@@ -196,12 +196,7 @@ def build_standalone_dashboard():
                 </div>
             </nav>
 
-            <!-- RIGHT: LIVE SYNC + SQUAD PILL + CREATOR BADGE + METODOLOGIA AI + GESTIONE DROPDOWN -->
             <div class="header-right">
-                <div id="liveSyncStatus" class="sync-badge offline" onclick="promptServerConnection()" title="Sincronizzazione Live. Clicca per impostazioni server.">
-                    <span class="sync-dot"></span> <span id="syncText">Offline</span>
-                </div>
-
                 <!-- CREATOR STATUS BADGE (Visibile solo se abilitato) -->
                 <div id="creatorStatusBadge" class="creator-status-badge creator-only-control" onclick="openCreatorAuthModal()" title="👑 Modalità Creatore Attiva. Clicca per disattivare o gestire.">
                     <span>👑 Creatore Attivo</span>

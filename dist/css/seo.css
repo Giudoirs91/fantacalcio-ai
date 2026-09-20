@@ -1648,6 +1648,11 @@ main {
     display: none !important;
 }
 
+#liveSyncStatus,
+.sync-badge {
+    display: none !important;
+}
+
 /* --- Creator Mode Access Control & Badge --- */
 .creator-only-control,
 .creator-only-block {

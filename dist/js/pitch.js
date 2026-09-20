@@ -178,9 +178,13 @@ function renderPitchTeam(teamName) {
             pillBadgeHtml = `<div class="pitch-fpn-pill">FPN</div>`;
         }
 
-        const posLabel = p.pos_label || p.pos;
         const ovrVal = fullP ? fullP.ovr : '';
-        const priceVal = fullP && fullP.prezzo_cons ? `<span style="color:#fbbf24;font-weight:800;font-size:9px;margin-left:3px;">${fullP.prezzo_cons}CR</span>` : '';
+        const ovrTierClass = (typeof getOvrClass === 'function' && ovrVal) ? getOvrClass(ovrVal) : '';
+        
+        // Iconcina rossa per calciatore infortunato
+        const isInjured = fullP && (fullP.is_injured || (fullP.infortunio_motivo && fullP.infortunio_motivo !== ''));
+        const injBadgeHtml = isInjured ? `<span class="pitch-inj-badge" title="Infortunato: ${fullP.infortunio_motivo || 'Indisponibile'} (Rientro previsto: ${fullP.infortunio_rientro || 'TBD'})">✚</span>` : '';
+
         const sub = getSubstituteForStarter(p, team, teamPlayers);
         const subHtml = sub ? `<div class="pitch-card-sub" title="Sostituto naturale / ballottaggio: ${sub.name} (${sub.role})"><span style="opacity:0.4;font-size:8px;">↳</span> <span style="font-weight:700;color:rgba(255,255,255,0.85);">${sub.name}</span> <span class="sub-role-badge ${sub.role}">${sub.role}</span></div>` : '';
 
@@ -192,11 +196,11 @@ function renderPitchTeam(teamName) {
             <div class="pitch-card ${cardFppClass}">
                 <div class="pitch-card-header">
                     ${pitchBadgeHtml}
-                    ${ovrVal ? `<span class="pitch-ovr-tag">${ovrVal}</span>` : ''}
+                    ${ovrVal ? `<span class="pitch-ovr-tag ${ovrTierClass}">${ovrVal}</span>` : ''}
                     ${pillBadgeHtml}
+                    ${injBadgeHtml}
                 </div>
                 <div class="pitch-card-name" title="${p.name}">${p.name}</div>
-                <div class="pitch-card-pos">${posLabel} ${priceVal}</div>
                 ${subHtml}
             </div>
         `;

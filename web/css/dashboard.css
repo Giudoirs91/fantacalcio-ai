@@ -1414,11 +1414,41 @@ main {
     font-size: 9.5px;
     font-weight: 800;
     font-family: 'Outfit', sans-serif;
-    color: var(--accent-cyan);
-    background: rgba(0, 242, 254, 0.15);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
     padding: 1px 3.5px;
     border-radius: 3px;
-    border: 1px solid rgba(0, 242, 254, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pitch-ovr-tag.ovr-tier-elite { background: #581c87 !important; border-color: #a855f7 !important; color: #f3e8ff !important; }
+.pitch-ovr-tag.ovr-tier-top   { background: #064e3b !important; border-color: #10b981 !important; color: #a7f3d0 !important; }
+.pitch-ovr-tag.ovr-tier-high  { background: #134e4a !important; border-color: #2dd4bf !important; color: #ccfbf1 !important; }
+.pitch-ovr-tag.ovr-tier-good  { background: #1e3a8a !important; border-color: #3b82f6 !important; color: #dbeafe !important; }
+.pitch-ovr-tag.ovr-tier-mid   { background: #78350f !important; border-color: #f59e0b !important; color: #fef3c7 !important; }
+.pitch-ovr-tag.ovr-tier-low   { background: #7c2d12 !important; border-color: #f97316 !important; color: #ffedd5 !important; }
+.pitch-ovr-tag.ovr-tier-bench { background: #1e293b !important; border-color: #475569 !important; color: #cbd5e1 !important; }
+
+/* Iconcina Rossa Infortunato sul Campo */
+.pitch-inj-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #dc2626;
+    border: 1px solid #f87171;
+    color: #ffffff;
+    font-size: 8px;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: 0 0 6px rgba(239, 68, 68, 0.7);
+    flex-shrink: 0;
+    cursor: help;
 }
 
 .pitch-oop-pill {
@@ -11536,6 +11566,13 @@ main {
         padding: 0.5px 2px !important;
         border-radius: 2px !important;
         line-height: 1 !important;
+    }
+
+    .pitch-inj-badge {
+        width: 11px !important;
+        height: 11px !important;
+        font-size: 7px !important;
+        line-height: 11px !important;
     }
 
     .pitch-card-name {

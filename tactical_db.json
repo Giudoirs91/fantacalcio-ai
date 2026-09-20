@@ -1922,6 +1922,16 @@
     ],
     "ballottaggi": [
       {
+        "player": "Martinez Jo.",
+        "pct": 85,
+        "vs": "Provedel (15%)"
+      },
+      {
+        "player": "Provedel",
+        "pct": 15,
+        "vs": "Martinez Jo. (85%)"
+      },
+      {
         "player": "Bisseck",
         "pct": 75,
         "vs": "Pavard (25%)"
@@ -1930,16 +1940,6 @@
         "player": "Pavard",
         "pct": 25,
         "vs": "Bisseck (75%)"
-      },
-      {
-        "player": "Akanji",
-        "pct": 75,
-        "vs": "Stones (25%)"
-      },
-      {
-        "player": "Stones",
-        "pct": 25,
-        "vs": "Akanji (75%)"
       },
       {
         "player": "Diouf",
@@ -1952,44 +1952,24 @@
         "vs": "Diouf (65%)"
       },
       {
-        "player": "Barella",
-        "pct": 85,
-        "vs": "Sucic P. (15%)"
-      },
-      {
-        "player": "Sucic P.",
-        "pct": 15,
-        "vs": "Barella (85%)"
-      },
-      {
         "player": "Calhanoglu",
-        "pct": 85,
-        "vs": "Zielinski (15%)"
+        "pct": 80,
+        "vs": "Zielinski (20%)"
       },
       {
         "player": "Zielinski",
-        "pct": 15,
-        "vs": "Calhanoglu (85%)"
+        "pct": 20,
+        "vs": "Calhanoglu (80%)"
       },
       {
-        "player": "Jones C.",
-        "pct": 50,
-        "vs": "Sucic P. (50%)"
+        "player": "Zielinski",
+        "pct": 65,
+        "vs": "Sucic P. (35%)"
       },
       {
         "player": "Sucic P.",
-        "pct": 50,
-        "vs": "Jones C. (50%)"
-      },
-      {
-        "player": "Dimarco",
-        "pct": 85,
-        "vs": "Carlos Augusto (15%)"
-      },
-      {
-        "player": "Carlos Augusto",
-        "pct": 15,
-        "vs": "Dimarco (85%)"
+        "pct": 35,
+        "vs": "Zielinski (65%)"
       },
       {
         "player": "Thuram",
@@ -2010,8 +1990,8 @@
         "role": "P",
         "sub_name": "Provedel",
         "sub_role": "P",
-        "status": "Titolare Inamovibile (100% Tit)",
-        "pct": 100,
+        "status": "Titolare (85% vs Provedel 15%)",
+        "pct": 85,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -2034,8 +2014,8 @@
         "role": "D",
         "sub_name": "Stones",
         "sub_role": "D",
-        "status": "Titolare (75% vs Stones 25%)",
-        "pct": 75,
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -2068,10 +2048,10 @@
         "pos_label": "Mezzala DX",
         "name": "Barella",
         "role": "C",
-        "sub_name": "Sucic P.",
+        "sub_name": "Stankovic A.",
         "sub_role": "C",
-        "status": "Titolare (85% vs Sucic P. 15%)",
-        "pct": 85,
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -2082,20 +2062,20 @@
         "role": "C",
         "sub_name": "Zielinski",
         "sub_role": "C",
-        "status": "Titolare (85% vs Zielinski 15%)",
-        "pct": 85,
+        "status": "Titolare (80% vs Zielinski 20%)",
+        "pct": 80,
         "fpp_fpn": "NONE",
         "oop": false
       },
       {
         "pos": "CC_S",
         "pos_label": "Mezzala SX",
-        "name": "Jones C.",
+        "name": "Zielinski",
         "role": "C",
         "sub_name": "Sucic P.",
         "sub_role": "C",
-        "status": "Titolare (50% vs Sucic P. 50%)",
-        "pct": 50,
+        "status": "Titolare (65% vs Sucic P. 35%)",
+        "pct": 65,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -2106,8 +2086,8 @@
         "role": "D",
         "sub_name": "Carlos Augusto",
         "sub_role": "D",
-        "status": "Titolare (85% vs Carlos Augusto 15%)",
-        "pct": 85,
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
         "fpp_fpn": "FPP",
         "oop": true,
         "oop_type": "FPP_D_IN_C",
@@ -2348,9 +2328,9 @@
       {
         "pos": "MED_D",
         "pos_label": "Mediano DX",
-        "name": "Koopmeiners",
+        "name": "Locatelli",
         "role": "C",
-        "sub_name": "Sarr P.",
+        "sub_name": "Koopmeiners",
         "sub_role": "C",
         "status": "Titolare Inamovibile (100% Tit)",
         "pct": 100,
@@ -2496,16 +2476,6 @@
         "vs": "Sutalo J. (55%)"
       },
       {
-        "player": "Provstgaard",
-        "pct": 55,
-        "vs": "Diogo Leite (45%)"
-      },
-      {
-        "player": "Diogo Leite",
-        "pct": 45,
-        "vs": "Provstgaard (55%)"
-      },
-      {
         "player": "Gudmundsson A.",
         "pct": 65,
         "vs": "Isaksen (35%)"
@@ -2514,6 +2484,16 @@
         "player": "Isaksen",
         "pct": 35,
         "vs": "Gudmundsson A. (65%)"
+      },
+      {
+        "player": "Diogo Leite",
+        "pct": 65,
+        "vs": "Provstgaard (35%)"
+      },
+      {
+        "player": "Provstgaard",
+        "pct": 35,
+        "vs": "Diogo Leite (65%)"
       }
     ],
     "lineup": [
@@ -2556,11 +2536,11 @@
       {
         "pos": "DC_S",
         "pos_label": "Centrale SX",
-        "name": "Provstgaard",
+        "name": "Diogo Leite",
         "role": "D",
-        "sub_name": "Diogo Leite",
+        "sub_name": "Provstgaard",
         "sub_role": "D",
-        "status": "Titolare (55% vs Diogo Leite 45%)",
+        "status": "Titolare (65% vs Provstgaard 35%)",
         "pct": 55,
         "fpp_fpn": "NONE",
         "oop": false
@@ -3034,6 +3014,16 @@
         "vs": "Maignan (85%)"
       },
       {
+        "player": "De Winter",
+        "pct": 75,
+        "vs": "Gabbia (25%)"
+      },
+      {
+        "player": "Gabbia",
+        "pct": 25,
+        "vs": "De Winter (75%)"
+      },
+      {
         "player": "Chukwueze",
         "pct": 50,
         "vs": "Moreira (50%)"
@@ -3045,13 +3035,13 @@
       },
       {
         "player": "Modric",
-        "pct": 65,
-        "vs": "Jashari (35%)"
+        "pct": 85,
+        "vs": "Jashari (15%)"
       },
       {
         "player": "Jashari",
-        "pct": 35,
-        "vs": "Modric (65%)"
+        "pct": 15,
+        "vs": "Modric (85%)"
       },
       {
         "player": "Estupinan",
@@ -3112,12 +3102,12 @@
       {
         "pos": "DC_C",
         "pos_label": "Centrale",
-        "name": "Gabbia",
+        "name": "De Winter",
         "role": "D",
-        "sub_name": "De Winter",
+        "sub_name": "Gabbia",
         "sub_role": "D",
-        "status": "Titolare Inamovibile (100% Tit)",
-        "pct": 100,
+        "status": "Titolare (75% vs Gabbia 25%)",
+        "pct": 75,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -3154,8 +3144,8 @@
         "role": "C",
         "sub_name": "Jashari",
         "sub_role": "C",
-        "status": "Titolare (65% vs Jashari 35%)",
-        "pct": 65,
+        "status": "Titolare (85% vs Jashari 15%)",
+        "pct": 85,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -5014,14 +5004,14 @@
     ],
     "ballottaggi": [
       {
-        "player": "Mazzocchi",
+        "player": "Hainaut",
         "pct": 70,
-        "vs": "Correia T. (30%)"
+        "vs": "Mazzocchi (30%)"
       },
       {
-        "player": "Correia T.",
+        "player": "Mazzocchi",
         "pct": 30,
-        "vs": "Mazzocchi (70%)"
+        "vs": "Hainaut (70%)"
       }
     ],
     "lineup": [
@@ -5076,11 +5066,11 @@
       {
         "pos": "ED",
         "pos_label": "Esterno DX",
-        "name": "Mazzocchi",
+        "name": "Hainaut",
         "role": "D",
-        "sub_name": "Correia T.",
+        "sub_name": "Mazzocchi",
         "sub_role": "D",
-        "status": "Titolare (70% vs Correia T. 30%)",
+        "status": "Titolare (70% vs Mazzocchi 30%)",
         "pct": 70,
         "fpp_fpn": "FPP",
         "oop": true,

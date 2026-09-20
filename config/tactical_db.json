@@ -1922,34 +1922,44 @@
     ],
     "ballottaggi": [
       {
+        "player": "Martinez Jo.",
+        "pct": 85,
+        "vs": "Provedel (15%)"
+      },
+      {
+        "player": "Provedel",
+        "pct": 15,
+        "vs": "Martinez Jo. (85%)"
+      },
+      {
+        "player": "Bisseck",
+        "pct": 75,
+        "vs": "Pavard (25%)"
+      },
+      {
+        "player": "Pavard",
+        "pct": 25,
+        "vs": "Bisseck (75%)"
+      },
+      {
+        "player": "Diouf",
+        "pct": 65,
+        "vs": "Spence (35%)"
+      },
+      {
+        "player": "Spence",
+        "pct": 35,
+        "vs": "Diouf (65%)"
+      },
+      {
         "player": "Calhanoglu",
         "pct": 80,
         "vs": "Zielinski (20%)"
       },
       {
-        "player": "Bisseck",
-        "pct": 50,
-        "vs": "Stones (50%)"
-      },
-      {
-        "player": "Stones",
-        "pct": 50,
-        "vs": "Bisseck (50%)"
-      },
-      {
-        "player": "Spence",
-        "pct": 45,
-        "vs": "Diouf (35%) / Luis Henrique (30%)"
-      },
-      {
-        "player": "Diouf",
-        "pct": 35,
-        "vs": "Spence (45%) / Luis Henrique (30%)"
-      },
-      {
-        "player": "Luis Henrique",
-        "pct": 30,
-        "vs": "Spence (45%) / Diouf (35%)"
+        "player": "Zielinski",
+        "pct": 20,
+        "vs": "Calhanoglu (80%)"
       },
       {
         "player": "Zielinski",
@@ -1957,14 +1967,19 @@
         "vs": "Sucic P. (35%)"
       },
       {
-        "player": "Thuram",
-        "pct": 80,
-        "vs": "Bonny (20%)"
+        "player": "Sucic P.",
+        "pct": 35,
+        "vs": "Zielinski (65%)"
       },
       {
-        "player": "Bonny",
-        "pct": 20,
-        "vs": "Thuram (80%)"
+        "player": "Thuram",
+        "pct": 65,
+        "vs": "Esposito F.P. (35%)"
+      },
+      {
+        "player": "Esposito F.P.",
+        "pct": 35,
+        "vs": "Thuram (65%)"
       }
     ],
     "lineup": [
@@ -1973,123 +1988,134 @@
         "pos_label": "Portiere",
         "name": "Martinez Jo.",
         "role": "P",
-        "fpp_fpn": "NONE",
-        "status": "Titolare Inamovibile",
-        "oop": false,
         "sub_name": "Provedel",
-        "sub_role": "P"
+        "sub_role": "P",
+        "status": "Titolare (85% vs Provedel 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
       },
       {
         "pos": "DC_D",
         "pos_label": "Braccetto DX",
         "name": "Bisseck",
         "role": "D",
+        "sub_name": "Pavard",
+        "sub_role": "D",
+        "status": "Titolare (75% vs Pavard 25%)",
+        "pct": 75,
         "fpp_fpn": "NONE",
-        "status": "Titolare (50% vs Stones 50%)",
-        "oop": false,
-        "sub_name": "Stones",
-        "sub_role": "D"
+        "oop": false
       },
       {
         "pos": "DC_C",
         "pos_label": "Centrale",
         "name": "Akanji",
         "role": "D",
+        "sub_name": "Stones",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
         "fpp_fpn": "NONE",
-        "status": "Centrale Difesa (100% Tit)",
-        "oop": false,
-        "sub_name": "De Vrij",
-        "sub_role": "D"
+        "oop": false
       },
       {
         "pos": "DC_S",
         "pos_label": "Braccetto SX",
         "name": "Bastoni",
         "role": "D",
-        "fpp_fpn": "NONE",
-        "status": "Top D Assoluto (100% Tit)",
-        "oop": false,
         "sub_name": "Carlos Augusto",
-        "sub_role": "D"
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
       },
       {
         "pos": "ED",
         "pos_label": "Esterno DX",
-        "name": "Spence",
-        "role": "D",
+        "name": "Diouf",
+        "role": "C",
+        "sub_name": "Spence",
+        "sub_role": "D",
+        "status": "Titolare (65% vs Spence 35%)",
+        "pct": 65,
         "fpp_fpn": "NONE",
-        "status": "Titolare (45% vs Diouf 35% / Luis Henrique 30%)",
-        "oop": false,
-        "sub_name": "Luis Henrique",
-        "sub_role": "C"
+        "oop": false
       },
       {
         "pos": "CC_D",
         "pos_label": "Mezzala DX",
         "name": "Barella",
         "role": "C",
+        "sub_name": "Stankovic A.",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
         "fpp_fpn": "NONE",
-        "status": "Top C Inamovibile (100% Tit)",
-        "oop": false,
-        "sub_name": "Diouf",
-        "sub_role": "C"
+        "oop": false
       },
       {
         "pos": "MED",
         "pos_label": "Regista",
         "name": "Calhanoglu",
         "role": "C",
-        "fpp_fpn": "NONE",
-        "status": "Top Player & 1° Rigorista (80% vs Zielinski 20%)",
-        "oop": false,
         "sub_name": "Zielinski",
-        "sub_role": "C"
+        "sub_role": "C",
+        "status": "Titolare (80% vs Zielinski 20%)",
+        "pct": 80,
+        "fpp_fpn": "NONE",
+        "oop": false
       },
       {
         "pos": "CC_S",
         "pos_label": "Mezzala SX",
         "name": "Zielinski",
         "role": "C",
-        "fpp_fpn": "NONE",
-        "status": "Titolare (65% vs Sucic P. 35%)",
-        "oop": false,
         "sub_name": "Sucic P.",
-        "sub_role": "C"
+        "sub_role": "C",
+        "status": "Titolare (65% vs Sucic P. 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
       },
       {
         "pos": "ES",
         "pos_label": "Esterno SX",
         "name": "Dimarco",
         "role": "D",
+        "sub_name": "Carlos Augusto",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
         "fpp_fpn": "FPP",
         "oop": true,
         "oop_type": "FPP_D_IN_C",
-        "oop_desc": "Quotato D ➜ Ala/Quinto offensivo d'élite",
-        "status": "Top 1 D del Campionato (100% Tit)",
-        "sub_name": "Carlos Augusto",
-        "sub_role": "D"
+        "oop_desc": "Quotato D ➜ Ala/Quinto offensivo d'élite"
       },
       {
         "pos": "PC_D",
         "pos_label": "Punta DX",
         "name": "Martinez L.",
         "role": "A",
+        "sub_name": "Bonny",
+        "sub_role": "A",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
         "fpp_fpn": "NONE",
-        "status": "Top 1 A & Capitano (100% Tit)",
-        "oop": false,
-        "sub_name": "Esposito F.P.",
-        "sub_role": "A"
+        "oop": false
       },
       {
         "pos": "PC_S",
         "pos_label": "Punta SX",
         "name": "Thuram",
         "role": "A",
-        "fpp_fpn": "NONE",
+        "sub_name": "Esposito F.P.",
+        "sub_role": "A",
         "status": "Titolare (65% vs Esposito F.P. 35%)",
-        "oop": false,
-        "sub_name": "Bonny",
-        "sub_role": "A"
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
       }
     ]
   },
@@ -2988,6 +3014,16 @@
         "vs": "Maignan (85%)"
       },
       {
+        "player": "De Winter",
+        "pct": 75,
+        "vs": "Gabbia (25%)"
+      },
+      {
+        "player": "Gabbia",
+        "pct": 25,
+        "vs": "De Winter (75%)"
+      },
+      {
         "player": "Chukwueze",
         "pct": 50,
         "vs": "Moreira (50%)"
@@ -2999,13 +3035,13 @@
       },
       {
         "player": "Modric",
-        "pct": 65,
-        "vs": "Jashari (35%)"
+        "pct": 85,
+        "vs": "Jashari (15%)"
       },
       {
         "player": "Jashari",
-        "pct": 35,
-        "vs": "Modric (65%)"
+        "pct": 15,
+        "vs": "Modric (85%)"
       },
       {
         "player": "Estupinan",
@@ -3066,12 +3102,12 @@
       {
         "pos": "DC_C",
         "pos_label": "Centrale",
-        "name": "Gabbia",
+        "name": "De Winter",
         "role": "D",
-        "sub_name": "De Winter",
+        "sub_name": "Gabbia",
         "sub_role": "D",
-        "status": "Titolare Inamovibile (100% Tit)",
-        "pct": 100,
+        "status": "Titolare (75% vs Gabbia 25%)",
+        "pct": 75,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -3108,8 +3144,8 @@
         "role": "C",
         "sub_name": "Jashari",
         "sub_role": "C",
-        "status": "Titolare (65% vs Jashari 35%)",
-        "pct": 65,
+        "status": "Titolare (85% vs Jashari 15%)",
+        "pct": 85,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -4968,14 +5004,14 @@
     ],
     "ballottaggi": [
       {
-        "player": "Mazzocchi",
+        "player": "Hainaut",
         "pct": 70,
-        "vs": "Correia T. (30%)"
+        "vs": "Mazzocchi (30%)"
       },
       {
-        "player": "Correia T.",
+        "player": "Mazzocchi",
         "pct": 30,
-        "vs": "Mazzocchi (70%)"
+        "vs": "Hainaut (70%)"
       }
     ],
     "lineup": [
@@ -5030,11 +5066,11 @@
       {
         "pos": "ED",
         "pos_label": "Esterno DX",
-        "name": "Mazzocchi",
+        "name": "Hainaut",
         "role": "D",
-        "sub_name": "Correia T.",
+        "sub_name": "Mazzocchi",
         "sub_role": "D",
-        "status": "Titolare (70% vs Correia T. 30%)",
+        "status": "Titolare (70% vs Mazzocchi 30%)",
         "pct": 70,
         "fpp_fpn": "FPP",
         "oop": true,

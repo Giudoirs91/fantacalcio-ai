@@ -1,8 +1,5 @@
 {
   "version": 2,
-  "name": "fantacalcio-ai",
-  "public": true,
-
   "outputDirectory": "dist",
 
   "routes": [

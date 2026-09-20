@@ -1629,8 +1629,7 @@ main {
 
 /* Layout Tabellone Asta (Responsive Full Width) */
 .auction-main-layout {
-    display: block !important;
-    width: 100% !important;
+    width: 100%;
 }
 
 .auction-table-column {

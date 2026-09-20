@@ -131,7 +131,7 @@ def build_standalone_dashboard():
         <div class="header-main-row">
             <!-- LEFT: BRANDING + LEAGUES HUB + LEAGUE SELECTOR + MODE -->
             <div class="header-left">
-                <div class="brand-badge" onclick="handleBrandSecretClick(); switchTab('stats');" title="Fanta Master AI — Portale Statistico Serie A 2026/27">
+                <div class="brand-badge" onclick="handleBrandSecretClick(); switchTab('auction');" title="Fanta Master AI — Portale Statistico Serie A 2026/27">
                     <span class="brand-icon">⚡</span>
                     <div>
                         <div class="brand-title">FANTA MASTER AI</div>
@@ -792,15 +792,15 @@ def build_standalone_dashboard():
         </div>
     </div>
 
-    <!-- MOBILE BOTTOM NAVIGATION (Native App Bar - Statistical Consultation Focus) -->
+    <!-- MOBILE BOTTOM NAVIGATION (Native App Bar - Tabellone Home) -->
     <nav class="mobile-bottom-nav" id="mobileBottomNav">
-        <button class="mobile-nav-item active" id="mobNavStats" onclick="switchTabMobile('stats')">
-            <span class="mob-icon">📊</span>
-            <span class="mob-label">Statistiche</span>
-        </button>
-        <button class="mobile-nav-item" id="mobNavAuction" onclick="switchTabMobile('auction')">
+        <button class="mobile-nav-item active" id="mobNavAuction" onclick="switchTabMobile('auction')">
             <span class="mob-icon">📋</span>
             <span class="mob-label">Tabellone</span>
+        </button>
+        <button class="mobile-nav-item" id="mobNavStats" onclick="switchTabMobile('stats')">
+            <span class="mob-icon">📊</span>
+            <span class="mob-label">Statistiche</span>
         </button>
         <button class="mobile-nav-item" id="mobNavAdvice" onclick="switchTabMobile('matchday_advice')">
             <span class="mob-icon">🎯</span>
@@ -1243,7 +1243,7 @@ def build_standalone_dashboard():
             const hashTab = window.location.hash ? window.location.hash.replace('#', '') : null;
             const savedTab = localStorage.getItem('FANTA_LAST_ACTIVE_TAB');
 
-            let initialTab = 'stats'; // Portale Statistico Serie A #1 d'Italia
+            let initialTab = 'auction'; // Tabellone & Listone Calciatori Home Page
             if (hashTab && validConsultationTabs.includes(hashTab)) {{
                 initialTab = hashTab;
             }} else if (savedTab && validConsultationTabs.includes(savedTab)) {{

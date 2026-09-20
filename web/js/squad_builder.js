@@ -2290,7 +2290,7 @@ function parseCsvRawLines(text) {
 }
 
 function openCsvRosterImportModal(targetTeam = 'my_team') {
-    if (typeof showComingSoonModal === 'function') {
+    if ((typeof isCreatorModeActive !== 'function' || !isCreatorModeActive()) && typeof showComingSoonModal === 'function') {
         showComingSoonModal('Importazione Rose da CSV');
         return;
     }

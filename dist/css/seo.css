@@ -1648,6 +1648,45 @@ main {
     display: none !important;
 }
 
+/* --- Creator Mode Access Control & Badge --- */
+.creator-only-control,
+.creator-only-block {
+    display: none !important;
+}
+
+body.creator-mode-active .creator-only-control {
+    display: inline-flex !important;
+}
+
+body.creator-mode-active .creator-only-block {
+    display: block !important;
+}
+
+body.creator-mode-active .visitor-only-item {
+    display: none !important;
+}
+
+.creator-status-badge {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(217, 119, 6, 0.35) 100%);
+    border: 1px solid rgba(245, 158, 11, 0.6);
+    color: #fbbf24;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.25);
+    transition: all 0.2s ease;
+    align-items: center;
+    gap: 5px;
+}
+
+.creator-status-badge:hover {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.4) 0%, rgba(217, 119, 6, 0.5) 100%);
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
+    transform: translateY(-1px);
+}
+
 .roster-header {
     display: flex;
     align-items: center;

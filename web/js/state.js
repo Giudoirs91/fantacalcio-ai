@@ -2,6 +2,85 @@
 // GESTIONE STATO GLOBALE E PERSISTENZA LOCALSTORAGE (CON PREFERITI & RADAR RIVALI)
 // ==============================================================================
 
+// ==============================================================================
+// MODALITÀ CREATORE (ACCESSO RISERVATO STRUMENTI INTERNI / ADMIN)
+// ==============================================================================
+function isCreatorModeActive() {
+    try {
+        return localStorage.getItem('FANTA_CREATOR_MODE') === 'true';
+    } catch(e) {
+        return false;
+    }
+}
+
+function setCreatorMode(active) {
+    try {
+        if (active) {
+            localStorage.setItem('FANTA_CREATOR_MODE', 'true');
+        } else {
+            localStorage.removeItem('FANTA_CREATOR_MODE');
+        }
+    } catch(e) {}
+    updateCreatorModeUI();
+}
+
+function updateCreatorModeUI() {
+    const active = isCreatorModeActive();
+    if (typeof document !== 'undefined' && document.body) {
+        if (active) {
+            document.body.classList.add('creator-mode-active');
+        } else {
+            document.body.classList.remove('creator-mode-active');
+        }
+    }
+    const badge = document.getElementById('creatorStatusBadge');
+    if (badge) {
+        badge.style.display = active ? 'inline-flex' : 'none';
+    }
+}
+
+function promptCreatorAccess() {
+    if (isCreatorModeActive()) {
+        const confirmExit = confirm("👑 Sei attualmente in Modalità Creatore (tutti gli strumenti sbloccati).\n\nVuoi uscire e tornare alla vista visitatore ordinario?");
+        if (confirmExit) {
+            setCreatorMode(false);
+            alert("Modalità Visitatore ripristinata. Gli strumenti di gestione sono ora nascosti.");
+            window.location.reload();
+        }
+        return;
+    }
+    const pin = prompt("👑 Accesso Riservato Creatore FantaMaster AI\nInserisci il tuo PIN di amministratore (es. 1991):");
+    if (!pin) return;
+    const cleanPin = pin.trim().toLowerCase();
+    if (cleanPin === '1991' || cleanPin === 'fanta' || cleanPin === 'admin' || cleanPin === 'fantacalcio') {
+        setCreatorMode(true);
+        alert("👑 Benvenuto Creatore! Tutti gli strumenti (modifica formazioni, auto-fill, esportazione database, importazione ed hub leghe) sono sbloccati.");
+        window.location.reload();
+    } else {
+        alert("❌ PIN non valido.");
+    }
+}
+
+// Verifica immediata parametro URL ?creator=1 o ?admin=1 o ?creator=1991
+(function checkCreatorUrlParams() {
+    try {
+        if (typeof window !== 'undefined' && window.location) {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('creator') === '1' || params.get('admin') === '1' || params.get('creator') === '1991' || params.get('creator') === 'true') {
+                localStorage.setItem('FANTA_CREATOR_MODE', 'true');
+            }
+        }
+    } catch(e) {}
+})();
+
+if (typeof window !== 'undefined') {
+    window.isCreatorModeActive = isCreatorModeActive;
+    window.setCreatorMode = setCreatorMode;
+    window.updateCreatorModeUI = updateCreatorModeUI;
+    window.promptCreatorAccess = promptCreatorAccess;
+    window.addEventListener('DOMContentLoaded', updateCreatorModeUI);
+}
+
 const STORAGE_KEY = 'FANTA_MASTER_AI_STATE_2026_27';
 
 const RIVALS_TEMPLATE = {

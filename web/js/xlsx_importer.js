@@ -12,7 +12,7 @@ let xlsxImportState = {
 };
 
 function openXlsxImportModal() {
-    if (typeof showComingSoonModal === 'function') {
+    if ((typeof isCreatorModeActive !== 'function' || !isCreatorModeActive()) && typeof showComingSoonModal === 'function') {
         showComingSoonModal('Importazione Rose da Excel');
         return;
     }

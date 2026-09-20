@@ -1622,7 +1622,7 @@ function confirmResetLiveAuction() {
 }
 
 function openRosterModal(targetTeam = 'my_team') {
-    if (typeof showComingSoonModal === 'function') {
+    if ((typeof isCreatorModeActive !== 'function' || !isCreatorModeActive()) && typeof showComingSoonModal === 'function') {
         showComingSoonModal('Gestione Rose & Campionati');
         return;
     }

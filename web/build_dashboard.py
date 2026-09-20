@@ -139,8 +139,8 @@ def build_standalone_dashboard():
                     </div>
                 </div>
 
-                <button class="nav-btn-icon" id="tabHomeBtn" style="display:none;" onclick="showComingSoonModal('Gestione Leghe Private')" title="Hub Campionati & Leghe (In Arrivo)">
-                    🏠 Leghe <span class="coming-soon-dot">🔒</span>
+                <button class="nav-btn-icon creator-only-control" id="tabHomeBtn" onclick="switchTab('home')" title="Hub Campionati & Leghe (Accesso Creatore)">
+                    🏠 Leghe
                 </button>
 
                 <!-- LEAGUE SELECTOR DROPDOWN (Popolato dinamicamente da LeaguesManager) -->
@@ -196,10 +196,15 @@ def build_standalone_dashboard():
                 </div>
             </nav>
 
-            <!-- RIGHT: LIVE SYNC + SQUAD PILL + METODOLOGIA AI + GESTIONE DROPDOWN -->
+            <!-- RIGHT: LIVE SYNC + SQUAD PILL + CREATOR BADGE + METODOLOGIA AI + GESTIONE DROPDOWN -->
             <div class="header-right">
                 <div id="liveSyncStatus" class="sync-badge offline" onclick="promptServerConnection()" title="Sincronizzazione Live. Clicca per impostazioni server.">
                     <span class="sync-dot"></span> <span id="syncText">Offline</span>
+                </div>
+
+                <!-- CREATOR STATUS BADGE (Visibile solo se abilitato) -->
+                <div id="creatorStatusBadge" class="creator-status-badge creator-only-control" onclick="promptCreatorAccess()" title="👑 Modalità Creatore Attiva. Clicca per uscire o gestire.">
+                    <span>👑 Creatore Attivo</span>
                 </div>
 
                 <div class="header-squad-pill" style="display:none;" onclick="showComingSoonModal('Gestione Rose & Crediti')" title="Gestione Rosa (In Arrivo)">
@@ -215,7 +220,7 @@ def build_standalone_dashboard():
                     <span class="info-text-label">Come Funziona l'AI</span>
                 </button>
 
-                <!-- GESTIONE DROPDOWN (BLOCCATO & CONSOLIDATO PER PORTALE STATISTICHE) -->
+                <!-- GESTIONE DROPDOWN (VISITATORI vs CREATORE) -->
                 <div class="nav-dropdown align-right">
                     <button class="nav-btn-icon" title="Opzioni, Formule e Database">
                         ⚙️ Gestione <span class="caret">▾</span>
@@ -223,12 +228,32 @@ def build_standalone_dashboard():
                     <div class="nav-dropdown-menu">
                         <div class="dropdown-header">Trasparenza & AI</div>
                         <a href="javascript:void(0)" class="dropdown-item" onclick="openAiMethodologyModal('ovr')">ℹ️ Come Funziona l'AI & Formule</a>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="exportTacticalDbJson()">📥 Esporta Database Tattico</a>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-header">Gestione Leghe & Rose (Bloccato)</div>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Importazione Rose da Excel')" style="opacity:0.7;">🔒 Carica Rose da Excel <span class="coming-soon-pill">In Arrivo</span></a>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Importazione Rosa da CSV')" style="opacity:0.7;">🔒 Carica Rosa da CSV <span class="coming-soon-pill">In Arrivo</span></a>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Hub Gestione Leghe')" style="opacity:0.7;">🔒 Hub Leghe & Impostazioni <span class="coming-soon-pill">In Arrivo</span></a>
+
+                        <!-- VISTA VISITATORE (Strumenti Asta Bloccati / In Arrivo) -->
+                        <div class="visitor-only-item">
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-header">Gestione Leghe (In Arrivo)</div>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Importazione Rose da Excel')" style="opacity:0.7;">🔒 Carica Rose da Excel <span class="coming-soon-pill">In Arrivo</span></a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Importazione Rosa da CSV')" style="opacity:0.7;">🔒 Carica Rosa da CSV <span class="coming-soon-pill">In Arrivo</span></a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Hub Gestione Leghe')" style="opacity:0.7;">🔒 Hub Leghe & Impostazioni <span class="coming-soon-pill">In Arrivo</span></a>
+                            <div class="dropdown-divider"></div>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="promptCreatorAccess()" style="opacity:0.4;font-size:11px;padding:4px 8px;text-align:center;">🔒 Accesso Riservato Creatore</a>
+                        </div>
+
+                        <!-- VISTA CREATORE (Strumenti Completi Sbloccati) -->
+                        <div class="creator-only-block">
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-header" style="color:var(--accent-gold);font-weight:900;">👑 Strumenti Creatore</div>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="openXlsxImportModal()">📗 Carica Rose da Excel (.xlsx)</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="openCsvRosterImportModal(State.currentTeam || 'Unika')">📂 Carica Rosa da CSV</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="openRosterModal('ALL_RIVALS')">🕵️ Rose Rivale (7 Squadre)</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="switchTab('home')">🏠 Hub Leghe & Crea Lega</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="exportTacticalDbJson()">📥 Esporta Database Tattico</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="exportCurrentLeagueJson()">💾 Scarica Backup JSON Lega</a>
+                            <a href="javascript:void(0)" class="dropdown-item danger" onclick="resetLiveAuction()" style="color:#f87171;">🔄 Azzera Asta Lega Attiva</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="promptCreatorAccess()" style="color:#fbbf24;font-weight:700;font-size:11.5px;">👁️ Esci da Modalità Creatore</a>
+                        </div>
                     </div>
                 </div>
 
@@ -466,18 +491,18 @@ def build_standalone_dashboard():
                     <label style="font-size:12px;font-weight:800;color:var(--text-secondary);">SELEZIONA CLUB:</label>
                     <select id="selectPitchTeam" class="select-filter" onchange="renderPitchTeam(this.value)">
                     </select>
-                    <button class="btn-action" id="btnEditPitchLineup" onclick="openTacticalEditorModal()" style="background:linear-gradient(135deg, rgba(0,242,254,0.18) 0%, rgba(56,189,248,0.25) 100%);border:1px solid var(--accent-cyan);color:#fff;font-weight:800;padding:6px 14px;border-radius:8px;display:flex;align-items:center;gap:7px;box-shadow:0 0 14px rgba(0,242,254,0.2);cursor:pointer;transition:all 0.2s ease;">
+                    <button class="btn-action creator-only-control" id="btnEditPitchLineup" onclick="openTacticalEditorModal()" style="background:linear-gradient(135deg, rgba(0,242,254,0.18) 0%, rgba(56,189,248,0.25) 100%);border:1px solid var(--accent-cyan);color:#fff;font-weight:800;padding:6px 14px;border-radius:8px;align-items:center;gap:7px;box-shadow:0 0 14px rgba(0,242,254,0.2);cursor:pointer;transition:all 0.2s ease;">
                         ⚙️ Modifica Formazione & Sostituti
                     </button>
-                    <button class="btn-action" onclick="autoFillAndSaveCurrentTeam()" style="background:linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(109,40,217,0.3) 100%);border:1px solid rgba(139,92,246,0.5);color:#c084fc;font-weight:800;padding:6px 14px;border-radius:8px;display:flex;align-items:center;gap:7px;box-shadow:0 0 14px rgba(139,92,246,0.2);cursor:pointer;transition:all 0.2s ease;" title="Popola e salva automaticamente titolari e sostituti da dati reali 2026/27">
+                    <button class="btn-action creator-only-control" onclick="autoFillAndSaveCurrentTeam()" style="background:linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(109,40,217,0.3) 100%);border:1px solid rgba(139,92,246,0.5);color:#c084fc;font-weight:800;padding:6px 14px;border-radius:8px;align-items:center;gap:7px;box-shadow:0 0 14px rgba(139,92,246,0.2);cursor:pointer;transition:all 0.2s ease;" title="Popola e salva automaticamente titolari e sostituti da dati reali 2026/27">
                         🤖 Auto-Fill da Titolarità
                     </button>
                 </div>
                 <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-                    <button class="btn-action" onclick="autoFillAllTeams()" style="font-size:11.5px;background:linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(109,40,217,0.15) 100%);border-color:rgba(139,92,246,0.35);color:#c084fc;font-weight:700;" title="Auto-Fill e salva per tutte le 20 squadre di Serie A">
+                    <button class="btn-action creator-only-control" onclick="autoFillAllTeams()" style="font-size:11.5px;background:linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(109,40,217,0.15) 100%);border-color:rgba(139,92,246,0.35);color:#c084fc;font-weight:700;" title="Auto-Fill e salva per tutte le 20 squadre di Serie A">
                         🤖 Auto-Fill Tutte le Squadre
                     </button>
-                    <button class="btn-action" onclick="exportTacticalDbJson()" style="font-size:11.5px;background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.15);" title="Scarica il file tactical_db.json ufficiale aggiornato">
+                    <button class="btn-action creator-only-control" onclick="exportTacticalDbJson()" style="font-size:11.5px;background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.15);" title="Scarica il file tactical_db.json ufficiale aggiornato">
                         📥 Esporta Database Tattico
                     </button>
                     <div style="font-size:12px;color:var(--text-secondary);">
@@ -921,15 +946,19 @@ def build_standalone_dashboard():
             // Intercept locked tabs for auction/league management (Creazione Squadra & Gestione Leghe)
             const LOCKED_TABS = ['home', 'squad_builder', 'repair', 'trade', 'report'];
             if (LOCKED_TABS.includes(tabId)) {{
-                const tabNames = {{
-                    'home': 'Hub Gestione Leghe Private',
-                    'squad_builder': 'Creazione Squadra & 11',
-                    'repair': 'Asta di Riparazione & Svincoli',
-                    'trade': 'Scambi & Trade Machine',
-                    'report': 'Pagelle Lega & AI Roast'
-                }};
-                showComingSoonModal(tabNames[tabId] || 'Modulo Asta');
-                return;
+                if (typeof isCreatorModeActive === 'function' && isCreatorModeActive()) {{
+                    // Accesso consentito per il Creatore!
+                }} else {{
+                    const tabNames = {{
+                        'home': 'Hub Gestione Leghe Private',
+                        'squad_builder': 'Creazione Squadra & 11',
+                        'repair': 'Asta di Riparazione & Svincoli',
+                        'trade': 'Scambi & Trade Machine',
+                        'report': 'Pagelle Lega & AI Roast'
+                    }};
+                    showComingSoonModal(tabNames[tabId] || 'Modulo Asta');
+                    return;
+                }}
             }}
 
             State.activeTab = tabId;
@@ -966,7 +995,13 @@ def build_standalone_dashboard():
             const budgetBar = document.querySelector('.budget-bar-wrapper');
             if (budgetBar) budgetBar.style.display = 'none';
 
-            if (tabId === 'auction') {{
+            if (tabId === 'home') {{
+                const btn = document.getElementById('tabHomeBtn');
+                if (btn) btn.classList.add('active');
+                const view = document.getElementById('viewHomeHub');
+                if (view) view.style.display = 'block';
+                if (typeof renderHomeHubView === 'function') renderHomeHubView();
+            }} else if (tabId === 'auction') {{
                 const btn = document.getElementById('tabAuctionBtn');
                 if (btn) btn.classList.add('active');
                 const grp = document.getElementById('navGroupTactics');

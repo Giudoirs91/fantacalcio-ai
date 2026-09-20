@@ -11033,6 +11033,32 @@ main {
     overflow: hidden;
 }
 
+.fut-row-main {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.fut-quick-metric {
+    display: none;
+}
+
+.fut-row-details {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+}
+
+.mobile-only {
+    display: none !important;
+}
+
+.desktop-only {
+    display: flex;
+}
+
 .fut-player-row:hover {
     transform: translateX(4px);
     border-color: rgba(0, 242, 254, 0.4);
@@ -11361,42 +11387,268 @@ main {
     box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
 }
 
-/* RESPONSIVE LAYOUT */
+/* RESPONSIVE LAYOUT & MOBILE COMPACT ACCORDION */
 @media (max-width: 1024px) {
-    .fut-player-row {
-        flex-wrap: wrap;
-        gap: 10px;
+    .desktop-only {
+        display: none !important;
     }
-    .fut-tactical-briefing {
+    .mobile-only {
+        display: flex !important;
+    }
+    .fut-player-row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 0 !important;
+        gap: 0 !important;
+        border-radius: 10px !important;
+        margin-bottom: 6px !important;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .fut-player-row:hover {
+        transform: none !important;
+    }
+    .fut-row-main {
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 8px 10px !important;
+        cursor: pointer !important;
+        box-sizing: border-box !important;
+        gap: 8px !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+    .fut-player-row:active .fut-row-main {
+        background: rgba(255, 255, 255, 0.03);
+    }
+    .fut-player-core {
+        min-width: 0 !important;
+        flex: 1 !important;
+        margin: 0 !important;
+        gap: 2px !important;
+    }
+    .fut-name-row {
+        gap: 6px !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+        overflow: hidden !important;
+    }
+    .fut-player-name {
+        font-size: 14px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    .fut-team-pill {
+        font-size: 10.5px !important;
+        white-space: nowrap !important;
+    }
+    .fut-spec-mini {
+        font-size: 11px !important;
+        line-height: 1 !important;
+    }
+    .fut-matchup-strip {
+        font-size: 11.5px !important;
+        gap: 6px !important;
+    }
+    .fut-quick-metric {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        flex-shrink: 0 !important;
+    }
+    .quick-metric-ai {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .qm-lbl {
+        font-size: 7.5px;
+        font-weight: 800;
+        color: var(--text-muted);
+        letter-spacing: 0.5px;
+        line-height: 1;
+    }
+    .qm-val {
+        font-size: 14px;
+        font-weight: 900;
+        font-family: 'Outfit', sans-serif;
+        color: var(--accent-cyan);
+        line-height: 1.1;
+    }
+    .fut-chevron-toggle {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .fut-chevron {
+        font-size: 12px;
+        color: var(--text-secondary);
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+        display: inline-block;
+    }
+    .fut-row-details {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, padding 0.25s ease;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
         width: 100%;
-        min-width: 100%;
+        box-sizing: border-box;
+        background: rgba(9, 13, 22, 0.7);
+    }
+    .fut-player-row.is-expanded {
+        border-color: rgba(0, 242, 254, 0.35) !important;
+        box-shadow: 0 4px 18px rgba(0, 242, 254, 0.12) !important;
+    }
+    .fut-player-row.is-expanded .fut-chevron {
+        transform: rotate(180deg);
+        color: var(--accent-cyan);
+    }
+    .fut-player-row.is-expanded .fut-row-details {
+        max-height: 500px;
+        opacity: 1;
+        padding: 8px 10px 12px 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 }
 
 @media (max-width: 768px) {
     .matchday-advice-container.fut-gaming-theme {
-        padding: 8px 6px 24px;
+        padding: 6px 4px 24px !important;
     }
     .fut-header-banner {
-        padding: 14px;
+        padding: 10px 12px !important;
+        margin-bottom: 10px !important;
+        border-radius: 12px !important;
+        gap: 8px !important;
     }
-    .fut-player-row {
-        padding: 10px;
-        gap: 10px;
+    .fut-eyebrow {
+        display: none !important;
+    }
+    .fut-main-heading {
+        font-size: 16.5px !important;
+        letter-spacing: -0.3px !important;
+    }
+    .fut-btn-share {
+        padding: 5px 9px !important;
+        font-size: 11px !important;
+        border-radius: 6px !important;
+    }
+    .fut-control-bar {
+        flex-direction: column !important;
+        gap: 8px !important;
+        align-items: stretch !important;
+    }
+    .fut-ctrl-group {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+    .fut-mode-toggles {
+        width: 100% !important;
+        display: flex !important;
+    }
+    .fut-toggle-btn {
+        flex: 1 !important;
+        text-align: center !important;
+        padding: 6px 4px !important;
+        font-size: 11px !important;
+    }
+    .fut-fixtures-row {
+        padding: 4px 6px !important;
+        gap: 6px !important;
+    }
+    .fut-fixtures-label {
+        display: none !important;
+    }
+    .fut-chips-bar {
+        padding: 2px 0 4px !important;
+        gap: 5px !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    .fut-filter-chip {
+        padding: 4px 9px !important;
+        font-size: 11px !important;
+        flex-shrink: 0 !important;
+    }
+    .fut-section-header {
+        padding: 4px 6px !important;
+        margin-top: 10px !important;
+        margin-bottom: 6px !important;
+    }
+    .fut-section-title h2 {
+        font-size: 15px !important;
+    }
+    .fut-sec-sub {
+        display: none !important;
+    }
+    .fut-sec-badge {
+        font-size: 8.5px !important;
+        padding: 2px 6px !important;
     }
     .fut-card-shield {
-        width: 48px;
-        height: 56px;
+        width: 40px !important;
+        height: 46px !important;
+    }
+    .fut-shield-ovr {
+        font-size: 13px !important;
+    }
+    .fut-shield-pos {
+        font-size: 8px !important;
+    }
+    .fut-shield-avatar {
+        width: 18px !important;
+        height: 18px !important;
+        font-size: 9px !important;
+    }
+    .fut-shield-medal {
+        font-size: 9.5px !important;
+    }
+    .fut-mobile-badges-row {
+        display: flex !important;
+        gap: 6px !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
     }
     .fut-stats-hud {
-        width: 100%;
-        justify-content: space-around;
+        width: 100% !important;
+        justify-content: space-around !important;
+        padding: 4px 6px !important;
     }
-    .fut-action-col {
-        width: 100%;
+    .hud-stat-lbl {
+        font-size: 7.5px !important;
+    }
+    .hud-stat-val {
+        font-size: 11px !important;
+    }
+    .fut-tactical-briefing {
+        width: 100% !important;
+        min-width: 0 !important;
+        padding: 7px 9px !important;
+    }
+    .briefing-label {
+        font-size: 8.5px !important;
+    }
+    .briefing-text {
+        font-size: 11px !important;
+        line-height: 1.4 !important;
     }
     .fut-btn-inspect {
-        width: 100%;
+        width: 100% !important;
+        padding: 7px 12px !important;
+        font-size: 11.5px !important;
     }
 }
 

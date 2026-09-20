@@ -458,67 +458,93 @@ function renderMatchdayAdviceView() {
             const titVal = p.titolarita || 85;
 
             rowsHtml += `
-                <div class="fut-player-row ${tierClass}">
-                    <!-- FIFA / PES CARD SHIELD BADGE -->
-                    <div class="fut-card-shield ${tierClass}" onclick="openPlayerProfileModal(${p.id})" title="Clicca per aprire la scheda di ${p.name}">
-                        <div class="fut-shield-top">
-                            <span class="fut-shield-ovr">${ovrVal}</span>
-                            <span class="fut-shield-pos">${p.role}</span>
-                        </div>
-                        <div class="fut-shield-avatar">
-                            <span>${p.name.charAt(0)}</span>
-                        </div>
-                        <div class="fut-shield-medal">${tierMedal}</div>
-                    </div>
-
-                    <!-- PLAYER IDENTITY & INFO -->
-                    <div class="fut-player-core">
-                        <div class="fut-name-row">
-                            <span class="fut-tier-tag ${tierClass}">${tierBadgeText}</span>
-                            <span class="fut-player-name" onclick="openPlayerProfileModal(${p.id})">${p.name}</span>
-                            <span class="fut-team-pill">${p.team}</span>
-                            <div class="fut-mantra-box">${mantraTags}</div>
+                <div class="fut-player-row ${tierClass}" id="adviceCard_${p.id}">
+                    <!-- MAIN COMPACT ROW (Scan First: always visible) -->
+                    <div class="fut-row-main" onclick="toggleAdviceCard('adviceCard_${p.id}', event)">
+                        <!-- FIFA SHIELD -->
+                        <div class="fut-card-shield ${tierClass}" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();" title="Clicca per aprire la scheda di ${p.name}">
+                            <div class="fut-shield-top">
+                                <span class="fut-shield-ovr">${ovrVal}</span>
+                                <span class="fut-shield-pos">${p.role}</span>
+                            </div>
+                            <div class="fut-shield-avatar">
+                                <span>${p.name.charAt(0)}</span>
+                            </div>
+                            <div class="fut-shield-medal">${tierMedal}</div>
                         </div>
 
-                        <!-- MATCHUP PILL -->
-                        <div class="fut-matchup-strip">
-                            <span class="fut-matchup-vs">vs <strong>${mInfo.opp}</strong></span>
-                            ${locBadge}
-                            <div class="fut-special-badges-group">${specialBadges}</div>
-                        </div>
-                    </div>
+                        <!-- PLAYER CORE IDENTITY -->
+                        <div class="fut-player-core">
+                            <div class="fut-name-row">
+                                <span class="fut-tier-tag ${tierClass}">${tierBadgeText}</span>
+                                <span class="fut-player-name" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();">${p.name}</span>
+                                <span class="fut-team-pill">${p.team}</span>
+                                ${p.is_rigorista_1 ? '<span class="fut-spec-mini pen" title="1° Rigorista">⚽</span>' : ''}
+                                ${p.is_punizioni ? '<span class="fut-spec-mini fk" title="Tiratore Punizioni">🎯</span>' : ''}
+                                <div class="fut-mantra-box desktop-only">${mantraTags}</div>
+                            </div>
 
-                    <!-- HUD STATS DIAL (COMPACT) -->
-                    <div class="fut-stats-hud">
-                        <div class="hud-stat">
-                            <span class="hud-stat-lbl">FM 26/27</span>
-                            <span class="hud-stat-val neon">${fmVal}</span>
+                            <!-- MATCHUP STRIP -->
+                            <div class="fut-matchup-strip">
+                                <span class="fut-matchup-vs">vs <strong>${mInfo.opp}</strong></span>
+                                ${locBadge}
+                                <div class="fut-special-badges-group desktop-only">${specialBadges}</div>
+                            </div>
                         </div>
-                        <div class="hud-stat">
-                            <span class="hud-stat-lbl">TITOLARE</span>
-                            <span class="hud-stat-val">${titVal}%</span>
-                        </div>
-                        <div class="hud-stat">
-                            <span class="hud-stat-lbl">GOL / ASS</span>
-                            <span class="hud-stat-val">${p.gol_2627 || 0}/${p.assist_2627 || 0}</span>
-                        </div>
-                        <div class="hud-stat">
-                            <span class="hud-stat-lbl">RATING AI</span>
-                            <span class="hud-stat-val cyan">${item.score}</span>
+
+                        <!-- QUICK RATING AI & EXPAND CHEVRON -->
+                        <div class="fut-quick-metric">
+                            <div class="quick-metric-ai">
+                                <span class="qm-lbl">RATING AI</span>
+                                <span class="qm-val cyan">${item.score}</span>
+                            </div>
+                            <div class="fut-chevron-toggle" title="Espandi analisi tattica">
+                                <span class="fut-chevron">▾</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- ESSENTIAL TACTICAL BRIEFING (1-2 FRASI PUNCHY FACT-BASED) -->
-                    <div class="fut-tactical-briefing">
-                        <div class="briefing-label">💡 FOTMOB TACTICAL INSIGHT</div>
-                        <div class="briefing-text">${item.rationale}</div>
-                    </div>
+                    <!-- EXPANDABLE DRAWER (Details on demand: FotMob Insight, Stats, Scheda) -->
+                    <div class="fut-row-details">
+                        <!-- MOBILE BADGES ROW -->
+                        ${(specialBadges || mantraTags) ? `
+                        <div class="fut-mobile-badges-row mobile-only">
+                            ${mantraTags ? `<div class="fut-mantra-box">${mantraTags}</div>` : ''}
+                            ${specialBadges ? `<div class="fut-special-badges-group">${specialBadges}</div>` : ''}
+                        </div>` : ''}
 
-                    <!-- ACTION BUTTON -->
-                    <div class="fut-action-col">
-                        <button class="fut-btn-inspect" onclick="openPlayerProfileModal(${p.id})" title="Visualizza statistiche avanzate">
-                            🔍 Scheda
-                        </button>
+                        <!-- HUD STATS DIAL -->
+                        <div class="fut-stats-hud">
+                            <div class="hud-stat">
+                                <span class="hud-stat-lbl">FM 26/27</span>
+                                <span class="hud-stat-val neon">${fmVal}</span>
+                            </div>
+                            <div class="hud-stat">
+                                <span class="hud-stat-lbl">TITOLARE</span>
+                                <span class="hud-stat-val">${titVal}%</span>
+                            </div>
+                            <div class="hud-stat">
+                                <span class="hud-stat-lbl">GOL / ASS</span>
+                                <span class="hud-stat-val">${p.gol_2627 || 0}/${p.assist_2627 || 0}</span>
+                            </div>
+                            <div class="hud-stat">
+                                <span class="hud-stat-lbl">RATING AI</span>
+                                <span class="hud-stat-val cyan">${item.score}</span>
+                            </div>
+                        </div>
+
+                        <!-- ESSENTIAL TACTICAL BRIEFING -->
+                        <div class="fut-tactical-briefing">
+                            <div class="briefing-label">💡 FOTMOB TACTICAL INSIGHT</div>
+                            <div class="briefing-text">${item.rationale}</div>
+                        </div>
+
+                        <!-- ACTION BUTTON -->
+                        <div class="fut-action-col">
+                            <button class="fut-btn-inspect" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();" title="Visualizza statistiche avanzate">
+                                🔍 Scheda Completa ${p.name}
+                            </button>
+                        </div>
                     </div>
                 </div>
             `;
@@ -613,6 +639,20 @@ function renderMatchdayAdviceView() {
     container.innerHTML = fullHtml;
 }
 
+function toggleAdviceCard(cardId, event) {
+    if (event) {
+        if (event.target.closest('.fut-card-shield') || 
+            event.target.closest('.fut-player-name') || 
+            event.target.closest('.fut-btn-inspect')) {
+            return;
+        }
+    }
+    const card = document.getElementById(cardId);
+    if (!card) return;
+    card.classList.toggle('is-expanded');
+}
+
+window.toggleAdviceCard = toggleAdviceCard;
 window.renderMatchdayAdviceView = renderMatchdayAdviceView;
 window.setMatchdayAdviceMode = setMatchdayAdviceMode;
 window.onMatchdayRoundChange = onMatchdayRoundChange;

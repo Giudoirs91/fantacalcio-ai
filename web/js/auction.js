@@ -520,6 +520,7 @@ function filterBySlotShortcut(role, slotNum) {
 
 function renderSidebarRoster() {
     const container = document.getElementById('sidebarRosterContainer');
+    if (!container) return;
     const healthContainer = document.getElementById('sidebarBudgetHealthContainer');
     const analysis = getSlotBudgetAnalysis();
     
@@ -1621,6 +1622,10 @@ function confirmResetLiveAuction() {
 }
 
 function openRosterModal(targetTeam = 'my_team') {
+    if (typeof showComingSoonModal === 'function') {
+        showComingSoonModal('Gestione Rose & Campionati');
+        return;
+    }
     const modal = document.getElementById('rosterModal');
     const body = document.getElementById('rosterModalBody');
     if (!modal || !body) return;

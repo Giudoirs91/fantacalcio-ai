@@ -167,9 +167,6 @@ function renderSquadBuilder() {
                 <button class="sb-tool-btn" onclick="downloadRosterCSV();">
                     <span>📥 Scarica Excel / CSV</span>
                 </button>
-                <button class="sb-tool-btn" onclick="openCsvRosterImportModal('my_team');" style="background:rgba(14,165,233,0.18);border-color:rgba(14,165,233,0.45);color:#38bdf8;">
-                    <span>📂 Carica Rosa CSV</span>
-                </button>
             </div>
             <div style="display:flex;align-items:center;gap:8px;">
                 <span style="font-size:11.5px;color:var(--text-muted);">Visualizzazione:</span>
@@ -180,26 +177,8 @@ function renderSquadBuilder() {
             </div>
         </div>
 
-        <!-- MAIN LAYOUT: COMPACT LEFT SQUAD COLUMN + UNIFIED RIGHT RECOMMENDATIONS -->
-        <div class="sb-main-grid">
-            <!-- LEFT COLUMN: COMPACT ROSTER (340px) -->
-            <div class="sb-roster-col-compact">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-                    <h3 style="margin:0;font-size:14px;font-weight:800;color:var(--text-primary);">📋 La Tua Rosa (${maxRosterSlots})</h3>
-                    <button class="btn-roster-action" onclick="resetLiveAuction(); renderSquadBuilder();" title="Azzera Rosa Asta">🗑️ Azzera</button>
-                </div>
-
-                ${isMantraMode ? `
-                    ${renderCompactMantraGoalkeeperSlots()}
-                    ${renderCompactMantraMovementSlots()}
-                ` : `
-                    ${renderCompactDepartmentSlots('P', '🧤 Portieri', 3, 'var(--role-p)', ['1° Portiere', '2° Portiere', '3° Portiere'])}
-                    ${renderCompactDepartmentSlots('D', '🛡️ Difensori', 8, 'var(--role-d)', ['1° Top Mod', '2° Terzino Bonus', '3° Titolare', '4° Titolare', '5° Titolare', '6° Titolare', '7° Scommessa', '8° Scommessa'])}
-                    ${renderCompactDepartmentSlots('C', '🪄 Centrocampisti', 8, 'var(--role-c)', ['1° Rigorista', '2° Incursore', '3° Assistman', '4° Titolare', '5° Titolare', '6° Titolare', '7° Scommessa', '8° Scommessa'])}
-                    ${renderCompactDepartmentSlots('A', '⚡ Attaccanti', 6, 'var(--role-a)', ['1° Super Bomber', '2° Titolare Pesante', '3° Terzo Incomodo', '4° Titolare Provincia', '5° Scommessa Giovane', '6° Jolly / Copertura'])}
-                `}
-            </div>
-
+        <!-- MAIN LAYOUT: UNIFIED FULL-WIDTH RECOMMENDATIONS -->
+        <div class="sb-main-grid" style="display:block;width:100%;">
             <!-- RIGHT SECTION: UNIFIED RECOMMENDATION ENGINE CON SLIDER RUOLI E FILTRI -->
             <div class="sb-ai-unified-wrapper">
                 <!-- 1. SLIDER RUOLI A SCHEDE / PILLS -->
@@ -2311,6 +2290,10 @@ function parseCsvRawLines(text) {
 }
 
 function openCsvRosterImportModal(targetTeam = 'my_team') {
+    if (typeof showComingSoonModal === 'function') {
+        showComingSoonModal('Importazione Rose da CSV');
+        return;
+    }
     csvImportState.targetTeam = targetTeam;
     const modal = document.getElementById('csvRosterImportModal');
     if (!modal) return;

@@ -160,21 +160,10 @@ function renderHeaderLeagueDropdown() {
     }).join('');
 
     container.innerHTML = `
-        <div class="nav-dropdown">
-            <button class="header-league-btn" title="Cambia campionato">
-                <span style="font-size:14px;">🏆</span>
-                <span class="league-btn-name">${active.name}</span>
-                <span style="font-size:9.5px;padding:2px 6px;border-radius:4px;font-weight:800;background:${active.systemMode === 'mantra' ? 'rgba(0,242,254,0.18)' : 'rgba(251,191,36,0.18)'};color:${active.systemMode === 'mantra' ? 'var(--accent-cyan)' : '#fbbf24'};border:1px solid ${active.systemMode === 'mantra' ? 'rgba(0,242,254,0.4)' : 'rgba(251,191,36,0.4)'};">${active.systemMode === 'mantra' ? '🔮 MANTRA' : '⚡ CLASSIC'}</span>
-                <span class="caret">▾</span>
-            </button>
-            <div class="nav-dropdown-menu">
-                <div class="dropdown-header">I Tuoi Campionati</div>
-                ${itemsHtml}
-                <div class="dropdown-divider"></div>
-                <a href="javascript:void(0)" class="dropdown-item" onclick="openCreateLeagueModal()">➕ Crea Nuova Lega</a>
-                <a href="javascript:void(0)" class="dropdown-item" onclick="openXlsxImportModal()">📥 Importa Excel (.xlsx)</a>
-                <a href="javascript:void(0)" class="dropdown-item" onclick="switchTab('home')">🏠 Tutte le Leghe (Home Hub)</a>
-            </div>
+        <div class="header-league-static-badge" style="display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);font-size:12px;color:#fff;font-weight:700;">
+            <span style="font-size:14px;">🏆</span>
+            <span class="league-btn-name">Serie A 2026/27</span>
+            <span style="font-size:9.5px;padding:2px 6px;border-radius:4px;font-weight:800;background:rgba(0,242,254,0.18);color:var(--accent-cyan);border:1px solid rgba(0,242,254,0.4);">⚡ STATISTICHE</span>
         </div>
     `;
 

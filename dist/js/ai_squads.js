@@ -686,9 +686,9 @@ function renderAiSquadsTab() {
                             <span>↺ Ripristina Originale AI</span>
                         </button>
                     ` : ''}
-                    <button class="ai-load-squad-btn" onclick="loadAiSquadToBuilder('${currentSquad.id}')" title="Carica l'intera rosa nell'Asta Live">
-                        <span>📥 Carica nella Mia Rosa</span>
-                    </button>
+                    <span class="ai-consultation-badge" style="font-size:11.5px;padding:5px 12px;border-radius:8px;background:rgba(0,242,254,0.1);border:1px solid rgba(0,242,254,0.3);color:var(--accent-cyan);font-weight:700;display:inline-flex;align-items:center;gap:6px;">
+                        <span>📊</span> Modello Asta di Riferimento
+                    </span>
                 </div>
             </div>
 
@@ -800,12 +800,6 @@ function renderAiSquadsTab() {
                             <div class="ai-advantage-content" style="font-size:12px;">
                                 ${currentSquad.whyBeatsRivals}
                             </div>
-                        </div>
-
-                        <div style="margin-top:12px;">
-                            <button class="ai-load-squad-btn" style="width:100%;justify-content:center;" onclick="loadAiSquadToBuilder('${currentSquad.id}')">
-                                📥 Carica Questa Rosa nella Mia Rosa
-                            </button>
                         </div>
                     </div>
 
@@ -1204,53 +1198,12 @@ function renderAiReplaceCandidatesList() {
 }
 
 function loadAiSquadToBuilder(squadId) {
-    const squad = getAiSquadsData().find(s => s.id === squadId);
-    if (!squad) return;
-
-    const targetName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'la tua rosa';
-    if (!confirm(`Vuoi caricare tutti i 25 calciatori della formazione '${squad.name.split('—')[0]}' in ${targetName}?`)) {
-        return;
+    if (typeof showComingSoonModal === 'function') {
+        showComingSoonModal('Caricamento Rose & Gestione Leghe');
+    } else {
+        alert('Il portale è in modalità di consultazione statistica. La gestione delle rose è attualmente bloccata.');
     }
-
-    State.slots = {
-        P: { max: 3, players: [] },
-        D: { max: 8, players: [] },
-        C: { max: 8, players: [] },
-        A: { max: 6, players: [] }
-    };
-    State.budgetSpent = 0;
-
-    const allEntries = [
-        ...squad.starters.P.map(n => ({ n, r: 'P' })),
-        ...squad.bench.P.map(n => ({ n, r: 'P' })),
-        ...squad.starters.D.map(n => ({ n, r: 'D' })),
-        ...squad.bench.D.map(n => ({ n, r: 'D' })),
-        ...squad.starters.C.map(n => ({ n, r: 'C' })),
-        ...squad.bench.C.map(n => ({ n, r: 'C' })),
-        ...squad.starters.A.map(n => ({ n, r: 'A' })),
-        ...squad.bench.A.map(n => ({ n, r: 'A' }))
-    ];
-
-    allEntries.forEach(entry => {
-        const cleanN = entry.n.toLowerCase().trim();
-        let p = PLAYERS.find(pl => pl.role === entry.r && pl.name.toLowerCase() === cleanN);
-        if (!p) {
-            p = PLAYERS.find(pl => pl.role === entry.r && pl.name.toLowerCase().includes(cleanN));
-        }
-        if (!p) {
-            p = PLAYERS.find(pl => pl.name.toLowerCase() === cleanN || pl.name.toLowerCase().includes(cleanN));
-        }
-        if (p) {
-            const cost = getPlayerAuctionCost(p);
-            buyPlayer(p.id, cost);
-        }
-    });
-
-    saveStateToStorage();
-    updateAllViews();
-    switchTab('auction');
-
-    alert(`🎉 Rosa '${squad.name.split('—')[0]}' caricata con successo in ${targetName}!`);
+    return;
 }
 
 window.renderAiSquads = renderAiSquadsTab;

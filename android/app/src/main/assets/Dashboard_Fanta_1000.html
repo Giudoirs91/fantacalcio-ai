@@ -1663,50 +1663,25 @@ main {
     background: rgba(245, 158, 11, 0.4);
 }
 
-/* Layout Tabellone Asta (Responsive Smartphone & Tablet) */
+/* Layout Tabellone Asta (Responsive Full Width) */
 .auction-main-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
+    display: block !important;
+    width: 100% !important;
 }
 
-@media (min-width: 1100px) {
-    .auction-main-layout {
-        flex-direction: row;
-        gap: 18px;
-        align-items: flex-start;
-    }
+.auction-table-column {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
 }
 
-/* Persistent Right Sidebar: La Mia Squadra */
+/* Persistent Right Sidebar: Hidden for Pure Statistical Portal */
 .roster-sidebar {
-    background: rgba(15, 23, 42, 0.9);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--border-glass);
-    border-radius: 14px;
-    padding: 14px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    z-index: 20;
+    display: none !important;
 }
 
-@media (min-width: 1100px) {
-    .roster-sidebar {
-        width: 295px;
-        min-width: 285px;
-        position: sticky;
-        top: 70px;
-        max-height: calc(100vh - 85px);
-    }
-    .roster-sidebar.collapsed {
-        display: none !important;
-        width: 0 !important;
-        min-width: 0 !important;
-        max-width: 0 !important;
-    }
+.budget-bar-wrapper {
+    display: none !important;
 }
 
 .roster-header {
@@ -11969,7 +11944,7 @@ main {
                     </div>
                 </div>
 
-                <button class="nav-btn-icon" id="tabHomeBtn" onclick="showComingSoonModal('Gestione Leghe Private')" title="Hub Campionati & Leghe (In Arrivo)">
+                <button class="nav-btn-icon" id="tabHomeBtn" style="display:none;" onclick="showComingSoonModal('Gestione Leghe Private')" title="Hub Campionati & Leghe (In Arrivo)">
                     🏠 Leghe <span class="coming-soon-dot">🔒</span>
                 </button>
 
@@ -12032,7 +12007,7 @@ main {
                     <span class="sync-dot"></span> <span id="syncText">Offline</span>
                 </div>
 
-                <div class="header-squad-pill" onclick="showComingSoonModal('Gestione Rose & Crediti')" title="Gestione Rosa (In Arrivo)">
+                <div class="header-squad-pill" style="display:none;" onclick="showComingSoonModal('Gestione Rose & Crediti')" title="Gestione Rosa (In Arrivo)">
                     <span style="font-size:13px;">📋</span>
                     <span class="pill-credits" id="hdrRemainingBudget">1000 CR</span>
                     <span class="pill-divider">•</span>
@@ -12045,27 +12020,20 @@ main {
                     <span class="info-text-label">Come Funziona l'AI</span>
                 </button>
 
-                <!-- GESTIONE DROPDOWN -->
+                <!-- GESTIONE DROPDOWN (BLOCCATO & CONSOLIDATO PER PORTALE STATISTICHE) -->
                 <div class="nav-dropdown align-right">
-                    <button class="nav-btn-icon" title="Opzioni, Importazioni e Gestione">
+                    <button class="nav-btn-icon" title="Opzioni, Formule e Database">
                         ⚙️ Gestione <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
                         <div class="dropdown-header">Trasparenza & AI</div>
                         <a href="javascript:void(0)" class="dropdown-item" onclick="openAiMethodologyModal('ovr')">ℹ️ Come Funziona l'AI & Formule</a>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-header">Importazione Rose & Dati</div>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="openXlsxImportModal()">📗 Carica Rose da Excel (.xlsx)</a>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="openCsvRosterImportModal(State.currentTeam || 'Unika')">📂 Carica Rosa da CSV</a>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="openRosterModal('ALL_RIVALS')">🕵️ Rose Rivale (7 Squadre)</a>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-header">Campionato & Asta (In Arrivo)</div>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Hub Gestione Leghe')">🏠 Hub Leghe <span class="coming-soon-pill">In Arrivo</span></a>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Impostazioni Campionato')">⚙️ Impostazioni Lega <span class="coming-soon-pill">In Arrivo</span></a>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="exportCurrentLeagueJson()">💾 Scarica Backup JSON Lega</a>
                         <a href="javascript:void(0)" class="dropdown-item" onclick="exportTacticalDbJson()">📥 Esporta Database Tattico</a>
                         <div class="dropdown-divider"></div>
-                        <a href="javascript:void(0)" class="dropdown-item danger" onclick="showComingSoonModal('Azzera Asta')" style="color:#f87171;">🔄 Azzera Asta Lega Attiva</a>
+                        <div class="dropdown-header">Gestione Leghe & Rose (Bloccato)</div>
+                        <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Importazione Rose da Excel')" style="opacity:0.7;">🔒 Carica Rose da Excel <span class="coming-soon-pill">In Arrivo</span></a>
+                        <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Importazione Rosa da CSV')" style="opacity:0.7;">🔒 Carica Rosa da CSV <span class="coming-soon-pill">In Arrivo</span></a>
+                        <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Hub Gestione Leghe')" style="opacity:0.7;">🔒 Hub Leghe & Impostazioni <span class="coming-soon-pill">In Arrivo</span></a>
                     </div>
                 </div>
 
@@ -12075,38 +12043,18 @@ main {
         </div>
     </header>
 
-    <!-- Live Budget Bar -->
-    <div class="budget-bar-wrapper">
-        <div class="budget-metric">
-            <div>
-                <div class="budget-label">Budget Rimanente (Unika)</div>
-                <div class="budget-val" id="lblRemainingBudget">1000 CR</div>
-            </div>
-            <div>
-                <div class="budget-label">Crediti Spesi</div>
-                <div class="budget-val" style="color:var(--accent-cyan);" id="lblSpentBudget">0 CR</div>
-            </div>
-        </div>
-
-        <!-- Slot Tracker: Modalità Classic -->
-        <div class="slots-tracker" id="classicSlotsTracker">
-            <div class="slot-pill P"><span class="badge">P</span> <span id="lblSlotP">0/3</span></div>
-            <div class="slot-pill D"><span class="badge">D</span> <span id="lblSlotD">0/8</span></div>
-            <div class="slot-pill C"><span class="badge">C</span> <span id="lblSlotC">0/8</span></div>
-            <div class="slot-pill A"><span class="badge">A</span> <span id="lblSlotA">0/6</span></div>
-        </div>
-
-        <!-- Slot Tracker: Modalità Mantra (Portieri + Movimento = 31 Totale) -->
-        <div class="slots-tracker mantra-tracker" id="mantraSlotsTracker" style="display:none;">
-            <div class="slot-pill Por" title="Portieri (Por) in Rosa"><span class="badge" style="background:#d97706;color:#fff;">Por</span> <span id="lblMantraSlotPor">0</span></div>
-            <div class="slot-pill Mov" title="Giocatori di Movimento"><span class="badge" style="background:#0284c7;color:#fff;">Mov</span> <span id="lblMantraSlotMov">0</span></div>
-            <div class="slot-pill Tot" title="Totale Rosa Mantra (Max 31)"><span class="badge" style="background:#8b5cf6;color:#fff;">Tot</span> <span id="lblMantraSlotTot">0/31</span></div>
-        </div>
-
-        <div class="max-bid-box">
-            <div class="title">Max Bid Consentito:</div>
-            <div class="amount" id="lblMaxBidAllowed">976 CR</div>
-        </div>
+    <!-- Hidden Budget & Slots Container for Script Compatibility -->
+    <div class="budget-bar-wrapper" style="display:none !important;">
+        <span id="lblRemainingBudget"></span>
+        <span id="lblSpentBudget"></span>
+        <span id="lblSlotP"></span>
+        <span id="lblSlotD"></span>
+        <span id="lblSlotC"></span>
+        <span id="lblSlotA"></span>
+        <span id="lblMantraSlotPor"></span>
+        <span id="lblMantraSlotMov"></span>
+        <span id="lblMantraSlotTot"></span>
+        <span id="lblMaxBidAllowed"></span>
     </div>
 
     <!-- Main Workspace -->
@@ -12152,13 +12100,10 @@ main {
                         <button id="btnToggleOop" class="chip-toggle" onclick="toggleOopFilterQuick()">💎 OOP</button>
                     </div>
 
-                    <!-- Advanced Filter Drawer Button & Sidebar Toggle -->
+                    <!-- Advanced Filter Drawer Button -->
                     <div class="filter-actions-right">
                         <button id="btnAdvancedFilters" class="btn-clean-action" onclick="toggleAdvancedFiltersDrawer()" title="Filtri Avanzati">
                             <span>⚙️ Filtri</span>
-                        </button>
-                        <button id="btnToggleSidebar" class="btn-clean-action" onclick="toggleSidebarRoster()" title="Espandi/Comprimi Sidebar Rosa">
-                            <span>◨ Rosa</span>
                         </button>
                     </div>
                 </div>
@@ -12302,62 +12247,8 @@ main {
                 </div>
             </div>
 
-            <!-- Right: Persistent Sidebar 'La Mia Squadra' -->
-            <aside class="roster-sidebar" id="rosterSidebar">
-                <!-- Mobile Handle & Close Bar -->
-                <div class="mobile-drawer-handle-bar">
-                    <div style="display:flex;align-items:center;gap:6px;">
-                        <span style="font-size:16px;">📋</span>
-                        <span style="font-size:13px;font-weight:800;color:#fff;">La Mia Squadra</span>
-                    </div>
-                    <button class="btn-close-mobile-drawer" onclick="toggleMobileRosterDrawer(false)">✕ Chiudi</button>
-                </div>
-
-                <div class="roster-header">
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <span style="font-size:18px;">📋</span>
-                        <h3 style="margin:0;font-size:15px;font-weight:800;color:var(--text-primary);">La Mia Rosa <span style="font-size:10px;padding:2px 6px;border-radius:10px;background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);margin-left:4px;">In Arrivo</span></h3>
-                    </div>
-                    <button class="btn-roster-action" onclick="showComingSoonModal('Gestione Rosa')" title="Azzera Rosa Asta (In Arrivo)">🔒 Azzera</button>
-                </div>
-
-                <div style="margin:8px 12px 12px;padding:10px 12px;border-radius:10px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);display:flex;align-items:flex-start;gap:8px;">
-                    <span style="font-size:16px;">🔒</span>
-                    <div style="font-size:11.5px;color:var(--text-secondary);line-height:1.4;">
-                        <strong style="color:#fbbf24;">Creazione Rosa Bloccata</strong><br>
-                        Le aste estive 2026/27 sono chiuse. Il tabellone è in piena consultazione statistica; la compilazione della rosa riaprirà per la finestra di riparazione di gennaio.
-                    </div>
-                </div>
-
-                <div class="roster-summary-card">
-                    <div class="summary-stat">
-                        <span class="lbl">Crediti Residui</span>
-                        <span class="val" id="sidebarBudgetRem" style="color:var(--accent-gold);">1000 CR</span>
-                    </div>
-                    <div class="summary-stat">
-                        <span class="lbl">Slot Completati</span>
-                        <span class="val" id="sidebarSlotsFilled">0 / 25</span>
-                    </div>
-                    <div class="summary-stat">
-                        <span class="lbl">Crediti Spesi</span>
-                        <span class="val" id="sidebarBudgetSpent" style="color:var(--text-secondary);">0 CR</span>
-                    </div>
-                    <div class="summary-stat">
-                        <span class="lbl">Max Bid</span>
-                        <span class="val" id="sidebarMaxBid" style="color:var(--accent-cyan);">976 CR</span>
-                    </div>
-                </div>
-
-                <div class="roster-progress-bar">
-                    <div class="progress-fill" id="sidebarProgressBar" style="width:0%;"></div>
-                </div>
-
-                <div id="sidebarBudgetHealthContainer"></div>
-
-                <!-- Reparti Squadra (P, D, C, A) -->
-                <div class="roster-departments-container" id="sidebarRosterContainer">
-                </div>
-            </aside>
+            <!-- Hidden Container for JS compatibility -->
+            <div id="sidebarRosterContainer" style="display:none !important;"></div>
         </section>
 
         <!-- Tab: Consigliati Prossima Giornata (AI & Report) -->
@@ -12768,10 +12659,7 @@ main {
                 <div class="mobile-menu-section">
                     <div class="mobile-menu-section-title"><span>⚙️</span> Gestione Campionato <span class="coming-soon-pill">In Arrivo</span></div>
                     <div class="mobile-menu-links">
-                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Hub Gestione Leghe');">🏠 Hub Leghe <span class="coming-soon-dot">🔒</span></button>
-                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Gestione Rosa Completa');">📋 Rosa Completa <span class="coming-soon-dot">🔒</span></button>
-                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Rose Rivale');">🕵️ Rose Rivale <span class="coming-soon-dot">🔒</span></button>
-                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Caricamento Excel Rose');">📗 Carica Excel (.xlsx) <span class="coming-soon-dot">🔒</span></button>
+                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Gestione Leghe Private & Rose');">🔒 Gestione Leghe & Rose <span class="coming-soon-dot">🔒</span></button>
                     </div>
                 </div>
             </div>
@@ -13913,21 +13801,10 @@ function renderHeaderLeagueDropdown() {
     }).join('');
 
     container.innerHTML = `
-        <div class="nav-dropdown">
-            <button class="header-league-btn" title="Cambia campionato">
-                <span style="font-size:14px;">🏆</span>
-                <span class="league-btn-name">${active.name}</span>
-                <span style="font-size:9.5px;padding:2px 6px;border-radius:4px;font-weight:800;background:${active.systemMode === 'mantra' ? 'rgba(0,242,254,0.18)' : 'rgba(251,191,36,0.18)'};color:${active.systemMode === 'mantra' ? 'var(--accent-cyan)' : '#fbbf24'};border:1px solid ${active.systemMode === 'mantra' ? 'rgba(0,242,254,0.4)' : 'rgba(251,191,36,0.4)'};">${active.systemMode === 'mantra' ? '🔮 MANTRA' : '⚡ CLASSIC'}</span>
-                <span class="caret">▾</span>
-            </button>
-            <div class="nav-dropdown-menu">
-                <div class="dropdown-header">I Tuoi Campionati</div>
-                ${itemsHtml}
-                <div class="dropdown-divider"></div>
-                <a href="javascript:void(0)" class="dropdown-item" onclick="openCreateLeagueModal()">➕ Crea Nuova Lega</a>
-                <a href="javascript:void(0)" class="dropdown-item" onclick="openXlsxImportModal()">📥 Importa Excel (.xlsx)</a>
-                <a href="javascript:void(0)" class="dropdown-item" onclick="switchTab('home')">🏠 Tutte le Leghe (Home Hub)</a>
-            </div>
+        <div class="header-league-static-badge" style="display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);font-size:12px;color:#fff;font-weight:700;">
+            <span style="font-size:14px;">🏆</span>
+            <span class="league-btn-name">Serie A 2026/27</span>
+            <span style="font-size:9.5px;padding:2px 6px;border-radius:4px;font-weight:800;background:rgba(0,242,254,0.18);color:var(--accent-cyan);border:1px solid rgba(0,242,254,0.4);">⚡ STATISTICHE</span>
         </div>
     `;
 
@@ -14500,6 +14377,10 @@ let xlsxImportState = {
 };
 
 function openXlsxImportModal() {
+    if (typeof showComingSoonModal === 'function') {
+        showComingSoonModal('Importazione Rose da Excel');
+        return;
+    }
     const modal = document.getElementById('xlsxImportModal');
     if (!modal) return;
     modal.style.display = 'flex';
@@ -20266,6 +20147,7 @@ function filterBySlotShortcut(role, slotNum) {
 
 function renderSidebarRoster() {
     const container = document.getElementById('sidebarRosterContainer');
+    if (!container) return;
     const healthContainer = document.getElementById('sidebarBudgetHealthContainer');
     const analysis = getSlotBudgetAnalysis();
     
@@ -21367,6 +21249,10 @@ function confirmResetLiveAuction() {
 }
 
 function openRosterModal(targetTeam = 'my_team') {
+    if (typeof showComingSoonModal === 'function') {
+        showComingSoonModal('Gestione Rose & Campionati');
+        return;
+    }
     const modal = document.getElementById('rosterModal');
     const body = document.getElementById('rosterModalBody');
     if (!modal || !body) return;
@@ -22081,9 +21967,6 @@ function renderSquadBuilder() {
                 <button class="sb-tool-btn" onclick="downloadRosterCSV();">
                     <span>📥 Scarica Excel / CSV</span>
                 </button>
-                <button class="sb-tool-btn" onclick="openCsvRosterImportModal('my_team');" style="background:rgba(14,165,233,0.18);border-color:rgba(14,165,233,0.45);color:#38bdf8;">
-                    <span>📂 Carica Rosa CSV</span>
-                </button>
             </div>
             <div style="display:flex;align-items:center;gap:8px;">
                 <span style="font-size:11.5px;color:var(--text-muted);">Visualizzazione:</span>
@@ -22094,26 +21977,8 @@ function renderSquadBuilder() {
             </div>
         </div>
 
-        <!-- MAIN LAYOUT: COMPACT LEFT SQUAD COLUMN + UNIFIED RIGHT RECOMMENDATIONS -->
-        <div class="sb-main-grid">
-            <!-- LEFT COLUMN: COMPACT ROSTER (340px) -->
-            <div class="sb-roster-col-compact">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-                    <h3 style="margin:0;font-size:14px;font-weight:800;color:var(--text-primary);">📋 La Tua Rosa (${maxRosterSlots})</h3>
-                    <button class="btn-roster-action" onclick="resetLiveAuction(); renderSquadBuilder();" title="Azzera Rosa Asta">🗑️ Azzera</button>
-                </div>
-
-                ${isMantraMode ? `
-                    ${renderCompactMantraGoalkeeperSlots()}
-                    ${renderCompactMantraMovementSlots()}
-                ` : `
-                    ${renderCompactDepartmentSlots('P', '🧤 Portieri', 3, 'var(--role-p)', ['1° Portiere', '2° Portiere', '3° Portiere'])}
-                    ${renderCompactDepartmentSlots('D', '🛡️ Difensori', 8, 'var(--role-d)', ['1° Top Mod', '2° Terzino Bonus', '3° Titolare', '4° Titolare', '5° Titolare', '6° Titolare', '7° Scommessa', '8° Scommessa'])}
-                    ${renderCompactDepartmentSlots('C', '🪄 Centrocampisti', 8, 'var(--role-c)', ['1° Rigorista', '2° Incursore', '3° Assistman', '4° Titolare', '5° Titolare', '6° Titolare', '7° Scommessa', '8° Scommessa'])}
-                    ${renderCompactDepartmentSlots('A', '⚡ Attaccanti', 6, 'var(--role-a)', ['1° Super Bomber', '2° Titolare Pesante', '3° Terzo Incomodo', '4° Titolare Provincia', '5° Scommessa Giovane', '6° Jolly / Copertura'])}
-                `}
-            </div>
-
+        <!-- MAIN LAYOUT: UNIFIED FULL-WIDTH RECOMMENDATIONS -->
+        <div class="sb-main-grid" style="display:block;width:100%;">
             <!-- RIGHT SECTION: UNIFIED RECOMMENDATION ENGINE CON SLIDER RUOLI E FILTRI -->
             <div class="sb-ai-unified-wrapper">
                 <!-- 1. SLIDER RUOLI A SCHEDE / PILLS -->
@@ -24225,6 +24090,10 @@ function parseCsvRawLines(text) {
 }
 
 function openCsvRosterImportModal(targetTeam = 'my_team') {
+    if (typeof showComingSoonModal === 'function') {
+        showComingSoonModal('Importazione Rose da CSV');
+        return;
+    }
     csvImportState.targetTeam = targetTeam;
     const modal = document.getElementById('csvRosterImportModal');
     if (!modal) return;
@@ -25328,9 +25197,9 @@ function renderAiSquadsTab() {
                             <span>↺ Ripristina Originale AI</span>
                         </button>
                     ` : ''}
-                    <button class="ai-load-squad-btn" onclick="loadAiSquadToBuilder('${currentSquad.id}')" title="Carica l'intera rosa nell'Asta Live">
-                        <span>📥 Carica nella Mia Rosa</span>
-                    </button>
+                    <span class="ai-consultation-badge" style="font-size:11.5px;padding:5px 12px;border-radius:8px;background:rgba(0,242,254,0.1);border:1px solid rgba(0,242,254,0.3);color:var(--accent-cyan);font-weight:700;display:inline-flex;align-items:center;gap:6px;">
+                        <span>📊</span> Modello Asta di Riferimento
+                    </span>
                 </div>
             </div>
 
@@ -25442,12 +25311,6 @@ function renderAiSquadsTab() {
                             <div class="ai-advantage-content" style="font-size:12px;">
                                 ${currentSquad.whyBeatsRivals}
                             </div>
-                        </div>
-
-                        <div style="margin-top:12px;">
-                            <button class="ai-load-squad-btn" style="width:100%;justify-content:center;" onclick="loadAiSquadToBuilder('${currentSquad.id}')">
-                                📥 Carica Questa Rosa nella Mia Rosa
-                            </button>
                         </div>
                     </div>
 
@@ -25846,53 +25709,12 @@ function renderAiReplaceCandidatesList() {
 }
 
 function loadAiSquadToBuilder(squadId) {
-    const squad = getAiSquadsData().find(s => s.id === squadId);
-    if (!squad) return;
-
-    const targetName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'la tua rosa';
-    if (!confirm(`Vuoi caricare tutti i 25 calciatori della formazione '${squad.name.split('—')[0]}' in ${targetName}?`)) {
-        return;
+    if (typeof showComingSoonModal === 'function') {
+        showComingSoonModal('Caricamento Rose & Gestione Leghe');
+    } else {
+        alert('Il portale è in modalità di consultazione statistica. La gestione delle rose è attualmente bloccata.');
     }
-
-    State.slots = {
-        P: { max: 3, players: [] },
-        D: { max: 8, players: [] },
-        C: { max: 8, players: [] },
-        A: { max: 6, players: [] }
-    };
-    State.budgetSpent = 0;
-
-    const allEntries = [
-        ...squad.starters.P.map(n => ({ n, r: 'P' })),
-        ...squad.bench.P.map(n => ({ n, r: 'P' })),
-        ...squad.starters.D.map(n => ({ n, r: 'D' })),
-        ...squad.bench.D.map(n => ({ n, r: 'D' })),
-        ...squad.starters.C.map(n => ({ n, r: 'C' })),
-        ...squad.bench.C.map(n => ({ n, r: 'C' })),
-        ...squad.starters.A.map(n => ({ n, r: 'A' })),
-        ...squad.bench.A.map(n => ({ n, r: 'A' }))
-    ];
-
-    allEntries.forEach(entry => {
-        const cleanN = entry.n.toLowerCase().trim();
-        let p = PLAYERS.find(pl => pl.role === entry.r && pl.name.toLowerCase() === cleanN);
-        if (!p) {
-            p = PLAYERS.find(pl => pl.role === entry.r && pl.name.toLowerCase().includes(cleanN));
-        }
-        if (!p) {
-            p = PLAYERS.find(pl => pl.name.toLowerCase() === cleanN || pl.name.toLowerCase().includes(cleanN));
-        }
-        if (p) {
-            const cost = getPlayerAuctionCost(p);
-            buyPlayer(p.id, cost);
-        }
-    });
-
-    saveStateToStorage();
-    updateAllViews();
-    switchTab('auction');
-
-    alert(`🎉 Rosa '${squad.name.split('—')[0]}' caricata con successo in ${targetName}!`);
+    return;
 }
 
 window.renderAiSquads = renderAiSquadsTab;

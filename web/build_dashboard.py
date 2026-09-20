@@ -139,7 +139,7 @@ def build_standalone_dashboard():
                     </div>
                 </div>
 
-                <button class="nav-btn-icon" id="tabHomeBtn" onclick="showComingSoonModal('Gestione Leghe Private')" title="Hub Campionati & Leghe (In Arrivo)">
+                <button class="nav-btn-icon" id="tabHomeBtn" style="display:none;" onclick="showComingSoonModal('Gestione Leghe Private')" title="Hub Campionati & Leghe (In Arrivo)">
                     🏠 Leghe <span class="coming-soon-dot">🔒</span>
                 </button>
 
@@ -202,7 +202,7 @@ def build_standalone_dashboard():
                     <span class="sync-dot"></span> <span id="syncText">Offline</span>
                 </div>
 
-                <div class="header-squad-pill" onclick="showComingSoonModal('Gestione Rose & Crediti')" title="Gestione Rosa (In Arrivo)">
+                <div class="header-squad-pill" style="display:none;" onclick="showComingSoonModal('Gestione Rose & Crediti')" title="Gestione Rosa (In Arrivo)">
                     <span style="font-size:13px;">📋</span>
                     <span class="pill-credits" id="hdrRemainingBudget">1000 CR</span>
                     <span class="pill-divider">•</span>
@@ -215,27 +215,20 @@ def build_standalone_dashboard():
                     <span class="info-text-label">Come Funziona l'AI</span>
                 </button>
 
-                <!-- GESTIONE DROPDOWN -->
+                <!-- GESTIONE DROPDOWN (BLOCCATO & CONSOLIDATO PER PORTALE STATISTICHE) -->
                 <div class="nav-dropdown align-right">
-                    <button class="nav-btn-icon" title="Opzioni, Importazioni e Gestione">
+                    <button class="nav-btn-icon" title="Opzioni, Formule e Database">
                         ⚙️ Gestione <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
                         <div class="dropdown-header">Trasparenza & AI</div>
                         <a href="javascript:void(0)" class="dropdown-item" onclick="openAiMethodologyModal('ovr')">ℹ️ Come Funziona l'AI & Formule</a>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-header">Importazione Rose & Dati</div>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="openXlsxImportModal()">📗 Carica Rose da Excel (.xlsx)</a>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="openCsvRosterImportModal(State.currentTeam || 'Unika')">📂 Carica Rosa da CSV</a>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="openRosterModal('ALL_RIVALS')">🕵️ Rose Rivale (7 Squadre)</a>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-header">Campionato & Asta (In Arrivo)</div>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Hub Gestione Leghe')">🏠 Hub Leghe <span class="coming-soon-pill">In Arrivo</span></a>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Impostazioni Campionato')">⚙️ Impostazioni Lega <span class="coming-soon-pill">In Arrivo</span></a>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="exportCurrentLeagueJson()">💾 Scarica Backup JSON Lega</a>
                         <a href="javascript:void(0)" class="dropdown-item" onclick="exportTacticalDbJson()">📥 Esporta Database Tattico</a>
                         <div class="dropdown-divider"></div>
-                        <a href="javascript:void(0)" class="dropdown-item danger" onclick="showComingSoonModal('Azzera Asta')" style="color:#f87171;">🔄 Azzera Asta Lega Attiva</a>
+                        <div class="dropdown-header">Gestione Leghe & Rose (Bloccato)</div>
+                        <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Importazione Rose da Excel')" style="opacity:0.7;">🔒 Carica Rose da Excel <span class="coming-soon-pill">In Arrivo</span></a>
+                        <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Importazione Rosa da CSV')" style="opacity:0.7;">🔒 Carica Rosa da CSV <span class="coming-soon-pill">In Arrivo</span></a>
+                        <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Hub Gestione Leghe')" style="opacity:0.7;">🔒 Hub Leghe & Impostazioni <span class="coming-soon-pill">In Arrivo</span></a>
                     </div>
                 </div>
 
@@ -245,38 +238,18 @@ def build_standalone_dashboard():
         </div>
     </header>
 
-    <!-- Live Budget Bar -->
-    <div class="budget-bar-wrapper">
-        <div class="budget-metric">
-            <div>
-                <div class="budget-label">Budget Rimanente (Unika)</div>
-                <div class="budget-val" id="lblRemainingBudget">1000 CR</div>
-            </div>
-            <div>
-                <div class="budget-label">Crediti Spesi</div>
-                <div class="budget-val" style="color:var(--accent-cyan);" id="lblSpentBudget">0 CR</div>
-            </div>
-        </div>
-
-        <!-- Slot Tracker: Modalità Classic -->
-        <div class="slots-tracker" id="classicSlotsTracker">
-            <div class="slot-pill P"><span class="badge">P</span> <span id="lblSlotP">0/3</span></div>
-            <div class="slot-pill D"><span class="badge">D</span> <span id="lblSlotD">0/8</span></div>
-            <div class="slot-pill C"><span class="badge">C</span> <span id="lblSlotC">0/8</span></div>
-            <div class="slot-pill A"><span class="badge">A</span> <span id="lblSlotA">0/6</span></div>
-        </div>
-
-        <!-- Slot Tracker: Modalità Mantra (Portieri + Movimento = 31 Totale) -->
-        <div class="slots-tracker mantra-tracker" id="mantraSlotsTracker" style="display:none;">
-            <div class="slot-pill Por" title="Portieri (Por) in Rosa"><span class="badge" style="background:#d97706;color:#fff;">Por</span> <span id="lblMantraSlotPor">0</span></div>
-            <div class="slot-pill Mov" title="Giocatori di Movimento"><span class="badge" style="background:#0284c7;color:#fff;">Mov</span> <span id="lblMantraSlotMov">0</span></div>
-            <div class="slot-pill Tot" title="Totale Rosa Mantra (Max 31)"><span class="badge" style="background:#8b5cf6;color:#fff;">Tot</span> <span id="lblMantraSlotTot">0/31</span></div>
-        </div>
-
-        <div class="max-bid-box">
-            <div class="title">Max Bid Consentito:</div>
-            <div class="amount" id="lblMaxBidAllowed">976 CR</div>
-        </div>
+    <!-- Hidden Budget & Slots Container for Script Compatibility -->
+    <div class="budget-bar-wrapper" style="display:none !important;">
+        <span id="lblRemainingBudget"></span>
+        <span id="lblSpentBudget"></span>
+        <span id="lblSlotP"></span>
+        <span id="lblSlotD"></span>
+        <span id="lblSlotC"></span>
+        <span id="lblSlotA"></span>
+        <span id="lblMantraSlotPor"></span>
+        <span id="lblMantraSlotMov"></span>
+        <span id="lblMantraSlotTot"></span>
+        <span id="lblMaxBidAllowed"></span>
     </div>
 
     <!-- Main Workspace -->
@@ -322,13 +295,10 @@ def build_standalone_dashboard():
                         <button id="btnToggleOop" class="chip-toggle" onclick="toggleOopFilterQuick()">💎 OOP</button>
                     </div>
 
-                    <!-- Advanced Filter Drawer Button & Sidebar Toggle -->
+                    <!-- Advanced Filter Drawer Button -->
                     <div class="filter-actions-right">
                         <button id="btnAdvancedFilters" class="btn-clean-action" onclick="toggleAdvancedFiltersDrawer()" title="Filtri Avanzati">
                             <span>⚙️ Filtri</span>
-                        </button>
-                        <button id="btnToggleSidebar" class="btn-clean-action" onclick="toggleSidebarRoster()" title="Espandi/Comprimi Sidebar Rosa">
-                            <span>◨ Rosa</span>
                         </button>
                     </div>
                 </div>
@@ -472,62 +442,8 @@ def build_standalone_dashboard():
                 </div>
             </div>
 
-            <!-- Right: Persistent Sidebar 'La Mia Squadra' -->
-            <aside class="roster-sidebar" id="rosterSidebar">
-                <!-- Mobile Handle & Close Bar -->
-                <div class="mobile-drawer-handle-bar">
-                    <div style="display:flex;align-items:center;gap:6px;">
-                        <span style="font-size:16px;">📋</span>
-                        <span style="font-size:13px;font-weight:800;color:#fff;">La Mia Squadra</span>
-                    </div>
-                    <button class="btn-close-mobile-drawer" onclick="toggleMobileRosterDrawer(false)">✕ Chiudi</button>
-                </div>
-
-                <div class="roster-header">
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <span style="font-size:18px;">📋</span>
-                        <h3 style="margin:0;font-size:15px;font-weight:800;color:var(--text-primary);">La Mia Rosa <span style="font-size:10px;padding:2px 6px;border-radius:10px;background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);margin-left:4px;">In Arrivo</span></h3>
-                    </div>
-                    <button class="btn-roster-action" onclick="showComingSoonModal('Gestione Rosa')" title="Azzera Rosa Asta (In Arrivo)">🔒 Azzera</button>
-                </div>
-
-                <div style="margin:8px 12px 12px;padding:10px 12px;border-radius:10px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);display:flex;align-items:flex-start;gap:8px;">
-                    <span style="font-size:16px;">🔒</span>
-                    <div style="font-size:11.5px;color:var(--text-secondary);line-height:1.4;">
-                        <strong style="color:#fbbf24;">Creazione Rosa Bloccata</strong><br>
-                        Le aste estive 2026/27 sono chiuse. Il tabellone è in piena consultazione statistica; la compilazione della rosa riaprirà per la finestra di riparazione di gennaio.
-                    </div>
-                </div>
-
-                <div class="roster-summary-card">
-                    <div class="summary-stat">
-                        <span class="lbl">Crediti Residui</span>
-                        <span class="val" id="sidebarBudgetRem" style="color:var(--accent-gold);">1000 CR</span>
-                    </div>
-                    <div class="summary-stat">
-                        <span class="lbl">Slot Completati</span>
-                        <span class="val" id="sidebarSlotsFilled">0 / 25</span>
-                    </div>
-                    <div class="summary-stat">
-                        <span class="lbl">Crediti Spesi</span>
-                        <span class="val" id="sidebarBudgetSpent" style="color:var(--text-secondary);">0 CR</span>
-                    </div>
-                    <div class="summary-stat">
-                        <span class="lbl">Max Bid</span>
-                        <span class="val" id="sidebarMaxBid" style="color:var(--accent-cyan);">976 CR</span>
-                    </div>
-                </div>
-
-                <div class="roster-progress-bar">
-                    <div class="progress-fill" id="sidebarProgressBar" style="width:0%;"></div>
-                </div>
-
-                <div id="sidebarBudgetHealthContainer"></div>
-
-                <!-- Reparti Squadra (P, D, C, A) -->
-                <div class="roster-departments-container" id="sidebarRosterContainer">
-                </div>
-            </aside>
+            <!-- Hidden Container for JS compatibility -->
+            <div id="sidebarRosterContainer" style="display:none !important;"></div>
         </section>
 
         <!-- Tab: Consigliati Prossima Giornata (AI & Report) -->
@@ -938,10 +854,7 @@ def build_standalone_dashboard():
                 <div class="mobile-menu-section">
                     <div class="mobile-menu-section-title"><span>⚙️</span> Gestione Campionato <span class="coming-soon-pill">In Arrivo</span></div>
                     <div class="mobile-menu-links">
-                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Hub Gestione Leghe');">🏠 Hub Leghe <span class="coming-soon-dot">🔒</span></button>
-                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Gestione Rosa Completa');">📋 Rosa Completa <span class="coming-soon-dot">🔒</span></button>
-                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Rose Rivale');">🕵️ Rose Rivale <span class="coming-soon-dot">🔒</span></button>
-                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Caricamento Excel Rose');">📗 Carica Excel (.xlsx) <span class="coming-soon-dot">🔒</span></button>
+                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Gestione Leghe Private & Rose');">🔒 Gestione Leghe & Rose <span class="coming-soon-dot">🔒</span></button>
                     </div>
                 </div>
             </div>

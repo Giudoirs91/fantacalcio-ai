@@ -5,17 +5,17 @@
 const STORAGE_KEY = 'FANTA_MASTER_AI_STATE_2026_27';
 
 const RIVALS_TEMPLATE = {
-    'The President (Davide)': { manager: 'Davide', tendency: 'Aggressivo su 1° Portiere e Super Bomber', budget: 1000, spent: 0, players: [] },
-    'Divin Codino (Alessandro)': { manager: 'Alessandro', tendency: 'All-in su Attaccanti e Modificatore Difesa', budget: 1000, spent: 0, players: [] },
-    'Fc Enry (Enrico)': { manager: 'Enrico', tendency: 'Equilibrato, caccia ai terzini da assist', budget: 1000, spent: 0, players: [] },
-    'Cocorito (Rosario)': { manager: 'Rosario', tendency: 'Risparmio dietro, all-in su 2 Top Attaccanti', budget: 1000, spent: 0, players: [] },
-    'Partenope (Michele)': { manager: 'Michele', tendency: 'Focus su Napoli, rigoristi e incursori', budget: 1000, spent: 0, players: [] },
-    'AtletiCoSassicc (Ilario)': { manager: 'Ilario', tendency: 'Low cost a 1 CR e accumulo budget per le punte', budget: 1000, spent: 0, players: [] },
-    'Sparta (Valerio)': { manager: 'Valerio', tendency: 'Spesa mirata su centrocampo e scommesse offensive', budget: 1000, spent: 0, players: [] }
+    'Squadra A': { manager: 'Manager 1', tendency: 'Aggressivo su 1° Portiere e Super Bomber', budget: 1000, spent: 0, players: [] },
+    'Squadra B': { manager: 'Manager 2', tendency: 'All-in su Attaccanti e Modificatore Difesa', budget: 1000, spent: 0, players: [] },
+    'Squadra C': { manager: 'Manager 3', tendency: 'Equilibrato, caccia ai terzini da assist', budget: 1000, spent: 0, players: [] },
+    'Squadra D': { manager: 'Manager 4', tendency: 'Risparmio dietro, all-in su 2 Top Attaccanti', budget: 1000, spent: 0, players: [] },
+    'Squadra E': { manager: 'Manager 5', tendency: 'Focus su rigoristi e incursori', budget: 1000, spent: 0, players: [] },
+    'Squadra F': { manager: 'Manager 6', tendency: 'Low cost a 1 CR e accumulo budget per le punte', budget: 1000, spent: 0, players: [] },
+    'Squadra G': { manager: 'Manager 7', tendency: 'Spesa mirata su centrocampo e scommesse offensive', budget: 1000, spent: 0, players: [] }
 };
 
 const DefaultState = {
-    teamName: 'Unika (Giuseppe)',
+    teamName: 'La Mia Rosa',
     budgetTotal: 1000,
     budgetSpent: 0,
     slots: {
@@ -26,7 +26,7 @@ const DefaultState = {
     },
     favorites: [], // Array di ID calciatori preferiti (⭐)
     takenByOthers: [], // Array di ID calciatori presi da altri
-    rivalAssignments: {}, // { playerId: { rival: 'The President (Davide)', price: 45 } }
+    rivalAssignments: {}, // { playerId: { rival: 'Squadra A', price: 45 } }
     rivals: JSON.parse(JSON.stringify(RIVALS_TEMPLATE)),
     playerOverrides: {}, // { [playerId]: { slot_fascia, slot_num, oop_val, is_oop, fpp_fpn, ai_advice, consiglio, ai_advice_type } }
     
@@ -452,7 +452,42 @@ const LeaguesManager = {
             const raw = localStorage.getItem(LEAGUES_STORAGE_KEY);
             if (raw) {
                 const parsed = JSON.parse(raw);
-                if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    let changed = false;
+                    parsed.forEach(l => {
+                        if (l.name && (l.name.includes('Amici') || l.name.includes('Ferrovia') || l.name.includes('Lega Principale'))) {
+                            l.name = 'La Mia Lega';
+                            changed = true;
+                        }
+                        if (l.myTeamName && (l.myTeamName.includes('Unika') || l.myTeamName.includes('Giuseppe'))) {
+                            l.myTeamName = 'La Mia Rosa';
+                            changed = true;
+                        }
+                        if (l.rivals) {
+                            const rKeys = Object.keys(l.rivals);
+                            const hasPersonalNames = rKeys.some(k => k.includes('Davide') || k.includes('Alessandro') || k.includes('Enrico') || k.includes('Rosario') || k.includes('Michele') || k.includes('Ilario') || k.includes('Valerio') || k.includes('President') || k.includes('Phoenix'));
+                            if (hasPersonalNames) {
+                                const newR = JSON.parse(JSON.stringify(RIVALS_TEMPLATE));
+                                const templateKeys = Object.keys(newR);
+                                let idx = 0;
+                                rKeys.forEach(oldKey => {
+                                    const tKey = templateKeys[idx % templateKeys.length];
+                                    if (l.rivals[oldKey] && l.rivals[oldKey].players && l.rivals[oldKey].players.length > 0) {
+                                        newR[tKey].players = l.rivals[oldKey].players;
+                                        newR[tKey].spent = l.rivals[oldKey].spent;
+                                    }
+                                    idx++;
+                                });
+                                l.rivals = newR;
+                                changed = true;
+                            }
+                        }
+                    });
+                    if (changed) {
+                        this.saveAll(parsed);
+                    }
+                    return parsed;
+                }
             }
         } catch (e) {
             console.warn('Errore lettura leghe:', e);
@@ -489,7 +524,7 @@ const LeaguesManager = {
         const leagues = this.getAll();
         const id = 'league_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
         const name = opts.name || `Lega #${leagues.length + 1}`;
-        const myTeamName = opts.myTeamName || 'Unika (La Mia Rosa)';
+        const myTeamName = opts.myTeamName || 'La Mia Rosa';
         const systemMode = opts.systemMode || 'classic';
         const budgetTotal = opts.budgetTotal || 1000;
         const numTeams = opts.numTeams || 8;
@@ -656,8 +691,8 @@ const LeaguesManager = {
         if (!league) return;
 
         State.activeLeagueId = league.id || 'league_default';
-        State.leagueName = league.name || 'Lega';
-        State.teamName = league.myTeamName || 'Unika';
+        State.leagueName = (league.name && !league.name.includes('Amici') && !league.name.includes('Ferrovia')) ? league.name : 'La Mia Lega';
+        State.teamName = (league.myTeamName && !league.myTeamName.includes('Unika') && !league.myTeamName.includes('Giuseppe')) ? league.myTeamName : 'La Mia Rosa';
         State.systemMode = league.systemMode || 'classic';
         State.budgetTotal = Number(league.budgetTotal) || 1000;
         State.budgetSpent = Number(league.budgetSpent) || 0;
@@ -728,8 +763,8 @@ function loadStateFromStorage() {
                 const parsed = JSON.parse(oldSaved);
                 initialLeague = {
                     id: 'league_default',
-                    name: 'Lega Principale (Amici)',
-                    myTeamName: parsed.teamName || 'Unika (La Mia Rosa)',
+                    name: 'La Mia Lega',
+                    myTeamName: 'La Mia Rosa',
                     systemMode: parsed.systemMode || 'classic',
                     budgetTotal: parsed.budgetTotal || 1000,
                     budgetSpent: parsed.budgetSpent || 0,
@@ -746,8 +781,8 @@ function loadStateFromStorage() {
             } else {
                 initialLeague = {
                     id: 'league_default',
-                    name: 'Lega Principale (Amici)',
-                    myTeamName: 'Unika (La Mia Rosa)',
+                    name: 'La Mia Lega',
+                    myTeamName: 'La Mia Rosa',
                     systemMode: 'classic',
                     budgetTotal: 1000,
                     budgetSpent: 0,
@@ -772,6 +807,13 @@ function loadStateFromStorage() {
         if (active) {
             LeaguesManager.loadLeagueIntoState(active);
             console.log(`-> Lega attiva caricata con successo: "${active.name}" (${active.id}).`);
+        }
+
+        if (State.teamName && (State.teamName.includes('Unika') || State.teamName.includes('Giuseppe'))) {
+            State.teamName = 'La Mia Rosa';
+        }
+        if (State.leagueName && (State.leagueName.includes('Amici') || State.leagueName.includes('Ferrovia') || State.leagueName.includes('Lega Principale'))) {
+            State.leagueName = 'La Mia Lega';
         }
     } catch (e) {
         console.warn("Errore lettura leghe da localStorage:", e);

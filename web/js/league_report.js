@@ -143,8 +143,8 @@ function evaluateTeamRoster(teamName, playersList, budgetSpent, budgetTotal = 10
 
 function generateUniqueAiRoast(teamData, allTeams, assignedTemplateIds = new Set()) {
     const { teamName, roles, overallGrade, topPick, flopRisk, gradeP, gradeD, gradeC, gradeA, playersList } = teamData;
-    const myName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'Unika';
-    const isMyTeam = (teamName === myName || teamName === 'Unika');
+    const myName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'La Mia Rosa';
+    const isMyTeam = (teamName === myName || teamName === 'La Mia Rosa' || teamName === 'Unika');
     
     if (!playersList || playersList.length === 0) {
         return "Rosa ancora fantasma: sono ancora al buffet dell'asta o stanno leggendo la Guida Gazzetta del 2018.";
@@ -263,7 +263,7 @@ function generateUniqueAiRoast(teamData, allTeams, assignedTemplateIds = new Set
     if (overallGrade >= 8.0) {
         if (isMyTeam) {
             candidates.push({
-                id: 'scudetto_unika',
+                id: 'scudetto_myteam',
                 text: `Rosa costruita alla perfezione con l'AI: ${topAttackerName} davanti e ${topMidfielderName} in mezzo. Favoriti indiscussi per il titolo di lega.`
             });
         } else {
@@ -363,7 +363,7 @@ function copyLeagueReportToWhatsApp() {
     const myName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'La Mia Rosa';
 
     evals.forEach(e => {
-        const isMyTeam = (e.teamName === myName || e.teamName === 'Unika');
+        const isMyTeam = (e.teamName === myName || e.teamName === 'La Mia Rosa' || e.teamName === 'Unika');
         const teamTitle = isMyTeam ? `🌟 ${e.teamName.toUpperCase()} (La Tua Rosa)` : `👥 ${e.teamName.toUpperCase()}`;
         text += `------------------------------------\n`;
         text += `${e.rankBadge} • *${teamTitle}*\n`;
@@ -459,7 +459,7 @@ function openTeamRosterModal(teamName) {
     }
 
     const myName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'La Mia Rosa';
-    const isMyTeam = (teamEval.teamName === myName || teamEval.teamName === 'Unika');
+    const isMyTeam = (teamEval.teamName === myName || teamEval.teamName === 'La Mia Rosa' || teamEval.teamName === 'Unika');
     const players = teamEval.playersList || [];
     
     // Group by role
@@ -595,7 +595,7 @@ function renderLeagueReportView() {
     const myName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'La Mia Rosa';
 
     const cardsHtml = evals.map(e => {
-        const isMyTeam = (e.teamName === myName || e.teamName === 'Unika');
+        const isMyTeam = (e.teamName === myName || e.teamName === 'La Mia Rosa' || e.teamName === 'Unika');
         const gradeClass = e.overallGrade >= 8.0 ? 'top' : e.overallGrade >= 6.8 ? 'mid' : 'low';
         const escapedName = escapeQuotes(e.teamName);
 

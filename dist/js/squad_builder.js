@@ -167,7 +167,7 @@ function renderSquadBuilder() {
                 <button class="sb-tool-btn" onclick="downloadRosterCSV();">
                     <span>📥 Scarica Excel / CSV</span>
                 </button>
-                <button class="sb-tool-btn" onclick="openCsvRosterImportModal('Unika');" style="background:rgba(14,165,233,0.18);border-color:rgba(14,165,233,0.45);color:#38bdf8;">
+                <button class="sb-tool-btn" onclick="openCsvRosterImportModal('my_team');" style="background:rgba(14,165,233,0.18);border-color:rgba(14,165,233,0.45);color:#38bdf8;">
                     <span>📂 Carica Rosa CSV</span>
                 </button>
             </div>
@@ -2150,10 +2150,10 @@ function downloadRosterCSV() {
 }
 
 // ==============================================================================
-// 5. IMPORTAZIONE ROSA CSV & TESTO (UNIKA & RIVALI)
+// 5. IMPORTAZIONE ROSA CSV & TESTO (LA MIA ROSA & RIVALI)
 // ==============================================================================
 let csvImportState = {
-    targetTeam: 'Unika',
+    targetTeam: 'my_team',
     mode: 'replace', // 'replace' | 'append'
     parsedRows: [],
     showPasteArea: false,
@@ -2310,7 +2310,7 @@ function parseCsvRawLines(text) {
     });
 }
 
-function openCsvRosterImportModal(targetTeam = 'Unika') {
+function openCsvRosterImportModal(targetTeam = 'my_team') {
     csvImportState.targetTeam = targetTeam;
     const modal = document.getElementById('csvRosterImportModal');
     if (!modal) return;
@@ -2427,7 +2427,8 @@ function renderCsvImportModalContent() {
 
     const isMantraMode = (typeof State !== 'undefined' && State.systemMode === 'mantra');
     const rivalsList = (typeof State !== 'undefined' && State.rivals) ? Object.keys(State.rivals) : ['FC Sparta', 'Real Fanta', 'AC Picchia', 'Dinamo', 'Atletico', 'Virtus', 'Sporting'];
-    const target = csvImportState.targetTeam || 'Unika';
+    const target = csvImportState.targetTeam || 'my_team';
+    const isMyTeam = (target === 'my_team' || target === 'Unika' || target === (typeof State !== 'undefined' ? State.teamName : 'La Mia Rosa'));
     const mode = csvImportState.mode || 'replace';
     const rows = csvImportState.parsedRows || [];
 
@@ -2445,7 +2446,7 @@ function renderCsvImportModalContent() {
         else if (p.role === 'A') attCount++;
     });
 
-    const targetBudget = (target === 'Unika') ? (State.budgetTotal || 1000) : (State.rivals?.[target]?.budget || 1000);
+    const targetBudget = isMyTeam ? (State.budgetTotal || 1000) : (State.rivals?.[target]?.budget || 1000);
     const remBudget = targetBudget - totalSpent;
 
     let rivalsOptionsHtml = rivalsList.map(rName => {
@@ -2556,7 +2557,7 @@ function renderCsvImportModalContent() {
             <div>
                 <label style="display:block;font-size:11.5px;color:var(--text-muted);font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">Squadra di Destinazione</label>
                 <select id="csvImportTargetSelect" style="width:100%;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:6px;padding:6px 10px;font-size:12.5px;" onchange="onCsvImportTargetChange(this.value)">
-                    <option value="Unika" ${target === 'Unika' ? 'selected' : ''}>🌟 Unika (La Tua Rosa)</option>
+                    <option value="my_team" ${isMyTeam ? 'selected' : ''}>🌟 ${escapeQuotes(typeof State !== 'undefined' && State.teamName ? State.teamName : 'La Mia Rosa')}</option>
                     ${rivalsOptionsHtml}
                 </select>
             </div>
@@ -2619,7 +2620,8 @@ function renderCsvImportModalContent() {
 }
 
 function confirmApplyCsvRoster() {
-    const target = csvImportState.targetTeam || 'Unika';
+    const target = csvImportState.targetTeam || 'my_team';
+    const isMyTeam = (target === 'my_team' || target === 'Unika' || target === (typeof State !== 'undefined' ? State.teamName : 'La Mia Rosa'));
     const mode = csvImportState.mode || 'replace';
     const rows = csvImportState.parsedRows || [];
     const validRows = rows.filter(r => r.matchedPlayer && !r.isExcluded);
@@ -2630,13 +2632,13 @@ function confirmApplyCsvRoster() {
     }
 
     if (mode === 'replace') {
-        const teamDesc = (target === 'Unika') ? 'la tua Rosa Unika' : `la rosa di ${target}`;
+        const teamDesc = isMyTeam ? (State.teamName || 'la tua Rosa') : `la rosa di ${target}`;
         if (!confirm(`Stai per sovrascrivere completamente ${teamDesc} con i ${validRows.length} calciatori caricati dal CSV.\n\nVuoi procedere?`)) {
             return;
         }
     }
 
-    if (target === 'Unika') {
+    if (isMyTeam) {
         if (mode === 'replace') {
             State.slots.P.players = [];
             State.slots.D.players = [];
@@ -2700,7 +2702,7 @@ function confirmApplyCsvRoster() {
 
     closeCsvRosterImportModal();
 
-    const successMsg = `✓ Rosa di ${target === 'Unika' ? 'Unika' : target} caricata con successo (${validRows.length} calciatori)!`;
+    const successMsg = `✓ Rosa caricata con successo (${validRows.length} calciatori in ${teamDesc})!`;
     if (typeof showSyncToast === 'function') {
         showSyncToast(successMsg);
     } else {

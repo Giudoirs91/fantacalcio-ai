@@ -1620,7 +1620,7 @@ function confirmResetLiveAuction() {
     confirmResetMyRoster();
 }
 
-function openRosterModal(targetTeam = 'Unika') {
+function openRosterModal(targetTeam = 'my_team') {
     const modal = document.getElementById('rosterModal');
     const body = document.getElementById('rosterModalBody');
     if (!modal || !body) return;
@@ -1636,12 +1636,13 @@ function openRosterModal(targetTeam = 'Unika') {
     const unikaSpent = State.budgetSpent || 0;
     const unikaRem = (State.budgetTotal || 1000) - unikaSpent;
     const rivalsList = Object.keys(State.rivals || RIVALS_TEMPLATE);
+    const isMyTeamTab = (targetTeam === 'my_team' || targetTeam === 'Unika' || targetTeam === (State.teamName || 'La Mia Rosa'));
 
     // 1. Switcher bar per le 8 squadre della lega + vista comparativa ALL
     let tabsHtml = `
         <div class="roster-team-switcher">
-            <button type="button" class="roster-team-tab ${targetTeam === 'Unika' ? 'active' : ''}" onclick="openRosterModal('Unika')">
-                🌟 Unika (Tua Rosa) <span class="tab-budget-badge">${unikaRem} CR</span>
+            <button type="button" class="roster-team-tab ${isMyTeamTab ? 'active' : ''}" onclick="openRosterModal('my_team')">
+                🌟 ${escapeHtml(State.teamName || 'La Mia Rosa')} <span class="tab-budget-badge">${unikaRem} CR</span>
             </button>
     `;
 
@@ -1678,11 +1679,11 @@ function openRosterModal(targetTeam = 'Unika') {
         const unikaTotalPlayers = (State.slots.P.players.length + State.slots.D.players.length + State.slots.C.players.length + State.slots.A.players.length);
         const unikaMovPlayers = (State.slots.D.players.length + State.slots.C.players.length + State.slots.A.players.length);
         teamCardsHtml += `
-            <div class="all-teams-card" style="border-color:rgba(0,242,254,0.4);background:rgba(0,242,254,0.04);" onclick="openRosterModal('Unika')">
+            <div class="all-teams-card" style="border-color:rgba(0,242,254,0.4);background:rgba(0,242,254,0.04);" onclick="openRosterModal('my_team')">
                 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
                     <div>
                         <div style="font-size:11px;color:var(--accent-cyan);font-weight:800;letter-spacing:0.5px;">LA TUA SQUADRA</div>
-                        <h4 style="margin:2px 0 0 0;font-size:15px;color:#fff;font-weight:900;">🌟 Unika (Giuseppe)</h4>
+                        <h4 style="margin:2px 0 0 0;font-size:15px;color:#fff;font-weight:900;">🌟 ${escapeHtml(State.teamName || 'La Mia Rosa')}</h4>
                     </div>
                     <div style="text-align:right;">
                         <span style="font-size:16px;font-weight:900;color:var(--accent-gold);">${unikaRem} CR</span>
@@ -1767,8 +1768,8 @@ function openRosterModal(targetTeam = 'Unika') {
                 ${teamCardsHtml}
             </div>
         `;
-    } else if (targetTeam === 'Unika') {
-        // VISTA ROSA PERSONALE UNIKA CON MODELLO DINAMICO SLOT
+    } else if (targetTeam === 'my_team' || targetTeam === 'Unika') {
+        // VISTA ROSA PERSONALE CON MODELLO DINAMICO SLOT
         const analysis = getSlotBudgetAnalysis();
         const totalPurchased = analysis.totalBought;
         const maxBid = analysis.maxSingleBid;
@@ -1803,7 +1804,7 @@ function openRosterModal(targetTeam = 'Unika') {
                             </div>
                             <div style="display:flex;align-items:center;gap:10px;">
                                 <span style="color:var(--accent-gold);font-weight:900;font-size:13px;">${p.paidPrice} CR</span>
-                                <button class="btn-action" style="padding:2px 7px;font-size:10.5px;background:rgba(239,68,68,0.2);border-color:#ef4444;color:#ef4444;" onclick="removePlayerById(${p.id}); openRosterModal('Unika');">✕ Svincola</button>
+                                <button class="btn-action" style="padding:2px 7px;font-size:10.5px;background:rgba(239,68,68,0.2);border-color:#ef4444;color:#ef4444;" onclick="removePlayerById(${p.id}); openRosterModal('my_team');">✕ Svincola</button>
                             </div>
                         </div>
                     `;
@@ -1842,7 +1843,7 @@ function openRosterModal(targetTeam = 'Unika') {
                         </div>
                         <div style="display:flex;align-items:center;gap:10px;">
                             <span style="color:var(--accent-gold);font-weight:900;font-size:13px;">${p.paidPrice} CR</span>
-                            <button class="btn-action" style="padding:2px 7px;font-size:10.5px;background:rgba(239,68,68,0.2);border-color:#ef4444;color:#ef4444;" onclick="removePlayerById(${p.id}); openRosterModal('Unika');">✕ Svincola</button>
+                            <button class="btn-action" style="padding:2px 7px;font-size:10.5px;background:rgba(239,68,68,0.2);border-color:#ef4444;color:#ef4444;" onclick="removePlayerById(${p.id}); openRosterModal('my_team');">✕ Svincola</button>
                         </div>
                     </div>
                 `;
@@ -1902,7 +1903,7 @@ function openRosterModal(targetTeam = 'Unika') {
                                 <div style="display:flex;align-items:center;gap:10px;">
                                     ${deltaHtml}
                                     <span style="color:var(--accent-gold);font-weight:900;font-size:13px;">${p.paidPrice} CR</span>
-                                    <button class="btn-action" style="padding:2px 7px;font-size:10.5px;background:rgba(239,68,68,0.2);border-color:#ef4444;color:#ef4444;" onclick="removePlayerFromRoster('${role}', ${s.origIdx}); openRosterModal('Unika');">✕ Svincola</button>
+                                    <button class="btn-action" style="padding:2px 7px;font-size:10.5px;background:rgba(239,68,68,0.2);border-color:#ef4444;color:#ef4444;" onclick="removePlayerFromRoster('${role}', ${s.origIdx}); openRosterModal('my_team');">✕ Svincola</button>
                                 </div>
                             </div>
                         `;
@@ -1945,12 +1946,12 @@ function openRosterModal(targetTeam = 'Unika') {
         }
 
         contentHtml = `
-            <!-- Header Unika con Salute Finanziaria -->
+            <!-- Header La Mia Rosa con Salute Finanziaria -->
             <div style="background:linear-gradient(135deg, rgba(0,242,254,0.1) 0%, rgba(139,92,246,0.1) 100%);border:1px solid rgba(0,242,254,0.3);padding:14px 18px;border-radius:12px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
                 <div>
                     <div style="display:flex;align-items:center;gap:8px;">
                         <span style="font-size:22px;">🌟</span>
-                        <h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Rosa Ufficiale: Unika (Giuseppe)</h3>
+                        <h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Rosa Ufficiale: ${escapeHtml(State.teamName || 'La Mia Rosa')}</h3>
                     </div>
                     <div style="font-size:11.5px;color:var(--text-secondary);margin-top:3px;">
                         Slot completati: <b style="color:#fff;">${totalPurchased} / ${maxRosterSlots}</b> &nbsp;•&nbsp; Max Rilancio Consentito: <b style="color:var(--accent-cyan);">${maxBid} CR</b>

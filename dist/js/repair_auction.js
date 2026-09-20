@@ -194,7 +194,7 @@ function renderRepairAuctionView() {
 
     const aiSuggestions = generateRepairShoppingList(freedSlots, projectedRemaining, freeAgents);
 
-    // Render Lista Giocatori Unika da Svincolare
+    // Render Lista Giocatori della Tua Rosa da Svincolare
     let unikaCutListHtml = '';
     if (unikaPlayers.length === 0) {
         unikaCutListHtml = `
@@ -332,7 +332,7 @@ function renderRepairAuctionView() {
                         </select>
                     </div>
 
-                    <!-- LISTA GIOCATORI UNIKA -->
+                    <!-- LISTA GIOCATORI DELLA TUA ROSA -->
                     <div class="repair-cut-list">
                         ${unikaCutListHtml}
                     </div>

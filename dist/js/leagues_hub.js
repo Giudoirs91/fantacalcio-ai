@@ -211,13 +211,13 @@ function openCreateLeagueModal() {
                     <!-- 1. NOME LEGA -->
                     <div>
                         <label style="display:block;font-size:11px;color:var(--text-muted);font-weight:700;margin-bottom:3px;text-transform:uppercase;">1. Nome del Campionato / Lega</label>
-                        <input type="text" id="newLeagueName" required placeholder="Es. Fantacalcio Amici Storici" style="width:100%;box-sizing:border-box;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:8px;padding:8px 12px;font-size:13px;">
+                        <input type="text" id="newLeagueName" required placeholder="Es. Lega Fantacalcio Serie A" style="width:100%;box-sizing:border-box;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:8px;padding:8px 12px;font-size:13px;">
                     </div>
 
                     <!-- 2. NOME SQUADRA -->
                     <div>
                         <label style="display:block;font-size:11px;color:var(--text-muted);font-weight:700;margin-bottom:3px;text-transform:uppercase;">2. Nome della Tua Squadra</label>
-                        <input type="text" id="newLeagueTeamName" required value="Unika" placeholder="Es. Unika FC" style="width:100%;box-sizing:border-box;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:8px;padding:8px 12px;font-size:13px;">
+                        <input type="text" id="newLeagueTeamName" required value="La Mia Rosa" placeholder="Es. FC Campioni" style="width:100%;box-sizing:border-box;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:8px;padding:8px 12px;font-size:13px;">
                     </div>
 
                     <!-- 3. BUDGET & 4. NUMERO PARTECIPANTI -->
@@ -496,7 +496,7 @@ function openEditLeagueModal(leagueId) {
 
                     <div>
                         <label style="display:block;font-size:11.5px;color:var(--text-muted);font-weight:700;margin-bottom:4px;text-transform:uppercase;">Nome della Tua Squadra</label>
-                        <input type="text" id="editLeagueTeamName" required value="${l.myTeamName || 'Unika'}" style="width:100%;box-sizing:border-box;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:8px;padding:9px 12px;font-size:13px;">
+                        <input type="text" id="editLeagueTeamName" required value="${l.myTeamName || 'La Mia Rosa'}" style="width:100%;box-sizing:border-box;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:8px;padding:9px 12px;font-size:13px;">
                     </div>
 
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
@@ -629,7 +629,7 @@ function renderDeleteStep1(l) {
 
             <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px;font-size:12.5px;display:flex;flex-direction:column;gap:6px;">
                 <div style="display:flex;justify-content:space-between;"><span style="color:var(--text-muted);">Regolamento:</span> <b>${l.systemMode === 'mantra' ? '🔮 Mantra' : '⚡ Classic'}</b></div>
-                <div style="display:flex;justify-content:space-between;"><span style="color:var(--text-muted);">Tua Squadra:</span> <b>${l.myTeamName || 'Unika'}</b></div>
+                <div style="display:flex;justify-content:space-between;"><span style="color:var(--text-muted);">Tua Squadra:</span> <b>${l.myTeamName || 'La Mia Rosa'}</b></div>
                 <div style="display:flex;justify-content:space-between;"><span style="color:var(--text-muted);">Calciatori in Rosa:</span> <b>${pCount}</b></div>
                 <div style="display:flex;justify-content:space-between;"><span style="color:var(--text-muted);">Budget:</span> <b>${l.budgetSpent || 0} / ${l.budgetTotal || 1000} CR</b></div>
             </div>

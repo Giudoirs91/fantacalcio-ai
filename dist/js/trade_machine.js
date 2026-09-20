@@ -17,7 +17,7 @@ function getRivalPlayersFull(rivalName) {
     }).filter(Boolean);
 }
 
-function getUnikaPlayersFull() {
+function getMyTeamPlayersFull() {
     if (!State.slots) return [];
     return [
         ...(State.slots.P?.players || []),
@@ -26,6 +26,7 @@ function getUnikaPlayersFull() {
         ...(State.slots.A?.players || [])
     ];
 }
+const getUnikaPlayersFull = getMyTeamPlayersFull;
 
 function renderTradePlayerBadge(p) {
     const isMantra = (typeof State !== 'undefined' && State.systemMode === 'mantra');
@@ -318,12 +319,12 @@ function evaluateCustomTrade(givingIds, receivingIds, rivalName) {
         analysis = `Stai chiedendo troppo valore rispetto a quello che offri (+${ovrDelta} OVR, +${fvmDelta} FVM). Il manager di ${rivalName} rifiuterà a meno che tu non aggiunga una contropartita migliore.`;
     } else if (ovrDelta >= 2 || fvmDelta >= 12) {
         verdict = 'win';
-        title = '🌟 Ottimo Affare per Unika';
+        title = '🌟 Ottimo Affare per la Tua Rosa';
         badge = 'Favorevole';
         analysis = `Scambio vantaggioso per te (+${ovrDelta} OVR). Se ${rivalName} ha necessità nei ruoli che stai cedendo, ha ottime possibilità di andare a buon fine.`;
     } else if (ovrDelta <= -5 || fvmDelta <= -30) {
         verdict = 'lose';
-        title = '⚠️ Scambio Svantaggioso per Unika';
+        title = '⚠️ Scambio Svantaggioso per la Tua Rosa';
         badge = 'Sconsigliato';
         analysis = `Stai cedendo troppo talento (${giveOvrSum} OVR contro ${recOvrSum} OVR). Salvo gravi emergenze di ruolo, stai regalando valore al tuo avversario.`;
     } else {
@@ -367,7 +368,7 @@ Secondo me è un'ottima operazione Win-Win per entrambi perché sistemi i ruoli 
     };
 }
 
-// Applica lo scambio ufficiale tra Unika e Rivale
+// Applica lo scambio ufficiale tra la Mia Rosa e Rivale
 function executeTrade(givingIds, receivingIds, rivalName) {
     if (!givingIds.length || !receivingIds.length || !rivalName) {
         alert("Seleziona almeno un calciatore da cedere e uno da ricevere!");
@@ -384,7 +385,7 @@ function executeTrade(givingIds, receivingIds, rivalName) {
     const giving = unikaPlayers.filter(p => givingIds.includes(p.id));
     const receiving = rivalPlayers.filter(p => receivingIds.includes(p.id));
 
-    // 1. Rimuovi i calciatori ceduti da Unika
+    // 1. Rimuovi i calciatori ceduti dalla tua rosa
     giving.forEach(p => {
         const slotKey = (p.role === 'P' || (p.mantra && String(p.mantra).toUpperCase().includes('POR'))) ? 'P' : (State.slots[p.role] ? p.role : 'C');
         const idx = State.slots[slotKey].players.findIndex(x => x.id === p.id);
@@ -504,11 +505,11 @@ function renderTradeMachineView() {
         html += `
             <div class="trade-empty-state">
                 <span style="font-size:40px;">📋</span>
-                <h3 style="margin:10px 0 6px 0;color:#fff;">La tua rosa Unika è attualmente vuota</h3>
+                <h3 style="margin:10px 0 6px 0;color:#fff;">La tua rosa è attualmente vuota</h3>
                 <p style="color:var(--text-muted);font-size:13px;max-width:500px;margin:0 auto 16px auto;">
                     Acquista qualche calciatore all'asta o carica una rosa da file CSV per iniziare a scovare opportunità di scambio con i rivali.
                 </p>
-                <button class="btn-action" style="background:var(--accent-cyan);color:#000;font-weight:700;" onclick="openCsvRosterImportModal('Unika')">
+                <button class="btn-action" style="background:var(--accent-cyan);color:#000;font-weight:700;" onclick="openCsvRosterImportModal('my_team')">
                     📂 Carica Rosa da CSV
                 </button>
             </div>
@@ -596,7 +597,7 @@ function renderTradeMachineView() {
             return `<option value="${rName}" ${rName === rivalName ? 'selected' : ''}>👥 ${rName}</option>`;
         }).join('');
 
-        // Lista giocatori di Unika per selezione
+        // Lista giocatori della propria rosa per selezione
         const unikaListHtml = unikaPlayers.map(p => {
             const isSelected = tradeMachineState.givingPlayerIds.includes(p.id);
             return `
@@ -634,7 +635,7 @@ function renderTradeMachineView() {
 
         html += `
             <div class="trade-simulator-layout">
-                <!-- COLONNA UNIKA -->
+                <!-- COLONNA LA TUA ROSA -->
                 <div class="trade-sim-col">
                     <div class="trade-col-header">
                         <span style="font-size:13px;font-weight:700;color:var(--accent-cyan);">🌟 La Tua Rosa (Cedi)</span>

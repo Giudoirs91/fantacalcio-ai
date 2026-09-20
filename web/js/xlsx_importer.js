@@ -1,12 +1,12 @@
 // --- xlsx_importer.js ---
 // Motore di caricamento e importazione file Excel (.xlsx / .xls) per intera lega
-// Supporta formato standard Leghe Fantacalcio a colonne affiancate (es. fantarefri-rosters-1789316126497.xlsx)
+// Supporta formato standard Leghe Fantacalcio a colonne affiancate
 
 let xlsxImportState = {
     fileName: '',
     detectedTeams: {}, // { teamName: [ { rawName, rawRole, rawClub, price, matchedPlayer } ] }
     myTeamKey: '',
-    leagueName: 'Lega FantaRefri',
+    leagueName: 'La Mia Lega',
     targetAction: 'new_league', // 'new_league' | 'update_current'
     expandedTeams: {}
 };
@@ -153,8 +153,8 @@ function loadSampleFantarefriRosters() {
         for (let i = 0; i < binaryStr.length; i++) {
             bytes[i] = binaryStr.charCodeAt(i);
         }
-        xlsxImportState.fileName = 'fantarefri-rosters-1789316126497.xlsx';
-        xlsxImportState.leagueName = 'Lega FantaRefri';
+        xlsxImportState.fileName = 'rose-lega-esempio.xlsx';
+        xlsxImportState.leagueName = 'Lega Serie A';
         const workbook = XLSX.read(bytes, { type: 'array' });
         processXlsxWorkbook(workbook);
     } catch (err) {
@@ -604,7 +604,7 @@ function renderXlsxImportModalContent() {
         <!-- QUICK BUTTON PER FILE REALE DI PROVA -->
         <div style="display:flex;justify-content:center;margin-top:10px;">
             <button type="button" class="btn-action" onclick="loadSampleFantarefriRosters()" style="background:rgba(0,242,254,0.1);border:1px solid rgba(0,242,254,0.4);color:var(--accent-cyan);font-weight:800;font-size:12px;padding:7px 16px;border-radius:8px;display:flex;align-items:center;gap:7px;cursor:pointer;transition:all 0.2s ease;">
-                <span style="font-size:15px;">⚡</span> Carica file reale: <b>fantarefri-rosters-1789316126497.xlsx (10 Squadre)</b>
+                <span style="font-size:15px;">⚡</span> Carica file di esempio: <b>rose-lega-esempio.xlsx (10 Squadre)</b>
             </button>
         </div>
 

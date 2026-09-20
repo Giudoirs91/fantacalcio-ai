@@ -12796,17 +12796,17 @@ main {
 const STORAGE_KEY = 'FANTA_MASTER_AI_STATE_2026_27';
 
 const RIVALS_TEMPLATE = {
-    'The President (Davide)': { manager: 'Davide', tendency: 'Aggressivo su 1° Portiere e Super Bomber', budget: 1000, spent: 0, players: [] },
-    'Divin Codino (Alessandro)': { manager: 'Alessandro', tendency: 'All-in su Attaccanti e Modificatore Difesa', budget: 1000, spent: 0, players: [] },
-    'Fc Enry (Enrico)': { manager: 'Enrico', tendency: 'Equilibrato, caccia ai terzini da assist', budget: 1000, spent: 0, players: [] },
-    'Cocorito (Rosario)': { manager: 'Rosario', tendency: 'Risparmio dietro, all-in su 2 Top Attaccanti', budget: 1000, spent: 0, players: [] },
-    'Partenope (Michele)': { manager: 'Michele', tendency: 'Focus su Napoli, rigoristi e incursori', budget: 1000, spent: 0, players: [] },
-    'AtletiCoSassicc (Ilario)': { manager: 'Ilario', tendency: 'Low cost a 1 CR e accumulo budget per le punte', budget: 1000, spent: 0, players: [] },
-    'Sparta (Valerio)': { manager: 'Valerio', tendency: 'Spesa mirata su centrocampo e scommesse offensive', budget: 1000, spent: 0, players: [] }
+    'Squadra A': { manager: 'Manager 1', tendency: 'Aggressivo su 1° Portiere e Super Bomber', budget: 1000, spent: 0, players: [] },
+    'Squadra B': { manager: 'Manager 2', tendency: 'All-in su Attaccanti e Modificatore Difesa', budget: 1000, spent: 0, players: [] },
+    'Squadra C': { manager: 'Manager 3', tendency: 'Equilibrato, caccia ai terzini da assist', budget: 1000, spent: 0, players: [] },
+    'Squadra D': { manager: 'Manager 4', tendency: 'Risparmio dietro, all-in su 2 Top Attaccanti', budget: 1000, spent: 0, players: [] },
+    'Squadra E': { manager: 'Manager 5', tendency: 'Focus su rigoristi e incursori', budget: 1000, spent: 0, players: [] },
+    'Squadra F': { manager: 'Manager 6', tendency: 'Low cost a 1 CR e accumulo budget per le punte', budget: 1000, spent: 0, players: [] },
+    'Squadra G': { manager: 'Manager 7', tendency: 'Spesa mirata su centrocampo e scommesse offensive', budget: 1000, spent: 0, players: [] }
 };
 
 const DefaultState = {
-    teamName: 'Unika (Giuseppe)',
+    teamName: 'La Mia Rosa',
     budgetTotal: 1000,
     budgetSpent: 0,
     slots: {
@@ -12817,7 +12817,7 @@ const DefaultState = {
     },
     favorites: [], // Array di ID calciatori preferiti (⭐)
     takenByOthers: [], // Array di ID calciatori presi da altri
-    rivalAssignments: {}, // { playerId: { rival: 'The President (Davide)', price: 45 } }
+    rivalAssignments: {}, // { playerId: { rival: 'Squadra A', price: 45 } }
     rivals: JSON.parse(JSON.stringify(RIVALS_TEMPLATE)),
     playerOverrides: {}, // { [playerId]: { slot_fascia, slot_num, oop_val, is_oop, fpp_fpn, ai_advice, consiglio, ai_advice_type } }
     
@@ -13243,7 +13243,42 @@ const LeaguesManager = {
             const raw = localStorage.getItem(LEAGUES_STORAGE_KEY);
             if (raw) {
                 const parsed = JSON.parse(raw);
-                if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    let changed = false;
+                    parsed.forEach(l => {
+                        if (l.name && (l.name.includes('Amici') || l.name.includes('Ferrovia') || l.name.includes('Lega Principale'))) {
+                            l.name = 'La Mia Lega';
+                            changed = true;
+                        }
+                        if (l.myTeamName && (l.myTeamName.includes('Unika') || l.myTeamName.includes('Giuseppe'))) {
+                            l.myTeamName = 'La Mia Rosa';
+                            changed = true;
+                        }
+                        if (l.rivals) {
+                            const rKeys = Object.keys(l.rivals);
+                            const hasPersonalNames = rKeys.some(k => k.includes('Davide') || k.includes('Alessandro') || k.includes('Enrico') || k.includes('Rosario') || k.includes('Michele') || k.includes('Ilario') || k.includes('Valerio') || k.includes('President') || k.includes('Phoenix'));
+                            if (hasPersonalNames) {
+                                const newR = JSON.parse(JSON.stringify(RIVALS_TEMPLATE));
+                                const templateKeys = Object.keys(newR);
+                                let idx = 0;
+                                rKeys.forEach(oldKey => {
+                                    const tKey = templateKeys[idx % templateKeys.length];
+                                    if (l.rivals[oldKey] && l.rivals[oldKey].players && l.rivals[oldKey].players.length > 0) {
+                                        newR[tKey].players = l.rivals[oldKey].players;
+                                        newR[tKey].spent = l.rivals[oldKey].spent;
+                                    }
+                                    idx++;
+                                });
+                                l.rivals = newR;
+                                changed = true;
+                            }
+                        }
+                    });
+                    if (changed) {
+                        this.saveAll(parsed);
+                    }
+                    return parsed;
+                }
             }
         } catch (e) {
             console.warn('Errore lettura leghe:', e);
@@ -13280,7 +13315,7 @@ const LeaguesManager = {
         const leagues = this.getAll();
         const id = 'league_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
         const name = opts.name || `Lega #${leagues.length + 1}`;
-        const myTeamName = opts.myTeamName || 'Unika (La Mia Rosa)';
+        const myTeamName = opts.myTeamName || 'La Mia Rosa';
         const systemMode = opts.systemMode || 'classic';
         const budgetTotal = opts.budgetTotal || 1000;
         const numTeams = opts.numTeams || 8;
@@ -13447,8 +13482,8 @@ const LeaguesManager = {
         if (!league) return;
 
         State.activeLeagueId = league.id || 'league_default';
-        State.leagueName = league.name || 'Lega';
-        State.teamName = league.myTeamName || 'Unika';
+        State.leagueName = (league.name && !league.name.includes('Amici') && !league.name.includes('Ferrovia')) ? league.name : 'La Mia Lega';
+        State.teamName = (league.myTeamName && !league.myTeamName.includes('Unika') && !league.myTeamName.includes('Giuseppe')) ? league.myTeamName : 'La Mia Rosa';
         State.systemMode = league.systemMode || 'classic';
         State.budgetTotal = Number(league.budgetTotal) || 1000;
         State.budgetSpent = Number(league.budgetSpent) || 0;
@@ -13519,8 +13554,8 @@ function loadStateFromStorage() {
                 const parsed = JSON.parse(oldSaved);
                 initialLeague = {
                     id: 'league_default',
-                    name: 'Lega Principale (Amici)',
-                    myTeamName: parsed.teamName || 'Unika (La Mia Rosa)',
+                    name: 'La Mia Lega',
+                    myTeamName: 'La Mia Rosa',
                     systemMode: parsed.systemMode || 'classic',
                     budgetTotal: parsed.budgetTotal || 1000,
                     budgetSpent: parsed.budgetSpent || 0,
@@ -13537,8 +13572,8 @@ function loadStateFromStorage() {
             } else {
                 initialLeague = {
                     id: 'league_default',
-                    name: 'Lega Principale (Amici)',
-                    myTeamName: 'Unika (La Mia Rosa)',
+                    name: 'La Mia Lega',
+                    myTeamName: 'La Mia Rosa',
                     systemMode: 'classic',
                     budgetTotal: 1000,
                     budgetSpent: 0,
@@ -13563,6 +13598,13 @@ function loadStateFromStorage() {
         if (active) {
             LeaguesManager.loadLeagueIntoState(active);
             console.log(`-> Lega attiva caricata con successo: "${active.name}" (${active.id}).`);
+        }
+
+        if (State.teamName && (State.teamName.includes('Unika') || State.teamName.includes('Giuseppe'))) {
+            State.teamName = 'La Mia Rosa';
+        }
+        if (State.leagueName && (State.leagueName.includes('Amici') || State.leagueName.includes('Ferrovia') || State.leagueName.includes('Lega Principale'))) {
+            State.leagueName = 'La Mia Lega';
         }
     } catch (e) {
         console.warn("Errore lettura leghe da localStorage:", e);
@@ -13922,13 +13964,13 @@ function openCreateLeagueModal() {
                     <!-- 1. NOME LEGA -->
                     <div>
                         <label style="display:block;font-size:11px;color:var(--text-muted);font-weight:700;margin-bottom:3px;text-transform:uppercase;">1. Nome del Campionato / Lega</label>
-                        <input type="text" id="newLeagueName" required placeholder="Es. Fantacalcio Amici Storici" style="width:100%;box-sizing:border-box;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:8px;padding:8px 12px;font-size:13px;">
+                        <input type="text" id="newLeagueName" required placeholder="Es. Lega Fantacalcio Serie A" style="width:100%;box-sizing:border-box;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:8px;padding:8px 12px;font-size:13px;">
                     </div>
 
                     <!-- 2. NOME SQUADRA -->
                     <div>
                         <label style="display:block;font-size:11px;color:var(--text-muted);font-weight:700;margin-bottom:3px;text-transform:uppercase;">2. Nome della Tua Squadra</label>
-                        <input type="text" id="newLeagueTeamName" required value="Unika" placeholder="Es. Unika FC" style="width:100%;box-sizing:border-box;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:8px;padding:8px 12px;font-size:13px;">
+                        <input type="text" id="newLeagueTeamName" required value="La Mia Rosa" placeholder="Es. FC Campioni" style="width:100%;box-sizing:border-box;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:8px;padding:8px 12px;font-size:13px;">
                     </div>
 
                     <!-- 3. BUDGET & 4. NUMERO PARTECIPANTI -->
@@ -14207,7 +14249,7 @@ function openEditLeagueModal(leagueId) {
 
                     <div>
                         <label style="display:block;font-size:11.5px;color:var(--text-muted);font-weight:700;margin-bottom:4px;text-transform:uppercase;">Nome della Tua Squadra</label>
-                        <input type="text" id="editLeagueTeamName" required value="${l.myTeamName || 'Unika'}" style="width:100%;box-sizing:border-box;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:8px;padding:9px 12px;font-size:13px;">
+                        <input type="text" id="editLeagueTeamName" required value="${l.myTeamName || 'La Mia Rosa'}" style="width:100%;box-sizing:border-box;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:8px;padding:9px 12px;font-size:13px;">
                     </div>
 
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
@@ -14340,7 +14382,7 @@ function renderDeleteStep1(l) {
 
             <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px;font-size:12.5px;display:flex;flex-direction:column;gap:6px;">
                 <div style="display:flex;justify-content:space-between;"><span style="color:var(--text-muted);">Regolamento:</span> <b>${l.systemMode === 'mantra' ? '🔮 Mantra' : '⚡ Classic'}</b></div>
-                <div style="display:flex;justify-content:space-between;"><span style="color:var(--text-muted);">Tua Squadra:</span> <b>${l.myTeamName || 'Unika'}</b></div>
+                <div style="display:flex;justify-content:space-between;"><span style="color:var(--text-muted);">Tua Squadra:</span> <b>${l.myTeamName || 'La Mia Rosa'}</b></div>
                 <div style="display:flex;justify-content:space-between;"><span style="color:var(--text-muted);">Calciatori in Rosa:</span> <b>${pCount}</b></div>
                 <div style="display:flex;justify-content:space-between;"><span style="color:var(--text-muted);">Budget:</span> <b>${l.budgetSpent || 0} / ${l.budgetTotal || 1000} CR</b></div>
             </div>
@@ -14446,13 +14488,13 @@ const SAMPLE_FANTAREFRI_B64 = "UEsDBBQAAAAAAAAAAACkAYS4tQIAALUCAAAaAAAAeGwvX3Jlb
 // --- xlsx_importer.js ---
 // --- xlsx_importer.js ---
 // Motore di caricamento e importazione file Excel (.xlsx / .xls) per intera lega
-// Supporta formato standard Leghe Fantacalcio a colonne affiancate (es. fantarefri-rosters-1789316126497.xlsx)
+// Supporta formato standard Leghe Fantacalcio a colonne affiancate
 
 let xlsxImportState = {
     fileName: '',
     detectedTeams: {}, // { teamName: [ { rawName, rawRole, rawClub, price, matchedPlayer } ] }
     myTeamKey: '',
-    leagueName: 'Lega FantaRefri',
+    leagueName: 'La Mia Lega',
     targetAction: 'new_league', // 'new_league' | 'update_current'
     expandedTeams: {}
 };
@@ -14599,8 +14641,8 @@ function loadSampleFantarefriRosters() {
         for (let i = 0; i < binaryStr.length; i++) {
             bytes[i] = binaryStr.charCodeAt(i);
         }
-        xlsxImportState.fileName = 'fantarefri-rosters-1789316126497.xlsx';
-        xlsxImportState.leagueName = 'Lega FantaRefri';
+        xlsxImportState.fileName = 'rose-lega-esempio.xlsx';
+        xlsxImportState.leagueName = 'Lega Serie A';
         const workbook = XLSX.read(bytes, { type: 'array' });
         processXlsxWorkbook(workbook);
     } catch (err) {
@@ -15050,7 +15092,7 @@ function renderXlsxImportModalContent() {
         <!-- QUICK BUTTON PER FILE REALE DI PROVA -->
         <div style="display:flex;justify-content:center;margin-top:10px;">
             <button type="button" class="btn-action" onclick="loadSampleFantarefriRosters()" style="background:rgba(0,242,254,0.1);border:1px solid rgba(0,242,254,0.4);color:var(--accent-cyan);font-weight:800;font-size:12px;padding:7px 16px;border-radius:8px;display:flex;align-items:center;gap:7px;cursor:pointer;transition:all 0.2s ease;">
-                <span style="font-size:15px;">⚡</span> Carica file reale: <b>fantarefri-rosters-1789316126497.xlsx (10 Squadre)</b>
+                <span style="font-size:15px;">⚡</span> Carica file di esempio: <b>rose-lega-esempio.xlsx (10 Squadre)</b>
             </button>
         </div>
 
@@ -21324,7 +21366,7 @@ function confirmResetLiveAuction() {
     confirmResetMyRoster();
 }
 
-function openRosterModal(targetTeam = 'Unika') {
+function openRosterModal(targetTeam = 'my_team') {
     const modal = document.getElementById('rosterModal');
     const body = document.getElementById('rosterModalBody');
     if (!modal || !body) return;
@@ -21340,12 +21382,13 @@ function openRosterModal(targetTeam = 'Unika') {
     const unikaSpent = State.budgetSpent || 0;
     const unikaRem = (State.budgetTotal || 1000) - unikaSpent;
     const rivalsList = Object.keys(State.rivals || RIVALS_TEMPLATE);
+    const isMyTeamTab = (targetTeam === 'my_team' || targetTeam === 'Unika' || targetTeam === (State.teamName || 'La Mia Rosa'));
 
     // 1. Switcher bar per le 8 squadre della lega + vista comparativa ALL
     let tabsHtml = `
         <div class="roster-team-switcher">
-            <button type="button" class="roster-team-tab ${targetTeam === 'Unika' ? 'active' : ''}" onclick="openRosterModal('Unika')">
-                🌟 Unika (Tua Rosa) <span class="tab-budget-badge">${unikaRem} CR</span>
+            <button type="button" class="roster-team-tab ${isMyTeamTab ? 'active' : ''}" onclick="openRosterModal('my_team')">
+                🌟 ${escapeHtml(State.teamName || 'La Mia Rosa')} <span class="tab-budget-badge">${unikaRem} CR</span>
             </button>
     `;
 
@@ -21382,11 +21425,11 @@ function openRosterModal(targetTeam = 'Unika') {
         const unikaTotalPlayers = (State.slots.P.players.length + State.slots.D.players.length + State.slots.C.players.length + State.slots.A.players.length);
         const unikaMovPlayers = (State.slots.D.players.length + State.slots.C.players.length + State.slots.A.players.length);
         teamCardsHtml += `
-            <div class="all-teams-card" style="border-color:rgba(0,242,254,0.4);background:rgba(0,242,254,0.04);" onclick="openRosterModal('Unika')">
+            <div class="all-teams-card" style="border-color:rgba(0,242,254,0.4);background:rgba(0,242,254,0.04);" onclick="openRosterModal('my_team')">
                 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
                     <div>
                         <div style="font-size:11px;color:var(--accent-cyan);font-weight:800;letter-spacing:0.5px;">LA TUA SQUADRA</div>
-                        <h4 style="margin:2px 0 0 0;font-size:15px;color:#fff;font-weight:900;">🌟 Unika (Giuseppe)</h4>
+                        <h4 style="margin:2px 0 0 0;font-size:15px;color:#fff;font-weight:900;">🌟 ${escapeHtml(State.teamName || 'La Mia Rosa')}</h4>
                     </div>
                     <div style="text-align:right;">
                         <span style="font-size:16px;font-weight:900;color:var(--accent-gold);">${unikaRem} CR</span>
@@ -21471,8 +21514,8 @@ function openRosterModal(targetTeam = 'Unika') {
                 ${teamCardsHtml}
             </div>
         `;
-    } else if (targetTeam === 'Unika') {
-        // VISTA ROSA PERSONALE UNIKA CON MODELLO DINAMICO SLOT
+    } else if (targetTeam === 'my_team' || targetTeam === 'Unika') {
+        // VISTA ROSA PERSONALE CON MODELLO DINAMICO SLOT
         const analysis = getSlotBudgetAnalysis();
         const totalPurchased = analysis.totalBought;
         const maxBid = analysis.maxSingleBid;
@@ -21507,7 +21550,7 @@ function openRosterModal(targetTeam = 'Unika') {
                             </div>
                             <div style="display:flex;align-items:center;gap:10px;">
                                 <span style="color:var(--accent-gold);font-weight:900;font-size:13px;">${p.paidPrice} CR</span>
-                                <button class="btn-action" style="padding:2px 7px;font-size:10.5px;background:rgba(239,68,68,0.2);border-color:#ef4444;color:#ef4444;" onclick="removePlayerById(${p.id}); openRosterModal('Unika');">✕ Svincola</button>
+                                <button class="btn-action" style="padding:2px 7px;font-size:10.5px;background:rgba(239,68,68,0.2);border-color:#ef4444;color:#ef4444;" onclick="removePlayerById(${p.id}); openRosterModal('my_team');">✕ Svincola</button>
                             </div>
                         </div>
                     `;
@@ -21546,7 +21589,7 @@ function openRosterModal(targetTeam = 'Unika') {
                         </div>
                         <div style="display:flex;align-items:center;gap:10px;">
                             <span style="color:var(--accent-gold);font-weight:900;font-size:13px;">${p.paidPrice} CR</span>
-                            <button class="btn-action" style="padding:2px 7px;font-size:10.5px;background:rgba(239,68,68,0.2);border-color:#ef4444;color:#ef4444;" onclick="removePlayerById(${p.id}); openRosterModal('Unika');">✕ Svincola</button>
+                            <button class="btn-action" style="padding:2px 7px;font-size:10.5px;background:rgba(239,68,68,0.2);border-color:#ef4444;color:#ef4444;" onclick="removePlayerById(${p.id}); openRosterModal('my_team');">✕ Svincola</button>
                         </div>
                     </div>
                 `;
@@ -21606,7 +21649,7 @@ function openRosterModal(targetTeam = 'Unika') {
                                 <div style="display:flex;align-items:center;gap:10px;">
                                     ${deltaHtml}
                                     <span style="color:var(--accent-gold);font-weight:900;font-size:13px;">${p.paidPrice} CR</span>
-                                    <button class="btn-action" style="padding:2px 7px;font-size:10.5px;background:rgba(239,68,68,0.2);border-color:#ef4444;color:#ef4444;" onclick="removePlayerFromRoster('${role}', ${s.origIdx}); openRosterModal('Unika');">✕ Svincola</button>
+                                    <button class="btn-action" style="padding:2px 7px;font-size:10.5px;background:rgba(239,68,68,0.2);border-color:#ef4444;color:#ef4444;" onclick="removePlayerFromRoster('${role}', ${s.origIdx}); openRosterModal('my_team');">✕ Svincola</button>
                                 </div>
                             </div>
                         `;
@@ -21649,12 +21692,12 @@ function openRosterModal(targetTeam = 'Unika') {
         }
 
         contentHtml = `
-            <!-- Header Unika con Salute Finanziaria -->
+            <!-- Header La Mia Rosa con Salute Finanziaria -->
             <div style="background:linear-gradient(135deg, rgba(0,242,254,0.1) 0%, rgba(139,92,246,0.1) 100%);border:1px solid rgba(0,242,254,0.3);padding:14px 18px;border-radius:12px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
                 <div>
                     <div style="display:flex;align-items:center;gap:8px;">
                         <span style="font-size:22px;">🌟</span>
-                        <h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Rosa Ufficiale: Unika (Giuseppe)</h3>
+                        <h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Rosa Ufficiale: ${escapeHtml(State.teamName || 'La Mia Rosa')}</h3>
                     </div>
                     <div style="font-size:11.5px;color:var(--text-secondary);margin-top:3px;">
                         Slot completati: <b style="color:#fff;">${totalPurchased} / ${maxRosterSlots}</b> &nbsp;•&nbsp; Max Rilancio Consentito: <b style="color:var(--accent-cyan);">${maxBid} CR</b>
@@ -22038,7 +22081,7 @@ function renderSquadBuilder() {
                 <button class="sb-tool-btn" onclick="downloadRosterCSV();">
                     <span>📥 Scarica Excel / CSV</span>
                 </button>
-                <button class="sb-tool-btn" onclick="openCsvRosterImportModal('Unika');" style="background:rgba(14,165,233,0.18);border-color:rgba(14,165,233,0.45);color:#38bdf8;">
+                <button class="sb-tool-btn" onclick="openCsvRosterImportModal('my_team');" style="background:rgba(14,165,233,0.18);border-color:rgba(14,165,233,0.45);color:#38bdf8;">
                     <span>📂 Carica Rosa CSV</span>
                 </button>
             </div>
@@ -24021,10 +24064,10 @@ function downloadRosterCSV() {
 }
 
 // ==============================================================================
-// 5. IMPORTAZIONE ROSA CSV & TESTO (UNIKA & RIVALI)
+// 5. IMPORTAZIONE ROSA CSV & TESTO (LA MIA ROSA & RIVALI)
 // ==============================================================================
 let csvImportState = {
-    targetTeam: 'Unika',
+    targetTeam: 'my_team',
     mode: 'replace', // 'replace' | 'append'
     parsedRows: [],
     showPasteArea: false,
@@ -24181,7 +24224,7 @@ function parseCsvRawLines(text) {
     });
 }
 
-function openCsvRosterImportModal(targetTeam = 'Unika') {
+function openCsvRosterImportModal(targetTeam = 'my_team') {
     csvImportState.targetTeam = targetTeam;
     const modal = document.getElementById('csvRosterImportModal');
     if (!modal) return;
@@ -24298,7 +24341,8 @@ function renderCsvImportModalContent() {
 
     const isMantraMode = (typeof State !== 'undefined' && State.systemMode === 'mantra');
     const rivalsList = (typeof State !== 'undefined' && State.rivals) ? Object.keys(State.rivals) : ['FC Sparta', 'Real Fanta', 'AC Picchia', 'Dinamo', 'Atletico', 'Virtus', 'Sporting'];
-    const target = csvImportState.targetTeam || 'Unika';
+    const target = csvImportState.targetTeam || 'my_team';
+    const isMyTeam = (target === 'my_team' || target === 'Unika' || target === (typeof State !== 'undefined' ? State.teamName : 'La Mia Rosa'));
     const mode = csvImportState.mode || 'replace';
     const rows = csvImportState.parsedRows || [];
 
@@ -24316,7 +24360,7 @@ function renderCsvImportModalContent() {
         else if (p.role === 'A') attCount++;
     });
 
-    const targetBudget = (target === 'Unika') ? (State.budgetTotal || 1000) : (State.rivals?.[target]?.budget || 1000);
+    const targetBudget = isMyTeam ? (State.budgetTotal || 1000) : (State.rivals?.[target]?.budget || 1000);
     const remBudget = targetBudget - totalSpent;
 
     let rivalsOptionsHtml = rivalsList.map(rName => {
@@ -24427,7 +24471,7 @@ function renderCsvImportModalContent() {
             <div>
                 <label style="display:block;font-size:11.5px;color:var(--text-muted);font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">Squadra di Destinazione</label>
                 <select id="csvImportTargetSelect" style="width:100%;background:rgba(10,14,23,0.9);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:6px;padding:6px 10px;font-size:12.5px;" onchange="onCsvImportTargetChange(this.value)">
-                    <option value="Unika" ${target === 'Unika' ? 'selected' : ''}>🌟 Unika (La Tua Rosa)</option>
+                    <option value="my_team" ${isMyTeam ? 'selected' : ''}>🌟 ${escapeQuotes(typeof State !== 'undefined' && State.teamName ? State.teamName : 'La Mia Rosa')}</option>
                     ${rivalsOptionsHtml}
                 </select>
             </div>
@@ -24490,7 +24534,8 @@ function renderCsvImportModalContent() {
 }
 
 function confirmApplyCsvRoster() {
-    const target = csvImportState.targetTeam || 'Unika';
+    const target = csvImportState.targetTeam || 'my_team';
+    const isMyTeam = (target === 'my_team' || target === 'Unika' || target === (typeof State !== 'undefined' ? State.teamName : 'La Mia Rosa'));
     const mode = csvImportState.mode || 'replace';
     const rows = csvImportState.parsedRows || [];
     const validRows = rows.filter(r => r.matchedPlayer && !r.isExcluded);
@@ -24501,13 +24546,13 @@ function confirmApplyCsvRoster() {
     }
 
     if (mode === 'replace') {
-        const teamDesc = (target === 'Unika') ? 'la tua Rosa Unika' : `la rosa di ${target}`;
+        const teamDesc = isMyTeam ? (State.teamName || 'la tua Rosa') : `la rosa di ${target}`;
         if (!confirm(`Stai per sovrascrivere completamente ${teamDesc} con i ${validRows.length} calciatori caricati dal CSV.\n\nVuoi procedere?`)) {
             return;
         }
     }
 
-    if (target === 'Unika') {
+    if (isMyTeam) {
         if (mode === 'replace') {
             State.slots.P.players = [];
             State.slots.D.players = [];
@@ -24571,7 +24616,7 @@ function confirmApplyCsvRoster() {
 
     closeCsvRosterImportModal();
 
-    const successMsg = `✓ Rosa di ${target === 'Unika' ? 'Unika' : target} caricata con successo (${validRows.length} calciatori)!`;
+    const successMsg = `✓ Rosa caricata con successo (${validRows.length} calciatori in ${teamDesc})!`;
     if (typeof showSyncToast === 'function') {
         showSyncToast(successMsg);
     } else {
@@ -24595,10 +24640,8 @@ window.confirmApplyCsvRoster = confirmApplyCsvRoster;
 
 
 // --- ai_squads.js ---
-// ==============================================================================
-// MODULO: 5 SQUADRE PERFETTE CONSIGLIATE DALL'AI (CALIBRAZIONE REALE 1000 CR)
-// Modello Economico Empirico dalla 'Lega Ferrovia' (1000 CR) + Database Ufficiale 2026/27
-// ==============================================================================
+// Modello Economico Empirico su Base Asta Reale (1000 CR) + Database Ufficiale 2026/27
+// 5 Archetipi Vincenti Bilanciati: Titolari a 1 CR veri, panchine a voto garantito, quote reali calcolate.==============================================================================
 
 const AI_SQUADS_DATA = [
     {
@@ -24622,7 +24665,7 @@ const AI_SQUADS_DATA = [
             "C": ["Bernabè", "Busio", "Fazzini", "Thorstvedt"],
             "A": ["Bowie", "Kevin Carlos", "Vitinha O."]
         },
-        "strategyDescription": "La trasposizione perfetta della rosa vincente della Lega Ferrovia: punta sul Re assoluto dei Bomber <b>Lautaro Martinez (415 CR)</b> affiancato da <b>Scamacca (137 CR)</b> e dalla rivelazione <b>Raimondo (30 CR)</b>. In porta la certezza del Napoli di <b>Massimiliano Allegri</b> con <b>Meret (101 CR)</b>. In difesa la spinta di <b>Bellanova (15 CR)</b> con centrali rocciosi come <b>Kalulu (55 CR)</b> e <b>Mancini (50 CR)</b>. A centrocampo il gioiello di Allegri <b>Vergara (45 CR)</b> e <b>Da Cunha (45 CR)</b> con il rigorista <b>Calò (10 CR)</b>. In panchina zero sprechi: solo titolarissimi di provincia a 1 credito come <b>Valeri</b>, <b>Gallo</b>, <b>Busio</b> e la punta <b>Kevin Carlos</b>.",
+        "strategyDescription": "Strategia Top Player: punta sul Re assoluto dei Bomber <b>Lautaro Martinez (415 CR)</b> affiancato da <b>Scamacca (137 CR)</b> e dalla rivelazione <b>Raimondo (30 CR)</b>. In porta la certezza del Napoli di <b>Massimiliano Allegri</b> con <b>Meret (101 CR)</b>. In difesa la spinta di <b>Bellanova (15 CR)</b> con centrali rocciosi come <b>Kalulu (55 CR)</b> e <b>Mancini (50 CR)</b>. A centrocampo il gioiello di Allegri <b>Vergara (45 CR)</b> e <b>Da Cunha (45 CR)</b> con il rigorista <b>Calò (10 CR)</b>. In panchina zero sprechi: solo titolarissimi di provincia a 1 credito come <b>Valeri</b>, <b>Gallo</b>, <b>Busio</b> e la punta <b>Kevin Carlos</b>.",
         "whyBeatsRivals": "<ul><li><b>Il Capocannoniere Assoluto in Rosa</b>: Schieri Lautaro Martinez (415 CR) mantenendo un'ossatura completa e priva di buchi.</li><li><b>Porta Blindata di Allegri</b>: Il Napoli di Allegri garantisce la miglior difesa del torneo per il blocco Meret (103 CR).</li><li><b>Zero Sprechi sulle Riserve</b>: Nessun giocatore a vuoto, solo titolari inamovibili a 1 CR da 35 presenze come Valeri e Gallo.</li><li><b>Scommessa Bowie a 3 CR</b>: 1.5 xG attesi pagati solo 3 crediti per avere una mina vagante in attacco.</li></ul>"
     },
     {
@@ -24681,7 +24724,7 @@ const AI_SQUADS_DATA = [
         "tagColor": "#10b981",
         "badge": "⚖️ THURAM (255 CR) + GRIGLIA PORTIERI REALE (86 CR)",
         "coachContext": "Inter di <b>Cristian Chivu</b> (3-5-2) / Torino di <b>Ignazio Abate</b>",
-        "gkStrategy": "🧤 <b>Griglia Portieri Reale Torino + Cagliari (86 CR)</b>: Spesa reale da Lega Ferrovia: <b>Perri (41 CR)</b> + <b>Caprile (39 CR)</b> + <b>Corvi (6 CR)</b>. 32 partite su 38 giocate in casa senza dover sborsare 130 CR per una big!",
+        "gkStrategy": "🧤 <b>Griglia Portieri Calibrata Torino + Cagliari (86 CR)</b>: Spesa stimata su parametri d'asta reali: <b>Perri (41 CR)</b> + <b>Caprile (39 CR)</b> + <b>Corvi (6 CR)</b>. 32 partite su 38 giocate in casa senza dover sborsare 130 CR per una big!",
         "starters": {
             "P": ["Perri"],
             "D": ["Wesley", "Rrahmani", "Bellanova"],
@@ -24992,7 +25035,7 @@ function switchAiSquadTab(squadId) {
     renderAiSquadsTab();
 }
 
-// Prezzi reali da Lega Ferrovia integrati
+// Prezzi medi reali integrati da simulazioni d'asta
 const REAL_AUCTION_PRICES = {
     'meret': 101, 'milinkovic-savic v.': 1, 'contini': 1,
     'svilar': 136, 'gollini': 1, 'de marzi': 1, 'bijlow': 5,
@@ -25276,7 +25319,7 @@ function renderAiSquadsTab() {
                     <span style="font-size:22px;">🧠</span>
                     <div>
                         <h2 style="margin:0;font-size:18px;font-weight:900;color:#fff;">5 Formazioni Perfette (Calibrazione Reale 1000 CR)</h2>
-                        <span style="font-size:12px;color:var(--text-muted);">Basate sui dati d'asta della Lega Ferrovia • Titolari a 1 CR veri • Panchine a voto garantito</span>
+                        <span style="font-size:12px;color:var(--text-muted);">Basate su modelli matematici d'asta reale • Titolari a 1 CR • Panchine a voto garantito</span>
                     </div>
                 </div>
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
@@ -25286,7 +25329,7 @@ function renderAiSquadsTab() {
                         </button>
                     ` : ''}
                     <button class="ai-load-squad-btn" onclick="loadAiSquadToBuilder('${currentSquad.id}')" title="Carica l'intera rosa nell'Asta Live">
-                        <span>📥 Carica in Squadra (Unika)</span>
+                        <span>📥 Carica nella Mia Rosa</span>
                     </button>
                 </div>
             </div>
@@ -25403,7 +25446,7 @@ function renderAiSquadsTab() {
 
                         <div style="margin-top:12px;">
                             <button class="ai-load-squad-btn" style="width:100%;justify-content:center;" onclick="loadAiSquadToBuilder('${currentSquad.id}')">
-                                📥 Carica Questa Rosa in Unika
+                                📥 Carica Questa Rosa nella Mia Rosa
                             </button>
                         </div>
                     </div>
@@ -25806,7 +25849,8 @@ function loadAiSquadToBuilder(squadId) {
     const squad = getAiSquadsData().find(s => s.id === squadId);
     if (!squad) return;
 
-    if (!confirm(`Vuoi caricare tutti i 25 calciatori della formazione '${squad.name.split('—')[0]}' nella tua squadra (Unika)?`)) {
+    const targetName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'la tua rosa';
+    if (!confirm(`Vuoi caricare tutti i 25 calciatori della formazione '${squad.name.split('—')[0]}' in ${targetName}?`)) {
         return;
     }
 
@@ -25848,7 +25892,7 @@ function loadAiSquadToBuilder(squadId) {
     updateAllViews();
     switchTab('auction');
 
-    alert(`🎉 Rosa '${squad.name.split('—')[0]}' caricata con successo in Unika!`);
+    alert(`🎉 Rosa '${squad.name.split('—')[0]}' caricata con successo in ${targetName}!`);
 }
 
 window.renderAiSquads = renderAiSquadsTab;
@@ -27176,7 +27220,7 @@ function getRivalPlayersFull(rivalName) {
     }).filter(Boolean);
 }
 
-function getUnikaPlayersFull() {
+function getMyTeamPlayersFull() {
     if (!State.slots) return [];
     return [
         ...(State.slots.P?.players || []),
@@ -27185,6 +27229,7 @@ function getUnikaPlayersFull() {
         ...(State.slots.A?.players || [])
     ];
 }
+const getUnikaPlayersFull = getMyTeamPlayersFull;
 
 function renderTradePlayerBadge(p) {
     const isMantra = (typeof State !== 'undefined' && State.systemMode === 'mantra');
@@ -27477,12 +27522,12 @@ function evaluateCustomTrade(givingIds, receivingIds, rivalName) {
         analysis = `Stai chiedendo troppo valore rispetto a quello che offri (+${ovrDelta} OVR, +${fvmDelta} FVM). Il manager di ${rivalName} rifiuterà a meno che tu non aggiunga una contropartita migliore.`;
     } else if (ovrDelta >= 2 || fvmDelta >= 12) {
         verdict = 'win';
-        title = '🌟 Ottimo Affare per Unika';
+        title = '🌟 Ottimo Affare per la Tua Rosa';
         badge = 'Favorevole';
         analysis = `Scambio vantaggioso per te (+${ovrDelta} OVR). Se ${rivalName} ha necessità nei ruoli che stai cedendo, ha ottime possibilità di andare a buon fine.`;
     } else if (ovrDelta <= -5 || fvmDelta <= -30) {
         verdict = 'lose';
-        title = '⚠️ Scambio Svantaggioso per Unika';
+        title = '⚠️ Scambio Svantaggioso per la Tua Rosa';
         badge = 'Sconsigliato';
         analysis = `Stai cedendo troppo talento (${giveOvrSum} OVR contro ${recOvrSum} OVR). Salvo gravi emergenze di ruolo, stai regalando valore al tuo avversario.`;
     } else {
@@ -27526,7 +27571,7 @@ Secondo me è un'ottima operazione Win-Win per entrambi perché sistemi i ruoli 
     };
 }
 
-// Applica lo scambio ufficiale tra Unika e Rivale
+// Applica lo scambio ufficiale tra la Mia Rosa e Rivale
 function executeTrade(givingIds, receivingIds, rivalName) {
     if (!givingIds.length || !receivingIds.length || !rivalName) {
         alert("Seleziona almeno un calciatore da cedere e uno da ricevere!");
@@ -27543,7 +27588,7 @@ function executeTrade(givingIds, receivingIds, rivalName) {
     const giving = unikaPlayers.filter(p => givingIds.includes(p.id));
     const receiving = rivalPlayers.filter(p => receivingIds.includes(p.id));
 
-    // 1. Rimuovi i calciatori ceduti da Unika
+    // 1. Rimuovi i calciatori ceduti dalla tua rosa
     giving.forEach(p => {
         const slotKey = (p.role === 'P' || (p.mantra && String(p.mantra).toUpperCase().includes('POR'))) ? 'P' : (State.slots[p.role] ? p.role : 'C');
         const idx = State.slots[slotKey].players.findIndex(x => x.id === p.id);
@@ -27663,11 +27708,11 @@ function renderTradeMachineView() {
         html += `
             <div class="trade-empty-state">
                 <span style="font-size:40px;">📋</span>
-                <h3 style="margin:10px 0 6px 0;color:#fff;">La tua rosa Unika è attualmente vuota</h3>
+                <h3 style="margin:10px 0 6px 0;color:#fff;">La tua rosa è attualmente vuota</h3>
                 <p style="color:var(--text-muted);font-size:13px;max-width:500px;margin:0 auto 16px auto;">
                     Acquista qualche calciatore all'asta o carica una rosa da file CSV per iniziare a scovare opportunità di scambio con i rivali.
                 </p>
-                <button class="btn-action" style="background:var(--accent-cyan);color:#000;font-weight:700;" onclick="openCsvRosterImportModal('Unika')">
+                <button class="btn-action" style="background:var(--accent-cyan);color:#000;font-weight:700;" onclick="openCsvRosterImportModal('my_team')">
                     📂 Carica Rosa da CSV
                 </button>
             </div>
@@ -27755,7 +27800,7 @@ function renderTradeMachineView() {
             return `<option value="${rName}" ${rName === rivalName ? 'selected' : ''}>👥 ${rName}</option>`;
         }).join('');
 
-        // Lista giocatori di Unika per selezione
+        // Lista giocatori della propria rosa per selezione
         const unikaListHtml = unikaPlayers.map(p => {
             const isSelected = tradeMachineState.givingPlayerIds.includes(p.id);
             return `
@@ -27793,7 +27838,7 @@ function renderTradeMachineView() {
 
         html += `
             <div class="trade-simulator-layout">
-                <!-- COLONNA UNIKA -->
+                <!-- COLONNA LA TUA ROSA -->
                 <div class="trade-sim-col">
                     <div class="trade-col-header">
                         <span style="font-size:13px;font-weight:700;color:var(--accent-cyan);">🌟 La Tua Rosa (Cedi)</span>
@@ -28074,7 +28119,7 @@ function renderRepairAuctionView() {
 
     const aiSuggestions = generateRepairShoppingList(freedSlots, projectedRemaining, freeAgents);
 
-    // Render Lista Giocatori Unika da Svincolare
+    // Render Lista Giocatori della Tua Rosa da Svincolare
     let unikaCutListHtml = '';
     if (unikaPlayers.length === 0) {
         unikaCutListHtml = `
@@ -28212,7 +28257,7 @@ function renderRepairAuctionView() {
                         </select>
                     </div>
 
-                    <!-- LISTA GIOCATORI UNIKA -->
+                    <!-- LISTA GIOCATORI DELLA TUA ROSA -->
                     <div class="repair-cut-list">
                         ${unikaCutListHtml}
                     </div>
@@ -28487,8 +28532,8 @@ function evaluateTeamRoster(teamName, playersList, budgetSpent, budgetTotal = 10
 
 function generateUniqueAiRoast(teamData, allTeams, assignedTemplateIds = new Set()) {
     const { teamName, roles, overallGrade, topPick, flopRisk, gradeP, gradeD, gradeC, gradeA, playersList } = teamData;
-    const myName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'Unika';
-    const isMyTeam = (teamName === myName || teamName === 'Unika');
+    const myName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'La Mia Rosa';
+    const isMyTeam = (teamName === myName || teamName === 'La Mia Rosa' || teamName === 'Unika');
     
     if (!playersList || playersList.length === 0) {
         return "Rosa ancora fantasma: sono ancora al buffet dell'asta o stanno leggendo la Guida Gazzetta del 2018.";
@@ -28607,7 +28652,7 @@ function generateUniqueAiRoast(teamData, allTeams, assignedTemplateIds = new Set
     if (overallGrade >= 8.0) {
         if (isMyTeam) {
             candidates.push({
-                id: 'scudetto_unika',
+                id: 'scudetto_myteam',
                 text: `Rosa costruita alla perfezione con l'AI: ${topAttackerName} davanti e ${topMidfielderName} in mezzo. Favoriti indiscussi per il titolo di lega.`
             });
         } else {
@@ -28707,7 +28752,7 @@ function copyLeagueReportToWhatsApp() {
     const myName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'La Mia Rosa';
 
     evals.forEach(e => {
-        const isMyTeam = (e.teamName === myName || e.teamName === 'Unika');
+        const isMyTeam = (e.teamName === myName || e.teamName === 'La Mia Rosa' || e.teamName === 'Unika');
         const teamTitle = isMyTeam ? `🌟 ${e.teamName.toUpperCase()} (La Tua Rosa)` : `👥 ${e.teamName.toUpperCase()}`;
         text += `------------------------------------\n`;
         text += `${e.rankBadge} • *${teamTitle}*\n`;
@@ -28803,7 +28848,7 @@ function openTeamRosterModal(teamName) {
     }
 
     const myName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'La Mia Rosa';
-    const isMyTeam = (teamEval.teamName === myName || teamEval.teamName === 'Unika');
+    const isMyTeam = (teamEval.teamName === myName || teamEval.teamName === 'La Mia Rosa' || teamEval.teamName === 'Unika');
     const players = teamEval.playersList || [];
     
     // Group by role
@@ -28939,7 +28984,7 @@ function renderLeagueReportView() {
     const myName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'La Mia Rosa';
 
     const cardsHtml = evals.map(e => {
-        const isMyTeam = (e.teamName === myName || e.teamName === 'Unika');
+        const isMyTeam = (e.teamName === myName || e.teamName === 'La Mia Rosa' || e.teamName === 'Unika');
         const gradeClass = e.overallGrade >= 8.0 ? 'top' : e.overallGrade >= 6.8 ? 'mid' : 'low';
         const escapedName = escapeQuotes(e.teamName);
 

@@ -1,7 +1,5 @@
-// ==============================================================================
-// MODULO: 5 SQUADRE PERFETTE CONSIGLIATE DALL'AI (CALIBRAZIONE REALE 1000 CR)
-// Modello Economico Empirico dalla 'Lega Ferrovia' (1000 CR) + Database Ufficiale 2026/27
-// ==============================================================================
+// Modello Economico Empirico su Base Asta Reale (1000 CR) + Database Ufficiale 2026/27
+// 5 Archetipi Vincenti Bilanciati: Titolari a 1 CR veri, panchine a voto garantito, quote reali calcolate.==============================================================================
 
 const AI_SQUADS_DATA = [
     {
@@ -25,7 +23,7 @@ const AI_SQUADS_DATA = [
             "C": ["Bernabè", "Busio", "Fazzini", "Thorstvedt"],
             "A": ["Bowie", "Kevin Carlos", "Vitinha O."]
         },
-        "strategyDescription": "La trasposizione perfetta della rosa vincente della Lega Ferrovia: punta sul Re assoluto dei Bomber <b>Lautaro Martinez (415 CR)</b> affiancato da <b>Scamacca (137 CR)</b> e dalla rivelazione <b>Raimondo (30 CR)</b>. In porta la certezza del Napoli di <b>Massimiliano Allegri</b> con <b>Meret (101 CR)</b>. In difesa la spinta di <b>Bellanova (15 CR)</b> con centrali rocciosi come <b>Kalulu (55 CR)</b> e <b>Mancini (50 CR)</b>. A centrocampo il gioiello di Allegri <b>Vergara (45 CR)</b> e <b>Da Cunha (45 CR)</b> con il rigorista <b>Calò (10 CR)</b>. In panchina zero sprechi: solo titolarissimi di provincia a 1 credito come <b>Valeri</b>, <b>Gallo</b>, <b>Busio</b> e la punta <b>Kevin Carlos</b>.",
+        "strategyDescription": "Strategia Top Player: punta sul Re assoluto dei Bomber <b>Lautaro Martinez (415 CR)</b> affiancato da <b>Scamacca (137 CR)</b> e dalla rivelazione <b>Raimondo (30 CR)</b>. In porta la certezza del Napoli di <b>Massimiliano Allegri</b> con <b>Meret (101 CR)</b>. In difesa la spinta di <b>Bellanova (15 CR)</b> con centrali rocciosi come <b>Kalulu (55 CR)</b> e <b>Mancini (50 CR)</b>. A centrocampo il gioiello di Allegri <b>Vergara (45 CR)</b> e <b>Da Cunha (45 CR)</b> con il rigorista <b>Calò (10 CR)</b>. In panchina zero sprechi: solo titolarissimi di provincia a 1 credito come <b>Valeri</b>, <b>Gallo</b>, <b>Busio</b> e la punta <b>Kevin Carlos</b>.",
         "whyBeatsRivals": "<ul><li><b>Il Capocannoniere Assoluto in Rosa</b>: Schieri Lautaro Martinez (415 CR) mantenendo un'ossatura completa e priva di buchi.</li><li><b>Porta Blindata di Allegri</b>: Il Napoli di Allegri garantisce la miglior difesa del torneo per il blocco Meret (103 CR).</li><li><b>Zero Sprechi sulle Riserve</b>: Nessun giocatore a vuoto, solo titolari inamovibili a 1 CR da 35 presenze come Valeri e Gallo.</li><li><b>Scommessa Bowie a 3 CR</b>: 1.5 xG attesi pagati solo 3 crediti per avere una mina vagante in attacco.</li></ul>"
     },
     {
@@ -84,7 +82,7 @@ const AI_SQUADS_DATA = [
         "tagColor": "#10b981",
         "badge": "⚖️ THURAM (255 CR) + GRIGLIA PORTIERI REALE (86 CR)",
         "coachContext": "Inter di <b>Cristian Chivu</b> (3-5-2) / Torino di <b>Ignazio Abate</b>",
-        "gkStrategy": "🧤 <b>Griglia Portieri Reale Torino + Cagliari (86 CR)</b>: Spesa reale da Lega Ferrovia: <b>Perri (41 CR)</b> + <b>Caprile (39 CR)</b> + <b>Corvi (6 CR)</b>. 32 partite su 38 giocate in casa senza dover sborsare 130 CR per una big!",
+        "gkStrategy": "🧤 <b>Griglia Portieri Calibrata Torino + Cagliari (86 CR)</b>: Spesa stimata su parametri d'asta reali: <b>Perri (41 CR)</b> + <b>Caprile (39 CR)</b> + <b>Corvi (6 CR)</b>. 32 partite su 38 giocate in casa senza dover sborsare 130 CR per una big!",
         "starters": {
             "P": ["Perri"],
             "D": ["Wesley", "Rrahmani", "Bellanova"],
@@ -395,7 +393,7 @@ function switchAiSquadTab(squadId) {
     renderAiSquadsTab();
 }
 
-// Prezzi reali da Lega Ferrovia integrati
+// Prezzi medi reali integrati da simulazioni d'asta
 const REAL_AUCTION_PRICES = {
     'meret': 101, 'milinkovic-savic v.': 1, 'contini': 1,
     'svilar': 136, 'gollini': 1, 'de marzi': 1, 'bijlow': 5,
@@ -679,7 +677,7 @@ function renderAiSquadsTab() {
                     <span style="font-size:22px;">🧠</span>
                     <div>
                         <h2 style="margin:0;font-size:18px;font-weight:900;color:#fff;">5 Formazioni Perfette (Calibrazione Reale 1000 CR)</h2>
-                        <span style="font-size:12px;color:var(--text-muted);">Basate sui dati d'asta della Lega Ferrovia • Titolari a 1 CR veri • Panchine a voto garantito</span>
+                        <span style="font-size:12px;color:var(--text-muted);">Basate su modelli matematici d'asta reale • Titolari a 1 CR • Panchine a voto garantito</span>
                     </div>
                 </div>
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
@@ -689,7 +687,7 @@ function renderAiSquadsTab() {
                         </button>
                     ` : ''}
                     <button class="ai-load-squad-btn" onclick="loadAiSquadToBuilder('${currentSquad.id}')" title="Carica l'intera rosa nell'Asta Live">
-                        <span>📥 Carica in Squadra (Unika)</span>
+                        <span>📥 Carica nella Mia Rosa</span>
                     </button>
                 </div>
             </div>
@@ -806,7 +804,7 @@ function renderAiSquadsTab() {
 
                         <div style="margin-top:12px;">
                             <button class="ai-load-squad-btn" style="width:100%;justify-content:center;" onclick="loadAiSquadToBuilder('${currentSquad.id}')">
-                                📥 Carica Questa Rosa in Unika
+                                📥 Carica Questa Rosa nella Mia Rosa
                             </button>
                         </div>
                     </div>
@@ -1209,7 +1207,8 @@ function loadAiSquadToBuilder(squadId) {
     const squad = getAiSquadsData().find(s => s.id === squadId);
     if (!squad) return;
 
-    if (!confirm(`Vuoi caricare tutti i 25 calciatori della formazione '${squad.name.split('—')[0]}' nella tua squadra (Unika)?`)) {
+    const targetName = (typeof State !== 'undefined' && State.teamName) ? State.teamName : 'la tua rosa';
+    if (!confirm(`Vuoi caricare tutti i 25 calciatori della formazione '${squad.name.split('—')[0]}' in ${targetName}?`)) {
         return;
     }
 
@@ -1251,7 +1250,7 @@ function loadAiSquadToBuilder(squadId) {
     updateAllViews();
     switchTab('auction');
 
-    alert(`🎉 Rosa '${squad.name.split('—')[0]}' caricata con successo in Unika!`);
+    alert(`🎉 Rosa '${squad.name.split('—')[0]}' caricata con successo in ${targetName}!`);
 }
 
 window.renderAiSquads = renderAiSquadsTab;

@@ -1,0 +1,32 @@
+{
+  "Serie A": {
+    "league_id": 55,
+    "tournament_id": 27044,
+    "path": "stats/55/season/27044/topstats.json",
+    "url": "https://www.fotmob.com/it/leagues/55/stats/season/27044/players/expected_goals"
+  },
+  "Premier League": {
+    "league_id": 47,
+    "tournament_id": 27110,
+    "path": "stats/47/season/27110/topstats.json",
+    "url": "https://www.fotmob.com/it/leagues/47/stats/season/27110/players/expected_goals"
+  },
+  "La Liga": {
+    "league_id": 87,
+    "tournament_id": 27233,
+    "path": "stats/87/season/27233/topstats.json",
+    "url": "https://www.fotmob.com/it/leagues/87/stats/season/27233/players/expected_goals"
+  },
+  "Ligue 1": {
+    "league_id": 53,
+    "tournament_id": 27212,
+    "path": "stats/53/season/27212/topstats.json",
+    "url": "https://www.fotmob.com/it/leagues/53/stats/season/27212/players/expected_goals"
+  },
+  "Bundesliga": {
+    "league_id": 54,
+    "tournament_id": 26891,
+    "path": "stats/54/season/26891/topstats.json",
+    "url": "https://www.fotmob.com/it/leagues/54/stats/season/26891/players/expected_goals"
+  }
+}

@@ -1,0 +1,160 @@
+
+=======================================================
+SQUADRA LISTONE 2026_27: Atalanta (25 giocatori)
+=======================================================
+  [P]: Carnesecchi (FVM 52, Qt 16), Vismara (FVM 1, Qt 1), Sportiello (FVM 1, Qt 1)
+  [D]: Scalvini (FVM 28, Qt 10), Kristensen T. (FVM 20, Qt 7), Zappacosta (FVM 19, Qt 8), Bernasconi (FVM 18, Qt 6), Bellanova (FVM 17, Qt 6), Ahanor (FVM 14, Qt 6), Kossounou (FVM 12, Qt 3), Hien (FVM 11, Qt 8), Kolasinac (FVM 8, Qt 5)
+  [C]: Ederson D.S. (FVM 49, Qt 12), Samardzic (FVM 41, Qt 12), Gaetano (FVM 30, Qt 8), Elmas (FVM 28, Qt 7), Pasalic (FVM 24, Qt 9), Zalewski (FVM 20, Qt 6), De Roon (FVM 8, Qt 4), Sulemana I. (FVM 7, Qt 3)
+  [A]: Scamacca (FVM 123, Qt 19), Krstovic (FVM 100, Qt 19), De Ketelaere (FVM 98, Qt 17), Raspadori (FVM 76, Qt 14), Sulemana K. (FVM 10, Qt 6)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Bologna (24 giocatori)
+=======================================================
+  [P]: Skorupski (FVM 36, Qt 10), Happonen (FVM 1, Qt 1), Pessina Mas. (FVM 1, Qt 1)
+  [D]: Miranda J. (FVM 24, Qt 8), Zortea (FVM 19, Qt 6), Heggem (FVM 15, Qt 6), Holm (FVM 13, Qt 5), Helland (FVM 12, Qt 3), Vitik (FVM 10, Qt 5), Alhassane (FVM 6, Qt 2), Casale (FVM 5, Qt 3), De Silvestri (FVM 4, Qt 1)
+  [C]: Orsolini (FVM 192, Qt 25), Rowe (FVM 44, Qt 11), Bernardeschi (FVM 30, Qt 9), Ferguson (FVM 23, Qt 7), Cambiaghi (FVM 21, Qt 8), Odgaard (FVM 17, Qt 8), Moro N. (FVM 14, Qt 4), Pobega (FVM 13, Qt 6), Amondarain (FVM 12, Qt 5), El Azzouzi O. (FVM 10, Qt 2)
+  [A]: Dovbyk (FVM 58, Qt 15), Piccoli (FVM 37, Qt 8)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Cagliari (26 giocatori)
+=======================================================
+  [P]: Caprile (FVM 28, Qt 10), Sherri (FVM 1, Qt 1), Radunovic (FVM 1, Qt 1)
+  [D]: Mina (FVM 20, Qt 8), Obert (FVM 15, Qt 7), Rodriguez Ju. (FVM 14, Qt 4), Zè Pedro (FVM 13, Qt 5), Kofler (FVM 8, Qt 5), Zappa (FVM 7, Qt 4), Aurelio (FVM 5, Qt 2), Idrissi R. (FVM 3, Qt 3)
+  [C]: Fazzini (FVM 24, Qt 7), Romano (FVM 20, Qt 7), Winks (FVM 15, Qt 6), Adopo (FVM 13, Qt 7), Fadera (FVM 12, Qt 2), Felici (FVM 8, Qt 5), Deiola (FVM 8, Qt 4), Liteta (FVM 1, Qt 1)
+  [A]: Esposito Se. (FVM 40, Qt 13), Kevin Carlos (FVM 37, Qt 13), Maldini (FVM 21, Qt 5), Mendy P. (FVM 14, Qt 4), Mutandwa (FVM 10, Qt 6), Borrelli (FVM 9, Qt 4), Trepy (FVM 2, Qt 1)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Como (28 giocatori)
+=======================================================
+  [P]: Butez (FVM 54, Qt 16), Vigorito (FVM 1, Qt 1), Tornqvist (FVM 1, Qt 1)
+  [D]: Ramon (FVM 32, Qt 10), Chalobah T. (FVM 30, Qt 9), Couto (FVM 26, Qt 8), Valle (FVM 21, Qt 6), Kaiki (FVM 16, Qt 7), Kempf (FVM 13, Qt 5), Smolcic I. (FVM 10, Qt 4), Kambwala (FVM 8, Qt 3), Van Der Brempt (FVM 5, Qt 2), Goldaniga (FVM 1, Qt 1)
+  [C]: Paz N. (FVM 247, Qt 29), Baturina (FVM 97, Qt 19), Da Cunha (FVM 87, Qt 18), Perrone (FVM 37, Qt 10), Rodriguez Je. (FVM 31, Qt 12), Liberali (FVM 21, Qt 6), Milla (FVM 20, Qt 6), Caqueret (FVM 17, Qt 6), Addai (FVM 10, Qt 5), Lahdo (FVM 1, Qt 1)
+  [A]: Douvikas (FVM 170, Qt 21), Diao (FVM 47, Qt 11), Morata (FVM 7, Qt 4), Kuhn (FVM 5, Qt 3), Azon (FVM 1, Qt 1)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Fiorentina (23 giocatori)
+=======================================================
+  [P]: De Gea (FVM 40, Qt 12), Christensen O. (FVM 1, Qt 1), Lezzerini (FVM 1, Qt 1)
+  [D]: Dragusin (FVM 27, Qt 7), Jimenez A. (FVM 23, Qt 8), Dodò (FVM 20, Qt 10), Valdepenas (FVM 18, Qt 6), Viery (FVM 17, Qt 6), Joao Mario (FVM 12, Qt 3), Parisi (FVM 10, Qt 5), Ranieri L. (FVM 10, Qt 3), Pongracic (FVM 8, Qt 4)
+  [C]: Atta (FVM 86, Qt 16), Mastantuono (FVM 54, Qt 12), Gudmundsson A. (FVM 40, Qt 13), Ndour (FVM 25, Qt 8), Mandragora (FVM 23, Qt 9), Fagioli (FVM 22, Qt 8), Oulai (FVM 20, Qt 6), Brescianini (FVM 12, Qt 3), Fabbian (FVM 8, Qt 4)
+  [A]: Kean (FVM 187, Qt 25), Pellegrino M. (FVM 50, Qt 14)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Frosinone (30 giocatori)
+=======================================================
+  [P]: Palmisani (FVM 12, Qt 5), Desplanches (FVM 3, Qt 2), Lolic (FVM 1, Qt 1), Pisseri (FVM 1, Qt 1)
+  [D]: Monterisi (FVM 13, Qt 6), Bracaglia (FVM 12, Qt 5), Calvani (FVM 12, Qt 4), Oyono A. (FVM 10, Qt 5), Terzic (FVM 8, Qt 4), Tchato (FVM 8, Qt 3), Cittadini (FVM 8, Qt 3), Akpoguma (FVM 6, Qt 3), Omar Fayed (FVM 1, Qt 1), Amey (FVM 1, Qt 1)
+  [C]: Schmid (FVM 28, Qt 8), Calò (FVM 25, Qt 7), Fini (FVM 13, Qt 4), Zerbin (FVM 12, Qt 5), Cichella (FVM 12, Qt 4), Koutsoupias (FVM 11, Qt 4), Grillitsch (FVM 10, Qt 5), Gelli F. (FVM 8, Qt 3), Masini (FVM 8, Qt 3), Hasa (FVM 5, Qt 3), Kone B. (FVM 3, Qt 1), El Azzouzi A. (FVM 1, Qt 1)
+  [A]: Ghedjemis (FVM 27, Qt 9), Raimondo (FVM 22, Qt 7), Kvernadze (FVM 16, Qt 4), Birligea (FVM 14, Qt 5)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Genoa (25 giocatori)
+=======================================================
+  [P]: Bijlow (FVM 17, Qt 8), Stolz (FVM 1, Qt 1), Sommariva (FVM 1, Qt 1)
+  [D]: Ostigard (FVM 43, Qt 11), Vasquez (FVM 32, Qt 9), Norton-Cuffy (FVM 21, Qt 8), Marcandalli (FVM 14, Qt 6), Mitaj (FVM 10, Qt 4), Martin (FVM 8, Qt 5), Otoa (FVM 5, Qt 2), Sabelli (FVM 5, Qt 2), Puczka (FVM 3, Qt 2)
+  [C]: Baldanzi (FVM 30, Qt 11), Frendrup (FVM 20, Qt 7), Ellertsson (FVM 18, Qt 6), Sow (FVM 15, Qt 7), Amorim (FVM 11, Qt 5), Traorè Hj. (FVM 11, Qt 5), Meichtry (FVM 11, Qt 5), Messias (FVM 8, Qt 4), Venturino (FVM 4, Qt 2)
+  [A]: Colombo (FVM 55, Qt 11), Osmajic (FVM 30, Qt 8), Vitinha O. (FVM 16, Qt 8), Havel (FVM 9, Qt 4)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Inter (24 giocatori)
+=======================================================
+  [P]: Martinez Jo. (FVM 63, Qt 17), Provedel (FVM 5, Qt 2), Di Gennaro (FVM 1, Qt 1)
+  [D]: Dimarco (FVM 253, Qt 31), Akanji (FVM 51, Qt 16), Bastoni (FVM 43, Qt 14), Spence (FVM 40, Qt 12), Bisseck (FVM 37, Qt 12), Stones (FVM 30, Qt 12), Carlos Augusto (FVM 25, Qt 7), Pavard (FVM 14, Qt 6)
+  [C]: Calhanoglu (FVM 236, Qt 28), Barella (FVM 80, Qt 17), Jones C. (FVM 48, Qt 12), Zielinski (FVM 45, Qt 11), Diouf (FVM 44, Qt 9), Sucic P. (FVM 21, Qt 8), Luis Henrique (FVM 12, Qt 4), Mkhitaryan (FVM 10, Qt 5), Stankovic A. (FVM 7, Qt 3)
+  [A]: Martinez L. (FVM 367, Qt 34), Thuram (FVM 263, Qt 28), Esposito F.P. (FVM 105, Qt 17), Bonny (FVM 18, Qt 7)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Juventus (27 giocatori)
+=======================================================
+  [P]: Vicario (FVM 58, Qt 16), Pinsoglio (FVM 1, Qt 1), Grabara (FVM 1, Qt 1)
+  [D]: Bremer (FVM 60, Qt 16), Kalulu (FVM 46, Qt 13), Cambiaso (FVM 25, Qt 9), Lucumì (FVM 18, Qt 8), Celik (FVM 15, Qt 8), Kelly L. (FVM 12, Qt 5), Gatti (FVM 10, Qt 4), Cabal (FVM 4, Qt 1), Rugani (FVM 3, Qt 1)
+  [C]: McKennie (FVM 70, Qt 17), Conceicao (FVM 67, Qt 12), Alajbegovic (FVM 50, Qt 12), Thuram K. (FVM 35, Qt 10), Locatelli (FVM 33, Qt 8), Zhegrova (FVM 20, Qt 6), Douglas Luiz (FVM 15, Qt 4), Koopmeiners (FVM 13, Qt 5), Miretti (FVM 7, Qt 3)
+  [A]: Kolo Muani (FVM 211, Qt 25), Yildiz (FVM 150, Qt 22), David (FVM 37, Qt 9), Boga (FVM 26, Qt 6), Milik (FVM 13, Qt 5), Ekhator (FVM 10, Qt 3)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Lazio (28 giocatori)
+=======================================================
+  [P]: Mandas (FVM 32, Qt 10), Renzetti (FVM 1, Qt 1), Motta (FVM 1, Qt 1)
+  [D]: Romagnoli (FVM 22, Qt 7), Marusic (FVM 20, Qt 6), Sutalo J. (FVM 19, Qt 7), Doekhi (FVM 16, Qt 8), Pedraza (FVM 15, Qt 5), Provstgaard (FVM 14, Qt 3), Tavares N. (FVM 12, Qt 6), Floriani Mussolini (FVM 10, Qt 3), Pellegrini Lu. (FVM 7, Qt 2), Lazzari (FVM 5, Qt 2), Patric (FVM 1, Qt 1)
+  [C]: Zaccagni (FVM 88, Qt 16), Frattesi (FVM 68, Qt 9), Taylor K. (FVM 57, Qt 13), Cancellieri (FVM 28, Qt 9), Isaksen (FVM 22, Qt 9), Rovella (FVM 16, Qt 7), Dele-Bashiru (FVM 13, Qt 5), Cataldi (FVM 12, Qt 4), Przyborek (FVM 5, Qt 1), Belahyane (FVM 3, Qt 1)
+  [A]: Pinamonti (FVM 51, Qt 13), Dia (FVM 30, Qt 10), Ratkov (FVM 26, Qt 10), Noslin (FVM 17, Qt 6)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Lecce (25 giocatori)
+=======================================================
+  [P]: Falcone (FVM 30, Qt 9), Bleve (FVM 1, Qt 1), Penev (FVM 1, Qt 1)
+  [D]: Tiago Gabriel (FVM 20, Qt 9), Gallo (FVM 13, Qt 6), Veiga D. (FVM 12, Qt 6), Siebert (FVM 12, Qt 5), Gaspar K. (FVM 12, Qt 6), Ndaba (FVM 5, Qt 2), Jean (FVM 4, Qt 2)
+  [C]: Pierotti (FVM 19, Qt 6), Coulibaly L. (FVM 17, Qt 7), Ngom (FVM 13, Qt 4), Gorter (FVM 12, Qt 3), Berisha M. (FVM 12, Qt 5), Gandelman (FVM 10, Qt 5), Ilic (FVM 8, Qt 1), Maleh (FVM 7, Qt 3), Kaba (FVM 2, Qt 1), Laerke (FVM 1, Qt 1), Fofana Sa. (FVM 1, Qt 1)
+  [A]: Geubbels (FVM 23, Qt 9), Fatah (FVM 17, Qt 4), N'Dri (FVM 15, Qt 3), Stulic (FVM 12, Qt 7)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Milan (29 giocatori)
+=======================================================
+  [P]: Maignan (FVM 50, Qt 15), Terracciano (FVM 1, Qt 1), Torriani (FVM 1, Qt 1)
+  [D]: Pavlovic (FVM 48, Qt 14), Gila (FVM 31, Qt 12), Gabbia (FVM 24, Qt 7), Bartesaghi (FVM 22, Qt 8), Estupinan (FVM 13, Qt 4), De Winter (FVM 12, Qt 4), Tomori (FVM 8, Qt 7), Diawara S. (FVM 4, Qt 2), Terracciano F. (FVM 4, Qt 2)
+  [C]: Pulisic (FVM 160, Qt 24), Rabiot (FVM 145, Qt 23), Moreira (FVM 50, Qt 12), Modric (FVM 46, Qt 12), Saelemaekers (FVM 35, Qt 10), Cissè A. (FVM 25, Qt 5), Chukwueze (FVM 22, Qt 7), Loftus-Cheek (FVM 18, Qt 4), Musah (FVM 15, Qt 3), Jashari (FVM 13, Qt 5), Fofana Y. (FVM 10, Qt 5), Ricci S. (FVM 10, Qt 4), Comotto (FVM 1, Qt 1)
+  [A]: Ramos G. (FVM 228, Qt 27), Leao (FVM 75, Qt 18), Camarda (FVM 20, Qt 5), Gimenez (FVM 10, Qt 6)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Monza (24 giocatori)
+=======================================================
+  [P]: Thiam (FVM 11, Qt 5), Strajnar (FVM 1, Qt 1)
+  [D]: Mangas (FVM 15, Qt 6), Lucchesi (FVM 12, Qt 4), Birindelli (FVM 12, Qt 4), Delli Carri (FVM 11, Qt 4), Kouadio (FVM 9, Qt 3), Carboni A. (FVM 9, Qt 3), Bakoune (FVM 4, Qt 2), Antov (FVM 2, Qt 1), Maye (FVM 1, Qt 1)
+  [C]: Colpani (FVM 25, Qt 8), Akinsanmiro (FVM 16, Qt 6), Pessina (FVM 15, Qt 7), Tourè I. (FVM 15, Qt 6), Colombo L. (FVM 7, Qt 3), Ciurria (FVM 6, Qt 2), Mout (FVM 2, Qt 1), Foe Ondoa (FVM 2, Qt 1), Forson O. (FVM 1, Qt 2)
+  [A]: Cutrone (FVM 33, Qt 9), Mota (FVM 18, Qt 5), Robinson J. (FVM 10, Qt 4), Varela G. (FVM 7, Qt 5)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Napoli (28 giocatori)
+=======================================================
+  [P]: Meret (FVM 53, Qt 11), Milinkovic-Savic V. (FVM 7, Qt 5), Contini (FVM 1, Qt 1)
+  [D]: Rrahmani (FVM 51, Qt 14), Di Lorenzo (FVM 40, Qt 12), Spinazzola (FVM 25, Qt 8), Badiashile (FVM 21, Qt 7), Buongiorno (FVM 15, Qt 7), Olivera (FVM 13, Qt 5), Beukema (FVM 12, Qt 6), Favasuli (FVM 11, Qt 4), Marin R. (FVM 8, Qt 2), Mazzocchi (FVM 3, Qt 1), Marianucci (FVM 3, Qt 1)
+  [C]: McTominay (FVM 228, Qt 28), De Bruyne (FVM 107, Qt 16), Zambo Anguissa (FVM 47, Qt 11), Politano (FVM 40, Qt 10), Vergara (FVM 40, Qt 10), Lobotka (FVM 22, Qt 8), Gilmour (FVM 10, Qt 3), Folorunsho (FVM 5, Qt 4)
+  [A]: Hojlund (FVM 257, Qt 27), Santos A. (FVM 62, Qt 14), Neres (FVM 17, Qt 6), Lang (FVM 12, Qt 4), Giovane (FVM 10, Qt 4), Lucca (FVM 10, Qt 4)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Parma (23 giocatori)
+=======================================================
+  [P]: Daffara (FVM 10, Qt 7), Corvi (FVM 10, Qt 1)
+  [D]: Valeri (FVM 24, Qt 8), Delprato (FVM 21, Qt 8), Troilo (FVM 14, Qt 4), Valenti (FVM 10, Qt 4), Britschgi (FVM 10, Qt 3), Ndiaye (FVM 8, Qt 2), Carboni F. (FVM 3, Qt 1)
+  [C]: Bernabè (FVM 35, Qt 7), Nicolussi Caviglia (FVM 16, Qt 6), Keita M. (FVM 15, Qt 5), Sorensen O. (FVM 12, Qt 3), Diallo O. (FVM 12, Qt 4), Almqvist (FVM 11, Qt 4), Ordonez C. (FVM 5, Qt 3), Cremaschi (FVM 3, Qt 1)
+  [A]: Tourè E. (FVM 43, Qt 11), Romero D. (FVM 37, Qt 10), Elphege (FVM 11, Qt 3), Lontani (FVM 10, Qt 2), Frigan (FVM 10, Qt 5), De Martis (FVM 1, Qt 1)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Roma (24 giocatori)
+=======================================================
+  [P]: Svilar (FVM 75, Qt 18), De Marzi (FVM 1, Qt 1), Gollini (FVM 1, Qt 1)
+  [D]: Wesley (FVM 82, Qt 17), Molina N. (FVM 80, Qt 18), Mancini (FVM 49, Qt 15), N'Dicka (FVM 44, Qt 13), Hermoso (FVM 26, Qt 10), Koulierakis (FVM 17, Qt 8), Rensch (FVM 14, Qt 5), Ghilardi (FVM 10, Qt 4), Lulli (FVM 3, Qt 1), Ziolkowski (FVM 2, Qt 1)
+  [C]: Mora (FVM 95, Qt 19), Konè M. (FVM 42, Qt 10), Cristante (FVM 29, Qt 8), Pellegrini Lo. (FVM 25, Qt 10), El Aynaoui (FVM 18, Qt 4), Pisilli (FVM 17, Qt 7)
+  [A]: Malen (FVM 414, Qt 36), Dybala (FVM 95, Qt 15), Castro S. (FVM 76, Qt 14), Soulè (FVM 45, Qt 12), Vaz (FVM 4, Qt 1)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Sassuolo (27 giocatori)
+=======================================================
+  [P]: Muric (FVM 15, Qt 7), Russo A. (FVM 1, Qt 1), Satalino (FVM 1, Qt 1), Turati (FVM 1, Qt 1)
+  [D]: Idzes (FVM 19, Qt 7), Obrador (FVM 15, Qt 6), Leysen F. (FVM 12, Qt 5), Walukiewicz (FVM 10, Qt 4), Doig (FVM 10, Qt 4), Odenthal (FVM 8, Qt 3), Candè (FVM 7, Qt 3), Cinquegrano (FVM 4, Qt 2), Missori (FVM 2, Qt 1), Pieragnolo (FVM 1, Qt 1)
+  [C]: Thorstvedt (FVM 40, Qt 10), Volpato (FVM 23, Qt 8), Konè I. (FVM 20, Qt 9), Adzic (FVM 16, Qt 5), Matic (FVM 15, Qt 6), Bakola (FVM 14, Qt 5), Dominguez B. (FVM 12, Qt 4), Lipani (FVM 5, Qt 2), Boloca (FVM 5, Qt 2), Iannoni (FVM 1, Qt 1)
+  [A]: Berardi (FVM 101, Qt 18), Laurientè (FVM 86, Qt 15), Bowie (FVM 39, Qt 10)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Torino (24 giocatori)
+=======================================================
+  [P]: Mascardi (FVM 13, Qt 1), Paleari (FVM 1, Qt 1), Siviero (FVM 1, Qt 1)
+  [D]: Coco (FVM 14, Qt 7), Ismajli (FVM 13, Qt 7), Comuzzo (FVM 13, Qt 6), Comert (FVM 12, Qt 4), Fortini (FVM 12, Qt 5), Pedersen (FVM 12, Qt 5), Biraghi (FVM 5, Qt 2)
+  [C]: Vlasic (FVM 75, Qt 13), Casadei (FVM 32, Qt 10), Cacciamani (FVM 20, Qt 5), Fitz-Jim (FVM 18, Qt 4), Njie (FVM 14, Qt 5), Oristanio (FVM 12, Qt 7), Gineitis (FVM 12, Qt 6), Ilkhan (FVM 10, Qt 4), Aboukhlal (FVM 5, Qt 3), Anjorin (FVM 4, Qt 1)
+  [A]: Simeone (FVM 80, Qt 15), Adams C. (FVM 33, Qt 10), Zapata D. (FVM 18, Qt 7), Kulenovic (FVM 9, Qt 4)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Udinese (26 giocatori)
+=======================================================
+  [P]: Okoye (FVM 29, Qt 9), Mrozek (FVM 1, Qt 1), Padelli (FVM 1, Qt 1), Piana (FVM 1, Qt 1)
+  [D]: Solet (FVM 46, Qt 13), Vojvoda (FVM 19, Qt 8), Kabasele (FVM 12, Qt 4), Kamara H. (FVM 12, Qt 8), Palma (FVM 11, Qt 3), Abankwah (FVM 10, Qt 2), Bertola (FVM 10, Qt 4), Zanoli (FVM 10, Qt 4), Arizala (FVM 8, Qt 4), Ebosse (FVM 5, Qt 3), Mlacic (FVM 3, Qt 1)
+  [C]: Zaniolo (FVM 85, Qt 18), Ekkelenkamp (FVM 45, Qt 11), Karlstrom (FVM 20, Qt 7), Unai Gomez (FVM 17, Qt 7), Piotrowski (FVM 15, Qt 5), Miller L. (FVM 12, Qt 4), Chakvetadze (FVM 6, Qt 2), Zarraga (FVM 4, Qt 1)
+  [A]: Davis K. (FVM 109, Qt 19), Gueye (FVM 7, Qt 4), Bayo V. (FVM 3, Qt 1)
+
+=======================================================
+SQUADRA LISTONE 2026_27: Venezia (28 giocatori)
+=======================================================
+  [P]: Stankovic F. (FVM 12, Qt 6), Pozzi (FVM 1, Qt 1), Montipò (FVM 1, Qt 1), Grandi (FVM 1, Qt 1)
+  [D]: Bella-Kotchap (FVM 13, Qt 6), Correia T. (FVM 12, Qt 5), Hainaut (FVM 12, Qt 3), Halhal (FVM 10, Qt 4), Haps (FVM 10, Qt 5), Schingtienne (FVM 10, Qt 3), Franjic (FVM 7, Qt 2), Sverko (FVM 7, Qt 3), Moreno M. (FVM 6, Qt 5), Sagrado (FVM 4, Qt 2), Gomes (FVM 1, Qt 1)
+  [C]: Basic (FVM 19, Qt 6), Perez K. (FVM 15, Qt 5), Busio (FVM 14, Qt 5), Sohm (FVM 11, Qt 5), Duncan (FVM 4, Qt 2), Helgason (FVM 3, Qt 3), Dagasso (FVM 1, Qt 1)
+  [A]: Adams A. (FVM 45, Qt 12), Yeboah J. (FVM 27, Qt 8), Rrahmani Al. (FVM 18, Qt 8), Adorante (FVM 12, Qt 5), Lisman (FVM 1, Qt 1), Lauberbach (FVM 1, Qt 1)

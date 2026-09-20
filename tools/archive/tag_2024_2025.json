@@ -1,0 +1,22 @@
+{
+  "_translationId": "dc2d7b3d-4610-4465-8126-22a66651cb42",
+  "_entityId": "119bc14a-b79d-4725-9086-11d951153d47",
+  "selfUrl": "https://dapi.legaseriea.it/v2/content/it-it/tags/season-1e32f55e98fc408a9d1fc27c0ba43243",
+  "slug": "season-1e32f55e98fc408a9d1fc27c0ba43243",
+  "title": "2024/2025",
+  "fields": {},
+  "createdBy": "Gianluca Viglino",
+  "lastUpdatedBy": "Miriam Sibona",
+  "lastUpdatedDate": "2025-12-17T17:48:31.71Z",
+  "contentDate": "2025-11-12T14:51:40.74Z",
+  "featured": 0,
+  "extraData": {
+    "providerId": "opta:Season:b25u56idqlgo8s1rahhltqd5g",
+    "seasonId": "serie-a::Football_Season::1e32f55e98fc408a9d1fc27c0ba43243"
+  },
+  "externalSourceName": "sdpseason",
+  "externalSourceReference": {
+    "SourceId": "season-1e32f55e98fc408a9d1fc27c0ba43243",
+    "SourceName": "sdpseason"
+  }
+}

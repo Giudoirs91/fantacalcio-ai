@@ -1,0 +1,44 @@
+{
+  "Eredivisie": {
+    "league_id": 57,
+    "tournament_id": 27131,
+    "season_name": "2025/2026",
+    "path": "stats/57/season/27131/topstats.json"
+  },
+  "Liga Portugal": {
+    "league_id": 61,
+    "tournament_id": 27181,
+    "season_name": "2025/2026",
+    "path": "stats/61/season/27181/topstats.json"
+  },
+  "Championship": {
+    "league_id": 48,
+    "tournament_id": 27195,
+    "season_name": "2025/2026",
+    "path": "stats/48/season/27195/topstats.json"
+  },
+  "Belgian Pro League": {
+    "league_id": 40,
+    "tournament_id": 27152,
+    "season_name": "2025/2026",
+    "path": "stats/40/season/27152/topstats.json"
+  },
+  "Brasileirao": {
+    "league_id": 268,
+    "tournament_id": 25077,
+    "season_name": "2025",
+    "path": "stats/268/season/25077/topstats.json"
+  },
+  "Super Lig": {
+    "league_id": 52,
+    "tournament_id": 28966,
+    "season_name": "2025",
+    "path": "stats/52/season/28966/topstats.json"
+  },
+  "Super League Greece": {
+    "league_id": 67,
+    "tournament_id": 24511,
+    "season_name": "2025",
+    "path": "stats/67/season/24511/topstats.json"
+  }
+}

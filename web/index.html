@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Fanta Master AI — Serie A 2026/27</title>
+  <meta name="description" content="Assistente intelligente per il Fantacalcio: calcolo formazioni ideali, analisi statistiche e consigli d'asta in tempo reale.">
+  <meta name="theme-color" content="#00e676">
+
+  <!-- PWA Manifest & Icons -->
+  <link rel="manifest" href="/static/manifest.json">
+  <link rel="apple-touch-icon" href="/static/icon-192.png">
+
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Modern App Stylesheet -->
+  <link rel="stylesheet" href="/static/css/modern_app.css">
+</head>
+<body>
+
+  <!-- Top Header Bar -->
+  <header class="app-header">
+    <div class="header-container">
+      <a href="/" class="brand-logo" id="logo-brand">
+        <span>⚽ Fanta Master AI</span>
+        <span class="brand-badge">2026/27</span>
+      </a>
+
+      <!-- Main Navigation Tabs -->
+      <nav class="nav-tabs" aria-label="Navigazione Principale">
+        <button class="nav-tab-btn active" data-tab="lineup" id="tab-btn-lineup">
+          <span>🏟️ Formazione AI</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="players" id="tab-btn-players">
+          <span>🔍 Database Giocatori</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="gk" id="tab-btn-gk">
+          <span>🧤 Griglia Portieri</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="auction" id="tab-btn-auction">
+          <span>💰 Assistente Asta</span>
+        </button>
+      </nav>
+
+      <!-- Server & Live Status -->
+      <div class="header-actions">
+        <div class="live-indicator">
+          <div class="pulse-dot"></div>
+          <span>API Online</span>
+        </div>
+        <a href="/docs" target="_blank" class="btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.75rem; text-decoration: none;">
+          📖 Swagger /docs
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+
+    <!-- ==================== VIEW 1: FORMAZIONE AI & 20 CLUB ==================== -->
+    <section class="view-section active" id="view-lineup">
+      <!-- Mode Switcher (La Mia Rosa vs 20 Club Serie A) -->
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+        <div class="mode-switcher">
+          <button class="mode-btn active" id="btn-mode-squad">🏟️ La Mia Formazione (AI)</button>
+          <button class="mode-btn" id="btn-mode-clubs">⚽ 20 Club Serie A (Probabili Formazioni)</button>
+        </div>
+
+        <!-- Info Club Attivo (visibile solo in modalità 20 club) -->
+        <div id="club-active-badge-container" style="display: none; align-items: center; gap: 0.75rem;">
+          <span id="club-active-coach" class="brand-badge" style="background: var(--bg-surface-elevated); color: var(--text-primary); border: 1px solid var(--border-glass);">All: -</span>
+          <span id="club-active-formation" class="brand-badge" style="background: var(--accent-cyan); color: #000;">4-3-3</span>
+        </div>
+      </div>
+
+      <!-- Quick Bar 20 Club (visibile in modalità 20 club) -->
+      <div id="club-quick-bar-container" style="display: none; margin-bottom: 1rem;">
+        <div class="club-quick-bar" id="club-quick-bar">
+          <!-- Bottoni club generati via JS -->
+        </div>
+      </div>
+
+      <!-- Barra Controlli per la Mia Rosa -->
+      <div class="lineup-bar" id="squad-controls-bar">
+        <div>
+          <h1 style="font-size: 1.75rem; font-weight: 800;">🏟️ Ottimizzatore Formazione</h1>
+          <p class="text-secondary" style="font-size: 0.9rem;">L'algoritmo calcola l'11 titolare e la panchina ideale massimizzando i punti attesi.</p>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+          <select id="select-formation" class="custom-select" aria-label="Seleziona Modulo">
+            <option value="auto">✨ Modulo Ottimale (Auto AI)</option>
+          </select>
+
+          <select id="select-risk" class="custom-select" aria-label="Tolleranza Rischio">
+            <option value="balanced">⚖️ Bilanciato</option>
+            <option value="aggressive">🔥 Offensivo</option>
+            <option value="conservative">🛡️ Prudente</option>
+          </select>
+
+          <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; cursor: pointer;">
+            <input type="checkbox" id="check-defense-mod" checked style="accent-color: var(--accent-neon); width: 16px; height: 16px;">
+            <span>Modificatore Difesa</span>
+          </label>
+
+          <button id="btn-optimize-lineup" class="btn-primary">
+            <span>⚡ Ricalcola Formazione</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Grid: Campo Tattico 2D & Pannello Laterale -->
+      <div class="grid-2col">
+        <!-- Campo da Calcio 2D -->
+        <div class="glass-panel" style="padding: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <span id="pitch-title-label" style="font-weight: 700; font-size: 0.9rem; text-transform: uppercase; color: var(--text-secondary);">Campo Titolari (11)</span>
+            <span id="expected-score-badge" class="brand-badge" style="font-size: 0.8rem; background: var(--accent-neon); color: #000;">Calcolo in corso...</span>
+          </div>
+
+          <div class="pitch-container" id="tactical-pitch">
+            <div class="pitch-area-top"></div>
+            <div class="pitch-center-circle"></div>
+            <div class="pitch-area-bottom"></div>
+
+            <!-- Righe Tattiche (Attaccanti, Centrocampisti, Difensori, Portiere) -->
+            <div class="pitch-row" id="pitch-row-att"></div>
+            <div class="pitch-row" id="pitch-row-med"></div>
+            <div class="pitch-row" id="pitch-row-def"></div>
+            <div class="pitch-row" id="pitch-row-por"></div>
+          </div>
+
+          <!-- Sezione Panchina (visibile in modalità Rosa) -->
+          <div class="bench-container" id="bench-section-container">
+            <div class="bench-title">Panchina Ordinata (Sostituzioni Consigliate)</div>
+            <div class="bench-grid" id="bench-players-grid"></div>
+          </div>
+        </div>
+
+        <!-- Colonna Destra: Note AI oppure Dettagli Tattici Club -->
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          
+          <!-- Pannello Rosa Personale -->
+          <div id="panel-squad-details" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div class="glass-panel">
+              <h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem;">💡 Analisi Tattica AI</h2>
+              <div id="lineup-tactical-notes" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <p class="text-secondary">Caricamento analisi tattica...</p>
+              </div>
+            </div>
+
+            <div class="glass-panel" style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <h2 style="font-size: 1.15rem; font-weight: 700;">📋 La Mia Rosa</h2>
+                <span class="text-secondary" style="font-size: 0.85rem;">Aggiungi dal Database</span>
+              </div>
+              <p class="text-secondary" style="font-size: 0.85rem; margin-bottom: 1rem;">
+                Usa il pulsante <strong>➕ Rosa</strong> nella scheda "Database Giocatori" per inserire o rimuovere i tuoi calciatori.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pannello Dettagli Club Serie A (visibile in modalità 20 club) -->
+          <div id="panel-club-details" style="display: none; flex-direction: column; gap: 1rem;">
+            <!-- Calci Piazzati -->
+            <div class="glass-panel">
+              <h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">🎯 Gerarchie Calci Piazzati</h2>
+              <div class="set-pieces-grid" id="club-set-pieces-container">
+                <!-- Generato via JS -->
+              </div>
+            </div>
+
+            <!-- Ballottaggi -->
+            <div class="glass-panel">
+              <h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem;">⚔️ Ballottaggi & Percentuali</h2>
+              <div id="club-ballottaggi-container" style="max-height: 220px; overflow-y: auto;">
+                <!-- Generato via JS -->
+              </div>
+            </div>
+
+            <!-- Giocatori Consigliati & Fuori Ruolo (OOP) -->
+            <div class="glass-panel">
+              <h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">💎 Consigliati & Fuori Ruolo (OOP)</h2>
+              <div id="club-oop-container">
+                <!-- Generato via JS -->
+              </div>
+            </div>
+
+            <!-- Rosa Completa Club -->
+            <div class="glass-panel">
+              <h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">📋 Rosa Completa Club</h2>
+              <div style="max-height: 250px; overflow-y: auto;">
+                <table class="custom-table" style="font-size: 0.8rem;">
+                  <thead>
+                    <tr><th>R</th><th>Nome</th><th>FVM</th><th>Qt.</th><th>Azioni</th></tr>
+                  </thead>
+                  <tbody id="club-roster-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 2: DATABASE GIOCATORI ==================== -->
+    <section class="view-section" id="view-players">
+      <div class="lineup-bar">
+        <div>
+          <h1 style="font-size: 1.75rem; font-weight: 800;">🔍 Database Calciatori Serie A</h1>
+          <p class="text-secondary" style="font-size: 0.9rem;" id="players-total-count">Caricamento anagrafica...</p>
+        </div>
+      </div>
+
+      <!-- Barra Filtri e Ricerca -->
+      <div class="glass-panel" style="margin-bottom: 1.5rem; padding: 1rem 1.25rem;">
+        <div class="search-filter-bar">
+          <input type="text" id="input-player-search" class="custom-input" placeholder="🔍 Cerca per nome o club..." style="flex: 1; min-width: 200px;">
+
+          <select id="select-role-filter" class="custom-select">
+            <option value="">Tutti i Ruoli</option>
+            <option value="P">Portieri (P)</option>
+            <option value="D">Difensori (D)</option>
+            <option value="C">Centrocampisti (C)</option>
+            <option value="A">Attaccanti (A)</option>
+          </select>
+
+          <select id="select-sort-by" class="custom-select">
+            <option value="fvm">Ordina per FVM</option>
+            <option value="qta">Ordina per Quotazione</option>
+            <option value="fm_2627">Ordina per FantaMedia 2026/27</option>
+            <option value="titolarita">Ordina per Titolarità</option>
+          </select>
+        </div>
+
+        <!-- Tabella Giocatori -->
+        <div style="overflow-x: auto;">
+          <table class="custom-table" id="players-main-table">
+            <thead>
+              <tr>
+                <th>Ruolo</th>
+                <th>Nome</th>
+                <th>Club</th>
+                <th>FVM</th>
+                <th>Qt.</th>
+                <th>FM 26/27</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="players-table-body">
+              <!-- Righe generate via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Barra Paginazione -->
+        <div class="pagination-bar">
+          <span id="current-page-label">Pagina 1</span>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn-secondary" onclick="if(state.playersPage > 1) { state.playersPage--; loadPlayersTable(); }">⬅ Precedente</button>
+            <button class="btn-secondary" onclick="state.playersPage++; loadPlayersTable();">Successiva ➡</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 3: GRIGLIA PORTIERI ==================== -->
+    <section class="view-section" id="view-gk">
+      <div class="lineup-bar">
+        <div>
+          <h1 style="font-size: 1.75rem; font-weight: 800;">🧤 Matrice & Incroci Portieri</h1>
+          <p class="text-secondary" style="font-size: 0.9rem;">Le migliori coppie di portieri con perfetta alternanza casa / trasferta per la Serie A 2026/27.</p>
+        </div>
+      </div>
+
+      <div class="glass-panel">
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">🏆 Top 15 Coppie Consigliate per l'Asta</h2>
+        <div id="gk-pairs-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem;">
+          <!-- Coppie portieri generate via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 4: ASSISTENTE ASTA ==================== -->
+    <section class="view-section" id="view-auction">
+      <div class="lineup-bar">
+        <div>
+          <h1 style="font-size: 1.75rem; font-weight: 800;">💰 Assistente & Calcolatore Rilanci Asta</h1>
+          <p class="text-secondary" style="font-size: 0.9rem;">Stima il prezzo target e l'offerta massima per non pagare troppo i tuoi obiettivi.</p>
+        </div>
+      </div>
+
+      <div class="glass-panel" style="max-width: 650px; margin: 0 auto;">
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">🎯 Calcola Prezzo Massimo Consigliato</h2>
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div>
+            <label style="display:block; font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.4rem;">ID o Seleziona Giocatore</label>
+            <input type="number" id="auction-player-select" class="custom-input" placeholder="Inserisci ID giocatore (es. 5585)" style="width: 100%;">
+          </div>
+
+          <div>
+            <label style="display:block; font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.4rem;">Tuo Budget Residuo (su 500 o 1000)</label>
+            <input type="number" id="auction-budget-input" class="custom-input" value="500" style="width: 100%;">
+          </div>
+
+          <button id="btn-calc-bid" class="btn-primary" style="justify-content: center; width: 100%;">
+            <span>⚡ Calcola Strategia d'Offerta</span>
+          </button>
+        </div>
+
+        <div id="auction-advice-result"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal Dettaglio Giocatore -->
+  <div class="modal-backdrop" id="player-modal">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Chiudi">✕</button>
+      <div id="player-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/static/js/api_client.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

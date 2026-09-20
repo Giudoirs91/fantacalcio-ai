@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fanta Master AI — Studio Dark Edition Mockup</title>
+
+  <!-- Google Fonts: Outfit (Display/Heavy) & Inter (Precision UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-canvas: #0c0e12;
+      --bg-surface: #14171d;
+      --bg-surface-elevated: #1a1e26;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.18);
+
+      --text-main: #f3f4f6;
+      --text-muted: #8b929e;
+      --text-dim: #5a616d;
+
+      /* Card 1: Neutral / Slate */
+      --card-neutral-bg: #14171c;
+      --card-neutral-border: rgba(255, 255, 255, 0.09);
+
+      /* Card 2: Amber / Golden Bronze (PLUS) */
+      --card-amber-bg: linear-gradient(180deg, rgba(34, 25, 14, 0.9) 0%, rgba(20, 16, 11, 0.95) 100%);
+      --card-amber-border: rgba(245, 158, 11, 0.28);
+      --card-amber-glow: rgba(245, 158, 11, 0.08);
+      --accent-amber: #f59e0b;
+      --accent-amber-light: #fbbf24;
+
+      /* Card 3: Deep Teal / Emerald (MAX) */
+      --card-teal-bg: linear-gradient(180deg, rgba(14, 32, 34, 0.9) 0%, rgba(10, 21, 23, 0.95) 100%);
+      --card-teal-border: rgba(45, 212, 191, 0.3);
+      --card-teal-glow: rgba(45, 212, 191, 0.08);
+      --accent-teal: #2dd4bf;
+      --accent-teal-dark: #0f766e;
+
+      /* Electric Blue "Best Value" Badge */
+      --blue-badge: #2563eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      min-height: 100vh;
+      /* CAD / Technical Millimeter Grid Pattern */
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 32px 32px;
+      padding: 2rem 1.5rem 4rem 1.5rem;
+    }
+
+    /* Container */
+    .studio-container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    /* Top Navigation Bar */
+    .top-navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 2.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: #fff;
+      color: #000;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-pill {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Tabs & Controls */
+    .view-switcher {
+      display: flex;
+      background: #111419;
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      gap: 4px;
+    }
+
+    .view-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .view-btn.active {
+      background: #20242e;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Sub-header with toggles */
+    .controls-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .pill-toggle-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      background: #13161c;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .pill-toggle-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      background: #252a35;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .pill-toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .pill-toggle-switch.active {
+      background: var(--accent-amber);
+    }
+
+    .pill-toggle-switch.active::after {
+      transform: translateX(20px);
+    }
+
+    .tab-pills-right {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .pill-action-btn {
+      background: #161920;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 0.45rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pill-action-btn.active,
+    .pill-action-btn:hover {
+      background: #242935;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ==========================================================================
+       VIEW 1: THE 3 TIER STRATEGY CARDS (INVIDEO STYLE)
+       ========================================================================== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    @media (max-width: 980px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tier-card {
+      border-radius: 20px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid;
+    }
+
+    .tier-card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* CARD 1: STARTER / EQUILIBRATA */
+    .card-starter {
+      background: var(--card-neutral-bg);
+      border-color: var(--card-neutral-border);
+    }
+
+    /* CARD 2: PLUS / TOP CERTEZZE */
+    .card-plus {
+      background: var(--card-amber-bg);
+      border-color: var(--card-amber-border);
+      box-shadow: 0 0 35px var(--card-amber-glow);
+    }
+
+    /* CARD 3: MAX / ALL-IN ATTACCO */
+    .card-max {
+      background: var(--card-teal-bg);
+      border-color: var(--card-teal-border);
+      box-shadow: 0 0 35px var(--card-teal-glow);
+    }
+
+    /* Card Headers */
+    .card-header-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    .badge-discount {
+      background: rgba(245, 158, 11, 0.18);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: var(--accent-amber-light);
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.18rem 0.5rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-best-value {
+      background: var(--blue-badge);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 900;
+      font-style: italic;
+      padding: 0.18rem 0.55rem;
+      border-radius: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.45);
+    }
+
+    .card-subtitle {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      min-height: 2.2rem;
+    }
+
+    /* Stat / Credit Allocation Box */
+    .card-credits-hero {
+      margin-bottom: 1rem;
+    }
+
+    .credits-head {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+    }
+
+    .credits-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Sub-pills (like 400 credits per seat) */
+    .tier-subpill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 0.6rem 1rem;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      margin: 1.25rem 0;
+    }
+
+    /* Interactive Slider for Card 3 (Max) */
+    .slider-container-card {
+      margin: 1rem 0;
+    }
+
+    .slider-labels-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    .custom-range-track {
+      position: relative;
+      width: 100%;
+      height: 6px;
+      background: #1e282d;
+      border-radius: 9999px;
+      margin-top: 0.5rem;
+    }
+
+    .custom-range-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: var(--accent-teal);
+      border-radius: 9999px;
+      width: 45%;
+    }
+
+    .custom-range-thumb {
+      position: absolute;
+      top: 50%;
+      left: 45%;
+      transform: translate(-50%, -50%);
+      width: 22px;
+      height: 16px;
+      background: #39e3cd;
+      border-radius: 9999px;
+      display: grid;
+      place-items: center;
+      font-size: 0.55rem;
+      color: #000;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    /* Big Price / Credits Display */
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .price-original {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-dim);
+      text-decoration: line-through;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .price-current {
+      font-size: 2.6rem;
+      font-weight: 900;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .price-unit {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    /* CTA Buttons */
+    .btn-cta {
+      width: 100%;
+      padding: 0.85rem;
+      border-radius: 12px;
+      border: none;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-transform: capitalize;
+    }
+
+    .btn-cta-starter {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .btn-cta-starter:hover {
+      background: #e5e7eb;
+      transform: scale(1.01);
+    }
+
+    .btn-cta-plus {
+      background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+      color: #000000;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+    }
+
+    .btn-cta-plus:hover {
+      filter: brightness(1.1);
+      transform: scale(1.01);
+    }
+
+    .btn-cta-max {
+      background: linear-gradient(180deg, #fde047 0%, #eab308 100%);
+      color: #000000;
+      box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+    }
+
+    .btn-cta-max:hover {
+      filter: brightness(1.08);
+      transform: scale(1.01);
+    }
+
+    .cta-subtext {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      margin-top: 0.6rem;
+      margin-bottom: 1.25rem;
+      font-weight: 600;
+    }
+
+    .cta-subtext.highlight-amber {
+      color: var(--accent-amber-light);
+    }
+
+    .cta-subtext.highlight-teal {
+      color: var(--accent-teal);
+    }
+
+    /* Stepper Pill [-  1 seat  +] */
+    .stepper-pill {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+      padding: 0.35rem 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.75rem;
+    }
+
+    .stepper-btn {
+      width: 28px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: var(--text-main);
+      border-radius: 50%;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background 0.15s;
+    }
+
+    .stepper-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .stepper-val {
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    /* Section Separator */
+    .features-header {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-subtle);
+      margin-bottom: 1rem;
+    }
+
+    /* Features List */
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+    }
+
+    .feature-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .feature-icon-check {
+      color: #9ca3af;
+      font-size: 0.8rem;
+    }
+
+    .card-plus .feature-icon-check {
+      color: var(--accent-amber);
+    }
+
+    .card-max .feature-icon-check {
+      color: var(--accent-teal);
+    }
+
+    .feature-icon-cross {
+      color: #4b5563;
+      font-size: 0.8rem;
+    }
+
+    .feature-right-tag {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    /* Access to Models / Sub-module Table */
+    .subtable-container {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 0.85rem;
+      margin-top: auto;
+    }
+
+    .subtable-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card-plus .subtable-title {
+      color: var(--accent-amber);
+    }
+
+    .card-max .subtable-title {
+      color: var(--accent-teal);
+    }
+
+    .subtable-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      padding: 0.35rem 0;
+    }
+
+    .badge-capsule {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+
+    .badge-capsule.highlight {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       VIEW 2: THE WIZARD CONFIGURATOR (SECOND SCREENSHOT)
+       ========================================================================== */
+    .wizard-layout {
+      display: none;
+      /* toggled via JS */
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .wizard-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .wizard-step-section {
+      margin-bottom: 2.25rem;
+      position: relative;
+    }
+
+    .wizard-step-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-circle {
+      width: 28px;
+      height: 28px;
+      background: #232732;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .step-title-box h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .step-title-box p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Multi-select checkable tag cards */
+    .tag-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+      padding-left: 2.75rem;
+    }
+
+    .tag-pill-btn {
+      background: #15181f;
+      border: 1px solid var(--border-subtle);
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-main);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .tag-pill-btn:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: #1a1e28;
+    }
+
+    .tag-pill-btn.selected {
+      background: #201a12;
+      border-color: var(--accent-amber);
+      color: #fff;
+    }
+
+    .tag-checkbox-box {
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      border: 1px solid #4b5563;
+      display: grid;
+      place-items: center;
+      font-size: 0.65rem;
+      color: transparent;
+    }
+
+    .tag-pill-btn.selected .tag-checkbox-box {
+      background: var(--accent-amber);
+      border-color: var(--accent-amber);
+      color: #000;
+      font-weight: 900;
+    }
+
+    /* Graduated Ruler Sliders */
+    .ruler-slider-block {
+      padding-left: 2.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .ruler-item {
+      background: #13161c;
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+    }
+
+    .ruler-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .ruler-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ruler-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--accent-amber);
+    }
+
+    /* The visual ruler bar with ticks */
+    .ruler-ticks-track {
+      position: relative;
+      height: 20px;
+      background: repeating-linear-gradient(90deg,
+          rgba(255, 255, 255, 0.12) 0px,
+          rgba(255, 255, 255, 0.12) 1px,
+          transparent 1px,
+          transparent 8px);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+    }
+
+    .ruler-progress-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: repeating-linear-gradient(90deg,
+          var(--accent-amber) 0px,
+          var(--accent-amber) 1.5px,
+          transparent 1.5px,
+          transparent 8px);
+      border-radius: 6px;
+      pointer-events: none;
+      transition: width 0.1s;
+    }
+
+    .ruler-native-input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .ruler-thumb-pill {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 32px;
+      height: 18px;
+      background: #373b45;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 9999px;
+      pointer-events: none;
+      z-index: 1;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Right Preview Sidebar */
+    .wizard-sidebar {
+      background: #13161c;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
+    }
+
+    .rec-badge {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .rec-pill {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .btn-see-why {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      cursor: pointer;
+    }
+
+    .live-summary-card {
+      background: #171b23;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .live-credits-total {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+
+    .toast-banner {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px dashed rgba(245, 158, 11, 0.3);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: var(--accent-amber-light);
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="studio-container">
+
+    <!-- ==================== TOP NAVIGATION ==================== -->
+    <header class="top-navbar">
+      <div class="brand">
+        <div class="brand-logo-icon">⚡</div>
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="brand-title">FANTA MASTER AI</span>
+            <span class="brand-pill">Studio Dark</span>
+          </div>
+          <div style="font-size: 0.75rem; color: var(--text-muted);">Serie A 2026/27 • Live Auction & Tactical Engine
+          </div>
+        </div>
+      </div>
+
+      <!-- Switch View: Cards vs Wizard -->
+      <div class="view-switcher">
+        <button class="view-btn active" id="btnViewCards" onclick="switchMockView('cards')">
+          <span>📑</span> 3 Piani Strategici
+        </button>
+        <button class="view-btn" id="btnViewWizard" onclick="switchMockView('wizard')">
+          <span>🎛️</span> Wizard Configuratore
+        </button>
+      </div>
+    </header>
+
+    <!-- ==================== CONTROLS SUB-STRIP ==================== -->
+    <div class="controls-strip">
+      <!-- Left: Currency / Credit Base Toggle -->
+      <div class="pill-toggle-group">
+        <span>500 Crediti</span>
+        <div class="pill-toggle-switch active" id="budgetToggle" onclick="toggleBudgetBase()"></div>
+        <span style="color: #fff;">1000 Crediti</span>
+      </div>
+
+      <!-- Right: Quick Strategy Pills -->
+      <div class="tab-pills-right">
+        <button class="pill-action-btn active" onclick="setMode('classic')">Classic (Standard)</button>
+        <button class="pill-action-btn" onclick="setMode('mantra')">Mantra Ufficiale</button>
+        <button class="pill-action-btn" onclick="setMode('modificatore')">🛡️ Con Modificatore</button>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+       VIEW 1: 3 TIERS STRATEGY CARDS (INVIDEO AESTHETIC)
+       ========================================================================= -->
+    <div id="viewCards" class="cards-grid">
+
+      <!-- 1. STARTER: EQUILIBRATA & MODIFICATORE -->
+      <div class="tier-card card-starter">
+        <div class="card-header-row">
+          <h2 class="card-title">STARTER</h2>
+        </div>
+        <div class="card-subtitle">Strategia equilibrata con bonus difesa garantito</div>
+
+        <div class="card-credits-hero">
+          <div class="credits-head">
+            <span>⚡</span> <span id="valStarterCredits">450 cr.</span> allocati
+          </div>
+          <div class="credits-sub">
+            = 1 Top Portiere (Blocco)<br>
+            = 3 Difensori da Modificatore (MV ≥ 6.4)<br>
+            ~ Attacco distribuito con 3 titolari
+          </div>
+        </div>
+
+        <div class="tier-subpill">
+          <span>✓</span> <span>Slot 1: Difensori Titolarissimi</span>
+        </div>
+
+        <div class="price-row">
+          <span class="price-current" id="priceStarter">150</span>
+          <span class="price-unit">cr. budget attacco, su 1000 tot</span>
+        </div>
+
+        <button class="btn-cta btn-cta-starter" onclick="selectTier('Starter')">Seleziona Starter</button>
+        <div class="cta-subtext">Nessun overprice sui super-top</div>
+
+        <!-- Stepper Pill -->
+        <div class="stepper-pill">
+          <button class="stepper-btn" onclick="changeSeat('seatStarter', -1)">−</button>
+          <span class="stepper-val" id="seatStarter">1 Top Difensore (Dimarco)</span>
+          <button class="stepper-btn" onclick="changeSeat('seatStarter', 1)">+</button>
+        </div>
+
+        <!-- Section Features -->
+        <div class="features-header">
+          <span>🔒</span> STRUTTURA REPARTO
+        </div>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <span class="feature-left"><span class="feature-icon-check">✔</span> Modificatore Difesa</span>
+            <span class="feature-right-tag">+3 pt/giornata</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-left"><span class="feature-icon-cross">✕</span> Super Bomber da 400 cr.</span>
+            <span class="feature-right-tag" style="color: #6b7280;">No Top Assoluto</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-left"><span class="feature-icon-check">✔</span> Griglia Portieri Incroci</span>
+            <span class="feature-right-tag">Full access (38/38)</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-left"><span class="feature-icon-check">✔</span> Centrocampo Incursori</span>
+            <span class="feature-right-tag">3 Rigoristi secondari</span>
+          </li>
+        </ul>
+
+        <!-- Sub-table -->
+        <div class="subtable-container">
+          <div class="subtable-title">📊 METRICHE ALGORITMO AI</div>
+          <div class="subtable-row">
+            <span>Punti Attesi (xPTS)</span>
+            <span class="badge-capsule">72.4 / match</span>
+          </div>
+          <div class="subtable-row">
+            <span>Volatilità Rischio</span>
+            <span class="badge-capsule">Bassa (Safe)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. PLUS: TOP PLAYER & CERTEZZE (WARM AMBER GLOW) -->
+      <div class="tier-card card-plus">
+        <div class="card-header-row">
+          <h2 class="card-title" style="color: #fff;">PLUS</h2>
+          <span class="badge-discount">17% ROI EXP</span>
+        </div>
+        <div class="card-subtitle">Per leghe competitive: 1 Super Top + Centrocampo Elite</div>
+
+        <div class="card-credits-hero">
+          <div class="credits-head" style="color: var(--accent-amber-light);">
+            <span>⚡</span> <span id="valPlusCredits">650 cr.</span> allocati
+          </div>
+          <div class="credits-sub">
+            = 1 Super Bomber da 20+ gol (Lautaro/Vlahovic)<br>
+            = 2 Centrocampisti top tiratori piazzati<br>
+            ~ Difesa a 4 solida con terzini d'attacco
+          </div>
+        </div>
+
+        <div class="tier-subpill" style="border-color: rgba(245, 158, 11, 0.2); background: rgba(245, 158, 11, 0.06);">
+          <span style="color: var(--accent-amber);">✓</span> <span>Slot 1: 1 Fuoriclasse Assoluto</span>
+        </div>
+
+        <div class="price-row">
+          <span class="price-original" id="priceOriginalPlus">350</span>
+          <span class="price-current" style="color: #fff;" id="pricePlus">285</span>
+          <span class="price-unit">cr. quota bomber stimata</span>
+        </div>
+
+        <button class="btn-cta btn-cta-plus" onclick="selectTier('Plus')">Seleziona Plus</button>
+        <div class="cta-subtext highlight-amber">Risparmio medio stimato 65 crediti</div>
+
+        <!-- Stepper Pill -->
+        <div class="stepper-pill" style="border-color: rgba(245, 158, 11, 0.3);">
+          <button class="stepper-btn" onclick="changeSeat('seatPlus', -1)">−</button>
+          <span class="stepper-val" id="seatPlus">2 Rigoristi Titolari</span>
+          <button class="stepper-btn" onclick="changeSeat('seatPlus', 1)">+</button>
+        </div>
+
+        <!-- Section Features -->
+        <div class="features-header" style="color: var(--accent-amber-light); border-color: rgba(245, 158, 11, 0.2);">
+          <span>🔒</span> VANTAGGI STATISTICI
+        </div>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <span class="feature-left"><span class="feature-icon-check">✔</span> Bomber 1° Fascia</span>
+            <span class="feature-right-tag" style="color: #fff;">22+ gol stimati</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-left"><span class="feature-icon-check">✔</span> Tiratori Rigori & Punizioni</span>
+            <span class="feature-right-tag" style="color: #fff;">2 Specialisti</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-left"><span class="feature-icon-check">✔</span> Copertura Titolare 100%</span>
+            <span class="feature-right-tag">Coppie Club Top</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-left"><span class="feature-icon-check">✔</span> Suggerimenti Asta Live</span>
+            <span class="feature-right-tag" style="color: var(--accent-amber-light);">Real-time Bid</span>
+          </li>
+        </ul>
+
+        <!-- Sub-table -->
+        <div class="subtable-container" style="border-color: rgba(245, 158, 11, 0.2);">
+          <div class="subtable-title">🔥 ACCESS TO AI PREDICTOR</div>
+          <div class="subtable-row">
+            <span>xG Overperformance</span>
+            <span class="badge-capsule highlight">+4.2 Gol</span>
+          </div>
+          <div class="subtable-row">
+            <span>Probabilità Podio Lega</span>
+            <span class="badge-capsule highlight"
+              style="background: var(--accent-amber); color: #000; font-weight: 800;">78% Winrate</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. MAX: ALL-IN ATTACCO & SCOMMESSE (DEEP TEAL GLOW) -->
+      <div class="tier-card card-max">
+        <div class="card-header-row">
+          <h2 class="card-title" style="color: #fff;">MAX</h2>
+          <span class="badge-discount"
+            style="background: rgba(45, 212, 191, 0.15); border-color: rgba(45, 212, 191, 0.4); color: var(--accent-teal);">33%
+            UPSIDE</span>
+          <span class="badge-best-value">BEST VALUE</span>
+        </div>
+        <div class="card-subtitle">Tridente d'attacco devastante + Gemme e sleeper a 1 credito</div>
+
+        <div class="card-credits-hero">
+          <div class="credits-head" style="color: var(--accent-teal);">
+            <span>⚡</span> <span id="valMaxCredits">800 cr.</span> allocati
+          </div>
+          <div class="credits-sub">
+            = 3 Attaccanti titolari pesanti (45+ gol totali)<br>
+            = Gemme under 23 scovate dall'algoritmo<br>
+            ~ Portiere low-cost con griglia favorevole
+          </div>
+        </div>
+
+        <!-- Interactive Mini Slider -->
+        <div class="slider-container-card">
+          <div class="custom-range-track">
+            <div class="custom-range-fill" id="maxCardFill"></div>
+            <div class="custom-range-thumb" id="maxCardThumb">⚡</div>
+          </div>
+          <div class="slider-labels-row">
+            <span>500 cr.</span>
+            <span style="color: var(--accent-teal);">750 cr.</span>
+            <span>1000 cr.</span>
+          </div>
+        </div>
+
+        <div class="price-row">
+          <span class="price-original" id="priceOriginalMax">480</span>
+          <span class="price-current" style="color: #fff;" id="priceMax">390</span>
+          <span class="price-unit">cr. per il tridente offensivo</span>
+        </div>
+
+        <button class="btn-cta btn-cta-max" onclick="selectTier('Max')">Seleziona Max</button>
+        <div class="cta-subtext highlight-teal">Ottimizzazione monte ingaggi massima</div>
+
+        <!-- Stepper Pill -->
+        <div class="stepper-pill" style="border-color: rgba(45, 212, 191, 0.3);">
+          <button class="stepper-btn" onclick="changeSeat('seatMax', -1)">−</button>
+          <span class="stepper-val" id="seatMax">3 Punte Titolari</span>
+          <button class="stepper-btn" onclick="changeSeat('seatMax', 1)">+</button>
+        </div>
+
+        <!-- Section Features -->
+        <div class="features-header" style="color: var(--accent-teal); border-color: rgba(45, 212, 191, 0.2);">
+          <span>🔒</span> ARMA SEGRETA AI
+        </div>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <span class="feature-left"><span class="feature-icon-check">✔</span> Tridente Pesante (4-3-3 o 3-4-3)</span>
+            <span class="feature-right-tag" style="color: #fff;">3 Titolari top</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-left"><span class="feature-icon-check">✔</span> Accesso Sleeper & Gemme 1 cr.</span>
+            <span class="feature-right-tag" style="color: var(--accent-teal);">Database Elite</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-left"><span class="feature-icon-check">✔</span> Simulatore Rilanci Avversari</span>
+            <span class="feature-right-tag">Incluso</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-left"><span class="feature-icon-check">✔</span> Calcolo Titolarità Avanzato</span>
+            <span class="feature-right-tag" style="color: #fff;">XG & Indici Tattici</span>
+          </li>
+        </ul>
+
+        <!-- Sub-table -->
+        <div class="subtable-container" style="border-color: rgba(45, 212, 191, 0.2);">
+          <div class="subtable-title">⚡ MODELLI PREDITTIVI ATTIVI</div>
+          <div class="subtable-row">
+            <span>Monte Gol Atteso (xG)</span>
+            <span class="badge-capsule highlight" style="color: var(--accent-teal); font-weight: 800;">58 - 65
+              Gol</span>
+          </div>
+          <div class="subtable-row">
+            <span>Punteggio Bonus Previsto</span>
+            <span class="badge-capsule highlight"
+              style="background: var(--accent-teal); color: #000; font-weight: 800;">Top 1% Lega</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+       VIEW 2: WIZARD CONFIGURATOR (SLIDERS & PILLS - SECOND SCREENSHOT)
+       ========================================================================= -->
+    <div id="viewWizard" class="wizard-layout">
+
+      <!-- Left Column: Steps -->
+      <div class="wizard-left">
+
+        <!-- STEP 1 -->
+        <div class="wizard-step-section">
+          <div class="wizard-step-header">
+            <div class="step-circle">1</div>
+            <div class="step-title-box">
+              <h3>Qual è il tuo obiettivo per la rosa?</h3>
+              <p>Seleziona i pilastri tattici prioritari per la tua lega</p>
+            </div>
+          </div>
+
+          <div class="tag-grid">
+            <div class="tag-pill-btn selected" onclick="toggleTag(this)">
+              <span>🛡️ Modificatore Difesa</span>
+              <div class="tag-checkbox-box">✓</div>
+            </div>
+            <div class="tag-pill-btn" onclick="toggleTag(this)">
+              <span>⚽ Tridente Pesante</span>
+              <div class="tag-checkbox-box">✓</div>
+            </div>
+            <div class="tag-pill-btn" onclick="toggleTag(this)">
+              <span>🧤 Portiere Top Inviolato</span>
+              <div class="tag-checkbox-box">✓</div>
+            </div>
+            <div class="tag-pill-btn selected" onclick="toggleTag(this)">
+              <span>🔮 Gemme & Under 23</span>
+              <div class="tag-checkbox-box">✓</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: RULER SLIDERS -->
+        <div class="wizard-step-section">
+          <div class="wizard-step-header">
+            <div class="step-circle">2</div>
+            <div class="step-title-box">
+              <h3>Distribuzione Crediti Reparto</h3>
+              <p>Usa i righelli millimetrati per calibrare il budget in tempo reale</p>
+            </div>
+          </div>
+
+          <div class="ruler-slider-block">
+
+            <!-- Portieri -->
+            <div class="ruler-item">
+              <div class="ruler-header">
+                <span class="ruler-name">🧤 Portieri (3 giocatori)</span>
+                <span class="ruler-value" id="valRulerP">55 cr.</span>
+              </div>
+              <div class="ruler-ticks-track">
+                <div class="ruler-progress-fill" id="fillP" style="width: 15%;"></div>
+                <div class="ruler-thumb-pill" id="thumbP" style="left: 15%;"></div>
+                <input type="range" class="ruler-native-input" min="10" max="150" value="55"
+                  oninput="updateRuler('P', this.value, 10, 150)">
+              </div>
+            </div>
+
+            <!-- Difesa -->
+            <div class="ruler-item">
+              <div class="ruler-header">
+                <span class="ruler-name">🛡️ Difensori (8 giocatori)</span>
+                <span class="ruler-value" id="valRulerD">130 cr.</span>
+              </div>
+              <div class="ruler-ticks-track">
+                <div class="ruler-progress-fill" id="fillD" style="width: 32%;"></div>
+                <div class="ruler-thumb-pill" id="thumbD" style="left: 32%;"></div>
+                <input type="range" class="ruler-native-input" min="30" max="250" value="130"
+                  oninput="updateRuler('D', this.value, 30, 250)">
+              </div>
+            </div>
+
+            <!-- Centrocampo -->
+            <div class="ruler-item">
+              <div class="ruler-header">
+                <span class="ruler-name">🎯 Centrocampisti (8 giocatori)</span>
+                <span class="ruler-value" id="valRulerC">215 cr.</span>
+              </div>
+              <div class="ruler-ticks-track">
+                <div class="ruler-progress-fill" id="fillC" style="width: 45%;"></div>
+                <div class="ruler-thumb-pill" id="thumbC" style="left: 45%;"></div>
+                <input type="range" class="ruler-native-input" min="50" max="400" value="215"
+                  oninput="updateRuler('C', this.value, 50, 400)">
+              </div>
+            </div>
+
+            <!-- Attacco -->
+            <div class="ruler-item">
+              <div class="ruler-header">
+                <span class="ruler-name" style="color: #fff;">⚽ Attaccanti (6 giocatori)</span>
+                <span class="ruler-value" id="valRulerA"
+                  style="color: var(--accent-amber-light); font-size: 1.3rem;">600 cr.</span>
+              </div>
+              <div class="ruler-ticks-track">
+                <div class="ruler-progress-fill" id="fillA" style="width: 65%;"></div>
+                <div class="ruler-thumb-pill" id="thumbA" style="left: 65%;"></div>
+                <input type="range" class="ruler-native-input" min="200" max="800" value="600"
+                  oninput="updateRuler('A', this.value, 200, 800)">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- STEP 3: CAPABILITIES -->
+        <div class="wizard-step-section">
+          <div class="wizard-step-header">
+            <div class="step-circle">3</div>
+            <div class="step-title-box">
+              <h3>Vincoli & Automazioni Asta</h3>
+              <p>Filtri intelligenti applicati durante la chiamata giocatori</p>
+            </div>
+          </div>
+
+          <div style="padding-left: 2.75rem; display: flex; flex-wrap: wrap; gap: 0.6rem;">
+            <div class="badge-capsule highlight" style="padding: 0.5rem 0.85rem; font-size: 0.78rem;">
+              🎯 Rigoristi di Prima Fascia ✕
+            </div>
+            <div class="badge-capsule highlight" style="padding: 0.5rem 0.85rem; font-size: 0.78rem;">
+              🛡️ Solo Titolari Garantiti (>80%) ✕
+            </div>
+            <div class="badge-capsule"
+              style="padding: 0.5rem 0.85rem; font-size: 0.78rem; cursor: pointer; border-style: dashed;">
+              + Aggiungi Vincolo AI
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Live Recommendation Card -->
+      <aside class="wizard-sidebar">
+        <div class="rec-badge">
+          <span class="rec-pill">Consigliato dall'AI: <strong style="color: #fff;">Strategia Plus</strong></span>
+          <button class="btn-see-why">Perché? ℹ️</button>
+        </div>
+
+        <div class="live-summary-card">
+          <div
+            style="font-size: 0.82rem; font-weight: 800; color: var(--accent-amber); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">
+            BUDGET TOTALE CONFIGURATO
+          </div>
+          <div class="live-credits-total" id="liveTotalCredits">1000 cr.</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted);">
+            Allocazione: 25 giocatori • Rosa completa 3-8-8-6
+          </div>
+
+          <div class="toast-banner">
+            <span>✨</span>
+            <span>Configurazione ottimale per 4-3-3 o 3-4-3</span>
+          </div>
+        </div>
+
+        <button class="btn-cta btn-cta-plus" style="padding: 1rem;" onclick="applyWizardPlan()">
+          🚀 Applica Strategia alla Mia Rosa
+        </button>
+
+        <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
+          <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">
+            I valori vengono calibrati sul database reale Serie A 2026/27 con indici di quotazione Fanta Master.
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+  </div>
+
+  <script>
+    let isBudget1000 = true;
+
+    function switchMockView(viewName) {
+      const cardsEl = document.getElementById('viewCards');
+      const wizardEl = document.getElementById('viewWizard');
+      const btnCards = document.getElementById('btnViewCards');
+      const btnWizard = document.getElementById('btnViewWizard');
+
+      if (viewName === 'cards') {
+        cardsEl.style.display = 'grid';
+        wizardEl.style.display = 'none';
+        btnCards.classList.add('active');
+        btnWizard.classList.remove('active');
+      } else {
+        cardsEl.style.display = 'none';
+        wizardEl.style.display = 'grid';
+        btnCards.classList.remove('active');
+        btnWizard.classList.add('active');
+      }
+    }
+
+    function toggleBudgetBase() {
+      const switchEl = document.getElementById('budgetToggle');
+      isBudget1000 = !isBudget1000;
+
+      if (isBudget1000) {
+        switchEl.classList.add('active');
+        document.getElementById('valStarterCredits').textContent = "450 cr.";
+        document.getElementById('priceStarter').textContent = "150";
+
+        document.getElementById('valPlusCredits').textContent = "650 cr.";
+        document.getElementById('priceOriginalPlus').textContent = "350";
+        document.getElementById('pricePlus').textContent = "285";
+
+        document.getElementById('valMaxCredits').textContent = "800 cr.";
+        document.getElementById('priceOriginalMax').textContent = "480";
+        document.getElementById('priceMax').textContent = "390";
+
+        recalcWizard(1000);
+      } else {
+        switchEl.classList.remove('active');
+        document.getElementById('valStarterCredits').textContent = "225 cr.";
+        document.getElementById('priceStarter').textContent = "75";
+
+        document.getElementById('valPlusCredits').textContent = "325 cr.";
+        document.getElementById('priceOriginalPlus').textContent = "175";
+        document.getElementById('pricePlus').textContent = "142";
+
+        document.getElementById('valMaxCredits').textContent = "400 cr.";
+        document.getElementById('priceOriginalMax').textContent = "240";
+        document.getElementById('priceMax').textContent = "195";
+
+        recalcWizard(500);
+      }
+    }
+
+    function setMode(mode) {
+      document.querySelectorAll('.pill-action-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function changeSeat(id, delta) {
+      const el = document.getElementById(id);
+      let val = el.textContent;
+      // Simple visual feedback
+      el.style.transform = 'scale(1.08)';
+      setTimeout(() => el.style.transform = 'scale(1)', 150);
+    }
+
+    function toggleTag(el) {
+      el.classList.toggle('selected');
+    }
+
+    function updateRuler(role, val, min, max) {
+      document.getElementById(`valRuler${role}`).textContent = `${val} cr.`;
+      const pct = ((val - min) / (max - min)) * 100;
+      document.getElementById(`fill${role}`).style.width = `${pct}%`;
+      document.getElementById(`thumb${role}`).style.left = `${pct}%`;
+
+      // Update live total
+      const p = parseInt(document.getElementById('valRulerP').textContent);
+      const d = parseInt(document.getElementById('valRulerD').textContent);
+      const c = parseInt(document.getElementById('valRulerC').textContent);
+      const a = parseInt(document.getElementById('valRulerA').textContent);
+      const tot = p + d + c + a;
+      document.getElementById('liveTotalCredits').textContent = `${tot} cr.`;
+    }
+
+    function recalcWizard(base) {
+      const scale = base / 1000;
+      updateRuler('P', Math.round(55 * scale), 10, 150);
+      updateRuler('D', Math.round(130 * scale), 30, 250);
+      updateRuler('C', Math.round(215 * scale), 50, 400);
+      updateRuler('A', Math.round(600 * scale), 200, 800);
+    }
+
+    function selectTier(tierName) {
+      alert(`⚡ Hai selezionato la strategia [${tierName}]. I parametri sono stati inviati all'engine AI!`);
+    }
+
+    function applyWizardPlan() {
+      alert(`🚀 Strategia configurata con successo! Pronta per l'Asta Live.`);
+    }
+  </script>
+
+</body>
+
+</html>

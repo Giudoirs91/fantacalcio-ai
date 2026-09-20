@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /data/
+Disallow: /config/
+Disallow: /src/
+Disallow: /tools/
+Disallow: /tests/
+
+Sitemap: https://fantamasterai.it/sitemap.xml

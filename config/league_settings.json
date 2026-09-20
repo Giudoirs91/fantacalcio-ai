@@ -1,0 +1,22 @@
+{
+  "num_teams": 8,
+  "total_budget": 1000,
+  "slots": {
+    "P": {
+      "max": 3,
+      "budget_target_pct": 0.07
+    },
+    "D": {
+      "max": 8,
+      "budget_target_pct": 0.11
+    },
+    "C": {
+      "max": 8,
+      "budget_target_pct": 0.22
+    },
+    "A": {
+      "max": 6,
+      "budget_target_pct": 0.60
+    }
+  }
+}

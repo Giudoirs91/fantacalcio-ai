@@ -1,0 +1,23 @@
+{
+  "_translationId": "b017eae5-ea98-41bf-bd90-c2fa47d1fe61",
+  "_entityId": "828ef492-e858-4bc4-9c8f-e0878bb032ff",
+  "selfUrl": "https://dapi.legaseriea.it/v2/content/it-it/tags/season-ed7fdc2a3e7b408b942ec177b7b956b5",
+  "slug": "season-ed7fdc2a3e7b408b942ec177b7b956b5",
+  "title": "2026/2027",
+  "fields": {},
+  "createdBy": "Francesca Beatrice",
+  "lastUpdatedBy": "Francesca Beatrice",
+  "lastUpdatedDate": "2026-06-05T19:46:46.529Z",
+  "contentDate": "2026-06-05T19:29:12.592Z",
+  "featured": 0,
+  "extraData": {
+    "providerId": "kama:Season:278",
+    "seasonId": "serie-a::Football_Season::ed7fdc2a3e7b408b942ec177b7b956b5",
+    "isCurrent": true
+  },
+  "externalSourceName": "sdpseason",
+  "externalSourceReference": {
+    "SourceId": "season-ed7fdc2a3e7b408b942ec177b7b956b5",
+    "SourceName": "sdpseason"
+  }
+}

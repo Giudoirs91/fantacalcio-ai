@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Home / Portale Statistico Serie A 2026/27 -->
+    <url>
+        <loc>https://fantamasterai.it/</loc>
+        <lastmod>2026-09-18</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <!-- Statistiche Avanzate Serie A & xG -->
+    <url>
+        <loc>https://fantamasterai.it/#stats</loc>
+        <lastmod>2026-09-18</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.95</priority>
+    </url>
+    <!-- Consigli Fantacalcio & Chi Schierare -->
+    <url>
+        <loc>https://fantamasterai.it/#matchday_advice</loc>
+        <lastmod>2026-09-18</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.90</priority>
+    </url>
+    <!-- Top & Flop di Giornata -->
+    <url>
+        <loc>https://fantamasterai.it/#top_flop</loc>
+        <lastmod>2026-09-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <!-- Matrice Analitica Prezzo/Rendimento -->
+    <url>
+        <loc>https://fantamasterai.it/#matrix</loc>
+        <lastmod>2026-09-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <!-- Campo Tattico 2D & Schemi Ufficiali -->
+    <url>
+        <loc>https://fantamasterai.it/#pitch</loc>
+        <lastmod>2026-09-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <!-- Confronto Matchup 1vs1 -->
+    <url>
+        <loc>https://fantamasterai.it/#matchup</loc>
+        <lastmod>2026-09-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <!-- Griglia Portieri Serie A 38/38 -->
+    <url>
+        <loc>https://fantamasterai.it/#gk</loc>
+        <lastmod>2026-09-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <!-- 5 Squadre Perfette AI -->
+    <url>
+        <loc>https://fantamasterai.it/#ai_squads</loc>
+        <lastmod>2026-09-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.70</priority>
+    </url>
+    <!-- Gemme & Sleeper Low-Cost -->
+    <url>
+        <loc>https://fantamasterai.it/#gems</loc>
+        <lastmod>2026-09-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.80</priority>
+    </url>
+</urlset>

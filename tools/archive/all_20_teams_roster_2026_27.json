@@ -1,0 +1,3668 @@
+{
+  "Atalanta": [
+    {
+      "name": "Scamacca",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 123.0,
+      "qta": 19.0
+    },
+    {
+      "name": "Krstovic",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 100.0,
+      "qta": 19.0
+    },
+    {
+      "name": "De Ketelaere",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 98.0,
+      "qta": 17.0
+    },
+    {
+      "name": "Raspadori",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 76.0,
+      "qta": 14.0
+    },
+    {
+      "name": "Carnesecchi",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 52.0,
+      "qta": 16.0
+    },
+    {
+      "name": "Ederson D.S.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 49.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Samardzic",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 41.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Gaetano",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 30.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Scalvini",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 28.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Elmas",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 28.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Pasalic",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 24.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Kristensen T.",
+      "role": "D",
+      "mantra": "Dd;Dc",
+      "fvm": 20.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Zalewski",
+      "role": "C",
+      "mantra": "W",
+      "fvm": 20.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Zappacosta",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 19.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Bernasconi",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 18.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Bellanova",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 17.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Ahanor",
+      "role": "D",
+      "mantra": "B;Ds;E",
+      "fvm": 14.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Kossounou",
+      "role": "D",
+      "mantra": "Dd;Dc",
+      "fvm": 12.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Hien",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 11.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Sulemana K.",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 10.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Kolasinac",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 8.0,
+      "qta": 5.0
+    },
+    {
+      "name": "De Roon",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 8.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Sulemana I.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 7.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Vismara",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Sportiello",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Bologna": [
+    {
+      "name": "Orsolini",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 192.0,
+      "qta": 25.0
+    },
+    {
+      "name": "Dovbyk",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 58.0,
+      "qta": 15.0
+    },
+    {
+      "name": "Rowe",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 44.0,
+      "qta": 11.0
+    },
+    {
+      "name": "Piccoli",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 37.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Skorupski",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 36.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Bernardeschi",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 30.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Miranda J.",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 24.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Ferguson",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 23.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Cambiaghi",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 21.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Zortea",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 19.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Odgaard",
+      "role": "C",
+      "mantra": "T",
+      "fvm": 17.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Heggem",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 15.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Moro N.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 14.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Pobega",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 13.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Holm",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 13.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Amondarain",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 12.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Helland",
+      "role": "D",
+      "mantra": "Dd;Dc",
+      "fvm": 12.0,
+      "qta": 3.0
+    },
+    {
+      "name": "El Azzouzi O.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 10.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Vitik",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 10.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Alhassane",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 6.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Casale",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 5.0,
+      "qta": 3.0
+    },
+    {
+      "name": "De Silvestri",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 4.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Happonen",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Pessina Mas.",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Cagliari": [
+    {
+      "name": "Esposito Se.",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 40.0,
+      "qta": 13.0
+    },
+    {
+      "name": "Kevin Carlos",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 37.0,
+      "qta": 13.0
+    },
+    {
+      "name": "Caprile",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 28.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Fazzini",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 24.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Maldini",
+      "role": "A",
+      "mantra": "T;A",
+      "fvm": 21.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Romano",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 20.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Mina",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 20.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Obert",
+      "role": "D",
+      "mantra": "B;Ds;E",
+      "fvm": 15.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Winks",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 15.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Rodriguez Ju.",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 14.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Mendy P.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 14.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Zè Pedro",
+      "role": "D",
+      "mantra": "Dd;Dc",
+      "fvm": 13.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Adopo",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 13.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Fadera",
+      "role": "C",
+      "mantra": "W",
+      "fvm": 12.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Mutandwa",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 10.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Borrelli",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 9.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Kofler",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 8.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Felici",
+      "role": "C",
+      "mantra": "W",
+      "fvm": 8.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Deiola",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 8.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Zappa",
+      "role": "D",
+      "mantra": "B;Dd;E",
+      "fvm": 7.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Aurelio",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 5.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Idrissi R.",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 3.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Trepy",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 2.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Sherri",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Radunovic",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Liteta",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Como": [
+    {
+      "name": "Paz N.",
+      "role": "C",
+      "mantra": "T;A",
+      "fvm": 247.0,
+      "qta": 29.0
+    },
+    {
+      "name": "Douvikas",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 170.0,
+      "qta": 21.0
+    },
+    {
+      "name": "Baturina",
+      "role": "C",
+      "mantra": "T",
+      "fvm": 97.0,
+      "qta": 19.0
+    },
+    {
+      "name": "Da Cunha",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 87.0,
+      "qta": 18.0
+    },
+    {
+      "name": "Butez",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 54.0,
+      "qta": 16.0
+    },
+    {
+      "name": "Diao",
+      "role": "A",
+      "mantra": "W;A",
+      "fvm": 47.0,
+      "qta": 11.0
+    },
+    {
+      "name": "Perrone",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 37.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Ramon",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 32.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Rodriguez Je.",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 31.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Chalobah T.",
+      "role": "D",
+      "mantra": "Dd;Dc",
+      "fvm": 30.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Couto",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 26.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Valle",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 21.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Liberali",
+      "role": "C",
+      "mantra": "T",
+      "fvm": 21.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Milla",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 20.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Caqueret",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 17.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Kaiki",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 16.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Kempf",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 13.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Smolcic I.",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Addai",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 10.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Kambwala",
+      "role": "D",
+      "mantra": "Dd;Dc",
+      "fvm": 8.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Morata",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 7.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Kuhn",
+      "role": "A",
+      "mantra": "W;A",
+      "fvm": 5.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Van Der Brempt",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 5.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Vigorito",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Tornqvist",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Goldaniga",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Lahdo",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Azon",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Fiorentina": [
+    {
+      "name": "Kean",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 187.0,
+      "qta": 25.0
+    },
+    {
+      "name": "Atta",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 86.0,
+      "qta": 16.0
+    },
+    {
+      "name": "Mastantuono",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 54.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Pellegrino M.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 50.0,
+      "qta": 14.0
+    },
+    {
+      "name": "De Gea",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 40.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Gudmundsson A.",
+      "role": "C",
+      "mantra": "T;A",
+      "fvm": 40.0,
+      "qta": 13.0
+    },
+    {
+      "name": "Dragusin",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 27.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Ndour",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 25.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Jimenez A.",
+      "role": "D",
+      "mantra": "Dd;Ds;E",
+      "fvm": 23.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Mandragora",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 23.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Fagioli",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 22.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Oulai",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 20.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Dodò",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 20.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Valdepenas",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 18.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Viery",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 17.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Brescianini",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 12.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Joao Mario",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 12.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Parisi",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 10.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Ranieri L.",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 10.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Pongracic",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 8.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Fabbian",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 8.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Christensen O.",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Lezzerini",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Frosinone": [
+    {
+      "name": "Schmid",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 28.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Ghedjemis",
+      "role": "A",
+      "mantra": "W;A",
+      "fvm": 27.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Calò",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 25.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Raimondo",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 22.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Kvernadze",
+      "role": "A",
+      "mantra": "W;A",
+      "fvm": 16.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Birligea",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 14.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Monterisi",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 13.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Fini",
+      "role": "C",
+      "mantra": "W",
+      "fvm": 13.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Zerbin",
+      "role": "C",
+      "mantra": "W",
+      "fvm": 12.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Palmisani",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 12.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Bracaglia",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 12.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Calvani",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 12.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Cichella",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 12.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Koutsoupias",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 11.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Grillitsch",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 10.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Oyono A.",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 10.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Terzic",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 8.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Gelli F.",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 8.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Masini",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 8.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Tchato",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 8.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Cittadini",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 8.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Akpoguma",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 6.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Hasa",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 5.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Desplanches",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 3.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Kone B.",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 3.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Lolic",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Omar Fayed",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Amey",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Pisseri",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "El Azzouzi A.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Genoa": [
+    {
+      "name": "Colombo",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 55.0,
+      "qta": 11.0
+    },
+    {
+      "name": "Ostigard",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 43.0,
+      "qta": 11.0
+    },
+    {
+      "name": "Vasquez",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 32.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Baldanzi",
+      "role": "C",
+      "mantra": "T",
+      "fvm": 30.0,
+      "qta": 11.0
+    },
+    {
+      "name": "Osmajic",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 30.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Norton-Cuffy",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 21.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Frendrup",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 20.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Ellertsson",
+      "role": "C",
+      "mantra": "E;C",
+      "fvm": 18.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Bijlow",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 17.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Vitinha O.",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 16.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Sow",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 15.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Marcandalli",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 14.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Amorim",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 11.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Traorè Hj.",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 11.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Meichtry",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 11.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Mitaj",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Havel",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 9.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Martin",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 8.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Messias",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 8.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Otoa",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 5.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Sabelli",
+      "role": "D",
+      "mantra": "Dd;Ds;E",
+      "fvm": 5.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Venturino",
+      "role": "C",
+      "mantra": "W",
+      "fvm": 4.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Puczka",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 3.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Stolz",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Sommariva",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Inter": [
+    {
+      "name": "Martinez L.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 367.0,
+      "qta": 34.0
+    },
+    {
+      "name": "Thuram",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 263.0,
+      "qta": 28.0
+    },
+    {
+      "name": "Dimarco",
+      "role": "D",
+      "mantra": "E;W",
+      "fvm": 253.0,
+      "qta": 31.0
+    },
+    {
+      "name": "Calhanoglu",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 236.0,
+      "qta": 28.0
+    },
+    {
+      "name": "Esposito F.P.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 105.0,
+      "qta": 17.0
+    },
+    {
+      "name": "Barella",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 80.0,
+      "qta": 17.0
+    },
+    {
+      "name": "Martinez Jo.",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 63.0,
+      "qta": 17.0
+    },
+    {
+      "name": "Akanji",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 51.0,
+      "qta": 16.0
+    },
+    {
+      "name": "Jones C.",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 48.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Zielinski",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 45.0,
+      "qta": 11.0
+    },
+    {
+      "name": "Diouf",
+      "role": "C",
+      "mantra": "E;C",
+      "fvm": 44.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Bastoni",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 43.0,
+      "qta": 14.0
+    },
+    {
+      "name": "Spence",
+      "role": "D",
+      "mantra": "E",
+      "fvm": 40.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Bisseck",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 37.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Stones",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 30.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Carlos Augusto",
+      "role": "D",
+      "mantra": "B;Ds;E",
+      "fvm": 25.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Sucic P.",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 21.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Bonny",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 18.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Pavard",
+      "role": "D",
+      "mantra": "Dd;Dc",
+      "fvm": 14.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Luis Henrique",
+      "role": "C",
+      "mantra": "E;W",
+      "fvm": 12.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Mkhitaryan",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 10.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Stankovic A.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 7.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Provedel",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 5.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Di Gennaro",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Juventus": [
+    {
+      "name": "Kolo Muani",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 211.0,
+      "qta": 25.0
+    },
+    {
+      "name": "Yildiz",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 150.0,
+      "qta": 22.0
+    },
+    {
+      "name": "McKennie",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 70.0,
+      "qta": 17.0
+    },
+    {
+      "name": "Conceicao",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 67.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Bremer",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 60.0,
+      "qta": 16.0
+    },
+    {
+      "name": "Vicario",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 58.0,
+      "qta": 16.0
+    },
+    {
+      "name": "Alajbegovic",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 50.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Kalulu",
+      "role": "D",
+      "mantra": "Dd;Dc",
+      "fvm": 46.0,
+      "qta": 13.0
+    },
+    {
+      "name": "David",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 37.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Thuram K.",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 35.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Locatelli",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 33.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Boga",
+      "role": "A",
+      "mantra": "W;A",
+      "fvm": 26.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Cambiaso",
+      "role": "D",
+      "mantra": "Dd;Ds;E",
+      "fvm": 25.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Zhegrova",
+      "role": "C",
+      "mantra": "W",
+      "fvm": 20.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Lucumì",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 18.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Douglas Luiz",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 15.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Celik",
+      "role": "D",
+      "mantra": "B;Dd;E",
+      "fvm": 15.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Milik",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 13.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Koopmeiners",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 13.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Kelly L.",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 12.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Ekhator",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 10.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Gatti",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Miretti",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 7.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Cabal",
+      "role": "D",
+      "mantra": "B;Ds;E",
+      "fvm": 4.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Rugani",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 3.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Pinsoglio",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Grabara",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Lazio": [
+    {
+      "name": "Zaccagni",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 88.0,
+      "qta": 16.0
+    },
+    {
+      "name": "Frattesi",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 68.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Taylor K.",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 57.0,
+      "qta": 13.0
+    },
+    {
+      "name": "Pinamonti",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 51.0,
+      "qta": 13.0
+    },
+    {
+      "name": "Mandas",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 32.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Dia",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 30.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Cancellieri",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 28.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Ratkov",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 26.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Isaksen",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 22.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Romagnoli",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 22.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Marusic",
+      "role": "D",
+      "mantra": "Dd;Ds;E",
+      "fvm": 20.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Sutalo J.",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 19.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Noslin",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 17.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Rovella",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 16.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Doekhi",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 16.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Pedraza",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 15.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Provstgaard",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 14.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Dele-Bashiru",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 13.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Tavares N.",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 12.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Cataldi",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 12.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Floriani Mussolini",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 10.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Pellegrini Lu.",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 7.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Lazzari",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 5.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Przyborek",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 5.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Belahyane",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 3.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Renzetti",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Motta",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Patric",
+      "role": "D",
+      "mantra": "Dd;Dc",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Lecce": [
+    {
+      "name": "Falcone",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 30.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Geubbels",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 23.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Tiago Gabriel",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 20.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Pierotti",
+      "role": "C",
+      "mantra": "W",
+      "fvm": 19.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Fatah",
+      "role": "A",
+      "mantra": "W;A",
+      "fvm": 17.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Coulibaly L.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 17.0,
+      "qta": 7.0
+    },
+    {
+      "name": "N'Dri",
+      "role": "A",
+      "mantra": "W;A",
+      "fvm": 15.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Ngom",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 13.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Gallo",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 13.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Stulic",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 12.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Veiga D.",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 12.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Gorter",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 12.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Siebert",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 12.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Gaspar K.",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 12.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Berisha M.",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 12.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Gandelman",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 10.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Ilic",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 8.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Maleh",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 7.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Ndaba",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 5.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Jean",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 4.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Kaba",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 2.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Bleve",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Penev",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Laerke",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Fofana Sa.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Milan": [
+    {
+      "name": "Ramos G.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 228.0,
+      "qta": 27.0
+    },
+    {
+      "name": "Pulisic",
+      "role": "C",
+      "mantra": "T;A",
+      "fvm": 160.0,
+      "qta": 24.0
+    },
+    {
+      "name": "Rabiot",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 145.0,
+      "qta": 23.0
+    },
+    {
+      "name": "Leao",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 75.0,
+      "qta": 18.0
+    },
+    {
+      "name": "Maignan",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 50.0,
+      "qta": 15.0
+    },
+    {
+      "name": "Moreira",
+      "role": "C",
+      "mantra": "W",
+      "fvm": 50.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Pavlovic",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 48.0,
+      "qta": 14.0
+    },
+    {
+      "name": "Modric",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 46.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Saelemaekers",
+      "role": "C",
+      "mantra": "E;W",
+      "fvm": 35.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Gila",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 31.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Cissè A.",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 25.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Gabbia",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 24.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Bartesaghi",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 22.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Chukwueze",
+      "role": "C",
+      "mantra": "W",
+      "fvm": 22.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Camarda",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 20.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Loftus-Cheek",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 18.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Musah",
+      "role": "C",
+      "mantra": "C;W",
+      "fvm": 15.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Estupinan",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 13.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Jashari",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 13.0,
+      "qta": 5.0
+    },
+    {
+      "name": "De Winter",
+      "role": "D",
+      "mantra": "Dd;Dc",
+      "fvm": 12.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Fofana Y.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 10.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Gimenez",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 10.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Ricci S.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Tomori",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 8.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Diawara S.",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 4.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Terracciano F.",
+      "role": "D",
+      "mantra": "B;Dd;Ds",
+      "fvm": 4.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Terracciano",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Torriani",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Comotto",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Monza": [
+    {
+      "name": "Cutrone",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 33.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Colpani",
+      "role": "C",
+      "mantra": "T",
+      "fvm": 25.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Mota",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 18.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Akinsanmiro",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 16.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Mangas",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 15.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Pessina",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 15.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Tourè I.",
+      "role": "C",
+      "mantra": "E;M",
+      "fvm": 15.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Lucchesi",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 12.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Birindelli",
+      "role": "D",
+      "mantra": "Dd;Ds;E",
+      "fvm": 12.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Thiam",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 11.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Delli Carri",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 11.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Robinson J.",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Kouadio",
+      "role": "D",
+      "mantra": "Dd;Dc",
+      "fvm": 9.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Carboni A.",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 9.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Varela G.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 7.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Colombo L.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 7.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Ciurria",
+      "role": "C",
+      "mantra": "E;W",
+      "fvm": 6.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Bakoune",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 4.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Mout",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 2.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Antov",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 2.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Foe Ondoa",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 2.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Strajnar",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Maye",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Forson O.",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 1.0,
+      "qta": 2.0
+    }
+  ],
+  "Napoli": [
+    {
+      "name": "Hojlund",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 257.0,
+      "qta": 27.0
+    },
+    {
+      "name": "McTominay",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 228.0,
+      "qta": 28.0
+    },
+    {
+      "name": "De Bruyne",
+      "role": "C",
+      "mantra": "T",
+      "fvm": 107.0,
+      "qta": 16.0
+    },
+    {
+      "name": "Santos A.",
+      "role": "A",
+      "mantra": "W;A",
+      "fvm": 62.0,
+      "qta": 14.0
+    },
+    {
+      "name": "Meret",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 53.0,
+      "qta": 11.0
+    },
+    {
+      "name": "Rrahmani",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 51.0,
+      "qta": 14.0
+    },
+    {
+      "name": "Zambo Anguissa",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 47.0,
+      "qta": 11.0
+    },
+    {
+      "name": "Politano",
+      "role": "C",
+      "mantra": "W",
+      "fvm": 40.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Di Lorenzo",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 40.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Vergara",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 40.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Spinazzola",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 25.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Lobotka",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 22.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Badiashile",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 21.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Neres",
+      "role": "A",
+      "mantra": "W;A",
+      "fvm": 17.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Buongiorno",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 15.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Olivera",
+      "role": "D",
+      "mantra": "B;Ds;E",
+      "fvm": 13.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Beukema",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 12.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Lang",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 12.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Favasuli",
+      "role": "D",
+      "mantra": "Dd;Ds;E",
+      "fvm": 11.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Giovane",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Lucca",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Gilmour",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 10.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Marin R.",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 8.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Milinkovic-Savic V.",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 7.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Folorunsho",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 5.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Mazzocchi",
+      "role": "D",
+      "mantra": "Dd;Ds;E",
+      "fvm": 3.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Marianucci",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 3.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Contini",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Parma": [
+    {
+      "name": "Tourè E.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 43.0,
+      "qta": 11.0
+    },
+    {
+      "name": "Romero D.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 37.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Bernabè",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 35.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Valeri",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 24.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Delprato",
+      "role": "D",
+      "mantra": "B;Dd;E",
+      "fvm": 21.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Nicolussi Caviglia",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 16.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Keita M.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 15.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Troilo",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 14.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Sorensen O.",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 12.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Diallo O.",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 12.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Almqvist",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 11.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Elphege",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 11.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Valenti",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Daffara",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 10.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Corvi",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 10.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Britschgi",
+      "role": "D",
+      "mantra": "Dd;Ds;E",
+      "fvm": 10.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Lontani",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 10.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Frigan",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 10.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Ndiaye",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 8.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Ordonez C.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 5.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Carboni F.",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 3.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Cremaschi",
+      "role": "C",
+      "mantra": "E;C",
+      "fvm": 3.0,
+      "qta": 1.0
+    },
+    {
+      "name": "De Martis",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Roma": [
+    {
+      "name": "Malen",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 414.0,
+      "qta": 36.0
+    },
+    {
+      "name": "Mora",
+      "role": "C",
+      "mantra": "T",
+      "fvm": 95.0,
+      "qta": 19.0
+    },
+    {
+      "name": "Dybala",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 95.0,
+      "qta": 15.0
+    },
+    {
+      "name": "Wesley",
+      "role": "D",
+      "mantra": "E",
+      "fvm": 82.0,
+      "qta": 17.0
+    },
+    {
+      "name": "Molina N.",
+      "role": "D",
+      "mantra": "E",
+      "fvm": 80.0,
+      "qta": 18.0
+    },
+    {
+      "name": "Castro S.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 76.0,
+      "qta": 14.0
+    },
+    {
+      "name": "Svilar",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 75.0,
+      "qta": 18.0
+    },
+    {
+      "name": "Mancini",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 49.0,
+      "qta": 15.0
+    },
+    {
+      "name": "Soulè",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 45.0,
+      "qta": 12.0
+    },
+    {
+      "name": "N'Dicka",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 44.0,
+      "qta": 13.0
+    },
+    {
+      "name": "Konè M.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 42.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Cristante",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 29.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Hermoso",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 26.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Pellegrini Lo.",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 25.0,
+      "qta": 10.0
+    },
+    {
+      "name": "El Aynaoui",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 18.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Koulierakis",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 17.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Pisilli",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 17.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Rensch",
+      "role": "D",
+      "mantra": "B;Dd;E",
+      "fvm": 14.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Ghilardi",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Vaz",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 4.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Lulli",
+      "role": "D",
+      "mantra": "E",
+      "fvm": 3.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Ziolkowski",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 2.0,
+      "qta": 1.0
+    },
+    {
+      "name": "De Marzi",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Gollini",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Sassuolo": [
+    {
+      "name": "Berardi",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 101.0,
+      "qta": 18.0
+    },
+    {
+      "name": "Laurientè",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 86.0,
+      "qta": 15.0
+    },
+    {
+      "name": "Thorstvedt",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 40.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Bowie",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 39.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Volpato",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 23.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Konè I.",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 20.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Idzes",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 19.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Adzic",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 16.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Matic",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 15.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Obrador",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 15.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Muric",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 15.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Bakola",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 14.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Dominguez B.",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 12.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Leysen F.",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 12.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Walukiewicz",
+      "role": "D",
+      "mantra": "Dd;Dc",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Doig",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Odenthal",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 8.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Candè",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 7.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Lipani",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 5.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Boloca",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 5.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Cinquegrano",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 4.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Missori",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 2.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Russo A.",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Satalino",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Turati",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Pieragnolo",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Iannoni",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Torino": [
+    {
+      "name": "Simeone",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 80.0,
+      "qta": 15.0
+    },
+    {
+      "name": "Vlasic",
+      "role": "C",
+      "mantra": "T",
+      "fvm": 75.0,
+      "qta": 13.0
+    },
+    {
+      "name": "Adams C.",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 33.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Casadei",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 32.0,
+      "qta": 10.0
+    },
+    {
+      "name": "Cacciamani",
+      "role": "C",
+      "mantra": "E;W",
+      "fvm": 20.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Fitz-Jim",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 18.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Zapata D.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 18.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Coco",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 14.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Njie",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 14.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Ismajli",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 13.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Mascardi",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 13.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Comuzzo",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 13.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Comert",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 12.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Oristanio",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 12.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Fortini",
+      "role": "D",
+      "mantra": "E",
+      "fvm": 12.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Pedersen",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 12.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Gineitis",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 12.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Ilkhan",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Kulenovic",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 9.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Biraghi",
+      "role": "D",
+      "mantra": "B;Ds;E",
+      "fvm": 5.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Aboukhlal",
+      "role": "C",
+      "mantra": "W;A",
+      "fvm": 5.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Anjorin",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 4.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Paleari",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Siviero",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Udinese": [
+    {
+      "name": "Davis K.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 109.0,
+      "qta": 19.0
+    },
+    {
+      "name": "Zaniolo",
+      "role": "C",
+      "mantra": "T;A",
+      "fvm": 85.0,
+      "qta": 18.0
+    },
+    {
+      "name": "Solet",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 46.0,
+      "qta": 13.0
+    },
+    {
+      "name": "Ekkelenkamp",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 45.0,
+      "qta": 11.0
+    },
+    {
+      "name": "Okoye",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 29.0,
+      "qta": 9.0
+    },
+    {
+      "name": "Karlstrom",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 20.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Vojvoda",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 19.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Unai Gomez",
+      "role": "C",
+      "mantra": "T",
+      "fvm": 17.0,
+      "qta": 7.0
+    },
+    {
+      "name": "Piotrowski",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 15.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Kabasele",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 12.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Miller L.",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 12.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Kamara H.",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 12.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Palma",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 11.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Abankwah",
+      "role": "D",
+      "mantra": "Dd;Dc",
+      "fvm": 10.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Bertola",
+      "role": "D",
+      "mantra": "Dd;Ds;Dc",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Zanoli",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Arizala",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 8.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Gueye",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 7.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Chakvetadze",
+      "role": "C",
+      "mantra": "W;T",
+      "fvm": 6.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Ebosse",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 5.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Zarraga",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 4.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Mlacic",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 3.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Bayo V.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 3.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Mrozek",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Padelli",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Piana",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ],
+  "Venezia": [
+    {
+      "name": "Adams A.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 45.0,
+      "qta": 12.0
+    },
+    {
+      "name": "Yeboah J.",
+      "role": "A",
+      "mantra": "A",
+      "fvm": 27.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Basic",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 19.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Rrahmani Al.",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 18.0,
+      "qta": 8.0
+    },
+    {
+      "name": "Perez K.",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 15.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Busio",
+      "role": "C",
+      "mantra": "M;C",
+      "fvm": 14.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Bella-Kotchap",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 13.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Adorante",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 12.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Correia T.",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 12.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Stankovic F.",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 12.0,
+      "qta": 6.0
+    },
+    {
+      "name": "Hainaut",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 12.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Sohm",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 11.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Halhal",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 10.0,
+      "qta": 4.0
+    },
+    {
+      "name": "Haps",
+      "role": "D",
+      "mantra": "Ds;E",
+      "fvm": 10.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Schingtienne",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 10.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Franjic",
+      "role": "D",
+      "mantra": "B;Ds;E",
+      "fvm": 7.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Sverko",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 7.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Moreno M.",
+      "role": "D",
+      "mantra": "Dc",
+      "fvm": 6.0,
+      "qta": 5.0
+    },
+    {
+      "name": "Sagrado",
+      "role": "D",
+      "mantra": "Dd;E",
+      "fvm": 4.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Duncan",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 4.0,
+      "qta": 2.0
+    },
+    {
+      "name": "Helgason",
+      "role": "C",
+      "mantra": "C;T",
+      "fvm": 3.0,
+      "qta": 3.0
+    },
+    {
+      "name": "Pozzi",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Montipò",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Grandi",
+      "role": "P",
+      "mantra": "Por",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Gomes",
+      "role": "D",
+      "mantra": "Ds;Dc",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Dagasso",
+      "role": "C",
+      "mantra": "C",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Lisman",
+      "role": "A",
+      "mantra": "W;A",
+      "fvm": 1.0,
+      "qta": 1.0
+    },
+    {
+      "name": "Lauberbach",
+      "role": "A",
+      "mantra": "Pc",
+      "fvm": 1.0,
+      "qta": 1.0
+    }
+  ]
+}

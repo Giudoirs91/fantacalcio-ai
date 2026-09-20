@@ -1,0 +1,55 @@
+# === DATI PRIVATI / FILE GREZZI ===
+# File Excel e CSV originali (dati privati, non versionare)
+data/raw/
+data/raw/**
+
+# File di snapshot AI (rigenerati dalla pipeline)
+config/ai_predictions_snapshot.json
+config/ai_bias_corrections.json
+data/processed/ai_error_analysis.json
+
+# === PYTHON ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.pytest_cache/
+.Python
+*.egg-info/
+dist_py/
+build/
+*.egg
+
+# === AMBIENTE LOCALE ===
+.env
+.env.local
+.env.*.local
+venv/
+.venv/
+env/
+
+# === NODE / VERCEL ===
+node_modules/
+.vercel/
+
+# === EDITOR / OS ===
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.code-workspace
+
+# === SCRATCH / TEMPORANEI ===
+scratch/*.tmp
+*.log
+
+# === ANDROID BUILD ===
+android/.gradle/
+android/build/
+android/app/build/
+android/.idea/
+android/local.properties
+*.apk
+*.aab

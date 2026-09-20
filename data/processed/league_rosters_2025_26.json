@@ -1,0 +1,1523 @@
+{
+  "The President": {
+    "budget_cell": 0.0,
+    "total_spent": 1000.0,
+    "total_budget_implied": 1000.0,
+    "role_counts": {
+      "P": 3,
+      "D": 8,
+      "C": 8,
+      "A": 6
+    },
+    "role_spent": {
+      "P": 54.0,
+      "D": 173.0,
+      "C": 330.0,
+      "A": 443.0
+    },
+    "players": [
+      {
+        "role": "P",
+        "name": "Svilar",
+        "price": 30.0,
+        "team": "ROM"
+      },
+      {
+        "role": "P",
+        "name": "De Gea",
+        "price": 23.0,
+        "team": "FIO"
+      },
+      {
+        "role": "P",
+        "name": "Terracciano",
+        "price": 1.0,
+        "team": "FIO"
+      },
+      {
+        "role": "D",
+        "name": "Di Lorenzo",
+        "price": 49.0,
+        "team": "NAP"
+      },
+      {
+        "role": "D",
+        "name": "Pavlovic",
+        "price": 35.0,
+        "team": "MIL"
+      },
+      {
+        "role": "D",
+        "name": "Gosens",
+        "price": 30.0,
+        "team": "FIO"
+      },
+      {
+        "role": "D",
+        "name": "Biraghi",
+        "price": 27.0,
+        "team": "TOR"
+      },
+      {
+        "role": "D",
+        "name": "Dumfries",
+        "price": 12.0,
+        "team": "INT"
+      },
+      {
+        "role": "D",
+        "name": "Hermoso",
+        "price": 10.0,
+        "team": NaN
+      },
+      {
+        "role": "D",
+        "name": "Tavares",
+        "price": 9.0,
+        "team": "LAZ"
+      },
+      {
+        "role": "D",
+        "name": "Olivera",
+        "price": 1.0,
+        "team": "NAP"
+      },
+      {
+        "role": "C",
+        "name": "Calhanoglu",
+        "price": 119.0,
+        "team": "INT"
+      },
+      {
+        "role": "C",
+        "name": "Orsolini",
+        "price": 93.0,
+        "team": "BOL"
+      },
+      {
+        "role": "C",
+        "name": "Fabbian",
+        "price": 49.0,
+        "team": "BOL"
+      },
+      {
+        "role": "C",
+        "name": "Thuram K.",
+        "price": 25.0,
+        "team": "JUV"
+      },
+      {
+        "role": "C",
+        "name": "Lazovic",
+        "price": 24.0,
+        "team": "VER"
+      },
+      {
+        "role": "C",
+        "name": "Fofana",
+        "price": 9.0,
+        "team": "MIL"
+      },
+      {
+        "role": "C",
+        "name": "Zaniolo",
+        "price": 8.0,
+        "team": "FIO"
+      },
+      {
+        "role": "C",
+        "name": "Baldanzi",
+        "price": 3.0,
+        "team": "ROM"
+      },
+      {
+        "role": "A",
+        "name": "Kvaratskhelia",
+        "price": 264.0,
+        "team": NaN
+      },
+      {
+        "role": "A",
+        "name": "Dybala",
+        "price": 86.0,
+        "team": "ROM"
+      },
+      {
+        "role": "A",
+        "name": "Gudmundsson",
+        "price": 61.0,
+        "team": "FIO"
+      },
+      {
+        "role": "A",
+        "name": "Piccoli",
+        "price": 30.0,
+        "team": "CAG"
+      },
+      {
+        "role": "A",
+        "name": "Noslin",
+        "price": 1.0,
+        "team": "LAZ"
+      },
+      {
+        "role": "A",
+        "name": "Tengstedt",
+        "price": 1.0,
+        "team": "VER"
+      }
+    ]
+  },
+  "Unika FC": {
+    "budget_cell": 185.0,
+    "total_spent": 815.0,
+    "total_budget_implied": 1000.0,
+    "role_counts": {
+      "P": 3,
+      "D": 8,
+      "C": 8,
+      "A": 6
+    },
+    "role_spent": {
+      "P": 101.0,
+      "D": 165.0,
+      "C": 176.0,
+      "A": 373.0
+    },
+    "players": [
+      {
+        "role": "P",
+        "name": "Sommer",
+        "price": 99.0,
+        "team": "INT"
+      },
+      {
+        "role": "P",
+        "name": "Martinez J.",
+        "price": 1.0,
+        "team": "INT"
+      },
+      {
+        "role": "P",
+        "name": "Scuffet",
+        "price": 1.0,
+        "team": "NAP"
+      },
+      {
+        "role": "D",
+        "name": "Dimarco",
+        "price": 99.0,
+        "team": "INT"
+      },
+      {
+        "role": "D",
+        "name": "Bellanova",
+        "price": 45.0,
+        "team": "ATA"
+      },
+      {
+        "role": "D",
+        "name": "Spinazzola",
+        "price": 9.0,
+        "team": "NAP"
+      },
+      {
+        "role": "D",
+        "name": "Dodo",
+        "price": 8.0,
+        "team": "FIO"
+      },
+      {
+        "role": "D",
+        "name": "Bisseck",
+        "price": 1.0,
+        "team": "INT"
+      },
+      {
+        "role": "D",
+        "name": "Carlos Augusto",
+        "price": 1.0,
+        "team": "INT"
+      },
+      {
+        "role": "D",
+        "name": "Lazaro",
+        "price": 1.0,
+        "team": "TOR"
+      },
+      {
+        "role": "D",
+        "name": "Sergi Roberto",
+        "price": 1.0,
+        "team": "COM"
+      },
+      {
+        "role": "C",
+        "name": "Barella",
+        "price": 56.0,
+        "team": "INT"
+      },
+      {
+        "role": "C",
+        "name": "Saelemaekers",
+        "price": 33.0,
+        "team": "ROM"
+      },
+      {
+        "role": "C",
+        "name": "Zielinski",
+        "price": 26.0,
+        "team": "INT"
+      },
+      {
+        "role": "C",
+        "name": "Kone M.",
+        "price": 22.0,
+        "team": "ROM"
+      },
+      {
+        "role": "C",
+        "name": "Guendouzi",
+        "price": 20.0,
+        "team": "LAZ"
+      },
+      {
+        "role": "C",
+        "name": "Conceicao",
+        "price": 17.0,
+        "team": "JUV"
+      },
+      {
+        "role": "C",
+        "name": "Adli",
+        "price": 1.0,
+        "team": "FIO"
+      },
+      {
+        "role": "C",
+        "name": "Ferguson",
+        "price": 1.0,
+        "team": "BOL"
+      },
+      {
+        "role": "A",
+        "name": "Yildiz",
+        "price": 200.0,
+        "team": "JUV"
+      },
+      {
+        "role": "A",
+        "name": "Leao",
+        "price": 109.0,
+        "team": "MIL"
+      },
+      {
+        "role": "A",
+        "name": "De Ketelaere",
+        "price": 51.0,
+        "team": "ATA"
+      },
+      {
+        "role": "A",
+        "name": "Cutrone",
+        "price": 7.0,
+        "team": "COM"
+      },
+      {
+        "role": "A",
+        "name": "Taremi",
+        "price": 4.0,
+        "team": "INT"
+      },
+      {
+        "role": "A",
+        "name": "Sanchez",
+        "price": 2.0,
+        "team": "UDI"
+      }
+    ]
+  },
+  "t romp u cul F.C.": {
+    "budget_cell": 57.0,
+    "total_spent": 943.0,
+    "total_budget_implied": 1000.0,
+    "role_counts": {
+      "P": 3,
+      "D": 8,
+      "C": 8,
+      "A": 6
+    },
+    "role_spent": {
+      "P": 21.0,
+      "D": 53.0,
+      "C": 285.0,
+      "A": 584.0
+    },
+    "players": [
+      {
+        "role": "P",
+        "name": "Suzuki",
+        "price": 14.0,
+        "team": "PAR"
+      },
+      {
+        "role": "P",
+        "name": "Skorupski",
+        "price": 4.0,
+        "team": "BOL"
+      },
+      {
+        "role": "P",
+        "name": "Falcone",
+        "price": 3.0,
+        "team": "LEC"
+      },
+      {
+        "role": "D",
+        "name": "Tomori",
+        "price": 21.0,
+        "team": "MIL"
+      },
+      {
+        "role": "D",
+        "name": "Kolasinac",
+        "price": 16.0,
+        "team": "ATA"
+      },
+      {
+        "role": "D",
+        "name": "Lucumi",
+        "price": 5.0,
+        "team": "BOL"
+      },
+      {
+        "role": "D",
+        "name": "Candela",
+        "price": 4.0,
+        "team": NaN
+      },
+      {
+        "role": "D",
+        "name": "Sosa",
+        "price": 4.0,
+        "team": "TOR"
+      },
+      {
+        "role": "D",
+        "name": "Dossena",
+        "price": 1.0,
+        "team": "COM"
+      },
+      {
+        "role": "D",
+        "name": "Izzo",
+        "price": 1.0,
+        "team": "MON"
+      },
+      {
+        "role": "D",
+        "name": "Moreno A.",
+        "price": 1.0,
+        "team": "COM"
+      },
+      {
+        "role": "C",
+        "name": "Colpani",
+        "price": 65.0,
+        "team": "FIO"
+      },
+      {
+        "role": "C",
+        "name": "Mkhitaryan",
+        "price": 57.0,
+        "team": "INT"
+      },
+      {
+        "role": "C",
+        "name": "Pasalic",
+        "price": 57.0,
+        "team": "ATA"
+      },
+      {
+        "role": "C",
+        "name": "Freuler",
+        "price": 44.0,
+        "team": "BOL"
+      },
+      {
+        "role": "C",
+        "name": "Strefezza",
+        "price": 31.0,
+        "team": "COM"
+      },
+      {
+        "role": "C",
+        "name": "Malinovskyi",
+        "price": 18.0,
+        "team": "GEN"
+      },
+      {
+        "role": "C",
+        "name": "Aebischer",
+        "price": 8.0,
+        "team": "BOL"
+      },
+      {
+        "role": "C",
+        "name": "Paredes",
+        "price": 5.0,
+        "team": "ROM"
+      },
+      {
+        "role": "A",
+        "name": "Dovbyk ",
+        "price": 203.0,
+        "team": "ROM"
+      },
+      {
+        "role": "A",
+        "name": "Retegui",
+        "price": 200.0,
+        "team": "ATA"
+      },
+      {
+        "role": "A",
+        "name": "Castellanos",
+        "price": 116.0,
+        "team": "LAZ"
+      },
+      {
+        "role": "A",
+        "name": "Gonzalez N.",
+        "price": 43.0,
+        "team": "JUV"
+      },
+      {
+        "role": "A",
+        "name": "Caprari",
+        "price": 18.0,
+        "team": "MON"
+      },
+      {
+        "role": "A",
+        "name": "Banda",
+        "price": 4.0,
+        "team": "LEC"
+      }
+    ]
+  },
+  "Fc Enry": {
+    "budget_cell": 126.0,
+    "total_spent": 874.0,
+    "total_budget_implied": 1000.0,
+    "role_counts": {
+      "P": 3,
+      "D": 8,
+      "C": 8,
+      "A": 6
+    },
+    "role_spent": {
+      "P": 95.0,
+      "D": 27.0,
+      "C": 265.0,
+      "A": 487.0
+    },
+    "players": [
+      {
+        "role": "P",
+        "name": "Maignan",
+        "price": 72.0,
+        "team": "MIL"
+      },
+      {
+        "role": "P",
+        "name": "Milinkovic",
+        "price": 22.0,
+        "team": "TOR"
+      },
+      {
+        "role": "P",
+        "name": "Sportiello",
+        "price": 1.0,
+        "team": "MIL"
+      },
+      {
+        "role": "D",
+        "name": "Posch",
+        "price": 15.0,
+        "team": "ATA"
+      },
+      {
+        "role": "D",
+        "name": "Vasquez",
+        "price": 5.0,
+        "team": "GEN"
+      },
+      {
+        "role": "D",
+        "name": "Hummels",
+        "price": 2.0,
+        "team": "ROM"
+      },
+      {
+        "role": "D",
+        "name": "Danilo",
+        "price": 1.0,
+        "team": NaN
+      },
+      {
+        "role": "D",
+        "name": "Erlic",
+        "price": 1.0,
+        "team": "BOL"
+      },
+      {
+        "role": "D",
+        "name": "Godfrey",
+        "price": 1.0,
+        "team": NaN
+      },
+      {
+        "role": "D",
+        "name": "Mina",
+        "price": 1.0,
+        "team": "CAG"
+      },
+      {
+        "role": "D",
+        "name": "Pongracic",
+        "price": 1.0,
+        "team": "FIO"
+      },
+      {
+        "role": "C",
+        "name": "Koopmeiners",
+        "price": 102.0,
+        "team": "JUV"
+      },
+      {
+        "role": "C",
+        "name": "Samardzic",
+        "price": 46.0,
+        "team": "ATA"
+      },
+      {
+        "role": "C",
+        "name": "Ederson",
+        "price": 40.0,
+        "team": "ATA"
+      },
+      {
+        "role": "C",
+        "name": "Ndoye",
+        "price": 34.0,
+        "team": "BOL"
+      },
+      {
+        "role": "C",
+        "name": "Reijnders",
+        "price": 27.0,
+        "team": "MIL"
+      },
+      {
+        "role": "C",
+        "name": "Suslov",
+        "price": 14.0,
+        "team": "VER"
+      },
+      {
+        "role": "C",
+        "name": "Le Fee",
+        "price": 1.0,
+        "team": NaN
+      },
+      {
+        "role": "C",
+        "name": "Marchwinski",
+        "price": 1.0,
+        "team": "LEC"
+      },
+      {
+        "role": "A",
+        "name": "Vlahovic",
+        "price": 392.0,
+        "team": "JUV"
+      },
+      {
+        "role": "A",
+        "name": "Bonny",
+        "price": 47.0,
+        "team": "PAR"
+      },
+      {
+        "role": "A",
+        "name": "Dallinga",
+        "price": 39.0,
+        "team": "BOL"
+      },
+      {
+        "role": "A",
+        "name": "Pohjanpalo",
+        "price": 6.0,
+        "team": NaN
+      },
+      {
+        "role": "A",
+        "name": "Vitinha",
+        "price": 2.0,
+        "team": "GEN"
+      },
+      {
+        "role": "A",
+        "name": "Castro",
+        "price": 1.0,
+        "team": "BOL"
+      }
+    ]
+  },
+  "Cocorito": {
+    "budget_cell": 103.0,
+    "total_spent": 897.0,
+    "total_budget_implied": 1000.0,
+    "role_counts": {
+      "P": 3,
+      "D": 8,
+      "C": 8,
+      "A": 6
+    },
+    "role_spent": {
+      "P": 53.0,
+      "D": 118.0,
+      "C": 140.0,
+      "A": 586.0
+    },
+    "players": [
+      {
+        "role": "P",
+        "name": "Provedel",
+        "price": 30.0,
+        "team": "LAZ"
+      },
+      {
+        "role": "P",
+        "name": "Okoye",
+        "price": 22.0,
+        "team": "UDI"
+      },
+      {
+        "role": "P",
+        "name": "Turati",
+        "price": 1.0,
+        "team": "MON"
+      },
+      {
+        "role": "D",
+        "name": "Cambiaso",
+        "price": 61.0,
+        "team": "JUV"
+      },
+      {
+        "role": "D",
+        "name": "Coulibaly",
+        "price": 28.0,
+        "team": NaN
+      },
+      {
+        "role": "D",
+        "name": "Ruggeri",
+        "price": 18.0,
+        "team": "ATA"
+      },
+      {
+        "role": "D",
+        "name": "Gaspar",
+        "price": 6.0,
+        "team": "LEC"
+      },
+      {
+        "role": "D",
+        "name": "Romagnoli A.",
+        "price": 2.0,
+        "team": "LAZ"
+      },
+      {
+        "role": "D",
+        "name": "Kyriakopoulos",
+        "price": 1.0,
+        "team": "MON"
+      },
+      {
+        "role": "D",
+        "name": "Martin",
+        "price": 1.0,
+        "team": "GEN"
+      },
+      {
+        "role": "D",
+        "name": "Tchatchoua",
+        "price": 1.0,
+        "team": "VER"
+      },
+      {
+        "role": "C",
+        "name": "Man",
+        "price": 52.0,
+        "team": "PAR"
+      },
+      {
+        "role": "C",
+        "name": "Maldini",
+        "price": 42.0,
+        "team": "ATA"
+      },
+      {
+        "role": "C",
+        "name": "Da Cunha",
+        "price": 22.0,
+        "team": "COM"
+      },
+      {
+        "role": "C",
+        "name": "Oristanio",
+        "price": 20.0,
+        "team": "VEN"
+      },
+      {
+        "role": "C",
+        "name": "Ekkelenkamp",
+        "price": 1.0,
+        "team": "UDI"
+      },
+      {
+        "role": "C",
+        "name": "Morente",
+        "price": 1.0,
+        "team": "LEC"
+      },
+      {
+        "role": "C",
+        "name": "Nicolussi",
+        "price": 1.0,
+        "team": "VEN"
+      },
+      {
+        "role": "C",
+        "name": "Paz",
+        "price": 1.0,
+        "team": "COM"
+      },
+      {
+        "role": "A",
+        "name": "Thuram",
+        "price": 391.0,
+        "team": "INT"
+      },
+      {
+        "role": "A",
+        "name": "Kean",
+        "price": 116.0,
+        "team": "FIO"
+      },
+      {
+        "role": "A",
+        "name": "Adams",
+        "price": 51.0,
+        "team": "TOR"
+      },
+      {
+        "role": "A",
+        "name": "Brenner",
+        "price": 26.0,
+        "team": "UDI"
+      },
+      {
+        "role": "A",
+        "name": "Isaksen",
+        "price": 1.0,
+        "team": "LAZ"
+      },
+      {
+        "role": "A",
+        "name": "Milik",
+        "price": 1.0,
+        "team": "JUV"
+      }
+    ]
+  },
+  "SSC PARTENOPE": {
+    "budget_cell": 78.0,
+    "total_spent": 922.0,
+    "total_budget_implied": 1000.0,
+    "role_counts": {
+      "P": 3,
+      "D": 8,
+      "C": 8,
+      "A": 6
+    },
+    "role_spent": {
+      "P": 27.0,
+      "D": 105.0,
+      "C": 233.0,
+      "A": 557.0
+    },
+    "players": [
+      {
+        "role": "P",
+        "name": "Gollini",
+        "price": 25.0,
+        "team": "ROM"
+      },
+      {
+        "role": "P",
+        "name": "Leali",
+        "price": 1.0,
+        "team": "GEN"
+      },
+      {
+        "role": "P",
+        "name": "Sommariva",
+        "price": 1.0,
+        "team": "GEN"
+      },
+      {
+        "role": "D",
+        "name": "Buongiorno",
+        "price": 51.0,
+        "team": "NAP"
+      },
+      {
+        "role": "D",
+        "name": "Angelino",
+        "price": 21.0,
+        "team": "ROM"
+      },
+      {
+        "role": "D",
+        "name": "Beukema",
+        "price": 12.0,
+        "team": "BOL"
+      },
+      {
+        "role": "D",
+        "name": "Luperto",
+        "price": 6.0,
+        "team": "CAG"
+      },
+      {
+        "role": "D",
+        "name": "Hien",
+        "price": 5.0,
+        "team": "ATA"
+      },
+      {
+        "role": "D",
+        "name": "Giannetti",
+        "price": 4.0,
+        "team": "UDI"
+      },
+      {
+        "role": "D",
+        "name": "Augello",
+        "price": 3.0,
+        "team": "CAG"
+      },
+      {
+        "role": "D",
+        "name": "Gallo",
+        "price": 3.0,
+        "team": "LEC"
+      },
+      {
+        "role": "C",
+        "name": "Mctominay",
+        "price": 106.0,
+        "team": "NAP"
+      },
+      {
+        "role": "C",
+        "name": "De Roon",
+        "price": 32.0,
+        "team": "ATA"
+      },
+      {
+        "role": "C",
+        "name": "Bernabe",
+        "price": 30.0,
+        "team": "PAR"
+      },
+      {
+        "role": "C",
+        "name": "Pessina",
+        "price": 24.0,
+        "team": "MON"
+      },
+      {
+        "role": "C",
+        "name": "Gilmour",
+        "price": 14.0,
+        "team": "NAP"
+      },
+      {
+        "role": "C",
+        "name": "Lobotka",
+        "price": 13.0,
+        "team": "NAP"
+      },
+      {
+        "role": "C",
+        "name": "Ricci",
+        "price": 13.0,
+        "team": "TOR"
+      },
+      {
+        "role": "C",
+        "name": "Ramadani",
+        "price": 1.0,
+        "team": "LEC"
+      },
+      {
+        "role": "A",
+        "name": "Lukaku",
+        "price": 453.0,
+        "team": "NAP"
+      },
+      {
+        "role": "A",
+        "name": "Lucca",
+        "price": 51.0,
+        "team": "UDI"
+      },
+      {
+        "role": "A",
+        "name": "Colombo",
+        "price": 30.0,
+        "team": "EMP"
+      },
+      {
+        "role": "A",
+        "name": "Djuric",
+        "price": 21.0,
+        "team": "PAR"
+      },
+      {
+        "role": "A",
+        "name": "Simeone",
+        "price": 1.0,
+        "team": "NAP"
+      },
+      {
+        "role": "A",
+        "name": "Thauvin",
+        "price": 1.0,
+        "team": "UDI"
+      }
+    ]
+  },
+  "AtletiCoSassicc": {
+    "budget_cell": 165.0,
+    "total_spent": 835.0,
+    "total_budget_implied": 1000.0,
+    "role_counts": {
+      "P": 3,
+      "D": 8,
+      "C": 8,
+      "A": 6
+    },
+    "role_spent": {
+      "P": 42.0,
+      "D": 172.0,
+      "C": 271.0,
+      "A": 350.0
+    },
+    "players": [
+      {
+        "role": "P",
+        "name": "Carnesecchi",
+        "price": 40.0,
+        "team": "ATA"
+      },
+      {
+        "role": "P",
+        "name": "Reina",
+        "price": 1.0,
+        "team": "COM"
+      },
+      {
+        "role": "P",
+        "name": "Rui Patricio",
+        "price": 1.0,
+        "team": "ATA"
+      },
+      {
+        "role": "D",
+        "name": "Hernandez",
+        "price": 70.0,
+        "team": "MIL"
+      },
+      {
+        "role": "D",
+        "name": "Acerbi",
+        "price": 36.0,
+        "team": "INT"
+      },
+      {
+        "role": "D",
+        "name": "Bremer",
+        "price": 31.0,
+        "team": "JUV"
+      },
+      {
+        "role": "D",
+        "name": "Cabal",
+        "price": 22.0,
+        "team": "JUV"
+      },
+      {
+        "role": "D",
+        "name": "Rrahmani",
+        "price": 6.0,
+        "team": "NAP"
+      },
+      {
+        "role": "D",
+        "name": "Emerson R.",
+        "price": 4.0,
+        "team": "MIL"
+      },
+      {
+        "role": "D",
+        "name": "Delprato",
+        "price": 2.0,
+        "team": "PAR"
+      },
+      {
+        "role": "D",
+        "name": "Vojvoda",
+        "price": 1.0,
+        "team": "COM"
+      },
+      {
+        "role": "C",
+        "name": "Pulisic",
+        "price": 100.0,
+        "team": "MIL"
+      },
+      {
+        "role": "C",
+        "name": "Douglas Luiz",
+        "price": 80.0,
+        "team": "JUV"
+      },
+      {
+        "role": "C",
+        "name": "Frattesi",
+        "price": 58.0,
+        "team": "INT"
+      },
+      {
+        "role": "C",
+        "name": "Cristante",
+        "price": 10.0,
+        "team": "ROM"
+      },
+      {
+        "role": "C",
+        "name": "Linetty",
+        "price": 9.0,
+        "team": "TOR"
+      },
+      {
+        "role": "C",
+        "name": "Badelj",
+        "price": 7.0,
+        "team": "GEN"
+      },
+      {
+        "role": "C",
+        "name": "Anguissa",
+        "price": 6.0,
+        "team": "NAP"
+      },
+      {
+        "role": "C",
+        "name": "Rovella",
+        "price": 1.0,
+        "team": "LAZ"
+      },
+      {
+        "role": "A",
+        "name": "Lookman",
+        "price": 115.0,
+        "team": "ATA"
+      },
+      {
+        "role": "A",
+        "name": "Soule",
+        "price": 80.0,
+        "team": "ROM"
+      },
+      {
+        "role": "A",
+        "name": "Dia",
+        "price": 63.0,
+        "team": "LAZ"
+      },
+      {
+        "role": "A",
+        "name": "Morata",
+        "price": 50.0,
+        "team": NaN
+      },
+      {
+        "role": "A",
+        "name": "Belotti",
+        "price": 24.0,
+        "team": NaN
+      },
+      {
+        "role": "A",
+        "name": "Abraham",
+        "price": 18.0,
+        "team": "MIL"
+      }
+    ]
+  },
+  "Sparta fc": {
+    "budget_cell": 263.0,
+    "total_spent": 737.0,
+    "total_budget_implied": 1000.0,
+    "role_counts": {
+      "P": 3,
+      "D": 8,
+      "C": 8,
+      "A": 6
+    },
+    "role_spent": {
+      "P": 67.0,
+      "D": 129.0,
+      "C": 296.0,
+      "A": 245.0
+    },
+    "players": [
+      {
+        "role": "P",
+        "name": "Meret",
+        "price": 65.0,
+        "team": "NAP"
+      },
+      {
+        "role": "P",
+        "name": "Caprile",
+        "price": 1.0,
+        "team": "CAG"
+      },
+      {
+        "role": "P",
+        "name": "Montipo",
+        "price": 1.0,
+        "team": "VER"
+      },
+      {
+        "role": "D",
+        "name": "Bastoni A.",
+        "price": 40.0,
+        "team": "INT"
+      },
+      {
+        "role": "D",
+        "name": "Gatti",
+        "price": 32.0,
+        "team": "JUV"
+      },
+      {
+        "role": "D",
+        "name": "Pavard",
+        "price": 20.0,
+        "team": "INT"
+      },
+      {
+        "role": "D",
+        "name": "Martinez Quarta",
+        "price": 16.0,
+        "team": NaN
+      },
+      {
+        "role": "D",
+        "name": "Lazzari",
+        "price": 10.0,
+        "team": "LAZ"
+      },
+      {
+        "role": "D",
+        "name": "Baschirotto",
+        "price": 9.0,
+        "team": "LEC"
+      },
+      {
+        "role": "D",
+        "name": "Caldirola",
+        "price": 1.0,
+        "team": "MON"
+      },
+      {
+        "role": "D",
+        "name": "Idzes",
+        "price": 1.0,
+        "team": "VEN"
+      },
+      {
+        "role": "C",
+        "name": "Neres",
+        "price": 102.0,
+        "team": "NAP"
+      },
+      {
+        "role": "C",
+        "name": "Pellegrini Lo.",
+        "price": 66.0,
+        "team": "ROM"
+      },
+      {
+        "role": "C",
+        "name": "Politano",
+        "price": 50.0,
+        "team": "NAP"
+      },
+      {
+        "role": "C",
+        "name": "Gaetano",
+        "price": 34.0,
+        "team": "CAG"
+      },
+      {
+        "role": "C",
+        "name": "Chukwueze",
+        "price": 28.0,
+        "team": "MIL"
+      },
+      {
+        "role": "C",
+        "name": "Frendrup",
+        "price": 10.0,
+        "team": "GEN"
+      },
+      {
+        "role": "C",
+        "name": "Vlasic",
+        "price": 5.0,
+        "team": "TOR"
+      },
+      {
+        "role": "C",
+        "name": "Busio",
+        "price": 1.0,
+        "team": "VEN"
+      },
+      {
+        "role": "A",
+        "name": "Zapata",
+        "price": 128.0,
+        "team": "TOR"
+      },
+      {
+        "role": "A",
+        "name": "Krstovic",
+        "price": 38.0,
+        "team": "LEC"
+      },
+      {
+        "role": "A",
+        "name": "Pinamonti",
+        "price": 34.0,
+        "team": "GEN"
+      },
+      {
+        "role": "A",
+        "name": "Luvumbo",
+        "price": 30.0,
+        "team": "CAG"
+      },
+      {
+        "role": "A",
+        "name": "Esposito S.",
+        "price": 13.0,
+        "team": "EMP"
+      },
+      {
+        "role": "A",
+        "name": "Rebic",
+        "price": 2.0,
+        "team": "LEC"
+      }
+    ]
+  },
+  "NELLOS OLD BOYS": {
+    "budget_cell": 22.0,
+    "total_spent": 978.0,
+    "total_budget_implied": 1000.0,
+    "role_counts": {
+      "P": 3,
+      "D": 8,
+      "C": 8,
+      "A": 6
+    },
+    "role_spent": {
+      "P": 94.0,
+      "D": 172.0,
+      "C": 220.0,
+      "A": 492.0
+    },
+    "players": [
+      {
+        "role": "P",
+        "name": "Di Gregorio",
+        "price": 92.0,
+        "team": "JUV"
+      },
+      {
+        "role": "P",
+        "name": "Perin",
+        "price": 1.0,
+        "team": "JUV"
+      },
+      {
+        "role": "P",
+        "name": "Pinsoglio",
+        "price": 1.0,
+        "team": "JUV"
+      },
+      {
+        "role": "D",
+        "name": "Darmian",
+        "price": 36.0,
+        "team": "INT"
+      },
+      {
+        "role": "D",
+        "name": "Mancini",
+        "price": 35.0,
+        "team": "ROM"
+      },
+      {
+        "role": "D",
+        "name": "Coco",
+        "price": 31.0,
+        "team": "TOR"
+      },
+      {
+        "role": "D",
+        "name": "Dorgu",
+        "price": 25.0,
+        "team": NaN
+      },
+      {
+        "role": "D",
+        "name": "Bijol",
+        "price": 16.0,
+        "team": "UDI"
+      },
+      {
+        "role": "D",
+        "name": "Savona",
+        "price": 12.0,
+        "team": "JUV"
+      },
+      {
+        "role": "D",
+        "name": "Zappacosta",
+        "price": 12.0,
+        "team": "ATA"
+      },
+      {
+        "role": "D",
+        "name": "Miranda J.",
+        "price": 5.0,
+        "team": "BOL"
+      },
+      {
+        "role": "C",
+        "name": "Zaccagni",
+        "price": 82.0,
+        "team": "LAZ"
+      },
+      {
+        "role": "C",
+        "name": "Loftus Cheek",
+        "price": 51.0,
+        "team": "MIL"
+      },
+      {
+        "role": "C",
+        "name": "Ilic",
+        "price": 34.0,
+        "team": "TOR"
+      },
+      {
+        "role": "C",
+        "name": "Fagioli",
+        "price": 30.0,
+        "team": "FIO"
+      },
+      {
+        "role": "C",
+        "name": "Gyasi",
+        "price": 13.0,
+        "team": "EMP"
+      },
+      {
+        "role": "C",
+        "name": "Brescianini",
+        "price": 5.0,
+        "team": "ATA"
+      },
+      {
+        "role": "C",
+        "name": "Lovric",
+        "price": 3.0,
+        "team": "UDI"
+      },
+      {
+        "role": "C",
+        "name": "Harroui",
+        "price": 2.0,
+        "team": "VER"
+      },
+      {
+        "role": "A",
+        "name": "Martinez L.",
+        "price": 453.0,
+        "team": "INT"
+      },
+      {
+        "role": "A",
+        "name": "Okafor",
+        "price": 30.0,
+        "team": "NAP"
+      },
+      {
+        "role": "A",
+        "name": "Mihaila",
+        "price": 4.0,
+        "team": "PAR"
+      },
+      {
+        "role": "A",
+        "name": "Raspadori",
+        "price": 2.0,
+        "team": "NAP"
+      },
+      {
+        "role": "A",
+        "name": "Shomurodov",
+        "price": 2.0,
+        "team": "ROM"
+      },
+      {
+        "role": "A",
+        "name": "Petagna",
+        "price": 1.0,
+        "team": "MON"
+      }
+    ]
+  }
+}

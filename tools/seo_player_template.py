@@ -1353,6 +1353,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
         '</div>';
     }}
     </script>
+    <script src="/js/tracker.js" defer></script>
 </body>
 </html>
 """

@@ -8,6 +8,10 @@
       "dest": "/api/track.py"
     },
     {
+      "src": "/api/stats",
+      "dest": "/api/stats.py"
+    },
+    {
       "src": "/calciatore/([^/]+)(/index\\.html)?",
       "dest": "/calciatore/$1/index.html"
     },

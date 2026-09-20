@@ -668,6 +668,7 @@ def generate_injuries_pillar(players, injuries_db):
             <p>&copy; 2026/2027 Fanta Master AI &bull; Storico Infortuni Ufficiale Serie A</p>
         </div>
     </footer>
+    <script src="../js/tracker.js" defer></script>
 </body>
 </html>
 """
@@ -748,6 +749,7 @@ def generate_rigoristi_pillar(tactical_db):
             <p>&copy; 2026/2027 Fanta Master AI &bull; Rigoristi Ufficiali Serie A</p>
         </div>
     </footer>
+    <script src="../js/tracker.js" defer></script>
 </body>
 </html>
 """
@@ -822,6 +824,7 @@ def generate_gk_pillar(gk_matrix_data):
             <p>&copy; 2026/2027 Fanta Master AI &bull; Griglia Portieri Serie A</p>
         </div>
     </footer>
+    <script src="../js/tracker.js" defer></script>
 </body>
 </html>
 """
@@ -851,11 +854,26 @@ def build_all():
     with open(GK_MATRIX_PATH, "r", encoding="utf-8") as f:
         gk_matrix_data = json.load(f)
 
-    # 2. Copia l'applicazione interattiva principale in dist/app.html e dist/index.html
+    # 2. Copia JS e asset
+    js_dir = os.path.join(DIST_DIR, "js")
+    os.makedirs(js_dir, exist_ok=True)
+    web_js_dir = os.path.join(ROOT_DIR, "web", "js")
+    if os.path.exists(web_js_dir):
+        for f in os.listdir(web_js_dir):
+            if f.endswith(".js"):
+                shutil.copy(os.path.join(web_js_dir, f), os.path.join(js_dir, f))
+
+    # 2b. Copia l'applicazione interattiva principale in dist/app.html e dist/index.html
     if os.path.exists(DASHBOARD_HTML_PATH):
-        shutil.copy(DASHBOARD_HTML_PATH, os.path.join(DIST_DIR, "app.html"))
-        shutil.copy(DASHBOARD_HTML_PATH, os.path.join(DIST_DIR, "index.html"))
-        print("  ✓ App interattiva clonata in dist/app.html e dist/index.html")
+        with open(DASHBOARD_HTML_PATH, "r", encoding="utf-8") as f:
+            dash_content = f.read()
+        if "</body" in dash_content:
+            dash_content = dash_content.replace("</body>", '    <script src="/js/tracker.js" defer></script>\n</body>')
+        with open(os.path.join(DIST_DIR, "app.html"), "w", encoding="utf-8") as f:
+            f.write(dash_content)
+        with open(os.path.join(DIST_DIR, "index.html"), "w", encoding="utf-8") as f:
+            f.write(dash_content)
+        print("  ✓ App interattiva clonata con tracker in dist/app.html e dist/index.html")
 
     # 3. Genera le 532 pagine calciatore complete
     calciatori_dir = os.path.join(DIST_DIR, "calciatore")

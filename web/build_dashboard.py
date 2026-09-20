@@ -49,12 +49,7 @@ def build_standalone_dashboard():
     with open(css_path, 'r', encoding='utf-8') as f:
         css_content = f.read()
 
-    vendor_xlsx_path = os.path.join(root_dir, "web", "js", "vendor", "xlsx.full.min.js")
-    xlsx_script_tag = ""
-    if os.path.exists(vendor_xlsx_path):
-        with open(vendor_xlsx_path, 'r', encoding='utf-8') as f:
-            xlsx_content = f.read()
-        xlsx_script_tag = f"<script>\n{xlsx_content}\n</script>\n"
+    xlsx_script_tag = '<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>\n'
 
     js_modules = [
         "state.js",

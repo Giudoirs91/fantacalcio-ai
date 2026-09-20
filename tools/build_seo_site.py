@@ -867,8 +867,9 @@ def build_all():
     if os.path.exists(DASHBOARD_HTML_PATH):
         with open(DASHBOARD_HTML_PATH, "r", encoding="utf-8") as f:
             dash_content = f.read()
-        if "</body" in dash_content:
-            dash_content = dash_content.replace("</body>", '    <script src="/js/tracker.js" defer></script>\n</body>')
+        last_body_idx = dash_content.rfind("</body>")
+        if last_body_idx != -1 and "/js/tracker.js" not in dash_content:
+            dash_content = dash_content[:last_body_idx] + '    <script src="/js/tracker.js" defer></script>\n' + dash_content[last_body_idx:]
         with open(os.path.join(DIST_DIR, "app.html"), "w", encoding="utf-8") as f:
             f.write(dash_content)
         with open(os.path.join(DIST_DIR, "index.html"), "w", encoding="utf-8") as f:

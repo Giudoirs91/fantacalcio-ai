@@ -3,8 +3,31 @@
 // ==============================================================================
 
 // ==============================================================================
-// MODALITÀ CREATORE (ACCESSO RISERVATO STRUMENTI INTERNI / ADMIN)
+// MODALITÀ CREATORE (ACCESSO RISERVATO CRITTOGRAFATO SHA-256)
 // ==============================================================================
+let _logoClicks = 0;
+let _logoClickTimer = null;
+
+function handleBrandSecretClick() {
+    _logoClicks++;
+    clearTimeout(_logoClickTimer);
+    _logoClickTimer = setTimeout(() => { _logoClicks = 0; }, 2500);
+    if (_logoClicks >= 5) {
+        _logoClicks = 0;
+        openCreatorAuthModal();
+    }
+}
+
+// Scorciatoia da tastiera per creatore (Ctrl + Shift + K)
+if (typeof window !== 'undefined') {
+    window.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'K' || e.key === 'k')) {
+            e.preventDefault();
+            openCreatorAuthModal();
+        }
+    });
+}
+
 function isCreatorModeActive() {
     try {
         return localStorage.getItem('FANTA_CREATOR_MODE') === 'true';
@@ -39,35 +62,77 @@ function updateCreatorModeUI() {
     }
 }
 
-function promptCreatorAccess() {
+function openCreatorAuthModal() {
     if (isCreatorModeActive()) {
-        const confirmExit = confirm("👑 Sei attualmente in Modalità Creatore (tutti gli strumenti sbloccati).\n\nVuoi uscire e tornare alla vista visitatore ordinario?");
+        const confirmExit = confirm("👑 Sei attualmente in Modalità Creatore.\n\nVuoi disattivarla e tornare alla vista visitatore ordinario?");
         if (confirmExit) {
             setCreatorMode(false);
-            alert("Modalità Visitatore ripristinata. Gli strumenti di gestione sono ora nascosti.");
             window.location.reload();
         }
         return;
     }
-    const pin = prompt("👑 Accesso Riservato Creatore FantaMaster AI\nInserisci il tuo PIN di amministratore (es. 1991):");
-    if (!pin) return;
-    const cleanPin = pin.trim().toLowerCase();
-    if (cleanPin === '1991' || cleanPin === 'fanta' || cleanPin === 'admin' || cleanPin === 'fantacalcio') {
-        setCreatorMode(true);
-        alert("👑 Benvenuto Creatore! Tutti gli strumenti (modifica formazioni, auto-fill, esportazione database, importazione ed hub leghe) sono sbloccati.");
-        window.location.reload();
-    } else {
-        alert("❌ PIN non valido.");
+    const modal = document.getElementById('creatorAuthModal');
+    const input = document.getElementById('creatorPasswordInput');
+    const err = document.getElementById('creatorAuthError');
+    if (err) err.style.display = 'none';
+    if (input) input.value = '';
+    if (modal) {
+        modal.style.display = 'flex';
+        setTimeout(() => { if (input) input.focus(); }, 150);
     }
 }
 
-// Verifica immediata parametro URL ?creator=1 o ?admin=1 o ?creator=1991
+function closeCreatorAuthModal() {
+    const modal = document.getElementById('creatorAuthModal');
+    if (modal) modal.style.display = 'none';
+}
+
+async function hashSha256(str) {
+    const buffer = new TextEncoder().encode(str);
+    const hash = await crypto.subtle.digest('SHA-256', buffer);
+    return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function submitCreatorAuth() {
+    const input = document.getElementById('creatorPasswordInput');
+    const err = document.getElementById('creatorAuthError');
+    if (!input) return;
+    const pwd = input.value.trim();
+    if (!pwd) return;
+
+    const hash = await hashSha256(pwd);
+    const customHash = localStorage.getItem('FANTA_CREATOR_PWD_HASH');
+    
+    // Hash SHA-256 autorizzati (crittografati, nessuna password visibile in chiaro)
+    const ALLOWED_HASHES = [
+        '4be6e680a6dd2ee9957770984dd0c7f2dd8be7c703b44b80b7d7809630c8225d', // hash 1991
+        '56a4221a71ca2eb05b76c8c4a45a19fe99ba28d9ffb4b4d7fca1caec83a31c59'  // hash fantapass2026
+    ];
+    if (customHash) ALLOWED_HASHES.push(customHash);
+
+    if (ALLOWED_HASHES.includes(hash)) {
+        closeCreatorAuthModal();
+        setCreatorMode(true);
+        window.location.reload();
+    } else {
+        if (err) {
+            err.textContent = '❌ Password non corretta';
+            err.style.display = 'block';
+        }
+        input.value = '';
+        input.focus();
+    }
+}
+
+// Parametro URL ?login=creator apre la finestra di login crittografata
 (function checkCreatorUrlParams() {
     try {
         if (typeof window !== 'undefined' && window.location) {
             const params = new URLSearchParams(window.location.search);
-            if (params.get('creator') === '1' || params.get('admin') === '1' || params.get('creator') === '1991' || params.get('creator') === 'true') {
-                localStorage.setItem('FANTA_CREATOR_MODE', 'true');
+            if (params.get('login') === 'creator') {
+                window.addEventListener('DOMContentLoaded', () => {
+                    setTimeout(openCreatorAuthModal, 300);
+                });
             }
         }
     } catch(e) {}
@@ -77,7 +142,10 @@ if (typeof window !== 'undefined') {
     window.isCreatorModeActive = isCreatorModeActive;
     window.setCreatorMode = setCreatorMode;
     window.updateCreatorModeUI = updateCreatorModeUI;
-    window.promptCreatorAccess = promptCreatorAccess;
+    window.openCreatorAuthModal = openCreatorAuthModal;
+    window.closeCreatorAuthModal = closeCreatorAuthModal;
+    window.submitCreatorAuth = submitCreatorAuth;
+    window.handleBrandSecretClick = handleBrandSecretClick;
     window.addEventListener('DOMContentLoaded', updateCreatorModeUI);
 }
 

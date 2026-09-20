@@ -131,7 +131,7 @@ def build_standalone_dashboard():
         <div class="header-main-row">
             <!-- LEFT: BRANDING + LEAGUES HUB + LEAGUE SELECTOR + MODE -->
             <div class="header-left">
-                <div class="brand-badge" onclick="switchTab('stats')" title="Fanta Master AI — Portale Statistico Serie A 2026/27">
+                <div class="brand-badge" onclick="handleBrandSecretClick(); switchTab('stats');" title="Fanta Master AI — Portale Statistico Serie A 2026/27">
                     <span class="brand-icon">⚡</span>
                     <div>
                         <div class="brand-title">FANTA MASTER AI</div>
@@ -203,7 +203,7 @@ def build_standalone_dashboard():
                 </div>
 
                 <!-- CREATOR STATUS BADGE (Visibile solo se abilitato) -->
-                <div id="creatorStatusBadge" class="creator-status-badge creator-only-control" onclick="promptCreatorAccess()" title="👑 Modalità Creatore Attiva. Clicca per uscire o gestire.">
+                <div id="creatorStatusBadge" class="creator-status-badge creator-only-control" onclick="openCreatorAuthModal()" title="👑 Modalità Creatore Attiva. Clicca per disattivare o gestire.">
                     <span>👑 Creatore Attivo</span>
                 </div>
 
@@ -236,8 +236,6 @@ def build_standalone_dashboard():
                             <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Importazione Rose da Excel')" style="opacity:0.7;">🔒 Carica Rose da Excel <span class="coming-soon-pill">In Arrivo</span></a>
                             <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Importazione Rosa da CSV')" style="opacity:0.7;">🔒 Carica Rosa da CSV <span class="coming-soon-pill">In Arrivo</span></a>
                             <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Hub Gestione Leghe')" style="opacity:0.7;">🔒 Hub Leghe & Impostazioni <span class="coming-soon-pill">In Arrivo</span></a>
-                            <div class="dropdown-divider"></div>
-                            <a href="javascript:void(0)" class="dropdown-item" onclick="promptCreatorAccess()" style="opacity:0.4;font-size:11px;padding:4px 8px;text-align:center;">🔒 Accesso Riservato Creatore</a>
                         </div>
 
                         <!-- VISTA CREATORE (Strumenti Completi Sbloccati) -->
@@ -252,7 +250,7 @@ def build_standalone_dashboard():
                             <a href="javascript:void(0)" class="dropdown-item" onclick="exportCurrentLeagueJson()">💾 Scarica Backup JSON Lega</a>
                             <a href="javascript:void(0)" class="dropdown-item danger" onclick="resetLiveAuction()" style="color:#f87171;">🔄 Azzera Asta Lega Attiva</a>
                             <div class="dropdown-divider"></div>
-                            <a href="javascript:void(0)" class="dropdown-item" onclick="promptCreatorAccess()" style="color:#fbbf24;font-weight:700;font-size:11.5px;">👁️ Esci da Modalità Creatore</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="openCreatorAuthModal()" style="color:#fbbf24;font-weight:700;font-size:11.5px;">👁️ Esci da Modalità Creatore</a>
                         </div>
                     </div>
                 </div>
@@ -882,6 +880,21 @@ def build_standalone_dashboard():
                         <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Gestione Leghe Private & Rose');">🔒 Gestione Leghe & Rose <span class="coming-soon-dot">🔒</span></button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CREATOR AUTH MODAL (Sicuro, Input Password Mascherato, SHA-256) -->
+    <div id="creatorAuthModal" class="modal-backdrop" style="display:none;z-index:100005;" onclick="if(event.target === this) closeCreatorAuthModal()">
+        <div class="modal-card" style="max-width:380px;background:rgba(18,22,29,0.98);backdrop-filter:blur(24px);border:1px solid rgba(245,158,11,0.35);padding:26px 22px;border-radius:18px;box-shadow:0 25px 60px rgba(0,0,0,0.9);text-align:center;">
+            <div style="font-size:34px;margin-bottom:12px;">👑</div>
+            <h3 style="margin:0 0 6px 0;font-size:18px;font-weight:900;color:#fff;">Accesso Riservato Creatore</h3>
+            <p style="font-size:12px;color:var(--text-secondary);margin:0 0 20px 0;line-height:1.4;">Autenticati per sbloccare la modifica formazioni, auto-fill e gestione campionati.</p>
+            <input type="password" id="creatorPasswordInput" class="clean-input-search" placeholder="••••••••" autocomplete="off" style="width:100%;text-align:center;font-size:16px;letter-spacing:3px;padding:11px 14px;border-radius:10px;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.18);color:#fff;margin-bottom:12px;" onkeydown="if(event.key==='Enter') submitCreatorAuth()">
+            <div id="creatorAuthError" style="display:none;color:#f87171;font-size:12px;margin-bottom:14px;font-weight:700;">❌ Password non corretta</div>
+            <div style="display:flex;gap:10px;justify-content:center;">
+                <button class="btn-clean-action" onclick="closeCreatorAuthModal()" style="flex:1;padding:9px 14px;border-radius:8px;">Annulla</button>
+                <button class="btn-action" onclick="submitCreatorAuth()" style="flex:1;padding:9px 14px;background:linear-gradient(135deg,rgba(245,158,11,0.35),rgba(217,119,6,0.55));border:1px solid #fbbf24;color:#fbbf24;font-weight:800;border-radius:8px;">Sblocca</button>
             </div>
         </div>
     </div>

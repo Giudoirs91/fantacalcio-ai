@@ -373,10 +373,10 @@ function renderPitchTeam(teamName) {
                     const [p1, p2] = allContenders;
                     ballottaggiHtml += `
                         <div class="ballottaggio-item">
-                            <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px;margin-bottom:3px;">
-                                <span style="font-weight:700;color:#fff;">${p1.name} <span style="font-size:11px;color:#4ade80;font-weight:800;margin-left:2px;">${p1.pct}%</span></span>
-                                <span style="font-size:9.5px;color:var(--text-muted);font-weight:700;">vs</span>
-                                <span style="font-weight:700;color:#fff;"><span style="font-size:11px;color:#fbbf24;font-weight:800;margin-right:2px;">${p2.pct}%</span> ${p2.name}</span>
+                            <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:4px;min-width:0;">
+                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:46%;" title="${p1.name}">${p1.name} <span style="font-size:11px;color:#4ade80;font-weight:800;margin-left:2px;">${p1.pct}%</span></span>
+                                <span style="font-size:9.5px;color:var(--text-muted);font-weight:700;flex-shrink:0;margin:0 4px;">vs</span>
+                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:46%;text-align:right;" title="${p2.name}"><span style="font-size:11px;color:#fbbf24;font-weight:800;margin-right:2px;">${p2.pct}%</span> ${p2.name}</span>
                             </div>
                             <div class="ballottaggio-bar-track">
                                 <div class="ballottaggio-bar-fill-1" style="width:${p1.pct}%;"></div>
@@ -388,12 +388,12 @@ function renderPitchTeam(teamName) {
                     const [p1, p2, p3] = allContenders;
                     ballottaggiHtml += `
                         <div class="ballottaggio-item">
-                            <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:3px;flex-wrap:wrap;gap:2px;">
-                                <span style="font-weight:700;color:#fff;">${p1.name} <span style="font-size:10.5px;color:#4ade80;font-weight:800;">${p1.pct}%</span></span>
-                                <span style="font-size:9px;color:var(--text-muted);">vs</span>
-                                <span style="font-weight:700;color:#fff;">${p2.name} <span style="font-size:10.5px;color:#fbbf24;font-weight:800;">${p2.pct}%</span></span>
-                                <span style="font-size:9px;color:var(--text-muted);">vs</span>
-                                <span style="font-weight:700;color:#fff;">${p3.name} <span style="font-size:10.5px;color:#38bdf8;font-weight:800;">${p3.pct}%</span></span>
+                            <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;margin-bottom:4px;min-width:0;gap:2px;">
+                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:32%;" title="${p1.name}">${p1.name} <span style="font-size:10px;color:#4ade80;font-weight:800;">${p1.pct}%</span></span>
+                                <span style="font-size:8.5px;color:var(--text-muted);flex-shrink:0;">vs</span>
+                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:32%;" title="${p2.name}">${p2.name} <span style="font-size:10px;color:#fbbf24;font-weight:800;">${p2.pct}%</span></span>
+                                <span style="font-size:8.5px;color:var(--text-muted);flex-shrink:0;">vs</span>
+                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:32%;text-align:right;" title="${p3.name}">${p3.name} <span style="font-size:10px;color:#38bdf8;font-weight:800;">${p3.pct}%</span></span>
                             </div>
                             <div class="ballottaggio-bar-track">
                                 <div class="ballottaggio-bar-fill-1" style="width:${p1.pct}%;"></div>
@@ -426,10 +426,10 @@ function renderPitchTeam(teamName) {
                 duelsCreated.forEach(d => {
                     ballottaggiHtml += `
                         <div class="ballottaggio-item">
-                            <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px;margin-bottom:3px;">
-                                <span style="font-weight:700;color:#fff;">${d.p1} <span style="font-size:11px;color:#4ade80;font-weight:800;margin-left:2px;">${d.pct1}%</span></span>
-                                <span style="font-size:9.5px;color:var(--text-muted);font-weight:700;">vs</span>
-                                <span style="font-weight:700;color:#fff;"><span style="font-size:11px;color:#fbbf24;font-weight:800;margin-right:2px;">${d.pct2}%</span> ${d.p2}</span>
+                            <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:4px;min-width:0;">
+                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:46%;" title="${d.p1}">${d.p1} <span style="font-size:11px;color:#4ade80;font-weight:800;margin-left:2px;">${d.pct1}%</span></span>
+                                <span style="font-size:9.5px;color:var(--text-muted);font-weight:700;flex-shrink:0;margin:0 4px;">vs</span>
+                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:46%;text-align:right;" title="${d.p2}"><span style="font-size:11px;color:#fbbf24;font-weight:800;margin-right:2px;">${d.pct2}%</span> ${d.p2}</span>
                             </div>
                             <div class="ballottaggio-bar-track">
                                 <div class="ballottaggio-bar-fill-1" style="width:${d.pct1}%;"></div>

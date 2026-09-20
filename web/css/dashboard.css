@@ -11370,10 +11370,261 @@ main {
     }
 }
 
+/* ==============================================================================
+   ULTIMATE MOBILE OPTIMIZATIONS (PITCH 2D, HEADER & TOUCH HUD — MAX-WIDTH 768px)
+   ============================================================================== */
+@media (max-width: 768px) {
+    /* Safe Bottom Main Padding to avoid Bottom Bar overlap */
+    main {
+        padding: 6px 4px 96px 4px !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
 
+    /* Clean, non-crammed Mobile Header */
+    .header-main-row {
+        padding: 6px 8px !important;
+        gap: 4px !important;
+    }
 
+    .brand-badge {
+        padding: 3px 6px !important;
+        gap: 4px !important;
+    }
 
+    .brand-title {
+        font-size: 11px !important;
+        letter-spacing: -0.2px !important;
+    }
 
+    .header-league-btn {
+        padding: 3px 6px !important;
+        font-size: 10.5px !important;
+        max-width: 100px !important;
+    }
 
+    /* Hide Classic/Mantra verbose tag in header button on mobile */
+    .header-league-btn span:nth-child(3) {
+        display: none !important;
+    }
 
+    /* PITCH FILTER & CONTROLS ACCORDION ON MOBILE */
+    #viewPitch .filter-panel {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 6px !important;
+        padding: 8px 8px !important;
+        background: rgba(13, 19, 33, 0.9) !important;
+    }
 
+    #viewPitch .filter-panel > div {
+        width: 100% !important;
+        justify-content: space-between !important;
+        gap: 6px !important;
+    }
+
+    #selectPitchTeam {
+        flex: 1 1 auto !important;
+        min-width: 120px !important;
+        font-size: 12px !important;
+        padding: 5px 8px !important;
+    }
+
+    #viewPitch .btn-action {
+        font-size: 10px !important;
+        padding: 5px 8px !important;
+        border-radius: 6px !important;
+        flex: 1 1 auto !important;
+        justify-content: center !important;
+        white-space: nowrap !important;
+    }
+
+    /* Club Quick Bar Scroll */
+    .pitch-club-quick-bar {
+        padding: 4px 2px 8px !2px;
+        gap: 5px !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    .club-quick-btn {
+        padding: 4px 9px !important;
+        font-size: 11px !important;
+        border-radius: 6px !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* 2D PITCH FIELD CONTAINER (100% RESPONSIVE) */
+    .pitch-container-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+
+    .pitch-field-container {
+        width: 100% !important;
+    }
+
+    .pitch-field {
+        min-height: 480px !important;
+        max-height: 560px !important;
+        height: auto !important;
+        padding: 10px 4px !important;
+        border-radius: 10px !important;
+        border-width: 1.5px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Pitch bands */
+    .pitch-band {
+        display: flex !important;
+        flex-direction: row-reverse !important;
+        justify-content: space-evenly !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 1px 0 !important;
+        gap: 1px !important;
+    }
+
+    /* Individual Player Node on Pitch */
+    .pitch-player-node {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        max-width: 66px !important;
+        margin: 0 1px !important;
+        padding: 0 !important;
+    }
+
+    /* Player Card on Pitch */
+    .pitch-card {
+        min-width: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 3px 2px !important;
+        border-radius: 6px !important;
+        border-width: 1px !important;
+        gap: 1px !important;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6) !important;
+    }
+
+    .pitch-card-header {
+        gap: 2px !important;
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    .pitch-role-badge {
+        width: 13px !important;
+        height: 13px !important;
+        font-size: 8px !important;
+        line-height: 13px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .pitch-ovr-tag {
+        font-size: 7.5px !important;
+        padding: 0.5px 2px !important;
+        border-radius: 2px !important;
+        line-height: 1 !important;
+    }
+
+    .pitch-oop-pill, .pitch-fpn-pill {
+        font-size: 6.5px !important;
+        padding: 0.5px 2px !important;
+        border-radius: 2px !important;
+        line-height: 1 !important;
+    }
+
+    .pitch-card-name {
+        font-size: 8.5px !important;
+        font-weight: 800 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 100% !important;
+        text-align: center !important;
+        line-height: 1.15 !important;
+        margin-top: 1px !important;
+    }
+
+    .pitch-card-pos {
+        font-size: 7px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        line-height: 1 !important;
+        color: var(--text-muted) !important;
+    }
+
+    .pitch-card-sub {
+        font-size: 6.5px !important;
+        margin-top: 1px !important;
+        padding-top: 1px !important;
+        line-height: 1 !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+
+    .sub-role-badge {
+        font-size: 6px !important;
+        padding: 0 1.5px !important;
+        line-height: 8px !important;
+    }
+
+    /* Pitch Tactics Side Columns on Mobile */
+    .pitch-side-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    .tactics-card-col {
+        padding: 12px 10px !important;
+        max-height: none !important;
+        border-radius: 12px !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+    }
+
+    .ballottaggio-item {
+        padding: 6px 8px !important;
+        border-radius: 6px !important;
+    }
+
+    .ballottaggio-bar-track {
+        height: 5px !important;
+        margin-top: 4px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extreme small screen tuning (< 480px) */
+    .brand-title {
+        font-size: 10.5px !important;
+    }
+
+    #tabHomeBtn {
+        padding: 3px 5px !important;
+        font-size: 10px !important;
+    }
+
+    .pitch-player-node {
+        max-width: 60px !important;
+    }
+
+    .pitch-card {
+        padding: 2.5px 1.5px !important;
+    }
+
+    .pitch-card-name {
+        font-size: 8px !important;
+    }
+
+    .pitch-card-pos {
+        font-size: 6.5px !important;
+    }
+}

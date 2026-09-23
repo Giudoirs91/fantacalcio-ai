@@ -746,17 +746,20 @@ body {
 
 /* Diagnosis Cell */
 .diagnosis-badge {
-    display: inline-flex;
-    align-items: center;
+    display: flex;
+    align-items: flex-start;
     gap: 6px;
     color: #f1f5f9;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 12.5px;
-    white-space: nowrap;
+    white-space: normal !important;
+    line-height: 1.35;
+    max-width: 440px;
 }
 .diagnosis-icon {
     font-size: 14px;
     flex-shrink: 0;
+    margin-top: 1px;
 }
 
 /* Return Date Badge */
@@ -1054,8 +1057,47 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Injuries Table Specific Column Layout */
+#injuriesTable {
+    width: 100%;
+    table-layout: auto;
+}
+#injuriesTable th.col-player, #injuriesTable td.col-player {
+    width: 25%;
+    min-width: 160px;
+    white-space: nowrap;
+}
+#injuriesTable th.col-date, #injuriesTable td.col-date {
+    width: 18%;
+    min-width: 130px;
+    white-space: nowrap;
+}
+#injuriesTable th.col-diag, #injuriesTable td.col-diag {
+    width: 38%;
+    min-width: 200px;
+    white-space: normal !important;
+}
+#injuriesTable th.col-tier, #injuriesTable td.col-tier {
+    width: 11%;
+    min-width: 85px;
+    white-space: nowrap;
+}
+#injuriesTable th.col-action, #injuriesTable td.col-action {
+    width: 8%;
+    min-width: 65px;
+    white-space: nowrap;
+}
+
+/* Griglia Portieri Column Layout */
+#gkTable {
+    width: 100%;
+}
+#gkTable th, #gkTable td {
+    white-space: nowrap;
+}
+
 /* Smartwatch & Mobile Media Query */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .desktop-only {
         display: none !important;
     }
@@ -1069,8 +1111,8 @@ body {
         padding: 9px 8px;
     }
     .return-date-pill {
-        padding: 3px 7px;
-        font-size: 11px;
+        padding: 4px 8px;
+        font-size: 11.5px;
         font-weight: 800;
     }
     .cell-player-box {
@@ -1093,6 +1135,62 @@ body {
     }
     .pillar-search-wrapper {
         min-width: 100%;
+    }
+
+    /* Rigoristi Smartphone Card Layout */
+    #rigoristiTable thead {
+        display: none !important;
+    }
+    #rigoristiTable, #rigoristiTable tbody, #rigoristiTable tr.tactic-row, #rigoristiTable tr.tactic-row td {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+    #rigoristiTable tr.tactic-row {
+        background: rgba(18, 22, 29, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        margin-bottom: 14px;
+        padding: 12px 14px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+    #rigoristiTable tr.tactic-row td {
+        padding: 6px 0 !important;
+        border: none !important;
+        white-space: normal !important;
+    }
+    #rigoristiTable tr.tactic-row td:first-child {
+        padding-bottom: 8px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+        margin-bottom: 6px;
+    }
+    .mobile-tactic-field {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .mobile-tactic-label {
+        font-size: 10.5px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #94a3b8;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    #rigoristiTable .takers-flow, #rigoristiTable .setpiece-tag-group {
+        flex-wrap: wrap !important;
+        gap: 5px !important;
+        white-space: normal !important;
+    }
+
+    /* Griglia Portieri Smartphone Layout */
+    #gkTable th.desktop-only, #gkTable td.desktop-only {
+        display: none !important;
+    }
+    #gkTable td {
+        padding: 10px 8px !important;
     }
 }
 
@@ -1289,14 +1387,14 @@ def generate_injuries_pillar(players, injuries_db):
                     </div>
                 </div>
             </td>
+            <td class="col-date">
+                <span class="return-date-pill">📅 {clean_html(rientro_display)}</span>
+            </td>
             <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>{clean_html(motivo)}</span>
                 </div>
-            </td>
-            <td class="col-date">
-                <span class="return-date-pill">📅 {clean_html(rientro_display)}</span>
             </td>
             <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-{tier}">{tier}</span>
@@ -1425,13 +1523,13 @@ def generate_injuries_pillar(players, injuries_db):
                     <thead>
                         <tr>
                             <th class="col-player">Calciatore &amp; Ruolo</th>
-                            <th class="col-diag desktop-only">Diagnosi Infortunio</th>
                             <th class="col-date" onclick="toggleSortReturnDate()" style="cursor:pointer;" title="Clicca per invertire l'ordinamento per data di rientro">
                                 Rientro Stimato <span id="sortDateIcon" style="color:#fbbf24;margin-left:4px;">▲</span>
                             </th>
+                            <th class="col-diag desktop-only">Diagnosi Infortunio</th>
                             <th class="col-tier desktop-only">Fragilità Clinica</th>
                             <th class="col-action" style="text-align:center;">
-                                <span class="desktop-only">Dettagli</span>
+                                <span class="desktop-only">Scheda</span>
                                 <span class="mobile-only">Info</span>
                             </th>
                         </tr>
@@ -1601,13 +1699,22 @@ def generate_rigoristi_pillar(tactical_db):
                 </div>
             </td>
             <td>
-                <div class="takers-flow">{takers_html}</div>
+                <div class="mobile-tactic-field">
+                    <span class="mobile-tactic-label mobile-only">🎯 Rigoristi:</span>
+                    <div class="takers-flow">{takers_html}</div>
+                </div>
             </td>
             <td>
-                <div class="setpiece-tag-group">{pun_html}</div>
+                <div class="mobile-tactic-field">
+                    <span class="mobile-tactic-label mobile-only">🪄 Punizioni:</span>
+                    <div class="setpiece-tag-group">{pun_html}</div>
+                </div>
             </td>
             <td>
-                <div class="setpiece-tag-group">{cor_html}</div>
+                <div class="mobile-tactic-field">
+                    <span class="mobile-tactic-label mobile-only">🚩 Corner:</span>
+                    <div class="setpiece-tag-group">{cor_html}</div>
+                </div>
             </td>
         </tr>
         """
@@ -1792,16 +1899,17 @@ def generate_gk_pillar(gk_matrix_data):
                     </div>
                 </div>
             </td>
-            <td style="text-align:center;white-space:nowrap;">
+            <td class="desktop-only" style="text-align:center;white-space:nowrap;">
                 <span style="font-weight:800;color:#fff;font-size:13.5px;">{home}</span><span style="color:#64748b;font-size:11px;">/38</span>
             </td>
             <td style="text-align:center;white-space:nowrap;">
                 {conflict_badge}
+                <div class="mobile-only" style="margin-top:3px;font-size:11px;color:#94a3b8;font-weight:700;">{home}/38 in casa</div>
             </td>
             <td style="text-align:center;white-space:nowrap;">
                 <span style="color:{pct_color};font-weight:900;font-size:14px;font-family:'Outfit',sans-serif;">{pct:.1f}%</span>
             </td>
-            <td style="text-align:center;white-space:nowrap;">
+            <td class="desktop-only" style="text-align:center;white-space:nowrap;">
                 {tier_badge}
             </td>
         </tr>
@@ -1894,10 +2002,10 @@ def generate_gk_pillar(gk_matrix_data):
                     <thead>
                         <tr>
                             <th>Coppia di Club</th>
-                            <th style="text-align:center;">Gare Casa Coperte</th>
+                            <th class="desktop-only" style="text-align:center;">Gare Casa Coperte</th>
                             <th style="text-align:center;">Contemporaneità Trasferta</th>
                             <th style="text-align:center;">Alternanza Casa %</th>
-                            <th style="text-align:center;">Giudizio Algoritmo</th>
+                            <th class="desktop-only" style="text-align:center;">Giudizio Algoritmo</th>
                         </tr>
                     </thead>
                     <tbody>

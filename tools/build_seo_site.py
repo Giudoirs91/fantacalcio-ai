@@ -397,90 +397,576 @@ body {
 }
 
 .site-container {
-    max-width: 1140px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 16px;
-}
-
-/* Tabs Navigation in SEO Page */
-.seo-tab-nav {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 20px 0 16px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 8px;
-    overflow-x: auto;
-}
-.seo-tab-btn {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #94a3b8;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-.seo-tab-btn:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.08);
-}
-.seo-tab-btn.active {
-    background: rgba(56, 189, 248, 0.15);
-    border-color: rgba(56, 189, 248, 0.4);
-    color: #38bdf8;
-}
-
-.seo-tab-pane {
-    display: block;
-    margin-bottom: 24px;
+    padding: 0 20px;
 }
 
 /* Breadcrumbs */
 .breadcrumbs {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 11.5px;
-    color: #94a3b8;
-    padding: 16px 0 6px 0;
-}
-.breadcrumbs a { color: #94a3b8; text-decoration: none; }
-.breadcrumbs a:hover { color: #38bdf8; }
-
-/* Tactical set piece chips */
-.tactical-piece-card {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    padding: 14px 16px;
-}
-.tactical-piece-card h4 {
+    gap: 8px;
     font-size: 12px;
-    text-transform: uppercase;
+    color: #64748b;
+    padding: 20px 0 14px 0;
+    font-weight: 600;
+}
+.breadcrumbs a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.breadcrumbs a:hover {
     color: #38bdf8;
-    margin-bottom: 6px;
+}
+.breadcrumbs-sep {
+    color: #475569;
+}
+.breadcrumbs-cur {
+    color: #f8fafc;
+}
+
+/* Hero Section */
+.pillar-hero {
+    background: radial-gradient(120% 140% at 50% -20%, rgba(56, 189, 248, 0.16) 0%, rgba(15, 23, 42, 0.8) 100%), rgba(18, 22, 29, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 32px 36px;
+    margin-bottom: 22px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.pillar-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.8), transparent);
+}
+.pillar-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    color: #38bdf8;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+}
+.pillar-title {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    font-size: 27px;
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.4px;
+    line-height: 1.25;
+}
+.pillar-desc {
+    font-size: 14.5px;
+    color: #94a3b8;
+    margin: 0;
+    max-width: 840px;
+    line-height: 1.6;
+}
+
+/* KPI Metric Cards Grid */
+.pillar-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+    margin-bottom: 22px;
+}
+.pillar-kpi-card {
+    background: rgba(18, 22, 29, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+.pillar-kpi-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(56, 189, 248, 0.35);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+.pillar-kpi-icon {
+    font-size: 24px;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.pillar-kpi-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+}
+.pillar-kpi-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-top: 2px;
+}
+
+/* Interactive Filter Bar */
+.pillar-controls-bar {
+    background: rgba(18, 22, 29, 0.92);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+.pillar-search-wrapper {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+}
+.pillar-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #64748b;
+    pointer-events: none;
+}
+.pillar-search-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 10px 14px 10px 38px;
+    color: #fff;
+    font-size: 13.5px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+.pillar-search-input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+    background: rgba(0, 0, 0, 0.65);
+}
+.pillar-search-input::placeholder {
+    color: #64748b;
+}
+
+.pillar-select {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: #e2e8f0;
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+.pillar-select:focus {
+    border-color: #38bdf8;
+}
+
+.pillar-chips-group {
     display: flex;
     align-items: center;
     gap: 6px;
+    overflow-x: auto;
+}
+.pillar-filter-chip {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    padding: 7px 13px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+.pillar-filter-chip:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+.pillar-filter-chip.active {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: #38bdf8;
+    color: #38bdf8;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
 }
 
-.cta-banner {
-    background: linear-gradient(135deg, rgba(2, 132, 199, 0.25) 0%, rgba(6, 182, 212, 0.25) 100%);
-    border: 1px solid rgba(56, 189, 248, 0.4);
-    border-radius: 14px;
-    padding: 28px;
-    text-align: center;
-    margin: 32px 0 20px 0;
+/* Glass Table Card */
+.pillar-table-card {
+    background: rgba(18, 22, 29, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    margin-bottom: 24px;
 }
-.cta-banner h2 { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-.cta-banner p { font-size: 14px; color: #cbd5e1; margin-bottom: 18px; max-width: 640px; margin-left: auto; margin-right: auto; }
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.table-responsive::-webkit-scrollbar {
+    height: 6px;
+}
+.table-responsive::-webkit-scrollbar-track {
+    background: rgba(12, 14, 18, 0.6);
+}
+.table-responsive::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+}
+
+/* Ultra Modern Table */
+.seo-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: inherit;
+    text-align: left;
+}
+.seo-table th {
+    background: rgba(12, 15, 22, 0.96);
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 15px 18px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+    white-space: nowrap;
+}
+.seo-table td {
+    padding: 15px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    vertical-align: middle;
+    font-size: 13.5px;
+    color: #e2e8f0;
+}
+.seo-table tbody tr {
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.seo-table tbody tr:hover {
+    background: rgba(56, 189, 248, 0.04);
+}
+.seo-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Cell Elements */
+.cell-player-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.player-role-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 12px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.role-P { background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+.role-D { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+.role-C { background: rgba(56, 189, 248, 0.18); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); }
+.role-A { background: rgba(244, 63, 94, 0.18); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.4); }
+
+.player-main-name {
+    font-weight: 800;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none !important;
+    transition: color 0.15s ease;
+    display: block;
+    line-height: 1.3;
+}
+.player-main-name:hover {
+    color: #38bdf8;
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+.player-meta-sub {
+    font-size: 11.5px;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 3px;
+}
+.team-tag {
+    color: #cbd5e1;
+    font-weight: 600;
+}
+.meta-dot {
+    color: #475569;
+}
+
+/* Diagnosis Cell */
+.diagnosis-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #f1f5f9;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1.4;
+}
+.diagnosis-icon {
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+/* Return Date Badge */
+.return-date-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    color: #fbbf24;
+    padding: 5px 11px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 12.5px;
+    white-space: nowrap;
+}
+
+/* Fragility Chips */
+.fragility-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+.tier-CRISTALLO {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.18), rgba(185, 28, 28, 0.28));
+    border: 1px solid #ef4444;
+    color: #fca5a5;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.25);
+}
+.tier-FRAGILE {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.18), rgba(194, 65, 12, 0.28));
+    border: 1px solid #f97316;
+    color: #fdba74;
+}
+.tier-ATTENZIONE {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(180, 83, 9, 0.28));
+    border: 1px solid #f59e0b;
+    color: #fde047;
+}
+.tier-STABILE {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(4, 120, 87, 0.28));
+    border: 1px solid #10b981;
+    color: #6ee7b7;
+}
+
+/* Action Button */
+.btn-detail-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: #38bdf8;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+.btn-detail-link:hover {
+    background: #38bdf8;
+    color: #0b0f19;
+    border-color: #38bdf8;
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.45);
+    transform: translateX(2px);
+}
+
+/* Rigoristi Tactical Design System */
+.team-tactical-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.team-badge-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 12px;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.team-name-bold {
+    font-weight: 800;
+    font-size: 14.5px;
+    color: #fff;
+    line-height: 1.2;
+}
+.team-coach-sub {
+    font-size: 11.5px;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+.tactical-formation-chip {
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: #38bdf8;
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 1px 7px;
+    border-radius: 6px;
+    margin-left: 4px;
+}
+
+.takers-flow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.taker-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.taker-1 {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.3));
+    border: 1px solid #fbbf24;
+    color: #fbbf24;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.22);
+}
+.taker-2 {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #f1f5f9;
+}
+.taker-3 {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+}
+
+.setpiece-tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.setpiece-tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    padding: 4px 9px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.setpiece-tag.corner-tag {
+    background: rgba(168, 85, 247, 0.1);
+    border-color: rgba(168, 85, 247, 0.3);
+    color: #c084fc;
+}
+
+/* Call to action & footer */
+.pillar-cta-box {
+    background: radial-gradient(120% 120% at 50% 0%, rgba(56, 189, 248, 0.18) 0%, rgba(18, 22, 29, 0.95) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 18px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    margin: 36px 0 24px 0;
+}
+.pillar-cta-box h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 8px 0;
+}
+.pillar-cta-box p {
+    font-size: 14px;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    line-height: 1.5;
+}
+.btn-cta-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 12px 26px;
+    border-radius: 10px;
+    text-decoration: none !important;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+    transition: all 0.2s ease;
+}
+.btn-cta-main:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 28px rgba(6, 182, 212, 0.6);
+}
 
 .site-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -582,6 +1068,10 @@ from tools.seo_player_template import generate_player_page
 
 def generate_injuries_pillar(players, injuries_db):
     active_players = [p for p in players if p.get("is_injured")]
+    total_injured = len(active_players)
+    muscular_count = sum(1 for p in active_players if any(w in p.get("infortunio_motivo", "").lower() for w in ["muscol", "bicipite", "adduttore", "flessore", "polpaccio", "affaticamento", "coscia"]))
+    fragile_count = sum(1 for p in active_players if p.get("fragility_tier") in ["CRISTALLO", "FRAGILE"])
+    all_teams = sorted(list(set(p.get("team") for p in active_players if p.get("team"))))
     
     rows = ""
     for p in active_players:
@@ -597,23 +1087,41 @@ def generate_injuries_pillar(players, injuries_db):
         full_name = hist_entry.get("tm_name", name)
         slug = slugify(full_name)
         
-        tier_color = "#f87171" if tier in ["CRISTALLO", "FRAGILE"] else ("#fbbf24" if tier == "ATTENZIONE" else "#34d399")
-        
         rows += f"""
-        <tr>
+        <tr class="injury-row" data-name="{clean_html(full_name.lower())}" data-team="{clean_html(team.lower())}" data-role="{role}" data-tier="{tier}">
             <td>
-                <a href="../calciatore/{slug}/index.html" style="font-weight:700;color:#fff;">{clean_html(full_name)}</a>
-                <div style="font-size:11px;color:#94a3b8;">{clean_html(team)} &bull; {role}</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-{role}">{role}</div>
+                    <div>
+                        <a href="../calciatore/{slug}/" class="player-main-name">{clean_html(full_name)}</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">{clean_html(team)}</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo {role}</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">{clean_html(motivo)}</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">{clean_html(rientro)}</td>
-            <td><span class="injury-tier-chip" style="border:1px solid {tier_color};color:{tier_color};padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">{tier}</span></td>
             <td>
-                <a href="../calciatore/{slug}/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>{clean_html(motivo)}</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 {clean_html(rientro)}</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-{tier}">{tier}</span>
+            </td>
+            <td>
+                <a href="../calciatore/{slug}/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         """
         
+    team_options = "".join([f'<option value="{clean_html(t.lower())}">{clean_html(t)}</option>' for t in all_teams])
+
     meta_title = "Infortunati Serie A 2026/27: Tabella Tempi di Recupero & Rientri | Fanta Master AI"
     meta_desc = "Tabella sempre aggiornata di tutti i calciatori infortunati in Serie A 2026/27: diagnosi medica, tempi di recupero stimati, data di rientro e consigli per l'asta Fantacalcio."
     page_url = f"{BASE_URL}/infortunati-serie-a/"
@@ -622,10 +1130,13 @@ def generate_injuries_pillar(players, injuries_db):
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>{clean_html(meta_title)}</title>
     <meta name="description" content="{clean_html(meta_desc)}">
     <link rel="canonical" href="{page_url}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/seo.css">
 </head>
 <body>
@@ -633,25 +1144,79 @@ def generate_injuries_pillar(players, injuries_db):
 
     <main class="site-container">
         <nav class="breadcrumbs">
-            <a href="../index.html">Home</a> <span>/</span> <span style="color:#fff;">Infortunati Serie A</span>
+            <a href="../">Home</a> <span class="breadcrumbs-sep">/</span> <span class="breadcrumbs-cur">Infortunati Serie A</span>
         </nav>
 
-        <section class="player-hero-card" style="display:block;">
-            <h1 style="font-size:24px;font-weight:800;color:#fff;margin-bottom:6px;">Infortunati Serie A 2026/27: Tabella Tempi di Recupero & Rientri</h1>
-            <p style="font-size:13.5px;color:#cbd5e1;">
-                Monitoraggio clinico in tempo reale di tutti i calciatori attualmente indisponibili nei 20 club di Serie A, verificato con Transfermarkt e bollettini medici.
+        <!-- HERO HEADER -->
+        <section class="pillar-hero">
+            <div class="pillar-tag">🩺 MONITORAGGIO CLINICO SERIE A 2026/27</div>
+            <h1 class="pillar-title">Infortunati Serie A: Tempi di Recupero &amp; Rientri</h1>
+            <p class="pillar-desc">
+                Bollettini medici ufficiali e verificati in tempo reale: diagnosi cliniche dettagliate, tempi di recupero stimati e indice di fragilità per gestire al meglio formazioni, asta e scambi.
             </p>
         </section>
 
-        <section class="content-section" style="background:rgba(15,23,42,0.75);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px;">
+        <!-- KPI SUMMARY METRICS -->
+        <section class="pillar-kpi-grid">
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#f43f5e;">🔴</div>
+                <div>
+                    <div class="pillar-kpi-num">{total_injured}</div>
+                    <div class="pillar-kpi-label">Infortunati Attivi</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#fbbf24;">⚡</div>
+                <div>
+                    <div class="pillar-kpi-num">{muscular_count}</div>
+                    <div class="pillar-kpi-label">Lesioni Muscolari</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#f97316;">⚠️</div>
+                <div>
+                    <div class="pillar-kpi-num">{fragile_count}</div>
+                    <div class="pillar-kpi-label">Fragili / Cristallo</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#38bdf8;">🛡️</div>
+                <div>
+                    <div class="pillar-kpi-num">G5</div>
+                    <div class="pillar-kpi-label">Dati Aggiornati Live</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE FILTER CONTROLS BAR -->
+        <div class="pillar-controls-bar">
+            <div class="pillar-search-wrapper">
+                <span class="pillar-search-icon">🔍</span>
+                <input type="text" id="injurySearch" class="pillar-search-input" placeholder="Cerca calciatore, club o tipo di infortunio..." oninput="filterInjuries()">
+            </div>
+            <select id="injuryTeamFilter" class="pillar-select" onchange="filterInjuries()">
+                <option value="all">Tutti i Club</option>
+                {team_options}
+            </select>
+            <div class="pillar-chips-group">
+                <button type="button" class="pillar-filter-chip active" data-role="ALL" onclick="setRoleFilter('ALL', this)">TUTTI</button>
+                <button type="button" class="pillar-filter-chip" data-role="P" onclick="setRoleFilter('P', this)">🧤 P</button>
+                <button type="button" class="pillar-filter-chip" data-role="D" onclick="setRoleFilter('D', this)">🛡️ D</button>
+                <button type="button" class="pillar-filter-chip" data-role="C" onclick="setRoleFilter('C', this)">🪄 C</button>
+                <button type="button" class="pillar-filter-chip" data-role="A" onclick="setRoleFilter('A', this)">⚡ A</button>
+            </div>
+        </div>
+
+        <!-- GLASS TABLE -->
+        <section class="pillar-table-card">
             <div class="table-responsive">
-                <table class="seo-table">
+                <table class="seo-table" id="injuriesTable">
                     <thead>
                         <tr>
-                            <th>Calciatore</th>
+                            <th>Calciatore &amp; Ruolo</th>
                             <th>Diagnosi Infortunio</th>
                             <th>Rientro Stimato</th>
-                            <th>Fragilità</th>
+                            <th>Fragilità Clinica</th>
                             <th>Dettagli</th>
                         </tr>
                     </thead>
@@ -662,18 +1227,52 @@ def generate_injuries_pillar(players, injuries_db):
             </div>
         </section>
 
-        <section class="cta-banner">
-            <h2>Non farti cogliere impreparato all'Asta!</h2>
-            <p>Utilizza l'algoritmo predittivo di Fanta Master AI per calcolare la penalità esatta sul prezzo d'asta per ogni infortunato.</p>
-            <a href="../app.html" class="btn-launch-app" style="font-size:14px;padding:10px 22px;">Vai alla Dashboard Live 🚀</a>
+        <!-- CTA BOX -->
+        <section class="pillar-cta-box">
+            <h3>Non farti cogliere impreparato all'Asta o agli Scambi!</h3>
+            <p>L'algoritmo predittivo di Fanta Master AI calcola la svalutazione esatta del prezzo d'asta in crediti (CR) per ogni infortunato e suggerisce i migliori sostituti in rosa.</p>
+            <a href="../" class="btn-cta-main">Vai alla Dashboard Live 🚀</a>
         </section>
     </main>
 
     <footer class="site-footer">
         <div class="site-container">
-            <p>&copy; 2026/2027 Fanta Master AI &bull; Storico Infortuni Ufficiale Serie A</p>
+            <p>&copy; 2026/2027 Fanta Master AI &bull; Portale Statistico Ufficiale Serie A</p>
         </div>
     </footer>
+
+    <script>
+        let currentRole = 'ALL';
+        function setRoleFilter(role, btn) {{
+            currentRole = role;
+            document.querySelectorAll('.pillar-filter-chip').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            filterInjuries();
+        }}
+
+        function filterInjuries() {{
+            const search = (document.getElementById('injurySearch').value || '').toLowerCase().trim();
+            const team = document.getElementById('injuryTeamFilter').value;
+            const rows = document.querySelectorAll('#injuriesTable tbody tr');
+
+            rows.forEach(tr => {{
+                const rName = tr.getAttribute('data-name') || '';
+                const rTeam = tr.getAttribute('data-team') || '';
+                const rRole = tr.getAttribute('data-role') || '';
+                const rTier = tr.getAttribute('data-tier') || '';
+
+                const matchesSearch = !search || rName.includes(search) || rTeam.includes(search);
+                const matchesTeam = team === 'all' || rTeam === team;
+                const matchesRole = currentRole === 'ALL' || rRole === currentRole;
+
+                if (matchesSearch && matchesTeam && matchesRole) {{
+                    tr.style.display = '';
+                }} else {{
+                    tr.style.display = 'none';
+                }}
+            }});
+        }}
+    </script>
     <script src="../js/tracker.js" defer></script>
 </body>
 </html>
@@ -681,6 +1280,7 @@ def generate_injuries_pillar(players, injuries_db):
     return html
 
 def generate_rigoristi_pillar(tactical_db):
+    total_teams = len(tactical_db)
     rows = ""
     for team, data in sorted(tactical_db.items()):
         all_coach = data.get("all", "Allenatore")
@@ -689,16 +1289,40 @@ def generate_rigoristi_pillar(tactical_db):
         punizioni = data.get("punizioni", [])
         corner = data.get("corner", [])
         
-        rig_str = ", ".join([f"<strong style='color:#fbbf24;'>{r}</strong>" if i == 0 else r for i, r in enumerate(rigoristi)]) if rigoristi else "Non specificato"
-        pun_str = ", ".join(punizioni) if punizioni else "-"
-        cor_str = ", ".join(corner) if corner else "-"
+        takers_html = ""
+        for i, r in enumerate(rigoristi[:3]):
+            rank_class = f"taker-{i+1}"
+            rank_medal = "🥇" if i == 0 else ("🥈" if i == 1 else "🥉")
+            takers_html += f'<span class="taker-badge {rank_class}">{rank_medal} {clean_html(r)}</span> '
+        if not takers_html:
+            takers_html = '<span style="color:#64748b;font-size:12px;">Non specificato</span>'
+            
+        pun_html = "".join([f'<span class="setpiece-tag">🪄 {clean_html(p)}</span>' for p in punizioni]) if punizioni else '<span style="color:#64748b;font-size:12px;">-</span>'
+        cor_html = "".join([f'<span class="setpiece-tag corner-tag">🚩 {clean_html(c)}</span>' for c in corner]) if corner else '<span style="color:#64748b;font-size:12px;">-</span>'
+        
+        team_short = team[:3].upper()
+        search_data = f"{team.lower()} {all_coach.lower()} {modulo.lower()} {' '.join(rigoristi).lower()} {' '.join(punizioni).lower()}"
         
         rows += f"""
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">{clean_html(team)}</strong><br><small style="color:#94a3b8;">{clean_html(all_coach)} ({modulo})</small></td>
-            <td><span>{rig_str}</span></td>
-            <td><span style="color:#cbd5e1;">{clean_html(pun_str)}</span></td>
-            <td><span style="color:#94a3b8;">{clean_html(cor_str)}</span></td>
+        <tr class="tactic-row" data-search="{clean_html(search_data)}">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">{team_short}</div>
+                    <div>
+                        <div class="team-name-bold">{clean_html(team)} <span class="tactical-formation-chip">{clean_html(modulo)}</span></div>
+                        <div class="team-coach-sub">All. {clean_html(all_coach)}</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow">{takers_html}</div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group">{pun_html}</div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group">{cor_html}</div>
+            </td>
         </tr>
         """
         
@@ -710,10 +1334,13 @@ def generate_rigoristi_pillar(tactical_db):
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>{clean_html(meta_title)}</title>
     <meta name="description" content="{clean_html(meta_desc)}">
     <link rel="canonical" href="{page_url}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/seo.css">
 </head>
 <body>
@@ -721,23 +1348,66 @@ def generate_rigoristi_pillar(tactical_db):
 
     <main class="site-container">
         <nav class="breadcrumbs">
-            <a href="../index.html">Home</a> <span>/</span> <span style="color:#fff;">Rigoristi Serie A</span>
+            <a href="../">Home</a> <span class="breadcrumbs-sep">/</span> <span class="breadcrumbs-cur">Rigoristi Serie A</span>
         </nav>
 
-        <section class="player-hero-card" style="display:block;">
-            <h1 style="font-size:24px;font-weight:800;color:#fff;margin-bottom:6px;">Rigoristi Serie A 2026/27: Gerarchie Rigori e Calci Piazzati</h1>
-            <p style="font-size:13.5px;color:#cbd5e1;">
-                La guida definitiva ai tiratori dal dischetto e specialisti da fermo di tutte le 20 squadre di Serie A per l'asta del Fantacalcio.
+        <!-- HERO HEADER -->
+        <section class="pillar-hero">
+            <div class="pillar-tag">🎯 GERARCHIE TATTICHE UFFICIALI SERIE A 2026/27</div>
+            <h1 class="pillar-title">Rigoristi Serie A: Gerarchie Rigori, Punizioni e Corner</h1>
+            <p class="pillar-desc">
+                La guida tattica definitiva per tutti i 20 club di Serie A: primo, secondo e terzo rigorista designato, tiratori di punizioni dirette e specialisti dei corner per fare la differenza al Fantacalcio.
             </p>
         </section>
 
-        <section class="content-section" style="background:rgba(15,23,42,0.75);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px;">
+        <!-- KPI SUMMARY METRICS -->
+        <section class="pillar-kpi-grid">
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#38bdf8;">🏟️</div>
+                <div>
+                    <div class="pillar-kpi-num">{total_teams}</div>
+                    <div class="pillar-kpi-label">Club Monitorati</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#fbbf24;">🎯</div>
+                <div>
+                    <div class="pillar-kpi-num">20</div>
+                    <div class="pillar-kpi-label">1° Tiratori Designati</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#34d399;">🪄</div>
+                <div>
+                    <div class="pillar-kpi-num">60+</div>
+                    <div class="pillar-kpi-label">Tiratori di Punizioni</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#c084fc;">🚩</div>
+                <div>
+                    <div class="pillar-kpi-num">50+</div>
+                    <div class="pillar-kpi-label">Battitori di Corner</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEARCH BAR -->
+        <div class="pillar-controls-bar">
+            <div class="pillar-search-wrapper">
+                <span class="pillar-search-icon">🔍</span>
+                <input type="text" id="rigoristiSearch" class="pillar-search-input" placeholder="Cerca squadra, rigorista, tiratore o allenatore..." oninput="filterRigoristi()">
+            </div>
+        </div>
+
+        <!-- GLASS TABLE -->
+        <section class="pillar-table-card">
             <div class="table-responsive">
-                <table class="seo-table">
+                <table class="seo-table" id="rigoristiTable">
                     <thead>
                         <tr>
-                            <th>Squadra & Allenatore</th>
-                            <th>Rigoristi Designati (1°, 2°, 3°)</th>
+                            <th>Squadra &amp; Modulo</th>
+                            <th>Gerarchia Rigoristi (1°, 2°, 3°)</th>
                             <th>Specialisti Punizioni</th>
                             <th>Battitori Corner</th>
                         </tr>
@@ -748,13 +1418,36 @@ def generate_rigoristi_pillar(tactical_db):
                 </table>
             </div>
         </section>
+
+        <!-- CTA BOX -->
+        <section class="pillar-cta-box">
+            <h3>Cerchi tiratori infallibili per la tua Rosa?</h3>
+            <p>Nella nostra Dashboard trovi l'indice xFM dei rigoristi, le percentuali di conversione dal dischetto e l'impatto sul budget per ciascun calciatore.</p>
+            <a href="../" class="btn-cta-main">Esplora il Listone Live 🚀</a>
+        </section>
     </main>
 
     <footer class="site-footer">
         <div class="site-container">
-            <p>&copy; 2026/2027 Fanta Master AI &bull; Rigoristi Ufficiali Serie A</p>
+            <p>&copy; 2026/2027 Fanta Master AI &bull; Rigoristi e Tattica Ufficiale Serie A</p>
         </div>
     </footer>
+
+    <script>
+        function filterRigoristi() {{
+            const search = (document.getElementById('rigoristiSearch').value || '').toLowerCase().trim();
+            const rows = document.querySelectorAll('#rigoristiTable tbody tr');
+
+            rows.forEach(tr => {{
+                const s = tr.getAttribute('data-search') || '';
+                if (!search || s.includes(search)) {{
+                    tr.style.display = '';
+                }} else {{
+                    tr.style.display = 'none';
+                }}
+            }});
+        }}
+    </script>
     <script src="../js/tracker.js" defer></script>
 </body>
 </html>
@@ -768,16 +1461,28 @@ def generate_gk_pillar(gk_matrix_data):
     
     couples = gk_matrix_data.get("couples", [])
     rows = ""
-    for c in couples[:25]:
-        t1 = c.get("team1")
-        t2 = c.get("team2")
+    for c in couples[:30]:
+        t1 = c.get("team1", "")
+        t2 = c.get("team2", "")
         score = c.get("score", 0)
         conflicts = c.get("conflicts", 0)
+        
+        conflict_badge = f'<span style="background:rgba(16,185,129,0.15);border:1px solid #10b981;color:#34d399;padding:4px 10px;border-radius:8px;font-weight:800;font-size:12px;">⭐ {conflicts} contemporaneità</span>' if conflicts <= 1 else f'<span style="background:rgba(245,158,11,0.15);border:1px solid #f59e0b;color:#fbbf24;padding:4px 10px;border-radius:8px;font-weight:700;font-size:12px;">{conflicts} contemporaneità</span>'
+        
         rows += f"""
         <tr>
-            <td><strong style="color:#fff;">{clean_html(t1)}</strong> + <strong style="color:#fff;">{clean_html(t2)}</strong></td>
-            <td style="color:#10b981;font-weight:800;text-align:center;">{conflicts} contemporaneità</td>
-            <td style="text-align:center;"><span style="color:#38bdf8;font-weight:700;">{score} pt</span></td>
+            <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <div class="team-badge-circle" style="color:#38bdf8;">🧤</div>
+                    <div>
+                        <strong style="color:#fff;font-size:14.5px;">{clean_html(t1)}</strong>
+                        <span style="color:#64748b;margin:0 6px;">+</span>
+                        <strong style="color:#fff;font-size:14.5px;">{clean_html(t2)}</strong>
+                    </div>
+                </div>
+            </td>
+            <td style="text-align:center;">{conflict_badge}</td>
+            <td style="text-align:center;"><span style="color:#38bdf8;font-weight:900;font-size:15px;font-family:'Outfit',sans-serif;">{score} pt</span></td>
         </tr>
         """
 
@@ -785,10 +1490,13 @@ def generate_gk_pillar(gk_matrix_data):
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>{clean_html(meta_title)}</title>
     <meta name="description" content="{clean_html(meta_desc)}">
     <link rel="canonical" href="{page_url}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/seo.css">
 </head>
 <body>
@@ -796,25 +1504,59 @@ def generate_gk_pillar(gk_matrix_data):
 
     <main class="site-container">
         <nav class="breadcrumbs">
-            <a href="../index.html">Home</a> <span>/</span> <span style="color:#fff;">Griglia Portieri Serie A</span>
+            <a href="../">Home</a> <span class="breadcrumbs-sep">/</span> <span class="breadcrumbs-cur">Griglia Portieri Serie A</span>
         </nav>
 
-        <section class="player-hero-card" style="display:block;">
-            <h1 style="font-size:24px;font-weight:800;color:#fff;margin-bottom:6px;">Griglia Portieri Fantacalcio 2026/27: Migliori Incroci Calendario</h1>
-            <p style="font-size:13.5px;color:#cbd5e1;">
-                La matrice completa di alternanza casa/trasferta a 38 giornate per costruire la coppia di portieri a minor numero di gol subiti.
+        <!-- HERO HEADER -->
+        <section class="pillar-hero">
+            <div class="pillar-tag">🧤 STRATEGIA ASTA ESTREMI DIFENSORI 2026/27</div>
+            <h1 class="pillar-title">Griglia Portieri: Tabella Incroci Casa e Trasferta</h1>
+            <p class="pillar-desc">
+                La matrice matematica a 38 giornate per costruire la coppia di portieri ideale: minimizza le partite difficili e assicurati di avere sempre un portiere che gioca tra le mura amiche.
             </p>
         </section>
 
-        <section class="content-section" style="background:rgba(15,23,42,0.75);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px;">
-            <h2 class="section-title" style="font-size:16px;font-weight:800;color:#fff;margin-bottom:12px;">🏆 Top Incroci Perfetti (0 o 1 sola contemporaneità fuori casa)</h2>
+        <!-- KPI SUMMARY METRICS -->
+        <section class="pillar-kpi-grid">
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#fbbf24;">🧤</div>
+                <div>
+                    <div class="pillar-kpi-num">20</div>
+                    <div class="pillar-kpi-label">Portieri Titolari</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#34d399;">🔄</div>
+                <div>
+                    <div class="pillar-kpi-num">38</div>
+                    <div class="pillar-kpi-label">Giornate Calcolate</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#38bdf8;">🏆</div>
+                <div>
+                    <div class="pillar-kpi-num">Top 30</div>
+                    <div class="pillar-kpi-label">Incroci Consigliati</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#a855f7;">🛡️</div>
+                <div>
+                    <div class="pillar-kpi-num">0-1</div>
+                    <div class="pillar-kpi-label">Minime Sovrapposizioni</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GLASS TABLE -->
+        <section class="pillar-table-card">
             <div class="table-responsive">
                 <table class="seo-table">
                     <thead>
                         <tr>
-                            <th>Accoppiata Squadre</th>
-                            <th style="text-align:center;">Gare Contemporanee</th>
-                            <th style="text-align:center;">Punteggio Incrocio</th>
+                            <th>Coppia di Club</th>
+                            <th style="text-align:center;">Gare Contemporanee Trasferta</th>
+                            <th style="text-align:center;">Indice Efficacia Incrocio</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -823,11 +1565,18 @@ def generate_gk_pillar(gk_matrix_data):
                 </table>
             </div>
         </section>
+
+        <!-- CTA BOX -->
+        <section class="pillar-cta-box">
+            <h3>Vuoi calcolare l'incrocio personalizzato per 3 portieri?</h3>
+            <p>Accedi alla Griglia Portieri interattiva della nostra Dashboard con la matrice completa 38 su 38 e il simulatore di spesa all'asta.</p>
+            <a href="../griglia-portieri/" class="btn-cta-main">Apri la Griglia Interattiva 🚀</a>
+        </section>
     </main>
 
     <footer class="site-footer">
         <div class="site-container">
-            <p>&copy; 2026/2027 Fanta Master AI &bull; Griglia Portieri Serie A</p>
+            <p>&copy; 2026/2027 Fanta Master AI &bull; Algoritmo Incroci Portieri Serie A</p>
         </div>
     </footer>
     <script src="../js/tracker.js" defer></script>

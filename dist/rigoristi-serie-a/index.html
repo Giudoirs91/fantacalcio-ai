@@ -2,10 +2,13 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Rigoristi Serie A 2026/27: Tabella Gerarchie Rigori, Punizioni e Corner | Fanta Master AI</title>
     <meta name="description" content="Tutti i rigoristi ufficiali della Serie A 2026/27 club per club: primo, secondo e terzo tiratore dal dischetto, specialisti delle punizioni e battitori di corner.">
     <link rel="canonical" href="https://fantamasterai.it/rigoristi-serie-a/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/seo.css">
 </head>
 <body>
@@ -94,180 +97,526 @@
 
     <main class="site-container">
         <nav class="breadcrumbs">
-            <a href="../index.html">Home</a> <span>/</span> <span style="color:#fff;">Rigoristi Serie A</span>
+            <a href="../">Home</a> <span class="breadcrumbs-sep">/</span> <span class="breadcrumbs-cur">Rigoristi Serie A</span>
         </nav>
 
-        <section class="player-hero-card" style="display:block;">
-            <h1 style="font-size:24px;font-weight:800;color:#fff;margin-bottom:6px;">Rigoristi Serie A 2026/27: Gerarchie Rigori e Calci Piazzati</h1>
-            <p style="font-size:13.5px;color:#cbd5e1;">
-                La guida definitiva ai tiratori dal dischetto e specialisti da fermo di tutte le 20 squadre di Serie A per l'asta del Fantacalcio.
+        <!-- HERO HEADER -->
+        <section class="pillar-hero">
+            <div class="pillar-tag">🎯 GERARCHIE TATTICHE UFFICIALI SERIE A 2026/27</div>
+            <h1 class="pillar-title">Rigoristi Serie A: Gerarchie Rigori, Punizioni e Corner</h1>
+            <p class="pillar-desc">
+                La guida tattica definitiva per tutti i 20 club di Serie A: primo, secondo e terzo rigorista designato, tiratori di punizioni dirette e specialisti dei corner per fare la differenza al Fantacalcio.
             </p>
         </section>
 
-        <section class="content-section" style="background:rgba(15,23,42,0.75);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px;">
+        <!-- KPI SUMMARY METRICS -->
+        <section class="pillar-kpi-grid">
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#38bdf8;">🏟️</div>
+                <div>
+                    <div class="pillar-kpi-num">20</div>
+                    <div class="pillar-kpi-label">Club Monitorati</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#fbbf24;">🎯</div>
+                <div>
+                    <div class="pillar-kpi-num">20</div>
+                    <div class="pillar-kpi-label">1° Tiratori Designati</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#34d399;">🪄</div>
+                <div>
+                    <div class="pillar-kpi-num">60+</div>
+                    <div class="pillar-kpi-label">Tiratori di Punizioni</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#c084fc;">🚩</div>
+                <div>
+                    <div class="pillar-kpi-num">50+</div>
+                    <div class="pillar-kpi-label">Battitori di Corner</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEARCH BAR -->
+        <div class="pillar-controls-bar">
+            <div class="pillar-search-wrapper">
+                <span class="pillar-search-icon">🔍</span>
+                <input type="text" id="rigoristiSearch" class="pillar-search-input" placeholder="Cerca squadra, rigorista, tiratore o allenatore..." oninput="filterRigoristi()">
+            </div>
+        </div>
+
+        <!-- GLASS TABLE -->
+        <section class="pillar-table-card">
             <div class="table-responsive">
-                <table class="seo-table">
+                <table class="seo-table" id="rigoristiTable">
                     <thead>
                         <tr>
-                            <th>Squadra & Allenatore</th>
-                            <th>Rigoristi Designati (1°, 2°, 3°)</th>
+                            <th>Squadra &amp; Modulo</th>
+                            <th>Gerarchia Rigoristi (1°, 2°, 3°)</th>
                             <th>Specialisti Punizioni</th>
                             <th>Battitori Corner</th>
                         </tr>
                     </thead>
                     <tbody>
                         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Atalanta</strong><br><small style="color:#94a3b8;">Maurizio Sarri (4-3-3)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Kessiè</strong>, Scamacca, De Ketelaere</span></td>
-            <td><span style="color:#cbd5e1;">Gaetano, Samardzic, Zalewski</span></td>
-            <td><span style="color:#94a3b8;">Gaetano, Zalewski, De Ketelaere</span></td>
+        <tr class="tactic-row" data-search="atalanta maurizio sarri 4-3-3 kessiè scamacca de ketelaere gaetano samardzic zalewski">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">ATA</div>
+                    <div>
+                        <div class="team-name-bold">Atalanta <span class="tactical-formation-chip">4-3-3</span></div>
+                        <div class="team-coach-sub">All. Maurizio Sarri</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Kessiè</span> <span class="taker-badge taker-2">🥈 Scamacca</span> <span class="taker-badge taker-3">🥉 De Ketelaere</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Gaetano</span><span class="setpiece-tag">🪄 Samardzic</span><span class="setpiece-tag">🪄 Zalewski</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Gaetano</span><span class="setpiece-tag corner-tag">🚩 Zalewski</span><span class="setpiece-tag corner-tag">🚩 De Ketelaere</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Bologna</strong><br><small style="color:#94a3b8;">Domenico Tedesco (4-2-3-1)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Orsolini</strong>, Dovbyk, Piccoli</span></td>
-            <td><span style="color:#cbd5e1;">Orsolini, Miranda J., Bernardeschi</span></td>
-            <td><span style="color:#94a3b8;">Orsolini, Miranda J., Cambiaghi</span></td>
+        <tr class="tactic-row" data-search="bologna domenico tedesco 4-2-3-1 orsolini dovbyk piccoli orsolini miranda j. bernardeschi">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">BOL</div>
+                    <div>
+                        <div class="team-name-bold">Bologna <span class="tactical-formation-chip">4-2-3-1</span></div>
+                        <div class="team-coach-sub">All. Domenico Tedesco</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Orsolini</span> <span class="taker-badge taker-2">🥈 Dovbyk</span> <span class="taker-badge taker-3">🥉 Piccoli</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Orsolini</span><span class="setpiece-tag">🪄 Miranda J.</span><span class="setpiece-tag">🪄 Bernardeschi</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Orsolini</span><span class="setpiece-tag corner-tag">🚩 Miranda J.</span><span class="setpiece-tag corner-tag">🚩 Cambiaghi</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Cagliari</strong><br><small style="color:#94a3b8;">Fabio Pisacane (4-3-2-1)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Maldini</strong>, Winks, Kevin Carlos</span></td>
-            <td><span style="color:#cbd5e1;">Maldini, Winks, Fazzini</span></td>
-            <td><span style="color:#94a3b8;">Maldini, Fazzini, Sugawara</span></td>
+        <tr class="tactic-row" data-search="cagliari fabio pisacane 4-3-2-1 maldini winks kevin carlos maldini winks fazzini">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">CAG</div>
+                    <div>
+                        <div class="team-name-bold">Cagliari <span class="tactical-formation-chip">4-3-2-1</span></div>
+                        <div class="team-coach-sub">All. Fabio Pisacane</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Maldini</span> <span class="taker-badge taker-2">🥈 Winks</span> <span class="taker-badge taker-3">🥉 Kevin Carlos</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Maldini</span><span class="setpiece-tag">🪄 Winks</span><span class="setpiece-tag">🪄 Fazzini</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Maldini</span><span class="setpiece-tag corner-tag">🚩 Fazzini</span><span class="setpiece-tag corner-tag">🚩 Sugawara</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Como</strong><br><small style="color:#94a3b8;">Cesc Fabregas (4-2-3-1)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Paz N.</strong>, Kean, Douvikas</span></td>
-            <td><span style="color:#cbd5e1;">Paz N., Baturina, Da Cunha</span></td>
-            <td><span style="color:#94a3b8;">Paz N., Baturina, Couto</span></td>
+        <tr class="tactic-row" data-search="como cesc fabregas 4-2-3-1 paz n. kean douvikas paz n. baturina da cunha">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">COM</div>
+                    <div>
+                        <div class="team-name-bold">Como <span class="tactical-formation-chip">4-2-3-1</span></div>
+                        <div class="team-coach-sub">All. Cesc Fabregas</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Paz N.</span> <span class="taker-badge taker-2">🥈 Kean</span> <span class="taker-badge taker-3">🥉 Douvikas</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Paz N.</span><span class="setpiece-tag">🪄 Baturina</span><span class="setpiece-tag">🪄 Da Cunha</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Paz N.</span><span class="setpiece-tag corner-tag">🚩 Baturina</span><span class="setpiece-tag corner-tag">🚩 Couto</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Fiorentina</strong><br><small style="color:#94a3b8;">Fabio Grosso (4-3-3)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Mastantuono</strong>, Pellegrino M., Beto</span></td>
-            <td><span style="color:#cbd5e1;">Mastantuono, Fagioli, Atta</span></td>
-            <td><span style="color:#94a3b8;">Mastantuono, Goncalves P., Atta</span></td>
+        <tr class="tactic-row" data-search="fiorentina fabio grosso 4-3-3 mastantuono pellegrino m. beto mastantuono fagioli atta">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">FIO</div>
+                    <div>
+                        <div class="team-name-bold">Fiorentina <span class="tactical-formation-chip">4-3-3</span></div>
+                        <div class="team-coach-sub">All. Fabio Grosso</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Mastantuono</span> <span class="taker-badge taker-2">🥈 Pellegrino M.</span> <span class="taker-badge taker-3">🥉 Beto</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Mastantuono</span><span class="setpiece-tag">🪄 Fagioli</span><span class="setpiece-tag">🪄 Atta</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Mastantuono</span><span class="setpiece-tag corner-tag">🚩 Goncalves P.</span><span class="setpiece-tag corner-tag">🚩 Atta</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Frosinone</strong><br><small style="color:#94a3b8;">Massimiliano Alvini (4-2-3-1)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Calò</strong>, Raimondo, Kvernadze</span></td>
-            <td><span style="color:#cbd5e1;">Calò, Kvernadze, Schmid</span></td>
-            <td><span style="color:#94a3b8;">Calò, Schmid, Kvernadze</span></td>
+        <tr class="tactic-row" data-search="frosinone massimiliano alvini 4-2-3-1 calò raimondo kvernadze calò kvernadze schmid">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">FRO</div>
+                    <div>
+                        <div class="team-name-bold">Frosinone <span class="tactical-formation-chip">4-2-3-1</span></div>
+                        <div class="team-coach-sub">All. Massimiliano Alvini</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Calò</span> <span class="taker-badge taker-2">🥈 Raimondo</span> <span class="taker-badge taker-3">🥉 Kvernadze</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Calò</span><span class="setpiece-tag">🪄 Kvernadze</span><span class="setpiece-tag">🪄 Schmid</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Calò</span><span class="setpiece-tag corner-tag">🚩 Schmid</span><span class="setpiece-tag corner-tag">🚩 Kvernadze</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Genoa</strong><br><small style="color:#94a3b8;">Daniele De Rossi (3-4-2-1)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Baldanzi</strong>, Vitinha O., Colombo</span></td>
-            <td><span style="color:#cbd5e1;">Baldanzi, Messias, Traorè Hj.</span></td>
-            <td><span style="color:#94a3b8;">Baldanzi, Messias, Drameh</span></td>
+        <tr class="tactic-row" data-search="genoa daniele de rossi 3-4-2-1 baldanzi vitinha o. colombo baldanzi messias traorè hj.">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">GEN</div>
+                    <div>
+                        <div class="team-name-bold">Genoa <span class="tactical-formation-chip">3-4-2-1</span></div>
+                        <div class="team-coach-sub">All. Daniele De Rossi</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Baldanzi</span> <span class="taker-badge taker-2">🥈 Vitinha O.</span> <span class="taker-badge taker-3">🥉 Colombo</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Baldanzi</span><span class="setpiece-tag">🪄 Messias</span><span class="setpiece-tag">🪄 Traorè Hj.</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Baldanzi</span><span class="setpiece-tag corner-tag">🚩 Messias</span><span class="setpiece-tag corner-tag">🚩 Drameh</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Inter</strong><br><small style="color:#94a3b8;">Cristian Chivu (3-5-2)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Calhanoglu</strong>, Martinez L., Thuram</span></td>
-            <td><span style="color:#cbd5e1;">Calhanoglu, Dimarco, Zielinski</span></td>
-            <td><span style="color:#94a3b8;">Calhanoglu, Dimarco, Barella</span></td>
+        <tr class="tactic-row" data-search="inter cristian chivu 3-5-2 calhanoglu martinez l. thuram calhanoglu dimarco zielinski">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">INT</div>
+                    <div>
+                        <div class="team-name-bold">Inter <span class="tactical-formation-chip">3-5-2</span></div>
+                        <div class="team-coach-sub">All. Cristian Chivu</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Calhanoglu</span> <span class="taker-badge taker-2">🥈 Martinez L.</span> <span class="taker-badge taker-3">🥉 Thuram</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Calhanoglu</span><span class="setpiece-tag">🪄 Dimarco</span><span class="setpiece-tag">🪄 Zielinski</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Calhanoglu</span><span class="setpiece-tag corner-tag">🚩 Dimarco</span><span class="setpiece-tag corner-tag">🚩 Barella</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Juventus</strong><br><small style="color:#94a3b8;">Luciano Spalletti (4-2-3-1)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Kolo Muani</strong>, Douglas Luiz, Conceicao</span></td>
-            <td><span style="color:#cbd5e1;">Douglas Luiz, Conceicao, Locatelli</span></td>
-            <td><span style="color:#94a3b8;">Conceicao, Douglas Luiz, Cambiaso</span></td>
+        <tr class="tactic-row" data-search="juventus luciano spalletti 4-2-3-1 kolo muani douglas luiz conceicao douglas luiz conceicao locatelli">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">JUV</div>
+                    <div>
+                        <div class="team-name-bold">Juventus <span class="tactical-formation-chip">4-2-3-1</span></div>
+                        <div class="team-coach-sub">All. Luciano Spalletti</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Kolo Muani</span> <span class="taker-badge taker-2">🥈 Douglas Luiz</span> <span class="taker-badge taker-3">🥉 Conceicao</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Douglas Luiz</span><span class="setpiece-tag">🪄 Conceicao</span><span class="setpiece-tag">🪄 Locatelli</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Conceicao</span><span class="setpiece-tag corner-tag">🚩 Douglas Luiz</span><span class="setpiece-tag corner-tag">🚩 Cambiaso</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Lazio</strong><br><small style="color:#94a3b8;">Gennaro Gattuso (4-3-3)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Zaccagni</strong>, Gudmundsson A., Pinamonti</span></td>
-            <td><span style="color:#cbd5e1;">Zaccagni, Gudmundsson A., Rovella</span></td>
-            <td><span style="color:#94a3b8;">Zaccagni, Gudmundsson A., Tavares N.</span></td>
+        <tr class="tactic-row" data-search="lazio gennaro gattuso 4-3-3 zaccagni gudmundsson a. pinamonti zaccagni gudmundsson a. rovella">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">LAZ</div>
+                    <div>
+                        <div class="team-name-bold">Lazio <span class="tactical-formation-chip">4-3-3</span></div>
+                        <div class="team-coach-sub">All. Gennaro Gattuso</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Zaccagni</span> <span class="taker-badge taker-2">🥈 Gudmundsson A.</span> <span class="taker-badge taker-3">🥉 Pinamonti</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Zaccagni</span><span class="setpiece-tag">🪄 Gudmundsson A.</span><span class="setpiece-tag">🪄 Rovella</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Zaccagni</span><span class="setpiece-tag corner-tag">🚩 Gudmundsson A.</span><span class="setpiece-tag corner-tag">🚩 Tavares N.</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Lecce</strong><br><small style="color:#94a3b8;">Eusebio Di Francesco (4-2-3-1)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Stulic</strong>, Geubbels, Pierotti</span></td>
-            <td><span style="color:#cbd5e1;">Berisha M., Gorter, Gallo</span></td>
-            <td><span style="color:#94a3b8;">Gallo, Pierotti, Berisha M.</span></td>
+        <tr class="tactic-row" data-search="lecce eusebio di francesco 4-2-3-1 stulic geubbels pierotti berisha m. gorter gallo">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">LEC</div>
+                    <div>
+                        <div class="team-name-bold">Lecce <span class="tactical-formation-chip">4-2-3-1</span></div>
+                        <div class="team-coach-sub">All. Eusebio Di Francesco</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Stulic</span> <span class="taker-badge taker-2">🥈 Geubbels</span> <span class="taker-badge taker-3">🥉 Pierotti</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Berisha M.</span><span class="setpiece-tag">🪄 Gorter</span><span class="setpiece-tag">🪄 Gallo</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Gallo</span><span class="setpiece-tag corner-tag">🚩 Pierotti</span><span class="setpiece-tag corner-tag">🚩 Berisha M.</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Milan</strong><br><small style="color:#94a3b8;">Ruben Amorim (3-4-2-1)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Pulisic</strong>, Ramos G., Modric</span></td>
-            <td><span style="color:#cbd5e1;">Modric, Pulisic, Rabiot</span></td>
-            <td><span style="color:#94a3b8;">Modric, Pulisic, Chukwueze</span></td>
+        <tr class="tactic-row" data-search="milan ruben amorim 3-4-2-1 pulisic ramos g. modric modric pulisic rabiot">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">MIL</div>
+                    <div>
+                        <div class="team-name-bold">Milan <span class="tactical-formation-chip">3-4-2-1</span></div>
+                        <div class="team-coach-sub">All. Ruben Amorim</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Pulisic</span> <span class="taker-badge taker-2">🥈 Ramos G.</span> <span class="taker-badge taker-3">🥉 Modric</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Modric</span><span class="setpiece-tag">🪄 Pulisic</span><span class="setpiece-tag">🪄 Rabiot</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Modric</span><span class="setpiece-tag corner-tag">🚩 Pulisic</span><span class="setpiece-tag corner-tag">🚩 Chukwueze</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Monza</strong><br><small style="color:#94a3b8;">Ivan Juric (3-4-2-1)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Colpani</strong>, Varela G., Cutrone</span></td>
-            <td><span style="color:#cbd5e1;">Colpani, Birindelli, Folorunsho</span></td>
-            <td><span style="color:#94a3b8;">Colpani, Birindelli, Mangas</span></td>
+        <tr class="tactic-row" data-search="monza ivan juric 3-4-2-1 colpani varela g. cutrone colpani birindelli folorunsho">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">MON</div>
+                    <div>
+                        <div class="team-name-bold">Monza <span class="tactical-formation-chip">3-4-2-1</span></div>
+                        <div class="team-coach-sub">All. Ivan Juric</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Colpani</span> <span class="taker-badge taker-2">🥈 Varela G.</span> <span class="taker-badge taker-3">🥉 Cutrone</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Colpani</span><span class="setpiece-tag">🪄 Birindelli</span><span class="setpiece-tag">🪄 Folorunsho</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Colpani</span><span class="setpiece-tag corner-tag">🚩 Birindelli</span><span class="setpiece-tag corner-tag">🚩 Mangas</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Napoli</strong><br><small style="color:#94a3b8;">Massimiliano Allegri (4-3-3)</small></td>
-            <td><span><strong style='color:#fbbf24;'>De Bruyne</strong>, Hojlund, Politano</span></td>
-            <td><span style="color:#cbd5e1;">De Bruyne, Politano, Di Lorenzo</span></td>
-            <td><span style="color:#94a3b8;">De Bruyne, Politano, Spinazzola</span></td>
+        <tr class="tactic-row" data-search="napoli massimiliano allegri 4-3-3 de bruyne hojlund politano de bruyne politano di lorenzo">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">NAP</div>
+                    <div>
+                        <div class="team-name-bold">Napoli <span class="tactical-formation-chip">4-3-3</span></div>
+                        <div class="team-coach-sub">All. Massimiliano Allegri</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 De Bruyne</span> <span class="taker-badge taker-2">🥈 Hojlund</span> <span class="taker-badge taker-3">🥉 Politano</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 De Bruyne</span><span class="setpiece-tag">🪄 Politano</span><span class="setpiece-tag">🪄 Di Lorenzo</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 De Bruyne</span><span class="setpiece-tag corner-tag">🚩 Politano</span><span class="setpiece-tag corner-tag">🚩 Spinazzola</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Parma</strong><br><small style="color:#94a3b8;">Carlos Cuesta (3-4-2-1)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Bernabè</strong>, Romero D., Tourè E.</span></td>
-            <td><span style="color:#cbd5e1;">Bernabè, Valeri, Fabbian</span></td>
-            <td><span style="color:#94a3b8;">Bernabè, Valeri, Delprato</span></td>
+        <tr class="tactic-row" data-search="parma carlos cuesta 3-4-2-1 bernabè romero d. tourè e. bernabè valeri fabbian">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">PAR</div>
+                    <div>
+                        <div class="team-name-bold">Parma <span class="tactical-formation-chip">3-4-2-1</span></div>
+                        <div class="team-coach-sub">All. Carlos Cuesta</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Bernabè</span> <span class="taker-badge taker-2">🥈 Romero D.</span> <span class="taker-badge taker-3">🥉 Tourè E.</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Bernabè</span><span class="setpiece-tag">🪄 Valeri</span><span class="setpiece-tag">🪄 Fabbian</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Bernabè</span><span class="setpiece-tag corner-tag">🚩 Valeri</span><span class="setpiece-tag corner-tag">🚩 Delprato</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Roma</strong><br><small style="color:#94a3b8;">Gian Piero Gasperini (3-4-2-1)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Dybala</strong>, Malen, Soulè</span></td>
-            <td><span style="color:#cbd5e1;">Dybala, Soulè, Mora</span></td>
-            <td><span style="color:#94a3b8;">Dybala, Soulè, Molina N.</span></td>
+        <tr class="tactic-row" data-search="roma gian piero gasperini 3-4-2-1 dybala malen soulè dybala soulè mora">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">ROM</div>
+                    <div>
+                        <div class="team-name-bold">Roma <span class="tactical-formation-chip">3-4-2-1</span></div>
+                        <div class="team-coach-sub">All. Gian Piero Gasperini</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Dybala</span> <span class="taker-badge taker-2">🥈 Malen</span> <span class="taker-badge taker-3">🥉 Soulè</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Dybala</span><span class="setpiece-tag">🪄 Soulè</span><span class="setpiece-tag">🪄 Mora</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Dybala</span><span class="setpiece-tag corner-tag">🚩 Soulè</span><span class="setpiece-tag corner-tag">🚩 Molina N.</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Sassuolo</strong><br><small style="color:#94a3b8;">Alberto Aquilani (4-3-3)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Berardi</strong>, Laurientè, Thorstvedt</span></td>
-            <td><span style="color:#cbd5e1;">Berardi, Laurientè, Adzic</span></td>
-            <td><span style="color:#94a3b8;">Berardi, Laurientè, Doig</span></td>
+        <tr class="tactic-row" data-search="sassuolo alberto aquilani 4-3-3 berardi laurientè thorstvedt berardi laurientè adzic">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">SAS</div>
+                    <div>
+                        <div class="team-name-bold">Sassuolo <span class="tactical-formation-chip">4-3-3</span></div>
+                        <div class="team-coach-sub">All. Alberto Aquilani</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Berardi</span> <span class="taker-badge taker-2">🥈 Laurientè</span> <span class="taker-badge taker-3">🥉 Thorstvedt</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Berardi</span><span class="setpiece-tag">🪄 Laurientè</span><span class="setpiece-tag">🪄 Adzic</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Berardi</span><span class="setpiece-tag corner-tag">🚩 Laurientè</span><span class="setpiece-tag corner-tag">🚩 Doig</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Torino</strong><br><small style="color:#94a3b8;">Ignazio Abate (3-5-2)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Simeone</strong>, Mandragora, Vlasic</span></td>
-            <td><span style="color:#cbd5e1;">Mandragora, Vlasic, Cacciamani</span></td>
-            <td><span style="color:#94a3b8;">Vlasic, Mandragora, Cacciamani</span></td>
+        <tr class="tactic-row" data-search="torino ignazio abate 3-5-2 simeone mandragora vlasic mandragora vlasic cacciamani">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">TOR</div>
+                    <div>
+                        <div class="team-name-bold">Torino <span class="tactical-formation-chip">3-5-2</span></div>
+                        <div class="team-coach-sub">All. Ignazio Abate</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Simeone</span> <span class="taker-badge taker-2">🥈 Mandragora</span> <span class="taker-badge taker-3">🥉 Vlasic</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Mandragora</span><span class="setpiece-tag">🪄 Vlasic</span><span class="setpiece-tag">🪄 Cacciamani</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Vlasic</span><span class="setpiece-tag corner-tag">🚩 Mandragora</span><span class="setpiece-tag corner-tag">🚩 Cacciamani</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Udinese</strong><br><small style="color:#94a3b8;">Kosta Runjaic (3-4-2-1)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Davis K.</strong>, Zaniolo, Ekkelenkamp</span></td>
-            <td><span style="color:#cbd5e1;">Zaniolo, Ekkelenkamp, Vojvoda</span></td>
-            <td><span style="color:#94a3b8;">Ekkelenkamp, Zaniolo, Kamara H.</span></td>
+        <tr class="tactic-row" data-search="udinese kosta runjaic 3-4-2-1 davis k. zaniolo ekkelenkamp zaniolo ekkelenkamp vojvoda">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">UDI</div>
+                    <div>
+                        <div class="team-name-bold">Udinese <span class="tactical-formation-chip">3-4-2-1</span></div>
+                        <div class="team-coach-sub">All. Kosta Runjaic</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Davis K.</span> <span class="taker-badge taker-2">🥈 Zaniolo</span> <span class="taker-badge taker-3">🥉 Ekkelenkamp</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Zaniolo</span><span class="setpiece-tag">🪄 Ekkelenkamp</span><span class="setpiece-tag">🪄 Vojvoda</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Ekkelenkamp</span><span class="setpiece-tag corner-tag">🚩 Zaniolo</span><span class="setpiece-tag corner-tag">🚩 Kamara H.</span></div>
+            </td>
         </tr>
         
-        <tr>
-            <td><strong style="font-size:14px;color:#fff;">Venezia</strong><br><small style="color:#94a3b8;">Giovanni Stroppa (3-5-2)</small></td>
-            <td><span><strong style='color:#fbbf24;'>Adams A.</strong>, Yeboah J., Basic</span></td>
-            <td><span style="color:#cbd5e1;">Basic, Busio, Mazzocchi</span></td>
-            <td><span style="color:#94a3b8;">Basic, Busio, Haps</span></td>
+        <tr class="tactic-row" data-search="venezia giovanni stroppa 3-5-2 adams a. yeboah j. basic basic busio mazzocchi">
+            <td>
+                <div class="team-tactical-header">
+                    <div class="team-badge-circle">VEN</div>
+                    <div>
+                        <div class="team-name-bold">Venezia <span class="tactical-formation-chip">3-5-2</span></div>
+                        <div class="team-coach-sub">All. Giovanni Stroppa</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="takers-flow"><span class="taker-badge taker-1">🥇 Adams A.</span> <span class="taker-badge taker-2">🥈 Yeboah J.</span> <span class="taker-badge taker-3">🥉 Basic</span> </div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag">🪄 Basic</span><span class="setpiece-tag">🪄 Busio</span><span class="setpiece-tag">🪄 Mazzocchi</span></div>
+            </td>
+            <td>
+                <div class="setpiece-tag-group"><span class="setpiece-tag corner-tag">🚩 Basic</span><span class="setpiece-tag corner-tag">🚩 Busio</span><span class="setpiece-tag corner-tag">🚩 Haps</span></div>
+            </td>
         </tr>
         
                     </tbody>
                 </table>
             </div>
         </section>
+
+        <!-- CTA BOX -->
+        <section class="pillar-cta-box">
+            <h3>Cerchi tiratori infallibili per la tua Rosa?</h3>
+            <p>Nella nostra Dashboard trovi l'indice xFM dei rigoristi, le percentuali di conversione dal dischetto e l'impatto sul budget per ciascun calciatore.</p>
+            <a href="../" class="btn-cta-main">Esplora il Listone Live 🚀</a>
+        </section>
     </main>
 
     <footer class="site-footer">
         <div class="site-container">
-            <p>&copy; 2026/2027 Fanta Master AI &bull; Rigoristi Ufficiali Serie A</p>
+            <p>&copy; 2026/2027 Fanta Master AI &bull; Rigoristi e Tattica Ufficiale Serie A</p>
         </div>
     </footer>
+
+    <script>
+        function filterRigoristi() {
+            const search = (document.getElementById('rigoristiSearch').value || '').toLowerCase().trim();
+            const rows = document.querySelectorAll('#rigoristiTable tbody tr');
+
+            rows.forEach(tr => {
+                const s = tr.getAttribute('data-search') || '';
+                if (!search || s.includes(search)) {
+                    tr.style.display = '';
+                } else {
+                    tr.style.display = 'none';
+                }
+            });
+        }
+    </script>
     <script src="../js/tracker.js" defer></script>
 </body>
 </html>

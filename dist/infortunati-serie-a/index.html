@@ -2,10 +2,13 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Infortunati Serie A 2026/27: Tabella Tempi di Recupero &amp; Rientri | Fanta Master AI</title>
     <meta name="description" content="Tabella sempre aggiornata di tutti i calciatori infortunati in Serie A 2026/27: diagnosi medica, tempi di recupero stimati, data di rientro e consigli per l&#39;asta Fantacalcio.">
     <link rel="canonical" href="https://fantamasterai.it/infortunati-serie-a/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/seo.css">
 </head>
 <body>
@@ -94,755 +97,1817 @@
 
     <main class="site-container">
         <nav class="breadcrumbs">
-            <a href="../index.html">Home</a> <span>/</span> <span style="color:#fff;">Infortunati Serie A</span>
+            <a href="../">Home</a> <span class="breadcrumbs-sep">/</span> <span class="breadcrumbs-cur">Infortunati Serie A</span>
         </nav>
 
-        <section class="player-hero-card" style="display:block;">
-            <h1 style="font-size:24px;font-weight:800;color:#fff;margin-bottom:6px;">Infortunati Serie A 2026/27: Tabella Tempi di Recupero & Rientri</h1>
-            <p style="font-size:13.5px;color:#cbd5e1;">
-                Monitoraggio clinico in tempo reale di tutti i calciatori attualmente indisponibili nei 20 club di Serie A, verificato con Transfermarkt e bollettini medici.
+        <!-- HERO HEADER -->
+        <section class="pillar-hero">
+            <div class="pillar-tag">🩺 MONITORAGGIO CLINICO SERIE A 2026/27</div>
+            <h1 class="pillar-title">Infortunati Serie A: Tempi di Recupero &amp; Rientri</h1>
+            <p class="pillar-desc">
+                Bollettini medici ufficiali e verificati in tempo reale: diagnosi cliniche dettagliate, tempi di recupero stimati e indice di fragilità per gestire al meglio formazioni, asta e scambi.
             </p>
         </section>
 
-        <section class="content-section" style="background:rgba(15,23,42,0.75);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px;">
+        <!-- KPI SUMMARY METRICS -->
+        <section class="pillar-kpi-grid">
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#f43f5e;">🔴</div>
+                <div>
+                    <div class="pillar-kpi-num">56</div>
+                    <div class="pillar-kpi-label">Infortunati Attivi</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#fbbf24;">⚡</div>
+                <div>
+                    <div class="pillar-kpi-num">20</div>
+                    <div class="pillar-kpi-label">Lesioni Muscolari</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#f97316;">⚠️</div>
+                <div>
+                    <div class="pillar-kpi-num">34</div>
+                    <div class="pillar-kpi-label">Fragili / Cristallo</div>
+                </div>
+            </div>
+            <div class="pillar-kpi-card">
+                <div class="pillar-kpi-icon" style="color:#38bdf8;">🛡️</div>
+                <div>
+                    <div class="pillar-kpi-num">G5</div>
+                    <div class="pillar-kpi-label">Dati Aggiornati Live</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE FILTER CONTROLS BAR -->
+        <div class="pillar-controls-bar">
+            <div class="pillar-search-wrapper">
+                <span class="pillar-search-icon">🔍</span>
+                <input type="text" id="injurySearch" class="pillar-search-input" placeholder="Cerca calciatore, club o tipo di infortunio..." oninput="filterInjuries()">
+            </div>
+            <select id="injuryTeamFilter" class="pillar-select" onchange="filterInjuries()">
+                <option value="all">Tutti i Club</option>
+                <option value="atalanta">Atalanta</option><option value="bologna">Bologna</option><option value="cagliari">Cagliari</option><option value="fiorentina">Fiorentina</option><option value="frosinone">Frosinone</option><option value="genoa">Genoa</option><option value="inter">Inter</option><option value="juventus">Juventus</option><option value="lazio">Lazio</option><option value="lecce">Lecce</option><option value="monza">Monza</option><option value="napoli">Napoli</option><option value="parma">Parma</option><option value="sassuolo">Sassuolo</option><option value="torino">Torino</option><option value="udinese">Udinese</option><option value="venezia">Venezia</option>
+            </select>
+            <div class="pillar-chips-group">
+                <button type="button" class="pillar-filter-chip active" data-role="ALL" onclick="setRoleFilter('ALL', this)">TUTTI</button>
+                <button type="button" class="pillar-filter-chip" data-role="P" onclick="setRoleFilter('P', this)">🧤 P</button>
+                <button type="button" class="pillar-filter-chip" data-role="D" onclick="setRoleFilter('D', this)">🛡️ D</button>
+                <button type="button" class="pillar-filter-chip" data-role="C" onclick="setRoleFilter('C', this)">🪄 C</button>
+                <button type="button" class="pillar-filter-chip" data-role="A" onclick="setRoleFilter('A', this)">⚡ A</button>
+            </div>
+        </div>
+
+        <!-- GLASS TABLE -->
+        <section class="pillar-table-card">
             <div class="table-responsive">
-                <table class="seo-table">
+                <table class="seo-table" id="injuriesTable">
                     <thead>
                         <tr>
-                            <th>Calciatore</th>
+                            <th>Calciatore &amp; Ruolo</th>
                             <th>Diagnosi Infortunio</th>
                             <th>Rientro Stimato</th>
-                            <th>Fragilità</th>
+                            <th>Fragilità Clinica</th>
                             <th>Dettagli</th>
                         </tr>
                     </thead>
                     <tbody>
                         
-        <tr>
+        <tr class="injury-row" data-name="yildiz" data-team="juventus" data-role="A" data-tier="STABILE">
             <td>
-                <a href="../calciatore/yildiz/index.html" style="font-weight:700;color:#fff;">Yildiz</a>
-                <div style="font-size:11px;color:#94a3b8;">Juventus &bull; A</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-A">A</div>
+                    <div>
+                        <a href="../calciatore/yildiz/" class="player-main-name">Yildiz</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Juventus</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo A</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Infortunio al piede sinistro, possibile intervento chirurgico</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">26/11/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #34d399;color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">STABILE</span></td>
             <td>
-                <a href="../calciatore/yildiz/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Infortunio al piede sinistro, possibile intervento chirurgico</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/alisson-santos/index.html" style="font-weight:700;color:#fff;">Alisson Santos</a>
-                <div style="font-size:11px;color:#94a3b8;">Napoli &bull; A</div>
+                <span class="return-date-pill">📅 26/11/2026</span>
             </td>
-            <td><strong style="color:#fff;">Lesione di medio grado del bicipite femorale sinistro</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">15/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #34d399;color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">STABILE</span></td>
             <td>
-                <a href="../calciatore/alisson-santos/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-STABILE">STABILE</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/artem-dovbyk/index.html" style="font-weight:700;color:#fff;">Artem Dovbyk</a>
-                <div style="font-size:11px;color:#94a3b8;">Bologna &bull; A</div>
-            </td>
-            <td><strong style="color:#fff;">Affaticamento muscolare</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">05/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">CRISTALLO</span></td>
-            <td>
-                <a href="../calciatore/artem-dovbyk/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/yildiz/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="alisson santos" data-team="napoli" data-role="A" data-tier="STABILE">
             <td>
-                <a href="../calciatore/che-adams/index.html" style="font-weight:700;color:#fff;">Ché Adams</a>
-                <div style="font-size:11px;color:#94a3b8;">Torino &bull; A</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-A">A</div>
+                    <div>
+                        <a href="../calciatore/alisson-santos/" class="player-main-name">Alisson Santos</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Napoli</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo A</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Problema all&#39;adduttore</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">11/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
             <td>
-                <a href="../calciatore/che-adams/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione di medio grado del bicipite femorale sinistro</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/willem-geubbels/index.html" style="font-weight:700;color:#fff;">Willem Geubbels</a>
-                <div style="font-size:11px;color:#94a3b8;">Lecce &bull; A</div>
+                <span class="return-date-pill">📅 15/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">Brutta torsione della caviglia sinistra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">01/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #34d399;color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">STABILE</span></td>
             <td>
-                <a href="../calciatore/willem-geubbels/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-STABILE">STABILE</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/jeremie-boga/index.html" style="font-weight:700;color:#fff;">Jérémie Boga</a>
-                <div style="font-size:11px;color:#94a3b8;">Juventus &bull; A</div>
-            </td>
-            <td><strong style="color:#fff;">Lesione di medio grado del bicipite femorale della coscia sinistra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">13/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">CRISTALLO</span></td>
-            <td>
-                <a href="../calciatore/jeremie-boga/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/alisson-santos/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="artem dovbyk" data-team="bologna" data-role="A" data-tier="CRISTALLO">
             <td>
-                <a href="../calciatore/giovane/index.html" style="font-weight:700;color:#fff;">Giovane</a>
-                <div style="font-size:11px;color:#94a3b8;">Napoli &bull; A</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-A">A</div>
+                    <div>
+                        <a href="../calciatore/artem-dovbyk/" class="player-main-name">Artem Dovbyk</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Bologna</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo A</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Operato per ernia inguinale (intervento di correzione presso Villa Stuart)</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">11/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #34d399;color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">STABILE</span></td>
             <td>
-                <a href="../calciatore/giovane/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Affaticamento muscolare</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/kamaldeen-sulemana/index.html" style="font-weight:700;color:#fff;">Kamaldeen Sulemana</a>
-                <div style="font-size:11px;color:#94a3b8;">Atalanta &bull; A</div>
+                <span class="return-date-pill">📅 05/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">11/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
             <td>
-                <a href="../calciatore/kamaldeen-sulemana/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/andrea-adorante/index.html" style="font-weight:700;color:#fff;">Andrea Adorante</a>
-                <div style="font-size:11px;color:#94a3b8;">Venezia &bull; A</div>
-            </td>
-            <td><strong style="color:#fff;">Operato per un problema alla schiena</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">17/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
-            <td>
-                <a href="../calciatore/andrea-adorante/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/artem-dovbyk/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="ché adams" data-team="torino" data-role="A" data-tier="FRAGILE">
             <td>
-                <a href="../calciatore/jeff-ekhator/index.html" style="font-weight:700;color:#fff;">Jeff Ekhator</a>
-                <div style="font-size:11px;color:#94a3b8;">Juventus &bull; A</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-A">A</div>
+                    <div>
+                        <a href="../calciatore/che-adams/" class="player-main-name">Ché Adams</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Torino</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo A</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Lesione di basso grado del bicipite femorale della gamba destra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">02/11/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">CRISTALLO</span></td>
             <td>
-                <a href="../calciatore/jeff-ekhator/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Problema all&#39;adduttore</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/elias-havel/index.html" style="font-weight:700;color:#fff;">Elias Havel</a>
-                <div style="font-size:11px;color:#94a3b8;">Genoa &bull; A</div>
+                <span class="return-date-pill">📅 11/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">Contusione al polpaccio</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">10/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
             <td>
-                <a href="../calciatore/elias-havel/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/hakan-calhanoglu/index.html" style="font-weight:700;color:#fff;">Hakan Çalhanoğlu</a>
-                <div style="font-size:11px;color:#94a3b8;">Inter &bull; C</div>
-            </td>
-            <td><strong style="color:#fff;">Risentimento muscolare all&#39;adduttore della coscia destra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">05/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">CRISTALLO</span></td>
-            <td>
-                <a href="../calciatore/hakan-calhanoglu/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/che-adams/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="willem geubbels" data-team="lecce" data-role="A" data-tier="STABILE">
             <td>
-                <a href="../calciatore/scott-mctominay/index.html" style="font-weight:700;color:#fff;">Scott McTominay</a>
-                <div style="font-size:11px;color:#94a3b8;">Napoli &bull; C</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-A">A</div>
+                    <div>
+                        <a href="../calciatore/willem-geubbels/" class="player-main-name">Willem Geubbels</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Lecce</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo A</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Lieve aritmia benigna, intervento di correzione mediante ablazione (PFA)</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">11/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
             <td>
-                <a href="../calciatore/scott-mctominay/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Brutta torsione della caviglia sinistra</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/nicolo-zaniolo/index.html" style="font-weight:700;color:#fff;">Nicolò Zaniolo</a>
-                <div style="font-size:11px;color:#94a3b8;">Udinese &bull; C</div>
+                <span class="return-date-pill">📅 01/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">Sospetto stiramento muscolare (accusato nel finale di Udinese-Como, in attesa di esami strumentali)</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">01/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
             <td>
-                <a href="../calciatore/nicolo-zaniolo/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-STABILE">STABILE</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/cristian-volpato/index.html" style="font-weight:700;color:#fff;">Cristian Volpato</a>
-                <div style="font-size:11px;color:#94a3b8;">Sassuolo &bull; C</div>
-            </td>
-            <td><strong style="color:#fff;">Lesione (natura e sede non specificate)</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">21/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">CRISTALLO</span></td>
-            <td>
-                <a href="../calciatore/cristian-volpato/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/willem-geubbels/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="jérémie boga" data-team="juventus" data-role="A" data-tier="CRISTALLO">
             <td>
-                <a href="../calciatore/cesare-casadei/index.html" style="font-weight:700;color:#fff;">Cesare Casadei</a>
-                <div style="font-size:11px;color:#94a3b8;">Torino &bull; C</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-A">A</div>
+                    <div>
+                        <a href="../calciatore/jeremie-boga/" class="player-main-name">Jérémie Boga</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Juventus</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo A</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Affaticamento muscolare</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">30/09/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
             <td>
-                <a href="../calciatore/cesare-casadei/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione di medio grado del bicipite femorale della coscia sinistra</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/manuel-locatelli/index.html" style="font-weight:700;color:#fff;">Manuel Locatelli</a>
-                <div style="font-size:11px;color:#94a3b8;">Juventus &bull; C</div>
+                <span class="return-date-pill">📅 13/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">Problema al menisco del ginocchio destro (in valutazione, possibile intervento chirurgico o terapia conservativa)</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">08/02/2027</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #34d399;color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">STABILE</span></td>
             <td>
-                <a href="../calciatore/manuel-locatelli/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/toma-basic/index.html" style="font-weight:700;color:#fff;">Toma Bašić</a>
-                <div style="font-size:11px;color:#94a3b8;">Venezia &bull; C</div>
-            </td>
-            <td><strong style="color:#fff;">Infiammazione della pianta del piede</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">05/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
-            <td>
-                <a href="../calciatore/toma-basic/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/jeremie-boga/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="giovane" data-team="napoli" data-role="A" data-tier="STABILE">
             <td>
-                <a href="../calciatore/gianluca-busio/index.html" style="font-weight:700;color:#fff;">Gianluca Busio</a>
-                <div style="font-size:11px;color:#94a3b8;">Venezia &bull; C</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-A">A</div>
+                    <div>
+                        <a href="../calciatore/giovane/" class="player-main-name">Giovane</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Napoli</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo A</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Lesione muscolare alla coscia destra (problema ai flessori)</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">27/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
             <td>
-                <a href="../calciatore/gianluca-busio/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Operato per ernia inguinale (intervento di correzione presso Villa Stuart)</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/nicolo-rovella/index.html" style="font-weight:700;color:#fff;">Nicolò Rovella</a>
-                <div style="font-size:11px;color:#94a3b8;">Lazio &bull; C</div>
+                <span class="return-date-pill">📅 11/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">Problema al polpaccio destro</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">30/09/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">CRISTALLO</span></td>
             <td>
-                <a href="../calciatore/nicolo-rovella/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-STABILE">STABILE</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/idrissa-toure/index.html" style="font-weight:700;color:#fff;">Idrissa Touré</a>
-                <div style="font-size:11px;color:#94a3b8;">Monza &bull; C</div>
-            </td>
-            <td><strong style="color:#fff;">Fastidio articolare (articolazione non specificata)</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">30/09/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
-            <td>
-                <a href="../calciatore/idrissa-toure/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/giovane/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="kamaldeen sulemana" data-team="atalanta" data-role="A" data-tier="FRAGILE">
             <td>
-                <a href="../calciatore/jakub-piotrowski/index.html" style="font-weight:700;color:#fff;">Jakub Piotrowski</a>
-                <div style="font-size:11px;color:#94a3b8;">Udinese &bull; C</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-A">A</div>
+                    <div>
+                        <a href="../calciatore/kamaldeen-sulemana/" class="player-main-name">Kamaldeen Sulemana</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Atalanta</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo A</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Lieve aritmia cardiaca benigna, da sottoporre a intervento di ablazione cardiaca</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">18/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
             <td>
-                <a href="../calciatore/jakub-piotrowski/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/khephren-thuram/index.html" style="font-weight:700;color:#fff;">Khéphren Thuram</a>
-                <div style="font-size:11px;color:#94a3b8;">Juventus &bull; C</div>
+                <span class="return-date-pill">📅 11/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">Sindrome femoro-rotulea al ginocchio</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">01/01/2027</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">CRISTALLO</span></td>
             <td>
-                <a href="../calciatore/khephren-thuram/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/matteo-pessina/index.html" style="font-weight:700;color:#fff;">Matteo Pessina</a>
-                <div style="font-size:11px;color:#94a3b8;">Monza &bull; C</div>
-            </td>
-            <td><strong style="color:#fff;">Operato per la lussazione della rotula del ginocchio destro</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">28/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
-            <td>
-                <a href="../calciatore/matteo-pessina/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/kamaldeen-sulemana/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="andrea adorante" data-team="venezia" data-role="A" data-tier="FRAGILE">
             <td>
-                <a href="../calciatore/medon-berisha/index.html" style="font-weight:700;color:#fff;">Medon Berisha</a>
-                <div style="font-size:11px;color:#94a3b8;">Lecce &bull; C</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-A">A</div>
+                    <div>
+                        <a href="../calciatore/andrea-adorante/" class="player-main-name">Andrea Adorante</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Venezia</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo A</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Lesione del tendine riflesso del retto femorale destro, operato chirurgicamente</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">01/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">CRISTALLO</span></td>
             <td>
-                <a href="../calciatore/medon-berisha/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Operato per un problema alla schiena</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/florian-grillitsch/index.html" style="font-weight:700;color:#fff;">Florian Grillitsch</a>
-                <div style="font-size:11px;color:#94a3b8;">Frosinone &bull; C</div>
+                <span class="return-date-pill">📅 17/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">Sindrome retto-adduttoria</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">01/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
             <td>
-                <a href="../calciatore/florian-grillitsch/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/ismael-kone/index.html" style="font-weight:700;color:#fff;">Ismaël Koné</a>
-                <div style="font-size:11px;color:#94a3b8;">Sassuolo &bull; C</div>
-            </td>
-            <td><strong style="color:#fff;">Intervento di riduzione della frattura della gamba sinistra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">17/01/2027</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
-            <td>
-                <a href="../calciatore/ismael-kone/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/andrea-adorante/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="jeff ekhator" data-team="juventus" data-role="A" data-tier="CRISTALLO">
             <td>
-                <a href="../calciatore/hans-nicolussi-caviglia/index.html" style="font-weight:700;color:#fff;">Hans Nicolussi Caviglia</a>
-                <div style="font-size:11px;color:#94a3b8;">Parma &bull; C</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-A">A</div>
+                    <div>
+                        <a href="../calciatore/jeff-ekhator/" class="player-main-name">Jeff Ekhator</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Juventus</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo A</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Lesione di medio grado alla coscia destra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">02/11/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
             <td>
-                <a href="../calciatore/hans-nicolussi-caviglia/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione di basso grado del bicipite femorale della gamba destra</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/ibrahim-sulemana/index.html" style="font-weight:700;color:#fff;">Ibrahim Sulemana</a>
-                <div style="font-size:11px;color:#94a3b8;">Sassuolo &bull; C</div>
+                <span class="return-date-pill">📅 02/11/2026</span>
             </td>
-            <td><strong style="color:#fff;">Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">12/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
             <td>
-                <a href="../calciatore/ibrahim-sulemana/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/omri-gandelman/index.html" style="font-weight:700;color:#fff;">Omri Gandelman</a>
-                <div style="font-size:11px;color:#94a3b8;">Lecce &bull; C</div>
-            </td>
-            <td><strong style="color:#fff;">—</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">01/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
-            <td>
-                <a href="../calciatore/omri-gandelman/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/jeff-ekhator/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="elias havel" data-team="genoa" data-role="A" data-tier="FRAGILE">
             <td>
-                <a href="../calciatore/daniel-boloca/index.html" style="font-weight:700;color:#fff;">Daniel Boloca</a>
-                <div style="font-size:11px;color:#94a3b8;">Sassuolo &bull; C</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-A">A</div>
+                    <div>
+                        <a href="../calciatore/elias-havel/" class="player-main-name">Elias Havel</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Genoa</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo A</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Intervento in artroscopia al ginocchio sinistro per la pulizia meniscale</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">30/09/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
             <td>
-                <a href="../calciatore/daniel-boloca/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Contusione al polpaccio</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/matteo-dagasso/index.html" style="font-weight:700;color:#fff;">Matteo Dagasso</a>
-                <div style="font-size:11px;color:#94a3b8;">Venezia &bull; C</div>
+                <span class="return-date-pill">📅 10/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">—</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">05/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #34d399;color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">STABILE</span></td>
             <td>
-                <a href="../calciatore/matteo-dagasso/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/lorenzo-venturino/index.html" style="font-weight:700;color:#fff;">Lorenzo Venturino</a>
-                <div style="font-size:11px;color:#94a3b8;">Genoa &bull; C</div>
-            </td>
-            <td><strong style="color:#fff;">Operato al ginocchio</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">30/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
-            <td>
-                <a href="../calciatore/lorenzo-venturino/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/elias-havel/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="hakan çalhanoğlu" data-team="inter" data-role="C" data-tier="CRISTALLO">
             <td>
-                <a href="../calciatore/mattia-felici/index.html" style="font-weight:700;color:#fff;">Mattia Felici</a>
-                <div style="font-size:11px;color:#94a3b8;">Cagliari &bull; C</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/hakan-calhanoglu/" class="player-main-name">Hakan Çalhanoğlu</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Inter</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Nuovo infortunio al ginocchio (da accertare con esami strumentali)</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">09/02/2027</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">CRISTALLO</span></td>
             <td>
-                <a href="../calciatore/mattia-felici/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Risentimento muscolare all&#39;adduttore della coscia destra</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/oumar-solet/index.html" style="font-weight:700;color:#fff;">Oumar Solet</a>
-                <div style="font-size:11px;color:#94a3b8;">Udinese &bull; D</div>
+                <span class="return-date-pill">📅 05/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">Lesione al muscolo pettineo della gamba sinistra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">24/09/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
             <td>
-                <a href="../calciatore/oumar-solet/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/djed-spence/index.html" style="font-weight:700;color:#fff;">Djed Spence</a>
-                <div style="font-size:11px;color:#94a3b8;">Inter &bull; D</div>
-            </td>
-            <td><strong style="color:#fff;">Problema fisico pregresso non meglio specificato, sta smaltendo le conseguenze di un piccolo infortunio pregresso che ne ha rallentato la preparazione</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">05/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
-            <td>
-                <a href="../calciatore/djed-spence/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/hakan-calhanoglu/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="scott mctominay" data-team="napoli" data-role="C" data-tier="FRAGILE">
             <td>
-                <a href="../calciatore/leonardo-spinazzola/index.html" style="font-weight:700;color:#fff;">Leonardo Spinazzola</a>
-                <div style="font-size:11px;color:#94a3b8;">Napoli &bull; D</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/scott-mctominay/" class="player-main-name">Scott McTominay</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Napoli</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Lieve contrattura al bicipite femorale della coscia destra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">25/09/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
             <td>
-                <a href="../calciatore/leonardo-spinazzola/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lieve aritmia benigna, intervento di correzione mediante ablazione (PFA)</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/andrea-cambiaso/index.html" style="font-weight:700;color:#fff;">Andrea Cambiaso</a>
-                <div style="font-size:11px;color:#94a3b8;">Juventus &bull; D</div>
+                <span class="return-date-pill">📅 11/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">Leggera distorsione alla caviglia destra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">30/09/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
             <td>
-                <a href="../calciatore/andrea-cambiaso/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/adam-marusic/index.html" style="font-weight:700;color:#fff;">Adam Marusic</a>
-                <div style="font-size:11px;color:#94a3b8;">Lazio &bull; D</div>
-            </td>
-            <td><strong style="color:#fff;">Problema muscolare alla coscia (flessore/quadricipite)</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">01/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
-            <td>
-                <a href="../calciatore/adam-marusic/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/scott-mctominay/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="nicolò zaniolo" data-team="udinese" data-role="C" data-tier="ATTENZIONE">
             <td>
-                <a href="../calciatore/jay-idzes/index.html" style="font-weight:700;color:#fff;">Jay Idzes</a>
-                <div style="font-size:11px;color:#94a3b8;">Sassuolo &bull; D</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/nicolo-zaniolo/" class="player-main-name">Nicolò Zaniolo</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Udinese</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Lesione di grado moderato al quadricipite della gamba sinistra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">11/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #34d399;color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">STABILE</span></td>
             <td>
-                <a href="../calciatore/jay-idzes/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Sospetto stiramento muscolare (accusato nel finale di Udinese-Como, in attesa di esami strumentali)</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/john-stones/index.html" style="font-weight:700;color:#fff;">John Stones</a>
-                <div style="font-size:11px;color:#94a3b8;">Inter &bull; D</div>
+                <span class="return-date-pill">📅 01/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">Risentimento ai flessori della coscia sinistra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">17/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">CRISTALLO</span></td>
             <td>
-                <a href="../calciatore/john-stones/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/alessandro-buongiorno/index.html" style="font-weight:700;color:#fff;">Alessandro Buongiorno</a>
-                <div style="font-size:11px;color:#94a3b8;">Napoli &bull; D</div>
-            </td>
-            <td><strong style="color:#fff;">Intervento di riparazione della radice del menisco mediale del ginocchio destro</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">30/09/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
-            <td>
-                <a href="../calciatore/alessandro-buongiorno/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/nicolo-zaniolo/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="cristian volpato" data-team="sassuolo" data-role="C" data-tier="CRISTALLO">
             <td>
-                <a href="../calciatore/isak-hien/index.html" style="font-weight:700;color:#fff;">Isak Hien</a>
-                <div style="font-size:11px;color:#94a3b8;">Atalanta &bull; D</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/cristian-volpato/" class="player-main-name">Cristian Volpato</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Sassuolo</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Lesione del tendine del semimembranoso della gamba sinistra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">11/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
             <td>
-                <a href="../calciatore/isak-hien/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione (natura e sede non specificate)</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/sebastian-walukiewicz/index.html" style="font-weight:700;color:#fff;">Sebastian Walukiewicz</a>
-                <div style="font-size:11px;color:#94a3b8;">Sassuolo &bull; D</div>
+                <span class="return-date-pill">📅 21/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">Dead leg (contusione alla coscia)</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">30/09/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
             <td>
-                <a href="../calciatore/sebastian-walukiewicz/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/armel-bella-kotchap/index.html" style="font-weight:700;color:#fff;">Armel Bella-Kotchap</a>
-                <div style="font-size:11px;color:#94a3b8;">Venezia &bull; D</div>
-            </td>
-            <td><strong style="color:#fff;">Infortunio muscolare all&#39;interno coscia</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">06/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">CRISTALLO</span></td>
-            <td>
-                <a href="../calciatore/armel-bella-kotchap/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/cristian-volpato/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="cesare casadei" data-team="torino" data-role="C" data-tier="ATTENZIONE">
             <td>
-                <a href="../calciatore/juan-arizala/index.html" style="font-weight:700;color:#fff;">Juan Arizala</a>
-                <div style="font-size:11px;color:#94a3b8;">Udinese &bull; D</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/cesare-casadei/" class="player-main-name">Cesare Casadei</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Torino</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Lesione al bicipite femorale della coscia destra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">06/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #34d399;color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">STABILE</span></td>
             <td>
-                <a href="../calciatore/juan-arizala/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Affaticamento muscolare</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/fabiano-parisi/index.html" style="font-weight:700;color:#fff;">Fabiano Parisi</a>
-                <div style="font-size:11px;color:#94a3b8;">Fiorentina &bull; D</div>
+                <span class="return-date-pill">📅 30/09/2026</span>
             </td>
-            <td><strong style="color:#fff;">Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">01/11/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
             <td>
-                <a href="../calciatore/fabiano-parisi/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/fali-cande/index.html" style="font-weight:700;color:#fff;">Fali Candé</a>
-                <div style="font-size:11px;color:#94a3b8;">Sassuolo &bull; D</div>
-            </td>
-            <td><strong style="color:#fff;">Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">30/09/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
-            <td>
-                <a href="../calciatore/fali-cande/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/cesare-casadei/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="manuel locatelli" data-team="juventus" data-role="C" data-tier="STABILE">
             <td>
-                <a href="../calciatore/juan-cabal/index.html" style="font-weight:700;color:#fff;">Juan Cabal</a>
-                <div style="font-size:11px;color:#94a3b8;">Juventus &bull; D</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/manuel-locatelli/" class="player-main-name">Manuel Locatelli</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Juventus</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Lesione di basso grado del muscolo semimembranoso della coscia sinistra</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">08/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">CRISTALLO</span></td>
             <td>
-                <a href="../calciatore/juan-cabal/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Problema al menisco del ginocchio destro (in valutazione, possibile intervento chirurgico o terapia conservativa)</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/marin-sverko/index.html" style="font-weight:700;color:#fff;">Marin Šverko</a>
-                <div style="font-size:11px;color:#94a3b8;">Venezia &bull; D</div>
+                <span class="return-date-pill">📅 08/02/2027</span>
             </td>
-            <td><strong style="color:#fff;">Infortunio alle anche</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">17/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
             <td>
-                <a href="../calciatore/marin-sverko/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-STABILE">STABILE</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/riyad-idrissi/index.html" style="font-weight:700;color:#fff;">Riyad Idrissi</a>
-                <div style="font-size:11px;color:#94a3b8;">Cagliari &bull; D</div>
-            </td>
-            <td><strong style="color:#fff;">Intervento di ricostruzione del legamento crociato anteriore del ginocchio sinistro</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">11/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
-            <td>
-                <a href="../calciatore/riyad-idrissi/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/manuel-locatelli/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="toma bašić" data-team="venezia" data-role="C" data-tier="FRAGILE">
             <td>
-                <a href="../calciatore/luca-marianucci/index.html" style="font-weight:700;color:#fff;">Luca Marianucci</a>
-                <div style="font-size:11px;color:#94a3b8;">Napoli &bull; D</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/toma-basic/" class="player-main-name">Toma Bašić</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Venezia</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Lesione di alto grado del legamento collaterale mediale del ginocchio sinistro</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">11/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
             <td>
-                <a href="../calciatore/luca-marianucci/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Infiammazione della pianta del piede</span>
+                </div>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/bartol-franjic/index.html" style="font-weight:700;color:#fff;">Bartol Franjic</a>
-                <div style="font-size:11px;color:#94a3b8;">Venezia &bull; D</div>
+                <span class="return-date-pill">📅 05/10/2026</span>
             </td>
-            <td><strong style="color:#fff;">Dislocazione della clavicola</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">10/12/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
             <td>
-                <a href="../calciatore/bartol-franjic/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-        </tr>
-        
-        <tr>
             <td>
-                <a href="../calciatore/edoardo-pieragnolo/index.html" style="font-weight:700;color:#fff;">Edoardo Pieragnolo</a>
-                <div style="font-size:11px;color:#94a3b8;">Sassuolo &bull; D</div>
-            </td>
-            <td><strong style="color:#fff;">Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">01/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
-            <td>
-                <a href="../calciatore/edoardo-pieragnolo/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <a href="../calciatore/toma-basic/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="gianluca busio" data-team="venezia" data-role="C" data-tier="FRAGILE">
             <td>
-                <a href="../calciatore/alex-meret/index.html" style="font-weight:700;color:#fff;">Alex Meret</a>
-                <div style="font-size:11px;color:#94a3b8;">Napoli &bull; P</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/gianluca-busio/" class="player-main-name">Gianluca Busio</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Venezia</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Problema agli adduttori</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">08/10/2026</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #f87171;color:#f87171;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">FRAGILE</span></td>
             <td>
-                <a href="../calciatore/alex-meret/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione muscolare alla coscia destra (problema ai flessori)</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 27/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/gianluca-busio/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
-        <tr>
+        <tr class="injury-row" data-name="nicolò rovella" data-team="lazio" data-role="C" data-tier="CRISTALLO">
             <td>
-                <a href="../calciatore/kamil-grabara/index.html" style="font-weight:700;color:#fff;">Kamil Grabara</a>
-                <div style="font-size:11px;color:#94a3b8;">Juventus &bull; P</div>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/nicolo-rovella/" class="player-main-name">Nicolò Rovella</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Lazio</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td><strong style="color:#fff;">Rottura del legamento crociato del ginocchio destro, da trauma distorsivo in allenamento</strong></td>
-            <td style="color:#fbbf24;font-weight:700;">31/07/2027</td>
-            <td><span class="injury-tier-chip" style="border:1px solid #fbbf24;color:#fbbf24;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">ATTENZIONE</span></td>
             <td>
-                <a href="../calciatore/kamil-grabara/index.html" class="btn-launch-app" style="padding:4px 10px;font-size:11px;">Scheda Completa &rarr;</a>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Problema al polpaccio destro</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 30/09/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+            </td>
+            <td>
+                <a href="../calciatore/nicolo-rovella/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="idrissa touré" data-team="monza" data-role="C" data-tier="ATTENZIONE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/idrissa-toure/" class="player-main-name">Idrissa Touré</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Monza</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Fastidio articolare (articolazione non specificata)</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 30/09/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+            </td>
+            <td>
+                <a href="../calciatore/idrissa-toure/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="jakub piotrowski" data-team="udinese" data-role="C" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/jakub-piotrowski/" class="player-main-name">Jakub Piotrowski</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Udinese</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lieve aritmia cardiaca benigna, da sottoporre a intervento di ablazione cardiaca</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 18/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/jakub-piotrowski/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="khéphren thuram" data-team="juventus" data-role="C" data-tier="CRISTALLO">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/khephren-thuram/" class="player-main-name">Khéphren Thuram</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Juventus</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Sindrome femoro-rotulea al ginocchio</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 01/01/2027</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+            </td>
+            <td>
+                <a href="../calciatore/khephren-thuram/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="matteo pessina" data-team="monza" data-role="C" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/matteo-pessina/" class="player-main-name">Matteo Pessina</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Monza</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Operato per la lussazione della rotula del ginocchio destro</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 28/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/matteo-pessina/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="medon berisha" data-team="lecce" data-role="C" data-tier="CRISTALLO">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/medon-berisha/" class="player-main-name">Medon Berisha</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Lecce</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione del tendine riflesso del retto femorale destro, operato chirurgicamente</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 01/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+            </td>
+            <td>
+                <a href="../calciatore/medon-berisha/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="florian grillitsch" data-team="frosinone" data-role="C" data-tier="ATTENZIONE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/florian-grillitsch/" class="player-main-name">Florian Grillitsch</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Frosinone</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Sindrome retto-adduttoria</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 01/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+            </td>
+            <td>
+                <a href="../calciatore/florian-grillitsch/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="ismaël koné" data-team="sassuolo" data-role="C" data-tier="ATTENZIONE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/ismael-kone/" class="player-main-name">Ismaël Koné</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Sassuolo</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Intervento di riduzione della frattura della gamba sinistra</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 17/01/2027</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+            </td>
+            <td>
+                <a href="../calciatore/ismael-kone/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="hans nicolussi caviglia" data-team="parma" data-role="C" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/hans-nicolussi-caviglia/" class="player-main-name">Hans Nicolussi Caviglia</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Parma</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione di medio grado alla coscia destra</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 02/11/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/hans-nicolussi-caviglia/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="ibrahim sulemana" data-team="sassuolo" data-role="C" data-tier="ATTENZIONE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/ibrahim-sulemana/" class="player-main-name">Ibrahim Sulemana</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Sassuolo</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 12/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+            </td>
+            <td>
+                <a href="../calciatore/ibrahim-sulemana/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="omri gandelman" data-team="lecce" data-role="C" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/omri-gandelman/" class="player-main-name">Omri Gandelman</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Lecce</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>—</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 01/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/omri-gandelman/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="daniel boloca" data-team="sassuolo" data-role="C" data-tier="ATTENZIONE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/daniel-boloca/" class="player-main-name">Daniel Boloca</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Sassuolo</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Intervento in artroscopia al ginocchio sinistro per la pulizia meniscale</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 30/09/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+            </td>
+            <td>
+                <a href="../calciatore/daniel-boloca/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="matteo dagasso" data-team="venezia" data-role="C" data-tier="STABILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/matteo-dagasso/" class="player-main-name">Matteo Dagasso</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Venezia</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>—</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 05/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-STABILE">STABILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/matteo-dagasso/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="lorenzo venturino" data-team="genoa" data-role="C" data-tier="ATTENZIONE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/lorenzo-venturino/" class="player-main-name">Lorenzo Venturino</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Genoa</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Operato al ginocchio</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 30/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+            </td>
+            <td>
+                <a href="../calciatore/lorenzo-venturino/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="mattia felici" data-team="cagliari" data-role="C" data-tier="CRISTALLO">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-C">C</div>
+                    <div>
+                        <a href="../calciatore/mattia-felici/" class="player-main-name">Mattia Felici</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Cagliari</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo C</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Nuovo infortunio al ginocchio (da accertare con esami strumentali)</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 09/02/2027</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+            </td>
+            <td>
+                <a href="../calciatore/mattia-felici/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="oumar solet" data-team="udinese" data-role="D" data-tier="ATTENZIONE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/oumar-solet/" class="player-main-name">Oumar Solet</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Udinese</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione al muscolo pettineo della gamba sinistra</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 24/09/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+            </td>
+            <td>
+                <a href="../calciatore/oumar-solet/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="djed spence" data-team="inter" data-role="D" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/djed-spence/" class="player-main-name">Djed Spence</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Inter</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Problema fisico pregresso non meglio specificato, sta smaltendo le conseguenze di un piccolo infortunio pregresso che ne ha rallentato la preparazione</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 05/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/djed-spence/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="leonardo spinazzola" data-team="napoli" data-role="D" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/leonardo-spinazzola/" class="player-main-name">Leonardo Spinazzola</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Napoli</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lieve contrattura al bicipite femorale della coscia destra</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 25/09/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/leonardo-spinazzola/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="andrea cambiaso" data-team="juventus" data-role="D" data-tier="ATTENZIONE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/andrea-cambiaso/" class="player-main-name">Andrea Cambiaso</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Juventus</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Leggera distorsione alla caviglia destra</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 30/09/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+            </td>
+            <td>
+                <a href="../calciatore/andrea-cambiaso/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="adam marusic" data-team="lazio" data-role="D" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/adam-marusic/" class="player-main-name">Adam Marusic</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Lazio</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Problema muscolare alla coscia (flessore/quadricipite)</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 01/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/adam-marusic/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="jay idzes" data-team="sassuolo" data-role="D" data-tier="STABILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/jay-idzes/" class="player-main-name">Jay Idzes</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Sassuolo</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione di grado moderato al quadricipite della gamba sinistra</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 11/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-STABILE">STABILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/jay-idzes/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="john stones" data-team="inter" data-role="D" data-tier="CRISTALLO">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/john-stones/" class="player-main-name">John Stones</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Inter</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Risentimento ai flessori della coscia sinistra</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 17/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+            </td>
+            <td>
+                <a href="../calciatore/john-stones/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="alessandro buongiorno" data-team="napoli" data-role="D" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/alessandro-buongiorno/" class="player-main-name">Alessandro Buongiorno</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Napoli</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Intervento di riparazione della radice del menisco mediale del ginocchio destro</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 30/09/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/alessandro-buongiorno/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="isak hien" data-team="atalanta" data-role="D" data-tier="ATTENZIONE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/isak-hien/" class="player-main-name">Isak Hien</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Atalanta</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione del tendine del semimembranoso della gamba sinistra</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 11/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+            </td>
+            <td>
+                <a href="../calciatore/isak-hien/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="sebastian walukiewicz" data-team="sassuolo" data-role="D" data-tier="ATTENZIONE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/sebastian-walukiewicz/" class="player-main-name">Sebastian Walukiewicz</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Sassuolo</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Dead leg (contusione alla coscia)</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 30/09/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+            </td>
+            <td>
+                <a href="../calciatore/sebastian-walukiewicz/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="armel bella-kotchap" data-team="venezia" data-role="D" data-tier="CRISTALLO">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/armel-bella-kotchap/" class="player-main-name">Armel Bella-Kotchap</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Venezia</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Infortunio muscolare all&#39;interno coscia</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 06/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+            </td>
+            <td>
+                <a href="../calciatore/armel-bella-kotchap/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="juan arizala" data-team="udinese" data-role="D" data-tier="STABILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/juan-arizala/" class="player-main-name">Juan Arizala</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Udinese</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione al bicipite femorale della coscia destra</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 06/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-STABILE">STABILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/juan-arizala/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="fabiano parisi" data-team="fiorentina" data-role="D" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/fabiano-parisi/" class="player-main-name">Fabiano Parisi</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Fiorentina</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 01/11/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/fabiano-parisi/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="fali candé" data-team="sassuolo" data-role="D" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/fali-cande/" class="player-main-name">Fali Candé</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Sassuolo</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 30/09/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/fali-cande/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="juan cabal" data-team="juventus" data-role="D" data-tier="CRISTALLO">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/juan-cabal/" class="player-main-name">Juan Cabal</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Juventus</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione di basso grado del muscolo semimembranoso della coscia sinistra</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 08/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+            </td>
+            <td>
+                <a href="../calciatore/juan-cabal/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="marin šverko" data-team="venezia" data-role="D" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/marin-sverko/" class="player-main-name">Marin Šverko</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Venezia</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Infortunio alle anche</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 17/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/marin-sverko/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="riyad idrissi" data-team="cagliari" data-role="D" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/riyad-idrissi/" class="player-main-name">Riyad Idrissi</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Cagliari</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Intervento di ricostruzione del legamento crociato anteriore del ginocchio sinistro</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 11/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/riyad-idrissi/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="luca marianucci" data-team="napoli" data-role="D" data-tier="ATTENZIONE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/luca-marianucci/" class="player-main-name">Luca Marianucci</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Napoli</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Lesione di alto grado del legamento collaterale mediale del ginocchio sinistro</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 11/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+            </td>
+            <td>
+                <a href="../calciatore/luca-marianucci/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="bartol franjic" data-team="venezia" data-role="D" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/bartol-franjic/" class="player-main-name">Bartol Franjic</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Venezia</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Dislocazione della clavicola</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 10/12/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/bartol-franjic/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="edoardo pieragnolo" data-team="sassuolo" data-role="D" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-D">D</div>
+                    <div>
+                        <a href="../calciatore/edoardo-pieragnolo/" class="player-main-name">Edoardo Pieragnolo</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Sassuolo</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo D</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 01/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/edoardo-pieragnolo/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="alex meret" data-team="napoli" data-role="P" data-tier="FRAGILE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-P">P</div>
+                    <div>
+                        <a href="../calciatore/alex-meret/" class="player-main-name">Alex Meret</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Napoli</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo P</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Problema agli adduttori</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 08/10/2026</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+            </td>
+            <td>
+                <a href="../calciatore/alex-meret/" class="btn-detail-link">Scheda &rarr;</a>
+            </td>
+        </tr>
+        
+        <tr class="injury-row" data-name="kamil grabara" data-team="juventus" data-role="P" data-tier="ATTENZIONE">
+            <td>
+                <div class="cell-player-box">
+                    <div class="player-role-avatar role-P">P</div>
+                    <div>
+                        <a href="../calciatore/kamil-grabara/" class="player-main-name">Kamil Grabara</a>
+                        <div class="player-meta-sub">
+                            <span class="team-tag">Juventus</span>
+                            <span class="meta-dot">&bull;</span>
+                            <span>Ruolo P</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="diagnosis-badge">
+                    <span class="diagnosis-icon">🩺</span>
+                    <span>Rottura del legamento crociato del ginocchio destro, da trauma distorsivo in allenamento</span>
+                </div>
+            </td>
+            <td>
+                <span class="return-date-pill">📅 31/07/2027</span>
+            </td>
+            <td>
+                <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+            </td>
+            <td>
+                <a href="../calciatore/kamil-grabara/" class="btn-detail-link">Scheda &rarr;</a>
             </td>
         </tr>
         
@@ -851,18 +1916,52 @@
             </div>
         </section>
 
-        <section class="cta-banner">
-            <h2>Non farti cogliere impreparato all'Asta!</h2>
-            <p>Utilizza l'algoritmo predittivo di Fanta Master AI per calcolare la penalità esatta sul prezzo d'asta per ogni infortunato.</p>
-            <a href="../app.html" class="btn-launch-app" style="font-size:14px;padding:10px 22px;">Vai alla Dashboard Live 🚀</a>
+        <!-- CTA BOX -->
+        <section class="pillar-cta-box">
+            <h3>Non farti cogliere impreparato all'Asta o agli Scambi!</h3>
+            <p>L'algoritmo predittivo di Fanta Master AI calcola la svalutazione esatta del prezzo d'asta in crediti (CR) per ogni infortunato e suggerisce i migliori sostituti in rosa.</p>
+            <a href="../" class="btn-cta-main">Vai alla Dashboard Live 🚀</a>
         </section>
     </main>
 
     <footer class="site-footer">
         <div class="site-container">
-            <p>&copy; 2026/2027 Fanta Master AI &bull; Storico Infortuni Ufficiale Serie A</p>
+            <p>&copy; 2026/2027 Fanta Master AI &bull; Portale Statistico Ufficiale Serie A</p>
         </div>
     </footer>
+
+    <script>
+        let currentRole = 'ALL';
+        function setRoleFilter(role, btn) {
+            currentRole = role;
+            document.querySelectorAll('.pillar-filter-chip').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            filterInjuries();
+        }
+
+        function filterInjuries() {
+            const search = (document.getElementById('injurySearch').value || '').toLowerCase().trim();
+            const team = document.getElementById('injuryTeamFilter').value;
+            const rows = document.querySelectorAll('#injuriesTable tbody tr');
+
+            rows.forEach(tr => {
+                const rName = tr.getAttribute('data-name') || '';
+                const rTeam = tr.getAttribute('data-team') || '';
+                const rRole = tr.getAttribute('data-role') || '';
+                const rTier = tr.getAttribute('data-tier') || '';
+
+                const matchesSearch = !search || rName.includes(search) || rTeam.includes(search);
+                const matchesTeam = team === 'all' || rTeam === team;
+                const matchesRole = currentRole === 'ALL' || rRole === currentRole;
+
+                if (matchesSearch && matchesTeam && matchesRole) {
+                    tr.style.display = '';
+                } else {
+                    tr.style.display = 'none';
+                }
+            });
+        }
+    </script>
     <script src="../js/tracker.js" defer></script>
 </body>
 </html>

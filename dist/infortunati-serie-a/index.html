@@ -157,6 +157,7 @@
                 <button type="button" class="pillar-filter-chip" data-role="D" onclick="setRoleFilter('D', this)">🛡️ D</button>
                 <button type="button" class="pillar-filter-chip" data-role="C" onclick="setRoleFilter('C', this)">🪄 C</button>
                 <button type="button" class="pillar-filter-chip" data-role="A" onclick="setRoleFilter('A', this)">⚡ A</button>
+                <button type="button" class="pillar-filter-chip active" id="sortReturnBtn" onclick="toggleSortReturnDate()" title="Inverti ordinamento per data di rientro">📅 Rientro: Più Vicini ▲</button>
             </div>
         </div>
 
@@ -166,17 +167,22 @@
                 <table class="seo-table" id="injuriesTable">
                     <thead>
                         <tr>
-                            <th>Calciatore &amp; Ruolo</th>
-                            <th>Diagnosi Infortunio</th>
-                            <th>Rientro Stimato</th>
-                            <th>Fragilità Clinica</th>
-                            <th>Dettagli</th>
+                            <th class="col-player">Calciatore &amp; Ruolo</th>
+                            <th class="col-diag desktop-only">Diagnosi Infortunio</th>
+                            <th class="col-date" onclick="toggleSortReturnDate()" style="cursor:pointer;" title="Clicca per invertire l'ordinamento per data di rientro">
+                                Rientro Stimato <span id="sortDateIcon" style="color:#fbbf24;margin-left:4px;">▲</span>
+                            </th>
+                            <th class="col-tier desktop-only">Fragilità Clinica</th>
+                            <th class="col-action" style="text-align:center;">
+                                <span class="desktop-only">Dettagli</span>
+                                <span class="mobile-only">Info</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         
-        <tr class="injury-row" data-name="oumar solet" data-team="udinese" data-role="D" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-oumar-solet-6956" data-id="oumar-solet-6956" data-date-ts="20260924" data-date-str="24/09/2026" data-name="oumar solet" data-team="udinese" data-role="D" data-tier="ATTENZIONE" onclick="onRowClick('oumar-solet-6956', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -189,25 +195,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione al muscolo pettineo della gamba sinistra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 24/09/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/oumar-solet/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/oumar-solet/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-oumar-solet-6956" onclick="toggleInjuryDetail('oumar-solet-6956', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-oumar-solet-6956" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione al muscolo pettineo della gamba sinistra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/oumar-solet/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="leonardo spinazzola" data-team="napoli" data-role="D" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-leonardo-spinazzola-1852" data-id="leonardo-spinazzola-1852" data-date-ts="20260925" data-date-str="25/09/2026" data-name="leonardo spinazzola" data-team="napoli" data-role="D" data-tier="FRAGILE" onclick="onRowClick('leonardo-spinazzola-1852', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -220,25 +249,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lieve contrattura al bicipite femorale della coscia destra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 25/09/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/leonardo-spinazzola/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/leonardo-spinazzola/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-leonardo-spinazzola-1852" onclick="toggleInjuryDetail('leonardo-spinazzola-1852', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-leonardo-spinazzola-1852" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lieve contrattura al bicipite femorale della coscia destra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/leonardo-spinazzola/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="daniel boloca" data-team="sassuolo" data-role="C" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-daniel-boloca-6219" data-id="daniel-boloca-6219" data-date-ts="20260930" data-date-str="30/09/2026" data-name="daniel boloca" data-team="sassuolo" data-role="C" data-tier="ATTENZIONE" onclick="onRowClick('daniel-boloca-6219', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -251,25 +303,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Intervento in artroscopia al ginocchio sinistro per la pulizia meniscale</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 30/09/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/daniel-boloca/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/daniel-boloca/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-daniel-boloca-6219" onclick="toggleInjuryDetail('daniel-boloca-6219', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-daniel-boloca-6219" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Intervento in artroscopia al ginocchio sinistro per la pulizia meniscale</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/daniel-boloca/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="alessandro buongiorno" data-team="napoli" data-role="D" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-alessandro-buongiorno-2724" data-id="alessandro-buongiorno-2724" data-date-ts="20260930" data-date-str="30/09/2026" data-name="alessandro buongiorno" data-team="napoli" data-role="D" data-tier="FRAGILE" onclick="onRowClick('alessandro-buongiorno-2724', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -282,25 +357,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Intervento di riparazione della radice del menisco mediale del ginocchio destro</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 30/09/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/alessandro-buongiorno/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/alessandro-buongiorno/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-alessandro-buongiorno-2724" onclick="toggleInjuryDetail('alessandro-buongiorno-2724', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-alessandro-buongiorno-2724" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Intervento di riparazione della radice del menisco mediale del ginocchio destro</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/alessandro-buongiorno/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="andrea cambiaso" data-team="juventus" data-role="D" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-andrea-cambiaso-5520" data-id="andrea-cambiaso-5520" data-date-ts="20260930" data-date-str="30/09/2026" data-name="andrea cambiaso" data-team="juventus" data-role="D" data-tier="ATTENZIONE" onclick="onRowClick('andrea-cambiaso-5520', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -313,25 +411,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Leggera distorsione alla caviglia destra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 30/09/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/andrea-cambiaso/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/andrea-cambiaso/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-andrea-cambiaso-5520" onclick="toggleInjuryDetail('andrea-cambiaso-5520', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-andrea-cambiaso-5520" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Leggera distorsione alla caviglia destra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/andrea-cambiaso/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="fali candé" data-team="sassuolo" data-role="D" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-fali-cande-6985" data-id="fali-cande-6985" data-date-ts="20260930" data-date-str="30/09/2026" data-name="fali candé" data-team="sassuolo" data-role="D" data-tier="FRAGILE" onclick="onRowClick('fali-cande-6985', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -344,25 +465,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 30/09/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/fali-cande/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/fali-cande/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-fali-cande-6985" onclick="toggleInjuryDetail('fali-cande-6985', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-fali-cande-6985" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/fali-cande/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="cesare casadei" data-team="torino" data-role="C" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-cesare-casadei-5888" data-id="cesare-casadei-5888" data-date-ts="20260930" data-date-str="30/09/2026" data-name="cesare casadei" data-team="torino" data-role="C" data-tier="ATTENZIONE" onclick="onRowClick('cesare-casadei-5888', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -375,25 +519,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Affaticamento muscolare</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 30/09/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/cesare-casadei/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/cesare-casadei/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-cesare-casadei-5888" onclick="toggleInjuryDetail('cesare-casadei-5888', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-cesare-casadei-5888" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Affaticamento muscolare</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/cesare-casadei/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="nicolò rovella" data-team="lazio" data-role="C" data-tier="CRISTALLO">
-            <td>
+        <tr class="injury-row" id="row-nicolo-rovella-4459" data-id="nicolo-rovella-4459" data-date-ts="20260930" data-date-str="30/09/2026" data-name="nicolò rovella" data-team="lazio" data-role="C" data-tier="CRISTALLO" onclick="onRowClick('nicolo-rovella-4459', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -406,25 +573,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Problema al polpaccio destro</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 30/09/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-            <td>
-                <a href="../calciatore/nicolo-rovella/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/nicolo-rovella/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-nicolo-rovella-4459" onclick="toggleInjuryDetail('nicolo-rovella-4459', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-nicolo-rovella-4459" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Problema al polpaccio destro</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/nicolo-rovella/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="idrissa touré" data-team="monza" data-role="C" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-idrissa-toure-7146" data-id="idrissa-toure-7146" data-date-ts="20260930" data-date-str="30/09/2026" data-name="idrissa touré" data-team="monza" data-role="C" data-tier="ATTENZIONE" onclick="onRowClick('idrissa-toure-7146', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -437,25 +627,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Fastidio articolare (articolazione non specificata)</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 30/09/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/idrissa-toure/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/idrissa-toure/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-idrissa-toure-7146" onclick="toggleInjuryDetail('idrissa-toure-7146', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-idrissa-toure-7146" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Fastidio articolare (articolazione non specificata)</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/idrissa-toure/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="sebastian walukiewicz" data-team="sassuolo" data-role="D" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-sebastian-walukiewicz-4374" data-id="sebastian-walukiewicz-4374" data-date-ts="20260930" data-date-str="30/09/2026" data-name="sebastian walukiewicz" data-team="sassuolo" data-role="D" data-tier="ATTENZIONE" onclick="onRowClick('sebastian-walukiewicz-4374', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -468,25 +681,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Dead leg (contusione alla coscia)</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 30/09/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/sebastian-walukiewicz/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/sebastian-walukiewicz/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-sebastian-walukiewicz-4374" onclick="toggleInjuryDetail('sebastian-walukiewicz-4374', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-sebastian-walukiewicz-4374" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Dead leg (contusione alla coscia)</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/sebastian-walukiewicz/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="medon berisha" data-team="lecce" data-role="C" data-tier="CRISTALLO">
-            <td>
+        <tr class="injury-row" id="row-medon-berisha-6015" data-id="medon-berisha-6015" data-date-ts="20261001" data-date-str="01/10/2026" data-name="medon berisha" data-team="lecce" data-role="C" data-tier="CRISTALLO" onclick="onRowClick('medon-berisha-6015', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -499,25 +735,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione del tendine riflesso del retto femorale destro, operato chirurgicamente</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 01/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-            <td>
-                <a href="../calciatore/medon-berisha/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/medon-berisha/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-medon-berisha-6015" onclick="toggleInjuryDetail('medon-berisha-6015', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-medon-berisha-6015" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione del tendine riflesso del retto femorale destro, operato chirurgicamente</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/medon-berisha/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="omri gandelman" data-team="lecce" data-role="C" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-omri-gandelman-7318" data-id="omri-gandelman-7318" data-date-ts="20261001" data-date-str="01/10/2026" data-name="omri gandelman" data-team="lecce" data-role="C" data-tier="FRAGILE" onclick="onRowClick('omri-gandelman-7318', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -530,25 +789,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>—</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 01/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/omri-gandelman/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/omri-gandelman/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-omri-gandelman-7318" onclick="toggleInjuryDetail('omri-gandelman-7318', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-omri-gandelman-7318" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">—</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/omri-gandelman/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="willem geubbels" data-team="lecce" data-role="A" data-tier="STABILE">
-            <td>
+        <tr class="injury-row" id="row-willem-geubbels-5029" data-id="willem-geubbels-5029" data-date-ts="20261001" data-date-str="01/10/2026" data-name="willem geubbels" data-team="lecce" data-role="A" data-tier="STABILE" onclick="onRowClick('willem-geubbels-5029', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-A">A</div>
                     <div>
@@ -561,25 +843,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Brutta torsione della caviglia sinistra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 01/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-STABILE">STABILE</span>
             </td>
-            <td>
-                <a href="../calciatore/willem-geubbels/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/willem-geubbels/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-willem-geubbels-5029" onclick="toggleInjuryDetail('willem-geubbels-5029', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-willem-geubbels-5029" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Brutta torsione della caviglia sinistra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-STABILE">STABILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/willem-geubbels/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="florian grillitsch" data-team="frosinone" data-role="C" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-florian-grillitsch-7550" data-id="florian-grillitsch-7550" data-date-ts="20261001" data-date-str="01/10/2026" data-name="florian grillitsch" data-team="frosinone" data-role="C" data-tier="ATTENZIONE" onclick="onRowClick('florian-grillitsch-7550', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -592,25 +897,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Sindrome retto-adduttoria</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 01/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/florian-grillitsch/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/florian-grillitsch/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-florian-grillitsch-7550" onclick="toggleInjuryDetail('florian-grillitsch-7550', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-florian-grillitsch-7550" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Sindrome retto-adduttoria</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/florian-grillitsch/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="adam marusic" data-team="lazio" data-role="D" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-adam-marusic-2188" data-id="adam-marusic-2188" data-date-ts="20261001" data-date-str="01/10/2026" data-name="adam marusic" data-team="lazio" data-role="D" data-tier="FRAGILE" onclick="onRowClick('adam-marusic-2188', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -623,25 +951,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Problema muscolare alla coscia (flessore/quadricipite)</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 01/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/adam-marusic/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/adam-marusic/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-adam-marusic-2188" onclick="toggleInjuryDetail('adam-marusic-2188', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-adam-marusic-2188" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Problema muscolare alla coscia (flessore/quadricipite)</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/adam-marusic/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="edoardo pieragnolo" data-team="sassuolo" data-role="D" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-edoardo-pieragnolo-7156" data-id="edoardo-pieragnolo-7156" data-date-ts="20261001" data-date-str="01/10/2026" data-name="edoardo pieragnolo" data-team="sassuolo" data-role="D" data-tier="FRAGILE" onclick="onRowClick('edoardo-pieragnolo-7156', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -654,25 +1005,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 01/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/edoardo-pieragnolo/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/edoardo-pieragnolo/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-edoardo-pieragnolo-7156" onclick="toggleInjuryDetail('edoardo-pieragnolo-7156', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-edoardo-pieragnolo-7156" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/edoardo-pieragnolo/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="nicolò zaniolo" data-team="udinese" data-role="C" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-nicolo-zaniolo-2766" data-id="nicolo-zaniolo-2766" data-date-ts="20261001" data-date-str="01/10/2026" data-name="nicolò zaniolo" data-team="udinese" data-role="C" data-tier="ATTENZIONE" onclick="onRowClick('nicolo-zaniolo-2766', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -685,25 +1059,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Sospetto stiramento muscolare (accusato nel finale di Udinese-Como, in attesa di esami strumentali)</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 01/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/nicolo-zaniolo/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/nicolo-zaniolo/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-nicolo-zaniolo-2766" onclick="toggleInjuryDetail('nicolo-zaniolo-2766', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-nicolo-zaniolo-2766" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Sospetto stiramento muscolare (accusato nel finale di Udinese-Como, in attesa di esami strumentali)</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/nicolo-zaniolo/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="toma bašić" data-team="venezia" data-role="C" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-toma-basic-5674" data-id="toma-basic-5674" data-date-ts="20261005" data-date-str="05/10/2026" data-name="toma bašić" data-team="venezia" data-role="C" data-tier="FRAGILE" onclick="onRowClick('toma-basic-5674', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -716,25 +1113,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Infiammazione della pianta del piede</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 05/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/toma-basic/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/toma-basic/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-toma-basic-5674" onclick="toggleInjuryDetail('toma-basic-5674', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-toma-basic-5674" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Infiammazione della pianta del piede</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/toma-basic/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="hakan çalhanoğlu" data-team="inter" data-role="C" data-tier="CRISTALLO">
-            <td>
+        <tr class="injury-row" id="row-hakan-calhanoglu-2194" data-id="hakan-calhanoglu-2194" data-date-ts="20261005" data-date-str="05/10/2026" data-name="hakan çalhanoğlu" data-team="inter" data-role="C" data-tier="CRISTALLO" onclick="onRowClick('hakan-calhanoglu-2194', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -747,25 +1167,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Risentimento muscolare all&#39;adduttore della coscia destra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 05/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-            <td>
-                <a href="../calciatore/hakan-calhanoglu/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/hakan-calhanoglu/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-hakan-calhanoglu-2194" onclick="toggleInjuryDetail('hakan-calhanoglu-2194', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-hakan-calhanoglu-2194" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Risentimento muscolare all&#39;adduttore della coscia destra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/hakan-calhanoglu/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="matteo dagasso" data-team="venezia" data-role="C" data-tier="STABILE">
-            <td>
+        <tr class="injury-row" id="row-matteo-dagasso-7481" data-id="matteo-dagasso-7481" data-date-ts="20261005" data-date-str="05/10/2026" data-name="matteo dagasso" data-team="venezia" data-role="C" data-tier="STABILE" onclick="onRowClick('matteo-dagasso-7481', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -778,25 +1221,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>—</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 05/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-STABILE">STABILE</span>
             </td>
-            <td>
-                <a href="../calciatore/matteo-dagasso/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/matteo-dagasso/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-matteo-dagasso-7481" onclick="toggleInjuryDetail('matteo-dagasso-7481', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-matteo-dagasso-7481" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">—</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-STABILE">STABILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/matteo-dagasso/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="artem dovbyk" data-team="bologna" data-role="A" data-tier="CRISTALLO">
-            <td>
+        <tr class="injury-row" id="row-artem-dovbyk-6675" data-id="artem-dovbyk-6675" data-date-ts="20261005" data-date-str="05/10/2026" data-name="artem dovbyk" data-team="bologna" data-role="A" data-tier="CRISTALLO" onclick="onRowClick('artem-dovbyk-6675', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-A">A</div>
                     <div>
@@ -809,25 +1275,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Affaticamento muscolare</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 05/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-            <td>
-                <a href="../calciatore/artem-dovbyk/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/artem-dovbyk/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-artem-dovbyk-6675" onclick="toggleInjuryDetail('artem-dovbyk-6675', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-artem-dovbyk-6675" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Affaticamento muscolare</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/artem-dovbyk/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="djed spence" data-team="inter" data-role="D" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-djed-spence-5982" data-id="djed-spence-5982" data-date-ts="20261005" data-date-str="05/10/2026" data-name="djed spence" data-team="inter" data-role="D" data-tier="FRAGILE" onclick="onRowClick('djed-spence-5982', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -840,25 +1329,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Problema fisico pregresso non meglio specificato, sta smaltendo le conseguenze di un piccolo infortunio pregresso che ne ha rallentato la preparazione</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 05/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/djed-spence/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/djed-spence/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-djed-spence-5982" onclick="toggleInjuryDetail('djed-spence-5982', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-djed-spence-5982" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Problema fisico pregresso non meglio specificato, sta smaltendo le conseguenze di un piccolo infortunio pregresso che ne ha rallentato la preparazione</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/djed-spence/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="juan arizala" data-team="udinese" data-role="D" data-tier="STABILE">
-            <td>
+        <tr class="injury-row" id="row-juan-arizala-7312" data-id="juan-arizala-7312" data-date-ts="20261006" data-date-str="06/10/2026" data-name="juan arizala" data-team="udinese" data-role="D" data-tier="STABILE" onclick="onRowClick('juan-arizala-7312', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -871,25 +1383,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione al bicipite femorale della coscia destra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 06/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-STABILE">STABILE</span>
             </td>
-            <td>
-                <a href="../calciatore/juan-arizala/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/juan-arizala/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-juan-arizala-7312" onclick="toggleInjuryDetail('juan-arizala-7312', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-juan-arizala-7312" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione al bicipite femorale della coscia destra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-STABILE">STABILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/juan-arizala/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="armel bella-kotchap" data-team="venezia" data-role="D" data-tier="CRISTALLO">
-            <td>
+        <tr class="injury-row" id="row-armel-bella-kotchap-7253" data-id="armel-bella-kotchap-7253" data-date-ts="20261006" data-date-str="06/10/2026" data-name="armel bella-kotchap" data-team="venezia" data-role="D" data-tier="CRISTALLO" onclick="onRowClick('armel-bella-kotchap-7253', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -902,25 +1437,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Infortunio muscolare all&#39;interno coscia</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 06/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-            <td>
-                <a href="../calciatore/armel-bella-kotchap/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/armel-bella-kotchap/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-armel-bella-kotchap-7253" onclick="toggleInjuryDetail('armel-bella-kotchap-7253', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-armel-bella-kotchap-7253" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Infortunio muscolare all&#39;interno coscia</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/armel-bella-kotchap/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="juan cabal" data-team="juventus" data-role="D" data-tier="CRISTALLO">
-            <td>
+        <tr class="injury-row" id="row-juan-cabal-6039" data-id="juan-cabal-6039" data-date-ts="20261008" data-date-str="08/10/2026" data-name="juan cabal" data-team="juventus" data-role="D" data-tier="CRISTALLO" onclick="onRowClick('juan-cabal-6039', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -933,25 +1491,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione di basso grado del muscolo semimembranoso della coscia sinistra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 08/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-            <td>
-                <a href="../calciatore/juan-cabal/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/juan-cabal/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-juan-cabal-6039" onclick="toggleInjuryDetail('juan-cabal-6039', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-juan-cabal-6039" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione di basso grado del muscolo semimembranoso della coscia sinistra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/juan-cabal/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="alex meret" data-team="napoli" data-role="P" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-alex-meret-572" data-id="alex-meret-572" data-date-ts="20261008" data-date-str="08/10/2026" data-name="alex meret" data-team="napoli" data-role="P" data-tier="FRAGILE" onclick="onRowClick('alex-meret-572', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-P">P</div>
                     <div>
@@ -964,25 +1545,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Problema agli adduttori</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 08/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/alex-meret/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/alex-meret/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-alex-meret-572" onclick="toggleInjuryDetail('alex-meret-572', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-alex-meret-572" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Problema agli adduttori</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/alex-meret/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="elias havel" data-team="genoa" data-role="A" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-elias-havel-7453" data-id="elias-havel-7453" data-date-ts="20261010" data-date-str="10/10/2026" data-name="elias havel" data-team="genoa" data-role="A" data-tier="FRAGILE" onclick="onRowClick('elias-havel-7453', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-A">A</div>
                     <div>
@@ -995,25 +1599,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Contusione al polpaccio</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 10/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/elias-havel/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/elias-havel/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-elias-havel-7453" onclick="toggleInjuryDetail('elias-havel-7453', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-elias-havel-7453" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Contusione al polpaccio</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/elias-havel/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="ché adams" data-team="torino" data-role="A" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-che-adams-6646" data-id="che-adams-6646" data-date-ts="20261011" data-date-str="11/10/2026" data-name="ché adams" data-team="torino" data-role="A" data-tier="FRAGILE" onclick="onRowClick('che-adams-6646', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-A">A</div>
                     <div>
@@ -1026,25 +1653,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Problema all&#39;adduttore</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 11/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/che-adams/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/che-adams/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-che-adams-6646" onclick="toggleInjuryDetail('che-adams-6646', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-che-adams-6646" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Problema all&#39;adduttore</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/che-adams/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="giovane" data-team="napoli" data-role="A" data-tier="STABILE">
-            <td>
+        <tr class="injury-row" id="row-giovane-7162" data-id="giovane-7162" data-date-ts="20261011" data-date-str="11/10/2026" data-name="giovane" data-team="napoli" data-role="A" data-tier="STABILE" onclick="onRowClick('giovane-7162', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-A">A</div>
                     <div>
@@ -1057,25 +1707,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Operato per ernia inguinale (intervento di correzione presso Villa Stuart)</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 11/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-STABILE">STABILE</span>
             </td>
-            <td>
-                <a href="../calciatore/giovane/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/giovane/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-giovane-7162" onclick="toggleInjuryDetail('giovane-7162', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-giovane-7162" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Operato per ernia inguinale (intervento di correzione presso Villa Stuart)</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-STABILE">STABILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/giovane/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="isak hien" data-team="atalanta" data-role="D" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-isak-hien-6046" data-id="isak-hien-6046" data-date-ts="20261011" data-date-str="11/10/2026" data-name="isak hien" data-team="atalanta" data-role="D" data-tier="ATTENZIONE" onclick="onRowClick('isak-hien-6046', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -1088,25 +1761,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione del tendine del semimembranoso della gamba sinistra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 11/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/isak-hien/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/isak-hien/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-isak-hien-6046" onclick="toggleInjuryDetail('isak-hien-6046', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-isak-hien-6046" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione del tendine del semimembranoso della gamba sinistra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/isak-hien/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="riyad idrissi" data-team="cagliari" data-role="D" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-riyad-idrissi-7125" data-id="riyad-idrissi-7125" data-date-ts="20261011" data-date-str="11/10/2026" data-name="riyad idrissi" data-team="cagliari" data-role="D" data-tier="FRAGILE" onclick="onRowClick('riyad-idrissi-7125', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -1119,25 +1815,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Intervento di ricostruzione del legamento crociato anteriore del ginocchio sinistro</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 11/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/riyad-idrissi/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/riyad-idrissi/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-riyad-idrissi-7125" onclick="toggleInjuryDetail('riyad-idrissi-7125', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-riyad-idrissi-7125" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Intervento di ricostruzione del legamento crociato anteriore del ginocchio sinistro</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/riyad-idrissi/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="jay idzes" data-team="sassuolo" data-role="D" data-tier="STABILE">
-            <td>
+        <tr class="injury-row" id="row-jay-idzes-6672" data-id="jay-idzes-6672" data-date-ts="20261011" data-date-str="11/10/2026" data-name="jay idzes" data-team="sassuolo" data-role="D" data-tier="STABILE" onclick="onRowClick('jay-idzes-6672', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -1150,25 +1869,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione di grado moderato al quadricipite della gamba sinistra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 11/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-STABILE">STABILE</span>
             </td>
-            <td>
-                <a href="../calciatore/jay-idzes/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/jay-idzes/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-jay-idzes-6672" onclick="toggleInjuryDetail('jay-idzes-6672', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-jay-idzes-6672" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione di grado moderato al quadricipite della gamba sinistra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-STABILE">STABILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/jay-idzes/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="luca marianucci" data-team="napoli" data-role="D" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-luca-marianucci-6809" data-id="luca-marianucci-6809" data-date-ts="20261011" data-date-str="11/10/2026" data-name="luca marianucci" data-team="napoli" data-role="D" data-tier="ATTENZIONE" onclick="onRowClick('luca-marianucci-6809', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -1181,25 +1923,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione di alto grado del legamento collaterale mediale del ginocchio sinistro</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 11/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/luca-marianucci/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/luca-marianucci/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-luca-marianucci-6809" onclick="toggleInjuryDetail('luca-marianucci-6809', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-luca-marianucci-6809" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione di alto grado del legamento collaterale mediale del ginocchio sinistro</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/luca-marianucci/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="scott mctominay" data-team="napoli" data-role="C" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-scott-mctominay-4777" data-id="scott-mctominay-4777" data-date-ts="20261011" data-date-str="11/10/2026" data-name="scott mctominay" data-team="napoli" data-role="C" data-tier="FRAGILE" onclick="onRowClick('scott-mctominay-4777', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -1212,25 +1977,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lieve aritmia benigna, intervento di correzione mediante ablazione (PFA)</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 11/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/scott-mctominay/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/scott-mctominay/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-scott-mctominay-4777" onclick="toggleInjuryDetail('scott-mctominay-4777', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-scott-mctominay-4777" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lieve aritmia benigna, intervento di correzione mediante ablazione (PFA)</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/scott-mctominay/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="kamaldeen sulemana" data-team="atalanta" data-role="A" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-kamaldeen-sulemana-5918" data-id="kamaldeen-sulemana-5918" data-date-ts="20261011" data-date-str="11/10/2026" data-name="kamaldeen sulemana" data-team="atalanta" data-role="A" data-tier="FRAGILE" onclick="onRowClick('kamaldeen-sulemana-5918', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-A">A</div>
                     <div>
@@ -1243,25 +2031,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 11/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/kamaldeen-sulemana/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/kamaldeen-sulemana/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-kamaldeen-sulemana-5918" onclick="toggleInjuryDetail('kamaldeen-sulemana-5918', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-kamaldeen-sulemana-5918" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/kamaldeen-sulemana/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="ibrahim sulemana" data-team="sassuolo" data-role="C" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-ibrahim-sulemana-6024" data-id="ibrahim-sulemana-6024" data-date-ts="20261012" data-date-str="12/10/2026" data-name="ibrahim sulemana" data-team="sassuolo" data-role="C" data-tier="ATTENZIONE" onclick="onRowClick('ibrahim-sulemana-6024', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -1274,25 +2085,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 12/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/ibrahim-sulemana/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/ibrahim-sulemana/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-ibrahim-sulemana-6024" onclick="toggleInjuryDetail('ibrahim-sulemana-6024', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-ibrahim-sulemana-6024" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/ibrahim-sulemana/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="jérémie boga" data-team="juventus" data-role="A" data-tier="CRISTALLO">
-            <td>
+        <tr class="injury-row" id="row-jeremie-boga-2832" data-id="jeremie-boga-2832" data-date-ts="20261013" data-date-str="13/10/2026" data-name="jérémie boga" data-team="juventus" data-role="A" data-tier="CRISTALLO" onclick="onRowClick('jeremie-boga-2832', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-A">A</div>
                     <div>
@@ -1305,25 +2139,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione di medio grado del bicipite femorale della coscia sinistra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 13/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-            <td>
-                <a href="../calciatore/jeremie-boga/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/jeremie-boga/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-jeremie-boga-2832" onclick="toggleInjuryDetail('jeremie-boga-2832', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-jeremie-boga-2832" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione di medio grado del bicipite femorale della coscia sinistra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/jeremie-boga/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="alisson santos" data-team="napoli" data-role="A" data-tier="STABILE">
-            <td>
+        <tr class="injury-row" id="row-alisson-santos-7351" data-id="alisson-santos-7351" data-date-ts="20261015" data-date-str="15/10/2026" data-name="alisson santos" data-team="napoli" data-role="A" data-tier="STABILE" onclick="onRowClick('alisson-santos-7351', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-A">A</div>
                     <div>
@@ -1336,25 +2193,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione di medio grado del bicipite femorale sinistro</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 15/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-STABILE">STABILE</span>
             </td>
-            <td>
-                <a href="../calciatore/alisson-santos/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/alisson-santos/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-alisson-santos-7351" onclick="toggleInjuryDetail('alisson-santos-7351', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-alisson-santos-7351" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione di medio grado del bicipite femorale sinistro</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-STABILE">STABILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/alisson-santos/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="andrea adorante" data-team="venezia" data-role="A" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-andrea-adorante-4387" data-id="andrea-adorante-4387" data-date-ts="20261017" data-date-str="17/10/2026" data-name="andrea adorante" data-team="venezia" data-role="A" data-tier="FRAGILE" onclick="onRowClick('andrea-adorante-4387', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-A">A</div>
                     <div>
@@ -1367,25 +2247,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Operato per un problema alla schiena</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 17/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/andrea-adorante/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/andrea-adorante/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-andrea-adorante-4387" onclick="toggleInjuryDetail('andrea-adorante-4387', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-andrea-adorante-4387" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Operato per un problema alla schiena</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/andrea-adorante/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="john stones" data-team="inter" data-role="D" data-tier="CRISTALLO">
-            <td>
+        <tr class="injury-row" id="row-john-stones-2514" data-id="john-stones-2514" data-date-ts="20261017" data-date-str="17/10/2026" data-name="john stones" data-team="inter" data-role="D" data-tier="CRISTALLO" onclick="onRowClick('john-stones-2514', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -1398,25 +2301,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Risentimento ai flessori della coscia sinistra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 17/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-            <td>
-                <a href="../calciatore/john-stones/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/john-stones/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-john-stones-2514" onclick="toggleInjuryDetail('john-stones-2514', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-john-stones-2514" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Risentimento ai flessori della coscia sinistra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/john-stones/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="marin šverko" data-team="venezia" data-role="D" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-marin-sverko-6673" data-id="marin-sverko-6673" data-date-ts="20261017" data-date-str="17/10/2026" data-name="marin šverko" data-team="venezia" data-role="D" data-tier="FRAGILE" onclick="onRowClick('marin-sverko-6673', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -1429,25 +2355,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Infortunio alle anche</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 17/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/marin-sverko/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/marin-sverko/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-marin-sverko-6673" onclick="toggleInjuryDetail('marin-sverko-6673', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-marin-sverko-6673" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Infortunio alle anche</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/marin-sverko/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="jakub piotrowski" data-team="udinese" data-role="C" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-jakub-piotrowski-7198" data-id="jakub-piotrowski-7198" data-date-ts="20261018" data-date-str="18/10/2026" data-name="jakub piotrowski" data-team="udinese" data-role="C" data-tier="FRAGILE" onclick="onRowClick('jakub-piotrowski-7198', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -1460,25 +2409,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lieve aritmia cardiaca benigna, da sottoporre a intervento di ablazione cardiaca</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 18/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/jakub-piotrowski/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/jakub-piotrowski/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-jakub-piotrowski-7198" onclick="toggleInjuryDetail('jakub-piotrowski-7198', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-jakub-piotrowski-7198" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lieve aritmia cardiaca benigna, da sottoporre a intervento di ablazione cardiaca</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/jakub-piotrowski/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="cristian volpato" data-team="sassuolo" data-role="C" data-tier="CRISTALLO">
-            <td>
+        <tr class="injury-row" id="row-cristian-volpato-5735" data-id="cristian-volpato-5735" data-date-ts="20261021" data-date-str="21/10/2026" data-name="cristian volpato" data-team="sassuolo" data-role="C" data-tier="CRISTALLO" onclick="onRowClick('cristian-volpato-5735', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -1491,25 +2463,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione (natura e sede non specificate)</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 21/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-            <td>
-                <a href="../calciatore/cristian-volpato/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/cristian-volpato/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-cristian-volpato-5735" onclick="toggleInjuryDetail('cristian-volpato-5735', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-cristian-volpato-5735" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione (natura e sede non specificate)</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/cristian-volpato/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="gianluca busio" data-team="venezia" data-role="C" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-gianluca-busio-5507" data-id="gianluca-busio-5507" data-date-ts="20261027" data-date-str="27/10/2026" data-name="gianluca busio" data-team="venezia" data-role="C" data-tier="FRAGILE" onclick="onRowClick('gianluca-busio-5507', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -1522,25 +2517,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione muscolare alla coscia destra (problema ai flessori)</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 27/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/gianluca-busio/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/gianluca-busio/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-gianluca-busio-5507" onclick="toggleInjuryDetail('gianluca-busio-5507', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-gianluca-busio-5507" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione muscolare alla coscia destra (problema ai flessori)</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/gianluca-busio/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="matteo pessina" data-team="monza" data-role="C" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-matteo-pessina-2741" data-id="matteo-pessina-2741" data-date-ts="20261028" data-date-str="28/10/2026" data-name="matteo pessina" data-team="monza" data-role="C" data-tier="FRAGILE" onclick="onRowClick('matteo-pessina-2741', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -1553,25 +2571,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Operato per la lussazione della rotula del ginocchio destro</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 28/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/matteo-pessina/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/matteo-pessina/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-matteo-pessina-2741" onclick="toggleInjuryDetail('matteo-pessina-2741', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-matteo-pessina-2741" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Operato per la lussazione della rotula del ginocchio destro</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/matteo-pessina/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="lorenzo venturino" data-team="genoa" data-role="C" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-lorenzo-venturino-6980" data-id="lorenzo-venturino-6980" data-date-ts="20261030" data-date-str="30/10/2026" data-name="lorenzo venturino" data-team="genoa" data-role="C" data-tier="ATTENZIONE" onclick="onRowClick('lorenzo-venturino-6980', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -1584,25 +2625,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Operato al ginocchio</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 30/10/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/lorenzo-venturino/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/lorenzo-venturino/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-lorenzo-venturino-6980" onclick="toggleInjuryDetail('lorenzo-venturino-6980', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-lorenzo-venturino-6980" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Operato al ginocchio</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/lorenzo-venturino/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="fabiano parisi" data-team="fiorentina" data-role="D" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-fabiano-parisi-5449" data-id="fabiano-parisi-5449" data-date-ts="20261101" data-date-str="01/11/2026" data-name="fabiano parisi" data-team="fiorentina" data-role="D" data-tier="FRAGILE" onclick="onRowClick('fabiano-parisi-5449', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -1615,25 +2679,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 01/11/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/fabiano-parisi/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/fabiano-parisi/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-fabiano-parisi-5449" onclick="toggleInjuryDetail('fabiano-parisi-5449', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-fabiano-parisi-5449" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/fabiano-parisi/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="jeff ekhator" data-team="juventus" data-role="A" data-tier="CRISTALLO">
-            <td>
+        <tr class="injury-row" id="row-jeff-ekhator-6822" data-id="jeff-ekhator-6822" data-date-ts="20261102" data-date-str="02/11/2026" data-name="jeff ekhator" data-team="juventus" data-role="A" data-tier="CRISTALLO" onclick="onRowClick('jeff-ekhator-6822', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-A">A</div>
                     <div>
@@ -1646,25 +2733,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione di basso grado del bicipite femorale della gamba destra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 02/11/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-            <td>
-                <a href="../calciatore/jeff-ekhator/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/jeff-ekhator/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-jeff-ekhator-6822" onclick="toggleInjuryDetail('jeff-ekhator-6822', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-jeff-ekhator-6822" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione di basso grado del bicipite femorale della gamba destra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/jeff-ekhator/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="hans nicolussi caviglia" data-team="parma" data-role="C" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-hans-nicolussi-caviglia-4349" data-id="hans-nicolussi-caviglia-4349" data-date-ts="20261102" data-date-str="02/11/2026" data-name="hans nicolussi caviglia" data-team="parma" data-role="C" data-tier="FRAGILE" onclick="onRowClick('hans-nicolussi-caviglia-4349', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -1677,25 +2787,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Lesione di medio grado alla coscia destra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 02/11/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/hans-nicolussi-caviglia/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/hans-nicolussi-caviglia/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-hans-nicolussi-caviglia-4349" onclick="toggleInjuryDetail('hans-nicolussi-caviglia-4349', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-hans-nicolussi-caviglia-4349" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Lesione di medio grado alla coscia destra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/hans-nicolussi-caviglia/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="yildiz" data-team="juventus" data-role="A" data-tier="STABILE">
-            <td>
+        <tr class="injury-row" id="row-yildiz-6434" data-id="yildiz-6434" data-date-ts="20261126" data-date-str="26/11/2026" data-name="yildiz" data-team="juventus" data-role="A" data-tier="STABILE" onclick="onRowClick('yildiz-6434', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-A">A</div>
                     <div>
@@ -1708,25 +2841,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Infortunio al piede sinistro, possibile intervento chirurgico</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 26/11/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-STABILE">STABILE</span>
             </td>
-            <td>
-                <a href="../calciatore/yildiz/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/yildiz/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-yildiz-6434" onclick="toggleInjuryDetail('yildiz-6434', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-yildiz-6434" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Infortunio al piede sinistro, possibile intervento chirurgico</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-STABILE">STABILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/yildiz/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="bartol franjic" data-team="venezia" data-role="D" data-tier="FRAGILE">
-            <td>
+        <tr class="injury-row" id="row-bartol-franjic-7478" data-id="bartol-franjic-7478" data-date-ts="20261210" data-date-str="10/12/2026" data-name="bartol franjic" data-team="venezia" data-role="D" data-tier="FRAGILE" onclick="onRowClick('bartol-franjic-7478', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-D">D</div>
                     <div>
@@ -1739,25 +2895,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Dislocazione della clavicola</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 10/12/2026</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
             </td>
-            <td>
-                <a href="../calciatore/bartol-franjic/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/bartol-franjic/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-bartol-franjic-7478" onclick="toggleInjuryDetail('bartol-franjic-7478', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-bartol-franjic-7478" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Dislocazione della clavicola</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-FRAGILE">FRAGILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/bartol-franjic/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="khéphren thuram" data-team="juventus" data-role="C" data-tier="CRISTALLO">
-            <td>
+        <tr class="injury-row" id="row-khephren-thuram-5562" data-id="khephren-thuram-5562" data-date-ts="20270101" data-date-str="01/01/2027" data-name="khéphren thuram" data-team="juventus" data-role="C" data-tier="CRISTALLO" onclick="onRowClick('khephren-thuram-5562', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -1770,25 +2949,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Sindrome femoro-rotulea al ginocchio</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 01/01/2027</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-            <td>
-                <a href="../calciatore/khephren-thuram/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/khephren-thuram/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-khephren-thuram-5562" onclick="toggleInjuryDetail('khephren-thuram-5562', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-khephren-thuram-5562" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Sindrome femoro-rotulea al ginocchio</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/khephren-thuram/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="ismaël koné" data-team="sassuolo" data-role="C" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-ismael-kone-6717" data-id="ismael-kone-6717" data-date-ts="20270117" data-date-str="17/01/2027" data-name="ismaël koné" data-team="sassuolo" data-role="C" data-tier="ATTENZIONE" onclick="onRowClick('ismael-kone-6717', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -1801,25 +3003,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Intervento di riduzione della frattura della gamba sinistra</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 17/01/2027</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/ismael-kone/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/ismael-kone/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-ismael-kone-6717" onclick="toggleInjuryDetail('ismael-kone-6717', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-ismael-kone-6717" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Intervento di riduzione della frattura della gamba sinistra</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/ismael-kone/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="manuel locatelli" data-team="juventus" data-role="C" data-tier="STABILE">
-            <td>
+        <tr class="injury-row" id="row-manuel-locatelli-827" data-id="manuel-locatelli-827" data-date-ts="20270208" data-date-str="08/02/2027" data-name="manuel locatelli" data-team="juventus" data-role="C" data-tier="STABILE" onclick="onRowClick('manuel-locatelli-827', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -1832,25 +3057,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Problema al menisco del ginocchio destro (in valutazione, possibile intervento chirurgico o terapia conservativa)</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 08/02/2027</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-STABILE">STABILE</span>
             </td>
-            <td>
-                <a href="../calciatore/manuel-locatelli/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/manuel-locatelli/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-manuel-locatelli-827" onclick="toggleInjuryDetail('manuel-locatelli-827', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-manuel-locatelli-827" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Problema al menisco del ginocchio destro (in valutazione, possibile intervento chirurgico o terapia conservativa)</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-STABILE">STABILE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/manuel-locatelli/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="mattia felici" data-team="cagliari" data-role="C" data-tier="CRISTALLO">
-            <td>
+        <tr class="injury-row" id="row-mattia-felici-6640" data-id="mattia-felici-6640" data-date-ts="20270209" data-date-str="09/02/2027" data-name="mattia felici" data-team="cagliari" data-role="C" data-tier="CRISTALLO" onclick="onRowClick('mattia-felici-6640', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-C">C</div>
                     <div>
@@ -1863,25 +3111,48 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Nuovo infortunio al ginocchio (da accertare con esami strumentali)</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 09/02/2027</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
             </td>
-            <td>
-                <a href="../calciatore/mattia-felici/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/mattia-felici/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-mattia-felici-6640" onclick="toggleInjuryDetail('mattia-felici-6640', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-mattia-felici-6640" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Nuovo infortunio al ginocchio (da accertare con esami strumentali)</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-CRISTALLO">CRISTALLO</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/mattia-felici/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
-        <tr class="injury-row" data-name="kamil grabara" data-team="juventus" data-role="P" data-tier="ATTENZIONE">
-            <td>
+        <tr class="injury-row" id="row-kamil-grabara-7603" data-id="kamil-grabara-7603" data-date-ts="20270731" data-date-str="31/07/2027" data-name="kamil grabara" data-team="juventus" data-role="P" data-tier="ATTENZIONE" onclick="onRowClick('kamil-grabara-7603', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-P">P</div>
                     <div>
@@ -1894,20 +3165,43 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>Rottura del legamento crociato del ginocchio destro, da trauma distorsivo in allenamento</span>
                 </div>
             </td>
-            <td>
+            <td class="col-date">
                 <span class="return-date-pill">📅 31/07/2027</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
             </td>
-            <td>
-                <a href="../calciatore/kamil-grabara/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/kamil-grabara/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-kamil-grabara-7603" onclick="toggleInjuryDetail('kamil-grabara-7603', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-kamil-grabara-7603" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">Rottura del legamento crociato del ginocchio destro, da trauma distorsivo in allenamento</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-ATTENZIONE">ATTENZIONE</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/kamil-grabara/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         
@@ -1932,9 +3226,77 @@
 
     <script>
         let currentRole = 'ALL';
+        let currentSortDir = 'asc';
+
+        function toggleSortReturnDate() {
+            currentSortDir = (currentSortDir === 'asc') ? 'desc' : 'asc';
+            updateSortUi();
+            sortRowsByDate();
+        }
+
+        function updateSortUi() {
+            const icon = document.getElementById('sortDateIcon');
+            if (icon) {
+                icon.textContent = (currentSortDir === 'asc') ? '▲' : '▼';
+            }
+            const btn = document.getElementById('sortReturnBtn');
+            if (btn) {
+                btn.textContent = (currentSortDir === 'asc') ? '📅 Rientro: Più Vicini ▲' : '📅 Rientro: Più Lontani ▼';
+            }
+        }
+
+        function sortRowsByDate() {
+            const tbody = document.querySelector('#injuriesTable tbody');
+            const mainRows = Array.from(tbody.querySelectorAll('tr.injury-row'));
+
+            mainRows.sort((a, b) => {
+                const tsA = parseInt(a.getAttribute('data-date-ts') || '99991231', 10);
+                const tsB = parseInt(b.getAttribute('data-date-ts') || '99991231', 10);
+                if (tsA !== tsB) {
+                    return currentSortDir === 'asc' ? tsA - tsB : tsB - tsA;
+                }
+                const nameA = a.getAttribute('data-name') || '';
+                const nameB = b.getAttribute('data-name') || '';
+                return nameA.localeCompare(nameB);
+            });
+
+            mainRows.forEach(row => {
+                const id = row.getAttribute('data-id');
+                const drawer = document.getElementById('drawer-' + id);
+                tbody.appendChild(row);
+                if (drawer) tbody.appendChild(drawer);
+            });
+        }
+
+        function toggleInjuryDetail(id, event) {
+            if (event) event.stopPropagation();
+            const drawer = document.getElementById('drawer-' + id);
+            const btn = document.getElementById('btn-toggle-' + id);
+            if (!drawer) return;
+
+            const isHidden = (drawer.style.display === 'none' || !drawer.style.display);
+            drawer.style.display = isHidden ? 'table-row' : 'none';
+            if (btn) {
+                if (isHidden) {
+                    btn.classList.add('expanded');
+                } else {
+                    btn.classList.remove('expanded');
+                }
+            }
+        }
+
+        function onRowClick(id, event) {
+            if (event.target.tagName.toLowerCase() === 'a' || event.target.closest('a')) return;
+            if (window.innerWidth <= 640) {
+                toggleInjuryDetail(id, event);
+            }
+        }
+
         function setRoleFilter(role, btn) {
             currentRole = role;
-            document.querySelectorAll('.pillar-filter-chip').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.pillar-chips-group .pillar-filter-chip').forEach(b => {
+                if (b.hasAttribute('data-role')) b.classList.remove('active');
+            });
             if (btn) btn.classList.add('active');
             filterInjuries();
         }
@@ -1942,13 +3304,14 @@
         function filterInjuries() {
             const search = (document.getElementById('injurySearch').value || '').toLowerCase().trim();
             const team = document.getElementById('injuryTeamFilter').value;
-            const rows = document.querySelectorAll('#injuriesTable tbody tr');
+            const mainRows = document.querySelectorAll('#injuriesTable tbody tr.injury-row');
 
-            rows.forEach(tr => {
+            mainRows.forEach(tr => {
+                const id = tr.getAttribute('data-id');
+                const drawer = document.getElementById('drawer-' + id);
                 const rName = tr.getAttribute('data-name') || '';
                 const rTeam = tr.getAttribute('data-team') || '';
                 const rRole = tr.getAttribute('data-role') || '';
-                const rTier = tr.getAttribute('data-tier') || '';
 
                 const matchesSearch = !search || rName.includes(search) || rTeam.includes(search);
                 const matchesTeam = team === 'all' || rTeam === team;
@@ -1958,6 +3321,7 @@
                     tr.style.display = '';
                 } else {
                     tr.style.display = 'none';
+                    if (drawer) drawer.style.display = 'none';
                 }
             });
         }

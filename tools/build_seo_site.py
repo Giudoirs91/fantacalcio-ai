@@ -943,6 +943,159 @@ body {
     color: #c084fc;
 }
 
+/* Griglia Portieri Matrix Badges */
+.gk-badge-perfect {
+    background: rgba(16, 185, 129, 0.16);
+    border: 1px solid #10b981;
+    color: #34d399;
+    padding: 3px 8px;
+    border-radius: 7px;
+    font-weight: 800;
+    font-size: 11.5px;
+    white-space: nowrap;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+.gk-badge-elite {
+    background: rgba(56, 189, 248, 0.14);
+    border: 1px solid #38bdf8;
+    color: #38bdf8;
+    padding: 3px 8px;
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 11.5px;
+    white-space: nowrap;
+}
+.gk-badge-optimal {
+    background: rgba(245, 158, 11, 0.14);
+    border: 1px solid #f59e0b;
+    color: #fbbf24;
+    padding: 3px 8px;
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 11.5px;
+    white-space: nowrap;
+}
+
+/* Expandable Injury Rows (Desktop & Smartwatch/Mobile) */
+.mobile-only {
+    display: none !important;
+}
+.desktop-only {
+    display: table-cell;
+}
+
+.btn-expand-toggle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #38bdf8;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 10px;
+    padding: 0;
+    transition: all 0.2s ease;
+}
+.btn-expand-toggle:hover {
+    background: rgba(56, 189, 248, 0.25);
+    border-color: #38bdf8;
+    color: #fff;
+    transform: scale(1.08);
+}
+.btn-expand-toggle.expanded .chevron-arrow {
+    transform: rotate(180deg);
+}
+.chevron-arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+    line-height: 1;
+}
+
+.injury-row {
+    cursor: pointer;
+}
+.injury-drawer-row td {
+    background: rgba(14, 18, 27, 0.98);
+    padding: 12px 14px !important;
+    border-bottom: 2px solid rgba(56, 189, 248, 0.25) !important;
+    white-space: normal !important;
+}
+.injury-drawer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.drawer-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+}
+.drawer-lbl {
+    font-weight: 800;
+    color: #94a3b8;
+    white-space: nowrap;
+    min-width: 82px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+.drawer-val {
+    color: #f1f5f9;
+    font-size: 12.5px;
+    line-height: 1.45;
+}
+.drawer-footer {
+    margin-top: 6px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Smartwatch & Mobile Media Query */
+@media (max-width: 640px) {
+    .desktop-only {
+        display: none !important;
+    }
+    .mobile-only {
+        display: inline-flex !important;
+    }
+    tr.mobile-only {
+        display: table-row !important;
+    }
+    .seo-table th, .seo-table td {
+        padding: 9px 8px;
+    }
+    .return-date-pill {
+        padding: 3px 7px;
+        font-size: 11px;
+        font-weight: 800;
+    }
+    .cell-player-box {
+        gap: 6px;
+    }
+    .player-role-avatar {
+        width: 26px;
+        height: 26px;
+        font-size: 10px;
+        border-radius: 7px;
+    }
+    .player-main-name {
+        font-size: 12.5px;
+    }
+    .player-meta-sub {
+        font-size: 10px;
+    }
+    .pillar-controls-bar {
+        padding: 10px 12px;
+    }
+    .pillar-search-wrapper {
+        min-width: 100%;
+    }
+}
+
 /* Call to action & footer */
 .pillar-cta-box {
     background: radial-gradient(120% 120% at 50% 0%, rgba(56, 189, 248, 0.18) 0%, rgba(18, 22, 29, 0.95) 100%);
@@ -1087,16 +1240,18 @@ from tools.seo_player_template import generate_player_page
 def generate_injuries_pillar(players, injuries_db):
     active_players = [p for p in players if p.get("is_injured")]
     
-    # Ordina cronologicamente per data di rientro (DD/MM/YYYY)
-    def parse_return_date(player):
+    # Parser per timestamp data rientro (DD/MM/YYYY -> YYYYMMDD)
+    def parse_return_info(player):
         d_str = str(player.get("infortunio_rientro") or "").strip()
         m = re.search(r'(\d{1,2})/(\d{1,2})/(\d{4})', d_str)
         if m:
             day, month, year = int(m.group(1)), int(m.group(2)), int(m.group(3))
-            return (year, month, day)
-        return (9999, 12, 31)
+            ts = year * 10000 + month * 100 + day
+            return ts, d_str
+        return 99991231, d_str or "Da definire"
 
-    active_players.sort(key=lambda p: (parse_return_date(p), p.get("name", "")))
+    # Ordinamento iniziale: data di rientro più vicina in cima
+    active_players.sort(key=lambda p: (parse_return_info(p)[0], p.get("name", "")))
     
     total_injured = len(active_players)
     muscular_count = sum(1 for p in active_players if any(w in p.get("infortunio_motivo", "").lower() for w in ["muscol", "bicipite", "adduttore", "flessore", "polpaccio", "affaticamento", "coscia"]))
@@ -1104,12 +1259,11 @@ def generate_injuries_pillar(players, injuries_db):
     all_teams = sorted(list(set(p.get("team") for p in active_players if p.get("team"))))
     
     rows = ""
-    for p in active_players:
+    for idx, p in enumerate(active_players):
         name = p.get("name", "")
         team = p.get("team", "")
         role = p.get("role", "C")
         motivo = p.get("infortunio_motivo", "Infortunio")
-        rientro = p.get("infortunio_rientro", "Da definire")
         tier = p.get("fragility_tier", "STABILE")
         
         team_inj = injuries_db.get(team, {})
@@ -1117,9 +1271,12 @@ def generate_injuries_pillar(players, injuries_db):
         full_name = hist_entry.get("tm_name", name)
         slug = slugify(full_name)
         
+        ts, rientro_display = parse_return_info(p)
+        safe_id = f"{slug}-{p.get('id', idx)}"
+        
         rows += f"""
-        <tr class="injury-row" data-name="{clean_html(full_name.lower())}" data-team="{clean_html(team.lower())}" data-role="{role}" data-tier="{tier}">
-            <td>
+        <tr class="injury-row" id="row-{safe_id}" data-id="{safe_id}" data-date-ts="{ts}" data-date-str="{clean_html(rientro_display)}" data-name="{clean_html(full_name.lower())}" data-team="{clean_html(team.lower())}" data-role="{role}" data-tier="{tier}" onclick="onRowClick('{safe_id}', event)">
+            <td class="col-player">
                 <div class="cell-player-box">
                     <div class="player-role-avatar role-{role}">{role}</div>
                     <div>
@@ -1132,20 +1289,43 @@ def generate_injuries_pillar(players, injuries_db):
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
                     <span class="diagnosis-icon">🩺</span>
                     <span>{clean_html(motivo)}</span>
                 </div>
             </td>
-            <td>
-                <span class="return-date-pill">📅 {clean_html(rientro)}</span>
+            <td class="col-date">
+                <span class="return-date-pill">📅 {clean_html(rientro_display)}</span>
             </td>
-            <td>
+            <td class="col-tier desktop-only">
                 <span class="fragility-chip tier-{tier}">{tier}</span>
             </td>
-            <td>
-                <a href="../calciatore/{slug}/" class="btn-detail-link">Scheda &rarr;</a>
+            <td class="col-action" style="text-align:center;">
+                <!-- Desktop button -->
+                <a href="../calciatore/{slug}/" class="btn-detail-link desktop-only">Scheda &rarr;</a>
+                <!-- Mobile / Smartwatch expand chevron -->
+                <button type="button" class="btn-expand-toggle mobile-only" id="btn-toggle-{safe_id}" onclick="toggleInjuryDetail('{safe_id}', event)" aria-label="Espandi dettagli infortunio">
+                    <span class="chevron-arrow">▼</span>
+                </button>
+            </td>
+        </tr>
+        <!-- Accordion Drawer (Smartwatch & Mobile) -->
+        <tr class="injury-drawer-row mobile-only" id="drawer-{safe_id}" style="display:none;">
+            <td colspan="3">
+                <div class="injury-drawer-content">
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">🩺 Diagnosi:</span>
+                        <span class="drawer-val">{clean_html(motivo)}</span>
+                    </div>
+                    <div class="drawer-item">
+                        <span class="drawer-lbl">⚠️ Fragilità:</span>
+                        <span class="fragility-chip tier-{tier}">{tier}</span>
+                    </div>
+                    <div class="drawer-item drawer-footer">
+                        <a href="../calciatore/{slug}/" class="btn-detail-link" style="width:100%;justify-content:center;">Vedi Scheda Calciatore &rarr;</a>
+                    </div>
+                </div>
             </td>
         </tr>
         """
@@ -1234,6 +1414,7 @@ def generate_injuries_pillar(players, injuries_db):
                 <button type="button" class="pillar-filter-chip" data-role="D" onclick="setRoleFilter('D', this)">🛡️ D</button>
                 <button type="button" class="pillar-filter-chip" data-role="C" onclick="setRoleFilter('C', this)">🪄 C</button>
                 <button type="button" class="pillar-filter-chip" data-role="A" onclick="setRoleFilter('A', this)">⚡ A</button>
+                <button type="button" class="pillar-filter-chip active" id="sortReturnBtn" onclick="toggleSortReturnDate()" title="Inverti ordinamento per data di rientro">📅 Rientro: Più Vicini ▲</button>
             </div>
         </div>
 
@@ -1243,11 +1424,16 @@ def generate_injuries_pillar(players, injuries_db):
                 <table class="seo-table" id="injuriesTable">
                     <thead>
                         <tr>
-                            <th>Calciatore &amp; Ruolo</th>
-                            <th>Diagnosi Infortunio</th>
-                            <th>Rientro Stimato</th>
-                            <th>Fragilità Clinica</th>
-                            <th>Dettagli</th>
+                            <th class="col-player">Calciatore &amp; Ruolo</th>
+                            <th class="col-diag desktop-only">Diagnosi Infortunio</th>
+                            <th class="col-date" onclick="toggleSortReturnDate()" style="cursor:pointer;" title="Clicca per invertire l'ordinamento per data di rientro">
+                                Rientro Stimato <span id="sortDateIcon" style="color:#fbbf24;margin-left:4px;">▲</span>
+                            </th>
+                            <th class="col-tier desktop-only">Fragilità Clinica</th>
+                            <th class="col-action" style="text-align:center;">
+                                <span class="desktop-only">Dettagli</span>
+                                <span class="mobile-only">Info</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1273,9 +1459,77 @@ def generate_injuries_pillar(players, injuries_db):
 
     <script>
         let currentRole = 'ALL';
+        let currentSortDir = 'asc';
+
+        function toggleSortReturnDate() {{
+            currentSortDir = (currentSortDir === 'asc') ? 'desc' : 'asc';
+            updateSortUi();
+            sortRowsByDate();
+        }}
+
+        function updateSortUi() {{
+            const icon = document.getElementById('sortDateIcon');
+            if (icon) {{
+                icon.textContent = (currentSortDir === 'asc') ? '▲' : '▼';
+            }}
+            const btn = document.getElementById('sortReturnBtn');
+            if (btn) {{
+                btn.textContent = (currentSortDir === 'asc') ? '📅 Rientro: Più Vicini ▲' : '📅 Rientro: Più Lontani ▼';
+            }}
+        }}
+
+        function sortRowsByDate() {{
+            const tbody = document.querySelector('#injuriesTable tbody');
+            const mainRows = Array.from(tbody.querySelectorAll('tr.injury-row'));
+
+            mainRows.sort((a, b) => {{
+                const tsA = parseInt(a.getAttribute('data-date-ts') || '99991231', 10);
+                const tsB = parseInt(b.getAttribute('data-date-ts') || '99991231', 10);
+                if (tsA !== tsB) {{
+                    return currentSortDir === 'asc' ? tsA - tsB : tsB - tsA;
+                }}
+                const nameA = a.getAttribute('data-name') || '';
+                const nameB = b.getAttribute('data-name') || '';
+                return nameA.localeCompare(nameB);
+            }});
+
+            mainRows.forEach(row => {{
+                const id = row.getAttribute('data-id');
+                const drawer = document.getElementById('drawer-' + id);
+                tbody.appendChild(row);
+                if (drawer) tbody.appendChild(drawer);
+            }});
+        }}
+
+        function toggleInjuryDetail(id, event) {{
+            if (event) event.stopPropagation();
+            const drawer = document.getElementById('drawer-' + id);
+            const btn = document.getElementById('btn-toggle-' + id);
+            if (!drawer) return;
+
+            const isHidden = (drawer.style.display === 'none' || !drawer.style.display);
+            drawer.style.display = isHidden ? 'table-row' : 'none';
+            if (btn) {{
+                if (isHidden) {{
+                    btn.classList.add('expanded');
+                }} else {{
+                    btn.classList.remove('expanded');
+                }}
+            }}
+        }}
+
+        function onRowClick(id, event) {{
+            if (event.target.tagName.toLowerCase() === 'a' || event.target.closest('a')) return;
+            if (window.innerWidth <= 640) {{
+                toggleInjuryDetail(id, event);
+            }}
+        }}
+
         function setRoleFilter(role, btn) {{
             currentRole = role;
-            document.querySelectorAll('.pillar-filter-chip').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.pillar-chips-group .pillar-filter-chip').forEach(b => {{
+                if (b.hasAttribute('data-role')) b.classList.remove('active');
+            }});
             if (btn) btn.classList.add('active');
             filterInjuries();
         }}
@@ -1283,13 +1537,14 @@ def generate_injuries_pillar(players, injuries_db):
         function filterInjuries() {{
             const search = (document.getElementById('injurySearch').value || '').toLowerCase().trim();
             const team = document.getElementById('injuryTeamFilter').value;
-            const rows = document.querySelectorAll('#injuriesTable tbody tr');
+            const mainRows = document.querySelectorAll('#injuriesTable tbody tr.injury-row');
 
-            rows.forEach(tr => {{
+            mainRows.forEach(tr => {{
+                const id = tr.getAttribute('data-id');
+                const drawer = document.getElementById('drawer-' + id);
                 const rName = tr.getAttribute('data-name') || '';
                 const rTeam = tr.getAttribute('data-team') || '';
                 const rRole = tr.getAttribute('data-role') || '';
-                const rTier = tr.getAttribute('data-tier') || '';
 
                 const matchesSearch = !search || rName.includes(search) || rTeam.includes(search);
                 const matchesTeam = team === 'all' || rTeam === team;
@@ -1299,6 +1554,7 @@ def generate_injuries_pillar(players, injuries_db):
                     tr.style.display = '';
                 }} else {{
                     tr.style.display = 'none';
+                    if (drawer) drawer.style.display = 'none';
                 }}
             }});
         }}
@@ -1489,30 +1745,65 @@ def generate_gk_pillar(gk_matrix_data):
     meta_desc = "Calcola le migliori coppie di portieri per l'asta del Fantacalcio 2026/27: tabella incroci perfetta casa e trasferta per non subire mai due trasferte consecutive."
     page_url = f"{BASE_URL}/griglia-portieri/"
     
-    couples = gk_matrix_data.get("couples", [])
+    pairs = gk_matrix_data.get("pairs", [])
+    teams = gk_matrix_data.get("teams", [])
+    total_pairs = len(pairs)
+    total_teams = len(teams)
+    perf_count = sum(1 for p in pairs if p.get("diff", 0) == 0)
+    elite_count = sum(1 for p in pairs if p.get("diff", 0) <= 3)
+    
+    team_options = "".join([f'<option value="{clean_html(t.lower())}">{clean_html(t)}</option>' for t in sorted(teams)])
+    
     rows = ""
-    for c in couples[:30]:
-        t1 = c.get("team1", "")
-        t2 = c.get("team2", "")
-        score = c.get("score", 0)
-        conflicts = c.get("conflicts", 0)
+    for p in pairs:
+        t1 = p.get("teamA", "")
+        t2 = p.get("teamB", "")
+        diff = p.get("diff", 0)
+        home = p.get("home_games", 0)
+        pct = p.get("pct", 0.0)
+        label = p.get("label", "")
+        tier = p.get("tier", "good")
         
-        conflict_badge = f'<span style="background:rgba(16,185,129,0.15);border:1px solid #10b981;color:#34d399;padding:4px 10px;border-radius:8px;font-weight:800;font-size:12px;">⭐ {conflicts} contemporaneità</span>' if conflicts <= 1 else f'<span style="background:rgba(245,158,11,0.15);border:1px solid #f59e0b;color:#fbbf24;padding:4px 10px;border-radius:8px;font-weight:700;font-size:12px;">{conflicts} contemporaneità</span>'
+        if diff == 0:
+            conflict_badge = '<span class="gk-badge-perfect">⭐ 0 Contemporaneità (100% Casa)</span>'
+            tier_badge = '<span class="fragility-chip tier-STABILE" style="color:#34d399;border-color:#10b981;background:rgba(16,185,129,0.18);">PERFETTO</span>'
+        elif diff <= 3:
+            conflict_badge = f'<span class="gk-badge-elite">🔥 {diff} Contemporaneità</span>'
+            tier_badge = '<span class="fragility-chip tier-ATTENZIONE" style="color:#38bdf8;border-color:#38bdf8;background:rgba(56,189,248,0.18);">ELITE</span>'
+        elif diff <= 5:
+            conflict_badge = f'<span class="gk-badge-optimal">✅ {diff} Contemporaneità</span>'
+            tier_badge = '<span class="fragility-chip" style="color:#fbbf24;border:1px solid #f59e0b;background:rgba(245,158,11,0.15);">OTTIMALE</span>'
+        else:
+            conflict_badge = f'<span style="color:#94a3b8;font-size:12px;font-weight:600;">{diff} Contemporaneità</span>'
+            tier_badge = '<span class="fragility-chip" style="color:#94a3b8;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);">STANDARD</span>'
+            
+        pct_color = "#34d399" if pct >= 95 else ("#38bdf8" if pct >= 85 else ("#fbbf24" if pct >= 75 else "#94a3b8"))
+        search_str = f"{t1.lower()} {t2.lower()} {tier.lower()}"
         
         rows += f"""
-        <tr>
+        <tr class="gk-row" data-search="{clean_html(search_str)}" data-team1="{clean_html(t1.lower())}" data-team2="{clean_html(t2.lower())}" data-diff="{diff}" data-tier="{tier}">
             <td>
-                <div style="display:flex;align-items:center;gap:10px;">
+                <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;">
                     <div class="team-badge-circle" style="color:#38bdf8;">🧤</div>
-                    <div>
-                        <strong style="color:#fff;font-size:14.5px;">{clean_html(t1)}</strong>
-                        <span style="color:#64748b;margin:0 6px;">+</span>
-                        <strong style="color:#fff;font-size:14.5px;">{clean_html(t2)}</strong>
+                    <div style="white-space:nowrap;">
+                        <strong style="color:#fff;font-size:14px;">{clean_html(t1)}</strong>
+                        <span style="color:#64748b;margin:0 4px;font-weight:800;">+</span>
+                        <strong style="color:#fff;font-size:14px;">{clean_html(t2)}</strong>
                     </div>
                 </div>
             </td>
-            <td style="text-align:center;">{conflict_badge}</td>
-            <td style="text-align:center;"><span style="color:#38bdf8;font-weight:900;font-size:15px;font-family:'Outfit',sans-serif;">{score} pt</span></td>
+            <td style="text-align:center;white-space:nowrap;">
+                <span style="font-weight:800;color:#fff;font-size:13.5px;">{home}</span><span style="color:#64748b;font-size:11px;">/38</span>
+            </td>
+            <td style="text-align:center;white-space:nowrap;">
+                {conflict_badge}
+            </td>
+            <td style="text-align:center;white-space:nowrap;">
+                <span style="color:{pct_color};font-weight:900;font-size:14px;font-family:'Outfit',sans-serif;">{pct:.1f}%</span>
+            </td>
+            <td style="text-align:center;white-space:nowrap;">
+                {tier_badge}
+            </td>
         </tr>
         """
 
@@ -1551,8 +1842,8 @@ def generate_gk_pillar(gk_matrix_data):
             <div class="pillar-kpi-card">
                 <div class="pillar-kpi-icon" style="color:#fbbf24;">🧤</div>
                 <div>
-                    <div class="pillar-kpi-num">20</div>
-                    <div class="pillar-kpi-label">Portieri Titolari</div>
+                    <div class="pillar-kpi-num">{total_teams}</div>
+                    <div class="pillar-kpi-label">Club Monitorati</div>
                 </div>
             </div>
             <div class="pillar-kpi-card">
@@ -1565,28 +1856,48 @@ def generate_gk_pillar(gk_matrix_data):
             <div class="pillar-kpi-card">
                 <div class="pillar-kpi-icon" style="color:#38bdf8;">🏆</div>
                 <div>
-                    <div class="pillar-kpi-num">Top 30</div>
-                    <div class="pillar-kpi-label">Incroci Consigliati</div>
+                    <div class="pillar-kpi-num">{total_pairs}</div>
+                    <div class="pillar-kpi-label">Incroci Matematici</div>
                 </div>
             </div>
             <div class="pillar-kpi-card">
-                <div class="pillar-kpi-icon" style="color:#a855f7;">🛡️</div>
+                <div class="pillar-kpi-icon" style="color:#a855f7;">⭐</div>
                 <div>
-                    <div class="pillar-kpi-num">0-1</div>
-                    <div class="pillar-kpi-label">Minime Sovrapposizioni</div>
+                    <div class="pillar-kpi-num">{perf_count}</div>
+                    <div class="pillar-kpi-label">Coppie Perfette (0)</div>
                 </div>
             </div>
         </section>
 
+        <!-- CONTROLS BAR -->
+        <div class="pillar-controls-bar">
+            <div class="pillar-search-wrapper">
+                <span class="pillar-search-icon">🔍</span>
+                <input type="text" id="gkSearch" class="pillar-search-input" placeholder="Cerca club (es. Inter, Milan, Juventus, Napoli...)" oninput="filterGkPairs()">
+            </div>
+            <select id="gkClubSelect" class="pillar-select" onchange="filterGkPairs()">
+                <option value="all">Tutti i Club (190 coppie)</option>
+                {team_options}
+            </select>
+            <div class="pillar-chips-group">
+                <button type="button" class="pillar-filter-chip active" data-tier="ALL" onclick="setGkTier('ALL', this)">TUTTI (190)</button>
+                <button type="button" class="pillar-filter-chip" data-tier="PERFECT" onclick="setGkTier('PERFECT', this)">⭐ PERFETTI (0)</button>
+                <button type="button" class="pillar-filter-chip" data-tier="ELITE" onclick="setGkTier('ELITE', this)">🔥 ELITE (&le;3)</button>
+                <button type="button" class="pillar-filter-chip" data-tier="OPTIMAL" onclick="setGkTier('OPTIMAL', this)">✅ OTTIMALI (&le;5)</button>
+            </div>
+        </div>
+
         <!-- GLASS TABLE -->
         <section class="pillar-table-card">
             <div class="table-responsive">
-                <table class="seo-table">
+                <table class="seo-table" id="gkTable">
                     <thead>
                         <tr>
                             <th>Coppia di Club</th>
-                            <th style="text-align:center;">Gare Contemporanee Trasferta</th>
-                            <th style="text-align:center;">Indice Efficacia Incrocio</th>
+                            <th style="text-align:center;">Gare Casa Coperte</th>
+                            <th style="text-align:center;">Contemporaneità Trasferta</th>
+                            <th style="text-align:center;">Alternanza Casa %</th>
+                            <th style="text-align:center;">Giudizio Algoritmo</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1600,7 +1911,7 @@ def generate_gk_pillar(gk_matrix_data):
         <section class="pillar-cta-box">
             <h3>Vuoi calcolare l'incrocio personalizzato per 3 portieri?</h3>
             <p>Accedi alla Griglia Portieri interattiva della nostra Dashboard con la matrice completa 38 su 38 e il simulatore di spesa all'asta.</p>
-            <a href="../griglia-portieri/" class="btn-cta-main">Apri la Griglia Interattiva 🚀</a>
+            <a href="../" class="btn-cta-main">Vai alla Dashboard Live 🚀</a>
         </section>
     </main>
 
@@ -1609,6 +1920,46 @@ def generate_gk_pillar(gk_matrix_data):
             <p>&copy; 2026/2027 Fanta Master AI &bull; Algoritmo Incroci Portieri Serie A</p>
         </div>
     </footer>
+
+    <script>
+        let currentGkTier = 'ALL';
+
+        function setGkTier(tier, btn) {{
+            currentGkTier = tier;
+            document.querySelectorAll('.pillar-chips-group .pillar-filter-chip').forEach(b => {{
+                if (b.hasAttribute('data-tier')) b.classList.remove('active');
+            }});
+            if (btn) btn.classList.add('active');
+            filterGkPairs();
+        }}
+
+        function filterGkPairs() {{
+            const search = (document.getElementById('gkSearch').value || '').toLowerCase().trim();
+            const club = (document.getElementById('gkClubSelect').value || 'all').toLowerCase();
+            const rows = document.querySelectorAll('#gkTable tbody tr.gk-row');
+
+            rows.forEach(tr => {{
+                const s = tr.getAttribute('data-search') || '';
+                const t1 = tr.getAttribute('data-team1') || '';
+                const t2 = tr.getAttribute('data-team2') || '';
+                const diff = parseInt(tr.getAttribute('data-diff') || '99', 10);
+
+                const matchesSearch = !search || s.includes(search);
+                const matchesClub = club === 'all' || t1 === club || t2 === club;
+                
+                let matchesTier = true;
+                if (currentGkTier === 'PERFECT') matchesTier = (diff === 0);
+                else if (currentGkTier === 'ELITE') matchesTier = (diff <= 3);
+                else if (currentGkTier === 'OPTIMAL') matchesTier = (diff <= 5);
+
+                if (matchesSearch && matchesClub && matchesTier) {{
+                    tr.style.display = '';
+                }} else {{
+                    tr.style.display = 'none';
+                }}
+            }});
+        }}
+    </script>
     <script src="../js/tracker.js" defer></script>
 </body>
 </html>

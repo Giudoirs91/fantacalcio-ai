@@ -157,13 +157,13 @@ def build_standalone_dashboard(sync_android=False):
                         <span>📈</span> Statistiche & Listone <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabStatsBtn" onclick="switchTab('stats')">📊 Statistiche Serie A & xG</a>
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabAuctionBtn" onclick="switchTab('auction')">📋 Tabellone & Listone Calciatori</a>
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabTopFlopBtn" onclick="switchTab('top_flop')">⚡ Top & Flop di Giornata</a>
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabMatrixBtn" onclick="switchTab('matrix')">📈 Matrice & Scatter Analytics</a>
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabPitchBtn" onclick="switchTab('pitch')">⚽ Campo 2D & Schemi Club</a>
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabMatchupBtn" onclick="switchTab('matchup')">⚔️ Matchup 1vs1</a>
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabGkBtn" onclick="switchTab('gk')">🧤 Griglia Portieri 38/38</a>
+                        <a href="/statistiche-serie-a/" class="dropdown-item" id="tabStatsBtn" onclick="onNavClick(event, 'stats')">📊 Statistiche Serie A & xG</a>
+                        <a href="/" class="dropdown-item" id="tabAuctionBtn" onclick="onNavClick(event, 'auction')">📋 Tabellone & Listone Calciatori</a>
+                        <a href="/top-flop/" class="dropdown-item" id="tabTopFlopBtn" onclick="onNavClick(event, 'top_flop')">⚡ Top & Flop di Giornata</a>
+                        <a href="/football-analytics/" class="dropdown-item" id="tabMatrixBtn" onclick="onNavClick(event, 'matrix')">📈 Matrice & Scatter Analytics</a>
+                        <a href="/probabili-formazioni/" class="dropdown-item" id="tabPitchBtn" onclick="onNavClick(event, 'pitch')">⚽ Campo 2D & Schemi Club</a>
+                        <a href="/confronto-calciatori/" class="dropdown-item" id="tabMatchupBtn" onclick="onNavClick(event, 'matchup')">⚔️ Matchup 1vs1</a>
+                        <a href="/griglia-portieri/" class="dropdown-item" id="tabGkBtn" onclick="onNavClick(event, 'gk')">🧤 Griglia Portieri 38/38</a>
                     </div>
                 </div>
 
@@ -173,9 +173,12 @@ def build_standalone_dashboard(sync_android=False):
                         <span>🧠</span> AI & Consigli <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabMatchdayAdviceBtn" onclick="switchTab('matchday_advice')">🎯 Chi Schierare Prossima Giornata</a>
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabAiSquadsBtn" onclick="switchTab('ai_squads')">🧠 5 Squadre Perfette AI</a>
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabGemsBtn" onclick="switchTab('gems')">🔮 Gemme & Sleeper AI</a>
+                        <a href="/consigli-fantacalcio/" class="dropdown-item" id="tabMatchdayAdviceBtn" onclick="onNavClick(event, 'matchday_advice')">🎯 Chi Schierare Prossima Giornata</a>
+                        <a href="/top-11-ai/" class="dropdown-item" id="tabAiSquadsBtn" onclick="onNavClick(event, 'ai_squads')">🧠 5 Squadre Perfette AI</a>
+                        <a href="/scommesse-talenti/" class="dropdown-item" id="tabGemsBtn" onclick="onNavClick(event, 'gems')">🔮 Gemme & Sleeper AI</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/infortunati-serie-a/" class="dropdown-item">🩺 Infortunati & Tempi di Recupero</a>
+                        <a href="/rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi & Calci Piazzati</a>
                         <div class="dropdown-divider"></div>
                         <a href="javascript:void(0)" class="dropdown-item" onclick="openAiMethodologyModal('ovr')">ℹ️ Metodologia & Fonti AI</a>
                     </div>
@@ -187,7 +190,7 @@ def build_standalone_dashboard(sync_android=False):
                         <span>📊</span> Asta & Mercato <span class="coming-soon-pill">In Arrivo</span> <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="switchTab('auction')">📋 Tabellone & Listone Completo</a>
+                        <a href="/" class="dropdown-item" onclick="onNavClick(event, 'auction')">📋 Tabellone & Listone Completo</a>
                         <div class="dropdown-divider"></div>
                         <div class="dropdown-header">Creazione & Gestione (In Arrivo)</div>
                         <a href="javascript:void(0)" class="dropdown-item" id="tabSquadBuilderBtn" onclick="showComingSoonModal('Creazione Squadra & 11')">✨ Creazione Squadra & 11 <span class="coming-soon-pill">In Arrivo</span></a>
@@ -922,11 +925,76 @@ def build_standalone_dashboard(sync_android=False):
             if (modal) modal.style.display = 'none';
         }}
 
+        // --- CLEAN URL ROUTING & NAVIGATION ---
+        const ROUTE_MAP = {{
+            'auction': '/',
+            'top_flop': '/top-flop/',
+            'matchday_advice': '/consigli-fantacalcio/',
+            'matrix': '/football-analytics/',
+            'stats': '/statistiche-serie-a/',
+            'pitch': '/probabili-formazioni/',
+            'matchup': '/confronto-calciatori/',
+            'gk': '/griglia-portieri/',
+            'ai_squads': '/top-11-ai/',
+            'gems': '/scommesse-talenti/',
+            'home': '/leghe/'
+        }};
+
+        const PATH_TO_TAB = {{
+            '/': 'auction',
+            '/index.html': 'auction',
+            '/app.html': 'auction',
+            '/top-flop': 'top_flop',
+            '/top-flop/': 'top_flop',
+            '/top-flop/index.html': 'top_flop',
+            '/consigli-fantacalcio': 'matchday_advice',
+            '/consigli-fantacalcio/': 'matchday_advice',
+            '/consigli-fantacalcio/index.html': 'matchday_advice',
+            '/football-analytics': 'matrix',
+            '/football-analytics/': 'matrix',
+            '/football-analytics/index.html': 'matrix',
+            '/statistiche-serie-a': 'stats',
+            '/statistiche-serie-a/': 'stats',
+            '/statistiche-serie-a/index.html': 'stats',
+            '/probabili-formazioni': 'pitch',
+            '/probabili-formazioni/': 'pitch',
+            '/probabili-formazioni/index.html': 'pitch',
+            '/confronto-calciatori': 'matchup',
+            '/confronto-calciatori/': 'matchup',
+            '/confronto-calciatori/index.html': 'matchup',
+            '/griglia-portieri': 'gk',
+            '/griglia-portieri/': 'gk',
+            '/griglia-portieri/index.html': 'gk',
+            '/top-11-ai': 'ai_squads',
+            '/top-11-ai/': 'ai_squads',
+            '/top-11-ai/index.html': 'ai_squads',
+            '/scommesse-talenti': 'gems',
+            '/scommesse-talenti/': 'gems',
+            '/scommesse-talenti/index.html': 'gems',
+            // Direct identifiers & legacy hashes
+            'top_flop': 'top_flop',
+            'matchday_advice': 'matchday_advice',
+            'matrix': 'matrix',
+            'stats': 'stats',
+            'pitch': 'pitch',
+            'matchup': 'matchup',
+            'gk': 'gk',
+            'ai_squads': 'ai_squads',
+            'gems': 'gems',
+            'auction': 'auction',
+            'home': 'home'
+        }};
+
+        function onNavClick(e, tabId) {{
+            if (e && e.preventDefault) e.preventDefault();
+            switchTab(tabId, true);
+        }}
+
         // Router & UI Handlers
         function switchTabMobile(tabId) {{
             closeMobileMenuModal();
             toggleMobileRosterDrawer(false);
-            switchTab(tabId);
+            switchTab(tabId, true);
         }}
 
         function toggleMobileRosterDrawer(forceState) {{
@@ -952,7 +1020,7 @@ def build_standalone_dashboard(sync_android=False):
             if (modal) modal.style.display = 'none';
         }}
 
-        function switchTab(tabId) {{
+        function switchTab(tabId, pushHistory = true) {{
             // Intercept locked tabs for auction/league management (Creazione Squadra & Gestione Leghe)
             const LOCKED_TABS = ['home', 'squad_builder', 'repair', 'trade', 'report'];
             if (LOCKED_TABS.includes(tabId)) {{
@@ -974,8 +1042,22 @@ def build_standalone_dashboard(sync_android=False):
             State.activeTab = tabId;
             try {{
                 localStorage.setItem('FANTA_LAST_ACTIVE_TAB', tabId);
-                if (window.location.hash !== '#' + tabId) {{
-                    history.replaceState(null, null, '#' + tabId);
+                const isFile = window.location.protocol === 'file:';
+                const targetPath = ROUTE_MAP[tabId] || '/';
+                if (!isFile) {{
+                    const cur = (window.location.pathname.replace(/[/]+$/, '') || '/');
+                    const tgt = (targetPath.replace(/[/]+$/, '') || '/');
+                    if (cur !== tgt || window.location.hash) {{
+                        if (pushHistory) {{
+                            history.pushState({{ tab: tabId }}, '', targetPath);
+                        }} else {{
+                            history.replaceState({{ tab: tabId }}, '', targetPath);
+                        }}
+                    }}
+                }} else {{
+                    if (window.location.hash !== '#' + tabId) {{
+                        history.replaceState(null, null, '#' + tabId);
+                    }}
                 }}
             }} catch (e) {{}}
 
@@ -1241,25 +1323,42 @@ def build_standalone_dashboard(sync_android=False):
 
             updateBudgetUI();
 
-            const validConsultationTabs = ['stats', 'auction', 'matchday_advice', 'top_flop', 'matrix', 'pitch', 'matchup', 'gk', 'ai_squads', 'gems'];
-            const hashTab = window.location.hash ? window.location.hash.replace('#', '') : null;
-            const savedTab = localStorage.getItem('FANTA_LAST_ACTIVE_TAB');
-
-            let initialTab = 'auction'; // Tabellone & Listone Calciatori Home Page
-            if (hashTab && validConsultationTabs.includes(hashTab)) {{
-                initialTab = hashTab;
-            }} else if (savedTab && validConsultationTabs.includes(savedTab)) {{
-                initialTab = savedTab;
+            function resolveCurrentTab() {{
+                if (window.INITIAL_TAB && PATH_TO_TAB[window.INITIAL_TAB]) {{
+                    return PATH_TO_TAB[window.INITIAL_TAB];
+                }}
+                const cur = (window.location.pathname.replace(/[/]+$/, '') || '/');
+                if (PATH_TO_TAB[cur]) {{
+                    return PATH_TO_TAB[cur];
+                }}
+                const h = window.location.hash ? window.location.hash.replace('#', '') : null;
+                if (h && PATH_TO_TAB[h]) {{
+                    return PATH_TO_TAB[h];
+                }}
+                const saved = localStorage.getItem('FANTA_LAST_ACTIVE_TAB');
+                if (saved && PATH_TO_TAB[saved]) {{
+                    return PATH_TO_TAB[saved];
+                }}
+                return 'auction';
             }}
 
-            switchTab(initialTab);
+            const initialTab = resolveCurrentTab();
+            switchTab(initialTab, false);
             renderPitchTeam('Inter');
+        }});
+
+        window.addEventListener('popstate', (e) => {{
+            const cur = (window.location.pathname.replace(/[/]+$/, '') || '/');
+            const tab = (e.state && e.state.tab) || (PATH_TO_TAB[cur] || 'auction');
+            if (tab && tab !== State.activeTab) {{
+                switchTab(tab, false);
+            }}
         }});
 
         window.addEventListener('hashchange', () => {{
             const hTab = window.location.hash ? window.location.hash.replace('#', '') : null;
-            if (hTab && hTab !== State.activeTab) {{
-                switchTab(hTab);
+            if (hTab && PATH_TO_TAB[hTab] && PATH_TO_TAB[hTab] !== State.activeTab) {{
+                switchTab(PATH_TO_TAB[hTab], true);
             }}
         }});
     </script>

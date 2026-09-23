@@ -16,6 +16,38 @@
       "dest": "/calciatore/$1/index.html"
     },
     {
+      "src": "/top-flop(/index\\.html)?",
+      "dest": "/top-flop/index.html"
+    },
+    {
+      "src": "/consigli-fantacalcio(/index\\.html)?",
+      "dest": "/consigli-fantacalcio/index.html"
+    },
+    {
+      "src": "/football-analytics(/index\\.html)?",
+      "dest": "/football-analytics/index.html"
+    },
+    {
+      "src": "/statistiche-serie-a(/index\\.html)?",
+      "dest": "/statistiche-serie-a/index.html"
+    },
+    {
+      "src": "/probabili-formazioni(/index\\.html)?",
+      "dest": "/probabili-formazioni/index.html"
+    },
+    {
+      "src": "/confronto-calciatori(/index\\.html)?",
+      "dest": "/confronto-calciatori/index.html"
+    },
+    {
+      "src": "/top-11-ai(/index\\.html)?",
+      "dest": "/top-11-ai/index.html"
+    },
+    {
+      "src": "/scommesse-talenti(/index\\.html)?",
+      "dest": "/scommesse-talenti/index.html"
+    },
+    {
       "src": "/griglia-portieri(/index\\.html)?",
       "dest": "/griglia-portieri/index.html"
     },

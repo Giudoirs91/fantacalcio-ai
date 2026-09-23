@@ -41,7 +41,7 @@ def render_unified_header(rel_path=""):
         <div class="header-main-row">
             <!-- LEFT: BRANDING & HOME -->
             <div class="header-left">
-                <a href="{rel_path}index.html" class="brand-badge" style="text-decoration:none;" title="Fanta Master AI — Portale Statistico Serie A 2026/27">
+                <a href="{rel_path}" class="brand-badge" style="text-decoration:none;" title="Fanta Master AI — Portale Statistico Serie A 2026/27">
                     <span class="brand-icon">⚡</span>
                     <div>
                         <div class="brand-title">FANTA MASTER AI</div>
@@ -49,7 +49,7 @@ def render_unified_header(rel_path=""):
                     </div>
                 </a>
 
-                <a href="{rel_path}index.html" class="nav-btn-icon" style="text-decoration:none;" title="Torna al Listone &amp; Statistiche">
+                <a href="{rel_path}" class="nav-btn-icon" style="text-decoration:none;" title="Torna al Listone &amp; Statistiche">
                     🏠 Listone
                 </a>
             </div>
@@ -62,9 +62,13 @@ def render_unified_header(rel_path=""):
                         <span>📈</span> Statistiche &amp; Listone <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="{rel_path}index.html" class="dropdown-item">📊 Statistiche Serie A &amp; xG</a>
-                        <a href="{rel_path}index.html" class="dropdown-item">📋 Tabellone &amp; Listone Calciatori</a>
-                        <a href="{rel_path}griglia-portieri/index.html" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
+                        <a href="{rel_path}statistiche-serie-a/" class="dropdown-item">📊 Statistiche Serie A &amp; xG</a>
+                        <a href="{rel_path}" class="dropdown-item">📋 Tabellone &amp; Listone Calciatori</a>
+                        <a href="{rel_path}top-flop/" class="dropdown-item">⚡ Top &amp; Flop di Giornata</a>
+                        <a href="{rel_path}football-analytics/" class="dropdown-item">📈 Matrice &amp; Scatter Analytics</a>
+                        <a href="{rel_path}probabili-formazioni/" class="dropdown-item">⚽ Campo 2D &amp; Schemi Club</a>
+                        <a href="{rel_path}confronto-calciatori/" class="dropdown-item">⚔️ Matchup 1vs1</a>
+                        <a href="{rel_path}griglia-portieri/" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
                     </div>
                 </div>
 
@@ -74,12 +78,12 @@ def render_unified_header(rel_path=""):
                         <span>🧠</span> AI &amp; Consigli <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="{rel_path}infortunati-serie-a/index.html" class="dropdown-item">🩺 Infortunati &amp; Tempi di Recupero</a>
-                        <a href="{rel_path}rigoristi-serie-a/index.html" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
+                        <a href="{rel_path}consigli-fantacalcio/" class="dropdown-item">🎯 Chi Schierare Prossima Giornata</a>
+                        <a href="{rel_path}top-11-ai/" class="dropdown-item">🧠 5 Squadre Perfette AI</a>
+                        <a href="{rel_path}scommesse-talenti/" class="dropdown-item">🔮 Gemme &amp; Sleeper AI</a>
                         <div class="dropdown-divider"></div>
-                        <a href="{rel_path}index.html" class="dropdown-item">🎯 Chi Schierare Prossima Giornata</a>
-                        <a href="{rel_path}index.html" class="dropdown-item">🧠 5 Squadre Perfette AI</a>
-                        <a href="{rel_path}index.html" class="dropdown-item">🔮 Gemme &amp; Sleeper AI</a>
+                        <a href="{rel_path}infortunati-serie-a/" class="dropdown-item">🩺 Infortunati &amp; Tempi di Recupero</a>
+                        <a href="{rel_path}rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
                     </div>
                 </div>
 
@@ -89,14 +93,14 @@ def render_unified_header(rel_path=""):
                         <span>📊</span> Asta &amp; Mercato <span class="coming-soon-pill">In Arrivo</span> <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="{rel_path}index.html" class="dropdown-item">📋 Tabellone &amp; Listone Completo</a>
+                        <a href="{rel_path}" class="dropdown-item">📋 Tabellone &amp; Listone Completo</a>
                     </div>
                 </div>
             </nav>
 
             <!-- RIGHT: LIVE STATUS & APP LAUNCH -->
             <div class="header-right">
-                <a href="{rel_path}index.html" class="header-squad-pill" style="text-decoration:none;" title="Apri Dashboard &amp; Rosa">
+                <a href="{rel_path}" class="header-squad-pill" style="text-decoration:none;" title="Apri Dashboard &amp; Rosa">
                     <span style="font-size:13px;">📋</span>
                     <span class="pill-credits">Dashboard Live</span>
                 </a>
@@ -104,10 +108,12 @@ def render_unified_header(rel_path=""):
         </div>
         <!-- MOBILE SUBNAV -->
         <nav class="mobile-subnav">
-            <a href="{rel_path}index.html">📊 Listone</a>
-            <a href="{rel_path}infortunati-serie-a/index.html">🩺 Infortuni</a>
-            <a href="{rel_path}rigoristi-serie-a/index.html">🎯 Rigoristi</a>
-            <a href="{rel_path}griglia-portieri/index.html">🧤 Portieri</a>
+            <a href="{rel_path}">📊 Listone</a>
+            <a href="{rel_path}consigli-fantacalcio/">🎯 Consigli</a>
+            <a href="{rel_path}top-flop/">⚡ Top/Flop</a>
+            <a href="{rel_path}infortunati-serie-a/">🩺 Infortuni</a>
+            <a href="{rel_path}rigoristi-serie-a/">🎯 Rigoristi</a>
+            <a href="{rel_path}griglia-portieri/">🧤 Portieri</a>
         </nav>
     </header>
     """

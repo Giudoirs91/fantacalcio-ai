@@ -500,7 +500,7 @@ def render_unified_header(rel_path=""):
         <div class="header-main-row">
             <!-- LEFT: BRANDING & HOME -->
             <div class="header-left">
-                <a href="{rel_path}index.html" class="brand-badge" style="text-decoration:none;" title="Fanta Master AI — Portale Statistico Serie A 2026/27">
+                <a href="{rel_path}" class="brand-badge" style="text-decoration:none;" title="Fanta Master AI — Portale Statistico Serie A 2026/27">
                     <span class="brand-icon">⚡</span>
                     <div>
                         <div class="brand-title">FANTA MASTER AI</div>
@@ -508,7 +508,7 @@ def render_unified_header(rel_path=""):
                     </div>
                 </a>
 
-                <a href="{rel_path}index.html" class="nav-btn-icon" style="text-decoration:none;" title="Torna al Listone &amp; Statistiche">
+                <a href="{rel_path}" class="nav-btn-icon" style="text-decoration:none;" title="Torna al Listone &amp; Statistiche">
                     🏠 Listone
                 </a>
             </div>
@@ -521,9 +521,13 @@ def render_unified_header(rel_path=""):
                         <span>📈</span> Statistiche &amp; Listone <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="{rel_path}index.html" class="dropdown-item">📊 Statistiche Serie A &amp; xG</a>
-                        <a href="{rel_path}index.html" class="dropdown-item">📋 Tabellone &amp; Listone Calciatori</a>
-                        <a href="{rel_path}griglia-portieri/index.html" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
+                        <a href="{rel_path}statistiche-serie-a/" class="dropdown-item">📊 Statistiche Serie A &amp; xG</a>
+                        <a href="{rel_path}" class="dropdown-item">📋 Tabellone &amp; Listone Calciatori</a>
+                        <a href="{rel_path}top-flop/" class="dropdown-item">⚡ Top &amp; Flop di Giornata</a>
+                        <a href="{rel_path}football-analytics/" class="dropdown-item">📈 Matrice &amp; Scatter Analytics</a>
+                        <a href="{rel_path}probabili-formazioni/" class="dropdown-item">⚽ Campo 2D &amp; Schemi Club</a>
+                        <a href="{rel_path}confronto-calciatori/" class="dropdown-item">⚔️ Matchup 1vs1</a>
+                        <a href="{rel_path}griglia-portieri/" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
                     </div>
                 </div>
 
@@ -533,12 +537,12 @@ def render_unified_header(rel_path=""):
                         <span>🧠</span> AI &amp; Consigli <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="{rel_path}infortunati-serie-a/index.html" class="dropdown-item">🩺 Infortunati &amp; Tempi di Recupero</a>
-                        <a href="{rel_path}rigoristi-serie-a/index.html" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
+                        <a href="{rel_path}consigli-fantacalcio/" class="dropdown-item">🎯 Chi Schierare Prossima Giornata</a>
+                        <a href="{rel_path}top-11-ai/" class="dropdown-item">🧠 5 Squadre Perfette AI</a>
+                        <a href="{rel_path}scommesse-talenti/" class="dropdown-item">🔮 Gemme &amp; Sleeper AI</a>
                         <div class="dropdown-divider"></div>
-                        <a href="{rel_path}index.html" class="dropdown-item">🎯 Chi Schierare Prossima Giornata</a>
-                        <a href="{rel_path}index.html" class="dropdown-item">🧠 5 Squadre Perfette AI</a>
-                        <a href="{rel_path}index.html" class="dropdown-item">🔮 Gemme &amp; Sleeper AI</a>
+                        <a href="{rel_path}infortunati-serie-a/" class="dropdown-item">🩺 Infortunati &amp; Tempi di Recupero</a>
+                        <a href="{rel_path}rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
                     </div>
                 </div>
 
@@ -548,14 +552,14 @@ def render_unified_header(rel_path=""):
                         <span>📊</span> Asta &amp; Mercato <span class="coming-soon-pill">In Arrivo</span> <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="{rel_path}index.html" class="dropdown-item">📋 Tabellone &amp; Listone Completo</a>
+                        <a href="{rel_path}" class="dropdown-item">📋 Tabellone &amp; Listone Completo</a>
                     </div>
                 </div>
             </nav>
 
             <!-- RIGHT: LIVE STATUS & APP LAUNCH -->
             <div class="header-right">
-                <a href="{rel_path}index.html" class="header-squad-pill" style="text-decoration:none;" title="Apri Dashboard &amp; Rosa">
+                <a href="{rel_path}" class="header-squad-pill" style="text-decoration:none;" title="Apri Dashboard &amp; Rosa">
                     <span style="font-size:13px;">📋</span>
                     <span class="pill-credits">Dashboard Live</span>
                 </a>
@@ -563,10 +567,12 @@ def render_unified_header(rel_path=""):
         </div>
         <!-- MOBILE SUBNAV -->
         <nav class="mobile-subnav">
-            <a href="{rel_path}index.html">📊 Listone</a>
-            <a href="{rel_path}infortunati-serie-a/index.html">🩺 Infortuni</a>
-            <a href="{rel_path}rigoristi-serie-a/index.html">🎯 Rigoristi</a>
-            <a href="{rel_path}griglia-portieri/index.html">🧤 Portieri</a>
+            <a href="{rel_path}">📊 Listone</a>
+            <a href="{rel_path}consigli-fantacalcio/">🎯 Consigli</a>
+            <a href="{rel_path}top-flop/">⚡ Top/Flop</a>
+            <a href="{rel_path}infortunati-serie-a/">🩺 Infortuni</a>
+            <a href="{rel_path}rigoristi-serie-a/">🎯 Rigoristi</a>
+            <a href="{rel_path}griglia-portieri/">🧤 Portieri</a>
         </nav>
     </header>
     """
@@ -864,6 +870,7 @@ def build_all():
                 shutil.copy(os.path.join(web_js_dir, f), os.path.join(js_dir, f))
 
     # 2b. Copia l'applicazione interattiva principale in dist/app.html e dist/index.html
+    dash_content = ""
     if os.path.exists(DASHBOARD_HTML_PATH):
         with open(DASHBOARD_HTML_PATH, "r", encoding="utf-8") as f:
             dash_content = f.read()
@@ -876,7 +883,94 @@ def build_all():
             f.write(dash_content)
         print("  ✓ App interattiva clonata con tracker in dist/app.html e dist/index.html")
 
-    # 2c. Copia i dati JSON elaborati in dist/data per endpoint e fetch
+    # 2c. Genera pagine dedicate Clean URL per ogni sezione della Dashboard
+    SECTIONS_METADATA = [
+        {
+            "route": "top-flop",
+            "tab": "top_flop",
+            "title": "Top & Flop 5ª Giornata Serie A 2026/27 | Pagelle e Statistiche | Fanta Master AI",
+            "desc": "I migliori e peggiori calciatori della 5ª giornata di Serie A 2026/27: voti ufficiali, FantaMedia, bonus, malus e analisi algoritmica Fanta Master AI.",
+            "keywords": "top flop serie a, pagelle fantacalcio 5 giornata, voti fantacalcio, migliori fantacalcio 5 giornata"
+        },
+        {
+            "route": "consigli-fantacalcio",
+            "tab": "matchday_advice",
+            "title": "Consigli Fantacalcio 6ª Giornata Serie A | Chi Schierare | Fanta Master AI",
+            "desc": "Chi schierare nella 6ª giornata di Serie A: indici di schierabilità, titolarità, verifiche predittive e consigli ruolo per ruolo con intelligenza artificiale.",
+            "keywords": "consigli fantacalcio 6 giornata, chi schierare 6 giornata, formazioni consigliate fantacalcio"
+        },
+        {
+            "route": "football-analytics",
+            "tab": "matrix",
+            "title": "Football Analytics Serie A | Scatter Matrix xG, xA e Performance | Fanta Master AI",
+            "desc": "Analisi avanzata e matrici di dispersione dei calciatori di Serie A: Expected Goals (xG), Expected Assists (xA), overperformance e statistiche FotMob.",
+            "keywords": "football analytics serie a, scatter matrix fantacalcio, expected goals serie a, metriche avanzate fantacalcio"
+        },
+        {
+            "route": "statistiche-serie-a",
+            "tab": "stats",
+            "title": "Statistiche Calciatori Serie A 2026/27 Avanzate & xG | Fanta Master AI",
+            "desc": "Tabella completa con tutte le statistiche della Serie A 2026/27: presenze, minuti, gol, assist, ammonizioni, espulsioni, xG, xA e FantaMedia.",
+            "keywords": "statistiche serie a 2026 2027, numeri fantacalcio, fantamedia calciatori, assist gol serie a"
+        },
+        {
+            "route": "probabili-formazioni",
+            "tab": "pitch",
+            "title": "Probabili Formazioni Serie A 2026/27 & Ballottaggi 2D | Fanta Master AI",
+            "desc": "Probabili formazioni delle 20 squadre di Serie A su campo tattico 2D interattivo, schemi dei club e percentuali di titolarità aggiornate.",
+            "keywords": "probabili formazioni serie a, formazioni fantacalcio, titolari ballottaggi serie a, campo 2d formazioni"
+        },
+        {
+            "route": "confronto-calciatori",
+            "tab": "matchup",
+            "title": "Confronto Calciatori Head-to-Head Serie A | Fanta Master AI",
+            "desc": "Confronta testa a testa due calciatori di Serie A: statistiche incrociate, overall (OVR), radar chart, xG, rendimento e metriche predittive.",
+            "keywords": "confronto calciatori fantacalcio, testa a testa calciatori, matchup 1vs1 serie a"
+        },
+        {
+            "route": "top-11-ai",
+            "tab": "ai_squads",
+            "title": "Top 11 AI & 5 Squadre Perfette Fantacalcio | Fanta Master AI",
+            "desc": "Le formazioni ideali generate dall'algoritmo predittivo per ogni budget e strategia d'asta: Top Player, Low Cost, Equilibrata, Giovani Talenti.",
+            "keywords": "top 11 fantacalcio, squadra ideale fantacalcio, 5 squadre perfette ai, consigli asta fantacalcio"
+        },
+        {
+            "route": "scommesse-talenti",
+            "tab": "gems",
+            "title": "Talenti Nascosti & Scommesse Low-Cost Serie A | Fanta Master AI",
+            "desc": "Scopri i talenti emergenti, le gemme nascoste e le scommesse a basso costo consigliate dall'algoritmo predittivo per il tuo Fantacalcio.",
+            "keywords": "scommesse fantacalcio, talenti nascosti serie a, gemme fantacalcio, sleeper fantacalcio"
+        }
+    ]
+
+    sitemap_urls = [
+        f"{BASE_URL}/",
+        f"{BASE_URL}/infortunati-serie-a/",
+        f"{BASE_URL}/rigoristi-serie-a/",
+        f"{BASE_URL}/griglia-portieri/"
+    ]
+
+    if dash_content:
+        for sec in SECTIONS_METADATA:
+            route = sec["route"]
+            tab = sec["tab"]
+            title = sec["title"]
+            desc = sec["desc"]
+            sec_dir = os.path.join(DIST_DIR, route)
+            os.makedirs(sec_dir, exist_ok=True)
+            
+            sec_html = dash_content
+            sec_html = re.sub(r'<title>.*?</title>', f'<title>{title}</title>', sec_html, flags=re.DOTALL)
+            sec_html = re.sub(r'<meta name="description" content=".*?">', f'<meta name="description" content="{desc}">', sec_html)
+            head_inject = f"""    <link rel="canonical" href="{BASE_URL}/{route}/">\n    <script>window.INITIAL_TAB = '{tab}';</script>\n</head>"""
+            sec_html = sec_html.replace('</head>', head_inject)
+            
+            with open(os.path.join(sec_dir, "index.html"), "w", encoding="utf-8") as f:
+                f.write(sec_html)
+            sitemap_urls.append(f"{BASE_URL}/{route}/")
+            print(f"  ✓ Generata pagina Clean URL: dist/{route}/index.html")
+
+    # 2d. Copia i dati JSON elaborati in dist/data per endpoint e fetch
     dist_data_dir = os.path.join(DIST_DIR, "data")
     os.makedirs(dist_data_dir, exist_ok=True)
     for json_name in ["processed_players_master.json", "top_flop_rounds.json", "gk_matrix_2026_27.json"]:
@@ -890,14 +984,6 @@ def build_all():
     # 3. Genera le 532 pagine calciatore complete
     calciatori_dir = os.path.join(DIST_DIR, "calciatore")
     os.makedirs(calciatori_dir, exist_ok=True)
-    
-    sitemap_urls = [
-        f"{BASE_URL}/",
-        f"{BASE_URL}/app.html",
-        f"{BASE_URL}/infortunati-serie-a/",
-        f"{BASE_URL}/rigoristi-serie-a/",
-        f"{BASE_URL}/griglia-portieri/"
-    ]
     
     player_count = 0
     seen_slugs = set()

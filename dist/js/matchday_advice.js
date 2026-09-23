@@ -1,5 +1,5 @@
 // ==============================================================================
-// MODULO CONSIGLIATI PROSSIMA GIORNATA — QUANTITATIVE FOTMOB ENGINE
+// MODULO CONSIGLIATI PROSSIMA GIORNATA — QUANTITATIVE MATCH ENGINE
 // Serie A 2026/27 — Rating Deterministico & Fact-Based Tattico (FIFA / PES Style)
 // ==============================================================================
 
@@ -49,7 +49,7 @@ function getMatchdayFixturesMap(roundNum) {
     return { fixtureMap, matchesList, roundDate };
 }
 
-// ALGORITMO QUANTITATIVO DETERMINISTICO (FotMob Advanced Metrics Engine)
+// ALGORITMO QUANTITATIVO DETERMINISTICO (Advanced Metrics Engine)
 function calcMatchdayAdviceScore(player, matchInfo) {
     if (!matchInfo || player.is_injured) return -999;
     const tit = Number(player.titolarita) || 50;
@@ -60,7 +60,7 @@ function calcMatchdayAdviceScore(player, matchInfo) {
     const isHome = matchInfo.isHome;
     const role = player.role;
 
-    // Dati FotMob di Squadra (Reali 2026/27)
+    // Dati Statistici di Squadra (Reali 2026/27)
     const myStats = (typeof TEAM_STATS_DB !== 'undefined' && TEAM_STATS_DB[team]) ? TEAM_STATS_DB[team] : {};
     const oppStats = (typeof TEAM_STATS_DB !== 'undefined' && TEAM_STATS_DB[opp]) ? TEAM_STATS_DB[opp] : {};
 
@@ -87,14 +87,14 @@ function calcMatchdayAdviceScore(player, matchInfo) {
     if (role === 'P') {
         let score = 65.0 + (ovr * 0.18) + (fm * 2.5);
 
-        // Solidità difensiva della propria squadra da FotMob
+        // Solidità difensiva della propria squadra da statistiche avanzate
         const csFactor = (myCs * 8.0) - (myGc * 6.0) - ((myXga / LEAGUE_AVG_XGA) * 5.0);
         score += csFactor;
 
         // Vantaggio campo: storicamente +18% probabilità di Clean Sheet in casa
         if (isHome) score += 10.0;
 
-        // Minaccia offensiva avversaria (xG e Big Chances FotMob):
+        // Minaccia offensiva avversaria (xG e Big Chances):
         // Penalizzazione esponenziale non lineare per attacchi prolifici (es. Inter xG 11.7, Roma xG 11.2)
         const xgDiff = oppXg - LEAGUE_AVG_XG;
         if (xgDiff > 0) {
@@ -433,7 +433,7 @@ function renderMatchdayAdviceView() {
                     </div>
                 </div>
                 <div class="fut-audit-note future-note">
-                    ⚡ <em>I consigliati per il 6° turno sono generati incrociando i matchup del calendario ufficiale, le metriche FotMob aggiornate e l'esclusione automatica degli infortunati.</em>
+                    ⚡ <em>I consigliati per il 6° turno sono generati incrociando i matchup del calendario ufficiale, le metriche statistiche aggiornate e l'esclusione automatica degli infortunati.</em>
                 </div>
             </div>
         `;
@@ -612,7 +612,7 @@ function renderMatchdayAdviceView() {
                         </div>
                     </div>
 
-                    <!-- EXPANDABLE DRAWER (Details on demand: FotMob Insight, Stats, Scheda) -->
+                    <!-- EXPANDABLE DRAWER (Details on demand: Tactical Insight, Stats, Scheda) -->
                     <div class="fut-row-details">
                         <!-- MOBILE BADGES ROW -->
                         ${(specialBadges || mantraTags) ? `
@@ -644,7 +644,7 @@ function renderMatchdayAdviceView() {
 
                         <!-- ESSENTIAL TACTICAL BRIEFING -->
                         <div class="fut-tactical-briefing">
-                            <div class="briefing-label">💡 FOTMOB TACTICAL INSIGHT</div>
+                            <div class="briefing-label">💡 ADVANCED TACTICAL INSIGHT</div>
                             <div class="briefing-text">${item.rationale}</div>
                         </div>
 
@@ -688,7 +688,7 @@ function renderMatchdayAdviceView() {
                     <div class="fut-title-block">
                         <div class="fut-logo-emblem">🎯</div>
                         <div>
-                            <div class="fut-eyebrow">FOTMOB QUANTITATIVE PREDICTIVE ENGINE • SERIE A 2026/27</div>
+                            <div class="fut-eyebrow">QUANTITATIVE PREDICTIVE ENGINE • SERIE A 2026/27</div>
                             <h1 class="fut-main-heading">CONSIGLIATI PROSSIMA GIORNATA</h1>
                         </div>
                     </div>

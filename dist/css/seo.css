@@ -6967,6 +6967,7 @@ body.creator-mode-active .visitor-only-item {
     position: relative;
 }
 
+.nav-direct-btn,
 .nav-group-btn {
     display: flex;
     align-items: center;
@@ -6979,13 +6980,80 @@ body.creator-mode-active .visitor-only-item {
     font-size: 12.5px;
     font-weight: 700;
     cursor: pointer;
+    text-decoration: none;
     transition: all 0.2s ease;
 }
 
-.nav-group-btn:hover, .nav-group-btn.active {
+.nav-direct-btn:hover,
+.nav-direct-btn.active,
+.nav-group-btn:hover,
+.nav-group-btn.active {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.22);
     color: #fff;
+}
+
+.nav-direct-btn.active {
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.22), rgba(37, 99, 235, 0.28));
+    border-color: rgba(56, 189, 248, 0.5);
+    color: #38bdf8;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.18);
+}
+
+/* --- Table View Selector (Standard vs Statistiche Avanzate) --- */
+.table-view-toggle {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    padding: 3px 4px;
+    gap: 4px;
+}
+
+.table-view-label {
+    font-size: 10.5px;
+    font-weight: 800;
+    color: var(--text-muted, #94a3b8);
+    padding: 0 4px 0 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.btn-view-toggle {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #94a3b8;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 4px 11px;
+    border-radius: 9999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.18s ease;
+}
+
+.btn-view-toggle:hover {
+    color: #f8fafc;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.btn-view-toggle.active {
+    background: linear-gradient(135deg, #0284c7, #2563eb);
+    border-color: rgba(56, 189, 248, 0.5);
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.4);
+}
+
+/* Visibility of advanced stat columns */
+.main-auction-table .col-adv-stat {
+    display: none !important;
+}
+
+.main-auction-table.table-view-advanced .col-adv-stat {
+    display: table-cell !important;
 }
 
 .coming-soon-pill {
@@ -7391,7 +7459,7 @@ body.creator-mode-active .visitor-only-item {
 }
 
 /* ==============================================================================
-   CLEAN MODERN DASHBOARD DESIGN SYSTEM (LINEAR / FOTMOB THEME)
+   CLEAN MODERN DASHBOARD DESIGN SYSTEM (LINEAR / MODERN THEME)
    ============================================================================== */
 
 /* 1. CLEAN FILTER BAR */
@@ -9248,8 +9316,8 @@ body.creator-mode-active .visitor-only-item {
     font-weight: 900;
 }
 
-.source-logo-badge.fotmob { background: #00f2fe; color: #0f172a; }
-.source-logo-badge.fanta { background: #fbbf24; color: #0f172a; }
+.source-logo-badge.stats { background: #00f2fe; color: #0f172a; font-size: 9px; }
+.source-logo-badge.ref { background: #fbbf24; color: #0f172a; font-size: 9px; }
 .source-logo-badge.tactical { background: #8b5cf6; color: #fff; font-size: 9px; }
 .source-logo-badge.medical { background: #ef4444; color: #fff; font-size: 9px; }
 
@@ -13224,3 +13292,66 @@ body {
     color: #94a3b8;
     text-align: center;
 }
+
+/* Team Page Pitch & Hero Styling */
+.pitch-club-quick-bar a.club-quick-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+.pitch-club-quick-bar a.club-quick-btn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+.pitch-club-quick-bar a.club-quick-btn.active {
+    color: #fff;
+    background: linear-gradient(135deg, #0284c7, #2563eb);
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.4);
+}
+.team-hero-banner {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(18, 22, 29, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.team-hero-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+.team-meta-pills {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+.team-stat-badge {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #cbd5e1;
+}
+

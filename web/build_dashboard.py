@@ -14,7 +14,9 @@ def build_standalone_dashboard(sync_android=False):
         gk_path = os.path.join(root_dir, "gk_matrix_2026_27.json")
 
     tactical_path = os.path.join(root_dir, "config", "tactical_db.json")
-    team_stats_path = os.path.join(root_dir, "data", "raw", "fotmob_team_stats_2026_27.json")
+    team_stats_path = os.path.join(root_dir, "data", "raw", "team_stats_2026_27.json")
+    if not os.path.exists(team_stats_path):
+        team_stats_path = os.path.join(root_dir, "data", "raw", "fotmob_team_stats_2026_27.json")
 
     with open(players_path, 'r', encoding='utf-8') as f:
         players_data = json.load(f)
@@ -149,25 +151,29 @@ def build_standalone_dashboard(sync_android=False):
                 <div id="headerLeagueSelectorContainer"></div>
             </div>
 
-            <!-- CENTER: INTELLIGENT DROPDOWN NAVIGATION (NO CLUTTER!) -->
+            <!-- CENTER: INTELLIGENT DIRECT NAVIGATION (NO REDUNDANCY!) -->
             <nav class="header-nav-groups">
-                <!-- 1. STATISTICHE & GUIDA (ATTIVO - FOCUS PORTALE STATISTICO) -->
+                <!-- 1. LISTONE CALCIATORI (ACCESSO DIRETTO PRIMARIO) -->
+                <a href="/" class="nav-direct-btn" id="tabAuctionBtn" onclick="onNavClick(event, 'auction')" title="Tabellone & Listone Calciatori">
+                    <span>📋</span> Listone Calciatori
+                </a>
+
+                <!-- 2. STATISTICHE SERIE A (FOCUS ANALISI & DATI) -->
                 <div class="nav-dropdown">
                     <button class="nav-group-btn" id="navGroupTactics">
-                        <span>📈</span> Statistiche & Listone <span class="caret">▾</span>
+                        <span>📈</span> Statistiche Serie A <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="/statistiche-serie-a/" class="dropdown-item" id="tabStatsBtn" onclick="onNavClick(event, 'stats')">📊 Statistiche Serie A & xG</a>
-                        <a href="/" class="dropdown-item" id="tabAuctionBtn" onclick="onNavClick(event, 'auction')">📋 Tabellone & Listone Calciatori</a>
+                        <a href="/statistiche-serie-a/" class="dropdown-item" id="tabStatsBtn" onclick="onNavClick(event, 'stats')">📊 Statistiche & xG Serie A</a>
                         <a href="/top-flop/" class="dropdown-item" id="tabTopFlopBtn" onclick="onNavClick(event, 'top_flop')">⚡ Top & Flop di Giornata</a>
                         <a href="/football-analytics/" class="dropdown-item" id="tabMatrixBtn" onclick="onNavClick(event, 'matrix')">📈 Matrice & Scatter Analytics</a>
                         <a href="/probabili-formazioni/" class="dropdown-item" id="tabPitchBtn" onclick="onNavClick(event, 'pitch')">⚽ Campo 2D & Schemi Club</a>
-                        <a href="/confronto-calciatori/" class="dropdown-item" id="tabMatchupBtn" onclick="onNavClick(event, 'matchup')">⚔️ Matchup 1vs1</a>
+                        <a href="/confronto-calciatori/" class="dropdown-item" id="tabMatchupBtn" onclick="onNavClick(event, 'matchup')">⚔️ Matchup 1vs1 Calciatori</a>
                         <a href="/griglia-portieri/" class="dropdown-item" id="tabGkBtn" onclick="onNavClick(event, 'gk')">🧤 Griglia Portieri 38/38</a>
                     </div>
                 </div>
 
-                <!-- 2. AI & CONSIGLI -->
+                <!-- 3. AI & CONSIGLI -->
                 <div class="nav-dropdown">
                     <button class="nav-group-btn" id="navGroupAi">
                         <span>🧠</span> AI & Consigli <span class="caret">▾</span>
@@ -179,24 +185,6 @@ def build_standalone_dashboard(sync_android=False):
                         <div class="dropdown-divider"></div>
                         <a href="/infortunati-serie-a/" class="dropdown-item">🩺 Infortunati & Tempi di Recupero</a>
                         <a href="/rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi & Calci Piazzati</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="openAiMethodologyModal('ovr')">ℹ️ Metodologia & Fonti AI</a>
-                    </div>
-                </div>
-
-                <!-- 3. ASTA & MERCATO (LOCKED - IN ARRIVO) -->
-                <div class="nav-dropdown">
-                    <button class="nav-group-btn" id="navGroupAuction">
-                        <span>📊</span> Asta & Mercato <span class="coming-soon-pill">In Arrivo</span> <span class="caret">▾</span>
-                    </button>
-                    <div class="nav-dropdown-menu">
-                        <a href="/" class="dropdown-item" onclick="onNavClick(event, 'auction')">📋 Tabellone & Listone Completo</a>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-header">Creazione & Gestione (In Arrivo)</div>
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabSquadBuilderBtn" onclick="showComingSoonModal('Creazione Squadra & 11')">✨ Creazione Squadra & 11 <span class="coming-soon-pill">In Arrivo</span></a>
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabRepairBtn" onclick="showComingSoonModal('Asta di Riparazione & Svincoli')">🛒 Riparazione & Svincoli <span class="coming-soon-pill">In Arrivo</span></a>
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabTradeBtn" onclick="showComingSoonModal('Scambi & Trade Machine')">🔄 Scambi & Trade Machine <span class="coming-soon-pill">In Arrivo</span></a>
-                        <a href="javascript:void(0)" class="dropdown-item" id="tabReportBtn" onclick="showComingSoonModal('Pagelle Lega & AI Roast')">🏆 Pagelle Lega & AI Roast <span class="coming-soon-pill">In Arrivo</span></a>
                     </div>
                 </div>
             </nav>
@@ -214,33 +202,28 @@ def build_standalone_dashboard(sync_android=False):
                     <span class="pill-count" id="hdrPlayersCount">0/25</span>
                 </div>
 
-                <!-- METODOLOGIA & INFO AI BUTTON -->
+                <!-- METODOLOGIA & INFO AI BUTTON (UNICO E CHIARO) -->
                 <button class="nav-btn-icon btn-ai-info-pill" onclick="openAiMethodologyModal('ovr')" title="Trasparenza & Metodologia AI — Come funziona l'algoritmo">
                     <span class="info-icon-badge">ℹ️</span>
                     <span class="info-text-label">Come Funziona l'AI</span>
                 </button>
 
-                <!-- GESTIONE DROPDOWN (VISITATORI vs CREATORE) -->
+                <!-- GESTIONE DROPDOWN (PULITO, ZERO RIDONDANZE) -->
                 <div class="nav-dropdown align-right">
-                    <button class="nav-btn-icon" title="Opzioni, Formule e Database">
+                    <button class="nav-btn-icon" title="Opzioni e Strumenti">
                         ⚙️ Gestione <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <div class="dropdown-header">Trasparenza & AI</div>
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="openAiMethodologyModal('ovr')">ℹ️ Come Funziona l'AI & Formule</a>
-
-                        <!-- VISTA VISITATORE (Strumenti Asta Bloccati / In Arrivo) -->
+                        <!-- VISTA VISITATORE -->
                         <div class="visitor-only-item">
+                            <div class="dropdown-header">Strumenti Listone</div>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="resetAllFilters()">🔄 Reimposta Filtri Listone</a>
                             <div class="dropdown-divider"></div>
-                            <div class="dropdown-header">Gestione Leghe (In Arrivo)</div>
-                            <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Importazione Rose da Excel')" style="opacity:0.7;">🔒 Carica Rose da Excel <span class="coming-soon-pill">In Arrivo</span></a>
-                            <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Importazione Rosa da CSV')" style="opacity:0.7;">🔒 Carica Rosa da CSV <span class="coming-soon-pill">In Arrivo</span></a>
-                            <a href="javascript:void(0)" class="dropdown-item" onclick="showComingSoonModal('Hub Gestione Leghe')" style="opacity:0.7;">🔒 Hub Leghe & Impostazioni <span class="coming-soon-pill">In Arrivo</span></a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="openCreatorAuthModal()" style="color:#fbbf24;font-weight:700;">👑 Accesso Riservato Creatore</a>
                         </div>
 
                         <!-- VISTA CREATORE (Strumenti Completi Sbloccati) -->
                         <div class="creator-only-block">
-                            <div class="dropdown-divider"></div>
                             <div class="dropdown-header" style="color:var(--accent-gold);font-weight:900;">👑 Strumenti Creatore</div>
                             <a href="javascript:void(0)" class="dropdown-item" onclick="openXlsxImportModal()">📗 Carica Rose da Excel (.xlsx)</a>
                             <a href="javascript:void(0)" class="dropdown-item" onclick="openCsvRosterImportModal(State.currentTeam || 'Unika')">📂 Carica Rosa da CSV</a>
@@ -432,8 +415,18 @@ def build_standalone_dashboard(sync_android=False):
                     </div>
                 </div>
 
-                <div style="display:flex;align-items:center;justify-content:space-between;padding:0 4px;">
+                <div class="table-subbar-container" style="display:flex;align-items:center;justify-content:space-between;padding:4px 4px 8px 4px;flex-wrap:wrap;gap:8px;">
                     <span id="lblPlayerCount" style="color:var(--text-secondary);font-weight:700;font-size:12px;">Mostrati: 523 / 523 Calciatori</span>
+
+                    <div class="table-view-toggle" id="auctionTableViewToggle" role="group" aria-label="Visuale Tabella">
+                        <span class="table-view-label">Visuale:</span>
+                        <button type="button" class="btn-view-toggle active" id="btnViewStandard" onclick="setAuctionTableView('standard')" title="Visuale standard e pulita">
+                            <span>📋 Standard</span>
+                        </button>
+                        <button type="button" class="btn-view-toggle" id="btnViewAdvanced" onclick="setAuctionTableView('advanced')" title="Visuale avanzata con più statistiche (xG, xA, Minuti, Cartellini)">
+                            <span>📊 Statistiche Avanzate</span>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- MANTRA SUB-POSITIONS QUICK FILTER BAR -->
@@ -443,21 +436,25 @@ def build_standalone_dashboard(sync_android=False):
                     <table class="fanta-table main-auction-table clean-table" id="auctionTable">
                         <thead>
                             <tr>
-                                <th style="width:44px;text-align:center;">Az.</th>
-                                <th onclick="setSort('role')" id="thRoleHeader" style="width:36px;text-align:center;" title="Ruolo">R</th>
-                                <th onclick="setSort('name')">Calciatore & Mantra</th>
-                                <th onclick="setSort('team')">Club</th>
-                                <th onclick="setSort('fvm')" style="text-align:center;" title="Fanta Valore di Mercato">FVM</th>
-                                <th onclick="setSort('qta')" style="text-align:center;" title="Quotazione Ufficiale">Qt.</th>
-                                <th onclick="setSort('ai_advice')" title="Tag Smart AI (Consiglio, Rigori, OOP)">Tag AI & Strategia</th>
-                                <th onclick="setSort('titolarita')" style="text-align:center;" title="Percentuale Titolarità">Tit.</th>
-                                <th onclick="setSort('coppia_nome')" title="Sostituto / Staffetta di Reparto">Sostituto / Coppia</th>
-                                <th onclick="setSort('mv_2627')" style="text-align:center;" title="Media Voto 2026/27">MV</th>
-                                <th onclick="setSort('fm_2627')" style="text-align:center;" title="FantaMedia Reale 2026/27">FM</th>
-                                <th onclick="setSort('xfm')" style="text-align:center;" title="Expected FantaMedia (xFM) - FantaMedia Attesa dal Modello AI">xFM</th>
-                                <th onclick="setSort('delta_xfm')" style="text-align:center;" title="Delta Performance (FM - xFM): Verde=Overperforming, Oro/Rosso=Underperforming/Occasione">Δ xFM</th>
-                                <th onclick="setSort('gol_2627')" style="text-align:center;" title="Gol / Assist 2026/27">Gol/Ass</th>
-                                <th onclick="setSort('ovr')" style="text-align:center;" title="Overall Scientifico">OVR</th>
+                                <th onclick="setSort('ovr')" style="width:48px;text-align:center;cursor:pointer;" title="Overall Scientifico (Rating AI 45-98)">OVR</th>
+                                <th onclick="setSort('role')" id="thRoleHeader" style="width:36px;text-align:center;cursor:pointer;" title="Ruolo">R</th>
+                                <th onclick="setSort('name')" style="cursor:pointer;">Calciatore & Mantra</th>
+                                <th onclick="setSort('team')" style="cursor:pointer;">Club</th>
+                                <th onclick="setSort('fvm')" style="text-align:center;cursor:pointer;" title="Fanta Valore di Mercato">FVM</th>
+                                <th onclick="setSort('qta')" style="text-align:center;cursor:pointer;" title="Quotazione Ufficiale">Qt.</th>
+                                <th onclick="setSort('ai_advice')" style="cursor:pointer;" title="Tag Smart AI (Consiglio, Rigori, OOP)">Tag AI & Strategia</th>
+                                <th onclick="setSort('titolarita')" style="text-align:center;cursor:pointer;" title="Percentuale Titolarità">Tit.</th>
+                                <th onclick="setSort('coppia_nome')" style="cursor:pointer;" title="Sostituto / Staffetta di Reparto">Sostituto / Coppia</th>
+                                <th onclick="setSort('mv_2627')" style="text-align:center;cursor:pointer;" title="Media Voto 2026/27">MV</th>
+                                <th onclick="setSort('fm_2627')" style="text-align:center;cursor:pointer;" title="FantaMedia Reale 2026/27">FM</th>
+                                <th onclick="setSort('xfm')" style="text-align:center;cursor:pointer;" title="Expected FantaMedia (xFM) - FantaMedia Attesa dal Modello AI">xFM</th>
+                                <th onclick="setSort('delta_xfm')" style="text-align:center;cursor:pointer;" title="Delta Performance (FM - xFM): Verde=Overperforming, Oro/Rosso=Underperforming/Occasione">Δ xFM</th>
+                                <th onclick="setSort('gol_2627')" style="text-align:center;cursor:pointer;" title="Gol / Assist 2026/27">Gol/Ass</th>
+                                <th onclick="setSort('xg_2627')" class="col-adv-stat" style="text-align:center;cursor:pointer;" title="Expected Goals (xG 2026/27)">xG</th>
+                                <th onclick="setSort('xa_2627')" class="col-adv-stat" style="text-align:center;cursor:pointer;" title="Expected Assists (xA 2026/27)">xA</th>
+                                <th onclick="setSort('minuti_2627')" class="col-adv-stat" style="text-align:center;cursor:pointer;" title="Minuti Giocati 2026/27">Min'</th>
+                                <th onclick="setSort('amm_2627')" class="col-adv-stat" style="text-align:center;cursor:pointer;" title="Cartellini Gialli e Rossi (Amm/Esp)">Cart.</th>
+                                <th style="width:48px;text-align:center;" title="Azioni Asta">Az.</th>
                             </tr>
                         </thead>
                         <tbody id="auctionTableBody"></tbody>
@@ -836,48 +833,45 @@ def build_standalone_dashboard(sync_android=False):
             </div>
             
             <div class="mobile-menu-grid">
-                <!-- Section 1: Asta & Mercato (In Arrivo) -->
+                <!-- Section 1: Calciatori & Listone -->
                 <div class="mobile-menu-section">
-                    <div class="mobile-menu-section-title"><span>📊</span> Asta & Mercato <span class="coming-soon-pill">In Arrivo</span></div>
+                    <div class="mobile-menu-section-title"><span>📋</span> Listone Principale</div>
                     <div class="mobile-menu-links">
-                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('auction')">📋 Tabellone Calciatori</button>
-                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Creazione Squadra & 11');">✨ Creazione Squadra <span class="coming-soon-dot">🔒</span></button>
-                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Asta di Riparazione');">🛒 Riparazione & Svincoli <span class="coming-soon-dot">🔒</span></button>
-                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Scambi & Trade Machine');">🔄 Scambi & Trade <span class="coming-soon-dot">🔒</span></button>
-                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Pagelle Lega & AI Roast');">🏆 Pagelle Lega & Roast <span class="coming-soon-dot">🔒</span></button>
+                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('auction')">📋 Listone Calciatori & OVR</button>
                     </div>
                 </div>
 
-                <!-- Section 2: Guida Asta & Statistiche -->
+                <!-- Section 2: Statistiche & Calciatori -->
                 <div class="mobile-menu-section">
-                    <div class="mobile-menu-section-title"><span>📖</span> Statistiche & Tattica</div>
+                    <div class="mobile-menu-section-title"><span>📖</span> Statistiche & Analisi</div>
                     <div class="mobile-menu-links">
+                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('auction')">📋 Listone Calciatori & OVR</button>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('stats')">📊 Statistiche Serie A & xG</button>
-                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('auction')">📋 Tabellone & Listone Completo</button>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('top_flop')">⚡ Top & Flop Giornata</button>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('matrix')">📈 Matrice Analytics</button>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('pitch')">⚽ Campo 2D & Schemi</button>
-                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('matchup')">⚔️ Matchup 1vs1</button>
-                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('gk')">🧤 Griglia Portieri</button>
+                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('matchup')">⚔️ Matchup 1vs1 Calciatori</button>
+                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('gk')">🧤 Griglia Portieri 38/38</button>
                     </div>
                 </div>
 
                 <!-- Section 3: AI & Strategia -->
                 <div class="mobile-menu-section">
-                    <div class="mobile-menu-section-title"><span>🧠</span> AI & Strategia</div>
+                    <div class="mobile-menu-section-title"><span>🧠</span> AI & Consigli</div>
                     <div class="mobile-menu-links">
-                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('matchday_advice')">🎯 Consigliati Giornata</button>
-                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('ai_squads')">🧠 5 Squadre Perfette</button>
+                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('matchday_advice')">🎯 Chi Schierare (Consigli)</button>
+                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('ai_squads')">🧠 5 Squadre Perfette AI</button>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('gems')">🔮 Gemme & Sleeper</button>
                         <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); openAiMethodologyModal('ovr');">ℹ️ Come Funziona l'AI</button>
                     </div>
                 </div>
 
-                <!-- Section 4: Campionato & Gestione (In Arrivo) -->
+                <!-- Section 4: Strumenti & Gestione -->
                 <div class="mobile-menu-section">
-                    <div class="mobile-menu-section-title"><span>⚙️</span> Gestione Campionato <span class="coming-soon-pill">In Arrivo</span></div>
+                    <div class="mobile-menu-section-title"><span>⚙️</span> Strumenti</div>
                     <div class="mobile-menu-links">
-                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); showComingSoonModal('Gestione Leghe Private & Rose');">🔒 Gestione Leghe & Rose <span class="coming-soon-dot">🔒</span></button>
+                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); resetAllFilters();">🔄 Reimposta Filtri Listone</button>
+                        <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); openCreatorAuthModal();" style="color:#fbbf24;">👑 Accesso Creatore</button>
                     </div>
                 </div>
             </div>
@@ -1096,8 +1090,6 @@ def build_standalone_dashboard(sync_android=False):
             }} else if (tabId === 'auction') {{
                 const btn = document.getElementById('tabAuctionBtn');
                 if (btn) btn.classList.add('active');
-                const grp = document.getElementById('navGroupTactics');
-                if (grp) grp.classList.add('active');
                 const mob = document.getElementById('mobNavAuction');
                 if (mob) mob.classList.add('active');
                 const view = document.getElementById('viewAuction');
@@ -1295,6 +1287,9 @@ def build_standalone_dashboard(sync_android=False):
             }}
             if (typeof setSystemMode === 'function') {{
                 setSystemMode(State.systemMode || 'classic', false);
+            }}
+            if (typeof initAuctionTableView === 'function') {{
+                initAuctionTableView();
             }}
 
             // Popola selettore squadre

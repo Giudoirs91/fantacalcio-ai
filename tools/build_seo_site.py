@@ -1245,6 +1245,69 @@ body {
     color: #94a3b8;
     text-align: center;
 }
+
+/* Team Page Pitch & Hero Styling */
+.pitch-club-quick-bar a.club-quick-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+.pitch-club-quick-bar a.club-quick-btn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+.pitch-club-quick-bar a.club-quick-btn.active {
+    color: #fff;
+    background: linear-gradient(135deg, #0284c7, #2563eb);
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.4);
+}
+.team-hero-banner {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(18, 22, 29, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.team-hero-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+.team-meta-pills {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+.team-stat-badge {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #cbd5e1;
+}
+
 """
     return base_dashboard_css + "\n" + extra_seo_css
 
@@ -1263,30 +1326,31 @@ def render_unified_header(rel_path=""):
                     </div>
                 </a>
 
-                <a href="{rel_path}" class="nav-btn-icon" style="text-decoration:none;" title="Torna al Listone &amp; Statistiche">
-                    🏠 Listone
-                </a>
             </div>
 
-            <!-- CENTER: DROPDOWNS -->
+            <!-- CENTER: DIRECT & INTUITIVE NAVIGATION -->
             <nav class="header-nav-groups">
-                <!-- 1. STATISTICHE & LISTONE -->
+                <!-- 1. LISTONE CALCIATORI -->
+                <a href="{rel_path}" class="nav-direct-btn" title="Tabellone &amp; Listone Calciatori">
+                    <span>📋</span> Listone Calciatori
+                </a>
+
+                <!-- 2. STATISTICHE SERIE A -->
                 <div class="nav-dropdown">
                     <button class="nav-group-btn" id="navGroupTactics">
-                        <span>📈</span> Statistiche &amp; Listone <span class="caret">▾</span>
+                        <span>📈</span> Statistiche Serie A <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
                         <a href="{rel_path}statistiche-serie-a/" class="dropdown-item">📊 Statistiche Serie A &amp; xG</a>
-                        <a href="{rel_path}" class="dropdown-item">📋 Tabellone &amp; Listone Calciatori</a>
                         <a href="{rel_path}top-flop/" class="dropdown-item">⚡ Top &amp; Flop di Giornata</a>
                         <a href="{rel_path}football-analytics/" class="dropdown-item">📈 Matrice &amp; Scatter Analytics</a>
                         <a href="{rel_path}probabili-formazioni/" class="dropdown-item">⚽ Campo 2D &amp; Schemi Club</a>
-                        <a href="{rel_path}confronto-calciatori/" class="dropdown-item">⚔️ Matchup 1vs1</a>
+                        <a href="{rel_path}confronto-calciatori/" class="dropdown-item">⚔️ Matchup 1vs1 Calciatori</a>
                         <a href="{rel_path}griglia-portieri/" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
                     </div>
                 </div>
 
-                <!-- 2. AI & CONSIGLI -->
+                <!-- 3. AI & CONSIGLI -->
                 <div class="nav-dropdown">
                     <button class="nav-group-btn" id="navGroupAi">
                         <span>🧠</span> AI &amp; Consigli <span class="caret">▾</span>
@@ -1298,16 +1362,6 @@ def render_unified_header(rel_path=""):
                         <div class="dropdown-divider"></div>
                         <a href="{rel_path}infortunati-serie-a/" class="dropdown-item">🩺 Infortunati &amp; Tempi di Recupero</a>
                         <a href="{rel_path}rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
-                    </div>
-                </div>
-
-                <!-- 3. ASTA & MERCATO -->
-                <div class="nav-dropdown">
-                    <button class="nav-group-btn" id="navGroupAuction">
-                        <span>📊</span> Asta &amp; Mercato <span class="coming-soon-pill">In Arrivo</span> <span class="caret">▾</span>
-                    </button>
-                    <div class="nav-dropdown-menu">
-                        <a href="{rel_path}" class="dropdown-item">📋 Tabellone &amp; Listone Completo</a>
                     </div>
                 </div>
             </nav>
@@ -2074,7 +2128,509 @@ def generate_gk_pillar(gk_matrix_data):
 """
     return html
 
+def get_pitch_band(pos, modulo):
+    if not pos:
+        return 'pitchMed'
+    pos = str(pos).upper()
+    if pos in ['P', 'POR']:
+        return 'pitchPor'
+    if pos.startswith('PC') or pos.startswith('PUN') or pos.startswith('ATT') or pos in ['SS', 'SP', 'A']:
+        return 'pitchAtt'
+    if pos.startswith('TRQ'):
+        return 'pitchTrq'
+    if pos in ['AD', 'AS']:
+        if modulo and ('4-3-3' in modulo or '3-4-3' in modulo):
+            return 'pitchAtt'
+        return 'pitchTrq'
+    if pos in ['TD', 'TS', 'D'] or pos.startswith('DC') or pos.startswith('BRAC'):
+        return 'pitchDef'
+    if pos in ['ED', 'ES', 'MED', 'CC', 'REG', 'C'] or pos.startswith('MED') or pos.startswith('CC') or pos.startswith('MEZ'):
+        return 'pitchMed'
+    return 'pitchMed'
+
+def get_ovr_tier_class(ovr):
+    try:
+        ovr = int(ovr)
+    except:
+        ovr = 70
+    if ovr >= 92: return 'ovr-tier-elite'
+    if ovr >= 87: return 'ovr-tier-top'
+    if ovr >= 82: return 'ovr-tier-high'
+    if ovr >= 77: return 'ovr-tier-good'
+    if ovr >= 72: return 'ovr-tier-mid'
+    if ovr >= 66: return 'ovr-tier-low'
+    return 'ovr-tier-bench'
+
+def get_substitute_info(starter, team_data, team_players):
+    sub_name = starter.get("sub_name")
+    if sub_name:
+        return sub_name, starter.get("sub_role", starter.get("role", "C"))
+    
+    s_name = (starter.get("name") or "").lower()
+    for b in team_data.get("ballottaggi", []):
+        bp = (b.get("player") or "").lower()
+        if bp and (bp in s_name or s_name in bp):
+            m = re.match(r'^([^(/\n]+)', b.get("vs", ""))
+            if m:
+                return m.group(1).strip(), starter.get("role", "C")
+    
+    st = starter.get("status", "")
+    m = re.search(r'vs\s+([^(/\n]+)', st, re.I)
+    if m:
+        return m.group(1).strip(), starter.get("role", "C")
+        
+    return None, None
+
+def generate_team_page(team_name, team_data, team_players, all_teams, injuries_db, base_url="https://fantamasterai.it"):
+    team_slug = slugify(team_name)
+    modulo = team_data.get("modulo", "3-5-2")
+    mister = team_data.get("all", "Mister")
+    dif_stars = int(team_data.get("dif_stars", 3))
+    att_stars = int(team_data.get("att_stars", 3))
+    top_players = team_data.get("top", [])
+    sleeper_players = team_data.get("sleeper", [])
+    
+    meta_title = f"Probabili Formazioni {team_name} 2026/27: Titolari, Ballottaggi e Rigoristi | Fanta Master AI"
+    meta_desc = f"Probabile formazione {team_name} 2026/27 aggiornata: modulo {modulo}, 11 titolare con percentuali, ballottaggi di reparto, rigoristi e rosa completa per il Fantacalcio."
+    page_url = f"{base_url}/probabili-formazioni/{team_slug}/"
+    
+    # 1. Quick Bar 20 Club
+    quick_bar_html = "".join([
+        f'<a href="../{slugify(tm)}/" class="club-quick-btn {"active" if tm.lower() == team_name.lower() else ""}">{clean_html(tm)}</a>'
+        for tm in sorted(all_teams)
+    ])
+    
+    # 2. Player matching helper
+    player_by_name_map = {}
+    for p in team_players:
+        player_by_name_map[p.get("name", "").lower()] = p
+        
+    def find_p(name):
+        if not name: return None
+        nl = name.lower().strip()
+        if nl in player_by_name_map:
+            return player_by_name_map[nl]
+        for k, v in player_by_name_map.items():
+            if k in nl or nl in k:
+                return v
+        return None
+
+    # 3. 11 Titolari su Campo 2D
+    bands = {'pitchAtt': [], 'pitchTrq': [], 'pitchMed': [], 'pitchDef': [], 'pitchPor': []}
+    lineup = team_data.get("lineup", [])
+    for st in lineup:
+        st_name = st.get("name", "")
+        st_role = st.get("role", "C")
+        pos_lbl = st.get("pos_label", st.get("pos", ""))
+        pct = int(st.get("pct", 70))
+        band_id = get_pitch_band(st.get("pos"), modulo)
+        
+        match_p = find_p(st_name)
+        p_slug = slugify(match_p.get("name", st_name)) if match_p else slugify(st_name)
+        ovr = match_p.get("ovr", 72) if match_p else 72
+        ovr_cls = get_ovr_tier_class(ovr)
+        
+        sub_name, sub_role = get_substitute_info(st, team_data, team_players)
+        tit_color = "#4ade80" if pct >= 80 else ("#fbbf24" if pct >= 60 else "#f87171")
+        
+        node_html = f"""
+        <div class="pitch-player-node">
+            <div class="pitch-card">
+                <div class="pitch-card-header">
+                    <span class="pitch-role-badge {st_role}">{st_role}</span>
+                    <span class="pitch-pos-label">{clean_html(pos_lbl)}</span>
+                    <span class="pitch-ovr-tag {ovr_cls}">{ovr}</span>
+                </div>
+                <a href="../../calciatore/{p_slug}/" class="pitch-player-name" title="Vedi Scheda {clean_html(st_name)}">{clean_html(st_name)}</a>
+                <div class="pitch-card-sub" style="margin-top:4px;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;">
+                    <span style="font-size:10px;font-weight:800;color:{tit_color};">{pct}% Tit</span>
+                    {f'<span class="sub-vs-tag" style="font-size:9.5px;color:var(--text-muted);" title="Staffetta con {clean_html(sub_name)}">🔄 vs {clean_html(sub_name)}</span>' if sub_name else ''}
+                </div>
+            </div>
+        </div>
+        """
+        bands[band_id].append(node_html)
+
+    # 4. Ballottaggi
+    ballottaggi_html = ""
+    ball_list = team_data.get("ballottaggi", [])
+    if ball_list:
+        for b in ball_list:
+            bp = clean_html(b.get("player", ""))
+            pct = int(b.get("pct", 50))
+            vs_txt = clean_html(b.get("vs", ""))
+            ballottaggi_html += f"""
+            <div class="ballottaggio-item" style="padding:9px 12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;margin-bottom:8px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:700;">
+                    <span style="color:#fff;">{bp} <b style="color:var(--accent-cyan);">{pct}%</b></span>
+                    <span style="color:var(--text-muted);font-size:11.5px;">vs {vs_txt}</span>
+                </div>
+                <div style="height:5px;background:rgba(255,255,255,0.08);border-radius:3px;margin-top:6px;overflow:hidden;">
+                    <div style="width:{pct}%;height:100%;background:linear-gradient(90deg,#0284c7,#38bdf8);border-radius:3px;"></div>
+                </div>
+            </div>
+            """
+    else:
+        ballottaggi_html = '<div style="color:var(--text-muted);font-size:12px;padding:8px 0;">Nessun ballottaggio serrato segnalato: gerarchie definite.</div>'
+
+    # 5. Piazzati & Tiratori
+    rigs = team_data.get("rigoristi", [])
+    puns = team_data.get("punizioni", [])
+    cors = team_data.get("corner", [])
+    
+    def render_set_piece_list(arr, icon):
+        if not arr: return '<span style="color:var(--text-muted);font-size:12px;">-</span>'
+        return " &bull; ".join([f'<b>{i+1}° {clean_html(name)}</b>' for i, name in enumerate(arr[:3])])
+
+    # 6. Infortunati del club
+    team_injuries = [p for p in team_players if p.get("is_injured")]
+    injuries_html = ""
+    if team_injuries:
+        for p in team_injuries:
+            p_slug = slugify(p.get("name", ""))
+            injuries_html += f"""
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:8px;margin-bottom:6px;">
+                <div>
+                    <a href="../../calciatore/{p_slug}/" style="font-weight:700;color:#f87171;text-decoration:none;font-size:12.5px;">🩹 {clean_html(p.get('name'))}</a>
+                    <div style="font-size:11px;color:var(--text-secondary);">{clean_html(p.get('infortunio_motivo', 'Infortunio'))}</div>
+                </div>
+                <span style="font-size:11.5px;font-weight:800;color:#fbbf24;">Rientro: {clean_html(p.get('infortunio_rientro', 'TBD'))}</span>
+            </div>
+            """
+    else:
+        injuries_html = '<div style="color:#4ade80;font-size:12px;font-weight:700;padding:6px 0;">🟢 Infermeria vuota: tutta la rosa a disposizione!</div>'
+
+    # 7. Tabella Rosa Completa del Club
+    roster_rows = ""
+    sorted_squad = sorted(team_players, key=lambda x: (
+        {'P': 1, 'D': 2, 'C': 3, 'A': 4}.get(x.get('role', 'C'), 5),
+        -(x.get('ovr') or 0)
+    ))
+    for p in sorted_squad:
+        p_slug = slugify(p.get("name", ""))
+        ovr_val = p.get("ovr", 70)
+        ovr_cls = get_ovr_tier_class(ovr_val)
+        r = p.get("role", "C")
+        tit = p.get("titolarita", 50)
+        tit_c = "#4ade80" if tit >= 80 else ("#fbbf24" if tit >= 60 else "#f87171")
+        mv = f"{float(p.get('mv_2627')):.2f}" if p.get('mv_2627') else "-"
+        fm = f"{float(p.get('fm_2627')):.2f}" if p.get('fm_2627') else "-"
+        xfm = f"{float(p.get('xfm')):.2f}" if p.get('xfm') is not None else "-"
+        ga = f"{p.get('gol_subiti_2627', 0)} GS" if r == 'P' else f"{p.get('gol_2627', 0)}G / {p.get('assist_2627', 0)}A"
+        
+        status_tag = ""
+        if p.get("is_injured"):
+            status_tag = f'<span style="color:#f87171;font-size:11px;font-weight:700;">🩹 {clean_html(p.get("infortunio_rientro", "Inf."))}</span>'
+        elif p.get("is_rigorista_1"):
+            status_tag = '<span style="color:#fbbf24;font-size:11px;font-weight:700;">👑 Rigorista</span>'
+        elif tit >= 85:
+            status_tag = '<span style="color:#4ade80;font-size:11px;font-weight:700;">Titolare</span>'
+        else:
+            status_tag = f'<span style="color:var(--text-muted);font-size:11px;">{tit}% Tit</span>'
+            
+        roster_rows += f"""
+        <tr>
+            <td style="text-align:center;"><span class="ovr-pill {ovr_cls}">{ovr_val}</span></td>
+            <td style="text-align:center;"><span class="role-badge {r}">{r}</span></td>
+            <td>
+                <a href="../../calciatore/{p_slug}/" class="player-name-link" style="font-weight:700;color:#fff;text-decoration:none;">{clean_html(p.get('name'))}</a>
+                {f'<span class="mantra-sub-txt" style="margin-left:6px;font-size:10px;color:var(--text-muted);">{p.get("mantra")}</span>' if p.get("mantra") else ''}
+            </td>
+            <td style="text-align:center;font-weight:800;color:var(--accent-gold);">{p.get('fvm', 1)}</td>
+            <td style="text-align:center;font-weight:700;color:{tit_c};">{tit}%</td>
+            <td style="text-align:center;">{mv}</td>
+            <td style="text-align:center;font-weight:700;color:#38bdf8;">{fm}</td>
+            <td style="text-align:center;color:var(--accent-cyan);font-weight:700;">{xfm}</td>
+            <td style="text-align:center;">{ga}</td>
+            <td style="text-align:center;">{status_tag}</td>
+            <td style="text-align:center;"><a href="../../calciatore/{p_slug}/" class="btn-clean-action" style="font-size:11px;padding:3px 8px;text-decoration:none;">Scheda &rarr;</a></td>
+        </tr>
+        """
+
+    # 8. FAQ Schema
+    faq_schema = [
+        {
+            "@type": "Question",
+            "name": f"Qual è la probabile formazione del {team_name} nel 2026/27?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f"Il {team_name} di mister {mister} scende in campo con il modulo {modulo}. Gli 11 titolari principali sono: {', '.join([st.get('name', '') for st in lineup])}."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": f"Chi è il primo rigorista del {team_name}?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f"Le gerarchie dal dischetto del {team_name} vedono come 1° rigorista {rigs[0] if rigs else 'da definire'}{', seguito da ' + rigs[1] if len(rigs)>1 else ''}{' e ' + rigs[2] if len(rigs)>2 else ''}."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": f"Quali sono i ballottaggi aperti nel {team_name} per la prossima giornata?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f"I ballottaggi più caldi nel {team_name} includono: {'; '.join([b.get('player','') + ' vs ' + b.get('vs','') for b in ball_list[:3]]) if ball_list else 'nessun ballottaggio critico' }."
+            }
+        }
+    ]
+
+    schema_data = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "SportsTeam",
+                "name": team_name,
+                "sport": "Soccer",
+                "coach": {
+                    "@type": "Person",
+                    "name": mister
+                },
+                "member": [
+                    {"@type": "Person", "name": p.get("name"), "jobTitle": p.get("role")}
+                    for p in team_players[:15]
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": faq_schema
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{base_url}/"},
+                    {"@type": "ListItem", "position": 2, "name": "Probabili Formazioni Serie A", "item": f"{base_url}/probabili-formazioni/"},
+                    {"@type": "ListItem", "position": 3, "name": team_name, "item": page_url}
+                ]
+            }
+        ]
+    }
+
+    top_badges = "".join([f'<span class="badge-tag gold" style="font-size:11px;">👑 {clean_html(t)}</span>' for t in top_players[:3]])
+    sleeper_badges = "".join([f'<span class="badge-tag cyan" style="font-size:11px;">🔮 {clean_html(s)}</span>' for s in sleeper_players[:3]])
+
+    html = f"""<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{clean_html(meta_title)}</title>
+    <meta name="description" content="{clean_html(meta_desc)}">
+    <link rel="canonical" href="{page_url}">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{clean_html(meta_title)}">
+    <meta property="og:description" content="{clean_html(meta_desc)}">
+    <meta property="og:url" content="{page_url}">
+    <meta property="og:site_name" content="Fanta Master AI">
+    
+    <!-- CSS Completo Dashboard -->
+    <link rel="stylesheet" href="../../css/seo.css">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {json.dumps(schema_data, ensure_ascii=False, indent=2)}
+    </script>
+</head>
+<body>
+    {render_unified_header('../../')}
+
+    <main class="site-container" style="padding-top:16px;">
+        <nav class="breadcrumbs">
+            <a href="../../">Home</a> <span>/</span> 
+            <a href="../../probabili-formazioni/">Probabili Formazioni</a> <span>/</span> 
+            <span style="color:#fff;">{clean_html(team_name)}</span>
+        </nav>
+
+        <!-- Hero Club Banner -->
+        <div class="team-hero-banner">
+            <div>
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <span style="font-size:32px;">⚽</span>
+                    <div>
+                        <h1 class="team-hero-title">Probabile Formazione {clean_html(team_name)}</h1>
+                        <div style="font-size:12.5px;color:var(--text-secondary);margin-top:2px;">Titolari, Modulo {clean_html(modulo)}, Ballottaggi, Rigoristi e Rosa Serie A 2026/27</div>
+                    </div>
+                </div>
+                <div class="team-meta-pills">
+                    <span class="team-stat-badge" style="color:var(--accent-cyan);border-color:rgba(56,189,248,0.35);background:rgba(56,189,248,0.08);">📋 Modulo: <b>{clean_html(modulo)}</b></span>
+                    <span class="team-stat-badge">👔 Allenatore: <b>{clean_html(mister)}</b></span>
+                    <span class="team-stat-badge">🛡️ Difesa: <b>{'⭐' * dif_stars}</b></span>
+                    <span class="team-stat-badge">⚡ Attacco: <b>{'⭐' * att_stars}</b></span>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start;">
+                <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;">Consigli Fantacalcio AI:</div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    {top_badges}
+                    {sleeper_badges}
+                </div>
+            </div>
+        </div>
+
+        <!-- Selettore Rapido 20 Club Serie A -->
+        <div style="margin-bottom:20px;">
+            <div style="font-size:11px;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Seleziona un Club di Serie A:</div>
+            <div class="pitch-club-quick-bar">
+                {quick_bar_html}
+            </div>
+        </div>
+
+        <!-- Campo 2D & Griglia Tattica Laterale -->
+        <div class="pitch-container-wrapper">
+            <div class="pitch-field-container">
+                <div class="pitch-field">
+                    <div class="pitch-markings">
+                        <div class="pitch-center-circle"></div>
+                        <div class="pitch-half-line"></div>
+                        <div class="pitch-penalty-area top"></div>
+                        <div class="pitch-goal-area top"></div>
+                        <div class="pitch-penalty-spot top"></div>
+                        <div class="pitch-penalty-area bottom"></div>
+                        <div class="pitch-goal-area bottom"></div>
+                        <div class="pitch-penalty-spot bottom"></div>
+                    </div>
+
+                    <div class="pitch-band" id="pitchAtt">{''.join(bands['pitchAtt'])}</div>
+                    {f'<div class="pitch-band" id="pitchTrq">{"".join(bands["pitchTrq"])}</div>' if bands['pitchTrq'] else ''}
+                    <div class="pitch-band" id="pitchMed">{''.join(bands['pitchMed'])}</div>
+                    <div class="pitch-band" id="pitchDef">{''.join(bands['pitchDef'])}</div>
+                    <div class="pitch-band" id="pitchPor">{''.join(bands['pitchPor'])}</div>
+                </div>
+            </div>
+
+            <!-- Griglia Laterale: Ballottaggi, Piazzati, Infortunati -->
+            <div class="pitch-side-grid">
+                <!-- Ballottaggi -->
+                <div class="tactics-card">
+                    <div class="tactics-card-header">
+                        <span style="font-size:16px;">🔄</span>
+                        <h4>Ballottaggi &amp; Percentuali Titolari</h4>
+                    </div>
+                    <div style="padding-top:4px;">
+                        {ballottaggi_html}
+                    </div>
+                </div>
+
+                <!-- Tiratori Piazzati -->
+                <div class="tactics-card">
+                    <div class="tactics-card-header">
+                        <span style="font-size:16px;">🎯</span>
+                        <h4>Tiratori Ufficiali Calci Piazzati</h4>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:8px;padding-top:6px;">
+                        <div class="tactics-meta-row">
+                            <span class="lbl">👑 Rigoristi:</span>
+                            <span class="val">{render_set_piece_list(rigs, '👑')}</span>
+                        </div>
+                        <div class="tactics-meta-row">
+                            <span class="lbl">👟 Punizioni:</span>
+                            <span class="val">{render_set_piece_list(puns, '👟')}</span>
+                        </div>
+                        <div class="tactics-meta-row">
+                            <span class="lbl">🚩 Calci d&#39;Angolo:</span>
+                            <span class="val">{render_set_piece_list(cors, '🚩')}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infortunati -->
+                <div class="tactics-card">
+                    <div class="tactics-card-header">
+                        <span style="font-size:16px;">🩹</span>
+                        <h4>Infermeria &amp; Indisponibili {clean_html(team_name)}</h4>
+                    </div>
+                    <div style="padding-top:6px;">
+                        {injuries_html}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabella Rosa Completa del Club -->
+        <section style="margin-top:34px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+                <div>
+                    <h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Rosa Completa {clean_html(team_name)} 2026/27</h3>
+                    <div style="font-size:12px;color:var(--text-secondary);">Statistiche ufficiali, Overall OVR, Fanta Valore di Mercato e FantaMedie</div>
+                </div>
+                <span style="font-size:12px;font-weight:700;color:var(--text-muted);">{len(team_players)} Calciatori in Rosa</span>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="fanta-table clean-table">
+                    <thead>
+                        <tr>
+                            <th style="width:48px;text-align:center;">OVR</th>
+                            <th style="width:36px;text-align:center;">R</th>
+                            <th>Calciatore &amp; Mantra</th>
+                            <th style="text-align:center;">FVM</th>
+                            <th style="text-align:center;">Tit.%</th>
+                            <th style="text-align:center;">MV</th>
+                            <th style="text-align:center;">FM</th>
+                            <th style="text-align:center;">xFM</th>
+                            <th style="text-align:center;">Gol/Ass</th>
+                            <th style="text-align:center;">Status</th>
+                            <th style="text-align:center;">Scheda</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {roster_rows}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Domande Frequenti (FAQ) -->
+        <section style="margin-top:35px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:22px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+                <span style="font-size:22px;">❓</span>
+                <h3 style="margin:0;font-size:17px;font-weight:900;color:#fff;">Domande Frequenti Formazione {clean_html(team_name)}</h3>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;">
+                    <b style="color:var(--accent-cyan);font-size:13.5px;">Qual è la probabile formazione del {clean_html(team_name)} nel 2026/27?</b>
+                    <p style="margin:6px 0 0 0;font-size:12.5px;color:var(--text-secondary);line-height:1.45;">Il {clean_html(team_name)} di mister {clean_html(mister)} gioca con il modulo {clean_html(modulo)}. Gli 11 titolari tipo includono {', '.join([st.get('name', '') for st in lineup[:7]])} e compagni.</p>
+                </div>
+                <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;">
+                    <b style="color:var(--accent-gold);font-size:13.5px;">Chi è il primo rigorista del {clean_html(team_name)}?</b>
+                    <p style="margin:6px 0 0 0;font-size:12.5px;color:var(--text-secondary);line-height:1.45;">Il tiratore principale designato dal dischetto è <b>{clean_html(rigs[0] if rigs else 'da definire')}</b>{', con ' + clean_html(rigs[1]) if len(rigs) > 1 else ''} come prima alternativa.</p>
+                </div>
+                <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;">
+                    <b style="color:#38bdf8;font-size:13.5px;">Quali sono i ballottaggi più caldi nel {clean_html(team_name)}?</b>
+                    <p style="margin:6px 0 0 0;font-size:12.5px;color:var(--text-secondary);line-height:1.45;">Le maglie contese di questa giornata riguardano soprattutto: {'; '.join([b.get('player','') + ' vs ' + b.get('vs','') for b in ball_list[:3]]) if ball_list else 'gerarchie stabili con titolari definiti'}.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Box Interlink -->
+        <section class="pillar-cta-box" style="margin-top:30px;">
+            <h3>Strumenti Tattici &amp; Guida Asta 2026/27</h3>
+            <p>Confronta i calciatori del {clean_html(team_name)} con tutti i profili della Serie A, calcola le alternanze portieri e scopri i valori previsti dall&#39;algoritmo predittivo.</p>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">
+                <a href="../../griglia-portieri/" class="btn-clean-action" style="text-decoration:none;">🧤 Griglia Portieri</a>
+                <a href="../../rigoristi-serie-a/" class="btn-clean-action" style="text-decoration:none;">🎯 Rigoristi Serie A</a>
+                <a href="../../infortunati-serie-a/" class="btn-clean-action" style="text-decoration:none;">🩺 Infortunati &amp; Rientri</a>
+                <a href="../../consigli-fantacalcio/" class="btn-cta-main" style="text-decoration:none;">🎯 Consigli di Giornata</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-container">
+            <p>&copy; 2026/2027 Fanta Master AI &bull; Formazioni Ufficiali {clean_html(team_name)} Serie A</p>
+        </div>
+    </footer>
+    <script src="../../js/tracker.js" defer></script>
+</body>
+</html>
+"""
+    return html
+
 def build_all():
+
     sys.stdout.reconfigure(encoding='utf-8')
     print(f"=== [SEO Site Builder] Avvio Generazione Pagine Statiche Google ===")
     
@@ -2141,7 +2697,7 @@ def build_all():
             "route": "football-analytics",
             "tab": "matrix",
             "title": "Football Analytics Serie A | Scatter Matrix xG, xA e Performance | Fanta Master AI",
-            "desc": "Analisi avanzata e matrici di dispersione dei calciatori di Serie A: Expected Goals (xG), Expected Assists (xA), overperformance e statistiche FotMob.",
+            "desc": "Analisi avanzata e matrici di dispersione dei calciatori di Serie A: Expected Goals (xG), Expected Assists (xA), overperformance e metriche avanzate di rendimento.",
             "keywords": "football analytics serie a, scatter matrix fantacalcio, expected goals serie a, metriche avanzate fantacalcio"
         },
         {
@@ -2239,7 +2795,7 @@ def build_all():
         sitemap_urls.append(f"{BASE_URL}/calciatore/{slug}/")
         player_count += 1
 
-    print(f"  ✓ Generate {player_count} schede calciatore complete di grafica, Radar SVG, FotMob e Infortuni!")
+    print(f"  ✓ Generate {player_count} schede calciatore complete di grafica, Radar SVG, Metriche Avanzate e Infortuni!")
 
     # 4. Genera Pagine Pillar
     inj_dir = os.path.join(DIST_DIR, "infortunati-serie-a")
@@ -2260,11 +2816,28 @@ def build_all():
         f.write(generate_gk_pillar(gk_matrix_data))
     print("  ✓ Generata pagina Pillar: dist/griglia-portieri/index.html")
 
+    # 4b. Genera 20 Pagine Dedicate Club & Probabili Formazioni (Cluster Squadra)
+    all_teams_list = sorted(list(tactical_db.keys()))
+    team_count = 0
+    for team_name, t_data in sorted(tactical_db.items()):
+        t_slug = slugify(team_name)
+        t_players = [p for p in players if (p.get("team") or "").lower() == team_name.lower()]
+        t_html = generate_team_page(team_name, t_data, t_players, all_teams_list, injuries_db, BASE_URL)
+        
+        t_dir = os.path.join(DIST_DIR, "probabili-formazioni", t_slug)
+        os.makedirs(t_dir, exist_ok=True)
+        with open(os.path.join(t_dir, "index.html"), "w", encoding="utf-8") as f:
+            f.write(t_html)
+            
+        sitemap_urls.append(f"{BASE_URL}/probabili-formazioni/{t_slug}/")
+        team_count += 1
+    print(f"  ✓ Generate {team_count} pagine squadra complete con Campo 2D, Titolari, Ballottaggi e Rosa in dist/probabili-formazioni/<squadra>/")
+
     # 5. Genera Sitemap XML
     today = datetime.now().strftime("%Y-%m-%d")
     sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     for url in sitemap_urls:
-        prio = "1.0" if url.endswith("/") and len(url.split("/")) == 4 else ("0.9" if "serie-a" in url else "0.8")
+        prio = "1.0" if url.endswith("/") and len(url.split("/")) == 4 else ("0.9" if ("serie-a" in url or "probabili-formazioni" in url) else "0.8")
         sitemap_xml += f"""  <url>
     <loc>{url}</loc>
     <lastmod>{today}</lastmod>

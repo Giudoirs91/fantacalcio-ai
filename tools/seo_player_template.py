@@ -49,30 +49,31 @@ def render_unified_header(rel_path=""):
                     </div>
                 </a>
 
-                <a href="{rel_path}" class="nav-btn-icon" style="text-decoration:none;" title="Torna al Listone &amp; Statistiche">
-                    🏠 Listone
-                </a>
             </div>
 
-            <!-- CENTER: DROPDOWNS -->
+            <!-- CENTER: DIRECT & INTUITIVE NAVIGATION -->
             <nav class="header-nav-groups">
-                <!-- 1. STATISTICHE & LISTONE -->
+                <!-- 1. LISTONE CALCIATORI -->
+                <a href="{rel_path}" class="nav-direct-btn" title="Tabellone &amp; Listone Calciatori">
+                    <span>📋</span> Listone Calciatori
+                </a>
+
+                <!-- 2. STATISTICHE SERIE A -->
                 <div class="nav-dropdown">
                     <button class="nav-group-btn" id="navGroupTactics">
-                        <span>📈</span> Statistiche &amp; Listone <span class="caret">▾</span>
+                        <span>📈</span> Statistiche Serie A <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
                         <a href="{rel_path}statistiche-serie-a/" class="dropdown-item">📊 Statistiche Serie A &amp; xG</a>
-                        <a href="{rel_path}" class="dropdown-item">📋 Tabellone &amp; Listone Calciatori</a>
                         <a href="{rel_path}top-flop/" class="dropdown-item">⚡ Top &amp; Flop di Giornata</a>
                         <a href="{rel_path}football-analytics/" class="dropdown-item">📈 Matrice &amp; Scatter Analytics</a>
                         <a href="{rel_path}probabili-formazioni/" class="dropdown-item">⚽ Campo 2D &amp; Schemi Club</a>
-                        <a href="{rel_path}confronto-calciatori/" class="dropdown-item">⚔️ Matchup 1vs1</a>
+                        <a href="{rel_path}confronto-calciatori/" class="dropdown-item">⚔️ Matchup 1vs1 Calciatori</a>
                         <a href="{rel_path}griglia-portieri/" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
                     </div>
                 </div>
 
-                <!-- 2. AI & CONSIGLI -->
+                <!-- 3. AI & CONSIGLI -->
                 <div class="nav-dropdown">
                     <button class="nav-group-btn" id="navGroupAi">
                         <span>🧠</span> AI &amp; Consigli <span class="caret">▾</span>
@@ -84,16 +85,6 @@ def render_unified_header(rel_path=""):
                         <div class="dropdown-divider"></div>
                         <a href="{rel_path}infortunati-serie-a/" class="dropdown-item">🩺 Infortunati &amp; Tempi di Recupero</a>
                         <a href="{rel_path}rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
-                    </div>
-                </div>
-
-                <!-- 3. ASTA & MERCATO -->
-                <div class="nav-dropdown">
-                    <button class="nav-group-btn" id="navGroupAuction">
-                        <span>📊</span> Asta &amp; Mercato <span class="coming-soon-pill">In Arrivo</span> <span class="caret">▾</span>
-                    </button>
-                    <div class="nav-dropdown-menu">
-                        <a href="{rel_path}" class="dropdown-item">📋 Tabellone &amp; Listone Completo</a>
                     </div>
                 </div>
             </nav>
@@ -883,7 +874,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
         {injury_history_html}
     </div>"""
 
-    # TAB 2: ADVANCED FOTMOB + RADAR
+    # TAB 2: ADVANCED STATS + RADAR
     radar_chart_html = f"""
     <div class="radar-chart-wrapper">
         <div class="radar-title-bar">
@@ -902,7 +893,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
         advanced_pillars_html = f"""
         <div class="profile-pillars-row">
             <div class="profile-pillar-card pillar-gk">
-                <div class="pillar-title"><span>🧤 DIFESA &amp; PASSIVO</span><span class="source-tag">FotMob</span></div>
+                <div class="pillar-title"><span>🧤 DIFESA &amp; PASSIVO</span><span class="source-tag">Statistiche</span></div>
                 <div class="pillar-hero-stat">
                     <span class="hero-label">GOL SUBITI 26/27</span>
                     <span class="hero-val" style="color:#ef4444;">{player.get('gol_subiti_2627', 0)} <small>({player.get('clean_sheets_2627', 0)} CS)</small></span>
@@ -926,7 +917,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                 <div class="pillar-stat-list">
                     <div class="pillar-stat-item"><span class="stat-name">FantaMedia Ufficiale</span><span class="stat-num" style="color:#fbbf24;">{fm_val_str}</span></div>
                     <div class="pillar-stat-item"><span class="stat-name">Expected FantaMedia (xFM)</span><span class="stat-num" style="color:var(--accent-cyan);font-weight:900;">{xfm_data['xfm']}</span></div>
-                    <div class="pillar-stat-item"><span class="stat-name">FotMob Match Rating</span><span class="stat-num" style="color:#38bdf8;">{f"{float(player.get('rating_fotmob_2627')):.2f}" if player.get('rating_fotmob_2627') else '-'}</span></div>
+                    <div class="pillar-stat-item"><span class="stat-name">Match Rating Statistico</span><span class="stat-num" style="color:#38bdf8;">{f"{float(player.get('rating_live_2627')):.2f}" if player.get('rating_live_2627') else '-'}</span></div>
                 </div>
                 <div class="pillar-comparison-chip">
                     <span>Storico 2025/26</span><b>MV {player.get('mv', '-')} &bull; FM {player.get('fm', '-')}</b>
@@ -1010,7 +1001,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
             <span>&bull;</span>
             <span>Difesa: <b style="color:#38bdf8;">#{tCtx.get('xga_team_rank', '-')}</b> ({tCtx.get('xga_team', 0)} xGA &bull; {tCtx.get('clean_sheets_team', 0)} CS)</span>
         </div>
-        <div style="font-size:11px;color:var(--text-muted);">FotMob Live Data</div>
+        <div style="font-size:11px;color:var(--text-muted);">Statistiche Live 2026/27</div>
     </div>""" if tCtx and tCtx.get("xg_team") else ""
 
     tab_advanced_html = f"""
@@ -1114,6 +1105,11 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
         }
     ]
 
+    team_slug = slugify(team)
+    meta_title = f"{full_name} ({team}): Statistiche Avanzate, xG, Storico Infortuni e Consigli Asta 2026/27"
+    meta_desc = f"Scheda tecnica completa di {full_name} ({team}): radar a 6 assi, xG, xA, storico infortuni e cartella clinica, gerarchie rigori, quotazione FVM e prezzo consigliato asta Fantacalcio 2026/27."
+    page_url = f"{base_url}/calciatore/{slug}/"
+
     schema_data = {
         "@context": "https://schema.org",
         "@graph": [
@@ -1129,13 +1125,18 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
             {
                 "@type": "FAQPage",
                 "mainEntity": faq_items
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{base_url}/"},
+                    {"@type": "ListItem", "position": 2, "name": "Probabili Formazioni Serie A", "item": f"{base_url}/probabili-formazioni/"},
+                    {"@type": "ListItem", "position": 3, "name": team, "item": f"{base_url}/probabili-formazioni/{team_slug}/"},
+                    {"@type": "ListItem", "position": 4, "name": full_name, "item": page_url}
+                ]
             }
         ]
     }
-
-    meta_title = f"{full_name} ({team}): Statistiche FotMob, xG, Storico Infortuni e Consigli Asta 2026/27"
-    meta_desc = f"Scheda tecnica completa di {full_name} ({team}): radar a 6 assi, xG, xA, storico infortuni Transfermarkt, gerarchie rigori, quotazione FVM e prezzo consigliato asta Fantacalcio 2026/27."
-    page_url = f"{base_url}/calciatore/{slug}/"
 
     html = f"""<!DOCTYPE html>
 <html lang="it">
@@ -1166,7 +1167,10 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
 
     <main class="site-container" style="padding-top:16px;">
         <nav class="breadcrumbs">
-            <a href="../../index.html">Home</a> <span>/</span> <a href="../../index.html">Calciatori</a> <span>/</span> <span style="color:#fff;">{clean_html(full_name)}</span>
+            <a href="../../">Home</a> <span>/</span> 
+            <a href="../../probabili-formazioni/">Probabili Formazioni</a> <span>/</span> 
+            <a href="../../probabili-formazioni/{team_slug}/">{clean_html(team)}</a> <span>/</span> 
+            <span style="color:#fff;">{clean_html(full_name)}</span>
         </nav>
 
         <!-- Profile Header (Identico a Modal App) -->
@@ -1178,7 +1182,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                         <h1 class="profile-player-name">{clean_html(full_name)}</h1>
                     </div>
                     <div class="profile-player-meta">
-                        <b class="player-meta-team">{clean_html(team)}</b> &bull; Mister: <b>{clean_html(mister)}</b> <span style="color:var(--text-muted);">({clean_html(modulo)})</span>
+                        <a href="../../probabili-formazioni/{team_slug}/" class="player-meta-team" style="text-decoration:none;border-bottom:1px dashed var(--accent-cyan);color:#fff;" title="Vedi Formazione Titolare e Rosa {clean_html(team)}"><b>{clean_html(team)}</b></a> &bull; Mister: <b>{clean_html(mister)}</b> <span style="color:var(--text-muted);">({clean_html(modulo)})</span>
                     </div>
                     <div class="profile-badges-wrapper">
                         <div class="profile-primary-badges">
@@ -1241,7 +1245,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
             </button>
             <button id="profileTabBtn_advanced" class="profile-3tab-btn" onclick="switchProfileTab('advanced')">
                 <span class="tab-icon">📊</span>
-                <span class="tab-txt-desktop">Statistiche Avanzate FotMob</span>
+                <span class="tab-txt-desktop">Statistiche Avanzate &amp; Radar</span>
                 <span class="tab-txt-mobile">Statistiche</span>
             </button>
             <button id="profileTabBtn_tactics" class="profile-3tab-btn" onclick="switchProfileTab('tactics')">

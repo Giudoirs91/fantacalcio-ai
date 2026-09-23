@@ -219,7 +219,7 @@ function renderPitchTeam(teamName) {
     // Render 3 Colonne Tattiche Dashboard (Stile Moderno, Chiaro e Minimalista)
     const dashboardEl = document.getElementById('teamTacticsDashboard');
     if (dashboardEl) {
-        // --- 1. COLONNA: INFO SQUADRA, PERFORMANCE FOTMOB & OOP MINIMAL ---
+        // --- 1. COLONNA: INFO SQUADRA, PERFORMANCE STATISTICHE & OOP MINIMAL ---
         let oopSectionHtml = '';
         
         // Estrai tutti i calciatori OOP della squadra (Titolari + Panchinari)
@@ -273,14 +273,14 @@ function renderPitchTeam(teamName) {
             `;
         }
 
-        // Statistiche FotMob 2026/2027 del Club
+        // Statistiche 2026/2027 del Club
         let teamStatsHtml = '';
         const tStat = (typeof TEAM_STATS_DB !== 'undefined' && TEAM_STATS_DB[teamName]) ? TEAM_STATS_DB[teamName] : null;
         if (tStat) {
             teamStatsHtml = `
                 <div style="background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 12px;">
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                        <span style="font-size:10.5px;font-weight:800;color:var(--text-muted);letter-spacing:0.5px;text-transform:uppercase;">⚡ Live FotMob (3 Giornate)</span>
+                        <span style="font-size:10.5px;font-weight:800;color:var(--text-muted);letter-spacing:0.5px;text-transform:uppercase;">⚡ Statistiche Live (3 Giornate)</span>
                         <span style="font-size:10.5px;color:var(--text-secondary);">⚔️ <b style="color:#fbbf24;">${tStat.attacco_label || '-'}</b> • 🛡️ <b style="color:#38bdf8;">${tStat.difesa_label || '-'}</b></span>
                     </div>
                     <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:6px;text-align:center;">
@@ -863,7 +863,7 @@ function renderTeamRosterTable(teamName) {
                             <th style="min-width:110px;text-align:center;">OOP</th>
                             <th style="min-width:65px;text-align:center;">Rigori</th>
                             <th style="min-width:140px;text-align:center;">Consiglio AI</th>
-                            <th style="min-width:75px;text-align:center;" title="Rating FotMob 25/26">⭐ Rating 25/26</th>
+                            <th style="min-width:75px;text-align:center;" title="Rating Statistico 25/26">⭐ Rating 25/26</th>
                             <th style="min-width:90px;text-align:center;" title="xG ogni 90 min o Gol Evitati">xG90 / G.Salvati</th>
                             <th style="min-width:75px;text-align:center;" title="Expected Goals on Target o Clean Sheets">xGOT / CS</th>
                             <th style="min-width:85px;text-align:center;" title="Expected Assists o % Parate">xA90 / % Parate</th>

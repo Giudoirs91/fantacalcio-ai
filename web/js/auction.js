@@ -857,6 +857,20 @@ function renderTable() {
             }
         }
 
+        if (State.sortBy === 'xg_2627') {
+            vA = (a.xg_2627 !== null && a.xg_2627 !== undefined) ? a.xg_2627 : (a.xg90_2627 ? parseFloat(a.xg90_2627) : 0);
+            vB = (b.xg_2627 !== null && b.xg_2627 !== undefined) ? b.xg_2627 : (b.xg90_2627 ? parseFloat(b.xg90_2627) : 0);
+        } else if (State.sortBy === 'xa_2627') {
+            vA = (a.xa_2627 !== null && a.xa_2627 !== undefined) ? a.xa_2627 : (a.xa90_2627 ? parseFloat(a.xa90_2627) : 0);
+            vB = (b.xa_2627 !== null && b.xa_2627 !== undefined) ? b.xa_2627 : (b.xa90_2627 ? parseFloat(b.xa90_2627) : 0);
+        } else if (State.sortBy === 'minuti_2627') {
+            vA = a.minuti_2627 || a.minuti_stat_2627 || 0;
+            vB = b.minuti_2627 || b.minuti_stat_2627 || 0;
+        } else if (State.sortBy === 'amm_2627') {
+            vA = (a.amm_2627 || 0) + (a.esp_2627 || 0) * 2;
+            vB = (b.amm_2627 || 0) + (b.esp_2627 || 0) * 2;
+        }
+
         let vA = a[State.sortBy];
         let vB = b[State.sortBy];
         if (State.sortBy === 'xfm' || State.sortBy === 'delta_xfm') {
@@ -992,8 +1006,30 @@ function renderTable() {
                 }
             }
 
+            // Statistiche Avanzate (Visuale Statistiche Avanzate)
+            const xgVal = (p.xg_2627 !== null && p.xg_2627 !== undefined) ? p.xg_2627 : (p.xg90_2627 ? parseFloat(p.xg90_2627) : null);
+            const xgHtml = (xgVal !== null && !isNaN(xgVal))
+                ? `<span class="stat-live xg" style="color:#f472b6;font-weight:700;">${Number(xgVal).toFixed(2)}</span>`
+                : `<span class="dim-dash">-</span>`;
+
+            const xaVal = (p.xa_2627 !== null && p.xa_2627 !== undefined) ? p.xa_2627 : (p.xa90_2627 ? parseFloat(p.xa90_2627) : null);
+            const xaHtml = (xaVal !== null && !isNaN(xaVal))
+                ? `<span class="stat-live xa" style="color:#38bdf8;font-weight:700;">${Number(xaVal).toFixed(2)}</span>`
+                : `<span class="dim-dash">-</span>`;
+
+            const minsVal = p.minuti_2627 || p.minuti_stat_2627 || (p.presenze_2627 ? (p.presenze_2627 * 75) : null);
+            const minHtml = minsVal
+                ? `<span class="stat-live mins" style="color:#a78bfa;font-size:11.5px;font-weight:600;">${minsVal}'</span>`
+                : `<span class="dim-dash">-</span>`;
+
+            const ammVal = p.amm_2627 || 0;
+            const espVal = p.esp_2627 || 0;
+            const cardsHtml = (ammVal > 0 || espVal > 0)
+                ? `<span class="stat-live cards" style="font-size:11px;font-weight:700;">${ammVal ? ammVal+'🟨' : ''}${espVal ? ' '+espVal+'🟥' : ''}</span>`
+                : `<span class="dim-dash">-</span>`;
+
             tr.innerHTML = `
-                <td style="text-align:center;">${actionCellHtml}</td>
+                <td style="text-align:center;"><span class="ovr-pill ${ovrTierClass}">${p.ovr}</span></td>
                 <td style="text-align:center;">${roleCellHtml}</td>
                 <td onclick="if(!event.target.closest('button')) openPlayerProfileModal(${p.id})" style="cursor:pointer;" title="Clicca per aprire la Scheda Calciatore">
                     <div class="player-name-cell">
@@ -1016,7 +1052,11 @@ function renderTable() {
                 <td style="text-align:center;">${xfmStr}</td>
                 <td style="text-align:center;">${deltaHtml}</td>
                 <td style="text-align:center;">${ga2627Html}</td>
-                <td style="text-align:center;"><span class="ovr-pill ${ovrTierClass}">${p.ovr}</span></td>
+                <td class="col-adv-stat" style="text-align:center;">${xgHtml}</td>
+                <td class="col-adv-stat" style="text-align:center;">${xaHtml}</td>
+                <td class="col-adv-stat" style="text-align:center;">${minHtml}</td>
+                <td class="col-adv-stat" style="text-align:center;">${cardsHtml}</td>
+                <td style="text-align:center;">${actionCellHtml}</td>
             `;
             tbody.appendChild(tr);
         } catch (rowErr) {
@@ -1024,6 +1064,38 @@ function renderTable() {
         }
     });
 }
+
+function setAuctionTableView(mode) {
+    const table = document.getElementById('auctionTable');
+    const btnStd = document.getElementById('btnViewStandard');
+    const btnAdv = document.getElementById('btnViewAdvanced');
+    
+    if (mode === 'advanced') {
+        if (table) table.classList.add('table-view-advanced');
+        if (btnStd) btnStd.classList.remove('active');
+        if (btnAdv) btnAdv.classList.add('active');
+        try { localStorage.setItem('fanta_auction_table_view', 'advanced'); } catch(e){}
+    } else {
+        if (table) table.classList.remove('table-view-advanced');
+        if (btnStd) btnStd.classList.add('active');
+        if (btnAdv) btnAdv.classList.remove('active');
+        try { localStorage.setItem('fanta_auction_table_view', 'standard'); } catch(e){}
+    }
+}
+
+function initAuctionTableView() {
+    try {
+        const saved = localStorage.getItem('fanta_auction_table_view');
+        if (saved === 'advanced') {
+            setAuctionTableView('advanced');
+        } else {
+            setAuctionTableView('standard');
+        }
+    } catch(e){}
+}
+
+window.setAuctionTableView = setAuctionTableView;
+window.initAuctionTableView = initAuctionTableView;
 
 function getSmartBadgeHtml(p) {
     if (p.is_injured) {

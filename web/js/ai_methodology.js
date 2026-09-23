@@ -52,7 +52,7 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                     <span>🔮</span> 2. Expected FantaMedia (xFM)
                 </button>
                 <button id="methodologyBtn_sources" class="methodology-nav-btn ${defaultTab === 'sources' ? 'active' : ''}" onclick="switchAiMethodologyTab('sources')">
-                    <span>🌐</span> 3. Fonti Dati & Scraping
+                    <span>🌐</span> 3. Engine Dati & Statistiche Ufficiali
                 </button>
                 <button id="methodologyBtn_pricing" class="methodology-nav-btn ${defaultTab === 'pricing' ? 'active' : ''}" onclick="switchAiMethodologyTab('pricing')">
                     <span>💰</span> 4. Prezzi Consigliati & Max Bid
@@ -188,22 +188,22 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                     </div>
                 </div>
 
-                <!-- TAB 3: DATA SOURCES & SCRAPING -->
+                <!-- TAB 3: DATA ENGINE & STATS -->
                 <div id="methodologyPane_sources" class="methodology-pane" style="display:none;">
                     <div class="methodology-hero-card">
                         <div class="hero-chip" style="background:rgba(16,185,129,0.2);color:#34d399;">Pipeline Dati Ufficiale</div>
-                        <h3>Quali siti e banche dati vengono scansionati</h3>
+                        <h3>Come vengono elaborate le metriche avanzate</h3>
                         <p>
-                            La nostra architettura integra sorgenti dati professionali verificate in tempo reale tramite scraper automatizzati e pipeline di data engineering certificate.
+                            La nostra architettura integra feed statistici avanzati e referti di gara ufficiali in tempo reale tramite pipeline certificate di data engineering.
                         </p>
                     </div>
 
                     <div class="sources-list-grid">
                         <div class="source-card">
                             <div class="source-card-header">
-                                <div class="source-logo-badge fotmob">F</div>
+                                <div class="source-logo-badge stats">STAT</div>
                                 <div>
-                                    <h4 style="margin:0;color:#fff;">FotMob Pro Analytics</h4>
+                                    <h4 style="margin:0;color:#fff;">Advanced Match Analytics</h4>
                                     <span style="font-size:11px;color:var(--accent-cyan);">Statistiche Avanzate per Match</span>
                                 </div>
                             </div>
@@ -221,10 +221,10 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
 
                         <div class="source-card">
                             <div class="source-card-header">
-                                <div class="source-logo-badge fanta">FG</div>
+                                <div class="source-logo-badge ref">SERIE A</div>
                                 <div>
-                                    <h4 style="margin:0;color:#fff;">Fantacalcio.it & Referti Ufficiali</h4>
-                                    <span style="font-size:11px;color:#fbbf24;">Voti & Bonus Ufficiali Lega Serie A</span>
+                                    <h4 style="margin:0;color:#fff;">Referti & Voti Ufficiali</h4>
+                                    <span style="font-size:11px;color:#fbbf24;">Voti & Bonus Ufficiali Serie A</span>
                                 </div>
                             </div>
                             <div class="source-card-body">

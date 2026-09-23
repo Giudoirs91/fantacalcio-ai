@@ -1003,7 +1003,7 @@ function openPlayerProfileModal(playerId) {
     `;
 
     // ==========================================
-    // TAB 2: STATISTICHE AVANZATE FOTMOB + RADAR CHART
+    // TAB 2: STATISTICHE AVANZATE & RADAR CHART
     // ==========================================
     const radarChartHtml = generateRadarChartSvg(p);
 
@@ -1012,7 +1012,7 @@ function openPlayerProfileModal(playerId) {
         advancedContentHtml = `
             <div class="profile-pillars-row">
                 <div class="profile-pillar-card pillar-gk">
-                    <div class="pillar-title"><span>🧤 DIFESA & PASSIVO</span><span class="source-tag">FotMob</span></div>
+                    <div class="pillar-title"><span>🧤 DIFESA & PASSIVO</span><span class="source-tag">Statistiche</span></div>
                     <div class="pillar-hero-stat">
                         <span class="hero-label">GOL SUBITI 26/27</span>
                         <span class="hero-val" style="color:#ef4444;">${p.gol_subiti_2627 || 0} <small>(${p.clean_sheets_2627 || 0} CS)</small></span>
@@ -1036,7 +1036,7 @@ function openPlayerProfileModal(playerId) {
                     <div class="pillar-stat-list">
                         <div class="pillar-stat-item"><span class="stat-name">FantaMedia Ufficiale</span><span class="stat-num" style="color:#fbbf24;">${fmVal}</span></div>
                         <div class="pillar-stat-item"><span class="stat-name">Expected FantaMedia (xFM)</span><span class="stat-num" style="color:var(--accent-cyan);font-weight:900;">${xfmData.xfm}</span></div>
-                        <div class="pillar-stat-item"><span class="stat-name">FotMob Match Rating</span><span class="stat-num" style="color:#38bdf8;">${p.rating_fotmob_2627 ? p.rating_fotmob_2627.toFixed(2) : '-'}</span></div>
+                        <div class="pillar-stat-item"><span class="stat-name">Match Rating Statistico</span><span class="stat-num" style="color:#38bdf8;">${p.rating_live_2627 ? p.rating_live_2627.toFixed(2) : '-'}</span></div>
                     </div>
                     <div class="pillar-comparison-chip">
                         <span>Storico 2025/26</span><b>MV ${p.mv > 0 ? p.mv : '-'} • FM ${p.fm > 0 ? p.fm : '-'}</b>
@@ -1123,7 +1123,7 @@ function openPlayerProfileModal(playerId) {
                 <span>•</span>
                 <span>Difesa: <b style="color:#38bdf8;">#${tCtx.xga_team_rank || '-'}</b> (${tCtx.xga_team || 0} xGA • ${tCtx.clean_sheets_team || 0} CS)</span>
             </div>
-            <div style="font-size:11px;color:var(--text-muted);">FotMob Live Data</div>
+            <div style="font-size:11px;color:var(--text-muted);">Statistiche Live 2026/27</div>
         </div>
     ` : '';
 
@@ -1333,7 +1333,7 @@ function openPlayerProfileModal(playerId) {
             </button>
             <button id="profileTabBtn_advanced" class="profile-3tab-btn" onclick="switchProfileTab('advanced')">
                 <span class="tab-icon">📊</span>
-                <span class="tab-txt-desktop">Statistiche Avanzate FotMob</span>
+                <span class="tab-txt-desktop">Statistiche Avanzate & Radar</span>
                 <span class="tab-txt-mobile">Statistiche</span>
             </button>
             <button id="profileTabBtn_tactics" class="profile-3tab-btn" onclick="switchProfileTab('tactics')">

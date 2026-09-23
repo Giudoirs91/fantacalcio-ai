@@ -197,7 +197,7 @@ function updateMatchup() {
                     </tr>
                     <tr>
                         <td style="${ratingWinA ? 'color:var(--accent-cyan);font-weight:900;' : ''}"><b>${pA.rating_2526 || '-'}</b></td>
-                        <td><b>Rating FotMob 25/26</b></td>
+                        <td><b>Rating Statistico 25/26</b></td>
                         <td style="${ratingWinB ? 'color:#f472b6;font-weight:900;' : ''}"><b>${pB.rating_2526 || '-'}</b></td>
                     </tr>
                     

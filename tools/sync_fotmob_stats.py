@@ -303,17 +303,21 @@ def update_processed_master(fotmob_players):
             if 'xa90_2627' in fm_stats and fm_stats['xa90_2627'] is not None:
                 p['xa90_2627'] = float(fm_stats['xa90_2627'])
             if 'rating_fotmob_2627' in fm_stats and fm_stats['rating_fotmob_2627'] is not None:
-                p['rating_fotmob_2627'] = float(fm_stats['rating_fotmob_2627'])
+                p['rating_live_2627'] = float(fm_stats['rating_fotmob_2627'])
+            elif 'rating_live_2627' in fm_stats and fm_stats['rating_live_2627'] is not None:
+                p['rating_live_2627'] = float(fm_stats['rating_live_2627'])
             if 'goals_prevented_2627' in fm_stats and fm_stats['goals_prevented_2627'] is not None:
                 p['goals_prevented_2627'] = float(fm_stats['goals_prevented_2627'])
             if 'saves_per_90_2627' in fm_stats and fm_stats['saves_per_90_2627'] is not None:
                 p['saves_per_90_2627'] = float(fm_stats['saves_per_90_2627'])
             if 'clean_sheet_fotmob_2627' in fm_stats and fm_stats['clean_sheet_fotmob_2627'] is not None:
-                p['clean_sheet_fotmob_2627'] = int(fm_stats['clean_sheet_fotmob_2627'])
+                p['clean_sheet_stat_2627'] = int(fm_stats['clean_sheet_fotmob_2627'])
+            elif 'clean_sheet_stat_2627' in fm_stats and fm_stats['clean_sheet_stat_2627'] is not None:
+                p['clean_sheet_stat_2627'] = int(fm_stats['clean_sheet_stat_2627'])
             if 'save_pct_2627' in fm_stats and fm_stats['save_pct_2627'] is not None:
                 p['save_pct_2627'] = float(fm_stats['save_pct_2627'])
 
-            p['has_fotmob_stats'] = True
+            p['has_advanced_stats'] = True
 
     # Salva il master aggiornato
     with open(master_path, 'w', encoding='utf-8') as f:

@@ -121,7 +121,7 @@ function getAIPredictionDetails(p) {
         predictionText = "Mezzala di inserimento arrembante nel Como spettacolare di Fabregas. 0.32 xG90 per un centrocampista centrale è un dato d'élite europea: segna e calcia costantemente.";
         projectedBonus = "Proiezione: 5-7 Gol pesanti";
     } else if (name === 'Kaiki') {
-        predictionText = "Terzino sinistro di grande velocità con un rating FotMob fenomenale di 7.34. Perfetto per il modificatore di difesa e con cross sempre precisi.";
+        predictionText = "Terzino sinistro di grande velocità con un rating oggettivo fenomenale di 7.34. Perfetto per il modificatore di difesa e con cross sempre precisi.";
         projectedBonus = "Rating previsto ≥ 7.10 + 4-5 Assist";
     } else if (name === 'Zalewski') {
         predictionText = "Sarri lo impiega stabilmente come ala d'attacco nel tridente dell'Atalanta. 0.21 xA90 e 7.01 di rating: quotato centrocampista ma con compiti da punta a 1 credito.";
@@ -469,7 +469,7 @@ function renderGemsView() {
                     <!-- Metriche Chiave a 4 Riquadri -->
                     <div class="gem-metrics-grid">
                         <div class="gem-metric-box">
-                            <span class="gem-metric-lbl">RATING FOTMOB</span>
+                            <span class="gem-metric-lbl">RATING MEDIO</span>
                             <span class="gem-metric-val">${ratingVal}</span>
                         </div>
                         <div class="gem-metric-box">
@@ -535,7 +535,7 @@ function renderGemsView() {
                             </span>
                         </div>
                         <p style="margin:0;font-size:13px;color:var(--text-secondary);line-height:1.5;">
-                            Incrocio multidimensionale tra <b>Metriche Avanzate FotMob</b> (xG, xA, tiri/90), <b>Posizione Tattica Reale (OOP)</b> e <b>Stile Offensivo della Squadra</b>. Calciatori insospettabili a basso-medio costo proiettati ad una stagione di bonus e voti superiori al 7.
+                            Incrocio multidimensionale tra <b>Metriche Statistiche Avanzate</b> (xG, xA, tiri/90), <b>Posizione Tattica Reale (OOP)</b> e <b>Stile Offensivo della Squadra</b>. Calciatori insospettabili a basso-medio costo proiettati ad una stagione di bonus e voti superiori al 7.
                         </p>
                     </div>
 
@@ -592,7 +592,7 @@ function renderGemsView() {
                             <select class="tactical-select" style="width:160px;padding:4px 8px;font-size:11.5px;" onchange="setGemsFilter('sort', this.value)">
                                 <option value="AI_SCORE" ${sFilt === 'AI_SCORE' ? 'selected' : ''}>🔮 Indice Predittivo AI</option>
                                 <option value="PRICE_ASC" ${sFilt === 'PRICE_ASC' ? 'selected' : ''}>💰 Prezzo Crescente</option>
-                                <option value="RATING_DESC" ${sFilt === 'RATING_DESC' ? 'selected' : ''}>⭐ Rating FotMob Decrescente</option>
+                                <option value="RATING_DESC" ${sFilt === 'RATING_DESC' ? 'selected' : ''}>⭐ Rating Statistico Decrescente</option>
                                 <option value="BONUS_DESC" ${sFilt === 'BONUS_DESC' ? 'selected' : ''}>⚡ Somma xG + xA</option>
                             </select>
                         </div>

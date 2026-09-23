@@ -212,7 +212,7 @@ const DefaultState = {
 let State = { ...DefaultState };
 
 // ==============================================================================
-// METADATA & 11 SCHEMI UFFICIALI SISTEMA MANTRA (FANTACALCIO.IT)
+// METADATA & 11 SCHEMI UFFICIALI SISTEMA MANTRA
 // ==============================================================================
 const MANTRA_ROLES_META = {
     'Por': { name: 'Portiere', dept: 'Por', color: '#d97706', border: '#fbbf24', order: 1 },

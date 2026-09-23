@@ -133,7 +133,7 @@ function renderStatsSerieAView() {
 
     // 3. EXPECTED GOALS (xG)
     const cardXg = buildLeaderboardCard(
-        'Expected Goals (xG)', '🎯', 'Qualità e volume tiri generati (FotMob)',
+        'Expected Goals (xG)', '🎯', 'Qualità e volume tiri generati',
         pool,
         p => p.xg_2627 !== null && p.xg_2627 !== undefined ? p.xg_2627 : (p.xg90_2627 ? parseFloat(p.xg90_2627) : 0),
         p => p.xg90_2627 ? `${p.xg90_2627} xG/90` : '',
@@ -142,7 +142,7 @@ function renderStatsSerieAView() {
 
     // 4. EXPECTED ASSISTS (xA)
     const cardXa = buildLeaderboardCard(
-        'Expected Assists (xA)', '🪄', 'Pericolosità passaggi e occasioni (FotMob)',
+        'Expected Assists (xA)', '🪄', 'Pericolosità passaggi e occasioni create',
         pool,
         p => p.xa_2627 !== null && p.xa_2627 !== undefined ? p.xa_2627 : (p.xa90_2627 ? parseFloat(p.xa90_2627) : 0),
         p => p.xa90_2627 ? `${p.xa90_2627} xA/90` : '',
@@ -163,7 +163,7 @@ function renderStatsSerieAView() {
     const cardGkCs = buildLeaderboardCard(
         'Clean Sheets (Portieri)', '🛡️', 'Partite a porta inviolata',
         poolGk,
-        p => (p.clean_sheets_2627 !== undefined && p.clean_sheets_2627 > 0) ? p.clean_sheets_2627 : (p.clean_sheet_fotmob_2627 || 0),
+        p => (p.clean_sheets_2627 !== undefined && p.clean_sheets_2627 > 0) ? p.clean_sheets_2627 : (p.clean_sheet_stat_2627 || 0),
         p => `${p.presenze_2627 || 0} gare • ${p.parate_2627 || 0} parate`,
         '#4ade80', ''
     );
@@ -205,7 +205,7 @@ function renderStatsSerieAView() {
     );
 
     // 11. FANTAMEDIA UFFICIALE (min 2 gare)
-    const poolVoted2 = pool.filter(p => (p.presenze_2627 || p.partite_voto_2627 || 0) >= 2 || (p.minuti_fotmob_2627 || 0) >= 90);
+    const poolVoted2 = pool.filter(p => (p.presenze_2627 || p.partite_voto_2627 || 0) >= 2 || (p.minuti_stat_2627 || 0) >= 90);
     const getXfmObj = (p) => {
         if (p.xfm !== undefined && p.xfm !== null && p.delta_xfm !== undefined && p.delta_xfm !== null) {
             return { xfm: Number(p.xfm), delta: Number(p.delta_xfm) };
@@ -270,25 +270,25 @@ function renderStatsSerieAView() {
     const cardRecoveries = buildLeaderboardCard(
         'Palle Recuperate', '🛡️', 'Contrasti vinti e recuperi (Modificatore Difesa)',
         pool,
-        p => p.recuperi_2627 || p.ball_recovery_fotmob_2627 || 0,
+        p => p.recuperi_2627 || p.ball_recovery_stat_2627 || 0,
         p => `${p.presenze_2627 || 0} presenze`,
         '#38bdf8', ''
     );
 
     // 14. GRANDI OCCASIONI CREATE (BIG CHANCES)
     const cardBigChances = buildLeaderboardCard(
-        'Grandi Occasioni Create', '⚡', 'Palle gol nitide regalate ai compagni (FotMob)',
+        'Grandi Occasioni Create', '⚡', 'Palle gol nitide regalate ai compagni',
         pool,
         p => p.big_chances_created_2627 || p.chances_created_2627 || 0,
         p => `${p.assist_2627 || 0} assist reali`,
         '#c084fc', ''
     );
 
-    // 15. FOTMOB MATCH RATING (min 2 gare)
+    // 15. RATING STATISTICO (min 2 gare)
     const cardRating = buildLeaderboardCard(
-        'FotMob Rating', '⭐', 'Media voto oggettiva algoritmo FotMob (min. 2 gare)',
+        'Rating Statistico', '⭐', 'Media voto oggettiva e rendimento (min. 2 gare)',
         poolVoted2,
-        p => p.rating_fotmob_2627 || 0,
+        p => p.rating_live_2627 || 0,
         p => `${p.presenze_2627 || 0} gare a voto`,
         '#38bdf8', ''
     );
@@ -314,7 +314,7 @@ function renderStatsSerieAView() {
     // 18. TIRI NELLO SPECCHIO PER 90
     const cardShotsOnTarget = buildLeaderboardCard(
         'Tiri in Porta /90', '🎯', 'Frequenza conclusioni nello specchio ogni 90 min',
-        pool.filter(p => (p.minuti_2627 || p.minuti_fotmob_2627 || 0) >= 45),
+        pool.filter(p => (p.minuti_2627 || p.minuti_stat_2627 || 0) >= 45),
         p => p.ontarget_scoring_att_2627 || 0,
         p => `${p.gol_2627 || 0} gol`,
         '#fbbf24', ''
@@ -332,7 +332,7 @@ function renderStatsSerieAView() {
     // 20. % PARATE PORTIERI
     const cardSavePct = buildLeaderboardCard(
         '% Parate Effettuate', '🛡️', 'Percentuale tiri respinti (min. 2 gare)',
-        poolGk.filter(p => (p.presenze_2627 || p.minuti_fotmob_2627 ? 1 : 0) >= 1),
+        poolGk.filter(p => (p.presenze_2627 || p.minuti_stat_2627 ? 1 : 0) >= 1),
         p => p.save_pct_2627 || 0,
         p => `${p.parate_2627 || 0} parate • ${p.clean_sheets_2627 || 0} CS`,
         '#4ade80', '%'
@@ -341,16 +341,16 @@ function renderStatsSerieAView() {
     // 21. CONTRASTI VINTI /90 (TACKLES)
     const cardTackles = buildLeaderboardCard(
         'Contrasti Vinti /90', '⚔️', 'Tackle riusciti per gara (Interdizione e Modificatore)',
-        pool.filter(p => (p.minuti_2627 || p.minuti_fotmob_2627 || 0) >= 45),
+        pool.filter(p => (p.minuti_2627 || p.minuti_stat_2627 || 0) >= 45),
         p => p.total_tackle_2627 || 0,
-        p => `${p.recuperi_2627 || p.ball_recovery_fotmob_2627 || 0} recuperi`,
+        p => `${p.recuperi_2627 || p.ball_recovery_stat_2627 || 0} recuperi`,
         '#38bdf8', ''
     );
 
     // 22. DRIBBLING RIUSCITI /90
     const cardDribbles = buildLeaderboardCard(
         'Dribbling Riusciti /90', '🪄', 'Superiorità numerica e dribbling vinti per 90 min',
-        pool.filter(p => (p.minuti_2627 || p.minuti_fotmob_2627 || 0) >= 45),
+        pool.filter(p => (p.minuti_2627 || p.minuti_stat_2627 || 0) >= 45),
         p => p.won_contest_2627 || 0,
         p => `${p.assist_2627 || 0} assist`,
         '#c084fc', ''
@@ -359,7 +359,7 @@ function renderStatsSerieAView() {
     // 23. FALLI COMMESSI /90
     const cardFouls = buildLeaderboardCard(
         'Falli Commessi /90', '⚠️', 'Giocatori più fallosi per gara (Rischio Malus)',
-        pool.filter(p => (p.minuti_2627 || p.minuti_fotmob_2627 || 0) >= 45),
+        pool.filter(p => (p.minuti_2627 || p.minuti_stat_2627 || 0) >= 45),
         p => p.fouls_2627 || 0,
         p => `${p.amm_2627 || 0} ammonizioni`,
         '#f87171', ''

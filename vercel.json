@@ -32,6 +32,10 @@
       "dest": "/statistiche-serie-a/index.html"
     },
     {
+      "src": "/probabili-formazioni/([^/]+)(/index\\.html)?",
+      "dest": "/probabili-formazioni/$1/index.html"
+    },
+    {
       "src": "/probabili-formazioni(/index\\.html)?",
       "dest": "/probabili-formazioni/index.html"
     },

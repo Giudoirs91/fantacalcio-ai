@@ -1,7 +1,7 @@
 import os
 import json
 
-def build_standalone_dashboard():
+def build_standalone_dashboard(sync_android=False):
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     
     # 1. Carica i dati processati
@@ -1276,13 +1276,14 @@ def build_standalone_dashboard():
 
     print(f"-> [BuildDashboard] File standalone compilato con successo: {out_path}")
 
-    # Sincronizzazione automatica con l'App Android
-    android_assets_dir = os.path.join(root_dir, "android", "app", "src", "main", "assets")
-    if os.path.exists(android_assets_dir):
-        android_out = os.path.join(android_assets_dir, "Dashboard_Fanta_1000.html")
-        with open(android_out, 'w', encoding='utf-8') as f:
-            f.write(html_template)
-        print(f"-> [BuildDashboard] Asset sincronizzato nell'App Android: {android_out}")
+    # Sincronizzazione con l'App Android (solo se esplicitamente richiesta)
+    if sync_android:
+        android_assets_dir = os.path.join(root_dir, "android", "app", "src", "main", "assets")
+        if os.path.exists(android_assets_dir):
+            android_out = os.path.join(android_assets_dir, "Dashboard_Fanta_1000.html")
+            with open(android_out, 'w', encoding='utf-8') as f:
+                f.write(html_template)
+            print(f"-> [BuildDashboard] Asset sincronizzato nell'App Android: {android_out}")
 
     return out_path
 

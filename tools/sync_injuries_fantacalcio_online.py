@@ -235,6 +235,24 @@ def sync_injuries():
     with open(ROOT_MASTER, 'w', encoding='utf-8') as f:
         json.dump(players, f, ensure_ascii=False, indent=2)
 
+    # Salva anche in config/injuries.json per consentire alla pipeline di ricalcolare l'OVR con gli infortuni corretti
+    config_inj_path = os.path.join(ROOT_DIR, "config", "injuries.json")
+    config_injuries = []
+    for item in matched_log:
+        config_injuries.append({
+            "player": item['name'],
+            "player_id": None,
+            "team": item['team'],
+            "motivo": item['motivo'],
+            "rientro": item['rientro'],
+            "severity": item['gravita'],
+            "tipo_stop": "Infortunato",
+            "fonte": "fantacalcio-online.com"
+        })
+    with open(config_inj_path, 'w', encoding='utf-8') as f:
+        json.dump(config_injuries, f, ensure_ascii=False, indent=2)
+    print(f"-> [InjuriesSync] Aggiornato {config_inj_path} ({len(config_injuries)} infortunati).")
+
     print(f"\n=======================================================")
     print(f"✓ Sincronizzazione Infortuni Completata con Successo!")
     print(f"-> Totale infortuni ufficiali registrati: {len(new_injured_ids)}")

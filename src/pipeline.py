@@ -813,6 +813,30 @@ def run_master_pipeline():
                 ovr -= 1.2
 
         # ---------------------------------------------------------------------
+        # CALIBRAZIONE OVR SU RENDIMENTO REALE STAGIONE 2026/27 (5 GIORNATE)
+        # ---------------------------------------------------------------------
+        if partite_voto_2627 >= 2 and fm_2627 is not None:
+            # Grado di confidenza proporzionale al numero di giornate disputate (fino a 5/5)
+            confidence = min(1.0, partite_voto_2627 / 5.0)
+            target_baseline_fm = fm_raw if (fm_raw and fm_raw > 0) else 6.0
+            fm_delta = fm_2627 - target_baseline_fm
+            # Calibrazione: +1.0 di fantamedia su 5 gare = fino a +2.0 OVR
+            ovr += float(np.clip(fm_delta * 0.75 * confidence, -3.0, 3.0))
+
+            # Valutazione Rating FotMob ufficiale 2026/27
+            if rating_fotmob_2627 and rating_fotmob_2627 > 0:
+                if rating_fotmob_2627 >= 7.30:
+                    ovr += 0.8 * confidence
+                elif rating_fotmob_2627 >= 7.05:
+                    ovr += 0.4 * confidence
+                elif rating_fotmob_2627 < 6.20:
+                    ovr -= 0.6 * confidence
+        elif n_team_matches >= 4 and presenze_2627 == 0 and not is_injured:
+            # Calciatore integro ma mai impiegato dopo 5 giornate
+            ovr -= 1.0
+            titolarita = min(titolarita, 0.45)
+
+        # ---------------------------------------------------------------------
         # CALCOLO FRAGILITÀ FISICA & SEMAFORO (CON PESO SULL'OVERALL FINALE)
         # ---------------------------------------------------------------------
 

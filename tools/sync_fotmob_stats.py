@@ -65,6 +65,7 @@ METRICS_MAP = {
     'effective_clearance': 'effective_clearance_2627',
     'outfielder_block': 'outfielder_block_2627',
     'ball_recovery': 'ball_recovery_fotmob_2627',
+    'penalty_won': 'penalty_won_2627',
     'penalty_conceded': 'penalty_conceded_2627',
     'poss_won_att_3rd': 'poss_won_att_3rd_2627',
     'clean_sheet': 'clean_sheet_fotmob_2627',

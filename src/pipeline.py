@@ -1185,13 +1185,13 @@ def run_master_pipeline():
             if g and g > current_round:
                 current_round = g
 
-    if current_round == 0:
-        # T0: salva snapshot delle predizioni per uso futuro
-        save_predictions_snapshot(processed_players, round_num=0)
-    elif current_round >= 5:
+    # Assicura che lo snapshot T0 sia inizializzato se assente
+    save_predictions_snapshot(processed_players, round_num=0)
+
+    if current_round >= 5:
         # T+N: valuta predizioni e aggiorna bias corrections
         evaluate_predictions(processed_players, round_num=current_round)
-    else:
+    elif current_round > 0:
         print(f"[AI Evaluator] G{current_round}: dati ancora insufficienti per valutazione (min G5).")
     # ────────────────────────────────────────────────────────────────────────
 

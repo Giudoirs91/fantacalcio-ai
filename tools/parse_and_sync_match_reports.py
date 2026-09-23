@@ -267,8 +267,8 @@ def fix_g2_goalkeepers(df_g2):
 def sync_all_match_reports():
     print("=== [Sync Match Reports] Avvio parsing e sincronizzazione Match Reports ===")
     
-    # 1. Trova tutti i PDF presenti nella cartella
-    pdf_files = sorted([f for f in os.listdir(REPORTS_DIR) if f.endswith('.pdf')])
+    # 1. Trova tutti i PDF di match report presenti nella cartella (iniziano con numero_giornata_)
+    pdf_files = sorted([f for f in os.listdir(REPORTS_DIR) if f.endswith('.pdf') and re.match(r'^\d+_', f)])
     print(f"Trovati {len(pdf_files)} file PDF in '{REPORTS_DIR}'.")
 
     parsed_matches = []

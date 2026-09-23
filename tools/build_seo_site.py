@@ -876,6 +876,17 @@ def build_all():
             f.write(dash_content)
         print("  ✓ App interattiva clonata con tracker in dist/app.html e dist/index.html")
 
+    # 2c. Copia i dati JSON elaborati in dist/data per endpoint e fetch
+    dist_data_dir = os.path.join(DIST_DIR, "data")
+    os.makedirs(dist_data_dir, exist_ok=True)
+    for json_name in ["processed_players_master.json", "top_flop_rounds.json", "gk_matrix_2026_27.json"]:
+        src_json = os.path.join(ROOT_DIR, "data", "processed", json_name)
+        if not os.path.exists(src_json):
+            src_json = os.path.join(ROOT_DIR, json_name)
+        if os.path.exists(src_json):
+            shutil.copy(src_json, os.path.join(dist_data_dir, json_name))
+    print("  ✓ Dati JSON elaborati copiati in dist/data/")
+
     # 3. Genera le 532 pagine calciatore complete
     calciatori_dir = os.path.join(DIST_DIR, "calciatore")
     os.makedirs(calciatori_dir, exist_ok=True)

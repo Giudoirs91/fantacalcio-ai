@@ -11935,3 +11935,178 @@ body.creator-mode-active .visitor-only-item {
         font-size: 6.5px !important;
     }
 }
+
+/* ==============================================================================
+   PREDICTIVE AUDIT & HIT RATE STYLES — FUT / PES GAMING THEME
+   ============================================================================== */
+.fut-audit-banner {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 78, 59, 0.25) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.fut-audit-banner.future {
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.08) 0%, rgba(15, 23, 42, 0.4) 100%);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+}
+
+.fut-audit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.fut-audit-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.fut-audit-icon {
+    font-size: 26px;
+}
+
+.fut-audit-tag {
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #10b981;
+}
+
+.fut-audit-banner.future .fut-audit-tag {
+    color: var(--accent-cyan);
+}
+
+.fut-audit-heading {
+    font-size: 17px;
+    font-weight: 800;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+}
+
+.fut-audit-score-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 6px 14px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.fut-audit-score-pill.calibrated {
+    border-color: rgba(0, 242, 254, 0.35);
+}
+
+.fut-audit-score-pill .score-lbl {
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+}
+
+.fut-audit-score-pill .score-val {
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+}
+
+.fut-audit-score-pill .score-val.neon {
+    color: #10b981;
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.fut-audit-score-pill .score-val.cyan {
+    color: var(--accent-cyan);
+    font-size: 14px;
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+}
+
+.fut-audit-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.fut-audit-stat-card {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.fut-audit-stat-card .stat-num {
+    font-size: 18px;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+}
+
+.fut-audit-stat-card .stat-num.neon { color: #10b981; }
+.fut-audit-stat-card .stat-num.gold { color: #fbbf24; }
+.fut-audit-stat-card .stat-num.cyan { color: #38bdf8; }
+.fut-audit-stat-card .stat-num.orange { color: #f97316; font-size: 14px; }
+
+.fut-audit-stat-card .stat-desc {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.fut-audit-note {
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.45;
+    padding-top: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* OUTCOME BADGES IN PLAYER CARDS */
+.fut-outcome-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+.fut-outcome-pill.hit {
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.5);
+    color: #34d399;
+}
+
+.fut-outcome-pill.suff {
+    background: rgba(251, 191, 36, 0.15);
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    color: #fbbf24;
+}
+
+.fut-outcome-pill.miss {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #f87171;
+}
+
+.fut-outcome-pill .pill-status {
+    font-weight: 900;
+}
+
+.fut-outcome-pill .pill-detail {
+    font-weight: 600;
+    color: #fff;
+}
+

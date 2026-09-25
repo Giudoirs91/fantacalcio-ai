@@ -249,7 +249,19 @@ function computeExpectedFantaMedia(player) {
         xa = has2627 ? (player.xa_2627 || (player.xa90_2627 ? player.xa90_2627 * (player.minuti_2627 || 90) / 90 : 0)) : (player.xa_2526 || (player.xa90_2526 ? player.xa90_2526 * (player.mins_2526 || 900) / 90 : 0));
         malus = has2627 ? ((player.amm_2627 || 0) * 0.5 + (player.esp_2627 || 0) * 1.0) : ((player.amm || 0) * 0.5 + (player.esp || 0) * 1.0);
 
-        const bonusAttesi = (xg * 3.0) + (xa * 1.0);
+        // Finishing / Shot Placement Index (xGOT vs xG per valutare la qualità delle conclusioni)
+        const xgot = has2627 ? (player.xgot_2627 || xg) : (player.xgot_2526 || xg);
+        let shotPlacementMult = 1.0;
+        if ((player.role === 'A' || player.role === 'C') && xgot !== undefined && xgot !== null && xg >= 0.8) {
+            try {
+                const ratio = Number(xgot) / Number(xg);
+                shotPlacementMult = Math.max(0.90, Math.min(1.10, ratio));
+            } catch (e) {
+                shotPlacementMult = 1.0;
+            }
+        }
+
+        const bonusAttesi = (xg * shotPlacementMult * 3.0) + (xa * 1.0);
         const xfm = +(mv + ((bonusAttesi - malus) / presenze)).toFixed(2);
         const delta = +(realFm - xfm).toFixed(2);
         return { xfm, realFm: +realFm.toFixed(2), delta, has2627 };

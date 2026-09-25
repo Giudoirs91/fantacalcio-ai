@@ -238,6 +238,11 @@ def determine_advice_tag(p):
     if oop_tier == 'BRONZO':
         return "🥉 RISERVA D'ORO A 1 CR", "sleeper"
 
+    # 10b. SUPER-SUB / JOLLY DA VOTO (Presenza garantita a gara in corso con voto/minutaggio)
+    if presenze_2627 >= 3 and titolarita < 65 and not is_injured:
+        if (p.get('gol_2627', 0) >= 1 or p.get('assist_2627', 0) >= 1 or p.get('mv_2627', 0) >= 6.0):
+            return "⚡ SUPER-SUB / JOLLY DA VOTO", "supersub"
+
     # 11. OTTIMI TITOLARI & MODIFICATORE DIFESA / LOW COST
     if slot_num == 3 and titolarita >= 80:
         return "💎 OTTIMO 3° SLOT TITOLARE", "buy"
@@ -443,7 +448,19 @@ def calculate_xfm(p):
         xg = float(xg or 0.0)
         xa = float(xa or 0.0)
         malus = amm * 0.5 + esp * 1.0
-        bonus_attesi = (xg * 3.0) + (xa * 1.0)
+
+        # Finishing / Shot Placement Index (xGOT vs xG per valutare la qualità delle conclusioni)
+        xgot = p.get('xgot_2627') if p.get('xgot_2627') is not None else p.get('xgot_2526')
+        shot_placement_mult = 1.0
+        if role in ['A', 'C'] and xgot is not None and xg >= 0.8:
+            try:
+                raw_ratio = float(xgot) / float(xg)
+                # Clampa delicatamente il moltiplicatore tra 0.90 (tiratore poco cinico) e 1.10 (finisher chirurgico)
+                shot_placement_mult = max(0.90, min(1.10, raw_ratio))
+            except (ZeroDivisionError, ValueError):
+                shot_placement_mult = 1.0
+
+        bonus_attesi = (xg * shot_placement_mult * 3.0) + (xa * 1.0)
         xfm_base = round(float(mv + ((bonus_attesi - malus) / presenze)), 2)
 
     # ── Applica bias corrections apprese dall'AI Evaluator (non-distruttive) ────────

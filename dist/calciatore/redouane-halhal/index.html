@@ -384,7 +384,7 @@
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                     <span class="inspector-badge">GIORNATA 3</span>
                     <span class="inspector-venue">✈️ Fuori</span>
-                    <b class="inspector-match-title">FROSINONE 3-2 VENEZIA</b>
+                    <b class="inspector-match-title">Venezia @ Frosinone</b>
                 </div>
                 <span class="inspector-hint-text"><span class="hint-desktop">Passa il mouse</span><span class="hint-mobile">Tocca</span> sulle barre per ispezionare</span>
             </div>
@@ -403,11 +403,11 @@
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Gol / Assist</span>
-                    <b class="val">0 Gol &bull; 0 Ass</b>
+                    <b class="val">0.0 Gol &bull; 0.0 Ass</b>
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Disciplina</span>
-                    <span class="val" style="color:#ef4444;">1 Amm &bull; 0 Esp</span>
+                    <span class="val" style="color:#ef4444;">1.0 Amm &bull; 0.0 Esp</span>
                 </div>
             </div>
         </div>
@@ -431,7 +431,7 @@
                             
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G2</td>
-                <td style="font-weight:700;color:#fff;">MILAN 2-0 VENEZIA</td>
+                <td style="font-weight:700;color:#fff;">Venezia @ Milan</td>
                 <td style="color:var(--text-muted);font-size:11px;">✈️ Fuori</td>
                 <td style="font-weight:900;color:#f87171;">5.0</td>
                 <td><span class="table-bonus-tag">-2 (Autogol)</span></td>
@@ -439,7 +439,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G3</td>
-                <td style="font-weight:700;color:#fff;">FROSINONE 3-2 VENEZIA</td>
+                <td style="font-weight:700;color:#fff;">Venezia @ Frosinone</td>
                 <td style="color:var(--text-muted);font-size:11px;">✈️ Fuori</td>
                 <td style="font-weight:900;color:#f87171;">4.5</td>
                 <td><span class="table-bonus-tag">-0.5 (Amm)</span></td>
@@ -709,7 +709,7 @@
 
     <!-- Interactive Scripts for Tabs, Accordion & Season Inspector -->
     <script>
-    var VOTI_DATA = [{"giornata": 2, "match": "MILAN 2-0 VENEZIA", "opponent": "Milan", "is_home": false, "voto": 5.0, "fantavoto": 3.0, "gf": 0, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 1, "rp": 0, "rs": 0, "bonus_malus_str": "-2 (Autogol)"}, {"giornata": 3, "match": "FROSINONE 3-2 VENEZIA", "opponent": "Frosinone", "is_home": false, "voto": 4.5, "fantavoto": 4.0, "gf": 0, "gs": 0, "ass": 0, "amm": 1, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "-0.5 (Amm)"}];
+    var VOTI_DATA = [{"giornata": 2, "voto": 5.0, "fantavoto": 3.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 1.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "-2 (Autogol)", "opponent": "Milan", "is_home": false, "match": "Venezia @ Milan"}, {"giornata": 3, "voto": 4.5, "fantavoto": 4.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 1.0, "esp": 0.0, "bonus_malus_str": "-0.5 (Amm)", "opponent": "Frosinone", "is_home": false, "match": "Venezia @ Frosinone"}];
     
     function switchProfileTab(tabName) {
         var tabs = ['overview', 'advanced', 'tactics'];

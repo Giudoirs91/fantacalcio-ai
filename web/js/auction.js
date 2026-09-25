@@ -1187,6 +1187,8 @@ function getAllSmartBadgesHtml(p) {
         badges.push(`<span class="smart-tag sleeper" title="${adviceText}">🔥 Sleeper</span>`);
     } else if (adviceType === 'buy' || adviceText.toLowerCase().includes('best value')) {
         badges.push(`<span class="smart-tag value" title="${adviceText}">🚀 Best Value</span>`);
+    } else if (adviceType === 'supersub' || adviceText.includes('SUPER-SUB')) {
+        badges.push(`<span class="smart-tag sleeper" style="background:rgba(245,158,11,0.2);border-color:#f59e0b;color:#fbbf24;" title="${adviceText}">⚡ Super-Sub</span>`);
     } else if (adviceType === 'titolarissimo' || adviceText.toLowerCase().includes('titolarissimo')) {
         badges.push(`<span class="smart-tag starter" title="${adviceText}">🔒 Titolarissimo</span>`);
     } else if (adviceType === 'lowcost' || adviceText.toLowerCase().includes('low cost')) {
@@ -1237,6 +1239,9 @@ function getSmartBadgeHtml(p) {
     }
     if (adviceType === 'buy' || adviceText.toLowerCase().includes('best value')) {
         return `<span class="smart-tag value" title="${adviceText}">🚀 Best Value</span>`;
+    }
+    if (adviceType === 'supersub' || adviceText.includes('SUPER-SUB')) {
+        return `<span class="smart-tag sleeper" style="background:rgba(245,158,11,0.2);border-color:#f59e0b;color:#fbbf24;" title="${adviceText}">⚡ Super-Sub</span>`;
     }
     if (adviceType === 'titolarissimo' || adviceText.toLowerCase().includes('titolarissimo')) {
         return `<span class="smart-tag starter" title="${adviceText}">🔒 Titolarissimo</span>`;

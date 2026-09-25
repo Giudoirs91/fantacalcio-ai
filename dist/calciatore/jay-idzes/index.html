@@ -390,7 +390,7 @@
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                     <span class="inspector-badge">GIORNATA 4</span>
                     <span class="inspector-venue">🏠 Casa</span>
-                    <b class="inspector-match-title">SASSUOLO 3-2 JUVENTUS</b>
+                    <b class="inspector-match-title">Sassuolo vs Juventus</b>
                 </div>
                 <span class="inspector-hint-text"><span class="hint-desktop">Passa il mouse</span><span class="hint-mobile">Tocca</span> sulle barre per ispezionare</span>
             </div>
@@ -409,11 +409,11 @@
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Gol / Assist</span>
-                    <b class="val">0 Gol &bull; 0 Ass</b>
+                    <b class="val">0.0 Gol &bull; 0.0 Ass</b>
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Disciplina</span>
-                    <span class="val" style="color:var(--text-secondary);">0 Amm &bull; 0 Esp</span>
+                    <span class="val" style="color:var(--text-secondary);">0.0 Amm &bull; 0.0 Esp</span>
                 </div>
             </div>
         </div>
@@ -437,7 +437,7 @@
                             
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G2</td>
-                <td style="font-weight:700;color:#fff;">SASSUOLO 2-1 TORINO</td>
+                <td style="font-weight:700;color:#fff;">Sassuolo vs Torino</td>
                 <td style="color:var(--text-muted);font-size:11px;">🏠 Casa</td>
                 <td style="font-weight:900;color:#38bdf8;">6.0</td>
                 <td><span class="table-bonus-tag">Nessun bonus</span></td>
@@ -445,7 +445,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G3</td>
-                <td style="font-weight:700;color:#fff;">BOLOGNA 2-2 SASSUOLO</td>
+                <td style="font-weight:700;color:#fff;">Sassuolo @ Bologna</td>
                 <td style="color:var(--text-muted);font-size:11px;">✈️ Fuori</td>
                 <td style="font-weight:900;color:#38bdf8;">6.0</td>
                 <td><span class="table-bonus-tag">-0.5 (Amm)</span></td>
@@ -453,7 +453,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G4</td>
-                <td style="font-weight:700;color:#fff;">SASSUOLO 3-2 JUVENTUS</td>
+                <td style="font-weight:700;color:#fff;">Sassuolo vs Juventus</td>
                 <td style="color:var(--text-muted);font-size:11px;">🏠 Casa</td>
                 <td style="font-weight:900;color:#38bdf8;">6.5</td>
                 <td><span class="table-bonus-tag">Nessun bonus</span></td>
@@ -723,7 +723,7 @@
 
     <!-- Interactive Scripts for Tabs, Accordion & Season Inspector -->
     <script>
-    var VOTI_DATA = [{"giornata": 2, "match": "SASSUOLO 2-1 TORINO", "opponent": "Torino", "is_home": true, "voto": 6.0, "fantavoto": 6.0, "gf": 0, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "Nessun bonus"}, {"giornata": 3, "match": "BOLOGNA 2-2 SASSUOLO", "opponent": "Bologna", "is_home": false, "voto": 6.0, "fantavoto": 5.5, "gf": 0, "gs": 0, "ass": 0, "amm": 1, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "-0.5 (Amm)"}, {"giornata": 4, "match": "SASSUOLO 3-2 JUVENTUS", "opponent": "Juventus", "is_home": true, "voto": 6.5, "fantavoto": 6.5, "gf": 0, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "Nessun bonus"}];
+    var VOTI_DATA = [{"giornata": 2, "voto": 6.0, "fantavoto": 6.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Torino", "is_home": true, "match": "Sassuolo vs Torino"}, {"giornata": 3, "voto": 6.0, "fantavoto": 5.5, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 1.0, "esp": 0.0, "bonus_malus_str": "-0.5 (Amm)", "opponent": "Bologna", "is_home": false, "match": "Sassuolo @ Bologna"}, {"giornata": 4, "voto": 6.5, "fantavoto": 6.5, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Juventus", "is_home": true, "match": "Sassuolo vs Juventus"}];
     
     function switchProfileTab(tabName) {
         var tabs = ['overview', 'advanced', 'tactics'];

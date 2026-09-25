@@ -1,8 +1,3 @@
-// ==============================================================================
-// MODALE TRASPARENZA & METODOLOGIA INTELLIGENZA ARTIFICIALE (AI METHODOLOGY)
-// Spiegazione scientifica e trasparente di Overall (OVR), xFM, Fonti Dati e Prezzi
-// ==============================================================================
-
 function switchAiMethodologyTab(tabName) {
     const tabs = ['ovr', 'xfm', 'sources', 'pricing', 'trend', 'trust'];
     tabs.forEach(t => {
@@ -12,7 +7,6 @@ function switchAiMethodologyTab(tabName) {
         if (btn) btn.classList.toggle('active', t === tabName);
     });
 }
-
 function openAiMethodologyModal(defaultTab = 'ovr') {
     let modal = document.getElementById('aiMethodologyModal');
     if (!modal) {
@@ -23,7 +17,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
         modal.setAttribute('onclick', 'if(event.target === this) closeAiMethodologyModal()');
         document.body.appendChild(modal);
     }
-
     modal.innerHTML = `
         <div class="modal-card methodology-modal-card">
             <!-- Header -->
@@ -42,7 +35,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                 </div>
                 <button class="btn-action methodology-close-btn" onclick="closeAiMethodologyModal()">Chiudi ✕</button>
             </div>
-
             <!-- Navigation Tabs -->
             <div class="methodology-nav-tabs">
                 <button id="methodologyBtn_ovr" class="methodology-nav-btn ${defaultTab === 'ovr' ? 'active' : ''}" onclick="switchAiMethodologyTab('ovr')">
@@ -64,10 +56,8 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                     <span>🛡️</span> 6. Garanzia & Zero Bias
                 </button>
             </div>
-
             <!-- Content Container -->
             <div class="methodology-modal-body">
-                
                 <!-- TAB 1: OVERALL CALCULATION & COSA FA L'ALGORITMO -->
                 <div id="methodologyPane_ovr" class="methodology-pane" style="display:${defaultTab === 'ovr' ? 'block' : 'none'};">
                     <div class="methodology-hero-card">
@@ -77,7 +67,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                             Il nostro algoritmo non è un aggregatore di voti storici né un oracolo basato su sensazioni giornalistiche: è un <b>motore quantitativo predittivo</b> sviluppato per anticipare i bonus reali dei calciatori, eliminare il rumore della casualità e guidare ogni scelta d'asta e di formazione.
                         </p>
                     </div>
-
                     <!-- 3 CORE FEATURES CALLOUT -->
                     <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:12px;margin-bottom:20px;">
                         <div style="background:linear-gradient(135deg, rgba(56,189,248,0.12), rgba(15,23,42,0.7));border:1px solid rgba(56,189,248,0.3);padding:14px;border-radius:10px;">
@@ -89,7 +78,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                                 Non basta contare i tiri o le occasioni (xG): l'algoritmo misura la <b>qualità balistica del tiro nello specchio (xGOT)</b>. Distingue i finalizzatori chirurgici (che piazzano la palla all'angolino) da chi calcia centrale o a salve, correggendo la proiezione di bonus attesi.
                             </p>
                         </div>
-
                         <div style="background:linear-gradient(135deg, rgba(251,191,36,0.12), rgba(15,23,42,0.7));border:1px solid rgba(251,191,36,0.3);padding:14px;border-radius:10px;">
                             <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
                                 <span style="font-size:20px;">⚡</span>
@@ -99,7 +87,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                                 I modelli tradizionali penalizzano chi non gioca dall'inizio. Il nostro motore rileva i calciatori che <b>subentrano con regolarità incidendo con bonus o voti eccellenti</b>, etichettandoli come <code>⚡ SUPER-SUB</code> per acquisti a basso costo ma ad altissimo rendimento.
                             </p>
                         </div>
-
                         <div style="background:linear-gradient(135deg, rgba(16,185,129,0.12), rgba(15,23,42,0.7));border:1px solid rgba(16,185,129,0.3);padding:14px;border-radius:10px;">
                             <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
                                 <span style="font-size:20px;">🔄</span>
@@ -110,11 +97,9 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                             </p>
                         </div>
                     </div>
-
                     <div style="margin-bottom:12px;">
                         <h4 style="font-size:13px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin:0 0 8px 0;">I 5 Pilastri dell'Indice Composito Overall (OVR 0-99):</h4>
                     </div>
-
                     <div class="methodology-pillars-grid">
                         <div class="methodology-pillar-item">
                             <div class="pillar-weight-badge">35% del Totale</div>
@@ -124,7 +109,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                                 Analisi della Media Voto pura (MV) e della FantaMedia (FM) delle ultime 2 stagioni con peso decrescente, depurata da anomalie statistiche su campioni ridotti di presenze.
                             </p>
                         </div>
-
                         <div class="methodology-pillar-item">
                             <div class="pillar-weight-badge" style="background:rgba(56,189,248,0.2);color:#38bdf8;border-color:#38bdf8;">25% del Totale</div>
                             <div class="pillar-icon">🎯</div>
@@ -133,7 +117,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                                 Volume e qualità di gioco generato: Expected Goals (xG), Expected Assists (xA), Expected Goals on Target (xGOT), Big Chances create e tocchi in area avversaria.
                             </p>
                         </div>
-
                         <div class="methodology-pillar-item">
                             <div class="pillar-weight-badge" style="background:rgba(16,185,129,0.2);color:#34d399;border-color:#10b981;">20% del Totale</div>
                             <div class="pillar-icon">👔</div>
@@ -142,7 +125,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                                 Percentuale di titolarità stimata nei 38 turni, centralità negli 11 titolari del mister, rischio staffetta/ballottaggio e incidenza delle rotazioni europee.
                             </p>
                         </div>
-
                         <div class="methodology-pillar-item">
                             <div class="pillar-weight-badge" style="background:rgba(251,191,36,0.2);color:#fbbf24;border-color:#fbbf24;">10% del Totale</div>
                             <div class="pillar-icon">👑</div>
@@ -151,7 +133,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                                 Bonus addizionale calcolato in base alle gerarchie ufficiali del club: 1° rigorista (+1.8 FM attesa), 2°/3° rigorista, battitore di punizioni dirette e corner.
                             </p>
                         </div>
-
                         <div class="methodology-pillar-item">
                             <div class="pillar-weight-badge" style="background:rgba(244,63,94,0.2);color:#fb7185;border-color:#f43f5e;">10% del Totale</div>
                             <div class="pillar-icon">🛡️</div>
@@ -160,7 +141,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                                 Storico infortuni e fragilità muscolare combinato con la forza offensiva/difensiva della squadra di appartenenza (xG e xGA di squadra).
                             </p>
                         </div>
-
                         <div class="methodology-pillar-item" style="background:linear-gradient(135deg, rgba(139,92,246,0.1), rgba(15,23,42,0.6));border-color:rgba(139,92,246,0.3);">
                             <div class="pillar-weight-badge" style="background:rgba(139,92,246,0.2);color:#c084fc;border-color:#a855f7;">Fasce OVR</div>
                             <div class="pillar-icon">🏆</div>
@@ -175,7 +155,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                         </div>
                     </div>
                 </div>
-
                 <!-- TAB 2: EXPECTED FANTAMEDIA (xFM) -->
                 <div id="methodologyPane_xfm" class="methodology-pane" style="display:none;">
                     <div class="methodology-hero-card">
@@ -185,7 +164,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                             L'Expected FantaMedia (<b>xFM</b>) è la metrica predittiva proprietaria che indica quanti fantapunti un calciatore <i>avrebbe dovuto produrre</i> in base alla quantità e qualità di occasioni create, neutralizzando la fortuna o i rimpalli casuali.
                         </p>
                     </div>
-
                     <div class="methodology-formula-box">
                         <div class="formula-label">📐 Formula Matematica di xFM per Giocatori di Movimento (con Shot Placement Index):</div>
                         <div class="formula-code">
@@ -196,7 +174,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                             <br>Per i <b>Portieri</b>, la formula integra i Gol Prevented (GP), la percentuale parate e il coefficiente di Clean Sheet atteso.
                         </div>
                     </div>
-
                     <div class="methodology-comparison-grid">
                         <div class="comparison-card under">
                             <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
@@ -210,7 +187,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                             <div class="comparison-action-badge buy">⚡ SEGNALE AI: COMPRA ALL'ASTA O SCAMBIA</div>
                             <div class="comparison-desc">I dati garantiscono che presto i bonus arriveranno a grappoli per regressione naturale verso la media.</div>
                         </div>
-
                         <div class="comparison-card over">
                             <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
                                 <span style="font-size:22px;">⚠️</span>
@@ -224,7 +200,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                             <div class="comparison-desc">Il rendimento subirà un calo fisiologico; ottimo momento per scambiarlo al culmine della valutazione.</div>
                         </div>
                     </div>
-
                     <!-- VALIDAZIONE EMPIRICA IN-SEASON (5 GIORNATE SERIE A 2026/27) -->
                     <div style="margin-top:20px;padding:16px;background:linear-gradient(135deg, rgba(16,185,129,0.08), rgba(15,23,42,0.85));border:1px solid rgba(16,185,129,0.3);border-radius:12px;">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
@@ -261,7 +236,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                         </div>
                     </div>
                 </div>
-
                 <!-- TAB 3: DATA ENGINE & STATS -->
                 <div id="methodologyPane_sources" class="methodology-pane" style="display:none;">
                     <div class="methodology-hero-card">
@@ -271,7 +245,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                             La nostra architettura integra feed statistici avanzati e referti di gara ufficiali in tempo reale tramite pipeline certificate di data engineering.
                         </p>
                     </div>
-
                     <div class="sources-list-grid">
                         <div class="source-card">
                             <div class="source-card-header">
@@ -292,7 +265,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                                 </ul>
                             </div>
                         </div>
-
                         <div class="source-card">
                             <div class="source-card-header">
                                 <div class="source-logo-badge ref">SERIE A</div>
@@ -310,7 +282,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                                 </ul>
                             </div>
                         </div>
-
                         <div class="source-card">
                             <div class="source-card-header">
                                 <div class="source-logo-badge tactical">TACTIC</div>
@@ -328,7 +299,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                                 </ul>
                             </div>
                         </div>
-
                         <div class="source-card">
                             <div class="source-card-header">
                                 <div class="source-logo-badge medical">MED</div>
@@ -348,7 +318,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                         </div>
                     </div>
                 </div>
-
                 <!-- TAB 4: PRICING & AUCTION ALGORITHM -->
                 <div id="methodologyPane_pricing" class="methodology-pane" style="display:none;">
                     <div class="methodology-hero-card">
@@ -358,7 +327,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                             Non lasciamo la spesa al caso: il nostro motore economico calcola il valore di mercato ideale basandosi sulla teoria del <b>VORP (Value Over Replacement Player)</b> e sulla distribuzione del budget (1000 CR o 500 CR).
                         </p>
                     </div>
-
                     <div class="pricing-explanation-grid">
                         <div class="pricing-card">
                             <h4>🎯 Prezzo Consigliato (Target Bid)</h4>
@@ -369,7 +337,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                                 Base = Quotazione FVM × Coefficiente OVR × Scarsità di Ruolo × Fattore Rigorista
                             </div>
                         </div>
-
                         <div class="pricing-card">
                             <h4>🔥 Prezzo Massimo di Rilancio (Max Bid)</h4>
                             <p>
@@ -380,7 +347,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                             </div>
                         </div>
                     </div>
-
                     <div class="budget-reparti-box">
                         <h4 style="margin-top:0;color:#fff;font-size:13px;">📊 Strategia di Allocazione Budget Consigliata (Su 1000 Crediti):</h4>
                         <div class="budget-bars-stack">
@@ -397,7 +363,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                         </div>
                     </div>
                 </div>
-
                 <!-- TAB 5: TREND & MOMENTUM -->
                 <div id="methodologyPane_trend" class="methodology-pane" style="display:none;">
                     <div class="methodology-hero-card">
@@ -407,7 +372,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                             L'AI monitora la <b>Media Mobile a 3 partite (MA₃)</b> per identificare tempestivamente cambi di trend, exploit imminenti o cali di rendimento.
                         </p>
                     </div>
-
                     <div class="trend-rules-list">
                         <div class="trend-rule-row">
                             <span class="trend-pill fire">🔥 On Fire</span>
@@ -415,28 +379,24 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                                 <b>Rendimento Devastante:</b> Media FantaVoto ultime 3 gare &ge; 8.0 OPPURE almeno 2 gol/assist consecutivi. Giocatore immancabile nell'11 titolare.
                             </div>
                         </div>
-
                         <div class="trend-rule-row">
                             <span class="trend-pill up">📈 In Crescita</span>
                             <div class="trend-rule-desc">
                                 <b>Trend in Ascesa:</b> La media recente supera la media stagionale complessiva di almeno +0.40 punti, oppure voti in crescita costante da 2+ gare.
                             </div>
                         </div>
-
                         <div class="trend-rule-row">
                             <span class="trend-pill neutral">⚖️ Costante</span>
                             <div class="trend-rule-desc">
                                 <b>Regolarità & Solidità:</b> Prestazioni perfettamente stabili e allineate alle attese, voti regolari con basso scarto quadratico medio.
                             </div>
                         </div>
-
                         <div class="trend-rule-row">
                             <span class="trend-pill warning">⏳ A Secco</span>
                             <div class="trend-rule-desc">
                                 <b>Ritardo di Bonus:</b> Titolare regolare a voto (&ge; 6.0) ma a secco di gol/assist nelle ultime 3+ partite. Spesso ottima occasione di acquisto prima dello sblocco.
                             </div>
                         </div>
-
                         <div class="trend-rule-row">
                             <span class="trend-pill down">❄️ In Flessione</span>
                             <div class="trend-rule-desc">
@@ -445,7 +405,6 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                         </div>
                     </div>
                 </div>
-
                 <!-- TAB 6: ZERO BIAS & TRUST -->
                 <div id="methodologyPane_trust" class="methodology-pane" style="display:none;">
                     <div class="methodology-hero-card">
@@ -455,48 +414,40 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                             Il nostro obiettivo è farti vincere il Fantacalcio eliminando ogni errore umano, sensazione di pancia o favoritismo di tifo.
                         </p>
                     </div>
-
                     <div class="trust-features-grid">
                         <div class="trust-box">
                             <div class="trust-icon">⚖️</div>
                             <h4>100% Zero Bias di Squadra</h4>
                             <p>L'algoritmo tratta tutti i 530+ calciatori con le stesse identiche formule matematiche, dall'Inter alla neopromossa.</p>
                         </div>
-
                         <div class="trust-box">
                             <div class="trust-icon">🔄</div>
                             <h4>Aggiornamento Continuo Live</h4>
                             <p>I dati vengono ricalcolati automaticamente al termine di ogni turno di campionato con l'uscita dei voti ufficiali.</p>
                         </div>
-
                         <div class="trust-box">
                             <div class="trust-icon">🔬</div>
                             <h4>Validazione Continua & Backtesting</h4>
                             <p>Testato sui campionati storici e sulle prime 5 giornate di Serie A 2026/27: MAE reale di appena <b>0.27 punti</b> su 325 calciatori a voto.</p>
                         </div>
-
                         <div class="trust-box">
                             <div class="trust-icon">💎</div>
                             <h4>Compatibilità Totale Classic & Mantra</h4>
                             <p>Algoritmi dedicati per il Fantacalcio Classic e per tutti gli 11 schemi Mantra ufficiali con calcolo delle polivalenze (OOP).</p>
                         </div>
                     </div>
-
                     <div style="text-align:center;margin-top:20px;">
                         <button class="btn-action" style="padding:10px 24px;font-size:13px;font-weight:800;background:var(--accent-cyan);color:#0f172a;" onclick="closeAiMethodologyModal()">
                             Ho Capito, Torna alla Dashboard 🚀
                         </button>
                     </div>
                 </div>
-
             </div>
         </div>
     `;
-
     modal.classList.add('active');
     modal.style.display = 'flex';
 }
-
 function closeAiMethodologyModal() {
     const modal = document.getElementById('aiMethodologyModal');
     if (modal) {
@@ -504,7 +455,6 @@ function closeAiMethodologyModal() {
         modal.style.display = 'none';
     }
 }
-
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeAiMethodologyModal();

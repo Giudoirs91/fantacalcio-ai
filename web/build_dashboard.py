@@ -376,6 +376,7 @@ def build_standalone_dashboard(sync_android=False):
                                 <option value="buy">🚀 Best Value</option>
                                 <option value="titolarissimo">🔒 Titolarissimo</option>
                                 <option value="rotation">🔄 Ballottaggio</option>
+                                <option value="supersub">⚡ Super-Sub / Jolly</option>
                                 <option value="sleeper">🔥 Sleeper</option>
                                 <option value="lowcost">🪙 Low Cost</option>
                                 <option value="flop">⚠️ A Rischio</option>
@@ -433,7 +434,8 @@ def build_standalone_dashboard(sync_android=False):
                                 <option value="fvm">💰 FVM (Fanta Valore Mercato)</option>
                                 <option value="fm_2627">📈 FantaMedia Reale (FM)</option>
                                 <option value="xfm">🔮 Expected FantaMedia (xFM)</option>
-                                <option value="delta_xfm">💎 Occasioni (Sotto-rendimento Δ)</option>
+                                <option value="delta_xfm">💎 Sotto-performanti (Occasioni AI: xFM > FM)</option>
+                                <option value="delta_xfm_desc">⚠️ Sovra-performanti (Rischio Regressione: FM > xFM)</option>
                                 <option value="mv_2627">📊 Media Voto Pura (MV)</option>
                                 <option value="titolarita">🔒 Titolarità %</option>
                                 <option value="name">🔤 Nome Alfabetico</option>
@@ -1301,7 +1303,13 @@ def build_standalone_dashboard(sync_android=False):
         }}
 
         function setSort(field) {{
-            if (State.sortBy === field) {{
+            if (field === 'delta_xfm_desc') {{
+                State.sortBy = 'delta_xfm';
+                State.sortAsc = false;
+            }} else if (field === 'delta_xfm') {{
+                State.sortBy = 'delta_xfm';
+                State.sortAsc = true;
+            }} else if (State.sortBy === field) {{
                 State.sortAsc = !State.sortAsc;
             }} else {{
                 State.sortBy = field;

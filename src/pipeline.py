@@ -482,33 +482,102 @@ def run_master_pipeline():
 
         # Check explicit ballottaggi list
         is_in_ballottaggio = False
-        titolarita_desc_2627 = ""  # inizializzata qui; verrà sovrascritta da ballottaggio o da dati reali
-        titolarita_tactical = 0.50  # valore safe di default, verrà sempre sovrascritto sotto
+        titolarita_desc_2627 = ""
+        titolarita_tactical = 0.50
         ballottaggi_list = tactical_info.get("ballottaggi", [])
         for b in ballottaggi_list:
             if match_player_name(clean_pname, b.get('player', '')):
                 is_in_ballottaggio = True
-                titolarita = round(b.get('pct', 50) / 100.0, 2)
-                titolarita_tactical = titolarita
+                titolarita_tactical = round(b.get('pct', 50) / 100.0, 2)
                 titolarita_desc_2627 = f"Ballottaggio {b.get('pct')}% vs {b.get('vs', '')}"
                 break
 
         if not is_in_ballottaggio:
             if is_in_11: 
-                titolarita = 0.92
                 titolarita_tactical = 0.92
             elif fvm >= 50: 
-                titolarita = 0.65
                 titolarita_tactical = 0.65
             elif fvm >= 20: 
-                titolarita = 0.45
                 titolarita_tactical = 0.45
             elif fvm >= 8:
-                titolarita = 0.35
                 titolarita_tactical = 0.35
             else:
-                titolarita = 0.25
                 titolarita_tactical = 0.25
+
+        # ---------------------------------------------------------------------
+        # DATI REALI SERIE A 2026/2027 (MATCH REPORT UFFICIALI 5 GIORNATE)
+        # ---------------------------------------------------------------------
+        rep_key = f"{clean_pname}_{team.lower()}"
+        rep_data = match_reports_lookup.get(rep_key)
+        if not rep_data:
+            for k, r_val in match_reports_lookup.items():
+                k_pname, k_team = k.split('_', 1) if '_' in k else (k, '')
+                if (team.lower() in k_team or k_team in team.lower() or not k_team or not team) and match_player_name(clean_pname, k_pname):
+                    rep_data = r_val
+                    break
+
+        has_data_2627 = False
+        presenze_2627 = 0
+        starts_2627 = 0
+        minuti_2627 = 0
+        gol_2627 = 0
+        assist_2627 = 0
+        tiri_2627 = 0
+        tiri_porta_2627 = 0
+        key_passes_2627 = 0
+        recuperi_2627 = 0
+        falli_subiti_2627 = 0
+        amm_2627 = 0
+        esp_2627 = 0
+        clean_sheets_2627 = 0
+        parate_2627 = 0
+        gol_subiti_2627 = 0
+        n_team_matches = team_matches_map.get(team.upper(), 5)
+
+        is_new_arrival = (clean_pname == 'alaba' or pid == 59016 or 'alaba' in raw_name.lower())
+
+        if rep_data:
+            has_data_2627 = True
+            presenze_2627 = rep_data['presenze_2627']
+            starts_2627 = rep_data['titolarita_count_2627']
+            minuti_2627 = rep_data['minuti_2627']
+            gol_2627 = rep_data['gol_2627']
+            assist_2627 = rep_data['assist_2627']
+            tiri_2627 = rep_data['tiri_2627']
+            tiri_porta_2627 = rep_data['tiri_porta_2627']
+            key_passes_2627 = rep_data['key_passes_2627']
+            recuperi_2627 = rep_data['recuperi_2627']
+            falli_subiti_2627 = rep_data['falli_subiti_2627']
+            amm_2627 = rep_data['ammonizioni_2627']
+            esp_2627 = rep_data['espulsioni_2627']
+            clean_sheets_2627 = rep_data['clean_sheets_2627']
+            parate_2627 = rep_data['parate_2627']
+            gol_subiti_2627 = rep_data['gol_subiti_2627']
+
+            subs_2627 = max(0, presenze_2627 - starts_2627)
+            # CALCOLO 100% MATEMATICO DELLA TITOLARITA' DALLE PRIME 5 GIORNATE
+            tit_math = (starts_2627 * 1.0 + subs_2627 * 0.35) / max(1, n_team_matches)
+            titolarita = min(1.0, max(0.0, round(tit_math, 2)))
+
+            if starts_2627 == n_team_matches:
+                titolarita_desc_2627 = f"{starts_2627}/{n_team_matches} Titolare"
+            elif starts_2627 > 0 and presenze_2627 == n_team_matches:
+                titolarita_desc_2627 = f"{starts_2627}/{n_team_matches} Tit + {subs_2627} Sub"
+            elif starts_2627 > 0:
+                sub_part = f" + {subs_2627} Sub" if subs_2627 > 0 else ""
+                titolarita_desc_2627 = f"{starts_2627}/{n_team_matches} Titolare{sub_part}"
+            elif presenze_2627 > 0:
+                titolarita_desc_2627 = f"{presenze_2627}/{n_team_matches} Subentrato"
+            else:
+                titolarita_desc_2627 = f"0/{n_team_matches} Presenze"
+                titolarita = 0.0
+        elif is_new_arrival:
+            titolarita = titolarita_tactical
+            titolarita_desc_2627 = f"Nuovo Acquisto ({int(round(titolarita * 100))}% Tit)"
+        else:
+            # Calciatore presente in rosa ma con 0 presenze dopo 5 giornate
+            titolarita = 0.0
+            titolarita_desc_2627 = f"0/{n_team_matches} Presenze"
 
         # ---------------------------------------------------------------------
         # SISTEMA DI CLASSIFICAZIONE OOP MANTRA (ORO, ARGENTO, BRONZO)
@@ -568,7 +637,8 @@ def run_master_pipeline():
         t_mult = team_ratings.get(team, {}).get("multiplier", 1.0) if isinstance(team_ratings.get(team), dict) else team_ratings.get(team, 1.0)
 
         # Calcolo OVR e Prezzo Base
-        ovr, prezzo_cons = compute_continuous_ovr_and_price(role, fvm, is_in_11, team_mult=t_mult)
+        effective_in_11 = (is_in_11 and (starts_2627 >= 1 or is_new_arrival)) or (titolarita >= 0.60)
+        ovr, prezzo_cons = compute_continuous_ovr_and_price(role, fvm, effective_in_11, team_mult=t_mult)
 
         # Leggero boost predittivo se ha metriche 25/26 eccezionali
         if has_data_2526:
@@ -612,85 +682,8 @@ def run_master_pipeline():
         if is_sleeper: ovr += 0.8
         if is_flop: ovr -= 2.0
 
-        # ---------------------------------------------------------------------
-        # DATI REALI SERIE A 2026/2027 (G1 + G2 DA MATCH REPORT UFFICIALI)
-        # ---------------------------------------------------------------------
-        rep_key = f"{clean_pname}_{team.lower()}"
-        rep_data = match_reports_lookup.get(rep_key)
-        if not rep_data:
-            for k, r_val in match_reports_lookup.items():
-                k_pname, k_team = k.split('_', 1) if '_' in k else (k, '')
-                if (team.lower() in k_team or k_team in team.lower() or not k_team or not team) and match_player_name(clean_pname, k_pname):
-                    rep_data = r_val
-                    break
-
-        has_data_2627 = False
-        presenze_2627 = 0
-        starts_2627 = 0
-        minuti_2627 = 0
-        gol_2627 = 0
-        assist_2627 = 0
-        tiri_2627 = 0
-        tiri_porta_2627 = 0
-        key_passes_2627 = 0
-        recuperi_2627 = 0
-        falli_subiti_2627 = 0
-        amm_2627 = 0
-        esp_2627 = 0
-        clean_sheets_2627 = 0
-        parate_2627 = 0
-        gol_subiti_2627 = 0
-        n_team_matches = team_matches_map.get(team.upper(), 2)  # fallback 2: i report coprono G1+G2
-        if not titolarita_desc_2627:  # non sovrascrivere se già impostata dal blocco ballottaggi
-            titolarita_desc_2627 = f"0/{n_team_matches} Presenze"
-
+        # Boost per rendimento reale 2026/2027 (gol, assist, clean sheet sul campo)
         if rep_data:
-            has_data_2627 = True
-            presenze_2627 = rep_data['presenze_2627']
-            starts_2627 = rep_data['titolarita_count_2627']
-            minuti_2627 = rep_data['minuti_2627']
-            gol_2627 = rep_data['gol_2627']
-            assist_2627 = rep_data['assist_2627']
-            tiri_2627 = rep_data['tiri_2627']
-            tiri_porta_2627 = rep_data['tiri_porta_2627']
-            key_passes_2627 = rep_data['key_passes_2627']
-            recuperi_2627 = rep_data['recuperi_2627']
-            falli_subiti_2627 = rep_data['falli_subiti_2627']
-            amm_2627 = rep_data['ammonizioni_2627']
-            esp_2627 = rep_data['espulsioni_2627']
-            clean_sheets_2627 = rep_data['clean_sheets_2627']
-            parate_2627 = rep_data['parate_2627']
-            gol_subiti_2627 = rep_data['gol_subiti_2627']
-            
-            # Dinamica della descrizione titolarità reale 2026/27
-            if starts_2627 == n_team_matches:
-                titolarita_desc_2627 = f"{starts_2627}/{n_team_matches} Titolare"
-            elif starts_2627 > 0 and presenze_2627 == n_team_matches:
-                titolarita_desc_2627 = f"{starts_2627}/{n_team_matches} Tit + {n_team_matches - starts_2627} Sub"
-            elif starts_2627 > 0:
-                subs = presenze_2627 - starts_2627
-                sub_part = f" + {subs} Sub" if subs > 0 else ""
-                titolarita_desc_2627 = f"{starts_2627}/{n_team_matches} Titolare{sub_part}"
-            elif presenze_2627 > 0:
-                titolarita_desc_2627 = f"{presenze_2627}/{n_team_matches} Subentrato"
-            else:
-                titolarita_desc_2627 = f"0/{n_team_matches} Presenze"
-
-            # Aggiornamento dinamico percentuale di titolarità sul campo 2026/27:
-            if starts_2627 == n_team_matches and n_team_matches >= 2:
-                titolarita = max(titolarita, 0.88)
-                ovr += 1.2 if n_team_matches >= 3 else 0.8
-            elif starts_2627 >= 2 and presenze_2627 == n_team_matches:
-                titolarita = max(titolarita, 0.78)
-                ovr += 0.6
-            elif starts_2627 >= 1 and presenze_2627 == n_team_matches:
-                titolarita = max(titolarita, 0.65)
-                ovr += 0.3
-            elif starts_2627 == 0 and presenze_2627 > 0:
-                # Giocatore impiegato solo come subentrante
-                titolarita = min(titolarita, 0.50)
-
-            # Boost per impatto reale (gol, assist, clean sheet)
             if gol_2627 > 0:
                 ovr += min(2.5, gol_2627 * 0.5)
                 prezzo_cons = int(round(prezzo_cons + min(25, gol_2627 * 5)))
@@ -701,9 +694,8 @@ def run_master_pipeline():
                 ovr += min(1.0, clean_sheets_2627 * 0.5)
                 prezzo_cons = int(round(prezzo_cons + 3))
         else:
-            # Nessuna presenza nei match report: se doveva essere titolare nell'11, segnale di perdita del posto
-            if is_in_11 and n_team_matches >= 2:
-                titolarita = min(titolarita, 0.60)
+            # Nessuna presenza nei match report: se doveva essere titolare nell'11 e non è nuovo acquisto, segnale di perdita del posto
+            if is_in_11 and not is_new_arrival and n_team_matches >= 2:
                 ovr -= 0.6
 
         # Lookup Voti Ufficiali Fantacalcio.it 2026/27
@@ -831,10 +823,9 @@ def run_master_pipeline():
                     ovr += 0.4 * confidence
                 elif rating_fotmob_2627 < 6.20:
                     ovr -= 0.6 * confidence
-        elif n_team_matches >= 4 and presenze_2627 == 0 and not is_injured:
+        elif n_team_matches >= 4 and presenze_2627 == 0 and not is_injured and not is_new_arrival:
             # Calciatore integro ma mai impiegato dopo 5 giornate
             ovr -= 1.0
-            titolarita = min(titolarita, 0.45)
 
         # ---------------------------------------------------------------------
         # CALCOLO FRAGILITÀ FISICA & SEMAFORO (CON PESO SULL'OVERALL FINALE)

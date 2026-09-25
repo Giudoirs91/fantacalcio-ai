@@ -395,7 +395,7 @@ function renderPitchTeam(teamName) {
         let predAsta = `Puntare forte sui Top e sfruttare i giocatori OOP quotati C che giocano attaccanti.`;
         if (teamName === 'Bologna') {
             predAttacco = "Tridente ad alta propensione di bonus con ali molto offensive (Orsolini, Cambiaghi). Potenziale 50-55 gol.";
-            predDifesa = "Linea a 4 solida di Tedesco; Theate garanzia di rendimento e modificatore.";
+            predDifesa = "Linea a 4 solida di Palladino; Theate garanzia di rendimento e modificatore.";
             predAsta = "Priorità assoluta a Orsolini (1° Slot C). Ottima la coppia Piccoli-Dovbyk per chiudere l'attacco.";
         } else if (teamName === 'Atalanta') {
             predAttacco = "Attacco dominante di Sarri con elevato volume di tiri e inserimenti delle mezzali. Potenziale 65-72 gol.";
@@ -414,7 +414,7 @@ function renderPitchTeam(teamName) {
             predDifesa = "Linea alta e propositiva; Couto garanzia di bonus, Ramon e Chalobah affidabili.";
             predAsta = "Nico Paz Top 1 assoluto C (1° Slot d'oro); Kean/Douvikas ottimi 2° Slot A; Couto tra i migliori D.";
         } else if (teamName === 'Fiorentina') {
-            predAttacco = "Tridente dinamico di Grosso con Mastantuono e Goncalves ali d'alta qualità e Pellegrino/Beto centravanti. Potenziale 58-64 gol.";
+            predAttacco = "Tridente dinamico di Vanoli con Mastantuono e Goncalves ali d'alta qualità e Pellegrino/Beto centravanti. Potenziale 58-64 gol.";
             predDifesa = "De Gea leader esperto, Dragusin perno da modificatore.";
             predAsta = "Mastantuono (C rigorista) e Atta priorità; prendere la coppia Pellegrino-Beto per il centravanti titolare.";
         } else if (teamName === 'Frosinone') {

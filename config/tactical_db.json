@@ -271,7 +271,7 @@
   },
   "Bologna": {
     "modulo": "4-2-3-1",
-    "all": "Domenico Tedesco",
+    "all": "Raffaele Palladino",
     "rigoristi": [
       "Orsolini",
       "Dovbyk",
@@ -309,7 +309,7 @@
         "fpp_fpn": "FPP",
         "oop": true,
         "oop_type": "FPP_C_IN_A",
-        "oop_desc": "Quotato C ➜ Ala d'attacco tridente Tedesco & 1° Rigorista (100% Tit)"
+        "oop_desc": "Quotato C ➜ Ala d'attacco tridente Palladino & 1° Rigorista (100% Tit)"
       },
       {
         "name": "Cambiaghi",
@@ -1065,7 +1065,7 @@
   },
   "Fiorentina": {
     "modulo": "4-3-3",
-    "all": "Fabio Grosso",
+    "all": "Paolo Vanoli",
     "rigoristi": [
       "Mastantuono",
       "Pellegrino M.",
@@ -4718,6 +4718,7 @@
       "Ekkelenkamp"
     ],
     "punizioni": [
+      "Alaba",
       "Zaniolo",
       "Ekkelenkamp",
       "Vojvoda"
@@ -4774,9 +4775,14 @@
     ],
     "ballottaggi": [
       {
+        "player": "Alaba",
+        "pct": 75,
+        "vs": "Abankwah (25%)"
+      },
+      {
         "player": "Abankwah",
-        "pct": 55,
-        "vs": "Bertola (45%)"
+        "pct": 25,
+        "vs": "Alaba (75%)"
       },
       {
         "player": "Bertola",
@@ -4820,12 +4826,12 @@
       {
         "pos": "DC_S",
         "pos_label": "Braccetto SX",
-        "name": "Abankwah",
+        "name": "Alaba",
         "role": "D",
-        "sub_name": "Bertola",
+        "sub_name": "Abankwah",
         "sub_role": "D",
-        "status": "Titolare (55% vs Bertola 45%)",
-        "pct": 55,
+        "status": "Titolare (75% vs Abankwah 25%)",
+        "pct": 75,
         "fpp_fpn": "NONE",
         "oop": false
       },

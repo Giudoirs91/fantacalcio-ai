@@ -109,13 +109,13 @@ function getAIPredictionDetails(p) {
         predictionText = "Rating mostruoso di 7.37: abbina una fase difensiva impeccabile da 7 in pagella ad inserimenti puntuali con assist e conclusioni. Garanzia sia per il modificatore che per i bonus.";
         projectedBonus = "Candidato fermo al Club Rating ≥ 7.0";
     } else if (name === 'Piccoli') {
-        predictionText = "Perno centrale del tridente spregiudicato di Tedesco a Bologna. Con 0.35 xG90 riceve un volume altissimo di cross e palloni lavorabili: titolare economico da doppia cifra potenziale.";
+        predictionText = "Perno centrale del tridente spregiudicato di Palladino a Bologna. Con 0.35 xG90 riceve un volume altissimo di cross e palloni lavorabili: titolare economico da doppia cifra potenziale.";
         projectedBonus = "Proiezione: 10-13 Gol in Serie A";
     } else if (name.includes('Varela') && team === 'Monza') {
         predictionText = "Attaccante di grande dinamismo e strappi feroci agli ordini di Juric. Ha un xG90 sbalorditivo di 0.44 e 2 reti all'attivo: focalizza tutta la manovra offensiva brianzola.";
         projectedBonus = "Proiezione: 11-14 Gol";
     } else if (name === 'Bernardeschi') {
-        predictionText = "Schierato ala offensiva nel 4-3-3 di Tedesco con compiti di rifinitura e tiri da fuori. Statistiche avanzate da 0.22 xG90 e 0.17 xA90: a soli 8 CR è un furto d'asta legalizzato.";
+        predictionText = "Schierato ala offensiva nel 4-3-3 di Palladino con compiti di rifinitura e tiri da fuori. Statistiche avanzate da 0.22 xG90 e 0.17 xA90: a soli 8 CR è un furto d'asta legalizzato.";
         projectedBonus = "Proiezione: 6-8 Gol + 5-7 Assist";
     } else if (name === 'Milla') {
         predictionText = "Mezzala di inserimento arrembante nel Como spettacolare di Fabregas. 0.32 xG90 per un centrocampista centrale è un dato d'élite europea: segna e calcia costantemente.";

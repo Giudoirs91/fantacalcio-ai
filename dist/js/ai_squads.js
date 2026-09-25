@@ -54,8 +54,8 @@ const AI_SQUADS_DATA = [
         "archetype": "Mediana dei Sogni (489 CR) / Rigoristi & Tiratori Scelti / De Gea Low-Cost",
         "tagColor": "#a855f7",
         "badge": "🪄 MEDIANA DEI SOGNI (489 CR) + DE GEA LOW-COST",
-        "coachContext": "Como di <b>Fabregas</b> / Fiorentina di <b>Fabio Grosso</b>",
-        "gkStrategy": "🧤 <b>Blocco Low-Cost Fiorentina di Grosso (58 CR)</b>: Spesa reale d'asta: <b>De Gea (56 CR)</b> + <b>Christensen O. (1 CR)</b> + <b>Lezzerini (1 CR)</b>. Risparmiati oltre 80 crediti rispetto a Svilar per allestire il centrocampo più dominante della lega!",
+        "coachContext": "Como di <b>Fabregas</b> / Fiorentina di <b>Paolo Vanoli</b>",
+        "gkStrategy": "🧤 <b>Blocco Low-Cost Fiorentina di Vanoli (58 CR)</b>: Spesa reale d'asta: <b>De Gea (56 CR)</b> + <b>Christensen O. (1 CR)</b> + <b>Lezzerini (1 CR)</b>. Risparmiati oltre 80 crediti rispetto a Svilar per allestire il centrocampo più dominante della lega!",
         "starters": {
             "P": ["De Gea"],
             "D": ["Akanji", "Tavares N.", "Bellanova", "Valeri"],
@@ -176,7 +176,7 @@ const MANTRA_AI_SQUADS_DATA = [
         "archetype": "Porta Low-Cost (58 CR) + Bomber Malen (442 CR) + Trequarti d'Oro (190 CR)",
         "tagColor": "#a855f7",
         "badge": "🪄 MANTRA 4-2-3-1 • TREQUARTI ATOMICA (951 CR)",
-        "coachContext": "Como di <b>Fabregas</b> & Fiorentina di <b>Grosso</b>",
+        "coachContext": "Como di <b>Fabregas</b> & Fiorentina di <b>Vanoli</b>",
         "gkStrategy": "🧤 <b>Blocco Low-Cost Fiorentina (58 CR)</b>: De Gea (56 CR) + Christensen O. (1 CR) + Lezzerini (1 CR). Risparmio massimo per finanziare Malen e Nico Paz.",
         "starters": {
             "P": ["De Gea"],
@@ -201,7 +201,7 @@ const MANTRA_AI_SQUADS_DATA = [
         "tagColor": "#10b981",
         "badge": "🛡️ MANTRA 3-5-2 • FASCIA & COPPIA GOL (919 CR)",
         "coachContext": "Inter di <b>Chivu</b> & Atalanta di <b>Sarri</b>",
-        "gkStrategy": "🧤 <b>Blocco Viola di Grosso (58 CR)</b>: De Gea (56 CR) + Christensen O. (1 CR) + Lezzerini (1 CR).",
+        "gkStrategy": "🧤 <b>Blocco Viola di Vanoli (58 CR)</b>: De Gea (56 CR) + Christensen O. (1 CR) + Lezzerini (1 CR).",
         "starters": {
             "P": ["De Gea"],
             "D": ["Bremer", "Bastoni", "Hermoso"],

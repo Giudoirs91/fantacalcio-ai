@@ -3300,8 +3300,10 @@ function computeExpectedFantaMedia(player) {
     const presenze = has2627 ? player.presenze_2627 : (player.presenze || 1);
     const mv = has2627 ? (player.mv_2627 || 6.0) : (player.mv || 6.0);
     const realFm = has2627 ? (player.fm_2627 || mv) : (player.fm || mv);
-    if (player.xfm !== undefined && player.xfm !== null && player.delta_xfm !== undefined && player.delta_xfm !== null) {
-        return { xfm: Number(player.xfm), realFm: +Number(realFm).toFixed(2), delta: Number(player.delta_xfm), has2627 };
+    if (player.xfm !== undefined && player.xfm !== null) {
+        const xfm = Number(player.xfm);
+        const delta = +(Number(realFm) - xfm).toFixed(2);
+        return { xfm, realFm: +Number(realFm).toFixed(2), delta, has2627 };
     }
     let xg = 0, xa = 0, malus = 0;
     if (player.role === 'P') {

@@ -648,12 +648,13 @@ main {
     position: sticky;
     left: 0;
     z-index: 4;
-    background: #141720;
+    background: #0f1217;
     text-align: center;
     width: 48px;
     min-width: 48px;
     max-width: 48px;
     padding: 6px 3px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .main-auction-table th:nth-child(2),
@@ -661,12 +662,13 @@ main {
     position: sticky;
     left: 48px;
     z-index: 4;
-    background: #141720;
+    background: #0f1217;
     text-align: center;
     width: 32px;
     min-width: 32px;
     max-width: 32px;
     padding: 6px 3px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .main-auction-table th:nth-child(3),
@@ -674,10 +676,11 @@ main {
     position: sticky;
     left: 80px;
     z-index: 4;
-    background: #141720;
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
+    background: #0f1217;
+    border-right: 1px solid rgba(255, 255, 255, 0.09);
     min-width: 140px;
     padding: 6px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .main-auction-table thead th:first-child,
@@ -685,12 +688,19 @@ main {
 .main-auction-table thead th:nth-child(3) {
     z-index: 12;
     background: #11141a;
+    border-bottom: 2px solid var(--border-glass);
 }
 
-.main-auction-table tbody tr:hover td:first-child,
-.main-auction-table tbody tr:hover td:nth-child(2),
-.main-auction-table tbody tr:hover td:nth-child(3) {
-    background: #1c222e;
+.main-auction-table thead th:nth-child(3) {
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.main-auction-table tbody tr td {
+    background: #0f1217;
+}
+
+.main-auction-table tbody tr:hover td {
+    background: #181d26;
 }
 
 /* Tabella Rosa Squadra (Tab Campo & Singola Squadra) */
@@ -7065,6 +7075,23 @@ body.creator-mode-active .visitor-only-item {
 
 .main-auction-table.table-view-advanced .col-adv-stat {
     display: table-cell !important;
+}
+
+/* Switch tag AI: singolo compatto in Standard, tutti i tag posseduti in Avanzata */
+.main-auction-table .col-tag-advanced {
+    display: none !important;
+}
+
+.main-auction-table .col-tag-standard {
+    display: block !important;
+}
+
+.main-auction-table.table-view-advanced .col-tag-advanced {
+    display: flex !important;
+}
+
+.main-auction-table.table-view-advanced .col-tag-standard {
+    display: none !important;
 }
 
 .coming-soon-pill {

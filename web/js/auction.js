@@ -944,8 +944,13 @@ function renderTable() {
             const injIcon = p.is_injured ? `<span class="inj-indicator" title="${p.infortunio_motivo || 'Infortunato'} (Rientro: ${p.infortunio_rientro || 'TBD'})">🩹</span>` : '';
             const customBadge = p.is_custom_edited ? `<span class="mod-pill" title="Personalizzato">Mod</span>` : '';
 
-            // Smart Badge (Unified single badge)
-            const smartTagHtml = getSmartBadgeHtml(p);
+            // Smart Badge: visualizzazione standard (tag singolo compatto) vs avanzata (tutti i tag posseduti)
+            const singleSmartTag = getSmartBadgeHtml(p);
+            const multiSmartTags = getAllSmartBadgesHtml(p);
+            const smartTagHtml = `
+                <div class="col-tag-standard">${singleSmartTag}</div>
+                <div class="col-tag-advanced">${multiSmartTags}</div>
+            `;
 
             // Titolarità
             let titClass = 'tit-mid';
@@ -1135,6 +1140,73 @@ function initAuctionTableView() {
 
 window.setAuctionTableView = setAuctionTableView;
 window.initAuctionTableView = initAuctionTableView;
+
+function getAllSmartBadgesHtml(p) {
+    const badges = [];
+
+    // 1. Infortunio (se presente)
+    if (p.is_injured) {
+        badges.push(`<span class="smart-tag injured" title="Infortunato: ${p.infortunio_motivo || ''}">🩹 ${p.infortunio_rientro || 'Infortunato'}</span>`);
+    }
+
+    // 2. Rigorista
+    if (p.is_rigorista_1 || p.rigorista_val === '1° Rigorista') {
+        badges.push(`<span class="smart-tag penalty" title="1° Rigorista ufficiale">👑 1° Rigorista</span>`);
+    } else if (p.is_rigorista_2 || p.rigorista_val === '2° Rigorista') {
+        badges.push(`<span class="smart-tag penalty-sub" title="2° Rigorista">🎯 2° Rigorista</span>`);
+    }
+
+    // 3. Calci Piazzati (Punizioni o Corner)
+    if (p.is_punizioni && p.is_corner) {
+        badges.push(`<span class="smart-tag setpiece" title="Specialista Calci Piazzati (Corner & Punizioni)">📐 Corner & Puniz.</span>`);
+    } else if (p.is_punizioni) {
+        badges.push(`<span class="smart-tag setpiece" title="Specialista Punizioni">📐 Punizioni</span>`);
+    } else if (p.is_corner) {
+        badges.push(`<span class="smart-tag setpiece" title="Specialista Corner">📐 Corner</span>`);
+    }
+
+    // 4. OOP Mantra
+    const oopValStr = typeof p.oop_val === 'string' ? p.oop_val : (p.oop_val ? String(p.oop_val) : '');
+    if (oopValStr && oopValStr !== '-') {
+        const isGold = p.oop_tier === 'ORO' || oopValStr.includes('ORO');
+        const isSilver = p.oop_tier === 'ARGENTO' || oopValStr.includes('ARGENTO');
+        const tagType = isGold ? 'oop-gold' : (isSilver ? 'oop-silver' : 'oop-bronze');
+        const tierName = isGold ? 'Oro' : (isSilver ? 'Arg' : 'Bro');
+        badges.push(`<span class="smart-tag ${tagType}" title="${p.oop_desc || oopValStr}">💎 OOP ${tierName}</span>`);
+    }
+
+    // 5. Profilo Strategico AI & Advice Tag
+    const adviceType = p.ai_advice_type || 'regular';
+    const adviceText = p.ai_advice || p.consiglio || '';
+    
+    if (p.ovr >= 92 || p.slot_num === 1 || adviceType === 'top' || adviceText.toLowerCase().includes('top player') || adviceText.toLowerCase().includes('top di reparto')) {
+        badges.push(`<span class="smart-tag top" title="${adviceText || 'Top Player Assoluto'}">👑 Top Player</span>`);
+    } else if (adviceType === 'leader' || adviceText.toLowerCase().includes('leader')) {
+        badges.push(`<span class="smart-tag leader" title="${adviceText}">⭐ Leader</span>`);
+    } else if (adviceType === 'sleeper' || adviceText.toLowerCase().includes('sleeper')) {
+        badges.push(`<span class="smart-tag sleeper" title="${adviceText}">🔥 Sleeper</span>`);
+    } else if (adviceType === 'buy' || adviceText.toLowerCase().includes('best value')) {
+        badges.push(`<span class="smart-tag value" title="${adviceText}">🚀 Best Value</span>`);
+    } else if (adviceType === 'titolarissimo' || adviceText.toLowerCase().includes('titolarissimo')) {
+        badges.push(`<span class="smart-tag starter" title="${adviceText}">🔒 Titolarissimo</span>`);
+    } else if (adviceType === 'lowcost' || adviceText.toLowerCase().includes('low cost')) {
+        badges.push(`<span class="smart-tag lowcost" title="${adviceText}">🪙 Low Cost</span>`);
+    } else if (adviceType === 'rotation' || adviceText.toLowerCase().includes('ballottaggio')) {
+        badges.push(`<span class="smart-tag rotation" title="${adviceText}">🔄 Ballottaggio</span>`);
+    } else if (adviceType === 'flop' || (adviceType === 'danger' && adviceText.toLowerCase().includes('flop'))) {
+        badges.push(`<span class="smart-tag danger" title="${adviceText}">⚠️ Possibile Flop</span>`);
+    } else if (adviceText.includes('TOP DI VETRO') || adviceText.includes('COPERTURA')) {
+        badges.push(`<span class="smart-tag value" style="background:rgba(245,158,11,0.18);border-color:#f59e0b;color:#fbbf24;" title="${adviceText}">🛡️ Con Copertura</span>`);
+    } else if (adviceText) {
+        badges.push(`<span class="smart-tag regular">${adviceText}</span>`);
+    }
+
+    if (badges.length === 0) {
+        badges.push(`<span class="smart-tag regular">${p.slot_fascia || (p.slot_num ? p.slot_num + '° Slot' : '-')}</span>`);
+    }
+
+    return `<div class="smart-tags-multi-container" style="display:flex;flex-wrap:wrap;gap:4px;align-items:center;">${badges.join('')}</div>`;
+}
 
 function getSmartBadgeHtml(p) {
     if (p.is_injured) {

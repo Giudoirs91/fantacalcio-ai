@@ -299,6 +299,14 @@ def build_standalone_dashboard(sync_android=False):
                         <button type="button" class="auction-mode-toggle-btn" id="btnAuctionModeMantra" onclick="setAuctionTableMode('mantra')">💎 Mantra</button>
                     </div>
 
+                    <!-- Global Budget Switcher (1000, 500, Custom) -->
+                    <div class="auction-budget-switch-group" id="auctionBudgetSwitchContainer" title="Budget di Riferimento per Valutazioni & Prezzi Asta">
+                        <span class="budget-switch-label">Budget:</span>
+                        <button type="button" class="auction-budget-btn active" id="btnBudget1000" onclick="setGlobalBudget(1000)">1000</button>
+                        <button type="button" class="auction-budget-btn" id="btnBudget500" onclick="setGlobalBudget(500)">500</button>
+                        <button type="button" class="auction-budget-btn" id="btnBudgetCustom" onclick="promptCustomBudget()" title="Imposta budget personalizzato (es. 300, 600, 800)">⚙️</button>
+                    </div>
+
                     <div class="search-group" style="flex:1;min-width:200px;">
                         <input type="text" id="searchBox" class="clean-input-search" placeholder="🔍 Cerca calciatore, club o 'rigoristi'..." oninput="onSearchChange(this.value)">
                     </div>

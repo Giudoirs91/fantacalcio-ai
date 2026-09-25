@@ -460,7 +460,193 @@ window.toggleSeasonInjuryDetail = function(headerEl) {
     card.classList.toggle('expanded');
 };
 
+function generateAiStrengthsAndWeaknessesHtml(p) {
+    const strengths = [];
+    const weaknesses = [];
+
+    // Rigoristi & Piazzati
+    if (p.is_rigorista_1 || p.rigorista_val === '1° Rigorista') {
+        strengths.push('👑 <b>1° Rigorista Ufficiale</b>: Massima priorità dal dischetto nel club');
+    } else if (p.is_rigorista_2 || p.rigorista_val === '2° Rigorista') {
+        strengths.push('🎯 <b>2° Rigorista in Gerarchia</b>: Opportunità di bonus dagli undici metri');
+    }
+    if (p.is_punizioni || p.is_corner || (p.piazzati_val && p.piazzati_val !== '-')) {
+        strengths.push('📐 <b>Specialista Piazzati</b>: Incaricato di corner e punizioni dirette/indirette');
+    }
+
+    // Ruolo Specifico
+    if (p.role === 'P') {
+        const cs = p.clean_sheets_2627 !== undefined ? p.clean_sheets_2627 : (p.clean_sheets_2526 || 0);
+        if (cs >= 2 || (p.clean_sheets_2526 || 0) >= 8) {
+            strengths.push(`🧤 <b>Solidità Porta & Clean Sheet</b>: Già ${cs} gare a rete inviolata registrate`);
+        }
+        const savePct = p.save_pct_2627 || p.save_pct_2526 || 72;
+        if (savePct >= 74) {
+            strengths.push(`🧱 <b>Reattività tra i Pali</b>: Percentuale parate elevata (${savePct}%)`);
+        }
+        if ((p.goals_prevented_2627 || p.goals_prevented_2526 || 0) > 0.4) {
+            strengths.push(`⚡ <b>Gol Evitati (Post-Shot xG)</b>: Salva regolarmente il risultato oltre la media`);
+        }
+        if (p.rigori_parati_totali > 0 || (p.rp && p.rp > 0)) {
+            strengths.push(`🎯 <b>Specialista Para-Rigori</b>: Ottimo intuito sui penalty avversari`);
+        }
+        const mv = p.mv_2627 || p.mv || 6.0;
+        if (mv >= 6.3) {
+            strengths.push(`📈 <b>Media Voto Eccellente</b>: MV ${mv.toFixed(2)} tra le più alte del campionato`);
+        }
+
+        // Malus / Deboli Portiere
+        const pres = p.presenze_2627 || p.presenze || 1;
+        const gs = p.gol_subiti_2627 !== undefined ? p.gol_subiti_2627 : (p.gs || 0);
+        const gsPerGame = gs / pres;
+        if (gsPerGame >= 1.4) {
+            weaknesses.push(`⚠️ <b>Media Gol Subiti Elevata</b>: Concede circa ${gsPerGame.toFixed(1)} reti a partita`);
+        }
+        if (p.titolarita < 70 || p.coppia_tipo === 'RISERVA' || p.coppia_tipo === '2° PORTIERE') {
+            weaknesses.push(`🔄 <b>Ballottaggio di Reparto</b>: Staffetta aperta con ${p.coppia_nome || 'secondo portiere'}`);
+        }
+    } else if (p.role === 'D') {
+        const xg = p.xg_2627 || (p.xg90_2627 ? p.xg90_2627 * (p.minuti_2627 || 90) / 90 : 0);
+        if (xg >= 0.35 || (p.gol_2627 || 0) >= 1 || (p.gf || 0) >= 2) {
+            strengths.push('⚽ <b>Pericolosità da Bonus</b>: Inserimenti puntuali e stacco aereo da palla inattiva');
+        }
+        const xa = p.xa_2627 || (p.xa90_2627 ? p.xa90_2627 * (p.minuti_2627 || 90) / 90 : 0);
+        if (xa >= 0.25 || (p.assist_2627 || 0) >= 1 || (p.chances_created_2627 || 0) >= 4) {
+            strengths.push('🪄 <b>Corsia di Spinta & Assist</b>: Attivo nella rifinitura e cross dal fondo');
+        }
+        if ((p.recuperi_2627 || 0) >= 18) {
+            strengths.push(`🛡️ <b>Dominanza nei Duelli</b>: Già ${p.recuperi_2627} palloni recuperati con tackle puliti`);
+        }
+        const mv = p.mv_2627 || p.mv || 6.0;
+        if (mv >= 6.2) {
+            strengths.push(`💎 <b>Pilastro da Modificatore</b>: Media voto affidabile (${mv.toFixed(2)}) e sufficienze garantite`);
+        }
+
+        // Malus / Deboli Difensore
+        const amm = p.amm_2627 || 0;
+        if (amm >= 2 || (p.amm || 0) >= 7 || (p.esp_2627 || 0) > 0) {
+            weaknesses.push(`🟨 <b>Frequenza di Malus Cartellini</b>: Giocatore incline all'intervento falloso (${amm} ammonizioni)`);
+        }
+        if ((p.xg_2627 || 0) === 0 && (p.gol_2627 || 0) === 0 && (p.gf || 0) === 0 && (p.chances_created_2627 || 0) <= 1) {
+            weaknesses.push('🛡️ <b>Bassa Propensione Offensiva</b>: Difensore di contenimento, bonus pesanti rari');
+        }
+        if (p.titolarita < 70) {
+            weaknesses.push(`🔄 <b>Rotazioni nel Reparto</b>: Titolarità al ${p.titolarita}% con frequenti turnover`);
+        }
+    } else if (p.role === 'C') {
+        const xg = p.xg_2627 || (p.xg90_2627 ? p.xg90_2627 * (p.minuti_2627 || 90) / 90 : 0);
+        if (xg >= 0.7 || (p.gol_2627 || 0) >= 1 || (p.gf || 0) >= 4) {
+            strengths.push('⚡ <b>Incursore d\'Area di Rigore</b>: Tiro da fuori e inserimenti costanti a ridosso delle punte');
+        }
+        const chances = p.chances_created_2627 || p.key_passes_2627 || 0;
+        if (chances >= 6 || (p.assist_2627 || 0) >= 1 || (p.ass || 0) >= 4) {
+            strengths.push(`🪄 <b>Regia & Visione di Gioco</b>: Generatore di occasioni da rete (${chances} passaggi chiave)`);
+        }
+        if (p.oop_val && p.oop_val !== '-') {
+            strengths.push(`💎 <b>Giocatore Fuori Ruolo (OOP)</b>: Schierato avanzato rispetto alla posizione del listone`);
+        }
+        if (p.xfm && p.xfm >= 6.8) {
+            strengths.push(`🚀 <b>Expected FantaMedia d\'Élite</b>: xFM attesa pari a ${p.xfm} su base dati avanzati`);
+        }
+
+        // Malus / Deboli Centrocampista
+        if ((p.amm_2627 || 0) >= 2 || (p.amm || 0) >= 8) {
+            weaknesses.push(`🟨 <b>Pressione & Ammonizioni</b>: Gioco ruvido in mediana con costante rischio cartellino`);
+        }
+        if ((p.xfm || 0) < 6.2 && (p.gol_2627 || 0) === 0 && (p.gf || 0) <= 1) {
+            weaknesses.push('⏳ <b>Basso Volume di Bonus</b>: Mediano puro votato all\'equilibrio, fantamedia legata al solo voto base');
+        }
+        if (p.titolarita < 68) {
+            weaknesses.push(`🔄 <b>Concorrenza Serrata a Centrocampo</b>: Minutaggio soggetto a ballottaggi continui`);
+        }
+    } else if (p.role === 'A') {
+        const xg = p.xg_2627 || (p.xg90_2627 ? p.xg90_2627 * (p.minuti_2627 || 90) / 90 : 0);
+        if (xg >= 1.2 || (p.gol_2627 || 0) >= 2 || (p.gf || 0) >= 10) {
+            strengths.push('🎯 <b>Volume Tiri & xG da Bomber</b>: Terminale offensivo con alta frequenza di finalizzazione');
+        }
+        if ((p.tiri_porta_2627 || 0) >= 5 || (p.tiri_2627 || 0) >= 12) {
+            strengths.push('💥 <b>Costante Tiro verso lo Specchio</b>: Cerca con insistenza la porta avversaria');
+        }
+        if (p.ovr >= 86) {
+            strengths.push(`👑 <b>Top Player di Reparto</b>: OVR ${p.ovr}, trascinatore offensivo assoluto`);
+        }
+        if ((p.big_chances_created_2627 || 0) >= 2 || (p.assist_2627 || 0) >= 2) {
+            strengths.push('🤝 <b>Assistman & Raccordo</b>: Sa liberare i compagni davanti alla porta');
+        }
+
+        // Malus / Deboli Attaccante
+        if ((p.big_chance_missed_2627 || 0) >= 2) {
+            weaknesses.push(`❌ <b>Cinismo da Perfezionare</b>: ${p.big_chance_missed_2627} grandi occasioni fallite sotto porta`);
+        }
+        if (p.titolarita < 70) {
+            weaknesses.push(`🔄 <b>Alternanza in Attacco</b>: Subentro frequente a gara in corso o staffetta di reparto`);
+        }
+        if (p.diff_q !== undefined && p.diff_q < 0) {
+            weaknesses.push('📉 <b>Flessione di Quotazione</b>: Rendimento recente al di sotto delle aspettative');
+        }
+    }
+
+    // Integrità e status comune
+    if (p.titolarita >= 90) {
+        strengths.push(`🔒 <b>Inamovibile</b>: Garanzia di voto e presenza costante nello scacchiere titolare (${p.titolarita}%)`);
+    }
+    const disp = p.disponibilita_pct !== undefined ? p.disponibilita_pct : (100 - (p.fragility_score || 20));
+    if (disp >= 95) {
+        strengths.push('🟢 <b>Tenuta Atletica Impeccabile</b>: Nessuno stop muscolare significativo registrato');
+    } else if (p.fragility_score >= 55 || (p.partite_saltate_totali || 0) >= 5) {
+        weaknesses.push(`🩹 <b>Rischio Fragilità Fisica</b>: Storico di infortuni che ne condiziona la continuità (${p.fragility_tier || 'Attenzione'})`);
+    }
+
+    if (p.is_injured) {
+        weaknesses.push(`🔴 <b>Attualmente Indisponibile</b>: ${p.infortunio_motivo || 'Infortunio in corso'} (Rientro: ${p.infortunio_rientro || 'TBD'})`);
+    }
+
+    if (p.delta_xfm !== undefined && p.delta_xfm >= 0.65) {
+        weaknesses.push(`📈 <b>Possibile Regressione Statistica</b>: Ha raccolto più bonus rispetto al volume di gioco (delta +${p.delta_xfm.toFixed(2)})`);
+    } else if (p.delta_xfm !== undefined && p.delta_xfm <= -0.45) {
+        strengths.push(`💎 <b>Occasione Sottovalutata</b>: Volume di gioco superiore ai bonus raccolti (delta ${p.delta_xfm.toFixed(2)}), bonus imminenti`);
+    }
+
+    // Fallback eleganti se una lista è vuota
+    if (strengths.length === 0) {
+        strengths.push('⭐ Calciatore con rendimento regolare e buona collocazione nello scacchiere della squadra');
+    }
+    if (weaknesses.length === 0) {
+        weaknesses.push('⚖️ Profilo equilibrato: nessun punto debole strutturale evidente nei dati storici');
+    }
+
+    return `
+        <div class="ai-strengths-weaknesses-container">
+            <div class="ai-sw-card strengths">
+                <div class="ai-sw-header">
+                    <span class="sw-badge-icon">🟢</span>
+                    <div class="sw-header-title">
+                        <b>Punti di Forza Algoritmici (AI)</b>
+                        <small>Analisi predittiva su metriche reali</small>
+                    </div>
+                </div>
+                <ul class="ai-sw-list">
+                    ${strengths.slice(0, 4).map(s => `<li>${s}</li>`).join('')}
+                </ul>
+            </div>
+            <div class="ai-sw-card weaknesses">
+                <div class="ai-sw-header">
+                    <span class="sw-badge-icon">🔴</span>
+                    <div class="sw-header-title">
+                        <b>Punti Deboli & Rischi Asta (AI)</b>
+                        <small>Fattori di rischio e criticità</small>
+                    </div>
+                </div>
+                <ul class="ai-sw-list">
+                    ${weaknesses.slice(0, 4).map(w => `<li>${w}</li>`).join('')}
+                </ul>
+            </div>
+        </div>
+    `;
+}
+
 function openPlayerProfileModal(playerId) {
+    window._currentOpenPlayerId = playerId;
     const p = PLAYERS.find(pl => pl.id === playerId);
     if (!p) return;
 
@@ -620,6 +806,136 @@ function openPlayerProfileModal(playerId) {
     const maxPlayedRound = votiList.length > 0 ? Math.max(...votiList.map(v => v.giornata)) : 0;
     const sufficiencyCount = validVoti.filter(v => v.voto >= 6.0).length;
     const sufficiencyPct = validVoti.length > 0 ? Math.round((sufficiencyCount / validVoti.length) * 100) : 0;
+
+    // ==========================================
+    // BUDGET DINAMICO & PREZZI SCALATI (1000, 500, Custom)
+    // ==========================================
+    const curBudgetTotal = (typeof State !== 'undefined' && State.budgetTotal) ? State.budgetTotal : 1000;
+    const curRatio = (typeof getGlobalBudgetRatio === 'function') ? getGlobalBudgetRatio() : (curBudgetTotal / 1000);
+    const scaledPrice = Math.max(1, Math.round((p.prezzo_cons || 1) * curRatio));
+    const scaledMaxBid = Math.max(1, Math.round((p.max_bid || p.prezzo_cons || 1) * curRatio));
+    const scaledFvm = (p.fvm !== undefined && p.fvm !== null) ? Math.max(1, Math.round(p.fvm * curRatio)) : '-';
+    const budgetPct = (((p.prezzo_cons || 1) / 1000) * 100).toFixed(1);
+    const stealLimit = Math.max(1, Math.round(scaledPrice * 0.75));
+    const fairPriceMin = Math.max(1, Math.round(scaledPrice * 0.85));
+
+    // ==========================================
+    // 3 QUICK GAUGES (Titolarità, Affidabilità Voto, Integrità Fisica)
+    // ==========================================
+    const titVal = Math.min(100, Math.max(0, p.titolarita !== undefined ? p.titolarita : 50));
+    const suffPct = validVoti.length > 0 ? sufficiencyPct : (p.rating_2526 ? Math.min(95, Math.round(p.rating_2526 * 12)) : 75);
+    const integritaVal = Math.min(100, Math.max(0, p.disponibilita_pct !== undefined && p.disponibilita_pct !== null ? Math.round(p.disponibilita_pct) : Math.round(100 - (p.fragility_score || 20))));
+
+    let dispColor = '#10b981';
+    if (integritaVal < 75) dispColor = '#ef4444';
+    else if (integritaVal < 88) dispColor = '#f59e0b';
+
+    let affColor = '#38bdf8';
+    if (suffPct >= 75) affColor = '#34d399';
+    else if (suffPct < 55) affColor = '#f59e0b';
+
+    const quickGaugesHtml = `
+        <div class="profile-quick-gauges-bar">
+            <div class="quick-gauge-item">
+                <div class="gauge-header">
+                    <span class="gauge-lbl">Titolarità</span>
+                    <b class="gauge-val" style="color:${titColor};">${titVal}%</b>
+                </div>
+                <div class="gauge-track"><div class="gauge-fill" style="width:${titVal}%;background:${titColor};"></div></div>
+                <span class="gauge-sub">${p.titolarita_desc_2627 || (p.is_in_11 ? '11 Titolare' : (titVal >= 70 ? 'Titolare' : 'Rotazione'))}</span>
+            </div>
+            <div class="quick-gauge-item">
+                <div class="gauge-header">
+                    <span class="gauge-lbl">Affidabilità Voto</span>
+                    <b class="gauge-val" style="color:${affColor};">${suffPct}%</b>
+                </div>
+                <div class="gauge-track"><div class="gauge-fill" style="width:${suffPct}%;background:${affColor};"></div></div>
+                <span class="gauge-sub">${validVoti.length > 0 ? `${sufficiencyCount}/${validVoti.length} gare sufficienza` : 'Stabilità media voto'}</span>
+            </div>
+            <div class="quick-gauge-item">
+                <div class="gauge-header">
+                    <span class="gauge-lbl">Integrità Fisica</span>
+                    <b class="gauge-val" style="color:${dispColor};">${integritaVal}%</b>
+                </div>
+                <div class="gauge-track"><div class="gauge-fill" style="width:${integritaVal}%;background:${dispColor};"></div></div>
+                <span class="gauge-sub">${p.partite_saltate_totali !== undefined ? `${p.partite_saltate_totali} gare perse storiche` : (p.is_injured ? 'Infortunato' : 'Tenuta solida')}</span>
+            </div>
+        </div>
+    `;
+
+    // ==========================================
+    // PUNTI DI FORZA & PUNTI DEBOLI AI
+    // ==========================================
+    const aiStrengthsWeaknessesHtml = generateAiStrengthsAndWeaknessesHtml(p);
+
+    // ==========================================
+    // ROADMAP FASCE D'ASTA DINAMICA
+    // ==========================================
+    const auctionRoadmapHtml = `
+        <div class="profile-auction-roadmap">
+            <div class="roadmap-header">
+                <div style="display:flex;align-items:center;gap:6px;">
+                    <span style="font-size:15px;">🏷️</span>
+                    <b style="color:#fff;font-size:12px;">Strategia & Fasce d'Asta AI (su ${curBudgetTotal} CR)</b>
+                </div>
+                <span class="roadmap-meta-budget">Prezzo Equo: <b style="color:#fbbf24;">${scaledPrice} CR</b> (<b>${budgetPct}%</b> budget)</span>
+            </div>
+            <div class="roadmap-grid">
+                <div class="roadmap-box steal">
+                    <div class="r-badge">🟢 AFFARE (STEAL)</div>
+                    <b class="r-range">&lt; ${stealLimit} CR</b>
+                    <span class="r-desc">Acquisto super conveniente: rendimento sul capitale garantito</span>
+                </div>
+                <div class="roadmap-box fair">
+                    <div class="r-badge">🟡 PREZZO EQUO</div>
+                    <b class="r-range">${fairPriceMin} - ${scaledPrice} CR</b>
+                    <span class="r-desc">Puntata sostenibile: riflette il valore reale atteso sul campo</span>
+                </div>
+                <div class="roadmap-box overpay">
+                    <div class="r-badge">🔴 ALLARME OVERPAY</div>
+                    <b class="r-range">&gt; ${scaledMaxBid} CR</b>
+                    <span class="r-desc">Oltre questa soglia il rischio di pagare in eccesso è troppo alto</span>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // ==========================================
+    // TANDEM / COPPIA DI REPARTO (SE ESISTE)
+    // ==========================================
+    let tandemCardHtml = '';
+    if (p.coppia_nome && p.coppia_nome !== '-') {
+        const partner = PLAYERS.find(pl => (pl.name && pl.name.toLowerCase() === p.coppia_nome.toLowerCase()) || (p.coppia_id && pl.id === p.coppia_id));
+        const partnerScaled = partner ? Math.max(1, Math.round((partner.prezzo_cons || 1) * curRatio)) : Math.max(1, Math.round(10 * curRatio));
+        const combined = scaledPrice + partnerScaled;
+        const combinedPct = ((((p.prezzo_cons || 1) + (partner ? (partner.prezzo_cons || 1) : 10)) / 1000) * 100).toFixed(1);
+        const pClick = partner ? `onclick="openPlayerProfileModal(${partner.id})" style="cursor:pointer;"` : '';
+        tandemCardHtml = `
+            <div class="profile-tandem-card">
+                <div class="tandem-card-header">
+                    <div style="display:flex;align-items:center;gap:6px;">
+                        <span style="font-size:16px;">🧤</span>
+                        <b style="color:#fff;font-size:12.5px;">Tandem di Reparto ${p.team} (Copertura Asta)</b>
+                    </div>
+                    <span class="tandem-budget-chip">Spesa Tandem: <b>${combined} CR</b> (${combinedPct}% budget)</span>
+                </div>
+                <div class="tandem-players-row">
+                    <div class="tandem-player-chip active">
+                        <span class="t-role">${p.role}</span>
+                        <span class="t-name"><b>${p.name}</b> (${p.titolarita}% tit)</span>
+                        <span class="t-price">${scaledPrice} CR</span>
+                    </div>
+                    <span class="tandem-plus">+</span>
+                    <div class="tandem-player-chip partner" ${pClick} title="Apri scheda di ${p.coppia_nome}">
+                        <span class="t-role">${partner ? partner.role : p.role}</span>
+                        <span class="t-name"><b>${p.coppia_nome}</b> ${partner ? `(${partner.titolarita}% tit)` : ''} ↗</span>
+                        <span class="t-price">${partnerScaled} CR</span>
+                    </div>
+                </div>
+                <div class="tandem-advice-sub">${p.coppia_dettaglio || (p.role === 'P' ? 'Acquisto tandem raccomandato per blindare la porta senza incorrere in turni scoperti.' : 'Coppia di ballottaggio: acquisto combinato per assicurarsi il voto a ogni giornata.')}</div>
+            </div>
+        `;
+    }
 
     // SVG Chart Geometry
     const svgW = 760;
@@ -861,6 +1177,9 @@ function openPlayerProfileModal(playerId) {
 
     const tabOverviewHtml = `
         <div id="profileTabPane_overview" class="profile-tab-pane" style="display:block;">
+            <!-- 3 Pill Bar Gauges (Titolarità, Affidabilità Voto, Integrità Fisica) -->
+            ${quickGaugesHtml}
+
             <!-- Live Season Summary Bar -->
             <div class="profile-season-summary-bar">
                 <div class="profile-season-header-row">
@@ -900,6 +1219,15 @@ function openPlayerProfileModal(playerId) {
 
             <!-- Regression Alert Banner -->
             ${xfmAlertHtml}
+
+            <!-- AI Strengths & Weaknesses (100% Free & Transparent) -->
+            ${aiStrengthsWeaknessesHtml}
+
+            <!-- Strategic Auction Roadmap -->
+            ${auctionRoadmapHtml}
+
+            <!-- Tandem / Coppia Card (if applicable) -->
+            ${tandemCardHtml}
 
             <!-- 38-ROUND SEASON PERFORMANCE HUB -->
             <div class="profile-andamento-container">
@@ -1298,16 +1626,21 @@ function openPlayerProfileModal(playerId) {
                     </div>
 
                     <div class="profile-hero-metric-card card-price">
-                        <span class="hero-card-label">PREZZO CONS.</span>
-                        <div class="hero-card-value price-text">${p.prezzo_cons} <span style="font-size:11px;color:rgba(255,255,255,0.6);">CR</span></div>
-                        <span class="hero-card-sub" style="color:#f43f5e;">Max: <b>${p.max_bid} CR</b></span>
+                        <span class="hero-card-label">PREZZO (${curBudgetTotal} CR)</span>
+                        <div class="hero-card-value price-text">${scaledPrice} <span style="font-size:11px;color:rgba(255,255,255,0.6);">CR</span></div>
+                        <span class="hero-card-sub" style="color:#fbbf24;">🎯 <b>${budgetPct}%</b> budget</span>
                     </div>
                 </div>
 
                 <div class="profile-hero-sub-strip">
                     <div class="sub-stat-chip">
-                        <span class="sub-stat-lbl">FVM:</span>
-                        <b class="sub-stat-val text-cyan">${p.fvm !== undefined && p.fvm !== null ? p.fvm : '-'} CR</b>
+                        <span class="sub-stat-lbl">FVM (${curBudgetTotal} CR):</span>
+                        <b class="sub-stat-val text-cyan">${scaledFvm} CR</b>
+                    </div>
+                    <span class="sub-stat-dot">•</span>
+                    <div class="sub-stat-chip">
+                        <span class="sub-stat-lbl">Max Rilancio:</span>
+                        <b class="sub-stat-val" style="color:#f43f5e;">${scaledMaxBid} CR</b>
                     </div>
                     <span class="sub-stat-dot">•</span>
                     <div class="sub-stat-chip">

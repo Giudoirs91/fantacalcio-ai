@@ -103,6 +103,10 @@ function updateBudgetUI() {
         renderHeaderLeaguesDropdown();
     }
 
+    if (typeof syncBudgetButtonsUI === 'function') {
+        syncBudgetButtonsUI();
+    }
+
     renderSidebarRoster();
 }
 
@@ -1028,6 +1032,13 @@ function renderTable() {
                 ? `<span class="stat-live cards" style="font-size:11px;font-weight:700;">${ammVal ? ammVal+'🟨' : ''}${espVal ? ' '+espVal+'🟥' : ''}</span>`
                 : `<span class="dim-dash">-</span>`;
 
+            // FVM Scalato su budget dinamico (1000, 500, Custom)
+            const bRatio = (typeof getGlobalBudgetRatio === 'function') ? getGlobalBudgetRatio() : ((typeof State !== 'undefined' && State.budgetTotal ? State.budgetTotal : 1000) / 1000);
+            const currentB = (typeof State !== 'undefined' && State.budgetTotal) ? State.budgetTotal : 1000;
+            const scaledFvm = (p.fvm !== undefined && p.fvm !== null) ? Math.max(1, Math.round(p.fvm * bRatio)) : '-';
+            const fvmPct = (p.fvm !== undefined && p.fvm !== null) ? (((p.fvm || 0) / 1000) * 100).toFixed(1) : null;
+            const fvmTip = fvmPct !== null ? `FVM: ${scaledFvm} CR (${fvmPct}% del budget su ${currentB} CR)` : 'FVM non disponibile';
+
             tr.innerHTML = `
                 <td style="text-align:center;"><span class="ovr-pill ${ovrTierClass}">${p.ovr}</span></td>
                 <td style="text-align:center;">${roleCellHtml}</td>
@@ -1041,7 +1052,7 @@ function renderTable() {
                     </div>
                 </td>
                 <td><span class="team-cell">${p.team}</span></td>
-                <td style="text-align:center;"><span class="price-pill">${p.fvm !== undefined && p.fvm !== null ? p.fvm : '-'}</span></td>
+                <td style="text-align:center;"><span class="price-pill" title="${fvmTip}">${scaledFvm}</span></td>
                 <td style="text-align:center;"><span class="qta-val">${p.qta !== undefined && p.qta !== null ? p.qta : '-'}</span></td>
                 <td>${smartTagHtml}</td>
                 <td style="text-align:center;">${titHtml}</td>

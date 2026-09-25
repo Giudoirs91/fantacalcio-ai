@@ -1104,3 +1104,66 @@ function clearStorageState() {
         localStorage.removeItem(STORAGE_KEY);
     } catch (e) {}
 }
+
+// ==============================================================================
+// GESTIONE BUDGET GLOBALE DINAMICO (500, 1000 o Custom con ricalcolo immediato)
+// ==============================================================================
+function getGlobalBudgetRatio() {
+    return (Number(State.budgetTotal) || 1000) / 1000;
+}
+
+function getScaledPlayerPrice(basePrice1000) {
+    if (basePrice1000 === null || basePrice1000 === undefined || isNaN(basePrice1000)) return 1;
+    const ratio = getGlobalBudgetRatio();
+    return Math.max(1, Math.round(Number(basePrice1000) * ratio));
+}
+
+function getBudgetPercentage(basePrice1000) {
+    if (basePrice1000 === null || basePrice1000 === undefined || isNaN(basePrice1000)) return '0.0';
+    return (((Number(basePrice1000) || 1) / 1000) * 100).toFixed(1);
+}
+
+function setGlobalBudget(newBudget) {
+    const parsed = Math.max(50, Math.min(10000, parseInt(newBudget, 10) || 1000));
+    State.budgetTotal = parsed;
+    saveStateToStorage();
+    syncBudgetButtonsUI();
+    if (typeof updateBudgetUI === 'function') updateBudgetUI();
+    if (typeof renderTable === 'function') renderTable();
+    if (typeof updateAllViews === 'function') updateAllViews();
+
+    // Se il modale calciatore è aperto, ricaricalo con i prezzi scalati
+    const modal = document.getElementById('playerDetailModal');
+    if (modal && modal.classList.contains('active') && window._currentOpenPlayerId && typeof openPlayerProfileModal === 'function') {
+        openPlayerProfileModal(window._currentOpenPlayerId);
+    }
+}
+
+function promptCustomBudget() {
+    const cur = State.budgetTotal || 1000;
+    const val = prompt(`Imposta il Budget Iniziale della tua lega in crediti (es. 300, 500, 600, 800, 1000, 2000):`, cur);
+    if (val !== null) {
+        const parsed = parseInt(val.trim(), 10);
+        if (!isNaN(parsed) && parsed >= 50 && parsed <= 10000) {
+            setGlobalBudget(parsed);
+        } else {
+            alert('Inserisci un valore numerico valido tra 50 e 10.000 crediti.');
+        }
+    }
+}
+
+function syncBudgetButtonsUI() {
+    const cur = State.budgetTotal || 1000;
+    const btn1000 = document.getElementById('btnBudget1000');
+    const btn500 = document.getElementById('btnBudget500');
+    const btnCust = document.getElementById('btnBudgetCustom');
+
+    if (btn1000) btn1000.classList.toggle('active', cur === 1000);
+    if (btn500) btn500.classList.toggle('active', cur === 500);
+    if (btnCust) {
+        const isCustom = (cur !== 1000 && cur !== 500);
+        btnCust.classList.toggle('active', isCustom);
+        btnCust.innerHTML = isCustom ? `⚙️ ${cur}` : `⚙️ Custom`;
+        btnCust.title = isCustom ? `Budget personalizzato attivo: ${cur} CR (clicca per modificare)` : `Imposta un budget personalizzato`;
+    }
+}

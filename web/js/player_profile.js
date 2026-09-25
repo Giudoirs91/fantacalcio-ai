@@ -672,9 +672,19 @@ function generateAiStrengthsAndWeaknessesHtml(p) {
 }
 
 function openPlayerProfileModal(playerId) {
+    if (!playerId && playerId !== 0) return;
     window._currentOpenPlayerId = playerId;
-    const p = PLAYERS.find(pl => pl.id === playerId);
-    if (!p) return;
+    const targetId = typeof playerId === 'object' && playerId !== null ? (playerId.id || playerId.cod) : playerId;
+    const p = (typeof PLAYERS !== 'undefined' ? PLAYERS : []).find(pl => 
+        pl.id === targetId || 
+        String(pl.id) === String(targetId) || 
+        (pl.cod && String(pl.cod) === String(targetId)) ||
+        (pl.name && String(pl.name).toLowerCase() === String(targetId).toLowerCase())
+    );
+    if (!p) {
+        console.warn('Player not found for modal:', playerId);
+        return;
+    }
 
     const modal = document.getElementById('playerDetailModal');
     const modalBody = document.getElementById('playerDetailModalBody');
@@ -965,6 +975,7 @@ function openPlayerProfileModal(playerId) {
         const partnerScaled = partner ? Math.max(1, Math.round((partner.prezzo_cons || 1) * curRatio)) : Math.max(1, Math.round(10 * curRatio));
         const combined = scaledPrice + partnerScaled;
         const combinedPct = ((((p.prezzo_cons || 1) + (partner ? (partner.prezzo_cons || 1) : 10)) / 1000) * 100).toFixed(1);
+        const pClick = partner ? `onclick="openPlayerProfileModal(${partner.id})" style="cursor:pointer;"` : (p.coppia_id ? `onclick="openPlayerProfileModal(${p.coppia_id})" style="cursor:pointer;"` : '');
         let adviceText = '';
         let tandemTitle = '';
         if (p.role === 'P') {
@@ -1696,7 +1707,7 @@ function openPlayerProfileModal(playerId) {
                 <div class="profile-hero-triple-cards">
                     <div class="profile-hero-metric-card card-ovr">
                         <span class="hero-card-label">OVR RATING</span>
-                        <div class="hero-card-value ovr-text ${getOvrClass(p.ovr)}">${p.ovr}</div>
+                        <div class="hero-card-value ovr-text ${typeof getOvrClass === 'function' ? getOvrClass(p.ovr) : ''}">${p.ovr}</div>
                         <span class="hero-card-sub">${p.ovr >= 90 ? 'Top Assoluto' : (p.ovr >= 82 ? 'Titolare Top' : 'Rotazione')}</span>
                     </div>
 

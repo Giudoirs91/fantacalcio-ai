@@ -1261,7 +1261,7 @@ function openPlayerProfileModal(playerId) {
                         <h1 class="profile-player-name">${p.name}</h1>
                         <div class="profile-title-actions">
                             <button class="sb-star-toggle ${isFav ? 'active' : ''}" onclick="toggleFavorite(${p.id}); openPlayerProfileModal(${p.id});" title="Aggiungi ai Preferiti">${isFav ? '⭐' : '☆'}</button>
-                            <button onclick="openEditPlayerModal(${p.id})" title="Personalizza" class="btn-player-edit">✏️</button>
+                            <button onclick="openEditPlayerModal(${p.id})" title="Personalizza (Solo Admin)" class="btn-player-edit creator-only-control">✏️</button>
                         </div>
                     </div>
                     <div class="profile-player-meta">

@@ -426,9 +426,99 @@ function getPlayerAuctionCost(player) {
     return player.prezzo_cons || 1;
 }
 
+window._showAiSquadsCreatorPreview = false;
+function toggleCreatorAiSquadsPreview() {
+    window._showAiSquadsCreatorPreview = !window._showAiSquadsCreatorPreview;
+    renderAiSquadsTab();
+}
+
 function renderAiSquadsTab() {
     const container = document.getElementById('viewAiSquads');
     if (!container) return;
+
+    const isCreator = (typeof isCreatorModeActive === 'function' && isCreatorModeActive());
+
+    // LOCK SCHERMATA: Pagina 5 Squadre Perfette chiusa per riaddestramento algoritmo
+    if (!isCreator || !window._showAiSquadsCreatorPreview) {
+        let adminBannerHtml = '';
+        if (isCreator) {
+            adminBannerHtml = `
+                <div style="width: 100%; max-width: 900px; margin: 0 auto 16px auto; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.5); padding: 12px 18px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                    <div style="color: #fbbf24; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                        <span>👑</span> <span><b>Accesso Creatore:</b> Questa pagina è attualmente <u>chiusa e protetta</u> per tutti i visitatori.</span>
+                    </div>
+                    <button onclick="toggleCreatorAiSquadsPreview()" class="btn-action" style="font-size: 12px; font-weight: 800; background: rgba(245, 158, 11, 0.25); border-color: #fbbf24; color: #fff; cursor: pointer; padding: 6px 14px; border-radius: 6px;">
+                        🔓 Apri Anteprima Debug (Solo Admin)
+                    </button>
+                </div>
+            `;
+        }
+
+        container.innerHTML = `
+            ${adminBannerHtml}
+            <div style="width: 100%; max-width: 900px; margin: 20px auto; padding: 42px 28px; background: rgba(18, 24, 38, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(139, 92, 246, 0.35); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 35px rgba(139, 92, 246, 0.15); text-align: center;">
+                
+                <!-- Lock Animated Icon -->
+                <div style="width: 88px; height: 88px; margin: 0 auto 22px; border-radius: 50%; background: linear-gradient(135deg, rgba(239,68,68,0.2) 0%, rgba(139,92,246,0.25) 100%); border: 2px solid rgba(239,68,68,0.5); display: flex; align-items: center; justify-content: center; font-size: 40px; box-shadow: 0 0 35px rgba(239,68,68,0.3);">
+                    🔒
+                </div>
+
+                <!-- Status Badge -->
+                <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.35); color: #fca5a5; font-size: 12px; font-weight: 800; padding: 5px 16px; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px;">
+                    <span style="font-size: 14px;">⚙️</span> Modulo Temporaneamente Chiuso
+                </div>
+
+                <!-- Title & Subtitle -->
+                <h2 style="font-size: 26px; font-weight: 900; color: #fff; margin: 0 0 12px 0; font-family: 'Outfit', sans-serif;">
+                    5 Squadre Perfette AI — In Fase di Ricalibrazione
+                </h2>
+                <p style="font-size: 15px; color: var(--text-secondary); max-width: 720px; margin: 0 auto 30px; line-height: 1.6;">
+                    L'algoritmo predittivo per la generazione simultanea di 5 rose bilanciate è attualmente in fase di riaddestramento. Per garantire ai fantallenatori solo formazioni scientificamente ineccepibili e sostenibili al 100% di budget, la visualizzazione pubblica rimarrà bloccata fino al completamento del nuovo modello matematico.
+                </p>
+
+                <!-- 3 Cards: Trasparenza & Roadmap -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-bottom: 34px; text-align: left;">
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">🔬</div>
+                        <div style="font-size: 14px; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">Perché è Chiuso</div>
+                        <div style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.55;">
+                            I vincoli incrociati di budget reale (1000 CR) e titolarità garantita su 5 formazioni richiedono un nuovo solutore per evitare dispersioni o squilibri di reparto.
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">🧠</div>
+                        <div style="font-size: 14px; font-weight: 800; color: #c084fc; margin-bottom: 6px;">Addestramento in Corso</div>
+                        <div style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.55;">
+                            Sviluppo di un algoritmo genetico pesato su xG, xA, fragilità fisica e incroci calendario per produrre rose senza sovrapposizioni e con copertura 38/38.
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">⚡</div>
+                        <div style="font-size: 14px; font-weight: 800; color: #4ade80; margin-bottom: 6px;">Cosa Puoi Usare Oggi</div>
+                        <div style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.55;">
+                            Tutte le metriche predittive (xFM, OVR, consigli di giornata, griglia portieri e probabili formazioni 2D) sono attive al 100% per guidare le tue decisioni.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation CTAs -->
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                    <button onclick="switchTab('matchday_advice')" class="btn-clean-action" style="padding: 12px 20px; font-size: 13.5px; font-weight: 800; background: linear-gradient(135deg, rgba(0,242,254,0.2) 0%, rgba(56,189,248,0.3) 100%); border: 1px solid var(--accent-cyan); color: #fff; cursor: pointer; border-radius: 10px; transition: transform 0.2s;">
+                        🎯 Chi Schierare (Consigli Formazione)
+                    </button>
+                    <button onclick="switchTab('auction')" class="btn-clean-action" style="padding: 12px 20px; font-size: 13.5px; font-weight: 800; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #fff; cursor: pointer; border-radius: 10px;">
+                        📋 Tabellone Statistiche & xFM
+                    </button>
+                    <button onclick="switchTab('pitch')" class="btn-clean-action" style="padding: 12px 20px; font-size: 13.5px; font-weight: 800; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #fff; cursor: pointer; border-radius: 10px;">
+                        ⚽ Campo 2D & Schemi Club
+                    </button>
+                </div>
+            </div>
+        `;
+        return;
+    }
 
     if (typeof PLAYERS === 'undefined' || !PLAYERS.length) {
         container.innerHTML = `<div style="padding:40px;text-align:center;color:var(--text-muted);">Caricamento dati calciatori in corso...</div>`;
@@ -809,6 +899,20 @@ function renderAiSquadsTab() {
 
         </div>
     `;
+
+    if (isCreator && window._showAiSquadsCreatorPreview) {
+        const adminBar = document.createElement('div');
+        adminBar.style.cssText = "width: 100%; max-width: 1200px; margin: 0 auto 16px auto; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.5); padding: 12px 18px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;";
+        adminBar.innerHTML = `
+            <div style="color: #fbbf24; font-size: 13px; font-weight: 700; display:flex; align-items:center; gap:8px;">
+                <span>👑</span> <span><b>Anteprima Debug Attiva</b> (Visibile solo all'Admin). La pagina è CHIUSA per tutti i visitatori.</span>
+            </div>
+            <button onclick="toggleCreatorAiSquadsPreview()" class="btn-action" style="font-size: 12px; font-weight: 800; background: rgba(239, 68, 68, 0.25); border-color: #ef4444; color: #fff; cursor: pointer; padding: 6px 14px; border-radius: 6px;">
+                🔒 Richiudi Pagina
+            </button>
+        `;
+        container.insertBefore(adminBar, container.firstChild);
+    }
 }
 
 // ==============================================================================
@@ -1208,6 +1312,7 @@ function loadAiSquadToBuilder(squadId) {
 
 window.renderAiSquads = renderAiSquadsTab;
 window.renderAiSquadsTab = renderAiSquadsTab;
+window.toggleCreatorAiSquadsPreview = toggleCreatorAiSquadsPreview;
 window.openAiSquadReplaceModal = openAiSquadReplaceModal;
 window.closeAiSquadReplaceModal = closeAiSquadReplaceModal;
 window.onAiReplaceSearch = onAiReplaceSearch;

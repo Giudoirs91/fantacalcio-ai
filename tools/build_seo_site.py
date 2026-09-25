@@ -2724,8 +2724,8 @@ def build_all():
         {
             "route": "top-11-ai",
             "tab": "ai_squads",
-            "title": "Top 11 AI & 5 Squadre Perfette Fantacalcio | Fanta Master AI",
-            "desc": "Le formazioni ideali generate dall'algoritmo predittivo per ogni budget e strategia d'asta: Top Player, Low Cost, Equilibrata, Giovani Talenti.",
+            "title": "5 Squadre Perfette AI (In Ricalibrazione Algoritmica) | Fanta Master AI",
+            "desc": "Modulo di generazione 5 rose ideali in fase di riaddestramento. Consulta i consigli di giornata, il tabellone e le statistiche predittive Fanta Master AI.",
             "keywords": "top 11 fantacalcio, squadra ideale fantacalcio, 5 squadre perfette ai, consigli asta fantacalcio"
         },
         {

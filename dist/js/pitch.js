@@ -766,7 +766,7 @@ function renderTeamRosterTable(teamName) {
                 <td style="min-width:38px;text-align:center;">${rosterRoleBadge}</td>
                 <td style="min-width:240px;max-width:340px;text-align:left;">
                     <div style="display:flex;align-items:center;gap:6px;flex-wrap:nowrap;">
-                        <button onclick="openEditPlayerModal(${p.id})" title="Personalizza Slot, OOP e Consiglio AI" style="background:none;border:none;cursor:pointer;font-size:13px;padding:0 2px;opacity:0.85;transition:transform 0.15s ease;" onmouseover="this.style.transform='scale(1.25)'" onmouseout="this.style.transform='scale(1)'">✏️</button>
+                        <button onclick="openEditPlayerModal(${p.id})" title="Personalizza Slot, OOP e Consiglio AI (Solo Admin)" class="creator-only-control" style="background:none;border:none;cursor:pointer;font-size:13px;padding:0 2px;opacity:0.85;transition:transform 0.15s ease;" onmouseover="this.style.transform='scale(1.25)'" onmouseout="this.style.transform='scale(1)'">✏️</button>
                         <button onclick="toggleFavorite(${p.id}); renderTeamRosterTable('${teamName}');" title="${isFav ? 'Rimuovi dai Preferiti' : 'Aggiungi ai Preferiti'}" style="background:none;border:none;cursor:pointer;font-size:13px;padding:0 2px;opacity:${isFav ? '1' : '0.4'};transition:transform 0.15s ease;" onmouseover="this.style.transform='scale(1.25)'" onmouseout="this.style.transform='scale(1)'">${isFav ? '⭐' : '☆'}</button>
                         <b style="color:#fff;font-size:13px;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(0,242,254,0.4);white-space:nowrap;" onclick="openPlayerProfileModal(${p.id})" title="Apri Scheda Calciatore: ${p.name}">${p.name}</b>
                         ${injBadge}
@@ -815,9 +815,12 @@ function renderTeamRosterTable(teamName) {
                     </div>
 
                     <div style="display:flex;align-items:center;gap:8px;">
-                        <button class="btn-action" style="font-size:11px;background:rgba(239,68,68,0.12);border-color:rgba(239,68,68,0.35);color:#f87171;" onclick="resetTeamOverrides('${teamName}')" title="Ripristina valori predefiniti per tutti i calciatori di questa squadra">🔄 Reset Modifiche</button>
-                        <div style="font-size:11.5px;color:var(--text-muted);">
+                        <button class="btn-action creator-only-control" style="font-size:11px;background:rgba(239,68,68,0.12);border-color:rgba(239,68,68,0.35);color:#f87171;" onclick="resetTeamOverrides('${teamName}')" title="Ripristina valori predefiniti per tutti i calciatori di questa squadra">🔄 Reset Modifiche</button>
+                        <div class="creator-only-block" style="font-size:11.5px;color:var(--text-muted);">
                             💡 Clicca su <b>✏️</b> per modificare o su <b>Nome</b> per la scheda completa.
+                        </div>
+                        <div class="visitor-only-item" style="font-size:11.5px;color:var(--text-muted);">
+                            💡 Clicca sul <b>Nome</b> per aprire la scheda completa del calciatore.
                         </div>
                     </div>
                 </div>
@@ -899,6 +902,10 @@ function onAdvicePresetChange(val) {
 }
 
 function openEditPlayerModal(playerId) {
+    if (typeof isCreatorModeActive === 'function' && !isCreatorModeActive()) {
+        alert("🔒 Questa funzione di modifica parametri è riservata esclusivamente all'amministratore del sito.");
+        return;
+    }
     const p = PLAYERS.find(pl => pl.id === playerId);
     if (!p) return;
 

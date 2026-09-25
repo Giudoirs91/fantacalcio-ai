@@ -180,7 +180,7 @@ def build_standalone_dashboard(sync_android=False):
                     </button>
                     <div class="nav-dropdown-menu">
                         <a href="/consigli-fantacalcio/" class="dropdown-item" id="tabMatchdayAdviceBtn" onclick="onNavClick(event, 'matchday_advice')">🎯 Chi Schierare Prossima Giornata</a>
-                        <a href="/top-11-ai/" class="dropdown-item" id="tabAiSquadsBtn" onclick="onNavClick(event, 'ai_squads')">🧠 5 Squadre Perfette AI</a>
+                        <a href="/top-11-ai/" class="dropdown-item" id="tabAiSquadsBtn" onclick="onNavClick(event, 'ai_squads')">🔒 5 Squadre Perfette AI <span style="font-size:10px;background:rgba(239,68,68,0.2);color:#f87171;padding:2px 6px;border-radius:4px;font-weight:700;margin-left:6px;">In Aggiornamento</span></a>
                         <a href="/scommesse-talenti/" class="dropdown-item" id="tabGemsBtn" onclick="onNavClick(event, 'gems')">🔮 Gemme & Sleeper AI</a>
                         <div class="dropdown-divider"></div>
                         <a href="/infortunati-serie-a/" class="dropdown-item">🩺 Infortunati & Tempi di Recupero</a>
@@ -860,7 +860,7 @@ def build_standalone_dashboard(sync_android=False):
                     <div class="mobile-menu-section-title"><span>🧠</span> AI & Consigli</div>
                     <div class="mobile-menu-links">
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('matchday_advice')">🎯 Chi Schierare (Consigli)</button>
-                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('ai_squads')">🧠 5 Squadre Perfette AI</button>
+                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('ai_squads')">🔒 5 Squadre Perfette AI <span style="font-size:10px;background:rgba(239,68,68,0.2);color:#f87171;padding:2px 6px;border-radius:4px;font-weight:700;margin-left:6px;">In Aggiornamento</span></button>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('gems')">🔮 Gemme & Sleeper</button>
                         <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); openAiMethodologyModal('ovr');">ℹ️ Come Funziona l'AI</button>
                     </div>

@@ -1034,7 +1034,6 @@ function renderTable() {
                 <td onclick="if(!event.target.closest('button')) openPlayerProfileModal(${p.id})" style="cursor:pointer;" title="Clicca per aprire la Scheda Calciatore">
                     <div class="player-name-cell">
                         <button class="sb-star-toggle ${isFav ? 'active' : ''}" onclick="toggleFavorite(${p.id})" title="Preferito">${isFav ? '⭐' : '☆'}</button>
-                        <button onclick="openEditPlayerModal(${p.id})" title="Personalizza" class="btn-player-edit">✏️</button>
                         <span class="player-name-link" title="Apri Scheda Calciatore">${p.name}</span>
                         ${injIcon}
                         ${mantraSubLabel}

@@ -878,11 +878,17 @@ function renderTable() {
         let vA = a[State.sortBy];
         let vB = b[State.sortBy];
         if (State.sortBy === 'xfm' || State.sortBy === 'delta_xfm') {
-            if ((vA === undefined || vA === null) && typeof computeExpectedFantaMedia === 'function') {
+            const hasA = Boolean(a.has_data_2627 && (a.presenze_2627 || 0) > 0);
+            const hasB = Boolean(b.has_data_2627 && (b.presenze_2627 || 0) > 0);
+            if (!hasA) {
+                vA = null;
+            } else if ((vA === undefined || vA === null) && typeof computeExpectedFantaMedia === 'function') {
                 const resA = computeExpectedFantaMedia(a);
                 vA = State.sortBy === 'xfm' ? resA.xfm : resA.delta;
             }
-            if ((vB === undefined || vB === null) && typeof computeExpectedFantaMedia === 'function') {
+            if (!hasB) {
+                vB = null;
+            } else if ((vB === undefined || vB === null) && typeof computeExpectedFantaMedia === 'function') {
                 const resB = computeExpectedFantaMedia(b);
                 vB = State.sortBy === 'xfm' ? resB.xfm : resB.delta;
             }
@@ -1000,9 +1006,10 @@ function renderTable() {
             const fm2627Str = p.fm_2627 ? `<span class="stat-live fm">${p.fm_2627.toFixed(2)}</span>` : `<span class="dim-dash">-</span>`;
 
             // Expected FantaMedia (xFM) & Delta Performance (FM - xFM)
-            let xfmVal = p.xfm;
-            let deltaVal = p.delta_xfm;
-            if (xfmVal === undefined || xfmVal === null) {
+            const has2627 = Boolean(p.has_data_2627 && (p.presenze_2627 || 0) > 0);
+            let xfmVal = has2627 ? p.xfm : null;
+            let deltaVal = has2627 ? p.delta_xfm : null;
+            if (has2627 && (xfmVal === undefined || xfmVal === null)) {
                 if (typeof computeExpectedFantaMedia === 'function') {
                     const xfmData = computeExpectedFantaMedia(p);
                     xfmVal = xfmData.xfm;
@@ -1010,12 +1017,12 @@ function renderTable() {
                 }
             }
 
-            const xfmStr = (xfmVal !== undefined && xfmVal !== null && !isNaN(xfmVal))
+            const xfmStr = (has2627 && xfmVal !== undefined && xfmVal !== null && !isNaN(xfmVal))
                 ? `<span class="stat-live xfm" style="font-weight:800;color:var(--accent-cyan);" title="Expected FantaMedia: ${Number(xfmVal).toFixed(2)}">${Number(xfmVal).toFixed(2)}</span>`
                 : `<span class="dim-dash">-</span>`;
 
             let deltaHtml = `<span class="dim-dash">-</span>`;
-            if (deltaVal !== undefined && deltaVal !== null && !isNaN(deltaVal)) {
+            if (has2627 && deltaVal !== undefined && deltaVal !== null && !isNaN(deltaVal)) {
                 const dNum = Number(deltaVal);
                 if (dNum > 0.25) {
                     deltaHtml = `<span class="delta-pill delta-over" title="Overperformance (+${dNum.toFixed(2)}): Ha raccolto più bonus rispetto al volume di gioco/xG/xA prodotto">+${dNum.toFixed(2)}</span>`;

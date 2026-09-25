@@ -226,31 +226,35 @@ function generateRadarChartSvg(player) {
 }
 
 function computeExpectedFantaMedia(player) {
-    const has2627 = player.has_data_2627 && player.presenze_2627 > 0;
-    const presenze = has2627 ? player.presenze_2627 : (player.presenze || 1);
-    const mv = has2627 ? (player.mv_2627 || 6.0) : (player.mv || 6.0);
-    const realFm = has2627 ? (player.fm_2627 || mv) : (player.fm || mv);
+    const has2627 = Boolean(player.has_data_2627 && (player.presenze_2627 || 0) > 0);
+    if (!has2627) {
+        return { xfm: null, realFm: null, delta: null, has2627: false };
+    }
+
+    const presenze = player.presenze_2627;
+    const mv = (player.mv_2627 !== undefined && player.mv_2627 !== null) ? player.mv_2627 : 6.0;
+    const realFm = (player.fm_2627 !== undefined && player.fm_2627 !== null) ? player.fm_2627 : mv;
 
     if (player.xfm !== undefined && player.xfm !== null) {
         const xfm = Number(player.xfm);
-        const delta = +(Number(realFm) - xfm).toFixed(2);
-        return { xfm, realFm: +Number(realFm).toFixed(2), delta, has2627 };
+        const delta = player.delta_xfm !== undefined && player.delta_xfm !== null ? Number(player.delta_xfm) : +(Number(realFm) - xfm).toFixed(2);
+        return { xfm, realFm: +Number(realFm).toFixed(2), delta, has2627: true };
     }
 
     let xg = 0, xa = 0, malus = 0;
     if (player.role === 'P') {
-        const gs = has2627 ? (player.gol_subiti_2627 || 0) : (player.gs || 0);
-        const cs = has2627 ? (player.clean_sheets_2627 || 0) : (player.clean_sheets_2526 || 0);
+        const gs = player.gol_subiti_2627 || 0;
+        const cs = player.clean_sheets_2627 || 0;
         const xfm = +(mv - (gs / presenze) + (cs * 0.5 / presenze)).toFixed(2);
         const delta = +(realFm - xfm).toFixed(2);
-        return { xfm, realFm: +realFm.toFixed(2), delta, has2627 };
+        return { xfm, realFm: +realFm.toFixed(2), delta, has2627: true };
     } else {
-        xg = has2627 ? (player.xg_2627 || (player.xg90_2627 ? player.xg90_2627 * (player.minuti_2627 || 90) / 90 : 0)) : (player.xg_2526 || (player.xg90_2526 ? player.xg90_2526 * (player.mins_2526 || 900) / 90 : 0));
-        xa = has2627 ? (player.xa_2627 || (player.xa90_2627 ? player.xa90_2627 * (player.minuti_2627 || 90) / 90 : 0)) : (player.xa_2526 || (player.xa90_2526 ? player.xa90_2526 * (player.mins_2526 || 900) / 90 : 0));
-        malus = has2627 ? ((player.amm_2627 || 0) * 0.5 + (player.esp_2627 || 0) * 1.0) : ((player.amm || 0) * 0.5 + (player.esp || 0) * 1.0);
+        xg = player.xg_2627 || (player.xg90_2627 ? player.xg90_2627 * (player.minuti_2627 || 90) / 90 : 0);
+        xa = player.xa_2627 || (player.xa90_2627 ? player.xa90_2627 * (player.minuti_2627 || 90) / 90 : 0);
+        malus = (player.amm_2627 || 0) * 0.5 + (player.esp_2627 || 0) * 1.0;
 
         // Finishing / Shot Placement Index (xGOT vs xG per valutare la qualità delle conclusioni)
-        const xgot = has2627 ? (player.xgot_2627 || xg) : (player.xgot_2526 || xg);
+        const xgot = player.xgot_2627 || xg;
         let shotPlacementMult = 1.0;
         if ((player.role === 'A' || player.role === 'C') && xgot !== undefined && xgot !== null && xg >= 0.8) {
             try {
@@ -264,7 +268,7 @@ function computeExpectedFantaMedia(player) {
         const bonusAttesi = (xg * shotPlacementMult * 3.0) + (xa * 1.0);
         const xfm = +(mv + ((bonusAttesi - malus) / presenze)).toFixed(2);
         const delta = +(realFm - xfm).toFixed(2);
-        return { xfm, realFm: +realFm.toFixed(2), delta, has2627 };
+        return { xfm, realFm: +realFm.toFixed(2), delta, has2627: true };
     }
 }
 
@@ -763,9 +767,20 @@ function openPlayerProfileModal(playerId) {
     // Expected FantaMedia (xFM) & Regression Model
     const xfmData = computeExpectedFantaMedia(p);
     let xfmAlertHtml = '';
-    const isElitePerformer = (xfmData.xfm >= 7.8 || (p.ovr >= 86 && xfmData.xfm >= 7.2)) && xfmData.realFm >= 7.8;
+    const isElitePerformer = xfmData.has2627 && xfmData.xfm !== null && (xfmData.xfm >= 7.8 || (p.ovr >= 86 && xfmData.xfm >= 7.2)) && xfmData.realFm >= 7.8;
 
-    if (isElitePerformer && xfmData.delta >= 0.20) {
+    if (!xfmData.has2627 || xfmData.xfm === null) {
+        xfmAlertHtml = `
+            <div class="xfm-alert-box balanced" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);">
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span style="font-size:16px;">⏱️</span>
+                    <div style="font-size:11.5px;color:var(--text-muted);">
+                        Nessuna presenza a voto nella Serie A 2026/27. Il calcolo predittivo live della Expected FantaMedia (xFM) e del Delta si attiverà al debutto a voto.
+                    </div>
+                </div>
+            </div>
+        `;
+    } else if (isElitePerformer && xfmData.delta >= 0.20) {
         xfmAlertHtml = `
             <div class="xfm-alert-box under" style="background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.35);">
                 <div style="display:flex;align-items:center;gap:8px;">
@@ -1266,7 +1281,7 @@ function openPlayerProfileModal(playerId) {
                     </div>
                     <div class="kpi-mini-card">
                         <span class="kpi-mini-lbl">xFM</span>
-                        <b class="kpi-mini-val" style="color:var(--accent-cyan);">${xfmData.xfm}</b>
+                        <b class="kpi-mini-val" style="color:var(--accent-cyan);">${(xfmData.xfm !== null && xfmData.xfm !== undefined) ? Number(xfmData.xfm).toFixed(2) : '-'}</b>
                     </div>
                     <div class="kpi-mini-card">
                         <span class="kpi-mini-lbl">Sufficienze</span>

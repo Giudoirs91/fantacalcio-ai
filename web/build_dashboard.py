@@ -334,7 +334,7 @@ def build_standalone_dashboard(sync_android=False):
 
                     <!-- Advanced Filter Drawer Button -->
                     <div class="filter-actions-right">
-                        <button id="btnAdvancedFilters" class="btn-clean-action" onclick="toggleAdvancedFiltersDrawer()" title="Filtri Avanzati">
+                        <button id="btnAdvancedFilters" class="btn-clean-action active" onclick="toggleAdvancedFiltersDrawer()" title="Mostra/Nascondi Filtri">
                             <span>⚙️ Filtri</span>
                         </button>
                     </div>
@@ -348,8 +348,8 @@ def build_standalone_dashboard(sync_android=False):
                 <input type="checkbox" id="chkHealthy" style="display:none;" onchange="onToggleHealthy(this.checked)">
                 <select id="filterRole" style="display:none;"><option value="ALL">ALL</option></select>
 
-                <!-- Advanced Filters Collapsible Drawer -->
-                <div id="advancedFiltersDrawer" class="advanced-filters-drawer" style="display:none;">
+                <!-- Advanced Filters Collapsible Drawer (Always Visible by default) -->
+                <div id="advancedFiltersDrawer" class="advanced-filters-drawer" style="display:block;">
                     <div class="advanced-filters-grid">
                         <div class="adv-filter-item">
                             <label>Fascia / Slot</label>

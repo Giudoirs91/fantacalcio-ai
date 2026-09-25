@@ -397,60 +397,46 @@ def calibrate_budget_prices(players_list, league_settings):
 def calculate_xfm(p):
     """
     Calcola l'Expected FantaMedia (xFM) e il Delta di Performance (FM - xFM).
-    Se le bias corrections sono disponibili (da G5 in poi), le applica per migliorare
-    la precisione della predizione basandosi sugli errori delle stagioni precedenti.
-    Restituisce (xfm, delta_xfm) arrotondati a 2 decimali.
+    Se il calciatore non ha ancora disputato presenze o minuti a voto nella stagione 2026/27,
+    restituisce (None, None) poiché l'Expected FantaMedia in-season misura la performance
+    effettiva sul campo di questa stagione.
     """
     has_2627 = bool(p.get('has_data_2627') and (p.get('presenze_2627') or 0) > 0)
-    presenze = float(p.get('presenze_2627') or p.get('presenze') or 1)
-    if presenze <= 0:
-        presenze = 1.0
+    presenze = float(p.get('presenze_2627') or 0)
+    if not has_2627 or presenze <= 0:
+        return None, None
     
-    mv = p.get('mv_2627') if (has_2627 and p.get('mv_2627') is not None) else p.get('mv', 6.0)
+    mv = p.get('mv_2627') if p.get('mv_2627') is not None else 6.0
     mv = float(mv) if (mv is not None and mv > 0) else 6.0
         
-    real_fm = p.get('fm_2627') if (has_2627 and p.get('fm_2627') is not None) else p.get('fm', mv)
+    real_fm = p.get('fm_2627') if p.get('fm_2627') is not None else mv
     real_fm = float(real_fm) if (real_fm is not None and real_fm > 0) else mv
 
     role = p.get('role', 'C')
     if role == 'P':
-        gs = float(p.get('gol_subiti_2627') or p.get('gs') or 0.0)
-        cs = float(p.get('clean_sheets_2627') or p.get('clean_sheets_2526') or 0.0)
+        gs = float(p.get('gol_subiti_2627') or 0.0)
+        cs = float(p.get('clean_sheets_2627') or 0.0)
         xfm_base = round(float(mv - (gs / presenze) + (cs * 0.5 / presenze)), 2)
     else:
-        if has_2627:
-            xg = p.get('xg_2627')
-            if xg is None:
-                xg90 = float(p.get('xg90_2627') or 0.0)
-                mins = float(p.get('minuti_2627') or 90.0)
-                xg = xg90 * (mins / 90.0)
-            xa = p.get('xa_2627')
-            if xa is None:
-                xa90 = float(p.get('xa90_2627') or 0.0)
-                mins = float(p.get('minuti_2627') or 90.0)
-                xa = xa90 * (mins / 90.0)
-            amm = float(p.get('amm_2627') or 0.0)
-            esp = float(p.get('esp_2627') or 0.0)
-        else:
-            xg = p.get('xg_2526')
-            if xg is None:
-                xg90 = float(p.get('xg90_2526') or 0.0)
-                mins = float(p.get('mins_2526') or 900.0)
-                xg = xg90 * (mins / 90.0)
-            xa = p.get('xa_2526')
-            if xa is None:
-                xa90 = float(p.get('xa90_2526') or 0.0)
-                mins = float(p.get('mins_2526') or 900.0)
-                xa = xa90 * (mins / 90.0)
-            amm = float(p.get('amm') or 0.0)
-            esp = float(p.get('esp') or 0.0)
+        xg = p.get('xg_2627')
+        if xg is None:
+            xg90 = float(p.get('xg90_2627') or 0.0)
+            mins = float(p.get('minuti_2627') or 90.0)
+            xg = xg90 * (mins / 90.0)
+        xa = p.get('xa_2627')
+        if xa is None:
+            xa90 = float(p.get('xa90_2627') or 0.0)
+            mins = float(p.get('minuti_2627') or 90.0)
+            xa = xa90 * (mins / 90.0)
+        amm = float(p.get('amm_2627') or 0.0)
+        esp = float(p.get('esp_2627') or 0.0)
 
         xg = float(xg or 0.0)
         xa = float(xa or 0.0)
         malus = amm * 0.5 + esp * 1.0
 
         # Finishing / Shot Placement Index (xGOT vs xG per valutare la qualità delle conclusioni)
-        xgot = p.get('xgot_2627') if p.get('xgot_2627') is not None else p.get('xgot_2526')
+        xgot = p.get('xgot_2627')
         shot_placement_mult = 1.0
         if role in ['A', 'C'] and xgot is not None and xg >= 0.8:
             try:

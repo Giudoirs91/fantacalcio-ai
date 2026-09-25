@@ -1,6 +1,3 @@
-// Modello Economico Empirico su Base Asta Reale (1000 CR) + Database Ufficiale 2026/27
-// 5 Archetipi Vincenti Bilanciati: Titolari a 1 CR veri, panchine a voto garantito, quote reali calcolate.==============================================================================
-
 const AI_SQUADS_DATA = [
     {
         "id": "squad_343",
@@ -147,7 +144,6 @@ const AI_SQUADS_DATA = [
         "whyBeatsRivals": "<ul><li><b>Zero Senza Voto Garantito al 100%</b>: Se il titolare riposa o subentra, hai in panchina la sua esatta controfigura di ruolo e di squadra.</li><li><b>Ramos G. + Camarda & Scamacca + Krstovic</b>: Copri al 100% i 90 minuti del centravanti di Milan e Atalanta. Chiunque sia in campo porta gol e voti pesanti.</li><li><b>Rigoristi e Piazzati di Prima Fascia</b>: Calhanoglu all'Inter e Calò al Frosinone assicurano penalty e punizioni a ripetizione.</li><li><b>Prezzi dei Sostituti a 1 Credito</b>: Camarda (1 CR), Gatti (1 CR), Kelly (1 CR), Pedraza (1 CR), Odgaard (1 CR), Grillitsch (1 CR), Thorstvedt (1 CR) e Milinkovic-Savic V. (1 CR) blindano la rosa a costo irrisorio.</li><li><b>Tesoretto d'Asta da 53 Crediti</b>: 947 CR totali per avere margine strategico durante l'asta live.</li></ul>"
     }
 ];
-
 const MANTRA_AI_SQUADS_DATA = [
     {
         "id": "mantra_squad_433",
@@ -270,9 +266,7 @@ const MANTRA_AI_SQUADS_DATA = [
         "whyBeatsRivals": "<ul><li><b>Difesa Insuperabile</b>: La miglior difesa a 4 della Serie A a supporto della porta inviolata di Svilar.</li><li><b>Rigoristi Multipli</b>: Dybala, Scamacca e Calò.</li><li><b>69 Crediti di Sicurezza</b>: Riserva d'asta per non avere brutte sorprese.</li></ul>"
     }
 ];
-
 const AI_SQUADS_CUSTOM_KEY = 'FANTA_MASTER_AI_SQUADS_CUSTOM_V1';
-
 function getAiSquadsOverrides() {
     try {
         const raw = localStorage.getItem(AI_SQUADS_CUSTOM_KEY);
@@ -282,7 +276,6 @@ function getAiSquadsOverrides() {
         return {};
     }
 }
-
 function saveAiSquadsOverrides(overrides) {
     try {
         localStorage.setItem(AI_SQUADS_CUSTOM_KEY, JSON.stringify(overrides));
@@ -290,18 +283,15 @@ function saveAiSquadsOverrides(overrides) {
         console.warn("Errore salvataggio AI squads custom:", e);
     }
 }
-
 function getAiSquadsData() {
     const isMantra = (typeof State !== 'undefined' && State.systemMode === 'mantra');
     const baseList = isMantra ? MANTRA_AI_SQUADS_DATA : AI_SQUADS_DATA;
     const overrides = getAiSquadsOverrides();
-
     return baseList.map(baseSq => {
         const sq = JSON.parse(JSON.stringify(baseSq));
         sq.originalStarters = JSON.parse(JSON.stringify(baseSq.starters));
         sq.originalBench = JSON.parse(JSON.stringify(baseSq.bench));
         sq.isCustomized = false;
-
         const ov = overrides[sq.id];
         if (ov) {
             ['P', 'D', 'C', 'A'].forEach(r => {
@@ -320,8 +310,6 @@ function getAiSquadsData() {
                     });
                 }
             });
-
-            // Verifica se effettivamente c'è qualche calciatore diverso dall'originale
             let hasChanges = false;
             ['P', 'D', 'C', 'A'].forEach(r => {
                 (sq.starters[r] || []).forEach((n, idx) => {
@@ -337,11 +325,9 @@ function getAiSquadsData() {
             });
             sq.isCustomized = hasChanges;
         }
-
         return sq;
     });
 }
-
 function replaceAiPlayer(squadId, roleKey, isStarter, slotIndex, newPlayerName) {
     const overrides = getAiSquadsOverrides();
     if (!overrides[squadId]) {
@@ -354,12 +340,10 @@ function replaceAiPlayer(squadId, roleKey, isStarter, slotIndex, newPlayerName) 
         const sq = baseSquads.find(s => s.id === squadId);
         overrides[squadId][targetGroup][roleKey] = sq ? [...(sq[targetGroup][roleKey] || [])] : [];
     }
-
     overrides[squadId][targetGroup][roleKey][slotIndex] = newPlayerName;
     saveAiSquadsOverrides(overrides);
     renderAiSquadsTab();
 }
-
 function revertAiSquadPlayer(squadId, roleKey, isStarter, slotIndex) {
     const overrides = getAiSquadsOverrides();
     if (overrides[squadId]) {
@@ -373,7 +357,6 @@ function revertAiSquadPlayer(squadId, roleKey, isStarter, slotIndex) {
         }
     }
 }
-
 function resetAiSquadToDefault(squadId) {
     const overrides = getAiSquadsOverrides();
     if (overrides[squadId]) {
@@ -385,15 +368,11 @@ function resetAiSquadToDefault(squadId) {
         renderAiSquadsTab();
     }
 }
-
 let activeAiSquadTab = "squad_343";
-
 function switchAiSquadTab(squadId) {
     activeAiSquadTab = squadId;
     renderAiSquadsTab();
 }
-
-// Prezzi medi reali integrati da simulazioni d'asta
 const REAL_AUCTION_PRICES = {
     'meret': 101, 'milinkovic-savic v.': 1, 'contini': 1,
     'svilar': 136, 'gollini': 1, 'de marzi': 1, 'bijlow': 5,
@@ -416,7 +395,6 @@ const REAL_AUCTION_PRICES = {
     'rovella': 38, 'bastoni': 55, 'de bruyne': 115, 'dimarco': 90, 'orsolini': 110, 'zaccagni': 105,
     'dybala': 140, 'buongiorno': 45, 'lobotka': 35
 };
-
 function getPlayerAuctionCost(player) {
     if (!player) return 1;
     const cleanN = player.name.toLowerCase().trim();
@@ -425,20 +403,15 @@ function getPlayerAuctionCost(player) {
     }
     return player.prezzo_cons || 1;
 }
-
 window._showAiSquadsCreatorPreview = false;
 function toggleCreatorAiSquadsPreview() {
     window._showAiSquadsCreatorPreview = !window._showAiSquadsCreatorPreview;
     renderAiSquadsTab();
 }
-
 function renderAiSquadsTab() {
     const container = document.getElementById('viewAiSquads');
     if (!container) return;
-
     const isCreator = (typeof isCreatorModeActive === 'function' && isCreatorModeActive());
-
-    // LOCK SCHERMATA: Pagina 5 Squadre Perfette chiusa per riaddestramento algoritmo
     if (!isCreator || !window._showAiSquadsCreatorPreview) {
         let adminBannerHtml = '';
         if (isCreator) {
@@ -453,21 +426,17 @@ function renderAiSquadsTab() {
                 </div>
             `;
         }
-
         container.innerHTML = `
             ${adminBannerHtml}
             <div style="width: 100%; max-width: 900px; margin: 20px auto; padding: 42px 28px; background: rgba(18, 24, 38, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(139, 92, 246, 0.35); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 35px rgba(139, 92, 246, 0.15); text-align: center;">
-                
                 <!-- Lock Animated Icon -->
                 <div style="width: 88px; height: 88px; margin: 0 auto 22px; border-radius: 50%; background: linear-gradient(135deg, rgba(239,68,68,0.2) 0%, rgba(139,92,246,0.25) 100%); border: 2px solid rgba(239,68,68,0.5); display: flex; align-items: center; justify-content: center; font-size: 40px; box-shadow: 0 0 35px rgba(239,68,68,0.3);">
                     🔒
                 </div>
-
                 <!-- Status Badge -->
                 <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.35); color: #fca5a5; font-size: 12px; font-weight: 800; padding: 5px 16px; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px;">
                     <span style="font-size: 14px;">⚙️</span> Modulo Temporaneamente Chiuso
                 </div>
-
                 <!-- Title & Subtitle -->
                 <h2 style="font-size: 26px; font-weight: 900; color: #fff; margin: 0 0 12px 0; font-family: 'Outfit', sans-serif;">
                     5 Squadre Perfette AI — In Fase di Ricalibrazione
@@ -475,7 +444,6 @@ function renderAiSquadsTab() {
                 <p style="font-size: 15px; color: var(--text-secondary); max-width: 720px; margin: 0 auto 30px; line-height: 1.6;">
                     L'algoritmo predittivo per la generazione simultanea di 5 rose bilanciate è attualmente in fase di riaddestramento. Per garantire ai fantallenatori solo formazioni scientificamente ineccepibili e sostenibili al 100% di budget, la visualizzazione pubblica rimarrà bloccata fino al completamento del nuovo modello matematico.
                 </p>
-
                 <!-- 3 Cards: Trasparenza & Roadmap -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-bottom: 34px; text-align: left;">
                     <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px;">
@@ -485,7 +453,6 @@ function renderAiSquadsTab() {
                             I vincoli incrociati di budget reale (1000 CR) e titolarità garantita su 5 formazioni richiedono un nuovo solutore per evitare dispersioni o squilibri di reparto.
                         </div>
                     </div>
-
                     <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px;">
                         <div style="font-size: 24px; margin-bottom: 8px;">🧠</div>
                         <div style="font-size: 14px; font-weight: 800; color: #c084fc; margin-bottom: 6px;">Addestramento in Corso</div>
@@ -493,7 +460,6 @@ function renderAiSquadsTab() {
                             Sviluppo di un algoritmo genetico pesato su xG, xA, fragilità fisica e incroci calendario per produrre rose senza sovrapposizioni e con copertura 38/38.
                         </div>
                     </div>
-
                     <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px;">
                         <div style="font-size: 24px; margin-bottom: 8px;">⚡</div>
                         <div style="font-size: 14px; font-weight: 800; color: #4ade80; margin-bottom: 6px;">Cosa Puoi Usare Oggi</div>
@@ -502,7 +468,6 @@ function renderAiSquadsTab() {
                         </div>
                     </div>
                 </div>
-
                 <!-- Navigation CTAs -->
                 <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
                     <button onclick="switchTab('matchday_advice')" class="btn-clean-action" style="padding: 12px 20px; font-size: 13.5px; font-weight: 800; background: linear-gradient(135deg, rgba(0,242,254,0.2) 0%, rgba(56,189,248,0.3) 100%); border: 1px solid var(--accent-cyan); color: #fff; cursor: pointer; border-radius: 10px; transition: transform 0.2s;">
@@ -519,20 +484,16 @@ function renderAiSquadsTab() {
         `;
         return;
     }
-
     if (typeof PLAYERS === 'undefined' || !PLAYERS.length) {
         container.innerHTML = `<div style="padding:40px;text-align:center;color:var(--text-muted);">Caricamento dati calciatori in corso...</div>`;
         return;
     }
-
     const currentSquadsList = getAiSquadsData();
     let currentSquad = currentSquadsList.find(s => s.id === activeAiSquadTab);
     if (!currentSquad) {
         currentSquad = currentSquadsList[0];
         activeAiSquadTab = currentSquad.id;
     }
-
-    // Helper risoluzione calciatore nel master dataset
     const resolvePlayer = (name, expectedRole = null) => {
         const cleanN = name.toLowerCase().trim();
         if (expectedRole) {
@@ -541,18 +502,14 @@ function renderAiSquadsTab() {
         }
         const exact = PLAYERS.find(p => p.name.toLowerCase() === cleanN && (!expectedRole || p.role === expectedRole));
         if (exact) return exact;
-
         if (expectedRole) {
             const subRole = PLAYERS.find(p => p.role === expectedRole && (p.name.toLowerCase().includes(cleanN) || cleanN.includes(p.name.toLowerCase())));
             if (subRole) return subRole;
         }
-
         return PLAYERS.find(p => p.name.toLowerCase().includes(cleanN) || cleanN.includes(p.name.toLowerCase())) || {
             id: -1, name: name, role: expectedRole || 'C', team: '-', ovr: 75, prezzo_cons: 1, slot_fascia: 'Slot', ai_advice: 'Consigliato', titolarita_desc_2627: '-'
         };
     };
-
-    // Helper per alternative live all'asta
     const findAlternative = (originalP) => {
         if (!originalP || originalP.id === -1) return null;
         const origCost = getPlayerAuctionCost(originalP);
@@ -564,13 +521,10 @@ function renderAiSquadsTab() {
             getPlayerAuctionCost(p) <= (origCost + 20)
         );
     };
-
-    // Calcolo spesa reale e reparti per ciascuna squadra
     const squadStats = {};
     currentSquadsList.forEach(sq => {
         let pSpent = 0, dSpent = 0, cSpent = 0, aSpent = 0;
         let pCount = 0, dCount = 0, cCount = 0, aCount = 0;
-
         ['P', 'D', 'C', 'A'].forEach(r => {
             const allNames = [...(sq.starters[r] || []), ...(sq.bench[r] || [])];
             allNames.forEach(nm => {
@@ -582,7 +536,6 @@ function renderAiSquadsTab() {
                 else if (r === 'A') { aSpent += cost; aCount++; }
             });
         });
-
         const totalSpent = pSpent + dSpent + cSpent + aSpent;
         squadStats[sq.id] = {
             total: totalSpent,
@@ -593,10 +546,7 @@ function renderAiSquadsTab() {
             A: { spent: aSpent, count: aCount }
         };
     });
-
     const curStats = squadStats[currentSquad.id] || { total: 964, rem: 36, P:{spent:103, count:3}, D:{spent:125, count:8}, C:{spent:149, count:8}, A:{spent:587, count:6} };
-
-    // SELETTORE DELLE 5 SQUADRE IN ALTO (HORIZONTAL CARDS)
     const topSquadSwitcherHtml = currentSquadsList.map(sq => {
         const isActive = sq.id === activeAiSquadTab;
         const st = squadStats[sq.id] || { total: 0 };
@@ -614,28 +564,21 @@ function renderAiSquadsTab() {
             </button>
         `;
     }).join('');
-
-    // Render Reparto per la COLONNA SINISTRA (Titolari + Panchina con indicatore chiaro & azione di cambio manuale)
     const renderDepartmentBlock = (title, icon, startersNames, benchNames, roleColor, roleKey, squad) => {
         const startersObjs = startersNames.map((n, idx) => ({ p: resolvePlayer(n, roleKey), isStarter: true, index: idx, nameInSquad: n }));
         const benchObjs = benchNames.map((n, idx) => ({ p: resolvePlayer(n, roleKey), isStarter: false, index: idx, nameInSquad: n }));
         const allItems = [...startersObjs, ...benchObjs];
         const subtotal = allItems.reduce((acc, item) => acc + getPlayerAuctionCost(item.p), 0);
-
         let rows = allItems.map(item => {
             const p = item.p;
             const isStarter = item.isStarter;
             const cost = getPlayerAuctionCost(p);
             const isBought = (p.id !== -1) && isPlayerBought(p.id);
             const isTaken = (p.id !== -1) && isPlayerTakenByOther(p.id);
-
-            // Verifica personalizzazione manuale rispetto al modello originale
             const origBaseName = isStarter 
                 ? (squad.originalStarters && squad.originalStarters[roleKey] && squad.originalStarters[roleKey][item.index]) 
                 : (squad.originalBench && squad.originalBench[roleKey] && squad.originalBench[roleKey][item.index]);
-            
             const isSlotCustomized = origBaseName && (p.name.toLowerCase().trim() !== origBaseName.toLowerCase().trim());
-
             let statusBadge = '';
             let altHtml = '';
             if (isBought) {
@@ -649,13 +592,11 @@ function renderAiSquadsTab() {
             } else {
                 statusBadge = `<span class="ai-status-pill free">🟢 LIBERO</span>`;
             }
-
             let injBadge = '';
             if (p.is_injured) {
                 const isOrange = (p.infortunio_severity === 'orange');
                 injBadge = `<span class="ai-inj-pill ${isOrange ? 'orange' : 'red'}" title="${p.infortunio_status}">🚑 ${p.infortunio_motivo || 'Stop'}</span>`;
             }
-
             let coppiaHtml = '';
             if (p.coppia_nome && p.coppia_nome !== '-') {
                 const label = isStarter ? 'Sostituto' : 'Titolare';
@@ -664,18 +605,14 @@ function renderAiSquadsTab() {
                     <b>${p.coppia_nome}</b> <span style="color:var(--text-muted);font-size:10px;">(${p.coppia_dettaglio || p.coppia_tipo})</span>
                 </div>`;
             }
-
             const formationRolePill = isStarter 
                 ? `<span class="ai-formation-role-tag starter">⭐ TITOLARE</span>` 
                 : `<span class="ai-formation-role-tag bench">💺 PANCHINA</span>`;
-
             const roleBadgeHtml = State.systemMode === 'mantra'
                 ? renderMantraRoleBadges(p.mantra)
                 : `<span class="role-badge ${p.role}">${p.role}</span>`;
-
             const safePlayerName = (p.name || '').replace(/'/g, "\\'");
             const safeOrigName = (origBaseName || '').replace(/'/g, "\\'");
-
             return `
                 <tr class="ai-clean-player-row ${isStarter ? 'is-starter-row' : 'is-bench-row'} ${isTaken ? 'row-taken' : ''} ${isBought ? 'row-bought' : ''}" onclick="if(${p.id} !== -1) openPlayerProfileModal(${p.id})">
                     <td style="width:38px;text-align:center;">
@@ -721,7 +658,6 @@ function renderAiSquadsTab() {
                 </tr>
             `;
         }).join('');
-
         return `
             <div class="ai-clean-dept-card">
                 <div class="ai-clean-dept-header">
@@ -757,10 +693,8 @@ function renderAiSquadsTab() {
             </div>
         `;
     };
-
     container.innerHTML = `
         <div class="ai-clean-dashboard-wrapper">
-            
             <!-- 1. Header Superiore Compatto -->
             <div class="ai-compact-top-bar">
                 <div style="display:flex;align-items:center;gap:10px;">
@@ -781,15 +715,12 @@ function renderAiSquadsTab() {
                     </span>
                 </div>
             </div>
-
             <!-- 2. SELETTORE DELLE 5 SQUADRE IN ALTO (HORIZONTAL CARDS) -->
             <div class="ai-top-switcher-grid">
                 ${topSquadSwitcherHtml}
             </div>
-
             <!-- 3. LAYOUT A DUE COLONNE (SPLIT SCREEN) -->
             <div class="ai-split-screen-grid">
-                
                 <!-- COLONNA SINISTRA: L'INTERA SQUADRA (25 CALCIATORI) -->
                 <div class="ai-split-left-col">
                     <div class="ai-split-col-header">
@@ -800,7 +731,6 @@ function renderAiSquadsTab() {
                         </div>
                         <span class="ai-split-col-meta">11 Titolari + 14 Riserve • Spesa Reale: <b>${curStats.total} CR</b></span>
                     </div>
-
                     <div class="ai-roster-departments-list">
                         ${renderDepartmentBlock(State.systemMode === 'mantra' ? '🧤 Portieri (Por) — 3 Slot' : 'Portieri (3 Slot)', '🧤', currentSquad.starters.P, currentSquad.bench.P, 'var(--role-p)', 'P', currentSquad)}
                         ${renderDepartmentBlock(State.systemMode === 'mantra' ? '🛡️ Difensori (Dd, Ds, Dc, B) — 8 Slot' : 'Difensori (8 Slot)', '🛡️', currentSquad.starters.D, currentSquad.bench.D, 'var(--role-d)', 'D', currentSquad)}
@@ -808,10 +738,8 @@ function renderAiSquadsTab() {
                         ${renderDepartmentBlock(State.systemMode === 'mantra' ? '⚡ Trequarti & Attacco (T, W, A, Pc) — 6 Slot' : 'Attaccanti (6 Slot)', '⚡', currentSquad.starters.A, currentSquad.bench.A, 'var(--role-a)', 'A', currentSquad)}
                     </div>
                 </div>
-
                 <!-- COLONNA DESTRA: INFORMAZIONI STRATEGICHE, BUDGET & CONTESTO TATTICO (STICKY) -->
                 <div class="ai-split-right-col">
-                    
                     <!-- Card 1: Distribuzione Budget Reale -->
                     <div class="ai-right-panel-card">
                         <div class="ai-panel-header">
@@ -831,7 +759,6 @@ function renderAiSquadsTab() {
                                 <b style="color:var(--accent-cyan);">${curStats.rem} CR</b>
                             </div>
                         </div>
-
                         <!-- 4 Reparti Mini KPI -->
                         <div class="ai-dept-mini-grid">
                             <div class="ai-mini-kpi p-border">
@@ -856,7 +783,6 @@ function renderAiSquadsTab() {
                             </div>
                         </div>
                     </div>
-
                     <!-- Card 2: Strategia Portieri & Guida Tecnica -->
                     <div class="ai-right-panel-card" style="background:linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(15, 23, 42, 0.6)); border-color:rgba(56, 189, 248, 0.25);">
                         <div class="ai-panel-header">
@@ -870,7 +796,6 @@ function renderAiSquadsTab() {
                             👔 Contesto: ${currentSquad.coachContext}
                         </div>
                     </div>
-
                     <!-- Card 3: Scheda Tattica & Vantaggi Competitivi -->
                     <div class="ai-right-panel-card" style="border-top:3px solid ${currentSquad.tagColor};">
                         <div class="ai-panel-header">
@@ -882,7 +807,6 @@ function renderAiSquadsTab() {
                             <h4 style="margin:4px 0 8px 0;font-size:15.5px;font-weight:900;color:#fff;">${currentSquad.name}</h4>
                             <p style="margin:0;font-size:12.5px;color:var(--text-secondary);line-height:1.55;">${currentSquad.strategyDescription}</p>
                         </div>
-
                         <div class="ai-right-callout-box">
                             <div style="font-size:12px;font-weight:800;color:var(--accent-cyan);margin-bottom:6px;display:flex;align-items:center;gap:6px;">
                                 <span>⚡</span> Perché batte i rivali della Lega:
@@ -892,14 +816,10 @@ function renderAiSquadsTab() {
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     `;
-
     if (isCreator && window._showAiSquadsCreatorPreview) {
         const adminBar = document.createElement('div');
         adminBar.style.cssText = "width: 100%; max-width: 1200px; margin: 0 auto 16px auto; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.5); padding: 12px 18px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;";
@@ -914,11 +834,6 @@ function renderAiSquadsTab() {
         container.insertBefore(adminBar, container.firstChild);
     }
 }
-
-// ==============================================================================
-// MODALE SELEZIONE CALCIATORE MANUALE CON REGOLA DEL RUOLO RIGOROSA
-// ==============================================================================
-
 let aiReplaceModalState = {
     isOpen: false,
     squadId: null,
@@ -931,7 +846,6 @@ let aiReplaceModalState = {
     filterMantraRole: 'ALL',
     sortBy: 'ovr' // 'ovr', 'price_desc', 'price_asc', 'titolarita', 'name'
 };
-
 function openAiSquadReplaceModal(squadId, roleKey, isStarter, slotIndex, currentName) {
     aiReplaceModalState.isOpen = true;
     aiReplaceModalState.squadId = squadId;
@@ -943,7 +857,6 @@ function openAiSquadReplaceModal(squadId, roleKey, isStarter, slotIndex, current
     aiReplaceModalState.filterStatus = 'all';
     aiReplaceModalState.filterMantraRole = 'ALL';
     aiReplaceModalState.sortBy = 'ovr';
-
     let modal = document.getElementById('aiSquadReplaceModal');
     if (!modal) {
         modal = document.createElement('div');
@@ -957,17 +870,14 @@ function openAiSquadReplaceModal(squadId, roleKey, isStarter, slotIndex, current
         `;
         document.body.appendChild(modal);
     }
-
     renderAiSquadReplaceModalContent();
     modal.style.display = 'flex';
     modal.classList.add('active');
-
     setTimeout(() => {
         const inp = document.getElementById('aiReplaceSearchInput');
         if (inp) inp.focus();
     }, 50);
 }
-
 function closeAiSquadReplaceModal() {
     aiReplaceModalState.isOpen = false;
     const modal = document.getElementById('aiSquadReplaceModal');
@@ -976,12 +886,10 @@ function closeAiSquadReplaceModal() {
         modal.classList.remove('active');
     }
 }
-
 function onAiReplaceSearch(val) {
     aiReplaceModalState.searchQuery = val;
     renderAiReplaceCandidatesList();
 }
-
 function setAiReplaceFilterStatus(status) {
     aiReplaceModalState.filterStatus = status;
     const btns = document.querySelectorAll('.ai-replace-status-btn');
@@ -991,7 +899,6 @@ function setAiReplaceFilterStatus(status) {
     });
     renderAiReplaceCandidatesList();
 }
-
 function setAiReplaceFilterMantra(mRole) {
     aiReplaceModalState.filterMantraRole = mRole;
     const pills = document.querySelectorAll('.ai-replace-mantra-pill');
@@ -1001,35 +908,28 @@ function setAiReplaceFilterMantra(mRole) {
     });
     renderAiReplaceCandidatesList();
 }
-
 function setAiReplaceSortBy(sortBy) {
     aiReplaceModalState.sortBy = sortBy;
     renderAiReplaceCandidatesList();
 }
-
 function confirmAiPlayerReplacement(playerId) {
     const p = PLAYERS.find(pl => pl.id === playerId);
     if (!p) return;
     const { squadId, roleKey, isStarter, slotIndex } = aiReplaceModalState;
-
     if (p.role !== roleKey) {
         alert(`⚠️ Errore Regola del Ruolo: Non puoi inserire un calciatore di ruolo '${p.role}' in uno slot '${roleKey}'.`);
         return;
     }
-
     replaceAiPlayer(squadId, roleKey, isStarter, slotIndex, p.name);
     closeAiSquadReplaceModal();
 }
-
 function renderAiSquadReplaceModalContent() {
     const content = document.getElementById('aiSquadReplaceModalContent');
     if (!content) return;
-
     const { squadId, roleKey, isStarter, currentName } = aiReplaceModalState;
     const currentSquads = getAiSquadsData();
     const sq = currentSquads.find(s => s.id === squadId);
     const sqName = sq ? sq.name.split('—')[0].trim() : 'Formazione';
-
     const roleNameMap = {
         'P': 'Portiere',
         'D': 'Difensore',
@@ -1037,7 +937,6 @@ function renderAiSquadReplaceModalContent() {
         'A': 'Attaccante'
     };
     const roleFullTitle = roleNameMap[roleKey] || roleKey;
-
     const roleColorMap = {
         'P': 'var(--role-p)',
         'D': 'var(--role-d)',
@@ -1045,10 +944,7 @@ function renderAiSquadReplaceModalContent() {
         'A': 'var(--role-a)'
     };
     const roleColor = roleColorMap[roleKey] || 'var(--accent-cyan)';
-
     const isMantra = (typeof State !== 'undefined' && State.systemMode === 'mantra');
-
-    // Mantra sub-role filter pills per reparto
     let mantraPillsHtml = '';
     if (isMantra) {
         let subRoles = [];
@@ -1056,7 +952,6 @@ function renderAiSquadReplaceModalContent() {
         else if (roleKey === 'D') subRoles = ['ALL', 'Dc', 'Dd', 'Ds', 'B'];
         else if (roleKey === 'C') subRoles = ['ALL', 'M', 'C', 'E'];
         else if (roleKey === 'A') subRoles = ['ALL', 'Pc', 'A', 'W', 'T'];
-
         if (subRoles.length > 1) {
             mantraPillsHtml = `
                 <div class="ai-replace-mantra-bar">
@@ -1072,7 +967,6 @@ function renderAiSquadReplaceModalContent() {
             `;
         }
     }
-
     content.innerHTML = `
         <div class="ai-replace-modal-inner">
             <!-- Header Modale -->
@@ -1089,7 +983,6 @@ function renderAiSquadReplaceModalContent() {
                 </div>
                 <button class="btn-action" style="padding:4px 10px;font-size:12px;" onclick="closeAiSquadReplaceModal()">✕ Chiudi</button>
             </div>
-
             <!-- Box informativo Regola del Ruolo -->
             <div class="ai-replace-rule-alert" style="border-left-color:${roleColor};">
                 <div style="display:flex;align-items:center;gap:6px;font-weight:800;color:${roleColor};font-size:12.5px;">
@@ -1099,7 +992,6 @@ function renderAiSquadReplaceModalContent() {
                     In conformità alla regola del ruolo, l'elenco mostra <b>esclusivamente calciatori con ruolo '${roleKey}'</b>. Il budget totale della formazione e i crediti residui si ricalcoleranno in tempo reale.
                 </div>
             </div>
-
             <!-- Toolbar di Ricerca e Filtri -->
             <div class="ai-replace-toolbar">
                 <div class="ai-replace-search-box">
@@ -1107,14 +999,12 @@ function renderAiSquadReplaceModalContent() {
                     <input type="text" id="aiReplaceSearchInput" class="ai-replace-input" placeholder="Cerca calciatore o squadra..." value="${aiReplaceModalState.searchQuery}" oninput="onAiReplaceSearch(this.value)">
                     ${aiReplaceModalState.searchQuery ? `<button class="ai-replace-clear-search" onclick="onAiReplaceSearch(''); document.getElementById('aiReplaceSearchInput').value='';">✕</button>` : ''}
                 </div>
-
                 <div class="ai-replace-filters-row">
                     <div class="ai-replace-status-group">
                         <button class="ai-replace-status-btn ${aiReplaceModalState.filterStatus === 'all' ? 'active' : ''}" data-status="all" onclick="setAiReplaceFilterStatus('all')">Tutti</button>
                         <button class="ai-replace-status-btn ${aiReplaceModalState.filterStatus === 'free' ? 'active' : ''}" data-status="free" onclick="setAiReplaceFilterStatus('free')">🟢 Solo Liberi</button>
                         <button class="ai-replace-status-btn ${aiReplaceModalState.filterStatus === 'fav' ? 'active' : ''}" data-status="fav" onclick="setAiReplaceFilterStatus('fav')">⭐ Preferiti</button>
                     </div>
-
                     <div style="display:flex;align-items:center;gap:6px;">
                         <span style="font-size:11.5px;color:var(--text-muted);white-space:nowrap;">Ordina per:</span>
                         <select class="ai-replace-sort-select" onchange="setAiReplaceSortBy(this.value)">
@@ -1126,15 +1016,12 @@ function renderAiSquadReplaceModalContent() {
                         </select>
                     </div>
                 </div>
-
                 ${mantraPillsHtml}
             </div>
-
             <!-- Contenitore Lista Candidati (Scrollable) -->
             <div id="aiReplaceCandidatesList" class="ai-replace-candidates-container">
                 <!-- Verrà popolato dinamicamente da renderAiReplaceCandidatesList -->
             </div>
-
             <!-- Footer con istruzioni -->
             <div class="ai-replace-modal-footer">
                 <span style="font-size:11.5px;color:var(--text-muted);">
@@ -1143,18 +1030,13 @@ function renderAiSquadReplaceModalContent() {
             </div>
         </div>
     `;
-
     renderAiReplaceCandidatesList();
 }
-
 function renderAiReplaceCandidatesList() {
     const listContainer = document.getElementById('aiReplaceCandidatesList');
     if (!listContainer) return;
-
     const { squadId, roleKey, currentName } = aiReplaceModalState;
     const isMantra = (typeof State !== 'undefined' && State.systemMode === 'mantra');
-
-    // Recupera i calciatori già presenti in formazione per evitare doppioni
     const currentSquads = getAiSquadsData();
     const sq = currentSquads.find(s => s.id === squadId);
     const existingNamesInSquad = new Set();
@@ -1164,11 +1046,7 @@ function renderAiReplaceCandidatesList() {
             (sq.bench[r] || []).forEach(n => existingNamesInSquad.add(n.toLowerCase().trim()));
         });
     }
-
-    // 1. REGOLA DEL RUOLO RIGOROSA: solo calciatori con ruolo roleKey
     let candidates = PLAYERS.filter(p => p.role === roleKey);
-
-    // 2. Filtro Sub-ruoli Mantra (se attivo)
     if (isMantra && aiReplaceModalState.filterMantraRole !== 'ALL') {
         const targetM = aiReplaceModalState.filterMantraRole.toUpperCase();
         candidates = candidates.filter(p => {
@@ -1176,8 +1054,6 @@ function renderAiReplaceCandidatesList() {
             return pRoles.includes(targetM);
         });
     }
-
-    // 3. Filtro di ricerca testuale
     const q = (aiReplaceModalState.searchQuery || '').toLowerCase().trim();
     if (q) {
         candidates = candidates.filter(p => 
@@ -1186,15 +1062,11 @@ function renderAiReplaceCandidatesList() {
             (p.mantra && p.mantra.toLowerCase().includes(q))
         );
     }
-
-    // 4. Filtro disponibilità
     if (aiReplaceModalState.filterStatus === 'free') {
         candidates = candidates.filter(p => typeof isPlayerAvailable === 'function' ? isPlayerAvailable(p.id) : true);
     } else if (aiReplaceModalState.filterStatus === 'fav') {
         candidates = candidates.filter(p => typeof isFavorite === 'function' ? isFavorite(p.id) : false);
     }
-
-    // 5. Ordinamento
     candidates.sort((a, b) => {
         const costA = getPlayerAuctionCost(a);
         const costB = getPlayerAuctionCost(b);
@@ -1205,7 +1077,6 @@ function renderAiReplaceCandidatesList() {
         if (aiReplaceModalState.sortBy === 'name') return a.name.localeCompare(b.name);
         return (b.ovr || 0) - (a.ovr || 0);
     });
-
     if (!candidates.length) {
         listContainer.innerHTML = `
             <div style="padding:40px 20px;text-align:center;color:var(--text-muted);">
@@ -1216,13 +1087,9 @@ function renderAiReplaceCandidatesList() {
         `;
         return;
     }
-
-    // Limita la visualizzazione ai primi 70 per massima fluidità
     const totalCount = candidates.length;
     const displayList = candidates.slice(0, 70);
-
     const cleanCurrentName = currentName.toLowerCase().trim();
-
     const itemsHtml = displayList.map(p => {
         const cost = getPlayerAuctionCost(p);
         const isBought = (p.id !== -1) && isPlayerBought(p.id);
@@ -1230,26 +1097,21 @@ function renderAiReplaceCandidatesList() {
         const cleanPName = p.name.toLowerCase().trim();
         const isCurrent = (cleanPName === cleanCurrentName);
         const isAlreadyInSquad = existingNamesInSquad.has(cleanPName) && !isCurrent;
-
         let statusBadge = '';
         if (isBought) statusBadge = `<span class="ai-status-pill in-team">✓ TUO</span>`;
         else if (isTaken) statusBadge = `<span class="ai-status-pill taken">⛔ PRESO</span>`;
         else statusBadge = `<span class="ai-status-pill free">🟢 LIBERO</span>`;
-
         let injBadge = '';
         if (p.is_injured) {
             const isOrange = (p.infortunio_severity === 'orange');
             injBadge = `<span class="ai-inj-pill ${isOrange ? 'orange' : 'red'}" title="${p.infortunio_status}">🚑 ${p.infortunio_motivo || 'Stop'}</span>`;
         }
-
         let rigoristaBadge = '';
         if (p.is_rigorista_1) rigoristaBadge = `<span style="font-size:9.5px;color:var(--accent-gold);background:rgba(234,179,8,0.15);padding:1px 4px;border-radius:3px;border:1px solid rgba(234,179,8,0.3);font-weight:700;">🎯 1° Rig.</span>`;
         else if (p.is_rigorista_2) rigoristaBadge = `<span style="font-size:9.5px;color:var(--accent-gold);background:rgba(234,179,8,0.1);padding:1px 4px;border-radius:3px;font-weight:700;">🎯 2° Rig.</span>`;
-
         const roleBadgeHtml = isMantra
             ? renderMantraRoleBadges(p.mantra)
             : `<span class="role-badge ${p.role}">${p.role}</span>`;
-
         let actionBtnHtml = '';
         if (isCurrent) {
             actionBtnHtml = `<button class="ai-cand-btn current" disabled>📌 Attuale</button>`;
@@ -1258,7 +1120,6 @@ function renderAiReplaceCandidatesList() {
         } else {
             actionBtnHtml = `<button class="ai-cand-btn select" onclick="confirmAiPlayerReplacement(${p.id})">✅ Scegli</button>`;
         }
-
         return `
             <div class="ai-replace-item ${isCurrent ? 'is-current' : ''} ${isAlreadyInSquad ? 'is-in-squad' : ''}">
                 <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;">
@@ -1280,7 +1141,6 @@ function renderAiReplaceCandidatesList() {
                         </div>
                     </div>
                 </div>
-
                 <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;">
                     <div style="text-align:right;">
                         <div class="ai-cand-price">${cost} <small style="font-size:10px;color:var(--text-muted);">CR</small></div>
@@ -1293,14 +1153,11 @@ function renderAiReplaceCandidatesList() {
             </div>
         `;
     }).join('');
-
     const countNote = totalCount > displayList.length 
         ? `<div style="padding:8px 12px;text-align:center;font-size:11px;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,0.06);">Mostrati i primi ${displayList.length} di ${totalCount} calciatori nel ruolo '${roleKey}' (Usa la ricerca per restringere)</div>`
         : `<div style="padding:8px 12px;text-align:center;font-size:11px;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,0.06);">${totalCount} calciatori disponibili nel ruolo '${roleKey}'</div>`;
-
     listContainer.innerHTML = countNote + `<div class="ai-replace-items-list">${itemsHtml}</div>`;
 }
-
 function loadAiSquadToBuilder(squadId) {
     if (typeof showComingSoonModal === 'function') {
         showComingSoonModal('Caricamento Rose & Gestione Leghe');
@@ -1309,7 +1166,6 @@ function loadAiSquadToBuilder(squadId) {
     }
     return;
 }
-
 window.renderAiSquads = renderAiSquadsTab;
 window.renderAiSquadsTab = renderAiSquadsTab;
 window.toggleCreatorAiSquadsPreview = toggleCreatorAiSquadsPreview;
@@ -1323,4 +1179,3 @@ window.confirmAiPlayerReplacement = confirmAiPlayerReplacement;
 window.replaceAiPlayer = replaceAiPlayer;
 window.revertAiSquadPlayer = revertAiSquadPlayer;
 window.resetAiSquadToDefault = resetAiSquadToDefault;
-

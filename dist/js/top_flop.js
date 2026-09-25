@@ -1,31 +1,19 @@
-// --- top_flop.js ---
-// Vista Top & Flop per Giornata con navigazione dinamica (1°-4° turno)
-// Include commenti narrativi approfonditi, dettaglio bonus/malus e apertura scheda calciatore al click.
-
 let currentTopFlopRound = 4;
-
 function setTopFlopRound(roundNum) {
     currentTopFlopRound = parseInt(roundNum, 10) || 4;
     renderTopFlopView();
 }
-
 function renderTopFlopView() {
     const container = document.getElementById('viewTopFlop');
     if (!container) return;
-
     const data = (typeof TOP_FLOP_DATA !== 'undefined') ? TOP_FLOP_DATA : {};
     const availableRounds = Object.keys(data).map(k => parseInt(k, 10)).sort((a, b) => a - b);
-    
-    // Se non impostato, mostra sempre l'ultima giornata
     if (!currentTopFlopRound || !data[currentTopFlopRound]) {
         currentTopFlopRound = availableRounds.length > 0 ? availableRounds[availableRounds.length - 1] : 4;
     }
-
     const roundInfo = data[currentTopFlopRound] || { top: [], flop: [], total_players_voted: 0 };
     const topList = roundInfo.top || [];
     const flopList = roundInfo.flop || [];
-
-    // Genera bottoni selettore giornata
     const roundButtonsHtml = availableRounds.map(r => {
         const isCurrent = (r === currentTopFlopRound);
         return `
@@ -36,8 +24,6 @@ function renderTopFlopView() {
             </button>
         `;
     }).join('');
-
-    // Riquadri TOP
     const topCardsHtml = topList.map((p, idx) => {
         const roleClass = p.role || 'C';
         const teamText = p.team ? `${p.role} - ${p.team}` : p.role;
@@ -57,14 +43,12 @@ function renderTopFlopView() {
                                 <span style="font-size:11.5px;color:var(--text-muted);font-weight:600;">(${teamText})</span>
                                 <span style="font-size:11px;background:rgba(16,185,129,0.2);color:#34d399;padding:1px 6px;border-radius:4px;font-weight:700;">✨ ${p.motivo}</span>
                             </div>
-                            
                             <!-- Commento Giornalistico / Fantacalcistico -->
                             <div style="margin-top:6px;font-size:12px;color:#d1fae5;line-height:1.45;background:rgba(0,0,0,0.3);padding:7px 10px;border-radius:7px;border-left:3px solid #10b981;">
                                 “${commentText}”
                             </div>
                         </div>
                     </div>
-
                     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;min-width:90px;">
                         <div style="display:flex;align-items:center;gap:10px;">
                             <div style="text-align:right;">
@@ -84,8 +68,6 @@ function renderTopFlopView() {
             </div>
         `;
     }).join('');
-
-    // Riquadri FLOP
     const flopCardsHtml = flopList.map((p, idx) => {
         const roleClass = p.role || 'C';
         const teamText = p.team ? `${p.role} - ${p.team}` : p.role;
@@ -105,14 +87,12 @@ function renderTopFlopView() {
                                 <span style="font-size:11.5px;color:var(--text-muted);font-weight:600;">(${teamText})</span>
                                 <span style="font-size:11px;background:rgba(239,68,68,0.2);color:#fca5a5;padding:1px 6px;border-radius:4px;font-weight:700;">⚠️ ${p.motivo}</span>
                             </div>
-                            
                             <!-- Commento Giornalistico / Fantacalcistico -->
                             <div style="margin-top:6px;font-size:12px;color:#fee2e2;line-height:1.45;background:rgba(0,0,0,0.3);padding:7px 10px;border-radius:7px;border-left:3px solid #ef4444;">
                                 “${commentText}”
                             </div>
                         </div>
                     </div>
-
                     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;min-width:90px;">
                         <div style="display:flex;align-items:center;gap:10px;">
                             <div style="text-align:right;">
@@ -132,7 +112,6 @@ function renderTopFlopView() {
             </div>
         `;
     }).join('');
-
     container.innerHTML = `
         <div class="top-flop-container" style="max-width:1240px;margin:0 auto;padding:16px 20px;">
             <!-- HEADER -->
@@ -146,14 +125,12 @@ function renderTopFlopView() {
                         </div>
                     </div>
                 </div>
-
                 <!-- SELECTOR GIORNATA -->
                 <div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.3);padding:4px 8px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);">
                     <span style="font-size:11.5px;color:var(--text-muted);font-weight:700;margin-right:4px;">Seleziona Turno:</span>
                     ${roundButtonsHtml}
                 </div>
             </div>
-
             <!-- RIEPILOGO TURNO BADGE -->
             <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.02);padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);margin-bottom:20px;">
                 <span style="font-size:13px;font-weight:800;color:#fff;">
@@ -164,7 +141,6 @@ function renderTopFlopView() {
                     <span style="color:var(--accent-cyan);">💡 Clicca su un calciatore per aprire la scheda e vedere l'andamento</span>
                 </span>
             </div>
-
             <!-- GRIGLIA 2 COLONNE: TOP (VERDE) & FLOP (ROSSO) -->
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
                 <!-- COLONNA TOP -->
@@ -178,7 +154,6 @@ function renderTopFlopView() {
                     </div>
                     ${topCardsHtml || '<div style="color:var(--text-muted);font-size:12px;">Nessun dato per questo turno.</div>'}
                 </div>
-
                 <!-- COLONNA FLOP -->
                 <div style="background:rgba(18,24,38,0.7);border:1px solid rgba(239,68,68,0.3);border-radius:14px;padding:18px;">
                     <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;border-bottom:1px solid rgba(239,68,68,0.2);padding-bottom:10px;">
@@ -194,6 +169,5 @@ function renderTopFlopView() {
         </div>
     `;
 }
-
 window.setTopFlopRound = setTopFlopRound;
 window.renderTopFlopView = renderTopFlopView;

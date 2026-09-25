@@ -1,14 +1,8 @@
-// ==============================================================================
-// MODULO SQUAD BUILDER & RACCOMANDAZIONI DINAMICHE AI
-// (LAYOUT A LISTA & GRIGLIA, SLIDER RUOLI, FILTRO CONSIGLI, PREFERITI ⭐ & RICERCA)
-// ==============================================================================
-
 function setSbViewMode(mode) {
     State.sbViewMode = mode;
     renderSquadBuilderList();
     updateSbViewModeUI();
 }
-
 function updateSbViewModeUI() {
     document.querySelectorAll('.sb-view-btn').forEach(btn => {
         const mode = btn.getAttribute('data-mode');
@@ -16,7 +10,6 @@ function updateSbViewModeUI() {
         else btn.classList.remove('active');
     });
 }
-
 function onSbRoleSelect(role) {
     if (State.sbRole === role && role !== 'ALL') {
         State.sbRole = 'ALL';
@@ -26,29 +19,24 @@ function onSbRoleSelect(role) {
     renderSquadBuilderList();
     updateSbRolePillsUI();
 }
-
 function onSbAdviceSelect(advice) {
     State.sbAdvice = advice;
     renderSquadBuilderList();
 }
-
 function toggleSbFavoriteFilter() {
     State.sbOnlyFav = !State.sbOnlyFav;
     renderSquadBuilderList();
     updateSbFavButtonUI();
 }
-
 function toggleSbAvailableFilter() {
     State.sbOnlyAvail = !State.sbOnlyAvail;
     renderSquadBuilderList();
     updateSbAvailButtonUI();
 }
-
 function onSbSearchQuery(val) {
     State.sbQuery = val;
     renderSquadBuilderList();
 }
-
 function updateSbRolePillsUI() {
     const cur = State.sbRole || 'ALL';
     document.querySelectorAll('.sb-role-pill-btn, .sb-subrole-btn').forEach(btn => {
@@ -57,7 +45,6 @@ function updateSbRolePillsUI() {
         else btn.classList.remove('active');
     });
 }
-
 function updateSbFavButtonUI() {
     const btn = document.getElementById('btnSbOnlyFav');
     if (btn) {
@@ -74,7 +61,6 @@ function updateSbFavButtonUI() {
         }
     }
 }
-
 function updateSbAvailButtonUI() {
     const btn = document.getElementById('btnSbOnlyAvail');
     if (btn) {
@@ -91,14 +77,11 @@ function updateSbAvailButtonUI() {
         }
     }
 }
-
 function renderSquadBuilder() {
     const container = document.getElementById('squadBuilderContainer');
     if (!container) return;
-
     const isMantraMode = (typeof State !== 'undefined' && State.systemMode === 'mantra');
     if (!State.sbViewMode) State.sbViewMode = 'list';
-
     const remaining = State.budgetTotal - State.budgetSpent;
     const totalBought = State.slots.P.players.length + State.slots.D.players.length + State.slots.C.players.length + State.slots.A.players.length;
     const maxRosterSlots = isMantraMode ? 31 : 25;
@@ -106,19 +89,14 @@ function renderSquadBuilder() {
     const maxSingleBid = totalSlotsRemaining > 0 ? Math.max(1, remaining - (totalSlotsRemaining - 1)) : 0;
     const takenCount = State.takenByOthers ? State.takenByOthers.length : 0;
     const favCount = State.favorites ? State.favorites.length : 0;
-
-    // Percentuali di spesa effettive
     const pSpent = State.slots.P.players.reduce((sum, p) => sum + (p.paidPrice || 0), 0);
     const dSpent = State.slots.D.players.reduce((sum, p) => sum + (p.paidPrice || 0), 0);
     const cSpent = State.slots.C.players.reduce((sum, p) => sum + (p.paidPrice || 0), 0);
     const aSpent = State.slots.A.players.reduce((sum, p) => sum + (p.paidPrice || 0), 0);
-
-    // Metriche aggregate della rosa
     const allBought = [...State.slots.P.players, ...State.slots.D.players, ...State.slots.C.players, ...State.slots.A.players];
     const avgOvr = allBought.length > 0 ? (allBought.reduce((acc, p) => acc + p.ovr, 0) / allBought.length).toFixed(1) : '-';
     const totalG2526 = allBought.reduce((acc, p) => acc + (p.gf || 0), 0);
     const totalA2526 = allBought.reduce((acc, p) => acc + (p.ass || 0), 0);
-
     let html = `
         <!-- HEADER STATS BAR SQUAD BUILDER -->
         <div class="sb-stats-bar">
@@ -151,7 +129,6 @@ function renderSquadBuilder() {
                 </div>
             </div>
         </div>
-
         <!-- TOOLBAR: TOP 11, RADAR RIVALS, EXPORT WHATSAPP -->
         <div class="sb-actions-toolbar">
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
@@ -176,7 +153,6 @@ function renderSquadBuilder() {
                 </div>
             </div>
         </div>
-
         <!-- MAIN LAYOUT: UNIFIED FULL-WIDTH RECOMMENDATIONS -->
         <div class="sb-main-grid" style="display:block;width:100%;">
             <!-- RIGHT SECTION: UNIFIED RECOMMENDATION ENGINE CON SLIDER RUOLI E FILTRI -->
@@ -228,7 +204,6 @@ function renderSquadBuilder() {
                         </button>
                     `}
                 </div>
-
                 ${isMantraMode ? `
                     <!-- 1b. BARRA SOTTOPOSIZIONI SINGOLE MANTRA -->
                     <div class="sb-subroles-slider-bar">
@@ -270,14 +245,12 @@ function renderSquadBuilder() {
                         </button>
                     </div>
                 ` : ''}
-
                 <!-- 2. BARRA FILTRI (CONSIGLI AI, PREFERITI ⭐, DISPONIBILI, RICERCA) -->
                 <div class="sb-filter-control-panel">
                     <div class="sb-filter-left-group">
                         <div class="sb-input-search-box">
                             <input type="text" id="sbUnifiedSearchInput" class="sb-unified-search" placeholder="🔍 Cerca calciatore, squadra o ruolo..." value="${State.sbQuery || ''}" oninput="onSbSearchQuery(this.value)">
                         </div>
-
                         <select id="sbAdviceFilterSelect" class="select-filter" style="max-width:200px;" onchange="onSbAdviceSelect(this.value)">
                             <option value="ALL" ${State.sbAdvice === 'ALL' ? 'selected' : ''}>🎯 Tutti i Consigli AI</option>
                             <option value="top" ${State.sbAdvice === 'top' ? 'selected' : ''}>⭐ Top Player Assoluto</option>
@@ -289,7 +262,6 @@ function renderSquadBuilder() {
                             <option value="flop" ${State.sbAdvice === 'flop' ? 'selected' : ''}>⚠️ Possibile Flop / Fragile</option>
                         </select>
                     </div>
-
                     <div class="sb-filter-right-group">
                         <button id="btnSbOnlyFav" class="sb-toggle-btn ${State.sbOnlyFav ? 'active' : ''}" onclick="toggleSbFavoriteFilter()">
                             <span>⭐ Solo Preferiti (${favCount})</span>
@@ -299,31 +271,23 @@ function renderSquadBuilder() {
                         </button>
                     </div>
                 </div>
-
                 <!-- 3. LISTA DINAMICA UNIFICATA CALCIATORI CONSIGLIATI (LISTA O GRIGLIA) -->
                 <div class="sb-unified-list-container" id="sbUnifiedListContainer">
                     <!-- Popolato dinamicamente da renderSquadBuilderList() -->
                 </div>
             </div>
         </div>
-
         <!-- MODAL OVERLAY -->
         <div id="sbGenericModal" class="sb-modal-backdrop" style="display:none;" onclick="if(event.target===this) closeSbModal();">
             <div class="sb-modal-card" id="sbModalContent"></div>
         </div>
     `;
-
     container.innerHTML = html;
     renderSquadBuilderList();
 }
-
-// -----------------------------------------------------------------------------
-// RENDER DELLA LISTA / GRIGLIA UNIFICATA DEI CALCIATORI
-// -----------------------------------------------------------------------------
 function renderSquadBuilderList() {
     const listContainer = document.getElementById('sbUnifiedListContainer');
     if (!listContainer) return;
-
     let list = PLAYERS.filter(p => {
         if (State.systemMode === 'mantra') {
             if (State.sbRole && State.sbRole !== 'ALL' && !isPlayerEligibleForMantraRole(p, State.sbRole)) return false;
@@ -333,7 +297,6 @@ function renderSquadBuilderList() {
         if (State.sbOnlyAvail && !isPlayerAvailable(p.id)) return false;
         if (State.sbOnlyFav && !isFavorite(p.id)) return false;
         if (State.sbAdvice && State.sbAdvice !== 'ALL' && p.ai_advice_type !== State.sbAdvice) return false;
-
         if (State.sbQuery) {
             const q = State.sbQuery.toLowerCase();
             const mName = p.name.toLowerCase().includes(q);
@@ -343,7 +306,6 @@ function renderSquadBuilderList() {
         }
         return true;
     });
-
     list.sort((a, b) => {
         if (a.role === 'P' && b.role === 'P' && State.slots.P.players.length === 1) {
             const teamP = State.slots.P.players[0].team;
@@ -352,20 +314,17 @@ function renderSquadBuilderList() {
                 const aSame = a.team === teamP ? -1 : 1;
                 const bSame = b.team === teamP ? -1 : 1;
                 if (aSame !== bSame) return aSame - bSame;
-
                 const disA = row[a.team] !== undefined ? row[a.team] : 99;
                 const disB = row[b.team] !== undefined ? row[b.team] : 99;
                 if (disA !== disB) return disA - disB;
             }
         }
-
         const aRig = (a.rigorista_val && a.rigorista_val.includes('1°')) ? 30 : 0;
         const bRig = (b.rigorista_val && b.rigorista_val.includes('1°')) ? 30 : 0;
         const aScore = a.ovr + aRig + (a.xg90_2526 || 0) * 30 + (a.xa90_2526 || 0) * 30;
         const bScore = b.ovr + bRig + (b.xg90_2526 || 0) * 30 + (b.xa90_2526 || 0) * 30;
         return bScore - aScore;
     });
-
     if (list.length === 0) {
         listContainer.innerHTML = `
             <div class="sb-no-results-big">
@@ -376,9 +335,7 @@ function renderSquadBuilderList() {
         `;
         return;
     }
-
     const viewMode = State.sbViewMode || 'list';
-
     if (viewMode === 'list') {
         let itemsHtml = list.slice(0, 100).map(p => renderUnifiedPlayerRow(p)).join('');
         listContainer.innerHTML = `<div class="sb-list-rows-wrapper">${itemsHtml}</div>`;
@@ -387,20 +344,14 @@ function renderSquadBuilderList() {
         listContainer.innerHTML = `<div class="sb-cards-grid-unified">${itemsHtml}</div>`;
     }
 }
-
-// -----------------------------------------------------------------------------
-// 1. VISTA A RIGA (LISTA ORIZZONTALE COMPATTA E PULITA)
-// -----------------------------------------------------------------------------
 function renderUnifiedPlayerRow(p) {
     const isFav = isFavorite(p.id);
     const isBought = isPlayerBought(p.id);
     const isTaken = isPlayerTakenByOther(p.id);
     const starIcon = isFav ? '⭐' : '☆';
     const starClass = isFav ? 'active' : '';
-
     const fragIcon = p.fragilita_badge === 'alta' ? '🔴' : (p.fragilita_badge === 'media' ? '🟡' : '🟢');
     const topOvrClass = getOvrClass(p.ovr);
-
     let prioBadge = '';
     if (p.role === 'P' && State.slots.P.players.length === 1) {
         const team1 = State.slots.P.players[0].team;
@@ -420,7 +371,6 @@ function renderUnifiedPlayerRow(p) {
     } else if (p.prezzo_cons <= 5) {
         prioBadge = `<span class="sb-prio-badge dim">💎 Low Cost / Sleeper</span>`;
     }
-
     let statsShort = '';
     let liveBadge2627 = '';
     if (p.has_data_2627 && p.presenze_2627 > 0) {
@@ -433,7 +383,6 @@ function renderUnifiedPlayerRow(p) {
             liveBadge2627 = `<span class="sb-prio-badge ${colorClass}" title="Dati Reali Serie A 2026/27 (G1+G2)">🔥 26/27: ${gText}/${aText} (${p.presenze_2627}P, ${p.minuti_2627}')</span>`;
         }
     }
-
     if (p.has_data_2526) {
         if (p.role === 'P') {
             statsShort = `CS 25/26: <b>${p.clean_sheets_2526 || 0}</b> | % Par: <b>${p.save_pct_2526 || 0}%</b> | FM: <b>${p.fm || '-'}</b>`;
@@ -443,7 +392,6 @@ function renderUnifiedPlayerRow(p) {
     } else {
         statsShort = `<span style="color:#a78bfa;">✨ Nuovo 26/27</span> | FM: <b>${p.fm || '-'}</b>`;
     }
-
     let actionsHtml = '';
     if (isBought) {
         actionsHtml = `<span style="color:#4ade80;font-weight:800;font-size:11px;">✓ NELLA TUA ROSA</span>`;
@@ -462,11 +410,9 @@ function renderUnifiedPlayerRow(p) {
             </div>
         `;
     }
-
     const roleBadgeHtml = State.systemMode === 'mantra'
         ? renderMantraRoleBadges(p.mantra)
         : `<span class="role-badge ${p.role}">${p.role}</span>`;
-
     return `
         <div class="sb-unified-row ${isBought ? 'bought' : ''} ${isTaken ? 'taken' : ''}">
             <div class="sb-row-left">
@@ -478,7 +424,6 @@ function renderUnifiedPlayerRow(p) {
                     ${State.systemMode === 'classic' ? `<span style="font-size:10.5px;color:var(--text-muted);">${p.mantra || ''}</span>` : ''}
                 </div>
             </div>
-
             <div class="sb-row-mid">
                 ${liveBadge2627}
                 ${prioBadge}
@@ -487,7 +432,6 @@ function renderUnifiedPlayerRow(p) {
                 ${p.is_injured ? `<span style="color:#f87171;font-size:10px;font-weight:700;">🏥 ${p.infortunio_rientro}</span>` : ''}
                 <span class="sb-row-stats">${statsShort}</span>
             </div>
-
             <div class="sb-row-right">
                 <span class="ovr-pill ${topOvrClass}">${p.ovr}</span>
                 <span class="price-pill">${p.prezzo_cons} CR</span>
@@ -496,20 +440,14 @@ function renderUnifiedPlayerRow(p) {
         </div>
     `;
 }
-
-// -----------------------------------------------------------------------------
-// 2. VISTA A GRIGLIA (SCHEDE CARD)
-// -----------------------------------------------------------------------------
 function renderUnifiedPlayerCard(p) {
     const isFav = isFavorite(p.id);
     const isBought = isPlayerBought(p.id);
     const isTaken = isPlayerTakenByOther(p.id);
     const starIcon = isFav ? '⭐' : '☆';
     const starClass = isFav ? 'active' : '';
-
     const fragIcon = p.fragilita_badge === 'alta' ? '🔴' : (p.fragilita_badge === 'media' ? '🟡' : '🟢');
     const topOvrClass = getOvrClass(p.ovr);
-
     let prioBadge = '';
     if (p.role === 'P' && State.slots.P.players.length === 1) {
         const team1 = State.slots.P.players[0].team;
@@ -529,7 +467,6 @@ function renderUnifiedPlayerCard(p) {
     } else if (p.prezzo_cons <= 5) {
         prioBadge = `<span class="sb-prio-badge dim">💎 Low Cost / Sleeper</span>`;
     }
-
     let statsRow = '';
     if (p.has_data_2526) {
         if (p.role === 'P') {
@@ -540,7 +477,6 @@ function renderUnifiedPlayerCard(p) {
     } else {
         statsRow = `<span style="color:#a78bfa;">✨ Nuovo 2026/27</span> • <span>FM: <b>${p.fm || '-'}</b></span>`;
     }
-
     let actionsHtml = '';
     if (isBought) {
         actionsHtml = `<span style="color:#4ade80;font-weight:800;font-size:11px;">✓ NELLA TUA ROSA</span>`;
@@ -559,11 +495,9 @@ function renderUnifiedPlayerCard(p) {
             </div>
         `;
     }
-
     const roleBadgeHtml = State.systemMode === 'mantra'
         ? renderMantraRoleBadges(p.mantra)
         : `<span class="role-badge ${p.role}">${p.role}</span>`;
-
     return `
         <div class="sb-unified-card ${isBought ? 'bought' : ''} ${isTaken ? 'taken' : ''}">
             <div class="sb-unified-card-header">
@@ -581,7 +515,6 @@ function renderUnifiedPlayerCard(p) {
                     <span class="price-pill">${p.prezzo_cons} CR</span>
                 </div>
             </div>
-
             <div class="sb-unified-card-body">
                 <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                     ${prioBadge}
@@ -589,19 +522,16 @@ function renderUnifiedPlayerCard(p) {
                     <span title="Fragilità: ${p.fragilita_val || ''}" style="cursor:help;font-size:13px;">${fragIcon}</span>
                     ${p.is_injured ? `<span style="color:#f87171;font-size:10.5px;font-weight:700;">🏥 ${p.infortunio_rientro}</span>` : ''}
                 </div>
-
                 <div class="sb-unified-stats-row">
                     ${statsRow}
                 </div>
             </div>
-
             <div class="sb-unified-card-footer">
                 ${actionsHtml}
             </div>
         </div>
     `;
 }
-
 function resetSbFilters() {
     State.sbRole = 'ALL';
     State.sbAdvice = 'ALL';
@@ -617,14 +547,9 @@ function resetSbFilters() {
     updateSbAvailButtonUI();
     renderSquadBuilderList();
 }
-
-// -----------------------------------------------------------------------------
-// RENDER COMPACT SLOTS PER LA COLONNA SINISTRA
-// -----------------------------------------------------------------------------
 function renderCompactDepartmentSlots(role, label, maxSlots, color, slotLabels) {
     const list = State.slots[role].players || [];
     const spentDept = list.reduce((acc, p) => acc + (p.paidPrice || 0), 0);
-
     let html = `
         <div class="sb-dept-box-compact">
             <div class="sb-dept-header-compact">
@@ -636,12 +561,8 @@ function renderCompactDepartmentSlots(role, label, maxSlots, color, slotLabels) 
             </div>
             <div class="sb-slots-list-compact">
     `;
-
-    // Costruiamo la mappatura per piazzare ogni giocatore nel suo slot AI corrispondente
     const mappedSlots = new Array(maxSlots).fill(null);
     const unplaced = [];
-    
-    // 1. Assegna al posto ideale se libero
     for (let p of list) {
         const idealIdx = Math.min(Math.max(p.slot_num || 1, 1), maxSlots) - 1;
         if (!mappedSlots[idealIdx]) {
@@ -650,8 +571,6 @@ function renderCompactDepartmentSlots(role, label, maxSlots, color, slotLabels) 
             unplaced.push(p);
         }
     }
-    
-    // 2. Colma i buchi con chi ha trovato lo slot occupato (es. due top acquisti)
     for (let p of unplaced) {
         for (let i = 0; i < maxSlots; i++) {
             if (!mappedSlots[i]) {
@@ -660,7 +579,6 @@ function renderCompactDepartmentSlots(role, label, maxSlots, color, slotLabels) 
             }
         }
     }
-
     for (let i = 0; i < maxSlots; i++) {
         const p = mappedSlots[i];
         if (p) {
@@ -700,20 +618,17 @@ function renderCompactDepartmentSlots(role, label, maxSlots, color, slotLabels) 
             `;
         }
     }
-
     html += `
             </div>
         </div>
     `;
     return html;
 }
-
 function renderCompactMantraGoalkeeperSlots() {
     const list = State.slots.P.players || [];
     const spentGk = list.reduce((acc, p) => acc + (p.paidPrice || 0), 0);
     const maxSlots = 3;
     const slotLabels = ['1° Portiere', '2° Portiere', '3° Portiere'];
-
     let html = `
         <div class="sb-dept-box-compact">
             <div class="sb-dept-header-compact">
@@ -725,7 +640,6 @@ function renderCompactMantraGoalkeeperSlots() {
             </div>
             <div class="sb-slots-list-compact">
     `;
-
     for (let i = 0; i < maxSlots; i++) {
         const p = list[i];
         if (p) {
@@ -764,20 +678,16 @@ function renderCompactMantraGoalkeeperSlots() {
             `;
         }
     }
-
     html += `
             </div>
         </div>
     `;
     return html;
 }
-
 function renderCompactMantraMovementSlots() {
     const list = [...(State.slots.D.players || []), ...(State.slots.C.players || []), ...(State.slots.A.players || [])];
     const spentMov = list.reduce((acc, p) => acc + (p.paidPrice || 0), 0);
     const maxSlots = 28;
-
-    // Ordina i calciatori di movimento secondo gerarchia tattica Mantra
     const sortedList = [...list].sort((a, b) => {
         const scoreA = (typeof getMantraHierarchyScore === 'function') ? getMantraHierarchyScore(a.mantra) : 50;
         const scoreB = (typeof getMantraHierarchyScore === 'function') ? getMantraHierarchyScore(b.mantra) : 50;
@@ -785,7 +695,6 @@ function renderCompactMantraMovementSlots() {
         if ((b.paidPrice || 0) !== (a.paidPrice || 0)) return (b.paidPrice || 0) - (a.paidPrice || 0);
         return (b.ovr || 0) - (a.ovr || 0);
     });
-
     let html = `
         <div class="sb-dept-box-compact">
             <div class="sb-dept-header-compact" style="background:linear-gradient(90deg, rgba(2,132,199,0.18), rgba(139,92,246,0.12));">
@@ -800,7 +709,6 @@ function renderCompactMantraMovementSlots() {
             </div>
             <div class="sb-slots-list-compact" style="max-height: 520px; overflow-y: auto;">
     `;
-
     for (let i = 0; i < maxSlots; i++) {
         const p = sortedList[i];
         if (p) {
@@ -841,21 +749,18 @@ function renderCompactMantraMovementSlots() {
             `;
         }
     }
-
     html += `
             </div>
         </div>
     `;
     return html;
 }
-
 function quickBuyPlayer(playerName) {
     const player = PLAYERS.find(p => p.name.toLowerCase() === playerName.toLowerCase());
     if (!player) return;
     buyPlayer(player.id);
     renderSquadBuilder();
 }
-
 function clearAllTaken() {
     if (typeof confirmResetRivalsTaken === 'function') {
         confirmResetRivalsTaken();
@@ -868,14 +773,9 @@ function clearAllTaken() {
     saveStateToStorage();
     updateAllViews();
 }
-
-// ==============================================================================
-// MODALE 1: ASSEGNAZIONE GIOCATORE AI 7 RIVALI
-// ==============================================================================
 function openRivalAssignModal(playerId) {
     const p = PLAYERS.find(pl => pl.id === playerId);
     if (!p) return;
-
     let modal = document.getElementById('rivalAssignModal');
     let content = document.getElementById('rivalAssignModalContent');
     if (!modal || !content) {
@@ -883,9 +783,7 @@ function openRivalAssignModal(playerId) {
         content = document.getElementById('sbModalContent');
     }
     if (!modal || !content) return;
-
     const rivalsList = Object.keys(State.rivals || RIVALS_TEMPLATE);
-
     let rivalsBtnsHtml = rivalsList.map(rName => {
         const rData = State.rivals[rName];
         const rSpent = rData.spent || 0;
@@ -909,7 +807,6 @@ function openRivalAssignModal(playerId) {
             </button>
         `;
     }).join('');
-
     content.innerHTML = `
         <div style="display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;margin-bottom:14px;">
             <div>
@@ -923,7 +820,6 @@ function openRivalAssignModal(playerId) {
             </div>
             <button class="btn-action" style="padding:4px 10px;font-size:12px;" onclick="closeRivalAssignModal()">Chiudi ✕</button>
         </div>
-
         <div style="background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;">
             <div style="display:flex;align-items:center;gap:8px;">
                 <label style="font-size:12px;color:var(--text-secondary);font-weight:800;">PREZZO PAGATO:</label>
@@ -934,24 +830,19 @@ function openRivalAssignModal(playerId) {
                 </div>
                 <span style="font-size:12px;color:var(--accent-gold);font-weight:800;">CR</span>
             </div>
-
             <button type="button" class="btn-action" style="margin-left:auto;background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.15);font-size:11.5px;padding:6px 12px;" onclick="submitRivalAssign(${p.id}, null)" title="Segna come acquistato da altri ma senza specificare la squadra">
                 👤 Altro Generico (Senza Rivale)
             </button>
         </div>
-
         <div style="font-size:11px;font-weight:800;color:var(--text-muted);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px;">
             SCEGLI LA SQUADRA RIVALE CHE LO HA PRESO:
         </div>
-
         <div class="sb-rivals-grid-select">
             ${rivalsBtnsHtml}
         </div>
     `;
-
     modal.style.display = 'flex';
 }
-
 function adjustRivalPrice(delta) {
     const input = document.getElementById('rivalPaidPriceInput');
     if (!input) return;
@@ -959,7 +850,6 @@ function adjustRivalPrice(delta) {
     val = Math.max(1, val + delta);
     input.value = val;
 }
-
 function submitRivalAssign(playerId, rivalName) {
     const priceInput = document.getElementById('rivalPaidPriceInput');
     const price = priceInput ? parseInt(priceInput.value, 10) || 1 : null;
@@ -968,13 +858,11 @@ function submitRivalAssign(playerId, rivalName) {
     if (typeof renderGemsTab === 'function') renderGemsTab();
     if (typeof renderTeamRosterTable === 'function' && State.currentTeamPitch) renderTeamRosterTable(State.currentTeamPitch);
 }
-
 function closeRivalAssignModal() {
     const modal = document.getElementById('rivalAssignModal');
     if (modal) modal.style.display = 'none';
     closeSbModal();
 }
-
 function closeSbModal() {
     const modal = document.getElementById('sbGenericModal');
     if (modal) modal.style.display = 'none';
@@ -983,31 +871,23 @@ function closeSbModal() {
     const rModal = document.getElementById('rivalAssignModal');
     if (rModal) rModal.style.display = 'none';
 }
-
-// ==============================================================================
-// MODALE 2: RADAR SPIONAGGIO AVVERSARI
-// ==============================================================================
 function openRivalsRadarModal() {
     const modal = document.getElementById('sbGenericModal');
     const content = document.getElementById('sbModalContent');
     if (!modal || !content) return;
-
     const rivalsList = Object.keys(State.rivals || RIVALS_TEMPLATE);
-    
     const sortedRivals = rivalsList.map(rName => {
         const rData = State.rivals[rName];
         const spent = rData.spent || 0;
         const rem = 1000 - spent;
         return { name: rName, ...rData, remaining: rem };
     }).sort((a, b) => b.remaining - a.remaining);
-
     let rowsHtml = sortedRivals.map((r, idx) => {
         const pCount = { P: 0, D: 0, C: 0, A: 0 };
         r.players.forEach(pl => {
             const full = PLAYERS.find(p => p.id === pl.id);
             if (full && pCount[full.role] !== undefined) pCount[full.role]++;
         });
-
         let alertBadge = '';
         if (pCount.A === 0 && r.remaining >= 350) {
             alertBadge = `<span class="sb-threat-badge high">🔥 PERICOLO ATTACCO (Ha ${r.remaining} CR e 0 Punte)</span>`;
@@ -1018,7 +898,6 @@ function openRivalsRadarModal() {
         } else {
             alertBadge = `<span class="sb-threat-badge low">📊 In Gestione (${r.players.length}/25 slot)</span>`;
         }
-
         return `
             <div class="sb-rival-radar-card">
                 <div style="display:flex;align-items:center;justify-content:space-between;">
@@ -1034,7 +913,6 @@ function openRivalsRadarModal() {
                         <div style="font-size:10px;color:var(--text-muted);">Spesi: ${r.spent} CR</div>
                     </div>
                 </div>
-
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.06);">
                     <div style="display:flex;gap:6px;font-size:11px;">
                         <span style="color:var(--role-p);">🧤 ${pCount.P}/3</span>
@@ -1047,7 +925,6 @@ function openRivalsRadarModal() {
             </div>
         `;
     }).join('');
-
     content.innerHTML = `
         <div class="sb-modal-header">
             <div>
@@ -1056,68 +933,45 @@ function openRivalsRadarModal() {
             </div>
             <button class="sb-modal-close" onclick="closeSbModal()">✕</button>
         </div>
-
         <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;max-height:550px;overflow-y:auto;">
             ${rowsHtml}
         </div>
     `;
-
     modal.style.display = 'flex';
 }
-
-// ==============================================================================
-// REGOLA MANTRA 5.3: VERIFICA COMPATIBILITÀ E ADATTABILITÀ RUOLI FUORI POSIZIONE
-// ==============================================================================
 function checkMantraSlotCompatibility(player, slot) {
     if (!player || !slot) return { allowed: false };
     const pRoles = (player.mantra || '').split(';').map(r => r.trim()).filter(Boolean);
-    
-    // 1. Ruolo naturale (nessun malus)
     if (slot.roles.some(r => pRoles.includes(r))) {
         return { allowed: true, isAdapted: false, malus: 0 };
     }
-
-    // 2. Portiere: nessuna adattabilità permessa
     if (slot.roles.includes('Por') || pRoles.includes('Por')) {
         return { allowed: false };
     }
-
-    // 3. REGOLA 5.3: INIBIZIONI ASSOLUTE IN FASE DI INSERIMENTO FORMAZIONE
-    // - Inibito schierare B, Dd o Ds in posizione Dc
     const isPureDcSlot = slot.roles.length === 1 && slot.roles[0] === 'Dc';
     if (isPureDcSlot && !pRoles.includes('Dc')) {
         if (pRoles.some(r => ['B', 'Dd', 'Ds'].includes(r))) {
             return { allowed: false };
         }
     }
-
-    // - Inibito schierare Dd in posizione Ds e viceversa
     if (slot.roles.includes('Ds') && !pRoles.includes('Ds') && pRoles.includes('Dd')) {
         return { allowed: false };
     }
     if (slot.roles.includes('Dd') && !pRoles.includes('Dd') && pRoles.includes('Ds')) {
         return { allowed: false };
     }
-
-    // - Inibito schierare E in posizione M pura (rimane possibile in posizione M/C)
     const isPureMSlot = slot.roles.length === 1 && slot.roles[0] === 'M';
     if (isPureMSlot && pRoles.includes('E') && !pRoles.includes('M')) {
         return { allowed: false };
     }
-
-    // - Inibito schierare M in posizione E pura (rimane possibile in posizione E/W)
     const isPureESlot = slot.roles.length === 1 && slot.roles[0] === 'E';
     if (isPureESlot && pRoles.includes('M') && !pRoles.includes('E')) {
         return { allowed: false };
     }
-
-    // - Inibito schierare W in posizione T pura (rimane possibile in posizione T/A)
     const isPureTSlot = slot.roles.length === 1 && slot.roles[0] === 'T';
     if (isPureTSlot && pRoles.includes('W') && !pRoles.includes('T')) {
         return { allowed: false };
     }
-
-    // 4. ADATTABILITÀ CONSENTITE DALLA TABELLA MANTRA (CON AGGRAVIO MALUS 1 PUNTO)
     const ADAPT_MAP = {
         'Dd': ['E'],
         'Ds': ['E'],
@@ -1129,32 +983,25 @@ function checkMantraSlotCompatibility(player, slot) {
         'A': ['Pc', 'T', 'W'],
         'Pc': ['A']
     };
-
     for (const r of pRoles) {
         const targets = ADAPT_MAP[r] || [];
         if (slot.roles.some(target => targets.includes(target))) {
             return { allowed: true, isAdapted: true, malus: 1 };
         }
     }
-
     return { allowed: false };
 }
-
-// Helper: Risolutore Algoritmico Ottimale per Formazioni Mantra
 function solveOptimalMantraFormation(schema, allBought) {
     const slots = schema.slots;
     const nSlots = slots.length;
     let bestScore = -1;
     let bestCount = -1;
     let bestAssignment = new Array(nSlots).fill(null);
-
-    // Costruisci candidati per ciascuno slot (priorità assoluta ai ruoli naturali, poi adattati con malus)
     const candidatesPerSlot = slots.map((slot) => {
         const list = [];
         for (const p of allBought) {
             const compat = checkMantraSlotCompatibility(p, slot);
             if (compat.allowed) {
-                // Penalità di 15 punti OVR per i fuori posizione: garantisce che i naturali vincano sempre
                 const effectiveOvr = (p.ovr || 60) - (compat.isAdapted ? 15 : 0);
                 list.push({
                     ...p,
@@ -1166,10 +1013,8 @@ function solveOptimalMantraFormation(schema, allBought) {
         }
         return list.sort((a, b) => b.effectiveOvr - a.effectiveOvr);
     });
-
     const currentAssignment = new Array(nSlots).fill(null);
     const used = new Set();
-
     function backtrack(sIdx, currentScore, currentCount) {
         if (sIdx === nSlots) {
             if (currentCount > bestCount || (currentCount === bestCount && currentScore > bestScore)) {
@@ -1179,7 +1024,6 @@ function solveOptimalMantraFormation(schema, allBought) {
             }
             return;
         }
-
         let maxPossibleScore = currentScore;
         let maxPossibleCount = currentCount;
         for (let j = sIdx; j < nSlots; j++) {
@@ -1196,11 +1040,8 @@ function solveOptimalMantraFormation(schema, allBought) {
                 maxPossibleScore += maxOvr;
             }
         }
-
         if (maxPossibleCount < bestCount) return;
         if (maxPossibleCount === bestCount && maxPossibleScore <= bestScore) return;
-
-        // Prova i migliori candidati per questo slot (fino a 6 per contenere la combinatoria)
         const cands = candidatesPerSlot[sIdx].slice(0, 6);
         for (const cand of cands) {
             if (!used.has(cand.id)) {
@@ -1216,17 +1057,12 @@ function solveOptimalMantraFormation(schema, allBought) {
                 currentAssignment[sIdx] = null;
             }
         }
-
-        // Ramo con slot vuoto/libero
         currentAssignment[sIdx] = { player: null, slot: slots[sIdx], isAdapted: false, malus: 0 };
         backtrack(sIdx + 1, currentScore, currentCount);
     }
-
     backtrack(0, 0, 0);
-
     const naturalCount = bestAssignment.filter(a => a && a.player && !a.isAdapted).length;
     const adaptedCount = bestAssignment.filter(a => a && a.player && a.isAdapted).length;
-
     return { 
         assignment: bestAssignment, 
         score: bestScore, 
@@ -1235,13 +1071,7 @@ function solveOptimalMantraFormation(schema, allBought) {
         adaptedCount 
     };
 }
-
-// ==============================================================================
-// MODALE 3: MIGLIOR 11 TITOLARE AI (CON SCELTA MANUALE & REGOLA DEL RUOLO)
-// ==============================================================================
-
 const BEST11_CUSTOM_STORAGE_KEY = 'FANTA_MASTER_BEST11_CUSTOM_V1';
-
 function getBest11CustomSelections() {
     try {
         const raw = localStorage.getItem(BEST11_CUSTOM_STORAGE_KEY);
@@ -1252,7 +1082,6 @@ function getBest11CustomSelections() {
         return {};
     }
 }
-
 function saveBest11CustomSelections(sel) {
     try {
         const raw = localStorage.getItem(BEST11_CUSTOM_STORAGE_KEY);
@@ -1262,7 +1091,6 @@ function saveBest11CustomSelections(sel) {
         localStorage.setItem(BEST11_CUSTOM_STORAGE_KEY, JSON.stringify(all));
     } catch (e) {}
 }
-
 function setBest11CustomSlot(modName, slotIdx, playerId) {
     const allCustom = getBest11CustomSelections();
     if (!allCustom[modName]) allCustom[modName] = {};
@@ -1271,7 +1099,6 @@ function setBest11CustomSlot(modName, slotIdx, playerId) {
     closeBest11PickerModal();
     openBest11Modal(modName);
 }
-
 function revertBest11Slot(modName, slotIdx) {
     const allCustom = getBest11CustomSelections();
     if (allCustom[modName] && allCustom[modName][slotIdx] !== undefined) {
@@ -1280,7 +1107,6 @@ function revertBest11Slot(modName, slotIdx) {
         openBest11Modal(modName);
     }
 }
-
 function resetBest11ModToAuto(modName) {
     const allCustom = getBest11CustomSelections();
     if (allCustom[modName]) {
@@ -1289,28 +1115,20 @@ function resetBest11ModToAuto(modName) {
         openBest11Modal(modName);
     }
 }
-
 function openBest11Modal(preferredFormation = null) {
     const modal = document.getElementById('sbGenericModal');
     const content = document.getElementById('sbModalContent');
     if (!modal || !content) return;
-
     const allBought = [...State.slots.P.players, ...State.slots.D.players, ...State.slots.C.players, ...State.slots.A.players];
     if (allBought.length === 0) {
         alert("Acquista prima qualche calciatore nella tua rosa per calcolare la Top 11!");
         return;
     }
-
-    // Allarga e ottimizza visibilità modale a 2 colonne
     content.classList.add('sb-modal-large');
-
     const customSelectionsAll = getBest11CustomSelections();
-
     if (State.systemMode === 'mantra') {
         const mantraMods = Object.keys(MANTRA_FORMATIONS);
         let bestMod = preferredFormation;
-
-        // Se non è specificato un modulo preferito, calcola il punteggio su tutti gli 11 moduli e scegli il migliore
         if (!bestMod || !MANTRA_FORMATIONS[bestMod]) {
             let maxCount = -1;
             let maxScore = -1;
@@ -1325,15 +1143,11 @@ function openBest11Modal(preferredFormation = null) {
                 }
             }
         }
-
         const schema = MANTRA_FORMATIONS[bestMod];
         const res = solveOptimalMantraFormation(schema, allBought);
         const assigned = [...res.assignment];
-
         const customMod = customSelectionsAll[bestMod] || {};
         let hasCustom = false;
-
-        // Applica le selezioni manuali dell'utente rispettando il ruolo dello slot
         Object.keys(customMod).forEach(idxStr => {
             const sIdx = parseInt(idxStr, 10);
             const customPId = customMod[sIdx];
@@ -1353,22 +1167,17 @@ function openBest11Modal(preferredFormation = null) {
                 }
             }
         });
-
         const fieldedPlayerIds = assigned.filter(a => a && a.player).map(a => a.player.id);
         const benchPlayers = allBought.filter(p => !fieldedPlayerIds.includes(p.id)).sort((a, b) => (b.ovr || 0) - (a.ovr || 0));
-
         const fieldedCount = assigned.filter(a => a && a.player).length;
         const adaptedCount = assigned.filter(a => a && a.player && a.isAdapted).length;
         const naturalCount = fieldedCount - adaptedCount;
-
         const startersList = assigned.filter(a => a && a.player).map(a => a.player);
         const avgStarterOvr = startersList.length ? (startersList.reduce((s, p) => s + (p.ovr || 70), 0) / startersList.length).toFixed(1) : '-';
         const avgBenchOvr = benchPlayers.length ? (benchPlayers.reduce((s, p) => s + (p.ovr || 70), 0) / benchPlayers.length).toFixed(1) : '-';
-
         const startersSummary = adaptedCount > 0 
             ? `${fieldedCount}/11 Schierati (${naturalCount} Nat., ${adaptedCount} Adatt.)`
             : `${fieldedCount}/11 Titolari (Tutti Naturali)`;
-
         const renderMantraPill = (item, sIdx) => {
             const isCustom = item && item.isCustom;
             if (!item || !item.player) {
@@ -1388,17 +1197,14 @@ function openBest11Modal(preferredFormation = null) {
             const p = item.player;
             const posLbl = item.slot.pos;
             const isAdapted = item.isAdapted;
-
             const adaptedBadge = isAdapted ? `
                 <span style="font-size:8px;font-weight:900;color:#f59e0b;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.35);padding:1px 3px;border-radius:3px;">
                     ⚠️ -1 pt
                 </span>
             ` : '';
-
             const customTag = isCustom ? `
                 <span class="sb-best11-custom-tag" title="Calciatore scelto manualmente">✏️ Manuale</span>
             ` : '';
-
             const ratingDisplay = isAdapted ? `
                 <span class="sb-best11-ovr-tag" style="background:rgba(239,68,68,0.18);color:#fca5a5;border-color:rgba(239,68,68,0.35);" title="Punteggio decurtato per Malus Fuori Posizione (-1 punto)">
                     ⭐ ${p.ovr - 1} <small style="font-size:7.5px;opacity:0.8;">(-1)</small>
@@ -1406,7 +1212,6 @@ function openBest11Modal(preferredFormation = null) {
             ` : `
                 <span class="sb-best11-ovr-tag">⭐ ${p.ovr}</span>
             `;
-
             return `
                 <div class="sb-best11-pill mantra-pill-card ${isAdapted ? 'adapted' : ''}" onclick="openBest11SlotPickerModal('${bestMod}', ${sIdx})" style="cursor:pointer;" title="Clicca per cambiare questo calciatore">
                     <div style="display:flex;align-items:center;gap:3px;flex-wrap:wrap;justify-content:center;">
@@ -1435,12 +1240,8 @@ function openBest11Modal(preferredFormation = null) {
                 </div>
             `;
         };
-
-        // Ripartizione moduli Mantra in Difesa a 3 e Difesa a 4
         const def3Mods = mantraMods.filter(m => MANTRA_FORMATIONS[m].defCount === 3);
         const def4Mods = mantraMods.filter(m => MANTRA_FORMATIONS[m].defCount === 4);
-
-        // Rendering delle linee tattiche del campo esattamente secondo lo schema selezionato
         let slotCounter = 0;
         const pitchRowsHtml = schema.lines.map(lineSlots => {
             const rowPills = lineSlots.map(() => {
@@ -1450,7 +1251,6 @@ function openBest11Modal(preferredFormation = null) {
             }).join('');
             return `<div class="sb-best11-row">${rowPills}</div>`;
         }).join('');
-
         const benchHtml = benchPlayers.length > 0 ? benchPlayers.map(bp => `
             <div class="sb-best11-bench-item" title="${bp.name} (${bp.team || ''}) - A disposizione">
                 <div style="display:flex;align-items:center;gap:6px;min-width:0;flex:1;">
@@ -1470,7 +1270,6 @@ function openBest11Modal(preferredFormation = null) {
                 Tutti i calciatori in rosa sono schierati nell'11 titolare.
             </div>
         `;
-
         content.innerHTML = `
             <!-- MODAL HEADER -->
             <div class="sb-modal-header" style="margin-bottom:0;padding-bottom:10px;">
@@ -1495,7 +1294,6 @@ function openBest11Modal(preferredFormation = null) {
                 </div>
                 <button class="sb-modal-close" onclick="closeSbModal()">✕</button>
             </div>
-
             <!-- 2-COLUMN EXECUTIVE WORKSPACE -->
             <div class="sb-best11-layout">
                 <!-- LEFT SIDEBAR: SCHEMI TATTICI + PANCHINA -->
@@ -1506,7 +1304,6 @@ function openBest11Modal(preferredFormation = null) {
                             <span>📐 Schemi Ufficiali Mantra</span>
                             <span style="font-size:9.5px;color:var(--text-muted);font-weight:600;">(11 Moduli)</span>
                         </div>
-
                         <!-- DIFESA A 3 -->
                         <div style="margin-bottom:8px;">
                             <div style="font-size:10px;font-weight:800;color:var(--text-muted);margin-bottom:4px;">🛡️ DIFESA A 3 (5 SCHEMI):</div>
@@ -1518,7 +1315,6 @@ function openBest11Modal(preferredFormation = null) {
                                 `).join('')}
                             </div>
                         </div>
-
                         <!-- DIFESA A 4 -->
                         <div>
                             <div style="font-size:10px;font-weight:800;color:var(--text-muted);margin-bottom:4px;">🛡️ DIFESA A 4 (6 SCHEMI):</div>
@@ -1530,17 +1326,14 @@ function openBest11Modal(preferredFormation = null) {
                                 `).join('')}
                             </div>
                         </div>
-
                         <div style="font-size:10.5px;color:var(--text-secondary);margin-top:8px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.06);line-height:1.3;">
                             ${schema.description}
                         </div>
                     </div>
-
                     <!-- 2. INFO REGOLA RUOLO -->
                     <div style="background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.25);padding:7px 10px;border-radius:8px;font-size:10.5px;color:#38bdf8;line-height:1.35;">
                         💡 <b>Regola del Ruolo:</b> Clicca su <b>'🔄 Cambia'</b> per sostituire qualsiasi titolare. Schieramento fuori ruolo consentito con <b>Malus di -1 pt</b>.
                     </div>
-
                     <!-- 3. PANCHINA DEI SOSTITUTI -->
                     <div class="sb-best11-card sb-best11-bench-card">
                         <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.08);">
@@ -1552,7 +1345,6 @@ function openBest11Modal(preferredFormation = null) {
                         </div>
                     </div>
                 </div>
-
                 <!-- RIGHT COLUMN: CAMPO DA CALCIO FULL-HEIGHT -->
                 <div class="sb-best11-pitch-area">
                     <div class="sb-best11-pitch">
@@ -1561,17 +1353,13 @@ function openBest11Modal(preferredFormation = null) {
                 </div>
             </div>
         `;
-
         modal.style.display = 'flex';
         return;
     }
-
-    // Modalità Classic
     const gks = [...State.slots.P.players].sort((a, b) => b.ovr - a.ovr);
     const defs = [...State.slots.D.players].sort((a, b) => b.ovr - a.ovr);
     const mids = [...State.slots.C.players].sort((a, b) => b.ovr - a.ovr);
     const fwds = [...State.slots.A.players].sort((a, b) => b.ovr - a.ovr);
-
     const formations = {
         '3-4-3': { d: 3, c: 4, a: 3 },
         '4-3-3': { d: 4, c: 3, a: 3 },
@@ -1579,7 +1367,6 @@ function openBest11Modal(preferredFormation = null) {
         '4-4-2': { d: 4, c: 4, a: 2 },
         '4-2-3-1': { d: 4, c: 5, a: 1 }
     };
-
     let bestMod = preferredFormation || '3-4-3';
     if (!preferredFormation) {
         let maxScore = -1;
@@ -1596,19 +1383,14 @@ function openBest11Modal(preferredFormation = null) {
             }
         }
     }
-
     const schema = formations[bestMod];
     const customMod = customSelectionsAll[bestMod] || {};
     let hasCustom = false;
-
     const starterGkObj = { p: gks[0] || null, role: 'P', sIdx: 10 };
     const starterFwdsObjs = Array.from({ length: schema.a }).map((_, i) => ({ p: fwds[i] || null, role: 'A', sIdx: i }));
     const starterMidsObjs = Array.from({ length: schema.c }).map((_, i) => ({ p: mids[i] || null, role: 'C', sIdx: schema.a + i }));
     const starterDefsObjs = Array.from({ length: schema.d }).map((_, i) => ({ p: defs[i] || null, role: 'D', sIdx: schema.a + schema.c + i }));
-
     const allClassicSlots = [...starterFwdsObjs, ...starterMidsObjs, ...starterDefsObjs, starterGkObj];
-
-    // Applica custom
     allClassicSlots.forEach(slotItem => {
         if (customMod[slotItem.sIdx] !== undefined) {
             const customP = PLAYERS.find(pl => pl.id === customMod[slotItem.sIdx]);
@@ -1619,10 +1401,8 @@ function openBest11Modal(preferredFormation = null) {
             }
         }
     });
-
     const starterGk = starterGkObj.p;
     const starterDefs = starterDefsObjs.map(s => s.p).filter(Boolean);
-
     let modifHtml = '';
     if (schema.d >= 4 && starterDefs.length >= 4) {
         const top3Defs = [...starterDefs].sort((a, b) => (b.fm || b.ovr) - (a.fm || a.ovr)).slice(0, 3);
@@ -1631,27 +1411,22 @@ function openBest11Modal(preferredFormation = null) {
         if (avgDefFM >= 6.5) modBonus = '+6 PUNTI';
         else if (avgDefFM >= 6.25) modBonus = '+3 PUNTI';
         else if (avgDefFM >= 6.0) modBonus = '+1 PUNTO';
-
         modifHtml = `
             <div style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);padding:6px 10px;border-radius:8px;font-size:10.5px;color:#4ade80;line-height:1.35;">
                 🛡️ <b>Modificatore Difesa a 4:</b> Media Voto stimata <b>${avgDefFM.toFixed(2)}</b> ➜ Bonus: <b>${modBonus}</b>
             </div>
         `;
     }
-
     const starterPlayerIds = allClassicSlots.filter(s => s.p).map(s => s.p.id);
     const benchPlayers = allBought.filter(p => !starterPlayerIds.includes(p.id)).sort((a, b) => (b.ovr || 0) - (a.ovr || 0));
-
     const startersList = allClassicSlots.filter(s => s.p).map(s => s.p);
     const avgStarterOvr = startersList.length ? (startersList.reduce((s, p) => s + (p.ovr || 70), 0) / startersList.length).toFixed(1) : '-';
     const avgBenchOvr = benchPlayers.length ? (benchPlayers.reduce((s, p) => s + (p.ovr || 70), 0) / benchPlayers.length).toFixed(1) : '-';
-
     const renderPlayerPill = (item) => {
         const p = item.p;
         const sIdx = item.sIdx;
         const role = item.role;
         const isCustom = item.isCustom;
-
         if (!p) {
             return `
                 <div class="sb-best11-pill empty" onclick="openBest11SlotPickerModal('${bestMod}', ${sIdx})" style="cursor:pointer;" title="Scegli calciatore">
@@ -1663,7 +1438,6 @@ function openBest11Modal(preferredFormation = null) {
                 </div>
             `;
         }
-
         return `
             <div class="sb-best11-pill ${p.role}" onclick="openBest11SlotPickerModal('${bestMod}', ${sIdx})" style="cursor:pointer;" title="Clicca per cambiare questo calciatore">
                 <div style="display:flex;align-items:center;gap:4px;">
@@ -1688,13 +1462,11 @@ function openBest11Modal(preferredFormation = null) {
             </div>
         `;
     };
-
     const modButtonsHtml = Object.keys(formations).map(m => `
         <button class="sb-mod-select-btn ${m === bestMod ? 'active' : ''}" onclick="openBest11Modal('${m}')">
             ${m}
         </button>
     `).join('');
-
     const benchHtml = benchPlayers.length > 0 ? benchPlayers.map(bp => `
         <div class="sb-best11-bench-item" title="${bp.name} (${bp.team || ''}) - A disposizione">
             <div style="display:flex;align-items:center;gap:6px;min-width:0;flex:1;">
@@ -1714,7 +1486,6 @@ function openBest11Modal(preferredFormation = null) {
             Tutti i calciatori in rosa sono schierati nell'11 titolare.
         </div>
     `;
-
     content.innerHTML = `
         <!-- MODAL HEADER -->
         <div class="sb-modal-header" style="margin-bottom:0;padding-bottom:10px;">
@@ -1736,7 +1507,6 @@ function openBest11Modal(preferredFormation = null) {
             </div>
             <button class="sb-modal-close" onclick="closeSbModal()">✕</button>
         </div>
-
         <!-- 2-COLUMN EXECUTIVE WORKSPACE -->
         <div class="sb-best11-layout">
             <!-- LEFT SIDEBAR: MODULI + MODIFICATORE + PANCHINA -->
@@ -1750,10 +1520,8 @@ function openBest11Modal(preferredFormation = null) {
                         ${modButtonsHtml}
                     </div>
                 </div>
-
                 <!-- 2. MODIFICATORE DIFESA -->
                 ${modifHtml}
-
                 <!-- 3. PANCHINA DEI SOSTITUTI -->
                 <div class="sb-best11-card sb-best11-bench-card">
                     <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.08);">
@@ -1765,7 +1533,6 @@ function openBest11Modal(preferredFormation = null) {
                     </div>
                 </div>
             </div>
-
             <!-- RIGHT COLUMN: CAMPO DA CALCIO FULL-HEIGHT -->
             <div class="sb-best11-pitch-area">
                 <div class="sb-best11-pitch">
@@ -1785,27 +1552,19 @@ function openBest11Modal(preferredFormation = null) {
             </div>
         </div>
     `;
-
     modal.style.display = 'flex';
 }
-
-// ==============================================================================
-// MODALE SELEZIONE CALCIATORE PER MIGLIOR 11 AI (RISPETTO REGOLA DEL RUOLO)
-// ==============================================================================
-
 let best11PickerState = {
     modName: null,
     slotIdx: null,
     sourceTab: 'team', // 'team' o 'all'
     searchQuery: ''
 };
-
 function openBest11SlotPickerModal(modName, slotIdx) {
     best11PickerState.modName = modName;
     best11PickerState.slotIdx = slotIdx;
     best11PickerState.sourceTab = 'team';
     best11PickerState.searchQuery = '';
-
     let modal = document.getElementById('best11PickerModal');
     if (!modal) {
         modal = document.createElement('div');
@@ -1820,17 +1579,14 @@ function openBest11SlotPickerModal(modName, slotIdx) {
         `;
         document.body.appendChild(modal);
     }
-
     renderBest11PickerModal();
     modal.style.display = 'flex';
     modal.classList.add('active');
-
     setTimeout(() => {
         const inp = document.getElementById('best11PickerSearchInput');
         if (inp) inp.focus();
     }, 50);
 }
-
 function closeBest11PickerModal() {
     const modal = document.getElementById('best11PickerModal');
     if (modal) {
@@ -1838,27 +1594,21 @@ function closeBest11PickerModal() {
         modal.classList.remove('active');
     }
 }
-
 function setBest11PickerSourceTab(tab) {
     best11PickerState.sourceTab = tab;
     renderBest11PickerCandidates();
 }
-
 function onBest11PickerSearch(val) {
     best11PickerState.searchQuery = val;
     renderBest11PickerCandidates();
 }
-
 function renderBest11PickerModal() {
     const content = document.getElementById('best11PickerModalContent');
     if (!content) return;
-
     const { modName, slotIdx } = best11PickerState;
     const isMantra = (typeof State !== 'undefined' && State.systemMode === 'mantra');
-
     let posTitle = 'Slot';
     let roleReqText = '';
-
     if (isMantra) {
         const schema = MANTRA_FORMATIONS[modName];
         if (schema && schema.slots && schema.slots[slotIdx]) {
@@ -1876,7 +1626,6 @@ function renderBest11PickerModal() {
         posTitle = `Ruolo ${role}`;
         roleReqText = `Regola del Ruolo attiva: elenco limitato rigorosamente a calciatori di ruolo <b>${role}</b>.`;
     }
-
     content.innerHTML = `
         <div class="ai-replace-modal-inner">
             <div class="ai-replace-modal-header">
@@ -1886,20 +1635,17 @@ function renderBest11PickerModal() {
                 </div>
                 <button class="btn-action" style="padding:4px 10px;font-size:12px;" onclick="closeBest11PickerModal()">✕ Chiudi</button>
             </div>
-
             <div class="ai-replace-rule-alert" style="border-left-color:var(--accent-cyan);">
                 <div style="font-size:12px;color:var(--accent-cyan);font-weight:800;">🛡️ Regola del Ruolo Rigorosa</div>
                 <div style="font-size:11.5px;color:var(--text-secondary);margin-top:2px;">
                     ${roleReqText}
                 </div>
             </div>
-
             <div class="ai-replace-toolbar">
                 <div class="ai-replace-search-box">
                     <span style="font-size:14px;opacity:0.6;">🔍</span>
                     <input type="text" id="best11PickerSearchInput" class="ai-replace-input" placeholder="Cerca calciatore o squadra..." value="${best11PickerState.searchQuery}" oninput="onBest11PickerSearch(this.value)">
                 </div>
-
                 <div class="ai-replace-filters-row">
                     <div class="ai-replace-status-group">
                         <button id="best11TabTeam" class="ai-replace-status-btn ${best11PickerState.sourceTab === 'team' ? 'active' : ''}" onclick="setBest11PickerSourceTab('team'); document.getElementById('best11TabTeam').classList.add('active'); document.getElementById('best11TabAll').classList.remove('active');">
@@ -1911,27 +1657,21 @@ function renderBest11PickerModal() {
                     </div>
                 </div>
             </div>
-
             <div id="best11PickerCandidatesList" class="ai-replace-candidates-container">
                 <!-- Popolato da renderBest11PickerCandidates -->
             </div>
         </div>
     `;
-
     renderBest11PickerCandidates();
 }
-
 function renderBest11PickerCandidates() {
     const container = document.getElementById('best11PickerCandidatesList');
     if (!container) return;
-
     const { modName, slotIdx, sourceTab, searchQuery } = best11PickerState;
     const isMantra = (typeof State !== 'undefined' && State.systemMode === 'mantra');
     const allBought = [...State.slots.P.players, ...State.slots.D.players, ...State.slots.C.players, ...State.slots.A.players];
-
     let pool = (sourceTab === 'team') ? allBought : PLAYERS;
     let candidates = [];
-
     if (isMantra) {
         const schema = MANTRA_FORMATIONS[modName];
         const slot = schema.slots[slotIdx];
@@ -1951,7 +1691,6 @@ function renderBest11PickerCandidates() {
         if (slotIdx < sch.a) role = 'A';
         else if (slotIdx < sch.a + sch.c) role = 'C';
         else if (slotIdx < sch.a + sch.c + sch.d) role = 'D';
-
         candidates = pool.filter(p => p.role === role).map(p => ({
             player: p,
             allowed: true,
@@ -1959,7 +1698,6 @@ function renderBest11PickerCandidates() {
             malus: 0
         }));
     }
-
     const q = (searchQuery || '').toLowerCase().trim();
     if (q) {
         candidates = candidates.filter(item => {
@@ -1967,9 +1705,7 @@ function renderBest11PickerCandidates() {
             return p.name.toLowerCase().includes(q) || (p.team && p.team.toLowerCase().includes(q)) || (p.mantra && p.mantra.toLowerCase().includes(q));
         });
     }
-
     candidates.sort((a, b) => (b.player.ovr || 0) - (a.player.ovr || 0));
-
     if (candidates.length === 0) {
         container.innerHTML = `
             <div style="padding:40px 20px;text-align:center;color:var(--text-muted);">
@@ -1982,21 +1718,16 @@ function renderBest11PickerCandidates() {
         `;
         return;
     }
-
     const displayList = candidates.slice(0, 60);
-
     const itemsHtml = displayList.map(item => {
         const p = item.player;
         const roleBadgeHtml = isMantra
             ? renderMantraRoleBadges(p.mantra)
             : `<span class="role-badge ${p.role}">${p.role}</span>`;
-
         const adaptedTag = item.isAdapted 
             ? `<span style="font-size:9px;color:#f59e0b;background:rgba(245,158,11,0.15);padding:1px 4px;border-radius:3px;">⚠️ Fuori Pos. (-1 pt)</span>`
             : `<span style="font-size:9px;color:#4ade80;background:rgba(34,197,94,0.12);padding:1px 4px;border-radius:3px;">✓ Naturale</span>`;
-
         const isBought = allBought.some(b => b.id === p.id);
-
         return `
             <div class="ai-replace-item">
                 <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;">
@@ -2017,7 +1748,6 @@ function renderBest11PickerCandidates() {
                         </div>
                     </div>
                 </div>
-
                 <div style="flex-shrink:0;">
                     <button class="ai-cand-btn select" onclick="setBest11CustomSlot('${modName}', ${slotIdx}, ${p.id})">
                         ✅ Schiera
@@ -2026,7 +1756,6 @@ function renderBest11PickerCandidates() {
             </div>
         `;
     }).join('');
-
     container.innerHTML = `
         <div style="padding:6px 12px;font-size:11px;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,0.06);">
             ${candidates.length} calciatori compatibili (Regola del Ruolo rispettata)
@@ -2034,7 +1763,6 @@ function renderBest11PickerCandidates() {
         <div class="ai-replace-items-list">${itemsHtml}</div>
     `;
 }
-
 window.openBest11SlotPickerModal = openBest11SlotPickerModal;
 window.closeBest11PickerModal = closeBest11PickerModal;
 window.setBest11CustomSlot = setBest11CustomSlot;
@@ -2042,11 +1770,6 @@ window.revertBest11Slot = revertBest11Slot;
 window.resetBest11ModToAuto = resetBest11ModToAuto;
 window.setBest11PickerSourceTab = setBest11PickerSourceTab;
 window.onBest11PickerSearch = onBest11PickerSearch;
-
-
-// ==============================================================================
-// 4. ESPORTAZIONE ROSA WHATSAPP & CSV
-// ==============================================================================
 function exportRosterToWhatsApp() {
     const isMantraMode = (typeof State !== 'undefined' && State.systemMode === 'mantra');
     const remaining = State.budgetTotal - State.budgetSpent;
@@ -2055,20 +1778,16 @@ function exportRosterToWhatsApp() {
     const mids = State.slots.C.players || [];
     const fwds = State.slots.A.players || [];
     const allBought = [...gks, ...defs, ...mids, ...fwds];
-
     if (allBought.length === 0) {
         alert("La tua rosa è vuota! Acquista prima qualche calciatore.");
         return;
     }
-
     let text = `🏆 *LA MIA ROSA FANTA 2026/2027 (${isMantraMode ? 'MANTRA' : 'CLASSIC'})*\n`;
     text += `💰 Spesi: ${State.budgetSpent} CR | Residui: ${remaining} CR (su ${State.budgetTotal})\n\n`;
-
     if (isMantraMode) {
         text += `🧤 *PORTIERI (${gks.length}/3)*\n`;
         gks.forEach(p => { text += `• ${p.name} (${p.team}) - ${p.paidPrice} CR\n`; });
         if (gks.length === 0) text += `• Nessun portiere acquistato\n`;
-
         const movList = [...defs, ...mids, ...fwds];
         movList.sort((a, b) => {
             const scoreA = (typeof getMantraHierarchyScore === 'function') ? getMantraHierarchyScore(a.mantra) : 50;
@@ -2077,7 +1796,6 @@ function exportRosterToWhatsApp() {
             if ((b.paidPrice || 0) !== (a.paidPrice || 0)) return (b.paidPrice || 0) - (a.paidPrice || 0);
             return (b.ovr || 0) - (a.ovr || 0);
         });
-
         text += `\n🏃‍♂️ *GIOCATORI DI MOVIMENTO (${movList.length}/28)*\n`;
         movList.forEach(p => { text += `• [${p.mantra || p.role}] ${p.name} (${p.team}) - ${p.paidPrice} CR\n`; });
         if (movList.length === 0) text += `• Nessun giocatore di movimento acquistato\n`;
@@ -2085,29 +1803,23 @@ function exportRosterToWhatsApp() {
         text += `🧤 *PORTIERI (${gks.length}/3)*\n`;
         gks.forEach(p => { text += `• ${p.name} (${p.team}) - ${p.paidPrice} CR\n`; });
         if (gks.length === 0) text += `• Nessun portiere acquistato\n`;
-
         text += `\n🛡️ *DIFENSORI (${defs.length}/8)*\n`;
         defs.forEach(p => { text += `• ${p.name} (${p.team}) - ${p.paidPrice} CR\n`; });
         if (defs.length === 0) text += `• Nessun difensore acquistato\n`;
-
         text += `\n🪄 *CENTROCAMPISTI (${mids.length}/8)*\n`;
         mids.forEach(p => { text += `• ${p.name} (${p.team}) - ${p.paidPrice} CR\n`; });
         if (mids.length === 0) text += `• Nessun centrocampista acquistato\n`;
-
         text += `\n⚡ *ATTACCANTI (${fwds.length}/6)*\n`;
         fwds.forEach(p => { text += `• ${p.name} (${p.team}) - ${p.paidPrice} CR\n`; });
         if (fwds.length === 0) text += `• Nessun attaccante acquistato\n`;
     }
-
     text += `\n_Generato con Fanta Master AI 2026/27_`;
-
     navigator.clipboard.writeText(text).then(() => {
         alert("✓ Rosa copiata negli appunti con successo!\n\nPuoi incollarla direttamente nella chat WhatsApp della tua Lega.");
     }).catch(() => {
         prompt("Copia manualmente il testo della tua rosa:", text);
     });
 }
-
 function downloadRosterCSV() {
     const isMantraMode = (typeof State !== 'undefined' && State.systemMode === 'mantra');
     const all = [...State.slots.P.players, ...State.slots.D.players, ...State.slots.C.players, ...State.slots.A.players];
@@ -2115,22 +1827,16 @@ function downloadRosterCSV() {
         alert("La rosa è vuota!");
         return;
     }
-
     let csv = "Ruolo,Ruolo_Mantra,Nome,Squadra,OVR,Prezzo Pagato (CR),Fragilita,Slot\n";
     all.forEach(p => {
         csv += `${p.role},"${p.mantra || ''}","${p.name}","${p.team}",${p.ovr},${p.paidPrice},"${p.fragilita_val || ''}","${p.slot_fascia || ''}"\n`;
     });
-
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
     link.download = `Rosa_Fanta_2026_27_${isMantraMode ? 'Mantra' : 'Classic'}.csv`;
     link.click();
 }
-
-// ==============================================================================
-// 5. IMPORTAZIONE ROSA CSV & TESTO (LA MIA ROSA & RIVALI)
-// ==============================================================================
 let csvImportState = {
     targetTeam: 'my_team',
     mode: 'replace', // 'replace' | 'append'
@@ -2138,19 +1844,16 @@ let csvImportState = {
     showPasteArea: false,
     fileName: ''
 };
-
 function cleanCsvStr(s) {
     if (!s) return '';
     return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]/g, ' ').replace(/\s+/g, ' ').trim();
 }
-
 function matchPlayerAgainstMaster(rawName, rawTeam, rawRole, playerPool) {
     if (!playerPool || !playerPool.length) return null;
     const cQ = cleanCsvStr(rawName);
     const cTeam = cleanCsvStr(rawTeam);
     const qParts = cQ.split(' ').filter(Boolean);
     if (!qParts.length) return null;
-
     let pool = playerPool;
     let normRole = '';
     if (rawRole) {
@@ -2160,29 +1863,20 @@ function matchPlayerAgainstMaster(rawName, rawTeam, rawRole, playerPool) {
         else if (['C', 'M', 'T', 'W'].includes(rUpper)) normRole = 'C';
         else if (['A', 'PC'].includes(rUpper)) normRole = 'A';
     }
-
     if (normRole) {
         const byRole = pool.filter(p => p.role === normRole);
         if (byRole.length > 0) pool = byRole;
     }
-
-    // 1. Match esatto nome + squadra
     let match = pool.find(p => cleanCsvStr(p.name) === cQ && (!cTeam || cleanCsvStr(p.team) === cTeam));
     if (match) return match;
-
-    // 2. Match esatto nome (anche squadra diversa se trasferito o mancante)
     match = pool.find(p => cleanCsvStr(p.name) === cQ);
     if (match) return match;
-
-    // 3. Match fallback su tutto il database se il ruolo indicato non coincideva
     if (normRole) {
         match = playerPool.find(p => cleanCsvStr(p.name) === cQ && (!cTeam || cleanCsvStr(p.team) === cTeam));
         if (match) return match;
         match = playerPool.find(p => cleanCsvStr(p.name) === cQ);
         if (match) return match;
     }
-
-    // 4. Match intelligente per cognome / parti del nome
     const candidates = [];
     for (const p of pool) {
         const cp = cleanCsvStr(p.name);
@@ -2192,7 +1886,6 @@ function matchPlayerAgainstMaster(rawName, rawTeam, rawRole, playerPool) {
             candidates.push(p);
         }
     }
-
     if (candidates.length === 1) return candidates[0];
     if (candidates.length > 1) {
         if (cTeam) {
@@ -2206,14 +1899,11 @@ function matchPlayerAgainstMaster(rawName, rawTeam, rawRole, playerPool) {
         }
         return candidates[0];
     }
-
     return null;
 }
-
 function parseCsvRawLines(text) {
     const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
     if (!lines.length) return [];
-
     const firstLine = lines[0];
     let delim = ',';
     const semicolons = (firstLine.match(/;/g) || []).length;
@@ -2221,7 +1911,6 @@ function parseCsvRawLines(text) {
     const tabs = (firstLine.match(/\t/g) || []).length;
     if (semicolons > commas && semicolons > tabs) delim = ';';
     else if (tabs > commas && tabs > semicolons) delim = '\t';
-
     function splitRow(row) {
         const parts = [];
         let cur = '';
@@ -2240,13 +1929,10 @@ function parseCsvRawLines(text) {
         parts.push(cur.trim().replace(/^"|"$/g, '').trim());
         return parts;
     }
-
     const rawRows = lines.map(splitRow).filter(r => r.length >= 2);
     if (!rawRows.length) return [];
-
     const h = rawRows[0].map(c => cleanCsvStr(c));
     let nameIdx = -1, roleIdx = -1, teamIdx = -1, priceIdx = -1;
-
     for (let i = 0; i < h.length; i++) {
         const col = h[i];
         if (['nome', 'calciatore', 'player', 'giocatore', 'atleta'].includes(col)) nameIdx = i;
@@ -2254,7 +1940,6 @@ function parseCsvRawLines(text) {
         else if (['squadra', 'team', 'club'].includes(col)) teamIdx = i;
         else if (['prezzo', 'prezzo pagato', 'prezzo pagato cr', 'costo', 'spesa', 'pagato', 'cr', 'prezzo acquisto', 'qta', 'quotazione', 'fvm'].includes(col)) priceIdx = i;
     }
-
     let dataRows = rawRows;
     const hasHeader = (nameIdx !== -1 || roleIdx !== -1 || priceIdx !== -1);
     if (hasHeader) {
@@ -2265,7 +1950,6 @@ function parseCsvRawLines(text) {
         teamIdx = 2;
         priceIdx = 3;
     }
-
     return dataRows.map((row, idx) => {
         const rawRole = roleIdx >= 0 && roleIdx < row.length ? row[roleIdx] : '';
         const rawName = nameIdx >= 0 && nameIdx < row.length ? row[nameIdx] : (row[1] || row[0]);
@@ -2275,7 +1959,6 @@ function parseCsvRawLines(text) {
             const parsed = parseInt(String(row[priceIdx]).replace(/[^0-9]/g, ''), 10);
             if (!isNaN(parsed) && parsed >= 0) price = parsed;
         }
-
         const matched = (typeof PLAYERS !== 'undefined') ? matchPlayerAgainstMaster(rawName, rawTeam, rawRole, PLAYERS) : null;
         return {
             rowId: idx,
@@ -2288,7 +1971,6 @@ function parseCsvRawLines(text) {
         };
     });
 }
-
 function openCsvRosterImportModal(targetTeam = 'my_team') {
     if ((typeof isCreatorModeActive !== 'function' || !isCreatorModeActive()) && typeof showComingSoonModal === 'function') {
         showComingSoonModal('Importazione Rose da CSV');
@@ -2301,7 +1983,6 @@ function openCsvRosterImportModal(targetTeam = 'my_team') {
     modal.classList.add('active');
     renderCsvImportModalContent();
 }
-
 function closeCsvRosterImportModal() {
     const modal = document.getElementById('csvRosterImportModal');
     if (modal) {
@@ -2309,36 +1990,30 @@ function closeCsvRosterImportModal() {
         modal.style.display = 'none';
     }
 }
-
 function onCsvImportTargetChange(val) {
     csvImportState.targetTeam = val;
     renderCsvImportModalContent();
 }
-
 function onCsvImportModeChange(val) {
     csvImportState.mode = val;
     renderCsvImportModalContent();
 }
-
 function toggleCsvPasteArea() {
     csvImportState.showPasteArea = !csvImportState.showPasteArea;
     renderCsvImportModalContent();
 }
-
 function handleCsvFileSelected(event) {
     const file = event.target?.files?.[0];
     if (file) {
         readCsvFile(file);
     }
 }
-
 function handleCsvDragOver(event) {
     event.preventDefault();
     event.stopPropagation();
     const zone = document.getElementById('csvDropZone');
     if (zone) zone.classList.add('dragover');
 }
-
 function handleCsvDrop(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -2349,7 +2024,6 @@ function handleCsvDrop(event) {
         readCsvFile(file);
     }
 }
-
 function readCsvFile(file) {
     csvImportState.fileName = file.name;
     const reader = new FileReader();
@@ -2361,7 +2035,6 @@ function readCsvFile(file) {
     };
     reader.readAsText(file);
 }
-
 function parsePastedCsvText() {
     const textarea = document.getElementById('csvTextarea');
     if (!textarea || !textarea.value.trim()) {
@@ -2371,7 +2044,6 @@ function parsePastedCsvText() {
     csvImportState.fileName = 'Testo incollato';
     parseAndProcessCsv(textarea.value.trim());
 }
-
 function parseAndProcessCsv(text) {
     try {
         const rows = parseCsvRawLines(text);
@@ -2386,7 +2058,6 @@ function parseAndProcessCsv(text) {
         alert("Si è verificato un errore durante l'analisi del CSV: " + e.message);
     }
 }
-
 function updateCsvRowPrice(rowId, newPrice) {
     const r = csvImportState.parsedRows.find(x => x.rowId === rowId);
     if (r) {
@@ -2395,7 +2066,6 @@ function updateCsvRowPrice(rowId, newPrice) {
         renderCsvImportModalContent();
     }
 }
-
 function removeCsvRow(rowId) {
     const idx = csvImportState.parsedRows.findIndex(x => x.rowId === rowId);
     if (idx !== -1) {
@@ -2403,22 +2073,17 @@ function removeCsvRow(rowId) {
         renderCsvImportModalContent();
     }
 }
-
 function renderCsvImportModalContent() {
     const container = document.getElementById('csvRosterImportModalContent');
     if (!container) return;
-
     const isMantraMode = (typeof State !== 'undefined' && State.systemMode === 'mantra');
     const rivalsList = (typeof State !== 'undefined' && State.rivals) ? Object.keys(State.rivals) : ['FC Sparta', 'Real Fanta', 'AC Picchia', 'Dinamo', 'Atletico', 'Virtus', 'Sporting'];
     const target = csvImportState.targetTeam || 'my_team';
     const isMyTeam = (target === 'my_team' || target === 'Unika' || target === (typeof State !== 'undefined' ? State.teamName : 'La Mia Rosa'));
     const mode = csvImportState.mode || 'replace';
     const rows = csvImportState.parsedRows || [];
-
-    // Calcolo statistiche anteprima
     const validRows = rows.filter(r => r.matchedPlayer && !r.isExcluded);
     const unmatchedRows = rows.filter(r => !r.matchedPlayer);
-    
     let porCount = 0, defCount = 0, midCount = 0, attCount = 0, totalSpent = 0;
     validRows.forEach(r => {
         const p = r.matchedPlayer;
@@ -2428,14 +2093,11 @@ function renderCsvImportModalContent() {
         else if (p.role === 'C') midCount++;
         else if (p.role === 'A') attCount++;
     });
-
     const targetBudget = isMyTeam ? (State.budgetTotal || 1000) : (State.rivals?.[target]?.budget || 1000);
     const remBudget = targetBudget - totalSpent;
-
     let rivalsOptionsHtml = rivalsList.map(rName => {
         return `<option value="${rName}" ${target === rName ? 'selected' : ''}>👥 ${rName} (Rivale)</option>`;
     }).join('');
-
     let previewHtml = '';
     if (rows.length > 0) {
         const rowsTrHtml = rows.map(r => {
@@ -2448,7 +2110,6 @@ function renderCsvImportModalContent() {
             const statusBadge = isFound 
                 ? `<span class="csv-stat-badge success" style="padding:2px 7px;font-size:10.5px;">✓ Riconosciuto</span>`
                 : `<span class="csv-stat-badge warning" style="padding:2px 7px;font-size:10.5px;" title="Non presente nel listone ufficiale 2026/27">⚠️ Non trovato</span>`;
-
             return `
                 <tr style="${!isFound ? 'opacity:0.6;background:rgba(239,68,68,0.04);' : ''}">
                     <td style="text-align:center;width:40px;">
@@ -2471,7 +2132,6 @@ function renderCsvImportModalContent() {
                 </tr>
             `;
         }).join('');
-
         previewHtml = `
             <div style="margin-top:16px;">
                 <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
@@ -2495,13 +2155,11 @@ function renderCsvImportModalContent() {
                         </span>
                     </div>
                 </div>
-
                 ${unmatchedRows.length > 0 ? `
                     <div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:11.5px;color:#fbbf24;">
                         ⚠️ <b>Attenzione:</b> ${unmatchedRows.length} calciatori non sono stati trovati nel database Serie A 2026/27 (potrebbero essere trasferiti all'estero o avere un nome diverso). Solo i calciatori con spunta verde verranno inseriti nella rosa.
                     </div>
                 ` : ''}
-
                 <div class="csv-preview-table-wrap">
                     <table class="csv-preview-table">
                         <thead>
@@ -2521,7 +2179,6 @@ function renderCsvImportModalContent() {
             </div>
         `;
     }
-
     container.innerHTML = `
         <!-- HEADER -->
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:10px;">
@@ -2534,7 +2191,6 @@ function renderCsvImportModalContent() {
             </div>
             <button class="btn-action" style="padding:4px 10px;font-size:12px;" onclick="closeCsvRosterImportModal()">Chiudi ✕</button>
         </div>
-
         <!-- SETTINGS: TARGET TEAM & MODE -->
         <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:10px;margin-bottom:14px;">
             <div>
@@ -2558,7 +2214,6 @@ function renderCsvImportModalContent() {
                 </div>
             </div>
         </div>
-
         <!-- UPLOAD DROP ZONE -->
         <div class="csv-drop-zone" id="csvDropZone" ondragover="handleCsvDragOver(event)" ondrop="handleCsvDrop(event)" onclick="document.getElementById('csvFileInput').click()">
             <div style="font-size:26px;margin-bottom:4px;">📄</div>
@@ -2570,14 +2225,12 @@ function renderCsvImportModalContent() {
             </div>
             <input type="file" id="csvFileInput" accept=".csv, .txt, text/csv, text/plain" style="display:none;" onchange="handleCsvFileSelected(event)">
         </div>
-
         <!-- TOGGLE TEXTAREA FOR PASTE -->
         <div style="display:flex;justify-content:flex-end;margin-top:8px;">
             <button class="btn-action" style="font-size:11.5px;padding:3px 10px;background:rgba(255,255,255,0.04);" onclick="toggleCsvPasteArea()">
                 ${csvImportState.showPasteArea ? 'Nascondi area incolla ▴' : '📝 Oppure incolla il testo CSV ▾'}
             </button>
         </div>
-
         ${csvImportState.showPasteArea ? `
             <div style="margin-top:8px;">
                 <textarea id="csvTextarea" class="csv-textarea" rows="5" placeholder="Esempio:&#10;Ruolo,Calciatore,Squadra,Prezzo&#10;P,Svilar,Roma,25&#10;D,Dimarco,Inter,28&#10;C,Calhanoglu,Inter,50&#10;A,Martinez L.,Inter,230"></textarea>
@@ -2588,10 +2241,8 @@ function renderCsvImportModalContent() {
                 </div>
             </div>
         ` : ''}
-
         <!-- PREVIEW TABLE -->
         ${previewHtml}
-
         <!-- FOOTER ACTIONS -->
         <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:18px;border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;">
             <button class="btn-action" style="padding:8px 16px;font-size:12px;" onclick="closeCsvRosterImportModal()">Annulla</button>
@@ -2601,26 +2252,22 @@ function renderCsvImportModalContent() {
         </div>
     `;
 }
-
 function confirmApplyCsvRoster() {
     const target = csvImportState.targetTeam || 'my_team';
     const isMyTeam = (target === 'my_team' || target === 'Unika' || target === (typeof State !== 'undefined' ? State.teamName : 'La Mia Rosa'));
     const mode = csvImportState.mode || 'replace';
     const rows = csvImportState.parsedRows || [];
     const validRows = rows.filter(r => r.matchedPlayer && !r.isExcluded);
-
     if (validRows.length === 0) {
         alert("Nessun calciatore valido da importare!");
         return;
     }
-
     if (mode === 'replace') {
         const teamDesc = isMyTeam ? (State.teamName || 'la tua Rosa') : `la rosa di ${target}`;
         if (!confirm(`Stai per sovrascrivere completamente ${teamDesc} con i ${validRows.length} calciatori caricati dal CSV.\n\nVuoi procedere?`)) {
             return;
         }
     }
-
     if (isMyTeam) {
         if (mode === 'replace') {
             State.slots.P.players = [];
@@ -2629,29 +2276,22 @@ function confirmApplyCsvRoster() {
             State.slots.A.players = [];
             State.budgetSpent = 0;
         }
-
         validRows.forEach(r => {
             const p = r.matchedPlayer;
             const price = Math.max(1, parseInt(r.price, 10) || 1);
-
-            // Rimuovi da rivali se precedentemente assegnato
             if (State.takenByOthers && State.takenByOthers.includes(p.id)) {
                 if (typeof unmarkPlayerTaken === 'function') {
                     unmarkPlayerTaken(p.id);
                 }
             }
-
             const isGK = (p.role === 'P' || (p.mantra && String(p.mantra).toUpperCase().includes('POR')));
             const slotKey = isGK ? 'P' : (State.slots[p.role] ? p.role : 'C');
-
-            // Evita duplicati se in modalità append
             if (!State.slots[slotKey].players.some(x => x.id === p.id)) {
                 State.slots[slotKey].players.push({ ...p, paidPrice: price });
                 State.budgetSpent += price;
             }
         });
     } else {
-        // Assegnazione a squadra rivale
         if (State.rivals && State.rivals[target]) {
             if (mode === 'replace') {
                 const oldPlayers = [...(State.rivals[target].players || [])];
@@ -2663,7 +2303,6 @@ function confirmApplyCsvRoster() {
                 State.rivals[target].players = [];
                 State.rivals[target].spent = 0;
             }
-
             validRows.forEach(r => {
                 const p = r.matchedPlayer;
                 const price = Math.max(1, parseInt(r.price, 10) || 1);
@@ -2673,18 +2312,13 @@ function confirmApplyCsvRoster() {
             });
         }
     }
-
     if (typeof saveStateToStorage === 'function') saveStateToStorage();
     if (typeof updateAllViews === 'function') updateAllViews();
-
-    // Aggiorna rosterModal se è aperto in background
     const rModal = document.getElementById('rosterModal');
     if (rModal && rModal.classList.contains('active') && typeof openRosterModal === 'function') {
         openRosterModal(target);
     }
-
     closeCsvRosterImportModal();
-
     const successMsg = `✓ Rosa caricata con successo (${validRows.length} calciatori in ${teamDesc})!`;
     if (typeof showSyncToast === 'function') {
         showSyncToast(successMsg);
@@ -2692,7 +2326,6 @@ function confirmApplyCsvRoster() {
         alert(successMsg);
     }
 }
-
 window.openCsvRosterImportModal = openCsvRosterImportModal;
 window.closeCsvRosterImportModal = closeCsvRosterImportModal;
 window.onCsvImportTargetChange = onCsvImportTargetChange;
@@ -2705,4 +2338,3 @@ window.parsePastedCsvText = parsePastedCsvText;
 window.updateCsvRowPrice = updateCsvRowPrice;
 window.removeCsvRow = removeCsvRow;
 window.confirmApplyCsvRoster = confirmApplyCsvRoster;
-

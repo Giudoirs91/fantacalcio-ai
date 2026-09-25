@@ -1,8 +1,3 @@
-// ==============================================================================
-// MODULO ADVANCED FOOTBALL ANALYTICS & SCATTER PLOT A 4 QUADRANTI
-// METODOLOGIA ISPIRATA A SPORTELLATE / "NUMERO!" (NICOLA SANTOLINI)
-// ==============================================================================
-
 const AnalyticsMatrixState = {
     preset: 'under_over', // 'under_over', 'bonus_engine', 'value_money', 'gk_matrix'
     season: '2627',       // '2627' (Live) o '2526' (Storico)
@@ -13,7 +8,6 @@ const AnalyticsMatrixState = {
     highlightedPlayerId: null,
     isExpanded: false
 };
-
 const MATRIX_PRESETS = {
     under_over: {
         title: "Gol Reali vs Expected Goals (Under/Overperformance)",
@@ -168,11 +162,9 @@ const MATRIX_PRESETS = {
         }
     }
 };
-
 function initAnalyticsMatrix() {
     renderAnalyticsMatrixView();
 }
-
 function setMatrixPreset(presetKey) {
     if (!MATRIX_PRESETS[presetKey]) return;
     AnalyticsMatrixState.preset = presetKey;
@@ -183,58 +175,45 @@ function setMatrixPreset(presetKey) {
     }
     renderAnalyticsMatrixView();
 }
-
 function setMatrixSeason(seasonKey) {
     AnalyticsMatrixState.season = seasonKey;
     renderAnalyticsMatrixView();
 }
-
 function setMatrixRoleFilter(role) {
     AnalyticsMatrixState.roleFilter = role;
     renderAnalyticsMatrixView();
 }
-
 function setMatrixTeamFilter(team) {
     AnalyticsMatrixState.teamFilter = team;
     renderAnalyticsMatrixView();
 }
-
 function setMatrixMinMinutes(mins) {
     AnalyticsMatrixState.minMinutes = parseInt(mins, 10) || 0;
     renderAnalyticsMatrixView();
 }
-
 function setMatrixSearch(query) {
     AnalyticsMatrixState.searchQuery = query.toLowerCase().trim();
     renderAnalyticsMatrixView();
 }
-
 function toggleMatrixExpand() {
     AnalyticsMatrixState.isExpanded = !AnalyticsMatrixState.isExpanded;
     renderAnalyticsMatrixView();
 }
-
 function formatMatrixPlayerName(fullName) {
     if (!fullName) return '';
     fullName = fullName.trim();
     const parts = fullName.split(/\s+/);
     if (parts.length <= 1) return fullName;
-    
-    // Se l'ultima parola è un'iniziale puntata o molto corta (es. "Martinez L." o "Esposito F.")
     const last = parts[parts.length - 1];
     if (last.endsWith('.') || last.length <= 2) {
         return fullName;
     }
-    
-    // Se la penultima parola è una preposizione/prefisso (es. "De", "Di", "Kolo", "San", "El", "Van")
     const secondLast = parts[parts.length - 2].toLowerCase();
     if (['de', 'di', 'da', 'del', 'della', 'van', 'von', 'le', 'la', 'el', 'al', 'kolo', 'san', 'mc'].includes(secondLast)) {
         return `${parts[parts.length - 2]} ${parts[parts.length - 1]}`;
     }
-    
     return last;
 }
-
 function highlightMatrixDot(playerId) {
     AnalyticsMatrixState.highlightedPlayerId = playerId;
     const dots = document.querySelectorAll('.matrix-dot-circle');
@@ -253,7 +232,6 @@ function highlightMatrixDot(playerId) {
         }
     });
 }
-
 function unhighlightMatrixDot() {
     AnalyticsMatrixState.highlightedPlayerId = null;
     const dots = document.querySelectorAll('.matrix-dot-circle');
@@ -265,11 +243,8 @@ function unhighlightMatrixDot() {
         d.classList.remove('pulse-dot');
     });
 }
-
-// Calcolo Fanta Insights & Decisioni Operative
 function computeMatrixInsights(mapped, presetKey, season) {
     if (!mapped || mapped.length === 0) return { under: [], over: [], elite: [], gems: [] };
-
     if (presetKey === 'under_over') {
         const under = [...mapped]
             .filter(d => (d.y - d.x) <= -0.30 && d.x >= 0.7)
@@ -283,7 +258,6 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 deltaLabel: `Δ ${(d.y - d.x).toFixed(2)} xG`,
                 advice: `Ha generato ${d.x.toFixed(2)} xG senza raccogliere i meritati gol (pali o sfortuna). I bonus arriveranno: compralo ora prima che il prezzo schizzi!`
             }));
-
         const over = [...mapped]
             .filter(d => (d.y - d.x) >= 0.9)
             .sort((a, b) => (b.y - b.x) - (a.y - a.x))
@@ -296,7 +270,6 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 deltaLabel: `+${(d.y - d.x).toFixed(2)} surplus`,
                 advice: `Ha segnato ${d.y} gol a fronte di soli ${d.x.toFixed(2)} xG. Rendimento insostenibile nel lungo periodo: è il momento migliore per scambiarlo al valore massimo!`
             }));
-
         const elite = [...mapped]
             .filter(d => d.x >= 1.2 && d.y >= 2)
             .sort((a, b) => b.y - a.y)
@@ -309,10 +282,8 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 deltaLabel: `OVR ${d.player.ovr}`,
                 advice: `Volume devastante (${d.x.toFixed(2)} xG) e conversione clinica. Pilastro intoccabile del reparto d'attacco.`
             }));
-
         return { under, over, elite, gems: [] };
     } 
-    
     if (presetKey === 'bonus_engine') {
         const totalMonsters = [...mapped]
             .filter(d => d.x >= 0.18 && d.y >= 0.30)
@@ -326,7 +297,6 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 deltaLabel: `Tot ${(d.x + d.y).toFixed(2)}/90'`,
                 advice: `Coinvolto in tutte le occasioni da gol del club. Tira e serve assist: garanzia matematica di bonus ogni turno.`
             }));
-
         const playmakers = [...mapped]
             .filter(d => d.x >= 0.22 && d.y < 0.30)
             .sort((a, b) => b.x - a.x)
@@ -339,7 +309,6 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 deltaLabel: `FVM ${d.player.fvm} CR`,
                 advice: `Fantasista o esterno dai piedi d'oro. Sforna grandi occasioni da gol ad altissima frequenza.`
             }));
-
         const pureStrikers = [...mapped]
             .filter(d => d.y >= 0.40 && d.x < 0.15)
             .sort((a, b) => b.y - a.y)
@@ -352,10 +321,8 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 deltaLabel: `FM ${d.player.fm || '-'}`,
                 advice: `Finalizzatore puro. Pochi passaggi chiave ma altissima pericolosità al tiro dentro i sedici metri.`
             }));
-
         return { elite: totalMonsters, under: playmakers, over: pureStrikers, gems: [] };
     }
-
     if (presetKey === 'value_money') {
         const gems = [...mapped]
             .filter(d => d.player.fvm <= 28 && d.y >= 0.28)
@@ -369,7 +336,6 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 deltaLabel: `Affare Fanta`,
                 advice: `Produzione offensiva da semitop pagata a prezzi di saldo. Da prendere all'asta a tutti i costi!`
             }));
-
         const overpriced = [...mapped]
             .filter(d => d.player.fvm >= 35 && d.y < 0.32)
             .sort((a, b) => (a.y / Math.max(1, a.player.fvm)) - (b.y / Math.max(1, b.player.fvm)))
@@ -382,11 +348,8 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 deltaLabel: `Bassa Resa`,
                 advice: `Quotazione elevata che non corrisponde alla reale minaccia prodotta. Non strapagarlo nelle aste.`
             }));
-
         return { elite: gems, over: overpriced, under: [], gems: [] };
     }
-
-    // Portieri
     const topGk = [...mapped]
         .filter(d => d.y >= 0.4 && d.x >= 70)
         .sort((a, b) => b.y - a.y)
@@ -399,7 +362,6 @@ function computeMatrixInsights(mapped, presetKey, season) {
             deltaLabel: `MV ${d.player.mv || '-'}`,
             advice: `Portiere superbo: salva gol già fatti e garantisce voti alti costanti per il modificatore di difesa.`
         }));
-
     const underSiege = [...mapped]
         .filter(d => d.y >= 0.7 && d.x < 70)
         .sort((a, b) => b.y - a.y)
@@ -412,44 +374,32 @@ function computeMatrixInsights(mapped, presetKey, season) {
             deltaLabel: `FVM ${d.player.fvm} CR`,
             advice: `Subisce molti tiri ma fa parate spettacolari. Ottimo rapporto qualità/prezzo per leghe a modificatore.`
         }));
-
     return { elite: topGk, under: underSiege, over: [], gems: [] };
 }
-
 function renderAnalyticsMatrixView() {
     const container = document.getElementById('viewMatrix');
     if (!container) return;
-
     const preset = MATRIX_PRESETS[AnalyticsMatrixState.preset];
     const season = AnalyticsMatrixState.season;
     const isExpanded = AnalyticsMatrixState.isExpanded;
-
-    // Filtro base calciatori
     let dataset = PLAYERS.filter(p => {
         if (AnalyticsMatrixState.roleFilter !== 'ALL' && p.role !== AnalyticsMatrixState.roleFilter) return false;
         if (AnalyticsMatrixState.teamFilter !== 'ALL' && p.team !== AnalyticsMatrixState.teamFilter) return false;
-        
         const minutes = season === '2627' ? (p.minuti_2627 || 0) : (p.mins_2526 || 0);
         if (minutes < AnalyticsMatrixState.minMinutes) return false;
-
         if (AnalyticsMatrixState.searchQuery) {
             const q = AnalyticsMatrixState.searchQuery;
             const matchName = p.name.toLowerCase().includes(q);
             const matchTeam = p.team.toLowerCase().includes(q);
             if (!matchName && !matchTeam) return false;
         }
-
         return true;
     });
-
-    // Calcola coordinate X e Y per ciascun giocatore
     const allMapped = dataset.map(p => {
         const rawX = Number(preset.xKey(p, season)) || 0;
         const rawY = Number(preset.yKey(p, season)) || 0;
         return { player: p, x: rawX, y: rawY };
     }).filter(d => !isNaN(d.x) && !isNaN(d.y));
-
-    // Determina min, max e mediane globali per scaling coerente
     let minX = 0, maxX = 1, minY = 0, maxY = 1;
     if (allMapped.length > 0) {
         minX = Math.min(...allMapped.map(d => d.x));
@@ -457,50 +407,35 @@ function renderAnalyticsMatrixView() {
         minY = Math.min(...allMapped.map(d => d.y));
         maxY = Math.max(...allMapped.map(d => d.y));
     }
-
-    // Margine per dare respiro al grafico
     const marginX = Math.max(0.2, (maxX - minX) * 0.08);
     const marginY = Math.max(0.2, (maxY - minY) * 0.08);
     const plotMinX = Math.max(0, minX - marginX);
     const plotMaxX = Math.max(plotMinX + 0.8, maxX + marginX);
     const plotMinY = Math.min(0, minY - marginY);
     const plotMaxY = Math.max(plotMinY + 0.8, maxY + marginY);
-
     const midX = (plotMinX + plotMaxX) / 2;
     const midY = (plotMinY + plotMaxY) / 2;
-
-    // OTTIMIZZAZIONE ANTI-AMMASSAMENTO QUADRANTE GRIGIO (BASSO VOLUME)
-    // Tieni TUTTI i giocatori nei 3 quadranti attivi (Rosso, Blu, Verde), più preferiti/acquistati/ricercati.
-    // Nel quadrante grigio in basso a sinistra (x < midX && y < midY), mantieni solo un campione di max 30 profili top (per OVR).
     const isSpecificFilterActive = AnalyticsMatrixState.searchQuery || AnalyticsMatrixState.teamFilter !== 'ALL';
-    
     let mapped = [];
     if (isSpecificFilterActive) {
         mapped = allMapped;
     } else {
         const keyQuadrantsPoints = [];
         const greyQuadrantPoints = [];
-
         allMapped.forEach(d => {
             const isGrey = (d.x < midX && d.y < midY);
             const isBought = typeof isPlayerBought === 'function' ? isPlayerBought(d.player.id) : false;
             const isFav = typeof isFavorite === 'function' ? isFavorite(d.player.id) : false;
-
             if (!isGrey || isBought || isFav) {
                 keyQuadrantsPoints.push(d);
             } else {
                 greyQuadrantPoints.push(d);
             }
         });
-
-        // Nel quadrante grigio ordina per OVR/FVM e prendi i primi 30 più rilevanti
         greyQuadrantPoints.sort((a, b) => (b.player.ovr || 0) - (a.player.ovr || 0));
         const cappedGreyPoints = greyQuadrantPoints.slice(0, 30);
-
         mapped = [...keyQuadrantsPoints, ...cappedGreyPoints];
     }
-
-    // Dimensioni Generose (Adattive se in modalità Espansa o Standard)
     const width = isExpanded ? 980 : 760;
     const height = isExpanded ? 580 : 500;
     const padL = 55;
@@ -509,30 +444,21 @@ function renderAnalyticsMatrixView() {
     const padB = 45;
     const plotW = width - padL - padR;
     const plotH = height - padT - padB;
-
     const scaleX = (val) => padL + ((val - plotMinX) / (plotMaxX - plotMinX || 1)) * plotW;
     const scaleY = (val) => padT + plotH - ((val - plotMinY) / (plotMaxY - plotMinY || 1)) * plotH;
-
     const midScreenX = scaleX(midX);
     const midScreenY = scaleY(midY);
-
-    // Gestione collisioni per coordinate identiche (Micro-jitter visivo pulito)
     const coordCounts = {};
     mapped.forEach(d => {
         const key = `${d.x.toFixed(2)}_${d.y.toFixed(2)}`;
         coordCounts[key] = (coordCounts[key] || 0) + 1;
     });
-
     const seenCoords = {};
-
-    // Generazione Punti Scatter
     const dotsSvgHtml = mapped.map((d, index) => {
         const key = `${d.x.toFixed(2)}_${d.y.toFixed(2)}`;
         const count = coordCounts[key] || 1;
         const seenIdx = seenCoords[key] || 0;
         seenCoords[key] = seenIdx + 1;
-
-        // Offset a ventaglio per punti sovrapposti
         let offsetX = 0;
         let offsetY = 0;
         if (count > 1) {
@@ -541,10 +467,8 @@ function renderAnalyticsMatrixView() {
             offsetX = Math.cos(angle) * jitterRadius;
             offsetY = Math.sin(angle) * jitterRadius;
         }
-
         const cx = scaleX(d.x) + offsetX;
         const cy = scaleY(d.y) + offsetY;
-
         const roleColors = { P: '#f59e0b', D: '#10b981', C: '#38bdf8', A: '#f43f5e' };
         const dotColor = roleColors[d.player.role] || '#38bdf8';
         const isBought = typeof isPlayerBought === 'function' ? isPlayerBought(d.player.id) : false;
@@ -552,12 +476,8 @@ function renderAnalyticsMatrixView() {
         const strokeColor = isBought ? '#4ade80' : (isFav ? '#fbbf24' : 'rgba(255,255,255,0.8)');
         const strokeWidth = isBought || isFav ? 2.5 : 1.2;
         const radius = d.player.ovr >= 88 ? 7 : (d.player.ovr >= 80 ? 5.5 : 4.5);
-
-        // Etichetta i calciatori nei quadranti: Rosso (Top-Left), Blu (Top-Right), Verde (Bottom-Right)
-        // Nel quadrante Grigio (Bottom-Left: x < midX && y < midY) NON mettiamo i nomi
         const isGreyQuadrant = (d.x < midX && d.y < midY);
         let labelHtml = '';
-
         if (!isGreyQuadrant) {
             const displayName = formatMatrixPlayerName(d.player.name);
             const textX = cx > (padL + plotW - 80) ? cx - 8 : cx + 8;
@@ -569,7 +489,6 @@ function renderAnalyticsMatrixView() {
                 </text>
             `;
         }
-
         return `
             <g class="matrix-dot-group" onclick="openPlayerProfileModal(${d.player.id})" onmouseenter="highlightMatrixDot(${d.player.id})" onmouseleave="unhighlightMatrixDot()" style="cursor:pointer;">
                 <circle class="matrix-dot-circle" data-id="${d.player.id}" data-orig-r="${radius}" data-orig-stroke="${strokeColor}" data-orig-sw="${strokeWidth}" cx="${cx}" cy="${cy}" r="${radius}" fill="${dotColor}" stroke="${strokeColor}" stroke-width="${strokeWidth}" opacity="0.92">
@@ -579,10 +498,7 @@ function renderAnalyticsMatrixView() {
             </g>
         `;
     }).join('');
-
-    // Calcolo Fanta Insights per il pannello laterale
     const insights = computeMatrixInsights(allMapped, AnalyticsMatrixState.preset, season);
-
     const renderInsightCards = (list, sectionTitle, sectionIcon, sectionColor) => {
         if (!list || list.length === 0) return '';
         const cardsHtml = list.map(item => `
@@ -607,7 +523,6 @@ function renderAnalyticsMatrixView() {
                 </div>
             </div>
         `).join('');
-
         return `
             <div class="insight-group">
                 <div class="insight-group-header" style="border-left: 3px solid ${sectionColor};">
@@ -618,14 +533,11 @@ function renderAnalyticsMatrixView() {
             </div>
         `;
     };
-
-    // Toolbar Options
     const teamsList = (typeof TACTICAL_DB !== 'undefined' ? Object.keys(TACTICAL_DB).sort() : []);
     let teamsOptionsHtml = `<option value="ALL">Tutti i 20 Club</option>`;
     teamsList.forEach(t => {
         teamsOptionsHtml += `<option value="${t}" ${AnalyticsMatrixState.teamFilter === t ? 'selected' : ''}>${t}</option>`;
     });
-
     const presetButtonsHtml = Object.keys(MATRIX_PRESETS).map(key => {
         const pInfo = MATRIX_PRESETS[key];
         const isActive = AnalyticsMatrixState.preset === key;
@@ -643,13 +555,11 @@ function renderAnalyticsMatrixView() {
             </button>
         `;
     }).join('');
-
     const rolesChipsHtml = ['ALL', 'P', 'D', 'C', 'A'].map(r => {
         const isActive = AnalyticsMatrixState.roleFilter === r;
         const labels = { ALL: 'TUTTI', P: '🧤 P', D: '🛡️ D', C: '🪄 C', A: '⚡ A' };
         return `<button class="role-chip ${r} ${isActive ? 'active' : ''}" onclick="setMatrixRoleFilter('${r}')">${labels[r]}</button>`;
     }).join('');
-
     container.innerHTML = `
         <div class="matrix-view-layout ${isExpanded ? 'is-expanded-layout' : ''}">
             <!-- Header Bar -->
@@ -661,35 +571,29 @@ function renderAnalyticsMatrixView() {
                         <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Metodologia Sportellate / "Numero!" • Statistiche attese incrociate con guida pratica all'Asta & Scambi</div>
                     </div>
                 </div>
-
                 <div style="display:flex;align-items:center;gap:10px;">
                     <!-- Bottoncino Espandi / Riduci Schermo -->
                     <button class="btn-expand-matrix" onclick="toggleMatrixExpand()" title="${isExpanded ? 'Torna alla vista affiancata' : 'Ingrandisci il grafico a schermo pieno'}">
                         ${isExpanded ? '⤓ Vista Standard' : '⛶ Estendi Grafico'}
                     </button>
-
                     <div class="matrix-season-toggle">
                         <button class="matrix-season-btn ${season === '2627' ? 'active' : ''}" onclick="setMatrixSeason('2627')">⚡ Live 2026/27</button>
                         <button class="matrix-season-btn ${season === '2526' ? 'active' : ''}" onclick="setMatrixSeason('2526')">📊 Storico 2025/26</button>
                     </div>
                 </div>
             </div>
-
             <!-- Presets Navigation Strip -->
             <div class="matrix-presets-strip">
                 ${presetButtonsHtml}
             </div>
-
             <!-- Filter Controls Toolbar -->
             <div class="matrix-filter-toolbar">
                 <div class="role-chip-group">
                     ${rolesChipsHtml}
                 </div>
-
                 <select class="clean-select" style="max-width:145px;font-size:12px;padding:5px 10px;" onchange="setMatrixTeamFilter(this.value)">
                     ${teamsOptionsHtml}
                 </select>
-
                 <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary);">
                     <span>Minuti:</span>
                     <select class="clean-select" style="padding:5px 8px;font-size:11.5px;" onchange="setMatrixMinMinutes(this.value)">
@@ -699,16 +603,13 @@ function renderAnalyticsMatrixView() {
                         <option value="180" ${AnalyticsMatrixState.minMinutes === 180 ? 'selected' : ''}>≥ 180' (Titolari)</option>
                     </select>
                 </div>
-
                 <div style="flex:1;min-width:160px;margin-left:auto;">
                     <input type="text" class="clean-input-search" placeholder="🔍 Cerca calciatore o club..." value="${AnalyticsMatrixState.searchQuery}" oninput="setMatrixSearch(this.value)" style="padding:5px 12px;font-size:12px;">
                 </div>
-
                 <div style="font-size:11.5px;font-weight:700;color:var(--accent-cyan);padding:5px 10px;background:rgba(0,242,254,0.1);border-radius:6px;white-space:nowrap;">
                     ${mapped.length} Giocatori nel Grafico
                 </div>
             </div>
-
             <!-- WORKSPACE (2-COLUMN OPPURE FULL-WIDTH EXPANDED) -->
             <div class="${isExpanded ? 'matrix-expanded-workspace' : 'matrix-two-column-workspace'}">
                 <!-- CHART COLUMN -->
@@ -725,45 +626,36 @@ function renderAnalyticsMatrixView() {
                                 <span>${preset.qTopRight.sub}</span>
                             </div>
                         </div>
-
                         <svg viewBox="0 0 ${width} ${height}" class="matrix-svg-plot ${isExpanded ? 'svg-expanded' : ''}">
                             <!-- Quadrant Background Tints -->
                             <rect x="${padL}" y="${padT}" width="${midScreenX - padL}" height="${midScreenY - padT}" fill="${preset.qTopLeft.bg}" />
                             <rect x="${midScreenX}" y="${padT}" width="${padL + plotW - midScreenX}" height="${midScreenY - padT}" fill="${preset.qTopRight.bg}" />
                             <rect x="${padL}" y="${midScreenY}" width="${midScreenX - padL}" height="${padT + plotH - midScreenY}" fill="${preset.qBottomLeft.bg}" />
                             <rect x="${midScreenX}" y="${midScreenY}" width="${padL + plotW - midScreenX}" height="${padT + plotH - midScreenY}" fill="${preset.qBottomRight.bg}" />
-
                             <!-- Main Axes -->
                             <line x1="${padL}" y1="${padT + plotH}" x2="${padL + plotW}" y2="${padT + plotH}" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" />
                             <line x1="${padL}" y1="${padT}" x2="${padL}" y2="${padT + plotH}" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" />
-
                             <!-- Medians / Crosshair -->
                             <line x1="${midScreenX}" y1="${padT}" x2="${midScreenX}" y2="${padT + plotH}" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4,4" />
                             <line x1="${padL}" y1="${midScreenY}" x2="${padL + plotW}" y2="${midScreenY}" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4,4" />
-
                             <!-- Diagonal Line (Gol = xG) for Under/Overperformance -->
                             ${AnalyticsMatrixState.preset === 'under_over' ? `
                                 <line x1="${scaleX(0)}" y1="${scaleY(0)}" x2="${scaleX(Math.min(plotMaxX, plotMaxY))}" y2="${scaleY(Math.min(plotMaxX, plotMaxY))}" stroke="rgba(251, 191, 36, 0.4)" stroke-dasharray="6,4" stroke-width="1.5" />
                                 <text x="${scaleX(Math.min(plotMaxX, plotMaxY) * 0.72)}" y="${scaleY(Math.min(plotMaxX, plotMaxY) * 0.72) - 8}" fill="#fbbf24" font-size="9.5" font-weight="800" opacity="0.85">Linea Equilibrio (Gol = xG)</text>
                             ` : ''}
-
                             <!-- Axis Labels -->
                             <text x="${padL + plotW / 2}" y="${height - 12}" text-anchor="middle" fill="var(--accent-cyan)" font-size="11.5" font-weight="800">${preset.xLabel} ➔</text>
                             <text x="16" y="${padT + plotH / 2}" text-anchor="middle" fill="var(--accent-cyan)" font-size="11.5" font-weight="800" transform="rotate(-90 16 ${padT + plotH / 2})">➔ ${preset.yLabel}</text>
-
                             <!-- Axis Min / Mid / Max Ticks -->
                             <text x="${padL}" y="${padT + plotH + 16}" fill="var(--text-muted)" font-size="9.5" text-anchor="middle">${plotMinX.toFixed(1)}</text>
                             <text x="${midScreenX}" y="${padT + plotH + 16}" fill="var(--text-muted)" font-size="9.5" text-anchor="middle">${midX.toFixed(1)}</text>
                             <text x="${padL + plotW}" y="${padT + plotH + 16}" fill="var(--text-muted)" font-size="9.5" text-anchor="middle">${plotMaxX.toFixed(1)}</text>
-
                             <text x="${padL - 8}" y="${padT + plotH}" fill="var(--text-muted)" font-size="9.5" text-anchor="end">${plotMinY.toFixed(1)}</text>
                             <text x="${padL - 8}" y="${midScreenY}" fill="var(--text-muted)" font-size="9.5" text-anchor="end">${midY.toFixed(1)}</text>
                             <text x="${padL - 8}" y="${padT + 8}" fill="var(--text-muted)" font-size="9.5" text-anchor="end">${plotMaxY.toFixed(1)}</text>
-
                             <!-- Scatter Dots -->
                             ${dotsSvgHtml}
                         </svg>
-
                         <!-- Quadrants Bottom Header Indicator -->
                         <div class="matrix-quadrant-indicators">
                             <div class="quad-badge bottom-left" style="color:${preset.qBottomLeft.color};border-color:${preset.qBottomLeft.color}40;background:${preset.qBottomLeft.bg};">
@@ -776,7 +668,6 @@ function renderAnalyticsMatrixView() {
                             </div>
                         </div>
                     </div>
-
                     <div style="font-size:11.5px;color:var(--text-secondary);display:flex;align-items:center;justify-content:space-between;padding:4px 8px;">
                         <span>💡 Passa il mouse su una card per illuminare il pallino. Clicca per aprire la scheda calciatore.</span>
                         <div style="display:flex;gap:10px;">
@@ -787,14 +678,12 @@ function renderAnalyticsMatrixView() {
                         </div>
                     </div>
                 </div>
-
                 <!-- EDITORIAL FANTA INSIGHTS & ACTIONABLE RECOMMENDATIONS -->
                 <div class="${isExpanded ? 'matrix-expanded-insights-grid' : 'matrix-insights-column'}">
                     <div class="insights-panel-header">
                         <span style="font-size:18px;">🎯</span>
                         <h3 style="margin:0;font-size:15px;color:#fff;font-family:'Outfit',sans-serif;">Verdetti & Consigli Fanta Chiave</h3>
                     </div>
-
                     <div class="${isExpanded ? 'insights-expanded-cards-container' : 'insights-scrollable-list'}">
                         ${renderInsightCards(insights.under, "Occasioni d'Oro (Sotto la Lente)", "🔥", "#4ade80")}
                         ${renderInsightCards(insights.over, "Rischio Bolla (Cedi all'Apice)", "⚠️", "#f87171")}

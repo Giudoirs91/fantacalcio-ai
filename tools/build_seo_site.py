@@ -124,6 +124,24 @@ def generate_radar_chart_svg(player):
     svg = f"""<svg viewBox="0 0 {size} 320" style="width:100%;max-width:350px;display:block;margin:0 auto;">{circles}{lines}{poly}{labels}</svg>"""
     return svg
 
+def minify_css(css: str) -> str:
+    css = re.sub(r'/\*[\s\S]*?\*/', '', css)
+    css = re.sub(r'\s+', ' ', css)
+    css = re.sub(r'\s*([\{\}\:\;\,\>])\s*', r'\1', css)
+    css = re.sub(r';\}', '}', css)
+    return css.strip()
+
+def minify_js(js: str) -> str:
+    lines = []
+    for line in js.splitlines():
+        s = line.strip()
+        if not s or s.startswith('//'):
+            continue
+        lines.append(line)
+    cleaned = '\n'.join(lines)
+    cleaned = re.sub(r'/\*[\s\S]*?\*/', '', cleaned)
+    return cleaned
+
 def generate_seo_css():
     # Carica la base CSS completa di dashboard.css per riutilizzare tutte le classi del player modal
     css_path = os.path.join(ROOT_DIR, "web", "css", "dashboard.css")
@@ -1309,7 +1327,7 @@ body {
 }
 
 """
-    return base_dashboard_css + "\n" + extra_seo_css
+    return minify_css(base_dashboard_css + "\n" + extra_seo_css)
 
 def render_unified_header(rel_path=""):
     return f"""
@@ -2661,7 +2679,15 @@ def build_all():
     if os.path.exists(web_js_dir):
         for f in os.listdir(web_js_dir):
             if f.endswith(".js"):
-                shutil.copy(os.path.join(web_js_dir, f), os.path.join(js_dir, f))
+                src_f = os.path.join(web_js_dir, f)
+                dst_f = os.path.join(js_dir, f)
+                if f.endswith(".min.js"):
+                    shutil.copy(src_f, dst_f)
+                else:
+                    with open(src_f, "r", encoding="utf-8") as js_in:
+                        js_code = js_in.read()
+                    with open(dst_f, "w", encoding="utf-8") as js_out:
+                        js_out.write(minify_js(js_code))
 
     # 2b. Copia l'applicazione interattiva principale in dist/app.html e dist/index.html
     dash_content = ""

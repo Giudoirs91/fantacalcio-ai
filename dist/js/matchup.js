@@ -1,22 +1,15 @@
-// ==============================================================================
-// MODULO MATCHUP RADAR E CONFRONTO TESTA A TESTA 1VS1 (CON DATI 2025/2026 REALI)
-// ==============================================================================
-
 function initMatchupSelects() {
     const selA = document.getElementById('selectMatchupA');
     const selB = document.getElementById('selectMatchupB');
     if (!selA || !selB) return;
-    
     selA.innerHTML = '';
     selB.innerHTML = '';
-
     PLAYERS.forEach(p => {
         const optA = document.createElement('option');
         optA.value = p.id;
         optA.textContent = `${p.name} (${p.team} - ${p.role}) - OVR ${p.ovr}`;
         if (State.matchupA && p.id === State.matchupA.id) optA.selected = true;
         selA.appendChild(optA);
-
         const optB = document.createElement('option');
         optB.value = p.id;
         optB.textContent = `${p.name} (${p.team} - ${p.role}) - OVR ${p.ovr}`;
@@ -24,7 +17,6 @@ function initMatchupSelects() {
         selB.appendChild(optB);
     });
 }
-
 function setMatchupFromCard(playerId) {
     const p = PLAYERS.find(pl => pl.id === playerId);
     if (!p) return;
@@ -34,22 +26,18 @@ function setMatchupFromCard(playerId) {
     if (typeof switchTab === 'function') switchTab('matchup');
     updateMatchup();
 }
-
 function updateMatchup() {
     const elA = document.getElementById('selectMatchupA');
     const elB = document.getElementById('selectMatchupB');
     if (!elA || !elB) return;
-
     const idA = parseInt(elA.value, 10);
     const idB = parseInt(elB.value, 10);
     State.matchupA = PLAYERS.find(p => p.id === idA) || PLAYERS[0];
     State.matchupB = PLAYERS.find(p => p.id === idB) || PLAYERS[1];
-
     const pA = State.matchupA;
     const pB = State.matchupB;
     const container = document.getElementById('matchupComparisonContainer');
     if (!container) return;
-
     const numWinner = (valA, valB, higherIsBetter = true) => {
         const nA = parseFloat(valA) || 0;
         const nB = parseFloat(valB) || 0;
@@ -57,34 +45,25 @@ function updateMatchup() {
         if (higherIsBetter) return [nA > nB, nB > nA];
         return [nA < nB, nB < nA];
     };
-
     const [ovrWinA, ovrWinB] = numWinner(pA.ovr, pB.ovr);
     const [fmWinA, fmWinB] = numWinner(pA.fm, pB.fm);
     const [mvWinA, mvWinB] = numWinner(pA.mv, pB.mv);
     const [minsWinA, minsWinB] = numWinner(pA.mins_2526, pB.mins_2526);
     const [ratingWinA, ratingWinB] = numWinner(pA.rating_2526, pB.rating_2526);
     const [prcWinA, prcWinB] = numWinner(pA.prezzo_cons, pB.prezzo_cons, false);
-
     const slotWinA = (pA.slot_num || 99) < (pB.slot_num || 99);
     const slotWinB = (pB.slot_num || 99) < (pA.slot_num || 99);
-
     const oopA = (pA.oop_val && pA.oop_val !== '-') ? `<span class="oop-table-pill" style="color:#ec4899;font-weight:800;">${pA.oop_val}</span>` : '-';
     const oopB = (pB.oop_val && pB.oop_val !== '-') ? `<span class="oop-table-pill" style="color:#ec4899;font-weight:800;">${pB.oop_val}</span>` : '-';
-
     const advA = `<span class="ai-advice-badge ${pA.ai_advice_type || 'regular'}">${pA.ai_advice || pA.consiglio}</span>`;
     const advB = `<span class="ai-advice-badge ${pB.ai_advice_type || 'regular'}">${pB.ai_advice || pB.consiglio}</span>`;
-
     const isBothGK = (pA.role === 'P' && pB.role === 'P');
-
     let specificRows = '';
-
     if (isBothGK) {
-        // Confronto tra Portieri
         const [gpWinA, gpWinB] = numWinner(pA.goals_prevented_2526, pB.goals_prevented_2526);
         const [csWinA, csWinB] = numWinner(pA.clean_sheets_2526, pB.clean_sheets_2526);
         const [spWinA, spWinB] = numWinner(pA.save_pct_2526, pB.save_pct_2526);
         const [gsWinA, gsWinB] = numWinner(pA.gs, pB.gs, false); // Meno gol subiti è meglio
-
         specificRows = `
             <tr>
                 <td style="${gpWinA ? 'color:var(--accent-cyan);font-weight:900;' : ''}"><b>${pA.goals_prevented_2526 !== null && pA.goals_prevented_2526 !== undefined ? (pA.goals_prevented_2526 >= 0 ? '+' + pA.goals_prevented_2526 : pA.goals_prevented_2526) : '-'}</b></td>
@@ -108,13 +87,11 @@ function updateMatchup() {
             </tr>
         `;
     } else {
-        // Confronto tra Giocatori di Movimento (D, C, A)
         const [xg90WinA, xg90WinB] = numWinner(pA.xg90_2526, pB.xg90_2526);
         const [xgotWinA, xgotWinB] = numWinner(pA.xgot_2526, pB.xgot_2526);
         const [xa90WinA, xa90WinB] = numWinner(pA.xa90_2526, pB.xa90_2526);
         const [tklWinA, tklWinB] = numWinner(pA.tkl_int90_2526, pB.tkl_int90_2526);
         const [gfWinA, gfWinB] = numWinner(pA.gf, pB.gf);
-
         specificRows = `
             <tr>
                 <td style="${xg90WinA ? 'color:var(--accent-cyan);font-weight:900;' : ''}"><b>${pA.xg90_2526 !== null ? pA.xg90_2526 : '-'}</b></td>
@@ -143,7 +120,6 @@ function updateMatchup() {
             </tr>
         `;
     }
-
     container.innerHTML = `
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px;">
             <div style="background:rgba(0,242,254,0.08);border:1px solid rgba(0,242,254,0.3);border-radius:12px;padding:16px;display:flex;justify-content:space-between;align-items:center;">
@@ -159,7 +135,6 @@ function updateMatchup() {
                     <div style="color:var(--accent-gold);font-weight:800;font-size:14px;margin-top:4px;">${pA.prezzo_cons} CR</div>
                 </div>
             </div>
-
             <div style="background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.3);border-radius:12px;padding:16px;display:flex;justify-content:space-between;align-items:center;">
                 <div style="display:flex;align-items:center;gap:12px;">
                     <div class="role-badge ${pB.role}" style="width:36px;height:36px;font-size:16px;">${pB.role}</div>
@@ -174,7 +149,6 @@ function updateMatchup() {
                 </div>
             </div>
         </div>
-
         <div class="table-wrapper">
             <table class="fanta-table" style="text-align:center;">
                 <thead>
@@ -200,9 +174,7 @@ function updateMatchup() {
                         <td><b>Rating Statistico 25/26</b></td>
                         <td style="${ratingWinB ? 'color:#f472b6;font-weight:900;' : ''}"><b>${pB.rating_2526 || '-'}</b></td>
                     </tr>
-                    
                     ${specificRows}
-
                     <tr>
                         <td style="${fmWinA ? 'color:var(--accent-cyan);font-weight:900;' : ''}"><b>${pA.fm > 0 ? pA.fm : '-'}</b></td>
                         <td><b>FantaMedia 25/26</b></td>
@@ -241,7 +213,6 @@ function updateMatchup() {
                 </tbody>
             </table>
         </div>
-
         <!-- Sezione Interattiva Calendario Ufficiale 38 Giornate -->
         <div style="margin-top:32px;background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:20px;">
@@ -261,16 +232,12 @@ function updateMatchup() {
             <div id="calendarRoundGrid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:12px;"></div>
         </div>
     `;
-
     renderCalendarRound(window.currentSelectedRound || 5);
 }
-
 function getUpcomingMatchesForTeam(teamName, count = 5) {
     if (typeof OFFICIAL_CALENDAR_2026_27 === 'undefined' || !Array.isArray(OFFICIAL_CALENDAR_2026_27)) return [];
     const tClean = (teamName || '').toLowerCase();
     const upcoming = [];
-    
-    // Assumiamo che le prime 4 giornate siano state giocate (partiamo dalla 5)
     for (const g of OFFICIAL_CALENDAR_2026_27) {
         if (g.giornata < 5) continue;
         for (const m of (g.matches || [])) {
@@ -286,45 +253,37 @@ function getUpcomingMatchesForTeam(teamName, count = 5) {
     }
     return upcoming;
 }
-
 function renderUpcomingSchedulePills(teamName) {
     const matches = getUpcomingMatchesForTeam(teamName, 5);
     if (!matches || matches.length === 0) return '<span style="color:var(--text-secondary);">-</span>';
-
     return `<div style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap;">` +
         matches.map(m => {
             const loc = m.is_home ? 'C' : 'T';
             const oppShort = m.opponent.substring(0, 3).toUpperCase();
-            // Rating visivo
             const isBig = ['Inter', 'Juventus', 'Napoli', 'Milan', 'Atalanta', 'Roma'].includes(m.opponent);
             const isEasy = ['Venezia', 'Frosinone', 'Sassuolo', 'Lecce', 'Como', 'Parma', 'Monza'].includes(m.opponent);
             const badgeBg = isBig ? 'rgba(239,68,68,0.2)' : (isEasy ? 'rgba(34,197,94,0.2)' : 'rgba(59,130,246,0.15)');
             const badgeBorder = isBig ? '#ef4444' : (isEasy ? '#22c55e' : '#3b82f6');
             const badgeColor = isBig ? '#fca5a5' : (isEasy ? '#86efac' : '#93c5fd');
-
             return `<span style="font-size:11px;padding:3px 6px;border-radius:6px;background:${badgeBg};border:1px solid ${badgeBorder};color:${badgeColor};font-weight:700;" title="G${m.giornata}: ${m.opponent} (${m.is_home ? 'Casa' : 'Trasferta'})">
                 G${m.giornata}: ${oppShort} (${loc})
             </span>`;
         }).join('') +
     `</div>`;
 }
-
 function renderCalendarRound(roundNum) {
     window.currentSelectedRound = roundNum;
     const grid = document.getElementById('calendarRoundGrid');
     if (!grid) return;
-
     if (typeof OFFICIAL_CALENDAR_2026_27 === 'undefined' || !Array.isArray(OFFICIAL_CALENDAR_2026_27)) {
         grid.innerHTML = '<div style="color:var(--text-secondary);">Calendario non disponibile.</div>';
         return;
     }
-
     const roundData = OFFICIAL_CALENDAR_2026_27.find(g => g.giornata === roundNum);
     if (!roundData || !roundData.matches) {
         grid.innerHTML = `<div style="color:var(--text-secondary);">Nessun match trovato per la Giornata ${roundNum}.</div>`;
         return;
     }
-
     grid.innerHTML = roundData.matches.map(m => `
         <div style="background:rgba(30,41,59,0.5);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;transition:border-color 0.2s ease;">
             <div style="font-weight:800;font-size:14px;color:#fff;display:flex;align-items:center;gap:8px;">
@@ -337,4 +296,3 @@ function renderCalendarRound(roundNum) {
         </div>
     `).join('');
 }
-

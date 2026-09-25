@@ -1,44 +1,29 @@
-// ai_report_card.js — AI Report Card Dashboard Module
-// =====================================================
-// Legge data/processed/ai_error_analysis.json (iniettato nella pagina
-// dalla build come window.AI_ERROR_ANALYSIS) e disegna la sezione
-// "AI Report Card" con metriche di autovalutazione, pattern di errore
-// e le peggiori predizioni della stagione.
-
 (function () {
     'use strict';
-
-    // ── Helpers ───────────────────────────────────────────────────────────────
-
     function fmt(v, decimals = 2, signed = false) {
         if (v === null || v === undefined || isNaN(v)) return '—';
         const n = Number(v).toFixed(decimals);
         return signed ? (v >= 0 ? '+' + n : n) : n;
     }
-
     function pct(v) {
         if (v === null || v === undefined) return '—';
         return (Number(v) * 100).toFixed(0) + '%';
     }
-
     function biasColor(bias) {
         if (Math.abs(bias) < 0.2) return '#4ade80';      // green — ottimo
         if (Math.abs(bias) < 0.5) return '#facc15';      // yellow — attenzione
         return '#f87171';                                  // red — problema
     }
-
     function maeColor(mae) {
         if (mae < 0.8) return '#4ade80';
         if (mae < 1.5) return '#facc15';
         return '#f87171';
     }
-
     function accColor(acc) {
         if (acc >= 0.85) return '#4ade80';
         if (acc >= 0.65) return '#facc15';
         return '#f87171';
     }
-
     function renderProgressBar(value01, color, width = '100%') {
         const pct_val = Math.min(1, Math.max(0, value01)) * 100;
         return `
@@ -47,13 +32,9 @@
                             transition:width 0.8s ease;"></div>
             </div>`;
     }
-
-    // ── Main Render ───────────────────────────────────────────────────────────
-
     function renderAiReportCard() {
         const container = document.getElementById('ai-report-card-container');
         if (!container) return;
-
         const data = window.AI_ERROR_ANALYSIS;
         if (!data || !data.latest) {
             container.innerHTML = `
@@ -71,20 +52,16 @@
             _checkSnapshotStatus();
             return;
         }
-
         const latest = data.latest;
         const global = latest.global || {};
         const xfmStats = global.xfm || {};
         const roundNum = latest.round_num || 0;
         const analyzedAt = latest.analyzed_at ? new Date(latest.analyzed_at).toLocaleDateString('it-IT') : '—';
         const snapshotDate = data.snapshot_date ? new Date(data.snapshot_date).toLocaleDateString('it-IT') : '—';
-
         const bias = xfmStats.mean || 0;
         const mae = xfmStats.mae || 0;
         const advAcc = global.advice_accuracy || 0;
         const fragHit = global.fragility_hit_rate || 0;
-
-        // ── KPI Cards Row ─────────────────────────────────────────────────────
         const kpiHTML = `
             <div class="ai-rc-kpi-grid">
                 <div class="ai-rc-kpi-card">
@@ -112,12 +89,9 @@
                     <div class="ai-rc-kpi-sub">Infortuni previsti corretti</div>
                 </div>
             </div>`;
-
-        // ── Errori per Categoria ──────────────────────────────────────────────
         const byRole = latest.by_role || {};
         const byLeague = latest.by_league || {};
         const byOop = latest.by_oop || {};
-
         const roleRows = Object.entries(byRole)
             .sort((a, b) => Math.abs(b[1].mean) - Math.abs(a[1].mean))
             .map(([role, stats]) => {
@@ -130,7 +104,6 @@
                     <td>${renderProgressBar(1 - Math.min(1, stats.mae / 2), maeColor(stats.mae), '80px')}</td>
                 </tr>`;
             }).join('');
-
         const leagueRows = Object.entries(byLeague)
             .filter(([, s]) => s.count >= 3)
             .sort((a, b) => Math.abs(b[1].mean) - Math.abs(a[1].mean))
@@ -144,7 +117,6 @@
                     <td style="color:rgba(255,255,255,0.5)">${stats.count}</td>
                 </tr>`;
             }).join('');
-
         const oopRows = Object.entries(byOop)
             .filter(([tier]) => tier !== 'STANDARD')
             .map(([tier, stats]) => {
@@ -156,8 +128,6 @@
                     <td style="color:rgba(255,255,255,0.5)">${stats.count}</td>
                 </tr>`;
             }).join('');
-
-        // ── Advice Accuracy per Tipo ──────────────────────────────────────────
         const adviceAcc = latest.advice_accuracy || {};
         const adviceRows = Object.entries(adviceAcc)
             .sort((a, b) => b[1].accuracy - a[1].accuracy)
@@ -171,8 +141,6 @@
                     <td>${bar}</td>
                 </tr>`;
             }).join('');
-
-        // ── Peggiori Predizioni ───────────────────────────────────────────────
         const worst = latest.worst_predictions || [];
         const worstRows = worst.map(w => {
             const err = Number(w.error);
@@ -189,14 +157,10 @@
                 <td style="text-align:center">${correctIcon}</td>
             </tr>`;
         }).join('');
-
-        // ── Learning Notes ────────────────────────────────────────────────────
         const notes = latest.learning_notes || [];
         const notesHTML = notes.length > 0
             ? notes.map(n => `<div class="ai-rc-note"><span class="ai-rc-note-dot"></span>${n}</div>`).join('')
             : '<div class="ai-rc-note-empty">Nessuna nota disponibile per questa finestra temporale.</div>';
-
-        // ── Timeline (History) ────────────────────────────────────────────────
         const history = data.history || [];
         const timelineHTML = history.length > 1 ? `
             <div class="ai-rc-section">
@@ -216,8 +180,6 @@
                     }).join('')}
                 </div>
             </div>` : '';
-
-        // ── Assemble Full View ────────────────────────────────────────────────
         container.innerHTML = `
             <div class="ai-rc-header">
                 <div class="ai-rc-header-left">
@@ -231,11 +193,8 @@
                     ${_overallGradeLabel(mae, advAcc)}
                 </div>
             </div>
-
             ${kpiHTML}
-
             <div class="ai-rc-grid-2col">
-
                 <div class="ai-rc-section">
                     <h3 class="ai-rc-section-title">📊 Errori per Ruolo</h3>
                     <table class="ai-rc-table">
@@ -243,7 +202,6 @@
                         <tbody>${roleRows || '<tr><td colspan="5" style="opacity:0.4;text-align:center">—</td></tr>'}</tbody>
                     </table>
                 </div>
-
                 <div class="ai-rc-section">
                     <h3 class="ai-rc-section-title">🌍 Errori per Lega Origine</h3>
                     <table class="ai-rc-table">
@@ -251,7 +209,6 @@
                         <tbody>${leagueRows || '<tr><td colspan="4" style="opacity:0.4;text-align:center">Dati insufficienti per lega</td></tr>'}</tbody>
                     </table>
                 </div>
-
                 <div class="ai-rc-section">
                     <h3 class="ai-rc-section-title">🔀 Errori OOP (Fuori Ruolo)</h3>
                     <table class="ai-rc-table">
@@ -259,7 +216,6 @@
                         <tbody>${oopRows || '<tr><td colspan="4" style="opacity:0.4;text-align:center">Nessun OOP analizzato</td></tr>'}</tbody>
                     </table>
                 </div>
-
                 <div class="ai-rc-section">
                     <h3 class="ai-rc-section-title">🎯 Accuratezza Consigli AI</h3>
                     <table class="ai-rc-table">
@@ -268,9 +224,7 @@
                     </table>
                 </div>
             </div>
-
             ${timelineHTML}
-
             <div class="ai-rc-section">
                 <h3 class="ai-rc-section-title">⚠️ Top 15 Predizioni Peggiori</h3>
                 <div class="ai-rc-table-scroll">
@@ -280,7 +234,6 @@
                     </table>
                 </div>
             </div>
-
             <div class="ai-rc-section">
                 <h3 class="ai-rc-section-title">💡 Lezioni Apprese — Cosa ha sbagliato l'AI</h3>
                 <div class="ai-rc-notes">
@@ -293,9 +246,6 @@
             </div>
         `;
     }
-
-    // ── Private Helpers ───────────────────────────────────────────────────────
-
     function _adviceLabel(type) {
         const map = {
             top: '👑 Top', leader: '⭐ Leader', buy: '📈 Buy',
@@ -303,21 +253,18 @@
         };
         return map[type] || type;
     }
-
     function _overallGrade(mae, advAcc) {
         if (mae < 0.8 && advAcc >= 0.85) return 'grade-a';
         if (mae < 1.2 && advAcc >= 0.70) return 'grade-b';
         if (mae < 1.8 && advAcc >= 0.55) return 'grade-c';
         return 'grade-d';
     }
-
     function _overallGradeLabel(mae, advAcc) {
         if (mae < 0.8 && advAcc >= 0.85) return 'Grado A';
         if (mae < 1.2 && advAcc >= 0.70) return 'Grado B';
         if (mae < 1.8 && advAcc >= 0.55) return 'Grado C';
         return 'Grado D';
     }
-
     function _checkSnapshotStatus() {
         const el = document.getElementById('ai-rc-snapshot-status');
         if (!el) return;
@@ -331,13 +278,8 @@
             el.style.color = '#facc15';
         }
     }
-
-    // ── Init ──────────────────────────────────────────────────────────────────
-
     window.renderAiReportCard = renderAiReportCard;
-
     document.addEventListener('DOMContentLoaded', () => {
         renderAiReportCard();
     });
-
 })();

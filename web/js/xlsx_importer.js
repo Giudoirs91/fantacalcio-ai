@@ -11,11 +11,27 @@ let xlsxImportState = {
     expandedTeams: {}
 };
 
+function ensureXlsxLoaded() {
+    return new Promise((resolve, reject) => {
+        if (typeof XLSX !== 'undefined') {
+            resolve(window.XLSX);
+            return;
+        }
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
+        s.onload = () => resolve(window.XLSX);
+        s.onerror = (e) => reject(new Error("Impossibile caricare il modulo Excel online: " + e));
+        document.head.appendChild(s);
+    });
+}
+
 function openXlsxImportModal() {
     if ((typeof isCreatorModeActive !== 'function' || !isCreatorModeActive()) && typeof showComingSoonModal === 'function') {
         showComingSoonModal('Importazione Rose da Excel');
         return;
     }
+    // Pre-carica la libreria SheetJS in background
+    ensureXlsxLoaded().catch(() => {});
     const modal = document.getElementById('xlsxImportModal');
     if (!modal) return;
     modal.style.display = 'flex';
@@ -122,10 +138,19 @@ function matchPlayerFuzzy(rawName, rawClub, rawRole) {
     return null;
 }
 
-function readXlsxFile(file) {
+async function readXlsxFile(file) {
     xlsxImportState.fileName = file.name;
     const baseName = file.name.replace(/\.[^/.]+$/, '').replace(/[_ -]+/g, ' ');
     xlsxImportState.leagueName = `Lega ${baseName}`;
+
+    if (typeof XLSX === 'undefined') {
+        try {
+            await ensureXlsxLoaded();
+        } catch (e) {
+            alert("Errore nel caricamento della libreria Excel online: " + e.message);
+            return;
+        }
+    }
 
     const reader = new FileReader();
     reader.onload = function(e) {
@@ -146,10 +171,18 @@ function readXlsxFile(file) {
 }
 
 // Caricamento diretto del file reale fantarefri-rosters-1789316126497.xlsx (se presente)
-function loadSampleFantarefriRosters() {
+async function loadSampleFantarefriRosters() {
     if (typeof SAMPLE_FANTAREFRI_B64 === 'undefined' || !SAMPLE_FANTAREFRI_B64) {
         alert("File di esempio non disponibile. Trascina direttamente il tuo file fantarefri-rosters-1789316126497.xlsx.");
         return;
+    }
+    if (typeof XLSX === 'undefined') {
+        try {
+            await ensureXlsxLoaded();
+        } catch (e) {
+            alert("Errore nel caricamento della libreria Excel: " + e.message);
+            return;
+        }
     }
     try {
         const binaryStr = atob(SAMPLE_FANTAREFRI_B64);

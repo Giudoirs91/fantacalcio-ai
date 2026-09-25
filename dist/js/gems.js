@@ -1,7 +1,3 @@
-// ==============================================================================
-// MODULO PREDITTIVO AI: GEMME NASCOSTE, SLEEPER & CLUB RATING >= 7.0
-// ==============================================================================
-
 window.gemsState = {
     roleFilter: 'ALL',
     clusterFilter: 'ALL',
@@ -9,7 +5,6 @@ window.gemsState = {
     searchQuery: '',
     viewMode: 'LIST'
 };
-
 function getPredictiveSleeperScore(p) {
     const role = p.role;
     const xg90 = Number(p.xg90_2526) || 0;
@@ -22,17 +17,12 @@ function getPredictiveSleeperScore(p) {
     const a26 = Number(p.assist_2627) || 0;
     const pres26 = Number(p.presenze_2627) || 0;
     const price = Number(p.prezzo_cons) || 1;
-
     let score = 0;
-
-    // 1. Contesto offensivo di squadra
     let attBonus = 0;
     if (typeof TACTICAL_DB !== 'undefined' && TACTICAL_DB[p.team]) {
         const attStars = TACTICAL_DB[p.team].att_stars || 3;
         attBonus = (attStars - 2) * 5;
     }
-
-    // 2. Metriche per Ruolo
     if (role === 'A') {
         score = (xg90 * 60) + (xa90 * 30) + (shots90 * 8) + (g26 * 15) + (a26 * 8) + attBonus;
         if (rating >= 6.8) score += (rating - 6.5) * 20;
@@ -49,21 +39,14 @@ function getPredictiveSleeperScore(p) {
         const cs = Number(p.clean_sheets_2526) || 0;
         score = (rating >= 6.8 ? (rating - 6.5) * 30 : 0) + (gp * 3) + (cs * 2);
     }
-
-    // 3. Titolarità & Affidabilità
     if (tit >= 80) score += 12;
     else if (tit >= 65) score += 8;
     else if (tit >= 50) score += 4;
-
-    // 4. Rapporto Qualità/Prezzo (Underdog Efficiency)
-    // Più il prezzo è contenuto rispetto alle metriche, più è una gemma insospettabile!
     if (price <= 5) score += 15;
     else if (price <= 12) score += 10;
     else if (price <= 20) score += 5;
-
     return Math.round(score * 10) / 10;
 }
-
 function getAIPredictionDetails(p) {
     const name = p.name;
     const team = p.team;
@@ -74,13 +57,10 @@ function getAIPredictionDetails(p) {
     const isOop = !!p.is_oop;
     const g26 = Number(p.gol_2627) || 0;
     const a26 = Number(p.assist_2627) || 0;
-
-    // Cluster e motivazione personalizzata
     let cluster = 'REGULAR';
     let clusterLabel = '💎 Gemma Nascosta';
     let predictionText = '';
     let projectedBonus = 'Bonus Costanti (3-5 gol/assist)';
-
     if (rating >= 7.0 || (rating >= 6.95 && p.mins_2526 >= 1500)) {
         cluster = 'RATING_7';
         clusterLabel = '🌟 Club Media Voto ≥ 7.0';
@@ -94,8 +74,6 @@ function getAIPredictionDetails(p) {
         cluster = 'SNIPER';
         clusterLabel = '🚀 Cecchino Low Cost (High xG)';
     }
-
-    // Motivazioni sartoriali per i profili di spicco
     if (name === 'Schmid') {
         predictionText = "Numeri da trequartista d'alta classifica: con 0.24 xG90 e 0.31 xA90 genera occasioni da gol ogni partita. Alvini lo impiega stabilmente dietro le punte; a questo costo è il miglior affare del Frosinone.";
         projectedBonus = "Proiezione: 5-7 Gol + 6-8 Assist";
@@ -165,10 +143,8 @@ function getAIPredictionDetails(p) {
             projectedBonus = "Ottimo rapporto rendimento / crediti spesi";
         }
     }
-
     return { cluster, clusterLabel, predictionText, projectedBonus };
 }
-
 function renderGemsRoleBadge(p) {
     const isMantra = (typeof State !== 'undefined' && State.systemMode === 'mantra');
     if (isMantra && p.mantra) {
@@ -176,36 +152,24 @@ function renderGemsRoleBadge(p) {
     }
     return `<span class="role-badge ${p.role}" style="font-size:11px;width:22px;height:22px;">${p.role}</span>`;
 }
-
 function renderGemsView() {
     const container = document.getElementById('viewGems');
     if (!container) return;
-
-    // Filtra tutti i giocatori del database per estrarre gli insospettabili
-    // Soglie di prezzo: A <= 35, C <= 26, D <= 25, P <= 15
     const maxPrices = { 'A': 35, 'C': 26, 'D': 25, 'P': 15 };
-    
     let candidates = PLAYERS.filter(p => {
         const maxP = maxPrices[p.role] || 25;
         if ((p.prezzo_cons || 1) > maxP) return false;
         if ((p.titolarita || 0) < 45) return false;
-        
-        // Calcola punteggio predittivo
         p._sleeperScore = getPredictiveSleeperScore(p);
         p._aiPrediction = getAIPredictionDetails(p);
-
-        // Deve avere almeno qualche dato favorevole o xG/xA o OOP o Rating alto o gol recenti
         const hasNumbers = (p.xg90_2526 > 0.05) || (p.xa90_2526 > 0.05) || (p.rating_2526 >= 6.8) || (p.is_oop) || (p.gol_2627 > 0) || (p.assist_2627 > 0);
         return hasNumbers && p._sleeperScore >= 28;
     });
-
-    // Applica filtri UI
     const isMantra = (typeof State !== 'undefined' && State.systemMode === 'mantra');
     const rFilt = window.gemsState.roleFilter;
     const cFilt = window.gemsState.clusterFilter;
     const sFilt = window.gemsState.sortFilter;
     const qFilt = (window.gemsState.searchQuery || '').trim().toLowerCase();
-
     if (rFilt !== 'ALL') {
         if (isMantra) {
             const rf = rFilt.toUpperCase();
@@ -227,8 +191,6 @@ function renderGemsView() {
     if (qFilt) {
         candidates = candidates.filter(p => p.name.toLowerCase().includes(qFilt) || p.team.toLowerCase().includes(qFilt) || (p.mantra || '').toLowerCase().includes(qFilt));
     }
-
-    // Ordinamento
     if (sFilt === 'AI_SCORE') {
         candidates.sort((a, b) => b._sleeperScore - a._sleeperScore);
     } else if (sFilt === 'PRICE_ASC') {
@@ -238,11 +200,8 @@ function renderGemsView() {
     } else if (sFilt === 'BONUS_DESC') {
         candidates.sort((a, b) => ((b.xg90_2526 || 0) + (b.xa90_2526 || 0)) - ((a.xg90_2526 || 0) + (a.xa90_2526 || 0)));
     }
-
-    // Costruzione Visualizzazione (Lista Tabellare o Schede)
     const vMode = window.gemsState.viewMode || 'LIST';
     let mainContentHtml = '';
-
     if (candidates.length === 0) {
         mainContentHtml = `
             <div style="text-align:center;padding:48px 20px;background:rgba(255,255,255,0.02);border-radius:12px;border:1px dashed rgba(255,255,255,0.08);color:var(--text-muted);">
@@ -256,7 +215,6 @@ function renderGemsView() {
             const isBought = isPlayerBought(p.id);
             const isTaken = isPlayerTakenByOther(p.id);
             const pred = p._aiPrediction;
-
             let clusterBadgeStyle = 'background:rgba(139,92,246,0.15);border-color:rgba(139,92,246,0.4);color:#c084fc;';
             if (pred.cluster === 'RATING_7') {
                 clusterBadgeStyle = 'background:rgba(251,191,36,0.15);border-color:rgba(251,191,36,0.4);color:#fbbf24;box-shadow:0 0 8px rgba(251,191,36,0.2);';
@@ -267,7 +225,6 @@ function renderGemsView() {
             } else if (pred.cluster === 'SNIPER') {
                 clusterBadgeStyle = 'background:rgba(239,68,68,0.15);border-color:rgba(239,68,68,0.4);color:#f87171;';
             }
-
             let injBadge = '';
             let injTextDesc = '';
             if (p.is_injured) {
@@ -278,16 +235,13 @@ function renderGemsView() {
                 injBadge = `<span class="${classBadge}" title="${statusTitle}&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Rientro previsto: ${p.infortunio_rientro || 'TBD'}"><svg viewBox="0 0 24 24" width="12" height="12" fill="${colorHex}" style="vertical-align:middle;"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></span>`;
                 injTextDesc = `<span style="font-size:10px;font-weight:700;color:${colorHex};background:${isOrange ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)'};border:1px solid ${isOrange ? 'rgba(245,158,11,0.35)' : 'rgba(239,68,68,0.35)'};padding:1px 5px;border-radius:4px;" title="${p.infortunio_motivo || ''}">🏥 ${p.infortunio_rientro || 'Stop'}</span>`;
             }
-
             const ratingVal = p.rating_2526 ? `<b style="color:#fbbf24;font-size:13px;">${p.rating_2526}</b>` : `<span style="color:var(--text-muted);">-</span>`;
             const xgVal = p.xg90_2526 > 0 ? `<b style="color:#f472b6;font-size:12.5px;">${p.xg90_2526}</b>` : `<span style="color:var(--text-muted);">0.0</span>`;
             const xaVal = p.xa90_2526 > 0 ? `<b style="color:var(--accent-cyan);font-size:12.5px;">${p.xa90_2526}</b>` : `<span style="color:var(--text-muted);">0.0</span>`;
-            
             let gaVal = `<span style="color:var(--text-muted);font-size:11px;">0G / 0A</span>`;
             if (p.gol_2627 > 0 || p.assist_2627 > 0) {
                 gaVal = `<span style="color:#4ade80;font-weight:800;font-size:12px;">${p.gol_2627}G / ${p.assist_2627}A</span>`;
             }
-
             let actionHtml = '';
             if (isBought) {
                 actionHtml = `<span style="color:#4ade80;font-weight:800;font-size:11px;">✓ IN ROSA</span>`;
@@ -300,7 +254,6 @@ function renderGemsView() {
                     </button>
                 `;
             }
-
             rowsHtml += `
                 <tr class="${pred.cluster === 'RATING_7' ? 'gem-row-gold' : ''}" onclick="openPlayerProfileModal(${p.id})">
                     <td style="text-align:center;">
@@ -354,7 +307,6 @@ function renderGemsView() {
                 </tr>
             `;
         });
-
         mainContentHtml = `
             <div class="gems-table-container">
                 <table class="gems-table">
@@ -385,7 +337,6 @@ function renderGemsView() {
             const isBought = isPlayerBought(p.id);
             const isTaken = isPlayerTakenByOther(p.id);
             const pred = p._aiPrediction;
-
             let clusterBadgeStyle = 'background:rgba(139,92,246,0.15);border-color:rgba(139,92,246,0.4);color:#c084fc;';
             if (pred.cluster === 'RATING_7') {
                 clusterBadgeStyle = 'background:rgba(251,191,36,0.15);border-color:rgba(251,191,36,0.4);color:#fbbf24;box-shadow:0 0 10px rgba(251,191,36,0.2);';
@@ -396,7 +347,6 @@ function renderGemsView() {
             } else if (pred.cluster === 'SNIPER') {
                 clusterBadgeStyle = 'background:rgba(239,68,68,0.15);border-color:rgba(239,68,68,0.4);color:#f87171;';
             }
-
             let injBadge = '';
             let injCardBanner = '';
             if (p.is_injured) {
@@ -411,16 +361,13 @@ function renderGemsView() {
                     </div>
                 `;
             }
-
             const ratingVal = p.rating_2526 ? `<b style="color:#fbbf24;font-size:13.5px;">${p.rating_2526}</b>` : `<span style="color:var(--text-muted);">-</span>`;
             const xgVal = p.xg90_2526 > 0 ? `<b style="color:#f472b6;font-size:13px;">${p.xg90_2526}</b>` : `<span style="color:var(--text-muted);">0.0</span>`;
             const xaVal = p.xa90_2526 > 0 ? `<b style="color:var(--accent-cyan);font-size:13px;">${p.xa90_2526}</b>` : `<span style="color:var(--text-muted);">0.0</span>`;
-            
             let gaVal = `<span style="color:var(--text-muted);font-size:11px;">0G / 0A</span>`;
             if (p.gol_2627 > 0 || p.assist_2627 > 0) {
                 gaVal = `<span style="color:#4ade80;font-weight:800;font-size:12px;">${p.gol_2627}G / ${p.assist_2627}A</span>`;
             }
-
             let actionHtml = '';
             if (isBought) {
                 actionHtml = `<span style="color:#4ade80;font-weight:800;font-size:11.5px;display:flex;align-items:center;gap:4px;">✓ NELLA TUA ROSA</span>`;
@@ -433,7 +380,6 @@ function renderGemsView() {
                     </button>
                 `;
             }
-
             cardsHtml += `
                 <div class="gem-card ${pred.cluster === 'RATING_7' ? 'gem-card-gold' : ''}" onclick="openPlayerProfileModal(${p.id})">
                     <!-- Header Card: Nome, Squadra, Prezzo, Ruolo -->
@@ -456,16 +402,13 @@ function renderGemsView() {
                             <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">${p.slot_fascia.split('(')[0]}</div>
                         </div>
                     </div>
-
                     <!-- Cluster Badge & Eventuale Banner Infortunio -->
                     <div style="margin-bottom:10px;">
                         <span style="border:1px solid;padding:2px 8px;border-radius:20px;font-size:10.5px;font-weight:800;display:inline-block;${clusterBadgeStyle}">
                             ${pred.clusterLabel}
                         </span>
                     </div>
-
                     ${injCardBanner}
-
                     <!-- Metriche Chiave a 4 Riquadri -->
                     <div class="gem-metrics-grid">
                         <div class="gem-metric-box">
@@ -485,7 +428,6 @@ function renderGemsView() {
                             <span class="gem-metric-val">${gaVal}</span>
                         </div>
                     </div>
-
                     <!-- Analisi Predittiva Testuale Sartoriale -->
                     <div class="gem-prediction-box">
                         <div style="font-size:10.5px;font-weight:800;color:var(--accent-cyan);margin-bottom:3px;display:flex;align-items:center;gap:4px;">
@@ -498,7 +440,6 @@ function renderGemsView() {
                             ⚡ ${pred.projectedBonus}
                         </div>
                     </div>
-
                     <!-- Footer Azioni -->
                     <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">
                         <span style="font-size:10.5px;color:var(--text-muted);cursor:pointer;" onclick="event.stopPropagation(); openPlayerProfileModal(${p.id});">
@@ -511,14 +452,12 @@ function renderGemsView() {
                 </div>
             `;
         });
-
         mainContentHtml = `
             <div class="gems-cards-grid">
                 ${cardsHtml}
             </div>
         `;
     }
-
     container.innerHTML = `
         <div style="display:flex;flex-direction:column;gap:18px;">
             <!-- Header Banner Predittivo -->
@@ -538,13 +477,11 @@ function renderGemsView() {
                             Incrocio multidimensionale tra <b>Metriche Statistiche Avanzate</b> (xG, xA, tiri/90), <b>Posizione Tattica Reale (OOP)</b> e <b>Stile Offensivo della Squadra</b>. Calciatori insospettabili a basso-medio costo proiettati ad una stagione di bonus e voti superiori al 7.
                         </p>
                     </div>
-
                     <div style="background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px 16px;text-align:right;">
                         <div style="font-size:11px;color:var(--text-muted);font-weight:700;">GEMME IDENTIFICATE</div>
                         <div style="font-size:24px;font-weight:900;color:#fff;font-family:'Outfit',sans-serif;">${candidates.length} <span style="font-size:13px;color:var(--accent-cyan);">Profili</span></div>
                     </div>
                 </div>
-
                 <!-- Pannello Filtri Rapidi & Cluster -->
                 <div class="gems-filters-bar">
                     <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
@@ -570,7 +507,6 @@ function renderGemsView() {
                             </button>
                         `).join('')}
                     </div>
-
                     <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;border-left:1px solid rgba(255,255,255,0.08);padding-left:12px;">
                         <span style="font-size:11px;font-weight:800;color:var(--text-muted);margin-right:4px;">CLUSTER AI:</span>
                         <button class="gems-filter-pill ${cFilt === 'ALL' ? 'active' : ''}" onclick="setGemsFilter('cluster', 'ALL')">Tutti i Cluster</button>
@@ -579,14 +515,12 @@ function renderGemsView() {
                         <button class="gems-filter-pill ${cFilt === 'ASSIST_MACHINE' ? 'active' : ''}" onclick="setGemsFilter('cluster', 'ASSIST_MACHINE')">🎯 Macchine da Assist</button>
                         <button class="gems-filter-pill ${cFilt === 'SNIPER' ? 'active' : ''}" onclick="setGemsFilter('cluster', 'SNIPER')">🚀 Cecchini xG</button>
                     </div>
-
                     <div style="display:flex;align-items:center;gap:10px;margin-left:auto;flex-wrap:wrap;">
                         <!-- Selettore Vista Lista / Griglia -->
                         <div style="display:flex;align-items:center;background:rgba(0,0,0,0.45);padding:2px;border-radius:8px;border:1px solid rgba(255,255,255,0.12);">
                             <button class="gems-view-toggle ${vMode === 'LIST' ? 'active' : ''}" onclick="setGemsFilter('view', 'LIST')" title="Visualizza come Lista Tabellare">📋 Lista</button>
                             <button class="gems-view-toggle ${vMode === 'GRID' ? 'active' : ''}" onclick="setGemsFilter('view', 'GRID')" title="Visualizza come Schede">🃏 Schede</button>
                         </div>
-
                         <div style="display:flex;align-items:center;gap:6px;">
                             <label style="font-size:11px;font-weight:800;color:var(--text-muted);">ORDINA:</label>
                             <select class="tactical-select" style="width:160px;padding:4px 8px;font-size:11.5px;" onchange="setGemsFilter('sort', this.value)">
@@ -600,13 +534,11 @@ function renderGemsView() {
                     </div>
                 </div>
             </div>
-
             <!-- Contenuto Principale: Lista Tabellare o Griglia Schede -->
             ${mainContentHtml}
         </div>
     `;
 }
-
 function setGemsFilter(type, value) {
     if (type === 'role') window.gemsState.roleFilter = value;
     else if (type === 'cluster') window.gemsState.clusterFilter = value;
@@ -615,9 +547,6 @@ function setGemsFilter(type, value) {
     else if (type === 'view') window.gemsState.viewMode = value;
     renderGemsView();
 }
-
-// Alias: the dashboard HTML calls renderGemsTab(), state.js calls renderGemsView()
-// Both are exposed so both naming conventions work
 const renderGemsTab = renderGemsView;
 window.renderGemsTab = renderGemsView;
 window.renderGemsView = renderGemsView;

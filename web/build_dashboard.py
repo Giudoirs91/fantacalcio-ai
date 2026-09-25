@@ -1,5 +1,26 @@
 import os
 import json
+import re
+
+def minify_css(css: str) -> str:
+    """Minifica il CSS rimuovendo commenti e spazi ridondanti."""
+    css = re.sub(r'/\*[\s\S]*?\*/', '', css)
+    css = re.sub(r'\s+', ' ', css)
+    css = re.sub(r'\s*([\{\}\:\;\,\>])\s*', r'\1', css)
+    css = re.sub(r';\}', '}', css)
+    return css.strip()
+
+def minify_js(js: str) -> str:
+    """Rimuove commenti e linee vuote dal JavaScript per alleggerire il payload."""
+    lines = []
+    for line in js.splitlines():
+        s = line.strip()
+        if not s or s.startswith('//'):
+            continue
+        lines.append(line)
+    cleaned = '\n'.join(lines)
+    cleaned = re.sub(r'/\*[\s\S]*?\*/', '', cleaned)
+    return cleaned
 
 def build_standalone_dashboard(sync_android=False):
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -46,12 +67,10 @@ def build_standalone_dashboard(sync_android=False):
         with open(cal_path, 'r', encoding='utf-8') as f:
             cal_data = json.load(f)
 
-    # 2. Carica CSS e JS modulari
+    # 2. Carica CSS e JS modulari minificati
     css_path = os.path.join(root_dir, "web", "css", "dashboard.css")
     with open(css_path, 'r', encoding='utf-8') as f:
-        css_content = f.read()
-
-    xlsx_script_tag = '<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>\n'
+        css_content = minify_css(f.read())
 
     js_modules = [
         "state.js",
@@ -81,6 +100,7 @@ def build_standalone_dashboard(sync_android=False):
         j_path = os.path.join(root_dir, "web", "js", jm)
         with open(j_path, 'r', encoding='utf-8') as f:
             js_content += f"\n// --- {jm} ---\n" + f.read() + "\n"
+    js_content = minify_js(js_content)
 
     players_json = json.dumps(players_data, ensure_ascii=False)
     gk_json = json.dumps(gk_data, ensure_ascii=False)
@@ -118,12 +138,15 @@ def build_standalone_dashboard(sync_android=False):
       }}
     }}
     </script>
-    <!-- Google Fonts -->
+    <!-- Google Fonts Optimized (Preconnect, Preload & Non-blocking Swap) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- VENDOR_XLSX_INJECTION -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap">
+    </noscript>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Vercel Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
     <style>
@@ -1360,9 +1383,6 @@ def build_standalone_dashboard(sync_android=False):
 </body>
 </html>
 """
-
-    # Inietta libreria SheetJS vendor
-    html_template = html_template.replace("<!-- VENDOR_XLSX_INJECTION -->", xlsx_script_tag)
 
     out_path = os.path.join(root_dir, "Dashboard_Fanta_1000.html")
     with open(out_path, 'w', encoding='utf-8') as f:

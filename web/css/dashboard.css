@@ -1630,12 +1630,22 @@ main {
 /* Layout Tabellone Asta (Responsive Full Width) */
 .auction-main-layout {
     width: 100%;
+    min-height: 80vh;
 }
 
 .auction-table-column {
     width: 100% !important;
     max-width: 100% !important;
     flex: 1 1 100% !important;
+}
+
+.clean-filter-bar {
+    min-height: 52px;
+}
+
+.table-wrapper {
+    min-height: 600px;
+    contain: layout style;
 }
 
 /* Persistent Right Sidebar: Hidden for Pure Statistical Portal */
@@ -6846,6 +6856,7 @@ body.creator-mode-active .visitor-only-item {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     width: 100%;
     box-sizing: border-box;
+    min-height: 58px;
 }
 
 .header-main-row {

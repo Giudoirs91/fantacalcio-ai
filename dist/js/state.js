@@ -1,13 +1,5 @@
-// ==============================================================================
-// GESTIONE STATO GLOBALE E PERSISTENZA LOCALSTORAGE (CON PREFERITI & RADAR RIVALI)
-// ==============================================================================
-
-// ==============================================================================
-// MODALITÀ CREATORE (ACCESSO RISERVATO CRITTOGRAFATO SHA-256)
-// ==============================================================================
 let _logoClicks = 0;
 let _logoClickTimer = null;
-
 function handleBrandSecretClick() {
     _logoClicks++;
     clearTimeout(_logoClickTimer);
@@ -17,8 +9,6 @@ function handleBrandSecretClick() {
         openCreatorAuthModal();
     }
 }
-
-// Scorciatoia da tastiera per creatore (Ctrl + Shift + K)
 if (typeof window !== 'undefined') {
     window.addEventListener('keydown', (e) => {
         if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'K' || e.key === 'k')) {
@@ -27,7 +17,6 @@ if (typeof window !== 'undefined') {
         }
     });
 }
-
 function isCreatorModeActive() {
     try {
         return localStorage.getItem('FANTA_CREATOR_MODE') === 'true';
@@ -35,7 +24,6 @@ function isCreatorModeActive() {
         return false;
     }
 }
-
 function setCreatorMode(active) {
     try {
         if (active) {
@@ -46,7 +34,6 @@ function setCreatorMode(active) {
     } catch(e) {}
     updateCreatorModeUI();
 }
-
 function updateCreatorModeUI() {
     const active = isCreatorModeActive();
     if (typeof document !== 'undefined' && document.body) {
@@ -61,7 +48,6 @@ function updateCreatorModeUI() {
         badge.style.display = active ? 'inline-flex' : 'none';
     }
 }
-
 function openCreatorAuthModal() {
     if (isCreatorModeActive()) {
         const confirmExit = confirm("👑 Sei attualmente in Modalità Creatore.\n\nVuoi disattivarla e tornare alla vista visitatore ordinario?");
@@ -81,35 +67,28 @@ function openCreatorAuthModal() {
         setTimeout(() => { if (input) input.focus(); }, 150);
     }
 }
-
 function closeCreatorAuthModal() {
     const modal = document.getElementById('creatorAuthModal');
     if (modal) modal.style.display = 'none';
 }
-
 async function hashSha256(str) {
     const buffer = new TextEncoder().encode(str);
     const hash = await crypto.subtle.digest('SHA-256', buffer);
     return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
-
 async function submitCreatorAuth() {
     const input = document.getElementById('creatorPasswordInput');
     const err = document.getElementById('creatorAuthError');
     if (!input) return;
     const pwd = input.value.trim();
     if (!pwd) return;
-
     const hash = await hashSha256(pwd);
     const customHash = localStorage.getItem('FANTA_CREATOR_PWD_HASH');
-    
-    // Hash SHA-256 autorizzati (crittografati, nessuna password visibile in chiaro)
     const ALLOWED_HASHES = [
         '4be6e680a6dd2ee9957770984dd0c7f2dd8be7c703b44b80b7d7809630c8225d', // hash 1991
         '56a4221a71ca2eb05b76c8c4a45a19fe99ba28d9ffb4b4d7fca1caec83a31c59'  // hash fantapass2026
     ];
     if (customHash) ALLOWED_HASHES.push(customHash);
-
     if (ALLOWED_HASHES.includes(hash)) {
         closeCreatorAuthModal();
         setCreatorMode(true);
@@ -123,8 +102,6 @@ async function submitCreatorAuth() {
         input.focus();
     }
 }
-
-// Parametro URL ?login=creator apre la finestra di login crittografata
 (function checkCreatorUrlParams() {
     try {
         if (typeof window !== 'undefined' && window.location) {
@@ -137,7 +114,6 @@ async function submitCreatorAuth() {
         }
     } catch(e) {}
 })();
-
 if (typeof window !== 'undefined') {
     window.isCreatorModeActive = isCreatorModeActive;
     window.setCreatorMode = setCreatorMode;
@@ -148,9 +124,7 @@ if (typeof window !== 'undefined') {
     window.handleBrandSecretClick = handleBrandSecretClick;
     window.addEventListener('DOMContentLoaded', updateCreatorModeUI);
 }
-
 const STORAGE_KEY = 'FANTA_MASTER_AI_STATE_2026_27';
-
 const RIVALS_TEMPLATE = {
     'Squadra A': { manager: 'Manager 1', tendency: 'Aggressivo su 1° Portiere e Super Bomber', budget: 1000, spent: 0, players: [] },
     'Squadra B': { manager: 'Manager 2', tendency: 'All-in su Attaccanti e Modificatore Difesa', budget: 1000, spent: 0, players: [] },
@@ -160,7 +134,6 @@ const RIVALS_TEMPLATE = {
     'Squadra F': { manager: 'Manager 6', tendency: 'Low cost a 1 CR e accumulo budget per le punte', budget: 1000, spent: 0, players: [] },
     'Squadra G': { manager: 'Manager 7', tendency: 'Spesa mirata su centrocampo e scommesse offensive', budget: 1000, spent: 0, players: [] }
 };
-
 const DefaultState = {
     teamName: 'La Mia Rosa',
     budgetTotal: 1000,
@@ -176,17 +149,13 @@ const DefaultState = {
     rivalAssignments: {}, // { playerId: { rival: 'Squadra A', price: 45 } }
     rivals: JSON.parse(JSON.stringify(RIVALS_TEMPLATE)),
     playerOverrides: {}, // { [playerId]: { slot_fascia, slot_num, oop_val, is_oop, fpp_fpn, ai_advice, consiglio, ai_advice_type } }
-    
     systemMode: 'classic', // 'classic' o 'mantra'
-    
-    // Filtri per Creazione Squadra Unificata
     sbRole: 'ALL', // 'ALL', 'P', 'D', 'C', 'A' o Ruolo Mantra
     sbAdvice: 'ALL',
     sbOnlyFav: false,
     sbOnlyAvail: true,
     sbQuery: '',
     sbViewMode: 'list', // 'list' o 'grid'
-
     activeTab: 'auction',
     currentTeamPitch: 'Inter',
     filterRole: 'ALL',
@@ -208,12 +177,7 @@ const DefaultState = {
     matchupA: null,
     matchupB: null
 };
-
 let State = { ...DefaultState };
-
-// ==============================================================================
-// METADATA & 11 SCHEMI UFFICIALI SISTEMA MANTRA
-// ==============================================================================
 const MANTRA_ROLES_META = {
     'Por': { name: 'Portiere', dept: 'Por', color: '#d97706', border: '#fbbf24', order: 1 },
     'Dc':  { name: 'Difensore Centrale', dept: 'Dif', color: '#059669', border: '#34d399', order: 2 },
@@ -228,7 +192,6 @@ const MANTRA_ROLES_META = {
     'A':   { name: 'Seconda Punta / Attaccante Raccordo', dept: 'Att', color: '#e11d48', border: '#fb7185', order: 11 },
     'Pc':  { name: 'Punta Centrale / Centravanti', dept: 'Att', color: '#b91c1c', border: '#f87171', order: 12 }
 };
-
 const MANTRA_RAW_SCHEMAS = {
     '3-4-3': {
         name: '3-4-3',
@@ -359,8 +322,6 @@ const MANTRA_RAW_SCHEMAS = {
         ]
     }
 };
-
-// Costruisci MANTRA_FORMATIONS assicurando retrocompatibilità completa con 'slots'
 const MANTRA_FORMATIONS = {};
 for (const [key, val] of Object.entries(MANTRA_RAW_SCHEMAS)) {
     MANTRA_FORMATIONS[key] = {
@@ -368,21 +329,17 @@ for (const [key, val] of Object.entries(MANTRA_RAW_SCHEMAS)) {
         slots: val.lines.flat()
     };
 }
-
 function renderMantraRoleBadges(mantraStr, extraClass = '') {
     if (!mantraStr) return '<span class="mantra-badge" style="background:#475569;color:#fff;">-</span>';
     const subroles = String(mantraStr).split(';').map(s => s.trim()).filter(Boolean);
     if (subroles.length === 0) return '<span class="mantra-badge" style="background:#475569;color:#fff;">-</span>';
-    
     const badgesHtml = subroles.map(sr => {
         const key = sr.toLowerCase();
         const meta = MANTRA_ROLES_META[sr] || { name: sr };
         return `<span class="mantra-badge ${key} ${extraClass}" title="${meta.name || sr}">${sr}</span>`;
     }).join('');
-
     return `<div class="mantra-badge-group">${badgesHtml}</div>`;
 }
-
 function getMantraHierarchyScore(mantraStr) {
     if (!mantraStr) return 999;
     const subroles = String(mantraStr).split(';').map(s => s.trim()).filter(Boolean);
@@ -394,11 +351,9 @@ function getMantraHierarchyScore(mantraStr) {
     });
     return minOrder;
 }
-
 function isPlayerEligibleForMantraRole(player, roleFilter) {
     if (!roleFilter || roleFilter === 'ALL') return true;
     const pMantra = String(player.mantra || '').split(';').map(s => s.trim().toUpperCase()).filter(Boolean);
-    
     if (roleFilter === 'MULTI') {
         return pMantra.length >= 2;
     }
@@ -411,20 +366,15 @@ function isPlayerEligibleForMantraRole(player, roleFilter) {
     if (roleFilter === 'ATT_ALL') {
         return pMantra.some(r => ['T', 'W', 'A', 'PC'].includes(r));
     }
-    
     const target = roleFilter.toUpperCase();
     return pMantra.includes(target);
 }
-
 function getSystemMode() {
     return State.systemMode || 'classic';
 }
-
 function setSystemMode(mode, save = true) {
     const validMode = (mode === 'mantra') ? 'mantra' : 'classic';
     State.systemMode = validMode;
-    
-    // Aggiorna anche la modalità nella lega attiva persistita
     if (typeof LeaguesManager !== 'undefined' && typeof LeaguesManager.getActive === 'function') {
         const leagues = LeaguesManager.getAll();
         const activeId = LeaguesManager.getActiveId();
@@ -434,8 +384,6 @@ function setSystemMode(mode, save = true) {
             LeaguesManager.saveAll(leagues);
         }
     }
-    
-    // Aggiorna classi bottoni header
     const btnClassic = document.getElementById('btnModeClassic');
     const btnMantra = document.getElementById('btnModeMantra');
     if (btnClassic) {
@@ -446,8 +394,6 @@ function setSystemMode(mode, save = true) {
         if (validMode === 'mantra') btnMantra.classList.add('active');
         else btnMantra.classList.remove('active');
     }
-
-    // Aggiorna tracker budget in alto
     const classicTracker = document.getElementById('classicSlotsTracker');
     const mantraTracker = document.getElementById('mantraSlotsTracker');
     if (classicTracker && mantraTracker) {
@@ -459,28 +405,19 @@ function setSystemMode(mode, save = true) {
             mantraTracker.style.display = 'none';
         }
     }
-
-    // Aggiorna intestazione colonna Ruolo
     const thRole = document.getElementById('thRoleHeader');
     if (thRole) {
         thRole.textContent = (validMode === 'mantra') ? 'R. Mantra' : 'R';
         thRole.title = (validMode === 'mantra') ? 'Ruoli Ufficiali Mantra (clicca per ordinare)' : 'Ruolo Classic (P, D, C, A)';
     }
-
-    // Aggiorna opzioni selettore Ruolo nel pannello filtri asta
     if (typeof updateRoleFilterOptionsUI === 'function') {
         updateRoleFilterOptionsUI();
     }
-
-    // Salva preferenza se richiesto
     if (save) {
         saveStateToStorage();
     }
-
-    // Notifica ed aggiorna tutte le viste attive
     onSystemModeChanged();
 }
-
 function onSystemModeChanged() {
     if (typeof updateBudgetUI === 'function') updateBudgetUI();
     if (typeof renderTable === 'function') renderTable();
@@ -489,7 +426,6 @@ function onSystemModeChanged() {
     if (typeof renderAiSquads === 'function' && State.activeTab === 'ai_squads') renderAiSquads();
     if (typeof renderPitchTeam === 'function' && State.activeTab === 'pitch') renderPitchTeam(State.currentTeamPitch);
     if (typeof renderGemsView === 'function' && State.activeTab === 'gems') renderGemsView();
-    // Fix: use actual tab IDs ('trade' and 'repair') matching switchTab() in dashboard
     if (typeof renderTradeMachineView === 'function' && State.activeTab === 'trade') renderTradeMachineView();
     if (typeof renderRepairAuctionView === 'function' && State.activeTab === 'repair') renderRepairAuctionView();
     if (typeof initMatchupSelects === 'function' && State.activeTab === 'matchup') initMatchupSelects();
@@ -497,7 +433,6 @@ function onSystemModeChanged() {
     if (typeof renderMatchdayAdviceView === 'function' && State.activeTab === 'matchday_advice') renderMatchdayAdviceView();
     if (typeof renderHeaderLeagueDropdown === 'function') renderHeaderLeagueDropdown();
 }
-
 function getOvrClass(ovr) {
     const val = Number(ovr) || 0;
     if (val >= 90) return 'ovr-tier-elite';
@@ -508,12 +443,9 @@ function getOvrClass(ovr) {
     if (val >= 65) return 'ovr-tier-low';
     return 'ovr-tier-bench';
 }
-
 function applyPlayerOverrides() {
     if (typeof PLAYERS === 'undefined' || !Array.isArray(PLAYERS)) return;
-    
     PLAYERS.forEach(p => {
-        // Salva valori originali una sola volta
         if (p._orig_slot_fascia === undefined) {
             p._orig_slot_fascia = p.slot_fascia || '';
             p._orig_slot_num = p.slot_num || 1;
@@ -524,7 +456,6 @@ function applyPlayerOverrides() {
             p._orig_consiglio = p.consiglio || p.ai_advice || '';
             p._orig_ai_advice_type = p.ai_advice_type || 'regular';
         }
-
         const ovr = State.playerOverrides && State.playerOverrides[p.id];
         if (ovr) {
             if (ovr.slot_fascia !== undefined) {
@@ -555,7 +486,6 @@ function applyPlayerOverrides() {
         }
     });
 }
-
 function setPlayerOverride(playerId, overrides) {
     if (!State.playerOverrides) State.playerOverrides = {};
     State.playerOverrides[playerId] = { ...(State.playerOverrides[playerId] || {}), ...overrides };
@@ -563,7 +493,6 @@ function setPlayerOverride(playerId, overrides) {
     saveStateToStorage();
     updateAllViews();
 }
-
 function resetPlayerOverride(playerId) {
     if (State.playerOverrides && State.playerOverrides[playerId]) {
         delete State.playerOverrides[playerId];
@@ -572,7 +501,6 @@ function resetPlayerOverride(playerId) {
         updateAllViews();
     }
 }
-
 function resetTeamOverrides(teamName) {
     if (!State.playerOverrides || typeof PLAYERS === 'undefined') return;
     const teamPlayerIds = PLAYERS.filter(p => p.team === teamName).map(p => p.id);
@@ -589,10 +517,8 @@ function resetTeamOverrides(teamName) {
         updateAllViews();
     }
 }
-
 const LEAGUES_STORAGE_KEY = 'FANTA_MASTER_LEAGUES_COLLECTION_2026_27';
 const ACTIVE_LEAGUE_ID_KEY = 'FANTA_MASTER_ACTIVE_LEAGUE_ID_2026_27';
-
 const LeaguesManager = {
     getAll() {
         try {
@@ -641,7 +567,6 @@ const LeaguesManager = {
         }
         return [];
     },
-
     saveAll(leagues) {
         try {
             localStorage.setItem(LEAGUES_STORAGE_KEY, JSON.stringify(leagues));
@@ -649,25 +574,19 @@ const LeaguesManager = {
             console.error('Errore salvataggio leghe:', e);
         }
     },
-
     getActiveId() {
         return localStorage.getItem(ACTIVE_LEAGUE_ID_KEY) || 'league_default';
     },
-
     setActiveId(id) {
         localStorage.setItem(ACTIVE_LEAGUE_ID_KEY, id);
     },
-
     getActive() {
         const leagues = this.getAll();
         const activeId = this.getActiveId();
         return leagues.find(l => l.id === activeId) || leagues[0] || null;
     },
-
     createLeague(opts = {}) {
-        // 1. Salva sempre prima lo stato della lega attualmente attiva!
         this.saveCurrentStateToActiveLeague();
-
         const leagues = this.getAll();
         const id = 'league_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
         const name = opts.name || `Lega #${leagues.length + 1}`;
@@ -675,7 +594,6 @@ const LeaguesManager = {
         const systemMode = opts.systemMode || 'classic';
         const budgetTotal = opts.budgetTotal || 1000;
         const numTeams = opts.numTeams || 8;
-        
         const isMantra = (systemMode === 'mantra');
         const slotsP = opts.slotsP || 3;
         const slotsD = opts.slotsD || (isMantra ? 0 : 8);
@@ -683,7 +601,6 @@ const LeaguesManager = {
         const slotsA = opts.slotsA || (isMantra ? 0 : 6);
         const maxRoster = opts.maxRosterSize || (isMantra ? 30 : (slotsP + slotsD + slotsC + slotsA));
         const minRoster = opts.minRosterSize || (isMantra ? 25 : maxRoster);
-
         let rivals = opts.rivals;
         if (!rivals) {
             const templateKeys = Object.keys(RIVALS_TEMPLATE);
@@ -705,7 +622,6 @@ const LeaguesManager = {
         } else {
             rivals = JSON.parse(JSON.stringify(rivals));
         }
-
         const rules = {
             systemMode,
             minRosterSize: minRoster,
@@ -718,7 +634,6 @@ const LeaguesManager = {
             slotsC,
             slotsA
         };
-
         const newLeague = {
             id,
             name,
@@ -742,27 +657,19 @@ const LeaguesManager = {
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString()
         };
-
         leagues.push(newLeague);
         this.saveAll(leagues);
         this.setActiveId(id);
         this.loadLeagueIntoState(newLeague);
         return newLeague;
     },
-
     switchLeague(leagueId) {
         const leagues = this.getAll();
         const target = leagues.find(l => l.id === leagueId);
         if (!target) return false;
-        
-        // Salva prima la lega corrente nello storage
         this.saveCurrentStateToActiveLeague();
-
-        // Poi imposta e carica la nuova lega
         this.setActiveId(leagueId);
         this.loadLeagueIntoState(target);
-
-        // Mantieni aggiornato anche STORAGE_KEY per compatibilità
         const toSave = {
             leagueId: State.activeLeagueId,
             leagueName: State.leagueName,
@@ -781,7 +688,6 @@ const LeaguesManager = {
         try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
         } catch(e) {}
-
         if (typeof updateAllViews === 'function') updateAllViews();
         if (typeof renderHeaderLeagueDropdown === 'function') renderHeaderLeagueDropdown();
         if (State.activeTab === 'home' && typeof renderHomeHubView === 'function') {
@@ -789,34 +695,28 @@ const LeaguesManager = {
         }
         return true;
     },
-
     deleteLeague(leagueId) {
         let leagues = this.getAll();
         if (leagues.length <= 1) {
             alert("Non puoi eliminare l'unica lega presente. Creane prima un'altra.");
             return false;
         }
-
         leagues = leagues.filter(l => l.id !== leagueId);
         this.saveAll(leagues);
-
         if (this.getActiveId() === leagueId) {
             this.setActiveId(leagues[0].id);
             this.loadLeagueIntoState(leagues[0]);
         }
-
         if (typeof updateAllViews === 'function') updateAllViews();
         if (typeof renderHeaderLeagueDropdown === 'function') renderHeaderLeagueDropdown();
         if (typeof renderHomeHubView === 'function') renderHomeHubView();
         return true;
     },
-
     saveCurrentStateToActiveLeague() {
         const leagues = this.getAll();
         const activeId = this.getActiveId();
         const idx = leagues.findIndex(l => l.id === activeId);
         if (idx === -1) return;
-
         leagues[idx].name = State.leagueName || leagues[idx].name;
         leagues[idx].myTeamName = State.teamName || leagues[idx].myTeamName;
         leagues[idx].systemMode = State.systemMode || leagues[idx].systemMode;
@@ -830,21 +730,16 @@ const LeaguesManager = {
         leagues[idx].rivals = JSON.parse(JSON.stringify(State.rivals || {}));
         leagues[idx].playerOverrides = JSON.parse(JSON.stringify(State.playerOverrides || {}));
         leagues[idx].updatedAt = new Date().toISOString();
-
         this.saveAll(leagues);
     },
-
     loadLeagueIntoState(league) {
         if (!league) return;
-
         State.activeLeagueId = league.id || 'league_default';
         State.leagueName = (league.name && !league.name.includes('Amici') && !league.name.includes('Ferrovia')) ? league.name : 'La Mia Lega';
         State.teamName = (league.myTeamName && !league.myTeamName.includes('Unika') && !league.myTeamName.includes('Giuseppe')) ? league.myTeamName : 'La Mia Rosa';
         State.systemMode = league.systemMode || 'classic';
         State.budgetTotal = Number(league.budgetTotal) || 1000;
         State.budgetSpent = Number(league.budgetSpent) || 0;
-
-        // Deep clone slots per evitare contaminazioni tra leghe
         if (league.slots) {
             State.slots = JSON.parse(JSON.stringify(league.slots));
         } else {
@@ -856,8 +751,6 @@ const LeaguesManager = {
                 A: { max: isM ? 0 : 6, players: [] }
             };
         }
-
-        // Deep clone rules
         State.rules = league.rules ? JSON.parse(JSON.stringify(league.rules)) : {
             systemMode: league.systemMode || 'classic',
             minRosterSize: (league.systemMode === 'mantra' ? 25 : 25),
@@ -870,15 +763,11 @@ const LeaguesManager = {
             slotsC: 8,
             slotsA: 6
         };
-
-        // Deep clone favorites, takenByOthers, rivalAssignments, rivals, playerOverrides
         State.favorites = Array.isArray(league.favorites) ? JSON.parse(JSON.stringify(league.favorites)) : [];
         State.takenByOthers = Array.isArray(league.takenByOthers) ? JSON.parse(JSON.stringify(league.takenByOthers)) : [];
         State.rivalAssignments = league.rivalAssignments ? JSON.parse(JSON.stringify(league.rivalAssignments)) : {};
         State.rivals = league.rivals ? JSON.parse(JSON.stringify(league.rivals)) : JSON.parse(JSON.stringify(RIVALS_TEMPLATE));
         State.playerOverrides = league.playerOverrides ? JSON.parse(JSON.stringify(league.playerOverrides)) : {};
-
-        // Reset stati transitori viste specifiche per evitare residui dalla lega precedente
         State.matchupA = null;
         State.matchupB = null;
         if (typeof tradeMachineState !== 'undefined') {
@@ -889,23 +778,17 @@ const LeaguesManager = {
         if (typeof repairAuctionState !== 'undefined') {
             repairAuctionState.selectedCutIds = [];
         }
-
         applyPlayerOverrides();
         setSystemMode(league.systemMode || 'classic', false);
     }
 };
-
 window.LeaguesManager = LeaguesManager;
-
 function loadStateFromStorage() {
     try {
         let leagues = LeaguesManager.getAll();
-
-        // Auto-migrazione da versione precedente a singolo stato monolitico
         if (!leagues || leagues.length === 0) {
             const oldSaved = localStorage.getItem(STORAGE_KEY);
             let initialLeague;
-
             if (oldSaved) {
                 const parsed = JSON.parse(oldSaved);
                 initialLeague = {
@@ -944,18 +827,15 @@ function loadStateFromStorage() {
                     updatedAt: new Date().toISOString()
                 };
             }
-
             leagues = [initialLeague];
             LeaguesManager.saveAll(leagues);
             LeaguesManager.setActiveId('league_default');
         }
-
         const active = LeaguesManager.getActive();
         if (active) {
             LeaguesManager.loadLeagueIntoState(active);
             console.log(`-> Lega attiva caricata con successo: "${active.name}" (${active.id}).`);
         }
-
         if (State.teamName && (State.teamName.includes('Unika') || State.teamName.includes('Giuseppe'))) {
             State.teamName = 'La Mia Rosa';
         }
@@ -966,12 +846,9 @@ function loadStateFromStorage() {
         console.warn("Errore lettura leghe da localStorage:", e);
     }
 }
-
 function saveStateToStorage() {
     try {
         LeaguesManager.saveCurrentStateToActiveLeague();
-
-        // Mantieni aggiornato anche STORAGE_KEY per compatibilità
         const toSave = {
             leagueId: State.activeLeagueId || LeaguesManager.getActiveId(),
             leagueName: State.leagueName,
@@ -988,7 +865,6 @@ function saveStateToStorage() {
             playerOverrides: State.playerOverrides
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
-
         if (typeof broadcastStateUpdate === 'function') {
             broadcastStateUpdate(toSave);
         }
@@ -996,11 +872,9 @@ function saveStateToStorage() {
         console.warn("Errore salvataggio localStorage:", e);
     }
 }
-
 function isPlayerBought(playerId) {
     return Object.values(State.slots).some(slot => slot.players.some(p => p.id === playerId));
 }
-
 function removePlayerById(playerId) {
     for (let r of ['P', 'D', 'C', 'A']) {
         if (!State.slots[r] || !State.slots[r].players) continue;
@@ -1017,19 +891,15 @@ function removePlayerById(playerId) {
     }
     return null;
 }
-
 function isPlayerTakenByOther(playerId) {
     return State.takenByOthers && State.takenByOthers.includes(playerId);
 }
-
 function isPlayerAvailable(playerId) {
     return !isPlayerBought(playerId) && !isPlayerTakenByOther(playerId);
 }
-
 function isFavorite(playerId) {
     return State.favorites && State.favorites.includes(playerId);
 }
-
 function toggleFavorite(playerId) {
     if (!State.favorites) State.favorites = [];
     const idx = State.favorites.indexOf(playerId);
@@ -1041,33 +911,27 @@ function toggleFavorite(playerId) {
     saveStateToStorage();
     updateAllViews();
 }
-
 function markPlayerTaken(playerId, rivalName = null, price = null) {
     if (!State.takenByOthers.includes(playerId)) {
         State.takenByOthers.push(playerId);
     }
-
     if (rivalName && State.rivals[rivalName]) {
         const p = PLAYERS.find(pl => pl.id === playerId);
         const finalPrice = price !== null ? price : (p ? p.prezzo_cons : 1);
         State.rivalAssignments[playerId] = { rival: rivalName, price: finalPrice };
-        
         if (!State.rivals[rivalName].players.some(pl => pl.id === playerId)) {
             State.rivals[rivalName].players.push({ id: playerId, price: finalPrice });
             State.rivals[rivalName].spent += finalPrice;
         }
     }
-
     saveStateToStorage();
     updateAllViews();
 }
-
 function unmarkPlayerTaken(playerId) {
     const idx = State.takenByOthers.indexOf(playerId);
     if (idx !== -1) {
         State.takenByOthers.splice(idx, 1);
     }
-
     if (State.rivalAssignments[playerId]) {
         const assign = State.rivalAssignments[playerId];
         const rName = assign.rival;
@@ -1080,11 +944,9 @@ function unmarkPlayerTaken(playerId) {
         }
         delete State.rivalAssignments[playerId];
     }
-
     saveStateToStorage();
     updateAllViews();
 }
-
 function updateAllViews() {
     if (typeof updateBudgetUI === 'function') updateBudgetUI();
     if (typeof renderTable === 'function') renderTable();
@@ -1098,7 +960,6 @@ function updateAllViews() {
     if (typeof renderMatchdayAdviceView === 'function' && State.activeTab === 'matchday_advice') renderMatchdayAdviceView();
     if (typeof renderHeaderLeagueDropdown === 'function') renderHeaderLeagueDropdown();
 }
-
 function clearStorageState() {
     try {
         localStorage.removeItem(STORAGE_KEY);

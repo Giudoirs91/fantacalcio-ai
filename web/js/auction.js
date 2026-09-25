@@ -953,12 +953,41 @@ function renderTable() {
             else if (p.titolarita < 60) titClass = 'tit-low';
             const titHtml = `<span class="tit-pill ${titClass}" title="Titolarità stimata: ${p.titolarita || 0}%">${p.titolarita || 0}%</span>`;
 
-            // Sostituto / Coppia
+            // Sostituto / Coppia Dinamica basata su titolarità effettiva
             let coppiaHtml = `<span class="dim-dash">-</span>`;
             if (p.coppia_nome && p.coppia_nome !== '-') {
                 const clickHandler = p.coppia_id ? `onclick="openPlayerProfileModal(${p.coppia_id})"` : '';
                 const clickStyle = p.coppia_id ? 'cursor:pointer;' : 'cursor:default;';
-                coppiaHtml = `<span class="coppia-pill" style="${clickStyle}" ${clickHandler} title="${p.coppia_dettaglio || p.coppia_nome}">🔄 ${p.coppia_nome}</span>`;
+
+                let icon = '🔄';
+                let rolePrefix = '';
+                const tit = (p.titolarita !== undefined && p.titolarita !== null) ? p.titolarita : 50;
+
+                if (p.role === 'P') {
+                    if (tit >= 82) {
+                        icon = '🛡️';
+                        rolePrefix = 'Vice: ';
+                    } else if (tit <= 38) {
+                        icon = '⬆️';
+                        rolePrefix = '1°: ';
+                    } else {
+                        icon = '⚖️';
+                        rolePrefix = 'Staffetta: ';
+                    }
+                } else {
+                    if (tit >= 75) {
+                        icon = '⬇️';
+                        rolePrefix = 'Ris: ';
+                    } else if (tit <= 35) {
+                        icon = '⬆️';
+                        rolePrefix = 'Tit: ';
+                    } else {
+                        icon = '🔄';
+                        rolePrefix = 'Ball.: ';
+                    }
+                }
+
+                coppiaHtml = `<span class="coppia-pill" style="${clickStyle}" ${clickHandler} title="${p.coppia_dettaglio || `${rolePrefix}${p.coppia_nome}`}">${icon} ${rolePrefix}${p.coppia_nome}</span>`;
             }
 
             // Statistiche 2026/2027 Live

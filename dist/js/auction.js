@@ -821,7 +821,33 @@ function renderTable() {
             if (p.coppia_nome && p.coppia_nome !== '-') {
                 const clickHandler = p.coppia_id ? `onclick="openPlayerProfileModal(${p.coppia_id})"` : '';
                 const clickStyle = p.coppia_id ? 'cursor:pointer;' : 'cursor:default;';
-                coppiaHtml = `<span class="coppia-pill" style="${clickStyle}" ${clickHandler} title="${p.coppia_dettaglio || p.coppia_nome}">🔄 ${p.coppia_nome}</span>`;
+                let icon = '🔄';
+                let rolePrefix = '';
+                const tit = (p.titolarita !== undefined && p.titolarita !== null) ? p.titolarita : 50;
+                if (p.role === 'P') {
+                    if (tit >= 82) {
+                        icon = '🛡️';
+                        rolePrefix = 'Vice: ';
+                    } else if (tit <= 38) {
+                        icon = '⬆️';
+                        rolePrefix = '1°: ';
+                    } else {
+                        icon = '⚖️';
+                        rolePrefix = 'Staffetta: ';
+                    }
+                } else {
+                    if (tit >= 75) {
+                        icon = '⬇️';
+                        rolePrefix = 'Ris: ';
+                    } else if (tit <= 35) {
+                        icon = '⬆️';
+                        rolePrefix = 'Tit: ';
+                    } else {
+                        icon = '🔄';
+                        rolePrefix = 'Ball.: ';
+                    }
+                }
+                coppiaHtml = `<span class="coppia-pill" style="${clickStyle}" ${clickHandler} title="${p.coppia_dettaglio || `${rolePrefix}${p.coppia_nome}`}">${icon} ${rolePrefix}${p.coppia_nome}</span>`;
             }
             const mv2627Str = p.mv_2627 ? `<span class="stat-live mv">${p.mv_2627.toFixed(2)}</span>` : `<span class="dim-dash">-</span>`;
             const fm2627Str = p.fm_2627 ? `<span class="stat-live fm">${p.fm_2627.toFixed(2)}</span>` : `<span class="dim-dash">-</span>`;

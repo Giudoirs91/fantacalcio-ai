@@ -3540,8 +3540,14 @@ function generateAiStrengthsAndWeaknessesHtml(p) {
         if (gsPerGame >= 1.4) {
             weaknesses.push(`⚠️ <b>Media Gol Subiti Elevata</b>: Concede circa ${gsPerGame.toFixed(1)} reti a partita`);
         }
-        if (p.titolarita < 70 || p.coppia_tipo === 'RISERVA' || p.coppia_tipo === '2° PORTIERE') {
-            weaknesses.push(`🔄 <b>Ballottaggio di Reparto</b>: Staffetta aperta con ${p.coppia_nome || 'secondo portiere'}`);
+        if (p.titolarita >= 82) {
+            strengths.push(`👑 <b>Numero 1 Indiscusso</b>: Titolare inamovibile della porta (${p.titolarita}% titolarità, nessuna staffetta)`);
+        } else if (p.titolarita >= 68) {
+            strengths.push(`🧤 <b>Titolare Designato</b>: Prima scelta tra i pali (${p.titolarita}% presenze stimate)`);
+        } else if (p.titolarita <= 35) {
+            weaknesses.push(`⬇️ <b>Secondo Portiere / Riserva</b>: Impiego occasionale, scende in campo solo in assenza del titolare (${p.coppia_nome || '1° portiere'})`);
+        } else {
+            weaknesses.push(`⚖️ <b>Vero Ballottaggio Aperto</b>: Staffetta serrata per la porta con ${p.coppia_nome || 'secondo portiere'} (${p.titolarita}% titolarità)`);
         }
     } else if (p.role === 'D') {
         const xg = p.xg_2627 || (p.xg90_2627 ? p.xg90_2627 * (p.minuti_2627 || 90) / 90 : 0);
@@ -3694,7 +3700,26 @@ function openPlayerProfileModal(playerId) {
     let coppiaBadge = '';
     if (p.coppia_nome && p.coppia_nome !== '-') {
         const clickAttr = p.coppia_id ? `onclick="openPlayerProfileModal(${p.coppia_id})" style="cursor:pointer;"` : '';
-        const icon = p.coppia_tipo === 'RISERVA' || p.coppia_tipo === '2° PORTIERE' ? '⬇️ Vice' : (p.coppia_tipo === 'TITOLARE' || p.coppia_tipo === '1° PORTIERE' ? '⬆️ Titolare' : '🔄 Staffetta');
+        let icon = '🔄 Staffetta';
+        if (p.role === 'P') {
+            if (p.titolarita >= 82) {
+                icon = '🛡️ Vice';
+            } else if (p.titolarita >= 68) {
+                icon = '🧤 Riserva';
+            } else if (p.titolarita <= 38) {
+                icon = '⬆️ 1° Portiere';
+            } else {
+                icon = '⚖️ Staffetta';
+            }
+        } else {
+            if (p.titolarita >= 75) {
+                icon = '⬇️ Riserva';
+            } else if (p.titolarita <= 35) {
+                icon = '⬆️ Titolare';
+            } else {
+                icon = '🔄 Staffetta';
+            }
+        }
         coppiaBadge = `<span class="badge-tag blue" ${clickAttr} title="${p.coppia_dettaglio || ''}">${icon}: <b>${p.coppia_nome}</b></span>`;
     }
     let oopBadge = '';
@@ -3887,15 +3912,39 @@ function openPlayerProfileModal(playerId) {
         const partnerScaled = partner ? Math.max(1, Math.round((partner.prezzo_cons || 1) * curRatio)) : Math.max(1, Math.round(10 * curRatio));
         const combined = scaledPrice + partnerScaled;
         const combinedPct = ((((p.prezzo_cons || 1) + (partner ? (partner.prezzo_cons || 1) : 10)) / 1000) * 100).toFixed(1);
-        const pClick = partner ? `onclick="openPlayerProfileModal(${partner.id})" style="cursor:pointer;"` : '';
+        let adviceText = '';
+        let tandemTitle = '';
+        if (p.role === 'P') {
+            if (p.titolarita >= 82) {
+                tandemTitle = `Gerarchia Porta ${p.team} (Titolare Blindato)`;
+                adviceText = `Gerarchia definita: <b>${p.name}</b> è il Numero 1 indiscusso (${p.titolarita}% presenze stimate, nessuna staffetta). Acquistare <b>${p.coppia_nome}</b> a 1 credito serve unicamente come copertura anti-infortunio / squalifica.`;
+            } else if (p.titolarita <= 38) {
+                tandemTitle = `Gerarchia Porta ${p.team} (Secondo Portiere)`;
+                adviceText = `Ruolo di riserva: <b>${p.name}</b> è il secondo portiere (${p.titolarita}% presenze). Va acquistato a 1 credito solo per completare il blocco porta insieme al titolare <b>${p.coppia_nome}</b>.`;
+            } else {
+                tandemTitle = `Staffetta Aperta Porta ${p.team}`;
+                adviceText = `Staffetta reale: la porta di <b>${p.team}</b> è in ballottaggio alternato (${p.name} al ${p.titolarita}%). Acquisto obbligato di entrambi i portieri per non rischiare di giocare in inferiorità numerica.`;
+            }
+        } else {
+            if (p.titolarita >= 75) {
+                tandemTitle = `Gerarchia di Reparto ${p.team}`;
+                adviceText = `Titolare affidabile (${p.titolarita}%): ${p.coppia_nome} è l'alternativa naturale in panchina per le rotazioni a gara in corso.`;
+            } else if (p.titolarita <= 35) {
+                tandemTitle = `Gerarchia di Reparto ${p.team}`;
+                adviceText = `Riserva tattica: subentra tipicamente a gara in corso al posto del titolare ${p.coppia_nome}.`;
+            } else {
+                tandemTitle = `Ballottaggio di Reparto ${p.team}`;
+                adviceText = `Ballottaggio aperto (${p.titolarita}% vs rotazioni): acquisto in coppia raccomandato se cerchi la certezza del voto nel reparto.`;
+            }
+        }
         tandemCardHtml = `
             <div class="profile-tandem-card">
                 <div class="tandem-card-header">
                     <div style="display:flex;align-items:center;gap:6px;">
-                        <span style="font-size:16px;">🧤</span>
-                        <b style="color:#fff;font-size:12.5px;">Tandem di Reparto ${p.team} (Copertura Asta)</b>
+                        <span style="font-size:16px;">${p.role === 'P' ? '🧤' : '🔄'}</span>
+                        <b style="color:#fff;font-size:12.5px;">${tandemTitle}</b>
                     </div>
-                    <span class="tandem-budget-chip">Spesa Tandem: <b>${combined} CR</b> (${combinedPct}% budget)</span>
+                    <span class="tandem-budget-chip">Spesa Coppia: <b>${combined} CR</b> (${combinedPct}% budget)</span>
                 </div>
                 <div class="tandem-players-row">
                     <div class="tandem-player-chip active">
@@ -3910,7 +3959,7 @@ function openPlayerProfileModal(playerId) {
                         <span class="t-price">${partnerScaled} CR</span>
                     </div>
                 </div>
-                <div class="tandem-advice-sub">${p.coppia_dettaglio || (p.role === 'P' ? 'Acquisto tandem raccomandato per blindare la porta senza incorrere in turni scoperti.' : 'Coppia di ballottaggio: acquisto combinato per assicurarsi il voto a ogni giornata.')}</div>
+                <div class="tandem-advice-sub">${adviceText}</div>
             </div>
         `;
     }
@@ -4423,20 +4472,20 @@ function openPlayerProfileModal(playerId) {
                 </div>
                 <div class="tactics-card">
                     <div class="tactics-card-header">
-                        <span style="font-size:16px;">🔄</span>
-                        <h4>Ballottaggio & Copertura</h4>
+                        <span style="font-size:16px;">${p.role === 'P' ? '🧤' : '🔄'}</span>
+                        <h4>${p.role === 'P' ? 'Gerarchia Porta & Copertura' : 'Ballottaggio & Copertura'}</h4>
                     </div>
                     <div class="tactics-meta-row">
                         <span class="lbl">Titolarità Stimata:</span>
-                        <b class="val" style="color:${titColor};">${p.titolarita || 0}% (${p.titolarita_desc_2627 || 'Titolare'})</b>
+                        <b class="val" style="color:${titColor};">${p.titolarita || 0}% (${p.role === 'P' ? (p.titolarita >= 82 ? 'Numero 1 Indiscusso' : (p.titolarita <= 38 ? 'Secondo Portiere' : 'Ballottaggio Aperto')) : (p.titolarita_desc_2627 || (p.titolarita >= 75 ? 'Titolare' : 'Rotazione'))})</b>
                     </div>
                     <div class="tactics-meta-row">
-                        <span class="lbl">Compagno di Staffetta:</span>
-                        <b class="val" style="color:#38bdf8;">${p.coppia_nome || 'Nessun ballottaggio diretto'}</b>
+                        <span class="lbl">${p.role === 'P' ? (p.titolarita >= 68 ? 'Secondo Portiere:' : 'Primo Portiere:') : 'Compagno di Reparto:'}</span>
+                        <b class="val" style="color:#38bdf8;">${p.coppia_nome || 'Nessun compagno diretto'}</b>
                     </div>
                     <div class="tactics-meta-row">
                         <span class="lbl">Tipo Alternanza:</span>
-                        <span class="val">${p.coppia_tipo || 'Titolare inamovibile'}</span>
+                        <span class="val">${p.role === 'P' ? (p.titolarita >= 82 ? 'Nessuna staffetta (titolare fisso, vice per copertura)' : (p.titolarita <= 38 ? 'Secondo portiere (gioca solo se manca il 1°)' : 'Staffetta / Ballottaggio Aperto')) : (p.titolarita >= 75 ? 'Titolare solido (rotazioni a partita in corso)' : (p.titolarita <= 35 ? 'Riserva' : 'Ballottaggio aperto'))}</span>
                     </div>
                 </div>
             </div>
@@ -8112,7 +8161,33 @@ function renderTable() {
             if (p.coppia_nome && p.coppia_nome !== '-') {
                 const clickHandler = p.coppia_id ? `onclick="openPlayerProfileModal(${p.coppia_id})"` : '';
                 const clickStyle = p.coppia_id ? 'cursor:pointer;' : 'cursor:default;';
-                coppiaHtml = `<span class="coppia-pill" style="${clickStyle}" ${clickHandler} title="${p.coppia_dettaglio || p.coppia_nome}">🔄 ${p.coppia_nome}</span>`;
+                let icon = '🔄';
+                let rolePrefix = '';
+                const tit = (p.titolarita !== undefined && p.titolarita !== null) ? p.titolarita : 50;
+                if (p.role === 'P') {
+                    if (tit >= 82) {
+                        icon = '🛡️';
+                        rolePrefix = 'Vice: ';
+                    } else if (tit <= 38) {
+                        icon = '⬆️';
+                        rolePrefix = '1°: ';
+                    } else {
+                        icon = '⚖️';
+                        rolePrefix = 'Staffetta: ';
+                    }
+                } else {
+                    if (tit >= 75) {
+                        icon = '⬇️';
+                        rolePrefix = 'Ris: ';
+                    } else if (tit <= 35) {
+                        icon = '⬆️';
+                        rolePrefix = 'Tit: ';
+                    } else {
+                        icon = '🔄';
+                        rolePrefix = 'Ball.: ';
+                    }
+                }
+                coppiaHtml = `<span class="coppia-pill" style="${clickStyle}" ${clickHandler} title="${p.coppia_dettaglio || `${rolePrefix}${p.coppia_nome}`}">${icon} ${rolePrefix}${p.coppia_nome}</span>`;
             }
             const mv2627Str = p.mv_2627 ? `<span class="stat-live mv">${p.mv_2627.toFixed(2)}</span>` : `<span class="dim-dash">-</span>`;
             const fm2627Str = p.fm_2627 ? `<span class="stat-live fm">${p.fm_2627.toFixed(2)}</span>` : `<span class="dim-dash">-</span>`;

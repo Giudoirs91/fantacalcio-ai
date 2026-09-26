@@ -1189,6 +1189,8 @@
         "pos_label": "Portiere",
         "name": "De Gea",
         "role": "P",
+        "sub_name": "Christensen O.",
+        "sub_role": "P",
         "fpp_fpn": "NONE",
         "status": "Titolare Inamovibile",
         "oop": false
@@ -1198,6 +1200,8 @@
         "pos_label": "Terzino DX",
         "name": "Jimenez A.",
         "role": "D",
+        "sub_name": "Dodô",
+        "sub_role": "D",
         "fpp_fpn": "NONE",
         "status": "Titolare (60% vs Dodô 40%)",
         "oop": false
@@ -1207,6 +1211,8 @@
         "pos_label": "Centrale DX",
         "name": "Dragusin",
         "role": "D",
+        "sub_name": "Ranieri L.",
+        "sub_role": "D",
         "fpp_fpn": "NONE",
         "status": "Leader Difesa (100% Tit)",
         "oop": false
@@ -1216,6 +1222,8 @@
         "pos_label": "Centrale SX",
         "name": "Pongracic",
         "role": "D",
+        "sub_name": "Viery",
+        "sub_role": "D",
         "fpp_fpn": "NONE",
         "status": "Titolare (40% vs Viery 40% / Ranieri L. 20%)",
         "oop": false
@@ -1225,6 +1233,8 @@
         "pos_label": "Terzino SX",
         "name": "Valdepenas",
         "role": "D",
+        "sub_name": "Joao Mario",
+        "sub_role": "D",
         "fpp_fpn": "NONE",
         "status": "Terzino SX (100% Tit)",
         "oop": false
@@ -1234,6 +1244,8 @@
         "pos_label": "Mezzala DX",
         "name": "Atta",
         "role": "C",
+        "sub_name": "Mandragora",
+        "sub_role": "C",
         "fpp_fpn": "NONE",
         "status": "Inamovibile (100% Tit)",
         "oop": false
@@ -1243,6 +1255,8 @@
         "pos_label": "Regista",
         "name": "Fagioli",
         "role": "C",
+        "sub_name": "Oulai",
+        "sub_role": "C",
         "fpp_fpn": "NONE",
         "status": "Regista (50% vs Oulai 50%)",
         "oop": false
@@ -1252,6 +1266,8 @@
         "pos_label": "Mezzala SX",
         "name": "Ndour",
         "role": "C",
+        "sub_name": "Brescianini",
+        "sub_role": "C",
         "fpp_fpn": "NONE",
         "status": "Mezzala SX (100% Tit)",
         "oop": false
@@ -1261,6 +1277,8 @@
         "pos_label": "Ala Destra",
         "name": "Mastantuono",
         "role": "C",
+        "sub_name": "Gnonto",
+        "sub_role": "A",
         "fpp_fpn": "FPP",
         "oop": true,
         "oop_type": "FPP_C_IN_A",
@@ -1272,6 +1290,8 @@
         "pos_label": "Punta Centrale",
         "name": "Pellegrino M.",
         "role": "A",
+        "sub_name": "Beto",
+        "sub_role": "A",
         "fpp_fpn": "NONE",
         "status": "Punta Centrale (60% vs Beto 40%)",
         "oop": false
@@ -1281,6 +1301,8 @@
         "pos_label": "Ala Sinistra",
         "name": "Goncalves P.",
         "role": "C",
+        "sub_name": "Njie",
+        "sub_role": "C",
         "fpp_fpn": "FPP",
         "oop": true,
         "oop_type": "FPP_C_IN_A",

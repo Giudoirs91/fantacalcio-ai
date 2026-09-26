@@ -962,8 +962,19 @@ function renderTable() {
             let titClass = 'tit-mid';
             if (p.titolarita >= 85) titClass = 'tit-high';
             else if (p.titolarita < 60) titClass = 'tit-low';
+
+            let titLabel = `${p.titolarita || 0}%`;
+            if (p.is_injured) {
+                if ((p.titolarita || 0) === 0) {
+                    titClass = 'tit-low';
+                    titLabel = `0% 🚑`;
+                } else if (!p.presenze_2627 || p.presenze_2627 === 0) {
+                    titLabel = `${p.titolarita}% 🚑`;
+                }
+            }
+
             const titTitle = p.titolarita_dettaglio || `Titolarità stimata: ${p.titolarita || 0}%\n${p.titolarita_desc_2627 || ''}`;
-            const titHtml = `<span class="tit-pill ${titClass}" title="${titTitle}">${p.titolarita || 0}%</span>`;
+            const titHtml = `<span class="tit-pill ${titClass}" title="${titTitle}">${titLabel}</span>`;
 
             // Sostituto / Coppia Dinamica basata su titolarità effettiva
             let coppiaHtml = `<span class="dim-dash">-</span>`;

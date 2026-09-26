@@ -163,14 +163,13 @@ def compute_substitute_pairings(processed_players, tactical_db, reports_csv):
             if not st_obj or not sb_obj or st_obj['role'] == 'P' or sb_obj['role'] == 'P':
                 continue
             
-            if st_obj['id'] not in pairings and sb_obj['id'] not in pairings:
+            # Assegna al titolare se non ha ancora una coppia assegnata
+            if st_obj['id'] not in pairings:
                 is_hybrid = (st_obj['role'] != sb_obj['role'])
                 if is_hybrid:
                     det_st = f"Alternativa tattica: {sb_obj['name']} ({pos_label}). ⚠️ Ruoli Classic differenti: {st_obj['role']} vs {sb_obj['role']}"
-                    det_sb = f"Subentra a {st_obj['name']} ({pos_label}). ⚠️ Ruoli Classic differenti: {sb_obj['role']} vs {st_obj['role']}"
                 else:
                     det_st = f"Alternativa diretta: {sb_obj['name']} ({pos_label})"
-                    det_sb = f"Subentra a {st_obj['name']} ({pos_label})"
 
                 pairings[st_obj['id']] = {
                     'coppia_nome': sb_obj['name'],
@@ -180,14 +179,25 @@ def compute_substitute_pairings(processed_players, tactical_db, reports_csv):
                     'coppia_dettaglio': det_st,
                     'coppia_ibrida': is_hybrid
                 }
-                pairings[sb_obj['id']] = {
-                    'coppia_nome': st_obj['name'],
-                    'coppia_id': st_obj['id'],
-                    'coppia_ruolo': st_obj['role'],
-                    'coppia_tipo': 'RISERVA',
-                    'coppia_dettaglio': det_sb,
-                    'coppia_ibrida': is_hybrid
-                }
+
+                # La riserva può coprire più titolari (es. Carlos Augusto per Bastoni e Dimarco, Soulé per Dybala e Mora)
+                if sb_obj['id'] not in pairings:
+                    det_sb = f"Subentra a {st_obj['name']} ({pos_label})"
+                    if is_hybrid:
+                        det_sb += f". ⚠️ Ruoli Classic differenti: {sb_obj['role']} vs {st_obj['role']}"
+                    pairings[sb_obj['id']] = {
+                        'coppia_nome': st_obj['name'],
+                        'coppia_id': st_obj['id'],
+                        'coppia_ruolo': st_obj['role'],
+                        'coppia_tipo': 'RISERVA',
+                        'coppia_dettaglio': det_sb,
+                        'coppia_ibrida': is_hybrid
+                    }
+                else:
+                    prev = pairings[sb_obj['id']]
+                    if st_obj['name'] not in prev['coppia_nome']:
+                        prev['coppia_nome'] = f"{prev['coppia_nome']} / {st_obj['name']}"
+                        prev['coppia_dettaglio'] = f"Jolly di reparto: copre sia {prev['coppia_nome']}"
 
         # 4. Match Reports: Staffette reali dai cambi effettivi
         team_upper = team_name.upper()
@@ -232,16 +242,16 @@ def compute_substitute_pairings(processed_players, tactical_db, reports_csv):
 
         # 5. Fallback per titolari dell'11 ancora senza sostituto: assegna riserva compatibile
         starters_unmapped = [p for p in t_players if p.get('is_in_11') and p['id'] not in pairings and p['role'] != 'P']
-        bench_unmapped = [p for p in t_players if not p.get('is_in_11') and p['id'] not in pairings and p['role'] != 'P']
-        bench_unmapped.sort(key=lambda x: (x.get('fvm', 0), x.get('ovr', 0)), reverse=True)
+        bench_candidates = [p for p in t_players if not p.get('is_in_11') and p['role'] != 'P']
+        bench_candidates.sort(key=lambda x: (x.get('fvm', 0), x.get('ovr', 0)), reverse=True)
         
-        used_bench = set()
+        used_bench = set(p['coppia_id'] for p in pairings.values() if p.get('coppia_id'))
         for st in starters_unmapped:
             st_mantra = set((st.get('mantra') or '').split(';'))
             best_candidate = None
             
             # Priorità 1: stesso ruolo Fantacalcio + affinità Mantra esatta (es. Pc per Pc, Dc per Dc, E per E)
-            for b in bench_unmapped:
+            for b in bench_candidates:
                 if b['role'] == st['role'] and b['id'] not in used_bench:
                     b_mantra = set((b.get('mantra') or '').split(';'))
                     if st_mantra.intersection(b_mantra):
@@ -254,7 +264,7 @@ def compute_substitute_pairings(processed_players, tactical_db, reports_csv):
                 is_st_cb = ('Dc' in st_mantra or 'B' in st_mantra) and ('E' not in st_mantra and 'W' not in st_mantra)
                 is_st_wing = ('E' in st_mantra or 'W' in st_mantra) and ('Dc' not in st_mantra)
                 
-                for b in bench_unmapped:
+                for b in bench_candidates:
                     if b['role'] == st['role'] and b['id'] not in used_bench:
                         b_mantra = set((b.get('mantra') or '').split(';'))
                         is_b_cb = ('Dc' in b_mantra or 'B' in b_mantra) and ('E' not in b_mantra and 'W' not in b_mantra)
@@ -268,7 +278,16 @@ def compute_substitute_pairings(processed_players, tactical_db, reports_csv):
                             
                         best_candidate = b
                         break
-                        
+            
+            # Priorità 3: se tutte le riserve sono già abbinate, condividi la migliore riserva compatibile di reparto
+            if not best_candidate:
+                for b in bench_candidates:
+                    if b['role'] == st['role']:
+                        b_mantra = set((b.get('mantra') or '').split(';'))
+                        if st_mantra.intersection(b_mantra):
+                            best_candidate = b
+                            break
+
             if best_candidate:
                 used_bench.add(best_candidate['id'])
                 pairings[st['id']] = {
@@ -276,17 +295,18 @@ def compute_substitute_pairings(processed_players, tactical_db, reports_csv):
                     'coppia_id': best_candidate['id'],
                     'coppia_ruolo': best_candidate['role'],
                     'coppia_tipo': 'RISERVA',
-                    'coppia_dettaglio': f"Alternativa ({best_candidate['name']})",
+                    'coppia_dettaglio': f"Alternativa di reparto ({best_candidate['name']})",
                     'coppia_ibrida': False
                 }
-                pairings[best_candidate['id']] = {
-                    'coppia_nome': st['name'],
-                    'coppia_id': st['id'],
-                    'coppia_ruolo': st['role'],
-                    'coppia_tipo': 'TITOLARE',
-                    'coppia_dettaglio': f"Copertura di {st['name']}",
-                    'coppia_ibrida': False
-                }
+                if best_candidate['id'] not in pairings:
+                    pairings[best_candidate['id']] = {
+                        'coppia_nome': st['name'],
+                        'coppia_id': st['id'],
+                        'coppia_ruolo': st['role'],
+                        'coppia_tipo': 'TITOLARE',
+                        'coppia_dettaglio': f"Copertura di {st['name']}",
+                        'coppia_ibrida': False
+                    }
 
     # Assegna i campi a ogni giocatore
     for p in processed_players:
@@ -331,23 +351,50 @@ def compute_predictive_titolarita(
     Protezione assoluta per infortuni (esclusi dal demerito tecnico) e zero division safety.
     """
     n_matches = max(1, int(n_team_matches or 5))
-    prior = titolarita_storica if (titolarita_storica and titolarita_storica > 0 and titolarita_storica <= 1.0) else titolarita_tactical
-    prior = min(1.0, max(0.0, float(prior or 0.50)))
+    
+    # Se il giocatore fa parte dell'11 titolare del club, prior può riflettere lo storico
+    # Se NON fa parte dell'11 titolare (es. riserva Giovane nel Napoli con FVM 7), prior NON può eccedere titolarita_tactical
+    if is_in_11:
+        prior = titolarita_storica if (titolarita_storica and titolarita_storica > 0 and titolarita_storica <= 1.0) else titolarita_tactical
+    else:
+        prior = min(titolarita_tactical, titolarita_storica if (titolarita_storica and titolarita_storica > 0) else titolarita_tactical)
+    prior = min(1.0, max(0.0, float(prior or 0.35)))
 
-    # Caso 1: Giocatore infortunato di lungo corso senza presenze 26/27 (es. Bremer, Scalvini, Ferguson)
+    # Caso 1: Giocatore infortunato senza presenze 26/27 (es. Thuram K., Konè I., Buongiorno, Walukiewicz)
     has_rep = bool(rep_data and rep_data.get('presenze_2627', 0) > 0)
     if is_injured and not has_rep:
-        if is_in_11:
-            tit_val = max(titolarita_tactical, prior if prior > 0 else 0.88)
-        else:
-            tit_val = max(titolarita_tactical, prior if prior > 0 else 0.25)
-        tit_val = min(1.0, max(0.0, round(tit_val, 2)))
-        pct = int(round(tit_val * 100))
         rientro = infortunio_info.get("rientro", "Infortunato") if infortunio_info else "Infortunato"
-        status_label = "Titolare" if tit_val >= 0.70 else "Riserva"
-        desc = f"{status_label} (Indisponibile - {rientro})"
-        dettaglio = f"Titolarità Tecnica Salvaguardata: {pct}% (Indisponibile per infortunio - rientro {rientro})"
-        return tit_val, desc, pct, pct, int(round(prior * 100)), dettaglio
+        severity = infortunio_info.get("severity", "") if infortunio_info else ""
+        tipo_stop = infortunio_info.get("tipo_stop", "") if infortunio_info else ""
+        motivo = infortunio_info.get("motivo", "") if infortunio_info else ""
+        
+        # Rilevamento Lunga Degenza (Evitare) / Stop grave oltre 45 giorni o nel 2027
+        is_long_term = (
+            severity == 'red' or 
+            'LUNGA DEGENZA' in tipo_stop.upper() or 
+            '2027' in rientro or 
+            'crociato' in motivo.lower() or 
+            'frattura' in motivo.lower()
+        )
+        
+        if is_long_term:
+            # Per il fantacalcio la disponibilità immediata a breve termine è 0%!
+            tit_teorica = int(round((titolarita_tactical if is_in_11 else prior) * 100))
+            desc = f"Indisponibile (Lunga degenza: {rientro})"
+            dettaglio = f"Indisponibile per grave infortunio (rientro previsto: {rientro}). Titolarità tecnica teorica a regime: {tit_teorica}%"
+            return 0.0, desc, 0, 0, tit_teorica, dettaglio
+        else:
+            # Infortunio temporaneo a breve termine (rientro imminente, es. Buongiorno o Walukiewicz)
+            if is_in_11:
+                tit_val = max(titolarita_tactical, 0.85)
+            else:
+                tit_val = min(titolarita_tactical, 0.35)
+            tit_val = min(1.0, max(0.0, round(tit_val, 2)))
+            pct = int(round(tit_val * 100))
+            status_label = "Titolare" if is_in_11 else "Riserva"
+            desc = f"{status_label} (Ai box - rientro {rientro})"
+            dettaglio = f"Titolarità a regime: {pct}% (Temporaneamente indisponibile per infortunio - rientro: {rientro})"
+            return tit_val, desc, pct, pct, int(round(prior * 100)), dettaglio
 
     # Caso 2: Nuovo acquisto annunciato a fine mercato o svincolato
     if is_new_arrival:

@@ -1023,10 +1023,16 @@ function getAllSmartBadgesHtml(p) {
         badges.push(`<span class="smart-tag sleeper" title="${adviceText}">🔥 Sleeper</span>`);
     } else if (adviceType === 'buy' || adviceText.toLowerCase().includes('best value')) {
         badges.push(`<span class="smart-tag value" title="${adviceText}">🚀 Best Value</span>`);
+    } else if (adviceType === 'hot' || adviceText.includes('IN FORMA') || adviceText.includes('MOMENTO D\'ORO')) {
+        badges.push(`<span class="smart-tag hot" title="${adviceText}">🔥 In Forma</span>`);
+    } else if (adviceType === 'benched' || adviceText.includes('PERSO IL POSTO') || adviceText.includes('IN PANCHINA')) {
+        badges.push(`<span class="smart-tag benched" title="${adviceText}">🪑 In Panchina</span>`);
     } else if (adviceType === 'supersub' || adviceText.includes('SUPER-SUB')) {
         badges.push(`<span class="smart-tag sleeper" style="background:rgba(245,158,11,0.2);border-color:#f59e0b;color:#fbbf24;" title="${adviceText}">⚡ Super-Sub</span>`);
     } else if (adviceType === 'titolarissimo' || adviceText.toLowerCase().includes('titolarissimo')) {
         badges.push(`<span class="smart-tag starter" title="${adviceText}">🔒 Titolarissimo</span>`);
+    } else if (adviceType === 'titolare' || adviceText.toLowerCase().includes('titolare da voto')) {
+        badges.push(`<span class="smart-tag titolare" title="${adviceText}">🛡️ Titolare</span>`);
     } else if (adviceType === 'lowcost' || adviceText.toLowerCase().includes('low cost')) {
         badges.push(`<span class="smart-tag lowcost" title="${adviceText}">🪙 Low Cost</span>`);
     } else if (adviceType === 'rotation' || adviceText.toLowerCase().includes('ballottaggio')) {
@@ -1072,11 +1078,20 @@ function getSmartBadgeHtml(p) {
     if (adviceType === 'buy' || adviceText.toLowerCase().includes('best value')) {
         return `<span class="smart-tag value" title="${adviceText}">🚀 Best Value</span>`;
     }
+    if (adviceType === 'hot' || adviceText.includes('IN FORMA') || adviceText.includes('MOMENTO D\'ORO')) {
+        return `<span class="smart-tag hot" title="${adviceText}">🔥 In Forma</span>`;
+    }
+    if (adviceType === 'benched' || adviceText.includes('PERSO IL POSTO') || adviceText.includes('IN PANCHINA')) {
+        return `<span class="smart-tag benched" title="${adviceText}">🪑 In Panchina</span>`;
+    }
     if (adviceType === 'supersub' || adviceText.includes('SUPER-SUB')) {
         return `<span class="smart-tag sleeper" style="background:rgba(245,158,11,0.2);border-color:#f59e0b;color:#fbbf24;" title="${adviceText}">⚡ Super-Sub</span>`;
     }
     if (adviceType === 'titolarissimo' || adviceText.toLowerCase().includes('titolarissimo')) {
         return `<span class="smart-tag starter" title="${adviceText}">🔒 Titolarissimo</span>`;
+    }
+    if (adviceType === 'titolare' || adviceText.toLowerCase().includes('titolare da voto')) {
+        return `<span class="smart-tag titolare" title="${adviceText}">🛡️ Titolare</span>`;
     }
     if (adviceType === 'lowcost' || adviceText.toLowerCase().includes('low cost')) {
         return `<span class="smart-tag lowcost" title="${adviceText}">🪙 Low Cost</span>`;

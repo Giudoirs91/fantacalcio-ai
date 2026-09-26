@@ -7897,6 +7897,9 @@ body.creator-mode-active .visitor-only-item {
 .smart-tag.sleeper { background: rgba(236, 72, 153, 0.15); border: 1px solid #ec4899; color: #f472b6; }
 .smart-tag.value { background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #34d399; }
 .smart-tag.starter { background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; }
+.smart-tag.titolare { background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #34d399; }
+.smart-tag.hot { background: rgba(239, 68, 68, 0.18); border: 1px solid #ef4444; color: #f87171; }
+.smart-tag.benched { background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); color: #fca5a5; }
 .smart-tag.lowcost { background: rgba(148, 163, 184, 0.12); border: 1px solid #64748b; color: #94a3b8; }
 .smart-tag.rotation { background: rgba(249, 115, 22, 0.12); border: 1px solid #f97316; color: #fb923c; }
 .smart-tag.danger { background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); color: #f87171; }

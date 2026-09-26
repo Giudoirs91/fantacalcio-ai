@@ -31,13 +31,20 @@ MIN_SEGMENT_SIZE = 8
 LEARNING_RATE = 0.5
 
 ADVICE_THRESHOLDS = {
-    "top":     lambda fm, pres, rounds: fm > 8.0 and pres >= rounds * 0.80,
-    "leader":  lambda fm, pres, rounds: fm > 7.0 and pres >= rounds * 0.70,
-    "buy":     lambda fm, pres, rounds: fm > 6.5 or pres >= rounds * 0.65,
-    "sleeper": lambda fm, pres, rounds: fm > 7.0,
-    "warning": lambda fm, pres, rounds: fm < 6.5 or pres < rounds * 0.60,
-    "flop":    lambda fm, pres, rounds: fm < 6.0,
-    "avoid":   lambda fm, pres, rounds: fm < 5.5 or pres < rounds * 0.40,
+    "top":           lambda fm, pres, rounds: fm > 8.0 and pres >= rounds * 0.80,
+    "leader":        lambda fm, pres, rounds: fm > 7.0 and pres >= rounds * 0.70,
+    "buy":           lambda fm, pres, rounds: fm > 6.5 or pres >= rounds * 0.65,
+    "sleeper":       lambda fm, pres, rounds: fm > 7.0,
+    "warning":       lambda fm, pres, rounds: fm < 6.5 or pres < rounds * 0.60,
+    "flop":          lambda fm, pres, rounds: fm < 6.0,
+    "avoid":         lambda fm, pres, rounds: fm < 5.5 or pres < rounds * 0.40,
+    "titolarissimo": lambda fm, pres, rounds: pres >= rounds * 0.90,
+    "titolare":      lambda fm, pres, rounds: pres >= rounds * 0.70,
+    "hot":           lambda fm, pres, rounds: fm >= 7.0 and pres >= rounds * 0.60,
+    "supersub":      lambda fm, pres, rounds: pres >= rounds * 0.60 and fm >= 6.0,
+    "benched":       lambda fm, pres, rounds: pres < rounds * 0.35,
+    "rotation":      lambda fm, pres, rounds: pres >= rounds * 0.40 and pres < rounds * 0.75,
+    "lowcost":       lambda fm, pres, rounds: pres >= rounds * 0.30,
 }
 
 
@@ -150,7 +157,7 @@ def evaluate_predictions(players_current, round_num):
         advice_correct = advice_fn(float(fm_actual), presenze_actual, round_num) if advice_fn else None
 
         injury_occurred = presenze_actual < round_num * 0.5
-        high_fragility_pred = fragility_score_pred >= 3 or bool(p_snap.get("is_chronic_fragile"))
+        high_fragility_pred = (fragility_score_pred >= 65 or str(p_snap.get("fragility_tier", "")).upper() in ["FRAGILE", "CRISTALLO"] or bool(p_snap.get("is_chronic_fragile")))
         fragility_correct = (high_fragility_pred == injury_occurred)
 
         errors.append({
@@ -242,7 +249,7 @@ def analyze_error_patterns(errors, round_num):
     by_frag = defaultdict(list)
     for e in errors:
         fs = e.get("fragility_score_pred", 1)
-        tier = "alta" if fs >= 3 else ("media" if fs >= 2 else "bassa")
+        tier = "alta" if (fs >= 65 or str(e.get("fragility_tier", "")).upper() in ["FRAGILE", "CRISTALLO"]) else ("media" if (fs >= 39 or str(e.get("fragility_tier", "")).upper() == "ATTENZIONE") else "bassa")
         by_frag[tier].append(e["xfm_error"])
     fragility_stats = {t: _stats(v) for t, v in by_frag.items()}
 
@@ -437,7 +444,7 @@ def apply_bias_correction_to_xfm(xfm, player, corrections):
         total_correction += corrections.get("oop_correction", {}).get(oop_tier, 0.0)
 
     fragilita = player.get("fragilita_score") or player.get("fragility_score") or 1
-    frag_tier = "alta" if fragilita >= 3 else ("media" if fragilita >= 2 else "bassa")
+    frag_tier = "alta" if (fragilita >= 65 or str(player.get("fragility_tier", "")).upper() in ["FRAGILE", "CRISTALLO"]) else ("media" if (fragilita >= 39 or str(player.get("fragility_tier", "")).upper() == "ATTENZIONE") else "bassa")
     total_correction += corrections.get("fragility_correction", {}).get(frag_tier, 0.0)
 
     return round(xfm + total_correction, 2)

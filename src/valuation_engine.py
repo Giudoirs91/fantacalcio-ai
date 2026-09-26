@@ -144,9 +144,17 @@ def determine_advice_tag(p):
     
     is_injured = p.get('is_injured', False)
     giornate_perse = p.get('giornate_perse', 0)
-    fragilita_score = p.get('fragilita_score', 1)  # 1=bassa, 2=media, 3=alta
-    fragilita_badge = p.get('fragilita_badge', 'bassa')
+    fragilita_score = p.get('fragilita_score', 0)
+    fragilita_badge = str(p.get('fragilita_badge', 'roccia')).lower()
+    fragility_tier = str(p.get('fragility_tier', '')).upper()
     is_chronic_fragile = p.get('is_chronic_fragile', False)
+    # Un calciatore è ad alta fragilità/rischio solo se ha tier FRAGILE/CRISTALLO o score >= 65
+    is_physically_fragile = (
+        is_chronic_fragile 
+        or fragility_tier in ['FRAGILE', 'CRISTALLO'] 
+        or fragilita_badge in ['fragile', 'cristallo'] 
+        or (isinstance(fragilita_score, (int, float)) and fragilita_score >= 65)
+    )
     
     oop_tier = p.get('oop_tier', '')  # ORO, ARGENTO, BRONZO
     is_oop = p.get('is_oop', False)
@@ -163,13 +171,17 @@ def determine_advice_tag(p):
     fm_2526 = p.get('fm', 0.0)
     mv_2526 = p.get('mv', 0.0)
     
-    # Dati 2026/27 (con prudenza)
+    # Dati dinamici 2026/27 (prime 5 giornate e successive)
     has_data_2627 = p.get('has_data_2627', False)
-    gol_2627 = p.get('gol_2627', 0)
-    assist_2627 = p.get('assist_2627', 0)
-    presenze_2627 = p.get('presenze_2627', 0)
+    gol_2627 = p.get('gol_2627', 0) or 0
+    assist_2627 = p.get('assist_2627', 0) or 0
+    presenze_2627 = p.get('presenze_2627', 0) or 0
+    starts_2627 = p.get('starts_2627', 0) or 0
+    fm_2627 = p.get('fm_2627')
+    mv_2627 = p.get('mv_2627')
+    tot_bonus_2627 = p.get('tot_bonus_2627', 0.0) or 0.0
 
-    # 1. INFORTUNI GRAVI / LUNGA DEGENZA (Priorità 1 Assoluta)
+    # 1. INFORTUNI GRAVI / LUNGA DEGENZA (Priorità 1 Assoluta e Dinamica)
     motivo_inf = str(p.get('infortunio_motivo', '')).lower()
     if is_injured and (giornate_perse >= 10 or 'mesi' in motivo_inf or 'crociato' in motivo_inf or 'operazione' in motivo_inf):
         return "⛔ LUNGA DEGENZA (EVITARE)", "avoid"
@@ -184,19 +196,35 @@ def determine_advice_tag(p):
     if ovr >= 92 or (slot_num == 1 and (ovr >= 88 or fm_2526 >= 7.8)):
         if is_rigorista_1:
             return "👑 1° RIGORISTA & TOP ASSOLUTO", "top"
-        if (fragilita_score >= 3 or fragilita_badge == 'alta' or is_chronic_fragile):
+        if is_physically_fragile:
             return "👑 TOP DI REPARTO (CON COPERTURA)", "top"
         return "👑 TOP PLAYER ASSOLUTO", "top"
 
     # 3. TOP DI VETRO (Fortissimo ma con storico infortuni gravoso)
-    if (fragilita_score >= 3 or fragilita_badge == 'alta' or is_chronic_fragile) and (slot_num <= 2 or ovr >= 82):
+    if is_physically_fragile and (slot_num <= 2 or ovr >= 82):
         return "⚠️ TOP DI VETRO (CON COPERTURA)", "warning"
 
-    # 4. FLOP PREVISTI & REGRESSIONE GRAVE (Priorità su bonus minori)
+    # 4. DINAMICO 26/27: ALERT PERDITA POSTO / IN PANCHINA FISSA
+    # Calciatore con status/fvm rilevante ma non impiegato dal mister nelle 5 giornate
+    if not is_injured and has_data_2627 and starts_2627 == 0 and presenze_2627 <= 1 and (slot_num <= 4 or p.get('fvm', 0) >= 8 or ovr >= 65):
+        return "⚠️ HA PERSO IL POSTO (IN PANCHINA)", "benched"
+
+    # 5. DINAMICO 26/27: FLOP PREVISTI & REGRESSIONE GRAVE
     if is_flop:
         return "⚠️ POSSIBILE FLOP (SOPRAVVALUTATO)", "flop"
+    if presenze_2627 >= 3 and fm_2627 is not None and fm_2627 < 5.5 and (slot_num <= 3 or ovr >= 76):
+        return "⚠️ TREND NEGATIVO (SOTTOTONO)", "flop"
 
-    # 5. FUORI RUOLO D'ORO (Super King Power: Quinti a tutta fascia e Ali d'attacco quotate C)
+    # 6. DINAMICO 26/27: CALCIATORE ON FIRE / IN FORMA STREPITOSA
+    if presenze_2627 >= 3 and not is_injured:
+        if role == 'A' and (gol_2627 >= 2 or (fm_2627 is not None and fm_2627 >= 8.0)):
+            return "🔥 IN FORMA / GOLEADOR (+3)", "hot"
+        elif role == 'C' and (gol_2627 >= 1 or assist_2627 >= 2 or (fm_2627 is not None and fm_2627 >= 7.3)):
+            return "🔥 IN FORMA / TREND DA BONUS", "hot"
+        elif role == 'D' and (gol_2627 >= 1 or (mv_2627 is not None and mv_2627 >= 6.35)):
+            return "🔥 DIFENSORE IN FORMA / DA VOTO", "hot"
+
+    # 7. FUORI RUOLO D'ORO (Super King Power: Quinti a tutta fascia e Ali d'attacco quotate C)
     if oop_tier == 'ORO':
         if role == 'D':
             if slot_num <= 2 or is_in_11 or titolarita >= 75:
@@ -207,7 +235,7 @@ def determine_advice_tag(p):
                 return "🥇 ALA/SECONDA PUNTA (TOP OOP)", "buy"
             return "🥇 ESTERNO D'ATTACCO OOP", "buy"
 
-    # 6. FUORI RUOLO D'ARGENTO (Trequartisti d'incursione C e Terzini di spinta D)
+    # 8. FUORI RUOLO D'ARGENTO (Trequartisti d'incursione C e Terzini di spinta D)
     if oop_tier == 'ARGENTO':
         if role == 'C':
             if slot_num <= 3 or titolarita >= 75:
@@ -216,59 +244,60 @@ def determine_advice_tag(p):
         elif role == 'D':
             return "🥈 TERZINO DI SPINTA (OOP)", "buy"
 
-    # 7. RIGORISTI DI SQUADRA
+    # 9. RIGORISTI DI SQUADRA
     if is_rigorista_1:
         if role in ['D', 'C']:
             return "🎯 RIGORISTA & BONUS MAN (+3)", "leader"
         if titolarita >= 75:
             return "🎯 1° RIGORISTA DI SQUADRA", "leader"
 
-    # 8. SPECIALISTI PIAZZATI & LEADER
+    # 10. SPECIALISTI PIAZZATI & LEADER
     if (is_punizioni and is_corner) and titolarita >= 75 and (slot_num <= 4 or ovr >= 74):
         return "🚀 SPECIALISTA PIAZZATI & ASSIST", "buy"
 
     if is_top or (slot_num == 2 and titolarita >= 75):
         return "⭐ 2° SLOT / TITOLARE DI LUSSO", "leader"
 
-    # 9. SLEEPER & SCOMMESSE CONFERMATE
+    # 11. SUPER-SUB / JOLLY DA VOTO (Presenza garantita a gara in corso con voto/minutaggio)
+    if presenze_2627 >= 3 and starts_2627 <= 1 and not is_injured:
+        if (gol_2627 >= 1 or assist_2627 >= 1 or (mv_2627 is not None and mv_2627 >= 6.0)):
+            return "⚡ SUPER-SUB / JOLLY DA VOTO", "supersub"
+
+    # 12. SLEEPER & SCOMMESSE CONFERMATE
     if is_sleeper or (has_data_2627 and (gol_2627 >= 1 or assist_2627 >= 1) and prezzo_cons <= 15 and titolarita >= 65 and presenze_2627 >= 2):
         return "🔥 SCOMMESSA / SLEEPER", "sleeper"
 
-    # 10. FUORI RUOLO BRONZO (Riserve con ruolo offensivo a 1 credito)
+    # 13. FUORI RUOLO BRONZO (Riserve con ruolo offensivo a 1 credito)
     if oop_tier == 'BRONZO':
         return "🥉 RISERVA D'ORO A 1 CR", "sleeper"
 
-    # 10b. SUPER-SUB / JOLLY DA VOTO (Presenza garantita a gara in corso con voto/minutaggio)
-    if presenze_2627 >= 3 and titolarita < 65 and not is_injured:
-        if (p.get('gol_2627', 0) >= 1 or p.get('assist_2627', 0) >= 1 or p.get('mv_2627', 0) >= 6.0):
-            return "⚡ SUPER-SUB / JOLLY DA VOTO", "supersub"
+    # 14. TITOLARISSIMI REALI (95%+ o 5/5 da titolare)
+    if titolarita >= 95 or starts_2627 >= 5:
+        return "🔒 TITOLARISSIMO (100% VOTO)", "titolarissimo"
 
-    # 11. OTTIMI TITOLARI & MODIFICATORE DIFESA / LOW COST
+    # 15. OTTIMI TITOLARI (3° Slot o Solidi da Voto 75-94%)
     if slot_num == 3 and titolarita >= 80:
         return "💎 OTTIMO 3° SLOT TITOLARE", "buy"
 
-    if role == 'D' and titolarita >= 80 and prezzo_cons <= 10 and (mv_2526 >= 6.05 or ovr >= 70):
+    if role == 'D' and titolarita >= 75 and prezzo_cons <= 10 and (mv_2526 >= 6.05 or ovr >= 70 or (mv_2627 is not None and mv_2627 >= 6.1)):
         return "🛡️ LOW COST DA MODIFICATORE", "lowcost"
 
-    if role == 'C' and titolarita >= 80 and prezzo_cons <= 10:
+    if role == 'C' and titolarita >= 75 and prezzo_cons <= 10:
         return "🛡️ TITOLARE LOW COST DA VOTO", "lowcost"
 
-    if titolarita >= 85 and is_in_11:
-        return "🔒 TITOLARISSIMO DA VOTO", "titolarissimo"
+    if titolarita >= 75:
+        return "🛡️ TITOLARE DA VOTO", "titolare"
 
-    # 12. BALLOTTAGGI & ROTAZIONI
-    if is_in_ballottaggio or (titolarita >= 55 and titolarita < 78):
+    # 16. BALLOTTAGGI & ROTAZIONI (50-74%)
+    if is_in_ballottaggio or (titolarita >= 50 and titolarita < 75):
         return "🔄 ROTAZIONE / BALLOTTAGGIO", "rotation"
 
-    # 13. PANCHINARI & SCARTI
-    if titolarita >= 35 and titolarita < 55:
+    # 17. PANCHINARI & SCARTI (25-49%)
+    if titolarita >= 25 and titolarita < 50:
         return "🪑 RISERVA DA SLOT 1 CR", "lowcost"
 
-    if ovr <= 52 or titolarita < 35 or p.get('fvm', 1) <= 1:
+    if ovr <= 52 or titolarita < 25 or p.get('fvm', 1) <= 1:
         return "⛔ DA EVITARE / RISERVA", "avoid"
-
-    if titolarita >= 70:
-        return "🔒 TITOLARE DA VOTO", "titolarissimo"
 
     return "🔄 ROTAZIONE", "rotation"
 

@@ -113,7 +113,7 @@ def recalibrate_dataset():
                 fvm_mult *= 0.90
 
         # Fragilità cronica
-        if p.get('is_chronic_fragile', False) or p.get('fragilita_score', 1) >= 3:
+        if p.get('is_chronic_fragile', False) or p.get('fragility_tier', '').upper() in ['FRAGILE', 'CRISTALLO'] or p.get('fragilita_score', 0) >= 65:
             inj_penalty += 1.5
             fvm_mult *= 0.92
 

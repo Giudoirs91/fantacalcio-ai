@@ -999,7 +999,14 @@ function renderTable() {
                     }
                 }
 
-                coppiaHtml = `<span class="coppia-pill" style="${clickStyle}" ${clickHandler} title="${p.coppia_dettaglio || `${rolePrefix}${p.coppia_nome}`}">${icon} ${rolePrefix}${p.coppia_nome}</span>`;
+                const isHybrid = Boolean(p.coppia_ibrida || (p.coppia_ruolo && p.coppia_ruolo !== '-' && p.coppia_ruolo !== p.role));
+                const hybridBadge = isHybrid
+                    ? ` <span class="badge-hybrid-role" style="background:rgba(245,158,11,0.22);color:#fbbf24;border:1px solid rgba(245,158,11,0.5);border-radius:4px;padding:1px 4px;font-size:9.5px;font-weight:700;margin-left:3px;" title="Attenzione Classic: Ruolo differente (${p.role} vs ${p.coppia_ruolo})">${p.coppia_ruolo} ⚠️</span>`
+                    : '';
+
+                const fullTitle = (p.coppia_dettaglio || `${rolePrefix}${p.coppia_nome}`) + (isHybrid ? `\n⚠️ Attenzione Classic: ruoli differenti nel listone (${p.role} vs ${p.coppia_ruolo}), ma stessa posizione/staffetta in campo!` : '');
+
+                coppiaHtml = `<span class="coppia-pill ${isHybrid ? 'coppia-pill-hybrid' : ''}" style="${clickStyle}" ${clickHandler} title="${fullTitle}">${icon} ${rolePrefix}${p.coppia_nome}${hybridBadge}</span>`;
             }
 
             // Statistiche 2026/2027 Live

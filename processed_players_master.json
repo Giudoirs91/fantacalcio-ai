@@ -387,8 +387,9 @@
     "coppia_nome": "Castro S.",
     "coppia_id": 6572,
     "coppia_ruolo": "A",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (3 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Castro S. (Punta Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 2764,
@@ -808,8 +809,9 @@
     "coppia_nome": "Bonny",
     "coppia_id": 6669,
     "coppia_ruolo": "A",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Bonny)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Bonny (Punta DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6052,
@@ -1088,8 +1090,9 @@
     "coppia_nome": "Lucca",
     "coppia_id": 6215,
     "coppia_ruolo": "A",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (3 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Lucca (Punta Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 6397,
@@ -1440,11 +1443,12 @@
     "ai_advice": "👑 TOP PLAYER ASSOLUTO",
     "ai_advice_type": "top",
     "consiglio": "👑 TOP PLAYER ASSOLUTO",
-    "coppia_nome": "Camarda",
-    "coppia_id": 6519,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_nome": "Loftus-Cheek",
+    "coppia_id": 4199,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "BALLOTTAGGIO",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 50% vs 50% (Loftus-Cheek). ⚠️ Asimmetria Classic: Ramos G. è A, Loftus-Cheek è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 4871,
@@ -1865,7 +1869,8 @@
     "coppia_id": 7071,
     "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Esposito F.P.)"
+    "coppia_dettaglio": "65% vs 35% (Esposito F.P.)",
+    "coppia_ibrida": false
   },
   {
     "id": 5951,
@@ -2208,7 +2213,8 @@
     "coppia_id": 6752,
     "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Woltemade)"
+    "coppia_dettaglio": "65% vs 35% (Woltemade)",
+    "coppia_ibrida": false
   },
   {
     "id": 2097,
@@ -2629,7 +2635,8 @@
     "coppia_id": 7017,
     "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "75% vs 25% (Douvikas)"
+    "coppia_dettaglio": "75% vs 25% (Douvikas)",
+    "coppia_ibrida": false
   },
   {
     "id": 7017,
@@ -2924,7 +2931,8 @@
     "coppia_id": 2097,
     "coppia_ruolo": "A",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "25% vs 75% (Kean)"
+    "coppia_dettaglio": "25% vs 75% (Kean)",
+    "coppia_ibrida": false
   },
   {
     "id": 309,
@@ -3359,11 +3367,12 @@
     "ai_advice": "⚠️ TOP DI VETRO (CON COPERTURA)",
     "ai_advice_type": "warning",
     "consiglio": "⚠️ TOP DI VETRO (CON COPERTURA)",
-    "coppia_nome": "Soulè",
-    "coppia_id": 5734,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Soulè)"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 531,
@@ -3780,11 +3789,12 @@
     "ai_advice": "⭐ 2° SLOT / TITOLARE DI LUSSO",
     "ai_advice_type": "leader",
     "consiglio": "⭐ 2° SLOT / TITOLARE DI LUSSO",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Volpato",
+    "coppia_id": 5735,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "BALLOTTAGGIO",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 50% vs 50% (Volpato). ⚠️ Asimmetria Classic: Berardi è A, Volpato è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 6752,
@@ -4091,7 +4101,8 @@
     "coppia_id": 5951,
     "coppia_ruolo": "A",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Kolo Muani)"
+    "coppia_dettaglio": "35% vs 65% (Kolo Muani)",
+    "coppia_ibrida": false
   },
   {
     "id": 5637,
@@ -4511,8 +4522,9 @@
     "coppia_nome": "Gueye",
     "coppia_id": 7272,
     "coppia_ruolo": "A",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (2 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Gueye (Punta Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 7071,
@@ -4807,7 +4819,8 @@
     "coppia_id": 4871,
     "coppia_ruolo": "A",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Thuram)"
+    "coppia_dettaglio": "35% vs 65% (Thuram)",
+    "coppia_ibrida": false
   },
   {
     "id": 2137,
@@ -5246,7 +5259,8 @@
     "coppia_id": 6435,
     "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "75% vs 25% (Krstovic)"
+    "coppia_dettaglio": "75% vs 25% (Krstovic)",
+    "coppia_ibrida": false
   },
   {
     "id": 6060,
@@ -5541,7 +5555,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 2061,
@@ -5908,7 +5923,8 @@
     "coppia_id": 608,
     "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Zapata D.)"
+    "coppia_dettaglio": "65% vs 35% (Zapata D.)",
+    "coppia_ibrida": false
   },
   {
     "id": 5995,
@@ -6307,11 +6323,12 @@
     "ai_advice": "⭐ 2° SLOT / TITOLARE DI LUSSO",
     "ai_advice_type": "leader",
     "consiglio": "⭐ 2° SLOT / TITOLARE DI LUSSO",
-    "coppia_nome": "Sulemana K.",
-    "coppia_id": 5918,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Sulemana K.)"
+    "coppia_nome": "Elmas",
+    "coppia_id": 4479,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 85% vs 15% (Elmas). ⚠️ Asimmetria Classic: De Ketelaere è A, Elmas è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 7523,
@@ -6560,11 +6577,12 @@
     "ai_advice": "🔥 IN FORMA / GOLEADOR (+3)",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / GOLEADOR (+3)",
-    "coppia_nome": "Robinson J.",
-    "coppia_id": 7546,
+    "coppia_nome": "Cutrone",
+    "coppia_id": 2155,
     "coppia_ruolo": "A",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Cutrone (Punta Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 6435,
@@ -6859,7 +6877,8 @@
     "coppia_id": 2137,
     "coppia_ruolo": "A",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "25% vs 75% (Scamacca)"
+    "coppia_dettaglio": "25% vs 75% (Scamacca)",
+    "coppia_ibrida": false
   },
   {
     "id": 6572,
@@ -7135,8 +7154,9 @@
     "coppia_nome": "Malen",
     "coppia_id": 5585,
     "coppia_ruolo": "A",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Malen"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Malen (Punta Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 6434,
@@ -7342,7 +7362,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 5734,
@@ -7645,11 +7666,12 @@
     "ai_advice": "🔥 IN FORMA / GOLEADOR (+3)",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / GOLEADOR (+3)",
-    "coppia_nome": "Dybala",
-    "coppia_id": 309,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Dybala"
+    "coppia_nome": "Mora",
+    "coppia_id": 7556,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "BALLOTTAGGIO",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 50% vs 50% (Mora). ⚠️ Asimmetria Classic: Soulè è A, Mora è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 5436,
@@ -7932,7 +7954,8 @@
     "coppia_id": 7610,
     "coppia_ruolo": "A",
     "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_dettaglio": "Staffetta (1 cambi)",
+    "coppia_ibrida": false
   },
   {
     "id": 4371,
@@ -8241,11 +8264,12 @@
     "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "ai_advice_type": "rotation",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Rowe",
+    "coppia_id": 6844,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "BALLOTTAGGIO",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 60% vs 40% (Rowe). ⚠️ Asimmetria Classic: Raspadori è A, Rowe è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 7023,
@@ -8528,7 +8552,8 @@
     "coppia_id": 5694,
     "coppia_ruolo": "A",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "60% vs 40% (Beto)"
+    "coppia_dettaglio": "60% vs 40% (Beto)",
+    "coppia_ibrida": false
   },
   {
     "id": 6967,
@@ -8843,11 +8868,12 @@
     "ai_advice": "🔥 IN FORMA / GOLEADOR (+3)",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / GOLEADOR (+3)",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Liberali",
+    "coppia_id": 6678,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 75% vs 25% (Liberali). ⚠️ Asimmetria Classic: Diao è A, Liberali è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 2038,
@@ -9232,7 +9258,8 @@
     "coppia_id": 6556,
     "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Noslin"
+    "coppia_dettaglio": "Alternativa diretta: Noslin (Punta Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 4923,
@@ -9539,7 +9566,8 @@
     "coppia_id": 7600,
     "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Osmajic)"
+    "coppia_dettaglio": "65% vs 35% (Osmajic)",
+    "coppia_ibrida": false
   },
   {
     "id": 6204,
@@ -9797,7 +9825,8 @@
     "coppia_id": 7612,
     "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "85% vs 15% (Bobcek)"
+    "coppia_dettaglio": "85% vs 15% (Bobcek)",
+    "coppia_ibrida": false
   },
   {
     "id": 5694,
@@ -10080,7 +10109,8 @@
     "coppia_id": 7023,
     "coppia_ruolo": "A",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 60% (Pellegrino M.)"
+    "coppia_dettaglio": "40% vs 60% (Pellegrino M.)",
+    "coppia_ibrida": false
   },
   {
     "id": 7554,
@@ -10425,11 +10455,12 @@
     "ai_advice": "🔥 IN FORMA / GOLEADOR (+3)",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / GOLEADOR (+3)",
-    "coppia_nome": "Lontani",
-    "coppia_id": 7561,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "55% vs 45% (Lontani)"
+    "coppia_nome": "Almqvist",
+    "coppia_id": 6207,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 85% vs 15% (Almqvist). ⚠️ Asimmetria Classic: Romero D. è A, Almqvist è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 7351,
@@ -10664,7 +10695,8 @@
     "coppia_id": 7120,
     "coppia_ruolo": "A",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Lang)"
+    "coppia_dettaglio": "50% vs 50% (Lang)",
+    "coppia_ibrida": false
   },
   {
     "id": 7484,
@@ -10982,8 +11014,9 @@
     "coppia_nome": "Lauberbach",
     "coppia_id": 7482,
     "coppia_ruolo": "A",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Lauberbach (Punta DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6675,
@@ -11386,7 +11419,8 @@
     "coppia_id": 4359,
     "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Piccoli)"
+    "coppia_dettaglio": "65% vs 35% (Piccoli)",
+    "coppia_ibrida": false
   },
   {
     "id": 4463,
@@ -11735,7 +11769,8 @@
     "coppia_id": 7347,
     "coppia_ruolo": "A",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "15% vs 85% (Bowie)"
+    "coppia_dettaglio": "15% vs 85% (Bowie)",
+    "coppia_ibrida": false
   },
   {
     "id": 7347,
@@ -12030,7 +12065,8 @@
     "coppia_id": 4463,
     "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "85% vs 15% (Esposito Se.)"
+    "coppia_dettaglio": "85% vs 15% (Esposito Se.)",
+    "coppia_ibrida": false
   },
   {
     "id": 4896,
@@ -12469,7 +12505,8 @@
     "coppia_id": 5336,
     "coppia_ruolo": "A",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Nzola)"
+    "coppia_dettaglio": "Alternativa (Nzola)",
+    "coppia_ibrida": false
   },
   {
     "id": 7547,
@@ -12691,7 +12728,8 @@
     "coppia_id": 7374,
     "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Mendy P.)"
+    "coppia_dettaglio": "65% vs 35% (Mendy P.)",
+    "coppia_ibrida": false
   },
   {
     "id": 6904,
@@ -13033,8 +13071,9 @@
     "coppia_nome": "Rrahmani Al.",
     "coppia_id": 7449,
     "coppia_ruolo": "A",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Rrahmani Al. (Punta SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6229,
@@ -13397,11 +13436,12 @@
     "ai_advice": "🔥 SCOMMESSA AD ALTO POTENZIALE",
     "ai_advice_type": "sleeper",
     "consiglio": "🔥 SCOMMESSA AD ALTO POTENZIALE",
-    "coppia_nome": "Frigan",
-    "coppia_id": 7213,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_nome": "Almqvist",
+    "coppia_id": 6207,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 85% vs 15% (Almqvist). ⚠️ Asimmetria Classic: Tourè E. è A, Almqvist è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 4359,
@@ -13792,7 +13832,8 @@
     "coppia_id": 6675,
     "coppia_ruolo": "A",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Dovbyk)"
+    "coppia_dettaglio": "35% vs 65% (Dovbyk)",
+    "coppia_ibrida": false
   },
   {
     "id": 7600,
@@ -14045,7 +14086,8 @@
     "coppia_id": 4923,
     "coppia_ruolo": "A",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Colombo)"
+    "coppia_dettaglio": "35% vs 65% (Colombo)",
+    "coppia_ibrida": false
   },
   {
     "id": 7612,
@@ -14340,7 +14382,8 @@
     "coppia_id": 6204,
     "coppia_ruolo": "A",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "15% vs 85% (Kvernadze)"
+    "coppia_dettaglio": "15% vs 85% (Kvernadze)",
+    "coppia_ibrida": false
   },
   {
     "id": 7623,
@@ -14595,11 +14638,12 @@
     "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
     "ai_advice_type": "lowcost",
     "consiglio": "🪑 RISERVA DA SLOT 1 CR",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Mastantuono",
+    "coppia_id": 7078,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Subentra a Mastantuono (1 cambi). ⚠️ Ruoli Classic differenti: A vs C",
+    "coppia_ibrida": true
   },
   {
     "id": 6646,
@@ -14914,11 +14958,12 @@
     "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
     "ai_advice_type": "warning",
     "consiglio": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Vlasic",
+    "coppia_id": 5687,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 15% vs 85% (Vlasic). ⚠️ Asimmetria Classic: Adams C. è A, Vlasic è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 2155,
@@ -15239,11 +15284,12 @@
     "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "ai_advice_type": "rotation",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Varela G.",
+    "coppia_id": 7523,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Varela G. (Punta Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 6530,
@@ -15486,11 +15532,12 @@
     "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "ai_advice_type": "rotation",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Schmid",
+    "coppia_id": 7551,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Subentra a Schmid (1 cambi). ⚠️ Ruoli Classic differenti: A vs C",
+    "coppia_ibrida": true
   },
   {
     "id": 5029,
@@ -15875,7 +15922,8 @@
     "coppia_id": 7252,
     "coppia_ruolo": "A",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Stulic)"
+    "coppia_dettaglio": "50% vs 50% (Stulic)",
+    "coppia_ibrida": false
   },
   {
     "id": 6519,
@@ -16112,11 +16160,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "Ramos G.",
-    "coppia_id": 6397,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Ramos G."
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6669,
@@ -16416,8 +16465,9 @@
     "coppia_nome": "Martinez L.",
     "coppia_id": 2764,
     "coppia_ruolo": "A",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Martinez L."
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Martinez L. (Punta DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 2832,
@@ -16816,11 +16866,12 @@
     "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
     "ai_advice_type": "warning",
     "consiglio": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Alajbegovic",
+    "coppia_id": 7436,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 25% vs 75% (Alajbegovic). ⚠️ Asimmetria Classic: Boga è A, Alajbegovic è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 6831,
@@ -17219,11 +17270,12 @@
     "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "ai_advice_type": "rotation",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Politano",
+    "coppia_id": 536,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 15% vs 85% (Politano). ⚠️ Asimmetria Classic: Neres è A, Politano è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 7252,
@@ -17494,7 +17546,8 @@
     "coppia_id": 5029,
     "coppia_ruolo": "A",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Geubbels)"
+    "coppia_dettaglio": "50% vs 50% (Geubbels)",
+    "coppia_ibrida": false
   },
   {
     "id": 7620,
@@ -17773,11 +17826,12 @@
     "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "ai_advice_type": "benched",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Colpani",
+    "coppia_id": 5878,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 30% vs 70% (Colpani). ⚠️ Asimmetria Classic: Zeballos è A, Colpani è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 7120,
@@ -18198,7 +18252,8 @@
     "coppia_id": 7351,
     "coppia_ruolo": "A",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Santos A.)"
+    "coppia_dettaglio": "50% vs 50% (Santos A.)",
+    "coppia_ibrida": false
   },
   {
     "id": 6145,
@@ -18438,7 +18493,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6556,
@@ -18750,8 +18806,9 @@
     "coppia_nome": "Pinamonti",
     "coppia_id": 2038,
     "coppia_ruolo": "A",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (2 cambi)"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Pinamonti (Punta Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 7374,
@@ -19022,7 +19079,8 @@
     "coppia_id": 7547,
     "coppia_ruolo": "A",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Kevin Carlos)"
+    "coppia_dettaglio": "35% vs 65% (Kevin Carlos)",
+    "coppia_ibrida": false
   },
   {
     "id": 6164,
@@ -19373,11 +19431,12 @@
     "ai_advice": "🔥 SCOMMESSA AD ALTO POTENZIALE",
     "ai_advice_type": "sleeper",
     "consiglio": "🔥 SCOMMESSA AD ALTO POTENZIALE",
-    "coppia_nome": "Robinho Junior",
-    "coppia_id": 7622,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Robinho Junior)"
+    "coppia_nome": "Messias",
+    "coppia_id": 4970,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "BALLOTTAGGIO",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 60% vs 40% (Messias). ⚠️ Asimmetria Classic: Vitinha O. è A, Messias è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 7449,
@@ -19665,8 +19724,9 @@
     "coppia_nome": "Yeboah J.",
     "coppia_id": 6904,
     "coppia_ruolo": "A",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Yeboah J."
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Yeboah J. (Punta SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6215,
@@ -19984,8 +20044,9 @@
     "coppia_nome": "Hojlund",
     "coppia_id": 6052,
     "coppia_ruolo": "A",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Hojlund"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Hojlund (Punta Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 7561,
@@ -20256,7 +20317,8 @@
     "coppia_id": 7554,
     "coppia_ruolo": "A",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "45% vs 55% (Romero D.)"
+    "coppia_dettaglio": "45% vs 55% (Romero D.)",
+    "coppia_ibrida": false
   },
   {
     "id": 7602,
@@ -20529,11 +20591,12 @@
     "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "ai_advice_type": "rotation",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "coppia_nome": "N'Dri",
-    "coppia_id": 7001,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (N'Dri)"
+    "coppia_nome": "Monteiro J.",
+    "coppia_id": 7619,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 65% vs 35% (Monteiro J.). ⚠️ Asimmetria Classic: Fatah è A, Monteiro J. è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 7001,
@@ -20800,11 +20863,12 @@
     "ai_advice": "🔥 SCOMMESSA AD ALTO POTENZIALE",
     "ai_advice_type": "sleeper",
     "consiglio": "🔥 SCOMMESSA AD ALTO POTENZIALE",
-    "coppia_nome": "Fatah",
-    "coppia_id": 7602,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Fatah"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7610,
@@ -21153,7 +21217,8 @@
     "coppia_id": 5436,
     "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Raimondo"
+    "coppia_dettaglio": "Subentra a Raimondo",
+    "coppia_ibrida": false
   },
   {
     "id": 7349,
@@ -21375,7 +21440,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7272,
@@ -21614,8 +21680,9 @@
     "coppia_nome": "Davis K.",
     "coppia_id": 5637,
     "coppia_ruolo": "A",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Davis K."
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Davis K. (Punta Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 7342,
@@ -21888,11 +21955,12 @@
     "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "ai_advice_type": "supersub",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Fabbian",
+    "coppia_id": 6206,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 15% vs 85% (Fabbian). ⚠️ Asimmetria Classic: Elphege è A, Fabbian è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 5882,
@@ -22271,7 +22339,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7546,
@@ -22507,11 +22576,12 @@
     "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "ai_advice_type": "rotation",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "coppia_nome": "Varela G.",
-    "coppia_id": 7523,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Varela G."
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 608,
@@ -22896,7 +22966,8 @@
     "coppia_id": 2061,
     "coppia_ruolo": "A",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Simeone)"
+    "coppia_dettaglio": "35% vs 65% (Simeone)",
+    "coppia_ibrida": false
   },
   {
     "id": 2012,
@@ -23244,7 +23315,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 5336,
@@ -23544,7 +23616,8 @@
     "coppia_id": 4896,
     "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Maldini"
+    "coppia_dettaglio": "Copertura di Maldini",
+    "coppia_ibrida": false
   },
   {
     "id": 7162,
@@ -23748,7 +23821,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7627,
@@ -23934,7 +24008,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7161,
@@ -24211,7 +24286,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7213,
@@ -24460,11 +24536,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "Tourè E.",
-    "coppia_id": 6229,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Tourè E."
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 5918,
@@ -24748,11 +24825,12 @@
     "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
     "ai_advice_type": "warning",
     "consiglio": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "coppia_nome": "De Ketelaere",
-    "coppia_id": 5995,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di De Ketelaere"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 4387,
@@ -24968,7 +25046,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6822,
@@ -25196,7 +25275,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7622,
@@ -25359,11 +25439,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "Vitinha O.",
-    "coppia_id": 6164,
-    "coppia_ruolo": "A",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Vitinha O."
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7482,
@@ -25633,8 +25714,9 @@
     "coppia_nome": "Adams A.",
     "coppia_id": 7484,
     "coppia_ruolo": "A",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Adams A."
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Adams A. (Punta DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7408,
@@ -25826,7 +25908,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7568,
@@ -25993,7 +26076,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7453,
@@ -26197,7 +26281,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7317,
@@ -26377,7 +26462,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6875,
@@ -26660,7 +26746,8 @@
     "coppia_id": 5453,
     "coppia_ruolo": "C",
     "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (2 cambi)"
+    "coppia_dettaglio": "Staffetta (2 cambi)",
+    "coppia_ibrida": false
   },
   {
     "id": 2167,
@@ -27039,7 +27126,8 @@
     "coppia_id": 184,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "85% vs 15% (Bernardeschi)"
+    "coppia_dettaglio": "85% vs 15% (Bernardeschi)",
+    "coppia_ibrida": false
   },
   {
     "id": 2423,
@@ -27420,11 +27508,12 @@
     "ai_advice": "👑 1° RIGORISTA & TOP ASSOLUTO",
     "ai_advice_type": "top",
     "consiglio": "👑 1° RIGORISTA & TOP ASSOLUTO",
-    "coppia_nome": "Cissè A.",
-    "coppia_id": 6618,
-    "coppia_ruolo": "C",
+    "coppia_nome": "Ramos G.",
+    "coppia_id": 6397,
+    "coppia_ruolo": "A",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "85% vs 15% (Cissè A.)"
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 85% vs 15% (Ramos G.). ⚠️ Asimmetria Classic: Pulisic è C, Ramos G. è A (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 2194,
@@ -27827,7 +27916,8 @@
     "coppia_id": 152,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "80% vs 20% (Zielinski)"
+    "coppia_dettaglio": "80% vs 20% (Zielinski)",
+    "coppia_ibrida": false
   },
   {
     "id": 2379,
@@ -28265,8 +28355,9 @@
     "coppia_nome": "Musah",
     "coppia_id": 5295,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Musah)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Musah (Mediano SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4777,
@@ -28647,11 +28738,12 @@
     "ai_advice": "⚠️ INFORTUNATO (TOP DA SCONTO)",
     "ai_advice_type": "warning",
     "consiglio": "⚠️ INFORTUNATO (TOP DA SCONTO)",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "De Bruyne",
+    "coppia_id": 2517,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: De Bruyne (Mezzala SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 2517,
@@ -29086,11 +29178,12 @@
     "ai_advice": "👑 1° RIGORISTA & TOP ASSOLUTO",
     "ai_advice_type": "top",
     "consiglio": "👑 1° RIGORISTA & TOP ASSOLUTO",
-    "coppia_nome": "Politano",
-    "coppia_id": 536,
+    "coppia_nome": "McTominay",
+    "coppia_id": 4777,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Politano"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a McTominay (Mezzala SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7126,
@@ -29373,7 +29466,8 @@
     "coppia_id": 7129,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "70% vs 30% (Rodriguez Je.)"
+    "coppia_dettaglio": "70% vs 30% (Rodriguez Je.)",
+    "coppia_ibrida": false
   },
   {
     "id": 632,
@@ -29811,8 +29905,9 @@
     "coppia_nome": "Cancellieri",
     "coppia_id": 5500,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Cancellieri)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Cancellieri (Ala Sinistra)",
+    "coppia_ibrida": false
   },
   {
     "id": 7556,
@@ -30061,11 +30156,12 @@
     "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
-    "coppia_nome": "Pellegrini Lo.",
-    "coppia_id": 530,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Pellegrini Lo.)"
+    "coppia_nome": "Soulè",
+    "coppia_id": 5734,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "BALLOTTAGGIO",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 50% vs 50% (Soulè). ⚠️ Asimmetria Classic: Mora è C, Soulè è A (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 7078,
@@ -30356,11 +30452,12 @@
     "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Gnonto",
+    "coppia_id": 7623,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "STAFFETTA",
+    "coppia_dettaglio": "Staffetta (1 cambi). ⚠️ Ruoli Classic differenti: C vs A (stessa posizione in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 5559,
@@ -30643,7 +30740,8 @@
     "coppia_id": 7412,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "15% vs 85% (Milla)"
+    "coppia_dettaglio": "15% vs 85% (Milla)",
+    "coppia_ibrida": false
   },
   {
     "id": 2848,
@@ -31034,7 +31132,8 @@
     "coppia_id": 6629,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Dele-Bashiru"
+    "coppia_dettaglio": "Alternativa diretta: Dele-Bashiru (Mezzala DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 2766,
@@ -31419,7 +31518,8 @@
     "coppia_id": 6783,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "85% vs 15% (Unai Gomez)"
+    "coppia_dettaglio": "85% vs 15% (Unai Gomez)",
+    "coppia_ibrida": false
   },
   {
     "id": 6884,
@@ -31834,7 +31934,8 @@
     "coppia_id": 5761,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "75% vs 25% (Zhegrova)"
+    "coppia_dettaglio": "75% vs 25% (Zhegrova)",
+    "coppia_ibrida": false
   },
   {
     "id": 1870,
@@ -32257,11 +32358,12 @@
     "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
-    "coppia_nome": "Jones C.",
-    "coppia_id": 5172,
+    "coppia_nome": "Stankovic A.",
+    "coppia_id": 6503,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Jones C.)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Stankovic A. (Mezzala DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5687,
@@ -32684,11 +32786,12 @@
     "ai_advice": "⚠️ TREND NEGATIVO (SOTTOTONO)",
     "ai_advice_type": "flop",
     "consiglio": "⚠️ TREND NEGATIVO (SOTTOTONO)",
-    "coppia_nome": "Braganca",
-    "coppia_id": 7624,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Braganca)"
+    "coppia_nome": "Adams C.",
+    "coppia_id": 6646,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 85% vs 15% (Adams C.). ⚠️ Asimmetria Classic: Vlasic è C, Adams C. è A (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 6908,
@@ -32995,7 +33098,8 @@
     "coppia_id": 4947,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Brescianini"
+    "coppia_dettaglio": "Subentra a Brescianini",
+    "coppia_ibrida": false
   },
   {
     "id": 6684,
@@ -33373,8 +33477,9 @@
     "coppia_nome": "Chakvetadze",
     "coppia_id": 7418,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Chakvetadze)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Chakvetadze (Trequartista SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4973,
@@ -33759,7 +33864,8 @@
     "coppia_id": 4179,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "25% vs 75% (Gonzalez N.)"
+    "coppia_dettaglio": "25% vs 75% (Gonzalez N.)",
+    "coppia_ibrida": false
   },
   {
     "id": 6372,
@@ -34042,7 +34148,8 @@
     "coppia_id": 4856,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Chukwueze)"
+    "coppia_dettaglio": "50% vs 50% (Chukwueze)",
+    "coppia_ibrida": false
   },
   {
     "id": 6274,
@@ -34291,11 +34398,12 @@
     "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
-    "coppia_nome": "Luis Henrique",
-    "coppia_id": 5301,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Luis Henrique)"
+    "coppia_nome": "Spence",
+    "coppia_id": 5982,
+    "coppia_ruolo": "D",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 65% vs 35% (Spence). ⚠️ Asimmetria Classic: Diouf è C, Spence è D (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 7314,
@@ -34646,11 +34754,12 @@
     "ai_advice": "🥈 TREQUARTISTA D'INCURSIONE (FRP)",
     "ai_advice_type": "buy",
     "consiglio": "🥈 TREQUARTISTA D'INCURSIONE (FRP)",
-    "coppia_nome": "Cataldi",
-    "coppia_id": 333,
+    "coppia_nome": "Przyborek",
+    "coppia_id": 7345,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Cataldi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Przyborek (Mezzala SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 536,
@@ -35085,11 +35194,12 @@
     "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
-    "coppia_nome": "De Bruyne",
-    "coppia_id": 2517,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_nome": "Neres",
+    "coppia_id": 6831,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 85% vs 15% (Neres). ⚠️ Asimmetria Classic: Politano è C, Neres è A (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 4179,
@@ -35510,7 +35620,8 @@
     "coppia_id": 4973,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "75% vs 25% (McKennie)"
+    "coppia_dettaglio": "75% vs 25% (McKennie)",
+    "coppia_ibrida": false
   },
   {
     "id": 7625,
@@ -35865,7 +35976,8 @@
     "coppia_id": 6827,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "60% vs 40% (Njie)"
+    "coppia_dettaglio": "60% vs 40% (Njie)",
+    "coppia_ibrida": false
   },
   {
     "id": 2606,
@@ -36304,7 +36416,8 @@
     "coppia_id": 7203,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "85% vs 15% (Jashari)"
+    "coppia_dettaglio": "85% vs 15% (Jashari)",
+    "coppia_ibrida": false
   },
   {
     "id": 1850,
@@ -36607,11 +36720,12 @@
     "ai_advice": "🎯 RIGORISTA & BONUS MAN (+3)",
     "ai_advice_type": "leader",
     "consiglio": "🎯 RIGORISTA & BONUS MAN (+3)",
-    "coppia_nome": "Ederson D.S.",
-    "coppia_id": 5792,
+    "coppia_nome": "Gaetano",
+    "coppia_id": 4364,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Ederson D.S."
+    "coppia_dettaglio": "Copertura di Gaetano",
+    "coppia_ibrida": false
   },
   {
     "id": 5119,
@@ -36918,7 +37032,8 @@
     "coppia_id": 5422,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Zalewski)"
+    "coppia_dettaglio": "65% vs 35% (Zalewski)",
+    "coppia_ibrida": false
   },
   {
     "id": 5800,
@@ -37315,7 +37430,8 @@
     "coppia_id": 6398,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Isaksen)"
+    "coppia_dettaglio": "65% vs 35% (Isaksen)",
+    "coppia_ibrida": false
   },
   {
     "id": 7472,
@@ -37586,7 +37702,8 @@
     "coppia_id": 7550,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "80% vs 20% (Grillitsch)"
+    "coppia_dettaglio": "80% vs 20% (Grillitsch)",
+    "coppia_ibrida": false
   },
   {
     "id": 152,
@@ -38025,7 +38142,8 @@
     "coppia_id": 2194,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "20% vs 80% (Calhanoglu)"
+    "coppia_dettaglio": "20% vs 80% (Calhanoglu)",
+    "coppia_ibrida": false
   },
   {
     "id": 7436,
@@ -38274,11 +38392,12 @@
     "ai_advice": "🥇 ALA/SECONDA PUNTA (TOP FUORI RUOLO - FRP)",
     "ai_advice_type": "buy",
     "consiglio": "🥇 ALA/SECONDA PUNTA (TOP FUORI RUOLO - FRP)",
-    "coppia_nome": "Koopmeiners",
-    "coppia_id": 5685,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_nome": "Boga",
+    "coppia_id": 2832,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 75% vs 25% (Boga). ⚠️ Asimmetria Classic: Alajbegovic è C, Boga è A (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 7551,
@@ -38629,11 +38748,12 @@
     "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
-    "coppia_nome": "El Azzouzi A.",
-    "coppia_id": 7456,
-    "coppia_ruolo": "C",
+    "coppia_nome": "Ghedjemis",
+    "coppia_id": 6530,
+    "coppia_ruolo": "A",
     "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_dettaglio": "Staffetta (1 cambi). ⚠️ Ruoli Classic differenti: C vs A (stessa posizione in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 5792,
@@ -38936,11 +39056,12 @@
     "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
-    "coppia_nome": "Kessiè",
-    "coppia_id": 1850,
+    "coppia_nome": "Pasalic",
+    "coppia_id": 2077,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Pasalic (Mezzala SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4892,
@@ -39337,7 +39458,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 5844,
@@ -39679,8 +39801,9 @@
     "coppia_nome": "Matic",
     "coppia_id": 2528,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Matic"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Matic (Regista)",
+    "coppia_ibrida": false
   },
   {
     "id": 5589,
@@ -40118,8 +40241,9 @@
     "coppia_nome": "Pisilli",
     "coppia_id": 6190,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Pisilli (Mediano SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5823,
@@ -40546,7 +40670,8 @@
     "coppia_id": 2857,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "55% vs 45% (Traorè Hj.)"
+    "coppia_dettaglio": "55% vs 45% (Traorè Hj.)",
+    "coppia_ibrida": false
   },
   {
     "id": 5172,
@@ -40951,11 +41076,12 @@
     "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "ai_advice_type": "supersub",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "coppia_nome": "Barella",
-    "coppia_id": 1870,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Barella"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7129,
@@ -41190,7 +41316,8 @@
     "coppia_id": 7126,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "30% vs 70% (Baturina)"
+    "coppia_dettaglio": "30% vs 70% (Baturina)",
+    "coppia_ibrida": false
   },
   {
     "id": 6844,
@@ -41445,11 +41572,12 @@
     "ai_advice": "🔥 SCOMMESSA AD ALTO POTENZIALE",
     "ai_advice_type": "sleeper",
     "consiglio": "🔥 SCOMMESSA AD ALTO POTENZIALE",
-    "coppia_nome": "Elmas",
-    "coppia_id": 4479,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_nome": "Raspadori",
+    "coppia_id": 4371,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "BALLOTTAGGIO",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 40% vs 60% (Raspadori). ⚠️ Asimmetria Classic: Rowe è C, Raspadori è A (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 6666,
@@ -41800,11 +41928,12 @@
     "ai_advice": "🎯 RIGORISTA & BONUS MAN (+3)",
     "ai_advice_type": "leader",
     "consiglio": "🎯 RIGORISTA & BONUS MAN (+3)",
-    "coppia_nome": "Almqvist",
-    "coppia_id": 6207,
+    "coppia_nome": "Nicolussi Caviglia",
+    "coppia_id": 4349,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Nicolussi Caviglia (Mediano SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6618,
@@ -42057,7 +42186,8 @@
     "coppia_id": 4199,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Loftus-Cheek)"
+    "coppia_dettaglio": "50% vs 50% (Loftus-Cheek)",
+    "coppia_ibrida": false
   },
   {
     "id": 184,
@@ -42496,7 +42626,8 @@
     "coppia_id": 2167,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "15% vs 85% (Orsolini)"
+    "coppia_dettaglio": "15% vs 85% (Orsolini)",
+    "coppia_ibrida": false
   },
   {
     "id": 4856,
@@ -42911,7 +43042,8 @@
     "coppia_id": 6372,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Moreira)"
+    "coppia_dettaglio": "50% vs 50% (Moreira)",
+    "coppia_ibrida": false
   },
   {
     "id": 6677,
@@ -43230,7 +43362,8 @@
     "coppia_id": 6024,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "55% vs 45% (Sulemana I.)"
+    "coppia_dettaglio": "55% vs 45% (Sulemana I.)",
+    "coppia_ibrida": false
   },
   {
     "id": 4220,
@@ -43651,7 +43784,8 @@
     "coppia_id": 7223,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "55% vs 45% (Vergara)"
+    "coppia_dettaglio": "55% vs 45% (Vergara)",
+    "coppia_ibrida": false
   },
   {
     "id": 7060,
@@ -43905,11 +44039,12 @@
     "ai_advice": "🥇 ALA/SECONDA PUNTA (TOP FUORI RUOLO - FRP)",
     "ai_advice_type": "buy",
     "consiglio": "🥇 ALA/SECONDA PUNTA (TOP FUORI RUOLO - FRP)",
-    "coppia_nome": "Aboukhlal",
-    "coppia_id": 7183,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_nome": "Belghali",
+    "coppia_id": 7220,
+    "coppia_ruolo": "D",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 85% vs 15% (Belghali). ⚠️ Asimmetria Classic: Cacciamani è C, Belghali è D (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 6151,
@@ -44204,7 +44339,8 @@
     "coppia_id": 5036,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Caqueret)"
+    "coppia_dettaglio": "Alternativa (Caqueret)",
+    "coppia_ibrida": false
   },
   {
     "id": 7223,
@@ -44499,7 +44635,8 @@
     "coppia_id": 4220,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "45% vs 55% (Zambo Anguissa)"
+    "coppia_dettaglio": "45% vs 55% (Zambo Anguissa)",
+    "coppia_ibrida": false
   },
   {
     "id": 5500,
@@ -44853,8 +44990,9 @@
     "coppia_nome": "Zaccagni",
     "coppia_id": 632,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Zaccagni"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Zaccagni (Ala Sinistra)",
+    "coppia_ibrida": false
   },
   {
     "id": 5878,
@@ -45127,11 +45265,12 @@
     "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
-    "coppia_nome": "Forson O.",
-    "coppia_id": 6592,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_nome": "Zeballos",
+    "coppia_id": 7620,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 70% vs 30% (Zeballos). ⚠️ Asimmetria Classic: Colpani è C, Zeballos è A (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 4364,
@@ -45488,11 +45627,12 @@
     "ai_advice": "🔥 SCOMMESSA AD ALTO POTENZIALE",
     "ai_advice_type": "sleeper",
     "consiglio": "🔥 SCOMMESSA AD ALTO POTENZIALE",
-    "coppia_nome": "Pasalic",
-    "coppia_id": 2077,
+    "coppia_nome": "Kessiè",
+    "coppia_id": 1850,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Pasalic)"
+    "coppia_dettaglio": "Alternativa (Kessiè)",
+    "coppia_ibrida": false
   },
   {
     "id": 4436,
@@ -45823,7 +45963,8 @@
     "coppia_id": 6833,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "55% vs 45% (Mbangula)"
+    "coppia_dettaglio": "55% vs 45% (Mbangula)",
+    "coppia_ibrida": false
   },
   {
     "id": 6827,
@@ -46136,7 +46277,8 @@
     "coppia_id": 7625,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 60% (Goncalves P.)"
+    "coppia_dettaglio": "40% vs 60% (Goncalves P.)",
+    "coppia_ibrida": false
   },
   {
     "id": 7618,
@@ -46371,7 +46513,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6833,
@@ -46648,7 +46791,8 @@
     "coppia_id": 4436,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "45% vs 55% (Cambiaghi)"
+    "coppia_dettaglio": "45% vs 55% (Cambiaghi)",
+    "coppia_ibrida": false
   },
   {
     "id": 7412,
@@ -46979,7 +47123,8 @@
     "coppia_id": 5559,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "85% vs 15% (Da Cunha)"
+    "coppia_dettaglio": "85% vs 15% (Da Cunha)",
+    "coppia_ibrida": false
   },
   {
     "id": 779,
@@ -47393,8 +47538,9 @@
     "coppia_nome": "De Roon",
     "coppia_id": 22,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: De Roon (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 1933,
@@ -47833,7 +47979,8 @@
     "coppia_id": 6218,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "60% vs 40% (Oristanio)"
+    "coppia_dettaglio": "60% vs 40% (Oristanio)",
+    "coppia_ibrida": false
   },
   {
     "id": 6010,
@@ -48206,7 +48353,8 @@
     "coppia_id": 6815,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "60% vs 40% (Fadera)"
+    "coppia_dettaglio": "60% vs 40% (Fadera)",
+    "coppia_ibrida": false
   },
   {
     "id": 6398,
@@ -48537,7 +48685,8 @@
     "coppia_id": 5800,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Gudmundsson A.)"
+    "coppia_dettaglio": "35% vs 65% (Gudmundsson A.)",
+    "coppia_ibrida": false
   },
   {
     "id": 6678,
@@ -48737,11 +48886,12 @@
     "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
     "ai_advice_type": "sleeper",
     "consiglio": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Diao",
+    "coppia_id": 6967,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 25% vs 75% (Diao). ⚠️ Asimmetria Classic: Liberali è C, Diao è A (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 5761,
@@ -49162,7 +49312,8 @@
     "coppia_id": 6884,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "25% vs 75% (Conceicao)"
+    "coppia_dettaglio": "25% vs 75% (Conceicao)",
+    "coppia_ibrida": false
   },
   {
     "id": 6190,
@@ -49426,8 +49577,9 @@
     "coppia_nome": "Konè M.",
     "coppia_id": 5589,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Konè M."
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Konè M. (Mediano SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7619,
@@ -49770,7 +49922,8 @@
     "coppia_id": 6549,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 60% (Pierotti)"
+    "coppia_dettaglio": "40% vs 60% (Pierotti)",
+    "coppia_ibrida": false
   },
   {
     "id": 4287,
@@ -50208,8 +50361,9 @@
     "coppia_nome": "Gilmour",
     "coppia_id": 5131,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Gilmour (Regista)",
+    "coppia_ibrida": false
   },
   {
     "id": 4479,
@@ -50578,11 +50732,12 @@
     "ai_advice": "🥇 ESTERNO D'ATTACCO FUORI RUOLO (FRP)",
     "ai_advice_type": "buy",
     "consiglio": "🥇 ESTERNO D'ATTACCO FUORI RUOLO (FRP)",
-    "coppia_nome": "Rowe",
-    "coppia_id": 6844,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Rowe"
+    "coppia_nome": "De Ketelaere",
+    "coppia_id": 5995,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 15% vs 85% (De Ketelaere). ⚠️ Asimmetria Classic: Elmas è C, De Ketelaere è A (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 2077,
@@ -50879,11 +51034,12 @@
     "ai_advice": "🥈 TREQUARTISTA INSERIMENTI",
     "ai_advice_type": "buy",
     "consiglio": "🥈 TREQUARTISTA INSERIMENTI",
-    "coppia_nome": "Gaetano",
-    "coppia_id": 4364,
+    "coppia_nome": "Ederson D.S.",
+    "coppia_id": 5792,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Gaetano"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Ederson D.S. (Mezzala SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6294,
@@ -51166,7 +51322,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 5680,
@@ -51431,7 +51588,8 @@
     "coppia_id": 4911,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 60% (Douglas Luiz)"
+    "coppia_dettaglio": "40% vs 60% (Douglas Luiz)",
+    "coppia_ibrida": false
   },
   {
     "id": 4465,
@@ -51822,7 +51980,8 @@
     "coppia_id": 7464,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Oulai)"
+    "coppia_dettaglio": "50% vs 50% (Oulai)",
+    "coppia_ibrida": false
   },
   {
     "id": 6549,
@@ -52105,7 +52264,8 @@
     "coppia_id": 7619,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "60% vs 40% (Monteiro J.)"
+    "coppia_dettaglio": "60% vs 40% (Monteiro J.)",
+    "coppia_ibrida": false
   },
   {
     "id": 5858,
@@ -52459,8 +52619,9 @@
     "coppia_nome": "Moro N.",
     "coppia_id": 6054,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Moro N.)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Moro N. (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5504,
@@ -52827,7 +52988,8 @@
     "coppia_id": 7318,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "55% vs 45% (Gandelman)"
+    "coppia_dettaglio": "55% vs 45% (Gandelman)",
+    "coppia_ibrida": false
   },
   {
     "id": 7311,
@@ -53084,8 +53246,9 @@
     "coppia_nome": "Gagliardini",
     "coppia_id": 801,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Gagliardini (Mezzala SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5422,
@@ -53392,7 +53555,8 @@
     "coppia_id": 5119,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Samardzic)"
+    "coppia_dettaglio": "35% vs 65% (Samardzic)",
+    "coppia_ibrida": false
   },
   {
     "id": 6680,
@@ -53683,11 +53847,12 @@
     "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
-    "coppia_nome": "Zarraga",
-    "coppia_id": 6212,
+    "coppia_nome": "Miller L.",
+    "coppia_id": 7208,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Zarraga)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Miller L. (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5735,
@@ -53966,11 +54131,12 @@
     "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
     "ai_advice_type": "warning",
     "consiglio": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Berardi",
+    "coppia_id": 531,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "BALLOTTAGGIO",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 50% vs 50% (Berardi). ⚠️ Asimmetria Classic: Volpato è C, Berardi è A (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 795,
@@ -54354,8 +54520,9 @@
     "coppia_nome": "Frendrup",
     "coppia_id": 5791,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Frendrup"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Frendrup (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5888,
@@ -54566,7 +54733,8 @@
     "coppia_id": 6170,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "25% vs 75% (Gineitis)"
+    "coppia_dettaglio": "25% vs 75% (Gineitis)",
+    "coppia_ibrida": false
   },
   {
     "id": 7070,
@@ -54819,7 +54987,8 @@
     "coppia_id": 152,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Zielinski)"
+    "coppia_dettaglio": "35% vs 65% (Zielinski)",
+    "coppia_ibrida": false
   },
   {
     "id": 5685,
@@ -55218,11 +55387,12 @@
     "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
-    "coppia_nome": "Alajbegovic",
-    "coppia_id": 7436,
+    "coppia_nome": "Locatelli",
+    "coppia_id": 827,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Alajbegovic"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Locatelli (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7535,
@@ -55600,8 +55770,9 @@
     "coppia_nome": "Ilkhan",
     "coppia_id": 6005,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Ilkhan (Mezzala DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5295,
@@ -55931,8 +56102,9 @@
     "coppia_nome": "Rabiot",
     "coppia_id": 2379,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Rabiot"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Rabiot (Mediano SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 530,
@@ -56276,11 +56448,12 @@
     "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
     "ai_advice_type": "sleeper",
     "consiglio": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
-    "coppia_nome": "Mora",
-    "coppia_id": 7556,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Mora"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7036,
@@ -56557,7 +56730,8 @@
     "coppia_id": 6246,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Lipani)"
+    "coppia_dettaglio": "65% vs 35% (Lipani)",
+    "coppia_ibrida": false
   },
   {
     "id": 6252,
@@ -56978,7 +57152,8 @@
     "coppia_id": 7574,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Foe Ondoa)"
+    "coppia_dettaglio": "65% vs 35% (Foe Ondoa)",
+    "coppia_ibrida": false
   },
   {
     "id": 5036,
@@ -57267,7 +57442,8 @@
     "coppia_id": 6151,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Perrone"
+    "coppia_dettaglio": "Copertura di Perrone",
+    "coppia_ibrida": false
   },
   {
     "id": 6783,
@@ -57550,7 +57726,8 @@
     "coppia_id": 2766,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "15% vs 85% (Zaniolo)"
+    "coppia_dettaglio": "15% vs 85% (Zaniolo)",
+    "coppia_ibrida": false
   },
   {
     "id": 2528,
@@ -57988,8 +58165,9 @@
     "coppia_nome": "Thorstvedt",
     "coppia_id": 5844,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Thorstvedt)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Thorstvedt (Regista)",
+    "coppia_ibrida": false
   },
   {
     "id": 6506,
@@ -58229,7 +58407,8 @@
     "coppia_id": 5998,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "85% vs 15% (Zerbin)"
+    "coppia_dettaglio": "85% vs 15% (Zerbin)",
+    "coppia_ibrida": false
   },
   {
     "id": 827,
@@ -58568,11 +58747,12 @@
     "ai_advice": "⛔ LUNGA DEGENZA (EVITARE)",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ LUNGA DEGENZA (EVITARE)",
-    "coppia_nome": "Thuram K.",
-    "coppia_id": 5562,
+    "coppia_nome": "Koopmeiners",
+    "coppia_id": 5685,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Thuram K.)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Koopmeiners (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7464,
@@ -58807,7 +58987,8 @@
     "coppia_id": 4465,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Fagioli)"
+    "coppia_dettaglio": "50% vs 50% (Fagioli)",
+    "coppia_ibrida": false
   },
   {
     "id": 6994,
@@ -59110,11 +59291,12 @@
     "ai_advice": "🥈 TREQUARTISTA D'INCURSIONE (FRP)",
     "ai_advice_type": "buy",
     "consiglio": "🥈 TREQUARTISTA D'INCURSIONE (FRP)",
-    "coppia_nome": "Dagasso",
-    "coppia_id": 7481,
+    "coppia_nome": "Busio",
+    "coppia_id": 5507,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Busio (Mediano)",
+    "coppia_ibrida": false
   },
   {
     "id": 5998,
@@ -59427,7 +59609,8 @@
     "coppia_id": 6506,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "15% vs 85% (Fini)"
+    "coppia_dettaglio": "15% vs 85% (Fini)",
+    "coppia_ibrida": false
   },
   {
     "id": 2765,
@@ -59818,7 +60001,8 @@
     "coppia_id": 6225,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "85% vs 15% (El Azzouzi O.)"
+    "coppia_dettaglio": "85% vs 15% (El Azzouzi O.)",
+    "coppia_ibrida": false
   },
   {
     "id": 4199,
@@ -60257,7 +60441,8 @@
     "coppia_id": 6618,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Cissè A.)"
+    "coppia_dettaglio": "50% vs 50% (Cissè A.)",
+    "coppia_ibrida": false
   },
   {
     "id": 5791,
@@ -60539,8 +60724,9 @@
     "coppia_nome": "El Shaarawy",
     "coppia_id": 795,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (El Shaarawy)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: El Shaarawy (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4260,
@@ -60918,8 +61104,9 @@
     "coppia_nome": "Massolin",
     "coppia_id": 7579,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Massolin)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Massolin (Regista)",
+    "coppia_ibrida": false
   },
   {
     "id": 7624,
@@ -61186,11 +61373,12 @@
     "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "ai_advice_type": "supersub",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "coppia_nome": "Vlasic",
-    "coppia_id": 5687,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Vlasic"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 4911,
@@ -61581,7 +61769,8 @@
     "coppia_id": 5680,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "60% vs 40% (Sarr P.)"
+    "coppia_dettaglio": "60% vs 40% (Sarr P.)",
+    "coppia_ibrida": false
   },
   {
     "id": 5674,
@@ -61854,11 +62043,12 @@
     "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
     "ai_advice_type": "warning",
     "consiglio": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "coppia_nome": "Duncan",
-    "coppia_id": 526,
+    "coppia_nome": "Helgason",
+    "coppia_id": 5872,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Duncan)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Helgason (Mezzala DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5301,
@@ -62113,11 +62303,12 @@
     "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "ai_advice_type": "supersub",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "coppia_nome": "Diouf",
-    "coppia_id": 6274,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Diouf"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 4870,
@@ -62432,11 +62623,12 @@
     "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
-    "coppia_nome": "Liteta",
-    "coppia_id": 7165,
+    "coppia_nome": "Deiola",
+    "coppia_id": 1871,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Liteta)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Deiola (Mezzala DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7248,
@@ -62640,7 +62832,8 @@
     "coppia_id": 7322,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Ngom)"
+    "coppia_dettaglio": "35% vs 65% (Ngom)",
+    "coppia_ibrida": false
   },
   {
     "id": 6020,
@@ -62919,11 +63112,12 @@
     "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
     "ai_advice_type": "titolarissimo",
     "consiglio": "🔒 TITOLARISSIMO (100% VOTO)",
-    "coppia_nome": "Meichtry",
-    "coppia_id": 7409,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Meichtry)"
+    "coppia_nome": "Mitaj",
+    "coppia_id": 7537,
+    "coppia_ruolo": "D",
+    "coppia_tipo": "BALLOTTAGGIO",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 50% vs 50% (Mitaj). ⚠️ Asimmetria Classic: Ellertsson è C, Mitaj è D (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 6895,
@@ -63200,7 +63394,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6054,
@@ -63476,8 +63671,9 @@
     "coppia_nome": "Ferguson",
     "coppia_id": 5858,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Ferguson"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Ferguson (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5453,
@@ -63832,7 +64028,8 @@
     "coppia_id": 6875,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Paz N."
+    "coppia_dettaglio": "Subentra a Paz N.",
+    "coppia_ibrida": false
   },
   {
     "id": 7575,
@@ -64090,7 +64287,8 @@
     "coppia_id": 6593,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Akinsanmiro)"
+    "coppia_dettaglio": "50% vs 50% (Akinsanmiro)",
+    "coppia_ibrida": false
   },
   {
     "id": 4947,
@@ -64391,7 +64589,8 @@
     "coppia_id": 6908,
     "coppia_ruolo": "C",
     "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_dettaglio": "Staffetta (1 cambi)",
+    "coppia_ibrida": false
   },
   {
     "id": 5507,
@@ -64760,11 +64959,12 @@
     "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
     "ai_advice_type": "warning",
     "consiglio": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "coppia_nome": "Helgason",
-    "coppia_id": 5872,
+    "coppia_nome": "Perez K.",
+    "coppia_id": 6994,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Perez K. (Mediano)",
+    "coppia_ibrida": false
   },
   {
     "id": 6898,
@@ -65067,11 +65267,12 @@
     "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
     "ai_advice_type": "titolarissimo",
     "consiglio": "🔒 TITOLARISSIMO (100% VOTO)",
-    "coppia_nome": "Diallo O.",
-    "coppia_id": 7536,
+    "coppia_nome": "Ordonez C.",
+    "coppia_id": 7138,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Ordonez C. (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6629,
@@ -65329,8 +65530,9 @@
     "coppia_nome": "Frattesi",
     "coppia_id": 2848,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Frattesi (Mezzala DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7203,
@@ -65613,7 +65815,8 @@
     "coppia_id": 2606,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "15% vs 85% (Modric)"
+    "coppia_dettaglio": "15% vs 85% (Modric)",
+    "coppia_ibrida": false
   },
   {
     "id": 22,
@@ -65973,8 +66176,9 @@
     "coppia_nome": "Cristante",
     "coppia_id": 779,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Cristante"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Cristante (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7473,
@@ -66196,7 +66400,8 @@
     "coppia_id": 6917,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Masini)"
+    "coppia_dettaglio": "35% vs 65% (Masini)",
+    "coppia_ibrida": false
   },
   {
     "id": 6207,
@@ -66559,11 +66764,12 @@
     "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
-    "coppia_nome": "Bernabè",
-    "coppia_id": 6666,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Bernabè"
+    "coppia_nome": "Britschgi",
+    "coppia_id": 7255,
+    "coppia_ruolo": "D",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 25% vs 75% (Britschgi). ⚠️ Asimmetria Classic: Almqvist è C, Britschgi è D (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 5131,
@@ -66869,8 +67075,9 @@
     "coppia_nome": "Lobotka",
     "coppia_id": 4287,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Lobotka"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Lobotka (Regista)",
+    "coppia_ibrida": false
   },
   {
     "id": 6593,
@@ -67147,7 +67354,8 @@
     "coppia_id": 7575,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Mout)"
+    "coppia_dettaglio": "50% vs 50% (Mout)",
+    "coppia_ibrida": false
   },
   {
     "id": 5946,
@@ -67586,7 +67794,8 @@
     "coppia_id": 7341,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "60% vs 40% (Amorim)"
+    "coppia_dettaglio": "60% vs 40% (Amorim)",
+    "coppia_ibrida": false
   },
   {
     "id": 6218,
@@ -67893,7 +68102,8 @@
     "coppia_id": 1933,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 60% (Mandragora)"
+    "coppia_dettaglio": "40% vs 60% (Mandragora)",
+    "coppia_ibrida": false
   },
   {
     "id": 7409,
@@ -68166,11 +68376,12 @@
     "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
     "ai_advice_type": "sleeper",
     "consiglio": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
-    "coppia_nome": "Ellertsson",
-    "coppia_id": 6020,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Ellertsson"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 2857,
@@ -68501,7 +68712,8 @@
     "coppia_id": 5823,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "45% vs 55% (Baldanzi)"
+    "coppia_dettaglio": "45% vs 55% (Baldanzi)",
+    "coppia_ibrida": false
   },
   {
     "id": 7536,
@@ -68732,11 +68944,12 @@
     "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "ai_advice_type": "benched",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "coppia_nome": "Keita M.",
-    "coppia_id": 6898,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Keita M."
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6815,
@@ -69013,7 +69226,8 @@
     "coppia_id": 6010,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 60% (Fazzini)"
+    "coppia_dettaglio": "40% vs 60% (Fazzini)",
+    "coppia_ibrida": false
   },
   {
     "id": 7127,
@@ -69253,7 +69467,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6206,
@@ -69496,11 +69711,12 @@
     "ai_advice": "🥈 TREQUARTISTA INSERIMENTI",
     "ai_advice_type": "buy",
     "consiglio": "🥈 TREQUARTISTA INSERIMENTI",
-    "coppia_nome": "Nicolussi Caviglia",
-    "coppia_id": 4349,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Nicolussi Caviglia)"
+    "coppia_nome": "Elphege",
+    "coppia_id": 7342,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 85% vs 15% (Elphege). ⚠️ Asimmetria Classic: Fabbian è C, Elphege è A (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 5298,
@@ -69909,7 +70125,8 @@
     "coppia_id": 7528,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "75% vs 25% (Amondarain)"
+    "coppia_dettaglio": "75% vs 25% (Amondarain)",
+    "coppia_ibrida": false
   },
   {
     "id": 4459,
@@ -70290,11 +70507,12 @@
     "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
     "ai_advice_type": "avoid",
     "consiglio": "⚠️ INFORTUNATO (NON COMPRARE)",
-    "coppia_nome": "Belahyane",
-    "coppia_id": 6191,
+    "coppia_nome": "Cataldi",
+    "coppia_id": 333,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Belahyane"
+    "coppia_dettaglio": "Alternativa diretta: Cataldi (Regista)",
+    "coppia_ibrida": false
   },
   {
     "id": 7146,
@@ -70546,7 +70764,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6170,
@@ -70859,7 +71078,8 @@
     "coppia_id": 5888,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "75% vs 25% (Casadei)"
+    "coppia_dettaglio": "75% vs 25% (Casadei)",
+    "coppia_ibrida": false
   },
   {
     "id": 4970,
@@ -71294,11 +71514,12 @@
     "ai_advice": "🥇 ESTERNO D'ATTACCO FUORI RUOLO (FRP)",
     "ai_advice_type": "buy",
     "consiglio": "🥇 ESTERNO D'ATTACCO FUORI RUOLO (FRP)",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Vitinha O.",
+    "coppia_id": 6164,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "BALLOTTAGGIO",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 40% vs 60% (Vitinha O.). ⚠️ Asimmetria Classic: Messias è C, Vitinha O. è A (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 6917,
@@ -71605,7 +71826,8 @@
     "coppia_id": 7473,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Cichella)"
+    "coppia_dettaglio": "65% vs 35% (Cichella)",
+    "coppia_ibrida": false
   },
   {
     "id": 7579,
@@ -71784,8 +72006,9 @@
     "coppia_nome": "Winks",
     "coppia_id": 4260,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Winks"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Winks (Regista)",
+    "coppia_ibrida": false
   },
   {
     "id": 7528,
@@ -72020,7 +72243,8 @@
     "coppia_id": 5298,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "25% vs 75% (Pobega)"
+    "coppia_dettaglio": "25% vs 75% (Pobega)",
+    "coppia_ibrida": false
   },
   {
     "id": 5319,
@@ -72368,8 +72592,9 @@
     "coppia_nome": "Fernandez T.",
     "coppia_id": 7232,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (2 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Fernandez T. (Mezzala SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7341,
@@ -72609,7 +72834,8 @@
     "coppia_id": 5946,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 60% (Sow)"
+    "coppia_dettaglio": "40% vs 60% (Sow)",
+    "coppia_ibrida": false
   },
   {
     "id": 7322,
@@ -72880,7 +73106,8 @@
     "coppia_id": 7248,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Gorter)"
+    "coppia_dettaglio": "65% vs 35% (Gorter)",
+    "coppia_ibrida": false
   },
   {
     "id": 7208,
@@ -73159,11 +73386,12 @@
     "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "ai_advice_type": "rotation",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "coppia_nome": "Piotrowski",
-    "coppia_id": 7198,
+    "coppia_nome": "Karlstrom",
+    "coppia_id": 6680,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Piotrowski"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Karlstrom (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6503,
@@ -73363,11 +73591,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Barella",
+    "coppia_id": 1870,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Barella (Mezzala DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5007,
@@ -73784,11 +74013,12 @@
     "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
     "ai_advice_type": "hot",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
-    "coppia_nome": "Berisha M.",
-    "coppia_id": 6015,
+    "coppia_nome": "Fofana Sa.",
+    "coppia_id": 7319,
     "coppia_ruolo": "C",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Berisha M.)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Fofana Sa. (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7198,
@@ -74079,11 +74309,12 @@
     "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
     "ai_advice_type": "warning",
     "consiglio": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "coppia_nome": "Miller L.",
-    "coppia_id": 7208,
+    "coppia_nome": "Zarraga",
+    "coppia_id": 6212,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (2 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Zarraga (Mediano SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7138,
@@ -74344,11 +74575,12 @@
     "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "ai_advice_type": "rotation",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "coppia_nome": "Cremaschi",
-    "coppia_id": 7276,
+    "coppia_nome": "Keita M.",
+    "coppia_id": 6898,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Keita M. (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 2741,
@@ -74612,7 +74844,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 2529,
@@ -74979,7 +75212,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 333,
@@ -75323,11 +75557,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "Taylor K.",
-    "coppia_id": 7314,
+    "coppia_nome": "Rovella",
+    "coppia_id": 4459,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Taylor K."
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Rovella (Regista)",
+    "coppia_ibrida": false
   },
   {
     "id": 6717,
@@ -75543,7 +75778,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7232,
@@ -75801,8 +76037,9 @@
     "coppia_nome": "Sohm",
     "coppia_id": 5319,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Sohm"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Sohm (Mezzala SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5562,
@@ -76086,11 +76323,12 @@
     "ai_advice": "⛔ LUNGA DEGENZA (EVITARE)",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ LUNGA DEGENZA (EVITARE)",
-    "coppia_nome": "Locatelli",
-    "coppia_id": 827,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Locatelli"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6015,
@@ -76357,11 +76595,12 @@
     "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
     "ai_advice_type": "avoid",
     "consiglio": "⚠️ INFORTUNATO (NON COMPRARE)",
-    "coppia_nome": "Ilic",
-    "coppia_id": 5007,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Ilic"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7550,
@@ -76728,7 +76967,8 @@
     "coppia_id": 7472,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "20% vs 80% (Calò)"
+    "coppia_dettaglio": "20% vs 80% (Calò)",
+    "coppia_ibrida": false
   },
   {
     "id": 6225,
@@ -77047,7 +77287,8 @@
     "coppia_id": 2765,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "15% vs 85% (Odgaard)"
+    "coppia_dettaglio": "15% vs 85% (Odgaard)",
+    "coppia_ibrida": false
   },
   {
     "id": 6903,
@@ -77300,7 +77541,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6246,
@@ -77565,7 +77807,8 @@
     "coppia_id": 7036,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Bakola)"
+    "coppia_dettaglio": "35% vs 65% (Bakola)",
+    "coppia_ibrida": false
   },
   {
     "id": 6241,
@@ -77865,7 +78108,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 801,
@@ -78249,8 +78493,9 @@
     "coppia_nome": "Romano",
     "coppia_id": 7311,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Romano"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Romano (Mezzala SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5880,
@@ -78526,7 +78771,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7418,
@@ -78874,8 +79120,9 @@
     "coppia_nome": "Ekkelenkamp",
     "coppia_id": 6684,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Ekkelenkamp"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Ekkelenkamp (Trequartista SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7345,
@@ -79051,11 +79298,12 @@
     "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
     "ai_advice_type": "sleeper",
     "consiglio": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Taylor K.",
+    "coppia_id": 7314,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Taylor K. (Mezzala SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4349,
@@ -79291,11 +79539,12 @@
     "ai_advice": "⛔ LUNGA DEGENZA (EVITARE)",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ LUNGA DEGENZA (EVITARE)",
-    "coppia_nome": "Fabbian",
-    "coppia_id": 6206,
+    "coppia_nome": "Bernabè",
+    "coppia_id": 6666,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Fabbian"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Bernabè (Mediano SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6024,
@@ -79566,7 +79815,8 @@
     "coppia_id": 6677,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "45% vs 55% (Adzic)"
+    "coppia_dettaglio": "45% vs 55% (Adzic)",
+    "coppia_ibrida": false
   },
   {
     "id": 6592,
@@ -79863,11 +80113,12 @@
     "ai_advice": "🥇 ALA/SECONDA PUNTA (TOP FUORI RUOLO - FRP)",
     "ai_advice_type": "buy",
     "consiglio": "🥇 ALA/SECONDA PUNTA (TOP FUORI RUOLO - FRP)",
-    "coppia_nome": "Colpani",
-    "coppia_id": 5878,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Colpani"
+    "coppia_nome": "Zeballos",
+    "coppia_id": 7620,
+    "coppia_ruolo": "A",
+    "coppia_tipo": "BALLOTTAGGIO",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 50% vs 50% (Zeballos). ⚠️ Asimmetria Classic: Forson O. è C, Zeballos è A (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 7318,
@@ -80138,7 +80389,8 @@
     "coppia_id": 5504,
     "coppia_ruolo": "C",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "45% vs 55% (Coulibaly L.)"
+    "coppia_dettaglio": "45% vs 55% (Coulibaly L.)",
+    "coppia_ibrida": false
   },
   {
     "id": 6005,
@@ -80468,8 +80720,9 @@
     "coppia_nome": "Fitz-Jim",
     "coppia_id": 7535,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Fitz-Jim"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Fitz-Jim (Mezzala DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5457,
@@ -80848,7 +81101,8 @@
     "coppia_id": 6410,
     "coppia_ruolo": "C",
     "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_dettaglio": "Staffetta (1 cambi)",
+    "coppia_ibrida": false
   },
   {
     "id": 5872,
@@ -81073,11 +81327,12 @@
     "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
     "ai_advice_type": "sleeper",
     "consiglio": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
-    "coppia_nome": "Busio",
-    "coppia_id": 5507,
+    "coppia_nome": "Basic",
+    "coppia_id": 5674,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Busio"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Basic (Mezzala DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7092,
@@ -81269,7 +81524,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7477,
@@ -81468,7 +81724,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6191,
@@ -81729,11 +81986,12 @@
     "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "ai_advice_type": "rotation",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "coppia_nome": "Rovella",
-    "coppia_id": 4459,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6219,
@@ -81985,7 +82243,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6212,
@@ -82240,11 +82499,12 @@
     "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
     "ai_advice_type": "lowcost",
     "consiglio": "🪑 RISERVA DA SLOT 1 CR",
-    "coppia_nome": "Karlstrom",
-    "coppia_id": 6680,
+    "coppia_nome": "Piotrowski",
+    "coppia_id": 7198,
     "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Karlstrom"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Piotrowski (Mediano SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 1871,
@@ -82679,11 +82939,12 @@
     "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
     "ai_advice_type": "titolarissimo",
     "consiglio": "🔒 TITOLARISSIMO (100% VOTO)",
-    "coppia_nome": "Ciervo",
-    "coppia_id": 5462,
+    "coppia_nome": "Adopo",
+    "coppia_id": 4870,
     "coppia_ruolo": "C",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Adopo (Mezzala DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7183,
@@ -82992,11 +83253,12 @@
     "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
     "ai_advice_type": "sleeper",
     "consiglio": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
-    "coppia_nome": "Cacciamani",
-    "coppia_id": 7060,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Cacciamani"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7574,
@@ -83218,7 +83480,8 @@
     "coppia_id": 6252,
     "coppia_ruolo": "C",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Folorunsho)"
+    "coppia_dettaglio": "35% vs 65% (Folorunsho)",
+    "coppia_ibrida": false
   },
   {
     "id": 7357,
@@ -83398,7 +83661,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 5725,
@@ -83662,7 +83926,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 5462,
@@ -83862,11 +84127,12 @@
     "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
     "ai_advice_type": "sleeper",
     "consiglio": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
-    "coppia_nome": "Deiola",
-    "coppia_id": 1871,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Deiola"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7456,
@@ -84109,11 +84375,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "Schmid",
-    "coppia_id": 7551,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Schmid"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7572,
@@ -84293,7 +84560,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7276,
@@ -84518,11 +84786,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "Ordonez C.",
-    "coppia_id": 7138,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Ordonez C."
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 526,
@@ -84866,11 +85135,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "Basic",
-    "coppia_id": 5674,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Basic"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6410,
@@ -85123,7 +85393,8 @@
     "coppia_id": 5457,
     "coppia_ruolo": "C",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Maleh"
+    "coppia_dettaglio": "Subentra a Maleh",
+    "coppia_ibrida": false
   },
   {
     "id": 7571,
@@ -85290,7 +85561,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6980,
@@ -85494,7 +85766,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7481,
@@ -85725,11 +85998,12 @@
     "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
     "ai_advice_type": "avoid",
     "consiglio": "⚠️ INFORTUNATO (NON COMPRARE)",
-    "coppia_nome": "Perez K.",
-    "coppia_id": 6994,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Perez K."
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7165,
@@ -85917,11 +86191,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "Adopo",
-    "coppia_id": 4870,
-    "coppia_ruolo": "C",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Adopo"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7319,
@@ -86097,11 +86372,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Ilic",
+    "coppia_id": 5007,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Ilic (Mediano DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7628,
@@ -86504,7 +86780,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6640,
@@ -86781,7 +87058,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 254,
@@ -87180,11 +87458,12 @@
     "ai_advice": "👑 TOP PLAYER ASSOLUTO",
     "ai_advice_type": "top",
     "consiglio": "👑 TOP PLAYER ASSOLUTO",
-    "coppia_nome": "Carlos Augusto",
-    "coppia_id": 5877,
-    "coppia_ruolo": "D",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (2 cambi)"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 4998,
@@ -87521,7 +87800,8 @@
     "coppia_id": 7599,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Lulli)"
+    "coppia_dettaglio": "50% vs 50% (Lulli)",
+    "coppia_ibrida": false
   },
   {
     "id": 7181,
@@ -87881,8 +88161,9 @@
     "coppia_nome": "Rensch",
     "coppia_id": 6986,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Rensch)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Rensch (Esterno SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 2788,
@@ -88297,7 +88578,8 @@
     "coppia_id": 6766,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "85% vs 15% (Kelly L.)"
+    "coppia_dettaglio": "85% vs 15% (Kelly L.)",
+    "coppia_ibrida": false
   },
   {
     "id": 2296,
@@ -88700,7 +88982,8 @@
     "coppia_id": 6631,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "45% vs 55% (Ghilardi)"
+    "coppia_dettaglio": "45% vs 55% (Ghilardi)",
+    "coppia_ibrida": false
   },
   {
     "id": 5022,
@@ -89027,11 +89310,12 @@
     "ai_advice": "🔥 SCOMMESSA AD ALTO POTENZIALE",
     "ai_advice_type": "sleeper",
     "consiglio": "🔥 SCOMMESSA AD ALTO POTENZIALE",
-    "coppia_nome": "Tomori",
-    "coppia_id": 4751,
+    "coppia_nome": "Terracciano F.",
+    "coppia_id": 5812,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Tomori)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Terracciano F. (Braccetto SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4976,
@@ -89362,7 +89646,8 @@
     "coppia_id": 5520,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "85% vs 15% (Cambiaso)"
+    "coppia_dettaglio": "85% vs 15% (Cambiaso)",
+    "coppia_ibrida": false
   },
   {
     "id": 4409,
@@ -89797,11 +90082,12 @@
     "ai_advice": "⚠️ TOP DI VETRO (CON COPERTURA)",
     "ai_advice_type": "warning",
     "consiglio": "⚠️ TOP DI VETRO (CON COPERTURA)",
-    "coppia_nome": "Buongiorno",
-    "coppia_id": 2724,
+    "coppia_nome": "Beukema",
+    "coppia_id": 6202,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Buongiorno)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Beukema (Centrale DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4159,
@@ -90239,8 +90525,9 @@
     "coppia_nome": "Stones",
     "coppia_id": 2514,
     "coppia_ruolo": "D",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Stones (Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 2816,
@@ -90534,8 +90821,9 @@
     "coppia_nome": "Favasuli",
     "coppia_id": 7563,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Favasuli)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Favasuli (Terzino DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 2120,
@@ -90970,11 +91258,12 @@
     "ai_advice": "⭐ 2° SLOT / TITOLARE DI LUSSO",
     "ai_advice_type": "leader",
     "consiglio": "⭐ 2° SLOT / TITOLARE DI LUSSO",
-    "coppia_nome": "Spence",
-    "coppia_id": 5982,
+    "coppia_nome": "Carlos Augusto",
+    "coppia_id": 5877,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Spence)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Carlos Augusto (Braccetto SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6217,
@@ -91287,7 +91576,8 @@
     "coppia_id": 4177,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "75% vs 25% (Pavard)"
+    "coppia_dettaglio": "75% vs 25% (Pavard)",
+    "coppia_ibrida": false
   },
   {
     "id": 4317,
@@ -91653,8 +91943,9 @@
     "coppia_nome": "Balerdi",
     "coppia_id": 4705,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Balerdi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Balerdi (Braccetto DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5750,
@@ -91941,11 +92232,12 @@
     "ai_advice": "⚠️ TREND NEGATIVO (SOTTOTONO)",
     "ai_advice_type": "flop",
     "consiglio": "⚠️ TREND NEGATIVO (SOTTOTONO)",
-    "coppia_nome": "Otoa",
-    "coppia_id": 6977,
+    "coppia_nome": "Puczka",
+    "coppia_id": 7413,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Otoa)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Puczka (Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 6956,
@@ -92347,8 +92639,9 @@
     "coppia_nome": "Ebosse",
     "coppia_id": 5994,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Ebosse)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Ebosse (Braccetto DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5620,
@@ -92775,7 +93068,8 @@
     "coppia_id": 4817,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Pedraza"
+    "coppia_dettaglio": "Alternativa diretta: Pedraza (Terzino SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5833,
@@ -93126,11 +93420,12 @@
     "ai_advice": "🔥 SCOMMESSA AD ALTO POTENZIALE",
     "ai_advice_type": "sleeper",
     "consiglio": "🔥 SCOMMESSA AD ALTO POTENZIALE",
-    "coppia_nome": "Terracciano F.",
-    "coppia_id": 5812,
+    "coppia_nome": "Tomori",
+    "coppia_id": 4751,
     "coppia_ruolo": "D",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Tomori (Braccetto DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6869,
@@ -93412,8 +93707,9 @@
     "coppia_nome": "Kempf",
     "coppia_id": 6893,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Kempf)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Kempf (Centrale DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5514,
@@ -93698,11 +93994,12 @@
     "ai_advice": "🔥 DIFENSORE IN FORMA / DA VOTO",
     "ai_advice_type": "hot",
     "consiglio": "🔥 DIFENSORE IN FORMA / DA VOTO",
-    "coppia_nome": "Mitaj",
-    "coppia_id": 7537,
+    "coppia_nome": "Otoa",
+    "coppia_id": 6977,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Mitaj)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Otoa (Braccetto SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6727,
@@ -94033,7 +94330,8 @@
     "coppia_id": 7014,
     "coppia_ruolo": "D",
     "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (2 cambi)"
+    "coppia_dettaglio": "Staffetta (2 cambi)",
+    "coppia_ibrida": false
   },
   {
     "id": 4734,
@@ -94334,7 +94632,8 @@
     "coppia_id": 7483,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Alhassane)"
+    "coppia_dettaglio": "50% vs 50% (Alhassane)",
+    "coppia_ibrida": false
   },
   {
     "id": 5641,
@@ -94727,11 +95026,12 @@
     "ai_advice": "💎 OTTIMO 3° SLOT TITOLARE",
     "ai_advice_type": "buy",
     "consiglio": "💎 OTTIMO 3° SLOT TITOLARE",
-    "coppia_nome": "Kambwala",
-    "coppia_id": 6601,
+    "coppia_nome": "Goldaniga",
+    "coppia_id": 418,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Kambwala)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Goldaniga (Centrale SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5982,
@@ -94979,11 +95279,12 @@
     "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
     "ai_advice_type": "avoid",
     "consiglio": "⚠️ INFORTUNATO (NON COMPRARE)",
-    "coppia_nome": "Bastoni",
-    "coppia_id": 2120,
-    "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Bastoni"
+    "coppia_nome": "Diouf",
+    "coppia_id": 6274,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 35% vs 65% (Diouf). ⚠️ Asimmetria Classic: Spence è D, Diouf è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 5862,
@@ -95302,7 +95603,8 @@
     "coppia_id": 6149,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Carboni F.)"
+    "coppia_dettaglio": "Alternativa (Carboni F.)",
+    "coppia_ibrida": false
   },
   {
     "id": 6531,
@@ -95579,7 +95881,8 @@
     "coppia_id": 5885,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "60% vs 40% (Dodò)"
+    "coppia_dettaglio": "60% vs 40% (Dodò)",
+    "coppia_ibrida": false
   },
   {
     "id": 5877,
@@ -95882,11 +96185,12 @@
     "ai_advice": "🔥 DIFENSORE IN FORMA / DA VOTO",
     "ai_advice_type": "hot",
     "consiglio": "🔥 DIFENSORE IN FORMA / DA VOTO",
-    "coppia_nome": "Dimarco",
-    "coppia_id": 254,
+    "coppia_nome": "Bastoni",
+    "coppia_id": 2120,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Dimarco"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Bastoni (Braccetto SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4807,
@@ -96324,8 +96628,9 @@
     "coppia_nome": "Koulierakis",
     "coppia_id": 7529,
     "coppia_ruolo": "D",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Koulierakis (Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 7220,
@@ -96632,7 +96937,8 @@
     "coppia_id": 7069,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Fortini)"
+    "coppia_dettaglio": "65% vs 35% (Fortini)",
+    "coppia_ibrida": false
   },
   {
     "id": 6867,
@@ -96909,7 +97215,8 @@
     "coppia_id": 7414,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Kaiki)"
+    "coppia_dettaglio": "50% vs 50% (Kaiki)",
+    "coppia_ibrida": false
   },
   {
     "id": 6496,
@@ -97144,7 +97451,8 @@
     "coppia_id": 5273,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Estupinan)"
+    "coppia_dettaglio": "35% vs 65% (Estupinan)",
+    "coppia_ibrida": false
   },
   {
     "id": 4137,
@@ -97495,11 +97803,12 @@
     "ai_advice": "⭐ 2° SLOT / TITOLARE DI LUSSO",
     "ai_advice_type": "leader",
     "consiglio": "⭐ 2° SLOT / TITOLARE DI LUSSO",
-    "coppia_nome": "Valenti",
-    "coppia_id": 5307,
+    "coppia_nome": "Drobnic",
+    "coppia_id": 7615,
     "coppia_ruolo": "D",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Alternativa (Drobnic)",
+    "coppia_ibrida": false
   },
   {
     "id": 7485,
@@ -97818,7 +98127,8 @@
     "coppia_id": 7476,
     "coppia_ruolo": "D",
     "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_dettaglio": "Staffetta (1 cambi)",
+    "coppia_ibrida": false
   },
   {
     "id": 6989,
@@ -98058,7 +98368,8 @@
     "coppia_id": 6883,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Jean)"
+    "coppia_dettaglio": "Alternativa (Jean)",
+    "coppia_ibrida": false
   },
   {
     "id": 4994,
@@ -98469,11 +98780,12 @@
     "ai_advice": "🥇 SUPER QUINTO A 3 (ORO PURO)",
     "ai_advice_type": "buy",
     "consiglio": "🥇 SUPER QUINTO A 3 (ORO PURO)",
-    "coppia_nome": "Arizala",
-    "coppia_id": 7312,
+    "coppia_nome": "Zanoli",
+    "coppia_id": 5527,
     "coppia_ruolo": "D",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Zanoli (Esterno SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 1852,
@@ -98894,7 +99206,8 @@
     "coppia_id": 5840,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Olivera)"
+    "coppia_dettaglio": "65% vs 35% (Olivera)",
+    "coppia_ibrida": false
   },
   {
     "id": 6664,
@@ -99209,11 +99522,12 @@
     "ai_advice": "🥈 TERZINO DI SPINTA (FRP)",
     "ai_advice_type": "buy",
     "consiglio": "🥈 TERZINO DI SPINTA (FRP)",
-    "coppia_nome": "Ndiaye",
-    "coppia_id": 7202,
+    "coppia_nome": "Valenti",
+    "coppia_id": 5307,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Ndiaye)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Valenti (Braccetto SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5526,
@@ -99652,7 +99966,8 @@
     "coppia_id": 6046,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Hien)"
+    "coppia_dettaglio": "65% vs 35% (Hien)",
+    "coppia_ibrida": false
   },
   {
     "id": 4433,
@@ -99971,7 +100286,8 @@
     "coppia_id": 5678,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Holm)"
+    "coppia_dettaglio": "50% vs 50% (Holm)",
+    "coppia_ibrida": false
   },
   {
     "id": 7219,
@@ -100206,7 +100522,8 @@
     "coppia_id": 2640,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Kolasinac)"
+    "coppia_dettaglio": "50% vs 50% (Kolasinac)",
+    "coppia_ibrida": false
   },
   {
     "id": 59016,
@@ -100554,7 +100871,8 @@
     "coppia_id": 6021,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "75% vs 25% (Abankwah)"
+    "coppia_dettaglio": "75% vs 25% (Abankwah)",
+    "coppia_ibrida": false
   },
   {
     "id": 5675,
@@ -100861,7 +101179,8 @@
     "coppia_id": 7068,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "70% vs 30% (Vitik)"
+    "coppia_dettaglio": "70% vs 30% (Vitik)",
+    "coppia_ibrida": false
   },
   {
     "id": 7621,
@@ -101078,7 +101397,8 @@
     "coppia_id": 7274,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "70% vs 30% (Zè Pedro)"
+    "coppia_dettaglio": "70% vs 30% (Zè Pedro)",
+    "coppia_ibrida": false
   },
   {
     "id": 5739,
@@ -101469,7 +101789,8 @@
     "coppia_id": 4401,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "75% vs 25% (Gabbia)"
+    "coppia_dettaglio": "75% vs 25% (Gabbia)",
+    "coppia_ibrida": false
   },
   {
     "id": 7469,
@@ -101727,7 +102048,8 @@
     "coppia_id": 4375,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "55% vs 45% (Terzic)"
+    "coppia_dettaglio": "55% vs 45% (Terzic)",
+    "coppia_ibrida": false
   },
   {
     "id": 554,
@@ -102130,7 +102452,8 @@
     "coppia_id": 4887,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Bellanova)"
+    "coppia_dettaglio": "65% vs 35% (Bellanova)",
+    "coppia_ibrida": false
   },
   {
     "id": 4657,
@@ -102521,7 +102844,8 @@
     "coppia_id": 5520,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "75% vs 25% (Cambiaso)"
+    "coppia_dettaglio": "75% vs 25% (Cambiaso)",
+    "coppia_ibrida": false
   },
   {
     "id": 6320,
@@ -102828,7 +103152,8 @@
     "coppia_id": 7580,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "45% vs 55% (Sutalo J.)"
+    "coppia_dettaglio": "45% vs 55% (Sutalo J.)",
+    "coppia_ibrida": false
   },
   {
     "id": 7580,
@@ -103201,7 +103526,8 @@
     "coppia_id": 6320,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "55% vs 45% (Doekhi)"
+    "coppia_dettaglio": "55% vs 45% (Doekhi)",
+    "coppia_ibrida": false
   },
   {
     "id": 5520,
@@ -103550,7 +103876,8 @@
     "coppia_id": 4976,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "15% vs 85% (Kalulu)"
+    "coppia_dettaglio": "15% vs 85% (Kalulu)",
+    "coppia_ibrida": false
   },
   {
     "id": 5885,
@@ -103845,7 +104172,8 @@
     "coppia_id": 6531,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 60% (Jimenez A.)"
+    "coppia_dettaglio": "40% vs 60% (Jimenez A.)",
+    "coppia_ibrida": false
   },
   {
     "id": 5701,
@@ -104152,7 +104480,8 @@
     "coppia_id": 7548,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Aurelio)"
+    "coppia_dettaglio": "Alternativa (Aurelio)",
+    "coppia_ibrida": false
   },
   {
     "id": 4887,
@@ -104477,7 +104806,8 @@
     "coppia_id": 554,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Zappacosta)"
+    "coppia_dettaglio": "35% vs 65% (Zappacosta)",
+    "coppia_ibrida": false
   },
   {
     "id": 6485,
@@ -104760,7 +105090,8 @@
     "coppia_id": 5578,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Kossounou)"
+    "coppia_dettaglio": "50% vs 50% (Kossounou)",
+    "coppia_ibrida": false
   },
   {
     "id": 4210,
@@ -105123,11 +105454,12 @@
     "ai_advice": "⭐ 2° SLOT / TITOLARE DI LUSSO",
     "ai_advice_type": "leader",
     "consiglio": "⭐ 2° SLOT / TITOLARE DI LUSSO",
-    "coppia_nome": "Idrissi R.",
-    "coppia_id": 7125,
+    "coppia_nome": "Kofler",
+    "coppia_id": 7532,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Idrissi R.)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Kofler (Centrale DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 2188,
@@ -105494,7 +105826,8 @@
     "coppia_id": 7131,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Floriani Mussolini)"
+    "coppia_dettaglio": "65% vs 35% (Floriani Mussolini)",
+    "coppia_ibrida": false
   },
   {
     "id": 6042,
@@ -105795,7 +106128,8 @@
     "coppia_id": 5831,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "70% vs 30% (Gatti)"
+    "coppia_dettaglio": "70% vs 30% (Gatti)",
+    "coppia_ibrida": false
   },
   {
     "id": 7529,
@@ -106083,8 +106417,9 @@
     "coppia_nome": "Hermoso",
     "coppia_id": 4807,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Hermoso"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Hermoso (Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 5555,
@@ -106411,11 +106746,12 @@
     "ai_advice": "🔥 DIFENSORE IN FORMA / DA VOTO",
     "ai_advice_type": "hot",
     "consiglio": "🔥 DIFENSORE IN FORMA / DA VOTO",
-    "coppia_nome": "Zanoli",
-    "coppia_id": 5527,
+    "coppia_nome": "Arizala",
+    "coppia_id": 7312,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Zanoli)"
+    "coppia_dettaglio": "Alternativa (Arizala)",
+    "coppia_ibrida": false
   },
   {
     "id": 7414,
@@ -106650,7 +106986,8 @@
     "coppia_id": 6867,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Valle)"
+    "coppia_dettaglio": "50% vs 50% (Valle)",
+    "coppia_ibrida": false
   },
   {
     "id": 5273,
@@ -107077,7 +107414,8 @@
     "coppia_id": 6496,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Bartesaghi)"
+    "coppia_dettaglio": "65% vs 35% (Bartesaghi)",
+    "coppia_ibrida": false
   },
   {
     "id": 6672,
@@ -107380,11 +107718,12 @@
     "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
     "ai_advice_type": "warning",
     "consiglio": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "coppia_nome": "Caleta-Car",
-    "coppia_id": 4147,
+    "coppia_nome": "Odenthal",
+    "coppia_id": 7154,
     "coppia_ruolo": "D",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Odenthal (Centrale SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7629,
@@ -107661,7 +108000,8 @@
     "coppia_id": 7012,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Provstgaard)"
+    "coppia_dettaglio": "65% vs 35% (Provstgaard)",
+    "coppia_ibrida": false
   },
   {
     "id": 7212,
@@ -107944,7 +108284,8 @@
     "coppia_id": 7326,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Helland)"
+    "coppia_dettaglio": "65% vs 35% (Helland)",
+    "coppia_ibrida": false
   },
   {
     "id": 5838,
@@ -108251,7 +108592,8 @@
     "coppia_id": 7604,
     "coppia_ruolo": "D",
     "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_dettaglio": "Staffetta (1 cambi)",
+    "coppia_ibrida": false
   },
   {
     "id": 5365,
@@ -108554,11 +108896,12 @@
     "ai_advice": "🔥 SCOMMESSA AD ALTO POTENZIALE",
     "ai_advice_type": "sleeper",
     "consiglio": "🔥 SCOMMESSA AD ALTO POTENZIALE",
-    "coppia_nome": "Parisi",
-    "coppia_id": 5449,
-    "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Parisi)"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 4664,
@@ -108925,7 +109268,8 @@
     "coppia_id": 6638,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "25% vs 75% (Marin R.)"
+    "coppia_dettaglio": "25% vs 75% (Marin R.)",
+    "coppia_ibrida": false
   },
   {
     "id": 7294,
@@ -109190,7 +109534,8 @@
     "coppia_id": 7175,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Joao Mario"
+    "coppia_dettaglio": "Subentra a Joao Mario",
+    "coppia_ibrida": false
   },
   {
     "id": 4817,
@@ -109574,8 +109919,9 @@
     "coppia_nome": "Tavares N.",
     "coppia_id": 5620,
     "coppia_ruolo": "D",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Tavares N. (Terzino SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4147,
@@ -109824,11 +110170,12 @@
     "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
     "ai_advice_type": "lowcost",
     "consiglio": "🪑 RISERVA DA SLOT 1 CR",
-    "coppia_nome": "Idzes",
-    "coppia_id": 6672,
+    "coppia_nome": "Leysen F.",
+    "coppia_id": 7564,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Idzes"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Leysen F. (Centrale DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6986,
@@ -110212,8 +110559,9 @@
     "coppia_nome": "Wesley",
     "coppia_id": 7181,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Wesley"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Wesley (Esterno SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4401,
@@ -110586,7 +110934,8 @@
     "coppia_id": 5739,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "25% vs 75% (De Winter)"
+    "coppia_dettaglio": "25% vs 75% (De Winter)",
+    "coppia_ibrida": false
   },
   {
     "id": 5840,
@@ -111007,7 +111356,8 @@
     "coppia_id": 1852,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Spinazzola)"
+    "coppia_dettaglio": "35% vs 65% (Spinazzola)",
+    "coppia_ibrida": false
   },
   {
     "id": 2514,
@@ -111409,8 +111759,9 @@
     "coppia_nome": "Akanji",
     "coppia_id": 4159,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Akanji"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Akanji (Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 6821,
@@ -111729,7 +112080,8 @@
     "coppia_id": 5481,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "70% vs 30% (Mazzocchi)"
+    "coppia_dettaglio": "70% vs 30% (Mazzocchi)",
+    "coppia_ibrida": false
   },
   {
     "id": 6990,
@@ -112011,8 +112363,9 @@
     "coppia_nome": "Dembelè A.",
     "coppia_id": 6826,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Dembelè A.)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Dembelè A. (Terzino DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6495,
@@ -112300,8 +112653,9 @@
     "coppia_nome": "Rodriguez R.",
     "coppia_id": 2169,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Rodriguez R.)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Rodriguez R. (Braccetto SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7069,
@@ -112596,7 +112950,8 @@
     "coppia_id": 7220,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Belghali)"
+    "coppia_dettaglio": "35% vs 65% (Belghali)",
+    "coppia_ibrida": false
   },
   {
     "id": 7599,
@@ -112836,7 +113191,8 @@
     "coppia_id": 4998,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Molina N.)"
+    "coppia_dettaglio": "50% vs 50% (Molina N.)",
+    "coppia_ibrida": false
   },
   {
     "id": 7329,
@@ -113065,7 +113421,8 @@
     "coppia_id": 5851,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 60% (Doig)"
+    "coppia_dettaglio": "40% vs 60% (Doig)",
+    "coppia_ibrida": false
   },
   {
     "id": 6642,
@@ -113368,11 +113725,12 @@
     "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
     "ai_advice_type": "titolarissimo",
     "consiglio": "🔒 TITOLARISSIMO (100% VOTO)",
-    "coppia_nome": "Ismajli",
-    "coppia_id": 5010,
+    "coppia_nome": "Patterson",
+    "coppia_id": 5751,
     "coppia_ruolo": "D",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Patterson (Braccetto DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4952,
@@ -113687,11 +114045,12 @@
     "ai_advice": "🔥 SCOMMESSA AD ALTO POTENZIALE",
     "ai_advice_type": "sleeper",
     "consiglio": "🔥 SCOMMESSA AD ALTO POTENZIALE",
-    "coppia_nome": "Akpoguma",
-    "coppia_id": 7540,
+    "coppia_nome": "Omar Fayed",
+    "coppia_id": 7553,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Akpoguma)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Omar Fayed (Centrale SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4177,
@@ -114076,7 +114435,8 @@
     "coppia_id": 6217,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "25% vs 75% (Bisseck)"
+    "coppia_dettaglio": "25% vs 75% (Bisseck)",
+    "coppia_ibrida": false
   },
   {
     "id": 7268,
@@ -114379,11 +114739,12 @@
     "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
     "ai_advice_type": "lowcost",
     "consiglio": "🪑 RISERVA DA SLOT 1 CR",
-    "coppia_nome": "Kofler",
-    "coppia_id": 7532,
+    "coppia_nome": "Idrissi R.",
+    "coppia_id": 7125,
     "coppia_ruolo": "D",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Alternativa (Idrissi R.)",
+    "coppia_ibrida": false
   },
   {
     "id": 7012,
@@ -114654,7 +115015,8 @@
     "coppia_id": 7629,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Diogo Leite)"
+    "coppia_dettaglio": "35% vs 65% (Diogo Leite)",
+    "coppia_ibrida": false
   },
   {
     "id": 2724,
@@ -114998,11 +115360,12 @@
     "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
     "ai_advice_type": "warning",
     "consiglio": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "coppia_nome": "Rrahmani",
-    "coppia_id": 4409,
-    "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Rrahmani"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7563,
@@ -115218,8 +115581,9 @@
     "coppia_nome": "Di Lorenzo",
     "coppia_id": 2816,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Di Lorenzo"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Di Lorenzo (Terzino DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5678,
@@ -115658,7 +116022,8 @@
     "coppia_id": 4433,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Zortea)"
+    "coppia_dettaglio": "50% vs 50% (Zortea)",
+    "coppia_ibrida": false
   },
   {
     "id": 4502,
@@ -115995,7 +116360,8 @@
     "coppia_id": 7182,
     "coppia_ruolo": "D",
     "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_dettaglio": "Staffetta (1 cambi)",
+    "coppia_ibrida": false
   },
   {
     "id": 7131,
@@ -116278,7 +116644,8 @@
     "coppia_id": 2188,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Marusic)"
+    "coppia_dettaglio": "35% vs 65% (Marusic)",
+    "coppia_ibrida": false
   },
   {
     "id": 6660,
@@ -116557,11 +116924,12 @@
     "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
     "ai_advice_type": "titolarissimo",
     "consiglio": "🔒 TITOLARISSIMO (100% VOTO)",
-    "coppia_nome": "Sabelli",
-    "coppia_id": 791,
-    "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Sabelli)"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6893,
@@ -116945,8 +117313,9 @@
     "coppia_nome": "Ramon",
     "coppia_id": 6869,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Ramon"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Ramon (Centrale DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7467,
@@ -117217,7 +117586,8 @@
     "coppia_id": 5757,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "55% vs 45% (Cittadini)"
+    "coppia_dettaglio": "55% vs 45% (Cittadini)",
+    "coppia_ibrida": false
   },
   {
     "id": 7175,
@@ -117548,7 +117918,8 @@
     "coppia_id": 7294,
     "coppia_ruolo": "D",
     "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_dettaglio": "Staffetta (1 cambi)",
+    "coppia_ibrida": false
   },
   {
     "id": 7238,
@@ -117806,7 +118177,8 @@
     "coppia_id": 6537,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "60% vs 40% (Goglichidze)"
+    "coppia_dettaglio": "60% vs 40% (Goglichidze)",
+    "coppia_ibrida": false
   },
   {
     "id": 7235,
@@ -118060,11 +118432,12 @@
     "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
     "ai_advice_type": "titolarissimo",
     "consiglio": "🔒 TITOLARISSIMO (100% VOTO)",
-    "coppia_nome": "Drobnic",
-    "coppia_id": 7615,
+    "coppia_nome": "Ndiaye",
+    "coppia_id": 7202,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Drobnic)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Ndiaye (Centrale Difesa)",
+    "coppia_ibrida": false
   },
   {
     "id": 5851,
@@ -118431,7 +118804,8 @@
     "coppia_id": 7329,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "60% vs 40% (Obrador)"
+    "coppia_dettaglio": "60% vs 40% (Obrador)",
+    "coppia_ibrida": false
   },
   {
     "id": 6238,
@@ -118714,7 +119088,8 @@
     "coppia_id": 5424,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Amey)"
+    "coppia_dettaglio": "65% vs 35% (Amey)",
+    "coppia_ibrida": false
   },
   {
     "id": 7564,
@@ -119029,11 +119404,12 @@
     "ai_advice": "🔥 SCOMMESSA AD ALTO POTENZIALE",
     "ai_advice_type": "sleeper",
     "consiglio": "🔥 SCOMMESSA AD ALTO POTENZIALE",
-    "coppia_nome": "Walukiewicz",
-    "coppia_id": 4374,
+    "coppia_nome": "Caleta-Car",
+    "coppia_id": 4147,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Walukiewicz)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Caleta-Car (Centrale DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7526,
@@ -119426,11 +119802,12 @@
     "ai_advice": "🔥 SCOMMESSA AD ALTO POTENZIALE",
     "ai_advice_type": "sleeper",
     "consiglio": "🔥 SCOMMESSA AD ALTO POTENZIALE",
-    "coppia_nome": "Patterson",
-    "coppia_id": 5751,
+    "coppia_nome": "Ismajli",
+    "coppia_id": 5010,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Patterson)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Ismajli (Centrale Difesa)",
+    "coppia_ibrida": false
   },
   {
     "id": 7274,
@@ -119713,7 +120090,8 @@
     "coppia_id": 7621,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "30% vs 70% (Sugawara)"
+    "coppia_dettaglio": "30% vs 70% (Sugawara)",
+    "coppia_ibrida": false
   },
   {
     "id": 2169,
@@ -120079,8 +120457,9 @@
     "coppia_nome": "Comuzzo",
     "coppia_id": 6495,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Comuzzo"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Comuzzo (Braccetto SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6766,
@@ -120501,7 +120880,8 @@
     "coppia_id": 2788,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "15% vs 85% (Bremer)"
+    "coppia_dettaglio": "15% vs 85% (Bremer)",
+    "coppia_ibrida": false
   },
   {
     "id": 7326,
@@ -120748,7 +121128,8 @@
     "coppia_id": 7212,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Heggem)"
+    "coppia_dettaglio": "35% vs 65% (Heggem)",
+    "coppia_ibrida": false
   },
   {
     "id": 5695,
@@ -121169,7 +121550,8 @@
     "coppia_id": 4845,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Correia T."
+    "coppia_dettaglio": "Subentra a Correia T.",
+    "coppia_ibrida": false
   },
   {
     "id": 6047,
@@ -121440,7 +121822,8 @@
     "coppia_id": 5742,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Drameh)"
+    "coppia_dettaglio": "50% vs 50% (Drameh)",
+    "coppia_ibrida": false
   },
   {
     "id": 7014,
@@ -121644,7 +122027,8 @@
     "coppia_id": 6727,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Couto"
+    "coppia_dettaglio": "Subentra a Couto",
+    "coppia_ibrida": false
   },
   {
     "id": 5010,
@@ -122061,11 +122445,12 @@
     "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "ai_advice_type": "rotation",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "coppia_nome": "Coco",
-    "coppia_id": 6642,
+    "coppia_nome": "Comert",
+    "coppia_id": 7526,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Coco"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Comert (Centrale Difesa)",
+    "coppia_ibrida": false
   },
   {
     "id": 7410,
@@ -122305,7 +122690,8 @@
     "coppia_id": 5603,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 40% (Pongracic)"
+    "coppia_dettaglio": "40% vs 40% (Pongracic)",
+    "coppia_ibrida": false
   },
   {
     "id": 6202,
@@ -122565,11 +122951,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Rrahmani",
+    "coppia_id": 4409,
+    "coppia_ruolo": "D",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Rrahmani (Centrale DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6631,
@@ -122804,7 +123191,8 @@
     "coppia_id": 2296,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "55% vs 45% (Mancini)"
+    "coppia_dettaglio": "55% vs 45% (Mancini)",
+    "coppia_ibrida": false
   },
   {
     "id": 5831,
@@ -123075,7 +123463,8 @@
     "coppia_id": 6042,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "30% vs 70% (Lucumì)"
+    "coppia_dettaglio": "30% vs 70% (Lucumì)",
+    "coppia_ibrida": false
   },
   {
     "id": 6021,
@@ -123333,7 +123722,8 @@
     "coppia_id": 59016,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "25% vs 75% (Alaba)"
+    "coppia_dettaglio": "25% vs 75% (Alaba)",
+    "coppia_ibrida": false
   },
   {
     "id": 5742,
@@ -123525,7 +123915,8 @@
     "coppia_id": 6047,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Ehizibue)"
+    "coppia_dettaglio": "50% vs 50% (Ehizibue)",
+    "coppia_ibrida": false
   },
   {
     "id": 7255,
@@ -123774,11 +124165,12 @@
     "ai_advice": "🥈 TERZINO DI SPINTA (FRP)",
     "ai_advice_type": "buy",
     "consiglio": "🥈 TERZINO DI SPINTA (FRP)",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Almqvist",
+    "coppia_id": 6207,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 75% vs 25% (Almqvist). ⚠️ Asimmetria Classic: Britschgi è D, Almqvist è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 4705,
@@ -124120,8 +124512,9 @@
     "coppia_nome": "N'Dicka",
     "coppia_id": 4317,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di N'Dicka"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a N'Dicka (Braccetto DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6632,
@@ -124398,7 +124791,8 @@
     "coppia_id": 7240,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "60% vs 40% (Siebert)"
+    "coppia_dettaglio": "60% vs 40% (Siebert)",
+    "coppia_ibrida": false
   },
   {
     "id": 5751,
@@ -124719,11 +125113,12 @@
     "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
     "ai_advice_type": "sleeper",
     "consiglio": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
-    "coppia_nome": "Comert",
-    "coppia_id": 7526,
+    "coppia_nome": "Coco",
+    "coppia_id": 6642,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Comert"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Coco (Braccetto DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7240,
@@ -125078,7 +125473,8 @@
     "coppia_id": 6632,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 60% (Gaspar K.)"
+    "coppia_dettaglio": "40% vs 60% (Gaspar K.)",
+    "coppia_ibrida": false
   },
   {
     "id": 4263,
@@ -125361,7 +125757,8 @@
     "coppia_id": 6925,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "60% vs 40% (Palma)"
+    "coppia_dettaglio": "60% vs 40% (Palma)",
+    "coppia_ibrida": false
   },
   {
     "id": 4845,
@@ -125746,7 +126143,8 @@
     "coppia_id": 5695,
     "coppia_ruolo": "D",
     "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_dettaglio": "Staffetta (1 cambi)",
+    "coppia_ibrida": false
   },
   {
     "id": 5578,
@@ -126059,7 +126457,8 @@
     "coppia_id": 6485,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Kristensen T.)"
+    "coppia_dettaglio": "50% vs 50% (Kristensen T.)",
+    "coppia_ibrida": false
   },
   {
     "id": 4378,
@@ -126330,7 +126729,8 @@
     "coppia_id": 5603,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "20% vs 40% (Pongracic)"
+    "coppia_dettaglio": "20% vs 40% (Pongracic)",
+    "coppia_ibrida": false
   },
   {
     "id": 6659,
@@ -126637,7 +127037,8 @@
     "coppia_id": 5399,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Antov)"
+    "coppia_dettaglio": "Alternativa (Antov)",
+    "coppia_ibrida": false
   },
   {
     "id": 7537,
@@ -126861,11 +127262,12 @@
     "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
     "ai_advice_type": "sleeper",
     "consiglio": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
-    "coppia_nome": "Vasquez",
-    "coppia_id": 5514,
-    "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Vasquez"
+    "coppia_nome": "Ellertsson",
+    "coppia_id": 6020,
+    "coppia_ruolo": "C",
+    "coppia_tipo": "BALLOTTAGGIO",
+    "coppia_dettaglio": "Staffetta/Ballottaggio reale 50% vs 50% (Ellertsson). ⚠️ Asimmetria Classic: Mitaj è D, Ellertsson è C (stessa corsia/zona in campo)",
+    "coppia_ibrida": true
   },
   {
     "id": 6896,
@@ -127153,7 +127555,8 @@
     "coppia_id": 7573,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "65% vs 35% (Cinquegrano)"
+    "coppia_dettaglio": "65% vs 35% (Cinquegrano)",
+    "coppia_ibrida": false
   },
   {
     "id": 7068,
@@ -127477,7 +127880,8 @@
     "coppia_id": 5675,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "30% vs 70% (Theate)"
+    "coppia_dettaglio": "30% vs 70% (Theate)",
+    "coppia_ibrida": false
   },
   {
     "id": 5820,
@@ -127748,7 +128152,8 @@
     "coppia_id": 6021,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "45% vs 55% (Abankwah)"
+    "coppia_dettaglio": "45% vs 55% (Abankwah)",
+    "coppia_ibrida": false
   },
   {
     "id": 6925,
@@ -127995,7 +128400,8 @@
     "coppia_id": 4263,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 60% (Kabasele)"
+    "coppia_dettaglio": "40% vs 60% (Kabasele)",
+    "coppia_ibrida": false
   },
   {
     "id": 5527,
@@ -128250,11 +128656,12 @@
     "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "ai_advice_type": "benched",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "coppia_nome": "Kamara H.",
-    "coppia_id": 5555,
+    "coppia_nome": "Vojvoda",
+    "coppia_id": 4994,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Kamara H."
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Vojvoda (Esterno SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6046,
@@ -128554,7 +128961,8 @@
     "coppia_id": 5526,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Scalvini)"
+    "coppia_dettaglio": "35% vs 65% (Scalvini)",
+    "coppia_ibrida": false
   },
   {
     "id": 7154,
@@ -128761,11 +129169,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Idzes",
+    "coppia_id": 6672,
+    "coppia_ruolo": "D",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Idzes (Centrale SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4751,
@@ -129013,11 +129422,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "Pavlovic",
-    "coppia_id": 5022,
+    "coppia_nome": "Gila",
+    "coppia_id": 5833,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Pavlovic"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Gila (Braccetto DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 4374,
@@ -129337,11 +129747,12 @@
     "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
     "ai_advice_type": "warning",
     "consiglio": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "coppia_nome": "Leysen F.",
-    "coppia_id": 7564,
-    "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Leysen F."
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 4925,
@@ -129732,7 +130143,8 @@
     "coppia_id": 7260,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "25% vs 75% (Ziolkowski)"
+    "coppia_dettaglio": "25% vs 75% (Ziolkowski)",
+    "coppia_ibrida": false
   },
   {
     "id": 6638,
@@ -130015,7 +130427,8 @@
     "coppia_id": 4664,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "75% vs 25% (Badiashile)"
+    "coppia_dettaglio": "75% vs 25% (Badiashile)",
+    "coppia_ibrida": false
   },
   {
     "id": 5481,
@@ -130315,7 +130728,8 @@
     "coppia_id": 6821,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "30% vs 70% (Hainaut)"
+    "coppia_dettaglio": "30% vs 70% (Hainaut)",
+    "coppia_ibrida": false
   },
   {
     "id": 7605,
@@ -130519,7 +130933,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7532,
@@ -130737,11 +131152,12 @@
     "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "ai_advice_type": "supersub",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "coppia_nome": "Rodriguez Ju.",
-    "coppia_id": 7268,
+    "coppia_nome": "Mina",
+    "coppia_id": 4210,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Rodriguez Ju."
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Mina (Centrale DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5603,
@@ -131108,7 +131524,8 @@
     "coppia_id": 7410,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 40% (Viery)"
+    "coppia_dettaglio": "40% vs 40% (Viery)",
+    "coppia_ibrida": false
   },
   {
     "id": 4375,
@@ -131481,7 +131898,8 @@
     "coppia_id": 7469,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "45% vs 55% (Bracaglia)"
+    "coppia_dettaglio": "45% vs 55% (Bracaglia)",
+    "coppia_ibrida": false
   },
   {
     "id": 256,
@@ -131862,11 +132280,12 @@
     "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
     "ai_advice_type": "lowcost",
     "consiglio": "🪑 RISERVA DA SLOT 1 CR",
-    "coppia_nome": "Sverko",
-    "coppia_id": 6673,
+    "coppia_nome": "Halhal",
+    "coppia_id": 7538,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Sverko)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Halhal (Braccetto SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7538,
@@ -132091,11 +132510,12 @@
     "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
     "ai_advice_type": "lowcost",
     "consiglio": "🪑 RISERVA DA SLOT 1 CR",
-    "coppia_nome": "Franjic",
-    "coppia_id": 7478,
+    "coppia_nome": "Juan Jesus",
+    "coppia_id": 256,
     "coppia_ruolo": "D",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Juan Jesus (Braccetto SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6892,
@@ -132377,8 +132797,9 @@
     "coppia_nome": "Moreno M.",
     "coppia_id": 6890,
     "coppia_ruolo": "D",
-    "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "Alternativa (Moreno M.)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Moreno M. (Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 2728,
@@ -132726,7 +133147,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7483,
@@ -132943,7 +133365,8 @@
     "coppia_id": 4734,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Miranda J.)"
+    "coppia_dettaglio": "50% vs 50% (Miranda J.)",
+    "coppia_ibrida": false
   },
   {
     "id": 7253,
@@ -133333,8 +133756,9 @@
     "coppia_nome": "Sagrado",
     "coppia_id": 6681,
     "coppia_ruolo": "D",
-    "coppia_tipo": "STAFFETTA",
-    "coppia_dettaglio": "Staffetta (1 cambi)"
+    "coppia_tipo": "TITOLARE",
+    "coppia_dettaglio": "Alternativa diretta: Sagrado (Braccetto DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7312,
@@ -133541,11 +133965,12 @@
     "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
     "ai_advice_type": "avoid",
     "consiglio": "⚠️ INFORTUNATO (NON COMPRARE)",
-    "coppia_nome": "Vojvoda",
-    "coppia_id": 4994,
+    "coppia_nome": "Kamara H.",
+    "coppia_id": 5555,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Vojvoda"
+    "coppia_dettaglio": "Copertura di Kamara H.",
+    "coppia_ibrida": false
   },
   {
     "id": 6601,
@@ -133733,11 +134158,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "Chalobah T.",
-    "coppia_id": 5641,
-    "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Chalobah T."
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7202,
@@ -133932,11 +134358,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "Delprato",
-    "coppia_id": 6664,
+    "coppia_nome": "Troilo",
+    "coppia_id": 7235,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Delprato"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Troilo (Centrale Difesa)",
+    "coppia_ibrida": false
   },
   {
     "id": 7260,
@@ -134116,7 +134543,8 @@
     "coppia_id": 4925,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "75% vs 25% (Carboni A.)"
+    "coppia_dettaglio": "75% vs 25% (Carboni A.)",
+    "coppia_ibrida": false
   },
   {
     "id": 5307,
@@ -134443,11 +134871,12 @@
     "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "ai_advice_type": "benched",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "coppia_nome": "Diego Carlos",
-    "coppia_id": 4137,
+    "coppia_nome": "Delprato",
+    "coppia_id": 6664,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Diego Carlos"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Delprato (Braccetto SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 5757,
@@ -134814,7 +135243,8 @@
     "coppia_id": 7467,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "45% vs 55% (Calvani)"
+    "coppia_dettaglio": "45% vs 55% (Calvani)",
+    "coppia_ibrida": false
   },
   {
     "id": 7548,
@@ -135073,7 +135503,8 @@
     "coppia_id": 5701,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Obert"
+    "coppia_dettaglio": "Copertura di Obert",
+    "coppia_ibrida": false
   },
   {
     "id": 5449,
@@ -135309,11 +135740,12 @@
     "ai_advice": "⛔ LUNGA DEGENZA (EVITARE)",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ LUNGA DEGENZA (EVITARE)",
-    "coppia_nome": "Dragusin",
-    "coppia_id": 5365,
-    "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Dragusin"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7573,
@@ -135596,7 +136028,8 @@
     "coppia_id": 6896,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Van Der Brempt)"
+    "coppia_dettaglio": "35% vs 65% (Van Der Brempt)",
+    "coppia_ibrida": false
   },
   {
     "id": 791,
@@ -135827,11 +136260,12 @@
     "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
     "ai_advice_type": "sleeper",
     "consiglio": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
-    "coppia_nome": "Marcandalli",
-    "coppia_id": 6660,
-    "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Marcandalli"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 2263,
@@ -136234,7 +136668,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7182,
@@ -136451,7 +136886,8 @@
     "coppia_id": 4502,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Gallo"
+    "coppia_dettaglio": "Subentra a Gallo",
+    "coppia_ibrida": false
   },
   {
     "id": 252,
@@ -136775,7 +137211,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 487,
@@ -137142,7 +137579,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 2640,
@@ -137563,7 +138001,8 @@
     "coppia_id": 7219,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "50% vs 50% (Bernasconi)"
+    "coppia_dettaglio": "50% vs 50% (Bernasconi)",
+    "coppia_ibrida": false
   },
   {
     "id": 7540,
@@ -137895,11 +138334,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "Monterisi",
-    "coppia_id": 4952,
-    "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Monterisi"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 5812,
@@ -138190,11 +138630,12 @@
     "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "ai_advice_type": "rotation",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "coppia_nome": "Gila",
-    "coppia_id": 5833,
+    "coppia_nome": "Pavlovic",
+    "coppia_id": 5022,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Gila"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Pavlovic (Braccetto SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6985,
@@ -138386,7 +138827,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7525,
@@ -138553,7 +138995,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6681,
@@ -138853,8 +139296,9 @@
     "coppia_nome": "Bella-Kotchap",
     "coppia_id": 7253,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Bella-Kotchap"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Bella-Kotchap (Braccetto DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7413,
@@ -139049,11 +139493,12 @@
     "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
     "ai_advice_type": "sleeper",
     "consiglio": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Ostigard",
+    "coppia_id": 5750,
+    "coppia_ruolo": "D",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Ostigard (Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 7476,
@@ -139318,7 +139763,8 @@
     "coppia_id": 7485,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Mangas"
+    "coppia_dettaglio": "Subentra a Mangas",
+    "coppia_ibrida": false
   },
   {
     "id": 6890,
@@ -139600,8 +140046,9 @@
     "coppia_nome": "Schingtienne",
     "coppia_id": 6892,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Schingtienne"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Schingtienne (Centrale)",
+    "coppia_ibrida": false
   },
   {
     "id": 5994,
@@ -139919,8 +140366,9 @@
     "coppia_nome": "Solet",
     "coppia_id": 6956,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Solet"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Solet (Braccetto DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 6537,
@@ -140136,7 +140584,8 @@
     "coppia_id": 7238,
     "coppia_ruolo": "D",
     "coppia_tipo": "BALLOTTAGGIO",
-    "coppia_dettaglio": "40% vs 60% (Kouadio)"
+    "coppia_dettaglio": "40% vs 60% (Kouadio)",
+    "coppia_ibrida": false
   },
   {
     "id": 6149,
@@ -140316,7 +140765,8 @@
     "coppia_id": 5862,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Valeri"
+    "coppia_dettaglio": "Copertura di Valeri",
+    "coppia_ibrida": false
   },
   {
     "id": 5498,
@@ -140664,7 +141114,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6977,
@@ -140937,11 +141388,12 @@
     "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
     "ai_advice_type": "lowcost",
     "consiglio": "🪑 RISERVA DA SLOT 1 CR",
-    "coppia_nome": "Ostigard",
-    "coppia_id": 5750,
+    "coppia_nome": "Vasquez",
+    "coppia_id": 5514,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Ostigard"
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Vasquez (Braccetto SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 294,
@@ -141265,7 +141717,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6039,
@@ -141553,7 +142006,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6673,
@@ -141897,11 +142351,12 @@
     "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
     "ai_advice_type": "avoid",
     "consiglio": "⚠️ INFORTUNATO (NON COMPRARE)",
-    "coppia_nome": "Juan Jesus",
-    "coppia_id": 256,
-    "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Juan Jesus"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7125,
@@ -142077,11 +142532,12 @@
     "ai_advice": "⛔ LUNGA DEGENZA (EVITARE)",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ LUNGA DEGENZA (EVITARE)",
-    "coppia_nome": "Mina",
-    "coppia_id": 4210,
+    "coppia_nome": "Rodriguez Ju.",
+    "coppia_id": 7268,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Mina"
+    "coppia_dettaglio": "Copertura di Rodriguez Ju.",
+    "coppia_ibrida": false
   },
   {
     "id": 6883,
@@ -142273,7 +142729,8 @@
     "coppia_id": 6989,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Tiago Gabriel"
+    "coppia_dettaglio": "Copertura di Tiago Gabriel",
+    "coppia_ibrida": false
   },
   {
     "id": 6809,
@@ -142477,7 +142934,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6826,
@@ -142656,8 +143114,9 @@
     "coppia_nome": "Veiga D.",
     "coppia_id": 6990,
     "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Veiga D."
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Veiga D. (Terzino DX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7615,
@@ -142857,11 +143316,12 @@
     "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
     "ai_advice_type": "lowcost",
     "consiglio": "🪑 RISERVA DA SLOT 1 CR",
-    "coppia_nome": "Troilo",
-    "coppia_id": 7235,
+    "coppia_nome": "Diego Carlos",
+    "coppia_id": 4137,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Troilo"
+    "coppia_dettaglio": "Copertura di Diego Carlos",
+    "coppia_ibrida": false
   },
   {
     "id": 5424,
@@ -143114,7 +143574,8 @@
     "coppia_id": 6238,
     "coppia_ruolo": "D",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "35% vs 65% (Oyono A.)"
+    "coppia_dettaglio": "35% vs 65% (Oyono A.)",
+    "coppia_ibrida": false
   },
   {
     "id": 7478,
@@ -143411,11 +143872,12 @@
     "ai_advice": "⛔ LUNGA DEGENZA (EVITARE)",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ LUNGA DEGENZA (EVITARE)",
-    "coppia_nome": "Halhal",
-    "coppia_id": 7538,
-    "coppia_ruolo": "D",
-    "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Halhal"
+    "coppia_nome": "-",
+    "coppia_id": null,
+    "coppia_ruolo": "-",
+    "coppia_tipo": "-",
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 7553,
@@ -143615,11 +144077,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Monterisi",
+    "coppia_id": 4952,
+    "coppia_ruolo": "D",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Monterisi (Centrale SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 7604,
@@ -143836,7 +144299,8 @@
     "coppia_id": 5838,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Subentra a Birindelli"
+    "coppia_dettaglio": "Subentra a Birindelli",
+    "coppia_ibrida": false
   },
   {
     "id": 7156,
@@ -144016,7 +144480,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 418,
@@ -144324,11 +144789,12 @@
     "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
-    "coppia_nome": "-",
-    "coppia_id": null,
-    "coppia_ruolo": "-",
-    "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_nome": "Chalobah T.",
+    "coppia_id": 5641,
+    "coppia_ruolo": "D",
+    "coppia_tipo": "RISERVA",
+    "coppia_dettaglio": "Subentra a Chalobah T. (Centrale SX)",
+    "coppia_ibrida": false
   },
   {
     "id": 327,
@@ -144676,7 +145142,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 5399,
@@ -144856,7 +145323,8 @@
     "coppia_id": 6659,
     "coppia_ruolo": "D",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Copertura di Lucchesi"
+    "coppia_dettaglio": "Copertura di Lucchesi",
+    "coppia_ibrida": false
   },
   {
     "id": 7454,
@@ -145023,7 +145491,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 5841,
@@ -145354,7 +145823,8 @@
     "coppia_id": 7048,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (De Marzi)"
+    "coppia_dettaglio": "2° Portiere (De Marzi)",
+    "coppia_ibrida": false
   },
   {
     "id": 4964,
@@ -145685,7 +146155,8 @@
     "coppia_id": 7603,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Grabara)"
+    "coppia_dettaglio": "2° Portiere (Grabara)",
+    "coppia_ibrida": false
   },
   {
     "id": 5116,
@@ -145968,7 +146439,8 @@
     "coppia_id": 2814,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Provedel)"
+    "coppia_dettaglio": "2° Portiere (Provedel)",
+    "coppia_ibrida": false
   },
   {
     "id": 4431,
@@ -146287,7 +146759,8 @@
     "coppia_id": 7626,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Pompei)"
+    "coppia_dettaglio": "2° Portiere (Pompei)",
+    "coppia_ibrida": false
   },
   {
     "id": 4312,
@@ -146702,7 +147175,8 @@
     "coppia_id": 2815,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Terracciano)"
+    "coppia_dettaglio": "2° Portiere (Terracciano)",
+    "coppia_ibrida": false
   },
   {
     "id": 6966,
@@ -146967,7 +147441,8 @@
     "coppia_id": 6344,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Sanchez Ro.)"
+    "coppia_dettaglio": "2° Portiere (Sanchez Ro.)",
+    "coppia_ibrida": false
   },
   {
     "id": 6482,
@@ -147250,7 +147725,8 @@
     "coppia_id": 7337,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Motta)"
+    "coppia_dettaglio": "2° Portiere (Motta)",
+    "coppia_ibrida": false
   },
   {
     "id": 572,
@@ -147653,7 +148129,8 @@
     "coppia_id": 2170,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Milinkovic-Savic V.)"
+    "coppia_dettaglio": "2° Portiere (Milinkovic-Savic V.)",
+    "coppia_ibrida": false
   },
   {
     "id": 4360,
@@ -147936,7 +148413,8 @@
     "coppia_id": 6650,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Sherri)"
+    "coppia_dettaglio": "2° Portiere (Sherri)",
+    "coppia_ibrida": false
   },
   {
     "id": 2521,
@@ -148279,7 +148757,8 @@
     "coppia_id": 6403,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Christensen O.)"
+    "coppia_dettaglio": "2° Portiere (Christensen O.)",
+    "coppia_ibrida": false
   },
   {
     "id": 2134,
@@ -148562,7 +149041,8 @@
     "coppia_id": 7557,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Penev)"
+    "coppia_dettaglio": "2° Portiere (Penev)",
+    "coppia_ibrida": false
   },
   {
     "id": 133,
@@ -148959,7 +149439,8 @@
     "coppia_id": 7172,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Pessina Mas.)"
+    "coppia_dettaglio": "2° Portiere (Pessina Mas.)",
+    "coppia_ibrida": false
   },
   {
     "id": 6462,
@@ -149326,7 +149807,8 @@
     "coppia_id": 543,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Padelli)"
+    "coppia_dettaglio": "2° Portiere (Padelli)",
+    "coppia_ibrida": false
   },
   {
     "id": 6534,
@@ -149561,7 +150043,8 @@
     "coppia_id": 7457,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Mascardi)"
+    "coppia_dettaglio": "2° Portiere (Mascardi)",
+    "coppia_ibrida": false
   },
   {
     "id": 6344,
@@ -149820,7 +150303,8 @@
     "coppia_id": 6966,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Butez"
+    "coppia_dettaglio": "Vice di Butez",
+    "coppia_ibrida": false
   },
   {
     "id": 6415,
@@ -150078,7 +150562,8 @@
     "coppia_id": 7466,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Lolic)"
+    "coppia_dettaglio": "2° Portiere (Lolic)",
+    "coppia_ibrida": false
   },
   {
     "id": 7332,
@@ -150517,7 +151002,8 @@
     "coppia_id": 219,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Sommariva)"
+    "coppia_dettaglio": "2° Portiere (Sommariva)",
+    "coppia_ibrida": false
   },
   {
     "id": 4236,
@@ -150812,7 +151298,8 @@
     "coppia_id": 4518,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Russo A.)"
+    "coppia_dettaglio": "2° Portiere (Russo A.)",
+    "coppia_ibrida": false
   },
   {
     "id": 6662,
@@ -151070,7 +151557,8 @@
     "coppia_id": 7411,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Daffara)"
+    "coppia_dettaglio": "2° Portiere (Daffara)",
+    "coppia_ibrida": false
   },
   {
     "id": 7301,
@@ -151256,7 +151744,8 @@
     "coppia_id": 4485,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Thiam"
+    "coppia_dettaglio": "Vice di Thiam",
+    "coppia_ibrida": false
   },
   {
     "id": 6248,
@@ -151563,7 +152052,8 @@
     "coppia_id": 6671,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Grandi)"
+    "coppia_dettaglio": "2° Portiere (Grandi)",
+    "coppia_ibrida": false
   },
   {
     "id": 2170,
@@ -151936,7 +152426,8 @@
     "coppia_id": 572,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Meret"
+    "coppia_dettaglio": "Vice di Meret",
+    "coppia_ibrida": false
   },
   {
     "id": 7411,
@@ -152116,7 +152607,8 @@
     "coppia_id": 6662,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Corvi"
+    "coppia_dettaglio": "Vice di Corvi",
+    "coppia_ibrida": false
   },
   {
     "id": 2814,
@@ -152380,7 +152872,8 @@
     "coppia_id": 5116,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Martinez Jo."
+    "coppia_dettaglio": "Vice di Martinez Jo.",
+    "coppia_ibrida": false
   },
   {
     "id": 2815,
@@ -152656,7 +153149,8 @@
     "coppia_id": 4312,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Maignan"
+    "coppia_dettaglio": "Vice di Maignan",
+    "coppia_ibrida": false
   },
   {
     "id": 7457,
@@ -152860,7 +153354,8 @@
     "coppia_id": 6534,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Perri"
+    "coppia_dettaglio": "Vice di Perri",
+    "coppia_ibrida": false
   },
   {
     "id": 6813,
@@ -153040,7 +153535,8 @@
     "coppia_id": 4312,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Maignan)"
+    "coppia_dettaglio": "3° Portiere (Maignan)",
+    "coppia_ibrida": false
   },
   {
     "id": 4485,
@@ -153275,7 +153771,8 @@
     "coppia_id": 7301,
     "coppia_ruolo": "P",
     "coppia_tipo": "RISERVA",
-    "coppia_dettaglio": "2° Portiere (Tornqvist)"
+    "coppia_dettaglio": "2° Portiere (Tornqvist)",
+    "coppia_ibrida": false
   },
   {
     "id": 7172,
@@ -153461,7 +153958,8 @@
     "coppia_id": 133,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Skorupski"
+    "coppia_dettaglio": "Vice di Skorupski",
+    "coppia_ibrida": false
   },
   {
     "id": 1930,
@@ -153677,7 +154175,8 @@
     "coppia_id": 4964,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Vicario)"
+    "coppia_dettaglio": "3° Portiere (Vicario)",
+    "coppia_ibrida": false
   },
   {
     "id": 7337,
@@ -153905,7 +154404,8 @@
     "coppia_id": 6482,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Mandas"
+    "coppia_dettaglio": "Vice di Mandas",
+    "coppia_ibrida": false
   },
   {
     "id": 7534,
@@ -154072,7 +154572,8 @@
     "coppia_id": 6482,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Mandas)"
+    "coppia_dettaglio": "3° Portiere (Mandas)",
+    "coppia_ibrida": false
   },
   {
     "id": 7048,
@@ -154239,7 +154740,8 @@
     "coppia_id": 5841,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Svilar"
+    "coppia_dettaglio": "Vice di Svilar",
+    "coppia_ibrida": false
   },
   {
     "id": 7533,
@@ -154419,7 +154921,8 @@
     "coppia_id": 133,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Skorupski)"
+    "coppia_dettaglio": "3° Portiere (Skorupski)",
+    "coppia_ibrida": false
   },
   {
     "id": 2809,
@@ -154623,7 +155126,8 @@
     "coppia_id": 6966,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Butez)"
+    "coppia_dettaglio": "3° Portiere (Butez)",
+    "coppia_ibrida": false
   },
   {
     "id": 6403,
@@ -154863,7 +155367,8 @@
     "coppia_id": 2521,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di De Gea"
+    "coppia_dettaglio": "Vice di De Gea",
+    "coppia_ibrida": false
   },
   {
     "id": 7466,
@@ -155030,7 +155535,8 @@
     "coppia_id": 6415,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Palmisani"
+    "coppia_dettaglio": "Vice di Palmisani",
+    "coppia_ibrida": false
   },
   {
     "id": 1926,
@@ -155306,7 +155812,8 @@
     "coppia_id": 5116,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Martinez Jo.)"
+    "coppia_dettaglio": "3° Portiere (Martinez Jo.)",
+    "coppia_ibrida": false
   },
   {
     "id": 2845,
@@ -155582,7 +156089,8 @@
     "coppia_id": 572,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Meret)"
+    "coppia_dettaglio": "3° Portiere (Meret)",
+    "coppia_ibrida": false
   },
   {
     "id": 4518,
@@ -155749,7 +156257,8 @@
     "coppia_id": 4236,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Muric"
+    "coppia_dettaglio": "Vice di Muric",
+    "coppia_ibrida": false
   },
   {
     "id": 7363,
@@ -155929,7 +156438,8 @@
     "coppia_id": 6534,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Perri)"
+    "coppia_dettaglio": "3° Portiere (Perri)",
+    "coppia_ibrida": false
   },
   {
     "id": 2127,
@@ -156145,7 +156655,8 @@
     "coppia_id": 4236,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Muric)"
+    "coppia_dettaglio": "3° Portiere (Muric)",
+    "coppia_ibrida": false
   },
   {
     "id": 7560,
@@ -156349,7 +156860,8 @@
     "coppia_id": 6415,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Palmisani)"
+    "coppia_dettaglio": "3° Portiere (Palmisani)",
+    "coppia_ibrida": false
   },
   {
     "id": 7626,
@@ -156516,7 +157028,8 @@
     "coppia_id": 4431,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Carnesecchi"
+    "coppia_dettaglio": "Vice di Carnesecchi",
+    "coppia_ibrida": false
   },
   {
     "id": 7463,
@@ -156720,7 +157233,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 4,
@@ -157020,7 +157534,8 @@
     "coppia_id": 4431,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Carnesecchi)"
+    "coppia_dettaglio": "3° Portiere (Carnesecchi)",
+    "coppia_ibrida": false
   },
   {
     "id": 6650,
@@ -157200,7 +157715,8 @@
     "coppia_id": 4360,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Caprile"
+    "coppia_dettaglio": "Vice di Caprile",
+    "coppia_ibrida": false
   },
   {
     "id": 158,
@@ -157464,7 +157980,8 @@
     "coppia_id": 2521,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (De Gea)"
+    "coppia_dettaglio": "3° Portiere (De Gea)",
+    "coppia_ibrida": false
   },
   {
     "id": 219,
@@ -157631,7 +158148,8 @@
     "coppia_id": 7332,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Bijlow"
+    "coppia_dettaglio": "Vice di Bijlow",
+    "coppia_ibrida": false
   },
   {
     "id": 6569,
@@ -157811,7 +158329,8 @@
     "coppia_id": 7332,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Bijlow)"
+    "coppia_dettaglio": "3° Portiere (Bijlow)",
+    "coppia_ibrida": false
   },
   {
     "id": 7475,
@@ -157978,7 +158497,8 @@
     "coppia_id": 4485,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Thiam)"
+    "coppia_dettaglio": "3° Portiere (Thiam)",
+    "coppia_ibrida": false
   },
   {
     "id": 610,
@@ -158290,7 +158810,8 @@
     "coppia_id": 5841,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Svilar)"
+    "coppia_dettaglio": "3° Portiere (Svilar)",
+    "coppia_ibrida": false
   },
   {
     "id": 4867,
@@ -158554,7 +159075,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 543,
@@ -158770,7 +159292,8 @@
     "coppia_id": 6462,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Okoye"
+    "coppia_dettaglio": "Vice di Okoye",
+    "coppia_ibrida": false
   },
   {
     "id": 5707,
@@ -158937,7 +159460,8 @@
     "coppia_id": 6462,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Okoye)"
+    "coppia_dettaglio": "3° Portiere (Okoye)",
+    "coppia_ibrida": false
   },
   {
     "id": 7557,
@@ -159104,7 +159628,8 @@
     "coppia_id": 2134,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Falcone"
+    "coppia_dettaglio": "Vice di Falcone",
+    "coppia_ibrida": false
   },
   {
     "id": 7611,
@@ -159284,7 +159809,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 6671,
@@ -159500,7 +160026,8 @@
     "coppia_id": 6248,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Stankovic F."
+    "coppia_dettaglio": "Vice di Stankovic F.",
+    "coppia_ibrida": false
   },
   {
     "id": 7531,
@@ -159752,7 +160279,8 @@
     "coppia_id": 6248,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Stankovic F.)"
+    "coppia_dettaglio": "3° Portiere (Stankovic F.)",
+    "coppia_ibrida": false
   },
   {
     "id": 3,
@@ -159956,7 +160484,8 @@
     "coppia_id": 4360,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Caprile)"
+    "coppia_dettaglio": "3° Portiere (Caprile)",
+    "coppia_ibrida": false
   },
   {
     "id": 4957,
@@ -160172,7 +160701,8 @@
     "coppia_id": null,
     "coppia_ruolo": "-",
     "coppia_tipo": "-",
-    "coppia_dettaglio": "Nessuna alternativa diretta"
+    "coppia_dettaglio": "Nessuna alternativa diretta",
+    "coppia_ibrida": false
   },
   {
     "id": 4468,
@@ -160376,7 +160906,8 @@
     "coppia_id": 2134,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Falcone)"
+    "coppia_dettaglio": "3° Portiere (Falcone)",
+    "coppia_ibrida": false
   },
   {
     "id": 2874,
@@ -160592,7 +161123,8 @@
     "coppia_id": 6662,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "3° Portiere (Corvi)"
+    "coppia_dettaglio": "3° Portiere (Corvi)",
+    "coppia_ibrida": false
   },
   {
     "id": 7603,
@@ -160832,6 +161364,7 @@
     "coppia_id": 4964,
     "coppia_ruolo": "P",
     "coppia_tipo": "TITOLARE",
-    "coppia_dettaglio": "Vice di Vicario"
+    "coppia_dettaglio": "Vice di Vicario",
+    "coppia_ibrida": false
   }
 ]

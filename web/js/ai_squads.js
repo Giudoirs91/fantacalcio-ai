@@ -659,9 +659,11 @@ function renderAiSquadsTab() {
             let coppiaHtml = '';
             if (p.coppia_nome && p.coppia_nome !== '-') {
                 const label = isStarter ? 'Sostituto' : 'Titolare';
+                const isHybrid = Boolean(p.coppia_ibrida || (p.coppia_ruolo && p.coppia_ruolo !== '-' && p.coppia_ruolo !== p.role));
+                const hybridTag = isHybrid ? `<span style="background:rgba(245,158,11,0.2);color:#fbbf24;border:1px solid rgba(245,158,11,0.5);border-radius:4px;padding:0 3px;font-size:9px;font-weight:700;" title="Ruolo Classic diverso: ${p.role} vs ${p.coppia_ruolo}">${p.coppia_ruolo} ⚠️</span>` : '';
                 coppiaHtml = `<div class="ai-coppia-tag" style="font-size:10.5px;color:var(--accent-cyan);margin-top:2px;display:flex;align-items:center;gap:4px;">
                     <span style="font-size:9px;background:rgba(6,182,212,0.15);padding:1px 4px;border-radius:4px;border:1px solid rgba(6,182,212,0.3);font-weight:700;">🔗 ${label}</span>
-                    <b>${p.coppia_nome}</b> <span style="color:var(--text-muted);font-size:10px;">(${p.coppia_dettaglio || p.coppia_tipo})</span>
+                    <b>${p.coppia_nome}</b>${hybridTag} <span style="color:var(--text-muted);font-size:10px;">(${p.coppia_dettaglio || p.coppia_tipo})</span>
                 </div>`;
             }
 

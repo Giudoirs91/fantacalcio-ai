@@ -646,7 +646,10 @@ function openPlayerProfileModal(playerId) {
                 icon = '🔄 Staffetta';
             }
         }
-        coppiaBadge = `<span class="badge-tag blue" ${clickAttr} title="${p.coppia_dettaglio || ''}">${icon}: <b>${p.coppia_nome}</b></span>`;
+        const isHybrid = Boolean(p.coppia_ibrida || (p.coppia_ruolo && p.coppia_ruolo !== '-' && p.coppia_ruolo !== p.role));
+        const badgeClass = isHybrid ? 'badge-tag yellow' : 'badge-tag blue';
+        const hybridWarn = isHybrid ? ` (${p.coppia_ruolo} ⚠️)` : '';
+        coppiaBadge = `<span class="${badgeClass}" ${clickAttr} title="${p.coppia_dettaglio || ''}">${icon}: <b>${p.coppia_nome}</b>${hybridWarn}</span>`;
     }
     let oopBadge = '';
     if (p.oop_val && p.oop_val !== '-') {
@@ -846,6 +849,8 @@ function openPlayerProfileModal(playerId) {
     let tandemCardHtml = '';
     if (p.coppia_nome && p.coppia_nome !== '-') {
         const partner = PLAYERS.find(pl => (pl.name && pl.name.toLowerCase() === p.coppia_nome.toLowerCase()) || (p.coppia_id && pl.id === p.coppia_id));
+        const partnerRole = partner ? partner.role : (p.coppia_ruolo && p.coppia_ruolo !== '-' ? p.coppia_ruolo : p.role);
+        const isHybrid = Boolean(p.coppia_ibrida || (partnerRole !== p.role));
         const partnerScaled = partner ? Math.max(1, Math.round((partner.prezzo_cons || 1) * curRatio)) : Math.max(1, Math.round(10 * curRatio));
         const combined = scaledPrice + partnerScaled;
         const combinedPct = ((((p.prezzo_cons || 1) + (partner ? (partner.prezzo_cons || 1) : 10)) / 1000) * 100).toFixed(1);
@@ -864,7 +869,10 @@ function openPlayerProfileModal(playerId) {
                 adviceText = `Staffetta reale: la porta di <b>${p.team}</b> è in ballottaggio alternato (${p.name} al ${p.titolarita}%). Acquisto obbligato di entrambi i portieri per non rischiare di giocare in inferiorità numerica.`;
             }
         } else {
-            if (p.titolarita >= 75) {
+            if (isHybrid) {
+                tandemTitle = `Staffetta Tattica ${p.team} (Coppia Ibrida Classic)`;
+                adviceText = `Staffetta tattica reale: <b>${p.name}</b> e <b>${p.coppia_nome}</b> condividono la stessa corsia/zona di campo nelle rotazioni dell'allenatore.`;
+            } else if (p.titolarita >= 75) {
                 tandemTitle = `Gerarchia di Reparto ${p.team}`;
                 adviceText = `Titolare affidabile (${p.titolarita}%): ${p.coppia_nome} è l'alternativa naturale in panchina per le rotazioni a gara in corso.`;
             } else if (p.titolarita <= 35) {
@@ -875,11 +883,20 @@ function openPlayerProfileModal(playerId) {
                 adviceText = `Ballottaggio aperto (${p.titolarita}% vs rotazioni): acquisto in coppia raccomandato se cerchi la certezza del voto nel reparto.`;
             }
         }
+        const hybridNoticeHtml = isHybrid ? `
+            <div class="tandem-hybrid-notice" style="margin-top:10px;padding:8px 12px;background:rgba(245,158,11,0.12);border-left:3px solid #f59e0b;border-radius:6px;font-size:11.5px;color:#fde68a;line-height:1.45;">
+                ⚠️ <b>Specificazione Ruolo Classic:</b> <b>${p.name}</b> è listato come <b>${p.role}</b> mentre <b>${p.coppia_nome}</b> è listato come <b>${partnerRole}</b>. 
+                Condividono la stessa zolla di gioco e la staffetta sul campo (entrambi affini al Mantra), ma se acquistati in coppia occuperanno due slot in reparti diversi della tua rosa Classic.
+            </div>
+        ` : '';
+        const partnerRoleBadge = isHybrid
+            ? `<span class="t-role" style="background:#f59e0b;color:#000;font-weight:700;padding:2px 5px;border-radius:4px;" title="Ruolo Classic differente">${partnerRole} ⚠️</span>`
+            : `<span class="t-role">${partnerRole}</span>`;
         tandemCardHtml = `
             <div class="profile-tandem-card">
                 <div class="tandem-card-header">
                     <div style="display:flex;align-items:center;gap:6px;">
-                        <span style="font-size:16px;">${p.role === 'P' ? '🧤' : '🔄'}</span>
+                        <span style="font-size:16px;">${p.role === 'P' ? '🧤' : (isHybrid ? '⚡' : '🔄')}</span>
                         <b style="color:#fff;font-size:12.5px;">${tandemTitle}</b>
                     </div>
                     <span class="tandem-budget-chip">Spesa Coppia: <b>${combined} CR</b> (${combinedPct}% budget)</span>
@@ -892,12 +909,13 @@ function openPlayerProfileModal(playerId) {
                     </div>
                     <span class="tandem-plus">+</span>
                     <div class="tandem-player-chip partner" ${pClick} title="Apri scheda di ${p.coppia_nome}">
-                        <span class="t-role">${partner ? partner.role : p.role}</span>
+                        ${partnerRoleBadge}
                         <span class="t-name"><b>${p.coppia_nome}</b> ${partner ? `(${partner.titolarita}% tit)` : ''} ↗</span>
                         <span class="t-price">${partnerScaled} CR</span>
                     </div>
                 </div>
                 <div class="tandem-advice-sub">${adviceText}</div>
+                ${hybridNoticeHtml}
             </div>
         `;
     }

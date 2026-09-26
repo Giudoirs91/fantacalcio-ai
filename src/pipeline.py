@@ -92,14 +92,14 @@ def compute_substitute_pairings(processed_players, tactical_db, reports_csv):
                     'coppia_dettaglio': f"3° Portiere ({p1['name']})"
                 }
 
-        # 2. Ballottaggi espliciti da Tactical DB (SOLO SE STESSO RUOLO FANTACALCIO)
+        # 2. Ballottaggi espliciti da Tactical DB
         for b in ballottaggi:
             p_name = b.get('player', '')
             p_pct = b.get('pct', 50)
             vs_str = b.get('vs', '')
             
             p_obj = next((p for p in t_players if match_player_name(p['name'], p_name)), None)
-            if not p_obj:
+            if not p_obj or p_obj['role'] == 'P':
                 continue
                 
             vs_matches = re.findall(r'([A-Za-z\s\.\'\-]+?)\s*\((\d+)%\)', vs_str)
@@ -109,63 +109,128 @@ def compute_substitute_pairings(processed_players, tactical_db, reports_csv):
                     rival_pct = int(rival_pct)
                     
                     r_obj = next((p for p in t_players if match_player_name(p['name'], rival_name)), None)
-                    # RIGOROSO: Devono avere lo stesso ruolo Fantacalcio (P-P, D-D, C-C, A-A)
-                    if r_obj and r_obj['role'] == p_obj['role']:
-                        tipo = 'BALLOTTAGGIO'
-                        if p_pct >= 65:
-                            tipo = 'TITOLARE'   # alta % = è lui il titolare
-                        elif p_pct <= 35:
-                            tipo = 'RISERVA'    # bassa % = è la riserva
-                        
-                        det = f"{p_pct}% vs {rival_pct}% ({r_obj['name']})"
-                        if p_obj['id'] not in pairings:
-                            pairings[p_obj['id']] = {
-                                'coppia_nome': r_obj['name'],
-                                'coppia_id': r_obj['id'],
-                                'coppia_ruolo': r_obj['role'],
-                                'coppia_tipo': tipo,
-                                'coppia_dettaglio': det
-                            }
-                        
-                        if r_obj['id'] not in pairings:
-                            r_tipo = 'TITOLARE' if tipo == 'RISERVA' else ('RISERVA' if tipo == 'TITOLARE' else 'BALLOTTAGGIO')
-                            r_det = f"{rival_pct}% vs {p_pct}% ({p_obj['name']})"
-                            pairings[r_obj['id']] = {
-                                'coppia_nome': p_obj['name'],
-                                'coppia_id': p_obj['id'],
-                                'coppia_ruolo': p_obj['role'],
-                                'coppia_tipo': r_tipo,
-                                'coppia_dettaglio': r_det
-                            }
-                        break
+                    if not r_obj or r_obj['role'] == 'P':
+                        continue
+                    
+                    is_hybrid = (r_obj['role'] != p_obj['role'])
+                    
+                    tipo = 'BALLOTTAGGIO'
+                    if p_pct >= 65:
+                        tipo = 'TITOLARE'   # alta % = è lui il titolare
+                    elif p_pct <= 35:
+                        tipo = 'RISERVA'    # bassa % = è la riserva
+                    
+                    r_tipo = 'TITOLARE' if tipo == 'RISERVA' else ('RISERVA' if tipo == 'TITOLARE' else 'BALLOTTAGGIO')
+                    
+                    if is_hybrid:
+                        det_p = f"Staffetta/Ballottaggio reale {p_pct}% vs {rival_pct}% ({r_obj['name']}). ⚠️ Asimmetria Classic: {p_obj['name']} è {p_obj['role']}, {r_obj['name']} è {r_obj['role']} (stessa corsia/zona in campo)"
+                        det_r = f"Staffetta/Ballottaggio reale {rival_pct}% vs {p_pct}% ({p_obj['name']}). ⚠️ Asimmetria Classic: {r_obj['name']} è {r_obj['role']}, {p_obj['name']} è {p_obj['role']} (stessa corsia/zona in campo)"
+                    else:
+                        det_p = f"{p_pct}% vs {rival_pct}% ({r_obj['name']})"
+                        det_r = f"{rival_pct}% vs {p_pct}% ({p_obj['name']})"
+                    
+                    if p_obj['id'] not in pairings:
+                        pairings[p_obj['id']] = {
+                            'coppia_nome': r_obj['name'],
+                            'coppia_id': r_obj['id'],
+                            'coppia_ruolo': r_obj['role'],
+                            'coppia_tipo': tipo,
+                            'coppia_dettaglio': det_p,
+                            'coppia_ibrida': is_hybrid
+                        }
+                    
+                    if r_obj['id'] not in pairings:
+                        pairings[r_obj['id']] = {
+                            'coppia_nome': p_obj['name'],
+                            'coppia_id': p_obj['id'],
+                            'coppia_ruolo': p_obj['role'],
+                            'coppia_tipo': r_tipo,
+                            'coppia_dettaglio': det_r,
+                            'coppia_ibrida': is_hybrid
+                        }
+                    break
 
-        # 3. Match Reports: Staffette reali (SOLO SE STESSO RUOLO FANTACALCIO)
+        # 3. Lineup esplicite da Tactical DB (per ruoli/corsie con sub_name indicato)
+        lineup_slots = t_tac.get('lineup', [])
+        for slot in lineup_slots:
+            st_name = slot.get('name')
+            sb_name = slot.get('sub_name')
+            pos_label = slot.get('pos_label') or slot.get('pos') or 'Corsia'
+            if not st_name or not sb_name:
+                continue
+            st_obj = next((p for p in t_players if match_player_name(p['name'], st_name)), None)
+            sb_obj = next((p for p in t_players if match_player_name(p['name'], sb_name)), None)
+            if not st_obj or not sb_obj or st_obj['role'] == 'P' or sb_obj['role'] == 'P':
+                continue
+            
+            if st_obj['id'] not in pairings and sb_obj['id'] not in pairings:
+                is_hybrid = (st_obj['role'] != sb_obj['role'])
+                if is_hybrid:
+                    det_st = f"Alternativa tattica: {sb_obj['name']} ({pos_label}). ⚠️ Ruoli Classic differenti: {st_obj['role']} vs {sb_obj['role']}"
+                    det_sb = f"Subentra a {st_obj['name']} ({pos_label}). ⚠️ Ruoli Classic differenti: {sb_obj['role']} vs {st_obj['role']}"
+                else:
+                    det_st = f"Alternativa diretta: {sb_obj['name']} ({pos_label})"
+                    det_sb = f"Subentra a {st_obj['name']} ({pos_label})"
+
+                pairings[st_obj['id']] = {
+                    'coppia_nome': sb_obj['name'],
+                    'coppia_id': sb_obj['id'],
+                    'coppia_ruolo': sb_obj['role'],
+                    'coppia_tipo': 'TITOLARE',
+                    'coppia_dettaglio': det_st,
+                    'coppia_ibrida': is_hybrid
+                }
+                pairings[sb_obj['id']] = {
+                    'coppia_nome': st_obj['name'],
+                    'coppia_id': st_obj['id'],
+                    'coppia_ruolo': st_obj['role'],
+                    'coppia_tipo': 'RISERVA',
+                    'coppia_dettaglio': det_sb,
+                    'coppia_ibrida': is_hybrid
+                }
+
+        # 4. Match Reports: Staffette reali dai cambi effettivi
         team_upper = team_name.upper()
         for (t_up, st_name, sb_name), count in sorted(sub_pairs_count.items(), key=lambda x: x[1], reverse=True):
             if t_up != team_upper and team_upper not in t_up and t_up not in team_upper:
                 continue
             st_obj = next((p for p in t_players if match_player_name(p['name'], st_name)), None)
             sb_obj = next((p for p in t_players if match_player_name(p['name'], sb_name)), None)
+            if not st_obj or not sb_obj or st_obj['role'] == 'P' or sb_obj['role'] == 'P':
+                continue
             
-            # RIGOROSO: Lo stesso ruolo è obbligatorio! (Un attaccante NON può essere sostituito da un centrocampista o difensore)
-            if st_obj and sb_obj and st_obj['role'] == sb_obj['role']:
-                if st_obj['id'] not in pairings and sb_obj['id'] not in pairings:
-                    pairings[st_obj['id']] = {
-                        'coppia_nome': sb_obj['name'],
-                        'coppia_id': sb_obj['id'],
-                        'coppia_ruolo': sb_obj['role'],
-                        'coppia_tipo': 'STAFFETTA',
-                        'coppia_dettaglio': f"Staffetta ({count} cambi)"
-                    }
-                    pairings[sb_obj['id']] = {
-                        'coppia_nome': st_obj['name'],
-                        'coppia_id': st_obj['id'],
-                        'coppia_ruolo': st_obj['role'],
-                        'coppia_tipo': 'TITOLARE',
-                        'coppia_dettaglio': f"Subentra a {st_obj['name']}"
-                    }
+            if st_obj['id'] not in pairings and sb_obj['id'] not in pairings:
+                is_hybrid = (st_obj['role'] != sb_obj['role'])
+                if is_hybrid:
+                    st_mantra = set((st_obj.get('mantra') or '').split(';'))
+                    sb_mantra = set((sb_obj.get('mantra') or '').split(';'))
+                    # Solo se condividono almeno una posizione al Mantra (es. entrambi E, entrambi W)
+                    if not st_mantra.intersection(sb_mantra):
+                        continue
+                    det_st = f"Staffetta ({count} cambi). ⚠️ Ruoli Classic differenti: {st_obj['role']} vs {sb_obj['role']} (stessa posizione in campo)"
+                    det_sb = f"Subentra a {st_obj['name']} ({count} cambi). ⚠️ Ruoli Classic differenti: {sb_obj['role']} vs {st_obj['role']}"
+                else:
+                    det_st = f"Staffetta ({count} cambi)"
+                    det_sb = f"Subentra a {st_obj['name']}"
 
-        # 4. Fallback per titolari dell'11 ancora senza sostituto: assegna il miglior panchinaro dello STESSO ruolo e Mantra affine
+                pairings[st_obj['id']] = {
+                    'coppia_nome': sb_obj['name'],
+                    'coppia_id': sb_obj['id'],
+                    'coppia_ruolo': sb_obj['role'],
+                    'coppia_tipo': 'STAFFETTA',
+                    'coppia_dettaglio': det_st,
+                    'coppia_ibrida': is_hybrid
+                }
+                pairings[sb_obj['id']] = {
+                    'coppia_nome': st_obj['name'],
+                    'coppia_id': st_obj['id'],
+                    'coppia_ruolo': st_obj['role'],
+                    'coppia_tipo': 'TITOLARE',
+                    'coppia_dettaglio': det_sb,
+                    'coppia_ibrida': is_hybrid
+                }
+
+        # 5. Fallback per titolari dell'11 ancora senza sostituto: assegna riserva compatibile
         starters_unmapped = [p for p in t_players if p.get('is_in_11') and p['id'] not in pairings and p['role'] != 'P']
         bench_unmapped = [p for p in t_players if not p.get('is_in_11') and p['id'] not in pairings and p['role'] != 'P']
         bench_unmapped.sort(key=lambda x: (x.get('fvm', 0), x.get('ovr', 0)), reverse=True)
@@ -175,7 +240,7 @@ def compute_substitute_pairings(processed_players, tactical_db, reports_csv):
             st_mantra = set((st.get('mantra') or '').split(';'))
             best_candidate = None
             
-            # Priorità 1: stesso ruolo Fantacalcio + affinità Mantra (es. Pc per Pc, Dc per Dc, E per E)
+            # Priorità 1: stesso ruolo Fantacalcio + affinità Mantra esatta (es. Pc per Pc, Dc per Dc, E per E)
             for b in bench_unmapped:
                 if b['role'] == st['role'] and b['id'] not in used_bench:
                     b_mantra = set((b.get('mantra') or '').split(';'))
@@ -183,10 +248,24 @@ def compute_substitute_pairings(processed_players, tactical_db, reports_csv):
                         best_candidate = b
                         break
             
-            # Priorità 2: stesso ruolo Fantacalcio generale
+            # Priorità 2: stesso ruolo Classic MA compatibile a livello tattico
+            # NON accoppiare MAI un centrale puro (Dc senza E) con un esterno a tutta fascia (E senza Dc)
             if not best_candidate:
+                is_st_cb = ('Dc' in st_mantra or 'B' in st_mantra) and ('E' not in st_mantra and 'W' not in st_mantra)
+                is_st_wing = ('E' in st_mantra or 'W' in st_mantra) and ('Dc' not in st_mantra)
+                
                 for b in bench_unmapped:
                     if b['role'] == st['role'] and b['id'] not in used_bench:
+                        b_mantra = set((b.get('mantra') or '').split(';'))
+                        is_b_cb = ('Dc' in b_mantra or 'B' in b_mantra) and ('E' not in b_mantra and 'W' not in b_mantra)
+                        is_b_wing = ('E' in b_mantra or 'W' in b_mantra) and ('Dc' not in b_mantra)
+                        
+                        # Incompatibilità netta
+                        if is_st_cb and is_b_wing:
+                            continue
+                        if is_st_wing and is_b_cb:
+                            continue
+                            
                         best_candidate = b
                         break
                         
@@ -197,31 +276,35 @@ def compute_substitute_pairings(processed_players, tactical_db, reports_csv):
                     'coppia_id': best_candidate['id'],
                     'coppia_ruolo': best_candidate['role'],
                     'coppia_tipo': 'RISERVA',
-                    'coppia_dettaglio': f"Alternativa ({best_candidate['name']})"
+                    'coppia_dettaglio': f"Alternativa ({best_candidate['name']})",
+                    'coppia_ibrida': False
                 }
                 pairings[best_candidate['id']] = {
                     'coppia_nome': st['name'],
                     'coppia_id': st['id'],
                     'coppia_ruolo': st['role'],
                     'coppia_tipo': 'TITOLARE',
-                    'coppia_dettaglio': f"Copertura di {st['name']}"
+                    'coppia_dettaglio': f"Copertura di {st['name']}",
+                    'coppia_ibrida': False
                 }
 
     # Assegna i campi a ogni giocatore
     for p in processed_players:
         pair = pairings.get(p['id'])
-        if pair and pair['coppia_ruolo'] == p['role']:
+        if pair:
             p['coppia_nome'] = pair['coppia_nome']
             p['coppia_id'] = pair['coppia_id']
             p['coppia_ruolo'] = pair['coppia_ruolo']
             p['coppia_tipo'] = pair['coppia_tipo']
             p['coppia_dettaglio'] = pair['coppia_dettaglio']
+            p['coppia_ibrida'] = bool(pair.get('coppia_ibrida') or (pair['coppia_ruolo'] != p['role']))
         else:
             p['coppia_nome'] = '-'
             p['coppia_id'] = None
             p['coppia_ruolo'] = '-'
             p['coppia_tipo'] = '-'
             p['coppia_dettaglio'] = 'Nessuna alternativa diretta'
+            p['coppia_ibrida'] = False
 
     print(f"-> Mappatura Coppie/Sostituti completata: {len(pairings)}/{len(processed_players)} calciatori associati.")
     return processed_players

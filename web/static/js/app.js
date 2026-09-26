@@ -217,7 +217,7 @@ function renderClubLineupOnPitch(lineup, modulo) {
 function createClubPitchCardHtml(slot) {
   const role = (slot.role || 'C').toLowerCase();
   const subInfo = slot.sub_name ? `<div class="sub-indicator">vs ${slot.sub_name} (${100 - (slot.pct || 60)}%)</div>` : '';
-  const oopBadge = slot.oop ? '<span class="oop-badge" style="font-size:0.6rem; padding:0.05rem 0.2rem;">OOP</span>' : '';
+  const oopBadge = slot.oop ? '<span class="oop-badge" style="font-size:0.6rem; padding:0.05rem 0.2rem;" title="Fuori Ruolo Positivo (FRP): schierato sul campo in una posizione più offensiva rispetto alla quotazione del listone">FRP</span>' : '';
 
   return `
     <div class="pitch-card" data-player-id="${slot.id || ''}">
@@ -298,11 +298,11 @@ function renderClubOOP(club) {
     html += `<div style="margin-bottom:0.5rem;"><strong style="color:var(--accent-gold); font-size:0.85rem;">⭐ Top Consigliati:</strong> <span style="font-size:0.85rem;">${topList.join(', ')}</span></div>`;
   }
   if (sleeperList.length > 0) {
-    html += `<div style="margin-bottom:0.5rem;"><strong style="color:var(--accent-cyan); font-size:0.85rem;">🔥 Scommesse / Sleeper:</strong> <span style="font-size:0.85rem;">${sleeperList.join(', ')}</span></div>`;
+    html += `<div style="margin-bottom:0.5rem;"><strong style="color:var(--accent-cyan); font-size:0.85rem;" title="Calciatori dal costo contenuto con statistiche avanzate (xG/xA) ad alto potenziale">🔥 Scommesse ad Alto Potenziale:</strong> <span style="font-size:0.85rem;">${sleeperList.join(', ')}</span></div>`;
   }
 
   if (oopList.length > 0) {
-    html += '<div style="margin-top:0.75rem;"><strong style="color:var(--accent-purple); font-size:0.85rem;">💎 Giocatori Fuori Ruolo (OOP):</strong></div>';
+    html += '<div style="margin-top:0.75rem;"><strong style="color:var(--accent-purple); font-size:0.85rem;" title="Fuori Ruolo Positivo (FRP): Calciatori listati più arretrati rispetto alla loro posizione reale sul campo">💎 Giocatori Fuori Ruolo Positivo (FRP):</strong></div>';
     html += oopList.map(o => `
       <div class="oop-badge" style="display:block; margin-top:0.4rem;">
         <strong>${o.name}</strong> (${o.role}) ➜ ${o.pos_label}

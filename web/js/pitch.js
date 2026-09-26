@@ -263,8 +263,8 @@ function renderPitchTeam(teamName) {
 
             oopSectionHtml = `
                 <div style="background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 12px;">
-                    <div style="font-size:11px;font-weight:800;color:#fbbf24;margin-bottom:7px;display:flex;align-items:center;gap:6px;letter-spacing:0.4px;">
-                        👑 CALCIATORI FUORI RUOLO (OOP)
+                    <div style="font-size:11px;font-weight:800;color:#fbbf24;margin-bottom:7px;display:flex;align-items:center;gap:6px;letter-spacing:0.4px;" title="Fuori Ruolo Positivo (FRP): Calciatori listati più arretrati rispetto alla loro posizione reale in campo">
+                        👑 CALCIATORI FUORI RUOLO POSITIVO (FRP)
                     </div>
                     <div style="display:flex;flex-direction:column;gap:5px;">
                         ${oopItemsHtml}
@@ -467,7 +467,7 @@ function renderPitchTeam(teamName) {
         // Previsioni predittive specifiche per club
         let predAttacco = team.att_stars >= 4 ? "Alta produzione gol grazie al gioco offensivo e ali rientranti." : "Produzione gol media; terminale centrale focalizzatore.";
         let predDifesa = team.dif_stars >= 4 ? "Solidità elevata con ottime probabilità di Clean Sheet e voti positivi." : "Linea da voto regolare; attenzione a qualche malus contro big.";
-        let predAsta = `Puntare forte sui Top e sfruttare i giocatori OOP quotati C che giocano attaccanti.`;
+        let predAsta = `Puntare forte sui Top e sfruttare i giocatori con Fuori Ruolo Positivo (FRP) quotati C che giocano attaccanti.`;
 
         if (teamName === 'Bologna') {
             predAttacco = "Tridente ad alta propensione di bonus con ali molto offensive (Orsolini, Cambiaghi). Potenziale 50-55 gol.";
@@ -476,7 +476,7 @@ function renderPitchTeam(teamName) {
         } else if (teamName === 'Atalanta') {
             predAttacco = "Attacco dominante di Sarri con elevato volume di tiri e inserimenti delle mezzali. Potenziale 65-72 gol.";
             predDifesa = "Fase difensiva basata sul possesso; Carnesecchi e Scalvini profili top da modificatore.";
-            predAsta = "De Ketelaere e Scamacca priorità; Rowe e Bernasconi sleeper eccellenti a basso costo.";
+            predAsta = "De Ketelaere e Scamacca priorità; Rowe e Bernasconi scommesse eccellenti a basso costo.";
         } else if (teamName === 'Inter') {
             predAttacco = "Attacco a 2 di Chivu con Lautaro perno assoluto e Dimarco/Calhanoglu costanti distributori di bonus. Potenziale 75-80 gol.";
             predDifesa = "Difesa a 3 dominante in Serie A; Bastoni e Stones top assoluti da modificatore di difesa.";
@@ -484,7 +484,7 @@ function renderPitchTeam(teamName) {
         } else if (teamName === 'Cagliari') {
             predAttacco = "Albero di Natale di Pisacane con Maldini e Fazzini rifinitori dietro la punta. Potenziale 38-44 gol.";
             predDifesa = "Caprile portiere affidabile da voto alto; Mina guida la linea per solidità casalinga.";
-            predAsta = "Maldini (rigorista e leader) obiettivo principale; Fazzini e Kevin Carlos sleeper a pochi crediti.";
+            predAsta = "Maldini (rigorista e leader) obiettivo principale; Fazzini e Kevin Carlos scommesse a pochi crediti.";
         } else if (teamName === 'Como') {
             predAttacco = "Attacco stellare di Fabregas con Nico Paz faro assoluto, Baturina e Kean finalizzatori. Potenziale 68-75 gol.";
             predDifesa = "Linea alta e propositiva; Couto garanzia di bonus, Ramon e Chalobah affidabili.";
@@ -540,7 +540,7 @@ function renderPitchTeam(teamName) {
         } else if (teamName === 'Torino') {
             predAttacco = "3-4-2-1 di Abate con Simeone centravanti di movimento e Vlasic/Casadei incursori. Potenziale 44-50 gol.";
             predDifesa = "Linea a 3 fisica con Coco e Comuzzo; Perri portiere giovane ed affidabile.";
-            predAsta = "Simeone (1° Rigorista) e Vlasic (C) certezze d'asta; Casadei e Belghali sleeper a poco prezzo.";
+            predAsta = "Simeone (1° Rigorista) e Vlasic (C) certezze d'asta; Casadei e Belghali scommesse a poco prezzo.";
         } else if (teamName === 'Udinese') {
             predAttacco = "Attacco dinamico di Runjaic: Davis centravanti di peso e Zaniolo (C) seconda punta d'alta qualità. Potenziale 48-54 gol.";
             predDifesa = "Muro fisico con Solet leader difensivo; Kamara e Vojvoda costanti rifinitori sui binari.";
@@ -564,7 +564,7 @@ function renderPitchTeam(teamName) {
                         <div style="display:flex;flex-wrap:wrap;gap:4px;">${topBadges}</div>
                     </div>
                     <div>
-                        <div style="font-size:10px;font-weight:800;color:var(--text-muted);margin-bottom:4px;letter-spacing:0.4px;">SLEEPER & VALUE</div>
+                        <div style="font-size:10px;font-weight:800;color:var(--text-muted);margin-bottom:4px;letter-spacing:0.4px;" title="Scommesse ad Alto Potenziale e Calciatori Best Value">SCOMMESSE & VALUE</div>
                         <div style="display:flex;flex-wrap:wrap;gap:4px;">${sleeperBadges}</div>
                     </div>
                     <div>
@@ -863,7 +863,7 @@ function renderTeamRosterTable(teamName) {
                             <th style="min-width:75px;text-align:center;">Max Bid</th>
                             <th style="min-width:95px;text-align:center;">Slot</th>
                             <th style="width:50px;text-align:center;" title="Livello di Fragilità Fisica">Frag.</th>
-                            <th style="min-width:110px;text-align:center;">OOP</th>
+                            <th style="min-width:110px;text-align:center;" title="Fuori Ruolo Positivo (FRP): Calciatore schierato sul campo più avanzato rispetto al listone">FRP</th>
                             <th style="min-width:65px;text-align:center;">Rigori</th>
                             <th style="min-width:140px;text-align:center;">Consiglio AI</th>
                             <th style="min-width:75px;text-align:center;" title="Rating Statistico 25/26">⭐ Rating 25/26</th>
@@ -940,7 +940,7 @@ function openEditPlayerModal(playerId) {
         { label: '🚀 Best Value / Da Acquistare', val: 'Best Value / Da Acquistare', type: 'buy' },
         { label: '🔒 Titolarissimo da Voto', val: 'Titolarissimo da Voto', type: 'titolarissimo' },
         { label: '🔄 Rotazione / Ballottaggio', val: 'Rotazione', type: 'rotation' },
-        { label: '🔥 Scommessa / Sleeper', val: 'Scommessa / Sleeper', type: 'sleeper' },
+        { label: '🔥 Scommessa ad Alto Potenziale', val: 'Scommessa', type: 'sleeper' },
         { label: '🛡️ Low Cost Modificatore', val: 'Low Cost Modificatore', type: 'lowcost' },
         { label: '⚠️ Possibile Flop / Fragile', val: 'Possibile Flop / Fragile', type: 'flop' },
         { label: '⛔ Da Evitare', val: 'Da Evitare', type: 'avoid' }
@@ -973,15 +973,15 @@ function openEditPlayerModal(playerId) {
                 <div style="font-size:11px;color:var(--text-muted);">Assegna a quale slot d'asta appartiene il calciatore (1° Slot, 2° Slot, ecc.).</div>
             </div>
 
-            <!-- Field 2: OOP (Fuori Ruolo) -->
+            <!-- Field 2: FRP (Fuori Ruolo Positivo) -->
             <div style="display:flex;flex-direction:column;gap:6px;">
-                <label style="font-size:12px;font-weight:800;color:#ec4899;display:flex;align-items:center;gap:6px;">
-                    ⚡ FUORI RUOLO (OOP / FPP):
+                <label style="font-size:12px;font-weight:800;color:#ec4899;display:flex;align-items:center;gap:6px;" title="Fuori Ruolo Positivo (FRP): schierato in campo più avanzato rispetto al ruolo ufficiale">
+                    ⚡ FUORI RUOLO POSITIVO (FRP):
                 </label>
                 <select id="editPlayerOop" class="select-filter" style="width:100%;background:rgba(0,0,0,0.4);border-color:rgba(236,72,153,0.35);">
                     ${oopOptions.map(o => `<option value="${o.val}" ${p.oop_val === o.val ? 'selected' : ''}>${o.label}</option>`).join('')}
                 </select>
-                <div style="font-size:11px;color:var(--text-muted);">Indica se il giocatore gioca in una posizione più avanzata rispetto alla quotazione listone.</div>
+                <div style="font-size:11px;color:var(--text-muted);">Indica se il giocatore gioca in una posizione più avanzata (FRP) rispetto alla quotazione listone (+3/+1 facilitati).</div>
             </div>
 
             <!-- Field 3: Consiglio AI -->

@@ -1172,14 +1172,19 @@ function getAllSmartBadgesHtml(p) {
         badges.push(`<span class="smart-tag setpiece" title="Specialista Corner">📐 Corner</span>`);
     }
 
-    // 4. OOP Mantra
+    // 4. Fuori Ruolo Positivo (FRP)
     const oopValStr = typeof p.oop_val === 'string' ? p.oop_val : (p.oop_val ? String(p.oop_val) : '');
     if (oopValStr && oopValStr !== '-') {
         const isGold = p.oop_tier === 'ORO' || oopValStr.includes('ORO');
         const isSilver = p.oop_tier === 'ARGENTO' || oopValStr.includes('ARGENTO');
         const tagType = isGold ? 'oop-gold' : (isSilver ? 'oop-silver' : 'oop-bronze');
         const tierName = isGold ? 'Oro' : (isSilver ? 'Arg' : 'Bro');
-        badges.push(`<span class="smart-tag ${tagType}" title="${p.oop_desc || oopValStr}">💎 OOP ${tierName}</span>`);
+        const frpDesc = isGold 
+            ? "Fuori Ruolo Positivo (FRP Oro): Massima categoria FRP. Terzino listato Difensore che gioca come ala pura d'attacco o quinto offensivo a tutta fascia (+3 facili)."
+            : (isSilver 
+                ? "Fuori Ruolo Positivo (FRP Argento): Centrocampista listato C che gioca stabilmente da trequartista d'incursione dietro le punte."
+                : "Fuori Ruolo Positivo (FRP Bronzo): Riserva offensiva listata in posizione arretrata, ottima scommessa a 1 credito.");
+        badges.push(`<span class="smart-tag ${tagType}" title="${frpDesc}">💎 FRP ${tierName}</span>`);
     }
 
     // 5. Profilo Strategico AI & Advice Tag
@@ -1187,33 +1192,33 @@ function getAllSmartBadgesHtml(p) {
     const adviceText = p.ai_advice || p.consiglio || '';
     
     if (p.ovr >= 92 || p.slot_num === 1 || adviceType === 'top' || adviceText.toLowerCase().includes('top player') || adviceText.toLowerCase().includes('top di reparto')) {
-        badges.push(`<span class="smart-tag top" title="${adviceText || 'Top Player Assoluto'}">👑 Top Player</span>`);
+        badges.push(`<span class="smart-tag top" title="👑 Top Player Assoluto: 1° slot o tra i migliori del campionato per fantamedia e bonus attesi. ${adviceText}">👑 Top Player</span>`);
     } else if (adviceType === 'leader' || adviceText.toLowerCase().includes('leader')) {
-        badges.push(`<span class="smart-tag leader" title="${adviceText}">⭐ Leader</span>`);
-    } else if (adviceType === 'sleeper' || adviceText.toLowerCase().includes('sleeper')) {
-        badges.push(`<span class="smart-tag sleeper" title="${adviceText}">🔥 Sleeper</span>`);
+        badges.push(`<span class="smart-tag leader" title="⭐ Leader di Reparto: Titolare di altissimo livello e 2° slot d'asta con voti costanti e bonus frequenti. ${adviceText}">⭐ Leader</span>`);
+    } else if (adviceType === 'sleeper' || adviceText.toLowerCase().includes('sleeper') || adviceText.toLowerCase().includes('scommessa')) {
+        badges.push(`<span class="smart-tag sleeper" title="🔥 Scommessa ad Alto Potenziale: Calciatore dal prezzo contenuto con statistiche avanzate (xG/xA) che indicano un elevato potenziale a sorpresa. ${adviceText}">🔥 Scommessa</span>`);
     } else if (adviceType === 'buy' || adviceText.toLowerCase().includes('best value')) {
-        badges.push(`<span class="smart-tag value" title="${adviceText}">🚀 Best Value</span>`);
+        badges.push(`<span class="smart-tag value" title="🚀 Best Value: Giocatore che garantisce un rendimento statistico superiore al costo in crediti d'asta. ${adviceText}">🚀 Best Value</span>`);
     } else if (adviceType === 'hot' || adviceText.includes('IN FORMA') || adviceText.includes('MOMENTO D\'ORO')) {
-        badges.push(`<span class="smart-tag hot" title="${adviceText}">🔥 In Forma</span>`);
+        badges.push(`<span class="smart-tag hot" title="🔥 In Forma / Momento d'Oro: Calciatore protagonista nelle ultime giornate di Serie A con bonus o voti eccellenti. ${adviceText}">🔥 In Forma</span>`);
     } else if (adviceType === 'benched' || adviceText.includes('PERSO IL POSTO') || adviceText.includes('IN PANCHINA')) {
-        badges.push(`<span class="smart-tag benched" title="${adviceText}">🪑 In Panchina</span>`);
+        badges.push(`<span class="smart-tag benched" title="🪑 In Panchina: Calciatore con status iniziale elevato ma scivolato indietro nelle gerarchie tecniche dell'allenatore. ${adviceText}">🪑 In Panchina</span>`);
     } else if (adviceType === 'supersub' || adviceText.includes('SUPER-SUB')) {
-        badges.push(`<span class="smart-tag sleeper" style="background:rgba(245,158,11,0.2);border-color:#f59e0b;color:#fbbf24;" title="${adviceText}">⚡ Super-Sub</span>`);
+        badges.push(`<span class="smart-tag sleeper" style="background:rgba(245,158,11,0.2);border-color:#f59e0b;color:#fbbf24;" title="⚡ Super-Sub / Spacca-Partite: Calciatore che subentra sistematicamente a gara in corso garantendo voto utile e bonus. ${adviceText}">⚡ Super-Sub</span>`);
     } else if (adviceType === 'titolarissimo' || adviceText.toLowerCase().includes('titolarissimo')) {
-        badges.push(`<span class="smart-tag starter" title="${adviceText}">🔒 Titolarissimo</span>`);
+        badges.push(`<span class="smart-tag starter" title="🔒 Titolarissimo (100% da Voto): Certezza assoluta di presenza dal 1' minuto in tutte le giornate disputate. ${adviceText}">🔒 Titolarissimo</span>`);
     } else if (adviceType === 'titolare' || adviceText.toLowerCase().includes('titolare da voto')) {
-        badges.push(`<span class="smart-tag titolare" title="${adviceText}">🛡️ Titolare</span>`);
+        badges.push(`<span class="smart-tag titolare" title="🛡️ Titolare Affidabile (75-94%): Calciatore che parte titolare nella grande maggioranza delle partite con sporadico turnover. ${adviceText}">🛡️ Titolare</span>`);
     } else if (adviceType === 'lowcost' || adviceText.toLowerCase().includes('low cost')) {
-        badges.push(`<span class="smart-tag lowcost" title="${adviceText}">🪙 Low Cost</span>`);
+        badges.push(`<span class="smart-tag lowcost" title="🪙 Low Cost da Voto: Ottimo elemento da slot finale a 1-5 crediti con titolarità garantita. ${adviceText}">🪙 Low Cost</span>`);
     } else if (adviceType === 'rotation' || adviceText.toLowerCase().includes('ballottaggio')) {
-        badges.push(`<span class="smart-tag rotation" title="${adviceText}">🔄 Ballottaggio</span>`);
+        badges.push(`<span class="smart-tag rotation" title="🔄 In Ballottaggio: Giocatore in costante alternanza con un compagno di reparto per una maglia da titolare. ${adviceText}">🔄 Ballottaggio</span>`);
     } else if (adviceType === 'flop' || (adviceType === 'danger' && adviceText.toLowerCase().includes('flop'))) {
-        badges.push(`<span class="smart-tag danger" title="${adviceText}">⚠️ Possibile Flop</span>`);
+        badges.push(`<span class="smart-tag danger" title="⚠️ Possibile Flop: Calciatore sopravvalutato dal mercato o con rendimento al di sotto delle aspettative di spesa. ${adviceText}">⚠️ Possibile Flop</span>`);
     } else if (adviceText.includes('TOP DI VETRO') || adviceText.includes('COPERTURA')) {
-        badges.push(`<span class="smart-tag value" style="background:rgba(245,158,11,0.18);border-color:#f59e0b;color:#fbbf24;" title="${adviceText}">🛡️ Con Copertura</span>`);
+        badges.push(`<span class="smart-tag value" style="background:rgba(245,158,11,0.18);border-color:#f59e0b;color:#fbbf24;" title="🛡️ Da Prendere con Copertura: Calciatore di grande talento ma soggetto a infortuni frequenti; indispensabile acquistare anche il suo sostituto naturale. ${adviceText}">🛡️ Con Copertura</span>`);
     } else if (adviceText) {
-        badges.push(`<span class="smart-tag regular">${adviceText}</span>`);
+        badges.push(`<span class="smart-tag regular" title="${adviceText}">${adviceText}</span>`);
     }
 
     if (badges.length === 0) {
@@ -1225,10 +1230,10 @@ function getAllSmartBadgesHtml(p) {
 
 function getSmartBadgeHtml(p) {
     if (p.is_injured) {
-        return `<span class="smart-tag injured" title="Infortunato: ${p.infortunio_motivo || ''}">🩹 ${p.infortunio_rientro || 'Infortunato'}</span>`;
+        return `<span class="smart-tag injured" title="Infortunato: ${p.infortunio_motivo || ''} — Rientro previsto: ${p.infortunio_rientro || 'Non comunicato'}">🩹 ${p.infortunio_rientro || 'Infortunato'}</span>`;
     }
     if (p.is_rigorista_1 || p.rigorista_val === '1° Rigorista') {
-        return `<span class="smart-tag penalty" title="1° Rigorista ufficiale">👑 1° Rigorista</span>`;
+        return `<span class="smart-tag penalty" title="1° Rigorista ufficiale: Tiratore principale designato per i calci di rigore (+3 dal dischetto).">👑 1° Rigorista</span>`;
     }
     const oopValStr = typeof p.oop_val === 'string' ? p.oop_val : (p.oop_val ? String(p.oop_val) : '');
     if (oopValStr && oopValStr !== '-') {
@@ -1236,52 +1241,57 @@ function getSmartBadgeHtml(p) {
         const isSilver = p.oop_tier === 'ARGENTO' || oopValStr.includes('ARGENTO');
         const tagType = isGold ? 'oop-gold' : (isSilver ? 'oop-silver' : 'oop-bronze');
         const tierName = isGold ? 'Oro' : (isSilver ? 'Arg' : 'Bro');
-        return `<span class="smart-tag ${tagType}" title="${p.oop_desc || oopValStr}">💎 OOP ${tierName}</span>`;
+        const frpDesc = isGold 
+            ? "Fuori Ruolo Positivo (FRP Oro): Massima categoria FRP. Terzino listato Difensore che gioca come ala pura d'attacco o quinto offensivo a tutta fascia (+3 facili)."
+            : (isSilver 
+                ? "Fuori Ruolo Positivo (FRP Argento): Centrocampista listato C che gioca stabilmente da trequartista d'incursione dietro le punte."
+                : "Fuori Ruolo Positivo (FRP Bronzo): Riserva offensiva listata in posizione arretrata, ottima scommessa a 1 credito.");
+        return `<span class="smart-tag ${tagType}" title="${frpDesc}">💎 FRP ${tierName}</span>`;
     }
     const adviceType = p.ai_advice_type || 'regular';
     const adviceText = p.ai_advice || p.consiglio || '';
     
     if (p.ovr >= 92 || p.slot_num === 1 || adviceType === 'top' || adviceText.toLowerCase().includes('top player') || adviceText.toLowerCase().includes('top di reparto')) {
-        return `<span class="smart-tag top" title="${adviceText || 'Top Player Assoluto'}">👑 Top Player</span>`;
+        return `<span class="smart-tag top" title="👑 Top Player Assoluto: 1° slot o tra i migliori del campionato per fantamedia e bonus attesi. ${adviceText}">👑 Top Player</span>`;
     }
     if (adviceType === 'leader' || adviceText.toLowerCase().includes('leader')) {
-        return `<span class="smart-tag leader" title="${adviceText}">⭐ Leader</span>`;
+        return `<span class="smart-tag leader" title="⭐ Leader di Reparto: Titolare di altissimo livello e 2° slot d'asta con voti costanti e bonus frequenti. ${adviceText}">⭐ Leader</span>`;
     }
-    if (adviceType === 'sleeper' || adviceText.toLowerCase().includes('sleeper')) {
-        return `<span class="smart-tag sleeper" title="${adviceText}">🔥 Sleeper</span>`;
+    if (adviceType === 'sleeper' || adviceText.toLowerCase().includes('sleeper') || adviceText.toLowerCase().includes('scommessa')) {
+        return `<span class="smart-tag sleeper" title="🔥 Scommessa ad Alto Potenziale: Calciatore dal prezzo contenuto con statistiche avanzate (xG/xA) che indicano un elevato potenziale a sorpresa. ${adviceText}">🔥 Scommessa</span>`;
     }
     if (adviceType === 'buy' || adviceText.toLowerCase().includes('best value')) {
-        return `<span class="smart-tag value" title="${adviceText}">🚀 Best Value</span>`;
+        return `<span class="smart-tag value" title="🚀 Best Value: Giocatore che garantisce un rendimento statistico superiore al costo in crediti d'asta. ${adviceText}">🚀 Best Value</span>`;
     }
     if (adviceType === 'hot' || adviceText.includes('IN FORMA') || adviceText.includes('MOMENTO D\'ORO')) {
-        return `<span class="smart-tag hot" title="${adviceText}">🔥 In Forma</span>`;
+        return `<span class="smart-tag hot" title="🔥 In Forma / Momento d'Oro: Calciatore protagonista nelle ultime giornate di Serie A con bonus o voti eccellenti. ${adviceText}">🔥 In Forma</span>`;
     }
     if (adviceType === 'benched' || adviceText.includes('PERSO IL POSTO') || adviceText.includes('IN PANCHINA')) {
-        return `<span class="smart-tag benched" title="${adviceText}">🪑 In Panchina</span>`;
+        return `<span class="smart-tag benched" title="🪑 In Panchina: Calciatore con status iniziale elevato ma scivolato indietro nelle gerarchie tecniche dell'allenatore. ${adviceText}">🪑 In Panchina</span>`;
     }
     if (adviceType === 'supersub' || adviceText.includes('SUPER-SUB')) {
-        return `<span class="smart-tag sleeper" style="background:rgba(245,158,11,0.2);border-color:#f59e0b;color:#fbbf24;" title="${adviceText}">⚡ Super-Sub</span>`;
+        return `<span class="smart-tag sleeper" style="background:rgba(245,158,11,0.2);border-color:#f59e0b;color:#fbbf24;" title="⚡ Super-Sub / Spacca-Partite: Calciatore che subentra sistematicamente a gara in corso garantendo voto utile e bonus. ${adviceText}">⚡ Super-Sub</span>`;
     }
     if (adviceType === 'titolarissimo' || adviceText.toLowerCase().includes('titolarissimo')) {
-        return `<span class="smart-tag starter" title="${adviceText}">🔒 Titolarissimo</span>`;
+        return `<span class="smart-tag starter" title="🔒 Titolarissimo (100% da Voto): Certezza assoluta di presenza dal 1' minuto in tutte le giornate disputate. ${adviceText}">🔒 Titolarissimo</span>`;
     }
     if (adviceType === 'titolare' || adviceText.toLowerCase().includes('titolare da voto')) {
-        return `<span class="smart-tag titolare" title="${adviceText}">🛡️ Titolare</span>`;
+        return `<span class="smart-tag titolare" title="🛡️ Titolare Affidabile (75-94%): Calciatore che parte titolare nella grande maggioranza delle partite con sporadico turnover. ${adviceText}">🛡️ Titolare</span>`;
     }
     if (adviceType === 'lowcost' || adviceText.toLowerCase().includes('low cost')) {
-        return `<span class="smart-tag lowcost" title="${adviceText}">🪙 Low Cost</span>`;
+        return `<span class="smart-tag lowcost" title="🪙 Low Cost da Voto: Ottimo elemento da slot finale a 1-5 crediti con titolarità garantita. ${adviceText}">🪙 Low Cost</span>`;
     }
     if (adviceType === 'rotation' || adviceText.toLowerCase().includes('ballottaggio')) {
-        return `<span class="smart-tag rotation" title="${adviceText}">🔄 Ballottaggio</span>`;
+        return `<span class="smart-tag rotation" title="🔄 In Ballottaggio: Giocatore in costante alternanza con un compagno di reparto per una maglia da titolare. ${adviceText}">🔄 Ballottaggio</span>`;
     }
     if (adviceType === 'flop' || (adviceType === 'danger' && adviceText.toLowerCase().includes('flop'))) {
-        return `<span class="smart-tag danger" title="${adviceText}">⚠️ Possibile Flop</span>`;
+        return `<span class="smart-tag danger" title="⚠️ Possibile Flop: Calciatore sopravvalutato dal mercato o con rendimento al di sotto delle aspettative di spesa. ${adviceText}">⚠️ Possibile Flop</span>`;
     }
     if (adviceText.includes('TOP DI VETRO') || adviceText.includes('COPERTURA')) {
-        return `<span class="smart-tag value" style="background:rgba(245,158,11,0.18);border-color:#f59e0b;color:#fbbf24;" title="${adviceText}">🛡️ Con Copertura</span>`;
+        return `<span class="smart-tag value" style="background:rgba(245,158,11,0.18);border-color:#f59e0b;color:#fbbf24;" title="🛡️ Da Prendere con Copertura: Calciatore di grande talento ma soggetto a infortuni frequenti; indispensabile acquistare anche il suo sostituto naturale. ${adviceText}">🛡️ Con Copertura</span>`;
     }
     if (p.is_rigorista_2 || p.rigorista_val === '2° Rigorista') {
-        return `<span class="smart-tag penalty-sub" title="2° Rigorista">🎯 2° Rigorista</span>`;
+        return `<span class="smart-tag penalty-sub" title="2° Rigorista designato della squadra.">🎯 2° Rigorista</span>`;
     }
     if (p.is_punizioni || p.is_corner) {
         return `<span class="smart-tag setpiece" title="Specialista Calci Piazzati">📐 Piazzati</span>`;

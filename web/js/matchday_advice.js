@@ -516,9 +516,9 @@ function renderMatchdayAdviceView() {
             const mantraTags = p.mantra ? p.mantra.split(';').map(t => `<span class="fut-mantra-pill">${t.trim()}</span>`).join('') : '';
 
             let specialBadges = '';
-            if (p.is_rigorista_1) specialBadges += `<span class="fut-spec-pill pen" title="1° Rigorista">⚽ RIGORISTA</span>`;
-            if (p.is_oop) specialBadges += `<span class="fut-spec-pill oop" title="Fuori Ruolo">💎 OOP</span>`;
-            if (p.is_punizioni) specialBadges += `<span class="fut-spec-pill fk" title="Tiratore Punizioni">🎯 PIAZZATI</span>`;
+            if (p.is_rigorista_1) specialBadges += `<span class="fut-spec-pill pen" title="1° Rigorista ufficiale della squadra (+3 dal dischetto)">⚽ RIGORISTA</span>`;
+            if (p.is_oop) specialBadges += `<span class="fut-spec-pill oop" title="Fuori Ruolo Positivo (FRP): Calciatore schierato sul campo in una posizione più offensiva rispetto al ruolo ufficiale del listone">💎 FRP</span>`;
+            if (p.is_punizioni) specialBadges += `<span class="fut-spec-pill fk" title="Tiratore designato per i calci piazzati diretti o cross da fermo">🎯 PIAZZATI</span>`;
 
             const ovrVal = p.ovr || 82;
             const fmVal = (p.fm_2627 || p.fm || 6.0).toFixed(2);

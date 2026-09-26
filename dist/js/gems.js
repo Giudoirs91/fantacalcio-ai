@@ -66,7 +66,7 @@ function getAIPredictionDetails(p) {
         clusterLabel = '🌟 Club Media Voto ≥ 7.0';
     } else if (isOop) {
         cluster = 'OOP';
-        clusterLabel = '⚡ Jolly Fuori Ruolo (OOP)';
+        clusterLabel = '⚡ Jolly Fuori Ruolo Positivo (FRP)';
     } else if (xa90 >= 0.18 || (role === 'C' && xa90 >= 0.14)) {
         cluster = 'ASSIST_MACHINE';
         clusterLabel = '🎯 Macchina da Assist (High xA)';
@@ -139,7 +139,7 @@ function getAIPredictionDetails(p) {
             predictionText = `Attaccante con alto indice di pericolosità (${xg90} xG ogni 90 min). Tira molto e gioca in un sistema propositivo a prezzo d'affare.`;
             projectedBonus = "Finalizzatore concreto da 7-11 bonus";
         } else {
-            predictionText = `Incrocio favorevole tra minutaggio, metriche avanzate e ruolo tattico con ${team}. Sleeper eccellente da prendere a pochi crediti.`;
+            predictionText = `Incrocio favorevole tra minutaggio, metriche avanzate e ruolo tattico con ${team}. Scommessa eccellente ad alto potenziale da prendere a pochi crediti.`;
             projectedBonus = "Ottimo rapporto rendimento / crediti spesi";
         }
     }
@@ -467,14 +467,14 @@ function renderGemsView() {
                         <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
                             <span style="font-size:26px;">🔮</span>
                             <h2 style="margin:0;font-size:22px;font-weight:900;color:#fff;letter-spacing:-0.4px;">
-                                Algoritmo Predittivo: <span style="color:var(--accent-cyan);">Gemme Nascoste & Sleeper AI</span>
+                                Algoritmo Predittivo: <span style="color:var(--accent-cyan);">Gemme Nascoste & Scommesse AI</span>
                             </h2>
                             <span style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.4);color:#fbbf24;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:800;">
                                 Serie A 2026/27
                             </span>
                         </div>
                         <p style="margin:0;font-size:13px;color:var(--text-secondary);line-height:1.5;">
-                            Incrocio multidimensionale tra <b>Metriche Statistiche Avanzate</b> (xG, xA, tiri/90), <b>Posizione Tattica Reale (OOP)</b> e <b>Stile Offensivo della Squadra</b>. Calciatori insospettabili a basso-medio costo proiettati ad una stagione di bonus e voti superiori al 7.
+                            Incrocio multidimensionale tra <b>Metriche Statistiche Avanzate</b> (xG, xA, tiri/90), <b>Posizione Tattica Reale (FRP - Fuori Ruolo Positivo)</b> e <b>Stile Offensivo della Squadra</b>. Calciatori insospettabili a basso-medio costo proiettati ad una stagione di bonus e voti superiori al 7.
                         </p>
                     </div>
                     <div style="background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px 16px;text-align:right;">
@@ -511,7 +511,7 @@ function renderGemsView() {
                         <span style="font-size:11px;font-weight:800;color:var(--text-muted);margin-right:4px;">CLUSTER AI:</span>
                         <button class="gems-filter-pill ${cFilt === 'ALL' ? 'active' : ''}" onclick="setGemsFilter('cluster', 'ALL')">Tutti i Cluster</button>
                         <button class="gems-filter-pill ${cFilt === 'RATING_7' ? 'active' : ''}" onclick="setGemsFilter('cluster', 'RATING_7')">🌟 Media Voto ≥ 7.0</button>
-                        <button class="gems-filter-pill ${cFilt === 'OOP' ? 'active' : ''}" onclick="setGemsFilter('cluster', 'OOP')">⚡ Jolly Fuori Ruolo</button>
+                        <button class="gems-filter-pill ${cFilt === 'OOP' ? 'active' : ''}" onclick="setGemsFilter('cluster', 'OOP')" title="Fuori Ruolo Positivo (FRP): Calciatori listati più arretrati rispetto alla loro posizione reale in campo">⚡ Fuori Ruolo Positivo (FRP)</button>
                         <button class="gems-filter-pill ${cFilt === 'ASSIST_MACHINE' ? 'active' : ''}" onclick="setGemsFilter('cluster', 'ASSIST_MACHINE')">🎯 Macchine da Assist</button>
                         <button class="gems-filter-pill ${cFilt === 'SNIPER' ? 'active' : ''}" onclick="setGemsFilter('cluster', 'SNIPER')">🚀 Cecchini xG</button>
                     </div>

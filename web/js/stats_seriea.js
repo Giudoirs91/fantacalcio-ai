@@ -238,7 +238,7 @@ function renderStatsSerieAView() {
 
     // 11c. OCCASIONI DI MERCATO / SOTTO-PERFORMANCE (FM < xFM)
     const cardUnderperformers = buildLeaderboardCard(
-        'Occasioni di Mercato (Sleeper 💎)', '💎', 'Producono tanto xG/xA ma hanno raccolto meno bonus (Da Comprare!)',
+        'Occasioni di Mercato (Scommesse 💎)', '💎', 'Producono tanto xG/xA ma hanno raccolto meno bonus (Da Comprare!)',
         poolVoted2.filter(p => getXfmObj(p).delta < -0.15),
         p => getXfmObj(p).delta,
         p => `xFM ${getXfmObj(p).xfm.toFixed(2)} vs FM ${p.fm_2627 ? p.fm_2627.toFixed(2) : '-'}`,

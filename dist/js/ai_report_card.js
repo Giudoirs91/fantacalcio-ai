@@ -210,10 +210,10 @@
                     </table>
                 </div>
                 <div class="ai-rc-section">
-                    <h3 class="ai-rc-section-title">🔀 Errori OOP (Fuori Ruolo)</h3>
+                    <h3 class="ai-rc-section-title">🔀 Accuratezza FRP (Fuori Ruolo Positivo)</h3>
                     <table class="ai-rc-table">
                         <thead><tr><th>Tier</th><th>Bias</th><th>MAE</th><th>N</th></tr></thead>
-                        <tbody>${oopRows || '<tr><td colspan="4" style="opacity:0.4;text-align:center">Nessun OOP analizzato</td></tr>'}</tbody>
+                        <tbody>${oopRows || '<tr><td colspan="4" style="opacity:0.4;text-align:center">Nessun FRP analizzato</td></tr>'}</tbody>
                     </table>
                 </div>
                 <div class="ai-rc-section">
@@ -248,8 +248,11 @@
     }
     function _adviceLabel(type) {
         const map = {
-            top: '👑 Top', leader: '⭐ Leader', buy: '📈 Buy',
-            sleeper: '🔥 Sleeper', warning: '⚠️ Warning', flop: '📉 Flop', avoid: '⛔ Avoid'
+            top: '👑 Top', leader: '⭐ Leader', buy: '📈 Best Value',
+            sleeper: '🔥 Scommessa', hot: '🔥 In Forma', titolare: '🛡️ Titolare',
+            titolarissimo: '🔒 Titolarissimo', supersub: '⚡ Super-Sub',
+            rotation: '🔄 Ballottaggio', benched: '🪑 In Panchina',
+            lowcost: '🪙 Low Cost', warning: '⚠️ Warning', flop: '📉 Flop', avoid: '⛔ Avoid'
         };
         return map[type] || type;
     }

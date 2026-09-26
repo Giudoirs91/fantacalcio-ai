@@ -232,17 +232,17 @@ def determine_advice_tag(p):
             return "🥇 QUINTO D'ORO (DA PRENDERE)", "buy"
         elif role == 'C':
             if slot_num <= 2 or is_in_11 or titolarita >= 75:
-                return "🥇 ALA/SECONDA PUNTA (TOP OOP)", "buy"
-            return "🥇 ESTERNO D'ATTACCO OOP", "buy"
+                return "🥇 ALA/SECONDA PUNTA (TOP FUORI RUOLO - FRP)", "buy"
+            return "🥇 ESTERNO D'ATTACCO FUORI RUOLO (FRP)", "buy"
 
     # 8. FUORI RUOLO D'ARGENTO (Trequartisti d'incursione C e Terzini di spinta D)
     if oop_tier == 'ARGENTO':
         if role == 'C':
             if slot_num <= 3 or titolarita >= 75:
-                return "🥈 TREQUARTISTA D'INCURSIONE (OOP)", "buy"
+                return "🥈 TREQUARTISTA D'INCURSIONE (FRP)", "buy"
             return "🥈 TREQUARTISTA INSERIMENTI", "buy"
         elif role == 'D':
-            return "🥈 TERZINO DI SPINTA (OOP)", "buy"
+            return "🥈 TERZINO DI SPINTA (FRP)", "buy"
 
     # 9. RIGORISTI DI SQUADRA
     if is_rigorista_1:
@@ -263,13 +263,13 @@ def determine_advice_tag(p):
         if (gol_2627 >= 1 or assist_2627 >= 1 or (mv_2627 is not None and mv_2627 >= 6.0)):
             return "⚡ SUPER-SUB / JOLLY DA VOTO", "supersub"
 
-    # 12. SLEEPER & SCOMMESSE CONFERMATE
+    # 12. SCOMMESSE CONFERMATE AD ALTO POTENZIALE
     if is_sleeper or (has_data_2627 and (gol_2627 >= 1 or assist_2627 >= 1) and prezzo_cons <= 15 and titolarita >= 65 and presenze_2627 >= 2):
-        return "🔥 SCOMMESSA / SLEEPER", "sleeper"
+        return "🔥 SCOMMESSA AD ALTO POTENZIALE", "sleeper"
 
     # 13. FUORI RUOLO BRONZO (Riserve con ruolo offensivo a 1 credito)
     if oop_tier == 'BRONZO':
-        return "🥉 RISERVA D'ORO A 1 CR", "sleeper"
+        return "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR", "sleeper"
 
     # 14. TITOLARISSIMI REALI (95%+ o 5/5 da titolare)
     if titolarita >= 95 or starts_2627 >= 5:

@@ -433,7 +433,7 @@ function openAiMethodologyModal(defaultTab = 'ovr') {
                         <div class="trust-box">
                             <div class="trust-icon">💎</div>
                             <h4>Compatibilità Totale Classic & Mantra</h4>
-                            <p>Algoritmi dedicati per il Fantacalcio Classic e per tutti gli 11 schemi Mantra ufficiali con calcolo delle polivalenze (OOP).</p>
+                            <p>Algoritmi dedicati per il Fantacalcio Classic e per tutti gli 11 schemi Mantra ufficiali con calcolo delle polivalenze e Fuori Ruolo Positivi (FRP).</p>
                         </div>
                     </div>
                     <div style="text-align:center;margin-top:20px;">

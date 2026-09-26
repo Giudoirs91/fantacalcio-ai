@@ -204,7 +204,7 @@ def build_standalone_dashboard(sync_android=False):
                     <div class="nav-dropdown-menu">
                         <a href="/consigli-fantacalcio/" class="dropdown-item" id="tabMatchdayAdviceBtn" onclick="onNavClick(event, 'matchday_advice')">🎯 Chi Schierare Prossima Giornata</a>
                         <a href="/top-11-ai/" class="dropdown-item" id="tabAiSquadsBtn" onclick="onNavClick(event, 'ai_squads')">🔒 5 Squadre Perfette AI <span style="font-size:10px;background:rgba(239,68,68,0.2);color:#f87171;padding:2px 6px;border-radius:4px;font-weight:700;margin-left:6px;">In Aggiornamento</span></a>
-                        <a href="/scommesse-talenti/" class="dropdown-item" id="tabGemsBtn" onclick="onNavClick(event, 'gems')">🔮 Gemme & Sleeper AI</a>
+                        <a href="/scommesse-talenti/" class="dropdown-item" id="tabGemsBtn" onclick="onNavClick(event, 'gems')">🔮 Gemme & Scommesse AI</a>
                         <div class="dropdown-divider"></div>
                         <a href="/infortunati-serie-a/" class="dropdown-item">🩺 Infortunati & Tempi di Recupero</a>
                         <a href="/rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi & Calci Piazzati</a>
@@ -329,7 +329,7 @@ def build_standalone_dashboard(sync_android=False):
                     <div class="quick-toggles">
                         <button id="btnToggleFav" class="chip-toggle" onclick="toggleFavFilterQuick()">⭐ Preferiti</button>
                         <button id="btnToggleAvail" class="chip-toggle" onclick="toggleAvailFilterQuick()">🟢 Svincolati</button>
-                        <button id="btnToggleOop" class="chip-toggle" onclick="toggleOopFilterQuick()">💎 OOP</button>
+                        <button id="btnToggleOop" class="chip-toggle" onclick="toggleOopFilterQuick()" title="Fuori Ruolo Positivo (FRP): Calciatori schierati sul campo in posizioni più offensive rispetto al ruolo del listone (es. Difensori che giocano ali o Centrocampisti punte)">💎 FRP</button>
                     </div>
 
                     <!-- Advanced Filter Drawer Button -->
@@ -374,12 +374,15 @@ def build_standalone_dashboard(sync_android=False):
                                 <option value="top">👑 Top Player</option>
                                 <option value="leader">⭐ Leader</option>
                                 <option value="buy">🚀 Best Value</option>
-                                <option value="titolarissimo">🔒 Titolarissimo</option>
+                                <option value="titolarissimo">🔒 Titolarissimo (100%)</option>
+                                <option value="titolare">🛡️ Titolare (75-94%)</option>
+                                <option value="hot">🔥 In Forma (ultime giornate)</option>
                                 <option value="rotation">🔄 Ballottaggio</option>
                                 <option value="supersub">⚡ Super-Sub / Jolly</option>
-                                <option value="sleeper">🔥 Sleeper</option>
+                                <option value="sleeper">🔥 Scommessa</option>
                                 <option value="lowcost">🪙 Low Cost</option>
-                                <option value="flop">⚠️ A Rischio</option>
+                                <option value="benched">🪑 In Panchina</option>
+                                <option value="flop">⚠️ A Rischio / Flop</option>
                             </select>
                         </div>
 
@@ -475,7 +478,7 @@ def build_standalone_dashboard(sync_android=False):
                                 <th onclick="setSort('team')" style="cursor:pointer;">Club</th>
                                 <th onclick="setSort('fvm')" style="text-align:center;cursor:pointer;" title="Fanta Valore di Mercato">FVM</th>
                                 <th onclick="setSort('qta')" style="text-align:center;cursor:pointer;" title="Quotazione Ufficiale">Qt.</th>
-                                <th onclick="setSort('ai_advice')" style="cursor:pointer;" title="Tag Smart AI (Consiglio, Rigori, OOP)">Tag AI & Strategia</th>
+                                <th onclick="setSort('ai_advice')" style="cursor:pointer;" title="Tag Smart AI (Consigli d'Asta, Rigoristi, Fuori Ruolo Positivo - FRP)">Tag AI & Strategia</th>
                                 <th onclick="setSort('titolarita')" style="text-align:center;cursor:pointer;" title="Percentuale Titolarità">Tit.</th>
                                 <th onclick="setSort('coppia_nome')" style="cursor:pointer;" title="Sostituto / Staffetta di Reparto">Sostituto / Coppia</th>
                                 <th onclick="setSort('mv_2627')" style="text-align:center;cursor:pointer;" title="Media Voto 2026/27">MV</th>
@@ -634,7 +637,7 @@ def build_standalone_dashboard(sync_android=False):
             </div>
         </section>
 
-        <!-- Tab 5: Gemme Nascoste & Sleeper AI -->
+        <!-- Tab 5: Gemme Nascoste & Scommesse AI -->
         <section id="viewGems" class="tab-content" style="display:none;">
         </section>
 
@@ -894,7 +897,7 @@ def build_standalone_dashboard(sync_android=False):
                     <div class="mobile-menu-links">
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('matchday_advice')">🎯 Chi Schierare (Consigli)</button>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('ai_squads')">🔒 5 Squadre Perfette AI <span style="font-size:10px;background:rgba(239,68,68,0.2);color:#f87171;padding:2px 6px;border-radius:4px;font-weight:700;margin-left:6px;">In Aggiornamento</span></button>
-                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('gems')">🔮 Gemme & Sleeper</button>
+                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('gems')">🔮 Gemme & Scommesse</button>
                         <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); openAiMethodologyModal('ovr');">ℹ️ Come Funziona l'AI</button>
                     </div>
                 </div>

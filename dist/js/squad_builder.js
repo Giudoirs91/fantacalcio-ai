@@ -256,7 +256,7 @@ function renderSquadBuilder() {
                             <option value="top" ${State.sbAdvice === 'top' ? 'selected' : ''}>⭐ Top Player Assoluto</option>
                             <option value="leader" ${State.sbAdvice === 'leader' ? 'selected' : ''}>👑 Leader di Squadra / Rigorista</option>
                             <option value="buy" ${State.sbAdvice === 'buy' ? 'selected' : ''}>🔥 Da Acquistare (Best Value)</option>
-                            <option value="sleeper" ${State.sbAdvice === 'sleeper' ? 'selected' : ''}>💎 Scommessa / Sleeper</option>
+                            <option value="sleeper" ${State.sbAdvice === 'sleeper' ? 'selected' : ''} title="Calciatore dal costo contenuto con statistiche avanzate ad alto potenziale">💎 Scommessa ad Alto Potenziale</option>
                             <option value="lowcost" ${State.sbAdvice === 'lowcost' ? 'selected' : ''}>🪙 Low Cost Modificatore</option>
                             <option value="titolarissimo" ${State.sbAdvice === 'titolarissimo' ? 'selected' : ''}>🔒 Titolarissimo da Voto</option>
                             <option value="flop" ${State.sbAdvice === 'flop' ? 'selected' : ''}>⚠️ Possibile Flop / Fragile</option>
@@ -369,7 +369,7 @@ function renderUnifiedPlayerRow(p) {
     } else if (p.xa90_2526 >= 0.12 || p.oop_val !== '-') {
         prioBadge = `<span class="sb-prio-badge cyan">🪄 Terzino da Bonus</span>`;
     } else if (p.prezzo_cons <= 5) {
-        prioBadge = `<span class="sb-prio-badge dim">💎 Low Cost / Sleeper</span>`;
+        prioBadge = `<span class="sb-prio-badge dim" title="Calciatore a basso costo (1-5 CR) ad alto rendimento potenziale">💎 Low Cost / Scommessa</span>`;
     }
     let statsShort = '';
     let liveBadge2627 = '';
@@ -465,7 +465,7 @@ function renderUnifiedPlayerCard(p) {
     } else if (p.xa90_2526 >= 0.12 || p.oop_val !== '-') {
         prioBadge = `<span class="sb-prio-badge cyan">🪄 Terzino da Bonus</span>`;
     } else if (p.prezzo_cons <= 5) {
-        prioBadge = `<span class="sb-prio-badge dim">💎 Low Cost / Sleeper</span>`;
+        prioBadge = `<span class="sb-prio-badge dim" title="Calciatore a basso costo (1-5 CR) ad alto rendimento potenziale">💎 Low Cost / Scommessa</span>`;
     }
     let statsRow = '';
     if (p.has_data_2526) {

@@ -501,7 +501,7 @@ function generateAiStrengthsAndWeaknessesHtml(p) {
             strengths.push(`🪄 <b>Regia & Visione di Gioco</b>: Generatore di occasioni da rete (${chances} passaggi chiave)`);
         }
         if (p.oop_val && p.oop_val !== '-') {
-            strengths.push(`💎 <b>Giocatore Fuori Ruolo (OOP)</b>: Schierato avanzato rispetto alla posizione del listone`);
+            strengths.push(`💎 <b>Fuori Ruolo Positivo (FRP)</b>: Schierato in posizione più offensiva rispetto alla quotazione ufficiale del listone`);
         }
         if (p.xfm && p.xfm >= 6.8) {
             strengths.push(`🚀 <b>Expected FantaMedia d\'Élite</b>: xFM attesa pari a ${p.xfm} su base dati avanzati`);

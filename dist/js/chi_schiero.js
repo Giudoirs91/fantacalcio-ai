@@ -116,15 +116,15 @@ function calculateChiSchieroScore(player, roundNum) {
                     factors.push({ name: `Attacco rivale prolifico (${oppStats.squadra}: xG ${oppXg.toFixed(1)})`, val: '-6 pt ⚠️', positive: false });
                 }
             } else {
-                if (oppXga >= 9.5 || oppGc >= 1.7) {
-                    dynamicScore += 6.5;
-                    factors.push({ name: `Difesa rivale fragile (${oppStats.squadra}: ${oppGc.toFixed(1)} gol subiti/partita)`, val: '+6.5 pt 🎯', positive: true });
-                } else if (oppXga >= 7.5 || oppGc >= 1.4) {
-                    dynamicScore += 3;
-                    factors.push({ name: `Difesa rivale permeabile (${oppStats.squadra})`, val: '+3 pt ⚽', positive: true });
-                } else if (oppXga <= 4.5 || oppGc <= 0.8) {
+                if (oppGc <= 0.85) {
                     dynamicScore -= 4;
                     factors.push({ name: `Difesa rivale blindata (${oppStats.squadra}: solo ${oppGc.toFixed(1)} gol subiti/partita)`, val: '-4 pt 🛡️', positive: false });
+                } else if (oppGc >= 1.6 || oppXga >= 9.5) {
+                    dynamicScore += 6.5;
+                    factors.push({ name: `Difesa rivale fragile (${oppStats.squadra}: ${oppGc.toFixed(1)} gol subiti/partita)`, val: '+6.5 pt 🎯', positive: true });
+                } else if (oppGc >= 1.3 || oppXga >= 7.0) {
+                    dynamicScore += 2.5;
+                    factors.push({ name: `Difesa rivale permeabile (${oppStats.squadra})`, val: '+2.5 pt ⚽', positive: true });
                 } else {
                     factors.push({ name: `Difesa rivale nella media (${oppStats.squadra})`, val: 'Neutro', positive: true });
                 }
@@ -219,6 +219,9 @@ function calculateChiSchieroVerdict(playerA, playerB, roundNum) {
     } else {
         bullets.push(`💎 <b>Expected FantaMedia:</b> ${winnerPlayer.name} produce un volume di gioco atteso pari a <b>${xfmW.toFixed(2)} xFM</b> contro i ${xfmL.toFixed(2)} xFM di ${loserPlayer.name}.`);
     }
+    const analysisA = buildDetailedPlayerProsAndCons(playerA, dataA);
+    const analysisB = buildDetailedPlayerProsAndCons(playerB, dataB);
+    const strategy = buildStrategicVerdictGuidance(playerA, dataA, playerB, dataB, roundNum);
     return {
         playerA,
         playerB,
@@ -229,8 +232,211 @@ function calculateChiSchieroVerdict(playerA, playerB, roundNum) {
         winnerId,
         verdictTitle,
         verdictSubtitle,
-        bullets
+        bullets,
+        analysisA,
+        analysisB,
+        strategy
     };
+}
+function buildDetailedPlayerProsAndCons(player, data) {
+    const pros = [];
+    const cons = [];
+    const fixture = data.fixture;
+    const oppStats = (fixture && typeof TEAM_STATS_DB !== 'undefined' && TEAM_STATS_DB[fixture.opp]) ? TEAM_STATS_DB[fixture.opp] : null;
+    if (fixture) {
+        if (fixture.isHome) {
+            pros.push({
+                icon: '🏠',
+                title: 'Fattore Campo Favorevole',
+                desc: `Gioca in casa (${fixture.shortLabel}) davanti al proprio pubblico. Storicamente le squadre di casa producono +18% di occasioni da gol.`
+            });
+        } else {
+            cons.push({
+                icon: '✈️',
+                title: 'Impegno in Trasferta',
+                desc: `Gioca fuori casa (${fixture.shortLabel}). Storicamente la produzione offensiva e il baricentro medio calano del 12% in trasferta.`
+            });
+        }
+        if (oppStats) {
+            const oppGc = Number(oppStats.goals_conceded_match) || 1.3;
+            const oppXga = Number(oppStats.xga_team) || 7.0;
+            if (player.role === 'P') {
+                const oppXg = Number(oppStats.xg_team) || 7.0;
+                if (oppXg <= 5.5) {
+                    pros.push({
+                        icon: '🧤',
+                        title: 'Alta Probabilità di Clean Sheet',
+                        desc: `L'attacco del ${oppStats.squadra} è tra i meno prolifici della Serie A (appena ${oppXg.toFixed(1)} xG prodotti in 5 turni).`
+                    });
+                } else if (oppXg >= 9.0) {
+                    cons.push({
+                        icon: '⚠️',
+                        title: 'Rischio Malus Gol Subiti',
+                        desc: `L'attacco del ${oppStats.squadra} è altamente prolifico (${oppXg.toFixed(1)} xG e ${oppStats.big_chances || 15} grandi occasioni create).`
+                    });
+                }
+            } else {
+                if (oppGc <= 0.85) {
+                    cons.push({
+                        icon: '🛡️',
+                        title: `Muro Difensivo Rivale (${oppStats.squadra})`,
+                        desc: `Il ${oppStats.squadra} è tra le difese più ermetiche della Serie A (solo ${oppGc.toFixed(1)} gol subiti a gara). Spazi ridotti al minimo per le punte.`
+                    });
+                } else if (oppGc >= 1.6 || oppXga >= 9.5) {
+                    pros.push({
+                        icon: '🎯',
+                        title: `Difesa Rivale Fragile (${oppStats.squadra})`,
+                        desc: `Il ${oppStats.squadra} concede ben ${oppGc.toFixed(1)} gol a partita (${oppXga.toFixed(1)} xGA): terreno ideale per colpire.`
+                    });
+                } else {
+                    pros.push({
+                        icon: '⚖️',
+                        title: `Difesa Rivale nella Media (${oppStats.squadra})`,
+                        desc: `Il ${oppStats.squadra} concede ${oppGc.toFixed(1)} gol a partita. Partita equilibrata con normali possibilità di manovra.`
+                    });
+                }
+            }
+        }
+    }
+    const tit = (player.titolarita !== undefined && player.titolarita !== null) ? Number(player.titolarita) : 70;
+    if (player.is_injured) {
+        cons.push({
+            icon: '🩹',
+            title: 'Infortunio / Rientro Incerto',
+            desc: `Calciatore alle prese con noie fisiche. Alto rischio di mancata convocazione o minutaggio nullo.`
+        });
+    } else if (tit >= 85) {
+        pros.push({
+            icon: '🔒',
+            title: `Titolarità Blindata (${tit}%)`,
+            desc: `Inamovibile nello scacchiere tattico, garantisce 75-90 minuti in campo senza rischio s.v.`
+        });
+    } else if (tit >= 40) {
+        cons.push({
+            icon: '🔄',
+            title: `Ballottaggio / Staffetta (${tit}%)`,
+            desc: `Non ha il posto garantito al 100%. Potrebbe partire dalla panchina o essere sostituito attorno al 60'.`
+        });
+        if (player.ovr >= 85 || player.is_rigorista_1) {
+            pros.push({
+                icon: '⚡',
+                title: 'Super-Sub ad Alto Impatto',
+                desc: `Anche subentrando a gara in corso ha la qualità e i calci piazzati per incidere sui fantavoti.`
+            });
+        }
+    } else {
+        cons.push({
+            icon: '🪑',
+            title: `Minutaggio a Forte Rischio (${tit}%)`,
+            desc: `Parte molto indietro nelle gerarchie dell'allenatore. Concreto rischio di voto nullo senza copertura.`
+        });
+    }
+    if (player.is_rigorista_1 || player.rigorista_val === '1° Rigorista') {
+        pros.push({
+            icon: '👑',
+            title: '1° Rigorista Designato',
+            desc: `Prima scelta assoluta dal dischetto: ogni fallo da rigore conquistato dalla squadra si trasforma in una chance da +3.`
+        });
+    } else if (player.is_rigorista_2 || player.rigorista_val === '2° Rigorista') {
+        pros.push({
+            icon: '🎯',
+            title: '2° Rigorista in Rosa',
+            desc: `Opzione di riserva dal dischetto se il primo rigorista non è in campo o ha già calciato.`
+        });
+    } else if (player.role !== 'P') {
+        cons.push({
+            icon: '❌',
+            title: 'Nessun Bonus dal Dischetto',
+            desc: `Non tira i calci di rigore: i suoi bonus dipendono esclusivamente da azioni manovrate o piazzati.`
+        });
+    }
+    if (player.is_punizioni || player.is_corner) {
+        pros.push({
+            icon: '📐',
+            title: 'Specialista Piazzati & Corner',
+            desc: `Batte corner e punizioni verso l'area: moltiplica l'Expected Assist (xA) da palla inattiva.`
+        });
+    }
+    const ovr = Number(player.ovr) || 75;
+    if (ovr >= 90) {
+        pros.push({
+            icon: '⭐',
+            title: `Caratura da Top Player (OVR ${ovr})`,
+            desc: `Leader tecnico assoluto con 'ceiling' (tetto massimo di punti) tra i più alti della Serie A.`
+        });
+    }
+    if (ovr >= 85 && (player.gol_2627 || 0) === 0 && oppStats && (Number(oppStats.goals_conceded_match) >= 1.5 || Number(oppStats.xga_team) >= 8.5)) {
+        pros.push({
+            icon: '🚀',
+            title: 'Fame di Riscatto (Bounce-Back)',
+            desc: `Top player incredibilmente ancora a secco di gol dopo 5 turni: l'incrocio contro una difesa colabrodo è lo scenario perfetto per sbloccarsi.`
+        });
+    }
+    const amm = Number(player.amm_2627) || 0;
+    const esp = Number(player.esp_2627) || 0;
+    if (esp > 0 || amm >= 2) {
+        cons.push({
+            icon: '🟨',
+            title: 'Rischio Malus Disciplinare',
+            desc: `Giocatore con propensione al cartellino (${amm} ammonizioni${esp > 0 ? ', 1 espulsione' : ''}). Rischio -0.5 costante.`
+        });
+    }
+    return { pros, cons };
+}
+function buildStrategicVerdictGuidance(pA, dataA, pB, dataB, round) {
+    const titA = Number(pA.titolarita) || 50;
+    const titB = Number(pB.titolarita) || 50;
+    const ovrA = Number(pA.ovr) || 75;
+    const ovrB = Number(pB.ovr) || 75;
+    const fixA = dataA.fixture;
+    const fixB = dataB.fixture;
+    let safePlayer = pA;
+    let safeReason = '';
+    let upsidePlayer = pB;
+    let upsideReason = '';
+    if (titA >= titB && (fixA && fixA.isHome)) {
+        safePlayer = pA;
+        safeReason = `Parte dal 1' minuto (${titA}% titolarità) con il calore del pubblico di casa. Garantisce voto sicuro e consistenza.`;
+        upsidePlayer = pB;
+    } else if (titB > titA && (fixB && fixB.isHome)) {
+        safePlayer = pB;
+        safeReason = `Parte dal 1' minuto (${titB}% titolarità) tra le mura amiche, minimizzando i rischi di turnover.`;
+        upsidePlayer = pA;
+    } else if (titA >= titB) {
+        safePlayer = pA;
+        safeReason = `Maggiore garanzia di minutaggio rispetto all'alternativa (${titA}% vs ${titB}%).`;
+        upsidePlayer = pB;
+    } else {
+        safePlayer = pB;
+        safeReason = `Maggiore garanzia di minutaggio rispetto all'alternativa (${titB}% vs ${titA}%).`;
+        upsidePlayer = pA;
+    }
+    const oppB = (fixB && typeof TEAM_STATS_DB !== 'undefined') ? TEAM_STATS_DB[fixB.opp] : null;
+    const oppA = (fixA && typeof TEAM_STATS_DB !== 'undefined') ? TEAM_STATS_DB[fixA.opp] : null;
+    if (upsidePlayer.id === pB.id) {
+        let r = [];
+        if (pB.is_rigorista_1) r.push('1° rigorista (+3)');
+        if (ovrB >= 90) r.push(`Top Player OVR ${ovrB}`);
+        if (oppB && Number(oppB.goals_conceded_match) >= 1.6) r.push(`sfida la fragile difesa del ${oppB.squadra} (${Number(oppB.goals_conceded_match).toFixed(1)} gol subiti/gara)`);
+        upsideReason = r.length > 0 
+            ? `Ha un 'ceiling' esplosivo: ${r.join(', ')}. Perfetto se punti a vincere la giornata con un bonus pesante.`
+            : `Potenziale di bonus elevato grazie alla posizione offensiva e agli expected stats.`;
+    } else {
+        let r = [];
+        if (pA.is_rigorista_1) r.push('1° rigorista (+3)');
+        if (ovrA >= 90) r.push(`Top Player OVR ${ovrA}`);
+        if (oppA && Number(oppA.goals_conceded_match) >= 1.6) r.push(`sfida la fragile difesa del ${oppA.squadra} (${Number(oppA.goals_conceded_match).toFixed(1)} gol subiti/gara)`);
+        upsideReason = r.length > 0 
+            ? `Ha un 'ceiling' esplosivo: ${r.join(', ')}. Perfetto se punti a vincere la giornata con un bonus pesante.`
+            : `Potenziale di bonus elevato grazie alla posizione offensiva e agli expected stats.`;
+    }
+    let finalAiTake = '';
+    if (safePlayer.id === upsidePlayer.id) {
+        finalAiTake = `L'algoritmo non ha dubbi: <b>${safePlayer.name}</b> domina il confronto sia in termini di sicurezza del voto sia in potenziale di bonus (+3). Schieralo senza esitazione.`;
+    } else {
+        finalAiTake = `Se la tua priorità è il voto sicuro e la continuità di rendimento, <b>${safePlayer.name}</b> è la scelta più solida. Se invece la tua partita di lega richiede un exploit offensivo e ti serve un +3 pesante, punta forte su <b>${upsidePlayer.name}</b>.`;
+    }
+    return { safePlayer, safeReason, upsidePlayer, upsideReason, finalAiTake };
 }
 function selectChiSchieroPreset(nameA, nameB) {
     if (typeof PLAYERS === 'undefined' || !Array.isArray(PLAYERS)) return;
@@ -512,19 +718,108 @@ function renderChiSchieroView() {
                     </div>
                 </div>
             </div>
-            <!-- MOTIVAZIONI AI (DECISION ENGINE BULLETS) -->
-            <div class="cs-reasons-card">
-                <div class="cs-reasons-header">
-                    <span class="cs-reasons-icon">💡</span>
-                    <h3>Perché l'Algoritmo Consiglia Questo Esito?</h3>
+            <!-- LA GUIDA STRATEGICA DELL'AI (DECISION COMPASS) -->
+            <div class="cs-strategic-advice-card">
+                <div class="cs-strategic-header">
+                    <span class="cs-compass-icon">🧭</span>
+                    <div>
+                        <h4>LA GUIDA STRATEGICA DELL'AI</h4>
+                        <div class="cs-strat-subtitle">Come orientare la tua scelta in base al piano partita della tua lega</div>
+                    </div>
                 </div>
-                <div class="cs-reasons-list">
-                    ${verdict.bullets.map(b => `
-                        <div class="cs-reason-item">
-                            <span class="cs-check-icon">✓</span>
-                            <div>${b}</div>
+                <div class="cs-strat-scenarios-grid">
+                    <div class="cs-scenario-box scenario-safe">
+                        <div class="cs-scen-tag">🛡️ PER IL VOTO SICURO & CONSISTENZA</div>
+                        <div class="cs-scen-player">${verdict.strategy.safePlayer.name} (${verdict.strategy.safePlayer.team})</div>
+                        <div class="cs-scen-desc">${verdict.strategy.safeReason}</div>
+                    </div>
+                    <div class="cs-scenario-box scenario-risk">
+                        <div class="cs-scen-tag">🚀 PER IL BONUS PESANTE (+3 / CEILING)</div>
+                        <div class="cs-scen-player">${verdict.strategy.upsidePlayer.name} (${verdict.strategy.upsidePlayer.team})</div>
+                        <div class="cs-scen-desc">${verdict.strategy.upsideReason}</div>
+                    </div>
+                </div>
+                <div class="cs-final-ai-take">
+                    <span class="cs-take-badge">🤖 IL VERDETTO TATTICO:</span>
+                    <span>${verdict.strategy.finalAiTake}</span>
+                </div>
+            </div>
+            <!-- ANALISI DETTAGLIATA PRO & CONTRO PARALLELA -->
+            <div class="cs-deep-analysis-section">
+                <div class="cs-section-header-box">
+                    <span class="cs-section-header-icon">⚖️</span>
+                    <div>
+                        <h2>Analisi Dettagliata Punti di Forza (Pro) &amp; Insidie (Contro)</h2>
+                        <p>Trasparenza algoritmica totale: ecco tutti i fattori positivi e negativi analizzati per ciascun giocatore</p>
+                    </div>
+                </div>
+                <div class="cs-dual-analysis-grid">
+                    <!-- CARD PRO/CONTRO CALCIATORE A -->
+                    <div class="cs-player-analysis-card card-a">
+                        <div class="cs-ana-player-bar">
+                            <div class="cs-ana-player-meta">
+                                <span class="role-badge ${pA.role}">${pA.role}</span>
+                                <div>
+                                    <div class="cs-ana-pname">${pA.name}</div>
+                                    <div class="cs-ana-pteam">${pA.team} • OVR ${pA.ovr}</div>
+                                </div>
+                            </div>
+                            <div class="cs-ana-score-pill">Punteggio: ${verdict.dataA.score} pt</div>
                         </div>
-                    `).join('')}
+                        <!-- PRO BLOCK A -->
+                        <div class="cs-ana-block">
+                            <div class="cs-ana-block-title pro">🟢 Punti a Favore (Pro)</div>
+                            ${verdict.analysisA.pros.map(pr => `
+                                <div class="cs-point-item pro">
+                                    <span class="cs-point-icon">${pr.icon}</span>
+                                    <div><b>${pr.title}:</b> ${pr.desc}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <!-- CONTRO BLOCK A -->
+                        <div class="cs-ana-block">
+                            <div class="cs-ana-block-title con">🔴 Rischi &amp; Punti Critici (Contro)</div>
+                            ${verdict.analysisA.cons.map(cn => `
+                                <div class="cs-point-item con">
+                                    <span class="cs-point-icon">${cn.icon}</span>
+                                    <div><b>${cn.title}:</b> ${cn.desc}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <!-- CARD PRO/CONTRO CALCIATORE B -->
+                    <div class="cs-player-analysis-card card-b">
+                        <div class="cs-ana-player-bar">
+                            <div class="cs-ana-player-meta">
+                                <span class="role-badge ${pB.role}">${pB.role}</span>
+                                <div>
+                                    <div class="cs-ana-pname">${pB.name}</div>
+                                    <div class="cs-ana-pteam">${pB.team} • OVR ${pB.ovr}</div>
+                                </div>
+                            </div>
+                            <div class="cs-ana-score-pill">Punteggio: ${verdict.dataB.score} pt</div>
+                        </div>
+                        <!-- PRO BLOCK B -->
+                        <div class="cs-ana-block">
+                            <div class="cs-ana-block-title pro">🟢 Punti a Favore (Pro)</div>
+                            ${verdict.analysisB.pros.map(pr => `
+                                <div class="cs-point-item pro">
+                                    <span class="cs-point-icon">${pr.icon}</span>
+                                    <div><b>${pr.title}:</b> ${pr.desc}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <!-- CONTRO BLOCK B -->
+                        <div class="cs-ana-block">
+                            <div class="cs-ana-block-title con">🔴 Rischi &amp; Punti Critici (Contro)</div>
+                            ${verdict.analysisB.cons.map(cn => `
+                                <div class="cs-point-item con">
+                                    <span class="cs-point-icon">${cn.icon}</span>
+                                    <div><b>${cn.title}:</b> ${cn.desc}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- TAVOLA COMPARATIVA TESTA A TESTA -->

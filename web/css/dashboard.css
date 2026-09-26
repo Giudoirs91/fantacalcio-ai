@@ -13491,5 +13491,276 @@ body.creator-mode-active .visitor-only-item {
     background: rgba(255, 255, 255, 0.02);
 }
 
+/* ==============================================================================
+   DETAILED PRO/CONTRA ANALYSIS & STRATEGIC AI DECISION GUIDE
+   ============================================================================== */
+.cs-deep-analysis-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cs-section-header-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 4px;
+}
+.cs-section-header-icon {
+    font-size: 26px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cs-section-header-box h2 {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 19px;
+    font-weight: 800;
+    color: #f8fafc;
+}
+.cs-section-header-box p {
+    margin: 3px 0 0 0;
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.cs-dual-analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+@media (max-width: 860px) {
+    .cs-dual-analysis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cs-player-analysis-card {
+    background: rgba(18, 22, 36, 0.95);
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+.cs-player-analysis-card.card-a {
+    border-color: rgba(168, 85, 247, 0.35);
+}
+.cs-player-analysis-card.card-b {
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.cs-ana-player-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.cs-ana-player-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.cs-ana-pname {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+}
+.cs-ana-pteam {
+    font-size: 11.5px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.cs-ana-score-pill {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+}
+
+.cs-ana-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.cs-ana-block-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 2px;
+}
+.cs-ana-block-title.pro {
+    color: #4ade80;
+}
+.cs-ana-block-title.con {
+    color: #f87171;
+}
+
+.cs-point-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #e2e8f0;
+}
+.cs-point-item.pro {
+    background: rgba(34, 197, 94, 0.07);
+    border: 1px solid rgba(34, 197, 94, 0.18);
+}
+.cs-point-item.con {
+    background: rgba(239, 68, 68, 0.07);
+    border: 1px solid rgba(239, 68, 68, 0.18);
+}
+.cs-point-icon {
+    font-size: 14px;
+    margin-top: 1px;
+    flex-shrink: 0;
+}
+
+/* STRATEGIC SCENARIOS GUIDELINES */
+.cs-strategic-advice-card {
+    background: linear-gradient(135deg, rgba(20, 24, 42, 0.98), rgba(12, 16, 28, 0.99));
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    border-radius: 16px;
+    padding: 22px 24px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cs-strategic-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.cs-compass-icon {
+    font-size: 26px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cs-strategic-header h4 {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    color: #fbbf24;
+    letter-spacing: 0.2px;
+}
+.cs-strat-subtitle {
+    font-size: 12.5px;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+.cs-strat-scenarios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+@media (max-width: 768px) {
+    .cs-strat-scenarios-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cs-scenario-box {
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.cs-scenario-box.scenario-safe {
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+.cs-scenario-box.scenario-risk {
+    background: rgba(168, 85, 247, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.cs-scen-tag {
+    font-size: 10.5px;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+.scenario-safe .cs-scen-tag {
+    color: #4ade80;
+}
+.scenario-risk .cs-scen-tag {
+    color: #c084fc;
+}
+
+.cs-scen-player {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+}
+.cs-scen-desc {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #cbd5e1;
+}
+
+.cs-final-ai-take {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #f1f5f9;
+}
+.cs-take-badge {
+    background: rgba(245, 158, 11, 0.2);
+    border: 1px solid rgba(245, 158, 11, 0.5);
+    color: #fbbf24;
+    font-size: 10.5px;
+    font-weight: 900;
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-top: 1px;
+}
+
+
 
 

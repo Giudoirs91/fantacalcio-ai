@@ -1,0 +1,193 @@
+{
+  "timestamp": "2026-09-26T15:15:39.095878",
+  "rounds_analyzed": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "overall_hit_rate": 60.0,
+  "role_hit_rates": {
+    "P": 86.7,
+    "D": 60.0,
+    "C": 40.0,
+    "A": 53.3
+  },
+  "miss_count": 24,
+  "misses_diagnostic": [
+    {
+      "round": 1,
+      "player": "Maignan",
+      "team": "Milan",
+      "role": "P",
+      "reason": "Malus disciplinare decisivo"
+    },
+    {
+      "round": 1,
+      "player": "Hainaut",
+      "team": "Venezia",
+      "role": "D",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 1,
+      "player": "Valeri",
+      "team": "Parma",
+      "role": "D",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 1,
+      "player": "Adzic",
+      "team": "Sassuolo",
+      "role": "C",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 1,
+      "player": "Paz N.",
+      "team": "Como",
+      "role": "C",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 1,
+      "player": "Martinez L.",
+      "team": "Inter",
+      "role": "A",
+      "reason": "Malus disciplinare decisivo"
+    },
+    {
+      "round": 1,
+      "player": "Thuram",
+      "team": "Inter",
+      "role": "A",
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+    },
+    {
+      "round": 2,
+      "player": "Molina N.",
+      "team": "Roma",
+      "role": "D",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 2,
+      "player": "Mastantuono",
+      "team": "Fiorentina",
+      "role": "C",
+      "reason": "Prestazione gravemente insufficiente"
+    },
+    {
+      "round": 2,
+      "player": "Rabiot",
+      "team": "Milan",
+      "role": "C",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 2,
+      "player": "Martinez L.",
+      "team": "Inter",
+      "role": "A",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 2,
+      "player": "Thuram",
+      "team": "Inter",
+      "role": "A",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 3,
+      "player": "Svilar",
+      "team": "Roma",
+      "role": "P",
+      "reason": "Malus disciplinare decisivo"
+    },
+    {
+      "round": 3,
+      "player": "Mora",
+      "team": "Roma",
+      "role": "C",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 3,
+      "player": "Mastantuono",
+      "team": "Fiorentina",
+      "role": "C",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 3,
+      "player": "Malen",
+      "team": "Roma",
+      "role": "A",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 4,
+      "player": "Wesley",
+      "team": "Roma",
+      "role": "D",
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+    },
+    {
+      "round": 4,
+      "player": "Dimarco",
+      "team": "Inter",
+      "role": "D",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 4,
+      "player": "Frattesi",
+      "team": "Lazio",
+      "role": "C",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 4,
+      "player": "Martinez L.",
+      "team": "Inter",
+      "role": "A",
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+    },
+    {
+      "round": 5,
+      "player": "De Winter",
+      "team": "Milan",
+      "role": "D",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 5,
+      "player": "Mastantuono",
+      "team": "Fiorentina",
+      "role": "C",
+      "reason": "Malus disciplinare decisivo"
+    },
+    {
+      "round": 5,
+      "player": "Mora",
+      "team": "Roma",
+      "role": "C",
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+    },
+    {
+      "round": 5,
+      "player": "Malen",
+      "team": "Roma",
+      "role": "A",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    }
+  ],
+  "learned_bias_adjustments": {
+    "comment": "Questi pesi vengono assorbiti in background dal motore predittivo",
+    "titolarita_weight_boost": 1.15,
+    "fragile_defense_caution": 1.0
+  }
+}

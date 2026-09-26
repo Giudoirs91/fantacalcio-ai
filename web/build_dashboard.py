@@ -67,6 +67,12 @@ def build_standalone_dashboard(sync_android=False):
         with open(cal_path, 'r', encoding='utf-8') as f:
             cal_data = json.load(f)
 
+    accuracy_path = os.path.join(root_dir, "data", "processed", "matchday_advice_accuracy.json")
+    accuracy_data = {}
+    if os.path.exists(accuracy_path):
+        with open(accuracy_path, 'r', encoding='utf-8') as f:
+            accuracy_data = json.load(f)
+
     # 2. Carica CSS e JS modulari minificati
     css_path = os.path.join(root_dir, "web", "css", "dashboard.css")
     with open(css_path, 'r', encoding='utf-8') as f:
@@ -109,6 +115,7 @@ def build_standalone_dashboard(sync_android=False):
     team_stats_json = json.dumps(team_stats_data, ensure_ascii=False)
     top_flop_json = json.dumps(top_flop_data, ensure_ascii=False)
     cal_json = json.dumps(cal_data, ensure_ascii=False)
+    accuracy_json = json.dumps(accuracy_data, ensure_ascii=False)
 
     # 3. Costruisci il documento HTML completo
     html_template = f"""<!DOCTYPE html>
@@ -943,6 +950,7 @@ def build_standalone_dashboard(sync_android=False):
         const TEAM_STATS_DB = {team_stats_json};
         const TOP_FLOP_DATA = {top_flop_json};
         const OFFICIAL_CALENDAR_2026_27 = {cal_json};
+        const MATCHDAY_ACCURACY_DATA = {accuracy_json};
 
 {js_content}
 

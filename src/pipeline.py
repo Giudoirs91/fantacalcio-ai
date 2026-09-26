@@ -1482,6 +1482,11 @@ def run_master_pipeline():
     if current_round >= 5:
         # T+N: valuta predizioni e aggiorna bias corrections
         evaluate_predictions(processed_players, round_num=current_round)
+        try:
+            from src.matchday_evaluator import run_learning_and_accuracy_evaluation
+            run_learning_and_accuracy_evaluation()
+        except Exception as e:
+            print(f"[Pipeline] Warning matchday learning evaluation: {e}")
     elif current_round > 0:
         print(f"[AI Evaluator] G{current_round}: dati ancora insufficienti per valutazione (min G5).")
     # ────────────────────────────────────────────────────────────────────────

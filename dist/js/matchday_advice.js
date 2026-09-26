@@ -273,69 +273,79 @@ function renderMatchdayAdviceView() {
     const { fixtureMap, matchesList, roundDate } = getMatchdayFixturesMap(currentRound);
     const upcomingRound = getUpcomingMatchdayRound(); // 6
     const prevRound = Math.max(1, upcomingRound - 1); // 5
-    const isPastRound = Number(currentRound) <= prevRound;
-    let roundOptionsHtml = `
-        <option value="${upcomingRound}" ${Number(currentRound) === upcomingRound ? 'selected' : ''}>⚽ Giornata ${upcomingRound} (Prossima in Arrivo ⭐)</option>
-        <option value="${prevRound}" ${Number(currentRound) === prevRound ? 'selected' : ''}>🏆 Giornata ${prevRound} (Verifica Esito & Accuratezza AI)</option>
-    `;
+    const isPastRound = Number(currentRound) < upcomingRound;
+    let roundOptionsHtml = `<option value="${upcomingRound}" ${Number(currentRound) === upcomingRound ? 'selected' : ''}>⚽ Giornata ${upcomingRound} (Prossima in Arrivo ⭐)</option>`;
+    for (let r = upcomingRound - 1; r >= 1; r--) {
+        roundOptionsHtml += `<option value="${r}" ${Number(currentRound) === r ? 'selected' : ''}>🏆 Giornata ${r} (Conclusa • Verifica Accuratezza AI)</option>`;
+    }
+    const roundAcc = (typeof MATCHDAY_ACCURACY_DATA !== 'undefined' && MATCHDAY_ACCURACY_DATA && MATCHDAY_ACCURACY_DATA[String(currentRound)]) 
+        ? MATCHDAY_ACCURACY_DATA[String(currentRound)] 
+        : null;
     let auditBannerHtml = '';
-    if (isPastRound) {
+    if (isPastRound && roundAcc && roundAcc.summary) {
+        const sum = roundAcc.summary;
+        const hitRateStr = Number(sum.hit_rate_pct).toFixed(1) + '%';
+        const suffRateStr = Number(sum.sufficiency_rate_pct).toFixed(1) + '%';
+        const avgFvStr = Number(sum.avg_fantavoto).toFixed(2);
+        const hits = sum.hits;
+        const total = sum.total_consigliati;
         auditBannerHtml = `
             <div class="fut-audit-banner">
                 <div class="fut-audit-header">
                     <div class="fut-audit-title">
                         <span class="fut-audit-icon">🏆</span>
                         <div>
-                            <div class="fut-audit-tag">AUDIT & TRASPARENZA PREDITTIVA • GIORNATA ${currentRound}</div>
-                            <div class="fut-audit-heading">Verifica Riuscita Algoritmo AI</div>
+                            <div class="fut-audit-tag">GIORNATA ${currentRound} COMPLETATA • VERIFICA RETROSPETTIVA AI</div>
+                            <div class="fut-audit-heading">Percentuale di Riuscita Consigli AI: ${hitRateStr} Hit Rate</div>
                         </div>
                     </div>
                     <div class="fut-audit-score-pill">
-                        <span class="score-lbl">ACCURATEZZA / HIT RATE</span>
-                        <span class="score-val neon">83.3%</span>
+                        <span class="score-lbl">RIUSCITA CONVALIDATA</span>
+                        <span class="score-val neon">${hitRateStr}</span>
                     </div>
                 </div>
                 <div class="fut-audit-stats-grid">
                     <div class="fut-audit-stat-card">
-                        <span class="stat-num neon">83.3%</span>
-                        <span class="stat-desc">🎯 Successo Pieno (Bonus / Top Voto)</span>
+                        <span class="stat-num neon">${hitRateStr}</span>
+                        <span class="stat-desc">🎯 Consigli a Bersaglio (${hits}/${total} con Bonus o Voto ≥ 6.5)</span>
                     </div>
                     <div class="fut-audit-stat-card">
-                        <span class="stat-num gold">100%</span>
-                        <span class="stat-desc">🛡️ Sufficienze (12/12 Zero Insufficienze)</span>
+                        <span class="stat-num gold">${suffRateStr}</span>
+                        <span class="stat-desc">🛡️ Sufficienze Reali (Voto ≥ 6.0)</span>
                     </div>
                     <div class="fut-audit-stat-card">
-                        <span class="stat-num cyan">7.54</span>
-                        <span class="stat-desc">⭐ FantaMedia Media Consigliati</span>
+                        <span class="stat-num cyan">${avgFvStr}</span>
+                        <span class="stat-desc">⭐ FantaMedia Reale dei Consigliati</span>
                     </div>
                     <div class="fut-audit-stat-card">
-                        <span class="stat-num orange">TOP HIT</span>
-                        <span class="stat-desc">🔥 Lautaro 14.0 (+6), Pulisic 10.5 (+3), Bremer 10.0 (+3)</span>
+                        <span class="stat-num orange">FEEDBACK LOOP</span>
+                        <span class="stat-desc">🧠 Errori e scarti analizzati in background per calibrare i turni futuri</span>
                     </div>
                 </div>
                 <div class="fut-audit-note">
-                    💡 <em>L'algoritmo predittivo ha imparato da questa giornata: i pesi di spinta offensiva e solidità difensiva sono stati calibrati per generare i consigliati della Giornata 6 con ancora maggiore accuratezza.</em>
+                    💡 <em>A giornata conclusa, il sistema analizza automaticamente gli errori per calibrare i pesi predittivi. Per le sole giornate concluse viene esposta la percentuale di riuscita reale.</em>
                 </div>
             </div>
         `;
     } else {
+        const lastCompleted = upcomingRound - 1;
         auditBannerHtml = `
             <div class="fut-audit-banner future">
                 <div class="fut-audit-header">
                     <div class="fut-audit-title">
                         <span class="fut-audit-icon">🔮</span>
                         <div>
-                            <div class="fut-audit-tag">ALGORITMO PREDITTIVO ATTIVO • SERIE A 2026/27</div>
-                            <div class="fut-audit-heading">Previsioni Ufficiali Giornata ${currentRound}</div>
+                            <div class="fut-audit-tag">GIORNATA IN ARRIVO • ALGORITMO PREDITTIVO ATTIVO</div>
+                            <div class="fut-audit-heading">Consigli Ufficiali per la Giornata ${currentRound}</div>
                         </div>
                     </div>
                     <div class="fut-audit-score-pill calibrated">
-                        <span class="score-lbl">FEEDBACK LOOP AI</span>
-                        <span class="score-val cyan">CALIBRATO SU G5 (83.3% HIT)</span>
+                        <span class="score-lbl">CALIBRAZIONE AI</span>
+                        <span class="score-val cyan">AGGIORNATO SU G${lastCompleted}</span>
                     </div>
                 </div>
                 <div class="fut-audit-note future-note">
-                    ⚡ <em>I consigliati per il 6° turno sono generati incrociando i matchup del calendario ufficiale, le metriche statistiche aggiornate e l'esclusione automatica degli infortunati.</em>
+                    ⚡ <em>I consigliati per questo turno sono calcolati dal nostro motore predittivo. La percentuale di riuscita effettiva sarà verificata e certificata solo a giornata completata.</em>
                 </div>
             </div>
         `;

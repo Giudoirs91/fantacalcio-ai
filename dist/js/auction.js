@@ -670,6 +670,29 @@ function renderSidebarRoster() {
     });
     container.innerHTML = html;
 }
+function getStatTierClass(metric, val, role) {
+    if (val === null || val === undefined || isNaN(val)) return 'stat-tier-bench';
+    const num = Number(val);
+    if (metric === 'fm' || metric === 'xfm') {
+        if (role === 'P') {
+            if (num >= 5.80) return 'stat-tier-elite';
+            if (num >= 5.20) return 'stat-tier-top';
+            if (num >= 4.70) return 'stat-tier-mid';
+            return 'stat-tier-bench';
+        }
+        if (num >= 8.00) return 'stat-tier-elite';
+        if (num >= 7.00) return 'stat-tier-top';
+        if (num >= 6.20) return 'stat-tier-mid';
+        return 'stat-tier-bench';
+    }
+    if (metric === 'mv') {
+        if (num >= 6.40) return 'stat-tier-elite';
+        if (num >= 6.15) return 'stat-tier-top';
+        if (num >= 5.95) return 'stat-tier-mid';
+        return 'stat-tier-bench';
+    }
+    return 'stat-tier-bench';
+}
 function renderTable() {
     const tbody = document.getElementById('auctionTableBody');
     if (!tbody) return;
@@ -825,12 +848,14 @@ function renderTable() {
                 <div class="col-tag-advanced">${multiSmartTags}</div>
             `;
             let titClass = 'tit-mid';
-            if (p.titolarita >= 85) titClass = 'tit-high';
-            else if (p.titolarita < 60) titClass = 'tit-low';
+            if (p.titolarita >= 90) titClass = 'tit-elite';
+            else if (p.titolarita >= 75) titClass = 'tit-high';
+            else if (p.titolarita >= 50) titClass = 'tit-mid';
+            else titClass = 'tit-low';
             let titLabel = `${p.titolarita || 0}%`;
             if (p.is_injured) {
                 if ((p.titolarita || 0) === 0) {
-                    titClass = 'tit-low';
+                    titClass = 'tit-alert';
                     titLabel = `0% 🚑`;
                 } else if (!p.presenze_2627 || p.presenze_2627 === 0) {
                     titLabel = `${p.titolarita}% 🚑`;
@@ -875,8 +900,10 @@ function renderTable() {
                 const fullTitle = (p.coppia_dettaglio || `${rolePrefix}${p.coppia_nome}`) + (isHybrid ? `\n⚠️ Attenzione Classic: ruoli differenti nel listone (${p.role} vs ${p.coppia_ruolo}), ma stessa posizione/staffetta in campo!` : '');
                 coppiaHtml = `<span class="coppia-pill ${isHybrid ? 'coppia-pill-hybrid' : ''}" style="${clickStyle}" ${clickHandler} title="${fullTitle}">${icon} ${rolePrefix}${p.coppia_nome}${hybridBadge}</span>`;
             }
-            const mv2627Str = p.mv_2627 ? `<span class="stat-live mv">${p.mv_2627.toFixed(2)}</span>` : `<span class="dim-dash">-</span>`;
-            const fm2627Str = p.fm_2627 ? `<span class="stat-live fm">${p.fm_2627.toFixed(2)}</span>` : `<span class="dim-dash">-</span>`;
+            const mvCls = p.mv_2627 ? getStatTierClass('mv', p.mv_2627, p.role) : '';
+            const mv2627Str = p.mv_2627 ? `<span class="stat-live mv ${mvCls}">${p.mv_2627.toFixed(2)}</span>` : `<span class="dim-dash">-</span>`;
+            const fmCls = p.fm_2627 ? getStatTierClass('fm', p.fm_2627, p.role) : '';
+            const fm2627Str = p.fm_2627 ? `<span class="stat-live fm ${fmCls}">${p.fm_2627.toFixed(2)}</span>` : `<span class="dim-dash">-</span>`;
             const has2627 = Boolean(p.has_data_2627 && (p.presenze_2627 || 0) > 0);
             let xfmVal = has2627 ? p.xfm : null;
             let deltaVal = has2627 ? p.delta_xfm : null;
@@ -887,8 +914,9 @@ function renderTable() {
                     deltaVal = xfmData.delta;
                 }
             }
+            const xfmCls = (has2627 && xfmVal !== undefined && xfmVal !== null && !isNaN(xfmVal)) ? getStatTierClass('xfm', xfmVal, p.role) : '';
             const xfmStr = (has2627 && xfmVal !== undefined && xfmVal !== null && !isNaN(xfmVal))
-                ? `<span class="stat-live xfm" style="font-weight:800;color:var(--accent-cyan);" title="Expected FantaMedia: ${Number(xfmVal).toFixed(2)}">${Number(xfmVal).toFixed(2)}</span>`
+                ? `<span class="stat-live xfm ${xfmCls}" title="Expected FantaMedia: ${Number(xfmVal).toFixed(2)}">${Number(xfmVal).toFixed(2)}</span>`
                 : `<span class="dim-dash">-</span>`;
             let deltaHtml = `<span class="dim-dash">-</span>`;
             if (has2627 && deltaVal !== undefined && deltaVal !== null && !isNaN(deltaVal)) {
@@ -911,24 +939,38 @@ function renderTable() {
                 }
             } else {
                 if (p.has_data_2627 && p.presenze_2627 > 0) {
-                    const gText = p.gol_2627 > 0 ? `<b class="stat-gol">${p.gol_2627}</b>` : `<span>0</span>`;
-                    const aText = p.assist_2627 > 0 ? `<b class="stat-ass">${p.assist_2627}</b>` : `<span>0</span>`;
+                    const gText = p.gol_2627 > 0 ? `<b class="stat-gol">${p.gol_2627}</b>` : `<span style="color:#94a3b8;">0</span>`;
+                    const aText = p.assist_2627 > 0 ? `<b class="stat-ass">${p.assist_2627}</b>` : `<span style="color:#64748b;">0</span>`;
                     ga2627Html = `${gText}/${aText}`;
                 } else {
                     ga2627Html = `<span class="dim-dash">0/0</span>`;
                 }
             }
             const xgVal = (p.xg_2627 !== null && p.xg_2627 !== undefined) ? p.xg_2627 : (p.xg90_2627 ? parseFloat(p.xg90_2627) : null);
+            let xgCls = 'stat-neutral';
+            if (xgVal !== null && !isNaN(xgVal)) {
+                const n = Number(xgVal);
+                if (n >= 3.0) xgCls = 'stat-tier-elite';
+                else if (n >= 1.5) xgCls = 'stat-tier-top';
+                else if (n >= 0.5) xgCls = 'stat-tier-mid';
+            }
             const xgHtml = (xgVal !== null && !isNaN(xgVal))
-                ? `<span class="stat-live xg" style="color:#f472b6;font-weight:700;">${Number(xgVal).toFixed(2)}</span>`
+                ? `<span class="stat-live xg ${xgCls}">${Number(xgVal).toFixed(2)}</span>`
                 : `<span class="dim-dash">-</span>`;
             const xaVal = (p.xa_2627 !== null && p.xa_2627 !== undefined) ? p.xa_2627 : (p.xa90_2627 ? parseFloat(p.xa90_2627) : null);
+            let xaCls = 'stat-neutral';
+            if (xaVal !== null && !isNaN(xaVal)) {
+                const n = Number(xaVal);
+                if (n >= 2.0) xaCls = 'stat-tier-elite';
+                else if (n >= 1.0) xaCls = 'stat-tier-top';
+                else if (n >= 0.3) xaCls = 'stat-tier-mid';
+            }
             const xaHtml = (xaVal !== null && !isNaN(xaVal))
-                ? `<span class="stat-live xa" style="color:#38bdf8;font-weight:700;">${Number(xaVal).toFixed(2)}</span>`
+                ? `<span class="stat-live xa ${xaCls}">${Number(xaVal).toFixed(2)}</span>`
                 : `<span class="dim-dash">-</span>`;
             const minsVal = p.minuti_2627 || p.minuti_stat_2627 || (p.presenze_2627 ? (p.presenze_2627 * 75) : null);
             const minHtml = minsVal
-                ? `<span class="stat-live mins" style="color:#a78bfa;font-size:11.5px;font-weight:600;">${minsVal}'</span>`
+                ? `<span class="stat-live mins stat-neutral" style="font-size:11.5px;">${minsVal}'</span>`
                 : `<span class="dim-dash">-</span>`;
             const ammVal = p.amm_2627 || 0;
             const espVal = p.esp_2627 || 0;
@@ -1048,7 +1090,7 @@ function getAllSmartBadgesHtml(p) {
     } else if (adviceType === 'benched' || adviceText.includes('PERSO IL POSTO') || adviceText.includes('IN PANCHINA')) {
         badges.push(`<span class="smart-tag benched" title="🪑 In Panchina: Calciatore con status iniziale elevato ma scivolato indietro nelle gerarchie tecniche dell'allenatore. ${adviceText}">🪑 In Panchina</span>`);
     } else if (adviceType === 'supersub' || adviceText.includes('SUPER-SUB')) {
-        badges.push(`<span class="smart-tag sleeper" style="background:rgba(245,158,11,0.2);border-color:#f59e0b;color:#fbbf24;" title="⚡ Super-Sub / Spacca-Partite: Calciatore che subentra sistematicamente a gara in corso garantendo voto utile e bonus. ${adviceText}">⚡ Super-Sub</span>`);
+        badges.push(`<span class="smart-tag supersub" title="⚡ Super-Sub / Spacca-Partite: Calciatore che subentra sistematicamente a gara in corso garantendo voto utile e bonus. ${adviceText}">⚡ Super-Sub</span>`);
     } else if (adviceType === 'titolarissimo' || adviceText.toLowerCase().includes('titolarissimo')) {
         badges.push(`<span class="smart-tag starter" title="🔒 Titolarissimo (100% da Voto): Certezza assoluta di presenza dal 1' minuto in tutte le giornate disputate. ${adviceText}">🔒 Titolarissimo</span>`);
     } else if (adviceType === 'titolare' || adviceText.toLowerCase().includes('titolare da voto')) {
@@ -1060,7 +1102,7 @@ function getAllSmartBadgesHtml(p) {
     } else if (adviceType === 'flop' || (adviceType === 'danger' && adviceText.toLowerCase().includes('flop'))) {
         badges.push(`<span class="smart-tag danger" title="⚠️ Possibile Flop: Calciatore sopravvalutato dal mercato o con rendimento al di sotto delle aspettative di spesa. ${adviceText}">⚠️ Possibile Flop</span>`);
     } else if (adviceText.includes('TOP DI VETRO') || adviceText.includes('COPERTURA')) {
-        badges.push(`<span class="smart-tag value" style="background:rgba(245,158,11,0.18);border-color:#f59e0b;color:#fbbf24;" title="🛡️ Da Prendere con Copertura: Calciatore di grande talento ma soggetto a infortuni frequenti; indispensabile acquistare anche il suo sostituto naturale. ${adviceText}">🛡️ Con Copertura</span>`);
+        badges.push(`<span class="smart-tag coverage" title="🛡️ Da Prendere con Copertura: Calciatore di grande talento ma soggetto a infortuni frequenti; indispensabile acquistare anche il suo sostituto naturale. ${adviceText}">🛡️ Con Copertura</span>`);
     } else if (adviceText) {
         badges.push(`<span class="smart-tag regular" title="${adviceText}">${adviceText}</span>`);
     }
@@ -1110,7 +1152,7 @@ function getSmartBadgeHtml(p) {
         return `<span class="smart-tag benched" title="🪑 In Panchina: Calciatore con status iniziale elevato ma scivolato indietro nelle gerarchie tecniche dell'allenatore. ${adviceText}">🪑 In Panchina</span>`;
     }
     if (adviceType === 'supersub' || adviceText.includes('SUPER-SUB')) {
-        return `<span class="smart-tag sleeper" style="background:rgba(245,158,11,0.2);border-color:#f59e0b;color:#fbbf24;" title="⚡ Super-Sub / Spacca-Partite: Calciatore che subentra sistematicamente a gara in corso garantendo voto utile e bonus. ${adviceText}">⚡ Super-Sub</span>`;
+        return `<span class="smart-tag supersub" title="⚡ Super-Sub / Spacca-Partite: Calciatore che subentra sistematicamente a gara in corso garantendo voto utile e bonus. ${adviceText}">⚡ Super-Sub</span>`;
     }
     if (adviceType === 'titolarissimo' || adviceText.toLowerCase().includes('titolarissimo')) {
         return `<span class="smart-tag starter" title="🔒 Titolarissimo (100% da Voto): Certezza assoluta di presenza dal 1' minuto in tutte le giornate disputate. ${adviceText}">🔒 Titolarissimo</span>`;
@@ -1128,7 +1170,7 @@ function getSmartBadgeHtml(p) {
         return `<span class="smart-tag danger" title="⚠️ Possibile Flop: Calciatore sopravvalutato dal mercato o con rendimento al di sotto delle aspettative di spesa. ${adviceText}">⚠️ Possibile Flop</span>`;
     }
     if (adviceText.includes('TOP DI VETRO') || adviceText.includes('COPERTURA')) {
-        return `<span class="smart-tag value" style="background:rgba(245,158,11,0.18);border-color:#f59e0b;color:#fbbf24;" title="🛡️ Da Prendere con Copertura: Calciatore di grande talento ma soggetto a infortuni frequenti; indispensabile acquistare anche il suo sostituto naturale. ${adviceText}">🛡️ Con Copertura</span>`;
+        return `<span class="smart-tag coverage" title="🛡️ Da Prendere con Copertura: Calciatore di grande talento ma soggetto a infortuni frequenti; indispensabile acquistare anche il suo sostituto naturale. ${adviceText}">🛡️ Con Copertura</span>`;
     }
     if (p.is_rigorista_2 || p.rigorista_val === '2° Rigorista') {
         return `<span class="smart-tag penalty-sub" title="2° Rigorista designato della squadra.">🎯 2° Rigorista</span>`;

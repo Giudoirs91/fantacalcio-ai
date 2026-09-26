@@ -240,30 +240,39 @@ def compute_predictive_titolarita(
     fvm
 ):
     """
-    Calcolo dinamico e predittivo della titolarità (0.0 - 1.0) combinando:
-    1. Recency ponderata con decadimento temporale sulle prime giornate (1-5);
-    2. Esclusione delle assenze per infortunio dal denominatore di demerito tecnico;
-    3. Pesi specifici Starter (1.0), Subentrato d'impatto >= 25 min (0.60), spezzone (0.35);
-    4. Integrazione Bayesiana con àncora storica 2025/26 e gerarchie tattiche;
-    5. Protezione assoluta contro divisioni per zero.
+    Calcolo quantitativo predittivo della titolarità (0.0 - 1.0) suddiviso in 3 metriche ponderate:
+    - Ultime 3 giornate: peso 50% (gerarchia attuale dell'allenatore)
+    - Giornate 4-8 all'indietro: peso 35% (continuità di medio periodo nella stagione)
+    - Resto della stagione / Storico: peso 15% (àncora statistica anti-rumore)
+    
+    Protezione assoluta per infortuni (esclusi dal demerito tecnico) e zero division safety.
     """
     n_matches = max(1, int(n_team_matches or 5))
+    prior = titolarita_storica if (titolarita_storica and titolarita_storica > 0 and titolarita_storica <= 1.0) else titolarita_tactical
+    prior = min(1.0, max(0.0, float(prior or 0.50)))
 
-    # Caso 1: Giocatore attualmente infortunato senza presenze (es. Bremer, Scalvini, Ferguson)
+    # Caso 1: Giocatore infortunato di lungo corso senza presenze 26/27 (es. Bremer, Scalvini, Ferguson)
     has_rep = bool(rep_data and rep_data.get('presenze_2627', 0) > 0)
     if is_injured and not has_rep:
         if is_in_11:
-            tit_val = max(titolarita_tactical, titolarita_storica if (titolarita_storica and titolarita_storica > 0) else 0.88)
+            tit_val = max(titolarita_tactical, prior if prior > 0 else 0.88)
         else:
-            tit_val = max(titolarita_tactical, titolarita_storica if (titolarita_storica and titolarita_storica > 0) else 0.25)
+            tit_val = max(titolarita_tactical, prior if prior > 0 else 0.25)
+        tit_val = min(1.0, max(0.0, round(tit_val, 2)))
+        pct = int(round(tit_val * 100))
         rientro = infortunio_info.get("rientro", "Infortunato") if infortunio_info else "Infortunato"
         status_label = "Titolare" if tit_val >= 0.70 else "Riserva"
-        return min(1.0, max(0.0, round(tit_val, 2))), f"{status_label} (Indisponibile - {rientro})"
+        desc = f"{status_label} (Indisponibile - {rientro})"
+        dettaglio = f"Titolarità Tecnica Salvaguardata: {pct}% (Indisponibile per infortunio - rientro {rientro})"
+        return tit_val, desc, pct, pct, int(round(prior * 100)), dettaglio
 
     # Caso 2: Nuovo acquisto annunciato a fine mercato o svincolato
     if is_new_arrival:
-        tit_val = titolarita_tactical
-        return min(1.0, max(0.0, round(tit_val, 2))), f"Nuovo Acquisto ({int(round(tit_val * 100))}% Tit)"
+        tit_val = min(1.0, max(0.0, round(titolarita_tactical, 2)))
+        pct = int(round(tit_val * 100))
+        desc = f"Nuovo Acquisto ({pct}% Tit)"
+        dettaglio = f"Nuovo Acquisto: stimato da gerarchia tattica al {pct}%"
+        return tit_val, desc, pct, pct, int(round(prior * 100)), dettaglio
 
     # Caso 3: Presenza nei report di gara 2026/27
     if rep_data:
@@ -272,73 +281,101 @@ def compute_predictive_titolarita(
         subs = max(0, presenze - starts)
         history = rep_data.get('history_by_round', {})
 
-        # Titolarissimo assoluto 100%: 5 su 5 o tutte le partite disputate
+        # Titolarissimo assoluto 100% (es. 5 su 5 dall'inizio)
         if starts >= n_matches:
-            return 1.0, f"{starts}/{n_matches} Titolare (100%)"
+            tit_val = 1.0
+            desc = f"{starts}/{n_matches} Titolare (100%)"
+            dettaglio = (
+                f"Titolarità Assoluta: 100% ({starts}/{n_matches} dal 1' minuto)\n"
+                f"• Ultime 3 giornate: 100% (peso 50%)\n"
+                f"• Giornate 4-8: 100% (peso 35%)\n"
+                f"• Storico/Àncora: {int(round(prior*100))}% (peso 15%)"
+            )
+            return 1.0, desc, 100, 100, int(round(prior * 100)), dettaglio
 
-        # Pesi temporali decrescenti a ritroso (le ultime giornate contano sensibilmente di più)
-        # Es. su 5 giornate: G5=1.0, G4=0.80, G3=0.65, G2=0.50, G1=0.35
-        score_sum = 0.0
-        weight_sum = 0.0
+        # Suddivisione rigorosa nelle 3 Fasce Temporali:
+        # Fascia 1: Ultime 3 giornate (es. se n_matches=5, sono G3, G4, G5)
+        last_3_rounds = [g for g in range(max(1, n_matches - 2), n_matches + 1)]
+        # Fascia 2: Giornate 4-8 all'indietro (es. G1 e G2)
+        mid_rounds = [g for g in range(max(1, n_matches - 7), max(1, n_matches - 2))]
+        # Fascia 3: Storico 2025/26 / Prior Tattico
 
-        for g in range(1, n_matches + 1):
-            denom_g = max(1, n_matches - 1)
-            w = 0.35 + 0.65 * ((g - 1) / float(denom_g))
-
+        def eval_round(g):
             if g in history:
                 h = history[g]
                 if h.get('is_starter', False):
-                    val = 1.0
-                else:
-                    mins = int(h.get('minutes', 0))
-                    val = 0.60 if mins >= 25 else (0.35 if mins > 0 else 0.0)
-                score_sum += w * val
-                weight_sum += w
+                    return 1.0
+                mins = int(h.get('minutes', 0))
+                return 0.60 if mins >= 25 else (0.35 if mins > 0 else 0.0)
             else:
-                # Non a referto in questa giornata
-                # Se è attualmente infortunato e la giornata è recente, non penalizzare come scelta tecnica
                 if is_injured and g >= max(1, n_matches - 1):
-                    pass
-                else:
-                    score_sum += w * 0.0
-                    weight_sum += w
+                    return None # Non penalizzare se assente per infortunio
+                return 0.0
 
-        recency_tit = (score_sum / max(1e-6, weight_sum)) if weight_sum > 0 else titolarita_tactical
+        # Punteggio Blocco 1: Ultime 3 giornate
+        v1_list = [eval_round(g) for g in last_3_rounds]
+        v1_valid = [v for v in v1_list if v is not None]
+        t_ultime3 = (sum(v1_valid) / max(1, len(v1_valid))) if v1_valid else prior
 
-        # Integrazione Bayesiana con l'àncora storica / gerarchia tattica
-        prior = titolarita_storica if (titolarita_storica and titolarita_storica > 0 and titolarita_storica <= 1.0) else titolarita_tactical
-        # A 5 giornate alpha = 0.75 (75% peso alla stagione in corso, 25% all'àncora)
-        alpha = min(0.75, 0.30 + 0.09 * n_matches)
-        tit_final = (alpha * recency_tit) + ((1.0 - alpha) * prior)
+        # Punteggio Blocco 2: Giornate 4-8 all'indietro
+        v2_list = [eval_round(g) for g in mid_rounds]
+        v2_valid = [v for v in v2_list if v is not None]
+        t_mid = (sum(v2_valid) / max(1, len(v2_valid))) if v2_valid else prior
 
-        # Regole di salvaguardia
+        # Punteggio Blocco 3: Storico / Àncora
+        t_storico = prior
+
+        # Ponderazione quantitativa esatta:
+        # Ultime 3 giornate: 50%
+        # Giornate 4-8: 35%
+        # Resto/Storico: 15%
+        if len(mid_rounds) > 0:
+            w_u3, w_mid, w_hist = 0.50, 0.35, 0.15
+        else:
+            w_u3, w_mid, w_hist = 0.65, 0.00, 0.35
+
+        tit_raw = (w_u3 * t_ultime3) + (w_mid * t_mid) + (w_hist * t_storico)
+
+        # Regola di salvaguardia per riserve senza presenze e non infortunate
         if starts == 0 and subs == 0 and not is_injured:
-            return 0.0, f"0/{n_matches} Presenze (Riserva)"
+            desc = f"0/{n_matches} Presenze (Riserva)"
+            dettaglio = f"Titolarità: 0% (0 presenze su {n_matches} partite disputate)"
+            return 0.0, desc, 0, 0, int(round(prior * 100)), dettaglio
 
         if starts >= 4 and is_in_11:
-            tit_final = max(tit_final, 0.82)
+            tit_raw = max(tit_raw, 0.82)
 
-        tit_final = min(1.0, max(0.0, round(tit_final, 2)))
-        pct_int = int(round(tit_final * 100))
+        tit_val = min(1.0, max(0.0, round(tit_raw, 2)))
+        pct = int(round(tit_val * 100))
+        u3_pct = int(round(t_ultime3 * 100))
+        mid_pct = int(round(t_mid * 100))
+        hist_pct = int(round(t_storico * 100))
 
         if starts == n_matches:
-            tit_desc = f"{starts}/{n_matches} Titolare (100%)"
+            desc = f"{starts}/{n_matches} Titolare (100%)"
         elif starts > 0:
             sub_part = f" + {subs} Sub" if subs > 0 else ""
-            tit_desc = f"{starts}/{n_matches} Tit{sub_part} ({pct_int}%)"
+            desc = f"{starts}/{n_matches} Tit{sub_part} ({pct}%)"
         elif subs > 0:
-            tit_desc = f"{subs}/{n_matches} Subentrato ({pct_int}%)"
+            desc = f"{subs}/{n_matches} Subentrato ({pct}%)"
         else:
-            tit_desc = f"0/{n_matches} Presenze ({pct_int}%)"
+            desc = f"0/{n_matches} Presenze ({pct}%)"
 
-        return tit_final, tit_desc
+        dettaglio = (
+            f"Titolarità Predittiva: {pct}%\n"
+            f"• Ultime 3 giornate: {u3_pct}% (peso {int(w_u3*100)}%)\n"
+            f"• Giornate 4-8: {mid_pct}% (peso {int(w_mid*100)}%)\n"
+            f"• Storico/Àncora: {hist_pct}% (peso {int(w_hist*100)}%)"
+        )
+        return tit_val, desc, u3_pct, mid_pct, hist_pct, dettaglio
 
-    # Caso 4: Nessun report e nessuna presenza
+    # Caso 4: Nessuna presenza a referto
     if is_injured:
         tit_val = titolarita_tactical if is_in_11 else 0.20
-        return min(1.0, max(0.0, round(tit_val, 2))), f"Indisponibile ({int(round(tit_val * 100))}%)"
+        pct = int(round(tit_val * 100))
+        return tit_val, f"Indisponibile ({pct}%)", pct, pct, int(round(prior * 100)), f"Indisponibile per infortunio ({pct}%)"
 
-    return 0.0, f"0/{n_matches} Presenze (Riserva)"
+    return 0.0, f"0/{n_matches} Presenze (Riserva)", 0, 0, int(round(prior * 100)), f"0/{n_matches} Presenze"
 
 def run_master_pipeline():
     print("=== [Pipeline] AVVIO FANTA MASTER AI (DATI REALI 2025/2026 FOTMOB + G1/G2 2026/27) ===")
@@ -698,8 +735,8 @@ def run_master_pipeline():
             parate_2627 = rep_data['parate_2627']
             gol_subiti_2627 = rep_data['gol_subiti_2627']
 
-        # CALCOLO DINAMICO E PREDITTIVO DELLA TITOLARITA'
-        titolarita, titolarita_desc_2627 = compute_predictive_titolarita(
+        # CALCOLO DINAMICO E PREDITTIVO DELLA TITOLARITA' (3 FASCE PONDERATE)
+        titolarita, titolarita_desc_2627, tit_u3, tit_mid, tit_hist, tit_dettaglio = compute_predictive_titolarita(
             clean_pname=clean_pname,
             team=team,
             rep_data=rep_data,
@@ -1116,6 +1153,10 @@ def run_master_pipeline():
             "esp": esp,
             "diff_bm": round(diff_bm, 1),
             "titolarita": int(round(titolarita * 100)),
+            "titolarita_ultime3": tit_u3,
+            "titolarita_mid": tit_mid,
+            "titolarita_storico": tit_hist,
+            "titolarita_dettaglio": tit_dettaglio,
             
             # --- METRICHE REALI 2026/2027 (G1 + G2 MATCH REPORTS) ---
             "has_data_2627": has_data_2627,

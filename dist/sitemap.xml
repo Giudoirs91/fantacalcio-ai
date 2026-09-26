@@ -811,12 +811,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fantamasterai.it/calciatore/jonathan-rowe/</loc>
-    <lastmod>2026-09-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://fantamasterai.it/calciatore/manu-kone/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>daily</changefreq>
@@ -836,6 +830,12 @@
   </url>
   <url>
     <loc>https://fantamasterai.it/calciatore/jesus-rodriguez/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fantamasterai.it/calciatore/jonathan-rowe/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1051,6 +1051,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://fantamasterai.it/calciatore/nicola-zalewski/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://fantamasterai.it/calciatore/jesper-karlstrom/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>daily</changefreq>
@@ -1106,12 +1112,6 @@
   </url>
   <url>
     <loc>https://fantamasterai.it/calciatore/darryl-bakola/</loc>
-    <lastmod>2026-09-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://fantamasterai.it/calciatore/nicola-zalewski/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1231,12 +1231,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fantamasterai.it/calciatore/alieu-fadera/</loc>
-    <lastmod>2026-09-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://fantamasterai.it/calciatore/mikael-egill-ellertsson/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>daily</changefreq>
@@ -1261,13 +1255,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fantamasterai.it/calciatore/marco-brescianini/</loc>
+    <loc>https://fantamasterai.it/calciatore/mathis-mout/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fantamasterai.it/calciatore/mathis-mout/</loc>
+    <loc>https://fantamasterai.it/calciatore/marco-brescianini/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1352,6 +1346,12 @@
   </url>
   <url>
     <loc>https://fantamasterai.it/calciatore/ousmane-diallo/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fantamasterai.it/calciatore/alieu-fadera/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>

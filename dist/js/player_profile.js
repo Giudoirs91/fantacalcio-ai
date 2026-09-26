@@ -788,9 +788,9 @@ function openPlayerProfileModal(playerId) {
     else if (suffPct < 55) affColor = '#f59e0b';
     const quickGaugesHtml = `
         <div class="profile-quick-gauges-bar">
-            <div class="quick-gauge-item">
+            <div class="quick-gauge-item" title="${p.titolarita_dettaglio || p.titolarita_desc_2627 || `Titolarità: ${titVal}%`}">
                 <div class="gauge-header">
-                    <span class="gauge-lbl">Titolarità</span>
+                    <span class="gauge-lbl">Titolarità ℹ️</span>
                     <b class="gauge-val" style="color:${titColor};">${titVal}%</b>
                 </div>
                 <div class="gauge-track"><div class="gauge-fill" style="width:${titVal}%;background:${titColor};"></div></div>

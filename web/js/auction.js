@@ -958,11 +958,12 @@ function renderTable() {
                 <div class="col-tag-advanced">${multiSmartTags}</div>
             `;
 
-            // Titolarità
+            // Titolarità (Formula a 3 Blocchi: 50% Ultime 3, 35% G4-8, 15% Storico)
             let titClass = 'tit-mid';
             if (p.titolarita >= 85) titClass = 'tit-high';
             else if (p.titolarita < 60) titClass = 'tit-low';
-            const titHtml = `<span class="tit-pill ${titClass}" title="Titolarità stimata: ${p.titolarita || 0}%">${p.titolarita || 0}%</span>`;
+            const titTitle = p.titolarita_dettaglio || `Titolarità stimata: ${p.titolarita || 0}%\n${p.titolarita_desc_2627 || ''}`;
+            const titHtml = `<span class="tit-pill ${titClass}" title="${titTitle}">${p.titolarita || 0}%</span>`;
 
             // Sostituto / Coppia Dinamica basata su titolarità effettiva
             let coppiaHtml = `<span class="dim-dash">-</span>`;

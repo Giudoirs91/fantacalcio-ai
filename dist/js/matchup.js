@@ -214,6 +214,11 @@ function updateMatchup() {
                         <td style="${slotWinB ? 'color:#f472b6;font-weight:900;' : ''}">${pB.slot_fascia || (pB.slot_num + '° Slot')}</td>
                     </tr>
                     <tr>
+                        <td style="${pA.titolarita > pB.titolarita ? 'color:var(--accent-cyan);font-weight:900;' : ''}" title="${pA.titolarita_dettaglio || ''}"><b>${pA.titolarita}%</b> <span style="font-size:11px;color:var(--text-muted);display:block;">${pA.titolarita_desc_2627 || ''}</span></td>
+                        <td title="Titolarità Quantitativa Predittiva: formula a 3 blocchi (50% Ultime 3 giornate, 35% Giornate 4-8, 15% Storico 25/26 e gerarchia tattica) con esclusione automatica degli infortuni"><b>Titolarità Predittiva ℹ️</b></td>
+                        <td style="${pB.titolarita > pA.titolarita ? 'color:#f472b6;font-weight:900;' : ''}" title="${pB.titolarita_dettaglio || ''}"><b>${pB.titolarita}%</b> <span style="font-size:11px;color:var(--text-muted);display:block;">${pB.titolarita_desc_2627 || ''}</span></td>
+                    </tr>
+                    <tr>
                         <td style="${ovrWinA ? 'color:var(--accent-cyan);font-weight:900;' : ''}"><b>${pA.ovr}</b></td>
                         <td title="Overall OVR (45-98): Valutazione predittiva complessiva elaborata dall'algoritmo AI"><b>Overall OVR ℹ️</b></td>
                         <td style="${ovrWinB ? 'color:#f472b6;font-weight:900;' : ''}"><b>${pB.ovr}</b></td>

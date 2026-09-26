@@ -40,10 +40,11 @@ File di tracciamento persistente delle attività pianificate per il progetto Fan
 ---
 
 ## 🔵 FASE 3: Viralità & Crescita del Traffico
-- [ ] **Generatore di Social Card Grafiche:**
-  - Tasto *"Condividi la mia Formazione"* che genera un'immagine ad alta risoluzione (campo 2D con logo FantaMaster AI) pronta da inviare sui gruppi WhatsApp di lega o nelle storie Instagram.
-- [ ] **"Il Bollettino del Venerdì" (Briefing Settimanale):**
-  - Rubrica automatica in homepage: *I 5 Caldi della Giornata*, *Le 3 Trappole da panchinare*, *Le 3 Scommesse Low-Cost*.
+- [x] **Generatore di Social Card Grafiche:**
+  - Motore Python Pillow (`src/telegram_engine.py`) che genera social card HD (1080x1080) con i consigliati per ruolo, OVR e matchup.
+- [x] **"Il Bollettino del Venerdì" (Briefing Telegram @fantamasterai ore 12:30):**
+  - Bot ufficiale `@FantamasterBot` collegato al canale `t.me/fantamasterai`.
+  - Invio automatico della Social Card HD + Briefing formattato prima degli anticipi del venerdì entro le ore 12:30.
 - [ ] **"Il Lunedì dei Rimpianti & della Fortuna" (AI Post-Match Analysis):**
   - Pillole automatiche del lunedì: *La Fortunata della Settimana* (overperformance da cedere), *La Sfortuna Cieca* (alta produzione offensiva a secco da comprare a sconto), *La Panchina dei Rimpianti* (i top panchinati d'Italia).
 - [ ] **Rilevatore di Regressione (Buy Low / Sell High):**

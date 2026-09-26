@@ -6,6 +6,7 @@ data/raw/**
 # File di snapshot AI (rigenerati dalla pipeline)
 config/ai_predictions_snapshot.json
 config/ai_bias_corrections.json
+config/telegram_config.json
 data/processed/ai_error_analysis.json
 
 # === PYTHON ===

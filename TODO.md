@@ -26,6 +26,12 @@ File di tracciamento persistente delle attività pianificate per il progetto Fan
   - Alert "Punti Ciechi" per evitare di giocare in 10 in caso di infortuni o squalifiche.
 - [ ] **"Trade Analyzer" (Valutatore di Scambi tra Leghe):**
   - Confronto matematico tra giocatori ceduti e ricevuti (*Scambio vantaggioso / equo / rischioso*).
+- [ ] **"Simulatore Modificatore Difesa: 4-3-3 o 3-4-3?":**
+  - Decision engine che calcola la media voto pura attesa dei 4 difensori + portiere vs potenziale offensivo del centrocampista aggiuntivo.
+  - Verdetto probabilistico sul modulo con punteggio atteso più alto (*es. Il 4-3-3 garantisce +1.8 pt attesi*).
+- [ ] **"Il Sospiro Statistico" (Player Similarity Engine):**
+  - Algoritmo di clustering e affinità statistica basato sulle metriche avanzate (dribbling, passaggi progressivi, xG90, xA90).
+  - Associa nuovi arrivi, scommesse ed esordienti a profili affermati della Serie A (*es. "Profilo affine per l'88% a Gudmundsson"*).
 
 ---
 
@@ -34,6 +40,8 @@ File di tracciamento persistente delle attività pianificate per il progetto Fan
   - Tasto *"Condividi la mia Formazione"* che genera un'immagine ad alta risoluzione (campo 2D con logo FantaMaster AI) pronta da inviare sui gruppi WhatsApp di lega o nelle storie Instagram.
 - [ ] **"Il Bollettino del Venerdì" (Briefing Settimanale):**
   - Rubrica automatica in homepage: *I 5 Caldi della Giornata*, *Le 3 Trappole da panchinare*, *Le 3 Scommesse Low-Cost*.
+- [ ] **"Il Lunedì dei Rimpianti & della Fortuna" (AI Post-Match Analysis):**
+  - Pillole automatiche del lunedì: *La Fortunata della Settimana* (overperformance da cedere), *La Sfortuna Cieca* (alta produzione offensiva a secco da comprare a sconto), *La Panchina dei Rimpianti* (i top panchinati d'Italia).
 - [ ] **Rilevatore di Regressione (Buy Low / Sell High):**
   - Tab per scovare chi ha fatto gol fortuiti (da cedere al picco) e chi ha xFM alto ma bonus sfortunati (da acquistare sottoprezzo).
 

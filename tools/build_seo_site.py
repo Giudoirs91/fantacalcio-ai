@@ -1375,6 +1375,7 @@ def render_unified_header(rel_path=""):
                     </button>
                     <div class="nav-dropdown-menu">
                         <a href="{rel_path}consigli-fantacalcio/" class="dropdown-item">🎯 Chi Schierare Prossima Giornata</a>
+                        <a href="{rel_path}chi-schiero/" class="dropdown-item">⚔️ Tool "Chi Schiero?" (Ballottaggi 1vs1)</a>
                         <a href="{rel_path}top-11-ai/" class="dropdown-item">🧠 5 Squadre Perfette AI</a>
                         <a href="{rel_path}scommesse-talenti/" class="dropdown-item">🔮 Gemme &amp; Sleeper AI</a>
                         <div class="dropdown-divider"></div>
@@ -2932,6 +2933,13 @@ def build_all():
             "title": "Consigli Fantacalcio 6ª Giornata Serie A | Chi Schierare | Fanta Master AI",
             "desc": "Chi schierare nella 6ª giornata di Serie A: indici di schierabilità, titolarità, verifiche predittive e consigli ruolo per ruolo con intelligenza artificiale.",
             "keywords": "consigli fantacalcio 6 giornata, chi schierare 6 giornata, formazioni consigliate fantacalcio"
+        },
+        {
+            "route": "chi-schiero",
+            "tab": "chi_schiero",
+            "title": "Chi Schiero? Comparatore 1vs1 Ballottaggi Fantacalcio | Fanta Master AI",
+            "desc": "Risolvi i tuoi dubbi di formazione per la prossima giornata: confronto testa a testa, xFM, facilità del calendario, xGA difesa rivale e verdetto percentuale immediato.",
+            "keywords": "chi schiero, chi schierare fantacalcio, ballottaggi fantacalcio, comparatore 1vs1 fantacalcio, consigli formazione serie a"
         },
         {
             "route": "football-analytics",

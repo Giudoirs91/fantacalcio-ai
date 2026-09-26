@@ -17,10 +17,13 @@ File di tracciamento persistente delle attività pianificate per il progetto Fan
 ---
 
 ## 🟡 FASE 2: Fidelizzazione & Strumenti ad Alto Valore (Retention)
-- [ ] **Tool "Chi Schiero?" (Comparatore 1vs1 del Weekend):**
-  - Interfaccia rapida a 2 caselle per confrontare due o più giocatori della propria rosa.
-  - Incrocio tra xFM, fattore casa/trasferta e facilità del calendario (xG concessi dalla difesa avversaria).
-  - Verdetto percentuale immediato (*es. Consigliato Politano 68% vs Orsolini 32%*).
+- [x] **Tool "Chi Schiero?" (Comparatore 1vs1 del Weekend):**
+  - Rilevamento dinamico automatico della prossima giornata di Serie A da voti reali + calendario a 38 turni.
+  - Interfaccia rapida a 2 caselle con ricerca istantanea, filtri ruolo e preset ballottaggi caldi.
+  - Incrocio deterministico xFM, fattore casa/trasferta, difficoltà matchup (xGA difesa rivale) e status rigoristi/piazzati.
+  - Verdetto percentuale immediato (*es. Consigliato Politano 89% vs Orsolini 11%*) con 3 motivazioni AI e confronto testa a testa tabellare.
+  - Pulsante per condivisione istantanea formattata su WhatsApp / Telegram.
+  - URL dedicato SEO `/chi-schiero/` indicizzato su Google e rotta Vercel configurata.
 - [ ] **Modulo "La Mia Rosa" (Salvataggio in `localStorage`):**
   - Selezione dei 25 giocatori della propria squadra senza obbligo di registrazione o login.
   - Top 11 personalizzata consigliata automaticamente ogni settimana.

@@ -87,6 +87,7 @@ def build_standalone_dashboard(sync_android=False):
         "ai_squads.js",
         "gems.js",
         "matchday_advice.js",
+        "chi_schiero.js",
         "trade_machine.js",
         "repair_auction.js",
         "league_report.js",
@@ -203,6 +204,7 @@ def build_standalone_dashboard(sync_android=False):
                     </button>
                     <div class="nav-dropdown-menu">
                         <a href="/consigli-fantacalcio/" class="dropdown-item" id="tabMatchdayAdviceBtn" onclick="onNavClick(event, 'matchday_advice')">🎯 Chi Schierare Prossima Giornata</a>
+                        <a href="/chi-schiero/" class="dropdown-item" id="tabChiSchieroBtn" onclick="onNavClick(event, 'chi_schiero')">⚔️ Tool "Chi Schiero?" (Ballottaggi 1vs1)</a>
                         <a href="/top-11-ai/" class="dropdown-item" id="tabAiSquadsBtn" onclick="onNavClick(event, 'ai_squads')">🔒 5 Squadre Perfette AI <span style="font-size:10px;background:rgba(239,68,68,0.2);color:#f87171;padding:2px 6px;border-radius:4px;font-weight:700;margin-left:6px;">In Aggiornamento</span></a>
                         <a href="/scommesse-talenti/" class="dropdown-item" id="tabGemsBtn" onclick="onNavClick(event, 'gems')">🔮 Gemme & Scommesse AI</a>
                         <div class="dropdown-divider"></div>
@@ -504,6 +506,10 @@ def build_standalone_dashboard(sync_android=False):
 
         <!-- Tab: Consigliati Prossima Giornata (AI & Report) -->
         <section id="viewMatchdayAdvice" class="tab-content" style="display:none;width:100%;">
+        </section>
+
+        <!-- Tab: Tool "Chi Schiero?" (Ballottaggi 1vs1) -->
+        <section id="viewChiSchiero" class="tab-content" style="display:none;width:100%;">
         </section>
 
         <!-- Tab: 5 Squadre Perfette Consigliate dall'AI -->
@@ -960,6 +966,7 @@ def build_standalone_dashboard(sync_android=False):
             'auction': '/',
             'top_flop': '/top-flop/',
             'matchday_advice': '/consigli-fantacalcio/',
+            'chi_schiero': '/chi-schiero/',
             'matrix': '/football-analytics/',
             'stats': '/statistiche-serie-a/',
             'pitch': '/probabili-formazioni/',
@@ -980,6 +987,9 @@ def build_standalone_dashboard(sync_android=False):
             '/consigli-fantacalcio': 'matchday_advice',
             '/consigli-fantacalcio/': 'matchday_advice',
             '/consigli-fantacalcio/index.html': 'matchday_advice',
+            '/chi-schiero': 'chi_schiero',
+            '/chi-schiero/': 'chi_schiero',
+            '/chi-schiero/index.html': 'chi_schiero',
             '/football-analytics': 'matrix',
             '/football-analytics/': 'matrix',
             '/football-analytics/index.html': 'matrix',
@@ -1004,6 +1014,7 @@ def build_standalone_dashboard(sync_android=False):
             // Direct identifiers & legacy hashes
             'top_flop': 'top_flop',
             'matchday_advice': 'matchday_advice',
+            'chi_schiero': 'chi_schiero',
             'matrix': 'matrix',
             'stats': 'stats',
             'pitch': 'pitch',
@@ -1108,7 +1119,7 @@ def build_standalone_dashboard(sync_android=False):
                 if (el) el.classList.remove('active');
             }});
 
-            ['viewHomeHub', 'viewAuction', 'viewMatchdayAdvice', 'viewAiSquads', 'viewSquadBuilder', 'viewTopFlop', 'viewMatrix', 'viewStats', 'viewPitch', 'viewMatchup', 'viewGk', 'viewGems', 'viewTradeMachine', 'viewRepairAuction', 'viewLeagueReport'].forEach(id => {{
+            ['viewHomeHub', 'viewAuction', 'viewMatchdayAdvice', 'viewChiSchiero', 'viewAiSquads', 'viewSquadBuilder', 'viewTopFlop', 'viewMatrix', 'viewStats', 'viewPitch', 'viewMatchup', 'viewGk', 'viewGems', 'viewTradeMachine', 'viewRepairAuction', 'viewLeagueReport'].forEach(id => {{
                 const el = document.getElementById(id);
                 if (el) el.style.display = 'none';
             }});
@@ -1149,6 +1160,13 @@ def build_standalone_dashboard(sync_android=False):
                 if (mob) mob.classList.add('active');
                 document.getElementById('viewMatchdayAdvice').style.display = 'block';
                 if (typeof renderMatchdayAdviceView === 'function') renderMatchdayAdviceView();
+            }} else if (tabId === 'chi_schiero') {{
+                const btn = document.getElementById('tabChiSchieroBtn');
+                if (btn) btn.classList.add('active');
+                const grp = document.getElementById('navGroupAi');
+                if (grp) grp.classList.add('active');
+                document.getElementById('viewChiSchiero').style.display = 'block';
+                if (typeof renderChiSchieroView === 'function') renderChiSchieroView();
             }} else if (tabId === 'top_flop') {{
                 const btn = document.getElementById('tabTopFlopBtn');
                 if (btn) btn.classList.add('active');

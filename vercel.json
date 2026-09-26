@@ -24,6 +24,10 @@
       "dest": "/privacy-policy/index.html"
     },
     {
+      "src": "/chi-schiero(/index\\.html)?",
+      "dest": "/chi-schiero/index.html"
+    },
+    {
       "src": "/consigli-fantacalcio(/index\\.html)?",
       "dest": "/consigli-fantacalcio/index.html"
     },

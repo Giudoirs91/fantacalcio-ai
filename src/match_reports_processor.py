@@ -51,7 +51,8 @@ def load_and_aggregate_match_reports():
                 'gol_subiti_2627': 0,
                 'parate_2627': 0,
                 'clean_sheets_2627': 0,
-                'giornate_giocate': []
+                'giornate_giocate': [],
+                'history_by_round': {}
             }
             
         rec = player_agg[key]
@@ -59,10 +60,16 @@ def load_and_aggregate_match_reports():
         g_num = int(row.get('giornata', 1))
         rec['giornate_giocate'].append(g_num)
         
-        if row.get('is_starter', False):
+        is_starter = bool(row.get('is_starter', False))
+        if is_starter:
             rec['titolarita_count_2627'] += 1
             
         rec['minuti_2627'] += int(row.get('minutes', 0))
+        rec['history_by_round'][g_num] = {
+            'is_starter': is_starter,
+            'minutes': int(row.get('minutes', 0)),
+            'is_gk': is_gk
+        }
         rec['ammonizioni_2627'] += int(row.get('yellow_cards', 0))
         rec['espulsioni_2627'] += int(row.get('red_cards', 0)) + int(row.get('double_yellows', 0))
         

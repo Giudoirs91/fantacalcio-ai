@@ -226,6 +226,120 @@ def compute_substitute_pairings(processed_players, tactical_db, reports_csv):
     print(f"-> Mappatura Coppie/Sostituti completata: {len(pairings)}/{len(processed_players)} calciatori associati.")
     return processed_players
 
+def compute_predictive_titolarita(
+    clean_pname,
+    team,
+    rep_data,
+    n_team_matches,
+    is_injured,
+    infortunio_info,
+    titolarita_tactical,
+    titolarita_storica,
+    is_in_11,
+    is_new_arrival,
+    fvm
+):
+    """
+    Calcolo dinamico e predittivo della titolarità (0.0 - 1.0) combinando:
+    1. Recency ponderata con decadimento temporale sulle prime giornate (1-5);
+    2. Esclusione delle assenze per infortunio dal denominatore di demerito tecnico;
+    3. Pesi specifici Starter (1.0), Subentrato d'impatto >= 25 min (0.60), spezzone (0.35);
+    4. Integrazione Bayesiana con àncora storica 2025/26 e gerarchie tattiche;
+    5. Protezione assoluta contro divisioni per zero.
+    """
+    n_matches = max(1, int(n_team_matches or 5))
+
+    # Caso 1: Giocatore attualmente infortunato senza presenze (es. Bremer, Scalvini, Ferguson)
+    has_rep = bool(rep_data and rep_data.get('presenze_2627', 0) > 0)
+    if is_injured and not has_rep:
+        if is_in_11:
+            tit_val = max(titolarita_tactical, titolarita_storica if (titolarita_storica and titolarita_storica > 0) else 0.88)
+        else:
+            tit_val = max(titolarita_tactical, titolarita_storica if (titolarita_storica and titolarita_storica > 0) else 0.25)
+        rientro = infortunio_info.get("rientro", "Infortunato") if infortunio_info else "Infortunato"
+        status_label = "Titolare" if tit_val >= 0.70 else "Riserva"
+        return min(1.0, max(0.0, round(tit_val, 2))), f"{status_label} (Indisponibile - {rientro})"
+
+    # Caso 2: Nuovo acquisto annunciato a fine mercato o svincolato
+    if is_new_arrival:
+        tit_val = titolarita_tactical
+        return min(1.0, max(0.0, round(tit_val, 2))), f"Nuovo Acquisto ({int(round(tit_val * 100))}% Tit)"
+
+    # Caso 3: Presenza nei report di gara 2026/27
+    if rep_data:
+        starts = int(rep_data.get('titolarita_count_2627', 0))
+        presenze = int(rep_data.get('presenze_2627', 0))
+        subs = max(0, presenze - starts)
+        history = rep_data.get('history_by_round', {})
+
+        # Titolarissimo assoluto 100%: 5 su 5 o tutte le partite disputate
+        if starts >= n_matches:
+            return 1.0, f"{starts}/{n_matches} Titolare (100%)"
+
+        # Pesi temporali decrescenti a ritroso (le ultime giornate contano sensibilmente di più)
+        # Es. su 5 giornate: G5=1.0, G4=0.80, G3=0.65, G2=0.50, G1=0.35
+        score_sum = 0.0
+        weight_sum = 0.0
+
+        for g in range(1, n_matches + 1):
+            denom_g = max(1, n_matches - 1)
+            w = 0.35 + 0.65 * ((g - 1) / float(denom_g))
+
+            if g in history:
+                h = history[g]
+                if h.get('is_starter', False):
+                    val = 1.0
+                else:
+                    mins = int(h.get('minutes', 0))
+                    val = 0.60 if mins >= 25 else (0.35 if mins > 0 else 0.0)
+                score_sum += w * val
+                weight_sum += w
+            else:
+                # Non a referto in questa giornata
+                # Se è attualmente infortunato e la giornata è recente, non penalizzare come scelta tecnica
+                if is_injured and g >= max(1, n_matches - 1):
+                    pass
+                else:
+                    score_sum += w * 0.0
+                    weight_sum += w
+
+        recency_tit = (score_sum / max(1e-6, weight_sum)) if weight_sum > 0 else titolarita_tactical
+
+        # Integrazione Bayesiana con l'àncora storica / gerarchia tattica
+        prior = titolarita_storica if (titolarita_storica and titolarita_storica > 0 and titolarita_storica <= 1.0) else titolarita_tactical
+        # A 5 giornate alpha = 0.75 (75% peso alla stagione in corso, 25% all'àncora)
+        alpha = min(0.75, 0.30 + 0.09 * n_matches)
+        tit_final = (alpha * recency_tit) + ((1.0 - alpha) * prior)
+
+        # Regole di salvaguardia
+        if starts == 0 and subs == 0 and not is_injured:
+            return 0.0, f"0/{n_matches} Presenze (Riserva)"
+
+        if starts >= 4 and is_in_11:
+            tit_final = max(tit_final, 0.82)
+
+        tit_final = min(1.0, max(0.0, round(tit_final, 2)))
+        pct_int = int(round(tit_final * 100))
+
+        if starts == n_matches:
+            tit_desc = f"{starts}/{n_matches} Titolare (100%)"
+        elif starts > 0:
+            sub_part = f" + {subs} Sub" if subs > 0 else ""
+            tit_desc = f"{starts}/{n_matches} Tit{sub_part} ({pct_int}%)"
+        elif subs > 0:
+            tit_desc = f"{subs}/{n_matches} Subentrato ({pct_int}%)"
+        else:
+            tit_desc = f"0/{n_matches} Presenze ({pct_int}%)"
+
+        return tit_final, tit_desc
+
+    # Caso 4: Nessun report e nessuna presenza
+    if is_injured:
+        tit_val = titolarita_tactical if is_in_11 else 0.20
+        return min(1.0, max(0.0, round(tit_val, 2))), f"Indisponibile ({int(round(tit_val * 100))}%)"
+
+    return 0.0, f"0/{n_matches} Presenze (Riserva)"
+
 def run_master_pipeline():
     print("=== [Pipeline] AVVIO FANTA MASTER AI (DATI REALI 2025/2026 FOTMOB + G1/G2 2026/27) ===")
     
@@ -505,6 +619,36 @@ def run_master_pipeline():
                 titolarita_tactical = 0.25
 
         # ---------------------------------------------------------------------
+        # VERIFICA INFORTUNIO ATTUALE 2026/27 (DB INFORTUNI)
+        # ---------------------------------------------------------------------
+        is_injured = False
+        infortunio_info_matched = None
+        infortunio_motivo = ""
+        infortunio_rientro = ""
+        infortunio_status = "🟢 Disponibile"
+        infortunio_severity = ""
+        infortunio_tipo_stop = ""
+        giornate_perse = 0
+
+        inj_list = injury_db if isinstance(injury_db, list) else list(injury_db.values())
+        for inj_info in inj_list:
+            inj_name = inj_info.get("player", inj_info.get("name", ""))
+            inj_team = inj_info.get("team", inj_info.get("squadra", ""))
+            name_match = match_player_name(clean_pname, inj_name)
+            team_match = (inj_team.lower() in team.lower() or team.lower() in inj_team.lower()) if inj_team else True
+            inj_pid = inj_info.get("player_id")
+            if (inj_pid and inj_pid == pid) or (name_match and team_match):
+                is_injured = True
+                infortunio_info_matched = inj_info
+                infortunio_motivo = inj_info.get("motivo", "")
+                infortunio_rientro = inj_info.get("rientro", "")
+                infortunio_severity = inj_info.get("severity", "orange")
+                infortunio_tipo_stop = inj_info.get("tipo_stop", "Infortunato")
+                emoji_inj = "🟠" if infortunio_severity == "orange" else "🔴"
+                infortunio_status = f"{emoji_inj} {infortunio_tipo_stop} (Rientro: {infortunio_rientro} - {infortunio_motivo})"
+                break
+
+        # ---------------------------------------------------------------------
         # DATI REALI SERIE A 2026/2027 (MATCH REPORT UFFICIALI 5 GIORNATE)
         # ---------------------------------------------------------------------
         rep_key = f"{clean_pname}_{team.lower()}"
@@ -554,30 +698,20 @@ def run_master_pipeline():
             parate_2627 = rep_data['parate_2627']
             gol_subiti_2627 = rep_data['gol_subiti_2627']
 
-            subs_2627 = max(0, presenze_2627 - starts_2627)
-            # CALCOLO 100% MATEMATICO DELLA TITOLARITA' DALLE PRIME 5 GIORNATE
-            tit_math = (starts_2627 * 1.0 + subs_2627 * 0.35) / max(1, n_team_matches)
-            titolarita = min(1.0, max(0.0, round(tit_math, 2)))
-
-            if starts_2627 == n_team_matches:
-                titolarita_desc_2627 = f"{starts_2627}/{n_team_matches} Titolare"
-            elif starts_2627 > 0 and presenze_2627 == n_team_matches:
-                titolarita_desc_2627 = f"{starts_2627}/{n_team_matches} Tit + {subs_2627} Sub"
-            elif starts_2627 > 0:
-                sub_part = f" + {subs_2627} Sub" if subs_2627 > 0 else ""
-                titolarita_desc_2627 = f"{starts_2627}/{n_team_matches} Titolare{sub_part}"
-            elif presenze_2627 > 0:
-                titolarita_desc_2627 = f"{presenze_2627}/{n_team_matches} Subentrato"
-            else:
-                titolarita_desc_2627 = f"0/{n_team_matches} Presenze"
-                titolarita = 0.0
-        elif is_new_arrival:
-            titolarita = titolarita_tactical
-            titolarita_desc_2627 = f"Nuovo Acquisto ({int(round(titolarita * 100))}% Tit)"
-        else:
-            # Calciatore presente in rosa ma con 0 presenze dopo 5 giornate
-            titolarita = 0.0
-            titolarita_desc_2627 = f"0/{n_team_matches} Presenze"
+        # CALCOLO DINAMICO E PREDITTIVO DELLA TITOLARITA'
+        titolarita, titolarita_desc_2627 = compute_predictive_titolarita(
+            clean_pname=clean_pname,
+            team=team,
+            rep_data=rep_data,
+            n_team_matches=n_team_matches,
+            is_injured=is_injured,
+            infortunio_info=infortunio_info_matched,
+            titolarita_tactical=titolarita_tactical,
+            titolarita_storica=titolarita_storica,
+            is_in_11=is_in_11,
+            is_new_arrival=is_new_arrival,
+            fvm=fvm
+        )
 
         # ---------------------------------------------------------------------
         # SISTEMA DI CLASSIFICAZIONE OOP MANTRA (ORO, ARGENTO, BRONZO)
@@ -894,40 +1028,11 @@ def run_master_pipeline():
             if presenze >= 30:
                 ovr += 0.5 # Piccolo bonus continuità per titolarità completa
 
-        # Infortunio attuale 2026/27 (se presente nel DB infortuni correnti)
-        is_injured = False
-        infortunio_motivo = ""
-        infortunio_rientro = ""
-        infortunio_status = "🟢 Disponibile"
-        infortunio_severity = ""
-        infortunio_tipo_stop = ""
-        giornate_perse = 0
-        
-        inj_list = injury_db if isinstance(injury_db, list) else list(injury_db.values())
-        for inj_info in inj_list:
-            inj_name = inj_info.get("player", inj_info.get("name", ""))
-            inj_team = inj_info.get("team", inj_info.get("squadra", ""))
-            
-            # Match per nome e squadra se specificata
-            name_match = match_player_name(clean_pname, inj_name)
-            team_match = (inj_team.lower() in team.lower() or team.lower() in inj_team.lower()) if inj_team else True
-            
-            inj_pid = inj_info.get("player_id")
-            if (inj_pid and inj_pid == pid) or (name_match and team_match):
-                is_injured = True
-                infortunio_motivo = inj_info.get("motivo", "")
-                infortunio_rientro = inj_info.get("rientro", "")
-                infortunio_severity = inj_info.get("severity", "orange") # 'orange' or 'red'
-                infortunio_tipo_stop = inj_info.get("tipo_stop", "Infortunato")
-                emoji_inj = "🟠" if infortunio_severity == "orange" else "🔴"
-                infortunio_status = f"{emoji_inj} {infortunio_tipo_stop} (Rientro: {infortunio_rientro} - {infortunio_motivo})"
-                
-                giornate_perse, pen_ovr, mult_prc = calcola_impatto_infortunio(infortunio_rientro)
-                ovr -= pen_ovr
-                prezzo_cons = max(1, int(round(prezzo_cons * mult_prc)))
-                if presenze_2627 == 0 and is_in_11:
-                    titolarita = titolarita_tactical # Assenza giustificata dall'infortunio
-                break
+        # Applicazione penalità infortunio attuale 2026/27 (se infortunato)
+        if is_injured:
+            giornate_perse, pen_ovr, mult_prc = calcola_impatto_infortunio(infortunio_rientro)
+            ovr -= pen_ovr
+            prezzo_cons = max(1, int(round(prezzo_cons * mult_prc)))
 
         # Tetto massimo credibile per budget asta 1000 CR
         if role == 'P':

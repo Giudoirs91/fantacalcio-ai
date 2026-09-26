@@ -20,6 +20,10 @@
       "dest": "/top-flop/index.html"
     },
     {
+      "src": "/privacy-policy(/index\\.html)?",
+      "dest": "/privacy-policy/index.html"
+    },
+    {
       "src": "/consigli-fantacalcio(/index\\.html)?",
       "dest": "/consigli-fantacalcio/index.html"
     },

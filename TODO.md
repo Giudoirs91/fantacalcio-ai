@@ -5,13 +5,14 @@ File di tracciamento persistente delle attività pianificate per il progetto Fan
 ---
 
 ## 🟢 FASE 1: Conformità Legale & Trasparenza (Copertura 100%)
-- [ ] **Creare la pagina `/privacy-policy` (o modale accessibile nel footer):**
+- [x] **Creare la pagina `/privacy-policy` (e modale interattivo accessibile nel footer):**
   - Dichiarazione formale di *Privacy by Design* (nessuna raccolta di dati personali identificativi, nessun indirizzo IP conservato).
   - Esenzione dal Cookie Banner preventivo per sole metriche statistiche aggregate anonime (Linee Guida Garante Privacy 10/06/2021).
   - Indicazione del contatto di riferimento del portale (`info@fantamasterai.it`).
-- [ ] **Aggiungere il Disclaimer Legale sui Marchi nel Footer:**
+- [x] **Aggiungere il Disclaimer Legale sui Marchi nel Footer:**
   - Clausola di indipendenza editoriale da Lega Serie A e testate commerciali.
   - Specifica sull'uso dei nomi a fini statistici e di legittima cronaca sportiva (Diritto d'autore / Fair Use).
+  - Footer presente in tutte le pagine (Dashboard SPA, 8 Clean URL sections, 533 schede calciatore, 20 club, 3 pillar e web app).
 
 ---
 

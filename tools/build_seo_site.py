@@ -1404,6 +1404,85 @@ def render_unified_header(rel_path=""):
     </header>
     """
 
+def render_unified_footer(rel_path=""):
+    return f"""
+    <!-- ==================== FOOTER & LEGAL DISCLAIMER ==================== -->
+    <footer class="app-site-footer">
+        <div class="footer-inner">
+            <div class="footer-top-grid">
+                <div class="footer-brand-col">
+                    <div class="footer-brand">
+                        <span class="footer-logo-badge">⚽ Fanta Master AI</span>
+                        <span class="footer-season-badge">Serie A 2026/27</span>
+                    </div>
+                    <p class="footer-tagline">
+                        Il portale statistico avanzato per il Fantacalcio: expected metrics (xG, xA, xFM), algoritmi predittivi per l'asta e ottimizzatore formazioni 2D con intelligenza artificiale.
+                    </p>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon">✉️</span>
+                        <span>Supporto &amp; Contatti: <a href="mailto:info@fantamasterai.it" class="footer-link-highlight">info@fantamasterai.it</a></span>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <div class="footer-heading">Navigazione Portale</div>
+                    <ul class="footer-nav-list">
+                        <li><a href="{rel_path}" class="footer-link">🏟️ Formazione &amp; Asta AI</a></li>
+                        <li><a href="{rel_path}consigli-fantacalcio/" class="footer-link">🎯 Consigli di Giornata</a></li>
+                        <li><a href="{rel_path}probabili-formazioni/" class="footer-link">⚽ Probabili Formazioni 2D</a></li>
+                        <li><a href="{rel_path}top-flop/" class="footer-link">⭐ Top &amp; Flop Settimanali</a></li>
+                        <li><a href="{rel_path}football-analytics/" class="footer-link">📊 Scatter Matrix xG &amp; xA</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <div class="footer-heading">Strumenti Tattici</div>
+                    <ul class="footer-nav-list">
+                        <li><a href="{rel_path}rigoristi-serie-a/" class="footer-link">🎯 Tabella Rigoristi &amp; Tiratori</a></li>
+                        <li><a href="{rel_path}griglia-portieri/" class="footer-link">🧤 Griglia Portieri 38 Turni</a></li>
+                        <li><a href="{rel_path}infortunati-serie-a/" class="footer-link">🏥 Report Infortunati &amp; Rientri</a></li>
+                        <li><a href="{rel_path}scommesse-talenti/" class="footer-link">💎 Talenti Low-Cost</a></li>
+                        <li><a href="{rel_path}confronto-calciatori/" class="footer-link">⚔️ Head-to-Head 1vs1</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <div class="footer-heading">Note Legali &amp; Privacy</div>
+                    <ul class="footer-nav-list">
+                        <li><a href="{rel_path}privacy-policy/" class="footer-link" id="footer-privacy-link">🔒 Privacy Policy (GDPR)</a></li>
+                        <li><span class="footer-status-pill">🛡️ Privacy by Design</span></li>
+                        <li><span class="footer-status-pill">🚫 Zero Cookie Traccianti</span></li>
+                        <li><span class="footer-status-pill">📊 Solo Dati Aggregati</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-disclaimer-box">
+                <div class="disclaimer-title">
+                    <span>⚖️ Disclaimer Legale sui Marchi e Diritto d'Autore (Fair Use)</span>
+                </div>
+                <p class="disclaimer-text">
+                    <strong>Fanta Master AI</strong> (<code>fantamasterai.it</code>) è un progetto editoriale e scientifico-statistico indipendente. Il sito <strong>non è affiliato, sponsorizzato, approvato o collegato</strong> in alcun modo alla <strong>Lega Nazionale Professionisti Serie A</strong>, alla <strong>FIGC</strong> o ai marchi commerciali registrati <em>Fantacalcio®</em> o <em>FantaMaster</em>. Tutti i nomi di calciatori, allenatori, squadre, stadi e competizioni sportive sono impiegati esclusivamente per finalità illustrative, statistiche, di cronaca e di legittima critica sportiva ai sensi della normativa vigente sul diritto d'autore (Fair Use e diritto di cronaca). Tutti i marchi registrati citati appartengono ai rispettivi legittimi titolari.
+                </p>
+                <p class="disclaimer-text" style="margin-top: 8px;">
+                    <strong>Informativa Privacy by Design (Linee Guida Garante Privacy 10/06/2021):</strong> Questo sito rispetta rigorosamente la privacy degli utenti. Non viene effettuata alcuna raccolta o profilazione di dati personali identificativi; gli indirizzi IP non vengono memorizzati; non sono installati cookie traccianti o di terze parti a fini commerciali. Ai sensi delle normative comunitarie (Regolamento UE 2016/679 - GDPR) e delle Linee Guida del Garante per la Protezione dei Dati Personali in materia di cookie e altri strumenti di tracciamento del 10 giugno 2021, la piattaforma è esente dall'obbligo di somministrazione preventiva del banner cookie di consenso in quanto tratta unicamente metriche di utilizzo anonime e aggregate di natura tecnica e statistica.
+                </p>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="footer-copy">
+                    &copy; 2026/2027 <strong>Fanta Master AI</strong> — <code>fantamasterai.it</code>. Tutti i diritti riservati.
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="{rel_path}privacy-policy/" class="footer-bottom-link">Privacy Policy</a>
+                    <span class="footer-sep">•</span>
+                    <a href="mailto:info@fantamasterai.it" class="footer-bottom-link">info@fantamasterai.it</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    """
+
 
 from tools.seo_player_template import generate_player_page
 
@@ -1729,6 +1808,7 @@ def generate_injuries_pillar(players, injuries_db):
             }});
         }}
     </script>
+    {render_unified_footer("../")}
     <script src="../js/tracker.js" defer></script>
 </body>
 </html>
@@ -1913,6 +1993,7 @@ def generate_rigoristi_pillar(tactical_db):
             }});
         }}
     </script>
+    {render_unified_footer("../")}
     <script src="../js/tracker.js" defer></script>
 </body>
 </html>
@@ -2140,6 +2221,7 @@ def generate_gk_pillar(gk_matrix_data):
             }});
         }}
     </script>
+    {render_unified_footer("../")}
     <script src="../js/tracker.js" defer></script>
 </body>
 </html>
@@ -2636,12 +2718,144 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="site-container">
-            <p>&copy; 2026/2027 Fanta Master AI &bull; Formazioni Ufficiali {clean_html(team_name)} Serie A</p>
-        </div>
-    </footer>
+    {render_unified_footer("../../")}
     <script src="../../js/tracker.js" defer></script>
+</body>
+</html>
+"""
+    return html
+
+def generate_privacy_policy_page():
+    meta_title = "Privacy Policy & Informativa Cookie | Fanta Master AI — Serie A 2026/27"
+    meta_desc = "Informativa estesa sul trattamento dei dati personali e cookie policy di Fanta Master AI: architettura Privacy by Design, nessun tracciamento invasivo, conformità GDPR."
+    page_url = f"{BASE_URL}/privacy-policy/"
+
+    html = f"""<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>{clean_html(meta_title)}</title>
+    <meta name="description" content="{clean_html(meta_desc)}">
+    <link rel="canonical" href="{page_url}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/seo.css">
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "{clean_html(meta_title)}",
+        "description": "{clean_html(meta_desc)}",
+        "url": "{page_url}"
+    }}
+    </script>
+</head>
+<body>
+    {render_unified_header("../")}
+
+    <main class="seo-container" style="max-width: 900px; margin: 24px auto; padding: 0 16px;">
+        <nav class="breadcrumb-bar" style="margin-bottom: 20px;">
+            <a href="../" class="breadcrumb-link">🏠 Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Privacy Policy &amp; Cookie</span>
+        </nav>
+
+        <div style="background: rgba(18, 24, 38, 0.85); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 18px; margin-bottom: 24px;">
+                <div>
+                    <h1 style="font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 800; color: #fff; margin: 0 0 6px 0;">
+                        🔒 Privacy Policy &amp; Cookie Policy
+                    </h1>
+                    <div style="color: var(--text-secondary); font-size: 13px;">
+                        Fanta Master AI (<code>fantamasterai.it</code>) &bull; Stagione Serie A 2026/27
+                    </div>
+                </div>
+                <span class="brand-badge" style="background: rgba(34, 197, 94, 0.15); border-color: rgba(34, 197, 94, 0.4); color: #4ade80; font-size: 12px; font-weight: 700;">
+                    ✓ Conforme GDPR &amp; Garante Privacy
+                </span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 24px; line-height: 1.7; font-size: 13.5px; color: #cbd5e1;">
+                
+                <section>
+                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; color: #38bdf8; margin: 0 0 8px 0;">
+                        1. Titolare del Trattamento &amp; Contatti
+                    </h2>
+                    <p style="margin: 0;">
+                        Il titolare del trattamento dei dati statistici del portale <strong>Fanta Master AI</strong> (accessibile via <code>https://fantamasterai.it</code>) è il team editoriale e di sviluppo scientifico della piattaforma. Per qualunque informazione, richiesta di chiarimento o segnalazione relativa alle prassi di tutela della privacy, è possibile contattare l'amministrazione tramite l'indirizzo email ufficiale: <a href="mailto:info@fantamasterai.it" style="color: #38bdf8; font-weight: 600; text-decoration: none;">info@fantamasterai.it</a>.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; color: #38bdf8; margin: 0 0 8px 0;">
+                        2. Principio di Privacy by Design &amp; by Default (GDPR Reg. UE 2016/679)
+                    </h2>
+                    <p style="margin: 0 0 8px 0;">
+                        La piattaforma Fanta Master AI è stata concepita e architettata seguendo i più rigorosi principi di <em>Privacy by Design</em> e <em>Privacy by Default</em> sanciti dall'art. 25 del Regolamento UE 2016/679 (GDPR):
+                    </p>
+                    <ul style="padding-left: 20px; margin: 0; display: flex; flex-direction: column; gap: 6px;">
+                        <li><strong>Nessun obbligo di registrazione:</strong> l'accesso a tutte le funzionalità (consultazione listone calciatori, metriche xG/xA/xFM, ottimizzatore di formazione 2D, griglia portieri e assistente asta) è completamente libero, anonimo e non richiede la creazione di credenziali o account.</li>
+                        <li><strong>Nessuna raccolta di dati identificativi diretti:</strong> il portale non memorizza né tratta nomi, cognomi, numeri telefonici, residenze o indirizzi e-mail dell'utente.</li>
+                        <li><strong>Nessuna conservazione di indirizzi IP:</strong> le chiamate di rete ai servizi serverless e alla CDN globale non persistono gli indirizzi IP dei visitatori nei database dell'applicazione.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; color: #38bdf8; margin: 0 0 8px 0;">
+                        3. Esenzione dal Cookie Banner Preventivo (Linee Guida Garante Privacy 10/06/2021)
+                    </h2>
+                    <p style="margin: 0 0 8px 0;">
+                        In piena ottemperanza all'articolo 122 del D.Lgs. 196/2003 (Codice Privacy) e alle <em>Linee Guida del Garante per la Protezione dei Dati Personali in materia di cookie e altri strumenti di tracciamento del 10 giugno 2021 (doc. web n. 9677876)</em>, si dichiara che:
+                    </p>
+                    <ul style="padding-left: 20px; margin: 0; display: flex; flex-direction: column; gap: 6px;">
+                        <li>Il sito <strong>NON utilizza cookie di profilazione pubblicitaria</strong>, né traccianti di terze parti finalizzati alla categorizzazione dei visitatori a scopi di marketing o retargeting commerciale.</li>
+                        <li>Le uniche tecnologie impiegate sono <strong>cookie tecnici strettamente necessari</strong> al funzionamento dell'infrastruttura di rete (CDN Vercel) o strumenti analitici proprietari con IP anonimizzato e finalità limitata all'elaborazione statistica aggregata della piattaforma.</li>
+                        <li>Ai sensi del quadro normativo vigente, <strong>non sussiste l'obbligo di somministrazione preventiva del banner cookie di consenso (cookie wall)</strong>, né la necessità di richiedere autorizzazioni all'utente prima della navigazione.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; color: #38bdf8; margin: 0 0 8px 0;">
+                        4. Dati Salvati in Locale nel Browser (Storage Locale)
+                    </h2>
+                    <p style="margin: 0;">
+                        Quando configuri la tua rosa, imposti il budget dell'asta, selezioni calciatori preferiti o personalizzi le impostazioni tattiche, tali informazioni vengono conservate unicamente sul tuo dispositivo tramite la memoria locale del browser (<code>localStorage</code>). Questi dati <strong>non vengono inviati o salvati sui nostri server</strong> e rimangono sotto il tuo esclusivo controllo. Puoi cancellarli in qualsiasi istante svuotando i dati di navigazione o la cache del browser.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; color: #38bdf8; margin: 0 0 8px 0;">
+                        5. Disclaimer Legale sui Marchi e Fair Use Editoriale
+                    </h2>
+                    <p style="margin: 0;">
+                        Fanta Master AI è un progetto editoriale e statistico indipendente. Non è in alcun modo sponsorizzato, affiliato o supportato da Lega Serie A, FIGC o testate editoriali titolari di marchi commerciali registrati (tra cui Fantacalcio® e FantaMaster). Tutti i marchi, loghi societari, nomi di club, atleti e competizioni citati sul portale appartengono ai rispettivi proprietari e sono impiegati ai soli fini di legittimo esercizio del diritto di cronaca, statistica e critica sportiva (Fair Use).
+                    </p>
+                </section>
+
+                <section>
+                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; color: #38bdf8; margin: 0 0 8px 0;">
+                        6. Esercizio dei Diritti dell'Interessato (GDPR Artt. 15-22)
+                    </h2>
+                    <p style="margin: 0;">
+                        Poiché il sito non raccoglie dati personali identificativi, non conserva log persistenti riconducibili a singole identità naturali né gestisce account utente, l'utente esercita pienamente la propria autodeterminazione cancellando autonomamente la memoria cache locale del proprio browser. Per qualsiasi quesito o comunicazione istituzionale, è possibile scrivere a <a href="mailto:info@fantamasterai.it" style="color: #38bdf8; font-weight: 600; text-decoration: none;">info@fantamasterai.it</a>.
+                    </p>
+                </section>
+
+                <div style="margin-top: 12px; display: flex; justify-content: center;">
+                    <a href="../" class="btn-primary" style="padding: 10px 22px; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                        <span>← Torna alla Dashboard Interattiva</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    {render_unified_footer("../")}
+    <script src="../js/tracker.js" defer></script>
 </body>
 </html>
 """
@@ -2765,6 +2979,7 @@ def build_all():
 
     sitemap_urls = [
         f"{BASE_URL}/",
+        f"{BASE_URL}/privacy-policy/",
         f"{BASE_URL}/infortunati-serie-a/",
         f"{BASE_URL}/rigoristi-serie-a/",
         f"{BASE_URL}/griglia-portieri/"
@@ -2858,6 +3073,13 @@ def build_all():
         sitemap_urls.append(f"{BASE_URL}/probabili-formazioni/{t_slug}/")
         team_count += 1
     print(f"  ✓ Generate {team_count} pagine squadra complete con Campo 2D, Titolari, Ballottaggi e Rosa in dist/probabili-formazioni/<squadra>/")
+
+    # 4c. Genera Pagina Privacy Policy Ufficiale & GDPR
+    priv_dir = os.path.join(DIST_DIR, "privacy-policy")
+    os.makedirs(priv_dir, exist_ok=True)
+    with open(os.path.join(priv_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write(generate_privacy_policy_page())
+    print("  ✓ Generata pagina Pillar: dist/privacy-policy/index.html")
 
     # 5. Genera Sitemap XML
     today = datetime.now().strftime("%Y-%m-%d")

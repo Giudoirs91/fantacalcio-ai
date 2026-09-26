@@ -1399,6 +1399,151 @@ def build_standalone_dashboard(sync_android=False):
             }}
         }});
     </script>
+
+    <!-- ==================== FOOTER & LEGAL DISCLAIMER ==================== -->
+    <footer class="app-site-footer">
+        <div class="footer-inner">
+            <div class="footer-top-grid">
+                <div class="footer-brand-col">
+                    <div class="footer-brand">
+                        <span class="footer-logo-badge">⚽ Fanta Master AI</span>
+                        <span class="footer-season-badge">Serie A 2026/27</span>
+                    </div>
+                    <p class="footer-tagline">
+                        Il portale statistico avanzato per il Fantacalcio: expected metrics (xG, xA, xFM), algoritmi predittivi per l'asta e ottimizzatore formazioni 2D con intelligenza artificiale.
+                    </p>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon">✉️</span>
+                        <span>Supporto &amp; Contatti: <a href="mailto:info@fantamasterai.it" class="footer-link-highlight">info@fantamasterai.it</a></span>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <div class="footer-heading">Navigazione Portale</div>
+                    <ul class="footer-nav-list">
+                        <li><a href="/" class="footer-link">🏟️ Formazione &amp; Asta AI</a></li>
+                        <li><a href="/consigli-fantacalcio/" class="footer-link">🎯 Consigli di Giornata</a></li>
+                        <li><a href="/probabili-formazioni/" class="footer-link">⚽ Probabili Formazioni 2D</a></li>
+                        <li><a href="/top-flop/" class="footer-link">⭐ Top &amp; Flop Settimanali</a></li>
+                        <li><a href="/football-analytics/" class="footer-link">📊 Scatter Matrix xG &amp; xA</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <div class="footer-heading">Strumenti Tattici</div>
+                    <ul class="footer-nav-list">
+                        <li><a href="/rigoristi-serie-a/" class="footer-link">🎯 Tabella Rigoristi &amp; Tiratori</a></li>
+                        <li><a href="/griglia-portieri/" class="footer-link">🧤 Griglia Portieri 38 Turni</a></li>
+                        <li><a href="/infortunati-serie-a/" class="footer-link">🏥 Report Infortunati &amp; Rientri</a></li>
+                        <li><a href="/scommesse-talenti/" class="footer-link">💎 Talenti Low-Cost</a></li>
+                        <li><a href="/confronto-calciatori/" class="footer-link">⚔️ Head-to-Head 1vs1</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <div class="footer-heading">Note Legali &amp; Privacy</div>
+                    <ul class="footer-nav-list">
+                        <li><a href="/privacy-policy/" class="footer-link" id="footer-privacy-link" onclick="openPrivacyModal(event)">🔒 Privacy Policy (GDPR)</a></li>
+                        <li><span class="footer-status-pill">🛡️ Privacy by Design</span></li>
+                        <li><span class="footer-status-pill">🚫 Zero Cookie Traccianti</span></li>
+                        <li><span class="footer-status-pill">📊 Solo Dati Aggregati</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-disclaimer-box">
+                <div class="disclaimer-title">
+                    <span>⚖️ Disclaimer Legale sui Marchi e Diritto d'Autore (Fair Use)</span>
+                </div>
+                <p class="disclaimer-text">
+                    <strong>Fanta Master AI</strong> (<code>fantamasterai.it</code>) è un progetto editoriale e scientifico-statistico indipendente. Il sito <strong>non è affiliato, sponsorizzato, approvato o collegato</strong> in alcun modo alla <strong>Lega Nazionale Professionisti Serie A</strong>, alla <strong>FIGC</strong> o ai marchi commerciali registrati <em>Fantacalcio®</em> o <em>FantaMaster</em>. Tutti i nomi di calciatori, allenatori, squadre, stadi e competizioni sportive sono impiegati esclusivamente per finalità illustrative, statistiche, di cronaca e di legittima critica sportiva ai sensi della normativa vigente sul diritto d'autore (Fair Use e diritto di cronaca). Tutti i marchi registrati citati appartengono ai rispettivi legittimi titolari.
+                </p>
+                <p class="disclaimer-text" style="margin-top: 8px;">
+                    <strong>Informativa Privacy by Design (Linee Guida Garante Privacy 10/06/2021):</strong> Questo sito rispetta rigorosamente la privacy degli utenti. Non viene effettuata alcuna raccolta o profilazione di dati personali identificativi; gli indirizzi IP non vengono memorizzati; non sono installati cookie traccianti o di terze parti a fini commerciali. Ai sensi delle normative comunitarie (Regolamento UE 2016/679 - GDPR) e delle Linee Guida del Garante per la Protezione dei Dati Personali in materia di cookie e altri strumenti di tracciamento del 10 giugno 2021, la piattaforma è esente dall'obbligo di somministrazione preventiva del banner cookie di consenso in quanto tratta unicamente metriche di utilizzo anonime e aggregate di natura tecnica e statistica.
+                </p>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="footer-copy">
+                    &copy; 2026/2027 <strong>Fanta Master AI</strong> — <code>fantamasterai.it</code>. Tutti i diritti riservati.
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="/privacy-policy/" class="footer-bottom-link" onclick="openPrivacyModal(event)">Privacy Policy</a>
+                    <span class="footer-sep">•</span>
+                    <a href="mailto:info@fantamasterai.it" class="footer-bottom-link">info@fantamasterai.it</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Privacy Policy In-App -->
+    <div class="modal-backdrop" id="privacy-policy-modal">
+        <div class="privacy-modal-card">
+            <div class="privacy-modal-header">
+                <div>
+                    <div class="privacy-modal-title">🔒 Informativa sulla Privacy &amp; Cookie Policy</div>
+                    <span class="privacy-modal-badge">✓ Conforme GDPR (Reg. UE 2016/679) &amp; Garante Privacy</span>
+                </div>
+                <button class="privacy-close-btn" onclick="closePrivacyModal()" aria-label="Chiudi Informativa">✕</button>
+            </div>
+            <div class="privacy-modal-body">
+                <div class="privacy-section-card">
+                    <h4>🛡️ 1. Privacy by Design &amp; Nessun Dato Personale Raccolto</h4>
+                    <p>Fanta Master AI (<code>fantamasterai.it</code>) è strutturato secondo il principio di <em>Privacy by Design</em>. Non richiediamo la registrazione di un account utente, né raccogliamo o trattiamo dati anagrafici (nomi, cognomi, email di login, numeri di telefono o credenziali personali).</p>
+                </div>
+                <div class="privacy-section-card">
+                    <h4>🚫 2. Esenzione Cookie Banner (Provvedimento Garante 10/06/2021)</h4>
+                    <p>In conformità all'art. 122 del Codice Privacy e alle Linee Guida del Garante per la Protezione dei Dati Personali del 10 giugno 2021, il sito <strong>non impiega cookie di profilazione pubblicitaria</strong>, cookie di tracciamento cross-sito o pixel di terze parti per finalità di marketing. Di conseguenza, il portale è formalmente esentato dall'obbligo di somministrazione preventiva del banner cookie (cookie wall).</p>
+                </div>
+                <div class="privacy-section-card">
+                    <h4>💾 3. Salvataggio Locale (localStorage)</h4>
+                    <p>Tutti i dati relativi alle tue rose, ai calciatori preferiti, ai rilanci d'asta e alle impostazioni personalizzate vengono memorizzati esclusivamente nella memoria locale del tuo browser (<code>localStorage</code>). Questi dati non lasciano mai il tuo dispositivo e puoi cancellarli in qualsiasi istante svuotando la cache del browser.</p>
+                </div>
+                <div class="privacy-section-card">
+                    <h4>📊 4. Metriche Tecniche Statistiche Anonime</h4>
+                    <p>Gli accessi tecnici e le visualizzazioni di pagina sono registrati in forma puramente aggregata e anonima, senza memorizzazione dell'indirizzo IP, al solo scopo di garantire la stabilità della CDN globale e ottimizzare le prestazioni dell'algoritmo predittivo.</p>
+                </div>
+                <div class="privacy-section-card">
+                    <h4>⚖️ 5. Disclaimer Marchi &amp; Indipendenza Editoriale</h4>
+                    <p>Fanta Master AI è un portale scientifico-statistico indipendente. Non ha alcun legame o affiliazione con Lega Serie A, FIGC o testate commerciali. L'uso dei nomi di calciatori e club avviene a solo titolo di cronaca sportiva e diritto di critica (Fair Use).</p>
+                </div>
+                <div class="privacy-section-card">
+                    <h4>✉️ 6. Titolare del Trattamento &amp; Contatti</h4>
+                    <p>Per qualunque informazione o segnalazione in merito alla presente informativa, puoi contattare l'amministrazione all'indirizzo e-mail: <a href="mailto:info@fantamasterai.it" class="footer-link-highlight">info@fantamasterai.it</a>.</p>
+                </div>
+            </div>
+            <div style="margin-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;">
+                <a href="/privacy-policy/" target="_blank" class="footer-link-highlight" style="font-size:12px;">📄 Apri pagina dedicata /privacy-policy &rarr;</a>
+                <button class="trade-action-btn primary" onclick="closePrivacyModal()" style="max-width:140px;">Ho Capito</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function openPrivacyModal(e) {{
+        if (e) e.preventDefault();
+        const m = document.getElementById('privacy-policy-modal');
+        if (m) {{
+            m.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }}
+    }}
+    function closePrivacyModal() {{
+        const m = document.getElementById('privacy-policy-modal');
+        if (m) {{
+            m.classList.remove('active');
+            document.body.style.overflow = '';
+        }}
+    }}
+    window.addEventListener('DOMContentLoaded', () => {{
+        const m = document.getElementById('privacy-policy-modal');
+        if (m) {{
+            m.addEventListener('click', (e) => {{
+                if (e.target === m) closePrivacyModal();
+            }});
+        }}
+    }});
+    </script>
 </body>
 </html>
 """

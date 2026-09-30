@@ -1233,6 +1233,14 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     <meta property="og:description" content="{clean_html(meta_desc)}">
     <meta property="og:url" content="{page_url}">
     <meta property="og:site_name" content="Fanta Master AI">
+    <meta property="og:image" content="{base_url}/static/og-image.jpg">
+    <meta property="og:locale" content="it_IT">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{clean_html(meta_title)}">
+    <meta name="twitter:description" content="{clean_html(meta_desc)}">
+    <meta name="twitter:image" content="{base_url}/static/og-image.jpg">
     
     <!-- CSS Completo Dashboard -->
     <link rel="stylesheet" href="../../css/seo.css">

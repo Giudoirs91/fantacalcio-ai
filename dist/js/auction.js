@@ -736,6 +736,8 @@ function renderTable() {
             if (State.filterPriceRange === 'budget' && price >= 5) return false;
         }
         if (State.filterOop && (!p.oop_val || p.oop_val === '-')) return false;
+        if (State.filterHot && p.ai_advice_type !== 'hot' && (p.fm_2627 || 0) < 6.8) return false;
+        if (State.filterRigid && !p.is_rigorista_1 && !p.is_rigorista_2 && !p.is_rigorista_3 && (!p.rigorista_val || p.rigorista_val === '-')) return false;
         if (State.filterInjured && !p.is_injured) return false;
         if (State.filterHealthy && p.is_injured) return false;
         if (State.filterOnlyAvailable && !isPlayerAvailable(p.id)) return false;
@@ -996,20 +998,22 @@ function renderTable() {
                 </td>
                 <td><span class="team-cell">${p.team}</span></td>
                 <td style="text-align:center;"><span class="price-pill" title="${fvmTip}">${scaledFvm}</span></td>
-                <td style="text-align:center;"><span class="qta-val">${p.qta !== undefined && p.qta !== null ? p.qta : '-'}</span></td>
+                <td class="col-hide-on-standard" style="text-align:center;"><span class="qta-val">${p.qta !== undefined && p.qta !== null ? p.qta : '-'}</span></td>
                 <td>${smartTagHtml}</td>
                 <td style="text-align:center;">${titHtml}</td>
-                <td>${coppiaHtml}</td>
-                <td style="text-align:center;">${mv2627Str}</td>
+                <td class="col-hide-on-standard">${coppiaHtml}</td>
+                <td class="col-hide-on-standard" style="text-align:center;">${mv2627Str}</td>
                 <td style="text-align:center;">${fm2627Str}</td>
-                <td style="text-align:center;">${xfmStr}</td>
-                <td style="text-align:center;">${deltaHtml}</td>
-                <td style="text-align:center;">${ga2627Html}</td>
+                <td class="col-hide-on-standard" style="text-align:center;">${xfmStr}</td>
+                <td class="col-hide-on-standard" style="text-align:center;">${deltaHtml}</td>
+                <td class="col-hide-on-standard" style="text-align:center;">${ga2627Html}</td>
                 <td class="col-adv-stat" style="text-align:center;">${xgHtml}</td>
                 <td class="col-adv-stat" style="text-align:center;">${xaHtml}</td>
                 <td class="col-adv-stat" style="text-align:center;">${minHtml}</td>
                 <td class="col-adv-stat" style="text-align:center;">${cardsHtml}</td>
-                <td style="text-align:center;">${actionCellHtml}</td>
+                <td style="text-align:center;">
+                    <button class="btn-clean-action" onclick="openPlayerProfileModal(${p.id})" style="padding:4px 7px;font-size:11px;" title="Apri Scheda Calciatore">🔍</button>
+                </td>
             `;
             tbody.appendChild(tr);
         } catch (rowErr) {
@@ -1221,6 +1225,18 @@ function toggleOopFilterQuick() {
     if (btn) btn.classList.toggle('active', State.filterOop);
     const chk = document.getElementById('chkOop');
     if (chk) chk.checked = State.filterOop;
+    renderTable();
+}
+function toggleHotFilterQuick() {
+    State.filterHot = !State.filterHot;
+    const btn = document.getElementById('btnToggleHot');
+    if (btn) btn.classList.toggle('active', State.filterHot);
+    renderTable();
+}
+function toggleRigFilterQuick() {
+    State.filterRigid = !State.filterRigid;
+    const btn = document.getElementById('btnToggleRig');
+    if (btn) btn.classList.toggle('active', State.filterRigid);
     renderTable();
 }
 function toggleAdvancedFiltersDrawer() {

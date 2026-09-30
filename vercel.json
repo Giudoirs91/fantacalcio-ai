@@ -1,6 +1,14 @@
 {
   "version": 2,
+  "name": "fantamasterai",
   "outputDirectory": "dist",
+  "framework": null,
+
+  "functions": {
+    "api/*.py": {
+      "excludeFiles": "{dist/**,Dashboard_Fanta_1000.html}"
+    }
+  },
 
   "routes": [
     {

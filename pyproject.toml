@@ -1,0 +1,6 @@
+[project]
+name = "fantamasterai"
+version = "0.1.0"
+
+[tool.vercel]
+entrypoint = "api.stats:handler"

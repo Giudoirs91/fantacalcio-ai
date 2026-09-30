@@ -133,12 +133,23 @@ function renderHeaderLeagueDropdown() {
             </a>
         `;
     }).join('');
+    const activeTab = (typeof State !== 'undefined' && State.activeTab) ? State.activeTab : 'auction';
+    const TAB_MAP = {
+        'auction': 'Listone Calciatori',
+        'stats': 'Statistiche & xG',
+        'top_flop': 'Top & Flop',
+        'matrix': 'Matrice Analytics',
+        'pitch': 'Campo 2D & Schemi',
+        'matchup': 'Matchup 1vs1',
+        'gk': 'Griglia Portieri',
+        'matchday_advice': 'Consigli Formazione',
+        'chi_schiero': 'Chi Schiero? 1vs1',
+        'ai_squads': '5 Squadre Perfette AI',
+        'gems': 'Gemme & Scommesse',
+        'home': 'Hub Leghe'
+    };
     container.innerHTML = `
-        <div class="header-league-static-badge" style="display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);font-size:12px;color:#fff;font-weight:700;">
-            <span style="font-size:14px;">🏆</span>
-            <span class="league-btn-name">Serie A 2026/27</span>
-            <span style="font-size:9.5px;padding:2px 6px;border-radius:4px;font-weight:800;background:rgba(0,242,254,0.18);color:var(--accent-cyan);border:1px solid rgba(0,242,254,0.4);">⚡ STATISTICHE</span>
-        </div>
+        <span class="header-page-title" id="headerPageTitle">${TAB_MAP[activeTab] || 'Listone Calciatori'}</span>
     `;
     const hdrBudget = document.getElementById('hdrRemainingBudget');
     const hdrCount = document.getElementById('hdrPlayersCount');

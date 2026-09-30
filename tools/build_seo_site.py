@@ -1594,6 +1594,22 @@ def generate_injuries_pillar(players, injuries_db):
     <title>{clean_html(meta_title)}</title>
     <meta name="description" content="{clean_html(meta_desc)}">
     <link rel="canonical" href="{page_url}">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{clean_html(meta_title)}">
+    <meta property="og:description" content="{clean_html(meta_desc)}">
+    <meta property="og:url" content="{page_url}">
+    <meta property="og:site_name" content="Fanta Master AI">
+    <meta property="og:image" content="{BASE_URL}/static/og-image.jpg">
+    <meta property="og:locale" content="it_IT">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{clean_html(meta_title)}">
+    <meta name="twitter:description" content="{clean_html(meta_desc)}">
+    <meta name="twitter:image" content="{BASE_URL}/static/og-image.jpg">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -1884,6 +1900,22 @@ def generate_rigoristi_pillar(tactical_db):
     <title>{clean_html(meta_title)}</title>
     <meta name="description" content="{clean_html(meta_desc)}">
     <link rel="canonical" href="{page_url}">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{clean_html(meta_title)}">
+    <meta property="og:description" content="{clean_html(meta_desc)}">
+    <meta property="og:url" content="{page_url}">
+    <meta property="og:site_name" content="Fanta Master AI">
+    <meta property="og:image" content="{BASE_URL}/static/og-image.jpg">
+    <meta property="og:locale" content="it_IT">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{clean_html(meta_title)}">
+    <meta name="twitter:description" content="{clean_html(meta_desc)}">
+    <meta name="twitter:image" content="{BASE_URL}/static/og-image.jpg">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -2077,6 +2109,22 @@ def generate_gk_pillar(gk_matrix_data):
     <title>{clean_html(meta_title)}</title>
     <meta name="description" content="{clean_html(meta_desc)}">
     <link rel="canonical" href="{page_url}">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{clean_html(meta_title)}">
+    <meta property="og:description" content="{clean_html(meta_desc)}">
+    <meta property="og:url" content="{page_url}">
+    <meta property="og:site_name" content="Fanta Master AI">
+    <meta property="og:image" content="{BASE_URL}/static/og-image.jpg">
+    <meta property="og:locale" content="it_IT">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{clean_html(meta_title)}">
+    <meta name="twitter:description" content="{clean_html(meta_desc)}">
+    <meta name="twitter:image" content="{BASE_URL}/static/og-image.jpg">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -2526,6 +2574,14 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
     <meta property="og:description" content="{clean_html(meta_desc)}">
     <meta property="og:url" content="{page_url}">
     <meta property="og:site_name" content="Fanta Master AI">
+    <meta property="og:image" content="{base_url}/static/og-image.jpg">
+    <meta property="og:locale" content="it_IT">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{clean_html(meta_title)}">
+    <meta name="twitter:description" content="{clean_html(meta_desc)}">
+    <meta name="twitter:image" content="{base_url}/static/og-image.jpg">
     
     <!-- CSS Completo Dashboard -->
     <link rel="stylesheet" href="../../css/seo.css">
@@ -2876,6 +2932,14 @@ def build_all():
     os.makedirs(css_dir, exist_ok=True)
     with open(os.path.join(css_dir, "seo.css"), "w", encoding="utf-8") as f:
         f.write(generate_seo_css())
+
+    # Copia assets statici (OG Image per social sharing)
+    static_dir = os.path.join(DIST_DIR, "static")
+    os.makedirs(static_dir, exist_ok=True)
+    og_image_src = os.path.join(ROOT_DIR, "web", "static", "og-image.jpg")
+    if os.path.exists(og_image_src):
+        shutil.copy(og_image_src, os.path.join(static_dir, "og-image.jpg"))
+        print("  ✓ OG Image copiata in dist/static/og-image.jpg")
         
     # Carica Dati
     with open(MASTER_PLAYERS_PATH, "r", encoding="utf-8") as f:
@@ -3005,6 +3069,12 @@ def build_all():
             sec_html = dash_content
             sec_html = re.sub(r'<title>.*?</title>', f'<title>{title}</title>', sec_html, flags=re.DOTALL)
             sec_html = re.sub(r'<meta name="description" content=".*?">', f'<meta name="description" content="{desc}">', sec_html)
+            # Update OG and Twitter meta tags per section
+            sec_html = re.sub(r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="{title}">', sec_html)
+            sec_html = re.sub(r'<meta property="og:description" content=".*?">', f'<meta property="og:description" content="{desc}">', sec_html)
+            sec_html = re.sub(r'<meta property="og:url" content=".*?">', f'<meta property="og:url" content="{BASE_URL}/{route}/">', sec_html)
+            sec_html = re.sub(r'<meta name="twitter:title" content=".*?">', f'<meta name="twitter:title" content="{title}">', sec_html)
+            sec_html = re.sub(r'<meta name="twitter:description" content=".*?">', f'<meta name="twitter:description" content="{desc}">', sec_html)
             head_inject = f"""    <link rel="canonical" href="{BASE_URL}/{route}/">\n    <script>window.INITIAL_TAB = '{tab}';</script>\n</head>"""
             sec_html = sec_html.replace('</head>', head_inject)
             

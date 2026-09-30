@@ -146,6 +146,14 @@ def build_standalone_dashboard(sync_android=False):
       }}
     }}
     </script>
+    <!-- PWA Manifest & App Icons -->
+    <link rel="manifest" href="/static/manifest.json">
+    <link rel="apple-touch-icon" href="/static/icon-192.png">
+    <meta name="theme-color" content="#00e676">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Fanta Master AI">
+
     <!-- Google Fonts Optimized (Preconnect, Preload & Non-blocking Swap) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -155,6 +163,7 @@ def build_standalone_dashboard(sync_android=False):
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap">
     </noscript>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <!-- Vercel Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
     <style>
@@ -178,8 +187,10 @@ def build_standalone_dashboard(sync_android=False):
                     🏠 Leghe
                 </button>
 
-                <!-- LEAGUE SELECTOR DROPDOWN (Popolato dinamicamente da LeaguesManager) -->
-                <div id="headerLeagueSelectorContainer"></div>
+                <!-- CURRENT PAGE TITLE IN HEADER (NO FRAMES, NO TROPHY, ULTRA-CLEAN) -->
+                <div id="headerLeagueSelectorContainer" class="header-league-selector-wrap">
+                    <span class="header-page-title" id="headerPageTitle">Listone Calciatori</span>
+                </div>
             </div>
 
             <!-- CENTER: INTELLIGENT DIRECT NAVIGATION (NO REDUNDANCY!) -->
@@ -240,6 +251,11 @@ def build_standalone_dashboard(sync_android=False):
                     <span class="info-text-label">Come Funziona l'AI</span>
                 </button>
 
+                <!-- PWA INSTALL BUTTON (Dinamico) -->
+                <button id="btnPwaInstall" class="nav-btn-icon" style="display:none;background:rgba(0,230,118,0.15);border:1px solid #00e676;color:#00e676;font-weight:700;padding:5px 10px;border-radius:8px;font-size:12px;gap:5px;align-items:center;" onclick="triggerPwaInstall()" title="Installa l'App Fanta Master AI su Smartphone o PC">
+                    <span>📲</span> <span>Installa App</span>
+                </button>
+
                 <!-- GESTIONE DROPDOWN (PULITO, ZERO RIDONDANZE) -->
                 <div class="nav-dropdown align-right">
                     <button class="nav-btn-icon" title="Opzioni e Strumenti">
@@ -270,8 +286,8 @@ def build_standalone_dashboard(sync_android=False):
                     </div>
                 </div>
 
-                <!-- MOBILE HAMBURGER MENU BUTTON -->
-                <button class="mobile-menu-trigger" id="btnMobileMenu" onclick="openMobileMenuModal()" title="Menu Navigazione & Opzioni">☰</button>
+                <!-- MOBILE HAMBURGER MENU BUTTON (HIDDEN PER USER REQUEST: ONLY BOTTOM FLOATING NAV MENU IS KEPT) -->
+                <button class="mobile-menu-trigger" id="btnMobileMenu" onclick="openMobileMenuModal()" title="Menu Navigazione & Opzioni" style="display:none !important;">☰</button>
             </div>
         </div>
     </header>
@@ -300,50 +316,88 @@ def build_standalone_dashboard(sync_android=False):
         <section id="viewAuction" class="tab-content auction-main-layout">
             <!-- Left: Filters & Table -->
             <div class="auction-table-column" id="auctionTableColumn" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:12px;">
-                <!-- Clean Modern Filter Bar -->
+                
+                <!-- HERO WELCOME & ACTION HUB (PRIMO IMPATTO VISIVO MODERNO) -->
+                <div class="portal-hero-section">
+                    <div class="portal-hero-header">
+                        <div class="portal-hero-title-group">
+                            <h1>⚽ Fanta Master <span class="gradient-text">AI</span></h1>
+                            <p>Il motore quantitativo che trasforma statistiche avanzate (xG, xA, xFM) in decisioni vincenti per il tuo Fantacalcio.</p>
+                        </div>
+                        <div class="portal-hero-pills">
+                            <span class="brand-badge" style="background:rgba(0,230,118,0.15);color:#00e676;border:1px solid rgba(0,230,118,0.3);padding:6px 12px;border-radius:20px;font-weight:800;font-size:12px;">✓ Serie A 2026/27</span>
+                            <span class="brand-badge" style="background:rgba(0,242,254,0.15);color:#00f2fe;border:1px solid rgba(0,242,254,0.3);padding:6px 12px;border-radius:20px;font-weight:800;font-size:12px;">🔮 Algoritmo Predittivo</span>
+                        </div>
+                    </div>
+
+                    <!-- 3 Action Cards ad Alto Valore -->
+                    <div class="hero-feature-grid">
+                        <div class="hero-card" onclick="switchTab('chi_schiero')">
+                            <div class="hero-card-icon" style="background:linear-gradient(135deg,rgba(0,242,254,0.15),rgba(56,189,248,0.25));color:var(--accent-cyan);">⚔️</div>
+                            <div class="hero-card-content">
+                                <div class="hero-card-title">Chi Schiero? 1vs1</div>
+                                <div class="hero-card-desc">Risolvi i tuoi dubbi di formazione con il confronto testa a testa AI</div>
+                            </div>
+                            <span class="hero-card-action">➔</span>
+                        </div>
+
+                        <div class="hero-card" onclick="switchTab('matchday_advice')">
+                            <div class="hero-card-icon" style="background:linear-gradient(135deg,rgba(0,230,118,0.15),rgba(34,197,94,0.25));color:var(--accent-neon);">🎯</div>
+                            <div class="hero-card-content">
+                                <div class="hero-card-title">I Consigliati del Turno</div>
+                                <div class="hero-card-desc">Top 11, indici di schierabilità e bonus attesi per la giornata</div>
+                            </div>
+                            <span class="hero-card-action">➔</span>
+                        </div>
+
+                        <div class="hero-card" onclick="switchTab('gems')">
+                            <div class="hero-card-icon" style="background:linear-gradient(135deg,rgba(168,85,247,0.15),rgba(147,51,234,0.25));color:var(--accent-purple);">🔮</div>
+                            <div class="hero-card-content">
+                                <div class="hero-card-title">Gemme & Scommesse</div>
+                                <div class="hero-card-desc">Calciatori low-cost con alto volume di xG/xA a prezzo stracciato</div>
+                            </div>
+                            <span class="hero-card-action">➔</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clean Modern Filter Bar (DESKTOP: 1 RIGA UNICA / MOBILE: 2 RIGHE STREAMLINED) -->
                 <div class="clean-filter-bar">
-                    <!-- Local Super Partes Mode Switcher (Classic vs Mantra) -->
+                    <!-- 1. Switch Classic / Mantra -->
                     <div class="auction-mode-switch-group" id="auctionModeSwitchContainer" title="Modalità di visualizzazione per questo Tabellone Super Partes">
                         <button type="button" class="auction-mode-toggle-btn active" id="btnAuctionModeClassic" onclick="setAuctionTableMode('classic')">⚡ Classic</button>
                         <button type="button" class="auction-mode-toggle-btn" id="btnAuctionModeMantra" onclick="setAuctionTableMode('mantra')">💎 Mantra</button>
                     </div>
 
-                    <!-- Global Budget Switcher (1000, 500, Custom) -->
-                    <div class="auction-budget-switch-group" id="auctionBudgetSwitchContainer" title="Budget di Riferimento per Valutazioni & Prezzi Asta">
-                        <span class="budget-switch-label">Budget:</span>
-                        <button type="button" class="auction-budget-btn active" id="btnBudget1000" onclick="setGlobalBudget(1000)">1000</button>
-                        <button type="button" class="auction-budget-btn" id="btnBudget500" onclick="setGlobalBudget(500)">500</button>
-                        <button type="button" class="auction-budget-btn" id="btnBudgetCustom" onclick="promptCustomBudget()" title="Imposta budget personalizzato (es. 300, 600, 800)">⚙️</button>
+                    <!-- 2. Ruoli e Quick Toggles (Inline su Desktop, Scroll su Mobile) -->
+                    <div class="filter-pills-row" id="filterPillsRow">
+                        <!-- Role Quick Chips (Classic) -->
+                        <div class="role-chip-group" id="classicRoleChipsGroup">
+                            <button class="role-chip active" data-role="ALL" onclick="setRoleFilterQuick('ALL')">TUTTI</button>
+                            <button class="role-chip P" data-role="P" onclick="setRoleFilterQuick('P')">🧤 P</button>
+                            <button class="role-chip D" data-role="D" onclick="setRoleFilterQuick('D')">🛡️ D</button>
+                            <button class="role-chip C" data-role="C" onclick="setRoleFilterQuick('C')">🪄 C</button>
+                            <button class="role-chip A" data-role="A" onclick="setRoleFilterQuick('A')">⚡ A</button>
+                        </div>
+
+                        <!-- Quick Toggles -->
+                        <div class="quick-toggles" id="auctionQuickToggles">
+                            <button id="btnToggleFav" class="chip-toggle" onclick="toggleFavFilterQuick()">⭐ Preferiti</button>
+                            <button id="btnToggleAvail" class="chip-toggle" onclick="toggleAvailFilterQuick()">🟢 Svincolati</button>
+                            <button id="btnToggleHot" class="chip-toggle" onclick="toggleHotFilterQuick()" title="Calciatori in forma">🔥 In Forma</button>
+                            <button id="btnToggleRig" class="chip-toggle" onclick="toggleRigFilterQuick()" title="Tutti i rigoristi">🎯 Rigoristi</button>
+                            <button id="btnToggleOop" class="chip-toggle" onclick="toggleOopFilterQuick()" title="Fuori Ruolo Positivo">💎 FRP</button>
+                        </div>
                     </div>
 
-                    <div class="search-group" style="flex:1;min-width:200px;">
-                        <input type="text" id="searchBox" class="clean-input-search" placeholder="🔍 Cerca calciatore, club o 'rigoristi'..." oninput="onSearchChange(this.value)">
+                    <!-- 3. Search Bar Principale -->
+                    <div class="search-group" id="filterSearchGroup">
+                        <input type="text" id="searchBox" class="clean-input-search" placeholder="🔍 Cerca calciatore, club..." oninput="onSearchChange(this.value)">
                     </div>
 
-                    <!-- Role Quick Chips (Classic) -->
-                    <div class="role-chip-group" id="classicRoleChipsGroup">
-                        <button class="role-chip active" data-role="ALL" onclick="setRoleFilterQuick('ALL')">TUTTI</button>
-                        <button class="role-chip P" data-role="P" onclick="setRoleFilterQuick('P')">🧤 P</button>
-                        <button class="role-chip D" data-role="D" onclick="setRoleFilterQuick('D')">🛡️ D</button>
-                        <button class="role-chip C" data-role="C" onclick="setRoleFilterQuick('C')">🪄 C</button>
-                        <button class="role-chip A" data-role="A" onclick="setRoleFilterQuick('A')">⚡ A</button>
-                    </div>
-
-                    <!-- Compact Team Select -->
-                    <select id="filterTeam" class="clean-select" onchange="onFilterTeamChange(this.value)">
-                        <option value="ALL">Tutti i 20 Club</option>
-                    </select>
-
-                    <!-- Quick Toggles -->
-                    <div class="quick-toggles">
-                        <button id="btnToggleFav" class="chip-toggle" onclick="toggleFavFilterQuick()">⭐ Preferiti</button>
-                        <button id="btnToggleAvail" class="chip-toggle" onclick="toggleAvailFilterQuick()">🟢 Svincolati</button>
-                        <button id="btnToggleOop" class="chip-toggle" onclick="toggleOopFilterQuick()" title="Fuori Ruolo Positivo (FRP): Calciatori schierati sul campo in posizioni più offensive rispetto al ruolo del listone (es. Difensori che giocano ali o Centrocampisti punte)">💎 FRP</button>
-                    </div>
-
-                    <!-- Advanced Filter Drawer Button -->
+                    <!-- 4. Advanced Filter Drawer Button -->
                     <div class="filter-actions-right">
-                        <button id="btnAdvancedFilters" class="btn-clean-action active" onclick="toggleAdvancedFiltersDrawer()" title="Mostra/Nascondi Filtri">
+                        <button id="btnAdvancedFilters" class="btn-clean-action" onclick="toggleAdvancedFiltersDrawer()" title="Apri filtri avanzati per budget, slot, club e prezzi">
                             <span>⚙️ Filtri</span>
                         </button>
                     </div>
@@ -357,9 +411,26 @@ def build_standalone_dashboard(sync_android=False):
                 <input type="checkbox" id="chkHealthy" style="display:none;" onchange="onToggleHealthy(this.checked)">
                 <select id="filterRole" style="display:none;"><option value="ALL">ALL</option></select>
 
-                <!-- Advanced Filters Collapsible Drawer (Always Visible by default) -->
-                <div id="advancedFiltersDrawer" class="advanced-filters-drawer" style="display:block;">
+                <!-- Advanced Filters Collapsible Drawer (COMPLETO DI BUDGET E CLUB NEL DRAWER) -->
+                <div id="advancedFiltersDrawer" class="advanced-filters-drawer" style="display:none;">
                     <div class="advanced-filters-grid">
+                        <!-- BUDGET CALCOLATO (ESTESO SU 2 COLONNE IN ALTO) -->
+                        <div class="adv-filter-item adv-filter-span-all">
+                            <label>Budget Calcolato</label>
+                            <div class="auction-budget-switch-group" id="auctionBudgetSwitchContainer" style="display:flex;width:100%;gap:4px;" title="Budget di Riferimento per Valutazioni & Prezzi Asta">
+                                <button type="button" class="auction-budget-btn active" style="flex:1;" id="btnBudget1000" onclick="setGlobalBudget(1000)">1000 CR</button>
+                                <button type="button" class="auction-budget-btn" style="flex:1;" id="btnBudget500" onclick="setGlobalBudget(500)">500 CR</button>
+                                <button type="button" class="auction-budget-btn" style="flex:1;" id="btnBudgetCustom" onclick="promptCustomBudget()" title="Imposta budget personalizzato">⚙️ Custom</button>
+                            </div>
+                        </div>
+
+                        <div class="adv-filter-item">
+                            <label>Filtra per Club</label>
+                            <select id="filterTeam" class="clean-select-sub" onchange="onFilterTeamChange(this.value)">
+                                <option value="ALL">Tutti i 20 Club</option>
+                            </select>
+                        </div>
+
                         <div class="adv-filter-item">
                             <label>Fascia / Slot</label>
                             <select id="filterSlot" class="clean-select-sub" onchange="onFilterSlotChange(this.value)">
@@ -454,8 +525,9 @@ def build_standalone_dashboard(sync_android=False):
                             </select>
                         </div>
 
-                        <div class="adv-filter-item" style="display:flex;align-items:flex-end;">
-                            <button class="btn-clean-reset" onclick="resetAllFilters()" title="Reimposta filtri">↺ Reset Filtri</button>
+                        <!-- RESET FILTRI (ESTESO SU 2 COLONNE IN BASSO, SOTTILE E PULITO) -->
+                        <div class="adv-filter-item adv-filter-span-all" style="margin-top:4px;">
+                            <button class="btn-clean-reset-full" onclick="resetAllFilters()" title="Reimposta tutti i filtri">↺ Reset Filtri</button>
                         </div>
                     </div>
                 </div>
@@ -486,20 +558,20 @@ def build_standalone_dashboard(sync_android=False):
                                 <th onclick="setSort('name')" style="cursor:pointer;">Calciatore & Mantra</th>
                                 <th onclick="setSort('team')" style="cursor:pointer;">Club</th>
                                 <th onclick="setSort('fvm')" style="text-align:center;cursor:pointer;" title="Fanta Valore di Mercato">FVM</th>
-                                <th onclick="setSort('qta')" style="text-align:center;cursor:pointer;" title="Quotazione Ufficiale">Qt.</th>
+                                <th onclick="setSort('qta')" class="col-hide-on-standard" style="text-align:center;cursor:pointer;" title="Quotazione Ufficiale">Qt.</th>
                                 <th onclick="setSort('ai_advice')" style="cursor:pointer;" title="Tag Smart AI (Consigli d'Asta, Rigoristi, Fuori Ruolo Positivo - FRP)">Tag AI & Strategia</th>
                                 <th onclick="setSort('titolarita')" style="text-align:center;cursor:pointer;" title="Percentuale Titolarità">Tit.</th>
-                                <th onclick="setSort('coppia_nome')" style="cursor:pointer;" title="Sostituto / Staffetta di Reparto">Sostituto / Coppia</th>
-                                <th onclick="setSort('mv_2627')" style="text-align:center;cursor:pointer;" title="Media Voto 2026/27">MV</th>
+                                <th onclick="setSort('coppia_nome')" class="col-hide-on-standard" style="cursor:pointer;" title="Sostituto / Staffetta di Reparto">Sostituto / Coppia</th>
+                                <th onclick="setSort('mv_2627')" class="col-hide-on-standard" style="text-align:center;cursor:pointer;" title="Media Voto 2026/27">MV</th>
                                 <th onclick="setSort('fm_2627')" style="text-align:center;cursor:pointer;" title="FantaMedia Reale 2026/27">FM</th>
-                                <th onclick="setSort('xfm')" style="text-align:center;cursor:pointer;" title="Expected FantaMedia (xFM) - FantaMedia Attesa dal Modello AI">xFM</th>
-                                <th onclick="setSort('delta_xfm')" style="text-align:center;cursor:pointer;" title="Delta Performance (FM - xFM): Verde=Overperforming, Oro/Rosso=Underperforming/Occasione">Δ xFM</th>
-                                <th onclick="setSort('gol_2627')" style="text-align:center;cursor:pointer;" title="Gol / Assist 2026/27">Gol/Ass</th>
+                                <th onclick="setSort('xfm')" class="col-hide-on-standard" style="text-align:center;cursor:pointer;" title="Expected FantaMedia (xFM) - FantaMedia Attesa dal Modello AI">xFM</th>
+                                <th onclick="setSort('delta_xfm')" class="col-hide-on-standard" style="text-align:center;cursor:pointer;" title="Delta Performance (FM - xFM): Verde=Overperforming, Oro/Rosso=Underperforming/Occasione">Δ xFM</th>
+                                <th onclick="setSort('gol_2627')" class="col-hide-on-standard" style="text-align:center;cursor:pointer;" title="Gol / Assist 2026/27">Gol/Ass</th>
                                 <th onclick="setSort('xg_2627')" class="col-adv-stat" style="text-align:center;cursor:pointer;" title="Expected Goals (xG 2026/27)">xG</th>
                                 <th onclick="setSort('xa_2627')" class="col-adv-stat" style="text-align:center;cursor:pointer;" title="Expected Assists (xA 2026/27)">xA</th>
                                 <th onclick="setSort('minuti_2627')" class="col-adv-stat" style="text-align:center;cursor:pointer;" title="Minuti Giocati 2026/27">Min'</th>
                                 <th onclick="setSort('amm_2627')" class="col-adv-stat" style="text-align:center;cursor:pointer;" title="Cartellini Gialli e Rossi (Amm/Esp)">Cart.</th>
-                                <th style="width:48px;text-align:center;" title="Azioni Asta">Az.</th>
+                                <th style="width:48px;text-align:center;" title="Scheda Calciatore">Info</th>
                             </tr>
                         </thead>
                         <tbody id="auctionTableBody"></tbody>
@@ -548,6 +620,9 @@ def build_standalone_dashboard(sync_android=False):
                     </button>
                     <button class="btn-action creator-only-control" onclick="exportTacticalDbJson()" style="font-size:11.5px;background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.15);" title="Scarica il file tactical_db.json ufficiale aggiornato">
                         📥 Esporta Database Tattico
+                    </button>
+                    <button class="btn-action" id="btnSharePitch" onclick="exportPitchScreenshot()" style="font-size:12px;background:linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(5,150,105,0.3) 100%);border:1px solid #10b981;color:#34d399;font-weight:800;padding:6px 14px;border-radius:8px;display:flex;align-items:center;gap:6px;cursor:pointer;box-shadow:0 0 14px rgba(16,185,129,0.25);" title="Scarica o condividi l'immagine grafica del campo da calcetto su WhatsApp">
+                        <span>📸</span> <span>Condividi Formazione</span>
                     </button>
                     <div style="font-size:12px;color:var(--text-secondary);">
                         💡 Clicca su qualsiasi calciatore in campo o nella tabella per aprire la Scheda Profilo.
@@ -1089,8 +1164,27 @@ def build_standalone_dashboard(sync_android=False):
             }}
 
             State.activeTab = tabId;
+
+            // Aggiorna titolo pulito della pagina nell'header (senza trofei, senza cornici)
+            const TAB_TITLES = {{
+                'auction': 'Listone Calciatori',
+                'stats': 'Statistiche & xG',
+                'top_flop': 'Top & Flop',
+                'matrix': 'Matrice Analytics',
+                'pitch': 'Campo 2D & Schemi',
+                'matchup': 'Matchup 1vs1',
+                'gk': 'Griglia Portieri',
+                'matchday_advice': 'Consigli Formazione',
+                'chi_schiero': 'Chi Schiero? 1vs1',
+                'ai_squads': '5 Squadre Perfette AI',
+                'gems': 'Gemme & Scommesse',
+                'home': 'Hub Leghe'
+            }};
+            const hdrTitle = document.getElementById('headerPageTitle');
+            if (hdrTitle) {{
+                hdrTitle.textContent = TAB_TITLES[tabId] || 'Listone Calciatori';
+            }}
             try {{
-                localStorage.setItem('FANTA_LAST_ACTIVE_TAB', tabId);
                 const isFile = window.location.protocol === 'file:';
                 const targetPath = ROUTE_MAP[tabId] || '/';
                 if (!isFile) {{
@@ -1304,6 +1398,8 @@ def build_standalone_dashboard(sync_android=False):
             State.filterTitolarita = 'ALL';
             State.filterPriceRange = 'ALL';
             State.filterOop = false;
+            State.filterHot = false;
+            State.filterRigid = false;
             State.filterInjured = false;
             State.filterHealthy = false;
             State.filterOnlyAvailable = false;
@@ -1318,6 +1414,12 @@ def build_standalone_dashboard(sync_android=False):
             const frig = document.getElementById('filterRigoristi'); if (frig) frig.value = 'ALL';
             const ftit = document.getElementById('filterTitolarita'); if (ftit) ftit.value = 'ALL';
             const fpr = document.getElementById('filterPriceRange'); if (fpr) fpr.value = 'ALL';
+
+            const bFav = document.getElementById('btnToggleFav'); if (bFav) bFav.classList.remove('active');
+            const bAvail = document.getElementById('btnToggleAvail'); if (bAvail) bAvail.classList.remove('active');
+            const bOop = document.getElementById('btnToggleOop'); if (bOop) bOop.classList.remove('active');
+            const bHot = document.getElementById('btnToggleHot'); if (bHot) bHot.classList.remove('active');
+            const bRig = document.getElementById('btnToggleRig'); if (bRig) bRig.classList.remove('active');
 
             const cFav = document.getElementById('chkOnlyFavorites'); if (cFav) cFav.checked = false;
             const cAvail = document.getElementById('chkOnlyAvailable'); if (cAvail) cAvail.checked = false;
@@ -1408,7 +1510,45 @@ def build_standalone_dashboard(sync_android=False):
             const initialTab = resolveCurrentTab();
             switchTab(initialTab, false);
             renderPitchTeam('Inter');
+
+            // Registrazione Service Worker per Progressive Web App (PWA)
+            if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {{
+                navigator.serviceWorker.register('/static/sw.js')
+                    .then(() => console.log('✓ Service Worker Fanta Master AI registrato'))
+                    .catch(e => console.warn('SW registration fallback:', e));
+            }}
         }});
+
+        // Gestione Installazione PWA (Prompt Dinamico)
+        let _deferredPwaPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {{
+            e.preventDefault();
+            _deferredPwaPrompt = e;
+            const pwaBtn = document.getElementById('btnPwaInstall');
+            if (pwaBtn) pwaBtn.style.display = 'inline-flex';
+        }});
+
+        window.addEventListener('appinstalled', () => {{
+            console.log('✓ Fanta Master AI installata con successo come Web App');
+            const pwaBtn = document.getElementById('btnPwaInstall');
+            if (pwaBtn) pwaBtn.style.display = 'none';
+        }});
+
+        function triggerPwaInstall() {{
+            if (_deferredPwaPrompt) {{
+                _deferredPwaPrompt.prompt();
+                _deferredPwaPrompt.userChoice.then((choice) => {{
+                    if (choice.outcome === 'accepted') {{
+                        console.log('Utente ha accettato l\\'installazione PWA');
+                    }}
+                    _deferredPwaPrompt = null;
+                    const pwaBtn = document.getElementById('btnPwaInstall');
+                    if (pwaBtn) pwaBtn.style.display = 'none';
+                }});
+            }} else {{
+                alert("Per installare l'app:\\n- Su iPhone/iPad: tocca 'Condividi' e poi 'Aggiungi alla schermata Home'\\n- Su Android/Chrome: tocca i 3 puntini in alto a destra e seleziona 'Aggiungi a schermata Home'");
+            }}
+        }}
 
         window.addEventListener('popstate', (e) => {{
             const cur = (window.location.pathname.replace(/[/]+$/, '') || '/');

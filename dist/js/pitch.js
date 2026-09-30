@@ -31,6 +31,71 @@ function renderPitchClubQuickBar(activeTeam) {
         return `<button class="club-quick-btn ${isActive ? 'active' : ''}" onclick="renderPitchTeam('${tm}')">${tm}</button>`;
     }).join('');
 }
+async function exportPitchScreenshot() {
+    const btn = document.getElementById('btnSharePitch');
+    const fieldEl = document.querySelector('.pitch-field');
+    if (!fieldEl) {
+        alert("Campo da gioco non trovato.");
+        return;
+    }
+    if (typeof html2canvas === 'undefined') {
+        alert("Libreria di rendering grafico in caricamento, riprova tra qualche secondo.");
+        return;
+    }
+    const originalBtnText = btn ? btn.innerHTML : '';
+    if (btn) {
+        btn.innerHTML = '<span>⏳</span> <span>Generazione...</span>';
+        btn.style.opacity = '0.7';
+    }
+    try {
+        const canvas = await html2canvas(fieldEl, {
+            backgroundColor: '#03170e',
+            scale: 2, // Alta definizione (Retina/HD)
+            useCORS: true,
+            logging: false
+        });
+        const teamName = State.currentTeamPitch || 'SerieA';
+        const fileName = `Formazione_${teamName}_FantaMasterAI.png`;
+        canvas.toBlob(async (blob) => {
+            if (!blob) {
+                alert("Errore durante la generazione dell'immagine.");
+                return;
+            }
+            if (navigator.canShare && navigator.canShare({ files: [new File([blob], fileName, { type: 'image/png' })] })) {
+                try {
+                    const file = new File([blob], fileName, { type: 'image/png' });
+                    await navigator.share({
+                        title: `Formazione ${teamName} — Fanta Master AI`,
+                        text: `Ecco la formazione e i ballottaggi del ${teamName} analizzati con l'AI su fantamasterai.it!`,
+                        files: [file]
+                    });
+                    return;
+                } catch(shareErr) {
+                    if (shareErr.name !== 'AbortError') {
+                        console.warn("Share API fallback su download:", shareErr);
+                    } else {
+                        return; // Utente ha chiuso il menu di condivisione
+                    }
+                }
+            }
+            const link = document.createElement('a');
+            link.download = fileName;
+            link.href = URL.createObjectURL(blob);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(link.href);
+        }, 'image/png');
+    } catch(err) {
+        console.error("Errore screenshot:", err);
+        alert("Impossibile generare l'immagine: " + err.message);
+    } finally {
+        if (btn) {
+            btn.innerHTML = originalBtnText;
+            btn.style.opacity = '1';
+        }
+    }
+}
 function getTeamTacticalData(teamName) {
     if (!window.CUSTOM_TACTICAL_DB) {
         try {

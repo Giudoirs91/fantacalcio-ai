@@ -1,0 +1,40 @@
+# Dati e pipeline Python (non servono in produzione)
+data/
+config/
+src/
+scripts/
+tools/
+tests/
+scratch/
+docs/
+
+# Build artifacts & caches
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# Android app
+android/
+
+# Node modules (Vercel installa le sue)
+node_modules/
+
+# File grandi non necessari
+Dashboard_Fanta_1000.html
+processed_players_master.json
+gk_matrix_2026_27.json
+tactical_db.json
+mock_invideo_style.html
+
+# Development files
+web/
+.git/
+.agents/
+*.md
+setup.py
+main.py
+requirements.txt
+package.json
+package-lock.json
+valid_endpoint_response.json
+.gitignore

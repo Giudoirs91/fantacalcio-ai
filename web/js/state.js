@@ -198,6 +198,8 @@ const DefaultState = {
     filterTitolarita: 'ALL',
     filterPriceRange: 'ALL',
     filterOop: false,
+    filterHot: false,
+    filterRigid: false,
     filterInjured: false,
     filterHealthy: false,
     filterOnlyAvailable: false,

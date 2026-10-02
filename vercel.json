@@ -2,7 +2,8 @@
   "version": 2,
   "name": "fantamasterai",
   "outputDirectory": "dist",
-  "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false,
 
   "functions": {
     "api/*.py": {
@@ -10,114 +11,55 @@
     }
   },
 
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/track",
-      "dest": "/api/track.py"
+      "source": "/api/track",
+      "destination": "/api/track.py"
     },
     {
-      "src": "/api/stats",
-      "dest": "/api/stats.py"
+      "source": "/api/stats",
+      "destination": "/api/stats.py"
     },
     {
-      "src": "/css/(.*)",
-      "headers": { "cache-control": "public, max-age=31536000, immutable" },
-      "dest": "/css/$1"
+      "source": "/calciatore/:slug",
+      "destination": "/calciatore/:slug/index.html"
     },
     {
-      "src": "/static/(.*)",
-      "headers": { "cache-control": "public, max-age=31536000, immutable" },
-      "dest": "/static/$1"
+      "source": "/probabili-formazioni/:team",
+      "destination": "/probabili-formazioni/:team/index.html"
+    }
+  ],
+
+  "headers": [
+    {
+      "source": "/css/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
     },
     {
-      "src": "/js/(.*)",
-      "headers": { "cache-control": "public, max-age=86400, stale-while-revalidate=604800" },
-      "dest": "/js/$1"
+      "source": "/static/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
     },
     {
-      "src": "/data/(.*)",
-      "headers": { "cache-control": "public, max-age=86400, stale-while-revalidate=604800" },
-      "dest": "/data/$1"
+      "source": "/js/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
     },
     {
-      "src": "/calciatore/([^/]+)(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/calciatore/$1/index.html"
+      "source": "/data/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
     },
     {
-      "src": "/top-flop(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/top-flop/index.html"
-    },
-    {
-      "src": "/privacy-policy(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/privacy-policy/index.html"
-    },
-    {
-      "src": "/chi-schiero(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/chi-schiero/index.html"
-    },
-    {
-      "src": "/consigli-fantacalcio(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/consigli-fantacalcio/index.html"
-    },
-    {
-      "src": "/football-analytics(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/football-analytics/index.html"
-    },
-    {
-      "src": "/statistiche-serie-a(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/statistiche-serie-a/index.html"
-    },
-    {
-      "src": "/probabili-formazioni/([^/]+)(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/probabili-formazioni/$1/index.html"
-    },
-    {
-      "src": "/probabili-formazioni(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/probabili-formazioni/index.html"
-    },
-    {
-      "src": "/confronto-calciatori(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/confronto-calciatori/index.html"
-    },
-    {
-      "src": "/top-11-ai(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/top-11-ai/index.html"
-    },
-    {
-      "src": "/scommesse-talenti(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/scommesse-talenti/index.html"
-    },
-    {
-      "src": "/griglia-portieri(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/griglia-portieri/index.html"
-    },
-    {
-      "src": "/infortunati-serie-a(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/infortunati-serie-a/index.html"
-    },
-    {
-      "src": "/rigoristi-serie-a(/index\\.html)?",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400", "x-robots-tag": "index, follow" },
-      "dest": "/rigoristi-serie-a/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "headers": { "cache-control": "public, max-age=3600, stale-while-revalidate=86400" },
-      "dest": "/$1"
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
     }
   ]
 }

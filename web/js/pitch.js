@@ -57,7 +57,25 @@ async function exportPitchScreenshot() {
     }
 
     if (typeof html2canvas === 'undefined') {
-        alert("Libreria di rendering grafico in caricamento, riprova tra qualche secondo.");
+        const origText = btn ? btn.innerHTML : '';
+        if (btn) {
+            btn.innerHTML = '<span>⏳</span> <span>Caricamento...</span>';
+            btn.style.opacity = '0.7';
+        }
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+        s.onload = () => {
+            if (btn) btn.innerHTML = origText;
+            exportPitchScreenshot();
+        };
+        s.onerror = () => {
+            if (btn) {
+                btn.innerHTML = origText;
+                btn.style.opacity = '1';
+            }
+            alert("Errore nel caricamento del modulo grafico.");
+        };
+        document.head.appendChild(s);
         return;
     }
 
@@ -238,16 +256,10 @@ function renderPitchTeam(teamName) {
 
         if (isFPP) {
             oopPlayersList.push(fullP || p);
-            if (oopTier === 'ORO') {
-                cardFppClass = 'fpp-gold';
-                pillBadgeHtml = `<div class="pitch-oop-pill oop-gold">🥇 ORO</div>`;
-            } else if (oopTier === 'ARGENTO') {
-                cardFppClass = 'fpp-silver';
-                pillBadgeHtml = `<div class="pitch-oop-pill oop-silver">🥈 ARG</div>`;
-            } else {
-                cardFppClass = 'fpp-bronze';
-                pillBadgeHtml = `<div class="pitch-oop-pill oop-bronze">🥉 BRZ</div>`;
-            }
+            const tierLabel = oopTier === 'ORO' ? 'GOLD' : (oopTier === 'ARGENTO' ? 'SILVER' : 'BRZ');
+            const tierClass = oopTier === 'ORO' ? 'oop-gold' : (oopTier === 'ARGENTO' ? 'oop-silver' : 'oop-bronze');
+            cardFppClass = `fpp-${oopTier.toLowerCase()}`;
+            pillBadgeHtml = `<div class="pitch-oop-pill ${tierClass}">FRP ${tierLabel}</div>`;
         } else if (isFPN) {
             fpnPlayersList.push(fullP || p);
             cardFppClass = 'fpn';
@@ -257,12 +269,12 @@ function renderPitchTeam(teamName) {
         const ovrVal = fullP ? fullP.ovr : '';
         const ovrTierClass = (typeof getOvrClass === 'function' && ovrVal) ? getOvrClass(ovrVal) : '';
         
-        // Iconcina rossa per calciatore infortunato
+        // Iconcina per calciatore infortunato
         const isInjured = fullP && (fullP.is_injured || (fullP.infortunio_motivo && fullP.infortunio_motivo !== ''));
-        const injBadgeHtml = isInjured ? `<span class="pitch-inj-badge" title="Infortunato: ${fullP.infortunio_motivo || 'Indisponibile'} (Rientro previsto: ${fullP.infortunio_rientro || 'TBD'})">✚</span>` : '';
+        const injBadgeHtml = isInjured ? `<span class="pitch-inj-badge" title="Infortunato: ${fullP.infortunio_motivo || 'Indisponibile'} (Rientro: ${fullP.infortunio_rientro || 'TBD'})">✚</span>` : '';
 
         const sub = getSubstituteForStarter(p, team, teamPlayers);
-        const subHtml = sub ? `<div class="pitch-card-sub" title="Sostituto naturale / ballottaggio: ${sub.name} (${sub.role})"><span style="opacity:0.4;font-size:8px;">↳</span> <span style="font-weight:700;color:rgba(255,255,255,0.85);">${sub.name}</span> <span class="sub-role-badge ${sub.role}">${sub.role}</span></div>` : '';
+        const subHtml = sub ? `<div class="pitch-card-sub" title="Staffetta: ${sub.name} (${sub.role})"><span class="sub-arrow">↳</span> <span class="sub-name">${sub.name}</span> <span class="sub-role-badge ${sub.role}">${sub.role}</span></div>` : '';
 
         const pitchBadgeHtml = (typeof State !== 'undefined' && State.systemMode === 'mantra' && fullP && fullP.mantra)
             ? renderMantraRoleBadges(fullP.mantra)
@@ -312,37 +324,38 @@ function renderPitchTeam(teamName) {
             let oopItemsHtml = '';
             teamOopPlayers.forEach(op => {
                 let badgeClass = 'oop-gold';
-                let medalLabel = '🥇 ORO';
+                let medalLabel = 'GOLD';
                 if (op.oop_tier === 'ARGENTO') {
                     badgeClass = 'oop-silver';
-                    medalLabel = '🥈 ARG';
+                    medalLabel = 'SILVER';
                 } else if (op.oop_tier === 'BRONZO') {
                     badgeClass = 'oop-bronze';
-                    medalLabel = '🥉 BRZ';
+                    medalLabel = 'BRONZE';
                 }
 
                 const typeBadge = op.role === 'D' 
-                    ? '<span style="color:#38bdf8;font-weight:800;font-size:11px;">[D ➜ Quinto]</span>' 
-                    : '<span style="color:#fbbf24;font-weight:800;font-size:11px;">[C ➜ Ala/Att]</span>';
+                    ? '<span class="frp-tag d">[D ➜ Quinto]</span>' 
+                    : '<span class="frp-tag c">[C ➜ Ala/Att]</span>';
 
                 oopItemsHtml += `
-                    <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,0.3);padding:6px 10px;border-radius:6px;border-left:3px solid ${op.oop_tier === 'ORO' ? '#fbbf24' : (op.oop_tier === 'ARGENTO' ? '#cbd5e1' : '#f97316')};">
-                        <div style="display:flex;align-items:center;gap:6px;">
-                            <b style="color:#fff;font-size:12.5px;cursor:pointer;" onclick="openPlayerProfileModal(${op.id})" title="Apri scheda">${op.name}</b>
-                            ${op.mantra ? `<span style="font-size:10px;color:var(--text-muted);">${op.mantra}</span>` : ''}
+                    <div class="frp-modern-item ${op.oop_tier.toLowerCase()}">
+                        <div class="frp-player-info">
+                            <span class="frp-player-name" onclick="openPlayerProfileModal(${op.id})" title="Apri scheda">${op.name}</span>
+                            ${op.mantra ? `<span class="frp-mantra-code">${op.mantra}</span>` : ''}
                             ${typeBadge}
                         </div>
-                        <span class="oop-tier-badge ${badgeClass}" style="font-size:9.5px;padding:2px 6px;">${medalLabel}</span>
+                        <span class="frp-tier-badge ${badgeClass}">${medalLabel}</span>
                     </div>
                 `;
             });
 
             oopSectionHtml = `
-                <div style="background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 12px;">
-                    <div style="font-size:11px;font-weight:800;color:#fbbf24;margin-bottom:7px;display:flex;align-items:center;gap:6px;letter-spacing:0.4px;" title="Fuori Ruolo Positivo (FRP): Calciatori listati più arretrati rispetto alla loro posizione reale in campo">
-                        👑 CALCIATORI FUORI RUOLO POSITIVO (FRP)
+                <div class="tactics-inner-card">
+                    <div class="tactics-inner-head gold">
+                        <span class="head-icon-circle">✦</span>
+                        <span>CALCIATORI FUORI RUOLO POSITIVO (FRP)</span>
                     </div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                    <div class="frp-list-group">
                         ${oopItemsHtml}
                     </div>
                 </div>
@@ -354,26 +367,29 @@ function renderPitchTeam(teamName) {
         const tStat = (typeof TEAM_STATS_DB !== 'undefined' && TEAM_STATS_DB[teamName]) ? TEAM_STATS_DB[teamName] : null;
         if (tStat) {
             teamStatsHtml = `
-                <div style="background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 12px;">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                        <span style="font-size:10.5px;font-weight:800;color:var(--text-muted);letter-spacing:0.5px;text-transform:uppercase;">⚡ Statistiche Live (3 Giornate)</span>
-                        <span style="font-size:10.5px;color:var(--text-secondary);">⚔️ <b style="color:#fbbf24;">${tStat.attacco_label || '-'}</b> • 🛡️ <b style="color:#38bdf8;">${tStat.difesa_label || '-'}</b></span>
+                <div class="tactics-inner-card">
+                    <div class="tactics-inner-head">
+                        <span class="head-icon-circle">◈</span>
+                        <div class="head-stat-title-wrap">
+                            <span>METRICHE SERIE A (3G)</span>
+                            <span class="stat-meta-pill">${tStat.attacco_label || '-'} • ${tStat.difesa_label || '-'}</span>
+                        </div>
                     </div>
-                    <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:6px;text-align:center;">
-                        <div style="background:rgba(0,0,0,0.25);padding:6px 4px;border-radius:6px;">
-                            <div style="font-size:9px;color:var(--text-muted);font-weight:700;">xG PRODOTTI</div>
-                            <div style="font-size:13.5px;font-weight:900;color:#fff;">${tStat.xg_team}</div>
-                            <div style="font-size:9px;color:#f472b6;font-weight:700;">#${tStat.xg_team_rank} in A</div>
+                    <div class="metrics-tiles-grid">
+                        <div class="metric-tile">
+                            <div class="tile-lbl">xG PRODOTTI</div>
+                            <div class="tile-val">${tStat.xg_team}</div>
+                            <div class="tile-rank rose">#${tStat.xg_team_rank} in A</div>
                         </div>
-                        <div style="background:rgba(0,0,0,0.25);padding:6px 4px;border-radius:6px;">
-                            <div style="font-size:9px;color:var(--text-muted);font-weight:700;">xGA SUBITI</div>
-                            <div style="font-size:13.5px;font-weight:900;color:#fff;">${tStat.xga_team}</div>
-                            <div style="font-size:9px;color:#38bdf8;font-weight:700;">#${tStat.xga_team_rank} in A</div>
+                        <div class="metric-tile">
+                            <div class="tile-lbl">xGA SUBITI</div>
+                            <div class="tile-val">${tStat.xga_team}</div>
+                            <div class="tile-rank cyan">#${tStat.xga_team_rank} in A</div>
                         </div>
-                        <div style="background:rgba(0,0,0,0.25);padding:6px 4px;border-radius:6px;">
-                            <div style="font-size:9px;color:var(--text-muted);font-weight:700;">CLEAN SHEETS</div>
-                            <div style="font-size:13.5px;font-weight:900;color:#fff;">${tStat.clean_sheets}</div>
-                            <div style="font-size:9px;color:#4ade80;font-weight:700;">#${tStat.clean_sheets_rank} in A</div>
+                        <div class="metric-tile">
+                            <div class="tile-lbl">CLEAN SHEETS</div>
+                            <div class="tile-val">${tStat.clean_sheets}</div>
+                            <div class="tile-rank green">#${tStat.clean_sheets_rank} in A</div>
                         </div>
                     </div>
                 </div>
@@ -382,36 +398,36 @@ function renderPitchTeam(teamName) {
 
         const col1Html = `
             <div class="tactics-card-col">
-                <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.06);">
+                <div class="tactics-hub-header">
                     <div>
-                        <div style="display:flex;align-items:center;gap:8px;">
-                            <h2 style="margin:0;font-size:20px;font-weight:900;color:#fff;letter-spacing:-0.3px;">${teamName}</h2>
-                            <span style="background:rgba(0,242,254,0.12);color:var(--accent-cyan);border:1px solid rgba(0,242,254,0.3);padding:2px 8px;border-radius:20px;font-size:11px;font-weight:800;">${team.modulo}</span>
+                        <div class="tactics-club-main">
+                            <h2 class="tactics-club-title">${teamName}</h2>
+                            <span class="tactics-modulo-capsule">${team.modulo}</span>
                         </div>
-                        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">All. <span style="color:var(--text-secondary);font-weight:600;">${team.all}</span></div>
+                        <div class="tactics-coach-txt">Allenatore: <span class="coach-val">${team.all}</span></div>
                     </div>
-                    <div style="display:flex;gap:6px;">
-                        <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:3px 7px;border-radius:6px;font-size:11px;color:var(--text-secondary);">🛡️ <b style="color:#fbbf24;">${'★'.repeat(team.dif_stars || 3)}</b></span>
-                        <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:3px 7px;border-radius:6px;font-size:11px;color:var(--text-secondary);">⚔️ <b style="color:#fbbf24;">${'★'.repeat(team.att_stars || 3)}</b></span>
+                    <div class="tactics-ratings-group">
+                        <span class="tactics-rate-pill"><span class="rate-role dif">DIF</span> <b class="rate-stars">${'★'.repeat(team.dif_stars || 3)}</b></span>
+                        <span class="tactics-rate-pill"><span class="rate-role att">ATT</span> <b class="rate-stars">${'★'.repeat(team.att_stars || 3)}</b></span>
                     </div>
                 </div>
 
                 ${teamStatsHtml}
-
                 ${oopSectionHtml}
 
-                <div style="background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:7px;">
-                    <div>
-                        <div style="font-size:10px;font-weight:800;color:var(--text-muted);margin-bottom:5px;letter-spacing:0.4px;">🎯 RIGORISTI</div>
-                        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
-                            <span style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.35);color:#4ade80;padding:2px 8px;border-radius:5px;font-size:11.5px;font-weight:800;">1° ${team.rigoristi[0] || '-'}</span>
-                            <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);color:var(--text-secondary);padding:2px 8px;border-radius:5px;font-size:11.5px;font-weight:600;">2° ${team.rigoristi[1] || '-'}</span>
-                            <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);color:var(--text-muted);padding:2px 8px;border-radius:5px;font-size:11.5px;">3° ${team.rigoristi[2] || '-'}</span>
-                        </div>
+                <div class="tactics-inner-card">
+                    <div class="tactics-inner-head">
+                        <span class="head-icon-circle">◎</span>
+                        <span>GERARCHIE RIGORISTI &amp; PIAZZATI</span>
                     </div>
-                    <div style="border-top:1px solid rgba(255,255,255,0.04);padding-top:6px;font-size:11.5px;color:var(--text-secondary);display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;">
-                        <span><b>Punizioni:</b> ${(team.punizioni || []).join(', ') || '-'}</span>
-                        <span><b>Corner:</b> ${(team.corner || []).join(', ') || '-'}</span>
+                    <div class="takers-podium-row">
+                        <span class="taker-chip rank-1"><b class="p-num">1°</b> ${team.rigoristi[0] || '-'}</span>
+                        <span class="taker-chip rank-2"><b class="p-num">2°</b> ${team.rigoristi[1] || '-'}</span>
+                        <span class="taker-chip rank-3"><b class="p-num">3°</b> ${team.rigoristi[2] || '-'}</span>
+                    </div>
+                    <div class="setpiece-subgrid">
+                        <div class="setpiece-subitem"><span class="lbl">Punizioni:</span> <span class="val">${(team.punizioni || []).join(', ') || '-'}</span></div>
+                        <div class="setpiece-subitem"><span class="lbl">Corner:</span> <span class="val">${(team.corner || []).join(', ') || '-'}</span></div>
                     </div>
                 </div>
             </div>
@@ -452,33 +468,46 @@ function renderPitchTeam(teamName) {
                 if (allContenders.length === 2) {
                     const [p1, p2] = allContenders;
                     ballottaggiHtml += `
-                        <div class="ballottaggio-item">
-                            <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:4px;min-width:0;">
-                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:46%;" title="${p1.name}">${p1.name} <span style="font-size:11px;color:#4ade80;font-weight:800;margin-left:2px;">${p1.pct}%</span></span>
-                                <span style="font-size:9.5px;color:var(--text-muted);font-weight:700;flex-shrink:0;margin:0 4px;">vs</span>
-                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:46%;text-align:right;" title="${p2.name}"><span style="font-size:11px;color:#fbbf24;font-weight:800;margin-right:2px;">${p2.pct}%</span> ${p2.name}</span>
+                        <div class="modern-duel-card">
+                            <div class="duel-contenders-row">
+                                <span class="duel-player p1" title="${p1.name}">
+                                    <span class="duel-name">${p1.name}</span>
+                                    <span class="duel-pct-chip pct-fav">${p1.pct}%</span>
+                                </span>
+                                <span class="duel-vs-chip">VS</span>
+                                <span class="duel-player p2" title="${p2.name}">
+                                    <span class="duel-pct-chip pct-sub">${p2.pct}%</span>
+                                    <span class="duel-name">${p2.name}</span>
+                                </span>
                             </div>
-                            <div class="ballottaggio-bar-track">
-                                <div class="ballottaggio-bar-fill-1" style="width:${p1.pct}%;"></div>
-                                <div class="ballottaggio-bar-fill-2" style="width:${p2.pct}%;"></div>
+                            <div class="modern-duel-gauge">
+                                <div class="duel-gauge-bar bar-p1" style="width:${p1.pct}%;"></div>
+                                <div class="duel-gauge-bar bar-p2" style="width:${p2.pct}%;"></div>
                             </div>
                         </div>
                     `;
                 } else if (allContenders.length >= 3) {
                     const [p1, p2, p3] = allContenders;
                     ballottaggiHtml += `
-                        <div class="ballottaggio-item">
-                            <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;margin-bottom:4px;min-width:0;gap:2px;">
-                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:32%;" title="${p1.name}">${p1.name} <span style="font-size:10px;color:#4ade80;font-weight:800;">${p1.pct}%</span></span>
-                                <span style="font-size:8.5px;color:var(--text-muted);flex-shrink:0;">vs</span>
-                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:32%;" title="${p2.name}">${p2.name} <span style="font-size:10px;color:#fbbf24;font-weight:800;">${p2.pct}%</span></span>
-                                <span style="font-size:8.5px;color:var(--text-muted);flex-shrink:0;">vs</span>
-                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:32%;text-align:right;" title="${p3.name}">${p3.name} <span style="font-size:10px;color:#38bdf8;font-weight:800;">${p3.pct}%</span></span>
+                        <div class="modern-duel-card">
+                            <div class="duel-contenders-row duel-contenders-row-3">
+                                <span class="duel-player p1" title="${p1.name}">
+                                    <span class="duel-name">${p1.name}</span>
+                                    <span class="duel-pct-chip pct-fav">${p1.pct}%</span>
+                                </span>
+                                <span class="duel-player p2" title="${p2.name}">
+                                    <span class="duel-name">${p2.name}</span>
+                                    <span class="duel-pct-chip pct-mid">${p2.pct}%</span>
+                                </span>
+                                <span class="duel-player p3" title="${p3.name}">
+                                    <span class="duel-name">${p3.name}</span>
+                                    <span class="duel-pct-chip pct-sub">${p3.pct}%</span>
+                                </span>
                             </div>
-                            <div class="ballottaggio-bar-track">
-                                <div class="ballottaggio-bar-fill-1" style="width:${p1.pct}%;"></div>
-                                <div class="ballottaggio-bar-fill-2" style="width:${p2.pct}%;"></div>
-                                <div class="ballottaggio-bar-fill-3" style="width:${p3.pct}%;"></div>
+                            <div class="modern-duel-gauge">
+                                <div class="duel-gauge-bar bar-p1" style="width:${p1.pct}%;"></div>
+                                <div class="duel-gauge-bar bar-p2" style="width:${p2.pct}%;"></div>
+                                <div class="duel-gauge-bar bar-p3" style="width:${p3.pct}%;"></div>
                             </div>
                         </div>
                     `;
@@ -505,40 +534,49 @@ function renderPitchTeam(teamName) {
             if (duelsCreated.length > 0) {
                 duelsCreated.forEach(d => {
                     ballottaggiHtml += `
-                        <div class="ballottaggio-item">
-                            <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:4px;min-width:0;">
-                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:46%;" title="${d.p1}">${d.p1} <span style="font-size:11px;color:#4ade80;font-weight:800;margin-left:2px;">${d.pct1}%</span></span>
-                                <span style="font-size:9.5px;color:var(--text-muted);font-weight:700;flex-shrink:0;margin:0 4px;">vs</span>
-                                <span style="font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:46%;text-align:right;" title="${d.p2}"><span style="font-size:11px;color:#fbbf24;font-weight:800;margin-right:2px;">${d.pct2}%</span> ${d.p2}</span>
+                        <div class="modern-duel-card">
+                            <div class="duel-contenders-row">
+                                <span class="duel-player p1" title="${d.p1}">
+                                    <span class="duel-name">${d.p1}</span>
+                                    <span class="duel-pct-chip pct-fav">${d.pct1}%</span>
+                                </span>
+                                <span class="duel-vs-chip">VS</span>
+                                <span class="duel-player p2" title="${d.p2}">
+                                    <span class="duel-pct-chip pct-sub">${d.pct2}%</span>
+                                    <span class="duel-name">${d.p2}</span>
+                                </span>
                             </div>
-                            <div class="ballottaggio-bar-track">
-                                <div class="ballottaggio-bar-fill-1" style="width:${d.pct1}%;"></div>
-                                <div class="ballottaggio-bar-fill-2" style="width:${d.pct2}%;"></div>
+                            <div class="modern-duel-gauge">
+                                <div class="duel-gauge-bar bar-p1" style="width:${d.pct1}%;"></div>
+                                <div class="duel-gauge-bar bar-p2" style="width:${d.pct2}%;"></div>
                             </div>
                         </div>
                     `;
                 });
             } else {
-                ballottaggiHtml = `<div style="font-size:12px;color:var(--text-muted);text-align:center;padding:20px 0;">11 titolare stabile senza ballottaggi aperti.</div>`;
+                ballottaggiHtml = `<div class="tactics-empty-state">Nessun ballottaggio critico aperto. 11 titolare stabile.</div>`;
             }
         }
 
         const col2Html = `
             <div class="tactics-card-col">
-                <div class="tactics-card-col-header">
-                    <h3 class="tactics-card-col-title">⚖️ I BALLOTTAGGI</h3>
-                    <span style="font-size:10.5px;color:var(--text-muted);font-weight:700;">Probabilità di voto</span>
+                <div class="tactics-hub-header">
+                    <div class="tactics-hub-title-wrap">
+                        <span class="hub-pill-tag">DUELLI VOTO</span>
+                        <h3 class="tactics-hub-title">Ballottaggi Chiave</h3>
+                    </div>
+                    <span class="hub-pill-count">Serie A</span>
                 </div>
-                <div style="display:flex;flex-direction:column;gap:8px;">
+                <div class="modern-duels-wrapper">
                     ${ballottaggiHtml}
                 </div>
             </div>
         `;
 
         // --- 3. COLONNA: CONSIGLI AI & PREVISIONI PREDITTIVE (MINIMAL & MODERNO) ---
-        const topBadges = (team.top || []).map(n => `<span style="background:rgba(236,72,153,0.12);border:1px solid rgba(236,72,153,0.3);color:#f472b6;padding:3px 8px;border-radius:5px;font-size:11.5px;font-weight:800;">👑 ${n}</span>`).join(' ') || '<span style="color:var(--text-muted);font-size:11.5px;">-</span>';
-        const sleeperBadges = (team.sleeper || []).map(n => `<span style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);color:#c084fc;padding:3px 8px;border-radius:5px;font-size:11.5px;font-weight:800;">🚀 ${n}</span>`).join(' ') || '<span style="color:var(--text-muted);font-size:11.5px;">-</span>';
-        const flopBadges = (team.flop || []).map(n => `<span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:#f87171;padding:3px 8px;border-radius:5px;font-size:11.5px;font-weight:800;">⚠️ ${n}</span>`).join(' ') || '<span style="color:var(--text-muted);font-size:11.5px;">Nessuno sconsigliato</span>';
+        const topBadges = (team.top || []).map(n => `<span class="intel-chip chip-top">${n}</span>`).join('') || '<span class="intel-chip chip-none">-</span>';
+        const sleeperBadges = (team.sleeper || []).map(n => `<span class="intel-chip chip-sleeper">${n}</span>`).join('') || '<span class="intel-chip chip-none">-</span>';
+        const flopBadges = (team.flop || []).map(n => `<span class="intel-chip chip-risk">${n}</span>`).join('') || '<span class="intel-chip chip-none">Nessuno sconsigliato</span>';
 
         // Previsioni predittive specifiche per club
         let predAttacco = team.att_stars >= 4 ? "Alta produzione gol grazie al gioco offensivo e ali rientranti." : "Produzione gol media; terminale centrale focalizzatore.";
@@ -629,38 +667,45 @@ function renderPitchTeam(teamName) {
 
         const col3Html = `
             <div class="tactics-card-col">
-                <div class="tactics-card-col-header">
-                    <h3 class="tactics-card-col-title">🤖 CONSIGLI AI & PREVISIONI</h3>
-                    <span style="font-size:10.5px;color:var(--accent-cyan);font-weight:800;background:rgba(0,242,254,0.1);padding:1px 6px;border-radius:4px;border:1px solid rgba(0,242,254,0.25);">2026/27</span>
+                <div class="tactics-hub-header">
+                    <div class="tactics-hub-title-wrap">
+                        <span class="hub-pill-tag tag-cyan">AI PREDICTOR</span>
+                        <h3 class="tactics-hub-title">Consigli Asta & Target</h3>
+                    </div>
+                    <span class="hub-season-tag">2026/27</span>
                 </div>
 
-                <div style="background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px;display:flex;flex-direction:column;gap:7px;">
-                    <div>
-                        <div style="font-size:10px;font-weight:800;color:var(--text-muted);margin-bottom:4px;letter-spacing:0.4px;">TARGET TOP ASTA</div>
-                        <div style="display:flex;flex-wrap:wrap;gap:4px;">${topBadges}</div>
+                <div class="intel-targets-card">
+                    <div class="intel-target-group">
+                        <div class="intel-group-label"><span class="intel-dot dot-top"></span> TARGET PRIMA FASCIA</div>
+                        <div class="intel-chips-wrap">${topBadges}</div>
                     </div>
-                    <div>
-                        <div style="font-size:10px;font-weight:800;color:var(--text-muted);margin-bottom:4px;letter-spacing:0.4px;" title="Scommesse ad Alto Potenziale e Calciatori Best Value">SCOMMESSE & VALUE</div>
-                        <div style="display:flex;flex-wrap:wrap;gap:4px;">${sleeperBadges}</div>
+                    <div class="intel-target-group">
+                        <div class="intel-group-label"><span class="intel-dot dot-sleeper"></span> SCOMMESSE & BEST VALUE</div>
+                        <div class="intel-chips-wrap">${sleeperBadges}</div>
                     </div>
-                    <div>
-                        <div style="font-size:10px;font-weight:800;color:var(--text-muted);margin-bottom:4px;letter-spacing:0.4px;">RISCHIO FLOP</div>
-                        <div style="display:flex;flex-wrap:wrap;gap:4px;">${flopBadges}</div>
+                    <div class="intel-target-group">
+                        <div class="intel-group-label"><span class="intel-dot dot-risk"></span> RISCHIO FLOP / CAUTELA</div>
+                        <div class="intel-chips-wrap">${flopBadges}</div>
                     </div>
                 </div>
 
-                <div style="background:rgba(0,242,254,0.03);border:1px solid rgba(0,242,254,0.18);padding:11px 13px;border-radius:10px;display:flex;flex-direction:column;gap:7px;">
-                    <div style="font-size:11px;font-weight:800;color:var(--accent-cyan);display:flex;align-items:center;gap:5px;letter-spacing:0.3px;">
-                        🔮 PREVISIONI PREDITTIVE
+                <div class="predictive-intel-card">
+                    <div class="predictive-intel-header">
+                        <span class="intel-sparkle">✦</span>
+                        <span>OUTLOOK TATTICO & BUDGET</span>
                     </div>
-                    <div style="font-size:12px;color:var(--text-secondary);line-height:1.4;">
-                        ⚽ <b>Attacco:</b> ${predAttacco}
+                    <div class="intel-metric-row">
+                        <span class="intel-metric-tag tag-att">ATTACCO</span>
+                        <span class="intel-metric-desc">${predAttacco}</span>
                     </div>
-                    <div style="font-size:12px;color:var(--text-secondary);line-height:1.4;">
-                        🛡️ <b>Difesa:</b> ${predDifesa}
+                    <div class="intel-metric-row">
+                        <span class="intel-metric-tag tag-dif">DIFESA</span>
+                        <span class="intel-metric-desc">${predDifesa}</span>
                     </div>
-                    <div style="font-size:12px;color:#4ade80;line-height:1.4;margin-top:2px;border-top:1px solid rgba(255,255,255,0.06);padding-top:6px;">
-                        💡 <b>Strategia Budget:</b> ${predAsta}
+                    <div class="intel-budget-strategy">
+                        <div class="strategy-badge">STRATEGIA BUDGET</div>
+                        <div class="strategy-text">${predAsta}</div>
                     </div>
                 </div>
             </div>

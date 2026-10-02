@@ -402,7 +402,7 @@
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                     <span class="inspector-badge">GIORNATA 5</span>
                     <span class="inspector-venue">✈️ Fuori</span>
-                    <b class="inspector-match-title">MONZA 2-1 SASSUOLO</b>
+                    <b class="inspector-match-title">Sassuolo @ Monza</b>
                 </div>
                 <span class="inspector-hint-text"><span class="hint-desktop">Passa il mouse</span><span class="hint-mobile">Tocca</span> sulle barre per ispezionare</span>
             </div>
@@ -421,11 +421,11 @@
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Gol / Assist</span>
-                    <b class="val">0 Gol &bull; 0 Ass</b>
+                    <b class="val">0.0 Gol &bull; 0.0 Ass</b>
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Disciplina</span>
-                    <span class="val" style="color:var(--text-secondary);">0 Amm &bull; 0 Esp</span>
+                    <span class="val" style="color:var(--text-secondary);">0.0 Amm &bull; 0.0 Esp</span>
                 </div>
             </div>
         </div>
@@ -449,7 +449,7 @@
                             
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G4</td>
-                <td style="font-weight:700;color:#fff;">SASSUOLO 3-2 JUVENTUS</td>
+                <td style="font-weight:700;color:#fff;">Sassuolo vs Juventus</td>
                 <td style="color:var(--text-muted);font-size:11px;">🏠 Casa</td>
                 <td style="font-weight:900;color:#38bdf8;">6.0</td>
                 <td><span class="table-bonus-tag">Nessun bonus</span></td>
@@ -457,7 +457,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G5</td>
-                <td style="font-weight:700;color:#fff;">MONZA 2-1 SASSUOLO</td>
+                <td style="font-weight:700;color:#fff;">Sassuolo @ Monza</td>
                 <td style="color:var(--text-muted);font-size:11px;">✈️ Fuori</td>
                 <td style="font-weight:900;color:#38bdf8;">6.0</td>
                 <td><span class="table-bonus-tag">Nessun bonus</span></td>
@@ -512,6 +512,74 @@
                 </div>
             </div>
         </div>
+
+        <!-- Intelligence Predittiva & Rischio AI (Floor, Ceiling, Super-Sub, Matchup G6) -->
+        
+        <div class="profile-predictive-hub" style="margin-top:14px;background:linear-gradient(135deg,rgba(15,23,42,0.85),rgba(20,28,48,0.75));border:1px solid rgba(0,242,254,0.2);border-radius:12px;padding:14px;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span style="font-size:18px;">🔮</span>
+                    <div>
+                        <b style="color:#fff;font-size:13px;letter-spacing:0.3px;">Intelligence Predittiva &amp; Rischio AI</b>
+                        <div style="font-size:10.5px;color:var(--text-muted);">Floor/Ceiling, Impatto da Subentro e Vulnerabilit&agrave; Difesa Avversaria G6</div>
+                    </div>
+                </div>
+                <span style="font-size:10.5px;background:rgba(0,242,254,0.1);color:var(--accent-cyan);border:1px solid rgba(0,242,254,0.3);padding:2px 8px;border-radius:12px;font-weight:700;">PRO AI</span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:12px;">
+                <!-- 1. FLOOR VS CEILING -->
+                <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                        <span style="font-size:11px;font-weight:700;color:#cbd5e1;">🎯 Rischio / Rendimento (Floor vs Ceiling)</span>
+                        <span style="font-size:9.5px;font-weight:800;color:#10b981;border:1px solid #10b981;padding:1px 5px;border-radius:4px;">VOLATILIT&Agrave; BASSA</span>
+                    </div>
+                    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;">
+                        <span style="font-size:11px;color:var(--text-muted);">Floor (Min Senza Bonus): <b style="color:#38bdf8;font-size:13px;">5.7</b></span>
+                        <span style="font-size:11px;color:var(--text-muted);">Ceiling (Potenziale Max): <b style="color:#fde047;font-size:13px;">7.5</b></span>
+                    </div>
+                    <div style="position:relative;width:100%;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;margin:6px 0;">
+                        <div style="position:absolute;left:22.5%;width:15.0%;height:100%;background:linear-gradient(90deg, #38bdf8, #fde047);border-radius:4px;"></div>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:9.5px;color:var(--text-muted);">
+                        <span>Range Esplosivit&agrave;: &plusmn;1.8 pt</span>
+                        <span style="color:#fff;font-weight:600;">🛡️ Floor Sicuro (Roccia Costante)</span>
+                    </div>
+                    <div style="font-size:10px;color:#94a3b8;margin-top:5px;line-height:1.3;">💡 Floor 5.7 / Ceiling 7.5: eccellente certezza di rendimento e modificatore, pochissimi rischi di insufficienza.</div>
+                </div>
+
+                <!-- 2. SUBENTRO & SUPER-SUB -->
+                <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                        <span style="font-size:11px;font-weight:700;color:#cbd5e1;">⚡ Indice di Impatto da Subentro</span>
+                        <span style="font-size:9.5px;font-weight:800;background:rgba(251,191,36,0.15);color:#fbbf24;border:1px solid rgba(251,191,36,0.3);padding:1px 5px;border-radius:4px;">⚠️ JOLLY A RISCHIO</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                        <span style="font-size:11px;color:var(--text-muted);">Probabilit&agrave; Voto se Parte Fuori:</span>
+                        <b style="font-size:13px;color:#fbbf24;">55%</b>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                        <span style="font-size:11px;color:var(--text-muted);">Pericolosit&agrave; Ultimi 30 Min:</span>
+                        <b style="font-size:12px;color:var(--accent-cyan);">45/100</b>
+                    </div>
+                    <div style="font-size:10px;color:#94a3b8;margin-top:4px;line-height:1.3;">ℹ️ Ingresso legato all&#39;inerzia della gara. Coprirsi con un titolare fisso.</div>
+                </div>
+
+                <!-- 3. MATCHUP VULNERABILITY G6 -->
+                <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                        <span style="font-size:11px;font-weight:700;color:#cbd5e1;">🛡️ Incrocio Tattico Turno 6</span>
+                        <span style="font-size:9.5px;font-weight:800;color:#f87171;border:1px solid rgba(255,255,255,0.15);padding:1px 5px;border-radius:4px;">🧱 MURO DIFENSIVO</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                        <span style="font-size:11px;color:var(--text-muted);">Rival G6: <b style="color:#fff;">Milan</b></span>
+                        <span style="font-size:11px;color:var(--text-muted);">Vulnerabilit&agrave; Difesa: <b style="color:#f87171;font-size:13px;">31/100</b></span>
+                    </div>
+                    <div style="font-size:10px;color:#94a3b8;margin-top:4px;line-height:1.3;">⚔️ Matchday G6 (Sassuolo vs Milan): Incrocio severo contro il Milan, tra le difese più solide della Serie A. Schierare con prudenza.</div>
+                </div>
+            </div>
+        </div>
+    
 
         <!-- Multi-Season Injury & Physical Reliability Hub -->
         
@@ -624,7 +692,7 @@
                 <div class="pillar-title"><span>🛡️ PRESENZA &amp; RENDIMENTO</span><span class="source-tag">Sul Campo</span></div>
                 <div class="pillar-hero-stat">
                     <span class="hero-label">MINUTI GIOCATI</span>
-                    <span class="hero-val">114&#39; <small>(2 tit)</small></span>
+                    <span class="hero-val">114&#39; <small>(1 tit)</small></span>
                 </div>
                 <div class="pillar-stat-list">
                     <div class="pillar-stat-item"><span class="stat-name">Palle Recuperate</span><span class="stat-num">9</span></div>
@@ -727,7 +795,7 @@
 
     <!-- Interactive Scripts for Tabs, Accordion & Season Inspector -->
     <script>
-    var VOTI_DATA = [{"giornata": 4, "match": "SASSUOLO 3-2 JUVENTUS", "opponent": "Juventus", "is_home": true, "voto": 6.0, "fantavoto": 6.0, "gf": 0, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "Nessun bonus"}, {"giornata": 5, "match": "MONZA 2-1 SASSUOLO", "opponent": "Monza", "is_home": false, "voto": 6.0, "fantavoto": 6.0, "gf": 0, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "Nessun bonus"}];
+    var VOTI_DATA = [{"giornata": 4, "voto": 6.0, "fantavoto": 6.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Juventus", "is_home": true, "match": "Sassuolo vs Juventus"}, {"giornata": 5, "voto": 6.0, "fantavoto": 6.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Monza", "is_home": false, "match": "Sassuolo @ Monza"}];
     
     function switchProfileTab(tabName) {
         var tabs = ['overview', 'advanced', 'tactics'];

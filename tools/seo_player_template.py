@@ -812,6 +812,97 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     fm_val_str = f"{float(player.get('fm_2627') or player.get('fm') or 0):.2f}" if (player.get('fm_2627') or player.get('fm')) else "-"
     mv_val_str = f"{float(player.get('mv_2627') or player.get('mv') or 0):.2f}" if (player.get('mv_2627') or player.get('mv')) else "-"
 
+    # PREDICTIVE INTELLIGENCE METRICS (Floor/Ceiling, Sub-Impact, Matchup G6)
+    floor_val = player.get("floor", 5.0)
+    ceiling_val = player.get("ceiling", 8.0)
+    spread_val = player.get("spread", round(ceiling_val - floor_val, 1))
+    vol_label = player.get("volatility_label", "MEDIA")
+    vol_color = "#f43f5e" if vol_label == "ALTA" else ("#10b981" if vol_label == "BASSA" else "#fbbf24")
+    tactical_prof = player.get("tactical_profile", "Equilibrato")
+    tactical_adv = player.get("tactical_advice", "")
+
+    sub_prob = player.get("sub_vote_prob", 35)
+    sub_score = player.get("sub_impact_score", 45)
+    sub_badge = player.get("super_sub_badge", "⚡ SUBENTRANTE UTILE")
+    sub_verdict = player.get("sub_verdict", "")
+
+    mv_data = player.get("matchup_vulnerability") or {}
+    opp_name = mv_data.get("opponent", "N/D")
+    vuln_score = mv_data.get("vulnerability_score", 50)
+    vuln_badge = mv_data.get("vulnerability_badge", "⚖️ MATCHUP EQUILIBRATO")
+    vuln_advice = mv_data.get("matchup_advice", "")
+
+    floor_pct = max(0, min(100, (floor_val - 3.0) / 12.0 * 100))
+    ceiling_pct = max(0, min(100, (ceiling_val - 3.0) / 12.0 * 100))
+    bar_width = max(4, ceiling_pct - floor_pct)
+
+    predictive_card_html = f"""
+        <div class="profile-predictive-hub" style="margin-top:14px;background:linear-gradient(135deg,rgba(15,23,42,0.85),rgba(20,28,48,0.75));border:1px solid rgba(0,242,254,0.2);border-radius:12px;padding:14px;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span style="font-size:18px;">🔮</span>
+                    <div>
+                        <b style="color:#fff;font-size:13px;letter-spacing:0.3px;">Intelligence Predittiva &amp; Rischio AI</b>
+                        <div style="font-size:10.5px;color:var(--text-muted);">Floor/Ceiling, Impatto da Subentro e Vulnerabilit&agrave; Difesa Avversaria G6</div>
+                    </div>
+                </div>
+                <span style="font-size:10.5px;background:rgba(0,242,254,0.1);color:var(--accent-cyan);border:1px solid rgba(0,242,254,0.3);padding:2px 8px;border-radius:12px;font-weight:700;">PRO AI</span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:12px;">
+                <!-- 1. FLOOR VS CEILING -->
+                <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                        <span style="font-size:11px;font-weight:700;color:#cbd5e1;">🎯 Rischio / Rendimento (Floor vs Ceiling)</span>
+                        <span style="font-size:9.5px;font-weight:800;color:{vol_color};border:1px solid {vol_color};padding:1px 5px;border-radius:4px;">VOLATILIT&Agrave; {vol_label}</span>
+                    </div>
+                    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;">
+                        <span style="font-size:11px;color:var(--text-muted);">Floor (Min Senza Bonus): <b style="color:#38bdf8;font-size:13px;">{floor_val}</b></span>
+                        <span style="font-size:11px;color:var(--text-muted);">Ceiling (Potenziale Max): <b style="color:#fde047;font-size:13px;">{ceiling_val}</b></span>
+                    </div>
+                    <div style="position:relative;width:100%;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;margin:6px 0;">
+                        <div style="position:absolute;left:{floor_pct:.1f}%;width:{bar_width:.1f}%;height:100%;background:linear-gradient(90deg, #38bdf8, #fde047);border-radius:4px;"></div>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:9.5px;color:var(--text-muted);">
+                        <span>Range Esplosivit&agrave;: &plusmn;{spread_val} pt</span>
+                        <span style="color:#fff;font-weight:600;">{clean_html(tactical_prof)}</span>
+                    </div>
+                    {f'<div style="font-size:10px;color:#94a3b8;margin-top:5px;line-height:1.3;">💡 {clean_html(tactical_adv)}</div>' if tactical_adv else ''}
+                </div>
+
+                <!-- 2. SUBENTRO & SUPER-SUB -->
+                <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                        <span style="font-size:11px;font-weight:700;color:#cbd5e1;">⚡ Indice di Impatto da Subentro</span>
+                        <span style="font-size:9.5px;font-weight:800;background:rgba(251,191,36,0.15);color:#fbbf24;border:1px solid rgba(251,191,36,0.3);padding:1px 5px;border-radius:4px;">{sub_badge}</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                        <span style="font-size:11px;color:var(--text-muted);">Probabilit&agrave; Voto se Parte Fuori:</span>
+                        <b style="font-size:13px;color:{'#34d399' if sub_prob >= 60 else ('#fbbf24' if sub_prob >= 35 else '#f87171')};">{sub_prob}%</b>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                        <span style="font-size:11px;color:var(--text-muted);">Pericolosit&agrave; Ultimi 30 Min:</span>
+                        <b style="font-size:12px;color:var(--accent-cyan);">{sub_score}/100</b>
+                    </div>
+                    {f'<div style="font-size:10px;color:#94a3b8;margin-top:4px;line-height:1.3;">ℹ️ {clean_html(sub_verdict)}</div>' if sub_verdict else ''}
+                </div>
+
+                <!-- 3. MATCHUP VULNERABILITY G6 -->
+                <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                        <span style="font-size:11px;font-weight:700;color:#cbd5e1;">🛡️ Incrocio Tattico Turno 6</span>
+                        <span style="font-size:9.5px;font-weight:800;color:{'#34d399' if vuln_score >= 70 else ('#f87171' if vuln_score <= 35 else '#38bdf8')};border:1px solid rgba(255,255,255,0.15);padding:1px 5px;border-radius:4px;">{vuln_badge}</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                        <span style="font-size:11px;color:var(--text-muted);">Rival G6: <b style="color:#fff;">{clean_html(opp_name)}</b></span>
+                        <span style="font-size:11px;color:var(--text-muted);">Vulnerabilit&agrave; Difesa: <b style="color:{'#34d399' if vuln_score >= 70 else ('#f87171' if vuln_score <= 35 else '#fbbf24')};font-size:13px;">{vuln_score}/100</b></span>
+                    </div>
+                    {f'<div style="font-size:10px;color:#94a3b8;margin-top:4px;line-height:1.3;">⚔️ {clean_html(vuln_advice)}</div>' if vuln_advice else ''}
+                </div>
+            </div>
+        </div>
+    """
+
     tab_overview_html = f"""
     <div id="profileTabPane_overview" class="profile-tab-pane" style="display:block;">
         <!-- Live Season Summary Bar -->
@@ -949,6 +1040,9 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                 </div>
             </div>
         </div>
+
+        <!-- Intelligence Predittiva & Rischio AI (Floor, Ceiling, Super-Sub, Matchup G6) -->
+        {predictive_card_html}
 
         <!-- Multi-Season Injury & Physical Reliability Hub -->
         {injury_history_html}

@@ -1284,6 +1284,90 @@ function openPlayerProfileModal(playerId) {
         tableRowsHtml = `<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:12px;">Nessun dato registrato</td></tr>`;
     }
 
+    // Metriche Predittive Avanzate (Floor vs Ceiling, Super-Sub, Matchup Vulnerability)
+    const floorVal = (p.floor !== undefined && p.floor !== null) ? Number(p.floor).toFixed(1) : (p.mv_2627 || p.mv || 6.0).toFixed(1);
+    const ceilingVal = (p.ceiling !== undefined && p.ceiling !== null) ? Number(p.ceiling).toFixed(1) : Math.min(18, ((p.xfm || p.fm || 6.0) + 4.5)).toFixed(1);
+    const tacticalProfile = p.tactical_profile || '⚖️ Rendimento Bilanciato';
+    const tacticalAdvice = p.tactical_advice || `Floor ${floorVal} / Ceiling ${ceilingVal}: solido equilibrio tra sufficienza garantita e buone chance di bonus.`;
+
+    const subVoteProb = (p.sub_vote_prob !== undefined && p.sub_vote_prob !== null) ? p.sub_vote_prob : (p.titolarita >= 80 ? 92 : 70);
+    const superSubBadge = p.super_sub_badge || (p.titolarita >= 80 ? '👑 TITOLARE FISSO' : '⚡ SUPER-SUB ORO');
+    const subVerdict = p.sub_verdict || (p.titolarita >= 80 ? 'Titolare indiscusso del reparto.' : 'Staffetta frequente a gara in corso.');
+
+    const matchupData = p.matchup_vulnerability || {};
+    const oppName = matchupData.opponent || 'Avversario';
+    const vulnScore = matchupData.vulnerability_score || 50;
+    const vulnBadge = matchupData.vulnerability_badge || '⚖️ MATCHUP EQUILIBRATO';
+    const matchStr = matchupData.match_str || 'Partita Turno 6';
+    const matchupAdvice = matchupData.matchup_advice || `Incrocio equilibrato contro il ${oppName}.`;
+    const favorableTraits = Array.isArray(matchupData.favorable_traits) ? matchupData.favorable_traits : [];
+
+    const advancedPredictiveCardHtml = `
+        <div class="profile-advanced-predictive-box" style="margin:16px 0;background:rgba(18,24,38,0.75);border:1px solid rgba(56,189,248,0.22);border-radius:14px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,0.35);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span style="font-size:18px;">🔮</span>
+                    <b style="color:#fff;font-family:'Outfit',sans-serif;font-size:13.5px;letter-spacing:0.3px;">Intelligence Predittiva & Rischio AI</b>
+                </div>
+                <span style="font-size:11px;font-weight:800;color:#38bdf8;background:rgba(56,189,248,0.12);padding:3px 8px;border-radius:20px;border:1px solid rgba(56,189,248,0.3);">Serie A 2026/27</span>
+            </div>
+
+            <!-- 1. FLOOR VS CEILING -->
+            <div style="margin-bottom:12px;background:rgba(0,0,0,0.25);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.04);">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:4px;">
+                    <span style="font-size:11.5px;font-weight:700;color:#94a3b8;">Spettro Rischio / Rendimento:</span>
+                    <b style="font-size:11.5px;color:#cbd5e1;">${tacticalProfile}</b>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;margin-bottom:8px;">
+                    <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:6px;">
+                        <span style="font-size:10px;color:#fca5a5;text-transform:uppercase;font-weight:700;display:block;">🛡️ Floor Min.</span>
+                        <b style="font-size:16px;color:#fff;">${floorVal}</b>
+                        <span style="font-size:9.5px;color:#94a3b8;display:block;">Senza bonus</span>
+                    </div>
+                    <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);border-radius:8px;padding:6px;">
+                        <span style="font-size:10px;color:#7dd3fc;text-transform:uppercase;font-weight:700;display:block;">🎯 xFM Attesa</span>
+                        <b style="font-size:16px;color:#38bdf8;">${(p.xfm || p.fm_2627 || p.fm || 6.0).toFixed(1)}</b>
+                        <span style="font-size:9.5px;color:#94a3b8;display:block;">Valore medio</span>
+                    </div>
+                    <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:6px;">
+                        <span style="font-size:10px;color:#fde68a;text-transform:uppercase;font-weight:700;display:block;">🚀 Ceiling Max</span>
+                        <b style="font-size:16px;color:#fbbf24;">${ceilingVal}</b>
+                        <span style="font-size:9.5px;color:#94a3b8;display:block;">Upside giornata</span>
+                    </div>
+                </div>
+                <div style="font-size:11.5px;color:#cbd5e1;line-height:1.4;">${tacticalAdvice}</div>
+            </div>
+
+            <!-- 2. SUB-IMPACT & SUPER-SUB -->
+            <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(0,0,0,0.25);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.04);flex-wrap:wrap;">
+                <div>
+                    <div style="display:flex;align-items:center;gap:6px;">
+                        <span style="font-size:12.5px;font-weight:800;color:#fff;">${superSubBadge}</span>
+                    </div>
+                    <div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">${subVerdict}</div>
+                </div>
+                <div style="text-align:right;">
+                    <span style="font-size:10px;color:#64748b;text-transform:uppercase;font-weight:800;display:block;">Probabilità Voto se in Panca</span>
+                    <b style="font-size:15px;color:${subVoteProb >= 80 ? '#34d399' : (subVoteProb >= 60 ? '#fbbf24' : '#f87171')};">${subVoteProb}%</b>
+                </div>
+            </div>
+
+            <!-- 3. MATCHUP VULNERABILITY G6 -->
+            <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.04);">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:6px;">
+                    <span style="font-size:12px;font-weight:700;color:#fff;">Incrocio Tattico Prossimo Turno: <b style="color:#38bdf8;">${matchStr}</b></span>
+                    <span style="font-size:11px;font-weight:800;color:${vulnScore >= 70 ? '#f43f5e' : (vulnScore <= 35 ? '#10b981' : '#fbbf24')};">${vulnBadge} (${vulnScore}/100)</span>
+                </div>
+                <div style="font-size:11.5px;color:#94a3b8;line-height:1.4;margin-bottom:6px;">${matchupAdvice}</div>
+                ${favorableTraits.length > 0 ? `
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;">
+                        ${favorableTraits.map(t => `<span style="font-size:10.5px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25);color:#7dd3fc;padding:2px 8px;border-radius:12px;">${t}</span>`).join('')}
+                    </div>
+                ` : ''}
+            </div>
+        </div>
+    `;
+
     const fmVal = p.fm_2627 ? p.fm_2627.toFixed(2) : '-';
     const mvVal = p.mv_2627 ? p.mv_2627.toFixed(2) : '-';
 
@@ -1331,6 +1415,9 @@ function openPlayerProfileModal(playerId) {
 
             <!-- Regression Alert Banner -->
             ${xfmAlertHtml}
+
+            <!-- Intelligence Predittiva & Rischio AI (Floor/Ceiling, Super-Sub, Matchup G6) -->
+            ${advancedPredictiveCardHtml}
 
             <!-- AI Strengths & Weaknesses (100% Free & Transparent) -->
             ${aiStrengthsWeaknessesHtml}

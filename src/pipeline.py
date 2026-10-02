@@ -24,6 +24,9 @@ from .valuation_engine import (
 )
 from .gk_engine import extract_gk_grid
 from .ai_evaluator import save_predictions_snapshot, evaluate_predictions
+from .advanced_metrics import (
+    compute_floor_and_ceiling, compute_sub_impact_metrics, compute_matchup_vulnerability
+)
 
 def compute_substitute_pairings(processed_players, tactical_db, reports_csv):
     """
@@ -568,6 +571,7 @@ def run_master_pipeline():
     if not os.path.exists(cal_file):
         cal_file = os.path.join(ROOT_DIR, "config", "calendario_serie_a_2026_27.json")
     cal_lookup = {}
+    cal_data = []
     if os.path.exists(cal_file):
         try:
             with open(cal_file, 'r', encoding='utf-8') as f:
@@ -1420,6 +1424,16 @@ def run_master_pipeline():
         xfm_val, delta_xfm_val = calculate_xfm(temp_record)
         temp_record["xfm"] = xfm_val
         temp_record["delta_xfm"] = delta_xfm_val
+
+        # --- METRICHE PREDITTIVE AVANZATE (FLOOR/CEILING, SUPER-SUB, MATCHUP VULN) ---
+        fc_data = compute_floor_and_ceiling(temp_record)
+        temp_record.update(fc_data)
+
+        sub_data = compute_sub_impact_metrics(temp_record, tactical_db)
+        temp_record.update(sub_data)
+
+        vuln_data = compute_matchup_vulnerability(temp_record, cal_data, team_stats_lookup, current_round=6)
+        temp_record["matchup_vulnerability"] = vuln_data
 
         processed_players.append(temp_record)
 

@@ -355,7 +355,7 @@ def generate_radar_chart_svg(player):
     poly = f'<polygon points="{" ".join(poly_pts)}" fill="{poly_color}" fill-opacity="0.25" stroke="{poly_color}" stroke-width="2.5" />'
     return f'<svg viewBox="0 0 {size} 320" style="width:100%;max-width:350px;display:block;margin:0 auto;">{circles}{lines}{poly}{labels}</svg>'
 
-def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_url="https://fantamasterai.it"):
+def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_url="https://www.fantamasterai.it"):
     name = player.get("name", "")
     p_id = player.get("id")
     team = player.get("team", "")
@@ -1234,6 +1234,8 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     <meta property="og:url" content="{page_url}">
     <meta property="og:site_name" content="Fanta Master AI">
     <meta property="og:image" content="{base_url}/static/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="it_IT">
     
     <!-- Twitter Card -->

@@ -6,4 +6,4 @@ Disallow: /src/
 Disallow: /tools/
 Disallow: /tests/
 
-Sitemap: https://fantamasterai.it/sitemap.xml
+Sitemap: https://www.fantamasterai.it/sitemap.xml

@@ -27,7 +27,7 @@ if os.path.exists(CALENDAR_PATH):
         print(f"Warning loading calendar: {e}")
 
 
-BASE_URL = "https://fantamasterai.it"
+BASE_URL = "https://www.fantamasterai.it"
 
 def slugify(text):
     if not text:
@@ -1525,6 +1525,47 @@ body {
     color: #fbbf24 !important;
     font-weight: 900 !important;
 }
+
+/* FAQ Accordion Section for SEO Structured Data */
+.faq-section {
+    background: rgba(18, 24, 38, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 28px 24px;
+    margin: 36px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.faq-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.faq-item {
+    margin-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 16px;
+}
+.faq-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.faq-q {
+    font-weight: 700;
+    color: #f1f5f9;
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+.faq-a {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.6;
+}
 """
     return minify_css(base_dashboard_css + "\n" + extra_seo_css)
 
@@ -1685,6 +1726,7 @@ def render_unified_footer(rel_path=""):
 
 
 from tools.seo_player_template import generate_player_page
+from tools.seo_duel_template import generate_duel_page
 
 def generate_injuries_pillar(players, injuries_db):
     active_players = [p for p in players if p.get("is_injured")]
@@ -1785,6 +1827,50 @@ def generate_injuries_pillar(players, injuries_db):
     meta_desc = "Tabella sempre aggiornata di tutti i calciatori infortunati in Serie A 2026/27: diagnosi medica, tempi di recupero stimati, data di rientro e consigli per l'asta Fantacalcio."
     page_url = f"{BASE_URL}/infortunati-serie-a/"
 
+    injuries_faq = [
+        {
+            "@type": "Question",
+            "name": "Chi sono i calciatori infortunati in Serie A e quando rientrano?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f"Attualmente in Serie A si contano {total_injured} calciatori indisponibili, di cui {muscular_count} per problemi o lesioni muscolari. La tabella interattiva di Fanta Master AI riporta per ciascuno diagnosi medica, tempi di recupero e data stimata di rientro."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Come gestire i calciatori infortunati all'Asta o negli Scambi?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "L'algoritmo predittivo di Fanta Master AI calcola l'esatta svalutazione in crediti (CR) e la perdita attesa di xFM, aiutandoti a cogliere occasioni a basso costo prima del rientro o a scambiare elementi ad alta fragilità atletica."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Qual è la differenza tra infortunio traumatico e fragilità muscolare cronica?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "I traumi ossei o articolari da scontro di gioco hanno tempi di recupero certi e basso tasso di recidiva. Le lesioni muscolari in calciatori classificati come 'Fragile' o 'Cristallo' presentano invece un elevato rischio di ricaduta durante la stagione."
+            }
+        }
+    ]
+
+    schema_data = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE_URL}/"},
+                    {"@type": "ListItem", "position": 2, "name": "Infortunati Serie A", "item": page_url}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": injuries_faq
+            }
+        ]
+    }
+
     html = f"""<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -1801,6 +1887,8 @@ def generate_injuries_pillar(players, injuries_db):
     <meta property="og:url" content="{page_url}">
     <meta property="og:site_name" content="Fanta Master AI">
     <meta property="og:image" content="{BASE_URL}/static/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="it_IT">
     
     <!-- Twitter Card -->
@@ -1813,6 +1901,11 @@ def generate_injuries_pillar(players, injuries_db):
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/seo.css">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {json.dumps(schema_data, ensure_ascii=False, indent=2)}
+    </script>
 </head>
 <body>
 {render_unified_header('../')}
@@ -1908,6 +2001,23 @@ def generate_injuries_pillar(players, injuries_db):
             </div>
         </section>
 
+        <!-- FAQ ACCORDION -->
+        <section class="faq-section">
+            <h2 class="faq-title">❓ Domande Frequenti su Infortuni e Rientri Serie A</h2>
+            <div class="faq-item">
+                <div class="faq-q">Chi sono i calciatori infortunati in Serie A e quando rientrano?</div>
+                <div class="faq-a">Attualmente in Serie A si contano <strong>{total_injured} calciatori indisponibili</strong>, di cui {muscular_count} per problemi o lesioni muscolari. La tabella interattiva di Fanta Master AI riporta per ciascuno diagnosi medica ufficiale, tempi di recupero stimati e data di rientro in campo costantemente aggiornata.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Come gestire i calciatori infortunati all'Asta o negli Scambi?</div>
+                <div class="faq-a">L'algoritmo predittivo di Fanta Master AI calcola l'esatta svalutazione in crediti (CR) e la perdita attesa di xFM, aiutandoti a cogliere occasioni a prezzo di saldo prima del rientro o a scambiare per tempo elementi ad alta fragilità atletica.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Qual è la differenza tra infortunio traumatico e fragilità muscolare cronica?</div>
+                <div class="faq-a">I traumi ossei o articolari da scontro di gioco hanno tempi di guarigione definiti e basso rischio di ricaduta. Al contrario, le lesioni muscolari in atleti classificati come 'Fragile' o 'Cristallo' presentano un elevato tasso di recidiva durante la stagione.</div>
+            </div>
+        </section>
+
         <!-- CTA BOX -->
         <section class="pillar-cta-box">
             <h3>Non farti cogliere impreparato all'Asta o agli Scambi!</h3>
@@ -1915,12 +2025,6 @@ def generate_injuries_pillar(players, injuries_db):
             <a href="../" class="btn-cta-main">Vai alla Dashboard Live 🚀</a>
         </section>
     </main>
-
-    <footer class="site-footer">
-        <div class="site-container">
-            <p>&copy; 2026/2027 Fanta Master AI &bull; Portale Statistico Ufficiale Serie A</p>
-        </div>
-    </footer>
 
     <script>
         let currentRole = 'ALL';
@@ -2091,6 +2195,50 @@ def generate_rigoristi_pillar(tactical_db):
     meta_desc = "Tutti i rigoristi ufficiali della Serie A 2026/27 club per club: primo, secondo e terzo tiratore dal dischetto, specialisti delle punizioni e battitori di corner."
     page_url = f"{BASE_URL}/rigoristi-serie-a/"
 
+    rigoristi_faq = [
+        {
+            "@type": "Question",
+            "name": "Chi sono i primi rigoristi della Serie A 2026/27 squadra per squadra?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Le gerarchie ufficiali vedono specialisti designati come Calhanoglu (Inter), Orsolini (Bologna), Dybala/Pellegrini (Roma) e gli altri tiratori primari club per club monitorati costantemente nella tabella di Fanta Master AI."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Quanto incide essere il primo rigorista sulla FantaMedia e sull'indice xFM?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Un rigorista titolare converte mediamente tra i 4 e gli 8 tiri dal dischetto a campionato, generando un incremento diretto di +12/+24 punti di bonus. Il nostro modello xFM ne valuta il peso specifico per definire il prezzo consigliato in crediti (CR)."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Cosa succede in caso di alternanza o errore dal dischetto?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Fanta Master AI traccia costantemente le opzioni di 2° e 3° tiratore, segnalando i ballottaggi dal dischetto e le possibili rotazioni tecniche decise dagli allenatori di Serie A."
+            }
+        }
+    ]
+
+    schema_data = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE_URL}/"},
+                    {"@type": "ListItem", "position": 2, "name": "Rigoristi Serie A", "item": page_url}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": rigoristi_faq
+            }
+        ]
+    }
+
     html = f"""<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -2107,6 +2255,8 @@ def generate_rigoristi_pillar(tactical_db):
     <meta property="og:url" content="{page_url}">
     <meta property="og:site_name" content="Fanta Master AI">
     <meta property="og:image" content="{BASE_URL}/static/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="it_IT">
     
     <!-- Twitter Card -->
@@ -2119,6 +2269,11 @@ def generate_rigoristi_pillar(tactical_db):
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/seo.css">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {json.dumps(schema_data, ensure_ascii=False, indent=2)}
+    </script>
 </head>
 <body>
 {render_unified_header('../')}
@@ -2196,6 +2351,23 @@ def generate_rigoristi_pillar(tactical_db):
             </div>
         </section>
 
+        <!-- FAQ ACCORDION -->
+        <section class="faq-section">
+            <h2 class="faq-title">❓ Domande Frequenti sui Rigoristi e Calci Piazzati</h2>
+            <div class="faq-item">
+                <div class="faq-q">Chi sono i primi rigoristi della Serie A 2026/27 squadra per squadra?</div>
+                <div class="faq-a">Le gerarchie dal dischetto vedono specialisti primari come <strong>Calhanoglu</strong> nell'Inter, <strong>Orsolini</strong> nel Bologna, <strong>Dybala</strong> e <strong>Pellegrini</strong> nella Roma. Consulta la tabella dinamica di Fanta Master AI per tutte le 20 squadre con ordine di 1°, 2° e 3° tiratore.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Quanto incide essere il primo rigorista sulla FantaMedia e sull'indice xFM?</div>
+                <div class="faq-a">Un rigorista designato realizza tipicamente tra i 4 e gli 8 gol dal dischetto all'anno, offrendo un boost immediato di <strong>+12 / +24 punti</strong> di bonus. L'algoritmo predittivo xFM incorpora questa componente per stimare con precisione il valore d'asta in crediti (CR).</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Cosa succede in caso di alternanza o errore dal dischetto?</div>
+                <div class="faq-a">Fanta Master AI traccia costantemente le opzioni di riserva dal dischetto, evidenziando i ballottaggi tecnici e le possibili rotazioni gerarchiche operate dagli allenatori durante la stagione.</div>
+            </div>
+        </section>
+
         <!-- CTA BOX -->
         <section class="pillar-cta-box">
             <h3>Cerchi tiratori infallibili per la tua Rosa?</h3>
@@ -2203,12 +2375,6 @@ def generate_rigoristi_pillar(tactical_db):
             <a href="../" class="btn-cta-main">Esplora il Listone Live 🚀</a>
         </section>
     </main>
-
-    <footer class="site-footer">
-        <div class="site-container">
-            <p>&copy; 2026/2027 Fanta Master AI &bull; Rigoristi e Tattica Ufficiale Serie A</p>
-        </div>
-    </footer>
 
     <script>
         function filterRigoristi() {{
@@ -2300,6 +2466,50 @@ def generate_gk_pillar(gk_matrix_data):
         </tr>
         """
 
+    gk_faq = [
+        {
+            "@type": "Question",
+            "name": "Cos'è la griglia portieri e come funziona l'incrocio casa/trasferta al Fantacalcio?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La griglia portieri calcola l'alternanza perfetta delle partite in casa tra due o più club di Serie A. Schierare il portiere che gioca in casa abbatte statisticamente la media dei gol subiti e massimizza le probabilità di Clean Sheet e bonus imbattibilità."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Quali sono le migliori coppie di portieri con 0 contemporaneità (100% alternanza)?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Le combinazioni perfette (diff = 0) vedono storicamente le squadre della stessa città (Inter + Milan, Roma + Lazio, Juventus + Torino) con perfetta alternanza a San Siro, Olimpico e Allianz Stadium, oltre ad accoppiamenti regionali a calendario asimmetrico."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "È meglio spendere per un portiere Top o investire su una coppia low-cost a incrocio perfetto?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "L'analisi algoritmica di Fanta Master AI dimostra che una coppia a basso costo con indice di incrocio superiore al 90% garantisce un rendimento in FantaMedia quasi identico a un portiere top di prima fascia, liberando fino al 50-60% del budget d'asta per centrocampo e attacco."
+            }
+        }
+    ]
+
+    schema_data = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE_URL}/"},
+                    {"@type": "ListItem", "position": 2, "name": "Griglia Portieri Serie A", "item": page_url}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": gk_faq
+            }
+        ]
+    }
+
     html = f"""<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -2316,6 +2526,8 @@ def generate_gk_pillar(gk_matrix_data):
     <meta property="og:url" content="{page_url}">
     <meta property="og:site_name" content="Fanta Master AI">
     <meta property="og:image" content="{BASE_URL}/static/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="it_IT">
     
     <!-- Twitter Card -->
@@ -2328,6 +2540,11 @@ def generate_gk_pillar(gk_matrix_data):
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/seo.css">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {json.dumps(schema_data, ensure_ascii=False, indent=2)}
+    </script>
 </head>
 <body>
 {render_unified_header('../')}
@@ -2416,6 +2633,23 @@ def generate_gk_pillar(gk_matrix_data):
             </div>
         </section>
 
+        <!-- FAQ ACCORDION -->
+        <section class="faq-section">
+            <h2 class="faq-title">❓ Domande Frequenti sulla Griglia Portieri Serie A</h2>
+            <div class="faq-item">
+                <div class="faq-q">Cos'è la griglia portieri e come funziona l'incrocio casa/trasferta al Fantacalcio?</div>
+                <div class="faq-a">La griglia portieri calcola l'alternanza perfetta delle partite in casa tra due club di Serie A. Schierare il portiere tra le mura amiche abbatte storicamente i gol subiti e massimizza le probabilità di Clean Sheet e modificatore di difesa.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Quali sono le migliori coppie di portieri con 0 contemporaneità (100% alternanza)?</div>
+                <div class="faq-a">Le combinazioni a zero contemporaneità (diff = 0) vedono storicamente le squadre della stessa città (Inter + Milan, Roma + Lazio, Juventus + Torino) con perfetta alternanza degli stadi casalinghi, oltre ad accoppiamenti regionali a calendario asimmetrico.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">È meglio spendere per un portiere Top o investire su una coppia low-cost a incrocio perfetto?</div>
+                <div class="faq-a">L'analisi algoritmica di Fanta Master AI dimostra che una coppia low-cost con indice di incrocio superiore al 90% garantisce un rendimento in FantaMedia quasi identico a un portiere top, liberando fino al <strong>50-60% del budget d'asta</strong> per centrocampo e attacco.</div>
+            </div>
+        </section>
+
         <!-- CTA BOX -->
         <section class="pillar-cta-box">
             <h3>Vuoi calcolare l'incrocio personalizzato per 3 portieri?</h3>
@@ -2423,12 +2657,6 @@ def generate_gk_pillar(gk_matrix_data):
             <a href="../" class="btn-cta-main">Vai alla Dashboard Live 🚀</a>
         </section>
     </main>
-
-    <footer class="site-footer">
-        <div class="site-container">
-            <p>&copy; 2026/2027 Fanta Master AI &bull; Algoritmo Incroci Portieri Serie A</p>
-        </div>
-    </footer>
 
     <script>
         let currentGkTier = 'ALL';
@@ -2529,7 +2757,7 @@ def get_substitute_info(starter, team_data, team_players):
         
     return None, None
 
-def generate_team_page(team_name, team_data, team_players, all_teams, injuries_db, base_url="https://fantamasterai.it"):
+def generate_team_page(team_name, team_data, team_players, all_teams, injuries_db, base_url="https://www.fantamasterai.it"):
     team_slug = slugify(team_name)
     modulo = team_data.get("modulo", "3-5-2")
     mister = team_data.get("all", "Mister")
@@ -2997,6 +3225,23 @@ def generate_privacy_policy_page():
     <title>{clean_html(meta_title)}</title>
     <meta name="description" content="{clean_html(meta_desc)}">
     <link rel="canonical" href="{page_url}">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{clean_html(meta_title)}">
+    <meta property="og:description" content="{clean_html(meta_desc)}">
+    <meta property="og:url" content="{page_url}">
+    <meta property="og:site_name" content="Fanta Master AI">
+    <meta property="og:image" content="{BASE_URL}/static/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="it_IT">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{clean_html(meta_title)}">
+    <meta name="twitter:description" content="{clean_html(meta_desc)}">
+    <meta name="twitter:image" content="{BASE_URL}/static/og-image.jpg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -3005,10 +3250,21 @@ def generate_privacy_policy_page():
     <script type="application/ld+json">
     {{
         "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "{clean_html(meta_title)}",
-        "description": "{clean_html(meta_desc)}",
-        "url": "{page_url}"
+        "@graph": [
+            {{
+                "@type": "WebPage",
+                "name": "{clean_html(meta_title)}",
+                "description": "{clean_html(meta_desc)}",
+                "url": "{page_url}"
+            }},
+            {{
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {{"@type": "ListItem", "position": 1, "name": "Home", "item": "{BASE_URL}/"}},
+                    {{"@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "{page_url}"}}
+                ]
+            }}
+        ]
     }}
     </script>
 </head>
@@ -3347,8 +3603,67 @@ def build_all():
             sec_html = re.sub(r'<meta property="og:url" content=".*?">', f'<meta property="og:url" content="{BASE_URL}/{route}/">', sec_html)
             sec_html = re.sub(r'<meta name="twitter:title" content=".*?">', f'<meta name="twitter:title" content="{title}">', sec_html)
             sec_html = re.sub(r'<meta name="twitter:description" content=".*?">', f'<meta name="twitter:description" content="{desc}">', sec_html)
-            head_inject = f"""    <link rel="canonical" href="{BASE_URL}/{route}/">\n    <script>window.INITIAL_TAB = '{tab}';</script>\n</head>"""
+            
+            og_img_tag = f'<meta property="og:image" content="{BASE_URL}/static/og-image.jpg">\n    <meta property="og:image:width" content="1200">\n    <meta property="og:image:height" content="630">\n    <meta property="og:site_name" content="Fanta Master AI">'
+            if '<meta property="og:image"' in sec_html:
+                sec_html = re.sub(r'<meta property="og:image" content=".*?">', f'<meta property="og:image" content="{BASE_URL}/static/og-image.jpg">', sec_html)
+            else:
+                sec_html = sec_html.replace('</head>', f'    {og_img_tag}\n</head>')
+                
+            tw_img_tag = f'<meta name="twitter:image" content="{BASE_URL}/static/og-image.jpg">'
+            if '<meta name="twitter:image"' in sec_html:
+                sec_html = re.sub(r'<meta name="twitter:image" content=".*?">', tw_img_tag, sec_html)
+            else:
+                sec_html = sec_html.replace('</head>', f'    {tw_img_tag}\n</head>')
+
+            sec_schema = {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": title,
+                "description": desc,
+                "url": f"{BASE_URL}/{route}/",
+                "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE_URL}/"},
+                        {"@type": "ListItem", "position": 2, "name": title.split("|")[0].strip(), "item": f"{BASE_URL}/{route}/"}
+                    ]
+                }
+            }
+            head_inject = f"""    <link rel="canonical" href="{BASE_URL}/{route}/">\n    <script type="application/ld+json">\n{json.dumps(sec_schema, ensure_ascii=False, indent=4)}\n    </script>\n    <script>window.INITIAL_TAB = '{tab}';</script>\n</head>"""
             sec_html = sec_html.replace('</head>', head_inject)
+            
+            if route == "chi-schiero":
+                duels_list = [
+                    ('Malen', 'Martinez L.'), ('Hojlund', 'Thuram'), ('Ramos G.', 'Kolo Muani'),
+                    ('Kean', 'Douvikas'), ('Dovbyk', 'Piccoli'), ('Dybala', 'Yildiz'),
+                    ('Krstovic', 'Lucca'), ('Scamacca', 'Davis K.'), ('Berardi', 'De Ketelaere'),
+                    ('Esposito F.P.', 'Woltemade'), ('Simeone', 'Raspadori'),
+                    ('Paz N.', 'Calhanoglu'), ('McTominay', 'Orsolini'), ('Pulisic', 'Zaccagni'),
+                    ('Rabiot', 'Barella'), ('De Bruyne', 'Baturina'), ('Frattesi', 'Pellegrini Lo.'),
+                    ('Koopmeiners', 'Ferguson'), ('Zaniolo', 'Vlasic'), ('Conceicao', 'McKennie'),
+                    ('Da Cunha', 'Mora'),
+                    ('Dimarco', 'Wesley'), ('Molina N.', 'Bremer'), ('Bastoni', 'Pavlovic'),
+                    ('Rrahmani', 'Mancini'), ('Di Lorenzo', 'Bellanova'), ('Tavares N.', 'Cambiaso'),
+                    ('Zortea', 'Darmian'), ('Akanji', 'Kalulu'), ('Solet', 'Ostigard'),
+                    ('Bisseck', 'Chalobah T.'),
+                    ('Svilar', 'Vicario'), ('Martinez Jo.', 'Carnesecchi'), ('Maignan', 'De Gea'),
+                    ('Meret', 'Provedel'), ('Butez', 'Mandas')
+                ]
+                duels_pills = "".join([
+                    f'<a href="{slugify(p1_n)}-vs-{slugify(p2_n)}/" style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);color:#38bdf8;padding:7px 14px;border-radius:20px;font-size:13px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:0.2s;" title="Chi schierare tra {p1_n} e {p2_n}">⚔️ {p1_n} vs {p2_n}</a>'
+                    for p1_n, p2_n in duels_list
+                ])
+                duels_box = f"""
+                <section class="seo-duels-grid-box" style="max-width:1200px;margin:32px auto;padding:24px 20px;background:rgba(18,24,38,0.85);border-radius:16px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 8px 24px rgba(0,0,0,0.4);">
+                    <h3 style="color:#fff;font-family:'Outfit',sans-serif;margin:0 0 6px 0;font-size:20px;font-weight:800;">🔥 I Ballottaggi e Duelli 1vs1 Più Cercati su Google</h3>
+                    <p style="color:#94a3b8;font-size:13.5px;margin:0 0 16px 0;">Confronti statistici testa a testa calcolati dall'algoritmo predittivo Fanta Master AI per sciogliere ogni dubbio di formazione:</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                        {duels_pills}
+                    </div>
+                </section>
+                """
+                sec_html = sec_html.replace('</body>', f'{duels_box}\n</body>')
             
             with open(os.path.join(sec_dir, "index.html"), "w", encoding="utf-8") as f:
                 f.write(sec_html)
@@ -3430,6 +3745,41 @@ def build_all():
     with open(os.path.join(priv_dir, "index.html"), "w", encoding="utf-8") as f:
         f.write(generate_privacy_policy_page())
     print("  ✓ Generata pagina Pillar: dist/privacy-policy/index.html")
+
+    # 4d. Genera 36 Pagine Landing "Chi Schiero tra X e Y" (High-Intent SEO Duels)
+    duels_list = [
+        ('Malen', 'Martinez L.'), ('Hojlund', 'Thuram'), ('Ramos G.', 'Kolo Muani'),
+        ('Kean', 'Douvikas'), ('Dovbyk', 'Piccoli'), ('Dybala', 'Yildiz'),
+        ('Krstovic', 'Lucca'), ('Scamacca', 'Davis K.'), ('Berardi', 'De Ketelaere'),
+        ('Esposito F.P.', 'Woltemade'), ('Simeone', 'Raspadori'),
+        ('Paz N.', 'Calhanoglu'), ('McTominay', 'Orsolini'), ('Pulisic', 'Zaccagni'),
+        ('Rabiot', 'Barella'), ('De Bruyne', 'Baturina'), ('Frattesi', 'Pellegrini Lo.'),
+        ('Koopmeiners', 'Ferguson'), ('Zaniolo', 'Vlasic'), ('Conceicao', 'McKennie'),
+        ('Da Cunha', 'Mora'),
+        ('Dimarco', 'Wesley'), ('Molina N.', 'Bremer'), ('Bastoni', 'Pavlovic'),
+        ('Rrahmani', 'Mancini'), ('Di Lorenzo', 'Bellanova'), ('Tavares N.', 'Cambiaso'),
+        ('Zortea', 'Darmian'), ('Akanji', 'Kalulu'), ('Solet', 'Ostigard'),
+        ('Bisseck', 'Chalobah T.'),
+        ('Svilar', 'Vicario'), ('Martinez Jo.', 'Carnesecchi'), ('Maignan', 'De Gea'),
+        ('Meret', 'Provedel'), ('Butez', 'Mandas')
+    ]
+    p_map = {p.get('name', '').lower(): p for p in players}
+    duel_count = 0
+    duel_dir_base = os.path.join(DIST_DIR, "chi-schiero")
+    os.makedirs(duel_dir_base, exist_ok=True)
+    for p1_name, p2_name in duels_list:
+        p1 = p_map.get(p1_name.lower())
+        p2 = p_map.get(p2_name.lower())
+        if not p1 or not p2:
+            continue
+        duel_slug, duel_html = generate_duel_page(p1, p2, tactical_db, CALENDAR_DATA, BASE_URL)
+        d_folder = os.path.join(duel_dir_base, duel_slug)
+        os.makedirs(d_folder, exist_ok=True)
+        with open(os.path.join(d_folder, "index.html"), "w", encoding="utf-8") as f:
+            f.write(duel_html)
+        sitemap_urls.append(f"{BASE_URL}/chi-schiero/{duel_slug}/")
+        duel_count += 1
+    print(f"  ✓ Generate {duel_count} pagine 'Chi Schiero' 1vs1 con Verdetto AI e Schema FAQ in dist/chi-schiero/<duello>/")
 
     # 5. Genera Sitemap XML
     today = datetime.now().strftime("%Y-%m-%d")

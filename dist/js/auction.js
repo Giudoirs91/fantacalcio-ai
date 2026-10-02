@@ -810,8 +810,41 @@ function renderTable() {
         countEl.textContent = `Mostrati: ${filtered.length} / ${PLAYERS.length} Calciatori`;
     }
     tbody.innerHTML = '';
-    filtered.forEach(p => {
-        try {
+    const CHUNK_SIZE = 35;
+    let renderedCount = 0;
+    function renderNextBatch() {
+        if (renderedCount >= filtered.length) return;
+        const batch = filtered.slice(renderedCount, renderedCount + CHUNK_SIZE);
+        const fragment = document.createDocumentFragment();
+        batch.forEach(p => {
+            const tr = buildAuctionPlayerRow(p, isMantraTable);
+            if (tr) fragment.appendChild(tr);
+        });
+        tbody.appendChild(fragment);
+        renderedCount += batch.length;
+    }
+    renderNextBatch();
+    const scrollParent = tbody.closest('.table-wrapper') || window;
+    if (window._auctionScrollCleanup) {
+        window._auctionScrollCleanup();
+    }
+    const onScroll = () => {
+        if (renderedCount >= filtered.length) {
+            scrollParent.removeEventListener('scroll', onScroll);
+            return;
+        }
+        const nearBottom = scrollParent === window
+            ? (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500)
+            : (scrollParent.scrollTop + scrollParent.clientHeight >= scrollParent.scrollHeight - 350);
+        if (nearBottom) {
+            renderNextBatch();
+        }
+    };
+    scrollParent.addEventListener('scroll', onScroll, { passive: true });
+    window._auctionScrollCleanup = () => scrollParent.removeEventListener('scroll', onScroll);
+}
+function buildAuctionPlayerRow(p, isMantraTable) {
+    try {
             const tr = document.createElement('tr');
             const isBought = isPlayerBought(p.id);
             const isTaken = isPlayerTakenByOther(p.id);
@@ -1015,11 +1048,11 @@ function renderTable() {
                     <button class="btn-clean-action" onclick="openPlayerProfileModal(${p.id})" style="padding:4px 7px;font-size:11px;" title="Apri Scheda Calciatore">🔍</button>
                 </td>
             `;
-            tbody.appendChild(tr);
-        } catch (rowErr) {
-            console.error("Errore rendering riga calciatore:", p, rowErr);
-        }
-    });
+        return tr;
+    } catch (rowErr) {
+        console.error("Errore rendering riga calciatore:", p, rowErr);
+        return null;
+    }
 }
 function setAuctionTableView(mode) {
     const table = document.getElementById('auctionTable');

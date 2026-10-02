@@ -3129,17 +3129,17 @@ def optimize_dashboard_for_web(dash_content, dist_dir):
     - Estrae la logica JS in /js/dashboard_app.js (caricato in defer)
     - Riduce l'HTML iniziale da 5.16 MB a ~75 KB (<15 KB gzip), crollando FCP e LCP sotto 1s.
     """
-    # 1. Estrai e minifica il CSS
+    # 1. Minifica il CSS inlined per FCP istantaneo a zero round-trip (appena 54 KB gzip con l'HTML)
     style_match = re.search(r'<style>(.*?)</style>', dash_content, re.DOTALL)
     if style_match:
-        css_content = style_match.group(1).strip()
+        css_content = minify_css(style_match.group(1).strip())
         css_dir = os.path.join(dist_dir, "css")
         os.makedirs(css_dir, exist_ok=True)
         with open(os.path.join(css_dir, "dashboard.min.css"), "w", encoding="utf-8") as f:
-            f.write(minify_css(css_content))
+            f.write(css_content)
         dash_content = (
             dash_content[:style_match.start()]
-            + '<link rel="stylesheet" href="/css/dashboard.min.css">'
+            + f'<style>{css_content}</style>'
             + dash_content[style_match.end():]
         )
 

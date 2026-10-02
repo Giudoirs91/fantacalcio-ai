@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-26T15:15:39.095878",
+  "timestamp": "2026-10-02T17:14:12.382099",
   "rounds_analyzed": [
     1,
     2,
@@ -144,10 +144,10 @@
     },
     {
       "round": 4,
-      "player": "Frattesi",
-      "team": "Lazio",
+      "player": "Calhanoglu",
+      "team": "Inter",
       "role": "C",
-      "reason": "Voto ordinario senza bonus (6.0)"
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
     },
     {
       "round": 4,

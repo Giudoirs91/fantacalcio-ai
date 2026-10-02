@@ -24453,7 +24453,7 @@
       "fragility_label": "🔴 Fragile (Rischio Elevato)",
       "fragility_badge": "fragile",
       "consiglio_medico_ai": "Profilo a rischio elevato (23 partite saltate e 5 ricadute muscolari). Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": false,
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "25/26",
@@ -26764,6 +26764,122 @@
           "giorni_stop": 100,
           "giorni": 100,
           "partite_perse": 16,
+          "tipo": "muscolare",
+          "in_corso": false
+        }
+      ]
+    },
+    "Darmian": {
+      "id": 2525,
+      "tm_id": "54906",
+      "tm_name": "Matteo Darmian",
+      "name": "Darmian",
+      "team": "Bologna",
+      "ruolo": "D",
+      "partite_saltate_totali": 28,
+      "giorni_stop_totali": 136,
+      "disponibilita_pct": 63.2,
+      "recidive_muscolari": 1,
+      "indice_fragilita_score": 62.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 28 gare saltate con 1 stop muscolari. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": [
+        {
+          "stagione": "25/26",
+          "motivo": "Gastroenterite",
+          "diagnosi": "Gastroenterite",
+          "data_inizio": "03/02/2026",
+          "data_fine": "07/02/2026",
+          "giorni_stop": 5,
+          "giorni": 5,
+          "partite_perse": 1,
+          "tipo": "medico",
+          "in_corso": false
+        },
+        {
+          "stagione": "25/26",
+          "motivo": "Problema al polpaccio",
+          "diagnosi": "Problema al polpaccio",
+          "data_inizio": "15/10/2025",
+          "data_fine": "13/01/2026",
+          "giorni_stop": 91,
+          "giorni": 91,
+          "partite_perse": 19,
+          "tipo": "muscolare",
+          "in_corso": false
+        },
+        {
+          "stagione": "25/26",
+          "motivo": "Lombalgia",
+          "diagnosi": "Lombalgia",
+          "data_inizio": "15/09/2025",
+          "data_fine": "20/09/2025",
+          "giorni_stop": 6,
+          "giorni": 6,
+          "partite_perse": 1,
+          "tipo": "medico",
+          "in_corso": false
+        },
+        {
+          "stagione": "24/25",
+          "motivo": "Infortunio alla coscia",
+          "diagnosi": "Infortunio alla coscia",
+          "data_inizio": "25/02/2025",
+          "data_fine": "18/03/2025",
+          "giorni_stop": 22,
+          "giorni": 22,
+          "partite_perse": 5,
+          "tipo": "muscolare",
+          "in_corso": false
+        },
+        {
+          "stagione": "24/25",
+          "motivo": "Contusione al ginocchio",
+          "diagnosi": "Contusione al ginocchio",
+          "data_inizio": "21/12/2024",
+          "data_fine": "01/01/2025",
+          "giorni_stop": 12,
+          "giorni": 12,
+          "partite_perse": 2,
+          "tipo": "traumatico",
+          "in_corso": false
+        },
+        {
+          "stagione": "22/23",
+          "motivo": "Infortunio agli adduttori",
+          "diagnosi": "Infortunio agli adduttori",
+          "data_inizio": "07/11/2022",
+          "data_fine": "08/12/2022",
+          "giorni_stop": 32,
+          "giorni": 32,
+          "partite_perse": 4,
+          "tipo": "muscolare",
+          "in_corso": false
+        },
+        {
+          "stagione": "21/22",
+          "motivo": "Infortunio alla coscia",
+          "diagnosi": "Infortunio alla coscia",
+          "data_inizio": "28/11/2021",
+          "data_fine": "21/12/2021",
+          "giorni_stop": 24,
+          "giorni": 24,
+          "partite_perse": 5,
+          "tipo": "muscolare",
+          "in_corso": false
+        },
+        {
+          "stagione": "19/20",
+          "motivo": "Stiramento alla coscia",
+          "diagnosi": "Stiramento alla coscia",
+          "data_inizio": "27/09/2019",
+          "data_fine": "15/10/2019",
+          "giorni_stop": 19,
+          "giorni": 19,
+          "partite_perse": 3,
           "tipo": "muscolare",
           "in_corso": false
         }

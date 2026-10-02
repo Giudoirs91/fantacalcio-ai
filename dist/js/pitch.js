@@ -554,7 +554,7 @@ function renderPitchTeam(teamName) {
             predDifesa = "Rrahmani e Badiashile coppia solida da clean sheet; Di Lorenzo certezza assoluta.";
             predAsta = "Hojlund (1° Slot A) e McTominay (Top 1 C da gol) imperdibili; Politano e De Bruyne ottimi investimenti.";
         } else if (teamName === 'Parma') {
-            predAttacco = "4-3-2-1 ad albero di Natale di Cuesta con Bernabè e Fabbian incursori dietro alle punte. Potenziale 40-46 gol.";
+            predAttacco = "3-4-2-1 compatto e organizzato di Gilardino con Bernabè e Fabbian incursori dietro alle punte. Potenziale 40-46 gol.";
             predDifesa = "Diego Carlos guida la retroguardia; Valeri garanzia di cross e spinta mancina.";
             predAsta = "Bernabè (rigorista e leader) 2° slot C top; Diego Carlos e Valeri tra i migliori difensori low-cost.";
         } else if (teamName === 'Roma') {

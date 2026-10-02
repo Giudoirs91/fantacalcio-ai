@@ -345,13 +345,13 @@
       },
       {
         "player": "Zortea",
-        "pct": 50,
-        "vs": "Holm (50%)"
+        "pct": 60,
+        "vs": "Darmian (40%)"
       },
       {
-        "player": "Holm",
-        "pct": 50,
-        "vs": "Zortea (50%)"
+        "player": "Darmian",
+        "pct": 40,
+        "vs": "Zortea (60%)"
       },
       {
         "player": "Heggem",
@@ -452,10 +452,10 @@
         "pos_label": "Terzino SX",
         "name": "Zortea",
         "role": "D",
-        "sub_name": "Holm",
+        "sub_name": "Darmian",
         "sub_role": "D",
-        "status": "Titolare (50% vs Holm 50%)",
-        "pct": 50,
+        "status": "Titolare (60% vs Darmian 40%)",
+        "pct": 60,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -3769,7 +3769,7 @@
   },
   "Parma": {
     "modulo": "3-4-2-1",
-    "all": "Carlos Cuesta",
+    "all": "Alberto Gilardino",
     "rigoristi": [
       "Bernabè",
       "Romero D.",

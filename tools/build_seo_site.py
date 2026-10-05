@@ -3427,10 +3427,11 @@ def optimize_dashboard_for_web(dash_content, dist_dir):
         with open(os.path.join(js_dir, "dashboard_app.js"), "w", encoding="utf-8") as f:
             f.write(app_code)
             
+        cache_v = int(datetime.now().timestamp())
         script_replacement = (
-            '<script src="/js/dashboard_data.js" defer></script>\n'
-            '    <script src="/js/dashboard_app.js" defer></script>\n'
-            '    <script src="/js/tracker.js" defer></script>'
+            f'<script src="/js/dashboard_data.js?v={cache_v}" defer></script>\n'
+            f'    <script src="/js/dashboard_app.js?v={cache_v}" defer></script>\n'
+            f'    <script src="/js/tracker.js?v={cache_v}" defer></script>'
         )
         
         dash_content = dash_content[:idx_script_start] + script_replacement + dash_content[idx_script_end + 9:]
@@ -3574,6 +3575,13 @@ def build_all():
             "title": "Talenti Nascosti & Scommesse Low-Cost Serie A | Fanta Master AI",
             "desc": "Scopri i talenti emergenti, le gemme nascoste e le scommesse a basso costo consigliate dall'algoritmo predittivo per il tuo Fantacalcio.",
             "keywords": "scommesse fantacalcio, talenti nascosti serie a, gemme fantacalcio, sleeper fantacalcio"
+        },
+        {
+            "route": "listone",
+            "tab": "auction",
+            "title": "Listone Calciatori Serie A 2026/27 | Quotazioni, FVM e Ruoli | Fanta Master AI",
+            "desc": "Tabellone completo di tutti i 534 calciatori di Serie A: quotazioni ufficiali, FVM (Fantalive Value Market), ruoli Classic e Mantra, statistiche avanzate e indici predittivi.",
+            "keywords": "listone fantacalcio, quotazioni serie a, fvm fantalive, ruoli mantra classic"
         }
     ]
 
@@ -3595,6 +3603,47 @@ def build_all():
             os.makedirs(sec_dir, exist_ok=True)
             
             sec_html = dash_content
+
+            TAB_VIEW_MAP = {
+                'home': ('viewHome', 'flex', 'tabHomeNavBtn', None),
+                'auction': ('viewAuction', 'flex', 'tabAuctionBtn', None),
+                'top_flop': ('viewTopFlop', 'block', 'tabTopFlopBtn', 'navGroupTactics'),
+                'matchday_advice': ('viewMatchdayAdvice', 'block', 'tabMatchdayAdviceBtn', 'navGroupAi'),
+                'chi_schiero': ('viewChiSchiero', 'block', 'tabChiSchieroBtn', 'navGroupAi'),
+                'matrix': ('viewMatrix', 'block', 'tabMatrixBtn', 'navGroupTactics'),
+                'stats': ('viewStats', 'block', 'tabStatsBtn', 'navGroupTactics'),
+                'pitch': ('viewPitch', 'block', 'tabPitchBtn', 'navGroupTactics'),
+                'matchup': ('viewMatchup', 'flex', 'tabMatchupBtn', 'navGroupTactics'),
+                'gk': ('viewGk', 'flex', 'tabGkBtn', 'navGroupTactics'),
+                'ai_squads': ('viewAiSquads', 'flex', 'tabAiSquadsBtn', 'navGroupAi'),
+                'gems': ('viewGems', 'block', 'tabGemsBtn', 'navGroupAi'),
+            }
+            target_view_id, disp_mode, btn_id, grp_id = TAB_VIEW_MAP.get(tab, ('viewHome', 'flex', 'tabHomeNavBtn', None))
+
+            # Hide viewHome if this is not home
+            if tab != 'home':
+                sec_html = re.sub(r'<section id="viewHome"[^>]*>', '<section id="viewHome" class="tab-content" style="display:none;width:100%;">', sec_html)
+                sec_html = re.sub(r'class="nav-direct-btn active" id="tabHomeNavBtn"', 'class="nav-direct-btn" id="tabHomeNavBtn"', sec_html)
+                sec_html = re.sub(r'id="tabHomeNavBtn" class="nav-direct-btn active"', 'id="tabHomeNavBtn" class="nav-direct-btn"', sec_html)
+            
+            # Hide viewAuction if this is not auction
+            if tab != 'auction':
+                sec_html = re.sub(r'<section id="viewAuction"[^>]*>', '<section id="viewAuction" class="tab-content auction-main-layout" style="display:none;">', sec_html)
+                sec_html = re.sub(r'class="nav-direct-btn active" id="tabAuctionBtn"', 'class="nav-direct-btn" id="tabAuctionBtn"', sec_html)
+                sec_html = re.sub(r'id="tabAuctionBtn" class="nav-direct-btn active"', 'id="tabAuctionBtn" class="nav-direct-btn"', sec_html)
+            
+            # Activate target view if not home
+            if tab != 'home':
+                sec_html = re.sub(rf'<section id="{target_view_id}"[^>]*>', f'<section id="{target_view_id}" class="tab-content active" style="display:{disp_mode};width:100%;">', sec_html)
+                if btn_id:
+                    sec_html = re.sub(rf'id="{btn_id}" class="dropdown-item"', f'id="{btn_id}" class="dropdown-item active"', sec_html)
+                    sec_html = re.sub(rf'class="dropdown-item" id="{btn_id}"', f'class="dropdown-item active" id="{btn_id}"', sec_html)
+                    sec_html = re.sub(rf'id="{btn_id}" class="nav-direct-btn"', f'id="{btn_id}" class="nav-direct-btn active"', sec_html)
+                    sec_html = re.sub(rf'class="nav-direct-btn" id="{btn_id}"', f'class="nav-direct-btn active" id="{btn_id}"', sec_html)
+                if grp_id:
+                    sec_html = re.sub(rf'id="{grp_id}" class="nav-group-btn"', f'id="{grp_id}" class="nav-group-btn active"', sec_html)
+                    sec_html = re.sub(rf'class="nav-group-btn" id="{grp_id}"', f'class="nav-group-btn active" id="{grp_id}"', sec_html)
+
             sec_html = re.sub(r'<title>.*?</title>', f'<title>{title}</title>', sec_html, flags=re.DOTALL)
             sec_html = re.sub(r'<meta name="description" content=".*?">', f'<meta name="description" content="{desc}">', sec_html)
             # Update OG and Twitter meta tags per section

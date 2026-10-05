@@ -318,7 +318,7 @@ def build_standalone_dashboard(sync_android=False):
         </section>
 
         <!-- Tab 0-Bis: Home Page Principale (Statistiche & Leader Serie A) -->
-        <section id="viewHome" class="tab-content" style="display:flex;flex-direction:column;gap:20px;width:100%;">
+        <section id="viewHome" class="tab-content active" style="display:flex;flex-direction:column;gap:20px;width:100%;">
             <!-- Header Hero Pulito -->
             <div class="portal-hero-section" style="margin-bottom:0;">
                 <div class="portal-hero-header">
@@ -510,7 +510,7 @@ def build_standalone_dashboard(sync_android=False):
         </section>
 
         <!-- Tab 1: Tabellone Asta -->
-        <section id="viewAuction" class="tab-content auction-main-layout">
+        <section id="viewAuction" class="tab-content auction-main-layout" style="display:none;">
             <!-- Left: Filters & Table -->
             <div class="auction-table-column" id="auctionTableColumn" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:12px;">
                 
@@ -1438,7 +1438,10 @@ def build_standalone_dashboard(sync_android=False):
 
             ['viewHome', 'viewHomeHub', 'viewAuction', 'viewMatchdayAdvice', 'viewChiSchiero', 'viewAiSquads', 'viewSquadBuilder', 'viewTopFlop', 'viewMatrix', 'viewStats', 'viewPitch', 'viewMatchup', 'viewGk', 'viewGems', 'viewTradeMachine', 'viewRepairAuction', 'viewLeagueReport'].forEach(id => {{
                 const el = document.getElementById(id);
-                if (el) el.style.display = 'none';
+                if (el) {{
+                    el.style.display = 'none';
+                    el.classList.remove('active');
+                }}
             }});
 
             // Budget bar is only for live auctions (hidden in statistical consultation mode)
@@ -1451,12 +1454,18 @@ def build_standalone_dashboard(sync_android=False):
                 const mob = document.getElementById('mobNavHome');
                 if (mob) mob.classList.add('active');
                 const view = document.getElementById('viewHome');
-                if (view) view.style.display = 'flex';
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'flex';
+                }}
             }} else if (tabId === 'leagues') {{
                 const btn = document.getElementById('tabLeaguesBtn') || document.getElementById('tabHomeBtn');
                 if (btn) btn.classList.add('active');
                 const view = document.getElementById('viewHomeHub');
-                if (view) view.style.display = 'block';
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'block';
+                }}
                 if (typeof renderHomeHubView === 'function') renderHomeHubView();
             }} else if (tabId === 'auction') {{
                 const btn = document.getElementById('tabAuctionBtn');
@@ -1464,7 +1473,10 @@ def build_standalone_dashboard(sync_android=False):
                 const mob = document.getElementById('mobNavAuction');
                 if (mob) mob.classList.add('active');
                 const view = document.getElementById('viewAuction');
-                if (view) view.style.display = 'flex';
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'flex';
+                }}
                 if (typeof renderTable === 'function') renderTable();
             }} else if (tabId === 'stats') {{
                 const btn = document.getElementById('tabStatsBtn');
@@ -1473,7 +1485,11 @@ def build_standalone_dashboard(sync_android=False):
                 if (grp) grp.classList.add('active');
                 const mob = document.getElementById('mobNavStats');
                 if (mob) mob.classList.add('active');
-                document.getElementById('viewStats').style.display = 'block';
+                const view = document.getElementById('viewStats');
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'block';
+                }}
                 if (typeof renderStatsSerieAView === 'function') renderStatsSerieAView();
             }} else if (tabId === 'matchday_advice') {{
                 const btn = document.getElementById('tabMatchdayAdviceBtn');
@@ -1482,28 +1498,44 @@ def build_standalone_dashboard(sync_android=False):
                 if (grp) grp.classList.add('active');
                 const mob = document.getElementById('mobNavAdvice');
                 if (mob) mob.classList.add('active');
-                document.getElementById('viewMatchdayAdvice').style.display = 'block';
+                const view = document.getElementById('viewMatchdayAdvice');
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'block';
+                }}
                 if (typeof renderMatchdayAdviceView === 'function') renderMatchdayAdviceView();
             }} else if (tabId === 'chi_schiero') {{
                 const btn = document.getElementById('tabChiSchieroBtn');
                 if (btn) btn.classList.add('active');
                 const grp = document.getElementById('navGroupAi');
                 if (grp) grp.classList.add('active');
-                document.getElementById('viewChiSchiero').style.display = 'block';
+                const view = document.getElementById('viewChiSchiero');
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'block';
+                }}
                 if (typeof renderChiSchieroView === 'function') renderChiSchieroView();
             }} else if (tabId === 'top_flop') {{
                 const btn = document.getElementById('tabTopFlopBtn');
                 if (btn) btn.classList.add('active');
                 const grp = document.getElementById('navGroupTactics');
                 if (grp) grp.classList.add('active');
-                document.getElementById('viewTopFlop').style.display = 'block';
+                const view = document.getElementById('viewTopFlop');
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'block';
+                }}
                 if (typeof renderTopFlopView === 'function') renderTopFlopView();
             }} else if (tabId === 'matrix') {{
                 const btn = document.getElementById('tabMatrixBtn');
                 if (btn) btn.classList.add('active');
                 const grp = document.getElementById('navGroupTactics');
                 if (grp) grp.classList.add('active');
-                document.getElementById('viewMatrix').style.display = 'block';
+                const view = document.getElementById('viewMatrix');
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'block';
+                }}
                 if (typeof renderAnalyticsMatrixView === 'function') renderAnalyticsMatrixView();
             }} else if (tabId === 'pitch') {{
                 const btn = document.getElementById('tabPitchBtn');
@@ -1512,7 +1544,11 @@ def build_standalone_dashboard(sync_android=False):
                 if (grp) grp.classList.add('active');
                 const mob = document.getElementById('mobNavPitch');
                 if (mob) mob.classList.add('active');
-                document.getElementById('viewPitch').style.display = 'block';
+                const view = document.getElementById('viewPitch');
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'block';
+                }}
                 const currentClub = State.currentTeamPitch || 'Inter';
                 const sel = document.getElementById('selectPitchTeam');
                 if (sel) sel.value = currentClub;
@@ -1522,7 +1558,11 @@ def build_standalone_dashboard(sync_android=False):
                 if (btn) btn.classList.add('active');
                 const grp = document.getElementById('navGroupTactics');
                 if (grp) grp.classList.add('active');
-                document.getElementById('viewMatchup').style.display = 'flex';
+                const view = document.getElementById('viewMatchup');
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'flex';
+                }}
                 updateMatchup();
             }} else if (tabId === 'gk') {{
                 const btn = document.getElementById('tabGkBtn');
@@ -1531,21 +1571,33 @@ def build_standalone_dashboard(sync_android=False):
                 if (grp) grp.classList.add('active');
                 const mob = document.getElementById('mobNavGk');
                 if (mob) mob.classList.add('active');
-                document.getElementById('viewGk').style.display = 'flex';
+                const view = document.getElementById('viewGk');
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'flex';
+                }}
                 renderGkGrid();
             }} else if (tabId === 'ai_squads') {{
                 const btn = document.getElementById('tabAiSquadsBtn');
                 if (btn) btn.classList.add('active');
                 const grp = document.getElementById('navGroupAi');
                 if (grp) grp.classList.add('active');
-                document.getElementById('viewAiSquads').style.display = 'flex';
+                const view = document.getElementById('viewAiSquads');
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'flex';
+                }}
                 renderAiSquadsTab();
             }} else if (tabId === 'gems') {{
                 const btn = document.getElementById('tabGemsBtn');
                 if (btn) btn.classList.add('active');
                 const grp = document.getElementById('navGroupAi');
                 if (grp) grp.classList.add('active');
-                document.getElementById('viewGems').style.display = 'block';
+                const view = document.getElementById('viewGems');
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'block';
+                }}
                 renderGemsTab();
             }} else {{
                 // Fallback sicuro se il tab non corrisponde a nessun id
@@ -1554,7 +1606,10 @@ def build_standalone_dashboard(sync_android=False):
                 const mob = document.getElementById('mobNavHome');
                 if (mob) mob.classList.add('active');
                 const view = document.getElementById('viewHome');
-                if (view) view.style.display = 'flex';
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'flex';
+                }}
             }}
         }}
 

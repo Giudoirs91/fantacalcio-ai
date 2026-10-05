@@ -102,6 +102,25 @@
     height: 5px;
 }
 
+/* ==============================================================================
+   TAB CONTENT ISOLATION SYSTEM
+   ============================================================================== */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+#viewHome.tab-content.active {
+    display: flex;
+}
+
+#viewAuction.tab-content.active {
+    display: flex;
+}
+
 body {
     background-color: var(--bg-main);
     background-image: 

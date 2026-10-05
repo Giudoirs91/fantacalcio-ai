@@ -100,6 +100,7 @@ def build_standalone_dashboard(sync_android=False):
         "top_flop.js",
         "stats_seriea.js",
         "analytics_matrix.js",
+        "home_hub.js",
         "sync.js"
     ]
     js_content = ""
@@ -317,195 +318,504 @@ def build_standalone_dashboard(sync_android=False):
         <section id="viewHomeHub" class="tab-content" style="display:none;width:100%;">
         </section>
 
-        <!-- Tab 0-Bis: Home Page Principale (Statistiche & Leader Serie A) -->
+        <!-- Tab 0-Bis: Home Page Principale (AI Command Center & Predictive Hub) -->
         <section id="viewHome" class="tab-content active" style="display:flex;flex-direction:column;gap:20px;width:100%;">
-            <!-- Header Hero Pulito -->
-            <div class="portal-hero-section" style="margin-bottom:0;">
-                <div class="portal-hero-header">
-                    <div class="portal-hero-title-group">
-                        <h1>🏠 Leader &amp; Statistiche <span class="gradient-text">Serie A 2026/27</span></h1>
-                        <p>Le informazioni e le metriche più importanti del campionato: gol, assist, expected metrics e fanta-medie aggiornate.</p>
-                    </div>
-                    <div class="portal-hero-pills">
-                        <button class="nav-direct-btn" onclick="switchTab('auction')" style="background:rgba(0,230,118,0.15);border:1px solid rgba(0,230,118,0.4);color:#00e676;cursor:pointer;padding:7px 16px;border-radius:20px;font-weight:800;font-size:12.5px;">📋 Vai al Listone Calciatori</button>
-                        <button class="nav-direct-btn" onclick="switchTab('pitch')" style="background:rgba(0,242,254,0.15);border:1px solid rgba(0,242,254,0.4);color:#00f2fe;cursor:pointer;padding:7px 16px;border-radius:20px;font-weight:800;font-size:12.5px;">⚽ Probabili Formazioni</button>
-                    </div>
-                </div>
-            </div>
+            <div class="ai-hub-container">
 
-            <!-- Griglia Leader Serie A: Le 6 Statistiche Più Importanti -->
-            <div class="leader-grid">
-                
-                <!-- 1. Capocannoniere -->
-                <div class="leader-card">
-                    <div class="leader-card-header">
-                        <span class="leader-stat-badge">⚽ Più Gol Segnati</span>
-                        <span class="leader-val">6</span>
+                <!-- 1. HERO NEURAL COMMAND CENTER -->
+                <div class="ai-hub-hero">
+                    <!-- Badges Bar -->
+                    <div class="ai-hub-badge-bar">
+                        <span class="ai-badge-chip live">
+                            <span class="pulse-dot-green"></span>
+                            Serie A 2026/27 • Live Engine
+                        </span>
+                        <span class="ai-badge-chip tech">🧠 Motore Predittivo xFM v2.4</span>
+                        <span class="ai-badge-chip purple">📊 534 Calciatori Modellati</span>
+                        <span class="ai-badge-chip tech">🏟️ 20 Club su Campo 2D</span>
                     </div>
-                    <div class="leader-player-info">
-                        <span class="role-badge A">A</span>
-                        <div>
-                            <div class="leader-player-name">Donyell Malen</div>
-                            <div class="leader-player-team">Roma • Attaccante</div>
-                        </div>
-                    </div>
-                    <div class="leader-podium">
-                        <strong>Inseguitori:</strong> 2° L. Martinez (Inter, 4 gol) • 3° Varela G. (Monza, 4 gol)
-                    </div>
-                </div>
 
-                <!-- 2. Miglior Assistman -->
-                <div class="leader-card">
-                    <div class="leader-card-header">
-                        <span class="leader-stat-badge">🎯 Più Assist Forniti</span>
-                        <span class="leader-val">4</span>
-                    </div>
-                    <div class="leader-player-info">
-                        <span class="role-badge A">A</span>
-                        <div>
-                            <div class="leader-player-name">Paulo Dybala</div>
-                            <div class="leader-player-team">Roma • Seconda Punta</div>
-                        </div>
-                    </div>
-                    <div class="leader-podium">
-                        <strong>Inseguitori:</strong> 2° Diouf (Inter, 3 assist) • 3° Schmid (Frosinone, 3 assist)
-                    </div>
-                </div>
+                    <!-- Main Catchy Title -->
+                    <h1 class="ai-hub-title">
+                        L'Algoritmo Predittivo N°1 per il <span class="gradient-text">Fantacalcio Serie A</span>
+                    </h1>
 
-                <!-- 3. Più xGoals (xG) -->
-                <div class="leader-card">
-                    <div class="leader-card-header">
-                        <span class="leader-stat-badge">⚡ Più xGoals (xG)</span>
-                        <span class="leader-val">4.7</span>
-                    </div>
-                    <div class="leader-player-info">
-                        <span class="role-badge A">A</span>
-                        <div>
-                            <div class="leader-player-name">Lautaro Martinez</div>
-                            <div class="leader-player-team">Inter • Punta Centrale</div>
+                    <!-- Authoritative Subtitle -->
+                    <p class="ai-hub-subtitle">
+                        Smetti di affidarti alle impressioni soggettive dei giornali. Fanta Master AI elabora oltre 50 metriche avanzate (Expected Goals, Expected Assists, Indici di Schierabilità e Fragilità Fisica) per anticipare bonus, flop e occasioni di mercato con precisione matematica.
+                    </p>
+
+                    <!-- Interactive Real-time Search Box -->
+                    <div class="ai-hub-search-wrap">
+                        <div class="ai-hub-search-inner">
+                            <span class="ai-hub-search-icon">🔍</span>
+                            <input type="text" id="hubQuickSearch" class="ai-hub-search-input" placeholder="Cerca qualsiasi calciatore (es. Malen, Lautaro, Nico Paz, Svilar)..." oninput="filterHubPlayers(this.value)" autocomplete="off">
                         </div>
+                        <div id="hubSearchResults" class="ai-hub-search-results"></div>
                     </div>
-                    <div class="leader-podium">
-                        <strong>Inseguitori:</strong> 2° Malen (Roma, 4.6 xG) • 3° Raimondo (Frosinone, 2.5 xG)
+
+                    <!-- Quick Chips -->
+                    <div class="ai-hub-quick-chips">
+                        <span class="quick-chip-lbl">Ricerche Rapide:</span>
+                        <button class="hub-chip-btn" onclick="openPlayerByName('Malen')">🔥 Malen</button>
+                        <button class="hub-chip-btn" onclick="openPlayerByName('Lautaro')">⚡ Lautaro</button>
+                        <button class="hub-chip-btn" onclick="openPlayerByName('Dybala')">🎯 Dybala</button>
+                        <button class="hub-chip-btn" onclick="openPlayerByName('Paz N.')">💎 Nico Paz</button>
+                        <button class="hub-chip-btn" onclick="openPlayerByName('Dimarco')">🛡️ Dimarco</button>
+                        <button class="hub-chip-btn" onclick="openPlayerByName('Svilar')">🧤 Svilar</button>
+                        <button class="hub-chip-btn" onclick="openPlayerByName('Woltemade')">🔮 Woltemade</button>
+                    </div>
+
+                    <!-- Primary CTAs -->
+                    <div class="ai-hub-cta-bar">
+                        <button class="hub-cta-btn primary" onclick="switchTab('chi_schiero')">
+                            <span>⚔️ Risolvi un Ballottaggio (Chi Schiero 1vs1)</span>
+                        </button>
+                        <button class="hub-cta-btn secondary" onclick="switchTab('pitch')">
+                            <span>🏟️ Probabili Formazioni 2D &amp; Schemi</span>
+                        </button>
+                        <button class="hub-cta-btn secondary" onclick="switchTab('auction')">
+                            <span>📋 Listone &amp; Valutazioni FVM</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- 4. Più xAssists (xA) -->
-                <div class="leader-card">
-                    <div class="leader-card-header">
-                        <span class="leader-stat-badge">🎨 Più xAssists (xA)</span>
-                        <span class="leader-val">3.4</span>
+                <!-- 2. AI INTELLIGENCE PULSE (3-BENTO: TOP PICK, FLOP ALERT, SCOMMESSA) -->
+                <div>
+                    <div class="ai-section-title-wrap">
+                        <span class="ai-section-tag">⚡ Live Intelligence Pulse</span>
+                        <h2 class="ai-section-title">
+                            <span>🧠</span> I 3 Verdetto Chiave dell'Algoritmo
+                        </h2>
+                        <p class="ai-section-subtitle">Analisi computazionale match-by-match per schierare la formazione ideale e minimizzare i rimpianti.</p>
                     </div>
-                    <div class="leader-player-info">
-                        <span class="role-badge A">A</span>
-                        <div>
-                            <div class="leader-player-name">Paulo Dybala</div>
-                            <div class="leader-player-team">Roma • Trequartista / Punta</div>
+
+                    <div class="ai-pulse-grid">
+                        <!-- Card 1: Top AI Pick & Capitano Ideale -->
+                        <div class="ai-pulse-card pick">
+                            <div class="pulse-card-header">
+                                <span class="pulse-badge green">🚀 Top Pick &amp; Capitano AI</span>
+                                <span class="pulse-card-score" style="color:#4ade80;">98% Schierabile</span>
+                            </div>
+                            <div class="pulse-player-box">
+                                <span class="role-badge A" style="width:34px;height:34px;font-size:15px;">A</span>
+                                <div>
+                                    <div class="pulse-player-name">Donyell Malen</div>
+                                    <div class="pulse-player-sub">Roma • Attaccante • OVR 88</div>
+                                </div>
+                            </div>
+                            <div class="pulse-metrics-strip">
+                                <div class="pulse-metric-item">
+                                    <span class="p-lbl">xFM Previsto</span>
+                                    <span class="p-val" style="color:#00e676;">8.45</span>
+                                </div>
+                                <div class="pulse-metric-item">
+                                    <span class="p-lbl">xG / 90m</span>
+                                    <span class="p-val" style="color:#38bdf8;">0.92</span>
+                                </div>
+                                <div class="pulse-metric-item">
+                                    <span class="p-lbl">Status Tattico</span>
+                                    <span class="p-val" style="color:#fbbf24;">1° Rigorista</span>
+                                </div>
+                            </div>
+                            <div class="pulse-quote-box">
+                                <b>Verdetto AI:</b> <i>"Capocannoniere del torneo con 6 reti e miglior volume di tiri nello specchio. Matchup ideale contro difesa a linea alta. Must-have assoluto di giornata."</i>
+                            </div>
+                            <button class="pulse-action-link" onclick="openPlayerByName('Malen')">
+                                <span>Apri Scheda Calciatore &amp; Radar SVG</span>
+                                <span>&rarr;</span>
+                            </button>
                         </div>
-                    </div>
-                    <div class="leader-podium">
-                        <strong>Inseguitori:</strong> 2° Dimarco (Inter, 1.6 xA) • 3° Diouf (Inter, 1.5 xA)
+
+                        <!-- Card 2: Flop & Trap Alert -->
+                        <div class="ai-pulse-card danger">
+                            <div class="pulse-card-header">
+                                <span class="pulse-badge red">⚠️ Flop &amp; Danger Alert</span>
+                                <span class="pulse-card-score" style="color:#f87171;">Difficoltà 4.8/5</span>
+                            </div>
+                            <div class="pulse-player-box">
+                                <span class="role-badge C" style="width:34px;height:34px;font-size:15px;">C</span>
+                                <div>
+                                    <div class="pulse-player-name">Rischio Malus &amp; Turnover</div>
+                                    <div class="pulse-player-sub">Filtro Predittivo Pre-Gara</div>
+                                </div>
+                            </div>
+                            <div class="pulse-metrics-strip">
+                                <div class="pulse-metric-item">
+                                    <span class="p-lbl">Rischio Malus</span>
+                                    <span class="p-val" style="color:#f87171;">Alto</span>
+                                </div>
+                                <div class="pulse-metric-item">
+                                    <span class="p-lbl">Indice Rotazione</span>
+                                    <span class="p-val" style="color:#fbbf24;">62%</span>
+                                </div>
+                                <div class="pulse-metric-item">
+                                    <span class="p-lbl">Expected Card</span>
+                                    <span class="p-val" style="color:#ef4444;">0.45 xC</span>
+                                </div>
+                            </div>
+                            <div class="pulse-quote-box" style="border-left-color:#ef4444;">
+                                <b>Verdetto AI:</b> <i>"Identificati 7 centrocampisti e difensori a forte rischio ammonizione o turnover europeo. Verifica le percentuali di titolarità prima di consegnare la formazione."</i>
+                            </div>
+                            <button class="pulse-action-link" onclick="switchTab('pitch')">
+                                <span>Verifica Ballottaggi &amp; Titolari su Campo 2D</span>
+                                <span>&rarr;</span>
+                            </button>
+                        </div>
+
+                        <!-- Card 3: Scommessa & Differenziale AI -->
+                        <div class="ai-pulse-card gem">
+                            <div class="pulse-card-header">
+                                <span class="pulse-badge purple">🔮 Scommessa &amp; Gemma Low-Cost</span>
+                                <span class="pulse-card-score" style="color:#c084fc;">Upside +28%</span>
+                            </div>
+                            <div class="pulse-player-box">
+                                <span class="role-badge C" style="width:34px;height:34px;font-size:15px;">C</span>
+                                <div>
+                                    <div class="pulse-player-name">Nico Paz</div>
+                                    <div class="pulse-player-sub">Como • Trequartista • FVM 24 CR</div>
+                                </div>
+                            </div>
+                            <div class="pulse-metrics-strip">
+                                <div class="pulse-metric-item">
+                                    <span class="p-lbl">xAssists (xA)</span>
+                                    <span class="p-val" style="color:#c084fc;">3.4</span>
+                                </div>
+                                <div class="pulse-metric-item">
+                                    <span class="p-lbl">Titolarità</span>
+                                    <span class="p-val" style="color:#34d399;">90%</span>
+                                </div>
+                                <div class="pulse-metric-item">
+                                    <span class="p-lbl">Piazzati</span>
+                                    <span class="p-val" style="color:#fbbf24;">Specialista</span>
+                                </div>
+                            </div>
+                            <div class="pulse-quote-box" style="border-left-color:#c084fc;">
+                                <b>Verdetto AI:</b> <i>"Generatore costante di occasioni e tiri da fuori. Volume offensivo d'élite per la fascia di prezzo. L'algoritmo prevede un aumento di fanta-media e quotazione."</i>
+                            </div>
+                            <button class="pulse-action-link" onclick="openPlayerByName('Paz N.')">
+                                <span>Esplora Radar &amp; Proiezioni Future</span>
+                                <span>&rarr;</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 5. Miglior FantaMedia -->
-                <div class="leader-card">
-                    <div class="leader-card-header">
-                        <span class="leader-stat-badge">⭐ Miglior FantaMedia (FM)</span>
-                        <span class="leader-val">10.6</span>
+                <!-- 3. LA SUITE DEI 6 SUPERPOTERI AI (BENTO CAPABILITIES) -->
+                <div>
+                    <div class="ai-section-title-wrap">
+                        <span class="ai-section-tag">🛠️ Strumenti Pro di Nuova Generazione</span>
+                        <h2 class="ai-section-title">
+                            <span>✨</span> La Suite Completa di Fanta Master AI
+                        </h2>
+                        <p class="ai-section-subtitle">Tutti i tool analitici sviluppati per farti vincere leghe a 8, 10 o 12 partecipanti.</p>
                     </div>
-                    <div class="leader-player-info">
-                        <span class="role-badge A">A</span>
-                        <div>
-                            <div class="leader-player-name">Donyell Malen</div>
-                            <div class="leader-player-team">Roma • FM 10.60 (6 presenze)</div>
+
+                    <div class="ai-capabilities-grid">
+                        <!-- Tool 1: Chi Schiero -->
+                        <div class="ai-cap-card" onclick="switchTab('chi_schiero')">
+                            <div>
+                                <div class="cap-card-top">
+                                    <div class="cap-icon-box" style="background:rgba(168,85,247,0.15);border:1px solid rgba(168,85,247,0.3);color:#c084fc;">⚔️</div>
+                                    <span class="cap-badge-tag">Simulatore 1vs1</span>
+                                </div>
+                                <h3 class="cap-title">Tool "Chi Schiero?"</h3>
+                                <p class="cap-desc">Hai un dubbio di formazione? Confronta due giocatori testa a testa. L'algoritmo simula bonus attesi, difficoltà dell'avversario e ti fornisce il verdetto motivato.</p>
+                            </div>
+                            <div class="cap-card-footer" style="color:#c084fc;">
+                                <span>Risolvi Ballottaggio &rarr;</span>
+                                <span style="font-size:11px;color:var(--text-muted);">Algoritmo Predittivo</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="leader-podium">
-                        <strong>Inseguitori:</strong> 2° L. Martinez (Inter, 8.85 FM) • 3° Dybala (Roma, 7.90 FM)
+
+                        <!-- Tool 2: Probabili Formazioni 2D -->
+                        <div class="ai-cap-card" onclick="switchTab('pitch')">
+                            <div>
+                                <div class="cap-card-top">
+                                    <div class="cap-icon-box" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#38bdf8;">🏟️</div>
+                                    <span class="cap-badge-tag">20 Club 2D</span>
+                                </div>
+                                <h3 class="cap-title">Probabili Formazioni 2D</h3>
+                                <p class="cap-desc">Lavagna tattica interattiva per tutti i 20 club di Serie A. Percentuali di titolarità stimate, ballottaggi aperti, gerarchie rigoristi e tiratori piazzati.</p>
+                            </div>
+                            <div class="cap-card-footer" style="color:#38bdf8;">
+                                <span>Vedi Schemi Club &rarr;</span>
+                                <span style="font-size:11px;color:var(--text-muted);">Live 2026/27</span>
+                            </div>
+                        </div>
+
+                        <!-- Tool 3: Football Analytics & Radar -->
+                        <div class="ai-cap-card" onclick="switchTab('matrix')">
+                            <div>
+                                <div class="cap-card-top">
+                                    <div class="cap-icon-box" style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:#4ade80;">📈</div>
+                                    <span class="cap-badge-tag">Expected Metrics</span>
+                                </div>
+                                <h3 class="cap-title">Football Analytics &amp; Radar</h3>
+                                <p class="cap-desc">Matrice avanzata con xG, xA, Floor vs Ceiling, sub-impact delle riserve e regressione per scovare chi sta sovraperformando o per esplodere.</p>
+                            </div>
+                            <div class="cap-card-footer" style="color:#4ade80;">
+                                <span>Analizza Metriche Avanzate &rarr;</span>
+                                <span style="font-size:11px;color:var(--text-muted);">Data Science</span>
+                            </div>
+                        </div>
+
+                        <!-- Tool 4: Listone & FVM Dinamico -->
+                        <div class="ai-cap-card" onclick="switchTab('auction')">
+                            <div>
+                                <div class="cap-card-top">
+                                    <div class="cap-icon-box" style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);color:#fbbf24;">💰</div>
+                                    <span class="cap-badge-tag">Scala 1-1000 CR</span>
+                                </div>
+                                <h3 class="cap-title">Listone Intelligente &amp; FVM</h3>
+                                <p class="cap-desc">534 calciatori con prezzi stimati d'asta (Fantalive Value Market), slot reparto 1-8, indici di spesa percentuale e ruoli sia Classic che Mantra.</p>
+                            </div>
+                            <div class="cap-card-footer" style="color:#fbbf24;">
+                                <span>Apri Tabellone Asta &rarr;</span>
+                                <span style="font-size:11px;color:var(--text-muted);">534 Calciatori</span>
+                            </div>
+                        </div>
+
+                        <!-- Tool 5: Griglia Portieri Dinamica -->
+                        <div class="ai-cap-card" onclick="switchTab('gk')">
+                            <div>
+                                <div class="cap-card-top">
+                                    <div class="cap-icon-box" style="background:rgba(0,242,254,0.15);border:1px solid rgba(0,242,254,0.3);color:#00f2fe;">🧤</div>
+                                    <span class="cap-badge-tag">38 Turni</span>
+                                </div>
+                                <h3 class="cap-title">Griglia Portieri Algoritmica</h3>
+                                <p class="cap-desc">Matrice combinatoria degli incroci casa/trasferta a 38 giornate. Trova la coppia perfetta di portieri a basso costo per non subire mai imbarcate.</p>
+                            </div>
+                            <div class="cap-card-footer" style="color:#00f2fe;">
+                                <span>Consulta Matrice Incroci &rarr;</span>
+                                <span style="font-size:11px;color:var(--text-muted);">Zero Malus</span>
+                            </div>
+                        </div>
+
+                        <!-- Tool 6: Top 11 AI & Scommesse -->
+                        <div class="ai-cap-card" onclick="switchTab('matchday_advice')">
+                            <div>
+                                <div class="cap-card-top">
+                                    <div class="cap-icon-box" style="background:rgba(236,72,153,0.15);border:1px solid rgba(236,72,153,0.3);color:#f472b6;">🎯</div>
+                                    <span class="cap-badge-tag">Top 11 AI</span>
+                                </div>
+                                <h3 class="cap-title">Consigliati &amp; Top 11 del Turno</h3>
+                                <p class="cap-desc">La formazione ideale calcolata su vincoli tattici e di budget per la giornata imminente, con indici di schierabilità percentuali per ogni ruolo.</p>
+                            </div>
+                            <div class="cap-card-footer" style="color:#f472b6;">
+                                <span>Scopri la Top 11 &rarr;</span>
+                                <span style="font-size:11px;color:var(--text-muted);">Machine Learning</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 6. Più Bonus Totali -->
-                <div class="leader-card">
-                    <div class="leader-card-header">
-                        <span class="leader-stat-badge">💎 Più Bonus Totali (+Gol &amp; +Assist)</span>
-                        <span class="leader-val">+18.0</span>
+                <!-- 4. PERCHÉ FANTA MASTER AI BATTE I METODI TRADIZIONALI -->
+                <div class="ai-comparison-box">
+                    <div class="ai-section-title-wrap" style="margin-bottom:0;">
+                        <span class="ai-section-tag" style="color:#00e676;">⚔️ The Next Generation</span>
+                        <h2 class="ai-section-title">
+                            <span>⚡</span> Perché l'Approccio Scientifico Batte i Siti Tradizionali
+                        </h2>
+                        <p class="ai-section-subtitle">Il divario tra chi si affida alle "sensazioni" e chi vince usando modelli quantitativi.</p>
                     </div>
-                    <div class="leader-player-info">
-                        <span class="role-badge A">A</span>
-                        <div>
-                            <div class="leader-player-name">Donyell Malen</div>
-                            <div class="leader-player-team">Roma • 6 gol (+18 pt bonus)</div>
+
+                    <div class="ai-comp-grid">
+                        <!-- Legacy Methods -->
+                        <div class="comp-column legacy">
+                            <div class="comp-column-head">
+                                <span style="font-size:22px;">📉</span>
+                                <h3 style="color:#f87171;">I Metodi Tradizionali &amp; Portali Storici</h3>
+                            </div>
+                            <ul class="comp-feature-list">
+                                <li class="comp-item">
+                                    <span class="comp-icon" style="color:#ef4444;">✕</span>
+                                    <span style="color:#94a3b8;"><b>Voti post-partita soggettivi:</b> Valutazioni basate sull'emotività o sulla simpatia del giornalista di turno.</span>
+                                </li>
+                                <li class="comp-item">
+                                    <span class="comp-icon" style="color:#ef4444;">✕</span>
+                                    <span style="color:#94a3b8;"><b>Consigli generici sul "nome":</b> Consigliano i calciatori più famosi senza considerare la difficoltà del matchup difensivo.</span>
+                                </li>
+                                <li class="comp-item">
+                                    <span class="comp-icon" style="color:#ef4444;">✕</span>
+                                    <span style="color:#94a3b8;"><b>Nessuna nozione di regressione:</b> Incapacità di distinguere tra un gol fortunoso e una produzione solida di Expected Goals (xG).</span>
+                                </li>
+                                <li class="comp-item">
+                                    <span class="comp-icon" style="color:#ef4444;">✕</span>
+                                    <span style="color:#94a3b8;"><b>Infortuni valutati a spanne:</b> Nessun calcolo scientifico sulla fragilità fisica, sui giorni di stop e sulle ricadute muscolari.</span>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="leader-podium">
-                        <strong>Inseguitori:</strong> 2° L. Martinez (+12.0 bonus) • 3° Raimondo (+12.0 bonus)
+
+                        <!-- Fanta Master AI -->
+                        <div class="comp-column ai-powered">
+                            <div class="comp-column-head">
+                                <span style="font-size:22px;">🚀</span>
+                                <h3 style="color:#38bdf8;">Fanta Master AI (Nuova Generazione)</h3>
+                            </div>
+                            <ul class="comp-feature-list">
+                                <li class="comp-item">
+                                    <span class="comp-icon" style="color:#22c55e;">✓</span>
+                                    <span style="color:#e2e8f0;"><b>Algoritmo Predittivo xFM (Expected FantaMedia):</b> Modello matematico che calcola il rendimento atteso futuro prima che i bonus si verifichino.</span>
+                                </li>
+                                <li class="comp-item">
+                                    <span class="comp-icon" style="color:#22c55e;">✓</span>
+                                    <span style="color:#e2e8f0;"><b>Simulatore 1vs1 per ogni ballottaggio:</b> Verdetto quantitativo imparziale su chi schierare tra due calciatori nel weekend.</span>
+                                </li>
+                                <li class="comp-item">
+                                    <span class="comp-icon" style="color:#22c55e;">✓</span>
+                                    <span style="color:#e2e8f0;"><b>Radar Chart SVG a 6-8 Dimensioni:</b> Visualizzazione istantanea dei percentili reali per ruolo su tiro, rifinitura, recuperi e titolarità.</span>
+                                </li>
+                                <li class="comp-item">
+                                    <span class="comp-icon" style="color:#22c55e;">✓</span>
+                                    <span style="color:#e2e8f0;"><b>Indice di Fragilità &amp; Cronistoria Medica:</b> Algoritmo di affidabilità fisica per non rischiare crediti su calciatori cronici.</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-            </div>
-
-            <!-- Accesso Rapido agli Strumenti -->
-            <div style="margin-top: 6px;">
-                <h2 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
-                    <span>⚡</span> Accesso Rapido agli Strumenti
-                </h2>
-                <div class="home-tools-grid">
-                    <div class="home-tool-item" onclick="switchTab('auction')">
-                        <div>
-                            <div style="font-size:24px;margin-bottom:8px;">📋</div>
-                            <strong style="font-size:15px;color:#fff;display:block;margin-bottom:6px;">Listone &amp; Valutazioni Calciatori</strong>
-                            <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.45;margin:0;">Tabellone completo con 534 calciatori di Serie A, quotazioni, FVM (Fantalive Value Market), ruoli Classic e Mantra.</p>
-                        </div>
-                        <span style="color:var(--accent-neon);font-size:12px;font-weight:700;">Apri Listone &rarr;</span>
+                <!-- 5. LEADER & STATISTICHE SERIE A (RE-IMAGINED & CLICKABLE) -->
+                <div>
+                    <div class="ai-section-title-wrap">
+                        <span class="ai-section-tag">📊 Serie A 2026/27 Live</span>
+                        <h2 class="ai-section-title">
+                            <span>🏆</span> I Leader Statistici del Campionato
+                        </h2>
+                        <p class="ai-section-subtitle">Le 6 metriche più determinanti: clicca su qualsiasi calciatore per aprire la sua scheda analitica con Radar.</p>
                     </div>
 
-                    <div class="home-tool-item" onclick="switchTab('pitch')">
-                        <div>
-                            <div style="font-size:24px;margin-bottom:8px;">⚽</div>
-                            <strong style="font-size:15px;color:#fff;display:block;margin-bottom:6px;">Probabili Formazioni 2D</strong>
-                            <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.45;margin:0;">Gli 11 titolari, moduli tattici e ballottaggi di tutti i 20 club di Serie A aggiornati per il prossimo turno.</p>
+                    <div class="leader-grid">
+                        <!-- 1. Capocannoniere -->
+                        <div class="leader-card" onclick="openPlayerByName('Malen')" style="cursor:pointer;">
+                            <div class="leader-card-header">
+                                <span class="leader-stat-badge">⚽ Più Gol Segnati</span>
+                                <span class="leader-val">6</span>
+                            </div>
+                            <div class="leader-player-info">
+                                <span class="role-badge A">A</span>
+                                <div>
+                                    <div class="leader-player-name">Donyell Malen <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 88</span></div>
+                                    <div class="leader-player-team">Roma • Attaccante</div>
+                                </div>
+                            </div>
+                            <div class="leader-podium">
+                                <strong>Inseguitori:</strong> 2° L. Martinez (Inter, 4 gol) • 3° Varela G. (Monza, 4 gol)
+                            </div>
                         </div>
-                        <span style="color:var(--accent-cyan);font-size:12px;font-weight:700;">Vedi Schemi Club &rarr;</span>
-                    </div>
 
-                    <div class="home-tool-item" onclick="switchTab('chi_schiero')">
-                        <div>
-                            <div style="font-size:24px;margin-bottom:8px;">⚔️</div>
-                            <strong style="font-size:15px;color:#fff;display:block;margin-bottom:6px;">Tool "Chi Schiero?" (1vs1)</strong>
-                            <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.45;margin:0;">Risolvi ogni dubbio di schieramento confrontando due giocatori testa a testa con l'algoritmo predittivo AI.</p>
+                        <!-- 2. Miglior Assistman -->
+                        <div class="leader-card" onclick="openPlayerByName('Dybala')" style="cursor:pointer;">
+                            <div class="leader-card-header">
+                                <span class="leader-stat-badge">🎯 Più Assist Forniti</span>
+                                <span class="leader-val">4</span>
+                            </div>
+                            <div class="leader-player-info">
+                                <span class="role-badge A">A</span>
+                                <div>
+                                    <div class="leader-player-name">Paulo Dybala <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 87</span></div>
+                                    <div class="leader-player-team">Roma • Seconda Punta</div>
+                                </div>
+                            </div>
+                            <div class="leader-podium">
+                                <strong>Inseguitori:</strong> 2° Diouf (Inter, 3 assist) • 3° Schmid (Frosinone, 3 assist)
+                            </div>
                         </div>
-                        <span style="color:var(--accent-purple);font-size:12px;font-weight:700;">Confronta 1vs1 &rarr;</span>
-                    </div>
 
-                    <div class="home-tool-item" onclick="switchTab('gk')">
-                        <div>
-                            <div style="font-size:24px;margin-bottom:8px;">🧤</div>
-                            <strong style="font-size:15px;color:#fff;display:block;margin-bottom:6px;">Griglia Portieri 38 Turni</strong>
-                            <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.45;margin:0;">Matrice incroci casa/trasferta e coefficienti di alternanza per subire meno gol possibili durante l'anno.</p>
+                        <!-- 3. Più xGoals (xG) -->
+                        <div class="leader-card" onclick="openPlayerByName('Lautaro')" style="cursor:pointer;">
+                            <div class="leader-card-header">
+                                <span class="leader-stat-badge">⚡ Più xGoals (xG)</span>
+                                <span class="leader-val">4.7</span>
+                            </div>
+                            <div class="leader-player-info">
+                                <span class="role-badge A">A</span>
+                                <div>
+                                    <div class="leader-player-name">Lautaro Martinez <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 94</span></div>
+                                    <div class="leader-player-team">Inter • Punta Centrale</div>
+                                </div>
+                            </div>
+                            <div class="leader-podium">
+                                <strong>Inseguitori:</strong> 2° Malen (Roma, 4.6 xG) • 3° Raimondo (Frosinone, 2.5 xG)
+                            </div>
                         </div>
-                        <span style="color:var(--accent-gold);font-size:12px;font-weight:700;">Consulta Griglia &rarr;</span>
-                    </div>
 
-                    <div class="home-tool-item" onclick="switchTab('matchday_advice')">
-                        <div>
-                            <div style="font-size:24px;margin-bottom:8px;">🎯</div>
-                            <strong style="font-size:15px;color:#fff;display:block;margin-bottom:6px;">Consigliati di Giornata</strong>
-                            <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.45;margin:0;">Indici di schierabilità per ruolo, bonus attesi, capitani ideali e Top 11 calcolata dall'AI.</p>
+                        <!-- 4. Più xAssists (xA) -->
+                        <div class="leader-card" onclick="openPlayerByName('Dybala')" style="cursor:pointer;">
+                            <div class="leader-card-header">
+                                <span class="leader-stat-badge">🎨 Più xAssists (xA)</span>
+                                <span class="leader-val">3.4</span>
+                            </div>
+                            <div class="leader-player-info">
+                                <span class="role-badge A">A</span>
+                                <div>
+                                    <div class="leader-player-name">Paulo Dybala <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 87</span></div>
+                                    <div class="leader-player-team">Roma • Trequartista / Punta</div>
+                                </div>
+                            </div>
+                            <div class="leader-podium">
+                                <strong>Inseguitori:</strong> 2° Dimarco (Inter, 1.6 xA) • 3° Diouf (Inter, 1.5 xA)
+                            </div>
                         </div>
-                        <span style="color:var(--accent-neon);font-size:12px;font-weight:700;">Vedi Consigliati &rarr;</span>
-                    </div>
 
-                    <div class="home-tool-item" onclick="switchTab('gems')">
-                        <div>
-                            <div style="font-size:24px;margin-bottom:8px;">🔮</div>
-                            <strong style="font-size:15px;color:#fff;display:block;margin-bottom:6px;">Gemme &amp; Scommesse AI</strong>
-                            <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.45;margin:0;">I migliori talenti low cost sotto radar ad alto volume di expected goals ed expected assists.</p>
+                        <!-- 5. Miglior FantaMedia -->
+                        <div class="leader-card" onclick="openPlayerByName('Malen')" style="cursor:pointer;">
+                            <div class="leader-card-header">
+                                <span class="leader-stat-badge">⭐ Miglior FantaMedia (FM)</span>
+                                <span class="leader-val">10.6</span>
+                            </div>
+                            <div class="leader-player-info">
+                                <span class="role-badge A">A</span>
+                                <div>
+                                    <div class="leader-player-name">Donyell Malen <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 88</span></div>
+                                    <div class="leader-player-team">Roma • FM 10.60 (6 presenze)</div>
+                                </div>
+                            </div>
+                            <div class="leader-podium">
+                                <strong>Inseguitori:</strong> 2° L. Martinez (Inter, 8.85 FM) • 3° Dybala (Roma, 7.90 FM)
+                            </div>
                         </div>
-                        <span style="color:var(--accent-cyan);font-size:12px;font-weight:700;">Scopri Gemme &rarr;</span>
+
+                        <!-- 6. Più Bonus Totali -->
+                        <div class="leader-card" onclick="openPlayerByName('Malen')" style="cursor:pointer;">
+                            <div class="leader-card-header">
+                                <span class="leader-stat-badge">💎 Più Bonus Totali (+Gol &amp; +Assist)</span>
+                                <span class="leader-val">+18.0</span>
+                            </div>
+                            <div class="leader-player-info">
+                                <span class="role-badge A">A</span>
+                                <div>
+                                    <div class="leader-player-name">Donyell Malen <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 88</span></div>
+                                    <div class="leader-player-team">Roma • 6 gol (+18 pt bonus)</div>
+                                </div>
+                            </div>
+                            <div class="leader-podium">
+                                <strong>Inseguitori:</strong> 2° L. Martinez (+12.0 bonus) • 3° Raimondo (+12.0 bonus)
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- 6. SOCIAL PROOF & PLATFORM METRICS -->
+                <div class="ai-counter-strip">
+                    <div class="ai-counter-item">
+                        <div class="c-val">534</div>
+                        <div class="c-lbl">Calciatori Modellati</div>
+                    </div>
+                    <div class="ai-counter-item">
+                        <div class="c-val">20</div>
+                        <div class="c-lbl">Club Serie A in 2D</div>
+                    </div>
+                    <div class="ai-counter-item">
+                        <div class="c-val">38</div>
+                        <div class="c-lbl">Turni Monitorati</div>
+                    </div>
+                    <div class="ai-counter-item">
+                        <div class="c-val" style="background:linear-gradient(135deg,#22c55e,#00f2fe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">100%</div>
+                        <div class="c-lbl">Statistiche Oggettive</div>
+                    </div>
+                </div>
+
             </div>
         </section>
 

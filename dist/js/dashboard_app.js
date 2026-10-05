@@ -16707,7 +16707,7 @@ window.renderTopFlopView = renderTopFlopView;
 let statsFilterRole = 'ALL';
 let statsFilterTeam = 'ALL';
 let statsSearchQuery = '';
-let statsViewCategory = 'ALL'; // 'ALL', 'goals', 'assists', 'xg_xa', 'gk', 'bonus_malus', 'cards', 'ratings', 'advanced'
+let statsViewCategory = 'ALL'; // 'ALL', 'xfm_delta', 'goals', 'assists', 'defense', 'discipline'
 let statsLimit = 10; // 10, 20, 50
 function setStatsCategory(cat) {
     statsViewCategory = cat;
@@ -16721,7 +16721,7 @@ function renderStatsSerieAView() {
     const container = document.getElementById('viewStats');
     if (!container) return;
     if (typeof PLAYERS === 'undefined' || !PLAYERS || PLAYERS.length === 0) {
-        container.innerHTML = `<div style="padding:40px;text-align:center;color:var(--text-muted);">Caricamento dati statistiche in corso...</div>`;
+        container.innerHTML = `<div style="padding:60px;text-align:center;color:var(--text-muted);font-size:14px;">Caricamento dati statistiche in corso...</div>`;
         return;
     }
     let pool = PLAYERS.filter(p => {
@@ -16739,6 +16739,7 @@ function renderStatsSerieAView() {
         const allowNegative = !!options.allowNegative;
         const sortAsc = !!options.sortAsc;
         const valFormatter = options.valFormatter || (v => `${v}${suffix}`);
+        const unitLabel = options.unitLabel || '';
         const sorted = playerList
             .filter(p => {
                 const val = valExtractor(p);
@@ -16748,130 +16749,113 @@ function renderStatsSerieAView() {
             })
             .sort((a, b) => sortAsc ? (valExtractor(a) - valExtractor(b)) : (valExtractor(b) - valExtractor(a)))
             .slice(0, statsLimit);
-        let rowsHtml = '';
         if (sorted.length === 0) {
-            rowsHtml = `<div style="padding:16px;text-align:center;font-size:12px;color:var(--text-muted);">Nessun dato per i filtri selezionati.</div>`;
-        } else {
-            rowsHtml = sorted.map((p, idx) => {
-                const rawVal = valExtractor(p);
-                const displayVal = valFormatter(rawVal);
-                const sec = secDetailExtractor ? secDetailExtractor(p) : '';
-                let rankBadge = `<span style="font-size:11.5px;font-weight:900;color:var(--text-muted);width:26px;text-align:center;">#${idx + 1}</span>`;
-                if (idx === 0) rankBadge = `<span style="font-size:14px;width:26px;text-align:center;">🥇</span>`;
-                else if (idx === 1) rankBadge = `<span style="font-size:14px;width:26px;text-align:center;">🥈</span>`;
-                else if (idx === 2) rankBadge = `<span style="font-size:14px;width:26px;text-align:center;">🥉</span>`;
-                return `
-                    <div class="stats-row" 
-                         onclick="openPlayerProfileModal(${p.id})" 
-                         title="Clicca per aprire la scheda di ${p.name}" 
-                         style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);margin-bottom:6px;transition:all 0.15s ease;">
-                        <div style="display:flex;align-items:center;gap:8px;overflow:hidden;flex:1;min-width:0;">
-                            ${rankBadge}
-                            <span class="role-badge ${p.role}" style="font-size:10px;padding:1px 5px;">${p.role}</span>
-                            <div style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-                                <div style="font-size:13px;font-weight:800;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${p.name}</div>
-                                <div style="font-size:10.5px;color:var(--text-muted);">${p.team}${sec ? ` • <span style="color:var(--text-secondary);">${sec}</span>` : ''}</div>
+            return `
+                <div class="stats-card">
+                    <div class="stats-card-header">
+                        <div class="stats-card-title-group">
+                            <span class="stats-card-icon">${icon}</span>
+                            <div>
+                                <h4 class="stats-card-title">${title}</h4>
+                                <div class="stats-card-sub">${subtitle}</div>
                             </div>
                         </div>
-                        <div style="display:flex;align-items:center;gap:8px;padding-left:10px;">
-                            <span style="font-size:16px;font-weight:900;color:${highlightColor};text-align:right;min-width:32px;letter-spacing:0.3px;">
-                                ${displayVal}
-                            </span>
-                        </div>
+                        <span class="stats-card-limit-tag">TOP ${statsLimit}</span>
                     </div>
-                `;
-            }).join('');
-        }
-        return `
-            <div class="stats-card" style="background:rgba(18,24,38,0.85);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;box-shadow:0 8px 24px rgba(0,0,0,0.35);">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.07);padding-bottom:10px;">
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <span style="font-size:20px;">${icon}</span>
-                        <div>
-                            <h3 style="margin:0;font-size:14.5px;font-weight:900;color:#fff;">${title}</h3>
-                            <div style="font-size:10.5px;color:var(--text-muted);">${subtitle}</div>
-                        </div>
+                    <div style="padding:32px 16px;text-align:center;font-size:12px;color:#64748b;">
+                        Nessun dato per i filtri selezionati.
                     </div>
-                    <span style="font-size:10px;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Top ${statsLimit}</span>
                 </div>
-                <div style="flex:1;display:flex;flex-direction:column;">
-                    ${rowsHtml}
+            `;
+        }
+        const leader = sorted[0];
+        const leaderRawVal = valExtractor(leader);
+        const leaderDisplayVal = valFormatter(leaderRawVal);
+        const leaderSec = secDetailExtractor ? secDetailExtractor(leader) : '';
+        const leaderMaxVal = Math.abs(leaderRawVal) || 1;
+        const leaderSpotlightHtml = `
+            <div class="leader-spotlight" onclick="openPlayerProfileModal(${leader.id})" title="Apri scheda di ${leader.name}" style="border-left: 3px solid ${highlightColor};">
+                <div style="position:absolute;right:-15px;top:-15px;width:120px;height:120px;background:radial-gradient(circle, ${highlightColor}20 0%, transparent 70%);pointer-events:none;"></div>
+                <div style="display:flex;align-items:center;min-width:0;flex:1;gap:10px;">
+                    <div class="leader-crown-badge">
+                        <span style="font-size:16px;line-height:1;">👑</span>
+                    </div>
+                    <div class="leader-info" style="min-width:0;flex:1;">
+                        <div class="leader-top-line" style="display:flex;align-items:center;gap:7px;margin-bottom:2px;">
+                            <span class="role-badge ${leader.role}" style="font-size:10px;padding:1px 6px;font-weight:800;flex-shrink:0;">${leader.role}</span>
+                            <span class="leader-name" style="font-size:15px;font-weight:900;color:#fff;letter-spacing:-0.2px;">${leader.name}</span>
+                        </div>
+                        <div class="leader-meta" style="font-size:11.5px;color:#94a3b8;display:flex;align-items:center;gap:5px;flex-wrap:wrap;">
+                            <span style="color:#cbd5e1;font-weight:700;">${leader.team}</span>
+                            ${leaderSec ? `<span style="opacity:0.4;">•</span><span>${leaderSec}</span>` : ''}
+                        </div>
+                    </div>
+                </div>
+                <div class="leader-stat-box" style="text-align:right;padding-left:10px;flex-shrink:0;">
+                    <div class="leader-stat-val" style="color:${highlightColor};font-size:22px;font-weight:950;letter-spacing:-0.5px;text-shadow:0 0 16px ${highlightColor}40;">
+                        ${leaderDisplayVal}
+                    </div>
+                    ${unitLabel ? `<div class="leader-metric-unit" style="font-size:9.5px;font-weight:800;color:#64748b;text-transform:uppercase;margin-top:2px;letter-spacing:0.5px;">${unitLabel}</div>` : ''}
                 </div>
             </div>
         `;
+        const remaining = sorted.slice(1);
+        let rowsHtml = '';
+        if (remaining.length > 0) {
+            rowsHtml = `
+                <div class="stats-rows-list">
+                    ${remaining.map((p, idx) => {
+                        const rawVal = valExtractor(p);
+                        const displayVal = valFormatter(rawVal);
+                        const sec = secDetailExtractor ? secDetailExtractor(p) : '';
+                        const rankNum = idx + 2;
+                        const rankClass = rankNum === 2 ? 'rank-2' : (rankNum === 3 ? 'rank-3' : '');
+                        const pct = leaderMaxVal > 0 
+                            ? Math.max(8, Math.min(100, Math.round((Math.abs(rawVal) / leaderMaxVal) * 100))) 
+                            : 50;
+                        return `
+                            <div class="stats-row" onclick="openPlayerProfileModal(${p.id})" title="Clicca per aprire la scheda di ${p.name}">
+                                <div class="stats-row-main">
+                                    <div class="stats-row-left">
+                                        <span class="stats-rank-num ${rankClass}">#${rankNum}</span>
+                                        <span class="role-badge ${p.role}" style="font-size:9.5px;padding:1px 5px;">${p.role}</span>
+                                        <div class="stats-player-info">
+                                            <span class="stats-player-name">${p.name}</span>
+                                            <span class="stats-player-meta">${p.team}${sec ? ` • ${sec}` : ''}</span>
+                                        </div>
+                                    </div>
+                                    <div class="stats-row-right">
+                                        <span class="stats-val" style="color:${highlightColor};">
+                                            ${displayVal}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="stats-bar-track">
+                                    <div class="stats-bar-fill" style="width:${pct}%;background:linear-gradient(90deg, ${highlightColor}50, ${highlightColor});"></div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        }
+        return `
+            <div class="stats-card">
+                <div class="stats-card-header">
+                    <div class="stats-card-title-group">
+                        <span class="stats-card-icon">${icon}</span>
+                        <div>
+                            <h4 class="stats-card-title">${title}</h4>
+                            <div class="stats-card-sub">${subtitle}</div>
+                        </div>
+                    </div>
+                    <span class="stats-card-limit-tag">TOP ${statsLimit}</span>
+                </div>
+                ${leaderSpotlightHtml}
+                ${rowsHtml}
+            </div>
+        `;
     };
-    const cardGoals = buildLeaderboardCard(
-        'Classifica Marcatori', '⚽', 'Gol segnati in Serie A 2026/27',
-        pool,
-        p => p.gol_2627 || 0,
-        p => `${p.presenze_2627 || 0} gare`,
-        '#fbbf24', ''
-    );
-    const cardAssists = buildLeaderboardCard(
-        'Classifica Assist', '🪄', 'Assist vincenti forniti ai compagni',
-        pool,
-        p => p.assist_2627 || 0,
-        p => `${p.presenze_2627 || 0} gare`,
-        '#00f2fe', ''
-    );
-    const cardXg = buildLeaderboardCard(
-        'Expected Goals (xG)', '🎯', 'Qualità e volume tiri generati',
-        pool,
-        p => p.xg_2627 !== null && p.xg_2627 !== undefined ? p.xg_2627 : (p.xg90_2627 ? parseFloat(p.xg90_2627) : 0),
-        p => p.xg90_2627 ? `${p.xg90_2627} xG/90` : '',
-        '#f472b6', ''
-    );
-    const cardXa = buildLeaderboardCard(
-        'Expected Assists (xA)', '🪄', 'Pericolosità passaggi e occasioni create',
-        pool,
-        p => p.xa_2627 !== null && p.xa_2627 !== undefined ? p.xa_2627 : (p.xa90_2627 ? parseFloat(p.xa90_2627) : 0),
-        p => p.xa90_2627 ? `${p.xa90_2627} xA/90` : '',
-        '#38bdf8', ''
-    );
-    const poolGk = pool.filter(p => p.role === 'P');
-    const cardGkGs = buildLeaderboardCard(
-        'Gol Subiti (Portieri)', '🧤', 'Reti incassate complessive',
-        poolGk,
-        p => p.gol_subiti_2627 || 0,
-        p => `CS: ${p.clean_sheets_2627 || 0} • Par: ${p.parate_2627 || 0}`,
-        '#ef4444', ''
-    );
-    const cardGkCs = buildLeaderboardCard(
-        'Clean Sheets (Portieri)', '🛡️', 'Partite a porta inviolata',
-        poolGk,
-        p => (p.clean_sheets_2627 !== undefined && p.clean_sheets_2627 > 0) ? p.clean_sheets_2627 : (p.clean_sheet_stat_2627 || 0),
-        p => `${p.presenze_2627 || 0} gare • ${p.parate_2627 || 0} parate`,
-        '#4ade80', ''
-    );
-    const cardBonus = buildLeaderboardCard(
-        'Top FantaBonus (+)', '🎁', 'Punti bonus accumulati (+3 Gol, +1 Assist, +3 Rigore Par.)',
-        pool,
-        p => (p.tot_bonus_2627 !== undefined && p.tot_bonus_2627 > 0) ? p.tot_bonus_2627 : ((p.gol_2627 || 0) * 3 + (p.assist_2627 || 0)),
-        p => `${p.gol_2627 || 0}G • ${p.assist_2627 || 0}A`,
-        '#10b981', ' pt'
-    );
-    const cardMalus = buildLeaderboardCard(
-        'Top FantaMalus (-)', '⚠️', 'Punti malus subiti (Gol subiti, Rig. falliti, Amm, Esp, Aut)',
-        pool,
-        p => (p.tot_malus_2627 !== undefined && p.tot_malus_2627 > 0) ? p.tot_malus_2627 : ((p.gol_subiti_2627 || 0) + (p.amm_2627 || 0) * 0.5 + (p.esp_2627 || 0)),
-        p => `${p.gol_subiti_2627 ? p.gol_subiti_2627 + ' GS • ' : ''}${p.amm_2627 || 0} Amm`,
-        '#f87171', ' pt'
-    );
-    const cardAmm = buildLeaderboardCard(
-        'Cartellini Gialli', '🟨', 'Classifica ammonizioni Serie A',
-        pool,
-        p => p.amm_2627 || 0,
-        p => `${p.falli_subiti_2627 || 0} falli subiti`,
-        '#fbbf24', ''
-    );
-    const cardEsp = buildLeaderboardCard(
-        'Cartellini Rossi', '🟥', 'Classifica espulsioni Serie A',
-        pool,
-        p => p.esp_2627 || 0,
-        p => `${p.amm_2627 || 0} gialli`,
-        '#ef4444', ''
-    );
-    const poolVoted2 = pool.filter(p => (p.presenze_2627 || p.partite_voto_2627 || 0) >= 2 || (p.minuti_stat_2627 || 0) >= 90);
     const getXfmObj = (p) => {
         if (p.xfm !== undefined && p.xfm !== null && p.delta_xfm !== undefined && p.delta_xfm !== null) {
             return { xfm: Number(p.xfm), delta: Number(p.delta_xfm) };
@@ -16882,306 +16866,378 @@ function renderStatsSerieAView() {
         }
         return { xfm: 6.0, delta: 0.0 };
     };
-    const cardFm = buildLeaderboardCard(
-        'Top FantaMedia (FM)', '📈', 'Miglior rendimento con bonus (min. 2 gare)',
-        poolVoted2,
-        p => p.fm_2627 || 0,
-        p => `${p.presenze_2627 || 0} gare a voto`,
-        '#fbbf24', '',
-        { valFormatter: v => Number(v).toFixed(2) }
-    );
+    const poolVoted2 = pool.filter(p => (p.presenze_2627 || p.partite_voto_2627 || 0) >= 2 || (p.minuti_stat_2627 || 0) >= 90);
+    const poolGk = pool.filter(p => p.role === 'P');
     const cardXfm = buildLeaderboardCard(
-        'Top Expected FantaMedia (xFM)', '🔮', 'FantaMedia attesa da modello xG/xA/Clean Sheet',
+        'Top Expected FantaMedia (xFM)', '🔮', 'FantaMedia attesa da modello xG/xA/CS',
         poolVoted2,
         p => getXfmObj(p).xfm,
-        p => `FM Reale: ${p.fm_2627 ? p.fm_2627.toFixed(2) : '-'} • ${p.presenze_2627 || 0} gare`,
-        'var(--accent-cyan)', '',
-        { valFormatter: v => Number(v).toFixed(2) }
+        p => `FM: ${p.fm_2627 ? p.fm_2627.toFixed(2) : '-'} • ${p.presenze_2627 || 0}g`,
+        '#00f2fe', '',
+        { valFormatter: v => Number(v).toFixed(2), unitLabel: 'xFM' }
     );
     const cardUnderperformers = buildLeaderboardCard(
-        'Occasioni di Mercato (Scommesse 💎)', '💎', 'Producono tanto xG/xA ma hanno raccolto meno bonus (Da Comprare!)',
+        'Occasioni di Mercato (Scommesse 💎)', '💎', 'Producono tanto xG/xA con meno bonus raccolti (Da Comprare)',
         poolVoted2.filter(p => getXfmObj(p).delta < -0.15),
         p => getXfmObj(p).delta,
         p => `xFM ${getXfmObj(p).xfm.toFixed(2)} vs FM ${p.fm_2627 ? p.fm_2627.toFixed(2) : '-'}`,
-        '#fbbf24', '',
-        { allowNegative: true, sortAsc: true, valFormatter: v => `${Number(v).toFixed(2)}` }
+        '#10b981', '',
+        { allowNegative: true, sortAsc: true, valFormatter: v => `${Number(v).toFixed(2)}`, unitLabel: 'Delta' }
     );
     const cardOverperformers = buildLeaderboardCard(
-        'Rischio Regressione (Overperformance)', '⚠️', 'Hanno raccolto più bonus rispetto al volume di occasioni create',
+        'Rischio Regressione ⚠️', '⚠️', 'Hanno raccolto più bonus rispetto al volume di occasioni create',
         poolVoted2.filter(p => getXfmObj(p).delta > 0.15),
         p => getXfmObj(p).delta,
         p => `FM ${p.fm_2627 ? p.fm_2627.toFixed(2) : '-'} vs xFM ${getXfmObj(p).xfm.toFixed(2)}`,
         '#f87171', '',
-        { allowNegative: true, sortAsc: false, valFormatter: v => `+${Number(v).toFixed(2)}` }
+        { allowNegative: true, sortAsc: false, valFormatter: v => `+${Number(v).toFixed(2)}`, unitLabel: 'Delta' }
+    );
+    const cardFm = buildLeaderboardCard(
+        'Top FantaMedia Reale (FM)', '📈', 'Miglior rendimento con bonus (min. 2 gare)',
+        poolVoted2,
+        p => p.fm_2627 || 0,
+        p => `${p.presenze_2627 || 0} gare a voto`,
+        '#fbbf24', '',
+        { valFormatter: v => Number(v).toFixed(2), unitLabel: 'FM' }
     );
     const cardMv = buildLeaderboardCard(
-        'Top Media Voto (MV)', '📊', 'Miglior media voto dei pagellisti (senza bonus)',
+        'Top Media Voto Pura (MV)', '📊', 'Miglior media voto senza bonus (min. 2 gare)',
         poolVoted2,
         p => p.mv_2627 || 0,
         p => `${p.presenze_2627 || 0} gare a voto`,
         '#4ade80', '',
-        { valFormatter: v => Number(v).toFixed(2) }
-    );
-    const cardRecoveries = buildLeaderboardCard(
-        'Palle Recuperate', '🛡️', 'Contrasti vinti e recuperi (Modificatore Difesa)',
-        pool,
-        p => p.recuperi_2627 || p.ball_recovery_stat_2627 || 0,
-        p => `${p.presenze_2627 || 0} presenze`,
-        '#38bdf8', ''
-    );
-    const cardBigChances = buildLeaderboardCard(
-        'Grandi Occasioni Create', '⚡', 'Palle gol nitide regalate ai compagni',
-        pool,
-        p => p.big_chances_created_2627 || p.chances_created_2627 || 0,
-        p => `${p.assist_2627 || 0} assist reali`,
-        '#c084fc', ''
+        { valFormatter: v => Number(v).toFixed(2), unitLabel: 'MV' }
     );
     const cardRating = buildLeaderboardCard(
-        'Rating Statistico', '⭐', 'Media voto oggettiva e rendimento (min. 2 gare)',
+        'Rating Statistico Live', '⭐', 'Media voto oggettiva basata su metriche live',
         poolVoted2,
         p => p.rating_live_2627 || 0,
         p => `${p.presenze_2627 || 0} gare a voto`,
-        '#38bdf8', ''
+        '#a78bfa', '',
+        { unitLabel: 'Rating' }
+    );
+    const cardGoals = buildLeaderboardCard(
+        'Classifica Marcatori', '⚽', 'Gol segnati in Serie A 2026/27',
+        pool,
+        p => p.gol_2627 || 0,
+        p => `${p.presenze_2627 || 0} gare`,
+        '#fbbf24', '',
+        { unitLabel: 'GOL' }
+    );
+    const cardXg = buildLeaderboardCard(
+        'Expected Goals (xG)', '🎯', 'Qualità e volume tiri generati',
+        pool,
+        p => p.xg_2627 !== null && p.xg_2627 !== undefined ? p.xg_2627 : (p.xg90_2627 ? parseFloat(p.xg90_2627) : 0),
+        p => p.xg90_2627 ? `${p.xg90_2627} xG/90` : `${p.gol_2627 || 0} gol`,
+        '#f472b6', '',
+        { unitLabel: 'xG' }
+    );
+    const cardShotsOnTarget = buildLeaderboardCard(
+        'Tiri nello Specchio /90', '🎯', 'Frequenza conclusioni in porta ogni 90 min',
+        pool.filter(p => (p.minuti_2627 || p.minuti_stat_2627 || 0) >= 45),
+        p => p.ontarget_scoring_att_2627 || 0,
+        p => `${p.gol_2627 || 0} gol realizzati`,
+        '#38bdf8', '',
+        { unitLabel: 'Tiri/90' }
     );
     const cardXgot = buildLeaderboardCard(
-        'Expected Goals on Target (xGOT)', '🎯', 'Qualità e precisione tiri nello specchio',
+        'Expected Goals on Target (xGOT)', '🎯', 'Precisione e pericolosità tiri nello specchio',
         pool,
         p => p.xgot_2627 || 0,
         p => `${p.gol_2627 || 0} gol segnati`,
-        '#ec4899', ''
+        '#ec4899', '',
+        { unitLabel: 'xGOT' }
     );
     const cardBigChancesMissed = buildLeaderboardCard(
         'Occasioni Nitide Fallite', '❌', 'Grandi occasioni da gol non concretizzate',
         pool,
         p => p.big_chance_missed_2627 || 0,
         p => `${p.gol_2627 || 0} gol realizzati`,
-        '#f87171', ''
+        '#f87171', '',
+        { unitLabel: 'Fallite' }
     );
-    const cardShotsOnTarget = buildLeaderboardCard(
-        'Tiri in Porta /90', '🎯', 'Frequenza conclusioni nello specchio ogni 90 min',
-        pool.filter(p => (p.minuti_2627 || p.minuti_stat_2627 || 0) >= 45),
-        p => p.ontarget_scoring_att_2627 || 0,
-        p => `${p.gol_2627 || 0} gol`,
-        '#fbbf24', ''
+    const cardAssists = buildLeaderboardCard(
+        'Classifica Assist', '🪄', 'Assist vincenti forniti ai compagni',
+        pool,
+        p => p.assist_2627 || 0,
+        p => `${p.presenze_2627 || 0} gare`,
+        '#00f2fe', '',
+        { unitLabel: 'ASSIST' }
     );
-    const cardGoalsPrevented = buildLeaderboardCard(
-        'Gol Evitati (Goals Prevented)', '🧤', 'Miracoli e gol salvati rispetto ai tiri subiti',
-        poolGk,
-        p => p.goals_prevented_2627 !== null && p.goals_prevented_2627 !== undefined ? p.goals_prevented_2627 : 0,
-        p => `Par: ${p.parate_2627 || 0} • GS: ${p.gol_subiti_2627 || 0}`,
-        '#10b981', ''
+    const cardXa = buildLeaderboardCard(
+        'Expected Assists (xA)', '🪄', 'Pericolosità passaggi e rifinitura',
+        pool,
+        p => p.xa_2627 !== null && p.xa_2627 !== undefined ? p.xa_2627 : (p.xa90_2627 ? parseFloat(p.xa90_2627) : 0),
+        p => p.xa90_2627 ? `${p.xa90_2627} xA/90` : `${p.assist_2627 || 0} assist`,
+        '#38bdf8', '',
+        { unitLabel: 'xA' }
     );
-    const cardSavePct = buildLeaderboardCard(
-        '% Parate Effettuate', '🛡️', 'Percentuale tiri respinti (min. 2 gare)',
-        poolGk.filter(p => (p.presenze_2627 || p.minuti_stat_2627 ? 1 : 0) >= 1),
-        p => p.save_pct_2627 || 0,
-        p => `${p.parate_2627 || 0} parate • ${p.clean_sheets_2627 || 0} CS`,
-        '#4ade80', '%'
-    );
-    const cardTackles = buildLeaderboardCard(
-        'Contrasti Vinti /90', '⚔️', 'Tackle riusciti per gara (Interdizione e Modificatore)',
-        pool.filter(p => (p.minuti_2627 || p.minuti_stat_2627 || 0) >= 45),
-        p => p.total_tackle_2627 || 0,
-        p => `${p.recuperi_2627 || p.ball_recovery_stat_2627 || 0} recuperi`,
-        '#38bdf8', ''
+    const cardBigChances = buildLeaderboardCard(
+        'Grandi Occasioni Create', '⚡', 'Palle gol nitide regalate ai compagni',
+        pool,
+        p => p.big_chances_created_2627 || p.chances_created_2627 || 0,
+        p => `${p.assist_2627 || 0} assist reali`,
+        '#c084fc', '',
+        { unitLabel: 'Chances' }
     );
     const cardDribbles = buildLeaderboardCard(
-        'Dribbling Riusciti /90', '🪄', 'Superiorità numerica e dribbling vinti per 90 min',
+        'Dribbling Riusciti /90', '💫', 'Superiorità numerica e dribbling vinti',
         pool.filter(p => (p.minuti_2627 || p.minuti_stat_2627 || 0) >= 45),
         p => p.won_contest_2627 || 0,
         p => `${p.assist_2627 || 0} assist`,
-        '#c084fc', ''
+        '#818cf8', '',
+        { unitLabel: 'Dribbling' }
+    );
+    const cardGkCs = buildLeaderboardCard(
+        'Clean Sheets (Portieri)', '🛡️', 'Partite a porta inviolata',
+        poolGk,
+        p => (p.clean_sheets_2627 !== undefined && p.clean_sheets_2627 > 0) ? p.clean_sheets_2627 : (p.clean_sheet_stat_2627 || 0),
+        p => `${p.presenze_2627 || 0} gare • ${p.parate_2627 || 0} parate`,
+        '#4ade80', '',
+        { unitLabel: 'Clean Sheet' }
+    );
+    const cardGoalsPrevented = buildLeaderboardCard(
+        'Gol Evitati (Goals Prevented)', '🧤', 'Miracoli e gol salvati oltre l\'atteso',
+        poolGk,
+        p => p.goals_prevented_2627 !== null && p.goals_prevented_2627 !== undefined ? p.goals_prevented_2627 : 0,
+        p => `Parate: ${p.parate_2627 || 0} • GS: ${p.gol_subiti_2627 || 0}`,
+        '#10b981', '',
+        { unitLabel: 'Evitati' }
+    );
+    const cardSavePct = buildLeaderboardCard(
+        '% Parate Effettuate', '🛡️', 'Percentuale tiri respinti (min. 1 gara)',
+        poolGk.filter(p => (p.presenze_2627 || p.minuti_stat_2627 ? 1 : 0) >= 1),
+        p => p.save_pct_2627 || 0,
+        p => `${p.parate_2627 || 0} parate • ${p.clean_sheets_2627 || 0} CS`,
+        '#22d3ee', '%',
+        { unitLabel: '% Parate' }
+    );
+    const cardRecoveries = buildLeaderboardCard(
+        'Palle Recuperate (Modificatore)', '🛡️', 'Contrasti vinti e recuperi difensivi',
+        pool,
+        p => p.recuperi_2627 || p.ball_recovery_stat_2627 || 0,
+        p => `${p.presenze_2627 || 0} presenze`,
+        '#38bdf8', '',
+        { unitLabel: 'Recuperi' }
+    );
+    const cardTackles = buildLeaderboardCard(
+        'Contrasti Vinti /90', '⚔️', 'Tackle riusciti per gara (Interdizione)',
+        pool.filter(p => (p.minuti_2627 || p.minuti_stat_2627 || 0) >= 45),
+        p => p.total_tackle_2627 || 0,
+        p => `${p.recuperi_2627 || p.ball_recovery_stat_2627 || 0} recuperi`,
+        '#60a5fa', '',
+        { unitLabel: 'Tackles' }
+    );
+    const cardGkGs = buildLeaderboardCard(
+        'Gol Subiti (Portieri)', '🧤', 'Reti incassate complessive',
+        poolGk,
+        p => p.gol_subiti_2627 || 0,
+        p => `CS: ${p.clean_sheets_2627 || 0} • Par: ${p.parate_2627 || 0}`,
+        '#ef4444', '',
+        { unitLabel: 'Gol Subiti' }
+    );
+    const cardBonus = buildLeaderboardCard(
+        'Top FantaBonus (+)', '🎁', 'Punti bonus accumulati (+3 Gol, +1 Assist, +3 Rig.)',
+        pool,
+        p => (p.tot_bonus_2627 !== undefined && p.tot_bonus_2627 > 0) ? p.tot_bonus_2627 : ((p.gol_2627 || 0) * 3 + (p.assist_2627 || 0)),
+        p => `${p.gol_2627 || 0}G • ${p.assist_2627 || 0}A`,
+        '#10b981', ' pt',
+        { unitLabel: 'Bonus' }
+    );
+    const cardMalus = buildLeaderboardCard(
+        'Top FantaMalus (-)', '⚠️', 'Punti malus subiti (Gol subiti, Rig. falliti, Amm, Esp)',
+        pool,
+        p => (p.tot_malus_2627 !== undefined && p.tot_malus_2627 > 0) ? p.tot_malus_2627 : ((p.gol_subiti_2627 || 0) + (p.amm_2627 || 0) * 0.5 + (p.esp_2627 || 0)),
+        p => `${p.gol_subiti_2627 ? p.gol_subiti_2627 + ' GS • ' : ''}${p.amm_2627 || 0} Amm`,
+        '#f87171', ' pt',
+        { unitLabel: 'Malus' }
+    );
+    const cardAmm = buildLeaderboardCard(
+        'Cartellini Gialli', '🟨', 'Classifica ammonizioni Serie A',
+        pool,
+        p => p.amm_2627 || 0,
+        p => `${p.falli_subiti_2627 || 0} falli subiti`,
+        '#fbbf24', '',
+        { unitLabel: 'Gialli' }
+    );
+    const cardEsp = buildLeaderboardCard(
+        'Cartellini Rossi', '🟥', 'Classifica espulsioni Serie A',
+        pool,
+        p => p.esp_2627 || 0,
+        p => `${p.amm_2627 || 0} gialli`,
+        '#ef4444', '',
+        { unitLabel: 'Rossi' }
     );
     const cardFouls = buildLeaderboardCard(
         'Falli Commessi /90', '⚠️', 'Giocatori più fallosi per gara (Rischio Malus)',
         pool.filter(p => (p.minuti_2627 || p.minuti_stat_2627 || 0) >= 45),
         p => p.fouls_2627 || 0,
         p => `${p.amm_2627 || 0} ammonizioni`,
-        '#f87171', ''
+        '#fb923c', '',
+        { unitLabel: 'Falli/90' }
+    );
+    const buildSectionGroup = (icon, title, badge, desc, cardsArray) => {
+        return `
+            <div class="stats-section-group">
+                <div class="stats-section-header">
+                    <div class="stats-section-title-wrap">
+                        <span class="stats-section-icon">${icon}</span>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                                <h3 class="stats-section-title">${title}</h3>
+                                <span class="stats-section-badge">${badge}</span>
+                            </div>
+                            <p class="stats-section-desc">${desc}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-cards-grid">
+                    ${cardsArray.join('')}
+                </div>
+            </div>
+        `;
+    };
+    const secValore = buildSectionGroup(
+        '🔮',
+        'Expected FantaMedia (xFM) & Analisi Valore',
+        'AI PREDITTIVA',
+        'Il cuore predittivo del fantacalcio: chi produce fanta-valore reale e chi è destinato a esplodere o calare.',
+        [cardXfm, cardUnderperformers, cardOverperformers, cardFm, cardMv, cardRating]
+    );
+    const secAttacco = buildSectionGroup(
+        '⚽',
+        'Attacco, Gol & Finalizzazione',
+        'RETI & VOLUME',
+        'I bomber della Serie A, la qualità del tiro (xG) e la freddezza sotto porta.',
+        [cardGoals, cardXg, cardShotsOnTarget, cardXgot, cardBigChancesMissed]
+    );
+    const secAssist = buildSectionGroup(
+        '🪄',
+        'Creatività, Assist & Grandi Occasioni',
+        'FANTASIA & REGIA',
+        'I maestri dell\'assist, visione di gioco ed Expected Assists (xA) forniti ai compagni.',
+        [cardAssists, cardXa, cardBigChances, cardDribbles]
+    );
+    const secDifesa = buildSectionGroup(
+        '🧤',
+        'Portieri, Clean Sheet & Modificatore Difesa',
+        'PORTA & CONTRASTI',
+        'I migliori interpreti difensivi: reti inviolate, miracoli tra i pali e contrasti vinti.',
+        [cardGkCs, cardGoalsPrevented, cardSavePct, cardRecoveries, cardTackles, cardGkGs]
+    );
+    const secDisciplina = buildSectionGroup(
+        '⚖️',
+        'FantaBonus, Malus & Disciplina',
+        'SALDO PUNTI & CARTELLINI',
+        'Impatto complessivo di bonus (+3, +1) contro le penalità da cartellini e gol subiti.',
+        [cardBonus, cardMalus, cardAmm, cardEsp, cardFouls]
     );
     let sectionsHtml = '';
     if (statsViewCategory === 'ALL') {
-        sectionsHtml = `
-            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:20px;">
-                ${cardGoals}
-                ${cardAssists}
-                ${cardFm}
-                ${cardXfm}
-                ${cardUnderperformers}
-                ${cardOverperformers}
-                ${cardMv}
-                ${cardRating}
-                ${cardXg}
-                ${cardXa}
-                ${cardXgot}
-                ${cardGoalsPrevented}
-                ${cardGkCs}
-                ${cardBigChances}
-                ${cardBigChancesMissed}
-                ${cardRecoveries}
-                ${cardTackles}
-                ${cardBonus}
-                ${cardMalus}
-            </div>
-        `;
-    } else if (statsViewCategory === 'xfm_delta') {
-        sectionsHtml = `
-            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:20px;">
-                ${cardXfm}
-                ${cardUnderperformers}
-                ${cardOverperformers}
-                ${cardFm}
-                ${cardXg}
-                ${cardXa}
-            </div>
-        `;
+        sectionsHtml = `${secValore} ${secAttacco} ${secAssist} ${secDifesa} ${secDisciplina}`;
+    } else if (statsViewCategory === 'xfm_delta' || statsViewCategory === 'ratings') {
+        sectionsHtml = secValore;
     } else if (statsViewCategory === 'goals') {
-        sectionsHtml = `
-            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:20px;">
-                ${cardGoals}
-                ${cardXg}
-                ${cardXgot}
-                ${cardShotsOnTarget}
-                ${cardBigChancesMissed}
-                ${cardBonus}
-            </div>
-        `;
+        sectionsHtml = secAttacco;
     } else if (statsViewCategory === 'assists') {
-        sectionsHtml = `
-            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:20px;">
-                ${cardAssists}
-                ${cardXa}
-                ${cardBigChances}
-                ${cardDribbles}
-            </div>
-        `;
-    } else if (statsViewCategory === 'gk') {
-        sectionsHtml = `
-            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:20px;">
-                ${cardGoalsPrevented}
-                ${cardGkCs}
-                ${cardSavePct}
-                ${cardGkGs}
-            </div>
-        `;
-    } else if (statsViewCategory === 'defense') {
-        sectionsHtml = `
-            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:20px;">
-                ${cardRecoveries}
-                ${cardTackles}
-                ${cardGkCs}
-            </div>
-        `;
-    } else if (statsViewCategory === 'bonus_malus') {
-        sectionsHtml = `
-            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:20px;">
-                ${cardBonus}
-                ${cardMalus}
-            </div>
-        `;
-    } else if (statsViewCategory === 'cards') {
-        sectionsHtml = `
-            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:20px;">
-                ${cardAmm}
-                ${cardEsp}
-                ${cardFouls}
-                ${cardMalus}
-            </div>
-        `;
-    } else if (statsViewCategory === 'ratings') {
-        sectionsHtml = `
-            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:20px;">
-                ${cardFm}
-                ${cardXfm}
-                ${cardUnderperformers}
-                ${cardOverperformers}
-                ${cardMv}
-                ${cardRating}
-            </div>
-        `;
+        sectionsHtml = secAssist;
+    } else if (statsViewCategory === 'defense' || statsViewCategory === 'gk') {
+        sectionsHtml = secDifesa;
+    } else if (['discipline', 'cards', 'bonus_malus'].includes(statsViewCategory)) {
+        sectionsHtml = secDisciplina;
     } else if (statsViewCategory === 'xg_xa') {
-        sectionsHtml = `
-            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:20px;">
-                ${cardXg}
-                ${cardXa}
-                ${cardXgot}
-                ${cardBigChances}
-                ${cardXfm}
-            </div>
-        `;
+        sectionsHtml = `${secAttacco} ${secAssist}`;
+    } else {
+        sectionsHtml = `${secValore} ${secAttacco} ${secAssist} ${secDifesa} ${secDisciplina}`;
     }
     const teamsList = Array.from(new Set(PLAYERS.map(p => p.team))).filter(Boolean).sort();
     const teamOptions = teamsList.map(tm => `<option value="${tm}" ${statsFilterTeam === tm ? 'selected' : ''}>${tm}</option>`).join('');
     container.innerHTML = `
-        <div class="stats-page-container" style="max-width:1380px;margin:0 auto;padding:16px 20px;">
+        <div class="stats-page-container">
             <!-- HEADER -->
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:14px;">
                 <div style="display:flex;align-items:center;gap:12px;">
-                    <span style="font-size:36px;">📊</span>
+                    <span style="font-size:32px;line-height:1;">📊</span>
                     <div>
-                        <h2 class="font-title" style="margin:0;font-size:20px;color:#fff;">Statistiche & Leaderboard Serie A 2026/27</h2>
+                        <h2 class="font-title" style="margin:0;font-size:20px;font-weight:900;color:#fff;letter-spacing:-0.3px;">Statistiche & Leaderboard Serie A 2026/27</h2>
                         <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">
-                            Classifiche ufficiali: Gol, Assist, xG/xA, Portieri, Bonus, Malus, Cartellini e Medie Voto. Clicca su qualsiasi calciatore per aprire la sua scheda.
+                            Classifiche ufficiali e avanzate: Gol, Assist, xG/xA, Portieri, Bonus, Malus e Modelli Predittivi xFM. Clicca su qualsiasi riga per aprire la scheda del calciatore.
                         </div>
                     </div>
                 </div>
-                <div style="display:flex;align-items:center;gap:10px;">
-                    <!-- TOP N SELECTOR -->
-                    <div style="display:flex;align-items:center;gap:4px;background:rgba(0,0,0,0.3);padding:3px 6px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);">
-                        <span style="font-size:11px;color:var(--text-muted);font-weight:700;margin-right:4px;">Righe:</span>
-                        <button class="btn-action ${statsLimit === 10 ? 'active' : ''}" style="padding:4px 10px;font-size:11px;" onclick="setStatsLimit(10)">Top 10</button>
-                        <button class="btn-action ${statsLimit === 20 ? 'active' : ''}" style="padding:4px 10px;font-size:11px;" onclick="setStatsLimit(20)">Top 20</button>
-                        <button class="btn-action ${statsLimit === 50 ? 'active' : ''}" style="padding:4px 10px;font-size:11px;" onclick="setStatsLimit(50)">Top 50</button>
-                    </div>
+                <div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.3);padding:3px 6px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);">
+                    <span style="font-size:11px;color:var(--text-muted);font-weight:800;margin-right:4px;">Righe:</span>
+                    <button class="btn-action ${statsLimit === 10 ? 'active' : ''}" style="padding:4px 10px;font-size:11px;border-radius:6px;" onclick="setStatsLimit(10)">Top 10</button>
+                    <button class="btn-action ${statsLimit === 20 ? 'active' : ''}" style="padding:4px 10px;font-size:11px;border-radius:6px;" onclick="setStatsLimit(20)">Top 20</button>
+                    <button class="btn-action ${statsLimit === 50 ? 'active' : ''}" style="padding:4px 10px;font-size:11px;border-radius:6px;" onclick="setStatsLimit(50)">Top 50</button>
                 </div>
+            </div>
+            <!-- MACRO NAVIGATION SWITCHER -->
+            <div class="stats-macro-nav">
+                <button class="stats-macro-btn ${statsViewCategory === 'ALL' ? 'active' : ''}" onclick="setStatsCategory('ALL')">
+                    <span class="macro-icon">🌟</span>
+                    <span class="macro-label">Panoramica Completa</span>
+                </button>
+                <button class="stats-macro-btn ${['xfm_delta', 'ratings'].includes(statsViewCategory) ? 'active' : ''}" onclick="setStatsCategory('xfm_delta')">
+                    <span class="macro-icon">🔮</span>
+                    <span class="macro-label">FantaMedia & xFM</span>
+                </button>
+                <button class="stats-macro-btn ${statsViewCategory === 'goals' ? 'active' : ''}" onclick="setStatsCategory('goals')">
+                    <span class="macro-icon">⚽</span>
+                    <span class="macro-label">Attacco & Gol</span>
+                </button>
+                <button class="stats-macro-btn ${statsViewCategory === 'assists' ? 'active' : ''}" onclick="setStatsCategory('assists')">
+                    <span class="macro-icon">🪄</span>
+                    <span class="macro-label">Assist & Rifinitura</span>
+                </button>
+                <button class="stats-macro-btn ${['defense', 'gk'].includes(statsViewCategory) ? 'active' : ''}" onclick="setStatsCategory('defense')">
+                    <span class="macro-icon">🧤</span>
+                    <span class="macro-label">Portieri & Difesa</span>
+                </button>
+                <button class="stats-macro-btn ${['discipline', 'cards', 'bonus_malus'].includes(statsViewCategory) ? 'active' : ''}" onclick="setStatsCategory('discipline')">
+                    <span class="macro-icon">⚖️</span>
+                    <span class="macro-label">Bonus & Disciplina</span>
+                </button>
             </div>
             <!-- BARRA FILTRI E RICERCA -->
-            <div class="filter-panel stats-filter-panel">
-                <div class="stats-search-box">
+            <div class="stats-filter-bar">
+                <div class="stats-search-wrapper">
+                    <span style="font-size:13px;color:#64748b;">🔍</span>
                     <input type="text" 
                            id="inputStatsSearch" 
-                           class="input-search"
-                           placeholder="🔍 Cerca calciatore nelle classifiche..." 
+                           placeholder="Cerca calciatore o squadra..." 
                            value="${statsSearchQuery}" 
                            oninput="statsSearchQuery = this.value; renderStatsSerieAView();">
+                    ${statsSearchQuery ? `
+                        <button onclick="statsSearchQuery = ''; renderStatsSerieAView();" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:12px;padding:0 4px;" title="Cancella ricerca">✕</button>
+                    ` : ''}
                 </div>
-                <div class="stats-select-group">
-                    <span style="font-size:11.5px;color:var(--text-muted);font-weight:700;">Ruolo:</span>
-                    <select class="select-filter" onchange="statsFilterRole = this.value; renderStatsSerieAView();">
-                        <option value="ALL" ${statsFilterRole === 'ALL' ? 'selected' : ''}>Tutti i Ruoli</option>
-                        <option value="P" ${statsFilterRole === 'P' ? 'selected' : ''}>Portieri (P)</option>
-                        <option value="D" ${statsFilterRole === 'D' ? 'selected' : ''}>Difensori (D)</option>
-                        <option value="C" ${statsFilterRole === 'C' ? 'selected' : ''}>Centrocampisti (C)</option>
-                        <option value="A" ${statsFilterRole === 'A' ? 'selected' : ''}>Attaccanti (A)</option>
-                    </select>
+                <div class="stats-filter-controls">
+                    <div class="filter-chip-group">
+                        <span class="filter-chip-label">Ruolo:</span>
+                        <select onchange="statsFilterRole = this.value; renderStatsSerieAView();">
+                            <option value="ALL" ${statsFilterRole === 'ALL' ? 'selected' : ''}>Tutti i Ruoli</option>
+                            <option value="P" ${statsFilterRole === 'P' ? 'selected' : ''}>Portieri (P)</option>
+                            <option value="D" ${statsFilterRole === 'D' ? 'selected' : ''}>Difensori (D)</option>
+                            <option value="C" ${statsFilterRole === 'C' ? 'selected' : ''}>Centrocampisti (C)</option>
+                            <option value="A" ${statsFilterRole === 'A' ? 'selected' : ''}>Attaccanti (A)</option>
+                        </select>
+                    </div>
+                    <div class="filter-chip-group">
+                        <span class="filter-chip-label">Club:</span>
+                        <select onchange="statsFilterTeam = this.value; renderStatsSerieAView();">
+                            <option value="ALL" ${statsFilterTeam === 'ALL' ? 'selected' : ''}>Tutti i Club</option>
+                            ${teamOptions}
+                        </select>
+                    </div>
+                    ${(statsSearchQuery || statsFilterRole !== 'ALL' || statsFilterTeam !== 'ALL') ? `
+                        <button class="btn-action" style="padding:5px 12px;font-size:11px;background:rgba(239,68,68,0.15);color:#f87171;border-color:rgba(239,68,68,0.3);border-radius:8px;" onclick="statsSearchQuery = ''; statsFilterRole = 'ALL'; statsFilterTeam = 'ALL'; renderStatsSerieAView();">
+                            Reset Filtri ✕
+                        </button>
+                    ` : ''}
                 </div>
-                <div class="stats-select-group">
-                    <span style="font-size:11.5px;color:var(--text-muted);font-weight:700;">Club:</span>
-                    <select class="select-filter" onchange="statsFilterTeam = this.value; renderStatsSerieAView();">
-                        <option value="ALL" ${statsFilterTeam === 'ALL' ? 'selected' : ''}>Tutti i Club</option>
-                        ${teamOptions}
-                    </select>
-                </div>
-                ${(statsSearchQuery || statsFilterRole !== 'ALL' || statsFilterTeam !== 'ALL') ? `
-                    <button class="btn-action" style="padding:5px 10px;font-size:11.5px;background:rgba(239,68,68,0.15);color:#f87171;border-color:rgba(239,68,68,0.3);" onclick="statsSearchQuery = ''; statsFilterRole = 'ALL'; statsFilterTeam = 'ALL'; renderStatsSerieAView();">
-                        Reset Filtri ✕
-                    </button>
-                ` : ''}
             </div>
-            <!-- PILLOLE CATEGORIE VELOCI -->
-            <div class="stats-pills-bar">
-                <button class="btn-action ${statsViewCategory === 'ALL' ? 'active' : ''}" onclick="setStatsCategory('ALL')">🌟 Panoramica Griglie</button>
-                <button class="btn-action ${statsViewCategory === 'xfm_delta' ? 'active' : ''}" onclick="setStatsCategory('xfm_delta')">🔮 Expected FantaMedia (xFM) & Occasioni</button>
-                <button class="btn-action ${statsViewCategory === 'goals' ? 'active' : ''}" onclick="setStatsCategory('goals')">⚽ Gol & Attacco</button>
-                <button class="btn-action ${statsViewCategory === 'assists' ? 'active' : ''}" onclick="setStatsCategory('assists')">🪄 Assist & Rifinitura</button>
-                <button class="btn-action ${statsViewCategory === 'xg_xa' ? 'active' : ''}" onclick="setStatsCategory('xg_xa')">🎯 Expected Metrics (xG / xA)</button>
-                <button class="btn-action ${statsViewCategory === 'gk' ? 'active' : ''}" onclick="setStatsCategory('gk')">🧤 Portieri</button>
-                <button class="btn-action ${statsViewCategory === 'defense' ? 'active' : ''}" onclick="setStatsCategory('defense')">🛡️ Difesa & Modificatore</button>
-                <button class="btn-action ${statsViewCategory === 'bonus_malus' ? 'active' : ''}" onclick="setStatsCategory('bonus_malus')">🎁 Bonus & Malus</button>
-                <button class="btn-action ${statsViewCategory === 'cards' ? 'active' : ''}" onclick="setStatsCategory('cards')">🟨 Cartellini & Disciplina</button>
-                <button class="btn-action ${statsViewCategory === 'ratings' ? 'active' : ''}" onclick="setStatsCategory('ratings')">📈 FantaMedia & Media Voto</button>
-            </div>
-            <!-- GRIGLIA CLASSIFICHE -->
+            <!-- GRIGLIA SEZIONI CONCETTUALI -->
             ${sectionsHtml}
         </div>
     `;
@@ -17190,14 +17246,15 @@ window.setStatsCategory = setStatsCategory;
 window.setStatsLimit = setStatsLimit;
 window.renderStatsSerieAView = renderStatsSerieAView;
 const AnalyticsMatrixState = {
-    preset: 'under_over', // 'under_over', 'bonus_engine', 'value_money', 'gk_matrix'
-    season: '2627',       // '2627' (Live) o '2526' (Storico)
-    roleFilter: 'ALL',    // 'ALL', 'P', 'D', 'C', 'A'
+    preset: 'under_over',      // 'under_over', 'bonus_engine', 'value_money', 'gk_matrix'
+    season: '2627',            // '2627' (Live) o '2526' (Storico)
+    roleFilter: 'ALL',         // 'ALL', 'P', 'D', 'C', 'A'
     teamFilter: 'ALL',
     minMinutes: 45,
     searchQuery: '',
     highlightedPlayerId: null,
-    isExpanded: false
+    isExpanded: false,
+    quadrantFilter: 'ALL'      // 'ALL', 'top_left', 'top_right', 'bottom_right', 'bottom_left'
 };
 const MATRIX_PRESETS = {
     under_over: {
@@ -17209,32 +17266,36 @@ const MATRIX_PRESETS = {
         yLabel: "Gol Reali Segnati",
         defaultRoles: ['A', 'C', 'D'],
         qTopLeft: { 
+            key: "top_left",
             title: "SOPRAVVALUTATI", 
             badge: "⚠️ Overperformance", 
             sub: "Tanti gol su pochi xG: rischio bolla / da cedere all'apice", 
             color: "#f87171",
-            bg: "rgba(239, 68, 68, 0.06)"
+            bg: "rgba(239, 68, 68, 0.08)"
         },
         qTopRight: { 
+            key: "top_right",
             title: "BOMBER D'ÉLITE", 
             badge: "👑 Top Player", 
             sub: "Altissimo volume offensivo e finalizzazione da fuoriclasse", 
             color: "#38bdf8",
-            bg: "rgba(56, 189, 248, 0.06)"
+            bg: "rgba(56, 189, 248, 0.08)"
         },
         qBottomRight: { 
+            key: "bottom_right",
             title: "SCOMMESSE D'ORO", 
             badge: "💎 Underperformance", 
             sub: "Altissimi xG ma 0-1 gol (pali/sfortuna): COMPRA SUBITO!", 
             color: "#4ade80",
-            bg: "rgba(34, 197, 94, 0.06)"
+            bg: "rgba(34, 197, 94, 0.08)"
         },
         qBottomLeft: { 
+            key: "bottom_left",
             title: "BASSO VOLUME", 
             badge: "🪙 Occasioni Ridotte", 
             sub: "Pochi tiri ed xG bassi: rendimento standard", 
             color: "#94a3b8",
-            bg: "rgba(148, 163, 184, 0.03)"
+            bg: "rgba(148, 163, 184, 0.04)"
         }
     },
     bonus_engine: {
@@ -17246,32 +17307,36 @@ const MATRIX_PRESETS = {
         yLabel: "Expected Goals / 90' (xG/90)",
         defaultRoles: ['A', 'C', 'D'],
         qTopLeft: { 
+            key: "top_left",
             title: "FINALIZZATORI PURI", 
             badge: "🎯 Punte d'Area", 
             sub: "Centravanti puri, vivono di gol su azione", 
             color: "#fbbf24",
-            bg: "rgba(251, 191, 36, 0.06)"
+            bg: "rgba(251, 191, 36, 0.08)"
         },
         qTopRight: { 
+            key: "top_right",
             title: "TOTAL BONUS MONSTERS", 
             badge: "🌟 Fuoriclasse Assoluti", 
             sub: "Altissimi sia al tiro che all'assist: i veri crack del fanta", 
             color: "#38bdf8",
-            bg: "rgba(56, 189, 248, 0.06)"
+            bg: "rgba(56, 189, 248, 0.08)"
         },
         qBottomRight: { 
+            key: "bottom_right",
             title: "RIFINITORI D'ÉLITE", 
             badge: "🪄 Re degli Assist", 
             sub: "Ali e trequartisti che sfornano grandi occasioni da gol", 
             color: "#c084fc",
-            bg: "rgba(192, 132, 252, 0.06)"
+            bg: "rgba(192, 132, 252, 0.08)"
         },
         qBottomLeft: { 
+            key: "bottom_left",
             title: "CONTENIMENTO", 
             badge: "⚙️ Lavoro Oscuro", 
             sub: "Mediani e difensori bloccati, rari bonus pesanti", 
             color: "#94a3b8",
-            bg: "rgba(148, 163, 184, 0.03)"
+            bg: "rgba(148, 163, 184, 0.04)"
         }
     },
     value_money: {
@@ -17287,32 +17352,36 @@ const MATRIX_PRESETS = {
         yLabel: "Minaccia Totale (xG/90 + xA/90)",
         defaultRoles: ['A', 'C', 'D'],
         qTopLeft: { 
+            key: "top_left",
             title: "VALUE GEMS (Affari)", 
             badge: "🚀 Occasioni d'Oro", 
             sub: "Altissima minaccia a prezzo stracciato: PRENDILI ALL'ASTA!", 
             color: "#4ade80",
-            bg: "rgba(34, 197, 94, 0.06)"
+            bg: "rgba(34, 197, 94, 0.08)"
         },
         qTopRight: { 
+            key: "top_right",
             title: "TOP PLAYER CERTIFICATI", 
             badge: "👑 Investimenti Sicuri", 
             sub: "Produzione altissima che ripaga l'esborso pesante", 
             color: "#38bdf8",
-            bg: "rgba(56, 189, 248, 0.06)"
+            bg: "rgba(56, 189, 248, 0.08)"
         },
         qBottomRight: { 
+            key: "bottom_right",
             title: "SOVRAPPREZZATI", 
             badge: "⚠️ Prezzo Eccessivo", 
             sub: "Costo spropositato rispetto alla reale produzione", 
             color: "#f87171",
-            bg: "rgba(239, 68, 68, 0.06)"
+            bg: "rgba(239, 68, 68, 0.08)"
         },
         qBottomLeft: { 
+            key: "bottom_left",
             title: "LOW COST DI ROTAZIONE", 
             badge: "🎟️ Tappabuchi", 
             sub: "Prezzo minimo per completare la rosa", 
             color: "#94a3b8",
-            bg: "rgba(148, 163, 184, 0.03)"
+            bg: "rgba(148, 163, 184, 0.04)"
         }
     },
     gk_matrix: {
@@ -17324,32 +17393,36 @@ const MATRIX_PRESETS = {
         yLabel: "Gol Evitati / Salvati (Goals Prevented)",
         defaultRoles: ['P'],
         qTopLeft: { 
+            key: "top_left",
             title: "PORTIERI SOTTO ASSEDIO", 
             badge: "🧤 Eroi da Modificatore", 
             sub: "Tanti salvataggi decisivi su difese traballanti (Top MV)", 
             color: "#fbbf24",
-            bg: "rgba(251, 191, 36, 0.06)"
+            bg: "rgba(251, 191, 36, 0.08)"
         },
         qTopRight: { 
+            key: "top_right",
             title: "SARACINESCHE D'ÉLITE", 
             badge: "🛡️ I Migliori in Assoluto", 
             sub: "Top % parate e saldo positivo (Massima sicurezza)", 
             color: "#38bdf8",
-            bg: "rgba(56, 189, 248, 0.06)"
+            bg: "rgba(56, 189, 248, 0.08)"
         },
         qBottomRight: { 
+            key: "bottom_right",
             title: "DIFESA BLINDATA", 
             badge: "🔒 Clean Sheet Facili", 
             sub: "Pochi tiri subiti, rendimento affidabile", 
             color: "#4ade80",
-            bg: "rgba(34, 197, 94, 0.06)"
+            bg: "rgba(34, 197, 94, 0.08)"
         },
         qBottomLeft: { 
+            key: "bottom_left",
             title: "A RISCHIO MALUS", 
             badge: "⚠️ Passivo Pesante", 
             sub: "Poche parate decisive e tanti gol subiti: evitare", 
             color: "#f87171",
-            bg: "rgba(239, 68, 68, 0.06)"
+            bg: "rgba(239, 68, 68, 0.08)"
         }
     }
 };
@@ -17359,6 +17432,7 @@ function initAnalyticsMatrix() {
 function setMatrixPreset(presetKey) {
     if (!MATRIX_PRESETS[presetKey]) return;
     AnalyticsMatrixState.preset = presetKey;
+    AnalyticsMatrixState.quadrantFilter = 'ALL';
     if (presetKey === 'gk_matrix') {
         AnalyticsMatrixState.roleFilter = 'P';
     } else if (AnalyticsMatrixState.roleFilter === 'P') {
@@ -17390,6 +17464,14 @@ function toggleMatrixExpand() {
     AnalyticsMatrixState.isExpanded = !AnalyticsMatrixState.isExpanded;
     renderAnalyticsMatrixView();
 }
+function setMatrixQuadrantFilter(qKey) {
+    if (AnalyticsMatrixState.quadrantFilter === qKey) {
+        AnalyticsMatrixState.quadrantFilter = 'ALL';
+    } else {
+        AnalyticsMatrixState.quadrantFilter = qKey;
+    }
+    renderAnalyticsMatrixView();
+}
 function formatMatrixPlayerName(fullName) {
     if (!fullName) return '';
     fullName = fullName.trim();
@@ -17412,8 +17494,10 @@ function highlightMatrixDot(playerId) {
         const id = Number(d.getAttribute('data-id'));
         if (id === playerId) {
             d.setAttribute('stroke', '#fbbf24');
-            d.setAttribute('stroke-width', '3.5');
+            d.setAttribute('stroke-width', '4');
             d.classList.add('pulse-dot');
+            const g = d.closest('.matrix-dot-group');
+            if (g && g.parentNode) g.parentNode.appendChild(g); // Portalo in primo piano
         } else {
             const originalR = d.getAttribute('data-orig-r') || '5.5';
             d.setAttribute('r', originalR);
@@ -17434,11 +17518,82 @@ function unhighlightMatrixDot() {
         d.classList.remove('pulse-dot');
     });
 }
+function showMatrixTooltip(e, id, name, team, role, xVal, yVal, ovr, fvm, deltaLabel, advice) {
+    let tooltip = document.getElementById('matrixTooltip');
+    if (!tooltip) {
+        tooltip = document.createElement('div');
+        tooltip.id = 'matrixTooltip';
+        tooltip.className = 'matrix-floating-tooltip';
+        document.body.appendChild(tooltip);
+    }
+    const preset = MATRIX_PRESETS[AnalyticsMatrixState.preset];
+    const roleColors = { P: '#f59e0b', D: '#10b981', C: '#38bdf8', A: '#f43f5e' };
+    const rColor = roleColors[role] || '#38bdf8';
+    tooltip.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:6px;">
+            <div style="display:flex;align-items:center;gap:6px;">
+                <span class="role-badge ${role}" style="font-size:9.5px;padding:1px 5px;background:${rColor}25;color:${rColor};border:1px solid ${rColor}50;">${role}</span>
+                <b style="color:#fff;font-size:13.5px;">${name}</b>
+                <span style="font-size:11px;color:#94a3b8;">(${team})</span>
+            </div>
+            <span style="font-size:10px;font-weight:800;color:#94a3b8;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">OVR ${ovr || '-'}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:11.5px;color:#cbd5e1;margin-top:2px;">
+            <span>${preset.xLabel}: <b style="color:#fff;">${xVal}</b></span>
+            <span>${preset.yLabel}: <b style="color:#fff;">${yVal}</b></span>
+        </div>
+        ${deltaLabel ? `<div style="font-size:11px;font-weight:700;color:${deltaLabel.includes('+') ? '#f87171' : '#4ade80'};">${deltaLabel}</div>` : ''}
+        ${advice ? `<div style="font-size:11px;color:#cbd5e1;line-height:1.35;background:rgba(0,0,0,0.3);padding:5px 8px;border-radius:6px;border-left:2px solid #fbbf24;">💡 ${advice}</div>` : ''}
+        <div style="font-size:9.5px;color:#64748b;text-align:right;margin-top:2px;">Clicca per scheda giocatore ➔</div>
+    `;
+    tooltip.style.display = 'flex';
+    moveMatrixTooltip(e);
+}
+function moveMatrixTooltip(e) {
+    const tooltip = document.getElementById('matrixTooltip');
+    if (!tooltip) return;
+    const x = e.clientX + 16;
+    const y = e.clientY - 20;
+    const maxX = window.innerWidth - 320;
+    if (x > maxX) {
+        tooltip.style.left = (e.clientX - 290) + 'px';
+    } else {
+        tooltip.style.left = x + 'px';
+    }
+    tooltip.style.top = Math.max(10, Math.min(window.innerHeight - 180, y)) + 'px';
+}
+function hideMatrixTooltip() {
+    const tooltip = document.getElementById('matrixTooltip');
+    if (tooltip) tooltip.style.display = 'none';
+}
+function getTailoredUnderAdvice(p, xg, gol) {
+    const diff = (xg - gol).toFixed(2);
+    if (p.role === 'A') {
+        if (gol === 0) {
+            return `Ha collezionato ben ${xg.toFixed(2)} xG senza sbloccarsi: pali, parate o sfortuna. La matematica predice gol a brevissimo: compralo ora prima che esploda!`;
+        }
+        return `Volume offensivo devastante (${xg.toFixed(2)} xG) con soli ${gol} gol. I bonus pesanti sono solo questione di tempo: giocatore da blindare assolutamente.`;
+    } else if (p.role === 'C') {
+        return `Centrocampista con inserimenti continui nell'area rivale (${xg.toFixed(2)} xG). Con questi numeri è destinato a scalare le gerarchie e portare gol a raffica.`;
+    } else {
+        return `Difensore pericolosissimo sui calci piazzati (${xg.toFixed(2)} xG). Il bonus pesante di testa è imminente, ottima pedina da modificatore.`;
+    }
+}
+function getTailoredOverAdvice(p, xg, gol) {
+    const diff = (gol - xg).toFixed(2);
+    if (gol >= 3 && xg < 1.0) {
+        return `Ha segnato ${gol} gol con soli ${xg.toFixed(2)} xG (conversione oltre il 300%). Rendimento statisticamente insostenibile a lungo termine: scambialo adesso all'apice dell'hype!`;
+    }
+    return `Rendimento sopra le righe (+${diff} gol oltre l'atteso). Ottimo momento di forma, ma è la finestra ideale per massimizzare il suo valore sul mercato degli scambi.`;
+}
+function getTailoredEliteAdvice(p, xg, gol) {
+    return `Pilastro offensivo assoluto: abbina un volume di tiri spaventoso (${xg.toFixed(2)} xG) a una conversione chirurgica (${gol} gol). È un fuoriclasse intoccabile.`;
+}
 function computeMatrixInsights(mapped, presetKey, season) {
     if (!mapped || mapped.length === 0) return { under: [], over: [], elite: [], gems: [] };
     if (presetKey === 'under_over') {
         const under = [...mapped]
-            .filter(d => (d.y - d.x) <= -0.30 && d.x >= 0.7)
+            .filter(d => (d.y - d.x) <= -0.25 && d.x >= 0.7)
             .sort((a, b) => (a.y - a.x) - (b.y - b.x))
             .slice(0, 4)
             .map(d => ({
@@ -17447,10 +17602,10 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 badgeClass: "badge-under",
                 statLabel: `${d.player.gol_2627 || 0} Gol su ${d.x.toFixed(2)} xG`,
                 deltaLabel: `Δ ${(d.y - d.x).toFixed(2)} xG`,
-                advice: `Ha generato ${d.x.toFixed(2)} xG senza raccogliere i meritati gol (pali o sfortuna). I bonus arriveranno: compralo ora prima che il prezzo schizzi!`
+                advice: getTailoredUnderAdvice(d.player, d.x, d.y)
             }));
         const over = [...mapped]
-            .filter(d => (d.y - d.x) >= 0.9)
+            .filter(d => (d.y - d.x) >= 0.85)
             .sort((a, b) => (b.y - b.x) - (a.y - a.x))
             .slice(0, 4)
             .map(d => ({
@@ -17459,7 +17614,7 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 badgeClass: "badge-over",
                 statLabel: `${d.y} Gol su soli ${d.x.toFixed(2)} xG`,
                 deltaLabel: `+${(d.y - d.x).toFixed(2)} surplus`,
-                advice: `Ha segnato ${d.y} gol a fronte di soli ${d.x.toFixed(2)} xG. Rendimento insostenibile nel lungo periodo: è il momento migliore per scambiarlo al valore massimo!`
+                advice: getTailoredOverAdvice(d.player, d.x, d.y)
             }));
         const elite = [...mapped]
             .filter(d => d.x >= 1.2 && d.y >= 2)
@@ -17471,13 +17626,13 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 badgeClass: "badge-elite",
                 statLabel: `${d.y} Gol (${d.x.toFixed(2)} xG)`,
                 deltaLabel: `OVR ${d.player.ovr}`,
-                advice: `Volume devastante (${d.x.toFixed(2)} xG) e conversione clinica. Pilastro intoccabile del reparto d'attacco.`
+                advice: getTailoredEliteAdvice(d.player, d.x, d.y)
             }));
         return { under, over, elite, gems: [] };
     } 
     if (presetKey === 'bonus_engine') {
         const totalMonsters = [...mapped]
-            .filter(d => d.x >= 0.18 && d.y >= 0.30)
+            .filter(d => d.x >= 0.18 && d.y >= 0.28)
             .sort((a, b) => (b.x + b.y) - (a.x + a.y))
             .slice(0, 4)
             .map(d => ({
@@ -17486,10 +17641,10 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 badgeClass: "badge-elite",
                 statLabel: `${d.y.toFixed(2)} xG/90 + ${d.x.toFixed(2)} xA/90`,
                 deltaLabel: `Tot ${(d.x + d.y).toFixed(2)}/90'`,
-                advice: `Coinvolto in tutte le occasioni da gol del club. Tira e serve assist: garanzia matematica di bonus ogni turno.`
+                advice: `Partecipazione attiva a ogni manovra da gol. Conclude in porta e sforna assist: garanzia matematica di bonus costanti.`
             }));
         const playmakers = [...mapped]
-            .filter(d => d.x >= 0.22 && d.y < 0.30)
+            .filter(d => d.x >= 0.22 && d.y < 0.28)
             .sort((a, b) => b.x - a.x)
             .slice(0, 3)
             .map(d => ({
@@ -17498,10 +17653,10 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 badgeClass: "badge-gem",
                 statLabel: `${d.x.toFixed(2)} xA/90 (${d.player.assist_2627 || 0} assist)`,
                 deltaLabel: `FVM ${d.player.fvm} CR`,
-                advice: `Fantasista o esterno dai piedi d'oro. Sforna grandi occasioni da gol ad altissima frequenza.`
+                advice: `Esterno o trequartista dai piedi fatati. Crea occasioni nitide ad altissima frequenza, ideale per chi cerca assistman affidabili.`
             }));
         const pureStrikers = [...mapped]
-            .filter(d => d.y >= 0.40 && d.x < 0.15)
+            .filter(d => d.y >= 0.38 && d.x < 0.16)
             .sort((a, b) => b.y - a.y)
             .slice(0, 3)
             .map(d => ({
@@ -17509,14 +17664,14 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 badge: "🎯 PUNTA PURA D'AREA",
                 badgeClass: "badge-under",
                 statLabel: `${d.y.toFixed(2)} xG/90`,
-                deltaLabel: `FM ${d.player.fm || '-'}`,
-                advice: `Finalizzatore puro. Pochi passaggi chiave ma altissima pericolosità al tiro dentro i sedici metri.`
+                deltaLabel: `FM ${d.player.fm ? Number(d.player.fm).toFixed(2) : '-'}`,
+                advice: `Centravanti di manovra ridotta ma micidiale nei 16 metri. Finalizza tutto ciò che gli arriva sui piedi.`
             }));
         return { elite: totalMonsters, under: playmakers, over: pureStrikers, gems: [] };
     }
     if (presetKey === 'value_money') {
         const gems = [...mapped]
-            .filter(d => d.player.fvm <= 28 && d.y >= 0.28)
+            .filter(d => d.player.fvm <= 30 && d.y >= 0.26)
             .sort((a, b) => (b.y / Math.max(1, b.player.fvm)) - (a.y / Math.max(1, a.player.fvm)))
             .slice(0, 4)
             .map(d => ({
@@ -17525,10 +17680,10 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 badgeClass: "badge-gem",
                 statLabel: `${d.y.toFixed(2)} Minaccia/90' a ${d.player.fvm} CR`,
                 deltaLabel: `Affare Fanta`,
-                advice: `Produzione offensiva da semitop pagata a prezzi di saldo. Da prendere all'asta a tutti i costi!`
+                advice: `Produzione offensiva da semitop acquistabile a cifre contenute. Da comprare assolutamente nelle aste di riparazione.`
             }));
         const overpriced = [...mapped]
-            .filter(d => d.player.fvm >= 35 && d.y < 0.32)
+            .filter(d => d.player.fvm >= 35 && d.y < 0.30)
             .sort((a, b) => (a.y / Math.max(1, a.player.fvm)) - (b.y / Math.max(1, b.player.fvm)))
             .slice(0, 4)
             .map(d => ({
@@ -17537,12 +17692,12 @@ function computeMatrixInsights(mapped, presetKey, season) {
                 badgeClass: "badge-over",
                 statLabel: `FVM ${d.player.fvm} CR per ${d.y.toFixed(2)} Minaccia`,
                 deltaLabel: `Bassa Resa`,
-                advice: `Quotazione elevata che non corrisponde alla reale minaccia prodotta. Non strapagarlo nelle aste.`
+                advice: `Quotazione elevata a fronte di occasioni create modeste. Evita di strapagarlo: c'è di molto meglio a parità di crediti.`
             }));
         return { elite: gems, over: overpriced, under: [], gems: [] };
     }
     const topGk = [...mapped]
-        .filter(d => d.y >= 0.4 && d.x >= 70)
+        .filter(d => d.y >= 0.35 && d.x >= 70)
         .sort((a, b) => b.y - a.y)
         .slice(0, 3)
         .map(d => ({
@@ -17550,11 +17705,11 @@ function computeMatrixInsights(mapped, presetKey, season) {
             badge: "🛡️ SARACINESCA TOP",
             badgeClass: "badge-elite",
             statLabel: `+${d.y.toFixed(2)} Gol Salvati (${d.x}% Parate)`,
-            deltaLabel: `MV ${d.player.mv || '-'}`,
-            advice: `Portiere superbo: salva gol già fatti e garantisce voti alti costanti per il modificatore di difesa.`
+            deltaLabel: `MV ${d.player.mv ? Number(d.player.mv).toFixed(2) : '-'}`,
+            advice: `Portiere superbo: para oltre le aspettative e regala voti altissimi utili per il modificatore di difesa.`
         }));
     const underSiege = [...mapped]
-        .filter(d => d.y >= 0.7 && d.x < 70)
+        .filter(d => d.y >= 0.6 && d.x < 70)
         .sort((a, b) => b.y - a.y)
         .slice(0, 3)
         .map(d => ({
@@ -17563,16 +17718,19 @@ function computeMatrixInsights(mapped, presetKey, season) {
             badgeClass: "badge-gem",
             statLabel: `+${d.y.toFixed(2)} Gol Evitati`,
             deltaLabel: `FVM ${d.player.fvm} CR`,
-            advice: `Subisce molti tiri ma fa parate spettacolari. Ottimo rapporto qualità/prezzo per leghe a modificatore.`
+            advice: `Difesa traballante ma portiere dai riflessi felini: compie prodezze costanti, garanzia di 6.5 e 7 in pagella.`
         }));
     return { elite: topGk, under: underSiege, over: [], gems: [] };
 }
 function renderAnalyticsMatrixView() {
     const container = document.getElementById('viewMatrix');
     if (!container) return;
-    const preset = MATRIX_PRESETS[AnalyticsMatrixState.preset];
-    const season = AnalyticsMatrixState.season;
+    const presetKey = AnalyticsMatrixState.preset || 'under_over';
+    const preset = MATRIX_PRESETS[presetKey];
+    if (!preset) return;
+    const season = AnalyticsMatrixState.season || '2627';
     const isExpanded = AnalyticsMatrixState.isExpanded;
+    const qFilter = AnalyticsMatrixState.quadrantFilter;
     let dataset = PLAYERS.filter(p => {
         if (AnalyticsMatrixState.roleFilter !== 'ALL' && p.role !== AnalyticsMatrixState.roleFilter) return false;
         if (AnalyticsMatrixState.teamFilter !== 'ALL' && p.team !== AnalyticsMatrixState.teamFilter) return false;
@@ -17580,8 +17738,8 @@ function renderAnalyticsMatrixView() {
         if (minutes < AnalyticsMatrixState.minMinutes) return false;
         if (AnalyticsMatrixState.searchQuery) {
             const q = AnalyticsMatrixState.searchQuery;
-            const matchName = p.name.toLowerCase().includes(q);
-            const matchTeam = p.team.toLowerCase().includes(q);
+            const matchName = (p.name || '').toLowerCase().includes(q);
+            const matchTeam = (p.team || '').toLowerCase().includes(q);
             if (!matchName && !matchTeam) return false;
         }
         return true;
@@ -17606,39 +17764,58 @@ function renderAnalyticsMatrixView() {
     const plotMaxY = Math.max(plotMinY + 0.8, maxY + marginY);
     const midX = (plotMinX + plotMaxX) / 2;
     const midY = (plotMinY + plotMaxY) / 2;
-    const isSpecificFilterActive = AnalyticsMatrixState.searchQuery || AnalyticsMatrixState.teamFilter !== 'ALL';
-    let mapped = [];
-    if (isSpecificFilterActive) {
-        mapped = allMapped;
-    } else {
-        const keyQuadrantsPoints = [];
-        const greyQuadrantPoints = [];
-        allMapped.forEach(d => {
-            const isGrey = (d.x < midX && d.y < midY);
-            const isBought = typeof isPlayerBought === 'function' ? isPlayerBought(d.player.id) : false;
-            const isFav = typeof isFavorite === 'function' ? isFavorite(d.player.id) : false;
-            if (!isGrey || isBought || isFav) {
-                keyQuadrantsPoints.push(d);
-            } else {
-                greyQuadrantPoints.push(d);
-            }
-        });
-        greyQuadrantPoints.sort((a, b) => (b.player.ovr || 0) - (a.player.ovr || 0));
-        const cappedGreyPoints = greyQuadrantPoints.slice(0, 30);
-        mapped = [...keyQuadrantsPoints, ...cappedGreyPoints];
-    }
-    const width = isExpanded ? 980 : 760;
-    const height = isExpanded ? 580 : 500;
-    const padL = 55;
-    const padR = 30;
-    const padT = 35;
-    const padB = 45;
+    const width = isExpanded ? 1040 : 840;
+    const height = isExpanded ? 640 : 520;
+    const padL = 60;
+    const padR = 35;
+    const padT = 40;
+    const padB = 48;
     const plotW = width - padL - padR;
     const plotH = height - padT - padB;
     const scaleX = (val) => padL + ((val - plotMinX) / (plotMaxX - plotMinX || 1)) * plotW;
     const scaleY = (val) => padT + plotH - ((val - plotMinY) / (plotMaxY - plotMinY || 1)) * plotH;
     const midScreenX = scaleX(midX);
     const midScreenY = scaleY(midY);
+    const getPointQuadrant = (d) => {
+        if (d.x >= midX && d.y >= midY) return 'top_right';
+        if (d.x < midX && d.y >= midY) return 'top_left';
+        if (d.x >= midX && d.y < midY) return 'bottom_right';
+        return 'bottom_left';
+    };
+    const quadCounts = {
+        top_left: allMapped.filter(d => getPointQuadrant(d) === 'top_left').length,
+        top_right: allMapped.filter(d => getPointQuadrant(d) === 'top_right').length,
+        bottom_right: allMapped.filter(d => getPointQuadrant(d) === 'bottom_right').length,
+        bottom_left: allMapped.filter(d => getPointQuadrant(d) === 'bottom_left').length
+    };
+    const isSpecificFilterActive = AnalyticsMatrixState.searchQuery || AnalyticsMatrixState.teamFilter !== 'ALL';
+    let mapped = [];
+    if (isSpecificFilterActive) {
+        mapped = allMapped;
+    } else {
+        const keyPoints = [];
+        const greyPoints = [];
+        allMapped.forEach(d => {
+            const isGrey = (d.x < midX && d.y < midY);
+            if (!isGrey) {
+                keyPoints.push(d);
+            } else {
+                greyPoints.push(d);
+            }
+        });
+        greyPoints.sort((a, b) => (b.player.ovr || 0) - (a.player.ovr || 0));
+        mapped = [...keyPoints, ...greyPoints.slice(0, 35)];
+    }
+    const outlierIds = new Set();
+    if (allMapped.length > 0) {
+        [...allMapped].sort((a, b) => b.x - a.x).slice(0, 2).forEach(d => outlierIds.add(d.player.id));
+        [...allMapped].sort((a, b) => b.y - a.y).slice(0, 2).forEach(d => outlierIds.add(d.player.id));
+        [...allMapped].sort((a, b) => (a.y - a.x) - (b.y - b.x)).slice(0, 2).forEach(d => outlierIds.add(d.player.id));
+        [...allMapped].sort((a, b) => (b.y - b.x) - (a.y - a.x)).slice(0, 1).forEach(d => outlierIds.add(d.player.id));
+    }
+    if (AnalyticsMatrixState.searchQuery) {
+        mapped.forEach(d => outlierIds.add(d.player.id));
+    }
     const coordCounts = {};
     mapped.forEach(d => {
         const key = `${d.x.toFixed(2)}_${d.y.toFixed(2)}`;
@@ -17664,26 +17841,62 @@ function renderAnalyticsMatrixView() {
         const dotColor = roleColors[d.player.role] || '#38bdf8';
         const isBought = typeof isPlayerBought === 'function' ? isPlayerBought(d.player.id) : false;
         const isFav = typeof isFavorite === 'function' ? isFavorite(d.player.id) : false;
-        const strokeColor = isBought ? '#4ade80' : (isFav ? '#fbbf24' : 'rgba(255,255,255,0.8)');
+        const strokeColor = isBought ? '#4ade80' : (isFav ? '#fbbf24' : 'rgba(255,255,255,0.85)');
         const strokeWidth = isBought || isFav ? 2.5 : 1.2;
-        const radius = d.player.ovr >= 88 ? 7 : (d.player.ovr >= 80 ? 5.5 : 4.5);
-        const isGreyQuadrant = (d.x < midX && d.y < midY);
+        const radius = d.player.ovr >= 88 ? 7.5 : (d.player.ovr >= 80 ? 6 : 4.8);
+        const pQuad = getPointQuadrant(d);
+        const isFadedByQuad = (qFilter !== 'ALL' && pQuad !== qFilter);
+        const dotOpacity = isFadedByQuad ? 0.12 : 0.92;
         let labelHtml = '';
-        if (!isGreyQuadrant) {
+        const isOutlier = outlierIds.has(d.player.id);
+        if (isOutlier && !isFadedByQuad) {
             const displayName = formatMatrixPlayerName(d.player.name);
-            const textX = cx > (padL + plotW - 80) ? cx - 8 : cx + 8;
-            const textY = cy < padT + 20 ? cy + 13 : (index % 2 === 0 ? cy - 5 : cy + 13);
-            const anchor = cx > (padL + plotW - 80) ? 'end' : 'start';
+            const labelWidth = Math.max(54, displayName.length * 6.8 + 14);
+            const isNearRightEdge = cx > (padL + plotW - 90);
+            const rectX = isNearRightEdge ? (cx - labelWidth - 8) : (cx + 8);
+            const rectY = cy - 9;
+            const textX = rectX + labelWidth / 2;
+            const textY = cy + 3.5;
             labelHtml = `
-                <text x="${textX}" y="${textY}" fill="#ffffff" font-size="10.5" font-weight="900" text-anchor="${anchor}" style="text-shadow: 0 1px 4px #000, 0 0 8px #000, 0 0 12px #000;" pointer-events="none">
-                    ${displayName}
-                </text>
+                <g class="matrix-outlier-callout" style="pointer-events:none;">
+                    <rect x="${rectX}" y="${rectY}" width="${labelWidth}" height="18" rx="5" ry="5" fill="rgba(10, 15, 28, 0.9)" stroke="${strokeColor}" stroke-width="1.2" filter="drop-shadow(0 2px 6px rgba(0,0,0,0.6))" />
+                    <text x="${textX}" y="${textY}" fill="#ffffff" font-size="10.5" font-weight="900" text-anchor="middle" font-family="'Outfit', sans-serif">
+                        ${displayName}
+                    </text>
+                </g>
             `;
         }
+        let deltaLabel = '';
+        if (presetKey === 'under_over') {
+            const diff = d.y - d.x;
+            deltaLabel = diff < 0 ? `Δ ${diff.toFixed(2)} xG (Underperformance)` : `+${diff.toFixed(2)} surplus (Overperformance)`;
+        } else if (presetKey === 'bonus_engine') {
+            deltaLabel = `Totale Minaccia: ${(d.x + d.y).toFixed(2)} /90'`;
+        }
+        const safeAdvice = (d.y - d.x < 0) 
+            ? getTailoredUnderAdvice(d.player, d.x, d.y) 
+            : getTailoredOverAdvice(d.player, d.x, d.y);
+        const escapedName = (d.player.name || '').replace(/'/g, "\\'");
+        const escapedTeam = (d.player.team || '').replace(/'/g, "\\'");
+        const escapedAdvice = safeAdvice.replace(/'/g, "\\'").replace(/"/g, '&quot;');
         return `
-            <g class="matrix-dot-group" onclick="openPlayerProfileModal(${d.player.id})" onmouseenter="highlightMatrixDot(${d.player.id})" onmouseleave="unhighlightMatrixDot()" style="cursor:pointer;">
-                <circle class="matrix-dot-circle" data-id="${d.player.id}" data-orig-r="${radius}" data-orig-stroke="${strokeColor}" data-orig-sw="${strokeWidth}" cx="${cx}" cy="${cy}" r="${radius}" fill="${dotColor}" stroke="${strokeColor}" stroke-width="${strokeWidth}" opacity="0.92">
-                    <title>${d.player.name} (${d.player.team})&#10;${preset.xLabel}: ${d.x}&#10;${preset.yLabel}: ${d.y}&#10;OVR: ${d.player.ovr} | FVM: ${d.player.fvm} CR&#10;Clicca per aprire la Scheda Giocatore</title>
+            <g class="matrix-dot-group" 
+               data-id="${d.player.id}"
+               onclick="openPlayerProfileModal(${d.player.id})" 
+               onmouseenter="highlightMatrixDot(${d.player.id}); showMatrixTooltip(event, ${d.player.id}, '${escapedName}', '${escapedTeam}', '${d.player.role}', '${d.x}', '${d.y}', '${d.player.ovr || '-'}', '${d.player.fvm || '-'}', '${deltaLabel}', '${escapedAdvice}')" 
+               onmousemove="moveMatrixTooltip(event)"
+               onmouseleave="unhighlightMatrixDot(); hideMatrixTooltip()" 
+               style="cursor:pointer;">
+                <circle class="matrix-dot-circle" 
+                        data-id="${d.player.id}" 
+                        data-orig-r="${radius}" 
+                        data-orig-stroke="${strokeColor}" 
+                        data-orig-sw="${strokeWidth}" 
+                        cx="${cx}" cy="${cy}" r="${radius}" 
+                        fill="${dotColor}" 
+                        stroke="${strokeColor}" 
+                        stroke-width="${strokeWidth}" 
+                        opacity="${dotOpacity}">
                 </circle>
                 ${labelHtml}
             </g>
@@ -17693,21 +17906,24 @@ function renderAnalyticsMatrixView() {
     const renderInsightCards = (list, sectionTitle, sectionIcon, sectionColor) => {
         if (!list || list.length === 0) return '';
         const cardsHtml = list.map(item => `
-            <div class="fanta-insight-card" onclick="openPlayerProfileModal(${item.player.id})" onmouseenter="highlightMatrixDot(${item.player.id})" onmouseleave="unhighlightMatrixDot()">
+            <div class="fanta-insight-card" 
+                 onclick="openPlayerProfileModal(${item.player.id})" 
+                 onmouseenter="highlightMatrixDot(${item.player.id})" 
+                 onmouseleave="unhighlightMatrixDot()">
                 <div class="fanta-insight-top">
-                    <div style="display:flex;align-items:center;gap:7px;">
-                        <span class="role-badge ${item.player.role}" style="font-size:10px;padding:1px 5px;">${item.player.role}</span>
-                        <b style="color:#fff;font-size:13.5px;">${item.player.name}</b>
-                        <span style="font-size:11.5px;color:var(--text-muted);">(${item.player.team})</span>
+                    <div style="display:flex;align-items:center;gap:8px;min-width:0;flex:1;">
+                        <span class="role-badge ${item.player.role}" style="font-size:10px;padding:1px 6px;flex-shrink:0;">${item.player.role}</span>
+                        <b style="color:#fff;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.player.name}</b>
+                        <span style="font-size:11.5px;color:var(--text-muted);flex-shrink:0;">(${item.player.team})</span>
                     </div>
                     <span class="insight-pill ${item.badgeClass}">${item.deltaLabel}</span>
                 </div>
                 <div class="fanta-insight-stats">
-                    <span style="color:var(--accent-cyan);font-weight:700;">📊 ${item.statLabel}</span>
-                    <span style="color:var(--text-muted);">•</span>
-                    <span>FVM: <b>${item.player.fvm || '-'} CR</b></span>
-                    <span style="color:var(--text-muted);">•</span>
-                    <span>OVR: <b>${item.player.ovr}</b></span>
+                    <span style="color:var(--accent-cyan);font-weight:800;">📊 ${item.statLabel}</span>
+                    <span style="color:rgba(255,255,255,0.2);">•</span>
+                    <span>FVM: <b style="color:#fff;">${item.player.fvm || '-'} CR</b></span>
+                    <span style="color:rgba(255,255,255,0.2);">•</span>
+                    <span>OVR: <b style="color:#fff;">${item.player.ovr}</b></span>
                 </div>
                 <div class="fanta-insight-advice">
                     💡 <b>Consiglio Fanta:</b> ${item.advice}
@@ -17717,8 +17933,9 @@ function renderAnalyticsMatrixView() {
         return `
             <div class="insight-group">
                 <div class="insight-group-header" style="border-left: 3px solid ${sectionColor};">
-                    <span>${sectionIcon}</span>
-                    <span style="color:${sectionColor};font-weight:800;font-size:13px;">${sectionTitle}</span>
+                    <span style="font-size:14px;">${sectionIcon}</span>
+                    <span style="color:${sectionColor};font-weight:800;font-size:13px;letter-spacing:-0.2px;">${sectionTitle}</span>
+                    <span style="margin-left:auto;font-size:10px;color:var(--text-muted);font-weight:700;">${list.length} GIOCATORI</span>
                 </div>
                 ${cardsHtml}
             </div>
@@ -17730,13 +17947,12 @@ function renderAnalyticsMatrixView() {
         teamsOptionsHtml += `<option value="${t}" ${AnalyticsMatrixState.teamFilter === t ? 'selected' : ''}>${t}</option>`;
     });
     const presetButtonsHtml = Object.keys(MATRIX_PRESETS).map(key => {
-        const pInfo = MATRIX_PRESETS[key];
         const isActive = AnalyticsMatrixState.preset === key;
-        const icons = { under_over: '⚖️', bonus_engine: '⚡', value_money: '💎', gk_matrix: '🧤' };
+        const icons = { under_over: '⚽', bonus_engine: '⚡', value_money: '💎', gk_matrix: '🧤' };
         const shortTitles = {
             under_over: 'Gol vs xG (Sotto/Sopraperformance)',
             bonus_engine: 'xG vs xA (Generatore di Bonus)',
-            value_money: 'Minaccia xG+xA vs FVM (Occasioni)',
+            value_money: 'Minaccia xG+xA vs FVM (Occasioni & Costo)',
             gk_matrix: 'Portieri (Gol Evitati vs % Parate)'
         };
         return `
@@ -17748,24 +17964,26 @@ function renderAnalyticsMatrixView() {
     }).join('');
     const rolesChipsHtml = ['ALL', 'P', 'D', 'C', 'A'].map(r => {
         const isActive = AnalyticsMatrixState.roleFilter === r;
-        const labels = { ALL: 'TUTTI', P: '🧤 P', D: '🛡️ D', C: '🪄 C', A: '⚡ A' };
-        return `<button class="role-chip ${r} ${isActive ? 'active' : ''}" onclick="setMatrixRoleFilter('${r}')">${labels[r]}</button>`;
+        const labels = { ALL: 'Tutti i Ruoli', P: '🧤 Portieri', D: '🛡️ Difensori', C: '🪄 Centrocampisti', A: '⚡ Attaccanti' };
+        return `<button class="role-chip ${r} ${isActive ? 'active' : ''}" style="padding:5px 12px;font-size:11.5px;border-radius:8px;" onclick="setMatrixRoleFilter('${r}')">${labels[r]}</button>`;
     }).join('');
     container.innerHTML = `
         <div class="matrix-view-layout ${isExpanded ? 'is-expanded-layout' : ''}">
             <!-- Header Bar -->
             <div class="matrix-header-bar">
                 <div style="display:flex;align-items:center;gap:12px;">
-                    <span style="font-size:24px;">📊</span>
+                    <span style="font-size:28px;line-height:1;">📊</span>
                     <div>
-                        <h2 class="font-title" style="margin:0;font-size:19px;color:#fff;">Football Analytics & Scatter Matrix</h2>
-                        <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Metodologia Sportellate / "Numero!" • Statistiche attese incrociate con guida pratica all'Asta & Scambi</div>
+                        <h2 class="font-title" style="margin:0;font-size:20px;font-weight:900;color:#fff;letter-spacing:-0.3px;">Football Analytics & Scatter Matrix</h2>
+                        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">
+                            ${preset.title} — Metodologia "Numero!" e Sportellate: statistiche attese incrociate con guida tattica ad Asta e Scambi.
+                        </div>
                     </div>
                 </div>
                 <div style="display:flex;align-items:center;gap:10px;">
                     <!-- Bottoncino Espandi / Riduci Schermo -->
                     <button class="btn-expand-matrix" onclick="toggleMatrixExpand()" title="${isExpanded ? 'Torna alla vista affiancata' : 'Ingrandisci il grafico a schermo pieno'}">
-                        ${isExpanded ? '⤓ Vista Standard' : '⛶ Estendi Grafico'}
+                        ${isExpanded ? '⤓ Vista Affiancata' : '⛶ Estendi Grafico'}
                     </button>
                     <div class="matrix-season-toggle">
                         <button class="matrix-season-btn ${season === '2627' ? 'active' : ''}" onclick="setMatrixSeason('2627')">⚡ Live 2026/27</button>
@@ -17779,25 +17997,33 @@ function renderAnalyticsMatrixView() {
             </div>
             <!-- Filter Controls Toolbar -->
             <div class="matrix-filter-toolbar">
-                <div class="role-chip-group">
+                <div class="role-chip-group" style="display:flex;gap:6px;flex-wrap:wrap;">
                     ${rolesChipsHtml}
                 </div>
-                <select class="clean-select" style="max-width:145px;font-size:12px;padding:5px 10px;" onchange="setMatrixTeamFilter(this.value)">
-                    ${teamsOptionsHtml}
-                </select>
-                <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary);">
-                    <span>Minuti:</span>
-                    <select class="clean-select" style="padding:5px 8px;font-size:11.5px;" onchange="setMatrixMinMinutes(this.value)">
+                <div class="filter-chip-group" style="display:flex;align-items:center;gap:6px;">
+                    <span style="font-size:11.5px;color:#94a3b8;font-weight:700;">Club:</span>
+                    <select class="clean-select" style="max-width:150px;font-size:12px;padding:4px 8px;border-radius:6px;" onchange="setMatrixTeamFilter(this.value)">
+                        ${teamsOptionsHtml}
+                    </select>
+                </div>
+                <div class="filter-chip-group" style="display:flex;align-items:center;gap:6px;">
+                    <span style="font-size:11.5px;color:#94a3b8;font-weight:700;">Minuti:</span>
+                    <select class="clean-select" style="padding:4px 8px;font-size:12px;border-radius:6px;" onchange="setMatrixMinMinutes(this.value)">
                         <option value="0" ${AnalyticsMatrixState.minMinutes === 0 ? 'selected' : ''}>Tutti i minuti</option>
                         <option value="45" ${AnalyticsMatrixState.minMinutes === 45 ? 'selected' : ''}>≥ 45'</option>
                         <option value="90" ${AnalyticsMatrixState.minMinutes === 90 ? 'selected' : ''}>≥ 90'</option>
                         <option value="180" ${AnalyticsMatrixState.minMinutes === 180 ? 'selected' : ''}>≥ 180' (Titolari)</option>
                     </select>
                 </div>
-                <div style="flex:1;min-width:160px;margin-left:auto;">
-                    <input type="text" class="clean-input-search" placeholder="🔍 Cerca calciatore o club..." value="${AnalyticsMatrixState.searchQuery}" oninput="setMatrixSearch(this.value)" style="padding:5px 12px;font-size:12px;">
+                <div style="flex:1;min-width:180px;max-width:320px;position:relative;">
+                    <input type="text" 
+                           class="clean-input-search" 
+                           placeholder="🔍 Cerca calciatore o club..." 
+                           value="${AnalyticsMatrixState.searchQuery}" 
+                           oninput="setMatrixSearch(this.value)" 
+                           style="width:100%;padding:6px 12px;font-size:12px;border-radius:8px;">
                 </div>
-                <div style="font-size:11.5px;font-weight:700;color:var(--accent-cyan);padding:5px 10px;background:rgba(0,242,254,0.1);border-radius:6px;white-space:nowrap;">
+                <div style="font-size:11.5px;font-weight:800;color:var(--accent-cyan);padding:5px 12px;background:rgba(0,242,254,0.1);border:1px solid rgba(0,242,254,0.25);border-radius:8px;white-space:nowrap;margin-left:auto;">
                     ${mapped.length} Giocatori nel Grafico
                 </div>
             </div>
@@ -17806,74 +18032,118 @@ function renderAnalyticsMatrixView() {
                 <!-- CHART COLUMN -->
                 <div class="matrix-chart-column">
                     <div class="matrix-canvas-card">
-                        <!-- Quadrants Top Header Indicator -->
+                        <!-- Quadrants Top Header Indicator (Interactive Click-to-Filter) -->
                         <div class="matrix-quadrant-indicators">
-                            <div class="quad-badge top-left" style="color:${preset.qTopLeft.color};border-color:${preset.qTopLeft.color}40;background:${preset.qTopLeft.bg};">
-                                <b>↖ ${preset.qTopLeft.title}</b>
+                            <div class="quad-badge top-left ${qFilter === 'top_left' ? 'active-filter' : ''}" 
+                                 onclick="setMatrixQuadrantFilter('top_left')" 
+                                 title="Clicca per filtrare/evidenziare solo questo quadrante" 
+                                 style="color:${preset.qTopLeft.color};border-color:${preset.qTopLeft.color}50;background:${preset.qTopLeft.bg};">
+                                <div style="display:flex;align-items:center;justify-content:space-between;">
+                                    <b>↖ ${preset.qTopLeft.title}</b>
+                                    <span style="font-weight:800;opacity:0.9;">${quadCounts.top_left}</span>
+                                </div>
                                 <span>${preset.qTopLeft.sub}</span>
                             </div>
-                            <div class="quad-badge top-right" style="color:${preset.qTopRight.color};border-color:${preset.qTopRight.color}40;background:${preset.qTopRight.bg};">
-                                <b>↗ ${preset.qTopRight.title}</b>
+                            <div class="quad-badge top-right ${qFilter === 'top_right' ? 'active-filter' : ''}" 
+                                 onclick="setMatrixQuadrantFilter('top_right')" 
+                                 title="Clicca per filtrare/evidenziare solo questo quadrante" 
+                                 style="color:${preset.qTopRight.color};border-color:${preset.qTopRight.color}50;background:${preset.qTopRight.bg};">
+                                <div style="display:flex;align-items:center;justify-content:space-between;">
+                                    <b>↗ ${preset.qTopRight.title}</b>
+                                    <span style="font-weight:800;opacity:0.9;">${quadCounts.top_right}</span>
+                                </div>
                                 <span>${preset.qTopRight.sub}</span>
                             </div>
                         </div>
+                        <!-- SVG SCATTER PLOT -->
                         <svg viewBox="0 0 ${width} ${height}" class="matrix-svg-plot ${isExpanded ? 'svg-expanded' : ''}">
                             <!-- Quadrant Background Tints -->
                             <rect x="${padL}" y="${padT}" width="${midScreenX - padL}" height="${midScreenY - padT}" fill="${preset.qTopLeft.bg}" />
                             <rect x="${midScreenX}" y="${padT}" width="${padL + plotW - midScreenX}" height="${midScreenY - padT}" fill="${preset.qTopRight.bg}" />
                             <rect x="${padL}" y="${midScreenY}" width="${midScreenX - padL}" height="${padT + plotH - midScreenY}" fill="${preset.qBottomLeft.bg}" />
                             <rect x="${midScreenX}" y="${midScreenY}" width="${padL + plotW - midScreenX}" height="${padT + plotH - midScreenY}" fill="${preset.qBottomRight.bg}" />
+                            <!-- Quadrant Watermarks inside Canvas -->
+                            <text x="${(padL + midScreenX) / 2}" y="${padT + 30}" text-anchor="middle" fill="${preset.qTopLeft.color}" opacity="0.22" font-size="14" font-weight="900" font-family="'Outfit', sans-serif" pointer-events="none">
+                                ⚠️ ${preset.qTopLeft.title}
+                            </text>
+                            <text x="${(midScreenX + padL + plotW) / 2}" y="${padT + 30}" text-anchor="middle" fill="${preset.qTopRight.color}" opacity="0.22" font-size="14" font-weight="900" font-family="'Outfit', sans-serif" pointer-events="none">
+                                👑 ${preset.qTopRight.title}
+                            </text>
+                            <text x="${(midScreenX + padL + plotW) / 2}" y="${padT + plotH - 14}" text-anchor="middle" fill="${preset.qBottomRight.color}" opacity="0.22" font-size="14" font-weight="900" font-family="'Outfit', sans-serif" pointer-events="none">
+                                💎 ${preset.qBottomRight.title}
+                            </text>
+                            <text x="${(padL + midScreenX) / 2}" y="${padT + plotH - 14}" text-anchor="middle" fill="${preset.qBottomLeft.color}" opacity="0.16" font-size="14" font-weight="900" font-family="'Outfit', sans-serif" pointer-events="none">
+                                🪙 ${preset.qBottomLeft.title}
+                            </text>
                             <!-- Main Axes -->
                             <line x1="${padL}" y1="${padT + plotH}" x2="${padL + plotW}" y2="${padT + plotH}" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" />
                             <line x1="${padL}" y1="${padT}" x2="${padL}" y2="${padT + plotH}" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" />
                             <!-- Medians / Crosshair -->
-                            <line x1="${midScreenX}" y1="${padT}" x2="${midScreenX}" y2="${padT + plotH}" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4,4" />
-                            <line x1="${padL}" y1="${midScreenY}" x2="${padL + plotW}" y2="${midScreenY}" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4,4" />
+                            <line x1="${midScreenX}" y1="${padT}" x2="${midScreenX}" y2="${padT + plotH}" stroke="rgba(255,255,255,0.18)" stroke-dasharray="5,4" />
+                            <line x1="${padL}" y1="${midScreenY}" x2="${padL + plotW}" y2="${midScreenY}" stroke="rgba(255,255,255,0.18)" stroke-dasharray="5,4" />
                             <!-- Diagonal Line (Gol = xG) for Under/Overperformance -->
                             ${AnalyticsMatrixState.preset === 'under_over' ? `
-                                <line x1="${scaleX(0)}" y1="${scaleY(0)}" x2="${scaleX(Math.min(plotMaxX, plotMaxY))}" y2="${scaleY(Math.min(plotMaxX, plotMaxY))}" stroke="rgba(251, 191, 36, 0.4)" stroke-dasharray="6,4" stroke-width="1.5" />
-                                <text x="${scaleX(Math.min(plotMaxX, plotMaxY) * 0.72)}" y="${scaleY(Math.min(plotMaxX, plotMaxY) * 0.72) - 8}" fill="#fbbf24" font-size="9.5" font-weight="800" opacity="0.85">Linea Equilibrio (Gol = xG)</text>
+                                <line x1="${scaleX(0)}" y1="${scaleY(0)}" x2="${scaleX(Math.min(plotMaxX, plotMaxY))}" y2="${scaleY(Math.min(plotMaxX, plotMaxY))}" stroke="rgba(251, 191, 36, 0.45)" stroke-dasharray="6,4" stroke-width="1.5" />
+                                <text x="${scaleX(Math.min(plotMaxX, plotMaxY) * 0.72)}" y="${scaleY(Math.min(plotMaxX, plotMaxY) * 0.72) - 8}" fill="#fbbf24" font-size="10" font-weight="800" opacity="0.85">Linea Equilibrio (Gol = xG)</text>
                             ` : ''}
                             <!-- Axis Labels -->
-                            <text x="${padL + plotW / 2}" y="${height - 12}" text-anchor="middle" fill="var(--accent-cyan)" font-size="11.5" font-weight="800">${preset.xLabel} ➔</text>
-                            <text x="16" y="${padT + plotH / 2}" text-anchor="middle" fill="var(--accent-cyan)" font-size="11.5" font-weight="800" transform="rotate(-90 16 ${padT + plotH / 2})">➔ ${preset.yLabel}</text>
+                            <text x="${padL + plotW / 2}" y="${height - 12}" text-anchor="middle" fill="var(--accent-cyan)" font-size="12" font-weight="850">${preset.xLabel} ➔</text>
+                            <text x="18" y="${padT + plotH / 2}" text-anchor="middle" fill="var(--accent-cyan)" font-size="12" font-weight="850" transform="rotate(-90 18 ${padT + plotH / 2})">➔ ${preset.yLabel}</text>
                             <!-- Axis Min / Mid / Max Ticks -->
-                            <text x="${padL}" y="${padT + plotH + 16}" fill="var(--text-muted)" font-size="9.5" text-anchor="middle">${plotMinX.toFixed(1)}</text>
-                            <text x="${midScreenX}" y="${padT + plotH + 16}" fill="var(--text-muted)" font-size="9.5" text-anchor="middle">${midX.toFixed(1)}</text>
-                            <text x="${padL + plotW}" y="${padT + plotH + 16}" fill="var(--text-muted)" font-size="9.5" text-anchor="middle">${plotMaxX.toFixed(1)}</text>
-                            <text x="${padL - 8}" y="${padT + plotH}" fill="var(--text-muted)" font-size="9.5" text-anchor="end">${plotMinY.toFixed(1)}</text>
-                            <text x="${padL - 8}" y="${midScreenY}" fill="var(--text-muted)" font-size="9.5" text-anchor="end">${midY.toFixed(1)}</text>
-                            <text x="${padL - 8}" y="${padT + 8}" fill="var(--text-muted)" font-size="9.5" text-anchor="end">${plotMaxY.toFixed(1)}</text>
+                            <text x="${padL}" y="${padT + plotH + 18}" fill="var(--text-muted)" font-size="10" text-anchor="middle">${plotMinX.toFixed(1)}</text>
+                            <text x="${midScreenX}" y="${padT + plotH + 18}" fill="var(--text-muted)" font-size="10" text-anchor="middle">${midX.toFixed(1)}</text>
+                            <text x="${padL + plotW}" y="${padT + plotH + 18}" fill="var(--text-muted)" font-size="10" text-anchor="middle">${plotMaxX.toFixed(1)}</text>
+                            <text x="${padL - 8}" y="${padT + plotH}" fill="var(--text-muted)" font-size="10" text-anchor="end">${plotMinY.toFixed(1)}</text>
+                            <text x="${padL - 8}" y="${midScreenY}" fill="var(--text-muted)" font-size="10" text-anchor="end">${midY.toFixed(1)}</text>
+                            <text x="${padL - 8}" y="${padT + 8}" fill="var(--text-muted)" font-size="10" text-anchor="end">${plotMaxY.toFixed(1)}</text>
                             <!-- Scatter Dots -->
                             ${dotsSvgHtml}
                         </svg>
-                        <!-- Quadrants Bottom Header Indicator -->
+                        <!-- Quadrants Bottom Header Indicator (Interactive Click-to-Filter) -->
                         <div class="matrix-quadrant-indicators">
-                            <div class="quad-badge bottom-left" style="color:${preset.qBottomLeft.color};border-color:${preset.qBottomLeft.color}40;background:${preset.qBottomLeft.bg};">
-                                <b>↙ ${preset.qBottomLeft.title}</b>
+                            <div class="quad-badge bottom-left ${qFilter === 'bottom_left' ? 'active-filter' : ''}" 
+                                 onclick="setMatrixQuadrantFilter('bottom_left')" 
+                                 title="Clicca per filtrare/evidenziare solo questo quadrante" 
+                                 style="color:${preset.qBottomLeft.color};border-color:${preset.qBottomLeft.color}50;background:${preset.qBottomLeft.bg};">
+                                <div style="display:flex;align-items:center;justify-content:space-between;">
+                                    <b>↙ ${preset.qBottomLeft.title}</b>
+                                    <span style="font-weight:800;opacity:0.9;">${quadCounts.bottom_left}</span>
+                                </div>
                                 <span>${preset.qBottomLeft.sub}</span>
                             </div>
-                            <div class="quad-badge bottom-right" style="color:${preset.qBottomRight.color};border-color:${preset.qBottomRight.color}40;background:${preset.qBottomRight.bg};">
-                                <b>↘ ${preset.qBottomRight.title}</b>
+                            <div class="quad-badge bottom-right ${qFilter === 'bottom_right' ? 'active-filter' : ''}" 
+                                 onclick="setMatrixQuadrantFilter('bottom_right')" 
+                                 title="Clicca per filtrare/evidenziare solo questo quadrante" 
+                                 style="color:${preset.qBottomRight.color};border-color:${preset.qBottomRight.color}50;background:${preset.qBottomRight.bg};">
+                                <div style="display:flex;align-items:center;justify-content:space-between;">
+                                    <b>↘ ${preset.qBottomRight.title}</b>
+                                    <span style="font-weight:800;opacity:0.9;">${quadCounts.bottom_right}</span>
+                                </div>
                                 <span>${preset.qBottomRight.sub}</span>
                             </div>
                         </div>
                     </div>
-                    <div style="font-size:11.5px;color:var(--text-secondary);display:flex;align-items:center;justify-content:space-between;padding:4px 8px;">
-                        <span>💡 Passa il mouse su una card per illuminare il pallino. Clicca per aprire la scheda calciatore.</span>
-                        <div style="display:flex;gap:10px;">
-                            <span style="color:#f43f5e;font-weight:700;">● Attaccanti</span>
-                            <span style="color:#38bdf8;font-weight:700;">● Centrocampisti</span>
-                            <span style="color:#10b981;font-weight:700;">● Difensori</span>
-                            <span style="color:#f59e0b;font-weight:700;">● Portieri</span>
+                    <!-- Legend & Interaction Hint -->
+                    <div style="font-size:12px;color:var(--text-secondary);display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:rgba(255,255,255,0.02);border-radius:8px;">
+                        <span>💡 <b>Interazione Grafico:</b> Passa il mouse su qualsiasi punto per aprire il tooltip dettagliato. Clicca sui quadranti per filtrarli.</span>
+                        <div style="display:flex;gap:12px;font-weight:700;">
+                            <span style="color:#f43f5e;">● Attaccanti</span>
+                            <span style="color:#38bdf8;">● Centrocampisti</span>
+                            <span style="color:#10b981;">● Difensori</span>
+                            <span style="color:#f59e0b;">● Portieri</span>
                         </div>
                     </div>
                 </div>
                 <!-- EDITORIAL FANTA INSIGHTS & ACTIONABLE RECOMMENDATIONS -->
                 <div class="${isExpanded ? 'matrix-expanded-insights-grid' : 'matrix-insights-column'}">
                     <div class="insights-panel-header">
-                        <span style="font-size:18px;">🎯</span>
-                        <h3 style="margin:0;font-size:15px;color:#fff;font-family:'Outfit',sans-serif;">Verdetti & Consigli Fanta Chiave</h3>
+                        <div style="display:flex;align-items:center;gap:8px;">
+                            <span style="font-size:20px;">🎯</span>
+                            <div>
+                                <h3 style="margin:0;font-size:15.5px;font-weight:850;color:#fff;font-family:'Outfit',sans-serif;">Verdetti & Consigli Fanta Chiave</h3>
+                                <div style="font-size:11px;color:var(--text-muted);">Decisioni operative per Asta & Scambi calcolate dall'algoritmo predittivo</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="${isExpanded ? 'insights-expanded-cards-container' : 'insights-scrollable-list'}">
                         ${renderInsightCards(insights.under, "Occasioni d'Oro (Sotto la Lente)", "🔥", "#4ade80")}
@@ -17886,6 +18156,21 @@ function renderAnalyticsMatrixView() {
         </div>
     `;
 }
+window.initAnalyticsMatrix = initAnalyticsMatrix;
+window.setMatrixPreset = setMatrixPreset;
+window.setMatrixSeason = setMatrixSeason;
+window.setMatrixRoleFilter = setMatrixRoleFilter;
+window.setMatrixTeamFilter = setMatrixTeamFilter;
+window.setMatrixMinMinutes = setMatrixMinMinutes;
+window.setMatrixSearch = setMatrixSearch;
+window.toggleMatrixExpand = toggleMatrixExpand;
+window.setMatrixQuadrantFilter = setMatrixQuadrantFilter;
+window.highlightMatrixDot = highlightMatrixDot;
+window.unhighlightMatrixDot = unhighlightMatrixDot;
+window.showMatrixTooltip = showMatrixTooltip;
+window.moveMatrixTooltip = moveMatrixTooltip;
+window.hideMatrixTooltip = hideMatrixTooltip;
+window.renderAnalyticsMatrixView = renderAnalyticsMatrixView;
 const CLIENT_ID = 'client_' + Math.random().toString(36).substring(2, 9) + '_' + Date.now().toString(36);
 let syncSocket = null;
 let syncReconnectTimer = null;
@@ -18131,7 +18416,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
         // --- CLEAN URL ROUTING & NAVIGATION ---
         const ROUTE_MAP = {
-            'auction': '/',
+            'home': '/',
+            'auction': '/listone/',
             'top_flop': '/top-flop/',
             'matchday_advice': '/consigli-fantacalcio/',
             'chi_schiero': '/chi-schiero/',
@@ -18142,13 +18428,20 @@ window.addEventListener('DOMContentLoaded', () => {
             'gk': '/griglia-portieri/',
             'ai_squads': '/top-11-ai/',
             'gems': '/scommesse-talenti/',
-            'home': '/leghe/'
+            'leagues': '/leghe/'
         };
 
         const PATH_TO_TAB = {
-            '/': 'auction',
-            '/index.html': 'auction',
-            '/app.html': 'auction',
+            '/': 'home',
+            '/index.html': 'home',
+            '/app.html': 'home',
+            '/home': 'home',
+            '/home/': 'home',
+            '/listone': 'auction',
+            '/listone/': 'auction',
+            '/listone/index.html': 'auction',
+            '/leghe': 'leagues',
+            '/leghe/': 'leagues',
             '/top-flop': 'top_flop',
             '/top-flop/': 'top_flop',
             '/top-flop/index.html': 'top_flop',
@@ -18191,6 +18484,7 @@ window.addEventListener('DOMContentLoaded', () => {
             'ai_squads': 'ai_squads',
             'gems': 'gems',
             'auction': 'auction',
+            'leagues': 'leagues',
             'home': 'home'
         };
 
@@ -18231,13 +18525,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
         function switchTab(tabId, pushHistory = true) {
             // Intercept locked tabs for auction/league management (Creazione Squadra & Gestione Leghe)
-            const LOCKED_TABS = ['home', 'squad_builder', 'repair', 'trade', 'report'];
+            const LOCKED_TABS = ['leagues', 'squad_builder', 'repair', 'trade', 'report'];
             if (LOCKED_TABS.includes(tabId)) {
                 if (typeof isCreatorModeActive === 'function' && isCreatorModeActive()) {
                     // Accesso consentito per il Creatore!
                 } else {
                     const tabNames = {
-                        'home': 'Hub Gestione Leghe Private',
+                        'leagues': 'Hub Gestione Leghe Private',
                         'squad_builder': 'Creazione Squadra & 11',
                         'repair': 'Asta di Riparazione & Svincoli',
                         'trade': 'Scambi & Trade Machine',
@@ -18252,6 +18546,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             // Aggiorna titolo pulito della pagina nell'header (senza trofei, senza cornici)
             const TAB_TITLES = {
+                'home': 'Home — Statistiche Serie A',
                 'auction': 'Listone Calciatori',
                 'stats': 'Statistiche & xG',
                 'top_flop': 'Top & Flop',
@@ -18263,11 +18558,11 @@ window.addEventListener('DOMContentLoaded', () => {
                 'chi_schiero': 'Chi Schiero? 1vs1',
                 'ai_squads': '5 Squadre Perfette AI',
                 'gems': 'Gemme & Scommesse',
-                'home': 'Hub Leghe'
+                'leagues': 'Hub Leghe'
             };
             const hdrTitle = document.getElementById('headerPageTitle');
             if (hdrTitle) {
-                hdrTitle.textContent = TAB_TITLES[tabId] || 'Listone Calciatori';
+                hdrTitle.textContent = TAB_TITLES[tabId] || 'Statistiche Serie A';
             }
             try {
                 const isFile = window.location.protocol === 'file:';
@@ -18289,13 +18584,13 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (e) {}
 
-            ['tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {
+            ['tabHomeNavBtn', 'tabLeaguesBtn', 'tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active');
             });
 
             // Reset mobile bottom nav active tabs
-            ['mobNavStats', 'mobNavAuction', 'mobNavAdvice', 'mobNavPitch'].forEach(id => {
+            ['mobNavHome', 'mobNavStats', 'mobNavAuction', 'mobNavAdvice', 'mobNavPitch'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active');
             });
@@ -18306,7 +18601,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 if (el) el.classList.remove('active');
             });
 
-            ['viewHomeHub', 'viewAuction', 'viewMatchdayAdvice', 'viewChiSchiero', 'viewAiSquads', 'viewSquadBuilder', 'viewTopFlop', 'viewMatrix', 'viewStats', 'viewPitch', 'viewMatchup', 'viewGk', 'viewGems', 'viewTradeMachine', 'viewRepairAuction', 'viewLeagueReport'].forEach(id => {
+            ['viewHome', 'viewHomeHub', 'viewAuction', 'viewMatchdayAdvice', 'viewChiSchiero', 'viewAiSquads', 'viewSquadBuilder', 'viewTopFlop', 'viewMatrix', 'viewStats', 'viewPitch', 'viewMatchup', 'viewGk', 'viewGems', 'viewTradeMachine', 'viewRepairAuction', 'viewLeagueReport'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.style.display = 'none';
             });
@@ -18316,7 +18611,14 @@ window.addEventListener('DOMContentLoaded', () => {
             if (budgetBar) budgetBar.style.display = 'none';
 
             if (tabId === 'home') {
-                const btn = document.getElementById('tabHomeBtn');
+                const btn = document.getElementById('tabHomeNavBtn');
+                if (btn) btn.classList.add('active');
+                const mob = document.getElementById('mobNavHome');
+                if (mob) mob.classList.add('active');
+                const view = document.getElementById('viewHome');
+                if (view) view.style.display = 'flex';
+            } else if (tabId === 'leagues') {
+                const btn = document.getElementById('tabLeaguesBtn') || document.getElementById('tabHomeBtn');
                 if (btn) btn.classList.add('active');
                 const view = document.getElementById('viewHomeHub');
                 if (view) view.style.display = 'block';
@@ -18410,6 +18712,14 @@ window.addEventListener('DOMContentLoaded', () => {
                 if (grp) grp.classList.add('active');
                 document.getElementById('viewGems').style.display = 'block';
                 renderGemsTab();
+            } else {
+                // Fallback sicuro se il tab non corrisponde a nessun id
+                const btn = document.getElementById('tabHomeNavBtn');
+                if (btn) btn.classList.add('active');
+                const mob = document.getElementById('mobNavHome');
+                if (mob) mob.classList.add('active');
+                const view = document.getElementById('viewHome');
+                if (view) view.style.display = 'flex';
             }
         }
 
@@ -18589,11 +18899,11 @@ window.addEventListener('DOMContentLoaded', () => {
                 if (saved && PATH_TO_TAB[saved]) {
                     return PATH_TO_TAB[saved];
                 }
-                return 'auction';
+                return 'home';
             }
 
             const initialTab = resolveCurrentTab();
-            switchTab(initialTab, false);
+            switchTab(initialTab || 'home', false);
             renderPitchTeam('Inter');
 
             // Registrazione Service Worker per Progressive Web App (PWA)

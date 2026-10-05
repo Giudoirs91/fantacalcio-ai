@@ -179,37 +179,42 @@ def build_standalone_dashboard(sync_android=False):
 <body>
     <header class="app-header-unified">
         <div class="header-main-row">
-            <!-- LEFT: BRANDING + LEAGUES HUB + LEAGUE SELECTOR + MODE -->
+            <!-- LEFT: MODERN BRAND LOGO -->
             <div class="header-left">
-                <div class="brand-badge" onclick="handleBrandSecretClick(); switchTab('auction');" title="Fanta Master AI — Portale Statistico Serie A 2026/27">
-                    <span class="brand-icon">⚡</span>
-                    <div>
-                        <div class="brand-title">FANTA MASTER AI</div>
-                        <div class="brand-sub">Portale Statistico</div>
+                <a href="/" class="brand-logo-modern" onclick="onNavClick(event, 'home')" title="Fanta Master AI — Serie A 2026/27">
+                    <div class="brand-icon-box">
+                        <span>⚡</span>
                     </div>
-                </div>
+                    <div class="brand-text-wrap">
+                        <span class="brand-main-name">Fanta Master <span class="brand-gradient-tag">AI</span></span>
+                    </div>
+                    <span class="brand-season-capsule">2026/27</span>
+                </a>
 
-                <button class="nav-btn-icon creator-only-control" id="tabHomeBtn" onclick="switchTab('home')" title="Hub Campionati & Leghe (Accesso Creatore)">
-                    🏠 Leghe
+                <button class="nav-btn-icon creator-only-control" id="tabLeaguesBtn" onclick="switchTab('leagues')" title="Hub Campionati & Leghe (Accesso Creatore)">
+                    👑 Leghe
                 </button>
 
-                <!-- CURRENT PAGE TITLE IN HEADER (NO FRAMES, NO TROPHY, ULTRA-CLEAN) -->
-                <div id="headerLeagueSelectorContainer" class="header-league-selector-wrap">
-                    <span class="header-page-title" id="headerPageTitle">Listone Calciatori</span>
-                </div>
+                <!-- Hidden container preserving ID for JS state compatibility -->
+                <span id="headerPageTitle" style="display:none;">Home — Statistiche Serie A</span>
             </div>
 
-            <!-- CENTER: INTELLIGENT DIRECT NAVIGATION (NO REDUNDANCY!) -->
+            <!-- CENTER: SLEEK SEGMENTED PILL NAVIGATION BAR -->
             <nav class="header-nav-groups">
-                <!-- 1. LISTONE CALCIATORI (ACCESSO DIRETTO PRIMARIO) -->
-                <a href="/" class="nav-direct-btn" id="tabAuctionBtn" onclick="onNavClick(event, 'auction')" title="Tabellone & Listone Calciatori">
+                <!-- 0. HOME -->
+                <a href="/" class="nav-direct-btn active" id="tabHomeNavBtn" onclick="onNavClick(event, 'home')" title="Home — Statistiche Principali & Leader">
+                    <span>🏠</span> Home
+                </a>
+
+                <!-- 1. LISTONE CALCIATORI -->
+                <a href="/listone/" class="nav-direct-btn" id="tabAuctionBtn" onclick="onNavClick(event, 'auction')" title="Tabellone & Listone Calciatori">
                     <span>📋</span> Listone Calciatori
                 </a>
 
-                <!-- 2. STATISTICHE SERIE A (FOCUS ANALISI & DATI) -->
+                <!-- 2. STATISTICHE SERIE A -->
                 <div class="nav-dropdown">
-                    <button class="nav-group-btn" id="navGroupTactics">
-                        <span>📈</span> Statistiche Serie A <span class="caret">▾</span>
+                    <button class="nav-group-btn" id="navGroupTactics" onclick="onNavClick(event, 'stats')">
+                        <span>📈</span> Statistiche Serie A <span class="nav-caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
                         <a href="/statistiche-serie-a/" class="dropdown-item" id="tabStatsBtn" onclick="onNavClick(event, 'stats')">📊 Statistiche & xG Serie A</a>
@@ -223,8 +228,8 @@ def build_standalone_dashboard(sync_android=False):
 
                 <!-- 3. AI & CONSIGLI -->
                 <div class="nav-dropdown">
-                    <button class="nav-group-btn" id="navGroupAi">
-                        <span>🧠</span> AI & Consigli <span class="caret">▾</span>
+                    <button class="nav-group-btn" id="navGroupAi" onclick="onNavClick(event, 'matchday_advice')">
+                        <span>🧠</span> AI & Consigli <span class="nav-caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
                         <a href="/consigli-fantacalcio/" class="dropdown-item" id="tabMatchdayAdviceBtn" onclick="onNavClick(event, 'matchday_advice')">🎯 Chi Schierare Prossima Giornata</a>
@@ -238,34 +243,28 @@ def build_standalone_dashboard(sync_android=False):
                 </div>
             </nav>
 
+            <!-- RIGHT: MODERN ACTIONS -->
             <div class="header-right">
                 <!-- CREATOR STATUS BADGE (Visibile solo se abilitato) -->
                 <div id="creatorStatusBadge" class="creator-status-badge creator-only-control" onclick="openCreatorAuthModal()" title="👑 Modalità Creatore Attiva. Clicca per disattivare o gestire.">
                     <span>👑 Creatore Attivo</span>
                 </div>
 
-                <div class="header-squad-pill" style="display:none;" onclick="showComingSoonModal('Gestione Rose & Crediti')" title="Gestione Rosa (In Arrivo)">
-                    <span style="font-size:13px;">📋</span>
-                    <span class="pill-credits" id="hdrRemainingBudget">1000 CR</span>
-                    <span class="pill-divider">•</span>
-                    <span class="pill-count" id="hdrPlayersCount">0/25</span>
-                </div>
-
-                <!-- METODOLOGIA & INFO AI BUTTON (UNICO E CHIARO) -->
-                <button class="nav-btn-icon btn-ai-info-pill" onclick="openAiMethodologyModal('ovr')" title="Trasparenza & Metodologia AI — Come funziona l'algoritmo">
-                    <span class="info-icon-badge">ℹ️</span>
-                    <span class="info-text-label">Come Funziona l'AI</span>
+                <!-- METODOLOGIA & INFO AI BUTTON -->
+                <button class="modern-header-pill-btn" onclick="openAiMethodologyModal('ovr')" title="Trasparenza & Metodologia AI — Come funziona l'algoritmo">
+                    <span class="pill-dot-cyan"></span>
+                    <span>Come Funziona l'AI</span>
                 </button>
 
                 <!-- PWA INSTALL BUTTON (Dinamico) -->
-                <button id="btnPwaInstall" class="nav-btn-icon" style="display:none;background:rgba(0,230,118,0.15);border:1px solid #00e676;color:#00e676;font-weight:700;padding:5px 10px;border-radius:8px;font-size:12px;gap:5px;align-items:center;" onclick="triggerPwaInstall()" title="Installa l'App Fanta Master AI su Smartphone o PC">
-                    <span>📲</span> <span>Installa App</span>
+                <button id="btnPwaInstall" class="modern-header-pill-btn" style="display:none;color:#00e676;border-color:rgba(0,230,118,0.3);background:rgba(0,230,118,0.08);" onclick="triggerPwaInstall()" title="Installa l'App Fanta Master AI su Smartphone o PC">
+                    <span>📲</span> <span>Installa</span>
                 </button>
 
-                <!-- GESTIONE DROPDOWN (PULITO, ZERO RIDONDANZE) -->
+                <!-- GESTIONE DROPDOWN -->
                 <div class="nav-dropdown align-right">
-                    <button class="nav-btn-icon" title="Opzioni e Strumenti">
-                        ⚙️ Gestione <span class="caret">▾</span>
+                    <button class="modern-header-icon-btn" title="Opzioni e Strumenti">
+                        <span>⚙️</span> <span class="nav-caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
                         <!-- VISTA VISITATORE -->
@@ -316,6 +315,198 @@ def build_standalone_dashboard(sync_android=False):
     <main>
         <!-- Tab 0: Home Hub (Tutte le Leghe & Campionati) -->
         <section id="viewHomeHub" class="tab-content" style="display:none;width:100%;">
+        </section>
+
+        <!-- Tab 0-Bis: Home Page Principale (Statistiche & Leader Serie A) -->
+        <section id="viewHome" class="tab-content" style="display:flex;flex-direction:column;gap:20px;width:100%;">
+            <!-- Header Hero Pulito -->
+            <div class="portal-hero-section" style="margin-bottom:0;">
+                <div class="portal-hero-header">
+                    <div class="portal-hero-title-group">
+                        <h1>🏠 Leader &amp; Statistiche <span class="gradient-text">Serie A 2026/27</span></h1>
+                        <p>Le informazioni e le metriche più importanti del campionato: gol, assist, expected metrics e fanta-medie aggiornate.</p>
+                    </div>
+                    <div class="portal-hero-pills">
+                        <button class="nav-direct-btn" onclick="switchTab('auction')" style="background:rgba(0,230,118,0.15);border:1px solid rgba(0,230,118,0.4);color:#00e676;cursor:pointer;padding:7px 16px;border-radius:20px;font-weight:800;font-size:12.5px;">📋 Vai al Listone Calciatori</button>
+                        <button class="nav-direct-btn" onclick="switchTab('pitch')" style="background:rgba(0,242,254,0.15);border:1px solid rgba(0,242,254,0.4);color:#00f2fe;cursor:pointer;padding:7px 16px;border-radius:20px;font-weight:800;font-size:12.5px;">⚽ Probabili Formazioni</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Griglia Leader Serie A: Le 6 Statistiche Più Importanti -->
+            <div class="leader-grid">
+                
+                <!-- 1. Capocannoniere -->
+                <div class="leader-card">
+                    <div class="leader-card-header">
+                        <span class="leader-stat-badge">⚽ Più Gol Segnati</span>
+                        <span class="leader-val">6</span>
+                    </div>
+                    <div class="leader-player-info">
+                        <span class="role-badge A">A</span>
+                        <div>
+                            <div class="leader-player-name">Donyell Malen</div>
+                            <div class="leader-player-team">Roma • Attaccante</div>
+                        </div>
+                    </div>
+                    <div class="leader-podium">
+                        <strong>Inseguitori:</strong> 2° L. Martinez (Inter, 4 gol) • 3° Varela G. (Monza, 4 gol)
+                    </div>
+                </div>
+
+                <!-- 2. Miglior Assistman -->
+                <div class="leader-card">
+                    <div class="leader-card-header">
+                        <span class="leader-stat-badge">🎯 Più Assist Forniti</span>
+                        <span class="leader-val">4</span>
+                    </div>
+                    <div class="leader-player-info">
+                        <span class="role-badge A">A</span>
+                        <div>
+                            <div class="leader-player-name">Paulo Dybala</div>
+                            <div class="leader-player-team">Roma • Seconda Punta</div>
+                        </div>
+                    </div>
+                    <div class="leader-podium">
+                        <strong>Inseguitori:</strong> 2° Diouf (Inter, 3 assist) • 3° Schmid (Frosinone, 3 assist)
+                    </div>
+                </div>
+
+                <!-- 3. Più xGoals (xG) -->
+                <div class="leader-card">
+                    <div class="leader-card-header">
+                        <span class="leader-stat-badge">⚡ Più xGoals (xG)</span>
+                        <span class="leader-val">4.7</span>
+                    </div>
+                    <div class="leader-player-info">
+                        <span class="role-badge A">A</span>
+                        <div>
+                            <div class="leader-player-name">Lautaro Martinez</div>
+                            <div class="leader-player-team">Inter • Punta Centrale</div>
+                        </div>
+                    </div>
+                    <div class="leader-podium">
+                        <strong>Inseguitori:</strong> 2° Malen (Roma, 4.6 xG) • 3° Raimondo (Frosinone, 2.5 xG)
+                    </div>
+                </div>
+
+                <!-- 4. Più xAssists (xA) -->
+                <div class="leader-card">
+                    <div class="leader-card-header">
+                        <span class="leader-stat-badge">🎨 Più xAssists (xA)</span>
+                        <span class="leader-val">3.4</span>
+                    </div>
+                    <div class="leader-player-info">
+                        <span class="role-badge A">A</span>
+                        <div>
+                            <div class="leader-player-name">Paulo Dybala</div>
+                            <div class="leader-player-team">Roma • Trequartista / Punta</div>
+                        </div>
+                    </div>
+                    <div class="leader-podium">
+                        <strong>Inseguitori:</strong> 2° Dimarco (Inter, 1.6 xA) • 3° Diouf (Inter, 1.5 xA)
+                    </div>
+                </div>
+
+                <!-- 5. Miglior FantaMedia -->
+                <div class="leader-card">
+                    <div class="leader-card-header">
+                        <span class="leader-stat-badge">⭐ Miglior FantaMedia (FM)</span>
+                        <span class="leader-val">10.6</span>
+                    </div>
+                    <div class="leader-player-info">
+                        <span class="role-badge A">A</span>
+                        <div>
+                            <div class="leader-player-name">Donyell Malen</div>
+                            <div class="leader-player-team">Roma • FM 10.60 (6 presenze)</div>
+                        </div>
+                    </div>
+                    <div class="leader-podium">
+                        <strong>Inseguitori:</strong> 2° L. Martinez (Inter, 8.85 FM) • 3° Dybala (Roma, 7.90 FM)
+                    </div>
+                </div>
+
+                <!-- 6. Più Bonus Totali -->
+                <div class="leader-card">
+                    <div class="leader-card-header">
+                        <span class="leader-stat-badge">💎 Più Bonus Totali (+Gol &amp; +Assist)</span>
+                        <span class="leader-val">+18.0</span>
+                    </div>
+                    <div class="leader-player-info">
+                        <span class="role-badge A">A</span>
+                        <div>
+                            <div class="leader-player-name">Donyell Malen</div>
+                            <div class="leader-player-team">Roma • 6 gol (+18 pt bonus)</div>
+                        </div>
+                    </div>
+                    <div class="leader-podium">
+                        <strong>Inseguitori:</strong> 2° L. Martinez (+12.0 bonus) • 3° Raimondo (+12.0 bonus)
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Accesso Rapido agli Strumenti -->
+            <div style="margin-top: 6px;">
+                <h2 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+                    <span>⚡</span> Accesso Rapido agli Strumenti
+                </h2>
+                <div class="home-tools-grid">
+                    <div class="home-tool-item" onclick="switchTab('auction')">
+                        <div>
+                            <div style="font-size:24px;margin-bottom:8px;">📋</div>
+                            <strong style="font-size:15px;color:#fff;display:block;margin-bottom:6px;">Listone &amp; Valutazioni Calciatori</strong>
+                            <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.45;margin:0;">Tabellone completo con 534 calciatori di Serie A, quotazioni, FVM (Fantalive Value Market), ruoli Classic e Mantra.</p>
+                        </div>
+                        <span style="color:var(--accent-neon);font-size:12px;font-weight:700;">Apri Listone &rarr;</span>
+                    </div>
+
+                    <div class="home-tool-item" onclick="switchTab('pitch')">
+                        <div>
+                            <div style="font-size:24px;margin-bottom:8px;">⚽</div>
+                            <strong style="font-size:15px;color:#fff;display:block;margin-bottom:6px;">Probabili Formazioni 2D</strong>
+                            <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.45;margin:0;">Gli 11 titolari, moduli tattici e ballottaggi di tutti i 20 club di Serie A aggiornati per il prossimo turno.</p>
+                        </div>
+                        <span style="color:var(--accent-cyan);font-size:12px;font-weight:700;">Vedi Schemi Club &rarr;</span>
+                    </div>
+
+                    <div class="home-tool-item" onclick="switchTab('chi_schiero')">
+                        <div>
+                            <div style="font-size:24px;margin-bottom:8px;">⚔️</div>
+                            <strong style="font-size:15px;color:#fff;display:block;margin-bottom:6px;">Tool "Chi Schiero?" (1vs1)</strong>
+                            <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.45;margin:0;">Risolvi ogni dubbio di schieramento confrontando due giocatori testa a testa con l'algoritmo predittivo AI.</p>
+                        </div>
+                        <span style="color:var(--accent-purple);font-size:12px;font-weight:700;">Confronta 1vs1 &rarr;</span>
+                    </div>
+
+                    <div class="home-tool-item" onclick="switchTab('gk')">
+                        <div>
+                            <div style="font-size:24px;margin-bottom:8px;">🧤</div>
+                            <strong style="font-size:15px;color:#fff;display:block;margin-bottom:6px;">Griglia Portieri 38 Turni</strong>
+                            <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.45;margin:0;">Matrice incroci casa/trasferta e coefficienti di alternanza per subire meno gol possibili durante l'anno.</p>
+                        </div>
+                        <span style="color:var(--accent-gold);font-size:12px;font-weight:700;">Consulta Griglia &rarr;</span>
+                    </div>
+
+                    <div class="home-tool-item" onclick="switchTab('matchday_advice')">
+                        <div>
+                            <div style="font-size:24px;margin-bottom:8px;">🎯</div>
+                            <strong style="font-size:15px;color:#fff;display:block;margin-bottom:6px;">Consigliati di Giornata</strong>
+                            <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.45;margin:0;">Indici di schierabilità per ruolo, bonus attesi, capitani ideali e Top 11 calcolata dall'AI.</p>
+                        </div>
+                        <span style="color:var(--accent-neon);font-size:12px;font-weight:700;">Vedi Consigliati &rarr;</span>
+                    </div>
+
+                    <div class="home-tool-item" onclick="switchTab('gems')">
+                        <div>
+                            <div style="font-size:24px;margin-bottom:8px;">🔮</div>
+                            <strong style="font-size:15px;color:#fff;display:block;margin-bottom:6px;">Gemme &amp; Scommesse AI</strong>
+                            <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.45;margin:0;">I migliori talenti low cost sotto radar ad alto volume di expected goals ed expected assists.</p>
+                        </div>
+                        <span style="color:var(--accent-cyan);font-size:12px;font-weight:700;">Scopri Gemme &rarr;</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Tab 1: Tabellone Asta -->
@@ -926,21 +1117,21 @@ def build_standalone_dashboard(sync_android=False):
 
     <!-- MOBILE BOTTOM NAVIGATION (Native App Bar - Tabellone Home) -->
     <nav class="mobile-bottom-nav" id="mobileBottomNav">
-        <button class="mobile-nav-item active" id="mobNavAuction" onclick="switchTabMobile('auction')">
+        <button class="mobile-nav-item active" id="mobNavHome" onclick="switchTabMobile('home')">
+            <span class="mob-icon">🏠</span>
+            <span class="mob-label">Home</span>
+        </button>
+        <button class="mobile-nav-item" id="mobNavAuction" onclick="switchTabMobile('auction')">
             <span class="mob-icon">📋</span>
-            <span class="mob-label">Tabellone</span>
-        </button>
-        <button class="mobile-nav-item" id="mobNavStats" onclick="switchTabMobile('stats')">
-            <span class="mob-icon">📊</span>
-            <span class="mob-label">Statistiche</span>
-        </button>
-        <button class="mobile-nav-item" id="mobNavAdvice" onclick="switchTabMobile('matchday_advice')">
-            <span class="mob-icon">🎯</span>
-            <span class="mob-label">Consigli AI</span>
+            <span class="mob-label">Listone</span>
         </button>
         <button class="mobile-nav-item" id="mobNavPitch" onclick="switchTabMobile('pitch')">
             <span class="mob-icon">⚽</span>
             <span class="mob-label">Campo 2D</span>
+        </button>
+        <button class="mobile-nav-item" id="mobNavAdvice" onclick="switchTabMobile('matchday_advice')">
+            <span class="mob-icon">🎯</span>
+            <span class="mob-label">Consigli AI</span>
         </button>
         <button class="mobile-nav-item" id="mobNavMenu" onclick="openMobileMenuModal()">
             <span class="mob-icon">☰</span>
@@ -963,6 +1154,14 @@ def build_standalone_dashboard(sync_android=False):
             </div>
             
             <div class="mobile-menu-grid">
+                <!-- Section 0: Home Page -->
+                <div class="mobile-menu-section">
+                    <div class="mobile-menu-section-title"><span>🏠</span> Home Page</div>
+                    <div class="mobile-menu-links">
+                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('home')">🏠 Home &amp; Leader Serie A</button>
+                    </div>
+                </div>
+
                 <!-- Section 1: Calciatori & Listone -->
                 <div class="mobile-menu-section">
                     <div class="mobile-menu-section-title"><span>📋</span> Listone Principale</div>
@@ -1052,7 +1251,8 @@ def build_standalone_dashboard(sync_android=False):
 
         // --- CLEAN URL ROUTING & NAVIGATION ---
         const ROUTE_MAP = {{
-            'auction': '/',
+            'home': '/',
+            'auction': '/listone/',
             'top_flop': '/top-flop/',
             'matchday_advice': '/consigli-fantacalcio/',
             'chi_schiero': '/chi-schiero/',
@@ -1063,13 +1263,20 @@ def build_standalone_dashboard(sync_android=False):
             'gk': '/griglia-portieri/',
             'ai_squads': '/top-11-ai/',
             'gems': '/scommesse-talenti/',
-            'home': '/leghe/'
+            'leagues': '/leghe/'
         }};
 
         const PATH_TO_TAB = {{
-            '/': 'auction',
-            '/index.html': 'auction',
-            '/app.html': 'auction',
+            '/': 'home',
+            '/index.html': 'home',
+            '/app.html': 'home',
+            '/home': 'home',
+            '/home/': 'home',
+            '/listone': 'auction',
+            '/listone/': 'auction',
+            '/listone/index.html': 'auction',
+            '/leghe': 'leagues',
+            '/leghe/': 'leagues',
             '/top-flop': 'top_flop',
             '/top-flop/': 'top_flop',
             '/top-flop/index.html': 'top_flop',
@@ -1112,6 +1319,7 @@ def build_standalone_dashboard(sync_android=False):
             'ai_squads': 'ai_squads',
             'gems': 'gems',
             'auction': 'auction',
+            'leagues': 'leagues',
             'home': 'home'
         }};
 
@@ -1152,13 +1360,13 @@ def build_standalone_dashboard(sync_android=False):
 
         function switchTab(tabId, pushHistory = true) {{
             // Intercept locked tabs for auction/league management (Creazione Squadra & Gestione Leghe)
-            const LOCKED_TABS = ['home', 'squad_builder', 'repair', 'trade', 'report'];
+            const LOCKED_TABS = ['leagues', 'squad_builder', 'repair', 'trade', 'report'];
             if (LOCKED_TABS.includes(tabId)) {{
                 if (typeof isCreatorModeActive === 'function' && isCreatorModeActive()) {{
                     // Accesso consentito per il Creatore!
                 }} else {{
                     const tabNames = {{
-                        'home': 'Hub Gestione Leghe Private',
+                        'leagues': 'Hub Gestione Leghe Private',
                         'squad_builder': 'Creazione Squadra & 11',
                         'repair': 'Asta di Riparazione & Svincoli',
                         'trade': 'Scambi & Trade Machine',
@@ -1173,6 +1381,7 @@ def build_standalone_dashboard(sync_android=False):
 
             // Aggiorna titolo pulito della pagina nell'header (senza trofei, senza cornici)
             const TAB_TITLES = {{
+                'home': 'Home — Statistiche Serie A',
                 'auction': 'Listone Calciatori',
                 'stats': 'Statistiche & xG',
                 'top_flop': 'Top & Flop',
@@ -1184,11 +1393,11 @@ def build_standalone_dashboard(sync_android=False):
                 'chi_schiero': 'Chi Schiero? 1vs1',
                 'ai_squads': '5 Squadre Perfette AI',
                 'gems': 'Gemme & Scommesse',
-                'home': 'Hub Leghe'
+                'leagues': 'Hub Leghe'
             }};
             const hdrTitle = document.getElementById('headerPageTitle');
             if (hdrTitle) {{
-                hdrTitle.textContent = TAB_TITLES[tabId] || 'Listone Calciatori';
+                hdrTitle.textContent = TAB_TITLES[tabId] || 'Statistiche Serie A';
             }}
             try {{
                 const isFile = window.location.protocol === 'file:';
@@ -1210,13 +1419,13 @@ def build_standalone_dashboard(sync_android=False):
                 }}
             }} catch (e) {{}}
 
-            ['tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {{
+            ['tabHomeNavBtn', 'tabLeaguesBtn', 'tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {{
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active');
             }});
 
             // Reset mobile bottom nav active tabs
-            ['mobNavStats', 'mobNavAuction', 'mobNavAdvice', 'mobNavPitch'].forEach(id => {{
+            ['mobNavHome', 'mobNavStats', 'mobNavAuction', 'mobNavAdvice', 'mobNavPitch'].forEach(id => {{
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active');
             }});
@@ -1227,7 +1436,7 @@ def build_standalone_dashboard(sync_android=False):
                 if (el) el.classList.remove('active');
             }});
 
-            ['viewHomeHub', 'viewAuction', 'viewMatchdayAdvice', 'viewChiSchiero', 'viewAiSquads', 'viewSquadBuilder', 'viewTopFlop', 'viewMatrix', 'viewStats', 'viewPitch', 'viewMatchup', 'viewGk', 'viewGems', 'viewTradeMachine', 'viewRepairAuction', 'viewLeagueReport'].forEach(id => {{
+            ['viewHome', 'viewHomeHub', 'viewAuction', 'viewMatchdayAdvice', 'viewChiSchiero', 'viewAiSquads', 'viewSquadBuilder', 'viewTopFlop', 'viewMatrix', 'viewStats', 'viewPitch', 'viewMatchup', 'viewGk', 'viewGems', 'viewTradeMachine', 'viewRepairAuction', 'viewLeagueReport'].forEach(id => {{
                 const el = document.getElementById(id);
                 if (el) el.style.display = 'none';
             }});
@@ -1237,7 +1446,14 @@ def build_standalone_dashboard(sync_android=False):
             if (budgetBar) budgetBar.style.display = 'none';
 
             if (tabId === 'home') {{
-                const btn = document.getElementById('tabHomeBtn');
+                const btn = document.getElementById('tabHomeNavBtn');
+                if (btn) btn.classList.add('active');
+                const mob = document.getElementById('mobNavHome');
+                if (mob) mob.classList.add('active');
+                const view = document.getElementById('viewHome');
+                if (view) view.style.display = 'flex';
+            }} else if (tabId === 'leagues') {{
+                const btn = document.getElementById('tabLeaguesBtn') || document.getElementById('tabHomeBtn');
                 if (btn) btn.classList.add('active');
                 const view = document.getElementById('viewHomeHub');
                 if (view) view.style.display = 'block';
@@ -1331,6 +1547,14 @@ def build_standalone_dashboard(sync_android=False):
                 if (grp) grp.classList.add('active');
                 document.getElementById('viewGems').style.display = 'block';
                 renderGemsTab();
+            }} else {{
+                // Fallback sicuro se il tab non corrisponde a nessun id
+                const btn = document.getElementById('tabHomeNavBtn');
+                if (btn) btn.classList.add('active');
+                const mob = document.getElementById('mobNavHome');
+                if (mob) mob.classList.add('active');
+                const view = document.getElementById('viewHome');
+                if (view) view.style.display = 'flex';
             }}
         }}
 
@@ -1510,11 +1734,11 @@ def build_standalone_dashboard(sync_android=False):
                 if (saved && PATH_TO_TAB[saved]) {{
                     return PATH_TO_TAB[saved];
                 }}
-                return 'auction';
+                return 'home';
             }}
 
             const initialTab = resolveCurrentTab();
-            switchTab(initialTab, false);
+            switchTab(initialTab || 'home', false);
             renderPitchTeam('Inter');
 
             // Registrazione Service Worker per Progressive Web App (PWA)

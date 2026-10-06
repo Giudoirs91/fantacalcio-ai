@@ -3886,6 +3886,7 @@ def build_all():
         f"{BASE_URL}/griglia-portieri/"
     ]
 
+    pitch_sec_template = None
     if dash_content:
         for sec in SECTIONS_METADATA:
             route = sec["route"]
@@ -4007,6 +4008,9 @@ def build_all():
                 """
                 sec_html = sec_html.replace('</body>', f'{duels_box}\n</body>')
             
+            if route == "probabili-formazioni":
+                pitch_sec_template = sec_html
+
             with open(os.path.join(sec_dir, "index.html"), "w", encoding="utf-8") as f:
                 f.write(sec_html)
             sitemap_urls.append(f"{BASE_URL}/{route}/")
@@ -4090,8 +4094,25 @@ def build_all():
     team_count = 0
     for team_name, t_data in sorted(tactical_db.items()):
         t_slug = slugify(team_name)
-        t_players = [p for p in players if (p.get("team") or "").lower() == team_name.lower()]
-        t_html = generate_team_page(team_name, t_data, t_players, all_teams_list, injuries_db, BASE_URL)
+        modulo = t_data.get("modulo", "3-5-2")
+        meta_title = f"Probabili Formazioni {team_name} 2026/27: Titolari, Ballottaggi e Rigoristi | Fanta Master AI"
+        meta_desc = f"Probabile formazione {team_name} 2026/27 aggiornata: modulo {modulo}, 11 titolare con percentuali, ballottaggi di reparto, rigoristi e rosa completa per il Fantacalcio."
+        t_url = f"{BASE_URL}/probabili-formazioni/{t_slug}/"
+
+        if pitch_sec_template:
+            t_html = pitch_sec_template
+            t_html = re.sub(r'<title>.*?</title>', f'<title>{meta_title}</title>', t_html, flags=re.DOTALL)
+            t_html = re.sub(r'<meta name="description" content=".*?">', f'<meta name="description" content="{meta_desc}">', t_html)
+            t_html = re.sub(r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="{meta_title}">', t_html)
+            t_html = re.sub(r'<meta property="og:description" content=".*?">', f'<meta property="og:description" content="{meta_desc}">', t_html)
+            t_html = re.sub(r'<meta property="og:url" content=".*?">', f'<meta property="og:url" content="{t_url}">', t_html)
+            t_html = re.sub(r'<meta name="twitter:title" content=".*?">', f'<meta name="twitter:title" content="{meta_title}">', t_html)
+            t_html = re.sub(r'<meta name="twitter:description" content=".*?">', f'<meta name="twitter:description" content="{meta_desc}">', t_html)
+            t_html = re.sub(r'<link rel="canonical" href=".*?">', f'<link rel="canonical" href="{t_url}">', t_html)
+            t_html = t_html.replace('</head>', f'    <script>window.INITIAL_PITCH_TEAM = "{team_name}";</script>\n</head>')
+        else:
+            t_players = [p for p in players if (p.get("team") or "").lower() == team_name.lower()]
+            t_html = generate_team_page(team_name, t_data, t_players, all_teams_list, injuries_db, BASE_URL)
         
         t_dir = os.path.join(DIST_DIR, "probabili-formazioni", t_slug)
         os.makedirs(t_dir, exist_ok=True)
@@ -4100,7 +4121,7 @@ def build_all():
             
         sitemap_urls.append(f"{BASE_URL}/probabili-formazioni/{t_slug}/")
         team_count += 1
-    print(f"  ✓ Generate {team_count} pagine squadra complete con Campo 2D, Titolari, Ballottaggi e Rosa in dist/probabili-formazioni/<squadra>/")
+    print(f"  ✓ Generate {team_count} pagine squadra unificate con interfaccia completa Hub (Campo 2D, Titolari, FRP, Ballottaggi, AI Predictor) in dist/probabili-formazioni/<squadra>/")
 
     # 4c. Genera Pagina Privacy Policy Ufficiale & GDPR
     priv_dir = os.path.join(DIST_DIR, "privacy-policy")

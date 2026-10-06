@@ -40,10 +40,11 @@ function getPitchBandId(pos, modulo) {
 function renderPitchClubQuickBar(activeTeam) {
     const bar = document.getElementById('pitchClubQuickBar');
     if (!bar) return;
-    const allTeams = Object.keys(TACTICAL_DB).sort();
+    const allTeams = (typeof TACTICAL_DB !== 'undefined' ? Object.keys(TACTICAL_DB) : []).sort();
     bar.innerHTML = allTeams.map(tm => {
         const isActive = tm.toLowerCase() === (activeTeam || '').toLowerCase();
-        return `<button class="club-quick-btn ${isActive ? 'active' : ''}" onclick="renderPitchTeam('${tm}')">${tm}</button>`;
+        const slug = tm.toLowerCase().replace(/\s+/g, '-');
+        return `<a href="/probabili-formazioni/${slug}/" class="club-quick-btn ${isActive ? 'active' : ''}" onclick="event.preventDefault(); renderPitchTeam('${tm}', true);">${tm}</a>`;
     }).join('');
 }
 
@@ -217,9 +218,36 @@ function getSubstituteForStarter(starter, team, teamPlayers) {
     return null;
 }
 
-function renderPitchTeam(teamName) {
-    if (!teamName) teamName = State.currentTeamPitch || 'Inter';
-    State.currentTeamPitch = teamName;
+function getInitialPitchClub() {
+    if (typeof window !== 'undefined') {
+        if (window.INITIAL_PITCH_TEAM) return window.INITIAL_PITCH_TEAM;
+        const pathMatch = window.location.pathname.match(/\/probabili-formazioni\/([a-z-]+)\/?/);
+        if (pathMatch && typeof TACTICAL_DB !== 'undefined') {
+            const slug = pathMatch[1];
+            const found = Object.keys(TACTICAL_DB).find(t => t.toLowerCase().replace(/\s+/g, '-') === slug);
+            if (found) return found;
+        }
+    }
+    return (typeof State !== 'undefined' && State.currentTeamPitch) ? State.currentTeamPitch : 'Inter';
+}
+
+function renderPitchTeam(teamName, updateUrl = false) {
+    if (!teamName) {
+        teamName = getInitialPitchClub();
+    }
+    if (typeof State !== 'undefined') {
+        State.currentTeamPitch = teamName;
+    }
+
+    // Aggiornamento sincronizzato dell'URL nel browser (Senza ricaricare la pagina)
+    if (updateUrl && typeof window !== 'undefined' && window.history && window.history.pushState) {
+        const slug = teamName.toLowerCase().replace(/\s+/g, '-');
+        const targetUrl = `/probabili-formazioni/${slug}/`;
+        if (window.location.pathname !== targetUrl) {
+            window.history.pushState({ team: teamName }, '', targetUrl);
+        }
+        document.title = `Probabile Formazione ${teamName} 2026/27: Titolari, Ballottaggi e Schemi | Fanta Master AI`;
+    }
 
     // Sincronizza selettore a tendina e barra rapida club
     const selEl = document.getElementById('selectPitchTeam');
@@ -396,8 +424,8 @@ function renderPitchTeam(teamName) {
                         </div>
                         <div class="metric-tile">
                             <div class="tile-lbl">CLEAN SHEETS</div>
-                            <div class="tile-val">${tStat.clean_sheets}</div>
-                            <div class="tile-rank green">#${tStat.clean_sheets_rank} in A</div>
+                            <div class="tile-val">${(tStat.clean_sheets !== undefined && tStat.clean_sheets !== null) ? tStat.clean_sheets : 0}</div>
+                            <div class="tile-rank green">#${(tStat.clean_sheets_rank !== undefined && tStat.clean_sheets_rank !== null) ? tStat.clean_sheets_rank : '-'} in A</div>
                         </div>
                     </div>
                 </div>
@@ -2187,5 +2215,29 @@ function _saveFromSlots(teamName, team) {
 
     applyTacticalChangesToPlayers(teamName, updatedTeam);
 }
+
+// Gestione Navigazione Browser (Frecce Avanti/Indietro) e Auto-Init da URL
+if (typeof window !== 'undefined') {
+    window.addEventListener('popstate', (e) => {
+        if (e.state && e.state.team) {
+            renderPitchTeam(e.state.team, false);
+        } else {
+            const pathMatch = window.location.pathname.match(/\/probabili-formazioni\/([a-z-]+)\/?/);
+            if (pathMatch && typeof TACTICAL_DB !== 'undefined') {
+                const found = Object.keys(TACTICAL_DB).find(t => t.toLowerCase().replace(/\s+/g, '-') === pathMatch[1]);
+                if (found) renderPitchTeam(found, false);
+            }
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Se siamo sulla pagina probabili formazioni, carica il club specificato dall'URL o window.INITIAL_PITCH_TEAM
+        if (typeof State !== 'undefined' && State.activeTab === 'pitch') {
+            const initClub = getInitialPitchClub();
+            renderPitchTeam(initClub, false);
+        }
+    });
+}
+
 
 

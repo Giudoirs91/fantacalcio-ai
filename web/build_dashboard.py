@@ -2125,8 +2125,10 @@ def build_standalone_dashboard(sync_android=False):
             }}
 
             const initialTab = resolveCurrentTab();
-            switchTab(initialTab || 'home', false);
-            renderPitchTeam('Inter');
+            const initialPitchTeam = (typeof getInitialPitchClub === 'function') 
+                ? getInitialPitchClub() 
+                : (window.INITIAL_PITCH_TEAM || 'Inter');
+            renderPitchTeam(initialPitchTeam, false);
 
             // Registrazione Service Worker per Progressive Web App (PWA)
             if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {{

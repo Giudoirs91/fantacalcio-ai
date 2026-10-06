@@ -1270,38 +1270,77 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
         {tactics_content_html}
     </div>"""
 
-    # FAQ Schema
-    faq_items = [
-        {
-            "@type": "Question",
-            "name": f"Qual è la fantamedia di {full_name} nel 2026/27?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": f"{full_name} ({team}) registra attualmente una FantaMedia reale di {fm_val_str} con una media voto pura di {mv_val_str} e un valore atteso xFM di {xfm_data['xfm']}."
+    # FAQ Schema & Dynamic SEO Meta
+    if is_injured:
+        meta_title = f"{full_name} ({team}): Infortunio, Tempi di Recupero, Statistiche e Consigli Asta 2026/27 | Fanta Master AI"
+        meta_desc = f"Quando rientra {full_name} ({team})? Diagnosi clinica: {infort_motivo}. Tempi di recupero stimati: {infort_rientro}. Sostituto in campo, xG, xA, quotazione FVM e consigli asta Fantacalcio 2026/27."
+        faq_items = [
+            {
+                "@type": "Question",
+                "name": f"Quando rientra {full_name} dall'infortunio e quali partite salta?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f"Il rientro in campo di {full_name} ({team}) è previsto per il {infort_rientro} a seguito di {infort_motivo}. Fino ad allora resterà indisponibile per le scelte di mister {mister}."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": f"Chi gioca al posto di {full_name} nel {team} durante la sua assenza?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f"Con l'indisponibilità di {full_name}, la prima opzione tattica per mister {mister} è {coppia_nome if coppia_nome and coppia_nome != '-' else 'una staffetta o rotazione interna nel reparto'}."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": f"Qual è la fantamedia di {full_name} nel 2026/27?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f"{full_name} ({team}) registra attualmente una FantaMedia reale di {fm_val_str} con una media voto pura di {mv_val_str} e un valore atteso xFM di {xfm_data['xfm']}."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": f"Conviene tenere o cedere {full_name} al Fantacalcio?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f"L'algoritmo valuta {full_name} con FVM di {fvm} CR. Se la data di rientro ({infort_rientro}) è imminente conviene trattenerlo in rosa; in caso di stop prolungato, valuta uno scambio con un titolare integro."
+                }
             }
-        },
-        {
-            "@type": "Question",
-            "name": f"{full_name} è infortunato? Quali sono i tempi di recupero?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": f"{'Attualmente ' + full_name + ' è indisponibile per ' + infort_motivo + '. Il rientro è previsto per il ' + infort_rientro + '.' if is_injured else full_name + ' è attualmente integro e regolarmente a disposizione di mister ' + mister + '.'}"
+        ]
+    else:
+        meta_title = f"{full_name} ({team}): Statistiche Avanzate, xG, Storico Infortuni e Consigli Asta 2026/27 | Fanta Master AI"
+        meta_desc = f"Scheda tecnica completa di {full_name} ({team}): radar a 6 assi, xG, xA, storico infortuni e cartella clinica, gerarchie rigori, quotazione FVM e prezzo consigliato asta Fantacalcio 2026/27."
+        faq_items = [
+            {
+                "@type": "Question",
+                "name": f"Qual è la fantamedia di {full_name} nel 2026/27?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f"{full_name} ({team}) registra attualmente una FantaMedia reale di {fm_val_str} con una media voto pura di {mv_val_str} e un valore atteso xFM di {xfm_data['xfm']}."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": f"{full_name} è infortunato o a disposizione?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f"{full_name} è attualmente integro e regolarmente a disposizione di mister {mister} per il prossimo turno di Serie A."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": f"Quanto pagare {full_name} all'asta del Fantacalcio?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f"Il prezzo consigliato dall'algoritmo AI per {full_name} è di {prezzo_cons} crediti su un budget di 1000 CR (FVM {fvm} CR), con rilancio massimo stimato a {max_bid} crediti."
+                }
             }
-        },
-        {
-            "@type": "Question",
-            "name": f"Quanto pagare {full_name} all'asta del Fantacalcio?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": f"Il prezzo consigliato dall'algoritmo AI per {full_name} è di {prezzo_cons} crediti su un budget di 1000 CR (FVM {fvm} CR), con rilancio massimo stimato a {max_bid} crediti."
-            }
-        }
-    ]
+        ]
 
     team_slug = slugify(team)
-    meta_title = f"{full_name} ({team}): Statistiche Avanzate, xG, Storico Infortuni e Consigli Asta 2026/27"
-    meta_desc = f"Scheda tecnica completa di {full_name} ({team}): radar a 6 assi, xG, xA, storico infortuni e cartella clinica, gerarchie rigori, quotazione FVM e prezzo consigliato asta Fantacalcio 2026/27."
     page_url = f"{base_url}/calciatore/{slug}/"
+    today_iso = datetime.now().strftime("%Y-%m-%d")
 
     schema_data = {
         "@context": "https://schema.org",
@@ -1314,6 +1353,13 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                     "@type": "SportsTeam",
                     "name": team
                 }
+            },
+            {
+                "@type": "WebPage",
+                "name": meta_title,
+                "url": page_url,
+                "dateModified": today_iso,
+                "description": meta_desc
             },
             {
                 "@type": "FAQPage",

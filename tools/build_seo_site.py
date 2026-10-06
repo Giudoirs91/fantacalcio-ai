@@ -2052,9 +2052,10 @@ def generate_injuries_pillar(players, injuries_db):
         
     team_options = "".join([f'<option value="{clean_html(t.lower())}">{clean_html(t)}</option>' for t in all_teams])
 
-    meta_title = "Infortunati Serie A 2026/27: Tabella Tempi di Recupero & Rientri | Fanta Master AI"
-    meta_desc = "Tabella sempre aggiornata di tutti i calciatori infortunati in Serie A 2026/27: diagnosi medica, tempi di recupero stimati, data di rientro e consigli per l'asta Fantacalcio."
+    meta_title = "Infortunati Serie A 2026/27: Tabella Tempi di Recupero & Rientri Aggiornata | Fanta Master AI"
+    meta_desc = "Tabella infortunati Serie A 2026/27 aggiornata in tempo reale: tempi di recupero, diagnosi clinica, data di rientro e chi gioca al loro posto per il Fantacalcio."
     page_url = f"{BASE_URL}/infortunati-serie-a/"
+    today_iso = datetime.now().strftime("%Y-%m-%d")
 
     injuries_faq = [
         {
@@ -2063,6 +2064,14 @@ def generate_injuries_pillar(players, injuries_db):
             "acceptedAnswer": {
                 "@type": "Answer",
                 "text": f"Attualmente in Serie A si contano {total_injured} calciatori indisponibili, di cui {muscular_count} per problemi o lesioni muscolari. La tabella interattiva di Fanta Master AI riporta per ciascuno diagnosi medica, tempi di recupero e data stimata di rientro."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Chi sono gli infortunati più cercati e i tempi di recupero (Boloca, Idzes e top di Serie A)?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tra i profili più monitorati dai fantallenatori figurano Daniel Boloca (recupero in corso, monitoraggio continuo), Jay Idzes e gli altri titolari di reparto con cartella clinica dettagliata, stima partite saltate e sostituto designato."
             }
         },
         {
@@ -2086,6 +2095,13 @@ def generate_injuries_pillar(players, injuries_db):
     schema_data = {
         "@context": "https://schema.org",
         "@graph": [
+            {
+                "@type": "WebPage",
+                "name": meta_title,
+                "url": page_url,
+                "dateModified": today_iso,
+                "description": meta_desc
+            },
             {
                 "@type": "BreadcrumbList",
                 "itemListElement": [
@@ -2995,9 +3011,10 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
     top_players = team_data.get("top", [])
     sleeper_players = team_data.get("sleeper", [])
     
-    meta_title = f"Probabili Formazioni {team_name} 2026/27: Titolari, Ballottaggi e Rigoristi | Fanta Master AI"
-    meta_desc = f"Probabile formazione {team_name} 2026/27 aggiornata: modulo {modulo}, 11 titolare con percentuali, ballottaggi di reparto, rigoristi e rosa completa per il Fantacalcio."
+    meta_title = f"Probabile Formazione {team_name} 2026/27: Titolari, Ballottaggi, Infortunati e Rigoristi | Fanta Master AI"
+    meta_desc = f"Probabile formazione {team_name} 2026/27 aggiornata: modulo {modulo}, 11 titolari con percentuali, ballottaggi di reparto, infortunati e tempi di recupero, rigoristi e rosa Fantacalcio."
     page_url = f"{base_url}/probabili-formazioni/{team_slug}/"
+    today_iso = datetime.now().strftime("%Y-%m-%d")
     
     # 1. Quick Bar 20 Club
     quick_bar_html = "".join([
@@ -3219,6 +3236,10 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
         </tr>
         """
 
+    team_injured = [p for p in team_players if p.get("is_injured")]
+    inj_summary = f"Gli indisponibili attuali nel {team_name} sono: {', '.join([p.get('name','') + ' (' + str(p.get('infortunio_motivo', 'infortunio')) + ', rientro stimato: ' + str(p.get('infortunio_rientro', 'TBD')) + ')' for p in team_injured])}." if team_injured else f"Attualmente l'infermeria del {team_name} è vuota: tutti i calciatori sono a disposizione di mister {mister}."
+    key_starters = ', '.join([p.get('name','') for p in sorted(team_players, key=lambda x: x.get('titolarita', 0), reverse=True)[:5]])
+
     # 8. FAQ Schema
     faq_schema = [
         {
@@ -3231,18 +3252,34 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
         },
         {
             "@type": "Question",
-            "name": f"Chi è il primo rigorista del {team_name}?",
+            "name": f"Quali sono i ballottaggi aperti nel {team_name} per la prossima giornata?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": f"Le gerarchie dal dischetto del {team_name} vedono come 1° rigorista {rigs[0] if rigs else 'da definire'}{', seguito da ' + rigs[1] if len(rigs)>1 else ''}{' e ' + rigs[2] if len(rigs)>2 else ''}."
+                "text": f"I ballottaggi più caldi nel {team_name} includono: {'; '.join([b.get('player','') + ' vs ' + b.get('vs','') for b in ball_list[:3]]) if ball_list else 'gerarchie stabili con titolari definiti' }."
             }
         },
         {
             "@type": "Question",
-            "name": f"Quali sono i ballottaggi aperti nel {team_name} per la prossima giornata?",
+            "name": f"Chi sono gli infortunati e gli indisponibili del {team_name}?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": f"I ballottaggi più caldi nel {team_name} includono: {'; '.join([b.get('player','') + ' vs ' + b.get('vs','') for b in ball_list[:3]]) if ball_list else 'nessun ballottaggio critico' }."
+                "text": inj_summary
+            }
+        },
+        {
+            "@type": "Question",
+            "name": f"Chi sono i titolari inamovibili del {team_name} al Fantacalcio?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f"I punti fermi con indice di titolarità più alto nel {team_name} sono: {key_starters}."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": f"Chi è il primo rigorista del {team_name}?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f"Le gerarchie dal dischetto del {team_name} vedono come 1° rigorista {rigs[0] if rigs else 'da definire'}{', seguito da ' + rigs[1] if len(rigs)>1 else ''}{' e ' + rigs[2] if len(rigs)>2 else ''}."
             }
         }
     ]
@@ -3262,6 +3299,13 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
                     {"@type": "Person", "name": p.get("name"), "jobTitle": p.get("role")}
                     for p in team_players[:15]
                 ]
+            },
+            {
+                "@type": "WebPage",
+                "name": meta_title,
+                "url": page_url,
+                "dateModified": today_iso,
+                "description": meta_desc
             },
             {
                 "@type": "FAQPage",
@@ -4095,9 +4139,96 @@ def build_all():
     for team_name, t_data in sorted(tactical_db.items()):
         t_slug = slugify(team_name)
         modulo = t_data.get("modulo", "3-5-2")
-        meta_title = f"Probabili Formazioni {team_name} 2026/27: Titolari, Ballottaggi e Rigoristi | Fanta Master AI"
-        meta_desc = f"Probabile formazione {team_name} 2026/27 aggiornata: modulo {modulo}, 11 titolare con percentuali, ballottaggi di reparto, rigoristi e rosa completa per il Fantacalcio."
+        mister = t_data.get("all", "Mister")
+        meta_title = f"Probabile Formazione {team_name} 2026/27: Titolari, Ballottaggi, Infortunati e Rigoristi | Fanta Master AI"
+        meta_desc = f"Probabile formazione {team_name} 2026/27 aggiornata: modulo {modulo}, 11 titolari con percentuali, ballottaggi di reparto, infortunati e tempi di recupero, rigoristi e rosa Fantacalcio."
         t_url = f"{BASE_URL}/probabili-formazioni/{t_slug}/"
+        today_iso = datetime.now().strftime("%Y-%m-%d")
+
+        t_players = [p for p in players if (p.get("team") or "").lower() == team_name.lower()]
+        team_injured = [p for p in t_players if p.get("is_injured")]
+        inj_summary = f"Gli indisponibili attuali nel {team_name} sono: {', '.join([p.get('name','') + ' (' + str(p.get('infortunio_motivo', 'infortunio')) + ', rientro stimato: ' + str(p.get('infortunio_rientro', 'TBD')) + ')' for p in team_injured])}." if team_injured else f"Attualmente l'infermeria del {team_name} è vuota: tutti i calciatori sono a disposizione di mister {mister}."
+        key_starters = ', '.join([p.get('name','') for p in sorted(t_players, key=lambda x: x.get('titolarita', 0), reverse=True)[:5]])
+        lineup_names = ', '.join([st.get('name', '') for st in t_data.get('lineup', [])])
+        ball_list = t_data.get('ballottaggi', [])
+        rigs = [t_data.get('rigorista_1'), t_data.get('rigorista_2'), t_data.get('rigorista_3')]
+        rigs = [r for r in rigs if r and r != '-']
+
+        faq_schema = [
+            {
+                "@type": "Question",
+                "name": f"Qual è la probabile formazione del {team_name} nel 2026/27?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f"Il {team_name} di mister {mister} scende in campo con il modulo {modulo}. Gli 11 titolari principali sono: {lineup_names}."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": f"Quali sono i ballottaggi aperti nel {team_name} per la prossima giornata?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f"I ballottaggi più caldi nel {team_name} includono: {'; '.join([b.get('player','') + ' vs ' + b.get('vs','') for b in ball_list[:3]]) if ball_list else 'gerarchie stabili con titolari definiti' }."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": f"Chi sono gli infortunati e gli indisponibili del {team_name}?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": inj_summary
+                }
+            },
+            {
+                "@type": "Question",
+                "name": f"Chi sono i titolari inamovibili del {team_name} al Fantacalcio?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f"I punti fermi con indice di titolarità più alto nel {team_name} sono: {key_starters}."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": f"Chi è il primo rigorista del {team_name}?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f"Le gerarchie dal dischetto del {team_name} vedono come 1° rigorista {rigs[0] if rigs else 'da definire'}{', seguito da ' + rigs[1] if len(rigs)>1 else ''}{' e ' + rigs[2] if len(rigs)>2 else ''}."
+                }
+            }
+        ]
+
+        team_schema = {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "SportsTeam",
+                    "name": team_name,
+                    "sport": "Soccer",
+                    "coach": {"@type": "Person", "name": mister},
+                    "member": [{"@type": "Person", "name": p.get("name"), "jobTitle": p.get("role")} for p in t_players[:15]]
+                },
+                {
+                    "@type": "WebPage",
+                    "name": meta_title,
+                    "url": t_url,
+                    "dateModified": today_iso,
+                    "description": meta_desc
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": faq_schema
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE_URL}/"},
+                        {"@type": "ListItem", "position": 2, "name": "Probabili Formazioni Serie A", "item": f"{BASE_URL}/probabili-formazioni/"},
+                        {"@type": "ListItem", "position": 3, "name": team_name, "item": t_url}
+                    ]
+                }
+            ]
+        }
+        schema_json_str = json.dumps(team_schema, ensure_ascii=False, indent=2)
 
         if pitch_sec_template:
             t_html = pitch_sec_template
@@ -4109,9 +4240,12 @@ def build_all():
             t_html = re.sub(r'<meta name="twitter:title" content=".*?">', f'<meta name="twitter:title" content="{meta_title}">', t_html)
             t_html = re.sub(r'<meta name="twitter:description" content=".*?">', f'<meta name="twitter:description" content="{meta_desc}">', t_html)
             t_html = re.sub(r'<link rel="canonical" href=".*?">', f'<link rel="canonical" href="{t_url}">', t_html)
+            if '<script type="application/ld+json">' in t_html:
+                t_html = re.sub(r'<script type="application/ld\+json">.*?</script>', f'<script type="application/ld+json">\n{schema_json_str}\n    </script>', t_html, flags=re.DOTALL, count=1)
+            else:
+                t_html = t_html.replace('</head>', f'    <script type="application/ld+json">\n{schema_json_str}\n    </script>\n</head>')
             t_html = t_html.replace('</head>', f'    <script>window.INITIAL_PITCH_TEAM = "{team_name}";</script>\n</head>')
         else:
-            t_players = [p for p in players if (p.get("team") or "").lower() == team_name.lower()]
             t_html = generate_team_page(team_name, t_data, t_players, all_teams_list, injuries_db, BASE_URL)
         
         t_dir = os.path.join(DIST_DIR, "probabili-formazioni", t_slug)

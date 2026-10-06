@@ -186,7 +186,8 @@ body {
     justify-content: space-between;
     padding: 8px 18px;
     gap: 16px;
-    max-width: 1200px;
+    max-width: 1560px;
+    width: 96%;
     margin: 0 auto;
 }
 
@@ -1335,25 +1336,35 @@ body {
     color: #cbd5e1;
 }
 
-/* PITCH 2D & TACTICAL FIELD (SPACIOUS & BEAUTIFULLY PROPORTIONED) */
+/* PITCH 2D & TACTICAL FIELD (ALLARGATO, WIDESCREEN & ULTRA-PREMIUM) */
+.team-page-container {
+    max-width: 1560px !important;
+    width: 96% !important;
+    margin: 0 auto !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+}
+
 .pitch-container-wrapper {
     display: grid !important;
-    grid-template-columns: minmax(430px, 1fr) 2.5fr !important;
-    gap: 18px !important;
+    grid-template-columns: minmax(580px, 1.18fr) minmax(460px, 1fr) !important;
+    gap: 24px !important;
     align-items: stretch !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 30px !important;
     width: 100% !important;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1320px) {
     .pitch-container-wrapper {
-        grid-template-columns: minmax(400px, 1.1fr) 2.4fr !important;
+        grid-template-columns: minmax(520px, 1.1fr) 1fr !important;
+        gap: 18px !important;
     }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1080px) {
     .pitch-container-wrapper {
         grid-template-columns: 1fr !important;
+        gap: 20px !important;
     }
 }
 
@@ -1365,54 +1376,193 @@ body {
 }
 
 .pitch-field {
-    min-height: 560px !important;
+    min-height: 680px !important;
     height: 100% !important;
-    padding: 18px 10px 22px 10px !important;
+    padding: 22px 14px 26px 14px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
-    border-radius: 12px !important;
+    border-radius: 16px !important;
     position: relative !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
+    background: radial-gradient(ellipse at 50% 12%, rgba(56, 189, 248, 0.12) 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 50%, rgba(34, 197, 94, 0.18) 0%, rgba(5, 54, 35, 0.65) 65%, #021a10 100%),
+                repeating-linear-gradient(0deg, #093c23 0px, #093c23 36px, #0b4528 36px, #0b4528 72px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.42) !important;
+    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.85), 0 16px 40px rgba(0, 0, 0, 0.6) !important;
 }
 
 .pitch-band {
     display: flex !important;
-    flex-direction: row-reverse !important;
-    justify-content: center !important;
-    gap: 10px !important;
-    margin: 4px 0 !important;
-    flex-wrap: nowrap !important;
+    flex-direction: row !important;
+    justify-content: space-evenly !important;
+    align-items: center !important;
     width: 100% !important;
+    margin: 4px 0 !important;
     z-index: 2 !important;
+    box-sizing: border-box !important;
 }
 
-.pitch-card {
-    background: rgba(13, 19, 33, 0.94) !important;
-    backdrop-filter: blur(12px) !important;
-    border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
-    border-radius: 9px !important;
-    padding: 5px 8px !important;
-    min-width: 86px !important;
-    max-width: 112px !important;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65) !important;
+/* Gestione bande per numero di giocatori */
+.pitch-band.band-count-5 {
+    gap: 5px !important;
+    padding: 0 4px !important;
+}
+.pitch-band.band-count-5 .pitch-player-node {
+    max-width: 102px !important;
+    flex: 1 1 0 !important;
+}
+.pitch-band.band-count-5 .pitch-card {
+    min-width: 76px !important;
+    max-width: 102px !important;
+    padding: 5px 4px !important;
+}
+.pitch-band.band-count-5 .pitch-player-name {
+    font-size: 10.5px !important;
+}
+.pitch-band.band-count-5 .pitch-pos-label {
+    font-size: 7.5px !important;
+}
+
+.pitch-band.band-count-4 {
+    gap: 12px !important;
+    padding: 0 6px !important;
+}
+.pitch-band.band-count-4 .pitch-player-node {
+    max-width: 114px !important;
+    flex: 1 1 0 !important;
+}
+.pitch-band.band-count-4 .pitch-card {
+    min-width: 84px !important;
+    max-width: 114px !important;
+    padding: 6px 6px !important;
+}
+
+.pitch-band.band-count-3,
+.pitch-band.band-count-2 {
+    gap: 22px !important;
+}
+.pitch-band.band-count-3 .pitch-player-node,
+.pitch-band.band-count-2 .pitch-player-node {
+    max-width: 124px !important;
+    flex: 0 1 124px !important;
+}
+.pitch-band.band-count-3 .pitch-card,
+.pitch-band.band-count-2 .pitch-card {
+    min-width: 90px !important;
+    max-width: 124px !important;
+    padding: 6px 8px !important;
+}
+
+.pitch-band.band-count-1 {
+    justify-content: center !important;
+}
+.pitch-band.band-count-1 .pitch-player-node {
+    max-width: 128px !important;
+    flex: 0 1 128px !important;
+}
+.pitch-band.band-count-1 .pitch-card {
+    min-width: 92px !important;
+    max-width: 128px !important;
+    padding: 6px 8px !important;
+}
+
+.pitch-player-node {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
+    cursor: pointer !important;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    z-index: 5 !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+.pitch-player-node:hover {
+    transform: translateY(-4px) scale(1.05) !important;
+    z-index: 10 !important;
+}
+
+.pitch-card {
+    background: rgba(9, 15, 28, 0.92) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.16) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.65), 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    transition: all 0.2s ease !important;
+}
+.pitch-card:hover {
+    border-color: rgba(56, 189, 248, 0.6) !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.8), 0 0 16px rgba(56, 189, 248, 0.3) !important;
+}
+
+.pitch-card-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 4px !important;
+    margin-bottom: 2px !important;
+}
+
+.pitch-role-badge {
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 8.5px !important;
+    font-weight: 900 !important;
+    color: #fff !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4) !important;
+}
+
+.pitch-pos-label {
+    font-size: 8px !important;
+    font-weight: 700 !important;
+    color: #94a3b8 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    flex: 1 !important;
+    text-align: center !important;
+}
+
+.pitch-ovr-tag {
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    font-family: 'Outfit', sans-serif !important;
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    padding: 1px 4px !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    flex-shrink: 0 !important;
+    line-height: 1 !important;
 }
 
 .pitch-player-name {
     color: #ffffff !important;
     font-weight: 800 !important;
-    font-size: 11.5px !important;
+    font-size: 11px !important;
     text-decoration: none !important;
     text-align: center !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     max-width: 100% !important;
-    margin: 2px 0 1px 0 !important;
+    margin: 1px 0 !important;
     display: block !important;
     letter-spacing: 0.1px !important;
     transition: color 0.15s ease !important;
@@ -1421,30 +1571,73 @@ body {
     color: #00f2fe !important;
 }
 
-/* SIDE GRID: 3 COLUMNS MATCHING PROBABILI-FORMAZIONI DASHBOARD */
+.pitch-card-sub {
+    font-size: 8.5px !important;
+    color: #94a3b8 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    margin-top: 3px !important;
+    padding-top: 3px !important;
+    width: 100% !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3px !important;
+    flex-wrap: nowrap !important;
+}
+
+.sub-vs-tag {
+    font-size: 8.5px !important;
+    color: #94a3b8 !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 4px !important;
+    padding: 0.5px 3.5px !important;
+    max-width: 58px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* SIDE GRID: 2 COLONNE IN ALTO + 1 IN BASSO, PERFETTAMENTE BILANCIATA */
 .pitch-side-grid {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: 1fr 1fr !important;
     gap: 16px !important;
-    align-items: stretch !important;
+    align-content: start !important;
     width: 100% !important;
 }
 
-@media (max-width: 1380px) {
-    .pitch-side-grid {
-        gap: 10px !important;
-    }
+.tactics-card-ballottaggi {
+    grid-column: 1 / 2 !important;
 }
 
-@media (max-width: 900px) {
+.tactics-card-piazzati {
+    grid-column: 2 / 3 !important;
+}
+
+.tactics-card-infermeria {
+    grid-column: 1 / -1 !important;
+}
+
+@media (max-width: 1240px) {
     .pitch-side-grid {
         grid-template-columns: 1fr !important;
+    }
+    .tactics-card-ballottaggi,
+    .tactics-card-piazzati,
+    .tactics-card-infermeria {
+        grid-column: 1 / -1 !important;
     }
 }
 
 .tactics-card {
-    background: rgba(13, 19, 33, 0.88) !important;
+    background: rgba(11, 17, 30, 0.90) !important;
     backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
     border: 1px solid rgba(255, 255, 255, 0.09) !important;
     border-radius: 14px !important;
     padding: 16px 18px !important;
@@ -2827,15 +3020,29 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
                 return v
         return None
 
-    # 3. 11 Titolari su Campo 2D
+    # 3. 11 Titolari su Campo 2D con Mappatura Orizzontale Rigorosa (Sinistra -> Destra)
+    HORIZONTAL_ORDER = {
+        # Fascia Sinistra (ordine 1)
+        'TS': 1, 'ES': 1, 'AS': 1,
+        # Centro-Sinistra (ordine 2)
+        'DC_S': 2, 'CC_S': 2, 'MED_S': 2, 'TRQ_S': 2, 'PC_S': 2,
+        # Centro (ordine 3)
+        'POR': 3, 'P': 3, 'DC_C': 3, 'MED': 3, 'MED_C': 3, 'CC': 3, 'REG': 3, 'TRQ': 3, 'PC': 3,
+        # Centro-Destra (ordine 4)
+        'DC_D': 4, 'CC_D': 4, 'MED_D': 4, 'TRQ_D': 4, 'PC_D': 4,
+        # Fascia Destra (ordine 5)
+        'TD': 5, 'ED': 5, 'AD': 5,
+    }
+
     bands = {'pitchAtt': [], 'pitchTrq': [], 'pitchMed': [], 'pitchDef': [], 'pitchPor': []}
     lineup = team_data.get("lineup", [])
     for st in lineup:
         st_name = st.get("name", "")
         st_role = st.get("role", "C")
-        pos_lbl = st.get("pos_label", st.get("pos", ""))
+        pos_code = st.get("pos", "")
+        pos_lbl = st.get("pos_label", pos_code)
         pct = int(st.get("pct", 70))
-        band_id = get_pitch_band(st.get("pos"), modulo)
+        band_id = get_pitch_band(pos_code, modulo)
         
         match_p = find_p(st_name)
         p_slug = get_player_slug(match_p, injuries_db) if match_p else slugify(st_name)
@@ -2844,6 +3051,21 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
         
         sub_name, sub_role = get_substitute_info(st, team_data, team_players)
         tit_color = "#4ade80" if pct >= 80 else ("#fbbf24" if pct >= 60 else "#f87171")
+        
+        # Abbreviazione intelligente della riserva per evitare troncamenti
+        sub_display = ""
+        if sub_name:
+            sub_clean = clean_html(sub_name)
+            if len(sub_clean) > 11:
+                parts = sub_clean.split()
+                # Se è formato "Cognome I." (es. Fernandez T.) prendi il cognome
+                if len(parts) > 1 and len(parts[0]) >= 3:
+                    sub_clean = parts[0]
+                elif len(parts) > 1 and len(parts[-1]) >= 3:
+                    sub_clean = parts[-1]
+                else:
+                    sub_clean = sub_clean[:10] + "…"
+            sub_display = f'<span class="sub-vs-tag" title="Staffetta con {clean_html(sub_name)}">🔄 {sub_clean}</span>'
         
         node_html = f"""
         <div class="pitch-player-node">
@@ -2854,14 +3076,26 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
                     <span class="pitch-ovr-tag {ovr_cls}">{ovr}</span>
                 </div>
                 <a href="../../calciatore/{p_slug}/" class="pitch-player-name" title="Vedi Scheda {clean_html(st_name)}">{clean_html(st_name)}</a>
-                <div class="pitch-card-sub" style="margin-top:4px;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;">
-                    <span style="font-size:10px;font-weight:800;color:{tit_color};">{pct}% Tit</span>
-                    {f'<span class="sub-vs-tag" style="font-size:9.5px;color:var(--text-muted);" title="Staffetta con {clean_html(sub_name)}">🔄 vs {clean_html(sub_name)}</span>' if sub_name else ''}
+                <div class="pitch-card-sub">
+                    <span style="font-size:9.5px;font-weight:800;color:{tit_color};">{pct}% Tit</span>
+                    {sub_display}
                 </div>
             </div>
         </div>
         """
-        bands[band_id].append(node_html)
+        bands[band_id].append({
+            'order': HORIZONTAL_ORDER.get(pos_code, 3),
+            'html': node_html
+        })
+
+    def render_pitch_band(band_key):
+        items = bands.get(band_key, [])
+        if not items:
+            return ""
+        sorted_items = sorted(items, key=lambda x: x['order'])
+        cnt = len(sorted_items)
+        html_nodes = "".join([x['html'] for x in sorted_items])
+        return f'<div class="pitch-band band-count-{cnt}" id="{band_key}">{html_nodes}</div>'
 
     # 4. Ballottaggi
     ballottaggi_html = ""
@@ -3083,7 +3317,7 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
 <body>
     {render_unified_header('../../')}
 
-    <main class="site-container" style="padding-top:16px;">
+    <main class="site-container team-page-container" style="padding-top:16px;">
         <nav class="breadcrumbs">
             <a href="../../">Home</a> <span>/</span> 
             <a href="../../probabili-formazioni/">Probabili Formazioni</a> <span>/</span> 
@@ -3139,18 +3373,18 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
                         <div class="pitch-penalty-spot bottom"></div>
                     </div>
 
-                    <div class="pitch-band" id="pitchAtt">{''.join(bands['pitchAtt'])}</div>
-                    {f'<div class="pitch-band" id="pitchTrq">{"".join(bands["pitchTrq"])}</div>' if bands['pitchTrq'] else ''}
-                    <div class="pitch-band" id="pitchMed">{''.join(bands['pitchMed'])}</div>
-                    <div class="pitch-band" id="pitchDef">{''.join(bands['pitchDef'])}</div>
-                    <div class="pitch-band" id="pitchPor">{''.join(bands['pitchPor'])}</div>
+                    {render_pitch_band('pitchAtt')}
+                    {render_pitch_band('pitchTrq')}
+                    {render_pitch_band('pitchMed')}
+                    {render_pitch_band('pitchDef')}
+                    {render_pitch_band('pitchPor')}
                 </div>
             </div>
 
             <!-- Griglia Laterale: Ballottaggi, Piazzati, Infortunati -->
             <div class="pitch-side-grid">
                 <!-- Ballottaggi -->
-                <div class="tactics-card">
+                <div class="tactics-card tactics-card-ballottaggi">
                     <div class="tactics-card-header">
                         <span style="font-size:16px;">🔄</span>
                         <h4>Ballottaggi &amp; Percentuali Titolari</h4>
@@ -3161,7 +3395,7 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
                 </div>
 
                 <!-- Tiratori Piazzati -->
-                <div class="tactics-card">
+                <div class="tactics-card tactics-card-piazzati">
                     <div class="tactics-card-header">
                         <span style="font-size:16px;">🎯</span>
                         <h4>Tiratori Ufficiali Calci Piazzati</h4>
@@ -3183,7 +3417,7 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
                 </div>
 
                 <!-- Infortunati -->
-                <div class="tactics-card">
+                <div class="tactics-card tactics-card-infermeria">
                     <div class="tactics-card-header">
                         <span style="font-size:16px;">🩹</span>
                         <h4>Infermeria &amp; Indisponibili {clean_html(team_name)}</h4>

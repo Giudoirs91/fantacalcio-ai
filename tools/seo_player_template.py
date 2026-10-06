@@ -35,17 +35,21 @@ def clean_html(text):
             .replace('"', '&quot;')
             .replace("'", '&#39;'))
 
+import unicodedata
+
 def slugify(text):
     if not text:
         return "calciatore"
-    text = text.lower()
-    text = re.sub(r'[àáâãäå]', 'a', text)
-    text = re.sub(r'[èéêë]', 'e', text)
-    text = re.sub(r'[ìíîï]', 'i', text)
-    text = re.sub(r'[òóôõö]', 'o', text)
-    text = re.sub(r'[ùúûü]', 'u', text)
-    text = re.sub(r'[^a-z0-9]+', '-', text)
-    return text.strip('-')
+    text = str(text).strip()
+    text = (text.replace('đ', 'dj').replace('Đ', 'dj')
+                .replace('ß', 'ss')
+                .replace('ø', 'o').replace('Ø', 'o')
+                .replace('ł', 'l').replace('Ł', 'l')
+                .replace('æ', 'ae').replace('Æ', 'ae'))
+    nfkd = unicodedata.normalize('NFKD', text)
+    ascii_text = ''.join([c for c in nfkd if not unicodedata.combining(c)])
+    clean = re.sub(r'[^a-zA-Z0-9]+', '-', ascii_text).lower().strip('-')
+    return clean or "calciatore"
 
 def render_unified_header(rel_path=""):
     return f"""

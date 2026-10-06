@@ -31,10 +31,17 @@ BASE_URL = "https://www.fantamasterai.it"
 
 def slugify(text):
     if not text:
-        return ""
-    text = unicodedata.normalize('NFD', text).encode('ascii', 'ignore').decode('utf-8')
-    text = re.sub(r'[^a-zA-Z0-9\s-]', '', text.lower())
-    return re.sub(r'[-\s]+', '-', text).strip('-')
+        return "calciatore"
+    text = str(text).strip()
+    text = (text.replace('đ', 'dj').replace('Đ', 'dj')
+                .replace('ß', 'ss')
+                .replace('ø', 'o').replace('Ø', 'o')
+                .replace('ł', 'l').replace('Ł', 'l')
+                .replace('æ', 'ae').replace('Æ', 'ae'))
+    nfkd = unicodedata.normalize('NFKD', text)
+    ascii_text = ''.join([c for c in nfkd if not unicodedata.combining(c)])
+    clean = re.sub(r'[^a-zA-Z0-9]+', '-', ascii_text).lower().strip('-')
+    return clean or "calciatore"
 
 def clean_html(text):
     if not text:
@@ -1735,6 +1742,16 @@ def render_unified_footer(rel_path=""):
 from tools.seo_player_template import generate_player_page
 from tools.seo_duel_template import generate_duel_page
 
+def get_player_slug(player, injuries_db):
+    if not player:
+        return "calciatore"
+    p_name = player.get("name", "")
+    p_team = player.get("team", "")
+    team_inj = injuries_db.get(p_team, {})
+    hist_entry = team_inj.get(p_name, {})
+    full_name = hist_entry.get("tm_name", p_name)
+    return slugify(full_name)
+
 def generate_injuries_pillar(players, injuries_db):
     active_players = [p for p in players if p.get("is_injured")]
     
@@ -2821,7 +2838,7 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
         band_id = get_pitch_band(st.get("pos"), modulo)
         
         match_p = find_p(st_name)
-        p_slug = slugify(match_p.get("name", st_name)) if match_p else slugify(st_name)
+        p_slug = get_player_slug(match_p, injuries_db) if match_p else slugify(st_name)
         ovr = match_p.get("ovr", 72) if match_p else 72
         ovr_cls = get_ovr_tier_class(ovr)
         
@@ -2882,7 +2899,7 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
     injuries_html = ""
     if team_injuries:
         for p in team_injuries:
-            p_slug = slugify(p.get("name", ""))
+            p_slug = get_player_slug(p, injuries_db)
             r_str = str(p.get('infortunio_rientro', 'TBD'))
             is_r = False
             m_r = re.match(r"^(\d{1,2})/(\d{1,2})/(\d{4})$", r_str.strip())
@@ -2916,7 +2933,7 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
         -(x.get('ovr') or 0)
     ))
     for p in sorted_squad:
-        p_slug = slugify(p.get("name", ""))
+        p_slug = get_player_slug(p, injuries_db)
         ovr_val = p.get("ovr", 70)
         ovr_cls = get_ovr_tier_class(ovr_val)
         r = p.get("role", "C")
@@ -3784,6 +3801,7 @@ def build_all():
             slug = f"{slug}-{p.get('id')}"
         seen_slugs.add(slug)
         
+        # 1. Cartella primaria canonica (es. toma-basic, guglielmo-vicario, mattia-zaccagni)
         p_dir = os.path.join(calciatori_dir, slug)
         os.makedirs(p_dir, exist_ok=True)
         with open(os.path.join(p_dir, "index.html"), "w", encoding="utf-8") as f:
@@ -3791,6 +3809,26 @@ def build_all():
             
         sitemap_urls.append(f"{BASE_URL}/calciatore/{slug}/")
         player_count += 1
+
+        # 2. Alias breve (cognome es. basic, vicario, zaccagni)
+        short_slug = slugify(p.get("name", ""))
+        if short_slug and short_slug != slug:
+            short_dir = os.path.join(calciatori_dir, short_slug)
+            os.makedirs(short_dir, exist_ok=True)
+            with open(os.path.join(short_dir, "index.html"), "w", encoding="utf-8") as f:
+                f.write(p_html)
+
+        # 3. Alias legacy per caratteri speciali (es. toma-ba-i, hakan-alhano-lu)
+        p_name = p.get("name", "")
+        p_team = p.get("team", "")
+        team_inj = injuries_db.get(p_team, {})
+        full_name = team_inj.get(p_name, {}).get("tm_name", p_name)
+        legacy_slug = re.sub(r'[^a-z0-9]+', '-', full_name.lower()).strip('-')
+        if legacy_slug and legacy_slug != slug and legacy_slug != short_slug:
+            legacy_dir = os.path.join(calciatori_dir, legacy_slug)
+            os.makedirs(legacy_dir, exist_ok=True)
+            with open(os.path.join(legacy_dir, "index.html"), "w", encoding="utf-8") as f:
+                f.write(p_html)
 
     print(f"  ✓ Generate {player_count} schede calciatore complete di grafica, Radar SVG, Metriche Avanzate e Infortuni!")
 

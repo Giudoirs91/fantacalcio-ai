@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "fantamasterai",
   "framework": null,
   "outputDirectory": "dist",
   "cleanUrls": true,

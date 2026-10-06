@@ -192,6 +192,8 @@ const DefaultState = {
     searchQuery: '',
     sortBy: 'ovr',
     sortAsc: false,
+    pageSize: 'all',
+    currentPage: 1,
     matchupA: null,
     matchupB: null
 };
@@ -7788,44 +7790,100 @@ function renderTable() {
         if (vA > vB) return State.sortAsc ? 1 : -1;
         return 0;
     });
+    const filterKey = `${State.filterRole}|${State.filterTeam}|${State.filterSlot}|${State.filterAdvice}|${State.filterFragilita}|${State.filterRigoristi}|${State.filterTitolarita}|${State.filterPriceRange}|${State.filterOop}|${State.filterHot}|${State.filterRigid}|${State.filterInjured}|${State.filterHealthy}|${State.filterOnlyAvailable}|${State.filterOnlyFavorites}|${State.searchQuery}|${State.sortBy}|${State.sortAsc}|${State.auctionTableMode}`;
+    if (window._lastAuctionFilterKey !== filterKey) {
+        window._lastAuctionFilterKey = filterKey;
+        State.currentPage = 1;
+    }
+    if (typeof State.pageSize === 'undefined') {
+        const savedSize = localStorage.getItem('FANTA_AUCTION_PAGE_SIZE');
+        State.pageSize = savedSize ? ((savedSize === 'all') ? 'all' : parseInt(savedSize, 10)) : 'all';
+    }
+    const isAll = (State.pageSize === 'all');
+    const pageSize = isAll ? filtered.length : (parseInt(State.pageSize, 10) || 100);
+    const totalPages = Math.max(1, Math.ceil(filtered.length / (pageSize || 1)));
+    State.currentPage = Math.min(Math.max(1, State.currentPage || 1), totalPages);
+    const startIdx = isAll ? 0 : (State.currentPage - 1) * pageSize;
+    const endIdx = isAll ? filtered.length : Math.min(startIdx + pageSize, filtered.length);
+    const displayList = filtered.slice(startIdx, endIdx);
     const countEl = document.getElementById('lblPlayerCount');
     if (countEl) {
-        countEl.textContent = `Mostrati: ${filtered.length} / ${PLAYERS.length} Calciatori`;
+        if (isAll || filtered.length <= pageSize) {
+            countEl.textContent = `Mostrati: ${filtered.length} / ${PLAYERS.length} Calciatori`;
+        } else {
+            countEl.textContent = `Mostrati: ${startIdx + 1}–${endIdx} di ${filtered.length} Calciatori (Totale: ${PLAYERS.length})`;
+        }
     }
+    updateAuctionPageSizeUI();
+    updateAuctionPaginationUI(totalPages);
     tbody.innerHTML = '';
-    const CHUNK_SIZE = 35;
-    let renderedCount = 0;
-    function renderNextBatch() {
-        if (renderedCount >= filtered.length) return;
-        const batch = filtered.slice(renderedCount, renderedCount + CHUNK_SIZE);
-        const fragment = document.createDocumentFragment();
-        batch.forEach(p => {
-            const tr = buildAuctionPlayerRow(p, isMantraTable);
-            if (tr) fragment.appendChild(tr);
-        });
-        tbody.appendChild(fragment);
-        renderedCount += batch.length;
-    }
-    renderNextBatch();
-    const scrollParent = tbody.closest('.table-wrapper') || window;
+    const fragment = document.createDocumentFragment();
+    displayList.forEach(p => {
+        const tr = buildAuctionPlayerRow(p, isMantraTable);
+        if (tr) fragment.appendChild(tr);
+    });
+    tbody.appendChild(fragment);
     if (window._auctionScrollCleanup) {
         window._auctionScrollCleanup();
+        window._auctionScrollCleanup = null;
     }
-    const onScroll = () => {
-        if (renderedCount >= filtered.length) {
-            scrollParent.removeEventListener('scroll', onScroll);
-            return;
-        }
-        const nearBottom = scrollParent === window
-            ? (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500)
-            : (scrollParent.scrollTop + scrollParent.clientHeight >= scrollParent.scrollHeight - 350);
-        if (nearBottom) {
-            renderNextBatch();
-        }
-    };
-    scrollParent.addEventListener('scroll', onScroll, { passive: true });
-    window._auctionScrollCleanup = () => scrollParent.removeEventListener('scroll', onScroll);
 }
+function setAuctionPageSize(size) {
+    if (typeof State === 'undefined') return;
+    State.pageSize = (size === 'all' || size === 'ALL') ? 'all' : parseInt(size, 10);
+    State.currentPage = 1;
+    localStorage.setItem('FANTA_AUCTION_PAGE_SIZE', State.pageSize);
+    updateAuctionPageSizeUI();
+    renderTable();
+}
+window.setAuctionPageSize = setAuctionPageSize;
+function changeAuctionPage(delta) {
+    if (typeof State === 'undefined') return;
+    State.currentPage = Math.max(1, (State.currentPage || 1) + delta);
+    renderTable();
+    const scrollParent = document.querySelector('.table-wrapper') || window;
+    if (scrollParent.scrollTo) {
+        scrollParent.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+window.changeAuctionPage = changeAuctionPage;
+function updateAuctionPageSizeUI() {
+    const activeSize = String((typeof State !== 'undefined' && State.pageSize) ? State.pageSize : 'all').toLowerCase();
+    document.querySelectorAll('.btn-page-size').forEach(btn => {
+        const btnSize = String(btn.getAttribute('data-size') || '').toLowerCase();
+        btn.classList.toggle('active', btnSize === activeSize);
+    });
+}
+window.updateAuctionPageSizeUI = updateAuctionPageSizeUI;
+function updateAuctionPaginationUI(totalPages) {
+    const isAll = (typeof State !== 'undefined' && State.pageSize === 'all');
+    const showPagination = !isAll && totalPages > 1;
+    const curPage = (typeof State !== 'undefined' && State.currentPage) ? State.currentPage : 1;
+    ['auctionPaginationControls', 'auctionBottomPaginationControls'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.style.display = showPagination ? (id.includes('Bottom') ? 'flex' : 'inline-flex') : 'none';
+        }
+    });
+    if (showPagination) {
+        const infoTxt = `Pagina ${curPage} di ${totalPages}`;
+        const topInfo = document.getElementById('lblPaginationInfo');
+        const bottomInfo = document.getElementById('lblPaginationInfoBottom');
+        if (topInfo) topInfo.textContent = infoTxt;
+        if (bottomInfo) bottomInfo.textContent = infoTxt;
+        const isFirst = (curPage <= 1);
+        const isLast = (curPage >= totalPages);
+        ['btnPrevPage', 'btnPrevPageBottom'].forEach(btnId => {
+            const b = document.getElementById(btnId);
+            if (b) b.disabled = isFirst;
+        });
+        ['btnNextPage', 'btnNextPageBottom'].forEach(btnId => {
+            const b = document.getElementById(btnId);
+            if (b) b.disabled = isLast;
+        });
+    }
+}
+window.updateAuctionPaginationUI = updateAuctionPaginationUI;
 function buildAuctionPlayerRow(p, isMantraTable) {
     try {
             const tr = document.createElement('tr');

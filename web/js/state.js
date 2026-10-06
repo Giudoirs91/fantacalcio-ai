@@ -227,6 +227,8 @@ const DefaultState = {
     searchQuery: '',
     sortBy: 'ovr',
     sortAsc: false,
+    pageSize: 'all',
+    currentPage: 1,
     matchupA: null,
     matchupB: null
 };

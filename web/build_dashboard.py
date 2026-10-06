@@ -1048,8 +1048,28 @@ def build_standalone_dashboard(sync_android=False):
                     </div>
                 </div>
 
-                <div class="table-subbar-container" style="display:flex;align-items:center;justify-content:space-between;padding:4px 4px 8px 4px;flex-wrap:wrap;gap:8px;">
-                    <span id="lblPlayerCount" style="color:var(--text-secondary);font-weight:700;font-size:12px;">Mostrati: 523 / 523 Calciatori</span>
+                <div class="table-subbar-container" style="display:flex;align-items:center;justify-content:space-between;padding:6px 6px 10px 6px;flex-wrap:wrap;gap:12px;">
+                    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+                        <span id="lblPlayerCount" style="color:var(--text-secondary);font-weight:700;font-size:12.5px;">Mostrati: 535 / 535 Calciatori</span>
+
+                        <!-- Selettore Quantità Calciatori: 50 / 100 / 200 / Tutti -->
+                        <div class="page-size-selector-group" id="auctionPageSizeGroup" style="display:inline-flex;align-items:center;gap:6px;">
+                            <span style="color:var(--text-muted);font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.4px;">Mostra:</span>
+                            <div class="page-size-buttons" style="display:inline-flex;background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:2px;gap:2px;">
+                                <button type="button" class="btn-page-size" data-size="50" onclick="setAuctionPageSize(50)" title="Mostra 50 calciatori per pagina">50</button>
+                                <button type="button" class="btn-page-size" data-size="100" onclick="setAuctionPageSize(100)" title="Mostra 100 calciatori per pagina">100</button>
+                                <button type="button" class="btn-page-size" data-size="200" onclick="setAuctionPageSize(200)" title="Mostra 200 calciatori per pagina">200</button>
+                                <button type="button" class="btn-page-size active" data-size="all" onclick="setAuctionPageSize('all')" title="Mostra tutti i calciatori">Tutti</button>
+                            </div>
+                        </div>
+
+                        <!-- Paginazione Superiore (attiva solo se selezionato 50/100/200) -->
+                        <div id="auctionPaginationControls" class="pagination-controls" style="display:none;align-items:center;gap:6px;">
+                            <button type="button" id="btnPrevPage" class="btn-pagination" onclick="changeAuctionPage(-1)" title="Pagina precedente">◀ Prec</button>
+                            <span id="lblPaginationInfo" style="color:#38bdf8;font-size:12px;font-weight:800;">Pagina 1 di 6</span>
+                            <button type="button" id="btnNextPage" class="btn-pagination" onclick="changeAuctionPage(1)" title="Pagina successiva">Succ ▶</button>
+                        </div>
+                    </div>
 
                     <div class="table-view-toggle" id="auctionTableViewToggle" role="group" aria-label="Visuale Tabella">
                         <span class="table-view-label">Visuale:</span>
@@ -1092,6 +1112,13 @@ def build_standalone_dashboard(sync_android=False):
                         </thead>
                         <tbody id="auctionTableBody"></tbody>
                     </table>
+
+                    <!-- Paginazione Inferiore (visibile solo se non è 'Tutti' e ci sono più pagine) -->
+                    <div id="auctionBottomPaginationControls" class="pagination-controls" style="display:none;align-items:center;justify-content:center;gap:10px;padding:14px 10px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(11,15,23,0.6);">
+                        <button type="button" id="btnPrevPageBottom" class="btn-pagination" onclick="changeAuctionPage(-1)" title="Pagina precedente">◀ Pagina Precedente</button>
+                        <span id="lblPaginationInfoBottom" style="color:#38bdf8;font-size:12.5px;font-weight:800;">Pagina 1 di 6</span>
+                        <button type="button" id="btnNextPageBottom" class="btn-pagination" onclick="changeAuctionPage(1)" title="Pagina successiva">Pagina Successiva ▶</button>
+                    </div>
                 </div>
             </div>
 

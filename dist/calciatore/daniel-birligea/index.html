@@ -394,7 +394,7 @@
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                     <span class="inspector-badge">GIORNATA 3</span>
                     <span class="inspector-venue">🏠 Casa</span>
-                    <b class="inspector-match-title">Frosinone vs Venezia</b>
+                    <b class="inspector-match-title">FROSINONE 3-2 VENEZIA</b>
                 </div>
                 <span class="inspector-hint-text"><span class="hint-desktop">Passa il mouse</span><span class="hint-mobile">Tocca</span> sulle barre per ispezionare</span>
             </div>
@@ -413,11 +413,11 @@
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Gol / Assist</span>
-                    <b class="val">0.0 Gol &bull; 0.0 Ass</b>
+                    <b class="val">0 Gol &bull; 0 Ass</b>
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Disciplina</span>
-                    <span class="val" style="color:var(--text-secondary);">0.0 Amm &bull; 0.0 Esp</span>
+                    <span class="val" style="color:var(--text-secondary);">0 Amm &bull; 0 Esp</span>
                 </div>
             </div>
         </div>
@@ -441,7 +441,7 @@
                             
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G2</td>
-                <td style="font-weight:700;color:#fff;">Frosinone @ Fiorentina</td>
+                <td style="font-weight:700;color:#fff;">FIORENTINA 0-3 FROSINONE</td>
                 <td style="color:var(--text-muted);font-size:11px;">✈️ Fuori</td>
                 <td style="font-weight:900;color:#38bdf8;">6.0</td>
                 <td><span class="table-bonus-tag">Nessun bonus</span></td>
@@ -449,7 +449,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G3</td>
-                <td style="font-weight:700;color:#fff;">Frosinone vs Venezia</td>
+                <td style="font-weight:700;color:#fff;">FROSINONE 3-2 VENEZIA</td>
                 <td style="color:var(--text-muted);font-size:11px;">🏠 Casa</td>
                 <td style="font-weight:900;color:#38bdf8;">6.0</td>
                 <td><span class="table-bonus-tag">Nessun bonus</span></td>
@@ -487,7 +487,7 @@
                     <span class="lbl">Integrità Fisica</span>
                 </div>
                 <div class="quick-info-content">
-                    <span class="quick-badge health-badge healthy">
+                    <span class="quick-badge health-badge healthy" style="">
                         🟢 Integro (Basso Rischio)
                     </span>
                 </div>
@@ -684,7 +684,7 @@
                 <div class="pillar-title"><span>🛡️ PRESENZA &amp; RENDIMENTO</span><span class="source-tag">Sul Campo</span></div>
                 <div class="pillar-hero-stat">
                     <span class="hero-label">MINUTI GIOCATI</span>
-                    <span class="hero-val">26&#39; <small>(0 tit)</small></span>
+                    <span class="hero-val">26&#39; <small>(2 tit)</small></span>
                 </div>
                 <div class="pillar-stat-list">
                     <div class="pillar-stat-item"><span class="stat-name">Palle Recuperate</span><span class="stat-num">1</span></div>
@@ -787,7 +787,7 @@
 
     <!-- Interactive Scripts for Tabs, Accordion & Season Inspector -->
     <script>
-    var VOTI_DATA = [{"giornata": 2, "voto": 6.0, "fantavoto": 6.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Fiorentina", "is_home": false, "match": "Frosinone @ Fiorentina"}, {"giornata": 3, "voto": 6.0, "fantavoto": 6.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Venezia", "is_home": true, "match": "Frosinone vs Venezia"}];
+    var VOTI_DATA = [{"giornata": 2, "match": "FIORENTINA 0-3 FROSINONE", "opponent": "Fiorentina", "is_home": false, "voto": 6.0, "fantavoto": 6.0, "gf": 0, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "Nessun bonus"}, {"giornata": 3, "match": "FROSINONE 3-2 VENEZIA", "opponent": "Venezia", "is_home": true, "voto": 6.0, "fantavoto": 6.0, "gf": 0, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "Nessun bonus"}];
     
     function switchProfileTab(tabName) {
         var tabs = ['overview', 'advanced', 'tactics'];
@@ -919,6 +919,7 @@
                     <div class="footer-heading">Community &amp; Note Legali</div>
                     <ul class="footer-nav-list">
                         <li><a href="https://t.me/fantamasterai" target="_blank" rel="noopener" class="footer-link" style="color:#38bdf8;font-weight:800;">📲 Canale Telegram Ufficiale</a></li>
+                        <li><a href="https://www.instagram.com/fantamasterai" target="_blank" rel="noopener" class="footer-link" style="color:#f43f5e;font-weight:800;">📸 Profilo Instagram Ufficiale</a></li>
                         <li><a href="../../privacy-policy/" class="footer-link" id="footer-privacy-link">🔒 Privacy Policy (GDPR)</a></li>
                         <li><span class="footer-status-pill">🛡️ Privacy by Design</span></li>
                         <li><span class="footer-status-pill">🚫 Zero Cookie Traccianti</span></li>

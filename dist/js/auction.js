@@ -874,7 +874,15 @@ function buildAuctionPlayerRow(p, isMantraTable) {
                 ? (typeof renderMantraRoleBadges === 'function' ? renderMantraRoleBadges(p.mantra) : `<span class="role-badge ${p.role}">${p.role}</span>`)
                 : `<span class="role-badge ${p.role}">${p.role}</span>`;
             const mantraSubLabel = (isMantraTable || !p.mantra) ? '' : `<span class="mantra-sub-txt">${p.mantra}</span>`;
-            const injIcon = p.is_injured ? `<span class="inj-indicator" title="${p.infortunio_motivo || 'Infortunato'} (Rientro: ${p.infortunio_rientro || 'TBD'})">🩹</span>` : '';
+            const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+            let injIcon = '';
+            if (p.is_injured) {
+                if (inRiatlet) {
+                    injIcon = `<span class="inj-indicator" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.5);border-radius:4px;padding:0 2px;font-size:11px;" title="In riatletizzazione: ${p.infortunio_motivo || ''} (Rientro stimato del ${p.infortunio_rientro || ''} superato) — In attesa di conferma ufficiale">🟡</span>`;
+                } else {
+                    injIcon = `<span class="inj-indicator" title="${p.infortunio_motivo || 'Infortunato'} (Rientro: ${p.infortunio_rientro || 'TBD'})">🩹</span>`;
+                }
+            }
             const customBadge = p.is_custom_edited ? `<span class="mod-pill" title="Personalizzato">Mod</span>` : '';
             const singleSmartTag = getSmartBadgeHtml(p);
             const multiSmartTags = getAllSmartBadgesHtml(p);
@@ -889,14 +897,19 @@ function buildAuctionPlayerRow(p, isMantraTable) {
             else titClass = 'tit-low';
             let titLabel = `${p.titolarita || 0}%`;
             if (p.is_injured) {
-                if ((p.titolarita || 0) === 0) {
+                if (inRiatlet) {
+                    titClass = 'tit-mid';
+                    titLabel = `${p.titolarita || 50}% 🟡`;
+                } else if ((p.titolarita || 0) === 0) {
                     titClass = 'tit-alert';
                     titLabel = `0% 🚑`;
                 } else if (!p.presenze_2627 || p.presenze_2627 === 0) {
                     titLabel = `${p.titolarita}% 🚑`;
                 }
             }
-            const titTitle = p.titolarita_dettaglio || `Titolarità stimata: ${p.titolarita || 0}%\n${p.titolarita_desc_2627 || ''}`;
+            const titTitle = inRiatlet 
+                ? `In riatletizzazione (Rientro ${p.infortunio_rientro}): parzialmente in gruppo, in attesa di conferma ufficiale.\nTitolarità stimata a pieno regime: ${p.titolarita || 50}%`
+                : (p.titolarita_dettaglio || `Titolarità stimata: ${p.titolarita || 0}%\n${p.titolarita_desc_2627 || ''}`);
             const titHtml = `<span class="tit-pill ${titClass}" title="${titTitle}">${titLabel}</span>`;
             let coppiaHtml = `<span class="dim-dash">-</span>`;
             if (p.coppia_nome && p.coppia_nome !== '-') {
@@ -1085,7 +1098,11 @@ window.initAuctionTableView = initAuctionTableView;
 function getAllSmartBadgesHtml(p) {
     const badges = [];
     if (p.is_injured) {
-        badges.push(`<span class="smart-tag injured" title="Infortunato: ${p.infortunio_motivo || ''}">🩹 ${p.infortunio_rientro || 'Infortunato'}</span>`);
+        if ((typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p)) {
+            badges.push(`<span class="smart-tag riatletizzazione" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;" title="In riatletizzazione: ${p.infortunio_motivo || ''} (Data stimata superata: ${p.infortunio_rientro || ''}) — In attesa di conferma ufficiale">🟡 In riatletizzazione</span>`);
+        } else {
+            badges.push(`<span class="smart-tag injured" title="Infortunato: ${p.infortunio_motivo || ''}">🩹 ${p.infortunio_rientro || 'Infortunato'}</span>`);
+        }
     }
     if (p.is_rigorista_1 || p.rigorista_val === '1° Rigorista') {
         badges.push(`<span class="smart-tag penalty" title="1° Rigorista ufficiale">👑 1° Rigorista</span>`);
@@ -1150,6 +1167,9 @@ function getAllSmartBadgesHtml(p) {
 }
 function getSmartBadgeHtml(p) {
     if (p.is_injured) {
+        if ((typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p)) {
+            return `<span class="smart-tag riatletizzazione" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;" title="In riatletizzazione: ${p.infortunio_motivo || ''} — Data stimata (${p.infortunio_rientro || ''}) superata, in attesa di conferma ufficiale">🟡 In riatletizzazione</span>`;
+        }
         return `<span class="smart-tag injured" title="Infortunato: ${p.infortunio_motivo || ''} — Rientro previsto: ${p.infortunio_rientro || 'Non comunicato'}">🩹 ${p.infortunio_rientro || 'Infortunato'}</span>`;
     }
     if (p.is_rigorista_1 || p.rigorista_val === '1° Rigorista') {

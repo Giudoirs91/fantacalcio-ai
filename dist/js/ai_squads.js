@@ -594,8 +594,13 @@ function renderAiSquadsTab() {
             }
             let injBadge = '';
             if (p.is_injured) {
-                const isOrange = (p.infortunio_severity === 'orange');
-                injBadge = `<span class="ai-inj-pill ${isOrange ? 'orange' : 'red'}" title="${p.infortunio_status}">🚑 ${p.infortunio_motivo || 'Stop'}</span>`;
+                const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+                if (inRiatlet) {
+                    injBadge = `<span class="ai-inj-pill orange" style="background:rgba(245,158,11,0.2);color:#fbbf24;border-color:rgba(245,158,11,0.5);" title="In riatletizzazione: data stimata superata">🟡 In riatletizzazione</span>`;
+                } else {
+                    const isOrange = (p.infortunio_severity === 'orange');
+                    injBadge = `<span class="ai-inj-pill ${isOrange ? 'orange' : 'red'}" title="${p.infortunio_status}">🚑 ${p.infortunio_motivo || 'Stop'}</span>`;
+                }
             }
             let coppiaHtml = '';
             if (p.coppia_nome && p.coppia_nome !== '-') {
@@ -1105,8 +1110,13 @@ function renderAiReplaceCandidatesList() {
         else statusBadge = `<span class="ai-status-pill free">🟢 LIBERO</span>`;
         let injBadge = '';
         if (p.is_injured) {
-            const isOrange = (p.infortunio_severity === 'orange');
-            injBadge = `<span class="ai-inj-pill ${isOrange ? 'orange' : 'red'}" title="${p.infortunio_status}">🚑 ${p.infortunio_motivo || 'Stop'}</span>`;
+            const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+            if (inRiatlet) {
+                injBadge = `<span class="ai-inj-pill orange" style="background:rgba(245,158,11,0.2);color:#fbbf24;border-color:rgba(245,158,11,0.5);" title="In riatletizzazione: data stimata superata">🟡 In riatletizzazione</span>`;
+            } else {
+                const isOrange = (p.infortunio_severity === 'orange');
+                injBadge = `<span class="ai-inj-pill ${isOrange ? 'orange' : 'red'}" title="${p.infortunio_status}">🚑 ${p.infortunio_motivo || 'Stop'}</span>`;
+            }
         }
         let rigoristaBadge = '';
         if (p.is_rigorista_1) rigoristaBadge = `<span style="font-size:9.5px;color:var(--accent-gold);background:rgba(234,179,8,0.15);padding:1px 4px;border-radius:3px;border:1px solid rgba(234,179,8,0.3);font-weight:700;">🎯 1° Rig.</span>`;

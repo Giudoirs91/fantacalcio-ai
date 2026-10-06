@@ -429,7 +429,7 @@ function renderUnifiedPlayerRow(p) {
                 ${prioBadge}
                 <span class="sb-advice-tag ${p.ai_advice_type || 'regular'}">${p.ai_advice || p.consiglio}</span>
                 <span title="Fragilità: ${p.fragilita_val || ''}" style="cursor:help;font-size:13px;">${fragIcon}</span>
-                ${p.is_injured ? `<span style="color:#f87171;font-size:10px;font-weight:700;">🏥 ${p.infortunio_rientro}</span>` : ''}
+                ${p.is_injured ? ((typeof isPlayerInRiatletizzazione === 'function' && isPlayerInRiatletizzazione(p)) ? `<span style="color:#fbbf24;font-size:10px;font-weight:700;" title="In riatletizzazione: data stimata superata">🟡 In riatletizzazione</span>` : `<span style="color:#f87171;font-size:10px;font-weight:700;">🏥 ${p.infortunio_rientro}</span>`) : ''}
                 <span class="sb-row-stats">${statsShort}</span>
             </div>
             <div class="sb-row-right">
@@ -520,7 +520,7 @@ function renderUnifiedPlayerCard(p) {
                     ${prioBadge}
                     <span class="sb-advice-tag ${p.ai_advice_type || 'regular'}">${p.ai_advice || p.consiglio}</span>
                     <span title="Fragilità: ${p.fragilita_val || ''}" style="cursor:help;font-size:13px;">${fragIcon}</span>
-                    ${p.is_injured ? `<span style="color:#f87171;font-size:10.5px;font-weight:700;">🏥 ${p.infortunio_rientro}</span>` : ''}
+                    ${p.is_injured ? ((typeof isPlayerInRiatletizzazione === 'function' && isPlayerInRiatletizzazione(p)) ? `<span style="color:#fbbf24;font-size:10.5px;font-weight:700;" title="In riatletizzazione: data stimata superata">🟡 In riatletizzazione</span>` : `<span style="color:#f87171;font-size:10.5px;font-weight:700;">🏥 ${p.infortunio_rientro}</span>`) : ''}
                 </div>
                 <div class="sb-unified-stats-row">
                     ${statsRow}

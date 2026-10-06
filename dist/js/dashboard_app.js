@@ -1,3 +1,19 @@
+function parseInjuryDate(dateStr) {
+    if (!dateStr || typeof dateStr !== 'string') return null;
+    const m = dateStr.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+    if (m) {
+        return new Date(parseInt(m[3], 10), parseInt(m[2], 10) - 1, parseInt(m[1], 10));
+    }
+    return null;
+}
+function isPlayerInRiatletizzazione(p) {
+    if (!p || !p.is_injured) return false;
+    const retDate = parseInjuryDate(p.infortunio_rientro);
+    if (!retDate) return false;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return retDate <= today;
+}
 let _logoClicks = 0;
 let _logoClickTimer = null;
 function handleBrandSecretClick() {
@@ -2530,8 +2546,8 @@ function generateInjuryHistoryCardHtml(p) {
     const partitePerse = p.partite_saltate_totali !== undefined && p.partite_saltate_totali !== null ? p.partite_saltate_totali : 0;
     const giorniStop = p.giorni_stop_totali !== undefined && p.giorni_stop_totali !== null ? p.giorni_stop_totali : 0;
     const recidive = p.recidive_muscolari !== undefined && p.recidive_muscolari !== null ? p.recidive_muscolari : 0;
-    const cronistoria = p.cronistoria_infortuni || [];
-    const medicalAdvice = p.consiglio_medico_ai || (p.is_injured ? `Attualmente indisponibile per ${p.infortunio_motivo || 'infortunio'}. Rientro stimato: ${p.infortunio_rientro || 'TBD'}.` : 'Calciatore con eccellente tenuta atletica e ridottissima incidenza di infortuni muscolari.');
+    const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+    const medicalAdvice = p.consiglio_medico_ai || (p.is_injured ? (inRiatlet ? `In fase di riatletizzazione: la data stimata di rientro (${p.infortunio_rientro}) è superata. Il calciatore ha ripreso il lavoro parziale sul campo/in gruppo, in attesa di conferma ufficiale di pieno reintegro.` : `Attualmente indisponibile per ${p.infortunio_motivo || 'infortunio'}. Rientro stimato: ${p.infortunio_rientro || 'TBD'}.`) : 'Calciatore con eccellente tenuta atletica e ridottissima incidenza di infortuni muscolari.');
     let tierColor = '#34d399';
     if (fragScore >= 80) { tierColor = '#f87171'; }
     else if (fragScore >= 60) { tierColor = '#fb923c'; }
@@ -2676,7 +2692,9 @@ function generateInjuryHistoryCardHtml(p) {
                     <span class="lbl">Stato Attuale</span>
                     <div style="margin-top:4px;">
                         ${p.is_injured 
-                            ? `<span class="health-current-tag injured">🩹 ${p.infortunio_motivo || 'Indisponibile'} (${p.infortunio_rientro || 'TBD'})</span>`
+                            ? (inRiatlet 
+                                ? `<span class="health-current-tag" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;padding:3px 8px;border-radius:6px;font-weight:700;">🟡 In Riatletizzazione (${p.infortunio_rientro})</span>`
+                                : `<span class="health-current-tag injured">🩹 ${p.infortunio_motivo || 'Indisponibile'} (${p.infortunio_rientro || 'TBD'})</span>`)
                             : `<span class="health-current-tag healthy">🟢 Pienamente Disponibile</span>`
                         }
                     </div>
@@ -2838,7 +2856,11 @@ function generateAiStrengthsAndWeaknessesHtml(p) {
         weaknesses.push(`🩹 <b>Rischio Fragilità Fisica</b>: Storico di infortuni che ne condiziona la continuità (${p.fragility_tier || 'Attenzione'})`);
     }
     if (p.is_injured) {
-        weaknesses.push(`🔴 <b>Attualmente Indisponibile</b>: ${p.infortunio_motivo || 'Infortunio in corso'} (Rientro: ${p.infortunio_rientro || 'TBD'})`);
+        if ((typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p)) {
+            weaknesses.push(`🟡 <b>In Riatletizzazione</b>: ${p.infortunio_motivo || 'Smaltimento infortunio'} (Data stimata del ${p.infortunio_rientro || ''} superata: lavoro sul campo/in gruppo, in attesa di conferma ufficiale)`);
+        } else {
+            weaknesses.push(`🔴 <b>Attualmente Indisponibile</b>: ${p.infortunio_motivo || 'Infortunio in corso'} (Rientro: ${p.infortunio_rientro || 'TBD'})`);
+        }
     }
     if (p.delta_xfm !== undefined && p.delta_xfm >= 0.65) {
         weaknesses.push(`📈 <b>Possibile Regressione Statistica</b>: Ha raccolto più bonus rispetto al volume di gioco (delta +${p.delta_xfm.toFixed(2)})`);
@@ -2905,7 +2927,9 @@ function openPlayerProfileModal(playerId) {
     if (p.titolarita < 68) titColor = '#f59e0b';
     else if (p.titolarita < 50) titColor = '#ef4444';
     const injBadge = p.is_injured 
-        ? `<span class="badge-tag red" title="${p.infortunio_motivo || ''}">🩹 Rientro: ${p.infortunio_rientro || 'TBD'}</span>`
+        ? (((typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p))
+            ? `<span class="badge-tag" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;font-weight:700;" title="${p.infortunio_motivo || ''} (Data stimata: ${p.infortunio_rientro})">🟡 In riatletizzazione</span>`
+            : `<span class="badge-tag red" title="${p.infortunio_motivo || ''}">🩹 Rientro: ${p.infortunio_rientro || 'TBD'}</span>`)
         : `<span class="badge-tag green">🟢 Integro</span>`;
     let rigoristaBadge = '';
     if (p.is_rigorista_1) rigoristaBadge = `<span class="badge-tag gold">👑 1° Rigorista</span>`;
@@ -3407,8 +3431,13 @@ function openPlayerProfileModal(playerId) {
     }
     const floorVal = (p.floor !== undefined && p.floor !== null) ? Number(p.floor).toFixed(1) : (p.mv_2627 || p.mv || 6.0).toFixed(1);
     const ceilingVal = (p.ceiling !== undefined && p.ceiling !== null) ? Number(p.ceiling).toFixed(1) : Math.min(18, ((p.xfm || p.fm || 6.0) + 4.5)).toFixed(1);
-    const tacticalProfile = p.tactical_profile || '⚖️ Rendimento Bilanciato';
-    const tacticalAdvice = p.tactical_advice || `Floor ${floorVal} / Ceiling ${ceilingVal}: solido equilibrio tra sufficienza garantita e buone chance di bonus.`;
+    let tacticalProfile = (p.tactical_profile || '⚖️ Rendimento Bilanciato')
+        .replace(/Floor Sicuro\s*\(Roccia Costante\)/gi, '🛡️ Base Solida (Costante)')
+        .replace(/Boom or Bust\s*\(Ceiling Esplosivo\)/gi, '🚀 Alto Potenziale (Exploit Bonus)');
+    let rawAdvice = p.tactical_advice || `Base minima ${floorVal} / Potenziale max ${ceilingVal}: solido equilibrio tra sufficienza garantita e buone chance di bonus.`;
+    const tacticalAdvice = rawAdvice
+        .replace(/Floor (\d+(?:\.\d+)?)/gi, 'Base minima $1')
+        .replace(/Ceiling (\d+(?:\.\d+)?)/gi, 'Potenziale max $1');
     const subVoteProb = (p.sub_vote_prob !== undefined && p.sub_vote_prob !== null) ? p.sub_vote_prob : (p.titolarita >= 80 ? 92 : 70);
     const superSubBadge = p.super_sub_badge || (p.titolarita >= 80 ? '👑 TITOLARE FISSO' : '⚡ SUPER-SUB ORO');
     const subVerdict = p.sub_verdict || (p.titolarita >= 80 ? 'Titolare indiscusso del reparto.' : 'Staffetta frequente a gara in corso.');
@@ -3420,38 +3449,38 @@ function openPlayerProfileModal(playerId) {
     const matchupAdvice = matchupData.matchup_advice || `Incrocio equilibrato contro il ${oppName}.`;
     const favorableTraits = Array.isArray(matchupData.favorable_traits) ? matchupData.favorable_traits : [];
     const advancedPredictiveCardHtml = `
-        <div class="profile-advanced-predictive-box" style="margin:16px 0;background:rgba(18,24,38,0.75);border:1px solid rgba(56,189,248,0.22);border-radius:14px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,0.35);">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;">
-                <div style="display:flex;align-items:center;gap:8px;">
-                    <span style="font-size:18px;">🔮</span>
-                    <b style="color:#fff;font-family:'Outfit',sans-serif;font-size:13.5px;letter-spacing:0.3px;">Intelligence Predittiva & Rischio AI</b>
+        <div class="profile-advanced-predictive-box" style="margin:16px 0;background:rgba(18,24,38,0.75);border:1px solid rgba(56,189,248,0.22);border-radius:14px;padding:14px;box-shadow:0 8px 24px rgba(0,0,0,0.35);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;flex-wrap:wrap;gap:6px;">
+                <div style="display:flex;align-items:center;gap:7px;">
+                    <span style="font-size:16px;">🔮</span>
+                    <b style="color:#fff;font-family:'Outfit',sans-serif;font-size:13px;letter-spacing:0.2px;">Intelligence Predittiva & Rischio AI</b>
                 </div>
-                <span style="font-size:11px;font-weight:800;color:#38bdf8;background:rgba(56,189,248,0.12);padding:3px 8px;border-radius:20px;border:1px solid rgba(56,189,248,0.3);">Serie A 2026/27</span>
+                <span style="font-size:10.5px;font-weight:800;color:#38bdf8;background:rgba(56,189,248,0.12);padding:2px 7px;border-radius:20px;border:1px solid rgba(56,189,248,0.3);">Serie A 2026/27</span>
             </div>
-            <!-- 1. FLOOR VS CEILING -->
-            <div style="margin-bottom:12px;background:rgba(0,0,0,0.25);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.04);">
+            <!-- 1. BASE MINIMA VS POTENZIALE MAX (Rendimento Senza Bonus vs Con Bonus) -->
+            <div style="margin-bottom:12px;background:rgba(0,0,0,0.25);border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.04);">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:4px;">
-                    <span style="font-size:11.5px;font-weight:700;color:#94a3b8;">Spettro Rischio / Rendimento:</span>
-                    <b style="font-size:11.5px;color:#cbd5e1;">${tacticalProfile}</b>
+                    <span style="font-size:11px;font-weight:700;color:#94a3b8;">Spettro Rischio / Rendimento:</span>
+                    <b style="font-size:11px;color:#cbd5e1;">${tacticalProfile}</b>
                 </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;margin-bottom:8px;">
-                    <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:6px;">
-                        <span style="font-size:10px;color:#fca5a5;text-transform:uppercase;font-weight:700;display:block;">🛡️ Floor Min.</span>
-                        <b style="font-size:16px;color:#fff;">${floorVal}</b>
-                        <span style="font-size:9.5px;color:#94a3b8;display:block;">Senza bonus</span>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;text-align:center;margin-bottom:8px;">
+                    <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:6px 3px;">
+                        <span style="font-size:9.5px;color:#fca5a5;text-transform:uppercase;font-weight:800;display:block;white-space:nowrap;letter-spacing:0.2px;">🛡️ Base Minima</span>
+                        <b style="font-size:16px;color:#fff;line-height:1.2;display:block;margin:2px 0;">${floorVal}</b>
+                        <span style="font-size:8.5px;color:#94a3b8;display:block;white-space:nowrap;">Senza bonus</span>
                     </div>
-                    <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);border-radius:8px;padding:6px;">
-                        <span style="font-size:10px;color:#7dd3fc;text-transform:uppercase;font-weight:700;display:block;">🎯 xFM Attesa</span>
-                        <b style="font-size:16px;color:#38bdf8;">${(p.xfm || p.fm_2627 || p.fm || 6.0).toFixed(1)}</b>
-                        <span style="font-size:9.5px;color:#94a3b8;display:block;">Valore medio</span>
+                    <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);border-radius:8px;padding:6px 3px;">
+                        <span style="font-size:9.5px;color:#7dd3fc;text-transform:uppercase;font-weight:800;display:block;white-space:nowrap;letter-spacing:0.2px;">🎯 Media Attesa</span>
+                        <b style="font-size:16px;color:#38bdf8;line-height:1.2;display:block;margin:2px 0;">${(p.xfm || p.fm_2627 || p.fm || 6.0).toFixed(1)}</b>
+                        <span style="font-size:8.5px;color:#94a3b8;display:block;white-space:nowrap;">Valore xFM</span>
                     </div>
-                    <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:6px;">
-                        <span style="font-size:10px;color:#fde68a;text-transform:uppercase;font-weight:700;display:block;">🚀 Ceiling Max</span>
-                        <b style="font-size:16px;color:#fbbf24;">${ceilingVal}</b>
-                        <span style="font-size:9.5px;color:#94a3b8;display:block;">Upside giornata</span>
+                    <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:6px 3px;">
+                        <span style="font-size:9.5px;color:#fde68a;text-transform:uppercase;font-weight:800;display:block;white-space:nowrap;letter-spacing:0.2px;">🚀 Potenziale Max</span>
+                        <b style="font-size:16px;color:#fbbf24;line-height:1.2;display:block;margin:2px 0;">${ceilingVal}</b>
+                        <span style="font-size:8.5px;color:#94a3b8;display:block;white-space:nowrap;">Picco con bonus</span>
                     </div>
                 </div>
-                <div style="font-size:11.5px;color:#cbd5e1;line-height:1.4;">${tacticalAdvice}</div>
+                <div style="font-size:11px;color:#cbd5e1;line-height:1.4;">${tacticalAdvice}</div>
             </div>
             <!-- 2. SUB-IMPACT & SUPER-SUB -->
             <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(0,0,0,0.25);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.04);flex-wrap:wrap;">
@@ -3607,8 +3636,8 @@ function openPlayerProfileModal(playerId) {
                         <span class="lbl">Integrità Fisica</span>
                     </div>
                     <div class="quick-info-content">
-                        <span class="quick-badge health-badge ${p.is_injured ? 'injured' : 'healthy'}">
-                            ${p.is_injured ? `🩹 Infortunato (${p.infortunio_rientro || 'TBD'})` : '🟢 Integro (Basso Rischio)'}
+                        <span class="quick-badge health-badge ${p.is_injured ? (inRiatlet ? 'amber' : 'injured') : 'healthy'}" style="${p.is_injured && inRiatlet ? 'background:rgba(245,158,11,0.18);border-color:rgba(245,158,11,0.5);color:#fbbf24;' : ''}">
+                            ${p.is_injured ? (inRiatlet ? `🟡 In riatletizzazione (${p.infortunio_rientro})` : `🩹 Infortunato (${p.infortunio_rientro || 'TBD'})`) : '🟢 Integro (Basso Rischio)'}
                         </span>
                     </div>
                 </div>
@@ -4744,7 +4773,15 @@ function renderPitchTeam(teamName) {
         const ovrVal = fullP ? fullP.ovr : '';
         const ovrTierClass = (typeof getOvrClass === 'function' && ovrVal) ? getOvrClass(ovrVal) : '';
         const isInjured = fullP && (fullP.is_injured || (fullP.infortunio_motivo && fullP.infortunio_motivo !== ''));
-        const injBadgeHtml = isInjured ? `<span class="pitch-inj-badge" title="Infortunato: ${fullP.infortunio_motivo || 'Indisponibile'} (Rientro: ${fullP.infortunio_rientro || 'TBD'})">✚</span>` : '';
+        const inRiatlet = isInjured && (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(fullP);
+        let injBadgeHtml = '';
+        if (isInjured) {
+            if (inRiatlet) {
+                injBadgeHtml = `<span class="pitch-inj-badge riatlet" style="color:#fbbf24;background:rgba(245,158,11,0.25);border:1px solid rgba(245,158,11,0.6);" title="In riatletizzazione: ${fullP.infortunio_motivo || 'Indisponibile'} (Data stimata ${fullP.infortunio_rientro || ''} superata, in attesa di conferma)">🟡</span>`;
+            } else {
+                injBadgeHtml = `<span class="pitch-inj-badge" title="Infortunato: ${fullP.infortunio_motivo || 'Indisponibile'} (Rientro: ${fullP.infortunio_rientro || 'TBD'})">✚</span>`;
+            }
+        }
         const sub = getSubstituteForStarter(p, team, teamPlayers);
         const subHtml = sub ? `<div class="pitch-card-sub" title="Staffetta: ${sub.name} (${sub.role})"><span class="sub-arrow">↳</span> <span class="sub-name">${sub.name}</span> <span class="sub-role-badge ${sub.role}">${sub.role}</span></div>` : '';
         const pitchBadgeHtml = (typeof State !== 'undefined' && State.systemMode === 'mantra' && fullP && fullP.mantra)
@@ -5280,11 +5317,16 @@ function renderTeamRosterTable(teamName) {
         }
         let injBadge = '';
         if (p.is_injured) {
-            const isOrange = (p.infortunio_severity === 'orange');
-            const colorHex = isOrange ? '#f59e0b' : '#ef4444';
-            const classBadge = isOrange ? 'inj-cross-badge orange' : 'inj-cross-badge red';
-            const statusTitle = isOrange ? 'PROSSIMO AL RIENTRO' : 'LUNGA DEGENZA';
-            injBadge = `<span class="${classBadge}" title="${statusTitle}&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Rientro previsto: ${p.infortunio_rientro || 'TBD'}"><svg viewBox="0 0 24 24" width="12" height="12" fill="${colorHex}" style="vertical-align:middle;"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></span>`;
+            const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+            if (inRiatlet) {
+                injBadge = `<span class="inj-cross-badge riatlet" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.5);border-radius:4px;padding:0 3px;font-size:11px;" title="IN RIATLETIZZAZIONE&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Data stimata (${p.infortunio_rientro || 'TBD'}) superata — in attesa di conferma ufficiale">🟡</span>`;
+            } else {
+                const isOrange = (p.infortunio_severity === 'orange');
+                const colorHex = isOrange ? '#f59e0b' : '#ef4444';
+                const classBadge = isOrange ? 'inj-cross-badge orange' : 'inj-cross-badge red';
+                const statusTitle = isOrange ? 'PROSSIMO AL RIENTRO' : 'LUNGA DEGENZA';
+                injBadge = `<span class="${classBadge}" title="${statusTitle}&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Rientro previsto: ${p.infortunio_rientro || 'TBD'}"><svg viewBox="0 0 24 24" width="12" height="12" fill="${colorHex}" style="vertical-align:middle;"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></span>`;
+            }
         }
         const rosterRoleBadge = (typeof State !== 'undefined' && State.systemMode === 'mantra')
             ? renderMantraRoleBadges(p.mantra)
@@ -7771,7 +7813,15 @@ function buildAuctionPlayerRow(p, isMantraTable) {
                 ? (typeof renderMantraRoleBadges === 'function' ? renderMantraRoleBadges(p.mantra) : `<span class="role-badge ${p.role}">${p.role}</span>`)
                 : `<span class="role-badge ${p.role}">${p.role}</span>`;
             const mantraSubLabel = (isMantraTable || !p.mantra) ? '' : `<span class="mantra-sub-txt">${p.mantra}</span>`;
-            const injIcon = p.is_injured ? `<span class="inj-indicator" title="${p.infortunio_motivo || 'Infortunato'} (Rientro: ${p.infortunio_rientro || 'TBD'})">🩹</span>` : '';
+            const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+            let injIcon = '';
+            if (p.is_injured) {
+                if (inRiatlet) {
+                    injIcon = `<span class="inj-indicator" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.5);border-radius:4px;padding:0 2px;font-size:11px;" title="In riatletizzazione: ${p.infortunio_motivo || ''} (Rientro stimato del ${p.infortunio_rientro || ''} superato) — In attesa di conferma ufficiale">🟡</span>`;
+                } else {
+                    injIcon = `<span class="inj-indicator" title="${p.infortunio_motivo || 'Infortunato'} (Rientro: ${p.infortunio_rientro || 'TBD'})">🩹</span>`;
+                }
+            }
             const customBadge = p.is_custom_edited ? `<span class="mod-pill" title="Personalizzato">Mod</span>` : '';
             const singleSmartTag = getSmartBadgeHtml(p);
             const multiSmartTags = getAllSmartBadgesHtml(p);
@@ -7786,14 +7836,19 @@ function buildAuctionPlayerRow(p, isMantraTable) {
             else titClass = 'tit-low';
             let titLabel = `${p.titolarita || 0}%`;
             if (p.is_injured) {
-                if ((p.titolarita || 0) === 0) {
+                if (inRiatlet) {
+                    titClass = 'tit-mid';
+                    titLabel = `${p.titolarita || 50}% 🟡`;
+                } else if ((p.titolarita || 0) === 0) {
                     titClass = 'tit-alert';
                     titLabel = `0% 🚑`;
                 } else if (!p.presenze_2627 || p.presenze_2627 === 0) {
                     titLabel = `${p.titolarita}% 🚑`;
                 }
             }
-            const titTitle = p.titolarita_dettaglio || `Titolarità stimata: ${p.titolarita || 0}%\n${p.titolarita_desc_2627 || ''}`;
+            const titTitle = inRiatlet 
+                ? `In riatletizzazione (Rientro ${p.infortunio_rientro}): parzialmente in gruppo, in attesa di conferma ufficiale.\nTitolarità stimata a pieno regime: ${p.titolarita || 50}%`
+                : (p.titolarita_dettaglio || `Titolarità stimata: ${p.titolarita || 0}%\n${p.titolarita_desc_2627 || ''}`);
             const titHtml = `<span class="tit-pill ${titClass}" title="${titTitle}">${titLabel}</span>`;
             let coppiaHtml = `<span class="dim-dash">-</span>`;
             if (p.coppia_nome && p.coppia_nome !== '-') {
@@ -7982,7 +8037,11 @@ window.initAuctionTableView = initAuctionTableView;
 function getAllSmartBadgesHtml(p) {
     const badges = [];
     if (p.is_injured) {
-        badges.push(`<span class="smart-tag injured" title="Infortunato: ${p.infortunio_motivo || ''}">🩹 ${p.infortunio_rientro || 'Infortunato'}</span>`);
+        if ((typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p)) {
+            badges.push(`<span class="smart-tag riatletizzazione" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;" title="In riatletizzazione: ${p.infortunio_motivo || ''} (Data stimata superata: ${p.infortunio_rientro || ''}) — In attesa di conferma ufficiale">🟡 In riatletizzazione</span>`);
+        } else {
+            badges.push(`<span class="smart-tag injured" title="Infortunato: ${p.infortunio_motivo || ''}">🩹 ${p.infortunio_rientro || 'Infortunato'}</span>`);
+        }
     }
     if (p.is_rigorista_1 || p.rigorista_val === '1° Rigorista') {
         badges.push(`<span class="smart-tag penalty" title="1° Rigorista ufficiale">👑 1° Rigorista</span>`);
@@ -8047,6 +8106,9 @@ function getAllSmartBadgesHtml(p) {
 }
 function getSmartBadgeHtml(p) {
     if (p.is_injured) {
+        if ((typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p)) {
+            return `<span class="smart-tag riatletizzazione" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;" title="In riatletizzazione: ${p.infortunio_motivo || ''} — Data stimata (${p.infortunio_rientro || ''}) superata, in attesa di conferma ufficiale">🟡 In riatletizzazione</span>`;
+        }
         return `<span class="smart-tag injured" title="Infortunato: ${p.infortunio_motivo || ''} — Rientro previsto: ${p.infortunio_rientro || 'Non comunicato'}">🩹 ${p.infortunio_rientro || 'Infortunato'}</span>`;
     }
     if (p.is_rigorista_1 || p.rigorista_val === '1° Rigorista') {
@@ -9541,7 +9603,7 @@ function renderUnifiedPlayerRow(p) {
                 ${prioBadge}
                 <span class="sb-advice-tag ${p.ai_advice_type || 'regular'}">${p.ai_advice || p.consiglio}</span>
                 <span title="Fragilità: ${p.fragilita_val || ''}" style="cursor:help;font-size:13px;">${fragIcon}</span>
-                ${p.is_injured ? `<span style="color:#f87171;font-size:10px;font-weight:700;">🏥 ${p.infortunio_rientro}</span>` : ''}
+                ${p.is_injured ? ((typeof isPlayerInRiatletizzazione === 'function' && isPlayerInRiatletizzazione(p)) ? `<span style="color:#fbbf24;font-size:10px;font-weight:700;" title="In riatletizzazione: data stimata superata">🟡 In riatletizzazione</span>` : `<span style="color:#f87171;font-size:10px;font-weight:700;">🏥 ${p.infortunio_rientro}</span>`) : ''}
                 <span class="sb-row-stats">${statsShort}</span>
             </div>
             <div class="sb-row-right">
@@ -9632,7 +9694,7 @@ function renderUnifiedPlayerCard(p) {
                     ${prioBadge}
                     <span class="sb-advice-tag ${p.ai_advice_type || 'regular'}">${p.ai_advice || p.consiglio}</span>
                     <span title="Fragilità: ${p.fragilita_val || ''}" style="cursor:help;font-size:13px;">${fragIcon}</span>
-                    ${p.is_injured ? `<span style="color:#f87171;font-size:10.5px;font-weight:700;">🏥 ${p.infortunio_rientro}</span>` : ''}
+                    ${p.is_injured ? ((typeof isPlayerInRiatletizzazione === 'function' && isPlayerInRiatletizzazione(p)) ? `<span style="color:#fbbf24;font-size:10.5px;font-weight:700;" title="In riatletizzazione: data stimata superata">🟡 In riatletizzazione</span>` : `<span style="color:#f87171;font-size:10.5px;font-weight:700;">🏥 ${p.infortunio_rientro}</span>`) : ''}
                 </div>
                 <div class="sb-unified-stats-row">
                     ${statsRow}
@@ -12046,8 +12108,13 @@ function renderAiSquadsTab() {
             }
             let injBadge = '';
             if (p.is_injured) {
-                const isOrange = (p.infortunio_severity === 'orange');
-                injBadge = `<span class="ai-inj-pill ${isOrange ? 'orange' : 'red'}" title="${p.infortunio_status}">🚑 ${p.infortunio_motivo || 'Stop'}</span>`;
+                const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+                if (inRiatlet) {
+                    injBadge = `<span class="ai-inj-pill orange" style="background:rgba(245,158,11,0.2);color:#fbbf24;border-color:rgba(245,158,11,0.5);" title="In riatletizzazione: data stimata superata">🟡 In riatletizzazione</span>`;
+                } else {
+                    const isOrange = (p.infortunio_severity === 'orange');
+                    injBadge = `<span class="ai-inj-pill ${isOrange ? 'orange' : 'red'}" title="${p.infortunio_status}">🚑 ${p.infortunio_motivo || 'Stop'}</span>`;
+                }
             }
             let coppiaHtml = '';
             if (p.coppia_nome && p.coppia_nome !== '-') {
@@ -12557,8 +12624,13 @@ function renderAiReplaceCandidatesList() {
         else statusBadge = `<span class="ai-status-pill free">🟢 LIBERO</span>`;
         let injBadge = '';
         if (p.is_injured) {
-            const isOrange = (p.infortunio_severity === 'orange');
-            injBadge = `<span class="ai-inj-pill ${isOrange ? 'orange' : 'red'}" title="${p.infortunio_status}">🚑 ${p.infortunio_motivo || 'Stop'}</span>`;
+            const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+            if (inRiatlet) {
+                injBadge = `<span class="ai-inj-pill orange" style="background:rgba(245,158,11,0.2);color:#fbbf24;border-color:rgba(245,158,11,0.5);" title="In riatletizzazione: data stimata superata">🟡 In riatletizzazione</span>`;
+            } else {
+                const isOrange = (p.infortunio_severity === 'orange');
+                injBadge = `<span class="ai-inj-pill ${isOrange ? 'orange' : 'red'}" title="${p.infortunio_status}">🚑 ${p.infortunio_motivo || 'Stop'}</span>`;
+            }
         }
         let rigoristaBadge = '';
         if (p.is_rigorista_1) rigoristaBadge = `<span style="font-size:9.5px;color:var(--accent-gold);background:rgba(234,179,8,0.15);padding:1px 4px;border-radius:3px;border:1px solid rgba(234,179,8,0.3);font-weight:700;">🎯 1° Rig.</span>`;
@@ -12863,12 +12935,18 @@ function renderGemsView() {
             let injBadge = '';
             let injTextDesc = '';
             if (p.is_injured) {
-                const isOrange = (p.infortunio_severity === 'orange');
-                const colorHex = isOrange ? '#f59e0b' : '#ef4444';
-                const classBadge = isOrange ? 'inj-cross-badge orange' : 'inj-cross-badge red';
-                const statusTitle = isOrange ? 'PROSSIMO AL RIENTRO' : 'LUNGA DEGENZA';
-                injBadge = `<span class="${classBadge}" title="${statusTitle}&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Rientro previsto: ${p.infortunio_rientro || 'TBD'}"><svg viewBox="0 0 24 24" width="12" height="12" fill="${colorHex}" style="vertical-align:middle;"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></span>`;
-                injTextDesc = `<span style="font-size:10px;font-weight:700;color:${colorHex};background:${isOrange ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)'};border:1px solid ${isOrange ? 'rgba(245,158,11,0.35)' : 'rgba(239,68,68,0.35)'};padding:1px 5px;border-radius:4px;" title="${p.infortunio_motivo || ''}">🏥 ${p.infortunio_rientro || 'Stop'}</span>`;
+                const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+                if (inRiatlet) {
+                    injBadge = `<span class="inj-cross-badge riatlet" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.5);border-radius:4px;padding:0 3px;font-size:11px;" title="IN RIATLETIZZAZIONE&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Data stimata (${p.infortunio_rientro || 'TBD'}) superata">🟡</span>`;
+                    injTextDesc = `<span style="font-size:10px;font-weight:700;color:#fbbf24;background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);padding:1px 5px;border-radius:4px;" title="${p.infortunio_motivo || ''} (In attesa di conferma)">🟡 In riatletizzazione</span>`;
+                } else {
+                    const isOrange = (p.infortunio_severity === 'orange');
+                    const colorHex = isOrange ? '#f59e0b' : '#ef4444';
+                    const classBadge = isOrange ? 'inj-cross-badge orange' : 'inj-cross-badge red';
+                    const statusTitle = isOrange ? 'PROSSIMO AL RIENTRO' : 'LUNGA DEGENZA';
+                    injBadge = `<span class="${classBadge}" title="${statusTitle}&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Rientro previsto: ${p.infortunio_rientro || 'TBD'}"><svg viewBox="0 0 24 24" width="12" height="12" fill="${colorHex}" style="vertical-align:middle;"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></span>`;
+                    injTextDesc = `<span style="font-size:10px;font-weight:700;color:${colorHex};background:${isOrange ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)'};border:1px solid ${isOrange ? 'rgba(245,158,11,0.35)' : 'rgba(239,68,68,0.35)'};padding:1px 5px;border-radius:4px;" title="${p.infortunio_motivo || ''}">🏥 ${p.infortunio_rientro || 'Stop'}</span>`;
+                }
             }
             const ratingVal = p.rating_2526 ? `<b style="color:#fbbf24;font-size:13px;">${p.rating_2526}</b>` : `<span style="color:var(--text-muted);">-</span>`;
             const xgVal = p.xg90_2526 > 0 ? `<b style="color:#f472b6;font-size:12.5px;">${p.xg90_2526}</b>` : `<span style="color:var(--text-muted);">0.0</span>`;
@@ -12985,16 +13063,26 @@ function renderGemsView() {
             let injBadge = '';
             let injCardBanner = '';
             if (p.is_injured) {
-                const isOrange = (p.infortunio_severity === 'orange');
-                const colorHex = isOrange ? '#f59e0b' : '#ef4444';
-                const classBadge = isOrange ? 'inj-cross-badge orange' : 'inj-cross-badge red';
-                const statusTitle = isOrange ? 'PROSSIMO AL RIENTRO' : 'LUNGA DEGENZA';
-                injBadge = `<span class="${classBadge}" title="${statusTitle}&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Rientro previsto: ${p.infortunio_rientro || 'TBD'}"><svg viewBox="0 0 24 24" width="12" height="12" fill="${colorHex}" style="vertical-align:middle;"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></span>`;
-                injCardBanner = `
-                    <div style="background:${isOrange ? 'rgba(245,158,11,0.12)' : 'rgba(239,68,68,0.12)'};border:1px solid ${isOrange ? 'rgba(245,158,11,0.3)' : 'rgba(239,68,68,0.3)'};color:${colorHex};font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
-                        ${injBadge} <span>${p.infortunio_motivo || 'Infortunato'} • Rientro: <b>${p.infortunio_rientro || 'TBD'}</b></span>
-                    </div>
-                `;
+                const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+                if (inRiatlet) {
+                    injBadge = `<span class="inj-cross-badge riatlet" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.5);border-radius:4px;padding:0 3px;font-size:11px;" title="IN RIATLETIZZAZIONE&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Data stimata (${p.infortunio_rientro || 'TBD'}) superata">🟡</span>`;
+                    injCardBanner = `
+                        <div style="background:rgba(245,158,11,0.14);border:1px solid rgba(245,158,11,0.45);color:#fbbf24;font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+                            ${injBadge} <span>🟡 In riatletizzazione • ${p.infortunio_motivo || 'Recupero in corso'} (in attesa di conferma)</span>
+                        </div>
+                    `;
+                } else {
+                    const isOrange = (p.infortunio_severity === 'orange');
+                    const colorHex = isOrange ? '#f59e0b' : '#ef4444';
+                    const classBadge = isOrange ? 'inj-cross-badge orange' : 'inj-cross-badge red';
+                    const statusTitle = isOrange ? 'PROSSIMO AL RIENTRO' : 'LUNGA DEGENZA';
+                    injBadge = `<span class="${classBadge}" title="${statusTitle}&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Rientro previsto: ${p.infortunio_rientro || 'TBD'}"><svg viewBox="0 0 24 24" width="12" height="12" fill="${colorHex}" style="vertical-align:middle;"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></span>`;
+                    injCardBanner = `
+                        <div style="background:${isOrange ? 'rgba(245,158,11,0.12)' : 'rgba(239,68,68,0.12)'};border:1px solid ${isOrange ? 'rgba(245,158,11,0.3)' : 'rgba(239,68,68,0.3)'};color:${colorHex};font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+                            ${injBadge} <span>${p.infortunio_motivo || 'Infortunato'} • Rientro: <b>${p.infortunio_rientro || 'TBD'}</b></span>
+                        </div>
+                    `;
+                }
             }
             const ratingVal = p.rating_2526 ? `<b style="color:#fbbf24;font-size:13.5px;">${p.rating_2526}</b>` : `<span style="color:var(--text-muted);">-</span>`;
             const xgVal = p.xg90_2526 > 0 ? `<b style="color:#f472b6;font-size:13px;">${p.xg90_2526}</b>` : `<span style="color:var(--text-muted);">0.0</span>`;
@@ -13904,8 +13992,14 @@ function calculateChiSchieroScore(player, roundNum) {
     factors.push({ name: 'Caratura & Expected FantaMedia (xFM)', val: `${perfScore.toFixed(2)} xFM • OVR ${ovr}`, positive: true });
     const tit = (player.titolarita !== undefined && player.titolarita !== null) ? Number(player.titolarita) : 70;
     if (player.is_injured) {
-        dynamicScore -= 32;
-        factors.push({ name: 'Infortunio / Rientro da valutare', val: '-32 pt 🩹', positive: false });
+        const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(player);
+        if (inRiatlet) {
+            dynamicScore -= 12;
+            factors.push({ name: 'In Riatletizzazione (rientro recente, minutaggio ridotto)', val: '-12 pt 🟡', positive: false });
+        } else {
+            dynamicScore -= 32;
+            factors.push({ name: 'Infortunio / Rientro da valutare', val: '-32 pt 🩹', positive: false });
+        }
     } else if (tit >= 85) {
         dynamicScore += 4;
         factors.push({ name: `Titolarissimo Garantito (${tit}%)`, val: '+4 pt 🔒', positive: true });
@@ -14130,11 +14224,20 @@ function buildDetailedPlayerProsAndCons(player, data) {
     }
     const tit = (player.titolarita !== undefined && player.titolarita !== null) ? Number(player.titolarita) : 70;
     if (player.is_injured) {
-        cons.push({
-            icon: '🩹',
-            title: 'Infortunio / Rientro Incerto',
-            desc: `Calciatore alle prese con noie fisiche. Alto rischio di mancata convocazione o minutaggio nullo.`
-        });
+        const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(player);
+        if (inRiatlet) {
+            cons.push({
+                icon: '🟡',
+                title: 'In Riatletizzazione / Gestione Minuti',
+                desc: `Data stimata di rientro superata (${player.infortunio_rientro || ''}). Ha ripreso ad allenarsi ma potrebbe subentrare solo nel finale.`
+            });
+        } else {
+            cons.push({
+                icon: '🩹',
+                title: 'Infortunio / Rientro Incerto',
+                desc: `Calciatore alle prese con noie fisiche. Alto rischio di mancata convocazione o minutaggio nullo.`
+            });
+        }
     } else if (tit >= 85) {
         pros.push({
             icon: '🔒',

@@ -246,20 +246,29 @@ def build_standalone_dashboard(sync_android=False):
 
             <!-- RIGHT: MODERN ACTIONS -->
             <div class="header-right">
+                <!-- CANALI SOCIAL: TELEGRAM & INSTAGRAM -->
+                <a href="https://t.me/fantamasterai" target="_blank" rel="noopener noreferrer" class="social-header-btn social-btn-telegram" title="Canale Telegram Ufficiale @fantamasterai" aria-label="Canale Telegram Ufficiale">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/fantamasterai" target="_blank" rel="noopener noreferrer" class="social-header-btn social-btn-instagram" title="Profilo Instagram Ufficiale @fantamasterai" aria-label="Profilo Instagram Ufficiale">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+
                 <!-- CREATOR STATUS BADGE (Visibile solo se abilitato) -->
                 <div id="creatorStatusBadge" class="creator-status-badge creator-only-control" onclick="openCreatorAuthModal()" title="👑 Modalità Creatore Attiva. Clicca per disattivare o gestire.">
                     <span>👑 Creatore Attivo</span>
                 </div>
 
                 <!-- METODOLOGIA & INFO AI BUTTON -->
-                <button class="modern-header-pill-btn" onclick="openAiMethodologyModal('ovr')" title="Trasparenza & Metodologia AI — Come funziona l'algoritmo">
+                <button class="modern-header-pill-btn header-ai-info-pill" onclick="openAiMethodologyModal('ovr')" title="Trasparenza & Metodologia AI — Come funziona l'algoritmo">
                     <span class="pill-dot-cyan"></span>
-                    <span>Come Funziona l'AI</span>
+                    <span class="header-pill-full-text">Come Funziona l'AI</span>
+                    <span class="header-pill-short-text">AI</span>
                 </button>
 
                 <!-- PWA INSTALL BUTTON (Dinamico) -->
-                <button id="btnPwaInstall" class="modern-header-pill-btn" style="display:none;color:#00e676;border-color:rgba(0,230,118,0.3);background:rgba(0,230,118,0.08);" onclick="triggerPwaInstall()" title="Installa l'App Fanta Master AI su Smartphone o PC">
-                    <span>📲</span> <span>Installa</span>
+                <button id="btnPwaInstall" class="modern-header-pill-btn header-pwa-pill" style="display:none;color:#00e676;border-color:rgba(0,230,118,0.3);background:rgba(0,230,118,0.08);" onclick="triggerPwaInstall()" title="Installa l'App Fanta Master AI su Smartphone o PC">
+                    <span>📲</span> <span class="header-pwa-full-text">Installa</span>
                 </button>
 
                 <!-- GESTIONE DROPDOWN -->
@@ -1513,6 +1522,19 @@ def build_standalone_dashboard(sync_android=False):
                         <button class="mobile-menu-link-btn" onclick="closeMobileMenuModal(); openCreatorAuthModal();" style="color:#fbbf24;">👑 Accesso Creatore</button>
                     </div>
                 </div>
+
+                <!-- Section 5: Community & Social Ufficiali -->
+                <div class="mobile-menu-section">
+                    <div class="mobile-menu-section-title"><span>🌐</span> Community & Social Ufficiali</div>
+                    <div class="mobile-menu-links">
+                        <a href="https://t.me/fantamasterai" target="_blank" rel="noopener noreferrer" class="mobile-menu-link-btn" style="color:#38bdf8;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:10px;">
+                            <span>✈️</span> Canale Telegram Ufficiale (@fantamasterai)
+                        </a>
+                        <a href="https://www.instagram.com/fantamasterai" target="_blank" rel="noopener noreferrer" class="mobile-menu-link-btn" style="color:#f43f5e;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:10px;">
+                            <span>📸</span> Instagram Ufficiale (@fantamasterai)
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -2176,6 +2198,14 @@ def build_standalone_dashboard(sync_android=False):
                     <div class="footer-contact-item">
                         <span class="footer-contact-icon">✉️</span>
                         <span>Supporto &amp; Contatti: <a href="mailto:info@fantamasterai.it" class="footer-link-highlight">info@fantamasterai.it</a></span>
+                    </div>
+                    <div class="footer-social-row" style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+                        <a href="https://t.me/fantamasterai" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25);color:#38bdf8;padding:4px 10px;border-radius:20px;font-size:11.5px;font-weight:700;text-decoration:none;">
+                            <span>✈️</span> Telegram
+                        </a>
+                        <a href="https://www.instagram.com/fantamasterai" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;background:rgba(244,63,94,0.1);border:1px solid rgba(244,63,94,0.25);color:#fb7185;padding:4px 10px;border-radius:20px;font-size:11.5px;font-weight:700;text-decoration:none;">
+                            <span>📸</span> Instagram
+                        </a>
                     </div>
                 </div>
 

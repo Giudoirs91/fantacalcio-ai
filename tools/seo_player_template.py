@@ -11,6 +11,19 @@ import os
 import re
 import json
 import math
+from datetime import datetime
+
+def is_in_riatletizzazione(rientro_str):
+    if not rientro_str:
+        return False
+    m = re.match(r"^(\d{1,2})/(\d{1,2})/(\d{4})$", str(rientro_str).strip())
+    if m:
+        try:
+            d = datetime(int(m.group(3)), int(m.group(2)), int(m.group(1)))
+            return d.date() <= datetime.now().date()
+        except Exception:
+            return False
+    return False
 
 def clean_html(text):
     if text is None:
@@ -156,6 +169,7 @@ def render_unified_footer(rel_path=""):
                     <div class="footer-heading">Community &amp; Note Legali</div>
                     <ul class="footer-nav-list">
                         <li><a href="https://t.me/fantamasterai" target="_blank" rel="noopener" class="footer-link" style="color:#38bdf8;font-weight:800;">📲 Canale Telegram Ufficiale</a></li>
+                        <li><a href="https://www.instagram.com/fantamasterai" target="_blank" rel="noopener" class="footer-link" style="color:#f43f5e;font-weight:800;">📸 Profilo Instagram Ufficiale</a></li>
                         <li><a href="{rel_path}privacy-policy/" class="footer-link" id="footer-privacy-link">🔒 Privacy Policy (GDPR)</a></li>
                         <li><span class="footer-status-pill">🛡️ Privacy by Design</span></li>
                         <li><span class="footer-status-pill">🚫 Zero Cookie Traccianti</span></li>
@@ -388,7 +402,8 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     tit_color = "#4ade80" if titolarita >= 68 else ("#f59e0b" if titolarita >= 50 else "#ef4444")
     ovr_cls = "elite" if ovr >= 90 else ("gold" if ovr >= 82 else ("cyan" if ovr >= 75 else "silver"))
 
-    inj_badge = f'<span class="badge-tag red">🩹 Rientro: {clean_html(infort_rientro)}</span>' if is_injured else '<span class="badge-tag green">🟢 Integro</span>'
+    in_riatlet = is_injured and is_in_riatletizzazione(infort_rientro)
+    inj_badge = f'<span class="badge-tag gold" style="background:rgba(245,158,11,0.2);color:#fbbf24;border:1px solid rgba(245,158,11,0.5);">🟡 In riatletizzazione</span>' if in_riatlet else (f'<span class="badge-tag red">🩹 Rientro: {clean_html(infort_rientro)}</span>' if is_injured else '<span class="badge-tag green">🟢 Integro</span>')
     
     rig_badge = ''
     if player.get("is_rigorista_1"): rig_badge = '<span class="badge-tag gold">👑 1° Rigorista</span>'
@@ -791,7 +806,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
             <div class="injury-metric-card">
                 <span class="lbl">Stato Attuale</span>
                 <div style="margin-top:4px;">
-                    {f'<span class="health-current-tag injured">🩹 {clean_html(infort_motivo)} ({clean_html(infort_rientro)})</span>' if is_injured else '<span class="health-current-tag healthy">🟢 Pienamente Disponibile</span>'}
+                    {f'<span class="health-current-tag riatlet" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;">🟡 In riatletizzazione ({clean_html(infort_rientro)})</span>' if in_riatlet else (f'<span class="health-current-tag injured">🩹 {clean_html(infort_motivo)} ({clean_html(infort_rientro)})</span>' if is_injured else '<span class="health-current-tag healthy">🟢 Pienamente Disponibile</span>')}
                 </div>
                 <span style="font-size:10.5px;color:var(--text-muted);">Serie A 2026/27</span>
             </div>
@@ -1023,8 +1038,8 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                     <span class="lbl">Integrità Fisica</span>
                 </div>
                 <div class="quick-info-content">
-                    <span class="quick-badge health-badge {'injured' if is_injured else 'healthy'}">
-                        {f'🩹 Infortunato ({clean_html(infort_rientro)})' if is_injured else '🟢 Integro (Basso Rischio)'}
+                    <span class="quick-badge health-badge {'amber' if in_riatlet else ('injured' if is_injured else 'healthy')}" style="{'background:rgba(245,158,11,0.18);border-color:rgba(245,158,11,0.5);color:#fbbf24;' if in_riatlet else ''}">
+                        {f'🟡 In riatletizzazione ({clean_html(infort_rientro)})' if in_riatlet else (f'🩹 Infortunato ({clean_html(infort_rientro)})' if is_injured else '🟢 Integro (Basso Rischio)')}
                     </span>
                 </div>
             </div>

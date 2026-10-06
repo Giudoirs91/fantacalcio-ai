@@ -228,12 +228,18 @@ function renderGemsView() {
             let injBadge = '';
             let injTextDesc = '';
             if (p.is_injured) {
-                const isOrange = (p.infortunio_severity === 'orange');
-                const colorHex = isOrange ? '#f59e0b' : '#ef4444';
-                const classBadge = isOrange ? 'inj-cross-badge orange' : 'inj-cross-badge red';
-                const statusTitle = isOrange ? 'PROSSIMO AL RIENTRO' : 'LUNGA DEGENZA';
-                injBadge = `<span class="${classBadge}" title="${statusTitle}&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Rientro previsto: ${p.infortunio_rientro || 'TBD'}"><svg viewBox="0 0 24 24" width="12" height="12" fill="${colorHex}" style="vertical-align:middle;"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></span>`;
-                injTextDesc = `<span style="font-size:10px;font-weight:700;color:${colorHex};background:${isOrange ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)'};border:1px solid ${isOrange ? 'rgba(245,158,11,0.35)' : 'rgba(239,68,68,0.35)'};padding:1px 5px;border-radius:4px;" title="${p.infortunio_motivo || ''}">🏥 ${p.infortunio_rientro || 'Stop'}</span>`;
+                const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+                if (inRiatlet) {
+                    injBadge = `<span class="inj-cross-badge riatlet" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.5);border-radius:4px;padding:0 3px;font-size:11px;" title="IN RIATLETIZZAZIONE&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Data stimata (${p.infortunio_rientro || 'TBD'}) superata">🟡</span>`;
+                    injTextDesc = `<span style="font-size:10px;font-weight:700;color:#fbbf24;background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);padding:1px 5px;border-radius:4px;" title="${p.infortunio_motivo || ''} (In attesa di conferma)">🟡 In riatletizzazione</span>`;
+                } else {
+                    const isOrange = (p.infortunio_severity === 'orange');
+                    const colorHex = isOrange ? '#f59e0b' : '#ef4444';
+                    const classBadge = isOrange ? 'inj-cross-badge orange' : 'inj-cross-badge red';
+                    const statusTitle = isOrange ? 'PROSSIMO AL RIENTRO' : 'LUNGA DEGENZA';
+                    injBadge = `<span class="${classBadge}" title="${statusTitle}&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Rientro previsto: ${p.infortunio_rientro || 'TBD'}"><svg viewBox="0 0 24 24" width="12" height="12" fill="${colorHex}" style="vertical-align:middle;"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></span>`;
+                    injTextDesc = `<span style="font-size:10px;font-weight:700;color:${colorHex};background:${isOrange ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)'};border:1px solid ${isOrange ? 'rgba(245,158,11,0.35)' : 'rgba(239,68,68,0.35)'};padding:1px 5px;border-radius:4px;" title="${p.infortunio_motivo || ''}">🏥 ${p.infortunio_rientro || 'Stop'}</span>`;
+                }
             }
             const ratingVal = p.rating_2526 ? `<b style="color:#fbbf24;font-size:13px;">${p.rating_2526}</b>` : `<span style="color:var(--text-muted);">-</span>`;
             const xgVal = p.xg90_2526 > 0 ? `<b style="color:#f472b6;font-size:12.5px;">${p.xg90_2526}</b>` : `<span style="color:var(--text-muted);">0.0</span>`;
@@ -350,16 +356,26 @@ function renderGemsView() {
             let injBadge = '';
             let injCardBanner = '';
             if (p.is_injured) {
-                const isOrange = (p.infortunio_severity === 'orange');
-                const colorHex = isOrange ? '#f59e0b' : '#ef4444';
-                const classBadge = isOrange ? 'inj-cross-badge orange' : 'inj-cross-badge red';
-                const statusTitle = isOrange ? 'PROSSIMO AL RIENTRO' : 'LUNGA DEGENZA';
-                injBadge = `<span class="${classBadge}" title="${statusTitle}&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Rientro previsto: ${p.infortunio_rientro || 'TBD'}"><svg viewBox="0 0 24 24" width="12" height="12" fill="${colorHex}" style="vertical-align:middle;"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></span>`;
-                injCardBanner = `
-                    <div style="background:${isOrange ? 'rgba(245,158,11,0.12)' : 'rgba(239,68,68,0.12)'};border:1px solid ${isOrange ? 'rgba(245,158,11,0.3)' : 'rgba(239,68,68,0.3)'};color:${colorHex};font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
-                        ${injBadge} <span>${p.infortunio_motivo || 'Infortunato'} • Rientro: <b>${p.infortunio_rientro || 'TBD'}</b></span>
-                    </div>
-                `;
+                const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+                if (inRiatlet) {
+                    injBadge = `<span class="inj-cross-badge riatlet" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.5);border-radius:4px;padding:0 3px;font-size:11px;" title="IN RIATLETIZZAZIONE&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Data stimata (${p.infortunio_rientro || 'TBD'}) superata">🟡</span>`;
+                    injCardBanner = `
+                        <div style="background:rgba(245,158,11,0.14);border:1px solid rgba(245,158,11,0.45);color:#fbbf24;font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+                            ${injBadge} <span>🟡 In riatletizzazione • ${p.infortunio_motivo || 'Recupero in corso'} (in attesa di conferma)</span>
+                        </div>
+                    `;
+                } else {
+                    const isOrange = (p.infortunio_severity === 'orange');
+                    const colorHex = isOrange ? '#f59e0b' : '#ef4444';
+                    const classBadge = isOrange ? 'inj-cross-badge orange' : 'inj-cross-badge red';
+                    const statusTitle = isOrange ? 'PROSSIMO AL RIENTRO' : 'LUNGA DEGENZA';
+                    injBadge = `<span class="${classBadge}" title="${statusTitle}&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Rientro previsto: ${p.infortunio_rientro || 'TBD'}"><svg viewBox="0 0 24 24" width="12" height="12" fill="${colorHex}" style="vertical-align:middle;"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></span>`;
+                    injCardBanner = `
+                        <div style="background:${isOrange ? 'rgba(245,158,11,0.12)' : 'rgba(239,68,68,0.12)'};border:1px solid ${isOrange ? 'rgba(245,158,11,0.3)' : 'rgba(239,68,68,0.3)'};color:${colorHex};font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+                            ${injBadge} <span>${p.infortunio_motivo || 'Infortunato'} • Rientro: <b>${p.infortunio_rientro || 'TBD'}</b></span>
+                        </div>
+                    `;
+                }
             }
             const ratingVal = p.rating_2526 ? `<b style="color:#fbbf24;font-size:13.5px;">${p.rating_2526}</b>` : `<span style="color:var(--text-muted);">-</span>`;
             const xgVal = p.xg90_2526 > 0 ? `<b style="color:#f472b6;font-size:13px;">${p.xg90_2526}</b>` : `<span style="color:var(--text-muted);">0.0</span>`;

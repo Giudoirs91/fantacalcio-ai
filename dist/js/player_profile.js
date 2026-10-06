@@ -241,8 +241,8 @@ function generateInjuryHistoryCardHtml(p) {
     const partitePerse = p.partite_saltate_totali !== undefined && p.partite_saltate_totali !== null ? p.partite_saltate_totali : 0;
     const giorniStop = p.giorni_stop_totali !== undefined && p.giorni_stop_totali !== null ? p.giorni_stop_totali : 0;
     const recidive = p.recidive_muscolari !== undefined && p.recidive_muscolari !== null ? p.recidive_muscolari : 0;
-    const cronistoria = p.cronistoria_infortuni || [];
-    const medicalAdvice = p.consiglio_medico_ai || (p.is_injured ? `Attualmente indisponibile per ${p.infortunio_motivo || 'infortunio'}. Rientro stimato: ${p.infortunio_rientro || 'TBD'}.` : 'Calciatore con eccellente tenuta atletica e ridottissima incidenza di infortuni muscolari.');
+    const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+    const medicalAdvice = p.consiglio_medico_ai || (p.is_injured ? (inRiatlet ? `In fase di riatletizzazione: la data stimata di rientro (${p.infortunio_rientro}) è superata. Il calciatore ha ripreso il lavoro parziale sul campo/in gruppo, in attesa di conferma ufficiale di pieno reintegro.` : `Attualmente indisponibile per ${p.infortunio_motivo || 'infortunio'}. Rientro stimato: ${p.infortunio_rientro || 'TBD'}.`) : 'Calciatore con eccellente tenuta atletica e ridottissima incidenza di infortuni muscolari.');
     let tierColor = '#34d399';
     if (fragScore >= 80) { tierColor = '#f87171'; }
     else if (fragScore >= 60) { tierColor = '#fb923c'; }
@@ -387,7 +387,9 @@ function generateInjuryHistoryCardHtml(p) {
                     <span class="lbl">Stato Attuale</span>
                     <div style="margin-top:4px;">
                         ${p.is_injured 
-                            ? `<span class="health-current-tag injured">🩹 ${p.infortunio_motivo || 'Indisponibile'} (${p.infortunio_rientro || 'TBD'})</span>`
+                            ? (inRiatlet 
+                                ? `<span class="health-current-tag" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;padding:3px 8px;border-radius:6px;font-weight:700;">🟡 In Riatletizzazione (${p.infortunio_rientro})</span>`
+                                : `<span class="health-current-tag injured">🩹 ${p.infortunio_motivo || 'Indisponibile'} (${p.infortunio_rientro || 'TBD'})</span>`)
                             : `<span class="health-current-tag healthy">🟢 Pienamente Disponibile</span>`
                         }
                     </div>
@@ -549,7 +551,11 @@ function generateAiStrengthsAndWeaknessesHtml(p) {
         weaknesses.push(`🩹 <b>Rischio Fragilità Fisica</b>: Storico di infortuni che ne condiziona la continuità (${p.fragility_tier || 'Attenzione'})`);
     }
     if (p.is_injured) {
-        weaknesses.push(`🔴 <b>Attualmente Indisponibile</b>: ${p.infortunio_motivo || 'Infortunio in corso'} (Rientro: ${p.infortunio_rientro || 'TBD'})`);
+        if ((typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p)) {
+            weaknesses.push(`🟡 <b>In Riatletizzazione</b>: ${p.infortunio_motivo || 'Smaltimento infortunio'} (Data stimata del ${p.infortunio_rientro || ''} superata: lavoro sul campo/in gruppo, in attesa di conferma ufficiale)`);
+        } else {
+            weaknesses.push(`🔴 <b>Attualmente Indisponibile</b>: ${p.infortunio_motivo || 'Infortunio in corso'} (Rientro: ${p.infortunio_rientro || 'TBD'})`);
+        }
     }
     if (p.delta_xfm !== undefined && p.delta_xfm >= 0.65) {
         weaknesses.push(`📈 <b>Possibile Regressione Statistica</b>: Ha raccolto più bonus rispetto al volume di gioco (delta +${p.delta_xfm.toFixed(2)})`);
@@ -616,7 +622,9 @@ function openPlayerProfileModal(playerId) {
     if (p.titolarita < 68) titColor = '#f59e0b';
     else if (p.titolarita < 50) titColor = '#ef4444';
     const injBadge = p.is_injured 
-        ? `<span class="badge-tag red" title="${p.infortunio_motivo || ''}">🩹 Rientro: ${p.infortunio_rientro || 'TBD'}</span>`
+        ? (((typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p))
+            ? `<span class="badge-tag" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;font-weight:700;" title="${p.infortunio_motivo || ''} (Data stimata: ${p.infortunio_rientro})">🟡 In riatletizzazione</span>`
+            : `<span class="badge-tag red" title="${p.infortunio_motivo || ''}">🩹 Rientro: ${p.infortunio_rientro || 'TBD'}</span>`)
         : `<span class="badge-tag green">🟢 Integro</span>`;
     let rigoristaBadge = '';
     if (p.is_rigorista_1) rigoristaBadge = `<span class="badge-tag gold">👑 1° Rigorista</span>`;
@@ -1118,8 +1126,13 @@ function openPlayerProfileModal(playerId) {
     }
     const floorVal = (p.floor !== undefined && p.floor !== null) ? Number(p.floor).toFixed(1) : (p.mv_2627 || p.mv || 6.0).toFixed(1);
     const ceilingVal = (p.ceiling !== undefined && p.ceiling !== null) ? Number(p.ceiling).toFixed(1) : Math.min(18, ((p.xfm || p.fm || 6.0) + 4.5)).toFixed(1);
-    const tacticalProfile = p.tactical_profile || '⚖️ Rendimento Bilanciato';
-    const tacticalAdvice = p.tactical_advice || `Floor ${floorVal} / Ceiling ${ceilingVal}: solido equilibrio tra sufficienza garantita e buone chance di bonus.`;
+    let tacticalProfile = (p.tactical_profile || '⚖️ Rendimento Bilanciato')
+        .replace(/Floor Sicuro\s*\(Roccia Costante\)/gi, '🛡️ Base Solida (Costante)')
+        .replace(/Boom or Bust\s*\(Ceiling Esplosivo\)/gi, '🚀 Alto Potenziale (Exploit Bonus)');
+    let rawAdvice = p.tactical_advice || `Base minima ${floorVal} / Potenziale max ${ceilingVal}: solido equilibrio tra sufficienza garantita e buone chance di bonus.`;
+    const tacticalAdvice = rawAdvice
+        .replace(/Floor (\d+(?:\.\d+)?)/gi, 'Base minima $1')
+        .replace(/Ceiling (\d+(?:\.\d+)?)/gi, 'Potenziale max $1');
     const subVoteProb = (p.sub_vote_prob !== undefined && p.sub_vote_prob !== null) ? p.sub_vote_prob : (p.titolarita >= 80 ? 92 : 70);
     const superSubBadge = p.super_sub_badge || (p.titolarita >= 80 ? '👑 TITOLARE FISSO' : '⚡ SUPER-SUB ORO');
     const subVerdict = p.sub_verdict || (p.titolarita >= 80 ? 'Titolare indiscusso del reparto.' : 'Staffetta frequente a gara in corso.');
@@ -1131,38 +1144,38 @@ function openPlayerProfileModal(playerId) {
     const matchupAdvice = matchupData.matchup_advice || `Incrocio equilibrato contro il ${oppName}.`;
     const favorableTraits = Array.isArray(matchupData.favorable_traits) ? matchupData.favorable_traits : [];
     const advancedPredictiveCardHtml = `
-        <div class="profile-advanced-predictive-box" style="margin:16px 0;background:rgba(18,24,38,0.75);border:1px solid rgba(56,189,248,0.22);border-radius:14px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,0.35);">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;">
-                <div style="display:flex;align-items:center;gap:8px;">
-                    <span style="font-size:18px;">🔮</span>
-                    <b style="color:#fff;font-family:'Outfit',sans-serif;font-size:13.5px;letter-spacing:0.3px;">Intelligence Predittiva & Rischio AI</b>
+        <div class="profile-advanced-predictive-box" style="margin:16px 0;background:rgba(18,24,38,0.75);border:1px solid rgba(56,189,248,0.22);border-radius:14px;padding:14px;box-shadow:0 8px 24px rgba(0,0,0,0.35);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;flex-wrap:wrap;gap:6px;">
+                <div style="display:flex;align-items:center;gap:7px;">
+                    <span style="font-size:16px;">🔮</span>
+                    <b style="color:#fff;font-family:'Outfit',sans-serif;font-size:13px;letter-spacing:0.2px;">Intelligence Predittiva & Rischio AI</b>
                 </div>
-                <span style="font-size:11px;font-weight:800;color:#38bdf8;background:rgba(56,189,248,0.12);padding:3px 8px;border-radius:20px;border:1px solid rgba(56,189,248,0.3);">Serie A 2026/27</span>
+                <span style="font-size:10.5px;font-weight:800;color:#38bdf8;background:rgba(56,189,248,0.12);padding:2px 7px;border-radius:20px;border:1px solid rgba(56,189,248,0.3);">Serie A 2026/27</span>
             </div>
-            <!-- 1. FLOOR VS CEILING -->
-            <div style="margin-bottom:12px;background:rgba(0,0,0,0.25);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.04);">
+            <!-- 1. BASE MINIMA VS POTENZIALE MAX (Rendimento Senza Bonus vs Con Bonus) -->
+            <div style="margin-bottom:12px;background:rgba(0,0,0,0.25);border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.04);">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:4px;">
-                    <span style="font-size:11.5px;font-weight:700;color:#94a3b8;">Spettro Rischio / Rendimento:</span>
-                    <b style="font-size:11.5px;color:#cbd5e1;">${tacticalProfile}</b>
+                    <span style="font-size:11px;font-weight:700;color:#94a3b8;">Spettro Rischio / Rendimento:</span>
+                    <b style="font-size:11px;color:#cbd5e1;">${tacticalProfile}</b>
                 </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;margin-bottom:8px;">
-                    <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:6px;">
-                        <span style="font-size:10px;color:#fca5a5;text-transform:uppercase;font-weight:700;display:block;">🛡️ Floor Min.</span>
-                        <b style="font-size:16px;color:#fff;">${floorVal}</b>
-                        <span style="font-size:9.5px;color:#94a3b8;display:block;">Senza bonus</span>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;text-align:center;margin-bottom:8px;">
+                    <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:6px 3px;">
+                        <span style="font-size:9.5px;color:#fca5a5;text-transform:uppercase;font-weight:800;display:block;white-space:nowrap;letter-spacing:0.2px;">🛡️ Base Minima</span>
+                        <b style="font-size:16px;color:#fff;line-height:1.2;display:block;margin:2px 0;">${floorVal}</b>
+                        <span style="font-size:8.5px;color:#94a3b8;display:block;white-space:nowrap;">Senza bonus</span>
                     </div>
-                    <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);border-radius:8px;padding:6px;">
-                        <span style="font-size:10px;color:#7dd3fc;text-transform:uppercase;font-weight:700;display:block;">🎯 xFM Attesa</span>
-                        <b style="font-size:16px;color:#38bdf8;">${(p.xfm || p.fm_2627 || p.fm || 6.0).toFixed(1)}</b>
-                        <span style="font-size:9.5px;color:#94a3b8;display:block;">Valore medio</span>
+                    <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);border-radius:8px;padding:6px 3px;">
+                        <span style="font-size:9.5px;color:#7dd3fc;text-transform:uppercase;font-weight:800;display:block;white-space:nowrap;letter-spacing:0.2px;">🎯 Media Attesa</span>
+                        <b style="font-size:16px;color:#38bdf8;line-height:1.2;display:block;margin:2px 0;">${(p.xfm || p.fm_2627 || p.fm || 6.0).toFixed(1)}</b>
+                        <span style="font-size:8.5px;color:#94a3b8;display:block;white-space:nowrap;">Valore xFM</span>
                     </div>
-                    <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:6px;">
-                        <span style="font-size:10px;color:#fde68a;text-transform:uppercase;font-weight:700;display:block;">🚀 Ceiling Max</span>
-                        <b style="font-size:16px;color:#fbbf24;">${ceilingVal}</b>
-                        <span style="font-size:9.5px;color:#94a3b8;display:block;">Upside giornata</span>
+                    <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:6px 3px;">
+                        <span style="font-size:9.5px;color:#fde68a;text-transform:uppercase;font-weight:800;display:block;white-space:nowrap;letter-spacing:0.2px;">🚀 Potenziale Max</span>
+                        <b style="font-size:16px;color:#fbbf24;line-height:1.2;display:block;margin:2px 0;">${ceilingVal}</b>
+                        <span style="font-size:8.5px;color:#94a3b8;display:block;white-space:nowrap;">Picco con bonus</span>
                     </div>
                 </div>
-                <div style="font-size:11.5px;color:#cbd5e1;line-height:1.4;">${tacticalAdvice}</div>
+                <div style="font-size:11px;color:#cbd5e1;line-height:1.4;">${tacticalAdvice}</div>
             </div>
             <!-- 2. SUB-IMPACT & SUPER-SUB -->
             <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(0,0,0,0.25);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.04);flex-wrap:wrap;">
@@ -1318,8 +1331,8 @@ function openPlayerProfileModal(playerId) {
                         <span class="lbl">Integrità Fisica</span>
                     </div>
                     <div class="quick-info-content">
-                        <span class="quick-badge health-badge ${p.is_injured ? 'injured' : 'healthy'}">
-                            ${p.is_injured ? `🩹 Infortunato (${p.infortunio_rientro || 'TBD'})` : '🟢 Integro (Basso Rischio)'}
+                        <span class="quick-badge health-badge ${p.is_injured ? (inRiatlet ? 'amber' : 'injured') : 'healthy'}" style="${p.is_injured && inRiatlet ? 'background:rgba(245,158,11,0.18);border-color:rgba(245,158,11,0.5);color:#fbbf24;' : ''}">
+                            ${p.is_injured ? (inRiatlet ? `🟡 In riatletizzazione (${p.infortunio_rientro})` : `🩹 Infortunato (${p.infortunio_rientro || 'TBD'})`) : '🟢 Integro (Basso Rischio)'}
                         </span>
                     </div>
                 </div>

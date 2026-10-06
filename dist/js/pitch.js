@@ -218,7 +218,15 @@ function renderPitchTeam(teamName) {
         const ovrVal = fullP ? fullP.ovr : '';
         const ovrTierClass = (typeof getOvrClass === 'function' && ovrVal) ? getOvrClass(ovrVal) : '';
         const isInjured = fullP && (fullP.is_injured || (fullP.infortunio_motivo && fullP.infortunio_motivo !== ''));
-        const injBadgeHtml = isInjured ? `<span class="pitch-inj-badge" title="Infortunato: ${fullP.infortunio_motivo || 'Indisponibile'} (Rientro: ${fullP.infortunio_rientro || 'TBD'})">✚</span>` : '';
+        const inRiatlet = isInjured && (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(fullP);
+        let injBadgeHtml = '';
+        if (isInjured) {
+            if (inRiatlet) {
+                injBadgeHtml = `<span class="pitch-inj-badge riatlet" style="color:#fbbf24;background:rgba(245,158,11,0.25);border:1px solid rgba(245,158,11,0.6);" title="In riatletizzazione: ${fullP.infortunio_motivo || 'Indisponibile'} (Data stimata ${fullP.infortunio_rientro || ''} superata, in attesa di conferma)">🟡</span>`;
+            } else {
+                injBadgeHtml = `<span class="pitch-inj-badge" title="Infortunato: ${fullP.infortunio_motivo || 'Indisponibile'} (Rientro: ${fullP.infortunio_rientro || 'TBD'})">✚</span>`;
+            }
+        }
         const sub = getSubstituteForStarter(p, team, teamPlayers);
         const subHtml = sub ? `<div class="pitch-card-sub" title="Staffetta: ${sub.name} (${sub.role})"><span class="sub-arrow">↳</span> <span class="sub-name">${sub.name}</span> <span class="sub-role-badge ${sub.role}">${sub.role}</span></div>` : '';
         const pitchBadgeHtml = (typeof State !== 'undefined' && State.systemMode === 'mantra' && fullP && fullP.mantra)
@@ -754,11 +762,16 @@ function renderTeamRosterTable(teamName) {
         }
         let injBadge = '';
         if (p.is_injured) {
-            const isOrange = (p.infortunio_severity === 'orange');
-            const colorHex = isOrange ? '#f59e0b' : '#ef4444';
-            const classBadge = isOrange ? 'inj-cross-badge orange' : 'inj-cross-badge red';
-            const statusTitle = isOrange ? 'PROSSIMO AL RIENTRO' : 'LUNGA DEGENZA';
-            injBadge = `<span class="${classBadge}" title="${statusTitle}&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Rientro previsto: ${p.infortunio_rientro || 'TBD'}"><svg viewBox="0 0 24 24" width="12" height="12" fill="${colorHex}" style="vertical-align:middle;"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></span>`;
+            const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
+            if (inRiatlet) {
+                injBadge = `<span class="inj-cross-badge riatlet" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.5);border-radius:4px;padding:0 3px;font-size:11px;" title="IN RIATLETIZZAZIONE&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Data stimata (${p.infortunio_rientro || 'TBD'}) superata — in attesa di conferma ufficiale">🟡</span>`;
+            } else {
+                const isOrange = (p.infortunio_severity === 'orange');
+                const colorHex = isOrange ? '#f59e0b' : '#ef4444';
+                const classBadge = isOrange ? 'inj-cross-badge orange' : 'inj-cross-badge red';
+                const statusTitle = isOrange ? 'PROSSIMO AL RIENTRO' : 'LUNGA DEGENZA';
+                injBadge = `<span class="${classBadge}" title="${statusTitle}&#10;Motivo: ${p.infortunio_motivo || 'Indisponibile'}&#10;Rientro previsto: ${p.infortunio_rientro || 'TBD'}"><svg viewBox="0 0 24 24" width="12" height="12" fill="${colorHex}" style="vertical-align:middle;"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></span>`;
+            }
         }
         const rosterRoleBadge = (typeof State !== 'undefined' && State.systemMode === 'mantra')
             ? renderMantraRoleBadges(p.mantra)

@@ -1627,6 +1627,12 @@ def render_unified_header(rel_path=""):
 
             <!-- RIGHT: LIVE STATUS & APP LAUNCH -->
             <div class="header-right">
+                <a href="https://t.me/fantamasterai" target="_blank" rel="noopener noreferrer" class="social-header-btn social-btn-telegram" title="Canale Telegram Ufficiale @fantamasterai" aria-label="Telegram">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/fantamasterai" target="_blank" rel="noopener noreferrer" class="social-header-btn social-btn-instagram" title="Profilo Instagram Ufficiale @fantamasterai" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
                 <a href="{rel_path}" class="header-squad-pill" style="text-decoration:none;" title="Apri Dashboard &amp; Rosa">
                     <span style="font-size:13px;">📋</span>
                     <span class="pill-credits">Dashboard Live</span>
@@ -1691,6 +1697,7 @@ def render_unified_footer(rel_path=""):
                     <div class="footer-heading">Community &amp; Note Legali</div>
                     <ul class="footer-nav-list">
                         <li><a href="https://t.me/fantamasterai" target="_blank" rel="noopener" class="footer-link" style="color:#38bdf8;font-weight:800;">📲 Canale Telegram Ufficiale</a></li>
+                        <li><a href="https://www.instagram.com/fantamasterai" target="_blank" rel="noopener" class="footer-link" style="color:#f43f5e;font-weight:800;">📸 Profilo Instagram Ufficiale</a></li>
                         <li><a href="{rel_path}privacy-policy/" class="footer-link" id="footer-privacy-link">🔒 Privacy Policy (GDPR)</a></li>
                         <li><span class="footer-status-pill">🛡️ Privacy by Design</span></li>
                         <li><span class="footer-status-pill">🚫 Zero Cookie Traccianti</span></li>
@@ -1765,6 +1772,18 @@ def generate_injuries_pillar(players, injuries_db):
         ts, rientro_display = parse_return_info(p)
         safe_id = f"{slug}-{p.get('id', idx)}"
         
+        is_riatlet = False
+        m_r = re.match(r"^(\d{1,2})/(\d{1,2})/(\d{4})$", rientro_display.strip())
+        if m_r:
+            try:
+                d_r = datetime(int(m_r.group(3)), int(m_r.group(2)), int(m_r.group(1)))
+                if d_r.date() <= datetime.now().date():
+                    is_riatlet = True
+            except Exception:
+                pass
+        
+        date_pill_html = f'<span class="return-date-pill riatlet" style="background:rgba(245,158,11,0.2);color:#fbbf24;border:1px solid rgba(245,158,11,0.5);">🟡 In riatletizzazione</span>' if is_riatlet else f'<span class="return-date-pill">📅 {clean_html(rientro_display)}</span>'
+
         rows += f"""
         <tr class="injury-row" id="row-{safe_id}" data-id="{safe_id}" data-date-ts="{ts}" data-date-str="{clean_html(rientro_display)}" data-name="{clean_html(full_name.lower())}" data-team="{clean_html(team.lower())}" data-role="{role}" data-tier="{tier}" onclick="onRowClick('{safe_id}', event)">
             <td class="col-player">
@@ -1781,7 +1800,7 @@ def generate_injuries_pillar(players, injuries_db):
                 </div>
             </td>
             <td class="col-date">
-                <span class="return-date-pill">📅 {clean_html(rientro_display)}</span>
+                {date_pill_html}
             </td>
             <td class="col-diag desktop-only">
                 <div class="diagnosis-badge">
@@ -2864,15 +2883,26 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
     if team_injuries:
         for p in team_injuries:
             p_slug = slugify(p.get("name", ""))
+            r_str = str(p.get('infortunio_rientro', 'TBD'))
+            is_r = False
+            m_r = re.match(r"^(\d{1,2})/(\d{1,2})/(\d{4})$", r_str.strip())
+            if m_r:
+                try:
+                    if datetime(int(m_r.group(3)), int(m_r.group(2)), int(m_r.group(1))).date() <= datetime.now().date():
+                        is_r = True
+                except Exception:
+                    pass
+            badge_icon = "🟡" if is_r else "🩹"
+            badge_date_html = f'<span class="badge-date" style="color:#fbbf24;">🟡 In riatletizzazione</span>' if is_r else f'<span class="badge-date">{clean_html(r_str)}</span>'
             injuries_html += f"""
             <div class="injury-bulletin-item">
                 <div class="injury-bulletin-info">
-                    <a href="../../calciatore/{p_slug}/" class="injury-bulletin-name">🩹 {clean_html(p.get('name'))}</a>
+                    <a href="../../calciatore/{p_slug}/" class="injury-bulletin-name">{badge_icon} {clean_html(p.get('name'))}</a>
                     <div class="injury-bulletin-reason">{clean_html(p.get('infortunio_motivo', 'Infortunio'))}</div>
                 </div>
                 <div class="injury-bulletin-badge">
-                    <span class="badge-lbl">Rientro:</span>
-                    <span class="badge-date">{clean_html(p.get('infortunio_rientro', 'TBD'))}</span>
+                    <span class="badge-lbl">{'Status:' if is_r else 'Rientro:'}</span>
+                    {badge_date_html}
                 </div>
             </div>
             """
@@ -2899,7 +2929,19 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
         
         status_tag = ""
         if p.get("is_injured"):
-            status_tag = f'<span style="color:#f87171;font-size:11px;font-weight:700;">🩹 {clean_html(p.get("infortunio_rientro", "Inf."))}</span>'
+            r_str = str(p.get("infortunio_rientro", "Inf."))
+            is_r = False
+            m_r = re.match(r"^(\d{1,2})/(\d{1,2})/(\d{4})$", r_str.strip())
+            if m_r:
+                try:
+                    if datetime(int(m_r.group(3)), int(m_r.group(2)), int(m_r.group(1))).date() <= datetime.now().date():
+                        is_r = True
+                except Exception:
+                    pass
+            if is_r:
+                status_tag = f'<span style="color:#fbbf24;font-size:11px;font-weight:700;">🟡 In riatletizzazione</span>'
+            else:
+                status_tag = f'<span style="color:#f87171;font-size:11px;font-weight:700;">🩹 {clean_html(r_str)}</span>'
         elif p.get("is_rigorista_1"):
             status_tag = '<span style="color:#fbbf24;font-size:11px;font-weight:700;">👑 Rigorista</span>'
         elif tit >= 85:

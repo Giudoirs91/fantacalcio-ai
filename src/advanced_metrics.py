@@ -76,16 +76,16 @@ def compute_floor_and_ceiling(player):
     # 3. PROFILAZIONE E VOLATILITÀ
     if spread >= 7.0:
         volatility_label = "ESPLOSIVA"
-        tactical_profile = "🚀 Boom or Bust (Ceiling Esplosivo)"
-        tactical_advice = f"Floor {floor} / Ceiling {ceiling}: da schierare quando hai bisogno di bonus pesanti per vincere la giornata."
+        tactical_profile = "🚀 Alto Potenziale (Exploit Bonus)"
+        tactical_advice = f"Base minima {floor} / Potenziale max {ceiling}: da schierare quando hai bisogno di bonus pesanti per vincere la giornata."
     elif spread <= 4.2:
         volatility_label = "BASSA"
-        tactical_profile = "🛡️ Floor Sicuro (Roccia Costante)"
-        tactical_advice = f"Floor {floor} / Ceiling {ceiling}: eccellente certezza di rendimento e modificatore, pochissimi rischi di insufficienza."
+        tactical_profile = "🛡️ Base Solida (Rendimento Costante)"
+        tactical_advice = f"Base minima {floor} / Potenziale max {ceiling}: eccellente certezza di rendimento e modificatore, pochissimi rischi di insufficienza."
     else:
         volatility_label = "MEDIA"
         tactical_profile = "⚖️ Rendimento Bilanciato"
-        tactical_advice = f"Floor {floor} / Ceiling {ceiling}: solido equilibrio tra sufficienza garantita e buone chance di bonus."
+        tactical_advice = f"Base minima {floor} / Potenziale max {ceiling}: solido equilibrio tra sufficienza garantita e buone chance di bonus."
 
     return {
         "floor": floor,

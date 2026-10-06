@@ -8004,6 +8004,40 @@ body.creator-mode-active .visitor-only-item {
     color: #fff;
 }
 
+/* Social Header Icon Buttons (Telegram & Instagram) */
+.social-header-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    color: #94a3b8;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.social-header-btn:hover {
+    transform: translateY(-2px);
+}
+
+.social-btn-telegram:hover {
+    color: #fff;
+    background: rgba(34, 158, 217, 0.2);
+    border-color: rgba(34, 158, 217, 0.6);
+    box-shadow: 0 4px 14px rgba(34, 158, 217, 0.35);
+}
+
+.social-btn-instagram:hover {
+    color: #fff;
+    background: linear-gradient(135deg, rgba(225, 48, 108, 0.25), rgba(131, 58, 180, 0.25));
+    border-color: rgba(225, 48, 108, 0.6);
+    box-shadow: 0 4px 14px rgba(225, 48, 108, 0.35);
+}
+
 /* --- Table View Selector (Standard vs Statistiche Avanzate) --- */
 .table-view-toggle {
     display: inline-flex;
@@ -12258,10 +12292,10 @@ body.creator-mode-active .visitor-only-item {
         display: none !important;
     }
 
-    /* Compact Header Mobile */
+    /* Compact Header Mobile (Nessun elemento si sovrappone) */
     .app-header-unified {
         padding: 0 !important;
-        overflow: hidden !important;
+        overflow: visible !important;
     }
 
     .header-main-row {
@@ -12272,16 +12306,42 @@ body.creator-mode-active .visitor-only-item {
         justify-content: space-between !important;
         width: 100% !important;
         box-sizing: border-box !important;
-        overflow: hidden !important;
+        overflow: visible !important;
     }
 
     .header-left {
         display: flex !important;
         align-items: center !important;
-        gap: 8px !important;
-        flex: 1 1 auto !important;
-        min-width: 0 !important;
-        overflow: hidden !important;
+        gap: 6px !important;
+        flex: 0 0 auto !important;
+        min-width: max-content !important;
+        overflow: visible !important;
+    }
+
+    .brand-logo-modern {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .brand-icon-box {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 13.5px !important;
+        border-radius: 8px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .brand-main-name {
+        font-size: 13px !important;
+        white-space: nowrap !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.2px !important;
+    }
+
+    .brand-season-capsule {
+        display: none !important;
     }
 
     .brand-badge {
@@ -12321,8 +12381,43 @@ body.creator-mode-active .visitor-only-item {
     .header-right {
         display: flex !important;
         align-items: center !important;
-        gap: 6px !important;
+        gap: 5px !important;
         flex-shrink: 0 !important;
+    }
+
+    /* Pulsante compattezza AI e PWA su Mobile */
+    .header-ai-info-pill {
+        padding: 5px 8px !important;
+        font-size: 11px !important;
+        gap: 4px !important;
+    }
+
+    .header-ai-info-pill .header-pill-full-text {
+        display: none !important;
+    }
+
+    .header-ai-info-pill .header-pill-short-text {
+        display: inline !important;
+        font-weight: 700 !important;
+    }
+
+    .header-pwa-pill {
+        padding: 5px 7px !important;
+        font-size: 11px !important;
+    }
+
+    .header-pwa-pill .header-pwa-full-text {
+        display: none !important;
+    }
+
+    .social-header-btn {
+        width: 28px !important;
+        height: 28px !important;
+    }
+
+    .social-header-btn svg {
+        width: 13px !important;
+        height: 13px !important;
     }
 
     /* Hide desktop-only controls in header on small mobile screens */
@@ -12620,7 +12715,7 @@ body.creator-mode-active .visitor-only-item {
         display: none;
     }
 
-    /* Sticky Columns on Mobile Auction Table */
+    /* Sticky Columns on Mobile Auction Table & Ottimizzazione Font */
     .table-wrapper {
         border-radius: 10px;
         max-width: 100vw;
@@ -12633,32 +12728,36 @@ body.creator-mode-active .visitor-only-item {
         left: 0 !important;
         z-index: 6 !important;
         background: #0b1120 !important;
-        width: 42px !important;
-        min-width: 42px !important;
-        max-width: 42px !important;
+        width: 36px !important;
+        min-width: 36px !important;
+        max-width: 36px !important;
         text-align: center;
+        padding: 6px 2px !important;
     }
 
     .main-auction-table th:nth-child(2),
     .main-auction-table td:nth-child(2) {
         position: sticky !important;
-        left: 42px !important;
+        left: 36px !important;
         z-index: 6 !important;
         background: #0b1120 !important;
-        width: 34px !important;
-        min-width: 34px !important;
-        max-width: 34px !important;
+        width: 28px !important;
+        min-width: 28px !important;
+        max-width: 28px !important;
         text-align: center;
+        padding: 6px 2px !important;
     }
 
     .main-auction-table th:nth-child(3),
     .main-auction-table td:nth-child(3) {
         position: sticky !important;
-        left: 76px !important;
+        left: 64px !important;
         z-index: 6 !important;
         background: #0b1120 !important;
-        min-width: 130px !important;
+        min-width: 100px !important;
+        max-width: 120px !important;
         box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5) !important;
+        padding: 6px 4px !important;
     }
 
     .main-auction-table th:nth-child(1),
@@ -12666,6 +12765,72 @@ body.creator-mode-active .visitor-only-item {
     .main-auction-table th:nth-child(3) {
         z-index: 15 !important;
         background: #0f172a !important;
+    }
+
+    /* Ottimizzazione font e dimensioni celle Listone Mobile */
+    .main-auction-table td,
+    .main-auction-table th {
+        padding: 6px 5px !important;
+    }
+
+    .main-auction-table .player-name-cell {
+        min-width: auto !important;
+        max-width: 112px !important;
+        gap: 3px !important;
+        overflow: hidden !important;
+    }
+
+    .main-auction-table .player-name-link,
+    .main-auction-table:not(.table-view-advanced) .player-name-link {
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: inline-block !important;
+        max-width: 78px !important;
+        vertical-align: middle !important;
+    }
+
+    .main-auction-table .sb-star-toggle {
+        font-size: 10px !important;
+        width: 13px !important;
+        height: 13px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    .main-auction-table .mantra-sub-txt {
+        font-size: 8.5px !important;
+        padding: 1px 3px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .main-auction-table .ovr-pill {
+        font-size: 10.5px !important;
+        padding: 1px 3px !important;
+        min-width: 22px !important;
+    }
+
+    .main-auction-table .role-badge {
+        width: 19px !important;
+        height: 19px !important;
+        font-size: 9.5px !important;
+        line-height: 19px !important;
+    }
+
+    .main-auction-table .team-cell,
+    .main-auction-table:not(.table-view-advanced) .team-cell {
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        white-space: nowrap !important;
+    }
+
+    .main-auction-table .price-pill {
+        font-size: 11px !important;
+        padding: 2px 5px !important;
+        font-weight: 800 !important;
     }
 
     /* Mobile Drawer for La Mia Rosa (Sidebar Overlay) */
@@ -15534,21 +15699,23 @@ body.creator-mode-active .visitor-only-item {
     font-weight: 900;
 }
 
-/* Pulizia & Spaziatura Visuale Standard Listone */
-.main-auction-table:not(.table-view-advanced) td,
-.main-auction-table:not(.table-view-advanced) th {
-    padding: 10px 10px !important;
-}
+/* Pulizia & Spaziatura Visuale Standard Listone (Desktop Only) */
+@media (min-width: 769px) {
+    .main-auction-table:not(.table-view-advanced) td,
+    .main-auction-table:not(.table-view-advanced) th {
+        padding: 10px 10px !important;
+    }
 
-.main-auction-table:not(.table-view-advanced) .player-name-link {
-    font-size: 14px !important;
-    font-weight: 800 !important;
-    color: #f8fafc !important;
-}
+    .main-auction-table:not(.table-view-advanced) .player-name-link {
+        font-size: 14px !important;
+        font-weight: 800 !important;
+        color: #f8fafc !important;
+    }
 
-.main-auction-table:not(.table-view-advanced) .team-cell {
-    font-size: 12.5px !important;
-    font-weight: 700 !important;
+    .main-auction-table:not(.table-view-advanced) .team-cell {
+        font-size: 12.5px !important;
+        font-weight: 700 !important;
+    }
 }
 
 /* Nascondi colonne superflue nella visuale Standard per lasciare solo 8 colonne pulite */

@@ -96,8 +96,14 @@ function calculateChiSchieroScore(player, roundNum) {
     // 2. TITOLARITÀ & STATUS IN ROSA
     const tit = (player.titolarita !== undefined && player.titolarita !== null) ? Number(player.titolarita) : 70;
     if (player.is_injured) {
-        dynamicScore -= 32;
-        factors.push({ name: 'Infortunio / Rientro da valutare', val: '-32 pt 🩹', positive: false });
+        const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(player);
+        if (inRiatlet) {
+            dynamicScore -= 12;
+            factors.push({ name: 'In Riatletizzazione (rientro recente, minutaggio ridotto)', val: '-12 pt 🟡', positive: false });
+        } else {
+            dynamicScore -= 32;
+            factors.push({ name: 'Infortunio / Rientro da valutare', val: '-32 pt 🩹', positive: false });
+        }
     } else if (tit >= 85) {
         dynamicScore += 4;
         factors.push({ name: `Titolarissimo Garantito (${tit}%)`, val: '+4 pt 🔒', positive: true });
@@ -373,11 +379,20 @@ function buildDetailedPlayerProsAndCons(player, data) {
     // 3. TITOLARITÀ E MINUTAGGIO
     const tit = (player.titolarita !== undefined && player.titolarita !== null) ? Number(player.titolarita) : 70;
     if (player.is_injured) {
-        cons.push({
-            icon: '🩹',
-            title: 'Infortunio / Rientro Incerto',
-            desc: `Calciatore alle prese con noie fisiche. Alto rischio di mancata convocazione o minutaggio nullo.`
-        });
+        const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(player);
+        if (inRiatlet) {
+            cons.push({
+                icon: '🟡',
+                title: 'In Riatletizzazione / Gestione Minuti',
+                desc: `Data stimata di rientro superata (${player.infortunio_rientro || ''}). Ha ripreso ad allenarsi ma potrebbe subentrare solo nel finale.`
+            });
+        } else {
+            cons.push({
+                icon: '🩹',
+                title: 'Infortunio / Rientro Incerto',
+                desc: `Calciatore alle prese con noie fisiche. Alto rischio di mancata convocazione o minutaggio nullo.`
+            });
+        }
     } else if (tit >= 85) {
         pros.push({
             icon: '🔒',

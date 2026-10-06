@@ -1,3 +1,19 @@
+function parseInjuryDate(dateStr) {
+    if (!dateStr || typeof dateStr !== 'string') return null;
+    const m = dateStr.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+    if (m) {
+        return new Date(parseInt(m[3], 10), parseInt(m[2], 10) - 1, parseInt(m[1], 10));
+    }
+    return null;
+}
+function isPlayerInRiatletizzazione(p) {
+    if (!p || !p.is_injured) return false;
+    const retDate = parseInjuryDate(p.infortunio_rientro);
+    if (!retDate) return false;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return retDate <= today;
+}
 let _logoClicks = 0;
 let _logoClickTimer = null;
 function handleBrandSecretClick() {

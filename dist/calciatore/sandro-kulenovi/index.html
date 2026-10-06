@@ -405,7 +405,7 @@
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                     <span class="inspector-badge">GIORNATA 5</span>
                     <span class="inspector-venue">✈️ Fuori</span>
-                    <b class="inspector-match-title">Torino @ Bologna</b>
+                    <b class="inspector-match-title">BOLOGNA 1-1 TORINO</b>
                 </div>
                 <span class="inspector-hint-text"><span class="hint-desktop">Passa il mouse</span><span class="hint-mobile">Tocca</span> sulle barre per ispezionare</span>
             </div>
@@ -424,11 +424,11 @@
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Gol / Assist</span>
-                    <b class="val">1.0 Gol &bull; 0.0 Ass</b>
+                    <b class="val">1 Gol &bull; 0 Ass</b>
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Disciplina</span>
-                    <span class="val" style="color:var(--text-secondary);">0.0 Amm &bull; 0.0 Esp</span>
+                    <span class="val" style="color:var(--text-secondary);">0 Amm &bull; 0 Esp</span>
                 </div>
             </div>
         </div>
@@ -452,7 +452,7 @@
                             
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G1</td>
-                <td style="font-weight:700;color:#fff;">Torino vs Milan</td>
+                <td style="font-weight:700;color:#fff;">TORINO 1-2 MILAN</td>
                 <td style="color:var(--text-muted);font-size:11px;">🏠 Casa</td>
                 <td style="font-weight:900;color:#38bdf8;">6.0</td>
                 <td><span class="table-bonus-tag">Nessun bonus</span></td>
@@ -460,7 +460,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G2</td>
-                <td style="font-weight:700;color:#fff;">Torino @ Sassuolo</td>
+                <td style="font-weight:700;color:#fff;">SASSUOLO 2-1 TORINO</td>
                 <td style="color:var(--text-muted);font-size:11px;">✈️ Fuori</td>
                 <td style="font-weight:900;color:#fbbf24;">5.5</td>
                 <td><span class="table-bonus-tag">Nessun bonus</span></td>
@@ -468,7 +468,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G5</td>
-                <td style="font-weight:700;color:#fff;">Torino @ Bologna</td>
+                <td style="font-weight:700;color:#fff;">BOLOGNA 1-1 TORINO</td>
                 <td style="color:var(--text-muted);font-size:11px;">✈️ Fuori</td>
                 <td style="font-weight:900;color:#34d399;">7.0</td>
                 <td><span class="table-bonus-tag">+3 (1G)</span></td>
@@ -506,7 +506,7 @@
                     <span class="lbl">Integrità Fisica</span>
                 </div>
                 <div class="quick-info-content">
-                    <span class="quick-badge health-badge healthy">
+                    <span class="quick-badge health-badge healthy" style="">
                         🟢 Integro (Basso Rischio)
                     </span>
                 </div>
@@ -703,7 +703,7 @@
                 <div class="pillar-title"><span>🛡️ PRESENZA &amp; RENDIMENTO</span><span class="source-tag">Sul Campo</span></div>
                 <div class="pillar-hero-stat">
                     <span class="hero-label">MINUTI GIOCATI</span>
-                    <span class="hero-val">74&#39; <small>(0 tit)</small></span>
+                    <span class="hero-val">74&#39; <small>(3 tit)</small></span>
                 </div>
                 <div class="pillar-stat-list">
                     <div class="pillar-stat-item"><span class="stat-name">Palle Recuperate</span><span class="stat-num">0</span></div>
@@ -806,7 +806,7 @@
 
     <!-- Interactive Scripts for Tabs, Accordion & Season Inspector -->
     <script>
-    var VOTI_DATA = [{"giornata": 1, "voto": 6.0, "fantavoto": 6.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Milan", "is_home": true, "match": "Torino vs Milan"}, {"giornata": 2, "voto": 5.5, "fantavoto": 5.5, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Sassuolo", "is_home": false, "match": "Torino @ Sassuolo"}, {"giornata": 5, "voto": 7.0, "fantavoto": 10.0, "gf": 1.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "+3 (1G)", "opponent": "Bologna", "is_home": false, "match": "Torino @ Bologna"}];
+    var VOTI_DATA = [{"giornata": 1, "match": "TORINO 1-2 MILAN", "opponent": "Milan", "is_home": true, "voto": 6.0, "fantavoto": 6.0, "gf": 0, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "Nessun bonus"}, {"giornata": 2, "match": "SASSUOLO 2-1 TORINO", "opponent": "Sassuolo", "is_home": false, "voto": 5.5, "fantavoto": 5.5, "gf": 0, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "Nessun bonus"}, {"giornata": 5, "match": "BOLOGNA 1-1 TORINO", "opponent": "Bologna", "is_home": false, "voto": 7.0, "fantavoto": 10.0, "gf": 1, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "+3 (1G)"}];
     
     function switchProfileTab(tabName) {
         var tabs = ['overview', 'advanced', 'tactics'];
@@ -938,6 +938,7 @@
                     <div class="footer-heading">Community &amp; Note Legali</div>
                     <ul class="footer-nav-list">
                         <li><a href="https://t.me/fantamasterai" target="_blank" rel="noopener" class="footer-link" style="color:#38bdf8;font-weight:800;">📲 Canale Telegram Ufficiale</a></li>
+                        <li><a href="https://www.instagram.com/fantamasterai" target="_blank" rel="noopener" class="footer-link" style="color:#f43f5e;font-weight:800;">📸 Profilo Instagram Ufficiale</a></li>
                         <li><a href="../../privacy-policy/" class="footer-link" id="footer-privacy-link">🔒 Privacy Policy (GDPR)</a></li>
                         <li><span class="footer-status-pill">🛡️ Privacy by Design</span></li>
                         <li><span class="footer-status-pill">🚫 Zero Cookie Traccianti</span></li>

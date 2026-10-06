@@ -2,6 +2,26 @@
 // GESTIONE STATO GLOBALE E PERSISTENZA LOCALSTORAGE (CON PREFERITI & RADAR RIVALI)
 // ==============================================================================
 
+// Helper: Verifica se la data stimata di rientro da infortunio è trascorsa rispetto ad oggi
+function parseInjuryDate(dateStr) {
+    if (!dateStr || typeof dateStr !== 'string') return null;
+    const m = dateStr.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+    if (m) {
+        return new Date(parseInt(m[3], 10), parseInt(m[2], 10) - 1, parseInt(m[1], 10));
+    }
+    return null;
+}
+
+function isPlayerInRiatletizzazione(p) {
+    if (!p || !p.is_injured) return false;
+    const retDate = parseInjuryDate(p.infortunio_rientro);
+    if (!retDate) return false;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    // Se la data di rientro stimata è passata o pari a ieri, entra in riatletizzazione in attesa di conferma ufficiale
+    return retDate <= today;
+}
+
 // ==============================================================================
 // MODALITÀ CREATORE (ACCESSO RISERVATO CRITTOGRAFATO SHA-256)
 // ==============================================================================

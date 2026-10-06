@@ -295,6 +295,7 @@ function generateInjuryHistoryCardHtml(p) {
     else if (dispPct < 85) dispColor = '#f59e0b';
 
     // Raggruppamento per Stagione con Totali e Dettaglio Espandibile
+    const cronistoria = (p && (p.cronistoria_infortuni || p.infortuni_cronistoria || p.infortuni)) ? (p.cronistoria_infortuni || p.infortuni_cronistoria || p.infortuni) : [];
     let seasonAccordionHtml = '';
     if (cronistoria && cronistoria.length > 0) {
         const seasonsMap = {};
@@ -676,6 +677,26 @@ function generateAiStrengthsAndWeaknessesHtml(p) {
         </div>
     `;
 }
+
+function openPlayerProfileByName(name, teamName) {
+    if (!name || typeof PLAYERS === 'undefined') return;
+    const clean = String(name).toLowerCase().trim();
+    let match = PLAYERS.find(p => p.name.toLowerCase() === clean);
+    if (!match) {
+        match = PLAYERS.find(p => {
+            const pName = p.name.toLowerCase();
+            const sameTeam = teamName ? (p.team && p.team.toLowerCase() === String(teamName).toLowerCase()) : true;
+            return sameTeam && (pName.includes(clean) || clean.includes(pName));
+        });
+    }
+    if (!match) {
+        match = PLAYERS.find(p => p.name.toLowerCase().includes(clean) || clean.includes(p.name.toLowerCase()));
+    }
+    if (match) {
+        openPlayerProfileModal(match.id);
+    }
+}
+window.openPlayerProfileByName = openPlayerProfileByName;
 
 function openPlayerProfileModal(playerId) {
     if (!playerId && playerId !== 0) return;
@@ -2024,3 +2045,6 @@ document.addEventListener('keydown', (e) => {
         closePlayerProfileModal();
     }
 });
+
+window.openPlayerProfileModal = openPlayerProfileModal;
+window.closePlayerProfileModal = closePlayerProfileModal;

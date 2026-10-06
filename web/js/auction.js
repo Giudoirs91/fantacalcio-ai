@@ -1268,7 +1268,7 @@ function buildAuctionPlayerRow(p, isMantraTable) {
                 <td onclick="if(!event.target.closest('button')) openPlayerProfileModal(${p.id})" style="cursor:pointer;" title="Clicca per aprire la Scheda Calciatore">
                     <div class="player-name-cell">
                         <button class="sb-star-toggle ${isFav ? 'active' : ''}" onclick="toggleFavorite(${p.id})" title="Preferito">${isFav ? '⭐' : '☆'}</button>
-                        <span class="player-name-link" title="Apri Scheda Calciatore">${p.name}</span>
+                        <span class="player-name-link" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();" title="Apri Scheda Calciatore">${p.name}</span>
                         ${injIcon}
                         ${mantraSubLabel}
                         ${customBadge}

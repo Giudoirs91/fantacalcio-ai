@@ -506,12 +506,12 @@ function renderPitchTeam(teamName, updateUrl = false) {
                     ballottaggiHtml += `
                         <div class="modern-duel-card">
                             <div class="duel-contenders-row">
-                                <span class="duel-player p1" title="${p1.name}">
+                                <span class="duel-player p1" onclick="openPlayerProfileByName('${p1.name}', '${teamName}')" style="cursor:pointer;" title="Apri scheda di ${p1.name}">
                                     <span class="duel-name">${p1.name}</span>
                                     <span class="duel-pct-chip pct-fav">${p1.pct}%</span>
                                 </span>
                                 <span class="duel-vs-chip">VS</span>
-                                <span class="duel-player p2" title="${p2.name}">
+                                <span class="duel-player p2" onclick="openPlayerProfileByName('${p2.name}', '${teamName}')" style="cursor:pointer;" title="Apri scheda di ${p2.name}">
                                     <span class="duel-pct-chip pct-sub">${p2.pct}%</span>
                                     <span class="duel-name">${p2.name}</span>
                                 </span>
@@ -610,9 +610,9 @@ function renderPitchTeam(teamName, updateUrl = false) {
         `;
 
         // --- 3. COLONNA: CONSIGLI AI & PREVISIONI PREDITTIVE (MINIMAL & MODERNO) ---
-        const topBadges = (team.top || []).map(n => `<span class="intel-chip chip-top">${n}</span>`).join('') || '<span class="intel-chip chip-none">-</span>';
-        const sleeperBadges = (team.sleeper || []).map(n => `<span class="intel-chip chip-sleeper">${n}</span>`).join('') || '<span class="intel-chip chip-none">-</span>';
-        const flopBadges = (team.flop || []).map(n => `<span class="intel-chip chip-risk">${n}</span>`).join('') || '<span class="intel-chip chip-none">Nessuno sconsigliato</span>';
+        const topBadges = (team.top || []).map(n => `<span class="intel-chip chip-top" onclick="openPlayerProfileByName('${n}', '${teamName}')" style="cursor:pointer;" title="Apri scheda di ${n}">${n}</span>`).join('') || '<span class="intel-chip chip-none">-</span>';
+        const sleeperBadges = (team.sleeper || []).map(n => `<span class="intel-chip chip-sleeper" onclick="openPlayerProfileByName('${n}', '${teamName}')" style="cursor:pointer;" title="Apri scheda di ${n}">${n}</span>`).join('') || '<span class="intel-chip chip-none">-</span>';
+        const flopBadges = (team.flop || []).map(n => `<span class="intel-chip chip-risk" onclick="openPlayerProfileByName('${n}', '${teamName}')" style="cursor:pointer;" title="Apri scheda di ${n}">${n}</span>`).join('') || '<span class="intel-chip chip-none">Nessuno sconsigliato</span>';
 
         // Previsioni predittive specifiche per club
         let predAttacco = team.att_stars >= 4 ? "Alta produzione gol grazie al gioco offensivo e ali rientranti." : "Produzione gol media; terminale centrale focalizzatore.";

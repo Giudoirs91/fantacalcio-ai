@@ -18882,6 +18882,16 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (e) {}
 
+            // Tracciamento virtual pageview per Google Analytics 4
+            try {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'page_view', {
+                        page_path: ROUTE_MAP[tabId] || window.location.pathname,
+                        page_title: TAB_TITLES[tabId] || document.title
+                    });
+                }
+            } catch (e) {}
+
             ['tabHomeNavBtn', 'tabLeaguesBtn', 'tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active');

@@ -174,6 +174,15 @@ def build_standalone_dashboard(sync_android=False):
     </noscript>
     <!-- Vercel Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QNYJ5YZXY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){{dataLayer.push(arguments);}}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4QNYJ5YZXY', {{ 'anonymize_ip': true }});
+    </script>
     <style>
 {css_content}
     </style>
@@ -1776,6 +1785,16 @@ def build_standalone_dashboard(sync_android=False):
                     if (window.location.hash !== '#' + tabId) {{
                         history.replaceState(null, null, '#' + tabId);
                     }}
+                }}
+            }} catch (e) {{}}
+
+            // Tracciamento virtual pageview per Google Analytics 4
+            try {{
+                if (typeof gtag === 'function') {{
+                    gtag('event', 'page_view', {{
+                        page_path: ROUTE_MAP[tabId] || window.location.pathname,
+                        page_title: TAB_TITLES[tabId] || document.title
+                    }});
                 }}
             }} catch (e) {{}}
 

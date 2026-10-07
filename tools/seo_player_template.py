@@ -1415,6 +1415,16 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     <script type="application/ld+json">
     {json.dumps(schema_data, ensure_ascii=False, indent=2)}
     </script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QNYJ5YZXY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){{dataLayer.push(arguments);}}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4QNYJ5YZXY', {{ 'anonymize_ip': true }});
+    </script>
 </head>
 <body>
     {render_unified_header('../../')}

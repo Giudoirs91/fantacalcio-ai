@@ -491,6 +491,16 @@ def generate_duel_page(p1, p2, tactical_db, calendar_data, base_url="https://www
             line-height: 1.55;
         }}
     </style>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QNYJ5YZXY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){{dataLayer.push(arguments);}}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4QNYJ5YZXY', {{ 'anonymize_ip': true }});
+    </script>
 </head>
 <body>
     <!-- Unified Header -->

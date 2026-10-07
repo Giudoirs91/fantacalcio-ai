@@ -28,6 +28,16 @@ if os.path.exists(CALENDAR_PATH):
 
 
 BASE_URL = "https://www.fantamasterai.it"
+GA_MEASUREMENT_ID = "G-4QNYJ5YZXY"
+GA_TAG_SNIPPET = f"""    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){{dataLayer.push(arguments);}}
+      gtag('js', new Date());
+
+      gtag('config', '{GA_MEASUREMENT_ID}', {{ 'anonymize_ip': true }});
+    </script>"""
 
 def slugify(text):
     if not text:
@@ -2151,6 +2161,7 @@ def generate_injuries_pillar(players, injuries_db):
     <script type="application/ld+json">
     {json.dumps(schema_data, ensure_ascii=False, indent=2)}
     </script>
+{GA_TAG_SNIPPET}
 </head>
 <body>
 {render_unified_header('../')}
@@ -2519,6 +2530,7 @@ def generate_rigoristi_pillar(tactical_db):
     <script type="application/ld+json">
     {json.dumps(schema_data, ensure_ascii=False, indent=2)}
     </script>
+{GA_TAG_SNIPPET}
 </head>
 <body>
 {render_unified_header('../')}
@@ -2790,6 +2802,7 @@ def generate_gk_pillar(gk_matrix_data):
     <script type="application/ld+json">
     {json.dumps(schema_data, ensure_ascii=False, indent=2)}
     </script>
+{GA_TAG_SNIPPET}
 </head>
 <body>
 {render_unified_header('../')}
@@ -3357,6 +3370,7 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
     <script type="application/ld+json">
     {json.dumps(schema_data, ensure_ascii=False, indent=2)}
     </script>
+{GA_TAG_SNIPPET}
 </head>
 <body>
     {render_unified_header('../../')}
@@ -3604,6 +3618,7 @@ def generate_privacy_policy_page():
         ]
     }}
     </script>
+{GA_TAG_SNIPPET}
 </head>
 <body>
     {render_unified_header("../")}

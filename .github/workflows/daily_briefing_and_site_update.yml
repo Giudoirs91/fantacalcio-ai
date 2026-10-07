@@ -27,7 +27,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install beautifulsoup4 pillow requests
+          pip install beautifulsoup4 pillow requests rapidfuzz numpy
 
       - name: Run Daily Routine (Sync Injuries, Build Site & Send Telegram)
         run: |

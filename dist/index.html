@@ -1469,9 +1469,9 @@
     </div>
 
     <!-- Data Injection & Engine Scripts -->
-    <script src="/js/dashboard_data.js?v=1791394133" defer></script>
-    <script src="/js/dashboard_app.js?v=1791394133" defer></script>
-    <script src="/js/tracker.js?v=1791394133" defer></script>
+    <script src="/js/dashboard_data.js?v=1791394924" defer></script>
+    <script src="/js/dashboard_app.js?v=1791394924" defer></script>
+    <script src="/js/tracker.js?v=1791394924" defer></script>
 
     <!-- ==================== FOOTER & LEGAL DISCLAIMER ==================== -->
     <footer class="app-site-footer">
@@ -1524,7 +1524,7 @@
                 <div class="footer-links-col">
                     <div class="footer-heading">Note Legali &amp; Privacy</div>
                     <ul class="footer-nav-list">
-                        <li><a href="/privacy-policy/" class="footer-link" id="footer-privacy-link" onclick="openPrivacyModal(event)">🔒 Privacy Policy (GDPR)</a></li>
+                        <li><a href="/privacy-policy/" class="footer-link" id="footer-privacy-link">🔒 Privacy Policy (GDPR)</a></li>
                         <li><span class="footer-status-pill">🛡️ Privacy by Design</span></li>
                         <li><span class="footer-status-pill">🚫 No Cookie Pubblicitari</span></li>
                         <li><span class="footer-status-pill">📊 GA4 IP Anonimizzato</span></li>
@@ -1549,81 +1549,12 @@
                     &copy; 2026/2027 <strong>Fanta Master AI</strong> — <code>fantamasterai.it</code>. Tutti i diritti riservati.
                 </div>
                 <div class="footer-bottom-links">
-                    <a href="/privacy-policy/" class="footer-bottom-link" onclick="openPrivacyModal(event)">Privacy Policy</a>
+                    <a href="/privacy-policy/" class="footer-bottom-link">Privacy Policy</a>
                     <span class="footer-sep">•</span>
                     <a href="mailto:info@fantamasterai.it" class="footer-bottom-link">info@fantamasterai.it</a>
                 </div>
             </div>
         </div>
     </footer>
-
-    <!-- Modal Privacy Policy In-App -->
-    <div class="modal-backdrop" id="privacy-policy-modal">
-        <div class="privacy-modal-card">
-            <div class="privacy-modal-header">
-                <div>
-                    <div class="privacy-modal-title">🔒 Informativa sulla Privacy &amp; Cookie Policy</div>
-                    <span class="privacy-modal-badge">✓ Conforme GDPR (Reg. UE 2016/679) &amp; Garante Privacy</span>
-                </div>
-                <button class="privacy-close-btn" onclick="closePrivacyModal()" aria-label="Chiudi Informativa">✕</button>
-            </div>
-            <div class="privacy-modal-body">
-                <div class="privacy-section-card">
-                    <h4>🛡️ 1. Privacy by Design &amp; Nessun Dato Personale Raccolto</h4>
-                    <p>Fanta Master AI (<code>fantamasterai.it</code>) è strutturato secondo il principio di <em>Privacy by Design</em>. Non richiediamo la registrazione di un account utente, né raccogliamo o trattiamo dati anagrafici (nomi, cognomi, email di login, numeri di telefono o credenziali personali).</p>
-                </div>
-                <div class="privacy-section-card">
-                    <h4>🚫 2. Esenzione Cookie Banner (Provvedimento Garante 10/06/2021)</h4>
-                    <p>In conformità all'art. 122 del Codice Privacy e alle Linee Guida del Garante per la Protezione dei Dati Personali del 10 giugno 2021, il sito <strong>non impiega cookie di profilazione pubblicitaria</strong>, né strumenti di tracciamento cross-sito a scopo di marketing o retargeting commerciale. I cookie impiegati sono esclusivamente tecnici e analitici aggregati con mascheramento dell'IP (equiparati a cookie tecnici), esentando il sito dall'obbligo di banner cookie preventivo (cookie wall).</p>
-                </div>
-                <div class="privacy-section-card">
-                    <h4>💾 3. Salvataggio Locale (localStorage)</h4>
-                    <p>Tutti i dati relativi alle tue rose, ai calciatori preferiti, ai rilanci d'asta e alle impostazioni personalizzate vengono memorizzati esclusivamente nella memoria locale del tuo browser (<code>localStorage</code>). Questi dati non lasciano mai il tuo dispositivo e puoi cancellarli in qualsiasi istante svuotando la cache del browser.</p>
-                </div>
-                <div class="privacy-section-card">
-                    <h4>📊 4. Metriche Statistiche &amp; Google Analytics 4 (IP Anonimizzato)</h4>
-                    <p>Utilizziamo <strong>Google Analytics 4 (GA4)</strong> di Google Ireland Limited per monitorare in tempo reale il traffico in forma aggregata. GA4 è configurato con mascheramento dell'indirizzo IP (<code>anonymize_ip: true</code>) e senza incrocio con altri prodotti Google. I dati non sono riconducibili alla tua persona. Puoi disattivare il tracciamento in qualsiasi momento installando il componente di <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="footer-link-highlight">Opt-Out ufficiale di Google</a>.</p>
-                </div>
-                <div class="privacy-section-card">
-                    <h4>⚖️ 5. Disclaimer Marchi &amp; Indipendenza Editoriale</h4>
-                    <p>Fanta Master AI è un portale scientifico-statistico indipendente. Non ha alcun legame o affiliazione con Lega Serie A, FIGC o testate commerciali. L'uso dei nomi di calciatori e club avviene a solo titolo di cronaca sportiva e diritto di critica (Fair Use).</p>
-                </div>
-                <div class="privacy-section-card">
-                    <h4>✉️ 6. Titolare del Trattamento &amp; Contatti</h4>
-                    <p>Per qualunque informazione o segnalazione in merito alla presente informativa, puoi contattare l'amministrazione all'indirizzo e-mail: <a href="mailto:info@fantamasterai.it" class="footer-link-highlight">info@fantamasterai.it</a>. Informativa estesa consultabile su <a href="/privacy-policy/" class="footer-link-highlight">/privacy-policy/</a>.</p>
-                </div>
-            </div>
-            <div style="margin-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;">
-                <a href="/privacy-policy/" target="_blank" class="footer-link-highlight" style="font-size:12px;">📄 Apri pagina dedicata /privacy-policy &rarr;</a>
-                <button class="trade-action-btn primary" onclick="closePrivacyModal()" style="max-width:140px;">Ho Capito</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-    function openPrivacyModal(e) {
-        if (e) e.preventDefault();
-        const m = document.getElementById('privacy-policy-modal');
-        if (m) {
-            m.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-    }
-    function closePrivacyModal() {
-        const m = document.getElementById('privacy-policy-modal');
-        if (m) {
-            m.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    }
-    window.addEventListener('DOMContentLoaded', () => {
-        const m = document.getElementById('privacy-policy-modal');
-        if (m) {
-            m.addEventListener('click', (e) => {
-                if (e.target === m) closePrivacyModal();
-            });
-        }
-    });
-    </script>
 </body>
 </html>

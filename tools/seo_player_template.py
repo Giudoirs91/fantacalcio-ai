@@ -58,8 +58,8 @@ def render_unified_header(rel_path=""):
         <div class="header-main-row">
             <!-- LEFT: BRANDING & HOME -->
             <div class="header-left">
-                <a href="{rel_path}" class="brand-badge" style="text-decoration:none;" title="Fanta Master AI — Portale Statistico Serie A 2026/27">
-                    <span class="brand-icon">⚡</span>
+                <a href="{rel_path}" class="brand-badge" style="text-decoration:none;display:flex;align-items:center;gap:8px;" title="Fanta Master AI — Portale Statistico Serie A 2026/27">
+                    <img src="{rel_path}static/icon-192.png" alt="Fanta Master AI Logo" style="width:30px;height:30px;border-radius:6px;object-fit:cover;flex-shrink:0;">
                     <div>
                         <div class="brand-title">FANTA MASTER AI</div>
                         <div class="brand-sub">Portale Statistico</div>

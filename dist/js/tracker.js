@@ -49,15 +49,10 @@
         });
     }, true);
     window.FantaTracker = { track: inviaEvento };
-
-    // =========================================================================
-    // FLOATING TOAST BANNER TELEGRAM (Opzione A - Non Invasivo)
-    // =========================================================================
     var TELEGRAM_URL = "https://t.me/fantamasterai";
     var TG_STORAGE_KEY = "fanta_tg_toast_until";
     var SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
     var THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
-
     function isTelegramToastSuppressed() {
         try {
             var until = localStorage.getItem(TG_STORAGE_KEY);
@@ -67,17 +62,14 @@
         } catch (e) {}
         return false;
     }
-
     function setTelegramToastDismiss(ms) {
         try {
             localStorage.setItem(TG_STORAGE_KEY, String(Date.now() + ms));
         } catch (e) {}
     }
-
     function injectTelegramToast() {
         if (isTelegramToastSuppressed()) return;
         if (document.getElementById("fanta-tg-toast")) return;
-
         var styleEl = document.createElement("style");
         styleEl.id = "fanta-tg-toast-style";
         styleEl.textContent = `
@@ -251,7 +243,6 @@
             }
         `;
         document.head.appendChild(styleEl);
-
         var toast = document.createElement("div");
         toast.id = "fanta-tg-toast";
         toast.setAttribute("role", "alert");
@@ -280,14 +271,12 @@
             </div>
         `;
         document.body.appendChild(toast);
-
         requestAnimationFrame(function() {
             setTimeout(function() {
                 toast.classList.add("fanta-tg-visible");
                 inviaEvento("telegram_toast_shown");
             }, 50);
         });
-
         function closeToast(isJoin) {
             toast.classList.remove("fanta-tg-visible");
             if (isJoin) {
@@ -302,7 +291,6 @@
                 if (styleEl.parentNode) styleEl.parentNode.removeChild(styleEl);
             }, 400);
         }
-
         document.getElementById("fanta-tg-close").addEventListener("click", function() {
             closeToast(false);
         });
@@ -313,7 +301,6 @@
             closeToast(true);
         });
     }
-
     var triggered = false;
     function triggerTelegramToast() {
         if (triggered) return;
@@ -321,13 +308,11 @@
         window.removeEventListener("scroll", onScrollTrigger);
         injectTelegramToast();
     }
-
     function onScrollTrigger() {
         if (window.scrollY > 300) {
             triggerTelegramToast();
         }
     }
-
     if (!isTelegramToastSuppressed()) {
         setTimeout(triggerTelegramToast, 6000);
         window.addEventListener("scroll", onScrollTrigger, { passive: true });

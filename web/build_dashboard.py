@@ -157,6 +157,7 @@ def build_standalone_dashboard(sync_android=False):
     </script>
     <!-- PWA Manifest & App Icons -->
     <link rel="manifest" href="/static/manifest.json">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="apple-touch-icon" href="/static/icon-192.png">
     <meta name="theme-color" content="#00e676">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -183,8 +184,8 @@ def build_standalone_dashboard(sync_android=False):
             <!-- LEFT: MODERN BRAND LOGO -->
             <div class="header-left">
                 <a href="/" class="brand-logo-modern" onclick="onNavClick(event, 'home')" title="Fanta Master AI — Serie A 2026/27">
-                    <div class="brand-icon-box">
-                        <span>⚡</span>
+                    <div class="brand-icon-box" style="padding:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+                        <img src="/static/icon-192.png" alt="Fanta Master AI Logo" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
                     </div>
                     <div class="brand-text-wrap">
                         <span class="brand-main-name">Fanta Master <span class="brand-gradient-tag">AI</span></span>

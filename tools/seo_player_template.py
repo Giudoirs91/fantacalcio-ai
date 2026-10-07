@@ -145,6 +145,11 @@ def render_unified_footer(rel_path=""):
                         <span class="footer-contact-icon">✉️</span>
                         <span>Supporto &amp; Contatti: <a href="mailto:info@fantamasterai.it" class="footer-link-highlight">info@fantamasterai.it</a></span>
                     </div>
+                    <div class="footer-social-row" style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+                        <a href="https://t.me/fantamasterai" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25);color:#38bdf8;padding:4px 10px;border-radius:20px;font-size:11.5px;font-weight:700;text-decoration:none;">
+                            <span>✈️</span> Telegram Ufficiale
+                        </a>
+                    </div>
                 </div>
 
                 <div class="footer-links-col">

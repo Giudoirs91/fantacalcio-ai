@@ -3008,12 +3008,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": true,
+    "is_injured": false,
     "giornate_perse": 4,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 05/10/2026 - Frattura della falange prossimale del quinto dito della mano destra, operato con osteosintesi)",
-    "infortunio_motivo": "Frattura della falange prossimale del quinto dito della mano destra, operato con osteosintesi",
-    "infortunio_rientro": "05/10/2026",
+    "infortunio_status": "Disponibile",
+    "infortunio_motivo": null,
+    "infortunio_rientro": null,
     "infortunio_severity": "red",
     "infortunio_tipo_stop": "Infortunato",
     "rigorista_val": "1° Rigorista",
@@ -3074,8 +3074,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Juventus @ Cagliari): Gara bilanciata contro il Cagliari, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ INFORTUNATO (TOP DA SCONTO)",
-    "ai_advice_type": "warning",
+    "ai_advice": "👑 1° RIGORISTA & TOP ASSOLUTO",
+    "ai_advice_type": "top",
     "consiglio": "⚠️ INFORTUNATO (TOP DA SCONTO)",
     "coppia_nome": "Woltemade",
     "coppia_id": 6752,
@@ -3085,7 +3085,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "green",
+    "giornate_perse_stimate": 0
   },
   {
     "id": 309,
@@ -7240,8 +7242,8 @@
       ],
       "matchup_advice": "Matchday G6 (Atalanta vs Venezia): La difesa del Venezia presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
+    "ai_advice_type": "titolarissimo",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Scamacca",
     "coppia_id": 2137,
@@ -7537,8 +7539,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Roma @ Como): Gara bilanciata contro il Como, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
+    "ai_advice_type": "rotation",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Malen",
     "coppia_id": 5585,
@@ -7703,7 +7705,7 @@
     "is_injured": true,
     "giornate_perse": 10,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 26/11/2026 - Infortunio al piede sinistro, possibile intervento chirurgico)",
+    "infortunio_status": "🔴 Infortunio al piede sinistro, possibile intervento chirurgico (Rientro: 26/11/2026)",
     "infortunio_motivo": "Infortunio al piede sinistro, possibile intervento chirurgico",
     "infortunio_rientro": "26/11/2026",
     "infortunio_severity": "red",
@@ -7777,7 +7779,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 8
   },
   {
     "id": 5734,
@@ -9701,12 +9705,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": false,
+    "is_injured": true,
     "giornate_perse": 0,
     "is_chronic_fragile": false,
-    "infortunio_status": "🟢 Disponibile",
-    "infortunio_motivo": "",
-    "infortunio_rientro": "",
+    "infortunio_status": "🔴 Trauma distorsivo alla caviglia sinistra (Rientro: 01/11/2026)",
+    "infortunio_motivo": "Trauma distorsivo alla caviglia sinistra",
+    "infortunio_rientro": "01/11/2026",
     "infortunio_severity": "",
     "infortunio_tipo_stop": "",
     "rigorista_val": "3° Rigorista",
@@ -9769,8 +9773,8 @@
       ],
       "matchup_advice": "Matchday G6 (Genoa vs Fiorentina): La difesa del Fiorentina presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "🔥 SCOMMESSA AD ALTO POTENZIALE",
-    "ai_advice_type": "sleeper",
+    "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
+    "ai_advice_type": "warning",
     "consiglio": "🔥 SCOMMESSA AD ALTO POTENZIALE",
     "coppia_nome": "Osmajic",
     "coppia_id": 7600,
@@ -9780,7 +9784,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 1,
     "trend_2627": "📈 In Crescita",
-    "trend_class": "up"
+    "trend_class": "up",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 8
   },
   {
     "id": 6204,
@@ -10316,7 +10322,7 @@
     "is_injured": true,
     "giornate_perse": 6,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 21/10/2026 - Distrazione di basso grado del muscolo bicipite femorale della coscia destra)",
+    "infortunio_status": "🔴 Distrazione di basso grado del muscolo bicipite femorale della coscia destra (Rientro: 21/10/2026)",
     "infortunio_motivo": "Distrazione di basso grado del muscolo bicipite femorale della coscia destra",
     "infortunio_rientro": "21/10/2026",
     "infortunio_severity": "red",
@@ -10392,7 +10398,9 @@
     "coppia_ibrida": true,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "❄️ In Flessione",
-    "trend_class": "down"
+    "trend_class": "down",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 5694,
@@ -11247,7 +11255,7 @@
     "is_injured": true,
     "giornate_perse": 6,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 15/10/2026 - Lesione di medio grado del bicipite femorale sinistro)",
+    "infortunio_status": "🔴 Lesione di medio grado del bicipite femorale sinistro (Rientro: 15/10/2026)",
     "infortunio_motivo": "Lesione di medio grado del bicipite femorale sinistro",
     "infortunio_rientro": "15/10/2026",
     "infortunio_severity": "red",
@@ -11323,7 +11331,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⏳ A Secco",
-    "trend_class": "warning"
+    "trend_class": "warning",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 7484,
@@ -12008,12 +12018,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": true,
+    "is_injured": false,
     "giornate_perse": 4,
     "is_chronic_fragile": true,
-    "infortunio_status": "🟠 Infortunato (Rientro: 05/10/2026 - Affaticamento muscolare)",
-    "infortunio_motivo": "Affaticamento muscolare",
-    "infortunio_rientro": "05/10/2026",
+    "infortunio_status": "Disponibile",
+    "infortunio_motivo": null,
+    "infortunio_rientro": null,
     "infortunio_severity": "orange",
     "infortunio_tipo_stop": "Infortunato",
     "rigorista_val": "2° Rigorista",
@@ -12076,8 +12086,8 @@
       ],
       "matchup_advice": "Matchday G6 (Bologna @ Lecce): La difesa del Lecce presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "ai_advice_type": "warning",
+    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
+    "ai_advice_type": "rotation",
     "consiglio": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
     "coppia_nome": "Piccoli",
     "coppia_id": 4359,
@@ -12087,7 +12097,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "📈 In Crescita",
-    "trend_class": "up"
+    "trend_class": "up",
+    "infortunio_gravita": "green",
+    "giornate_perse_stimate": 0
   },
   {
     "id": 4463,
@@ -15223,8 +15235,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Frosinone @ Napoli): Gara bilanciata contro il Napoli, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
+    "ai_advice_type": "rotation",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "Kvernadze / Raimondo",
     "coppia_id": 6204,
@@ -15780,7 +15792,7 @@
     "is_injured": true,
     "giornate_perse": 4,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 11/10/2026 - Problema all'adduttore)",
+    "infortunio_status": "🔴 Problema all'adduttore (Rientro: 11/10/2026)",
     "infortunio_motivo": "Problema all'adduttore",
     "infortunio_rientro": "11/10/2026",
     "infortunio_severity": "red",
@@ -15856,7 +15868,9 @@
     "coppia_ibrida": true,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "🔥 On Fire",
-    "trend_class": "fire"
+    "trend_class": "fire",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 5029,
@@ -17453,8 +17467,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Inter vs Parma): Gara bilanciata contro il Parma, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
+    "ai_advice_type": "lowcost",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Martinez L.",
     "coppia_id": 2764,
@@ -17814,7 +17828,7 @@
     "is_injured": true,
     "giornate_perse": 6,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 13/10/2026 - Lesione di medio grado del bicipite femorale della coscia sinistra)",
+    "infortunio_status": "🔴 Lesione di medio grado del bicipite femorale della coscia sinistra (Rientro: 13/10/2026)",
     "infortunio_motivo": "Lesione di medio grado del bicipite femorale della coscia sinistra",
     "infortunio_rientro": "13/10/2026",
     "infortunio_severity": "red",
@@ -17888,7 +17902,9 @@
     "coppia_ibrida": true,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⏳ A Secco",
-    "trend_class": "warning"
+    "trend_class": "warning",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 6831,
@@ -18903,8 +18919,8 @@
       ],
       "matchup_advice": "Matchday G6 (Monza @ Lazio): Incrocio severo contro il Lazio, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
+    "ai_advice_type": "rotation",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "Colpani",
     "coppia_id": 5878,
@@ -21260,8 +21276,8 @@
       ],
       "matchup_advice": "Matchday G6 (Napoli vs Frosinone): La difesa del Frosinone presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
-    "ai_advice_type": "lowcost",
+    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
+    "ai_advice_type": "titolarissimo",
     "consiglio": "🪑 RISERVA DA SLOT 1 CR",
     "coppia_nome": "Hojlund",
     "coppia_id": 6052,
@@ -22757,8 +22773,8 @@
       ],
       "matchup_advice": "Matchday G6 (Torino vs Udinese): La difesa del Udinese presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
+    "ai_advice_type": "lowcost",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "-",
     "coppia_id": null,
@@ -22951,12 +22967,12 @@
     "recidive_muscolari": 0,
     "consiglio_medico_ai": "Calciatore integro e solido. Storico infortuni pressocché nullo nelle ultime stagioni: affidabilità fisica massima.",
     "cronistoria_infortuni": [],
-    "is_injured": false,
+    "is_injured": true,
     "giornate_perse": 0,
     "is_chronic_fragile": false,
-    "infortunio_status": "🟢 Disponibile",
-    "infortunio_motivo": "",
-    "infortunio_rientro": "",
+    "infortunio_status": "🔴 Distorsione alla caviglia destra, con sospetto interessamento dei legamenti da accertare (Rientro: 05/01/2027)",
+    "infortunio_motivo": "Distorsione alla caviglia destra, con sospetto interessamento dei legamenti da accertare",
+    "infortunio_rientro": "05/01/2027",
     "infortunio_severity": "",
     "infortunio_tipo_stop": "",
     "rigorista_val": "-",
@@ -23017,8 +23033,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Udinese @ Torino): Gara bilanciata contro il Torino, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
+    "ai_advice_type": "warning",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Davis K.",
     "coppia_id": 5637,
@@ -23028,7 +23044,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "📈 In Crescita",
-    "trend_class": "up"
+    "trend_class": "up",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 18
   },
   {
     "id": 7342,
@@ -23314,8 +23332,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Parma @ Inter): Gara bilanciata contro il Inter, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
+    "ai_advice_type": "rotation",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Fabbian",
     "coppia_id": 6206,
@@ -23716,8 +23734,8 @@
       ],
       "matchup_advice": "Matchday G6 (Monza @ Lazio): Incrocio severo contro il Lazio, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
+    "ai_advice_type": "lowcost",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "-",
     "coppia_id": null,
@@ -25243,12 +25261,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": true,
+    "is_injured": false,
     "giornate_perse": 4,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 11/10/2026 - Operato per ernia inguinale (intervento di correzione presso Villa Stuart))",
-    "infortunio_motivo": "Operato per ernia inguinale (intervento di correzione presso Villa Stuart)",
-    "infortunio_rientro": "11/10/2026",
+    "infortunio_status": "Disponibile",
+    "infortunio_motivo": null,
+    "infortunio_rientro": null,
     "infortunio_severity": "red",
     "infortunio_tipo_stop": "Infortunato",
     "rigorista_val": "-",
@@ -25311,7 +25329,7 @@
       ],
       "matchup_advice": "Matchday G6 (Napoli vs Frosinone): La difesa del Frosinone presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
+    "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⚠️ INFORTUNATO (NON COMPRARE)",
     "coppia_nome": "-",
@@ -25320,7 +25338,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "green",
+    "giornate_perse_stimate": 0
   },
   {
     "id": 7627,
@@ -25817,8 +25837,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Udinese @ Torino): Gara bilanciata contro il Torino, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
+    "ai_advice_type": "lowcost",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "-",
     "coppia_id": null,
@@ -26341,7 +26361,7 @@
     "is_injured": true,
     "giornate_perse": 4,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 11/10/2026 - Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro)",
+    "infortunio_status": "🔴 Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro (Rientro: 11/10/2026)",
     "infortunio_motivo": "Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro",
     "infortunio_rientro": "11/10/2026",
     "infortunio_severity": "red",
@@ -26415,7 +26435,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 4387,
@@ -26581,7 +26603,7 @@
     "is_injured": true,
     "giornate_perse": 6,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 17/10/2026 - Operato per un problema alla schiena)",
+    "infortunio_status": "🔴 Operato per un problema alla schiena (Rientro: 17/10/2026)",
     "infortunio_motivo": "Operato per un problema alla schiena",
     "infortunio_rientro": "17/10/2026",
     "infortunio_severity": "red",
@@ -26653,7 +26675,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 6822,
@@ -26831,7 +26855,7 @@
     "is_injured": true,
     "giornate_perse": 10,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 02/11/2026 - Lesione di basso grado del bicipite femorale della gamba destra)",
+    "infortunio_status": "🔴 Lesione di basso grado del bicipite femorale della gamba destra (Rientro: 02/11/2026)",
     "infortunio_motivo": "Lesione di basso grado del bicipite femorale della gamba destra",
     "infortunio_rientro": "02/11/2026",
     "infortunio_severity": "red",
@@ -26903,7 +26927,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 8
   },
   {
     "id": 7622,
@@ -27943,7 +27969,7 @@
     "is_injured": true,
     "giornate_perse": 4,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 10/10/2026 - Contusione al polpaccio)",
+    "infortunio_status": "🔴 Contusione al polpaccio (Rientro: 10/10/2026)",
     "infortunio_motivo": "Contusione al polpaccio",
     "infortunio_rientro": "10/10/2026",
     "infortunio_severity": "red",
@@ -28017,7 +28043,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 7317,
@@ -30558,7 +30586,7 @@
     "is_injured": true,
     "giornate_perse": 4,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 11/10/2026 - Lieve aritmia benigna, intervento di correzione mediante ablazione (PFA))",
+    "infortunio_status": "🔴 Lieve aritmia benigna, intervento di correzione mediante ablazione (PFA) (Rientro: 11/10/2026)",
     "infortunio_motivo": "Lieve aritmia benigna, intervento di correzione mediante ablazione (PFA)",
     "infortunio_rientro": "11/10/2026",
     "infortunio_severity": "red",
@@ -30635,7 +30663,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 2517,
@@ -43669,8 +43699,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Inter vs Parma): Gara bilanciata contro il Parma, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
+    "ai_advice_type": "rotation",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "-",
     "coppia_id": null,
@@ -47143,8 +47173,8 @@
       ],
       "matchup_advice": "Matchday G6 (Como vs Roma): Incrocio severo contro il Roma, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "🛡️ TITOLARE LOW COST DA VOTO",
-    "ai_advice_type": "lowcost",
+    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
+    "ai_advice_type": "titolarissimo",
     "consiglio": "🛡️ TITOLARE LOW COST DA VOTO",
     "coppia_nome": "Da Cunha",
     "coppia_id": 5559,
@@ -47393,12 +47423,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": false,
+    "is_injured": true,
     "giornate_perse": 0,
     "is_chronic_fragile": true,
-    "infortunio_status": "🟢 Disponibile",
-    "infortunio_motivo": "",
-    "infortunio_rientro": "",
+    "infortunio_status": "🔴 Lesione distrattiva di medio grado del soleo destro (Rientro: 08/11/2026)",
+    "infortunio_motivo": "Lesione distrattiva di medio grado del soleo destro",
+    "infortunio_rientro": "08/11/2026",
     "infortunio_severity": "",
     "infortunio_tipo_stop": "",
     "rigorista_val": "-",
@@ -47462,8 +47492,8 @@
       ],
       "matchup_advice": "Matchday G6 (Napoli vs Frosinone): La difesa del Frosinone presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "🔥 IN FORMA / TREND DA BONUS",
-    "ai_advice_type": "hot",
+    "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
+    "ai_advice_type": "warning",
     "consiglio": "🔥 IN FORMA / TREND DA BONUS",
     "coppia_nome": "Zambo Anguissa",
     "coppia_id": 4220,
@@ -47473,7 +47503,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 8
   },
   {
     "id": 5500,
@@ -49470,8 +49502,8 @@
       ],
       "matchup_advice": "Matchday G6 (Milan @ Sassuolo): Gara bilanciata contro il Sassuolo, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "-",
     "coppia_id": null,
@@ -50124,8 +50156,8 @@
       ],
       "matchup_advice": "Matchday G6 (Como vs Roma): Incrocio severo contro il Roma, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "🛡️ TITOLARE LOW COST DA VOTO",
-    "ai_advice_type": "lowcost",
+    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
+    "ai_advice_type": "titolarissimo",
     "consiglio": "🛡️ TITOLARE LOW COST DA VOTO",
     "coppia_nome": "Da Cunha / Paz N.",
     "coppia_id": 5559,
@@ -50492,12 +50524,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": false,
+    "is_injured": true,
     "giornate_perse": 0,
     "is_chronic_fragile": false,
-    "infortunio_status": "🟢 Disponibile",
-    "infortunio_motivo": "",
-    "infortunio_rientro": "",
+    "infortunio_status": "🔴 Lombalgia (Rientro: 26/10/2026)",
+    "infortunio_motivo": "Lombalgia",
+    "infortunio_rientro": "26/10/2026",
     "infortunio_severity": "",
     "infortunio_tipo_stop": "",
     "rigorista_val": "-",
@@ -50558,8 +50590,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Roma @ Como): Gara bilanciata contro il Como, fattori individuali determinanti."
     },
-    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
-    "ai_advice_type": "titolarissimo",
+    "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
+    "ai_advice_type": "warning",
     "consiglio": "🔒 TITOLARISSIMO (100% VOTO)",
     "coppia_nome": "De Roon",
     "coppia_id": 22,
@@ -50569,7 +50601,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⏳ A Secco",
-    "trend_class": "warning"
+    "trend_class": "warning",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 1933,
@@ -57017,7 +57051,7 @@
     "is_injured": true,
     "giornate_perse": 6,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 21/10/2026 - Lesione (natura e sede non specificate))",
+    "infortunio_status": "🔴 Lesione (natura e sede non specificate) (Rientro: 21/10/2026)",
     "infortunio_motivo": "Lesione (natura e sede non specificate)",
     "infortunio_rientro": "21/10/2026",
     "infortunio_severity": "red",
@@ -57094,7 +57128,9 @@
     "coppia_ibrida": true,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 795,
@@ -60343,8 +60379,8 @@
       ],
       "matchup_advice": "Matchday G6 (Atalanta vs Venezia): La difesa del Venezia presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Samardzic",
     "coppia_id": 5119,
@@ -61099,8 +61135,8 @@
       ],
       "matchup_advice": "Matchday G6 (Como vs Roma): Incrocio severo contro il Roma, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "-",
     "coppia_id": null,
@@ -62426,7 +62462,7 @@
     "is_injured": true,
     "giornate_perse": 19,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 08/02/2027 - Problema al menisco del ginocchio destro (in valutazione, possibile intervento chirurgico o terapia conservativa))",
+    "infortunio_status": "🔴 Problema al menisco del ginocchio destro (in valutazione, possibile intervento chirurgico o terapia conservativa) (Rientro: 08/02/2027)",
     "infortunio_motivo": "Problema al menisco del ginocchio destro (in valutazione, possibile intervento chirurgico o terapia conservativa)",
     "infortunio_rientro": "08/02/2027",
     "infortunio_severity": "red",
@@ -62500,7 +62536,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 18
   },
   {
     "id": 7464,
@@ -64531,8 +64569,8 @@
       ],
       "matchup_advice": "Matchday G6 (Torino vs Udinese): La difesa del Udinese presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
+    "ai_advice_type": "lowcost",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "-",
     "coppia_id": null,
@@ -65174,12 +65212,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": true,
+    "is_injured": false,
     "giornate_perse": 4,
     "is_chronic_fragile": true,
-    "infortunio_status": "🟠 Infortunato (Rientro: 05/10/2026 - Infiammazione della pianta del piede)",
-    "infortunio_motivo": "Infiammazione della pianta del piede",
-    "infortunio_rientro": "05/10/2026",
+    "infortunio_status": "Disponibile",
+    "infortunio_motivo": null,
+    "infortunio_rientro": null,
     "infortunio_severity": "orange",
     "infortunio_tipo_stop": "Infortunato",
     "rigorista_val": "3° Rigorista",
@@ -65240,8 +65278,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Venezia @ Atalanta): Gara bilanciata contro il Atalanta, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "ai_advice_type": "warning",
+    "ai_advice": "⭐ 2° SLOT / TITOLARE DI LUSSO",
+    "ai_advice_type": "leader",
     "consiglio": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
     "coppia_nome": "Helgason",
     "coppia_id": 5872,
@@ -65251,7 +65289,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "green",
+    "giornate_perse_stimate": 0
   },
   {
     "id": 5301,
@@ -65522,8 +65562,8 @@
       ],
       "matchup_advice": "Matchday G6 (Inter vs Parma): Gara bilanciata contro il Parma, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "-",
     "coppia_id": null,
@@ -66426,8 +66466,8 @@
       ],
       "matchup_advice": "Matchday G6 (Frosinone @ Napoli): Gara bilanciata contro il Napoli, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Fini / Schmid",
     "coppia_id": 6506,
@@ -68309,8 +68349,8 @@
       ],
       "matchup_advice": "Matchday G6 (Monza @ Lazio): Incrocio severo contro il Lazio, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "ai_advice_type": "rotation",
+    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
+    "ai_advice_type": "titolarissimo",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "coppia_nome": "Akinsanmiro",
     "coppia_id": 6593,
@@ -68639,7 +68679,7 @@
     "is_injured": true,
     "giornate_perse": 6,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 27/10/2026 - Lesione muscolare alla coscia destra (problema ai flessori))",
+    "infortunio_status": "🔴 Lesione muscolare alla coscia destra (problema ai flessori) (Rientro: 27/10/2026)",
     "infortunio_motivo": "Lesione muscolare alla coscia destra (problema ai flessori)",
     "infortunio_rientro": "27/10/2026",
     "infortunio_severity": "red",
@@ -68713,7 +68753,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 2765,
@@ -69049,7 +69091,7 @@
     "is_injured": true,
     "giornate_perse": 6,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 21/10/2026 - Lesione ai flessori della coscia destra)",
+    "infortunio_status": "🔴 Lesione ai flessori della coscia destra (Rientro: 21/10/2026)",
     "infortunio_motivo": "Lesione ai flessori della coscia destra",
     "infortunio_rientro": "21/10/2026",
     "infortunio_severity": "red",
@@ -69126,7 +69168,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⏳ A Secco",
-    "trend_class": "warning"
+    "trend_class": "warning",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 6898,
@@ -69782,12 +69826,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": false,
+    "is_injured": true,
     "giornate_perse": 0,
     "is_chronic_fragile": true,
-    "infortunio_status": "🟢 Disponibile",
-    "infortunio_motivo": "",
-    "infortunio_rientro": "",
+    "infortunio_status": "🔴 Problema al polpaccio destro (Rientro: 15/10/2026)",
+    "infortunio_motivo": "Problema al polpaccio destro",
+    "infortunio_rientro": "15/10/2026",
     "infortunio_severity": "",
     "infortunio_tipo_stop": "",
     "rigorista_val": "-",
@@ -69850,8 +69894,8 @@
       ],
       "matchup_advice": "Matchday G6 (Lazio vs Monza): Gara bilanciata contro il Monza, fattori individuali determinanti."
     },
-    "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
-    "ai_advice_type": "lowcost",
+    "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
+    "ai_advice_type": "avoid",
     "consiglio": "🪑 RISERVA DA SLOT 1 CR",
     "coppia_nome": "Cataldi",
     "coppia_id": 333,
@@ -69861,7 +69905,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 6629,
@@ -70438,8 +70484,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Milan @ Sassuolo): Gara bilanciata contro il Sassuolo, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
+    "ai_advice_type": "rotation",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Modric",
     "coppia_id": 2606,
@@ -72874,8 +72920,8 @@
       ],
       "matchup_advice": "Matchday G6 (Torino vs Udinese): La difesa del Udinese presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "Mandragora",
     "coppia_id": 1933,
@@ -73434,8 +73480,8 @@
       ],
       "matchup_advice": "Matchday G6 (Parma @ Inter): Gara bilanciata contro il Inter, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "-",
     "coppia_id": null,
@@ -73734,8 +73780,8 @@
       ],
       "matchup_advice": "Matchday G6 (Cagliari vs Juventus): Incrocio severo contro il Juventus, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Fazzini / Maldini",
     "coppia_id": 6010,
@@ -74363,8 +74409,8 @@
       ],
       "matchup_advice": "Matchday G6 (Genoa vs Fiorentina): La difesa del Fiorentina presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "Baldanzi",
     "coppia_id": 5823,
@@ -77226,7 +77272,7 @@
     "is_injured": true,
     "giornate_perse": 4,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 11/10/2026 - Operato per la rottura del tendine d'Achille della gamba sinistra)",
+    "infortunio_status": "🔴 Operato per la rottura del tendine d'Achille della gamba sinistra (Rientro: 11/10/2026)",
     "infortunio_motivo": "Operato per la rottura del tendine d'Achille della gamba sinistra",
     "infortunio_rientro": "11/10/2026",
     "infortunio_severity": "red",
@@ -77301,7 +77347,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 7341,
@@ -77552,8 +77600,8 @@
       ],
       "matchup_advice": "Matchday G6 (Genoa vs Fiorentina): La difesa del Fiorentina presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
+    "ai_advice_type": "rotation",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Sow",
     "coppia_id": 5946,
@@ -77844,8 +77892,8 @@
       ],
       "matchup_advice": "Matchday G6 (Lecce vs Bologna): Incrocio severo contro il Bologna, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "🛡️ TITOLARE LOW COST DA VOTO",
-    "ai_advice_type": "lowcost",
+    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
+    "ai_advice_type": "titolarissimo",
     "consiglio": "🛡️ TITOLARE LOW COST DA VOTO",
     "coppia_nome": "Gorter",
     "coppia_id": 7248,
@@ -78146,8 +78194,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Udinese @ Torino): Gara bilanciata contro il Torino, fattori individuali determinanti."
     },
-    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "ai_advice_type": "rotation",
+    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
+    "ai_advice_type": "titolarissimo",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "coppia_nome": "Karlstrom",
     "coppia_id": 6680,
@@ -79068,7 +79116,7 @@
     "is_injured": true,
     "giornate_perse": 6,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 18/10/2026 - Lieve aritmia cardiaca benigna, da sottoporre a intervento di ablazione cardiaca)",
+    "infortunio_status": "🔴 Lieve aritmia cardiaca benigna, da sottoporre a intervento di ablazione cardiaca (Rientro: 18/10/2026)",
     "infortunio_motivo": "Lieve aritmia cardiaca benigna, da sottoporre a intervento di ablazione cardiaca",
     "infortunio_rientro": "18/10/2026",
     "infortunio_severity": "red",
@@ -79142,7 +79190,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 6015,
@@ -79428,8 +79478,8 @@
       ],
       "matchup_advice": "Matchday G6 (Lecce vs Bologna): Incrocio severo contro il Bologna, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "-",
     "coppia_id": null,
@@ -79818,8 +79868,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Frosinone @ Napoli): Gara bilanciata contro il Napoli, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
+    "ai_advice_type": "rotation",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "Calò",
     "coppia_id": 7472,
@@ -80328,7 +80378,7 @@
     "is_injured": true,
     "giornate_perse": 6,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 28/10/2026 - Operato per la lussazione della rotula del ginocchio destro)",
+    "infortunio_status": "🔴 Operato per la lussazione della rotula del ginocchio destro (Rientro: 28/10/2026)",
     "infortunio_motivo": "Operato per la lussazione della rotula del ginocchio destro",
     "infortunio_rientro": "28/10/2026",
     "infortunio_severity": "red",
@@ -80402,7 +80452,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 2529,
@@ -81328,7 +81380,7 @@
     "is_injured": true,
     "giornate_perse": 19,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 17/01/2027 - Intervento di riduzione della frattura della gamba sinistra)",
+    "infortunio_status": "🔴 Intervento di riduzione della frattura della gamba sinistra (Rientro: 17/01/2027)",
     "infortunio_motivo": "Intervento di riduzione della frattura della gamba sinistra",
     "infortunio_rientro": "17/01/2027",
     "infortunio_severity": "red",
@@ -81402,7 +81454,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 18
   },
   {
     "id": 7318,
@@ -81688,8 +81742,8 @@
       ],
       "matchup_advice": "Matchday G6 (Lecce vs Bologna): Incrocio severo contro il Bologna, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "Coulibaly L.",
     "coppia_id": 5504,
@@ -81970,8 +82024,8 @@
       ],
       "matchup_advice": "Matchday G6 (Venezia @ Atalanta): Gara bilanciata contro il Atalanta, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Sohm",
     "coppia_id": 5319,
@@ -82219,7 +82273,7 @@
     "is_injured": true,
     "giornate_perse": 19,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 01/01/2027 - Sindrome femoro-rotulea al ginocchio)",
+    "infortunio_status": "🔴 Sindrome femoro-rotulea al ginocchio (Rientro: 01/01/2027)",
     "infortunio_motivo": "Sindrome femoro-rotulea al ginocchio",
     "infortunio_rientro": "01/01/2027",
     "infortunio_severity": "red",
@@ -82291,7 +82345,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 18
   },
   {
     "id": 6225,
@@ -85000,7 +85056,7 @@
     "is_injured": true,
     "giornate_perse": 10,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 02/11/2026 - Lesione di medio grado alla coscia destra)",
+    "infortunio_status": "🔴 Lesione di medio grado alla coscia destra (Rientro: 02/11/2026)",
     "infortunio_motivo": "Lesione di medio grado alla coscia destra",
     "infortunio_rientro": "02/11/2026",
     "infortunio_severity": "red",
@@ -85072,7 +85128,9 @@
     "coppia_tipo": "RISERVA",
     "coppia_dettaglio": "Subentra a Bernabè (Mediano SX)",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 8
   },
   {
     "id": 6024,
@@ -85292,7 +85350,7 @@
     "is_injured": true,
     "giornate_perse": 4,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 12/10/2026 - Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro)",
+    "infortunio_status": "🔴 Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro (Rientro: 12/10/2026)",
     "infortunio_motivo": "Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro",
     "infortunio_rientro": "12/10/2026",
     "infortunio_severity": "red",
@@ -85368,7 +85426,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 6592,
@@ -86435,8 +86495,8 @@
       ],
       "matchup_advice": "Matchday G6 (Lecce vs Bologna): Incrocio severo contro il Bologna, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "🛡️ TITOLARE LOW COST DA VOTO",
-    "ai_advice_type": "lowcost",
+    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
+    "ai_advice_type": "titolarissimo",
     "consiglio": "🛡️ TITOLARE LOW COST DA VOTO",
     "coppia_nome": "Kaba",
     "coppia_id": 6410,
@@ -90139,7 +90199,7 @@
     "is_injured": true,
     "giornate_perse": 6,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 28/10/2026 - Lesione del menisco laterale del ginocchio sinistro, operato con meniscectomia esterna artroscopica selettiva)",
+    "infortunio_status": "🔴 Lesione del menisco laterale del ginocchio sinistro, operato con meniscectomia esterna artroscopica selettiva (Rientro: 28/10/2026)",
     "infortunio_motivo": "Lesione del menisco laterale del ginocchio sinistro, operato con meniscectomia esterna artroscopica selettiva",
     "infortunio_rientro": "28/10/2026",
     "infortunio_severity": "red",
@@ -90215,7 +90275,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⏳ A Secco",
-    "trend_class": "warning"
+    "trend_class": "warning",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 7276,
@@ -91459,7 +91521,7 @@
     "is_injured": true,
     "giornate_perse": 6,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 30/10/2026 - Operato al ginocchio)",
+    "infortunio_status": "🔴 Operato al ginocchio (Rientro: 30/10/2026)",
     "infortunio_motivo": "Operato al ginocchio",
     "infortunio_rientro": "30/10/2026",
     "infortunio_severity": "red",
@@ -91534,7 +91596,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 7481,
@@ -91715,12 +91779,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": true,
+    "is_injured": false,
     "giornate_perse": 4,
     "is_chronic_fragile": false,
-    "infortunio_status": "🟠 Infortunato (Rientro: 05/10/2026 - Risentimento muscolare al flessore, conseguenza di una precedente infiammazione al ginocchio)",
-    "infortunio_motivo": "Risentimento muscolare al flessore, conseguenza di una precedente infiammazione al ginocchio",
-    "infortunio_rientro": "05/10/2026",
+    "infortunio_status": "Disponibile",
+    "infortunio_motivo": null,
+    "infortunio_rientro": null,
     "infortunio_severity": "orange",
     "infortunio_tipo_stop": "Infortunato",
     "rigorista_val": "-",
@@ -91781,7 +91845,7 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Venezia @ Atalanta): Gara bilanciata contro il Atalanta, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
+    "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⚠️ INFORTUNATO (NON COMPRARE)",
     "coppia_nome": "-",
@@ -91792,7 +91856,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "green",
+    "giornate_perse_stimate": 0
   },
   {
     "id": 7165,
@@ -92861,7 +92927,7 @@
     "is_injured": true,
     "giornate_perse": 19,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 09/02/2027 - Nuovo infortunio al ginocchio (da accertare con esami strumentali))",
+    "infortunio_status": "🔴 Nuovo infortunio al ginocchio (da accertare con esami strumentali) (Rientro: 09/02/2027)",
     "infortunio_motivo": "Nuovo infortunio al ginocchio (da accertare con esami strumentali)",
     "infortunio_rientro": "09/02/2027",
     "infortunio_severity": "red",
@@ -92938,7 +93004,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 18
   },
   {
     "id": 254,
@@ -101543,12 +101611,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": true,
+    "is_injured": false,
     "giornate_perse": 4,
     "is_chronic_fragile": true,
-    "infortunio_status": "🟠 Infortunato (Rientro: 05/10/2026 - Problema fisico pregresso non meglio specificato, sta smaltendo le conseguenze di un piccolo infortunio pregresso che ne ha rallentato la preparazione)",
-    "infortunio_motivo": "Problema fisico pregresso non meglio specificato, sta smaltendo le conseguenze di un piccolo infortunio pregresso che ne ha rallentato la preparazione",
-    "infortunio_rientro": "05/10/2026",
+    "infortunio_status": "Disponibile",
+    "infortunio_motivo": null,
+    "infortunio_rientro": null,
     "infortunio_severity": "orange",
     "infortunio_tipo_stop": "Infortunato",
     "rigorista_val": "-",
@@ -101611,8 +101679,8 @@
       ],
       "matchup_advice": "Matchday G6 (Inter vs Parma): Gara bilanciata contro il Parma, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
-    "ai_advice_type": "avoid",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚠️ INFORTUNATO (NON COMPRARE)",
     "coppia_nome": "Diouf",
     "coppia_id": 6274,
@@ -101620,7 +101688,9 @@
     "coppia_tipo": "RISERVA",
     "coppia_dettaglio": "Staffetta/Ballottaggio reale 35% vs 65% (Diouf). ⚠️ Asimmetria Classic: Spence è D, Diouf è C (stessa corsia/zona in campo)",
     "coppia_ibrida": true,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "green",
+    "giornate_perse_stimate": 0
   },
   {
     "id": 5862,
@@ -104040,8 +104110,8 @@
       ],
       "matchup_advice": "Matchday G6 (Milan @ Sassuolo): Gara bilanciata contro il Sassuolo, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Estupinan",
     "coppia_id": 5273,
@@ -114799,7 +114869,7 @@
     "is_injured": true,
     "giornate_perse": 4,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 11/10/2026 - Lesione di grado moderato al quadricipite della gamba sinistra)",
+    "infortunio_status": "🔴 Lesione di grado moderato al quadricipite della gamba sinistra (Rientro: 11/10/2026)",
     "infortunio_motivo": "Lesione di grado moderato al quadricipite della gamba sinistra",
     "infortunio_rientro": "11/10/2026",
     "infortunio_severity": "red",
@@ -114875,7 +114945,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 7629,
@@ -115163,8 +115235,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Lazio vs Monza): Gara bilanciata contro il Monza, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
+    "ai_advice_type": "rotation",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "Provstgaard",
     "coppia_id": 7012,
@@ -116514,8 +116586,8 @@
       ],
       "matchup_advice": "Matchday G6 (Napoli vs Frosinone): La difesa del Frosinone presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
+    "ai_advice_type": "rotation",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "Marin R.",
     "coppia_id": 6638,
@@ -117206,8 +117278,8 @@
       ],
       "matchup_advice": "Matchday G6 (Lazio vs Monza): Gara bilanciata contro il Monza, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Tavares N.",
     "coppia_id": 5620,
@@ -118662,12 +118734,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": false,
+    "is_injured": true,
     "giornate_perse": 0,
     "is_chronic_fragile": false,
-    "infortunio_status": "🟢 Disponibile",
-    "infortunio_motivo": "",
-    "infortunio_rientro": "",
+    "infortunio_status": "🔴 Lesione distrattiva del muscolo otturatore esterno destro (Rientro: 05/11/2026)",
+    "infortunio_motivo": "Lesione distrattiva del muscolo otturatore esterno destro",
+    "infortunio_rientro": "05/11/2026",
     "infortunio_severity": "",
     "infortunio_tipo_stop": "",
     "rigorista_val": "-",
@@ -118731,8 +118803,8 @@
       ],
       "matchup_advice": "Matchday G6 (Napoli vs Frosinone): La difesa del Frosinone presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "🥈 TERZINO DI SPINTA (FRP)",
-    "ai_advice_type": "buy",
+    "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
+    "ai_advice_type": "warning",
     "consiglio": "🥈 TERZINO DI SPINTA (FRP)",
     "coppia_nome": "Spinazzola",
     "coppia_id": 1852,
@@ -118742,7 +118814,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 8
   },
   {
     "id": 2514,
@@ -119092,7 +119166,7 @@
     "is_injured": true,
     "giornate_perse": 6,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 17/10/2026 - Risentimento ai flessori della coscia sinistra)",
+    "infortunio_status": "🔴 Risentimento ai flessori della coscia sinistra (Rientro: 17/10/2026)",
     "infortunio_motivo": "Risentimento ai flessori della coscia sinistra",
     "infortunio_rientro": "17/10/2026",
     "infortunio_severity": "red",
@@ -119166,7 +119240,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 6821,
@@ -121250,12 +121326,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": false,
+    "is_injured": true,
     "giornate_perse": 0,
     "is_chronic_fragile": true,
-    "infortunio_status": "🟢 Disponibile",
-    "infortunio_motivo": "",
-    "infortunio_rientro": "",
+    "infortunio_status": "🔴 Intervento di riparazione della radice del menisco mediale del ginocchio destro (Rientro: 31/10/2026)",
+    "infortunio_motivo": "Intervento di riparazione della radice del menisco mediale del ginocchio destro",
+    "infortunio_rientro": "31/10/2026",
     "infortunio_severity": "",
     "infortunio_tipo_stop": "",
     "rigorista_val": "-",
@@ -121318,7 +121394,7 @@
       ],
       "matchup_advice": "Matchday G6 (Napoli vs Frosinone): La difesa del Frosinone presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "⛔ DA EVITARE / RISERVA",
+    "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
     "ai_advice_type": "avoid",
     "consiglio": "⛔ DA EVITARE / RISERVA",
     "coppia_nome": "-",
@@ -121327,7 +121403,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 6642,
@@ -122717,8 +122795,8 @@
       ],
       "matchup_advice": "Matchday G6 (Cagliari vs Juventus): Incrocio severo contro il Juventus, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
-    "ai_advice_type": "lowcost",
+    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
+    "ai_advice_type": "titolarissimo",
     "consiglio": "🪑 RISERVA DA SLOT 1 CR",
     "coppia_nome": "Zè Pedro",
     "coppia_id": 7274,
@@ -123180,12 +123258,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": false,
+    "is_injured": true,
     "giornate_perse": 0,
     "is_chronic_fragile": false,
-    "infortunio_status": "🟢 Disponibile",
-    "infortunio_motivo": "",
-    "infortunio_rientro": "",
+    "infortunio_status": "🔴 Lesione muscolare (rientrato al Napoli dopo valutazione medica con la Nazionale U21) (Rientro: 30/11/2026)",
+    "infortunio_motivo": "Lesione muscolare (rientrato al Napoli dopo valutazione medica con la Nazionale U21)",
+    "infortunio_rientro": "30/11/2026",
     "infortunio_severity": "",
     "infortunio_tipo_stop": "",
     "rigorista_val": "-",
@@ -123249,8 +123327,8 @@
       ],
       "matchup_advice": "Matchday G6 (Napoli vs Frosinone): La difesa del Frosinone presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
-    "ai_advice_type": "sleeper",
+    "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
+    "ai_advice_type": "avoid",
     "consiglio": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
     "coppia_nome": "Di Lorenzo",
     "coppia_id": 2816,
@@ -123260,7 +123338,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 8
   },
   {
     "id": 4502,
@@ -127975,8 +128055,8 @@
       ],
       "matchup_advice": "Matchday G6 (Torino vs Udinese): La difesa del Udinese presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "Comuzzo",
     "coppia_id": 6495,
@@ -130900,8 +130980,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Roma @ Como): Gara bilanciata contro il Como, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
+    "ai_advice_type": "rotation",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Mancini",
     "coppia_id": 2296,
@@ -131194,8 +131274,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Juventus @ Cagliari): Gara bilanciata contro il Cagliari, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
+    "ai_advice_type": "rotation",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "Lucumì",
     "coppia_id": 6042,
@@ -133352,8 +133432,8 @@
       ],
       "matchup_advice": "Matchday G6 (Lecce vs Bologna): Incrocio severo contro il Bologna, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "🛡️ TITOLARE DA VOTO",
-    "ai_advice_type": "titolare",
+    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
+    "ai_advice_type": "titolarissimo",
     "consiglio": "🛡️ TITOLARE DA VOTO",
     "coppia_nome": "Gaspar K. / Gallo",
     "coppia_id": 6632,
@@ -134330,12 +134410,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": false,
+    "is_injured": true,
     "giornate_perse": 0,
     "is_chronic_fragile": true,
-    "infortunio_status": "🟢 Disponibile",
-    "infortunio_motivo": "",
-    "infortunio_rientro": "",
+    "infortunio_status": "🔴 Risentimento muscolare ai flessori della coscia sinistra (Rientro: 29/10/2026)",
+    "infortunio_motivo": "Risentimento muscolare ai flessori della coscia sinistra",
+    "infortunio_rientro": "29/10/2026",
     "infortunio_severity": "",
     "infortunio_tipo_stop": "",
     "rigorista_val": "-",
@@ -134398,8 +134478,8 @@
       ],
       "matchup_advice": "Matchday G6 (Atalanta vs Venezia): La difesa del Venezia presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "🛡️ TITOLARE DA VOTO",
-    "ai_advice_type": "titolare",
+    "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
+    "ai_advice_type": "warning",
     "consiglio": "🛡️ TITOLARE DA VOTO",
     "coppia_nome": "Kristensen T.",
     "coppia_id": 6485,
@@ -134409,7 +134489,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 4378,
@@ -137067,8 +137149,8 @@
       ],
       "matchup_advice": "Matchday G6 (Udinese @ Torino): Gara bilanciata contro il Torino, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "Vojvoda",
     "coppia_id": 4994,
@@ -137328,7 +137410,7 @@
     "is_injured": true,
     "giornate_perse": 4,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 11/10/2026 - Lesione del tendine del semimembranoso della gamba sinistra)",
+    "infortunio_status": "🔴 Lesione del tendine del semimembranoso della gamba sinistra (Rientro: 11/10/2026)",
     "infortunio_motivo": "Lesione del tendine del semimembranoso della gamba sinistra",
     "infortunio_rientro": "11/10/2026",
     "infortunio_severity": "red",
@@ -137402,7 +137484,9 @@
     "coppia_tipo": "RISERVA",
     "coppia_dettaglio": "35% vs 65% (Scalvini)",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 7154,
@@ -139762,8 +139846,8 @@
       ],
       "matchup_advice": "Matchday G6 (Cagliari vs Juventus): Incrocio severo contro il Juventus, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🪑 RISERVA DA SLOT 1 CR",
+    "ai_advice_type": "lowcost",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "Mina",
     "coppia_id": 4210,
@@ -141441,12 +141525,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": false,
+    "is_injured": true,
     "giornate_perse": 0,
     "is_chronic_fragile": false,
-    "infortunio_status": "🟢 Disponibile",
-    "infortunio_motivo": "",
-    "infortunio_rientro": "",
+    "infortunio_status": "🟠 Distorsione alla caviglia destra (Rientro: 07/10/2026)",
+    "infortunio_motivo": "Distorsione alla caviglia destra",
+    "infortunio_rientro": "07/10/2026",
     "infortunio_severity": "",
     "infortunio_tipo_stop": "",
     "rigorista_val": "-",
@@ -141507,8 +141591,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Venezia @ Atalanta): Gara bilanciata contro il Atalanta, fattori individuali determinanti."
     },
-    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
-    "ai_advice_type": "titolarissimo",
+    "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
+    "ai_advice_type": "warning",
     "consiglio": "🔒 TITOLARISSIMO (100% VOTO)",
     "coppia_nome": "Moreno M.",
     "coppia_id": 6890,
@@ -141518,7 +141602,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "orange",
+    "giornate_perse_stimate": 2
   },
   {
     "id": 2728,
@@ -142467,12 +142553,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": true,
+    "is_injured": false,
     "giornate_perse": 4,
     "is_chronic_fragile": true,
-    "infortunio_status": "🟠 Infortunato (Rientro: 06/10/2026 - Infortunio muscolare all'interno coscia)",
-    "infortunio_motivo": "Infortunio muscolare all'interno coscia",
-    "infortunio_rientro": "06/10/2026",
+    "infortunio_status": "Disponibile",
+    "infortunio_motivo": null,
+    "infortunio_rientro": null,
     "infortunio_severity": "orange",
     "infortunio_tipo_stop": "Infortunato",
     "rigorista_val": "-",
@@ -142533,8 +142619,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Venezia @ Atalanta): Gara bilanciata contro il Atalanta, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "ai_advice_type": "warning",
+    "ai_advice": "🔥 SCOMMESSA AD ALTO POTENZIALE",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
     "coppia_nome": "Sagrado",
     "coppia_id": 6681,
@@ -142544,7 +142630,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "green",
+    "giornate_perse_stimate": 0
   },
   {
     "id": 7312,
@@ -142701,12 +142789,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": true,
+    "is_injured": false,
     "giornate_perse": 4,
     "is_chronic_fragile": false,
-    "infortunio_status": "🟠 Infortunato (Rientro: 06/10/2026 - Lesione al bicipite femorale della coscia destra)",
-    "infortunio_motivo": "Lesione al bicipite femorale della coscia destra",
-    "infortunio_rientro": "06/10/2026",
+    "infortunio_status": "Disponibile",
+    "infortunio_motivo": null,
+    "infortunio_rientro": null,
     "infortunio_severity": "orange",
     "infortunio_tipo_stop": "Infortunato",
     "rigorista_val": "-",
@@ -142769,8 +142857,8 @@
       ],
       "matchup_advice": "Matchday G6 (Udinese @ Torino): Gara bilanciata contro il Torino, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
-    "ai_advice_type": "avoid",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚠️ INFORTUNATO (NON COMPRARE)",
     "coppia_nome": "-",
     "coppia_id": null,
@@ -142780,7 +142868,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "green",
+    "giornate_perse_stimate": 0
   },
   {
     "id": 6601,
@@ -143765,8 +143855,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Parma @ Inter): Gara bilanciata contro il Inter, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
-    "ai_advice_type": "benched",
+    "ai_advice": "⛔ DA EVITARE / RISERVA",
+    "ai_advice_type": "avoid",
     "consiglio": "⚠️ HA PERSO IL POSTO (IN PANCHINA)",
     "coppia_nome": "Delprato",
     "coppia_id": 6664,
@@ -144151,8 +144241,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Frosinone @ Napoli): Gara bilanciata contro il Napoli, fattori individuali determinanti."
     },
-    "ai_advice": "🔄 ROTAZIONE / BALLOTTAGGIO",
-    "ai_advice_type": "rotation",
+    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
+    "ai_advice_type": "titolarissimo",
     "consiglio": "🔄 ROTAZIONE / BALLOTTAGGIO",
     "coppia_nome": "Calvani",
     "coppia_id": 7467,
@@ -144831,7 +144921,7 @@
     "is_injured": true,
     "giornate_perse": 19,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 29/01/2027 - Lesione al bicipite femorale della coscia destra)",
+    "infortunio_status": "🔴 Lesione al bicipite femorale della coscia destra (Rientro: 29/01/2027)",
     "infortunio_motivo": "Lesione al bicipite femorale della coscia destra",
     "infortunio_rientro": "29/01/2027",
     "infortunio_severity": "red",
@@ -144908,7 +144998,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 18
   },
   {
     "id": 5449,
@@ -145098,7 +145190,7 @@
     "is_injured": true,
     "giornate_perse": 10,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 01/11/2026 - Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro)",
+    "infortunio_status": "🔴 Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro (Rientro: 01/11/2026)",
     "infortunio_motivo": "Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro",
     "infortunio_rientro": "01/11/2026",
     "infortunio_severity": "red",
@@ -145172,7 +145264,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 8
   },
   {
     "id": 7573,
@@ -146153,8 +146247,8 @@
       ],
       "matchup_advice": "Matchday G6 (Lazio vs Monza): Gara bilanciata contro il Monza, fattori individuali determinanti."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "-",
     "coppia_id": null,
@@ -149272,8 +149366,8 @@
       ],
       "matchup_advice": "Matchday G6 (Monza @ Lazio): Incrocio severo contro il Lazio, tra le difese più solide della Serie A. Schierare con prudenza."
     },
-    "ai_advice": "⚡ SUPER-SUB / JOLLY DA VOTO",
-    "ai_advice_type": "supersub",
+    "ai_advice": "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR",
+    "ai_advice_type": "sleeper",
     "consiglio": "⚡ SUPER-SUB / JOLLY DA VOTO",
     "coppia_nome": "-",
     "coppia_id": null,
@@ -150139,8 +150233,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Udinese @ Torino): Gara bilanciata contro il Torino, fattori individuali determinanti."
     },
-    "ai_advice": "🛡️ TITOLARE DA VOTO",
-    "ai_advice_type": "titolare",
+    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
+    "ai_advice_type": "titolarissimo",
     "consiglio": "🛡️ TITOLARE DA VOTO",
     "coppia_nome": "Solet",
     "coppia_id": 6956,
@@ -151851,7 +151945,7 @@
     "is_injured": true,
     "giornate_perse": 4,
     "is_chronic_fragile": true,
-    "infortunio_status": "🟠 Infortunato (Rientro: 08/10/2026 - Lesione di basso grado del muscolo semimembranoso della coscia sinistra)",
+    "infortunio_status": "🟠 Lesione di basso grado del muscolo semimembranoso della coscia sinistra (Rientro: 08/10/2026)",
     "infortunio_motivo": "Lesione di basso grado del muscolo semimembranoso della coscia sinistra",
     "infortunio_rientro": "08/10/2026",
     "infortunio_severity": "orange",
@@ -151925,7 +152019,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "orange",
+    "giornate_perse_stimate": 2
   },
   {
     "id": 6673,
@@ -152223,7 +152319,7 @@
     "is_injured": true,
     "giornate_perse": 6,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 17/10/2026 - Infortunio alle anche)",
+    "infortunio_status": "🔴 Infortunio alle anche (Rientro: 17/10/2026)",
     "infortunio_motivo": "Infortunio alle anche",
     "infortunio_rientro": "17/10/2026",
     "infortunio_severity": "red",
@@ -152295,7 +152391,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 7125,
@@ -152425,7 +152523,7 @@
     "is_injured": true,
     "giornate_perse": 4,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 11/10/2026 - Intervento di ricostruzione del legamento crociato anteriore del ginocchio sinistro)",
+    "infortunio_status": "🔴 Intervento di ricostruzione del legamento crociato anteriore del ginocchio sinistro (Rientro: 11/10/2026)",
     "infortunio_motivo": "Intervento di ricostruzione del legamento crociato anteriore del ginocchio sinistro",
     "infortunio_rientro": "11/10/2026",
     "infortunio_severity": "red",
@@ -152500,7 +152598,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 5
   },
   {
     "id": 6883,
@@ -152867,12 +152967,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": true,
+    "is_injured": false,
     "giornate_perse": 4,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 11/10/2026 - Lesione di alto grado del legamento collaterale mediale del ginocchio sinistro)",
-    "infortunio_motivo": "Lesione di alto grado del legamento collaterale mediale del ginocchio sinistro",
-    "infortunio_rientro": "11/10/2026",
+    "infortunio_status": "Disponibile",
+    "infortunio_motivo": null,
+    "infortunio_rientro": null,
     "infortunio_severity": "red",
     "infortunio_tipo_stop": "Infortunato",
     "rigorista_val": "-",
@@ -152935,7 +153035,7 @@
       ],
       "matchup_advice": "Matchday G6 (Napoli vs Frosinone): La difesa del Frosinone presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
     },
-    "ai_advice": "⚠️ INFORTUNATO (NON COMPRARE)",
+    "ai_advice": "⛔ DA EVITARE / RISERVA",
     "ai_advice_type": "avoid",
     "consiglio": "⚠️ INFORTUNATO (NON COMPRARE)",
     "coppia_nome": "-",
@@ -152944,7 +153044,9 @@
     "coppia_tipo": "-",
     "coppia_dettaglio": "Nessuna alternativa diretta",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "green",
+    "giornate_perse_stimate": 0
   },
   {
     "id": 6826,
@@ -153899,7 +154001,7 @@
     "is_injured": true,
     "giornate_perse": 13,
     "is_chronic_fragile": true,
-    "infortunio_status": "🔴 Infortunato (Rientro: 10/12/2026 - Dislocazione della clavicola)",
+    "infortunio_status": "🔴 Dislocazione della clavicola (Rientro: 10/12/2026)",
     "infortunio_motivo": "Dislocazione della clavicola",
     "infortunio_rientro": "10/12/2026",
     "infortunio_severity": "red",
@@ -153975,7 +154077,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 8
   },
   {
     "id": 7156,
@@ -158461,7 +158565,7 @@
     "is_injured": true,
     "giornate_perse": 4,
     "is_chronic_fragile": true,
-    "infortunio_status": "🟠 Infortunato (Rientro: 08/10/2026 - Problema agli adduttori)",
+    "infortunio_status": "🟠 Problema agli adduttori (Rientro: 08/10/2026)",
     "infortunio_motivo": "Problema agli adduttori",
     "infortunio_rientro": "08/10/2026",
     "infortunio_severity": "orange",
@@ -158537,7 +158641,9 @@
     "coppia_ibrida": false,
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
-    "trend_class": "neutral"
+    "trend_class": "neutral",
+    "infortunio_gravita": "orange",
+    "giornate_perse_stimate": 2
   },
   {
     "id": 4360,
@@ -172904,7 +173010,7 @@
     "is_injured": true,
     "giornate_perse": 35,
     "is_chronic_fragile": false,
-    "infortunio_status": "🔴 Infortunato (Rientro: 31/07/2027 - Rottura del legamento crociato del ginocchio destro, da trauma distorsivo in allenamento)",
+    "infortunio_status": "🔴 Rottura del legamento crociato del ginocchio destro, da trauma distorsivo in allenamento (Rientro: 31/07/2027)",
     "infortunio_motivo": "Rottura del legamento crociato del ginocchio destro, da trauma distorsivo in allenamento",
     "infortunio_rientro": "31/07/2027",
     "infortunio_severity": "red",
@@ -172976,7 +173082,9 @@
     "coppia_tipo": "TITOLARE",
     "coppia_dettaglio": "3° Portiere (Vicario)",
     "coppia_ibrida": false,
-    "rigori_sbagliati_2627": 0
+    "rigori_sbagliati_2627": 0,
+    "infortunio_gravita": "red",
+    "giornate_perse_stimate": 18
   },
   {
     "id": 283,
@@ -173277,8 +173385,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Juventus @ Cagliari): Gara bilanciata contro il Cagliari, fattori individuali determinanti."
     },
-    "ai_advice": "🛡️ DA PRENDERE IN COPPIA CON VICARIO",
-    "ai_advice_type": "coverage",
+    "ai_advice": "⛔ DA EVITARE / RISERVA",
+    "ai_advice_type": "avoid",
     "consiglio": "🛡️ DA PRENDERE IN COPPIA CON VICARIO",
     "coppia_nome": "Vicario",
     "coppia_id": 4964,

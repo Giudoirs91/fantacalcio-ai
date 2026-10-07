@@ -56,3 +56,4 @@ android/local.properties
 *.aab
 
 .vercel
+.env*

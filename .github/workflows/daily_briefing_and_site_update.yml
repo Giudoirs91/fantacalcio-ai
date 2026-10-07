@@ -1,0 +1,42 @@
+name: Daily Briefing & Site Update
+
+on:
+  schedule:
+    # 05:30 UTC = 07:30 ora italiana (durante ora legale CEST, UTC+2)
+    # Nota: durante ora solare (CET, UTC+1), corrisponde alle 06:30 o può essere impostato a 06:30 UTC ('30 6 * * *')
+    - cron: '30 5 * * *'
+  workflow_dispatch: # Permette l'avvio manuale con un clic da GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  daily-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: ''
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install beautifulsoup4 pillow requests
+
+      - name: Run Daily Routine (Sync Injuries, Build Site & Send Telegram)
+        run: |
+          python tools/run_daily_update.py
+
+      - name: Commit and Push Updated Site to GitHub
+        run: |
+          git config --local user.email "bot@fantamasterai.it"
+          git config --local user.name "FantaMasterAI Bot"
+          git add dist/ data/ config/ processed_players_master.json
+          git commit -m "Auto-update: Daily injuries, SEO pages and stats [skip ci]" || echo "Nessuna modifica da salvare"
+          git push origin main

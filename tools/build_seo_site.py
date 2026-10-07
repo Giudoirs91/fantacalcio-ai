@@ -3672,21 +3672,35 @@ def generate_privacy_policy_page():
 
                 <section>
                     <h2 style="font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; color: #38bdf8; margin: 0 0 8px 0;">
-                        3. Esenzione dal Cookie Banner Preventivo (Linee Guida Garante Privacy 10/06/2021)
+                        3. Cookie Policy &amp; Esenzione dal Cookie Banner Preventivo (Linee Guida Garante Privacy 10/06/2021)
                     </h2>
                     <p style="margin: 0 0 8px 0;">
                         In piena ottemperanza all'articolo 122 del D.Lgs. 196/2003 (Codice Privacy) e alle <em>Linee Guida del Garante per la Protezione dei Dati Personali in materia di cookie e altri strumenti di tracciamento del 10 giugno 2021 (doc. web n. 9677876)</em>, si dichiara che:
                     </p>
                     <ul style="padding-left: 20px; margin: 0; display: flex; flex-direction: column; gap: 6px;">
-                        <li>Il sito <strong>NON utilizza cookie di profilazione pubblicitaria</strong>, né traccianti di terze parti finalizzati alla categorizzazione dei visitatori a scopi di marketing o retargeting commerciale.</li>
-                        <li>Le uniche tecnologie impiegate sono <strong>cookie tecnici strettamente necessari</strong> al funzionamento dell'infrastruttura di rete (CDN Vercel) o strumenti analitici proprietari con IP anonimizzato e finalità limitata all'elaborazione statistica aggregata della piattaforma.</li>
-                        <li>Ai sensi del quadro normativo vigente, <strong>non sussiste l'obbligo di somministrazione preventiva del banner cookie di consenso (cookie wall)</strong>, né la necessità di richiedere autorizzazioni all'utente prima della navigazione.</li>
+                        <li>Il sito <strong>NON utilizza cookie di profilazione pubblicitaria</strong>, né traccianti finalizzati alla categorizzazione comportamentale per scopi commerciali, marketing diretto o retargeting promozionale.</li>
+                        <li>Le tecnologie impiegate si limitano a <strong>cookie tecnici e analitici aggregati</strong> strettamente necessari al funzionamento dell'infrastruttura di erogazione (CDN Vercel) e alla misurazione aggregata delle visite.</li>
+                        <li>In conformità ai chiarimenti del Garante Privacy, i cookie analitici di terze parti adottati con mascheramento dell'indirizzo IP e senza combinazione dei dati con altre elaborazioni sono formalmente <strong>equiparati a cookie tecnici</strong>; pertanto, <strong>non sussiste l'obbligo di sottoporre all'utente un banner di consenso preventivo (cookie wall)</strong> o raccogliere consensi espliciti per la prosecuzione della navigazione.</li>
                     </ul>
                 </section>
 
                 <section>
                     <h2 style="font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; color: #38bdf8; margin: 0 0 8px 0;">
-                        4. Dati Salvati in Locale nel Browser (Storage Locale)
+                        4. Misurazione Statistica Aggregata: Google Analytics 4 (GA4 con IP Anonimizzato)
+                    </h2>
+                    <p style="margin: 0 0 8px 0;">
+                        Al fine di comprendere quali sezioni e statistiche del portale risultino di maggiore interesse per la community fantacalcistica e ottimizzare le risorse computazionali dei modelli algoritmici, il sito utilizza <strong>Google Analytics 4 (GA4)</strong>, un servizio di analisi web erogato da Google Ireland Limited ("Google").
+                    </p>
+                    <ul style="padding-left: 20px; margin: 0; display: flex; flex-direction: column; gap: 6px;">
+                        <li><strong>Anonimizzazione e Mascheramento IP:</strong> GA4 è configurato con mascheramento dell'indirizzo IP (<code>anonymize_ip: true</code>). L'indirizzo IP del visitatore non viene mai memorizzato per intero né reso visibile agli amministratori di Fanta Master AI.</li>
+                        <li><strong>Nessun incrocio di dati:</strong> I dati raccolti (es. tempo di permanenza aggregato, sezioni visitate, tipo di browser/dispositivo) sono elaborati esclusivamente in forma statistica aggregata e anonima, senza alcuna associazione a identità personali, profili pubblicitari o credenziali Google.</li>
+                        <li><strong>Disattivazione (Opt-Out):</strong> L'utente può in qualsiasi momento impedire la raccolta e l'elaborazione dei dati da parte di Google Analytics installando sul proprio browser il componente aggiuntivo ufficiale reso disponibile da Google: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600; text-decoration: none;">Componente di opt-out Google Analytics</a>. Per ulteriori informazioni sul trattamento effettuato da Google, consulta la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600; text-decoration: none;">Privacy Policy di Google</a>.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; color: #38bdf8; margin: 0 0 8px 0;">
+                        5. Dati Salvati in Locale nel Browser (Storage Locale)
                     </h2>
                     <p style="margin: 0;">
                         Quando configuri la tua rosa, imposti il budget dell'asta, selezioni calciatori preferiti o personalizzi le impostazioni tattiche, tali informazioni vengono conservate unicamente sul tuo dispositivo tramite la memoria locale del browser (<code>localStorage</code>). Questi dati <strong>non vengono inviati o salvati sui nostri server</strong> e rimangono sotto il tuo esclusivo controllo. Puoi cancellarli in qualsiasi istante svuotando i dati di navigazione o la cache del browser.
@@ -3695,7 +3709,7 @@ def generate_privacy_policy_page():
 
                 <section>
                     <h2 style="font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; color: #38bdf8; margin: 0 0 8px 0;">
-                        5. Disclaimer Legale sui Marchi e Fair Use Editoriale
+                        6. Disclaimer Legale sui Marchi e Fair Use Editoriale
                     </h2>
                     <p style="margin: 0;">
                         Fanta Master AI è un progetto editoriale e statistico indipendente. Non è in alcun modo sponsorizzato, affiliato o supportato da Lega Serie A, FIGC o testate editoriali titolari di marchi commerciali registrati (tra cui Fantacalcio® e FantaMaster). Tutti i marchi, loghi societari, nomi di club, atleti e competizioni citati sul portale appartengono ai rispettivi proprietari e sono impiegati ai soli fini di legittimo esercizio del diritto di cronaca, statistica e critica sportiva (Fair Use).
@@ -3704,7 +3718,7 @@ def generate_privacy_policy_page():
 
                 <section>
                     <h2 style="font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; color: #38bdf8; margin: 0 0 8px 0;">
-                        6. Esercizio dei Diritti dell'Interessato (GDPR Artt. 15-22)
+                        7. Esercizio dei Diritti dell'Interessato (GDPR Artt. 15-22)
                     </h2>
                     <p style="margin: 0;">
                         Poiché il sito non raccoglie dati personali identificativi, non conserva log persistenti riconducibili a singole identità naturali né gestisce account utente, l'utente esercita pienamente la propria autodeterminazione cancellando autonomamente la memoria cache locale del proprio browser. Per qualsiasi quesito o comunicazione istituzionale, è possibile scrivere a <a href="mailto:info@fantamasterai.it" style="color: #38bdf8; font-weight: 600; text-decoration: none;">info@fantamasterai.it</a>.

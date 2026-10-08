@@ -141525,12 +141525,12 @@
         "in_corso": false
       }
     ],
-    "is_injured": true,
+    "is_injured": false,
     "giornate_perse": 0,
     "is_chronic_fragile": false,
-    "infortunio_status": "🟠 Distorsione alla caviglia destra (Rientro: 07/10/2026)",
-    "infortunio_motivo": "Distorsione alla caviglia destra",
-    "infortunio_rientro": "07/10/2026",
+    "infortunio_status": "Disponibile",
+    "infortunio_motivo": null,
+    "infortunio_rientro": null,
     "infortunio_severity": "",
     "infortunio_tipo_stop": "",
     "rigorista_val": "-",
@@ -141591,8 +141591,8 @@
       "favorable_traits": [],
       "matchup_advice": "Matchday G6 (Venezia @ Atalanta): Gara bilanciata contro il Atalanta, fattori individuali determinanti."
     },
-    "ai_advice": "⚠️ INFORTUNATO (ATTENDERE RIENTRO)",
-    "ai_advice_type": "warning",
+    "ai_advice": "🔒 TITOLARISSIMO (100% VOTO)",
+    "ai_advice_type": "titolarissimo",
     "consiglio": "🔒 TITOLARISSIMO (100% VOTO)",
     "coppia_nome": "Moreno M.",
     "coppia_id": 6890,
@@ -141603,8 +141603,8 @@
     "rigori_sbagliati_2627": 0,
     "trend_2627": "⚖️ Costante",
     "trend_class": "neutral",
-    "infortunio_gravita": "orange",
-    "giornate_perse_stimate": 2
+    "infortunio_gravita": "green",
+    "giornate_perse_stimate": 0
   },
   {
     "id": 2728,

@@ -79,4 +79,12 @@ File di tracciamento persistente delle attività pianificate per il progetto Fan
     - 💡 **Consigli Flash:** `https://www.fantamasterai.it/consigli-fantacalcio/` (riassunti rapidi per ruolo con teaser accattivanti).
     - ⚔️ **Risoluzione Dubbi "Chi Schiero":** `https://www.fantamasterai.it/chi-schiero/` (call to action finale: *"Dubbio atomico sull'ultimo titolare? Risolvilo in 3 secondi col comparatore AI"*).
 
+---
+
+## 🛠️ RECENT BUG FIXES & MONITORAGGIO
+- [x] **Risoluzione mancato render iniziale su `/consigli-fantacalcio/` e `/chi-schiero/`:**
+  - **Causa individuata:** Nel commit `abf79a9b` era stata involontariamente rimossa la chiamata a `switchTab(initialTab || 'home', false)` all'inizializzazione del DOM in `build_dashboard.py`.
+  - **Fix applicato:** Ripristinata la chiamata `switchTab`, gestito `document.readyState` difensivo in `initApp()`, aggiunto `tabChiSchieroBtn` alla lista dei reset nav e aggiornato il Service Worker a `v2` con strategia *Network-First* per le pagine HTML.
+  - **Verifica:** Testato in locale e convalidato online in produzione su `https://www.fantamasterai.it/consigli-fantacalcio/` e `https://www.fantamasterai.it/chi-schiero/` (schede e comparatore 1vs1 visibili e operativi).
+
 

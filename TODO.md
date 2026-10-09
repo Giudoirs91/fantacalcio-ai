@@ -86,5 +86,14 @@ File di tracciamento persistente delle attività pianificate per il progetto Fan
   - **Causa individuata:** Nel commit `abf79a9b` era stata involontariamente rimossa la chiamata a `switchTab(initialTab || 'home', false)` all'inizializzazione del DOM in `build_dashboard.py`.
   - **Fix applicato:** Ripristinata la chiamata `switchTab`, gestito `document.readyState` difensivo in `initApp()`, aggiunto `tabChiSchieroBtn` alla lista dei reset nav e aggiornato il Service Worker a `v2` con strategia *Network-First* per le pagine HTML.
   - **Verifica:** Testato in locale e convalidato online in produzione su `https://www.fantamasterai.it/consigli-fantacalcio/` e `https://www.fantamasterai.it/chi-schiero/` (schede e comparatore 1vs1 visibili e operativi).
+- [x] **Integrazione "Scommesse Predittive & Differenziali Low-Cost" (Classic & Mantra):**
+  - **Obiettivo:** Fornire il vero valore aggiunto predittivo che nessun competitor possiede, affiancando ai Big/Top di reparto i profili a basso costo ad altissimo potenziale asimmetrico.
+  - **Architettura (4 Calciatori per Ruolo/Posizione):**
+    - 2 Top di Reparto (Certezze assolute: 🥇 TOP 1, 🥈 2° SCELTA)
+    - 2 Scommesse Predittive (Low-Cost / Differenziali AI: 🔮 SCOMMESSA AI, 💎 DIFFERENZIALE)
+  - **Algoritmo di Opportunity Score:** Filtra i titolari a basso costo (`OVR <= 80` o `FVM <= 28 CR`, `titolarita >= 50%` per movimento e `>= 70%` per portieri) e premia asimmetrie favorevoli (difesa avversaria perforabile xGA/GC, fattore casa, 1° rigorista, Fuori Ruolo Positivo FRP, tiratore da fermo).
+  - **Filtri Interattivi HUD:** Implementata barra filtri strategica `[⚡ TUTTI (2 Top + 2 Scommesse)]`, `[⭐ SOLO TOP & CERTEZZE (2)]`, `[🔮 SOLO SCOMMESSE LOW-COST (2)]`.
+  - **Copertura Completa:** Attivo su Classic (4 ruoli P, D, C, A) e su tutte le 12 posizioni Mantra (`Por`, `Dd`, `Ds`, `Dc`, `B`, `E`, `M`, `C`, `T`, `W`, `A`, `Pc`).
+
 
 

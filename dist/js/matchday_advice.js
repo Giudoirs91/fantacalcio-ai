@@ -41,8 +41,11 @@ function getMatchdayFixturesMap(roundNum) {
 }
 function calcMatchdayAdviceScore(player, matchInfo) {
     if (!matchInfo || player.is_injured) return -999;
-    const tit = Number(player.titolarita) || 50;
+    const tit = (player.titolarita !== undefined && player.titolarita !== null && player.titolarita !== '')
+        ? Number(player.titolarita)
+        : 0;
     if (tit < 50) return -500;
+    if (player.role === 'P' && tit < 70) return -500;
     const team = player.team;
     const opp = matchInfo.opp;
     const isHome = matchInfo.isHome;
@@ -163,13 +166,30 @@ function getTop3ClassicAdvice(playersList, fixtureMap) {
     const roles = ['P', 'D', 'C', 'A'];
     const result = {};
     roles.forEach(role => {
-        const pool = playersList.filter(p => p.role === role && fixtureMap[p.team] && !p.is_injured && (Number(p.titolarita) || 50) >= 50);
+        const minTit = (role === 'P') ? 70 : 50;
+        const pool = playersList.filter(p => {
+            if (p.role !== role || !fixtureMap[p.team] || p.is_injured) return false;
+            const tit = (p.titolarita !== undefined && p.titolarita !== null && p.titolarita !== '')
+                ? Number(p.titolarita)
+                : 0;
+            return tit >= minTit;
+        });
         pool.sort((a, b) => {
             const scoreA = calcMatchdayAdviceScore(a, fixtureMap[a.team]);
             const scoreB = calcMatchdayAdviceScore(b, fixtureMap[b.team]);
             return scoreB - scoreA;
         });
-        result[role] = pool.slice(0, 3).map((p, idx) => ({
+        const selected = [];
+        const seenTeams = new Set();
+        for (const p of pool) {
+            if (role === 'P') {
+                if (seenTeams.has(p.team)) continue;
+                seenTeams.add(p.team);
+            }
+            selected.push(p);
+            if (selected.length === 3) break;
+        }
+        result[role] = selected.map((p, idx) => ({
             player: p,
             matchInfo: fixtureMap[p.team],
             score: calcMatchdayAdviceScore(p, fixtureMap[p.team]),
@@ -183,8 +203,13 @@ function getTop3MantraAdvice(playersList, fixtureMap) {
     const mantraPositions = ['Por', 'Dd', 'Ds', 'Dc', 'B', 'E', 'M', 'C', 'T', 'W', 'A', 'Pc'];
     const result = {};
     mantraPositions.forEach(mPos => {
+        const minTit = (mPos === 'Por') ? 70 : 50;
         const pool = playersList.filter(p => {
-            if (!p.mantra || !fixtureMap[p.team] || p.is_injured || (Number(p.titolarita) || 50) < 50) return false;
+            if (!p.mantra || !fixtureMap[p.team] || p.is_injured) return false;
+            const tit = (p.titolarita !== undefined && p.titolarita !== null && p.titolarita !== '')
+                ? Number(p.titolarita)
+                : 0;
+            if (tit < minTit) return false;
             const posList = p.mantra.split(';').map(s => s.trim());
             return posList.includes(mPos);
         });
@@ -193,7 +218,17 @@ function getTop3MantraAdvice(playersList, fixtureMap) {
             const scoreB = calcMatchdayAdviceScore(b, fixtureMap[b.team]);
             return scoreB - scoreA;
         });
-        result[mPos] = pool.slice(0, 3).map((p, idx) => ({
+        const selected = [];
+        const seenTeams = new Set();
+        for (const p of pool) {
+            if (mPos === 'Por') {
+                if (seenTeams.has(p.team)) continue;
+                seenTeams.add(p.team);
+            }
+            selected.push(p);
+            if (selected.length === 3) break;
+        }
+        result[mPos] = selected.map((p, idx) => ({
             player: p,
             matchInfo: fixtureMap[p.team],
             score: calcMatchdayAdviceScore(p, fixtureMap[p.team]),
@@ -421,7 +456,7 @@ function renderMatchdayAdviceView() {
             if (p.is_punizioni) specialBadges += `<span class="fut-spec-pill fk" title="Tiratore designato per i calci piazzati diretti o cross da fermo">🎯 PIAZZATI</span>`;
             const ovrVal = p.ovr || 82;
             const fmVal = (p.fm_2627 || p.fm || 6.0).toFixed(2);
-            const titVal = p.titolarita || 85;
+            const titVal = (p.titolarita !== undefined && p.titolarita !== null) ? p.titolarita : 85;
             let outcomeBadgeHtml = '';
             let outcomeDrawerHtml = '';
             if (isPastRound) {

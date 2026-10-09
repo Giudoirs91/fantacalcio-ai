@@ -97,9 +97,12 @@ def get_top_advice_by_role(round_num):
     for p in players:
         team = p.get('team')
         fix = fixture_map.get(team)
-        if fix and not p.get('is_injured') and float(p.get('titolarita', 50)) >= 50:
+        role = p.get('role', 'C')
+        min_tit = 70.0 if role == 'P' else 50.0
+        p_tit = float(p.get('titolarita') if p.get('titolarita') is not None else 0)
+        if fix and not p.get('is_injured') and p_tit >= min_tit:
             score = calculate_advice_score(p, fix, team_stats)
-            by_role[p.get('role', 'C')].append({
+            by_role[role].append({
                 'player': p,
                 'score': score,
                 'fixture': fix
@@ -108,7 +111,21 @@ def get_top_advice_by_role(round_num):
     top_advice = {}
     for role, plist in by_role.items():
         plist.sort(key=lambda x: -x['score'])
-        top_advice[role] = plist[:3]
+        # Deduplicate goalkeepers by club
+        if role == 'P':
+            seen_teams = set()
+            filtered_p = []
+            for item in plist:
+                t = item['player'].get('team')
+                if t in seen_teams:
+                    continue
+                seen_teams.add(t)
+                filtered_p.append(item)
+                if len(filtered_p) == 3:
+                    break
+            top_advice[role] = filtered_p
+        else:
+            top_advice[role] = plist[:3]
     return top_advice
 
 

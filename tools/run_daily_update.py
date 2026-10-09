@@ -20,10 +20,22 @@ if ROOT_DIR not in sys.path:
 
 
 def step_1_sync_injuries():
-    print("\n--- STEP 1: Sincronizzazione Infortuni Live ---")
+    print("\n--- STEP 1: Sincronizzazione Infortuni Live & Ricalcolo Metriche ---")
     from tools.sync_injuries_fantacalcio_online import sync_injuries
     sync_injuries()
-    print("✓ Step 1 completato.")
+    
+    print("\n--- STEP 1b: Ricostruzione Database Storico Infortuni & Fragilità ---")
+    from tools.build_injuries_history import build_injuries_history_database
+    build_injuries_history_database()
+
+    print("\n--- STEP 1c: Esecuzione Master Pipeline & Ricalcolo Metriche/OVR ---")
+    from src.pipeline import run_master_pipeline
+    run_master_pipeline()
+
+    print("\n--- STEP 1d: Compilazione Dashboard Standalone ---")
+    from web.build_dashboard import build_standalone_dashboard
+    build_standalone_dashboard()
+    print("✓ Step 1 completato con successo.")
 
 
 def step_2_build_site():

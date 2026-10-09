@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-02T18:08:06.912101",
+  "timestamp": "2026-10-09T10:07:18.438725",
   "rounds_analyzed": [
     1,
     2,
@@ -7,22 +7,15 @@
     4,
     5
   ],
-  "overall_hit_rate": 60.0,
+  "overall_hit_rate": 63.3,
   "role_hit_rates": {
-    "P": 86.7,
-    "D": 60.0,
+    "P": 93.3,
+    "D": 66.7,
     "C": 40.0,
     "A": 53.3
   },
-  "miss_count": 24,
+  "miss_count": 22,
   "misses_diagnostic": [
-    {
-      "round": 1,
-      "player": "Maignan",
-      "team": "Milan",
-      "role": "P",
-      "reason": "Malus disciplinare decisivo"
-    },
     {
       "round": 1,
       "player": "Hainaut",
@@ -137,17 +130,10 @@
     },
     {
       "round": 4,
-      "player": "Dimarco",
-      "team": "Inter",
-      "role": "D",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
-      "round": 4,
-      "player": "Calhanoglu",
-      "team": "Inter",
+      "player": "Frattesi",
+      "team": "Lazio",
       "role": "C",
-      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 4,

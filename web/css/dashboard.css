@@ -13560,9 +13560,9 @@ body.creator-mode-active .visitor-only-item {
     border-radius: 12px;
     padding: 10px 14px;
     display: grid;
-    grid-template-columns: 290px 225px 1fr 135px;
+    grid-template-columns: 270px 250px 1fr 130px;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
     position: relative;

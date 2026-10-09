@@ -40,6 +40,43 @@ function getMatchdayFixturesMap(roundNum) {
     }
     return { fixtureMap, matchesList, roundDate };
 }
+function normalizeMatchdayScore100(rawScore, role, isBet = false, tierIndex = 0) {
+    if (!rawScore || rawScore <= 0) return 60.0;
+    const bases = {
+        'P': [80, 115],
+        'Por': [80, 115],
+        'D': [105, 165],
+        'Dd': [105, 165],
+        'Ds': [105, 165],
+        'Dc': [105, 165],
+        'B': [105, 165],
+        'E': [105, 165],
+        'C': [120, 190],
+        'M': [115, 180],
+        'T': [120, 190],
+        'W': [120, 190],
+        'A': [135, 235],
+        'Pc': [135, 235]
+    };
+    const [low, high] = bases[role] || [100, 200];
+    const pct = Math.max(0, Math.min(1.0, (rawScore - low) / (high - low)));
+    let score;
+    if (!isBet) {
+        if (tierIndex === 0) {
+            score = 94.0 + (pct * 4.8); // 94.0 - 98.8
+        } else {
+            score = 90.0 + (pct * 3.8); // 90.0 - 93.8
+        }
+    } else {
+        if (tierIndex === 2 || tierIndex === 0) {
+            score = 84.0 + (pct * 5.5); // 84.0 - 89.5
+        } else {
+            score = 78.0 + (pct * 5.5); // 78.0 - 83.5
+        }
+    }
+    const clamped = Math.min(99.0, Math.max(65.0, score));
+    return Math.round(clamped * 10) / 10;
+}
 function calcMatchdayAdviceScore(player, matchInfo) {
     if (!matchInfo || player.is_injured) return -999;
     const tit = (player.titolarita !== undefined && player.titolarita !== null && player.titolarita !== '')
@@ -272,7 +309,7 @@ function getTop3ClassicAdvice(playersList, fixtureMap) {
             ...topSelected.map((p, idx) => ({
                 player: p,
                 matchInfo: fixtureMap[p.team],
-                score: calcMatchdayAdviceScore(p, fixtureMap[p.team]),
+                score: normalizeMatchdayScore100(calcMatchdayAdviceScore(p, fixtureMap[p.team]), role, false, idx),
                 tierIndex: idx, // 0: Top 1, 1: Top 2
                 isBet: false,
                 rationale: generateConciseTacticalNote(p, fixtureMap[p.team], role, false)
@@ -280,7 +317,7 @@ function getTop3ClassicAdvice(playersList, fixtureMap) {
             ...betSelected.map((p, idx) => ({
                 player: p,
                 matchInfo: fixtureMap[p.team],
-                score: calcMatchdayOpportunityScore(p, fixtureMap[p.team]),
+                score: normalizeMatchdayScore100(calcMatchdayOpportunityScore(p, fixtureMap[p.team]), role, true, idx + 2),
                 tierIndex: idx + 2, // 2: Scommessa 1, 3: Scommessa 2
                 isBet: true,
                 rationale: generateConciseTacticalNote(p, fixtureMap[p.team], role, true)
@@ -339,7 +376,7 @@ function getTop3MantraAdvice(playersList, fixtureMap) {
             ...topSelected.map((p, idx) => ({
                 player: p,
                 matchInfo: fixtureMap[p.team],
-                score: calcMatchdayAdviceScore(p, fixtureMap[p.team]),
+                score: normalizeMatchdayScore100(calcMatchdayAdviceScore(p, fixtureMap[p.team]), mPos, false, idx),
                 tierIndex: idx,
                 isBet: false,
                 rationale: generateConciseTacticalNote(p, fixtureMap[p.team], mPos, false)
@@ -347,7 +384,7 @@ function getTop3MantraAdvice(playersList, fixtureMap) {
             ...betSelected.map((p, idx) => ({
                 player: p,
                 matchInfo: fixtureMap[p.team],
-                score: calcMatchdayOpportunityScore(p, fixtureMap[p.team]),
+                score: normalizeMatchdayScore100(calcMatchdayOpportunityScore(p, fixtureMap[p.team]), mPos, true, idx + 2),
                 tierIndex: idx + 2,
                 isBet: true,
                 rationale: generateConciseTacticalNote(p, fixtureMap[p.team], mPos, true)
@@ -619,7 +656,7 @@ function renderMatchdayAdviceView() {
                 }
             } else {
                 if (item.tierIndex === 2 || item.tierIndex === 0) {
-                    tierClass = 'tier-bet-purple';
+                    tierClass = 'tier-bet-green';
                     tierBadgeText = '🔮 SCOMMESSA AI';
                     tierMedal = '🔮';
                 } else {
@@ -746,7 +783,7 @@ function renderMatchdayAdviceView() {
                                 <span class="rating-hero-icon">⚡</span>
                                 <span class="rating-hero-lbl">RATING AI</span>
                             </div>
-                            <div class="rating-hero-val">${item.score}</div>
+                            <div class="rating-hero-val">${item.score}<span class="rating-base">/100</span></div>
                             <div class="rating-hero-sub">${ratingTierSub}</div>
                         </div>
                         <div class="fut-rating-meta">

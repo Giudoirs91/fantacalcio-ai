@@ -56,3 +56,28 @@ File di tracciamento persistente delle attività pianificate per il progetto Fan
 - [ ] **Aggiornamento Match Report alle prossime giornate (G6+):**
   - Inserimento dei nuovi report ufficiali e aggiornamento delle presenze/minuti.
   - Controllo del feedback loop AI per abbassare ulteriormente il MAE delle previsioni xFM.
+
+---
+
+## 📲 PALINSESTO TELEGRAM (@fantamasterai) — PROSSIMI INVIO & BROADCAST
+
+### 1️⃣ Venerdì ore 19:00 — I Possibili Top di Giornata (Consigli Weekend)
+- [ ] **Invio Broadcast Top Picks & Consigli di Giornata:**
+  - **Orario:** Venerdì 09/10/2026 alle ore 19:00
+  - **Script pronto all'uso:** `python tools/send_telegram_friday_top.py` (test: `python tools/send_telegram_friday_top.py --dry-run`)
+  - **Contenuto:** 
+    - Social Card HD con i 4 Top per ruolo (Portiere, Difensore da modificatore, Centrocampista da bonus, Attaccante bomber).
+    - Teaser analitico sulle gare del weekend.
+    - Link diretto ai consigli completi: `https://www.fantamasterai.it/consigli-fantacalcio/`
+    - Link al comparatore 1vs1: `https://www.fantamasterai.it/chi-schiero/`
+
+### 2️⃣ Sabato ore 14:30 — Alert Scadenza Formazione (Mezz'ora prima del kick-off)
+- [ ] **Invio Reminder Consegna Formazione & Check Infortunati:**
+  - **Orario:** Sabato 10/10/2026 alle ore 14:30 (30 minuti prima delle gare delle ore 15:00)
+  - **Script pronto all'uso:** `python tools/send_telegram_lineup_reminder.py` (test: `python tools/send_telegram_lineup_reminder.py --dry-run`)
+  - **Contenuto:**
+    - Messaggio d'urgenza: *"Mister, non dimenticarti di inserire la formazione! Fra mezz'ora inizia il primo turno."*
+    - Link prioritario alla lista infortunati aggiornata: `https://www.fantamasterai.it/infortunati-serie-a/`
+    - Teaser e piccoli riassunti accattivanti ruolo per ruolo per invogliare al click.
+    - Call to action verso: `https://www.fantamasterai.it/consigli-fantacalcio/` e `https://www.fantamasterai.it/chi-schiero/`
+

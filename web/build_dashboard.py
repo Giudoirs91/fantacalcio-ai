@@ -1798,7 +1798,7 @@ def build_standalone_dashboard(sync_android=False):
                 }}
             }} catch (e) {{}}
 
-            ['tabHomeNavBtn', 'tabLeaguesBtn', 'tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {{
+            ['tabHomeNavBtn', 'tabLeaguesBtn', 'tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabChiSchieroBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {{
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active');
             }});
@@ -2114,7 +2114,7 @@ def build_standalone_dashboard(sync_android=False):
         }}
 
         // Inizializzazione Applicazione
-        window.addEventListener('DOMContentLoaded', () => {{
+        function initApp() {{
             loadStateFromStorage();
             if (typeof renderHeaderLeagueDropdown === 'function') {{
                 renderHeaderLeagueDropdown();
@@ -2172,6 +2172,7 @@ def build_standalone_dashboard(sync_android=False):
             }}
 
             const initialTab = resolveCurrentTab();
+            switchTab(initialTab || 'home', false);
             const initialPitchTeam = (typeof getInitialPitchClub === 'function') 
                 ? getInitialPitchClub() 
                 : (window.INITIAL_PITCH_TEAM || 'Inter');
@@ -2183,7 +2184,13 @@ def build_standalone_dashboard(sync_android=False):
                     .then(() => console.log('✓ Service Worker Fanta Master AI registrato'))
                     .catch(e => console.warn('SW registration fallback:', e));
             }}
-        }});
+        }}
+
+        if (document.readyState === 'loading') {{
+            window.addEventListener('DOMContentLoaded', initApp);
+        }} else {{
+            initApp();
+        }}
 
         // Gestione Installazione PWA (Prompt Dinamico)
         let _deferredPwaPrompt = null;

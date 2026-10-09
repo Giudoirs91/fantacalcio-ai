@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fantamaestro-cache-v1';
+const CACHE_NAME = 'fantamaestro-cache-v2';
 const ASSETS = [
   '/',
   '/static/css/modern_app.css',
@@ -28,6 +28,18 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Richieste di navigazione HTML: Network-first per avere sempre i dati e la grafica più recenti
+  if (event.request.mode === 'navigate' || (event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html'))) {
+    event.respondWith(
+      fetch(event.request).then((response) => {
+        return response;
+      }).catch(() => {
+        return caches.match(event.request) || caches.match('/');
+      })
+    );
+    return;
+  }
+
   // Se la richiesta è per una route API, prova la rete prima della cache
   if (event.request.url.includes('/api/')) {
     event.respondWith(

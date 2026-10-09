@@ -18892,7 +18892,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (e) {}
 
-            ['tabHomeNavBtn', 'tabLeaguesBtn', 'tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {
+            ['tabHomeNavBtn', 'tabLeaguesBtn', 'tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabChiSchieroBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active');
             });
@@ -19208,7 +19208,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         // Inizializzazione Applicazione
-        window.addEventListener('DOMContentLoaded', () => {
+        function initApp() {
             loadStateFromStorage();
             if (typeof renderHeaderLeagueDropdown === 'function') {
                 renderHeaderLeagueDropdown();
@@ -19266,6 +19266,7 @@ window.addEventListener('DOMContentLoaded', () => {
             }
 
             const initialTab = resolveCurrentTab();
+            switchTab(initialTab || 'home', false);
             const initialPitchTeam = (typeof getInitialPitchClub === 'function') 
                 ? getInitialPitchClub() 
                 : (window.INITIAL_PITCH_TEAM || 'Inter');
@@ -19277,7 +19278,13 @@ window.addEventListener('DOMContentLoaded', () => {
                     .then(() => console.log('✓ Service Worker Fanta Master AI registrato'))
                     .catch(e => console.warn('SW registration fallback:', e));
             }
-        });
+        }
+
+        if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
 
         // Gestione Installazione PWA (Prompt Dinamico)
         let _deferredPwaPrompt = null;

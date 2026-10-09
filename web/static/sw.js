@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fantamaestro-cache-v2';
+const CACHE_NAME = 'fantamaestro-cache-v3';
 const ASSETS = [
   '/',
   '/static/css/modern_app.css',

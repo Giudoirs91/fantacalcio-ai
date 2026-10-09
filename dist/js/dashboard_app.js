@@ -13401,7 +13401,8 @@ window.setGemsFilter = setGemsFilter;
 window.matchdayAdviceState = {
     selectedRound: 6,
     mode: 'classic',  // 'classic' | 'mantra'
-    activeRoleFilter: 'ALL'
+    activeRoleFilter: 'ALL',
+    tierFilter: 'ALL' // 'ALL' | 'TOP_ONLY' | 'BETS_ONLY'
 };
 const LEAGUE_AVG_XGA = 6.03;
 const LEAGUE_AVG_XG = 6.04;
@@ -13509,7 +13510,50 @@ function calcMatchdayAdviceScore(player, matchInfo) {
         return Math.round(score * 10) / 10;
     }
 }
-function generateConciseTacticalNote(player, matchInfo, posKey) {
+function calcMatchdayOpportunityScore(player, matchInfo) {
+    if (!matchInfo || player.is_injured) return -999;
+    const tit = (player.titolarita !== undefined && player.titolarita !== null && player.titolarita !== '')
+        ? Number(player.titolarita)
+        : 0;
+    if (tit < 50) return -500;
+    if (player.role === 'P' && tit < 70) return -500;
+    const ovr = Number(player.ovr) || 70;
+    const fvm = Number(player.fvm) || 1;
+    if (ovr > 80 && fvm > 28) return -500;
+    const team = player.team;
+    const opp = matchInfo.opp;
+    const isHome = matchInfo.isHome;
+    const role = player.role;
+    const oppStats = (typeof TEAM_STATS_DB !== 'undefined' && TEAM_STATS_DB[opp]) ? TEAM_STATS_DB[opp] : {};
+    const myStats = (typeof TEAM_STATS_DB !== 'undefined' && TEAM_STATS_DB[team]) ? TEAM_STATS_DB[team] : {};
+    const oppXga = Number(oppStats.xga_team) || LEAGUE_AVG_XGA;
+    const oppGc = Number(oppStats.goals_conceded_match) || LEAGUE_AVG_GC;
+    const oppXg = Number(oppStats.xg_team) || LEAGUE_AVG_XG;
+    const fm = Number(player.fm_2627) || Number(player.fm) || 6.0;
+    const gol = Number(player.gol_2627) || 0;
+    const ass = Number(player.assist_2627) || 0;
+    const xg90 = Number(player.xg90_2627) || Number(player.xg90) || 0;
+    const xa90 = Number(player.xa90_2627) || Number(player.xa90) || 0;
+    let score = 50.0 + (fm * 3.5) + (tit * 0.12);
+    if (isHome) score += 8.0;
+    if (player.is_rigorista_1) score += 20.0;
+    else if (player.is_rigorista_2) score += 10.0;
+    if (player.is_oop) score += 16.0;
+    if (player.is_punizioni || player.is_corner) score += 10.0;
+    if (role === 'P') {
+        if (oppXg < 5.5) score += 18.0;
+        if (isHome) score += 10.0;
+    } else if (role === 'D') {
+        score += ((oppXga / LEAGUE_AVG_XGA) * 12.0) + (oppGc * 6.0);
+        score += (gol * 10.0) + (ass * 7.0);
+    } else {
+        score += ((oppXga / LEAGUE_AVG_XGA) * 16.0) + (oppGc * 8.0);
+        score += (xg90 * 20.0) + (xa90 * 18.0);
+        score += (gol * 8.0) + (ass * 5.0);
+    }
+    return Math.round(score * 10) / 10;
+}
+function generateConciseTacticalNote(player, matchInfo, posKey, isBet = false) {
     const opp = matchInfo.opp;
     const isHome = matchInfo.isHome;
     const role = player.role;
@@ -13524,6 +13568,25 @@ function generateConciseTacticalNote(player, matchInfo, posKey) {
     const oppGc = oppStats.goals_conceded_match ? oppStats.goals_conceded_match.toFixed(1) : '1.5';
     const myXga = myStats.xga_team ? myStats.xga_team.toFixed(1) : '6.0';
     const myCs = myStats.clean_sheets || 0;
+    if (isBet) {
+        const costTag = player.fvm ? `[FVM ${player.fvm} CR]` : '';
+        if (player.is_rigorista_1) {
+            return `🔮 Scommessa Predittiva ${costTag}: 1° rigorista ufficiale del ${team} contro la difesa del ${opp} (${oppXga} xGA concessi). Opportunità dal dischetto a costo contenuto.`;
+        }
+        if (player.is_oop) {
+            return `🔮 Gemma Tattica ${costTag}: schierato Fuori Ruolo (FRP) più avanzato del listone. Punta la corsia debole del ${opp} con alto potenziale assist e tiri.`;
+        }
+        if (player.is_punizioni) {
+            return `🔮 Tiratore Piazzati ${costTag}: incaricato di punizioni e corner ${isHome ? 'in casa' : 'a ' + opp}. Pericolo continuo contro una difesa che subisce ${oppGc} gol a gara.`;
+        }
+        if (role === 'P' || posKey === 'Por') {
+            return `🔮 Portiere Differenziale ${costTag}: incrocia l'attacco anemico del ${opp} (${oppXg} xG stagionali). Voto alto da modificatore e rischio malus contenuto.`;
+        }
+        if (role === 'D') {
+            return `🔮 Terzino di Spinta ${costTag}: sovrapposizioni continue ${isHome ? 'a domicilio' : 'a ' + opp} contro una retroguardia che concede ${oppGc} gol/partita. Bonus leggero e voto pulito (FM ${fm}).`;
+        }
+        return `🔮 Scommessa di Giornata ${costTag}: incrocia la retroguardia del ${opp} tra le più perforate (${oppXga} xGA). Varchi per l'inserimento e potenziale bonus a sorpresa (FM ${fm}).`;
+    }
     if (role === 'P' || posKey === 'Por') {
         if (isHome) {
             return `Fortino a domicilio contro il ${opp} (${oppXg} xG stagionali): la retroguardia del ${team} ha concesso solo ${myXga} xGA con ${myCs} clean sheet. Altissima probabilità di imbattibilità (+1).`;
@@ -13579,23 +13642,51 @@ function getTop3ClassicAdvice(playersList, fixtureMap) {
             const scoreB = calcMatchdayAdviceScore(b, fixtureMap[b.team]);
             return scoreB - scoreA;
         });
-        const selected = [];
+        const topSelected = [];
         const seenTeams = new Set();
         for (const p of pool) {
             if (role === 'P') {
                 if (seenTeams.has(p.team)) continue;
                 seenTeams.add(p.team);
             }
-            selected.push(p);
-            if (selected.length === 3) break;
+            topSelected.push(p);
+            if (topSelected.length === 2) break;
         }
-        result[role] = selected.map((p, idx) => ({
-            player: p,
-            matchInfo: fixtureMap[p.team],
-            score: calcMatchdayAdviceScore(p, fixtureMap[p.team]),
-            tierIndex: idx,
-            rationale: generateConciseTacticalNote(p, fixtureMap[p.team], role)
-        }));
+        const topIds = new Set(topSelected.map(p => p.id));
+        const poolBets = pool.filter(p => !topIds.has(p.id) && calcMatchdayOpportunityScore(p, fixtureMap[p.team]) > 0);
+        poolBets.sort((a, b) => {
+            const scoreA = calcMatchdayOpportunityScore(a, fixtureMap[a.team]);
+            const scoreB = calcMatchdayOpportunityScore(b, fixtureMap[b.team]);
+            return scoreB - scoreA;
+        });
+        const betSelected = [];
+        for (const p of poolBets) {
+            if (role === 'P') {
+                if (seenTeams.has(p.team)) continue;
+                seenTeams.add(p.team);
+            }
+            betSelected.push(p);
+            if (betSelected.length === 2) break;
+        }
+        const allSelected = [
+            ...topSelected.map((p, idx) => ({
+                player: p,
+                matchInfo: fixtureMap[p.team],
+                score: calcMatchdayAdviceScore(p, fixtureMap[p.team]),
+                tierIndex: idx, // 0: Top 1, 1: Top 2
+                isBet: false,
+                rationale: generateConciseTacticalNote(p, fixtureMap[p.team], role, false)
+            })),
+            ...betSelected.map((p, idx) => ({
+                player: p,
+                matchInfo: fixtureMap[p.team],
+                score: calcMatchdayOpportunityScore(p, fixtureMap[p.team]),
+                tierIndex: idx + 2, // 2: Scommessa 1, 3: Scommessa 2
+                isBet: true,
+                rationale: generateConciseTacticalNote(p, fixtureMap[p.team], role, true)
+            }))
+        ];
+        result[role] = allSelected;
     });
     return result;
 }
@@ -13618,28 +13709,56 @@ function getTop3MantraAdvice(playersList, fixtureMap) {
             const scoreB = calcMatchdayAdviceScore(b, fixtureMap[b.team]);
             return scoreB - scoreA;
         });
-        const selected = [];
+        const topSelected = [];
         const seenTeams = new Set();
         for (const p of pool) {
             if (mPos === 'Por') {
                 if (seenTeams.has(p.team)) continue;
                 seenTeams.add(p.team);
             }
-            selected.push(p);
-            if (selected.length === 3) break;
+            topSelected.push(p);
+            if (topSelected.length === 2) break;
         }
-        result[mPos] = selected.map((p, idx) => ({
-            player: p,
-            matchInfo: fixtureMap[p.team],
-            score: calcMatchdayAdviceScore(p, fixtureMap[p.team]),
-            tierIndex: idx,
-            rationale: generateConciseTacticalNote(p, fixtureMap[p.team], mPos)
-        }));
+        const topIds = new Set(topSelected.map(p => p.id));
+        const poolBets = pool.filter(p => !topIds.has(p.id) && calcMatchdayOpportunityScore(p, fixtureMap[p.team]) > 0);
+        poolBets.sort((a, b) => {
+            const scoreA = calcMatchdayOpportunityScore(a, fixtureMap[a.team]);
+            const scoreB = calcMatchdayOpportunityScore(b, fixtureMap[b.team]);
+            return scoreB - scoreA;
+        });
+        const betSelected = [];
+        for (const p of poolBets) {
+            if (mPos === 'Por') {
+                if (seenTeams.has(p.team)) continue;
+                seenTeams.add(p.team);
+            }
+            betSelected.push(p);
+            if (betSelected.length === 2) break;
+        }
+        const allSelected = [
+            ...topSelected.map((p, idx) => ({
+                player: p,
+                matchInfo: fixtureMap[p.team],
+                score: calcMatchdayAdviceScore(p, fixtureMap[p.team]),
+                tierIndex: idx,
+                isBet: false,
+                rationale: generateConciseTacticalNote(p, fixtureMap[p.team], mPos, false)
+            })),
+            ...betSelected.map((p, idx) => ({
+                player: p,
+                matchInfo: fixtureMap[p.team],
+                score: calcMatchdayOpportunityScore(p, fixtureMap[p.team]),
+                tierIndex: idx + 2,
+                isBet: true,
+                rationale: generateConciseTacticalNote(p, fixtureMap[p.team], mPos, true)
+            }))
+        ];
+        result[mPos] = allSelected;
     });
     return result;
 }
 function onMatchdayRoundChange(newRound) {
-    window.matchdayAdviceState.selectedRound = parseInt(newRound, 10) || 5;
+    window.matchdayAdviceState.selectedRound = parseInt(newRound, 10) || 6;
     renderMatchdayAdviceView();
 }
 function setMatchdayAdviceMode(mode) {
@@ -13651,44 +13770,69 @@ function setMatchdayRoleFilter(role) {
     window.matchdayAdviceState.activeRoleFilter = role;
     renderMatchdayAdviceView();
 }
+function setMatchdayTierFilter(tier) {
+    window.matchdayAdviceState.tierFilter = tier;
+    renderMatchdayAdviceView();
+}
 function copyMatchdayAdviceToClipboard() {
     const round = window.matchdayAdviceState.selectedRound;
     const mode = window.matchdayAdviceState.mode;
     const { fixtureMap, roundDate } = getMatchdayFixturesMap(round);
     let text = `🎮 *FUT FANTA MASTER AI — CONSIGLIATI GIORNATA ${round}* 📅 (${roundDate || 'Serie A 26/27'})\n`;
-    text += `Modalità: *${mode === 'classic' ? 'CLASSICO (3 per Ruolo)' : 'MANTRA (3 per Posizione)'}*\n`;
-    text += `══════════════════════════════════\n\n`;
+    text += `Modalità: *${mode === 'classic' ? 'CLASSICO (2 Top + 2 Scommesse AI)' : 'MANTRA (2 Top + 2 Scommesse AI)'}*\n`;
+    text += `════════════════════════════════════════════════════\n\n`;
     if (mode === 'classic') {
         const advice = getTop3ClassicAdvice(PLAYERS, fixtureMap);
         const roleLabels = { 'P': '🧤 PORTIERI', 'D': '🛡️ DIFENSORI', 'C': '🪄 CENTROCAMPISTI', 'A': '⚡ ATTACCANTI' };
         Object.keys(roleLabels).forEach(r => {
             text += `*${roleLabels[r]}*\n`;
-            (advice[r] || []).forEach((item, idx) => {
-                const medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : '🥉';
-                const loc = item.matchInfo.isHome ? 'CASA' : 'TRASFERTA';
-                text += `${medal} *${item.player.name}* (${item.player.team}) vs ${item.matchInfo.opp} [${loc}] — OVR ${item.player.ovr}\n`;
-                text += `   ↳ 💡 _${item.rationale}_\n`;
-            });
+            const list = advice[r] || [];
+            const tops = list.filter(item => !item.isBet);
+            const bets = list.filter(item => item.isBet);
+            if (tops.length > 0) {
+                text += `  ⭐ *TOP DI REPARTO (Certezze):*\n`;
+                tops.forEach((item, idx) => {
+                    const medal = idx === 0 ? '🥇' : '🥈';
+                    const loc = item.matchInfo.isHome ? 'CASA' : 'TRASFERTA';
+                    text += `    ${medal} *${item.player.name}* (${item.player.team}) vs ${item.matchInfo.opp} [${loc}] — OVR ${item.player.ovr}\n`;
+                    text += `       ↳ _${item.rationale}_\n`;
+                });
+            }
+            if (bets.length > 0) {
+                text += `  🔮 *SCOMMESSE PREDITTIVE (Low-Cost):*\n`;
+                bets.forEach((item, idx) => {
+                    const medal = idx === 0 ? '🔮' : '💎';
+                    const loc = item.matchInfo.isHome ? 'CASA' : 'TRASFERTA';
+                    text += `    ${medal} *${item.player.name}* (${item.player.team}) vs ${item.matchInfo.opp} [${loc}] (FVM ${item.player.fvm} CR)\n`;
+                    text += `       ↳ _${item.rationale}_\n`;
+                });
+            }
             text += `\n`;
         });
     } else {
         const advice = getTop3MantraAdvice(PLAYERS, fixtureMap);
         const mantraPositions = ['Por', 'Dd', 'Ds', 'Dc', 'B', 'E', 'M', 'C', 'T', 'W', 'A', 'Pc'];
         mantraPositions.forEach(mPos => {
-            text += `*💎 [${mPos}]*\n`;
-            (advice[mPos] || []).forEach((item, idx) => {
-                const medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : '🥉';
-                const loc = item.matchInfo.isHome ? 'CASA' : 'TRASFERTA';
-                text += `${medal} *${item.player.name}* (${item.player.team}) vs ${item.matchInfo.opp} [${loc}]\n`;
-                text += `   ↳ 💡 _${item.rationale}_\n`;
-            });
+            text += `*💎 RUOLO MANTRA [${mPos}]*\n`;
+            const list = advice[mPos] || [];
+            const tops = list.filter(item => !item.isBet);
+            const bets = list.filter(item => item.isBet);
+            if (tops.length > 0) {
+                text += `  ⭐ *Top:* `;
+                text += tops.map((it, i) => `${i === 0 ? '🥇' : '🥈'} *${it.player.name}* (${it.player.team})`).join(' • ') + `\n`;
+            }
+            if (bets.length > 0) {
+                text += `  🔮 *Scommesse:* `;
+                text += bets.map((it, i) => `${i === 0 ? '🔮' : '💎'} *${it.player.name}* (${it.player.team}, FVM ${it.player.fvm})`).join(' • ') + `\n`;
+            }
             text += `\n`;
         });
     }
-    text += `_Elaborato da Fanta Master AI 2026/27 Quantitative Engine_`;
+    text += `👉 Consulta la guida interattiva e le schede complete: https://www.fantamasterai.it/consigli-fantacalcio/\n`;
+    text += `_Elaborato da Fanta Master AI 2026/27 Quantitative Match Engine_`;
     if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
-            alert(`✅ Consigliati della Giornata ${round} copiati negli appunti per WhatsApp / Telegram!`);
+            alert(`✅ Consigliati (Top + Scommesse) della Giornata ${round} copiati per WhatsApp / Telegram!`);
         }).catch(() => {
             prompt("Copia manualmente il testo dei consigliati:", text);
         });
@@ -13705,6 +13849,7 @@ function renderMatchdayAdviceView() {
     const currentRound = window.matchdayAdviceState.selectedRound;
     const mode = window.matchdayAdviceState.mode || 'classic';
     const activeFilter = window.matchdayAdviceState.activeRoleFilter || 'ALL';
+    const tierFilter = window.matchdayAdviceState.tierFilter || 'ALL';
     const { fixtureMap, matchesList, roundDate } = getMatchdayFixturesMap(currentRound);
     const upcomingRound = getUpcomingMatchdayRound(); // 6
     const prevRound = Math.max(1, upcomingRound - 1); // 5
@@ -13835,17 +13980,54 @@ function renderMatchdayAdviceView() {
             </button>
         `;
     });
+    const tierFilterBarHtml = `
+        <div class="fut-tier-filter-row">
+            <span class="fut-tier-filter-label">🎯 LIVELLO STRATEGICO:</span>
+            <button class="fut-tier-btn ${tierFilter === 'ALL' ? 'active' : ''}" onclick="setMatchdayTierFilter('ALL')">
+                ⚡ TUTTI (2 Top + 2 Scommesse)
+            </button>
+            <button class="fut-tier-btn top ${tierFilter === 'TOP_ONLY' ? 'active' : ''}" onclick="setMatchdayTierFilter('TOP_ONLY')">
+                ⭐ SOLO TOP & CERTEZZE (2)
+            </button>
+            <button class="fut-tier-btn bets ${tierFilter === 'BETS_ONLY' ? 'active' : ''}" onclick="setMatchdayTierFilter('BETS_ONLY')">
+                🔮 SOLO SCOMMESSE LOW-COST (2)
+            </button>
+        </div>
+    `;
     let sectionsHtml = '';
     rolesToRender.forEach(roleObj => {
         if (activeFilter !== 'ALL' && activeFilter !== roleObj.key) return;
         const playersForRole = adviceData[roleObj.key] || [];
         let rowsHtml = '';
         playersForRole.forEach((item, idx) => {
+            if (tierFilter === 'TOP_ONLY' && item.isBet) return;
+            if (tierFilter === 'BETS_ONLY' && !item.isBet) return;
             const p = item.player;
             const mInfo = item.matchInfo;
-            const tierClass = idx === 0 ? 'tier-gold' : idx === 1 ? 'tier-silver' : 'tier-bronze';
-            const tierBadgeText = idx === 0 ? '🥇 TOP 1' : idx === 1 ? '🥈 2° SCELTA' : '🥉 GEMMA';
-            const tierMedal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : '🥉';
+            let tierClass = 'tier-gold';
+            let tierBadgeText = '🥇 TOP 1';
+            let tierMedal = '🥇';
+            if (!item.isBet) {
+                if (item.tierIndex === 0) {
+                    tierClass = 'tier-gold';
+                    tierBadgeText = '🥇 TOP 1';
+                    tierMedal = '🥇';
+                } else {
+                    tierClass = 'tier-silver';
+                    tierBadgeText = '🥈 2° SCELTA';
+                    tierMedal = '🥈';
+                }
+            } else {
+                if (item.tierIndex === 0) {
+                    tierClass = 'tier-bet-purple';
+                    tierBadgeText = '🔮 SCOMMESSA AI';
+                    tierMedal = '🔮';
+                } else {
+                    tierClass = 'tier-bet-cyan';
+                    tierBadgeText = '💎 DIFFERENZIALE';
+                    tierMedal = '💎';
+                }
+            }
             const locBadge = mInfo.isHome
                 ? `<span class="fut-matchup-loc home">CASA</span>`
                 : `<span class="fut-matchup-loc away">TRASFERTA</span>`;
@@ -13912,6 +14094,7 @@ function renderMatchdayAdviceView() {
                                 <span class="fut-tier-tag ${tierClass}">${tierBadgeText}</span>
                                 <span class="fut-player-name" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();">${p.name}</span>
                                 <span class="fut-team-pill">${p.team}</span>
+                                ${item.isBet ? `<span class="fut-fvm-badge" title="Quotazione di mercato low-cost">💰 FVM ${p.fvm || 1} CR</span>` : ''}
                                 ${p.is_rigorista_1 ? '<span class="fut-spec-mini pen" title="1° Rigorista">⚽</span>' : ''}
                                 ${p.is_punizioni ? '<span class="fut-spec-mini fk" title="Tiratore Punizioni">🎯</span>' : ''}
                                 <div class="fut-mantra-box desktop-only">${mantraTags}</div>
@@ -13965,7 +14148,7 @@ function renderMatchdayAdviceView() {
                         </div>
                         <!-- ESSENTIAL TACTICAL BRIEFING -->
                         <div class="fut-tactical-briefing">
-                            <div class="briefing-label">💡 ADVANCED TACTICAL INSIGHT</div>
+                            <div class="briefing-label">${item.isBet ? '🔮 ANALISI SCOMMESSA PREDITTIVA' : '💡 ADVANCED TACTICAL INSIGHT'}</div>
                             <div class="briefing-text">${item.rationale}</div>
                         </div>
                         <!-- ACTION BUTTON -->
@@ -13978,6 +14161,9 @@ function renderMatchdayAdviceView() {
                 </div>
             `;
         });
+        let secBadgeText = '2 TOP + 2 SCOMMESSE';
+        if (tierFilter === 'TOP_ONLY') secBadgeText = '⭐ 2 TOP & CERTEZZE';
+        if (tierFilter === 'BETS_ONLY') secBadgeText = '🔮 2 SCOMMESSE PREDITTIVE';
         sectionsHtml += `
             <div class="fut-role-section">
                 <div class="fut-section-header">
@@ -13988,7 +14174,7 @@ function renderMatchdayAdviceView() {
                             <span class="fut-sec-sub">${roleObj.desc}</span>
                         </div>
                     </div>
-                    <div class="fut-sec-badge">TOP 3 SCHIERABILI</div>
+                    <div class="fut-sec-badge">${secBadgeText}</div>
                 </div>
                 <div class="fut-rows-list">
                     ${rowsHtml}
@@ -14042,10 +14228,12 @@ function renderMatchdayAdviceView() {
                         ${fixturesBarHtml}
                     </div>
                 </div>
-                <!-- QUICK FILTER CHIPS -->
+                <!-- QUICK FILTER CHIPS (RUOLI) -->
                 <div class="fut-chips-bar">
                     ${roleChipsHtml}
                 </div>
+                <!-- QUICK FILTER CHIPS (LIVELLO STRATEGICO) -->
+                ${tierFilterBarHtml}
             </div>
             <!-- BANNER AUDIT / FEEDBACK LOOP PREDITTIVO -->
             ${auditBannerHtml}
@@ -14074,6 +14262,7 @@ window.renderMatchdayAdviceView = renderMatchdayAdviceView;
 window.setMatchdayAdviceMode = setMatchdayAdviceMode;
 window.onMatchdayRoundChange = onMatchdayRoundChange;
 window.setMatchdayRoleFilter = setMatchdayRoleFilter;
+window.setMatchdayTierFilter = setMatchdayTierFilter;
 window.copyMatchdayAdviceToClipboard = copyMatchdayAdviceToClipboard;
 window.chiSchieroState = {
     round: null,       // Calcolato dinamicamente da getUpcomingMatchdayRound()

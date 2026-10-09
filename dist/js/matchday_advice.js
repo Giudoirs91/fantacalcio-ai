@@ -618,7 +618,7 @@ function renderMatchdayAdviceView() {
                     tierMedal = '🥈';
                 }
             } else {
-                if (item.tierIndex === 0) {
+                if (item.tierIndex === 2 || item.tierIndex === 0) {
                     tierClass = 'tier-bet-purple';
                     tierBadgeText = '🔮 SCOMMESSA AI';
                     tierMedal = '🔮';
@@ -634,13 +634,50 @@ function renderMatchdayAdviceView() {
             const mantraTags = p.mantra ? p.mantra.split(';').map(t => `<span class="fut-mantra-pill">${t.trim()}</span>`).join('') : '';
             let specialBadges = '';
             if (p.is_rigorista_1) specialBadges += `<span class="fut-spec-pill pen" title="1° Rigorista ufficiale della squadra (+3 dal dischetto)">⚽ RIGORISTA</span>`;
-            if (p.is_oop) specialBadges += `<span class="fut-spec-pill oop" title="Fuori Ruolo Positivo (FRP): Calciatore schierato sul campo in una posizione più offensiva rispetto al ruolo ufficiale del listone">💎 FRP</span>`;
-            if (p.is_punizioni) specialBadges += `<span class="fut-spec-pill fk" title="Tiratore designato per i calci piazzati diretti o cross da fermo">🎯 PIAZZATI</span>`;
+            if (p.is_oop) specialBadges += `<span class="fut-spec-pill oop" title="Fuori Ruolo Positivo (FRP): schierato più avanzato rispetto al listone">💎 FRP</span>`;
+            if (p.is_punizioni) specialBadges += `<span class="fut-spec-pill fk" title="Tiratore designato per i piazzati">🎯 PIAZZATI</span>`;
             const ovrVal = p.ovr || 82;
             const fmVal = (p.fm_2627 || p.fm || 6.0).toFixed(2);
             const titVal = (p.titolarita !== undefined && p.titolarita !== null) ? p.titolarita : 85;
+            const floorVal = (p.floor !== undefined && p.floor !== null) ? Number(p.floor).toFixed(1) : (Number(fmVal) - 0.8).toFixed(1);
+            const ceilVal = (p.ceiling !== undefined && p.ceiling !== null) ? Number(p.ceiling).toFixed(1) : (Number(fmVal) + 2.5).toFixed(1);
+            const volLabel = p.volatility_label || 'MEDIA';
+            const volClass = volLabel === 'ESPLOSIVA' ? 'high' : (volLabel === 'BASSA' ? 'low' : 'med');
+            let ratingTierSub = 'OPPORTUNITÀ AI';
+            if (!item.isBet && item.tierIndex === 0) ratingTierSub = 'TOP PICK ASSOLUTO';
+            else if (!item.isBet) ratingTierSub = 'CERTEZZA TITOLARE';
+            else if (item.isBet && (item.tierIndex === 2 || item.tierIndex === 0)) ratingTierSub = 'SCOMMESSA AI TOP';
+            else ratingTierSub = 'DIFFERENZIALE LOW-COST';
+            let keyMetricHtml = '';
+            if (p.role === 'P') {
+                const csCount = (p.clean_sheets_2627 !== undefined && p.clean_sheets_2627 !== null) ? p.clean_sheets_2627 : (p.clean_sheets || 0);
+                keyMetricHtml = `🧤 <strong>${csCount}</strong> Clean Sheet • Tit <strong>${titVal}%</strong>`;
+            } else if (p.role === 'D') {
+                if (p.is_oop) {
+                    keyMetricHtml = `💎 <strong>FRP Quinto</strong> • ${p.key_passes_2627 || 0} Key Pass`;
+                } else if (p.xa90_2627) {
+                    keyMetricHtml = `🎯 <strong>xA/90 ${p.xa90_2627}</strong> • ${p.key_passes_2627 || 0} Key Pass`;
+                } else {
+                    keyMetricHtml = `🛡️ MV <strong>${(p.mv_2627 || p.mv || 6.0).toFixed(2)}</strong> • Tit <strong>${titVal}%</strong>`;
+                }
+            } else if (p.role === 'C') {
+                if (p.key_passes_2627) {
+                    keyMetricHtml = `🪄 <strong>${p.key_passes_2627}</strong> Key Pass • FM <strong>${fmVal}</strong>`;
+                } else if (p.xg90_2627) {
+                    keyMetricHtml = `⚡ <strong>xG/90 ${p.xg90_2627}</strong> • FM <strong>${fmVal}</strong>`;
+                } else {
+                    keyMetricHtml = `🪄 FM <strong>${fmVal}</strong> • Tit <strong>${titVal}%</strong>`;
+                }
+            } else { // 'A'
+                if (p.tiri_porta_2627) {
+                    keyMetricHtml = `🎯 <strong>${p.tiri_porta_2627}</strong> Tiri Porta • FM <strong>${fmVal}</strong>`;
+                } else if (p.xg90_2627) {
+                    keyMetricHtml = `🔥 <strong>xG/90 ${p.xg90_2627}</strong> • FM <strong>${fmVal}</strong>`;
+                } else {
+                    keyMetricHtml = `⚡ FM <strong>${fmVal}</strong> • Tit <strong>${titVal}%</strong>`;
+                }
+            }
             let outcomeBadgeHtml = '';
-            let outcomeDrawerHtml = '';
             if (isPastRound) {
                 const roundVoteObj = (p.voti_dettaglio_2627 || []).find(v => Number(v.giornata) === Number(currentRound));
                 if (roundVoteObj) {
@@ -665,18 +702,12 @@ function renderMatchdayAdviceView() {
                             <span class="pill-detail">${bText}</span>
                         </div>
                     `;
-                    outcomeDrawerHtml = `
-                        <div class="hud-stat" style="border:1px solid ${isHit ? '#10b981' : '#fbbf24'};background:rgba(0,0,0,0.5);">
-                            <span class="hud-stat-lbl">ESITO G${currentRound}</span>
-                            <span class="hud-stat-val ${isHit ? 'neon' : 'gold'}">${rFv ? rFv.toFixed(1) : rVoto.toFixed(1)}</span>
-                        </div>
-                    `;
                 }
             }
             rowsHtml += `
                 <div class="fut-player-row ${tierClass}" id="adviceCard_${p.id}">
-                    <!-- MAIN COMPACT ROW (Scan First: always visible) -->
-                    <div class="fut-row-main" onclick="toggleAdviceCard('adviceCard_${p.id}', event)">
+                    <!-- COLONNA 1: IDENTITÀ & SHIELD -->
+                    <div class="fut-col-identity">
                         <!-- FIFA SHIELD -->
                         <div class="fut-card-shield ${tierClass}" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();" title="Clicca per aprire la scheda di ${p.name}">
                             <div class="fut-shield-top">
@@ -688,75 +719,63 @@ function renderMatchdayAdviceView() {
                             </div>
                             <div class="fut-shield-medal">${tierMedal}</div>
                         </div>
-                        <!-- PLAYER CORE IDENTITY -->
-                        <div class="fut-player-core">
-                            <div class="fut-name-row">
+                        <!-- INFO GIOCATORE -->
+                        <div class="fut-identity-info">
+                            <div class="fut-identity-badges">
                                 <span class="fut-tier-tag ${tierClass}">${tierBadgeText}</span>
-                                <span class="fut-player-name" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();">${p.name}</span>
                                 <span class="fut-team-pill">${p.team}</span>
                                 ${item.isBet ? `<span class="fut-fvm-badge" title="Quotazione di mercato low-cost">💰 FVM ${p.fvm || 1} CR</span>` : ''}
                                 ${p.is_rigorista_1 ? '<span class="fut-spec-mini pen" title="1° Rigorista">⚽</span>' : ''}
+                                ${p.is_oop ? '<span class="fut-spec-mini oop" title="Fuori Ruolo Positivo">💎</span>' : ''}
                                 ${p.is_punizioni ? '<span class="fut-spec-mini fk" title="Tiratore Punizioni">🎯</span>' : ''}
-                                <div class="fut-mantra-box desktop-only">${mantraTags}</div>
-                                ${outcomeBadgeHtml}
                             </div>
-                            <!-- MATCHUP STRIP -->
+                            <div class="fut-player-name" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();" title="Apri scheda di ${p.name}">
+                                ${p.name}
+                            </div>
                             <div class="fut-matchup-strip">
                                 <span class="fut-matchup-vs">vs <strong>${mInfo.opp}</strong></span>
                                 ${locBadge}
-                                <div class="fut-special-badges-group desktop-only">${specialBadges}</div>
-                            </div>
-                        </div>
-                        <!-- QUICK RATING AI & EXPAND CHEVRON -->
-                        <div class="fut-quick-metric">
-                            <div class="quick-metric-ai">
-                                <span class="qm-lbl">RATING AI</span>
-                                <span class="qm-val cyan">${item.score}</span>
-                            </div>
-                            <div class="fut-chevron-toggle" title="Espandi analisi tattica">
-                                <span class="fut-chevron">▾</span>
+                                ${mantraTags ? `<span class="fut-mantra-box">${mantraTags}</span>` : ''}
                             </div>
                         </div>
                     </div>
-                    <!-- EXPANDABLE DRAWER (Details on demand: Tactical Insight, Stats, Scheda) -->
-                    <div class="fut-row-details">
-                        <!-- MOBILE BADGES ROW -->
-                        ${(specialBadges || mantraTags) ? `
-                        <div class="fut-mobile-badges-row mobile-only">
-                            ${mantraTags ? `<div class="fut-mantra-box">${mantraTags}</div>` : ''}
-                            ${specialBadges ? `<div class="fut-special-badges-group">${specialBadges}</div>` : ''}
-                        </div>` : ''}
-                        <!-- HUD STATS DIAL -->
-                        <div class="fut-stats-hud">
-                            <div class="hud-stat">
-                                <span class="hud-stat-lbl">FM 26/27</span>
-                                <span class="hud-stat-val neon">${fmVal}</span>
+                    <!-- COLONNA 2: HERO RATING AI & PREDITTIVO -->
+                    <div class="fut-col-rating">
+                        <div class="fut-rating-hero-box ${tierClass}">
+                            <div class="rating-hero-top">
+                                <span class="rating-hero-icon">⚡</span>
+                                <span class="rating-hero-lbl">RATING AI</span>
                             </div>
-                            <div class="hud-stat">
-                                <span class="hud-stat-lbl">TITOLARE</span>
-                                <span class="hud-stat-val">${titVal}%</span>
-                            </div>
-                            <div class="hud-stat">
-                                <span class="hud-stat-lbl">GOL / ASS</span>
-                                <span class="hud-stat-val">${p.gol_2627 || 0}/${p.assist_2627 || 0}</span>
-                            </div>
-                            <div class="hud-stat">
-                                <span class="hud-stat-lbl">RATING AI</span>
-                                <span class="hud-stat-val cyan">${item.score}</span>
-                            </div>
-                            ${outcomeDrawerHtml}
+                            <div class="rating-hero-val">${item.score}</div>
+                            <div class="rating-hero-sub">${ratingTierSub}</div>
                         </div>
-                        <!-- ESSENTIAL TACTICAL BRIEFING -->
-                        <div class="fut-tactical-briefing">
-                            <div class="briefing-label">${item.isBet ? '🔮 ANALISI SCOMMESSA PREDITTIVA' : '💡 ADVANCED TACTICAL INSIGHT'}</div>
-                            <div class="briefing-text">${item.rationale}</div>
+                        <div class="fut-rating-meta">
+                            <div class="fut-range-box" title="Range Min-Max di Fantavoto atteso (Floor / Ceiling)">
+                                <span class="range-tag">RANGE</span>
+                                <span class="range-numbers">${floorVal} <span class="range-arrow">➔</span> ${ceilVal}</span>
+                                <span class="range-vol ${volClass}">${volLabel}</span>
+                            </div>
+                            <div class="fut-key-metric-badge" title="Statistica chiave avanzata">
+                                ${keyMetricHtml}
+                            </div>
                         </div>
-                        <!-- ACTION BUTTON -->
-                        <div class="fut-action-col">
-                            <button class="fut-btn-inspect" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();" title="Visualizza statistiche avanzate">
-                                🔍 Scheda Completa ${p.name}
-                            </button>
+                    </div>
+                    <!-- COLONNA 3: TATTICA & VULNERABILITÀ RIVALE -->
+                    <div class="fut-col-tactics">
+                        <div class="fut-tactical-header">
+                            <span class="tactical-badge-icon">${item.isBet ? '🔮' : '💡'}</span>
+                            <span class="tactical-badge-title">${item.isBet ? 'ANALISI SCOMMESSA PREDITTIVA' : 'ADVANCED TACTICAL INSIGHT'}</span>
+                            ${outcomeBadgeHtml}
                         </div>
+                        <div class="fut-tactical-body">
+                            ${item.rationale}
+                        </div>
+                    </div>
+                    <!-- COLONNA 4: AZIONE SCHEDA -->
+                    <div class="fut-col-action">
+                        <button class="fut-btn-inspect" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();" title="Visualizza statistiche avanzate di ${p.name}">
+                            🔍 Scheda
+                        </button>
                     </div>
                 </div>
             `;

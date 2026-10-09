@@ -60,11 +60,12 @@ def build_friday_19_message(round_num):
     msg += f"   ↳ _{f_fw.get('label', '')} • OVR {p_fw.get('ovr', 90)}: primo terminale offensivo ad alto xG._\n\n"
 
     msg += f"━━━━━━━━━━━━━━━━━━━━━━\n"
-    msg += f"📋 *VUOI SCOPRIRE TUTTI I CONSIGLIATI RUOLO PER RUOLO?*\n"
-    msg += f"Consulta la guida completa con fasce, rigoristi e sorprese di giornata:\n"
+    msg += f"📋 *GUIDA COMPLETA AI CONSIGLIATI (CLASSIC & MANTRA):*\n"
+    msg += f"Tutte le fasce, i rigoristi, gli indici di appetibilità e le sorprese di giornata:\n"
     msg += f"👉 *https://www.fantamasterai.it/consigli-fantacalcio/*\n\n"
 
-    msg += f"⚔️ *DUBBI 1vs1? USA IL COMPARATORE AI:*\n"
+    msg += f"⚔️ *BALLOTTAGGI & DUBBI 1vs1? USA 'CHI SCHIERO':*\n"
+    msg += f"Sei indeciso tra due calciatori per l'ultimo posto da titolare? Mettili a confronto testa a testa nel nostro comparatore con percentuali matematiche e motivazioni AI:\n"
     msg += f"👉 *https://www.fantamasterai.it/chi-schiero/*"
     return msg
 

@@ -56,8 +56,8 @@ def build_lineup_reminder_message(round_num):
     msg += f"📖 *Leggi l'analisi completa con tutti i consigliati ruolo per ruolo:*\n"
     msg += f"👉 *https://www.fantamasterai.it/consigli-fantacalcio/*\n\n"
     
-    msg += f"⚔️ *Hai ancora un dubbio dell'ultimo minuto?*\n"
-    msg += f"Metti a confronto i tuoi 2 giocatori testa a testa nel comparatore AI:\n"
+    msg += f"⚔️ *DUBBIO ATOMICO TRA DUE GIOCATORI? USA 'CHI SCHIERO'*\n"
+    msg += f"Non rischiare di lasciare il bonus in panchina: metti a confronto i tuoi 2 ballottaggi nel comparatore AI con percentuali predittive, pro/contro e verdetto finale:\n"
     msg += f"👉 *https://www.fantamasterai.it/chi-schiero/*\n\n"
     msg += f"Buon fantacalcio e buona Serie A a tutti i fantallenatori! 🍀"
     return msg

@@ -230,6 +230,16 @@
     "fonte": "fantacalcio-online.com"
   },
   {
+    "player": "Saelemaekers",
+    "player_id": null,
+    "team": "Milan",
+    "motivo": "Distorsione alla caviglia destra senza lesioni ossee né danni capsulo-legamentosi",
+    "rientro": "08/02/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "fantacalcio-online.com"
+  },
+  {
     "player": "Pessina",
     "player_id": null,
     "team": "Monza",
@@ -255,16 +265,6 @@
     "team": "Napoli",
     "motivo": "Lesione muscolare (rientrato al Napoli dopo valutazione medica con la Nazionale U21)",
     "rientro": "30/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com"
-  },
-  {
-    "player": "McTominay",
-    "player_id": null,
-    "team": "Napoli",
-    "motivo": "Lieve aritmia benigna, intervento di correzione mediante ablazione (PFA)",
-    "rientro": "11/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "fantacalcio-online.com"

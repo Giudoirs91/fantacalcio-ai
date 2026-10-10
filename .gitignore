@@ -1,12 +1,18 @@
 # === DATI PRIVATI / FILE GREZZI ===
-# File Excel e CSV originali (dati privati, non versionare)
-data/raw/
-data/raw/**
+# File Excel e CSV originali (unignore dei file essenziali per la pipeline GitHub Actions)
+data/raw/*
+!data/raw/Listone_definitivo_Fantacalcio_Stagione_2026_27.xlsx
+!data/raw/Quotazioni_Fantacalcio_Stagione_2026_27.xlsx
+!data/raw/fotmob_seriea_2026_27_stats.json
+!data/raw/fotmob_team_stats_2026_27.json
+!data/raw/preview_all_518_players_stats_2025_26.csv
+!data/raw/voti 25-26/
+!data/raw/voti 25-26/**
 
 # File di snapshot AI (rigenerati dalla pipeline)
 config/ai_predictions_snapshot.json
 config/ai_bias_corrections.json
-config/telegram_config.json
+!config/telegram_config.json
 data/processed/ai_error_analysis.json
 
 # === PYTHON ===

@@ -4665,17 +4665,17 @@
       "name": "Saelemaekers",
       "team": "Milan",
       "ruolo": "C",
-      "partite_saltate_totali": 2,
+      "partite_saltate_totali": 5,
       "partite_saltate_2025_26": 2,
-      "giorni_stop_totali": 12,
-      "disponibilita_pct": 94.7,
+      "giorni_stop_totali": 192,
+      "disponibilita_pct": 86.8,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 14.0,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 42.5,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 5 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -4687,6 +4687,15 @@
             23,
             24
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Distorsione alla caviglia destra senza lesioni ossee né danni capsulo-legamentosi",
+          "partite_perse": 15,
+          "giorni_stop": 180,
+          "tipo": "articolare",
+          "rientro_previsto": "08/02/2027",
+          "in_corso": true
         }
       ]
     },
@@ -6191,17 +6200,17 @@
       "name": "McTominay",
       "team": "Napoli",
       "ruolo": "C",
-      "partite_saltate_totali": 8,
+      "partite_saltate_totali": 5,
       "partite_saltate_2025_26": 5,
-      "giorni_stop_totali": 228,
-      "disponibilita_pct": 78.9,
+      "giorni_stop_totali": 48,
+      "disponibilita_pct": 86.8,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 56.0,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 8 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 27.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (5 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -6234,15 +6243,6 @@
           "giornate": [
             28
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lieve aritmia benigna, intervento di correzione mediante ablazione (PFA)",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "chirurgico",
-          "rientro_previsto": "11/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -7734,17 +7734,17 @@
       "name": "Mina",
       "team": "Cagliari",
       "ruolo": "D",
-      "partite_saltate_totali": 10,
+      "partite_saltate_totali": 7,
       "partite_saltate_2025_26": 7,
-      "giorni_stop_totali": 239,
-      "disponibilita_pct": 73.7,
+      "giorni_stop_totali": 59,
+      "disponibilita_pct": 81.6,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 65.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 10 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 36.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (7 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -7788,15 +7788,6 @@
           "giornate": [
             24
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lieve aritmia benigna, intervento di correzione mediante ablazione (PFA)",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "chirurgico",
-          "rientro_previsto": "11/10/2026",
-          "in_corso": true
         }
       ]
     },

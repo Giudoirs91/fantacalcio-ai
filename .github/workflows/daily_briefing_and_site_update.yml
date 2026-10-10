@@ -28,6 +28,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Daily Routine (Sync Injuries, Build Site & Send Telegram)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           python tools/run_daily_update.py
 

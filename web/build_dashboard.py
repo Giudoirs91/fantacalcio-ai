@@ -80,6 +80,7 @@ def build_standalone_dashboard(sync_android=False):
 
     js_modules = [
         "state.js",
+        "my_squad_engine.js",
         "leagues_hub.js",
         "sample_fantarefri_data.js",
         "xlsx_importer.js",

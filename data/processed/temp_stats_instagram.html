@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistiche Avanzate Serie A</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: #05070a;
+            width: 1080px;
+            height: 1350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .canvas {
+            width: 1080px;
+            height: 1350px;
+            background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 45%),
+                        radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
+                        linear-gradient(180deg, #0a0d14 0%, #05070a 100%);
+            position: relative;
+            padding: 50px 55px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .canvas::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        /* Header */
+        .header { position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .brand { font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 900; color: #38bdf8; letter-spacing: 1px; display: flex; align-items: center; gap: 12px; }
+        .brand-dot { width: 12px; height: 12px; background: #38bdf8; border-radius: 50%; box-shadow: 0 0 12px #38bdf8; }
+        .top-tag { background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.35); padding: 8px 20px; border-radius: 99px; color: #c084fc; font-weight: 800; font-size: 15px; letter-spacing: 1.5px; text-transform: uppercase; }
+
+        .title-block { margin-bottom: 30px; }
+        .main-title { font-family: 'Outfit', sans-serif; font-size: 48px; font-weight: 900; color: #f8fafc; line-height: 1.15; }
+        .main-subtitle { font-size: 20px; color: #94a3b8; margin-top: 6px; font-weight: 500; }
+
+        /* Sections Grid */
+        .sections-container { display: flex; flex-direction: column; gap: 24px; position: relative; z-index: 10; flex-grow: 1; }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 22px 26px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px; }
+        .section-icon { font-size: 24px; }
+        .section-title { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; color: #f1f5f9; letter-spacing: 0.5px; }
+
+        /* Stat Row */
+        .stat-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed rgba(255,255,255,0.04); }
+        .stat-row:last-child { border-bottom: none; }
+
+        .rank { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 900; color: #64748b; width: 28px; }
+        .player-info { flex-grow: 1; margin-left: 10px; }
+        .player-name-row { display: flex; align-items: center; gap: 10px; }
+        .p-name { font-weight: 800; font-size: 20px; color: #f8fafc; }
+        .mantra-tag { background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 8px; }
+        .p-team { font-size: 14px; color: #94a3b8; font-weight: 600; margin-top: 3px; }
+
+        .stat-badge { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; padding: 6px 16px; border-radius: 12px; text-align: right; min-width: 130px; }
+        .stat-badge.cyan { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+        .stat-badge.purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+        .stat-badge.green { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+        .stat-unit { font-size: 13px; font-weight: 600; opacity: 0.8; margin-left: 4px; }
+
+        /* Footer */
+        .footer {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 16px 28px;
+            margin-top: 20px;
+        }
+        .footer-url { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #38bdf8; letter-spacing: 1px; }
+        .footer-badge { font-size: 14px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+        <div class="header">
+            <div class="brand"><div class="brand-dot"></div> FANTA MASTER AI</div>
+            <div class="top-tag">SERIE A ADVANCED DATA</div>
+        </div>
+
+        <div class="title-block">
+            <div class="main-title">STATISTICHE AVANZATE & METRICHE XG</div>
+            <div class="main-subtitle">Analisi predittiva sui calciatori con il potenziale più alto della Serie A</div>
+        </div>
+
+        <div class="sections-container">
+            <!-- Section 1: xG/90 -->
+            <div class="section-card">
+                <div class="section-header">
+                    <span class="section-icon">🎯</span>
+                    <span class="section-title">TOP PERICOLOSITÀ OFFENSIVA (GOL ATTESI xG / 90 MIN)</span>
+                </div>
+                
+            <div class="stat-row">
+                <div class="rank">1</div>
+                <div class="player-info">
+                    <div class="player-name-row">
+                        <span class="p-name">MARTINEZ L.</span>
+                        <span class="mantra-tag">Mantra: Pc</span>
+                    </div>
+                    <div class="p-team">INTER • A</div>
+                </div>
+                <div class="stat-badge cyan">1.32 <span class="stat-unit">xG/90</span></div>
+            </div>
+            
+            <div class="stat-row">
+                <div class="rank">2</div>
+                <div class="player-info">
+                    <div class="player-name-row">
+                        <span class="p-name">MALEN</span>
+                        <span class="mantra-tag">Mantra: Pc</span>
+                    </div>
+                    <div class="p-team">ROMA • A</div>
+                </div>
+                <div class="stat-badge cyan">1.20 <span class="stat-unit">xG/90</span></div>
+            </div>
+            
+            <div class="stat-row">
+                <div class="rank">3</div>
+                <div class="player-info">
+                    <div class="player-name-row">
+                        <span class="p-name">BETO</span>
+                        <span class="mantra-tag">Mantra: Pc</span>
+                    </div>
+                    <div class="p-team">FIORENTINA • A</div>
+                </div>
+                <div class="stat-badge cyan">1.06 <span class="stat-unit">xG/90</span></div>
+            </div>
+            
+            <div class="stat-row">
+                <div class="rank">4</div>
+                <div class="player-info">
+                    <div class="player-name-row">
+                        <span class="p-name">BAYO V.</span>
+                        <span class="mantra-tag">Mantra: Pc</span>
+                    </div>
+                    <div class="p-team">UDINESE • A</div>
+                </div>
+                <div class="stat-badge cyan">1.06 <span class="stat-unit">xG/90</span></div>
+            </div>
+            
+            </div>
+
+            <!-- Section 2: xA/90 -->
+            <div class="section-card">
+                <div class="section-header">
+                    <span class="section-icon">🪄</span>
+                    <span class="section-title">TOP RIFINITORI & VISIONE DI GIOCO (ASSIST ATTESI xA / 90 MIN)</span>
+                </div>
+                
+            <div class="stat-row">
+                <div class="rank">1</div>
+                <div class="player-info">
+                    <div class="player-name-row">
+                        <span class="p-name">DYBALA</span>
+                        <span class="mantra-tag">Mantra: A</span>
+                    </div>
+                    <div class="p-team">ROMA • A</div>
+                </div>
+                <div class="stat-badge purple">0.74 <span class="stat-unit">xA/90</span></div>
+            </div>
+            
+            <div class="stat-row">
+                <div class="rank">2</div>
+                <div class="player-info">
+                    <div class="player-name-row">
+                        <span class="p-name">GUDMUNDSSON A.</span>
+                        <span class="mantra-tag">Mantra: T;A</span>
+                    </div>
+                    <div class="p-team">LAZIO • C</div>
+                </div>
+                <div class="stat-badge purple">0.71 <span class="stat-unit">xA/90</span></div>
+            </div>
+            
+            <div class="stat-row">
+                <div class="rank">3</div>
+                <div class="player-info">
+                    <div class="player-name-row">
+                        <span class="p-name">PULISIC</span>
+                        <span class="mantra-tag">Mantra: T;A</span>
+                    </div>
+                    <div class="p-team">MILAN • C</div>
+                </div>
+                <div class="stat-badge purple">0.58 <span class="stat-unit">xA/90</span></div>
+            </div>
+            
+            <div class="stat-row">
+                <div class="rank">4</div>
+                <div class="player-info">
+                    <div class="player-name-row">
+                        <span class="p-name">DIMARCO</span>
+                        <span class="mantra-tag">Mantra: E;W</span>
+                    </div>
+                    <div class="p-team">INTER • D</div>
+                </div>
+                <div class="stat-badge purple">0.44 <span class="stat-unit">xA/90</span></div>
+            </div>
+            
+            </div>
+
+            <!-- Section 3: Δ xFM -->
+            <div class="section-card">
+                <div class="section-header">
+                    <span class="section-icon">📈</span>
+                    <span class="section-title">HIGHEST Δ xFM (POTENZIALE NASCOSTO & SCOMMESSE EXPLOSIVE)</span>
+                </div>
+                
+            <div class="stat-row">
+                <div class="rank">1</div>
+                <div class="player-info">
+                    <div class="player-name-row">
+                        <span class="p-name">ZEBALLOS</span>
+                        <span class="mantra-tag">Mantra: A</span>
+                    </div>
+                    <div class="p-team">MONZA • OVR 63</div>
+                </div>
+                <div class="stat-badge green">+2.65 <span class="stat-unit">Δ xFM</span></div>
+            </div>
+            
+            <div class="stat-row">
+                <div class="rank">2</div>
+                <div class="player-info">
+                    <div class="player-name-row">
+                        <span class="p-name">GATTI</span>
+                        <span class="mantra-tag">Mantra: Dc</span>
+                    </div>
+                    <div class="p-team">JUVENTUS • OVR 65</div>
+                </div>
+                <div class="stat-badge green">+2.13 <span class="stat-unit">Δ xFM</span></div>
+            </div>
+            
+            <div class="stat-row">
+                <div class="rank">3</div>
+                <div class="player-info">
+                    <div class="player-name-row">
+                        <span class="p-name">MOREIRA</span>
+                        <span class="mantra-tag">Mantra: E;W</span>
+                    </div>
+                    <div class="p-team">MILAN • OVR 79</div>
+                </div>
+                <div class="stat-badge green">+2.09 <span class="stat-unit">Δ xFM</span></div>
+            </div>
+            
+            <div class="stat-row">
+                <div class="rank">4</div>
+                <div class="player-info">
+                    <div class="player-name-row">
+                        <span class="p-name">CALHANOGLU</span>
+                        <span class="mantra-tag">Mantra: M;C</span>
+                    </div>
+                    <div class="p-team">INTER • OVR 98</div>
+                </div>
+                <div class="stat-badge green">+1.80 <span class="stat-unit">Δ xFM</span></div>
+            </div>
+            
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-url">fantamasterai.it/statistiche-serie-a/</div>
+            <div class="footer-badge">Database Algoritmo Live</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -16935,6 +16935,112 @@ body.creator-mode-active .visitor-only-item {
     }
 }
 
+/* ==============================================================================
+   ESTENSIONI UX: EASY MODE VS PRO MODE & MY SQUAD ROSTER HUB
+   ============================================================================== */
+.data-view-toggle {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid var(--border-glass);
+    border-radius: 999px;
+    padding: 3px;
+    gap: 4px;
+}
+
+.view-mode-toggle-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-secondary);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.view-mode-toggle-btn.easy-btn.active {
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.5);
+    color: #4ade80;
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.2);
+}
+
+.view-mode-toggle-btn.pro-btn.active {
+    background: rgba(56, 189, 248, 0.2);
+    border: 1px solid rgba(56, 189, 248, 0.5);
+    color: #38bdf8;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+}
+
+/* Modalità Semplice (Easy Mode): Nasconde la complessità al primo sguardo */
+body.mode-easy .pro-only-data,
+body.mode-easy .raw-stats-matrix,
+body.mode-easy .metric-detail-advanced {
+    display: none !important;
+}
+
+body.mode-pro .easy-only-data {
+    display: none !important;
+}
+
+/* Hub Rosa Personalizzata (My Squad Engine) */
+.my-squad-hub-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.my-squad-drop-zone {
+    border: 2px dashed rgba(56, 189, 248, 0.4);
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 20px;
+    padding: 40px 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.my-squad-drop-zone:hover, .my-squad-drop-zone.dragover {
+    border-color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+}
+
+.my-squad-action-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    padding: 18px 24px;
+    border-radius: 20px;
+}
+
+.generate-lineup-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    padding: 14px 28px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+    transition: all 0.2s ease;
+}
+
+.generate-lineup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(16, 185, 129, 0.45);
+}
+
 
 
 

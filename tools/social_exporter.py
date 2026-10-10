@@ -72,6 +72,7 @@ def get_sleepers():
                     
                     dummy_data.append({
                         "role": b.get('role', role),
+                        "mantra": b.get('mantra', 'N/A'),
                         "name": b.get('name', 'Unknown'),
                         "team": b.get('team', 'Unknown'),
                         "ovr": b.get('ovr', 0),
@@ -195,6 +196,7 @@ def build_html(dummy_data):
         .role-badge.role-d {{ background: var(--role-d); }}
         .role-badge.role-c {{ background: var(--role-c); }}
         .role-badge.role-a {{ background: var(--role-a); }}
+        .mantra-badge {{ background: rgba(56, 189, 248, 0.15); border: 2px solid rgba(56, 189, 248, 0.4); padding: 10px 22px; border-radius: 16px; font-weight: 800; color: #38bdf8; font-size: 34px; }}
 
         .player-ovr {{
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -249,6 +251,8 @@ def build_html(dummy_data):
                         <div class="player-name">{p['name'].upper()}</div>
                         <div class="player-meta">
                             <span class="role-badge {p['color_class']}">{p['role']}</span>
+                            <span class="mantra-badge">Mantra: {p['mantra']}</span>
+                            <span>•</span>
                             <span>{p['team'].upper()}</span>
                         </div>
                     </div>
@@ -301,7 +305,8 @@ def build_caption(dummy_data):
         
     msg += "\nScorri il carosello per leggere l'Advanced Tactical Insight completo per ognuno di loro! 👉\n\n"
     msg += "Tu chi schieri di questi? Faccelo sapere nei commenti! 👇\n\n"
-    msg += "🔗 Clicca il link in bio per analizzare la tua rosa completa su FANTAMASTERAI.IT!\n\n"
+    msg += "🔗 Consigli di formazione e comparatore 1vs1 completi su:\n"
+    msg += "👉 https://www.fantamasterai.it/consigli-fantacalcio/\n\n"
     msg += "#Fantacalcio #SerieA #ConsigliFantacalcio #FantaMasterAI #ScommesseFantacalcio"
     return msg
 

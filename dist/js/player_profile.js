@@ -617,6 +617,13 @@ function openPlayerProfileByName(name, teamName) {
     }
 }
 window.openPlayerProfileByName = openPlayerProfileByName;
+window.setPlayerProfileViewMode = function(mode) {
+    window._playerModalViewMode = mode;
+    try { localStorage.setItem('PLAYER_MODAL_VIEW_MODE', mode); } catch(e){}
+    if (window._currentOpenPlayerId !== undefined && window._currentOpenPlayerId !== null) {
+        openPlayerProfileModal(window._currentOpenPlayerId);
+    }
+};
 function openPlayerProfileModal(playerId) {
     if (!playerId && playerId !== 0) return;
     window._currentOpenPlayerId = playerId;
@@ -634,6 +641,10 @@ function openPlayerProfileModal(playerId) {
     const modal = document.getElementById('playerDetailModal');
     const modalBody = document.getElementById('playerDetailModalBody');
     if (!modal || !modalBody) return;
+    const currentViewMode = window._playerModalViewMode || (function(){
+        try { return localStorage.getItem('PLAYER_MODAL_VIEW_MODE') || 'simple'; } catch(e){ return 'simple'; }
+    })();
+    window._playerModalViewMode = currentViewMode;
     const teamTac = (typeof TACTICAL_DB !== 'undefined' && TACTICAL_DB[p.team]) ? TACTICAL_DB[p.team] : null;
     const isBought = typeof isPlayerBought === 'function' ? isPlayerBought(p.id) : false;
     const isTaken = typeof isPlayerTakenByOther === 'function' ? isPlayerTakenByOther(p.id) : false;
@@ -684,6 +695,9 @@ function openPlayerProfileModal(playerId) {
         const oopColor = p.oop_tier === 'ORO' ? '#f59e0b' : (p.oop_tier === 'ARGENTO' ? '#cbd5e1' : '#d97706');
         oopBadge = `<span class="badge-tag oop" style="border-color:${oopColor};color:${oopColor};" title="${p.oop_desc || ''}">💎 ${p.oop_val}</span>`;
     }
+    const mantraSubBadge = p.mantra 
+        ? `<div style="font-size:10px; font-weight:900; background:rgba(139,92,246,0.22); border:1px solid rgba(139,92,246,0.45); color:#c084fc; padding:2px 6px; border-radius:6px; margin-top:4px; text-transform:uppercase; font-family:'Outfit',sans-serif; text-align:center;" title="Ruoli Mantra">${p.mantra}</div>`
+        : '';
     let actionButtonsHtml = '';
     if (isBought) {
         actionButtonsHtml = `
@@ -714,6 +728,293 @@ function openPlayerProfileModal(playerId) {
             </div>
         `;
     }
+    const curBudgetTotal = (typeof State !== 'undefined' && State.budgetTotal) ? State.budgetTotal : 1000;
+    const curRatio = (typeof getGlobalBudgetRatio === 'function') ? getGlobalBudgetRatio() : (curBudgetTotal / 1000);
+    const scaledPrice = Math.max(1, Math.round((p.prezzo_cons || 1) * curRatio));
+    const scaledMaxBid = Math.max(1, Math.round((p.max_bid || p.prezzo_cons || 1) * curRatio));
+    const scaledFvm = (p.fvm !== undefined && p.fvm !== null) ? Math.max(1, Math.round(p.fvm * curRatio)) : '-';
+    const budgetPct = (((p.prezzo_cons || 1) / 1000) * 100).toFixed(1);
+    const topToggleBarHtml = `
+        <div class="player-view-mode-bar" style="display:flex; justify-content:space-between; align-items:center; background:rgba(15,23,42,0.95); padding:10px 18px; border-radius:16px; border:1px solid rgba(56,189,248,0.3); margin-bottom:16px; box-shadow: 0 4px 16px rgba(0,0,0,0.3);">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <span style="font-size:12px; font-weight:800; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">Modalità Scheda:</span>
+                <div class="view-mode-segmented-btn" style="display:inline-flex; background:rgba(0,0,0,0.4); padding:3px; border-radius:10px; border:1px solid rgba(255,255,255,0.1);">
+                    <button onclick="setPlayerProfileViewMode('simple')" class="mode-toggle-btn ${currentViewMode === 'simple' ? 'active' : ''}" style="padding:6px 14px; font-size:12px; font-weight:800; border-radius:8px; border:none; cursor:pointer; transition:all 0.2s; ${currentViewMode === 'simple' ? 'background:linear-gradient(135deg, #10b981, #059669); color:#fff; box-shadow:0 2px 8px rgba(16,185,129,0.4);' : 'background:transparent; color:#94a3b8;'}">
+                        🌱 Semplice
+                    </button>
+                    <button onclick="setPlayerProfileViewMode('pro')" class="mode-toggle-btn ${currentViewMode === 'pro' ? 'active' : ''}" style="padding:6px 14px; font-size:12px; font-weight:800; border-radius:8px; border:none; cursor:pointer; transition:all 0.2s; ${currentViewMode === 'pro' ? 'background:linear-gradient(135deg, #38bdf8, #0284c7); color:#fff; box-shadow:0 2px 8px rgba(56,189,248,0.4);' : 'background:transparent; color:#94a3b8;'}">
+                        🚀 Pro (Analisi Avanzata AI)
+                    </button>
+                </div>
+            </div>
+            <div style="font-size:11.5px; color:#94a3b8; font-style:italic;">
+                ${currentViewMode === 'simple' ? '💡 Vista essenziale ad altissima leggibilità' : '📊 Vista analitica con Radar, xG &amp; xFM'}
+            </div>
+        </div>
+    `;
+    if (currentViewMode === 'simple') {
+        const xfmData = computeExpectedFantaMedia(p);
+        const xfmValStr = (xfmData && xfmData.xfm !== null && xfmData.xfm !== undefined) ? xfmData.xfm : '-';
+        const xfmDeltaStr = (xfmData && xfmData.delta !== null && xfmData.delta !== undefined)
+            ? `<span style="font-size:11px; font-weight:800; color:${xfmData.delta >= 0 ? '#4ade80' : '#f87171'}; background:rgba(0,0,0,0.35); padding:2px 7px; border-radius:6px; margin-left:6px;">(${xfmData.delta >= 0 ? '+' : ''}${xfmData.delta})</span>`
+            : '';
+        let totalGoals = 0;
+        let totalAssists = 0;
+        if (p.voti_dettaglio_2627 && p.voti_dettaglio_2627.length > 0) {
+            p.voti_dettaglio_2627.forEach(v => {
+                totalGoals += (v.gf || 0);
+                totalAssists += (v.ass || 0);
+            });
+        } else {
+            totalGoals = p.gol_2526 || 0;
+            totalAssists = p.assist_2526 || 0;
+        }
+        let verdictTitle = "SCHIERA SEMPRE";
+        let verdictColor = "#4ade80";
+        let verdictIcon = "🌟";
+        let verdictSummary = "";
+        if (p.ovr >= 85 || (p.titolarita >= 80 && ((p.fm_2627 || 0) >= 7.5 || (p.fm_2526 || 0) >= 7.5))) {
+            verdictTitle = "SCHIERA SEMPRE (TOP DI REPARTO)";
+            verdictColor = "#4ade80";
+            verdictIcon = "🌟";
+            verdictSummary = `${p.name} è un pilastro inamovibile della ${p.team}. Ha una titolarità del ${p.titolarita}% e una media voto d'élite. Da schierare titolare in qualsiasi giornata!`;
+        } else if (p.titolarita >= 75) {
+            verdictTitle = "TITOLARE AFFIDABILE";
+            verdictColor = "#38bdf8";
+            verdictIcon = "⚽";
+            verdictSummary = `${p.name} garantisce presenza costante nell'undici di partenza della ${p.team}. Giocatore affidabile con voto sicuro da schierare quasi sempre.`;
+        } else if (p.titolarita >= 55 && ((p.fm_2627 || 0) >= 6.8 || (p.fm_2526 || 0) >= 6.8)) {
+            verdictTitle = "JOLLY AD ALTO IMPATTO";
+            verdictColor = "#fbbf24";
+            verdictIcon = "⚡";
+            verdictSummary = `${p.name} entra spesso a gara in corso o ruota con i compagni, ma spiazza le difese con bonus nella ripresa. Da mettere coprendosi in panchina!`;
+        } else if (p.titolarita >= 45) {
+            verdictTitle = "BALLOTTAGGIO APERTO";
+            verdictColor = "#f59e0b";
+            verdictIcon = "⚖️";
+            verdictSummary = `${p.name} si gioca il posto settimana per settimana. Va schierato dopo aver controllato le ultime dai campi.`;
+        } else {
+            verdictTitle = "RISCHIO PANCHINA / RISERVA";
+            verdictColor = "#f87171";
+            verdictIcon = "⚠️";
+            verdictSummary = `${p.name} al momento è una seconda scelta nelle gerarchie di squadra (${p.titolarita}% titolarità). Da mettere solo in emergenza o turnover.`;
+        }
+        const proPoints = [];
+        if (p.titolarita >= 75) proPoints.push("Titolare inamovibile della squadra (voto sicuro ogni giornata)");
+        if (p.is_rigorista_1 || p.is_rigorista_2) proPoints.push("Incaricato dei calci di rigore (bonus pesanti dagli 11 metri)");
+        if (p.is_punizioni || p.is_corner) proPoints.push("Specialista dei calci piazzati e punizioni");
+        if (totalGoals >= 3) proPoints.push(`Ottimo rendimento in zona gol (${totalGoals} gol segnati)`);
+        if (totalAssists >= 2) proPoints.push(`Eccellente rifinitore (${totalAssists} assist forniti)`);
+        if (p.ovr >= 82) proPoints.push("Quotazione ed efficacia di alto livello nel reparto");
+        if (!p.is_injured && (!p.fragility_score || p.fragility_score <= 20)) proPoints.push("Calciatore integro e fisicamente affidabile");
+        if (proPoints.length === 0) proPoints.push("Giocatore con potenziale di crescita nel corso del campionato");
+        const contraPoints = [];
+        if (p.is_injured) contraPoints.push(`Attualmente infortunato (rientro previsto: ${p.infortunio_rientro || 'da valutare'})`);
+        if (p.titolarita < 65) contraPoints.push(`Soggetto a rotazioni e ballottaggi continui (${p.titolarita}% titolarità)`);
+        if (p.coppia_nome && p.coppia_nome !== '-') contraPoints.push(`In staffetta diretta con ${p.coppia_nome}`);
+        if (p.fragility_score && p.fragility_score > 40) contraPoints.push("Storico infortuni da monitorare prima dell'asta");
+        if (contraPoints.length === 0) contraPoints.push("Nessun punto critico rilevato, giocatore regolare");
+        const proPointsList = proPoints.map(pt => `<li style="margin-bottom:6px;">${pt}</li>`).join('');
+        const contraPointsList = contraPoints.map(pt => `<li style="margin-bottom:6px;">${pt}</li>`).join('');
+        const mantraSubBadge = p.mantra 
+            ? `<div style="font-size:10px; font-weight:900; background:rgba(139,92,246,0.22); border:1px solid rgba(139,92,246,0.45); color:#c084fc; padding:2px 6px; border-radius:6px; margin-top:4px; text-transform:uppercase; font-family:'Outfit',sans-serif; text-align:center;" title="Ruoli Mantra">${p.mantra}</div>`
+            : '';
+        let simpleVotiHtml = '';
+        if (p.voti_dettaglio_2627 && p.voti_dettaglio_2627.length > 0) {
+            simpleVotiHtml = `<div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(115px, 1fr)); gap:10px; margin-top:10px;">` +
+                p.voti_dettaglio_2627.map(v => {
+                    if (v.fantavoto === null || v.fantavoto === undefined) {
+                        return `
+                            <div style="background:rgba(15,23,42,0.5); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:10px 8px; text-align:center;">
+                                <span style="font-size:11px; font-weight:900; color:#64748b;">G${v.giornata}</span>
+                                <div style="font-size:14px; font-weight:800; color:#475569; margin:4px 0;">s.v.</div>
+                            </div>
+                        `;
+                    }
+                    const fv = v.fantavoto;
+                    const votoBase = v.voto !== null && v.voto !== undefined ? v.voto : fv;
+                    let cardBg = 'rgba(15,23,42,0.7)';
+                    let borderColor = 'rgba(255,255,255,0.12)';
+                    let fvColor = '#fbbf24';
+                    if (fv >= 10.0) {
+                        cardBg = 'linear-gradient(180deg, rgba(34,197,94,0.18) 0%, rgba(15,23,42,0.85) 100%)';
+                        borderColor = 'rgba(34,197,94,0.45)';
+                        fvColor = '#4ade80';
+                    } else if (fv >= 7.5) {
+                        cardBg = 'linear-gradient(180deg, rgba(56,189,248,0.18) 0%, rgba(15,23,42,0.85) 100%)';
+                        borderColor = 'rgba(56,189,248,0.45)';
+                        fvColor = '#38bdf8';
+                    } else if (fv >= 6.0) {
+                        cardBg = 'rgba(15,23,42,0.75)';
+                        borderColor = 'rgba(251,191,36,0.35)';
+                        fvColor = '#fbbf24';
+                    } else {
+                        cardBg = 'linear-gradient(180deg, rgba(239,68,68,0.15) 0%, rgba(15,23,42,0.85) 100%)';
+                        borderColor = 'rgba(239,68,68,0.45)';
+                        fvColor = '#f87171';
+                    }
+                    const parts = [];
+                    if (v.gf > 0) parts.push(`<span style="background:rgba(34,197,94,0.22); border:1px solid rgba(34,197,94,0.5); color:#4ade80; padding:1px 5px; border-radius:5px; font-size:10px; font-weight:800;">⚽ ${v.gf > 1 ? 'x' + v.gf : '+3'}</span>`);
+                    if (v.ass > 0) parts.push(`<span style="background:rgba(56,189,248,0.22); border:1px solid rgba(56,189,248,0.5); color:#38bdf8; padding:1px 5px; border-radius:5px; font-size:10px; font-weight:800;">🅰️ ${v.ass > 1 ? 'x' + v.ass : '+1'}</span>`);
+                    if (v.amm) parts.push(`<span style="background:rgba(245,158,11,0.22); border:1px solid rgba(245,158,11,0.5); color:#fbbf24; padding:1px 5px; border-radius:5px; font-size:10px; font-weight:800;">🟨</span>`);
+                    if (v.esp) parts.push(`<span style="background:rgba(239,68,68,0.22); border:1px solid rgba(239,68,68,0.5); color:#f87171; padding:1px 5px; border-radius:5px; font-size:10px; font-weight:800;">🟥</span>`);
+                    const bonusBarHtml = parts.length > 0
+                        ? `<div style="display:flex; gap:3px; flex-wrap:wrap; justify-content:center; margin-top:4px;">${parts.join('')}</div>`
+                        : `<span style="font-size:9.5px; color:#64748b; margin-top:2px; display:block;">Nessun bonus</span>`;
+                    return `
+                        <div style="background:${cardBg}; border:1px solid ${borderColor}; border-radius:12px; padding:10px 8px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.25);">
+                            <div style="font-size:10.5px; font-weight:900; color:#94a3b8; text-transform:uppercase;">G${v.giornata}</div>
+                            <div style="font-size:18px; font-weight:900; color:${fvColor}; font-family:'Outfit',sans-serif; line-height:1.2; margin:2px 0;">
+                                ${fv}
+                            </div>
+                            <div style="font-size:10px; color:#cbd5e1;">Voto: <b>${votoBase}</b></div>
+                            ${bonusBarHtml}
+                        </div>
+                    `;
+                }).join('') +
+            `</div>`;
+        } else {
+            simpleVotiHtml = `<div style="color:#94a3b8; font-size:12.5px; font-style:italic;">Nessun voto registrato nella stagione 2026/27.</div>`;
+        }
+        modalBody.innerHTML = `
+            ${topToggleBarHtml}
+            <!-- Profile Header -->
+            <div class="profile-header-container" style="margin-bottom:16px;">
+                <div class="profile-hero-left">
+                    <div style="display:flex; flex-direction:column; align-items:center;">
+                        <div class="profile-role-circle ${p.role}">${p.role}</div>
+                        ${mantraSubBadge}
+                    </div>
+                    <div class="profile-hero-info">
+                        <div class="profile-hero-title-row">
+                            <h1 class="profile-player-name">${p.name}</h1>
+                            <div class="profile-title-actions">
+                                <button class="sb-star-toggle ${isFav ? 'active' : ''}" onclick="toggleFavorite(${p.id}); openPlayerProfileModal(${p.id});" title="Aggiungi ai Preferiti">${isFav ? '⭐' : '☆'}</button>
+                            </div>
+                        </div>
+                        <div class="profile-player-meta">
+                            <b class="player-meta-team">${p.team}</b> • Mister: <b>${teamTac ? teamTac.all : '-'}</b>
+                        </div>
+                        <div class="profile-badges-wrapper" style="margin-top:6px;">
+                            ${injBadge}
+                            ${rigoristaBadge}
+                            ${coppiaBadge}
+                        </div>
+                    </div>
+                </div>
+                <!-- Quick Cards -->
+                <div class="profile-hero-metrics-section">
+                    <div class="profile-hero-triple-cards">
+                        <div class="profile-hero-metric-card card-ovr">
+                            <span class="hero-card-label">OVR RATING</span>
+                            <div class="hero-card-value ovr-text ${typeof getOvrClass === 'function' ? getOvrClass(p.ovr) : ''}">${p.ovr}</div>
+                            <span class="hero-card-sub">${p.ovr >= 90 ? 'Top Assoluto' : (p.ovr >= 82 ? 'Titolare Top' : 'Rotazione')}</span>
+                        </div>
+                        <div class="profile-hero-metric-card card-titolarita">
+                            <span class="hero-card-label">TITOLARITÀ</span>
+                            <div class="hero-card-value" style="color:${titColor};">${p.titolarita}%</div>
+                            <span class="hero-card-sub" style="color:${titColor};">${p.titolarita >= 80 ? 'Titolare Fisso' : (p.titolarita >= 60 ? 'Rotazione' : 'Riserva')}</span>
+                        </div>
+                        <div class="profile-hero-metric-card card-price">
+                            <span class="hero-card-label">PREZZO (${curBudgetTotal} CR)</span>
+                            <div class="hero-card-value price-text">${scaledPrice} <span style="font-size:11px;color:rgba(255,255,255,0.6);">CR</span></div>
+                            <span class="hero-card-sub" style="color:#fbbf24;">Equo per l'asta</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Quick Action Bar -->
+            <div class="profile-action-bar" style="margin-bottom:16px;">
+                ${actionButtonsHtml}
+            </div>
+            <!-- 1. VERDETTO AI CHIARO E DIRETTO (SCHIERA / EVITA) -->
+            <div style="background: linear-gradient(135deg, rgba(30,41,59,0.9) 0%, rgba(15,23,42,0.9) 100%); border: 1px solid rgba(56,189,248,0.3); border-radius: 18px; padding: 20px 24px; margin-bottom: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:10px;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:24px;">${verdictIcon}</span>
+                        <div>
+                            <span style="font-size:11px; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.8px;">VERDETTO FANTACALCIO AI</span>
+                            <h3 style="margin:0; font-size:18px; font-weight:900; color:${verdictColor}; font-family:'Outfit',sans-serif;">${verdictTitle}</h3>
+                        </div>
+                    </div>
+                    <span style="background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.3); color:#38bdf8; font-weight:800; font-size:12px; padding:5px 12px; border-radius:99px;">
+                        Fascia: ${p.slot_fascia || (p.slot_num ? p.slot_num + '° Slot' : 'Consigliato')}
+                    </span>
+                </div>
+                <p style="margin:0; color:#cbd5e1; font-size:13.5px; line-height:1.5;">
+                    ${verdictSummary}
+                </p>
+            </div>
+            <!-- 2. 4 LEVE CHIAVE DEL GIOCATORE (GRIGLIA 2x2 CHIARA) -->
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin-bottom:20px;">
+                <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:16px;">
+                    <div style="font-size:11px; color:#94a3b8; font-weight:800; text-transform:uppercase; margin-bottom:6px;">⏱️ Titolarità In Squadra</div>
+                    <div style="font-size:22px; font-weight:900; color:${titColor}; font-family:'Outfit',sans-serif;">${p.titolarita}%</div>
+                    <div style="font-size:12px; color:#e2e8f0; margin-top:4px;">${p.titolarita >= 80 ? 'Posto da titolare garantito ogni gara' : (p.titolarita >= 60 ? 'Spesso titolare o 1° cambio' : 'Panchina / Minutaggio ridotto')}</div>
+                </div>
+                <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:16px;">
+                    <div style="font-size:11px; color:#94a3b8; font-weight:800; text-transform:uppercase; margin-bottom:6px;">⭐ Fantamedia Reale &amp; xFM</div>
+                    <div style="font-size:22px; font-weight:900; color:#fbbf24; font-family:'Outfit',sans-serif; display:flex; align-items:center; gap:8px;">
+                        <span>${p.fm_2627 ? p.fm_2627.toFixed(2) : (p.fm_2526 ? p.fm_2526.toFixed(2) : 'N/D')}</span>
+                        <span style="font-size:13px; font-weight:800; color:var(--accent-cyan); background:rgba(56,189,248,0.12); padding:3px 8px; border-radius:6px; border:1px solid rgba(56,189,248,0.3);">xFM: ${xfmValStr}</span>
+                    </div>
+                    <div style="font-size:12px; color:#e2e8f0; margin-top:6px;">
+                        Media voto: <b>${p.mv_2627 ? p.mv_2627.toFixed(2) : '-'}</b> ${xfmDeltaStr}
+                    </div>
+                </div>
+                <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:16px;">
+                    <div style="font-size:11px; color:#94a3b8; font-weight:800; text-transform:uppercase; margin-bottom:6px;">💎 Gol &amp; Assist Segnati</div>
+                    <div style="font-size:22px; font-weight:900; color:#4ade80; font-family:'Outfit',sans-serif;">${totalGoals} Gol • ${totalAssists} Assist</div>
+                    <div style="font-size:12px; color:#e2e8f0; margin-top:4px;">Bonus accumulati: <b>+${(totalGoals*3) + totalAssists} pt</b></div>
+                </div>
+                <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:16px;">
+                    <div style="font-size:11px; color:#94a3b8; font-weight:800; text-transform:uppercase; margin-bottom:6px;">💰 Valutazione Asta (${curBudgetTotal} CR)</div>
+                    <div style="font-size:22px; font-weight:900; color:#38bdf8; font-family:'Outfit',sans-serif;">${scaledPrice} CR</div>
+                    <div style="font-size:12px; color:#e2e8f0; margin-top:4px;">Max rilancio utile: <b>${scaledMaxBid} CR</b></div>
+                </div>
+            </div>
+            <!-- 3. PRO & CONTRO (PERCHÉ COMPRARLO / RISCHI) -->
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px; margin-bottom:20px;">
+                <div style="background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.25); border-radius:16px; padding:18px;">
+                    <div style="font-weight:900; color:#4ade80; font-size:14px; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+                        <span>🟢</span> Perché Comprarlo (Punti di Forza)
+                    </div>
+                    <ul style="margin:0; padding-left:18px; color:#e2e8f0; font-size:13px; line-height:1.6;">
+                        ${proPointsList}
+                    </ul>
+                </div>
+                <div style="background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.25); border-radius:16px; padding:18px;">
+                    <div style="font-weight:900; color:#f87171; font-size:14px; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+                        <span>🔴</span> Rischi &amp; Fattori da Valutare
+                    </div>
+                    <ul style="margin:0; padding-left:18px; color:#e2e8f0; font-size:13px; line-height:1.6;">
+                        ${contraPointsList}
+                    </ul>
+                </div>
+            </div>
+            <!-- 4. GRAFICO / STORICO VOTI SEMPLIFICATO -->
+            <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:18px; margin-bottom:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                    <div style="font-weight:900; color:#f8fafc; font-size:14px; display:flex; align-items:center; gap:8px;">
+                        <span>📈</span> Rendimento Partita per Partita (I Voti)
+                    </div>
+                    <span style="font-size:11.5px; color:#94a3b8;">Serie A 2026/27</span>
+                </div>
+                ${simpleVotiHtml}
+            </div>
+            <!-- 5. CALLOUT PER PASSARE ALLA MODALITÀ PRO -->
+            <div style="background:rgba(56,189,248,0.06); border:1px dashed rgba(56,189,248,0.3); border-radius:14px; padding:14px 18px; text-align:center;">
+                <span style="font-size:13px; color:#cbd5e1;">🔍 Vuoi consultare il Radar Tattico a 6 Assi, le metriche xG / xA / xFM e la Storia Medica Multi-Stagione?</span>
+                <button onclick="setPlayerProfileViewMode('pro')" style="margin-left:10px; background:rgba(56,189,248,0.18); border:1px solid rgba(56,189,248,0.4); color:#38bdf8; font-weight:800; padding:5px 12px; border-radius:8px; cursor:pointer; font-size:12.5px;">
+                    Passa alla Modalità Pro &rarr;
+                </button>
+            </div>
+        `;
+        modal.classList.add('active');
+        modal.style.display = 'flex';
+        return;
+    }
+    const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(p);
     const xfmData = computeExpectedFantaMedia(p);
     let xfmAlertHtml = '';
     const isElitePerformer = xfmData.has2627 && xfmData.xfm !== null && (xfmData.xfm >= 7.8 || (p.ovr >= 86 && xfmData.xfm >= 7.2)) && xfmData.realFm >= 7.8;
@@ -800,12 +1101,6 @@ function openPlayerProfileModal(playerId) {
     const maxPlayedRound = votiList.length > 0 ? Math.max(...votiList.map(v => v.giornata)) : 0;
     const sufficiencyCount = validVoti.filter(v => v.voto >= 6.0).length;
     const sufficiencyPct = validVoti.length > 0 ? Math.round((sufficiencyCount / validVoti.length) * 100) : 0;
-    const curBudgetTotal = (typeof State !== 'undefined' && State.budgetTotal) ? State.budgetTotal : 1000;
-    const curRatio = (typeof getGlobalBudgetRatio === 'function') ? getGlobalBudgetRatio() : (curBudgetTotal / 1000);
-    const scaledPrice = Math.max(1, Math.round((p.prezzo_cons || 1) * curRatio));
-    const scaledMaxBid = Math.max(1, Math.round((p.max_bid || p.prezzo_cons || 1) * curRatio));
-    const scaledFvm = (p.fvm !== undefined && p.fvm !== null) ? Math.max(1, Math.round(p.fvm * curRatio)) : '-';
-    const budgetPct = (((p.prezzo_cons || 1) / 1000) * 100).toFixed(1);
     const stealLimit = Math.max(1, Math.round(scaledPrice * 0.75));
     const fairPriceMin = Math.max(1, Math.round(scaledPrice * 0.85));
     const titVal = Math.min(100, Math.max(0, p.titolarita !== undefined ? p.titolarita : 50));
@@ -1592,13 +1887,14 @@ function openPlayerProfileModal(playerId) {
     `;
     const diffQStr = (p.diff_q !== undefined && p.diff_q !== 0) ? (p.diff_q > 0 ? '+' + p.diff_q : p.diff_q) : '';
     modalBody.innerHTML = `
+        ${topToggleBarHtml}
         <!-- Profile Header -->
         <div class="profile-header-container">
             <div class="profile-hero-left">
-                ${(typeof State !== 'undefined' && State.systemMode === 'mantra') 
-                    ? `<div class="profile-mantra-roles">${renderMantraRoleBadges(p.mantra)}</div>`
-                    : `<div class="profile-role-circle ${p.role}">${p.role}</div>`
-                }
+                <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div class="profile-role-circle ${p.role}">${p.role}</div>
+                    ${mantraSubBadge}
+                </div>
                 <div class="profile-hero-info">
                     <div class="profile-hero-title-row">
                         <h1 class="profile-player-name">${p.name}</h1>

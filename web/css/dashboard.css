@@ -15920,7 +15920,9 @@ body.creator-mode-active .visitor-only-item {
     margin-bottom: 18px;
 }
 
-.portal-hero-title-group h1 {
+.portal-hero-title-group h1,
+.portal-hero-title-group h2,
+.portal-hero-title-group .portal-hero-title {
     font-size: 22px;
     font-weight: 900;
     color: #fff;
@@ -15931,7 +15933,9 @@ body.creator-mode-active .visitor-only-item {
     gap: 8px;
 }
 
-.portal-hero-title-group h1 span.gradient-text {
+.portal-hero-title-group h1 span.gradient-text,
+.portal-hero-title-group h2 span.gradient-text,
+.portal-hero-title-group .portal-hero-title span.gradient-text {
     background: linear-gradient(135deg, #00e676, #00f2fe);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -1815,6 +1815,9 @@ def render_unified_header(rel_path=""):
                         <a href="{rel_path}probabili-formazioni/" class="dropdown-item">⚽ Campo 2D &amp; Schemi Club</a>
                         <a href="{rel_path}confronto-calciatori/" class="dropdown-item">⚔️ Matchup 1vs1 Calciatori</a>
                         <a href="{rel_path}griglia-portieri/" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{rel_path}infortunati-serie-a/" class="dropdown-item">🩺 Infortunati &amp; Tempi di Recupero</a>
+                        <a href="{rel_path}rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
                     </div>
                 </div>
 
@@ -1828,9 +1831,6 @@ def render_unified_header(rel_path=""):
                         <a href="{rel_path}chi-schiero/" class="dropdown-item">⚔️ Tool "Chi Schiero?" (Ballottaggi 1vs1)</a>
                         <a href="{rel_path}top-11-ai/" class="dropdown-item">🧠 5 Squadre Perfette AI</a>
                         <a href="{rel_path}scommesse-talenti/" class="dropdown-item">🔮 Gemme &amp; Sleeper AI</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="{rel_path}infortunati-serie-a/" class="dropdown-item">🩺 Infortunati &amp; Tempi di Recupero</a>
-                        <a href="{rel_path}rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
                     </div>
                 </div>
             </nav>
@@ -3872,6 +3872,8 @@ def build_all():
         with open(DASHBOARD_HTML_PATH, "r", encoding="utf-8") as f:
             dash_content = f.read()
         dash_content = optimize_dashboard_for_web(dash_content, DIST_DIR)
+        if '<link rel="canonical"' not in dash_content:
+            dash_content = dash_content.replace('</head>', f'    <link rel="canonical" href="{BASE_URL}/">\n</head>')
         with open(os.path.join(DIST_DIR, "app.html"), "w", encoding="utf-8") as f:
             f.write(dash_content)
         with open(os.path.join(DIST_DIR, "index.html"), "w", encoding="utf-8") as f:
@@ -4011,6 +4013,10 @@ def build_all():
                 if grp_id:
                     sec_html = re.sub(rf'id="{grp_id}" class="nav-group-btn"', f'id="{grp_id}" class="nav-group-btn active"', sec_html)
                     sec_html = re.sub(rf'class="nav-group-btn" id="{grp_id}"', f'class="nav-group-btn active" id="{grp_id}"', sec_html)
+
+            # Ottimizza l'H1 principale per la query di ricerca specifica di ogni sezione pillar
+            clean_h1 = title.split("|")[0].strip()
+            sec_html = re.sub(r'<h1 class="ai-hub-title">.*?</h1>', f'<h1 class="ai-hub-title">{clean_h1}</h1>', sec_html, flags=re.DOTALL)
 
             sec_html = re.sub(r'<title>.*?</title>', f'<title>{title}</title>', sec_html, flags=re.DOTALL)
             sec_html = re.sub(r'<meta name="description" content=".*?">', f'<meta name="description" content="{desc}">', sec_html)
@@ -4264,6 +4270,7 @@ def build_all():
             t_html = pitch_sec_template
             t_html = re.sub(r'<title>.*?</title>', f'<title>{meta_title}</title>', t_html, flags=re.DOTALL)
             t_html = re.sub(r'<meta name="description" content=".*?">', f'<meta name="description" content="{meta_desc}">', t_html)
+            t_html = re.sub(r'<h1 class="ai-hub-title">.*?</h1>', f'<h1 class="ai-hub-title">Probabili Formazioni {team_name} — Serie A 2026/27</h1>', t_html, flags=re.DOTALL)
             t_html = re.sub(r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="{meta_title}">', t_html)
             t_html = re.sub(r'<meta property="og:description" content=".*?">', f'<meta property="og:description" content="{meta_desc}">', t_html)
             t_html = re.sub(r'<meta property="og:url" content=".*?">', f'<meta property="og:url" content="{t_url}">', t_html)

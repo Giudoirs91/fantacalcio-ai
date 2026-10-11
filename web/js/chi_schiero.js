@@ -93,8 +93,17 @@ function calculateChiSchieroScore(player, roundNum) {
     let dynamicScore = (perfScore * 6.5) + (ovrScore * 3.5);
     factors.push({ name: 'Caratura & Expected FantaMedia (xFM)', val: `${perfScore.toFixed(2)} xFM • OVR ${ovr}`, positive: true });
 
-    // 2. TITOLARITÀ & STATUS IN ROSA
-    const tit = (player.titolarita !== undefined && player.titolarita !== null) ? Number(player.titolarita) : 70;
+    // 2. TITOLARITÀ, STATUS IN ROSA & SUPER-SUB (12° Uomo d'Oro)
+    let tit = (player.titolarita !== undefined && player.titolarita !== null) ? Number(player.titolarita) : 70;
+    if (player.is_in_11 === false) {
+        tit = player.is_in_ballottaggio ? 50 : 35;
+    } else if (player.is_in_ballottaggio) {
+        tit = 65;
+    }
+
+    const isSuperSub = (player.is_super_sub || (tit < 60 && perfScore >= 6.6 && (player.presenze_2627 || 0) >= 3));
+
+
     if (player.is_injured) {
         const inRiatlet = (typeof isPlayerInRiatletizzazione === 'function') && isPlayerInRiatletizzazione(player);
         if (inRiatlet) {
@@ -104,6 +113,9 @@ function calculateChiSchieroScore(player, roundNum) {
             dynamicScore -= 32;
             factors.push({ name: 'Infortunio / Rientro da valutare', val: '-32 pt 🩹', positive: false });
         }
+    } else if (isSuperSub) {
+        dynamicScore += 2.5;
+        factors.push({ name: `Super-Sub (12° Uomo d'Oro: subentro ad alto impatto & fanta-media elevata)`, val: '+2.5 pt ⚡', positive: true });
     } else if (tit >= 85) {
         dynamicScore += 4;
         factors.push({ name: `Titolarissimo Garantito (${tit}%)`, val: '+4 pt 🔒', positive: true });
@@ -111,22 +123,43 @@ function calculateChiSchieroScore(player, roundNum) {
         dynamicScore += 2;
         factors.push({ name: `Titolare Affidabile (${tit}%)`, val: '+2 pt 🛡️', positive: true });
     } else if (tit >= 40) {
-        // Se è un top player offensivo o rigorista, subentra quasi sempre ed è altamente pericoloso
-        if (player.ovr >= 85 || player.is_rigorista_1) {
-            dynamicScore -= 2;
-            factors.push({ name: `Staffetta / Spezzone decisivo (${tit}%)`, val: '-2 pt ⚡', positive: false });
+        if (player.ovr >= 84 || player.is_rigorista_1 || (player.fvm && player.fvm >= 28)) {
+            dynamicScore += 1.5;
+            factors.push({ name: `Top-Player in Turn-over (${tit}%): Must-have schierabile anche da subentrante!`, val: '+1.5 pt 🔥', positive: true });
         } else {
-            dynamicScore -= 5;
-            factors.push({ name: `Ballottaggio Rischioso (${tit}%)`, val: '-5 pt 🔄', positive: false });
+            dynamicScore -= 4.5;
+            factors.push({ name: `Ballottaggio Rischioso (${tit}%)`, val: '-4.5 pt 🔄', positive: false });
         }
     } else {
-        dynamicScore -= 12;
-        factors.push({ name: `Rischio s.v. / Panchina (<40%)`, val: '-12 pt 🪑', positive: false });
+        if (player.ovr >= 88 || (player.fvm && player.fvm >= 45)) {
+            dynamicScore -= 2.0;
+            factors.push({ name: `Top Player a riposo (${tit}%): Spezzone finale a voto con potenziale bonus`, val: '-2 pt ⚡', positive: false });
+        } else {
+            dynamicScore -= 12;
+            factors.push({ name: `Rischio s.v. / Panchina (<40%)`, val: '-12 pt 🪑', positive: false });
+        }
     }
 
-    // 3. MATCHUP DIFENSIVO AVVERSARIO & FATTORE CAMPO
+    // 3. MATCHUP DIFENSIVO AVVERSARIO, FATTORE CAMPO & BIG MATCH
     if (fixture) {
         const oppStats = (typeof TEAM_STATS_DB !== 'undefined' && TEAM_STATS_DB[fixture.opp]) ? TEAM_STATS_DB[fixture.opp] : null;
+        const BIG_TEAMS = ['Inter', 'Juventus', 'Milan', 'Roma', 'Lazio', 'Atalanta', 'Napoli'];
+        const playerTeamIsBig = BIG_TEAMS.includes(player.team);
+        const oppTeamIsBig = BIG_TEAMS.includes(fixture.opp);
+
+        // Big Match Index (Scontro diretto tra Top Club o Trasferta Proibitiva)
+        if (playerTeamIsBig && oppTeamIsBig) {
+            if (player.role === 'A' && ovr < 88) {
+                dynamicScore -= 1.5;
+                factors.push({ name: `Big Match Tattico (${player.team} vs ${fixture.opp}): spazi stretti`, val: '-1.5 pt 🛡️', positive: false });
+            } else if (player.role === 'D' || player.role === 'C') {
+                dynamicScore -= 1.0;
+                factors.push({ name: `Big Match ad alta tensione (Rischio cartellini)`, val: '-1.0 pt 🟨', positive: false });
+            }
+        } else if (!playerTeamIsBig && oppTeamIsBig && !fixture.isHome) {
+            dynamicScore -= 3.5;
+            factors.push({ name: `Trasferta proibitiva contro Top Club (${fixture.opp})`, val: '-3.5 pt ⚠️', positive: false });
+        }
 
         // Fattore Campo (+2.5 pt casa, -1.5 pt trasferta)
         if (fixture.isHome) {
@@ -142,7 +175,6 @@ function calculateChiSchieroScore(player, roundNum) {
             const oppGc = Number(oppStats.goals_conceded_match) || 1.3;
 
             if (player.role === 'P') {
-                // Portieri: forza d'attacco rivale
                 const oppXg = Number(oppStats.xg_team) || 7.0;
                 if (oppXg <= 5.5) {
                     dynamicScore += 6;
@@ -152,9 +184,6 @@ function calculateChiSchieroScore(player, roundNum) {
                     factors.push({ name: `Attacco rivale prolifico (${oppStats.squadra}: xG ${oppXg.toFixed(1)})`, val: '-6 pt ⚠️', positive: false });
                 }
             } else {
-                // Giocatori di movimento: vulnerabilità difesa rivale
-                // es. Lecce (xGA 11.6, 2.0 gol subiti) -> Difesa Fragile (+6.5 pt)
-                // es. Frosinone / Juventus (0.8 gol subiti) -> Difesa Blindata (-4 pt)
                 if (oppGc <= 0.85) {
                     dynamicScore -= 4;
                     factors.push({ name: `Difesa rivale blindata (${oppStats.squadra}: solo ${oppGc.toFixed(1)} gol subiti/partita)`, val: '-4 pt 🛡️', positive: false });
@@ -169,7 +198,6 @@ function calculateChiSchieroScore(player, roundNum) {
                 }
 
                 // 4. POTENZIALE DI RISCATTO (Bounce-Back Factor):
-                // Top player (OVR >= 85) a secco di bonus nelle prime gare che affrontano difese fragili
                 if (player.ovr >= 85 && (player.gol_2627 || 0) === 0 && (oppXga >= 8.5 || oppGc >= 1.6)) {
                     dynamicScore += 4.5;
                     factors.push({ name: `Potenziale di Riscatto Elevato: Top player a secco contro retroguardia debole (${oppStats.squadra})`, val: '+4.5 pt 🚀', positive: true });
@@ -178,13 +206,19 @@ function calculateChiSchieroScore(player, roundNum) {
         }
     }
 
+
     // 5. BONUS DA FERMO (Rigori & Piazzati)
     if (player.is_rigorista_1 || player.rigorista_val === '1° Rigorista') {
         dynamicScore += 5;
         factors.push({ name: '1° Rigorista Ufficiale (+3 dal dischetto)', val: '+5 pt 👑', positive: true });
     } else if (player.is_rigorista_2 || player.rigorista_val === '2° Rigorista') {
-        dynamicScore += 2;
-        factors.push({ name: '2° Rigorista Designato', val: '+2 pt 🎯', positive: true });
+        if (player.inherited_penalty) {
+            dynamicScore += 5.5;
+            factors.push({ name: '1° Rigorista Ereditato (Titolare infortunato/assente)', val: '+5.5 pt 👑', positive: true });
+        } else {
+            dynamicScore += 2;
+            factors.push({ name: '2° Rigorista Designato', val: '+2 pt 🎯', positive: true });
+        }
     }
 
     if (player.is_punizioni || player.is_corner) {
@@ -192,7 +226,27 @@ function calculateChiSchieroScore(player, roundNum) {
         factors.push({ name: 'Specialista Piazzati & Corner (Bonus xA)', val: '+2.5 pt 📐', positive: true });
     }
 
-    // 6. CARTELLINI & DISCIPLINA
+    // 6. FUORI RUOLO POSITIVO (FRP - Out of Position)
+    if (player.role === 'C' && (player.is_frp || (player.frp_level && player.frp_level !== 'NESSUNO'))) {
+        const bonusFRP = (player.frp_level === 'ORO') ? 4.0 : ((player.frp_level === 'ARGENTO') ? 3.0 : 2.5);
+        dynamicScore += bonusFRP;
+        factors.push({ name: `Fuori Ruolo Positivo (${player.frp_level || 'Tridente/Seconda Punta'})`, val: `+${bonusFRP.toFixed(1)} pt 🚀`, positive: true });
+    }
+
+    // 7. MOMENTO DI FORMA & TREND RECENTE (Hot-Streak 3 Gare)
+    const fm26 = Number(player.fm_2627) || 0;
+    if (fm26 >= 7.5 || player.is_hot_streak) {
+        dynamicScore += 3.0;
+        factors.push({ name: 'Momento d\'Oro (Hot-Streak Recente FM > 7.5)', val: '+3.0 pt 🔥', positive: true });
+    }
+
+    // 8. RISCHIO ORARIO MATCH & CERTEZZA FORMAZIONE (Posticipi con Ballottaggio)
+    if (fixture && fixture.isPosticipo && tit < 55) {
+        dynamicScore -= 2.0;
+        factors.push({ name: 'Posticipo con Ballottaggio Aperto (Rischio incertezza alla consegna)', val: '-2.0 pt ⏰', positive: false });
+    }
+
+    // 9. CARTELLINI & DISCIPLINA
     const amm = Number(player.amm_2627) || 0;
     const esp = Number(player.esp_2627) || 0;
     if (esp > 0) {
@@ -208,6 +262,7 @@ function calculateChiSchieroScore(player, roundNum) {
         factors: factors,
         fixture: fixture
     };
+
 }
 
 function calculateChiSchieroVerdict(playerA, playerB, roundNum) {

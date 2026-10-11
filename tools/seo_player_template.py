@@ -87,6 +87,9 @@ def render_unified_header(rel_path=""):
                         <a href="{rel_path}probabili-formazioni/" class="dropdown-item">⚽ Campo 2D &amp; Schemi Club</a>
                         <a href="{rel_path}confronto-calciatori/" class="dropdown-item">⚔️ Matchup 1vs1 Calciatori</a>
                         <a href="{rel_path}griglia-portieri/" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{rel_path}infortunati-serie-a/" class="dropdown-item">🩺 Infortunati &amp; Tempi di Recupero</a>
+                        <a href="{rel_path}rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
                     </div>
                 </div>
 
@@ -100,9 +103,6 @@ def render_unified_header(rel_path=""):
                         <a href="{rel_path}chi-schiero/" class="dropdown-item">⚔️ Tool "Chi Schiero?" (Ballottaggi 1vs1)</a>
                         <a href="{rel_path}top-11-ai/" class="dropdown-item">🧠 5 Squadre Perfette AI</a>
                         <a href="{rel_path}scommesse-talenti/" class="dropdown-item">🔮 Gemme &amp; Sleeper AI</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="{rel_path}infortunati-serie-a/" class="dropdown-item">🩺 Infortunati &amp; Tempi di Recupero</a>
-                        <a href="{rel_path}rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
                     </div>
                 </div>
             </nav>

@@ -101,8 +101,11 @@ async function submitCreatorAuth() {
     const hash = await hashSha256(pwd);
     const customHash = localStorage.getItem('FANTA_CREATOR_PWD_HASH');
     const ALLOWED_HASHES = [
-        '4be6e680a6dd2ee9957770984dd0c7f2dd8be7c703b44b80b7d7809630c8225d', // hash 1991
-        '56a4221a71ca2eb05b76c8c4a45a19fe99ba28d9ffb4b4d7fca1caec83a31c59'  // hash fantapass2026
+        'e99fade3573de8fd953ad23cd9e0cc7d8caa79db75753f413b7eae09c1f98d62', // fantapass26
+        '8e9b669109df89620b94f2387dc53206a82ddc71d658f8f7a2b3a9b417370d3e', // 1991
+        'e01c494e5f7a7bc3499cf10495e6b1aa8093b0f0c4b946662390c0f8cba79231', // fantapass2026
+        '4be6e680a6dd2ee9957770984dd0c7f2dd8be7c703b44b80b7d7809630c8225d',
+        '56a4221a71ca2eb05b76c8c4a45a19fe99ba28d9ffb4b4d7fca1caec83a31c59'
     ];
     if (customHash) ALLOWED_HASHES.push(customHash);
     if (ALLOWED_HASHES.includes(hash)) {

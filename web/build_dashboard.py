@@ -129,6 +129,7 @@ def build_standalone_dashboard(sync_android=False):
     <meta name="description" content="Il portale statistico n°1 in Italia per il Fantacalcio: expected metrics (xG, xA, xFM), algoritmi predittivi, griglia portieri 38/38, rigoristi, probabili formazioni e consigli su chi schierare.">
     <meta name="keywords" content="statistiche fantacalcio, consigli fantacalcio chi schierare, xg fantacalcio, xfm expected fantamedia, probabili formazioni serie a 2026 2027, griglia portieri fantacalcio, rigoristi serie a">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.fantamasterai.it/">
     <meta property="og:title" content="Statistiche Fantacalcio Serie A 2026/27 — xG, xA, xFM & Consigli Formazione | Fanta Master AI">
     <meta property="og:description" content="Expected metrics ufficiali, algoritmi di previsione bonus, griglia portieri e consigli di formazione per vincere al Fantacalcio.">
     <meta property="og:type" content="website">
@@ -218,6 +219,11 @@ def build_standalone_dashboard(sync_android=False):
                     <span>🏠</span> Home
                 </a>
 
+                <!-- 0-BIS. LA MIA ROSA -->
+                <button class="nav-direct-btn" id="tabMySquadNavBtn" onclick="openMySquadModal()" style="background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.4); color: #4ade80;" title="Gestisci la tua Rosa e Calcola la Formazione Perfetta">
+                    <span>📋</span> La Mia Rosa
+                </button>
+
                 <!-- 1. LISTONE CALCIATORI -->
                 <a href="/listone/" class="nav-direct-btn" id="tabAuctionBtn" onclick="onNavClick(event, 'auction')" title="Tabellone & Listone Calciatori">
                     <span>📋</span> Listone Calciatori
@@ -235,6 +241,9 @@ def build_standalone_dashboard(sync_android=False):
                         <a href="/probabili-formazioni/" class="dropdown-item" id="tabPitchBtn" onclick="onNavClick(event, 'pitch')">⚽ Campo 2D & Schemi Club</a>
                         <a href="/confronto-calciatori/" class="dropdown-item" id="tabMatchupBtn" onclick="onNavClick(event, 'matchup')">⚔️ Matchup 1vs1 Calciatori</a>
                         <a href="/griglia-portieri/" class="dropdown-item" id="tabGkBtn" onclick="onNavClick(event, 'gk')">🧤 Griglia Portieri 38/38</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/infortunati-serie-a/" class="dropdown-item">🩺 Infortunati & Tempi di Recupero</a>
+                        <a href="/rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi & Calci Piazzati</a>
                     </div>
                 </div>
 
@@ -248,15 +257,17 @@ def build_standalone_dashboard(sync_android=False):
                         <a href="/chi-schiero/" class="dropdown-item" id="tabChiSchieroBtn" onclick="onNavClick(event, 'chi_schiero')">⚔️ Tool "Chi Schiero?" (Ballottaggi 1vs1)</a>
                         <a href="/top-11-ai/" class="dropdown-item" id="tabAiSquadsBtn" onclick="onNavClick(event, 'ai_squads')">🔒 5 Squadre Perfette AI <span style="font-size:10px;background:rgba(239,68,68,0.2);color:#f87171;padding:2px 6px;border-radius:4px;font-weight:700;margin-left:6px;">In Aggiornamento</span></a>
                         <a href="/scommesse-talenti/" class="dropdown-item" id="tabGemsBtn" onclick="onNavClick(event, 'gems')">🔮 Gemme & Scommesse AI</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="/infortunati-serie-a/" class="dropdown-item">🩺 Infortunati & Tempi di Recupero</a>
-                        <a href="/rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi & Calci Piazzati</a>
                     </div>
                 </div>
             </nav>
 
             <!-- RIGHT: MODERN ACTIONS -->
             <div class="header-right">
+                <!-- EASY / PRO DATA VIEW TOGGLE -->
+                <div class="data-view-toggle" style="display:inline-flex; background:rgba(15,23,42,0.8); border:1px solid rgba(255,255,255,0.12); border-radius:99px; padding:3px; gap:3px;">
+                    <button class="view-mode-toggle-btn easy-btn active" data-mode="easy" onclick="setDataViewMode('easy')" style="padding:4px 12px; border-radius:99px; border:none; background:#10b981; color:#fff; font-weight:800; font-size:12px; cursor:pointer;" title="Vista Semplice: Giudizi in Italiano e Stelle">🟢 Semplice</button>
+                    <button class="view-mode-toggle-btn pro-btn" data-mode="pro" onclick="setDataViewMode('pro')" style="padding:4px 12px; border-radius:99px; border:none; background:transparent; color:#94a3b8; font-weight:700; font-size:12px; cursor:pointer;" title="Vista PRO: xFM, Δ xFM, xG90, xA90 e Radar SVG">⚡ PRO Data</button>
+                </div>
                 <!-- CANALI SOCIAL: TELEGRAM & INSTAGRAM -->
                 <a href="https://t.me/fantamasterai" target="_blank" rel="noopener noreferrer" class="social-header-btn social-btn-telegram" title="Canale Telegram Ufficiale @fantamasterai" aria-label="Canale Telegram Ufficiale">
                     <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
@@ -340,7 +351,7 @@ def build_standalone_dashboard(sync_android=False):
 
         <!-- Tab 0-Bis: Home Page Principale (AI Command Center & Predictive Hub) -->
         <section id="viewHome" class="tab-content active" style="display:flex;flex-direction:column;gap:20px;width:100%;">
-            <div class="ai-hub-container">
+            <div class="ai-hub-container" style="display:flex; flex-direction:column; gap:24px;">
 
                 <!-- 1. HERO NEURAL COMMAND CENTER -->
                 <div class="ai-hub-hero">
@@ -352,7 +363,7 @@ def build_standalone_dashboard(sync_android=False):
                         </span>
                         <span class="ai-badge-chip tech">🧠 Motore Predittivo xFM v2.4</span>
                         <span class="ai-badge-chip purple">📊 534 Calciatori Modellati</span>
-                        <span class="ai-badge-chip tech">🏟️ 20 Club su Campo 2D</span>
+                        <span class="ai-badge-chip tech">🏟️ Le 20 Formazioni Tipo</span>
                     </div>
 
                     <!-- Main Catchy Title -->
@@ -378,25 +389,45 @@ def build_standalone_dashboard(sync_android=False):
                     <div class="ai-hub-quick-chips">
                         <span class="quick-chip-lbl">Ricerche Rapide:</span>
                         <button class="hub-chip-btn" onclick="openPlayerByName('Malen')">🔥 Malen</button>
-                        <button class="hub-chip-btn" onclick="openPlayerByName('Lautaro')">⚡ Lautaro</button>
+                        <button class="hub-chip-btn" onclick="openPlayerByName('Lautaro Martinez')">⚡ Lautaro</button>
                         <button class="hub-chip-btn" onclick="openPlayerByName('Dybala')">🎯 Dybala</button>
-                        <button class="hub-chip-btn" onclick="openPlayerByName('Paz N.')">💎 Nico Paz</button>
+                        <button class="hub-chip-btn" onclick="openPlayerByName('Nico Paz')">💎 Nico Paz</button>
                         <button class="hub-chip-btn" onclick="openPlayerByName('Dimarco')">🛡️ Dimarco</button>
                         <button class="hub-chip-btn" onclick="openPlayerByName('Svilar')">🧤 Svilar</button>
                         <button class="hub-chip-btn" onclick="openPlayerByName('Woltemade')">🔮 Woltemade</button>
                     </div>
 
-                    <!-- Primary CTAs -->
+                    <!-- Primary CTAs (senza il pulsante duplicato Importa Rosa) -->
                     <div class="ai-hub-cta-bar">
                         <button class="hub-cta-btn primary" onclick="switchTab('chi_schiero')">
                             <span>⚔️ Risolvi un Ballottaggio (Chi Schiero 1vs1)</span>
                         </button>
                         <button class="hub-cta-btn secondary" onclick="switchTab('pitch')">
-                            <span>🏟️ Probabili Formazioni 2D &amp; Schemi</span>
+                            <span>🏟️ Le 20 Formazioni Tipo</span>
                         </button>
                         <button class="hub-cta-btn secondary" onclick="switchTab('auction')">
                             <span>📋 Listone &amp; Valutazioni FVM</span>
                         </button>
+                    </div>
+                </div>
+
+                <!-- HERO CARD: LA MIA ROSA & FORMAZIONE AI (Stessa larghezza della sezione benvenuto, posizionata subito sotto) -->
+                <div class="my-squad-hero-card" style="width: 100%; box-sizing: border-box; background: linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(30,41,59,0.95) 100%); border: 1px solid rgba(56,189,248,0.28); border-radius: 24px; padding: 26px 36px; box-shadow: 0 12px 30px rgba(0,0,0,0.5);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+                        <div>
+                            <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(34,197,94,0.15); border:1px solid rgba(34,197,94,0.4); padding:4px 14px; border-radius:99px; color:#4ade80; font-size:12px; font-weight:800; text-transform:uppercase; margin-bottom:10px;">
+                                ✨ FUNZIONE ROSA &amp; FORMAZIONE AI
+                            </div>
+                            <h2 style="font-size: 1.65rem; font-weight: 900; color: #f8fafc; font-family:'Outfit',sans-serif; margin:0 0 6px 0;">📋 Carica la Tua Rosa &amp; Schiera la Formazione Perfetta</h2>
+                            <p style="color: #94a3b8; font-size: 0.95rem; max-width: 720px; margin:0; line-height:1.5;">
+                                Trascina il file <code>rose.csv</code> / <code>rose.xml</code> scaricato da Leghe Fantacalcio.it o incolla i tuoi 25 calciatori. L'algoritmo calcolerà i titolari ideali, la panchina ordinata e i ballottaggi per il weekend (Classic con Modificatore &amp; 11 Schemi Mantra).
+                            </p>
+                        </div>
+                        <div style="display:flex; gap:12px;">
+                            <button class="btn-primary" onclick="openMySquadModal()" style="font-size:1rem; padding:14px 26px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); border:none; border-radius:14px; font-weight:800; cursor:pointer; box-shadow:0 8px 20px rgba(16,185,129,0.35); color:#fff; white-space:nowrap;">
+                                ⚡ Importa Rosa &amp; Schiera AI
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -548,15 +579,15 @@ def build_standalone_dashboard(sync_android=False):
                             </div>
                         </div>
 
-                        <!-- Tool 2: Probabili Formazioni 2D -->
+                        <!-- Tool 2: Le 20 Formazioni Tipo -->
                         <div class="ai-cap-card" onclick="switchTab('pitch')">
                             <div>
                                 <div class="cap-card-top">
                                     <div class="cap-icon-box" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#38bdf8;">🏟️</div>
                                     <span class="cap-badge-tag">20 Club 2D</span>
                                 </div>
-                                <h3 class="cap-title">Probabili Formazioni 2D</h3>
-                                <p class="cap-desc">Lavagna tattica interattiva per tutti i 20 club di Serie A. Percentuali di titolarità stimate, ballottaggi aperti, gerarchie rigoristi e tiratori piazzati.</p>
+                                <h3 class="cap-title">Le 20 Formazioni Tipo</h3>
+                                <p class="cap-desc">Lavagna tattica interattiva con le 20 formazioni tipo dei club di Serie A. Percentuali di titolarità stimate, ballottaggi aperti, gerarchie rigoristi e tiratori piazzati.</p>
                             </div>
                             <div class="cap-card-footer" style="color:#38bdf8;">
                                 <span>Vedi Schemi Club &rarr;</span>
@@ -848,7 +879,7 @@ def build_standalone_dashboard(sync_android=False):
                 <div class="portal-hero-section">
                     <div class="portal-hero-header">
                         <div class="portal-hero-title-group">
-                            <h1>⚽ Fanta Master <span class="gradient-text">AI</span></h1>
+                            <h2 style="font-size:22px;font-weight:900;margin:0 0 6px 0;">⚽ Fanta Master <span class="gradient-text">AI</span></h2>
                             <p>Il motore quantitativo che trasforma statistiche avanzate (xG, xA, xFM) in decisioni vincenti per il tuo Fantacalcio.</p>
                         </div>
                         <div class="portal-hero-pills">

@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /admin/
-Disallow: /storage/
+Disallow: /data/
+Disallow: /config/
+Disallow: /src/
+Disallow: /tools/
+Disallow: /tests/
 
-# Search Engine Indexing & Sitemaps
-Sitemap: https://fantamasterai.it/sitemap.xml
+Sitemap: https://www.fantamasterai.it/sitemap.xml

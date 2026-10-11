@@ -33,7 +33,8 @@ web/
 *.md
 setup.py
 main.py
-requirements.txt
+/requirements.txt
+!api/requirements.txt
 package.json
 package-lock.json
 valid_endpoint_response.json

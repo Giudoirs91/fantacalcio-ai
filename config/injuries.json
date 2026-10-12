@@ -1,15 +1,5 @@
 [
   {
-    "player": "Hien",
-    "player_id": null,
-    "team": "Atalanta",
-    "motivo": "Lesione del tendine del semimembranoso della gamba sinistra",
-    "rientro": "11/10/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com"
-  },
-  {
     "player": "Kossounou",
     "player_id": null,
     "team": "Atalanta",
@@ -25,16 +15,6 @@
     "team": "Atalanta",
     "motivo": "Distrazione di basso grado del muscolo bicipite femorale della coscia destra",
     "rientro": "21/10/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com"
-  },
-  {
-    "player": "Sulemana K.",
-    "player_id": null,
-    "team": "Atalanta",
-    "motivo": "Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro",
-    "rientro": "11/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "fantacalcio-online.com"
@@ -85,26 +65,6 @@
     "team": "Cagliari",
     "motivo": "Nuovo infortunio al ginocchio (da accertare con esami strumentali)",
     "rientro": "09/02/2027",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com"
-  },
-  {
-    "player": "Idrissi R.",
-    "player_id": null,
-    "team": "Cagliari",
-    "motivo": "Intervento di ricostruzione del legamento crociato anteriore del ginocchio sinistro",
-    "rientro": "11/10/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com"
-  },
-  {
-    "player": "Addai",
-    "player_id": null,
-    "team": "Como",
-    "motivo": "Operato per la rottura del tendine d'Achille della gamba sinistra",
-    "rientro": "11/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "fantacalcio-online.com"
@@ -340,16 +300,6 @@
     "fonte": "fantacalcio-online.com"
   },
   {
-    "player": "Idzes",
-    "player_id": null,
-    "team": "Sassuolo",
-    "motivo": "Lesione di grado moderato al quadricipite della gamba sinistra",
-    "rientro": "11/10/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com"
-  },
-  {
     "player": "Konè I.",
     "player_id": null,
     "team": "Sassuolo",
@@ -365,16 +315,6 @@
     "team": "Sassuolo",
     "motivo": "Lesione (natura e sede non specificate)",
     "rientro": "21/10/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com"
-  },
-  {
-    "player": "Adams C.",
-    "player_id": null,
-    "team": "Torino",
-    "motivo": "Problema all'adduttore",
-    "rientro": "11/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "fantacalcio-online.com"

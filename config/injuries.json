@@ -1,183 +1,103 @@
 [
   {
-    "player": "Sulemana K.",
+    "player": "Kossounou",
+    "player_id": null,
     "team": "Atalanta",
-    "motivo": "Lesione del collaterale mediale di secondo grado del ginocchio sinistro, in dubbio per la 6a",
-    "rientro": "G6",
-    "severity": "orange",
+    "motivo": "Risentimento muscolare ai flessori della coscia sinistra",
+    "rientro": "29/10/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Raspadori",
+    "player_id": null,
     "team": "Atalanta",
-    "motivo": "Distrazione di basso grado del muscolo bicipite femorale della coscia destra, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Hien",
-    "team": "Atalanta",
-    "motivo": "Fuori per una lesione del tendine prossimale del muscolo semimembranoso della coscia sinistra, in dubbio per la 12a",
-    "rientro": "G12",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Kossounou",
-    "team": "Atalanta",
-    "motivo": "Lesione di medio-alto grado del bicipite femorale della coscia sinistra, in dubbio per la 12a",
-    "rientro": "G12",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Pompei",
-    "team": "Atalanta",
-    "motivo": "Frattura della falange intermedia della mano destra, in dubbio per la 12a.",
-    "rientro": "G12",
+    "motivo": "Distrazione di basso grado del muscolo bicipite femorale della coscia destra",
+    "rientro": "21/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Odgaard",
-    "team": "Bologna",
-    "motivo": "Lesione ai flessori della coscia destra, in dubbio per la 8a",
-    "rientro": "G8",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Holm",
+    "player_id": null,
     "team": "Bologna",
-    "motivo": "Intervento chirurgico di sutura del tendine degli hamstring della coscia destra, tempi di recupero previsti di 4-6 mesi dal 1 ottobre.",
-    "rientro": "4-6 mesi dal 1 ottobre",
+    "motivo": "Lesione al bicipite femorale della coscia destra",
+    "rientro": "29/01/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
-    "player": "Idrissi R.",
-    "team": "Cagliari",
-    "motivo": "Intervento chirurgico di ricostruzione del legamento crociato anteriore del ginocchio sinistro, in dubbio per la 7a",
-    "rientro": "G7",
+    "player": "Odgaard",
+    "player_id": null,
+    "team": "Bologna",
+    "motivo": "Lesione ai flessori della coscia destra",
+    "rientro": "21/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
+  },
+  {
+    "player": "Deiola",
+    "player_id": null,
+    "team": "Cagliari",
+    "motivo": "Lesione del menisco laterale del ginocchio sinistro, operato con meniscectomia esterna artroscopica selettiva",
+    "rientro": "28/10/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Felici",
+    "player_id": null,
     "team": "Cagliari",
-    "motivo": "Rottura del legamento crociato anteriore, in dubbio per 29a.",
-    "rientro": "In dubbio",
+    "motivo": "Nuovo infortunio al ginocchio (da accertare con esami strumentali)",
+    "rientro": "09/02/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Kean",
+    "player_id": null,
     "team": "Como",
-    "motivo": "Forte contusione, in dubbio per la 7a.",
-    "rientro": "G7",
-    "severity": "orange",
+    "motivo": "Problema alla tibia",
+    "rientro": "20/10/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Atta",
-    "team": "Fiorentina",
-    "motivo": "Sovraccarico funzionale all'addome, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Parisi",
+    "player_id": null,
     "team": "Fiorentina",
-    "motivo": "Intervento chirurgico per la lesione del legamento crociato anteriore del ginocchio destro, in dubbio per la 10a.",
-    "rientro": "G10",
+    "motivo": "Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro",
+    "rientro": "01/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Birligea",
-    "team": "Frosinone",
-    "motivo": "Lesione del vasto intermedio del quadricipite sinistro, in dubbio per l'8a",
-    "rientro": "In dubbio",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Grillitsch",
-    "team": "Frosinone",
-    "motivo": "Intervento chirurgico per il trattamento di Sports Hernia destra, in dubbio per la 9a.",
-    "rientro": "G9",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Amorim",
-    "team": "Genoa",
-    "motivo": "Problema alla caviglia, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Havel",
-    "team": "Genoa",
-    "motivo": "Infortunio alla caviglia, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Meichtry",
-    "team": "Genoa",
-    "motivo": "Distrazione della muscolatura di un’anca, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Sow",
-    "team": "Genoa",
-    "motivo": "Problema muscolare, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Venturino",
-    "team": "Genoa",
-    "motivo": "Intervento chirurgico di “pulizia” del tendine rotuleo, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Colombo",
+    "player_id": null,
     "team": "Genoa",
-    "motivo": "Distorsione alla caviglia, in dubbio per l'8a.",
-    "rientro": "In dubbio",
-    "severity": "orange",
+    "motivo": "Trauma distorsivo alla caviglia sinistra",
+    "rientro": "01/11/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
+  },
+  {
+    "player": "Venturino",
+    "player_id": null,
+    "team": "Genoa",
+    "motivo": "Operato al ginocchio",
+    "rientro": "30/10/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Jones C.",
@@ -191,416 +111,262 @@
   },
   {
     "player": "Stones",
+    "player_id": null,
     "team": "Inter",
-    "motivo": "Risentimento ai flessori della coscia sinistra, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
+    "motivo": "Risentimento ai flessori della coscia sinistra",
+    "rientro": "17/10/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Jones C.",
-    "team": "Inter",
-    "motivo": "Risentimento miofasciale agli adduttori della coscia destra, in dubbio per la 10a.",
-    "rientro": "G10",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Boga",
+    "player_id": null,
     "team": "Juventus",
-    "motivo": "Lesione di medio grado del bicipite femorale, in dubbio per la 8a",
-    "rientro": "G8",
-    "severity": "orange",
+    "motivo": "Lesione di medio grado del bicipite femorale della coscia sinistra",
+    "rientro": "13/10/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Ekhator",
+    "player_id": null,
     "team": "Juventus",
-    "motivo": "Lesione di medio grado del muscolo semitendinoso, in dubbio per la 8a",
-    "rientro": "G8",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Yildiz",
-    "team": "Juventus",
-    "motivo": "Operato per frattura al quinto metatarso del piede sinistro, in dubbio per la 13a",
-    "rientro": "G13",
+    "motivo": "Lesione di basso grado del bicipite femorale della gamba destra",
+    "rientro": "02/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Locatelli",
-    "team": "Juventus",
-    "motivo": "Operazione al menisco del ginocchio, in dubbio per la 17a",
-    "rientro": "G17",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Thuram K.",
-    "team": "Juventus",
-    "motivo": "Intervento di condroplastica per la guarigione della condropatia rotulea del ginocchio destro, in dubbio per la 17a",
-    "rientro": "G17",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Grabara",
+    "player_id": null,
     "team": "Juventus",
-    "motivo": "Lesione del legamento crociato anteriore del ginocchio destro, in dubbio per la 30a.",
-    "rientro": "G30",
+    "motivo": "Rottura del legamento crociato del ginocchio destro, da trauma distorsivo in allenamento",
+    "rientro": "31/07/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
-    "player": "Neto",
+    "player": "Locatelli",
+    "player_id": null,
     "team": "Juventus",
-    "motivo": "Squalificato per 1 giornata",
-    "rientro": "Prossima Giornata",
+    "motivo": "Problema al menisco del ginocchio destro (in valutazione, possibile intervento chirurgico o terapia conservativa)",
+    "rientro": "08/02/2027",
     "severity": "red",
-    "tipo_stop": "Squalificato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "tipo_stop": "Infortunato",
+    "fonte": "fantacalcio-online.com"
   },
   {
-    "player": "Przyborek",
-    "team": "Lazio",
-    "motivo": "Affaticamento muscolare all'adduttore, in dubbio per la 6a",
-    "rientro": "G6",
-    "severity": "orange",
+    "player": "Thuram K.",
+    "player_id": null,
+    "team": "Juventus",
+    "motivo": "Sindrome femoro-rotulea al ginocchio",
+    "rientro": "01/01/2027",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
+  },
+  {
+    "player": "Yildiz",
+    "player_id": null,
+    "team": "Juventus",
+    "motivo": "Infortunio al piede sinistro, possibile intervento chirurgico",
+    "rientro": "26/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Rovella",
+    "player_id": null,
     "team": "Lazio",
-    "motivo": "Lesione muscolare al polpaccio, in dubbio per la 6a",
-    "rientro": "G6",
-    "severity": "orange",
+    "motivo": "Problema al polpaccio destro",
+    "rientro": "15/10/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Cancellieri",
-    "team": "Lazio",
-    "motivo": "Taglio sulla gamba, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Marusic",
-    "team": "Lazio",
-    "motivo": "Affaticamento muscolare, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Gudmundsson A.",
-    "team": "Lazio",
-    "motivo": "Lussazione dell’articolazione gleno-omerale destra, spontaneamente ridotta, in dubbio per la 8a.",
-    "rientro": "G8",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Berisha M.",
-    "team": "Lecce",
-    "motivo": "Sovraccarico, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Stulic",
-    "team": "Lecce",
-    "motivo": "Riacutizzarsi di un problema muscolare, in dubbio per la 7a.",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Terracciano",
-    "team": "Milan",
-    "motivo": "Trauma alla spalla destra, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Saelemaekers",
+    "player_id": null,
     "team": "Milan",
-    "motivo": "Sarà sottoposto ad intervento chirurgico per un problema alla caviglia destra, rientro previsto per il 2027 inoltrato.",
-    "rientro": "il 2027 inoltrato",
+    "motivo": "Distorsione alla caviglia destra senza lesioni ossee né danni capsulo-legamentosi",
+    "rientro": "08/02/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Tourè I.",
-    "team": "Monza",
-    "motivo": "Sta recuperando da un infortunio al ginocchio, in dubbio per la 6a",
-    "rientro": "G6",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Pessina",
+    "player_id": null,
     "team": "Monza",
-    "motivo": "Operato per lussazione della rotula del ginocchio destro, in dubbio per la 9a",
-    "rientro": "G9",
+    "motivo": "Operato per la lussazione della rotula del ginocchio destro",
+    "rientro": "28/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Ziolkowski",
-    "team": "Monza",
-    "motivo": "Problema alla fascia plantare, in dubbio per la 9a.",
-    "rientro": "G9",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Olivera",
-    "team": "Napoli",
-    "motivo": "Lieve lesione all'inguine, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Santos A.",
-    "team": "Napoli",
-    "motivo": "Lesione di medio grado del bicipite femorale sinistro, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Zambo Anguissa",
-    "team": "Napoli",
-    "motivo": "Ritardo di condizione post-infortunio, in dubbio per la 7a",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
-  },
-  {
-    "player": "Vergara",
-    "team": "Napoli",
-    "motivo": "Lesione distrattiva di medio grado del soleo destro, in dubbio per la 10a",
-    "rientro": "G10",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Buongiorno",
+    "player_id": null,
     "team": "Napoli",
-    "motivo": "Intervento chirurgico di riparazione della radice del menisco mediale del ginocchio destro, in dubbio per la 12a",
-    "rientro": "G12",
+    "motivo": "Intervento di riparazione della radice del menisco mediale del ginocchio destro",
+    "rientro": "31/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Favasuli",
+    "player_id": null,
     "team": "Napoli",
-    "motivo": "Lesione di secondo grado del retto femorale della coscia destra, in dubbio per la 12a.",
-    "rientro": "G12",
-    "severity": "orange",
+    "motivo": "Lesione muscolare (rientrato al Napoli dopo valutazione medica con la Nazionale U21)",
+    "rientro": "30/11/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta (Aggiornato 10/10/2026)"
+    "fonte": "fantacalcio-online.com"
   },
   {
-    "player": "Ndiaye",
-    "team": "Parma",
-    "motivo": "Contusione in allenamento",
-    "rientro": "G7",
-    "severity": "orange",
+    "player": "Olivera",
+    "player_id": null,
+    "team": "Napoli",
+    "motivo": "Lesione distrattiva del muscolo otturatore esterno destro",
+    "rientro": "05/11/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
+    "fonte": "fantacalcio-online.com"
   },
   {
-    "player": "Almqvist",
-    "team": "Parma",
-    "motivo": "Lesione di basso grado del polpaccio della gamba sinistra",
-    "rientro": "G9",
-    "severity": "orange",
+    "player": "Santos A.",
+    "player_id": null,
+    "team": "Napoli",
+    "motivo": "Lesione di medio grado del bicipite femorale sinistro",
+    "rientro": "15/10/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
+    "fonte": "fantacalcio-online.com"
+  },
+  {
+    "player": "Vergara",
+    "player_id": null,
+    "team": "Napoli",
+    "motivo": "Lesione distrattiva di medio grado del soleo destro",
+    "rientro": "08/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Nicolussi Caviglia",
+    "player_id": null,
     "team": "Parma",
-    "motivo": "Sindrome pubalgica",
-    "rientro": "G12",
-    "severity": "orange",
+    "motivo": "Lesione di medio grado alla coscia destra",
+    "rientro": "02/11/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Cristante",
+    "player_id": null,
     "team": "Roma",
-    "motivo": "Fastidio al ginocchio",
-    "rientro": "G7",
-    "severity": "orange",
+    "motivo": "Lombalgia",
+    "rientro": "26/10/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Svilar",
+    "player_id": null,
     "team": "Roma",
-    "motivo": "Frattura da stress al quinto dito del piede",
-    "rientro": "G12",
+    "motivo": "Frattura a un dito",
+    "rientro": "10/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
-  },
-  {
-    "player": "Koulierakis",
-    "team": "Roma",
-    "motivo": "Problema fisico da valutare",
-    "rientro": "In dubbio",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
-  },
-  {
-    "player": "Boloca",
-    "team": "Sassuolo",
-    "motivo": "Intervento chirurgico in artroscopia al ginocchio sinistro per la pulizia meniscale e applicazione PRP",
-    "rientro": "G7",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
-  },
-  {
-    "player": "Idzes",
-    "team": "Sassuolo",
-    "motivo": "Lesione di grado moderato al quadricipite della gamba sinistra",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
-  },
-  {
-    "player": "Pieragnolo",
-    "team": "Sassuolo",
-    "motivo": "Intervento chirurgico di ricostruzione del Legamento Crociato Anteriore del ginocchio destro",
-    "rientro": "G7",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Konè I.",
+    "player_id": null,
     "team": "Sassuolo",
     "motivo": "Intervento di riduzione della frattura della gamba sinistra",
-    "rientro": "G20",
+    "rientro": "17/01/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
+    "fonte": "fantacalcio-online.com"
   },
   {
-    "player": "Fortini",
-    "team": "Torino",
-    "motivo": "Problema muscolare alla coscia destra",
-    "rientro": "G6",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
-  },
-  {
-    "player": "Piotrowski",
-    "team": "Udinese",
-    "motivo": "Lieve aritmia cardiaca benigna ed intervento di ablazione cardiaca",
-    "rientro": "G6",
+    "player": "Volpato",
+    "player_id": null,
+    "team": "Sassuolo",
+    "motivo": "Lesione (natura e sede non specificate)",
+    "rientro": "21/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
-  },
-  {
-    "player": "Zaniolo",
-    "team": "Udinese",
-    "motivo": "Lesione al bicipite femorale della coscia destra",
-    "rientro": "G8",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Gueye",
+    "player_id": null,
     "team": "Udinese",
-    "motivo": "Intervento chirurgico alla caviglia destra",
-    "rientro": "G17",
+    "motivo": "Distorsione alla caviglia destra, con sospetto interessamento dei legamenti da accertare",
+    "rientro": "05/01/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
+    "fonte": "fantacalcio-online.com"
+  },
+  {
+    "player": "Piotrowski",
+    "player_id": null,
+    "team": "Udinese",
+    "motivo": "Lieve aritmia cardiaca benigna, da sottoporre a intervento di ablazione cardiaca",
+    "rientro": "18/10/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Adorante",
+    "player_id": null,
     "team": "Venezia",
-    "motivo": "Operazione per un problema alla schiena",
-    "rientro": "G7",
+    "motivo": "Operato per un problema alla schiena",
+    "rientro": "17/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
-  },
-  {
-    "player": "Sverko",
-    "team": "Venezia",
-    "motivo": "Infortunio alle anche",
-    "rientro": "G7",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Busio",
+    "player_id": null,
     "team": "Venezia",
-    "motivo": "Distrazione intratendinea del bicipite femorale destro",
-    "rientro": "G9",
-    "severity": "orange",
+    "motivo": "Lesione muscolare alla coscia destra (problema ai flessori)",
+    "rientro": "27/10/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
+    "fonte": "fantacalcio-online.com"
   },
   {
     "player": "Franjic",
+    "player_id": null,
     "team": "Venezia",
-    "motivo": "Intervento chirurgico per una lussazione acromion-claveare",
-    "rientro": "G15",
+    "motivo": "Dislocazione della clavicola",
+    "rientro": "10/12/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
+    "fonte": "fantacalcio-online.com"
   },
   {
-    "player": "Bella-Kotchap",
+    "player": "Sverko",
+    "player_id": null,
     "team": "Venezia",
-    "motivo": "Problema fisico da valutare",
-    "rientro": "In dubbio",
-    "severity": "orange",
+    "motivo": "Infortunio alle anche",
+    "rientro": "17/10/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "SOS Fanta"
+    "fonte": "fantacalcio-online.com"
   }
 ]

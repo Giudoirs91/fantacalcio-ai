@@ -2291,28 +2291,18 @@
       "name": "Sulemana I.",
       "team": "Atalanta",
       "ruolo": "C",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione di secondo grado del legamento collaterale mediale del ginocchio sinistro",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "12/10/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Krstovic": {
       "id": 6435,

@@ -1,0 +1,242 @@
+{
+  "Atalanta": {
+    "rigoristi": [
+      "Scamacca",
+      "Krstovic",
+      "Samardzic"
+    ],
+    "calci_piazzati": [
+      "De Ketelaere",
+      "Samardzic",
+      "Gaetano"
+    ]
+  },
+  "Bologna": {
+    "rigoristi": [
+      "Orsolini",
+      "Bernardeschi",
+      "Dovbyk"
+    ],
+    "calci_piazzati": [
+      "Orsolini",
+      "Bernardeschi",
+      "Miranda J."
+    ]
+  },
+  "Cagliari": {
+    "rigoristi": [
+      "Nzola",
+      "Kevin Carlos",
+      "Mina"
+    ],
+    "calci_piazzati": [
+      "Fazzini",
+      "Maldini",
+      "Romano"
+    ]
+  },
+  "Como": {
+    "rigoristi": [
+      "Da Cunha",
+      "Kean",
+      "Douvikas"
+    ],
+    "calci_piazzati": [
+      "Paz N.",
+      "Baturina",
+      "Milla"
+    ]
+  },
+  "Fiorentina": {
+    "rigoristi": [
+      "Goncalves P.",
+      "Mastantuono",
+      "Beto"
+    ],
+    "calci_piazzati": [
+      "Mastantuono",
+      "Atta",
+      "Goncalves P."
+    ]
+  },
+  "Frosinone": {
+    "rigoristi": [
+      "Calò",
+      "Schmid",
+      "Bobcek"
+    ],
+    "calci_piazzati": [
+      "Calò",
+      "Schmid",
+      "Ghedjemis"
+    ]
+  },
+  "Genoa": {
+    "rigoristi": [
+      "Colombo",
+      "Ostigard",
+      "Osmajic"
+    ],
+    "calci_piazzati": [
+      "Baldanzi",
+      "Vitinha O.",
+      "Messias"
+    ]
+  },
+  "Inter": {
+    "rigoristi": [
+      "Calhanoglu",
+      "Zielinski",
+      "Martinez L."
+    ],
+    "calci_piazzati": [
+      "Calhanoglu",
+      "Dimarco",
+      "Zielinski"
+    ]
+  },
+  "Juventus": {
+    "rigoristi": [
+      "Kolo Muani",
+      "Woltemade",
+      "Gonzalez N."
+    ],
+    "calci_piazzati": [
+      "Yildiz",
+      "Locatelli",
+      "Douglas Luiz"
+    ]
+  },
+  "Lazio": {
+    "rigoristi": [
+      "Zaccagni",
+      "Taylor K.",
+      "Pinamonti"
+    ],
+    "calci_piazzati": [
+      "Rovella",
+      "Zaccagni",
+      "Gudmundsson A."
+    ]
+  },
+  "Lecce": {
+    "rigoristi": [
+      "Geubbels",
+      "Stulic",
+      "Berisha M."
+    ],
+    "calci_piazzati": [
+      "Pierotti",
+      "Berisha M.",
+      "Gandelman"
+    ]
+  },
+  "Milan": {
+    "rigoristi": [
+      "Ramos G.",
+      "Pulisic",
+      "Modric"
+    ],
+    "calci_piazzati": [
+      "Modric",
+      "Pulisic",
+      "Saelemaekers"
+    ]
+  },
+  "Monza": {
+    "rigoristi": [
+      "Cutrone",
+      "Varela G.",
+      "Ngonge"
+    ],
+    "calci_piazzati": [
+      "Ngonge",
+      "Folorunsho",
+      "Pessina"
+    ]
+  },
+  "Napoli": {
+    "rigoristi": [
+      "De Bruyne",
+      "Hojlund",
+      "Politano"
+    ],
+    "calci_piazzati": [
+      "De Bruyne",
+      "Politano",
+      "Neres"
+    ]
+  },
+  "Parma": {
+    "rigoristi": [
+      "Tourè E.",
+      "Valeri",
+      "Bernabè"
+    ],
+    "calci_piazzati": [
+      "Bernabè",
+      "Nicolussi Caviglia",
+      "Valeri"
+    ]
+  },
+  "Roma": {
+    "rigoristi": [
+      "Malen",
+      "Dybala",
+      "Castro S."
+    ],
+    "calci_piazzati": [
+      "Dybala",
+      "Malen",
+      "Pellegrini Lo."
+    ]
+  },
+  "Sassuolo": {
+    "rigoristi": [
+      "Berardi",
+      "Esposito Se.",
+      "Laurientè"
+    ],
+    "calci_piazzati": [
+      "Berardi",
+      "Laurientè",
+      "Adzic"
+    ]
+  },
+  "Torino": {
+    "rigoristi": [
+      "Vlasic",
+      "Simeone",
+      "Mandragora"
+    ],
+    "calci_piazzati": [
+      "Vlasic",
+      "Mandragora",
+      "Gineitis"
+    ]
+  },
+  "Udinese": {
+    "rigoristi": [
+      "Davis K.",
+      "Solet",
+      "Zaniolo"
+    ],
+    "calci_piazzati": [
+      "Zaniolo",
+      "Ekkelenkamp",
+      "Unai Gomez"
+    ]
+  },
+  "Venezia": {
+    "rigoristi": [
+      "Busio",
+      "Yeboah J.",
+      "Adams A."
+    ],
+    "calci_piazzati": [
+      "Busio",
+      "Yeboah J.",
+      "Perez K."
+    ]
+  }
+}

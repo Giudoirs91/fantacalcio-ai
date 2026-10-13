@@ -735,7 +735,7 @@ function openPlayerProfileModal(playerId) {
     const scaledFvm = (p.fvm !== undefined && p.fvm !== null) ? Math.max(1, Math.round(p.fvm * curRatio)) : '-';
     const budgetPct = (((p.prezzo_cons || 1) / 1000) * 100).toFixed(1);
     const topToggleBarHtml = `
-        <div class="player-view-mode-bar" style="display:flex; justify-content:space-between; align-items:center; background:rgba(15,23,42,0.95); padding:10px 18px; border-radius:16px; border:1px solid rgba(56,189,248,0.3); margin-bottom:16px; box-shadow: 0 4px 16px rgba(0,0,0,0.3);">
+        <div class="player-view-mode-bar" style="display:flex; justify-content:flex-start; align-items:center; background:rgba(15,23,42,0.95); padding:10px 18px; border-radius:16px; border:1px solid rgba(56,189,248,0.3); margin-bottom:16px; box-shadow: 0 4px 16px rgba(0,0,0,0.3);">
             <div style="display:flex; align-items:center; gap:10px;">
                 <span style="font-size:12px; font-weight:800; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">Modalità Scheda:</span>
                 <div class="view-mode-segmented-btn" style="display:inline-flex; background:rgba(0,0,0,0.4); padding:3px; border-radius:10px; border:1px solid rgba(255,255,255,0.1);">
@@ -746,9 +746,6 @@ function openPlayerProfileModal(playerId) {
                         🚀 Pro (Analisi Avanzata AI)
                     </button>
                 </div>
-            </div>
-            <div style="font-size:11.5px; color:#94a3b8; font-style:italic;">
-                ${currentViewMode === 'simple' ? '💡 Vista essenziale ad altissima leggibilità' : '📊 Vista analitica con Radar, xG &amp; xFM'}
             </div>
         </div>
     `;

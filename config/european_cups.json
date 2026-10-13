@@ -1,0 +1,31 @@
+{
+  "season": "2026/27",
+  "competitions": {
+    "champions_league": {
+      "name": "UEFA Champions League",
+      "teams": ["Inter", "Milan", "Juventus", "Atalanta", "Bologna"],
+      "impact_level": "HIGH",
+      "matchdays_preceded_by_cup": [4, 6, 9, 11, 13, 15, 21, 22],
+      "matchdays_followed_by_cup": [3, 5, 8, 10, 12, 14, 20, 21]
+    },
+    "europa_league": {
+      "name": "UEFA Europa League",
+      "teams": ["Roma", "Lazio"],
+      "impact_level": "MEDIUM_HIGH",
+      "matchdays_preceded_by_cup": [5, 7, 9, 11, 13, 15, 21, 22],
+      "matchdays_followed_by_cup": [4, 6, 8, 10, 12, 14, 20, 21]
+    },
+    "conference_league": {
+      "name": "UEFA Conference League",
+      "teams": ["Fiorentina"],
+      "impact_level": "MEDIUM",
+      "matchdays_preceded_by_cup": [7, 9, 11, 13, 15, 17],
+      "matchdays_followed_by_cup": [6, 8, 10, 12, 14, 16]
+    }
+  },
+  "turnover_rules": {
+    "high_impact_penalty_titolarita": 10,
+    "medium_impact_penalty_titolarita": 6,
+    "advice_score_fatigue_penalty": 3.5
+  }
+}

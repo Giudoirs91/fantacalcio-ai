@@ -28,7 +28,12 @@ def step_1_sync_injuries():
     from tools.build_injuries_history import build_injuries_history_database
     build_injuries_history_database()
 
-    print("\n--- STEP 1c: Esecuzione Master Pipeline & Ricalcolo Metriche/OVR ---")
+    print("\n--- STEP 1c: Sincronizzazione Rigoristi e Calci Piazzati Ufficiali ---")
+    from tools.sync_set_pieces_fantacalcio import fetch_set_pieces, apply_set_pieces_to_master
+    sp_data = fetch_set_pieces()
+    apply_set_pieces_to_master(sp_data)
+
+    print("\n--- STEP 1d: Esecuzione Master Pipeline & Ricalcolo Metriche/OVR ---")
     from src.pipeline import run_master_pipeline
     run_master_pipeline()
 

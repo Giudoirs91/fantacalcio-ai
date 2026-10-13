@@ -267,7 +267,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 29,
+      "middle_pct": 32,
+      "right_pct": 39
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 28,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 30
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.3,
+      "open_play_pg": 1.0,
+      "counter_attack_pg": 0.0,
+      "set_piece_pg": 0.3,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.53
+    },
+    "whoscored_xg": {
+      "npxg": 6.54,
+      "goals_excl_pen": 8,
+      "npxg_diff": 1.46,
+      "shots": 81,
+      "npxg_per_shot": 0.08,
+      "whoscored_rating": 6.53
+    }
   },
   "Bologna": {
     "modulo": "4-2-3-1",
@@ -567,7 +594,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 42,
+      "middle_pct": 23,
+      "right_pct": 35
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 31,
+      "middle_third_pct": 43,
+      "opposition_third_pct": 25
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 0.8,
+      "open_play_pg": 0.7,
+      "counter_attack_pg": 0.0,
+      "set_piece_pg": 0.2,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.5
+    },
+    "whoscored_xg": {
+      "npxg": 9.15,
+      "goals_excl_pen": 5,
+      "npxg_diff": -4.15,
+      "shots": 76,
+      "npxg_per_shot": 0.12,
+      "whoscored_rating": 6.5
+    }
   },
   "Cagliari": {
     "modulo": "4-3-2-1",
@@ -787,7 +841,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 33,
+      "middle_pct": 34,
+      "right_pct": 33
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 37,
+      "middle_third_pct": 44,
+      "opposition_third_pct": 19
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.0,
+      "open_play_pg": 0.5,
+      "counter_attack_pg": 0.2,
+      "set_piece_pg": 0.2,
+      "penalty_scored_pg": 0.2,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.69
+    },
+    "whoscored_xg": {
+      "npxg": 5.18,
+      "goals_excl_pen": 5,
+      "npxg_diff": -0.18,
+      "shots": 57,
+      "npxg_per_shot": 0.09,
+      "whoscored_rating": 6.69
+    }
   },
   "Como": {
     "modulo": "4-2-3-1",
@@ -1061,7 +1142,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 26,
+      "middle_pct": 34,
+      "right_pct": 40
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 25,
+      "middle_third_pct": 43,
+      "opposition_third_pct": 32
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.5,
+      "open_play_pg": 1.0,
+      "counter_attack_pg": 0.2,
+      "set_piece_pg": 0.3,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.74
+    },
+    "whoscored_xg": {
+      "npxg": 12.43,
+      "goals_excl_pen": 9,
+      "npxg_diff": -3.43,
+      "shots": 136,
+      "npxg_per_shot": 0.09,
+      "whoscored_rating": 6.74
+    }
   },
   "Fiorentina": {
     "modulo": "4-3-3",
@@ -1309,7 +1417,34 @@
         "oop_desc": "Quotato C ➜ Ala Sinistra tridente (60% vs Njie 40%)",
         "status": "Titolare (60% vs Njie 40%)"
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 35,
+      "middle_pct": 28,
+      "right_pct": 38
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 26,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 32
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.2,
+      "open_play_pg": 0.7,
+      "counter_attack_pg": 0.3,
+      "set_piece_pg": 0.0,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.2,
+      "whoscored_rating": 6.4
+    },
+    "whoscored_xg": {
+      "npxg": 8.77,
+      "goals_excl_pen": 6,
+      "npxg_diff": -2.77,
+      "shots": 97,
+      "npxg_per_shot": 0.09,
+      "whoscored_rating": 6.4
+    }
   },
   "Frosinone": {
     "modulo": "4-2-3-1",
@@ -1593,7 +1728,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 33,
+      "middle_pct": 24,
+      "right_pct": 42
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 31,
+      "middle_third_pct": 37,
+      "opposition_third_pct": 31
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.5,
+      "open_play_pg": 1.0,
+      "counter_attack_pg": 0.2,
+      "set_piece_pg": 0.3,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.77
+    },
+    "whoscored_xg": {
+      "npxg": 9.75,
+      "goals_excl_pen": 9,
+      "npxg_diff": -0.75,
+      "shots": 101,
+      "npxg_per_shot": 0.1,
+      "whoscored_rating": 6.77
+    }
   },
   "Genoa": {
     "modulo": "3-4-2-1",
@@ -1877,7 +2039,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 41,
+      "middle_pct": 26,
+      "right_pct": 34
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 32,
+      "middle_third_pct": 41,
+      "opposition_third_pct": 27
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 0.8,
+      "open_play_pg": 0.5,
+      "counter_attack_pg": 0.2,
+      "set_piece_pg": 0.2,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.4
+    },
+    "whoscored_xg": {
+      "npxg": 5.76,
+      "goals_excl_pen": 5,
+      "npxg_diff": -0.76,
+      "shots": 68,
+      "npxg_per_shot": 0.08,
+      "whoscored_rating": 6.4
+    }
   },
   "Inter": {
     "modulo": "3-5-2",
@@ -2002,6 +2191,16 @@
         "player": "Esposito F.P.",
         "pct": 35,
         "vs": "Thuram (65%)"
+      },
+      {
+        "player": "Bastoni",
+        "pct": 45,
+        "vs": "Carlos Augusto (55%)"
+      },
+      {
+        "player": "Carlos Augusto",
+        "pct": 55,
+        "vs": "Bastoni (45%)"
       }
     ],
     "lineup": [
@@ -2043,13 +2242,13 @@
       },
       {
         "pos": "DC_S",
-        "pos_label": "Braccetto SX",
-        "name": "Bastoni",
+        "pos_label": "Terzino/Braccetto SX",
+        "name": "Carlos Augusto",
         "role": "D",
         "sub_name": "Carlos Augusto",
         "sub_role": "D",
-        "status": "Titolare Inamovibile (100% Tit)",
-        "pct": 100,
+        "status": "Titolare (55% vs Bastoni 45%)",
+        "pct": 55,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -2139,7 +2338,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 38,
+      "middle_pct": 29,
+      "right_pct": 33
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 25,
+      "middle_third_pct": 44,
+      "opposition_third_pct": 32
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 3.0,
+      "open_play_pg": 2.0,
+      "counter_attack_pg": 0.2,
+      "set_piece_pg": 0.7,
+      "penalty_scored_pg": 0.2,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.94
+    },
+    "whoscored_xg": {
+      "npxg": 16.65,
+      "goals_excl_pen": 17,
+      "npxg_diff": 0.35,
+      "shots": 134,
+      "npxg_per_shot": 0.12,
+      "whoscored_rating": 6.94
+    }
   },
   "Juventus": {
     "modulo": "4-2-3-1",
@@ -2201,11 +2427,6 @@
         "vs": "Cambiaso (15%)"
       },
       {
-        "player": "Cambiaso",
-        "pct": 15,
-        "vs": "Kalulu (85%)"
-      },
-      {
         "player": "Bremer",
         "pct": 85,
         "vs": "Kelly L. (15%)"
@@ -2224,16 +2445,6 @@
         "player": "Gatti",
         "pct": 30,
         "vs": "Lucumì (70%)"
-      },
-      {
-        "player": "Celik",
-        "pct": 75,
-        "vs": "Cambiaso (25%)"
-      },
-      {
-        "player": "Cambiaso",
-        "pct": 25,
-        "vs": "Celik (75%)"
       },
       {
         "player": "Douglas Luiz",
@@ -2284,6 +2495,16 @@
         "player": "Woltemade",
         "pct": 35,
         "vs": "Kolo Muani (65%)"
+      },
+      {
+        "player": "Celik",
+        "pct": 35,
+        "vs": "Cambiaso (65%)"
+      },
+      {
+        "player": "Cambiaso",
+        "pct": 65,
+        "vs": "Celik (35%)"
       }
     ],
     "lineup": [
@@ -2337,13 +2558,13 @@
       },
       {
         "pos": "TS",
-        "pos_label": "Terzino SX",
-        "name": "Celik",
+        "pos_label": "Terzino/Esterno DX",
+        "name": "Cambiaso",
         "role": "D",
         "sub_name": "Cambiaso",
         "sub_role": "D",
-        "status": "Titolare (75% vs Cambiaso 25%)",
-        "pct": 75,
+        "status": "Titolare (65% vs Celik 35%)",
+        "pct": 65,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -2421,7 +2642,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 31,
+      "middle_pct": 31,
+      "right_pct": 38
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 21,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 36
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.5,
+      "open_play_pg": 1.0,
+      "counter_attack_pg": 0.0,
+      "set_piece_pg": 0.5,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.73
+    },
+    "whoscored_xg": {
+      "npxg": 11.37,
+      "goals_excl_pen": 9,
+      "npxg_diff": -2.37,
+      "shots": 110,
+      "npxg_per_shot": 0.1,
+      "whoscored_rating": 6.73
+    }
   },
   "Lazio": {
     "modulo": "4-3-3",
@@ -2655,7 +2903,34 @@
         "oop_type": "FPP_C_IN_A",
         "oop_desc": "Quotato C ➜ Ala Sinistra & 1° Rigorista"
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 45,
+      "middle_pct": 25,
+      "right_pct": 30
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 25,
+      "middle_third_pct": 45,
+      "opposition_third_pct": 30
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.8,
+      "open_play_pg": 1.3,
+      "counter_attack_pg": 0.2,
+      "set_piece_pg": 0.2,
+      "penalty_scored_pg": 0.2,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.8
+    },
+    "whoscored_xg": {
+      "npxg": 9.65,
+      "goals_excl_pen": 10,
+      "npxg_diff": 0.35,
+      "shots": 80,
+      "npxg_per_shot": 0.12,
+      "whoscored_rating": 6.8
+    }
   },
   "Lecce": {
     "modulo": "4-2-3-1",
@@ -2929,7 +3204,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 37,
+      "middle_pct": 27,
+      "right_pct": 36
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 26,
+      "middle_third_pct": 47,
+      "opposition_third_pct": 27
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.0,
+      "open_play_pg": 0.3,
+      "counter_attack_pg": 0.0,
+      "set_piece_pg": 0.7,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.45
+    },
+    "whoscored_xg": {
+      "npxg": 7.66,
+      "goals_excl_pen": 6,
+      "npxg_diff": -1.66,
+      "shots": 61,
+      "npxg_per_shot": 0.13,
+      "whoscored_rating": 6.45
+    }
   },
   "Milan": {
     "modulo": "3-4-2-1",
@@ -3237,7 +3539,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 39,
+      "middle_pct": 27,
+      "right_pct": 34
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 29,
+      "middle_third_pct": 46,
+      "opposition_third_pct": 24
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.8,
+      "open_play_pg": 1.3,
+      "counter_attack_pg": 0.3,
+      "set_piece_pg": 0.0,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.2,
+      "whoscored_rating": 6.75
+    },
+    "whoscored_xg": {
+      "npxg": 11.58,
+      "goals_excl_pen": 10,
+      "npxg_diff": -1.58,
+      "shots": 75,
+      "npxg_per_shot": 0.15,
+      "whoscored_rating": 6.75
+    }
   },
   "Monza": {
     "modulo": "3-4-2-1",
@@ -3513,7 +3842,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 40,
+      "middle_pct": 26,
+      "right_pct": 33
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 27,
+      "middle_third_pct": 44,
+      "opposition_third_pct": 29
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.5,
+      "open_play_pg": 0.8,
+      "counter_attack_pg": 0.0,
+      "set_piece_pg": 0.5,
+      "penalty_scored_pg": 0.2,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.43
+    },
+    "whoscored_xg": {
+      "npxg": 11.76,
+      "goals_excl_pen": 8,
+      "npxg_diff": -3.76,
+      "shots": 85,
+      "npxg_per_shot": 0.14,
+      "whoscored_rating": 6.43
+    }
   },
   "Napoli": {
     "modulo": "4-3-3",
@@ -3765,7 +4121,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 37,
+      "middle_pct": 28,
+      "right_pct": 35
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 29,
+      "middle_third_pct": 41,
+      "opposition_third_pct": 29
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.7,
+      "open_play_pg": 1.0,
+      "counter_attack_pg": 0.2,
+      "set_piece_pg": 0.3,
+      "penalty_scored_pg": 0.2,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.67
+    },
+    "whoscored_xg": {
+      "npxg": 9.54,
+      "goals_excl_pen": 9,
+      "npxg_diff": -0.54,
+      "shots": 87,
+      "npxg_per_shot": 0.11,
+      "whoscored_rating": 6.67
+    }
   },
   "Parma": {
     "modulo": "3-4-2-1",
@@ -3974,7 +4357,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 30,
+      "middle_pct": 29,
+      "right_pct": 42
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 36,
+      "middle_third_pct": 43,
+      "opposition_third_pct": 21
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 0.7,
+      "open_play_pg": 0.5,
+      "counter_attack_pg": 0.2,
+      "set_piece_pg": 0.0,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.33
+    },
+    "whoscored_xg": {
+      "npxg": 5.2,
+      "goals_excl_pen": 4,
+      "npxg_diff": -1.2,
+      "shots": 50,
+      "npxg_per_shot": 0.1,
+      "whoscored_rating": 6.33
+    }
   },
   "Roma": {
     "modulo": "3-4-2-1",
@@ -4210,7 +4620,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 36,
+      "middle_pct": 24,
+      "right_pct": 39
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 24,
+      "middle_third_pct": 43,
+      "opposition_third_pct": 32
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 2.3,
+      "open_play_pg": 2.0,
+      "counter_attack_pg": 0.2,
+      "set_piece_pg": 0.2,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.96
+    },
+    "whoscored_xg": {
+      "npxg": 15.53,
+      "goals_excl_pen": 14,
+      "npxg_diff": -1.53,
+      "shots": 112,
+      "npxg_per_shot": 0.14,
+      "whoscored_rating": 6.96
+    }
   },
   "Sassuolo": {
     "modulo": "4-3-3",
@@ -4439,7 +4876,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 42,
+      "middle_pct": 25,
+      "right_pct": 34
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 29,
+      "middle_third_pct": 43,
+      "opposition_third_pct": 28
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.7,
+      "open_play_pg": 0.7,
+      "counter_attack_pg": 0.3,
+      "set_piece_pg": 0.7,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.61
+    },
+    "whoscored_xg": {
+      "npxg": 11.21,
+      "goals_excl_pen": 10,
+      "npxg_diff": -1.21,
+      "shots": 96,
+      "npxg_per_shot": 0.12,
+      "whoscored_rating": 6.61
+    }
   },
   "Torino": {
     "modulo": "3-5-2",
@@ -4729,7 +5193,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 34,
+      "middle_pct": 32,
+      "right_pct": 34
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 31,
+      "middle_third_pct": 45,
+      "opposition_third_pct": 23
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.2,
+      "open_play_pg": 0.8,
+      "counter_attack_pg": 0.0,
+      "set_piece_pg": 0.3,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.44
+    },
+    "whoscored_xg": {
+      "npxg": 7.96,
+      "goals_excl_pen": 7,
+      "npxg_diff": -0.96,
+      "shots": 59,
+      "npxg_per_shot": 0.13,
+      "whoscored_rating": 6.44
+    }
   },
   "Udinese": {
     "modulo": "3-4-2-1",
@@ -4965,7 +5456,34 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 34,
+      "middle_pct": 28,
+      "right_pct": 39
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 25,
+      "middle_third_pct": 45,
+      "opposition_third_pct": 30
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 1.5,
+      "open_play_pg": 0.8,
+      "counter_attack_pg": 0.2,
+      "set_piece_pg": 0.5,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.48
+    },
+    "whoscored_xg": {
+      "npxg": 7.15,
+      "goals_excl_pen": 9,
+      "npxg_diff": 1.85,
+      "shots": 86,
+      "npxg_per_shot": 0.08,
+      "whoscored_rating": 6.48
+    }
   },
   "Venezia": {
     "modulo": "3-5-2",
@@ -5179,6 +5697,33 @@
         "fpp_fpn": "NONE",
         "oop": false
       }
-    ]
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 35,
+      "middle_pct": 25,
+      "right_pct": 40
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 29,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 30
+    },
+    "whoscored_goal_situations": {
+      "total_pg": 0.8,
+      "open_play_pg": 0.5,
+      "counter_attack_pg": 0.3,
+      "set_piece_pg": 0.0,
+      "penalty_scored_pg": 0.0,
+      "own_goal_pg": 0.0,
+      "whoscored_rating": 6.35
+    },
+    "whoscored_xg": {
+      "npxg": 11.42,
+      "goals_excl_pen": 5,
+      "npxg_diff": -6.42,
+      "shots": 88,
+      "npxg_per_shot": 0.13,
+      "whoscored_rating": 6.35
+    }
   }
 }

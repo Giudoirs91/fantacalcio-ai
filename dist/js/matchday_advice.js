@@ -491,9 +491,9 @@ function renderMatchdayAdviceView() {
     const upcomingRound = getUpcomingMatchdayRound(); // 6
     const prevRound = Math.max(1, upcomingRound - 1); // 5
     const isPastRound = Number(currentRound) < upcomingRound;
-    let roundOptionsHtml = `<option value="${upcomingRound}" ${Number(currentRound) === upcomingRound ? 'selected' : ''}>⚽ Giornata ${upcomingRound} (Prossima in Arrivo ⭐)</option>`;
+    let roundOptionsHtml = `<option value="${upcomingRound}" ${Number(currentRound) === upcomingRound ? 'selected' : ''}>⚽ G${upcomingRound} (Prossima ⭐)</option>`;
     for (let r = upcomingRound - 1; r >= 1; r--) {
-        roundOptionsHtml += `<option value="${r}" ${Number(currentRound) === r ? 'selected' : ''}>🏆 Giornata ${r} (Conclusa • Verifica Accuratezza AI)</option>`;
+        roundOptionsHtml += `<option value="${r}" ${Number(currentRound) === r ? 'selected' : ''}>🏆 G${r} (Conclusa)</option>`;
     }
     const roundAcc = (typeof MATCHDAY_ACCURACY_DATA !== 'undefined' && MATCHDAY_ACCURACY_DATA && MATCHDAY_ACCURACY_DATA[String(currentRound)]) 
         ? MATCHDAY_ACCURACY_DATA[String(currentRound)] 
@@ -621,13 +621,16 @@ function renderMatchdayAdviceView() {
         <div class="fut-tier-filter-row">
             <span class="fut-tier-filter-label">🎯 LIVELLO STRATEGICO:</span>
             <button class="fut-tier-btn ${tierFilter === 'ALL' ? 'active' : ''}" onclick="setMatchdayTierFilter('ALL')">
-                ⚡ TUTTI (2 Top + 2 Scommesse)
+                <span class="fut-tier-txt-desk">⚡ TUTTI (2 Top + 2 Scommesse)</span>
+                <span class="fut-tier-txt-mob">⚡ Tutti (4)</span>
             </button>
             <button class="fut-tier-btn top ${tierFilter === 'TOP_ONLY' ? 'active' : ''}" onclick="setMatchdayTierFilter('TOP_ONLY')">
-                ⭐ SOLO TOP & CERTEZZE (2)
+                <span class="fut-tier-txt-desk">⭐ SOLO TOP & CERTEZZE (2)</span>
+                <span class="fut-tier-txt-mob">⭐ Top (2)</span>
             </button>
             <button class="fut-tier-btn bets ${tierFilter === 'BETS_ONLY' ? 'active' : ''}" onclick="setMatchdayTierFilter('BETS_ONLY')">
-                🔮 SOLO SCOMMESSE LOW-COST (2)
+                <span class="fut-tier-txt-desk">🔮 SOLO SCOMMESSE LOW-COST (2)</span>
+                <span class="fut-tier-txt-mob">🔮 Scommesse (2)</span>
             </button>
         </div>
     `;
@@ -811,7 +814,7 @@ function renderMatchdayAdviceView() {
                     <!-- COLONNA 4: AZIONE SCHEDA -->
                     <div class="fut-col-action">
                         <button class="fut-btn-inspect" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();" title="Visualizza statistiche avanzate di ${p.name}">
-                            🔍 Scheda
+                            <span>🔍</span> <span class="fut-inspect-txt-desk">Scheda</span><span class="fut-inspect-txt-mob">Scheda Giocatore ➔</span>
                         </button>
                     </div>
                 </div>
@@ -852,27 +855,27 @@ function renderMatchdayAdviceView() {
                     </div>
                     <div class="fut-header-actions">
                         <button class="fut-btn-share" onclick="copyMatchdayAdviceToClipboard()">
-                            <span>📲</span> Condividi su WhatsApp / Telegram
+                            <span>📲</span> <span class="fut-share-text-desk">Condividi su WhatsApp / Telegram</span><span class="fut-share-text-mob">Condividi</span>
                         </button>
                     </div>
                 </div>
                 <!-- CONTROLLI: GIORNATA + CLASSICO/MANTRA -->
                 <div class="fut-control-bar">
                     <div class="fut-ctrl-group">
-                        <label for="selectAdviceRound">⚽ TURNO SERIE A:</label>
+                        <label for="selectAdviceRound" class="fut-ctrl-label">⚽ TURNO SERIE A:</label>
                         <select id="selectAdviceRound" class="fut-select" onchange="onMatchdayRoundChange(this.value)">
                             ${roundOptionsHtml}
                         </select>
                         ${roundDate ? `<span class="fut-date-badge">📅 ${roundDate}</span>` : ''}
                     </div>
                     <div class="fut-ctrl-group">
-                        <label>FORMAT:</label>
+                        <label class="fut-ctrl-label">FORMAT:</label>
                         <div class="fut-mode-toggles">
                             <button class="fut-toggle-btn ${mode === 'classic' ? 'active' : ''}" onclick="setMatchdayAdviceMode('classic')">
-                                ⚡ CLASSICO (4 RUOLI)
+                                ⚡ CLASSICO <span class="fut-mode-sub">(4 RUOLI)</span>
                             </button>
                             <button class="fut-toggle-btn ${mode === 'mantra' ? 'active' : ''}" onclick="setMatchdayAdviceMode('mantra')">
-                                💎 MANTRA (12 POSIZIONI)
+                                💎 MANTRA <span class="fut-mode-sub">(12 POSIZIONI)</span>
                             </button>
                         </div>
                     </div>

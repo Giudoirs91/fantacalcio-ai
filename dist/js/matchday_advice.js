@@ -394,6 +394,149 @@ function getTop3MantraAdvice(playersList, fixtureMap) {
     });
     return result;
 }
+function computePlayerRoundOutcome(player, roundNum) {
+    if (!player) return null;
+    const rNum = Number(roundNum);
+    let accEntry = null;
+    if (typeof MATCHDAY_ACCURACY_DATA !== 'undefined' && MATCHDAY_ACCURACY_DATA && MATCHDAY_ACCURACY_DATA[String(rNum)]) {
+        const roundRoles = MATCHDAY_ACCURACY_DATA[String(rNum)].roles || {};
+        for (const roleKey of Object.keys(roundRoles)) {
+            const found = (roundRoles[roleKey] || []).find(item => Number(item.id) === Number(player.id));
+            if (found) {
+                accEntry = found;
+                break;
+            }
+        }
+    }
+    const voteDetail = (player.voti_dettaglio_2627 || []).find(v => Number(v.giornata) === rNum);
+    if (!accEntry && !voteDetail) {
+        return null;
+    }
+    let voto = null;
+    let fantavoto = null;
+    let bonusMalusStr = '';
+    let gf = 0, gs = 0, ass = 0, amm = 0, esp = 0, rp = 0, rs = 0, au = 0;
+    if (accEntry) {
+        voto = (accEntry.voto_reale !== undefined && accEntry.voto_reale !== null) ? Number(accEntry.voto_reale) : null;
+        fantavoto = (accEntry.fantavoto_reale !== undefined && accEntry.fantavoto_reale !== null) ? Number(accEntry.fantavoto_reale) : null;
+        bonusMalusStr = accEntry.bonus_malus || '';
+    }
+    if (voteDetail) {
+        if (voto === null && voteDetail.voto !== undefined && voteDetail.voto !== null) {
+            voto = Number(voteDetail.voto);
+        }
+        if (fantavoto === null && voteDetail.fantavoto !== undefined && voteDetail.fantavoto !== null) {
+            fantavoto = Number(voteDetail.fantavoto);
+        }
+        if (!bonusMalusStr && voteDetail.bonus_malus_str) {
+            bonusMalusStr = voteDetail.bonus_malus_str;
+        }
+        gf = Number(voteDetail.gf) || 0;
+        gs = Number(voteDetail.gs) || 0;
+        ass = Number(voteDetail.ass) || 0;
+        amm = Number(voteDetail.amm) || 0;
+        esp = Number(voteDetail.esp) || 0;
+        rp = Number(voteDetail.rp) || 0;
+        rs = Number(voteDetail.rs) || 0;
+        au = Number(voteDetail.au) || 0;
+    }
+    if (voto === null || isNaN(voto) || voto === 0) {
+        return {
+            isSv: true,
+            voto: null,
+            fantavoto: fantavoto || null,
+            fvText: 'S.V.',
+            suffReached: false,
+            suffClass: 'outcome-neutral',
+            suffIcon: '⚪',
+            suffText: 'S.V. (Non a voto)',
+            bonusClass: 'outcome-neutral',
+            bonusIcon: '⚪',
+            bonusSummary: 'Nessun voto a referto',
+            verdictClass: 'verdict-miss',
+            verdictIcon: '⚪',
+            verdictLabel: 'NON A VOTO (S.V.)'
+        };
+    }
+    const suffReached = voto >= 6.0;
+    const suffClass = suffReached ? 'outcome-success' : 'outcome-danger';
+    const suffIcon = suffReached ? '✅' : '❌';
+    const suffStatus = suffReached ? 'Raggiunta' : 'Mancata';
+    const suffText = `Voto ${voto.toFixed(1)} (${suffStatus})`;
+    const bonusItems = [];
+    const malusItems = [];
+    if (gf > 0) bonusItems.push(gf === 1 ? '⚽ Gol (+3)' : `⚽ ${gf} Gol (+${gf * 3})`);
+    if (ass > 0) bonusItems.push(ass === 1 ? '🅰️ Assist (+1)' : `🅰️ ${ass} Assist (+${ass})`);
+    if (rp > 0) bonusItems.push(rp === 1 ? '🧤 Rigore Parato (+3)' : `🧤 ${rp} Rigori Parati (+${rp * 3})`);
+    if (player.role === 'P' && gs === 0 && voto >= 6.0) bonusItems.push('🧤 Clean Sheet');
+    if (player.role === 'P' && gs > 0) malusItems.push(`-${gs} ${gs === 1 ? 'Gol Subito' : 'Gol Subiti'}`);
+    if (amm > 0) malusItems.push('Amm (-0.5)');
+    if (esp > 0) malusItems.push('Esp (-1.0)');
+    if (rs > 0) malusItems.push('Rig. Sbagliato (-3.0)');
+    if (au > 0) malusItems.push('Autogol (-2.0)');
+    const hasBonus = bonusItems.length > 0;
+    const hasMalus = malusItems.length > 0;
+    let bonusClass = 'outcome-neutral';
+    let bonusIcon = '⚪';
+    let bonusSummary = 'Nessun bonus (FV = Voto)';
+    if (hasBonus) {
+        bonusClass = 'outcome-bonus';
+        bonusIcon = '⚽';
+        let bStr = bonusItems.join(' • ');
+        if (hasMalus) bStr += ` (ma ${malusItems.join(', ')})`;
+        bonusSummary = bStr;
+    } else if (hasMalus) {
+        bonusClass = 'outcome-malus';
+        bonusIcon = '⚠️';
+        bonusSummary = `Malus: ${malusItems.join(', ')}`;
+    } else if (bonusMalusStr && bonusMalusStr !== 'Nessun bonus') {
+        bonusSummary = bonusMalusStr;
+        if (bonusMalusStr.includes('+')) {
+            bonusClass = 'outcome-bonus';
+            bonusIcon = '⚽';
+        } else {
+            bonusClass = 'outcome-malus';
+            bonusIcon = '⚠️';
+        }
+    }
+    const fvText = fantavoto !== null ? `FV ${fantavoto.toFixed(1)}` : `FV ${voto.toFixed(1)}`;
+    let isHit = false;
+    if (player.role === 'P') {
+        isHit = (gs === 0 || voto >= 6.5 || rp > 0);
+    } else {
+        isHit = (hasBonus || (fantavoto && fantavoto >= 6.5) || voto >= 6.5);
+    }
+    let verdictClass = 'verdict-miss';
+    let verdictIcon = '❌';
+    let verdictLabel = 'CONSIGLIO MANCATO';
+    if (isHit) {
+        verdictClass = 'verdict-hit';
+        verdictIcon = '🎯';
+        verdictLabel = 'PRESA (HIT PREDITTIVO)';
+    } else if (suffReached) {
+        verdictClass = 'verdict-suff';
+        verdictIcon = '👌';
+        verdictLabel = 'SUFFICIENTE (PRESA)';
+    }
+    return {
+        isSv: false,
+        voto: voto,
+        fantavoto: fantavoto !== null ? fantavoto : voto,
+        fvText: fvText,
+        suffReached: suffReached,
+        suffClass: suffClass,
+        suffIcon: suffIcon,
+        suffStatus: suffStatus,
+        suffText: suffText,
+        hasBonus: hasBonus,
+        bonusClass: bonusClass,
+        bonusIcon: bonusIcon,
+        bonusSummary: bonusSummary,
+        verdictClass: verdictClass,
+        verdictIcon: verdictIcon,
+        verdictLabel: verdictLabel
+    };
+}
 function onMatchdayRoundChange(newRound) {
     window.matchdayAdviceState.selectedRound = parseInt(newRound, 10) || 6;
     renderMatchdayAdviceView();
@@ -480,16 +623,23 @@ function copyMatchdayAdviceToClipboard() {
 function renderMatchdayAdviceView() {
     const container = document.getElementById('viewMatchdayAdvice');
     if (!container) return;
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const roundFromUrl = urlParams.get('giornata') || urlParams.get('g');
+        if (roundFromUrl && !window.matchdayAdviceState._hasManualRound) {
+            window.matchdayAdviceState.selectedRound = parseInt(roundFromUrl, 10);
+            window.matchdayAdviceState._hasManualRound = true;
+        }
+    } catch(e) {}
+    const upcomingRound = getUpcomingMatchdayRound(); // es. 7 (se 6 conclusa) o 6
     if (!window.matchdayAdviceState.selectedRound) {
-        window.matchdayAdviceState.selectedRound = getUpcomingMatchdayRound();
+        window.matchdayAdviceState.selectedRound = upcomingRound;
     }
     const currentRound = window.matchdayAdviceState.selectedRound;
     const mode = window.matchdayAdviceState.mode || 'classic';
     const activeFilter = window.matchdayAdviceState.activeRoleFilter || 'ALL';
     const tierFilter = window.matchdayAdviceState.tierFilter || 'ALL';
     const { fixtureMap, matchesList, roundDate } = getMatchdayFixturesMap(currentRound);
-    const upcomingRound = getUpcomingMatchdayRound(); // 6
-    const prevRound = Math.max(1, upcomingRound - 1); // 5
     const isPastRound = Number(currentRound) < upcomingRound;
     let roundOptionsHtml = `<option value="${upcomingRound}" ${Number(currentRound) === upcomingRound ? 'selected' : ''}>⚽ G${upcomingRound} (Prossima ⭐)</option>`;
     for (let r = upcomingRound - 1; r >= 1; r--) {
@@ -507,62 +657,50 @@ function renderMatchdayAdviceView() {
         const hits = sum.hits;
         const total = sum.total_consigliati;
         auditBannerHtml = `
-            <div class="fut-audit-banner">
-                <div class="fut-audit-header">
-                    <div class="fut-audit-title">
+            <div class="fut-audit-banner compact">
+                <div class="fut-audit-header-compact">
+                    <div class="fut-audit-title-compact">
                         <span class="fut-audit-icon">🏆</span>
                         <div>
-                            <div class="fut-audit-tag">GIORNATA ${currentRound} COMPLETATA • VERIFICA RETROSPETTIVA AI</div>
-                            <div class="fut-audit-heading">Percentuale di Riuscita Consigli AI: ${hitRateStr} Hit Rate</div>
+                            <div class="fut-audit-tag">GIORNATA ${currentRound} CONCLUSA • VERIFICA RETROSPETTIVA AI</div>
+                            <h3 class="fut-audit-heading-compact">Riepilogo Esiti: ${hitRateStr} Hit Rate • ${suffRateStr} Sufficienze</h3>
                         </div>
                     </div>
-                    <div class="fut-audit-score-pill">
-                        <span class="score-lbl">RIUSCITA CONVALIDATA</span>
-                        <span class="score-val neon">${hitRateStr}</span>
+                    <div class="fut-audit-pills-row">
+                        <div class="fut-audit-stat-pill hit" title="${hits} su ${total} consigliati hanno centrato il bonus o preso voto >= 6.5">
+                            <span class="pill-kpi">${hitRateStr}</span>
+                            <span class="pill-lbl">🎯 HIT (${hits}/${total})</span>
+                        </div>
+                        <div class="fut-audit-stat-pill suff" title="${suffRateStr} dei consigliati hanno ottenuto la sufficienza (voto >= 6.0)">
+                            <span class="pill-kpi">${suffRateStr}</span>
+                            <span class="pill-lbl">🛡️ SUFFICIENZE</span>
+                        </div>
+                        <div class="fut-audit-stat-pill fv" title="Fantavoto medio registrato dai calciatori consigliati">
+                            <span class="pill-kpi">${avgFvStr}</span>
+                            <span class="pill-lbl">⭐ FV MEDIO</span>
+                        </div>
                     </div>
-                </div>
-                <div class="fut-audit-stats-grid">
-                    <div class="fut-audit-stat-card">
-                        <span class="stat-num neon">${hitRateStr}</span>
-                        <span class="stat-desc">🎯 Consigli a Bersaglio (${hits}/${total} con Bonus o Voto ≥ 6.5)</span>
-                    </div>
-                    <div class="fut-audit-stat-card">
-                        <span class="stat-num gold">${suffRateStr}</span>
-                        <span class="stat-desc">🛡️ Sufficienze Reali (Voto ≥ 6.0)</span>
-                    </div>
-                    <div class="fut-audit-stat-card">
-                        <span class="stat-num cyan">${avgFvStr}</span>
-                        <span class="stat-desc">⭐ FantaMedia Reale dei Consigliati</span>
-                    </div>
-                    <div class="fut-audit-stat-card">
-                        <span class="stat-num orange">FEEDBACK LOOP</span>
-                        <span class="stat-desc">🧠 Errori e scarti analizzati in background per calibrare i turni futuri</span>
-                    </div>
-                </div>
-                <div class="fut-audit-note">
-                    💡 <em>A giornata conclusa, il sistema analizza automaticamente gli errori per calibrare i pesi predittivi. Per le sole giornate concluse viene esposta la percentuale di riuscita reale.</em>
                 </div>
             </div>
         `;
     } else {
         const lastCompleted = upcomingRound - 1;
         auditBannerHtml = `
-            <div class="fut-audit-banner future">
-                <div class="fut-audit-header">
-                    <div class="fut-audit-title">
+            <div class="fut-audit-banner compact future">
+                <div class="fut-audit-header-compact">
+                    <div class="fut-audit-title-compact">
                         <span class="fut-audit-icon">🔮</span>
                         <div>
-                            <div class="fut-audit-tag">GIORNATA IN ARRIVO • ALGORITMO PREDITTIVO ATTIVO</div>
-                            <div class="fut-audit-heading">Consigli Ufficiali per la Giornata ${currentRound}</div>
+                            <div class="fut-audit-tag">GIORNATA ${currentRound} IN ARRIVO • ALGORITMO PREDITTIVO ATTIVO</div>
+                            <h3 class="fut-audit-heading-compact">Consigli Ufficiali per la Giornata ${currentRound}</h3>
                         </div>
                     </div>
-                    <div class="fut-audit-score-pill calibrated">
-                        <span class="score-lbl">CALIBRAZIONE AI</span>
-                        <span class="score-val cyan">AGGIORNATO SU G${lastCompleted}</span>
+                    <div class="fut-audit-pills-row">
+                        <div class="fut-audit-stat-pill fv" title="Algoritmo ricalibrato sui dati ufficiali della Giornata ${lastCompleted}">
+                            <span class="pill-kpi">G${lastCompleted}</span>
+                            <span class="pill-lbl">CALIBRAZIONE AI</span>
+                        </div>
                     </div>
-                </div>
-                <div class="fut-audit-note future-note">
-                    ⚡ <em>I consigliati per questo turno sono calcolati dal nostro motore predittivo. La percentuale di riuscita effettiva sarà verificata e certificata solo a giornata completata.</em>
                 </div>
             </div>
         `;
@@ -619,18 +757,18 @@ function renderMatchdayAdviceView() {
     });
     const tierFilterBarHtml = `
         <div class="fut-tier-filter-row">
-            <span class="fut-tier-filter-label">🎯 LIVELLO STRATEGICO:</span>
+            <span class="fut-tier-filter-label">🎯 FILTRO STRATEGICO:</span>
             <button class="fut-tier-btn ${tierFilter === 'ALL' ? 'active' : ''}" onclick="setMatchdayTierFilter('ALL')">
-                <span class="fut-tier-txt-desk">⚡ TUTTI (2 Top + 2 Scommesse)</span>
-                <span class="fut-tier-txt-mob">⚡ Tutti (4)</span>
+                <span class="fut-tier-txt-desk">⚡ TUTTI (Top + Scommesse)</span>
+                <span class="fut-tier-txt-mob">⚡ Tutti</span>
             </button>
             <button class="fut-tier-btn top ${tierFilter === 'TOP_ONLY' ? 'active' : ''}" onclick="setMatchdayTierFilter('TOP_ONLY')">
-                <span class="fut-tier-txt-desk">⭐ SOLO TOP & CERTEZZE (2)</span>
-                <span class="fut-tier-txt-mob">⭐ Top (2)</span>
+                <span class="fut-tier-txt-desk">⭐ SOLO TOP & CERTEZZE</span>
+                <span class="fut-tier-txt-mob">⭐ Top</span>
             </button>
             <button class="fut-tier-btn bets ${tierFilter === 'BETS_ONLY' ? 'active' : ''}" onclick="setMatchdayTierFilter('BETS_ONLY')">
-                <span class="fut-tier-txt-desk">🔮 SOLO SCOMMESSE LOW-COST (2)</span>
-                <span class="fut-tier-txt-mob">🔮 Scommesse (2)</span>
+                <span class="fut-tier-txt-desk">🔮 SOLO SCOMMESSE LOW-COST</span>
+                <span class="fut-tier-txt-mob">🔮 Scommesse</span>
             </button>
         </div>
     `;
@@ -654,7 +792,7 @@ function renderMatchdayAdviceView() {
                     tierMedal = '🥇';
                 } else {
                     tierClass = 'tier-silver';
-                    tierBadgeText = '🥈 2° SCELTA';
+                    tierBadgeText = '🥈 2ª SCELTA';
                     tierMedal = '🥈';
                 }
             } else {
@@ -672,10 +810,6 @@ function renderMatchdayAdviceView() {
                 ? `<span class="fut-matchup-loc home">CASA</span>`
                 : `<span class="fut-matchup-loc away">TRASFERTA</span>`;
             const mantraTags = p.mantra ? p.mantra.split(';').map(t => `<span class="fut-mantra-pill">${t.trim()}</span>`).join('') : '';
-            let specialBadges = '';
-            if (p.is_rigorista_1) specialBadges += `<span class="fut-spec-pill pen" title="1° Rigorista ufficiale della squadra (+3 dal dischetto)">⚽ RIGORISTA</span>`;
-            if (p.is_oop) specialBadges += `<span class="fut-spec-pill oop" title="Fuori Ruolo Positivo (FRP): schierato più avanzato rispetto al listone">💎 FRP</span>`;
-            if (p.is_punizioni) specialBadges += `<span class="fut-spec-pill fk" title="Tiratore designato per i piazzati">🎯 PIAZZATI</span>`;
             const ovrVal = p.ovr || 82;
             const fmVal = (p.fm_2627 || p.fm || 6.0).toFixed(2);
             const titVal = (p.titolarita !== undefined && p.titolarita !== null) ? p.titolarita : 85;
@@ -691,18 +825,18 @@ function renderMatchdayAdviceView() {
             let keyMetricHtml = '';
             if (p.role === 'P') {
                 const csCount = (p.clean_sheets_2627 !== undefined && p.clean_sheets_2627 !== null) ? p.clean_sheets_2627 : (p.clean_sheets || 0);
-                keyMetricHtml = `🧤 <strong>${csCount}</strong> Clean Sheet • Tit <strong>${titVal}%</strong>`;
+                keyMetricHtml = `🧤 <strong>${csCount}</strong> CS • Tit <strong>${titVal}%</strong>`;
             } else if (p.role === 'D') {
                 if (p.is_oop) {
                     keyMetricHtml = `💎 <strong>FRP Quinto</strong> • ${p.key_passes_2627 || 0} Key Pass`;
                 } else if (p.xa90_2627) {
-                    keyMetricHtml = `🎯 <strong>xA/90 ${p.xa90_2627}</strong> • ${p.key_passes_2627 || 0} Key Pass`;
+                    keyMetricHtml = `🎯 <strong>xA/90 ${p.xa90_2627}</strong> • MV <strong>${(p.mv_2627 || p.mv || 6.0).toFixed(2)}</strong>`;
                 } else {
                     keyMetricHtml = `🛡️ MV <strong>${(p.mv_2627 || p.mv || 6.0).toFixed(2)}</strong> • Tit <strong>${titVal}%</strong>`;
                 }
             } else if (p.role === 'C') {
                 if (p.key_passes_2627) {
-                    keyMetricHtml = `🪄 <strong>${p.key_passes_2627}</strong> Key Pass • FM <strong>${fmVal}</strong>`;
+                    keyMetricHtml = `🪄 <strong>${p.key_passes_2627}</strong> KP • FM <strong>${fmVal}</strong>`;
                 } else if (p.xg90_2627) {
                     keyMetricHtml = `⚡ <strong>xG/90 ${p.xg90_2627}</strong> • FM <strong>${fmVal}</strong>`;
                 } else {
@@ -717,39 +851,72 @@ function renderMatchdayAdviceView() {
                     keyMetricHtml = `⚡ FM <strong>${fmVal}</strong> • Tit <strong>${titVal}%</strong>`;
                 }
             }
-            let outcomeBadgeHtml = '';
-            if (isPastRound) {
-                const roundVoteObj = (p.voti_dettaglio_2627 || []).find(v => Number(v.giornata) === Number(currentRound));
-                if (roundVoteObj) {
-                    const rVoto = Number(roundVoteObj.voto);
-                    const rFv = Number(roundVoteObj.fantavoto);
-                    const rBm = roundVoteObj.bonus_malus_str || '';
-                    const rGs = Number(roundVoteObj.gs) || 0;
-                    let isHit = false;
-                    if (p.role === 'P') {
-                        isHit = (rGs === 0 || rVoto >= 6.5);
-                    } else {
-                        isHit = (rFv >= 6.5 || rVoto >= 6.5);
-                    }
-                    const isSuff = rVoto >= 6.0;
-                    const bClass = isHit ? 'hit' : (isSuff ? 'suff' : 'miss');
-                    const bIcon = isHit ? '🎯 HIT PREDITTIVO' : (isSuff ? '👌 SUFFICIENTE' : '❌ SOTTO ATTESE');
-                    let bText = rFv ? `FV ${rFv.toFixed(1)} (Voto ${rVoto.toFixed(1)}${rBm && rBm !== 'Nessun bonus' ? ' ' + rBm : ''})` : `Voto ${rVoto.toFixed(1)}`;
-                    if (p.role === 'P' && rGs === 0) bText += ' • 🧤 Clean Sheet';
-                    outcomeBadgeHtml = `
-                        <div class="fut-outcome-pill ${bClass}" title="Esito reale in Giornata ${currentRound}">
-                            <span class="pill-status">${bIcon}</span>
-                            <span class="pill-detail">${bText}</span>
+            const outcome = isPastRound ? computePlayerRoundOutcome(p, currentRound) : null;
+            let colTacticsHtml = '';
+            if (isPastRound && outcome) {
+                colTacticsHtml = `
+                    <div class="fut-col-tactics is-past-round">
+                        <!-- BOX ESITI RETROSPETTIVI: VERDETTO + SUFFICIENZA + BONUS -->
+                        <div class="fut-outcome-box ${outcome.verdictClass}">
+                            <div class="fut-outcome-topline">
+                                <div class="fut-verdict-badge ${outcome.verdictClass}">
+                                    <span class="v-icon">${outcome.verdictIcon}</span>
+                                    <span class="v-label">${outcome.verdictLabel}</span>
+                                </div>
+                                <div class="fut-outcome-fv-badge">
+                                    <span class="fv-tag">FANTAVOTO REALE:</span>
+                                    <span class="fv-num">${outcome.fvText}</span>
+                                </div>
+                            </div>
+                            <div class="fut-outcome-breakdown-grid">
+                                <!-- 1. SUFFICIENZA -->
+                                <div class="fut-outcome-tile ${outcome.suffClass}">
+                                    <div class="tile-head">
+                                        <span class="tile-icon">${outcome.suffIcon}</span>
+                                        <span class="tile-title">SUFFICIENZA (VOTO ≥ 6.0)</span>
+                                    </div>
+                                    <div class="tile-body">
+                                        <strong>${outcome.suffText}</strong>
+                                    </div>
+                                </div>
+                                <!-- 2. BONUS / MALUS -->
+                                <div class="fut-outcome-tile ${outcome.bonusClass}">
+                                    <div class="tile-head">
+                                        <span class="tile-icon">${outcome.bonusIcon}</span>
+                                        <span class="tile-title">BONUS / MALUS</span>
+                                    </div>
+                                    <div class="tile-body">
+                                        <strong>${outcome.bonusSummary}</strong>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    `;
-                }
+                        <!-- NOTA TATTICA ORIGINARIA INIZIALE -->
+                        <div class="fut-tactical-past-note">
+                            <span class="past-note-tag">💡 MOTIVAZIONE AI:</span>
+                            <span class="past-note-text">${item.rationale}</span>
+                        </div>
+                    </div>
+                `;
+            } else {
+                colTacticsHtml = `
+                    <div class="fut-col-tactics">
+                        <div class="fut-tactical-header">
+                            <span class="tactical-badge-icon">${item.isBet ? '🔮' : '💡'}</span>
+                            <span class="tactical-badge-title">${item.isBet ? 'ANALISI SCOMMESSA PREDITTIVA' : 'MOTIVAZIONE TATTICA AI'}</span>
+                        </div>
+                        <div class="fut-tactical-body">
+                            ${item.rationale}
+                        </div>
+                    </div>
+                `;
             }
             rowsHtml += `
-                <div class="fut-player-row ${tierClass}" id="adviceCard_${p.id}">
+                <div class="fut-player-row ${tierClass}" id="adviceCard_${p.id}" onclick="openPlayerProfileModal(${p.id})" title="Clicca per visualizzare la scheda completa di ${p.name}">
                     <!-- COLONNA 1: IDENTITÀ & SHIELD -->
                     <div class="fut-col-identity">
                         <!-- FIFA SHIELD -->
-                        <div class="fut-card-shield ${tierClass}" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();" title="Clicca per aprire la scheda di ${p.name}">
+                        <div class="fut-card-shield ${tierClass}" title="Clicca per aprire la scheda di ${p.name}">
                             <div class="fut-shield-top">
                                 <span class="fut-shield-ovr">${ovrVal}</span>
                                 <span class="fut-shield-pos">${p.role}</span>
@@ -765,12 +932,12 @@ function renderMatchdayAdviceView() {
                                 <span class="fut-tier-tag ${tierClass}">${tierBadgeText}</span>
                                 <span class="fut-team-pill">${p.team}</span>
                                 ${item.isBet ? `<span class="fut-fvm-badge" title="Quotazione di mercato low-cost">💰 FVM ${p.fvm || 1} CR</span>` : ''}
-                                ${p.is_rigorista_1 ? '<span class="fut-spec-mini pen" title="1° Rigorista">⚽</span>' : ''}
-                                ${p.is_oop ? '<span class="fut-spec-mini oop" title="Fuori Ruolo Positivo">💎</span>' : ''}
-                                ${p.is_punizioni ? '<span class="fut-spec-mini fk" title="Tiratore Punizioni">🎯</span>' : ''}
+                                ${p.is_rigorista_1 ? '<span class="fut-spec-mini pen" title="1° Rigorista">⚽ Rig.</span>' : ''}
+                                ${p.is_oop ? '<span class="fut-spec-mini oop" title="Fuori Ruolo Positivo">💎 FRP</span>' : ''}
+                                ${p.is_punizioni ? '<span class="fut-spec-mini fk" title="Tiratore Punizioni">🎯 Piaz.</span>' : ''}
                             </div>
-                            <div class="fut-player-name" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();" title="Apri scheda di ${p.name}">
-                                ${p.name}
+                            <div class="fut-player-name" title="Clicca per aprire la scheda di ${p.name}">
+                                ${p.name} <span class="fut-click-hint">➔</span>
                             </div>
                             <div class="fut-matchup-strip">
                                 <span class="fut-matchup-vs">vs <strong>${mInfo.opp}</strong></span>
@@ -790,39 +957,24 @@ function renderMatchdayAdviceView() {
                             <div class="rating-hero-sub">${ratingTierSub}</div>
                         </div>
                         <div class="fut-rating-meta">
-                            <div class="fut-range-box" title="Range Min-Max di Fantavoto atteso (Floor / Ceiling)">
-                                <span class="range-tag">RANGE</span>
-                                <span class="range-numbers">${floorVal} <span class="range-arrow">➔</span> ${ceilVal}</span>
-                                <span class="range-vol ${volClass}">${volLabel}</span>
-                            </div>
                             <div class="fut-key-metric-badge" title="Statistica chiave avanzata">
                                 ${keyMetricHtml}
                             </div>
+                            <div class="fut-range-compact" title="Range Min-Max di Fantavoto atteso (Floor / Ceiling)">
+                                <span class="range-tag">ATTESO</span>
+                                <span class="range-numbers">${floorVal} - ${ceilVal}</span>
+                                <span class="range-vol ${volClass}">${volLabel}</span>
+                            </div>
                         </div>
                     </div>
-                    <!-- COLONNA 3: TATTICA & VULNERABILITÀ RIVALE -->
-                    <div class="fut-col-tactics">
-                        <div class="fut-tactical-header">
-                            <span class="tactical-badge-icon">${item.isBet ? '🔮' : '💡'}</span>
-                            <span class="tactical-badge-title">${item.isBet ? 'ANALISI SCOMMESSA PREDITTIVA' : 'ADVANCED TACTICAL INSIGHT'}</span>
-                            ${outcomeBadgeHtml}
-                        </div>
-                        <div class="fut-tactical-body">
-                            ${item.rationale}
-                        </div>
-                    </div>
-                    <!-- COLONNA 4: AZIONE SCHEDA -->
-                    <div class="fut-col-action">
-                        <button class="fut-btn-inspect" onclick="openPlayerProfileModal(${p.id}); event.stopPropagation();" title="Visualizza statistiche avanzate di ${p.name}">
-                            <span>🔍</span> <span class="fut-inspect-txt-desk">Scheda</span><span class="fut-inspect-txt-mob">Scheda Giocatore ➔</span>
-                        </button>
-                    </div>
+                    <!-- COLONNA 3: TATTICA O ESITI RETROSPETTIVI -->
+                    ${colTacticsHtml}
                 </div>
             `;
         });
-        let secBadgeText = '2 TOP + 2 SCOMMESSE';
-        if (tierFilter === 'TOP_ONLY') secBadgeText = '⭐ 2 TOP & CERTEZZE';
-        if (tierFilter === 'BETS_ONLY') secBadgeText = '🔮 2 SCOMMESSE PREDITTIVE';
+        let secBadgeText = 'TOP & SCOMMESSE';
+        if (tierFilter === 'TOP_ONLY') secBadgeText = '⭐ SOLO TOP & CERTEZZE';
+        if (tierFilter === 'BETS_ONLY') secBadgeText = '🔮 SOLO SCOMMESSE PREDITTIVE';
         sectionsHtml += `
             <div class="fut-role-section">
                 <div class="fut-section-header">
@@ -843,14 +995,14 @@ function renderMatchdayAdviceView() {
     });
     const fullHtml = `
         <div class="matchday-advice-container fut-gaming-theme">
-            <!-- GAMING HEADER -->
+            <!-- HEADER SLIM & PULITO -->
             <div class="fut-header-banner">
                 <div class="fut-header-top">
                     <div class="fut-title-block">
                         <div class="fut-logo-emblem">🎯</div>
                         <div>
                             <div class="fut-eyebrow">QUANTITATIVE PREDICTIVE ENGINE • SERIE A 2026/27</div>
-                            <h1 class="fut-main-heading">CONSIGLIATI PROSSIMA GIORNATA</h1>
+                            <h1 class="fut-main-heading">CONSIGLIATI DI GIORNATA</h1>
                         </div>
                     </div>
                     <div class="fut-header-actions">
@@ -894,9 +1046,9 @@ function renderMatchdayAdviceView() {
                 <!-- QUICK FILTER CHIPS (LIVELLO STRATEGICO) -->
                 ${tierFilterBarHtml}
             </div>
-            <!-- BANNER AUDIT / FEEDBACK LOOP PREDITTIVO -->
+            <!-- BANNER AUDIT COMPATTO / FEEDBACK LOOP PREDITTIVO -->
             ${auditBannerHtml}
-            <!-- CONTENUTO LISTA COMPATTA GAMING -->
+            <!-- CONTENUTO LISTA COMPATTA (CLICCABILE) -->
             <div class="fut-content-list">
                 ${sectionsHtml}
             </div>
@@ -904,19 +1056,6 @@ function renderMatchdayAdviceView() {
     `;
     container.innerHTML = fullHtml;
 }
-function toggleAdviceCard(cardId, event) {
-    if (event) {
-        if (event.target.closest('.fut-card-shield') || 
-            event.target.closest('.fut-player-name') || 
-            event.target.closest('.fut-btn-inspect')) {
-            return;
-        }
-    }
-    const card = document.getElementById(cardId);
-    if (!card) return;
-    card.classList.toggle('is-expanded');
-}
-window.toggleAdviceCard = toggleAdviceCard;
 window.renderMatchdayAdviceView = renderMatchdayAdviceView;
 window.setMatchdayAdviceMode = setMatchdayAdviceMode;
 window.onMatchdayRoundChange = onMatchdayRoundChange;

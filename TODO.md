@@ -95,5 +95,62 @@ File di tracciamento persistente delle attività pianificate per il progetto Fan
   - **Filtri Interattivi HUD:** Implementata barra filtri strategica `[⚡ TUTTI (2 Top + 2 Scommesse)]`, `[⭐ SOLO TOP & CERTEZZE (2)]`, `[🔮 SOLO SCOMMESSE LOW-COST (2)]`.
   - **Copertura Completa:** Attivo su Classic (4 ruoli P, D, C, A) e su tutte le 12 posizioni Mantra (`Por`, `Dd`, `Ds`, `Dc`, `B`, `E`, `M`, `C`, `T`, `W`, `A`, `Pc`).
 
+---
+
+## 🎯 MASTER CHECKLIST (16 PUNTI): ALGORITMO PREDITTIVO & CONSIGLI FORMAZIONE
+
+Metodologia completa in ordine di priorità logica e computazionale per anticipare bonus, eliminare rimpianti e massimizzare il punteggio della rosa:
+
+1. [x] **Controllo Assoluto Probabili Formazioni (`Fantapazz.com`):**
+   - Scraping/parsing continuo delle probabili formazioni ufficiali da `https://www.fantapazz.com/calcio/fantacalcio/serie-a/probabili-formazioni`.
+   - Verifica titolarità stimate, ballottaggi aperti e percentuali di subentro per i 20 club di Serie A.
+
+2. [x] **Audit Infortunati, Squalificati & Riatletizzazione:**
+   - Controllo sanitario DB (`config/injuries.json`, 66 report monitorati).
+   - *Gestione Differenziata:* Esclusione dai titolari per infortunati al 100% (icona 🏥/🟥), ma riconoscimento del bonus "Super-Sub" ($+2.0\text{ pt}$) per Top Player in riatletizzazione che subentrano a gara in corso.
+
+3. [x] **Fuori Ruolo Positivo (FRP - Out of Position):**
+   - Bonus extra ($+3.5\text{ pt}$) per centrocampisti o trequartisti (`C`, `E`, `T`) che giocano nel tridente d'attacco o come seconda punta (es. Man, Zaccagni, Nico Paz, Pulisic).
+
+4. [x] **Expected FantaMedia (xFM) & Caratura (OVR) (Baseline 65% xFM + 35% OVR):**
+   - Valore prestazionale base pesando al 65% il rendimento atteso da metriche avanzate (xG, xA, xFM) e al 35% la qualità intrinseca del calciatore (OVR).
+
+5. [x] **Matchup Avversario & Fattore Campo:**
+   - **a. Difesa Avversaria:** $+6.5\text{ pt}$ se la squadra rivale concede molti xGA/gol; $-4.0\text{ pt}$ se la difesa avversaria è blindata ($\le 0.85$ gol subiti/partita).
+   - **b. Fattore Campo:** $+2.5\text{ pt}$ per gare in Casa ($\text{🏠}$), $-1.5\text{ pt}$ per Trasferte ($\text{✈️}$).
+
+6. [x] **Fattore Anti-Cannibalizzazione Portiere/Attaccante:**
+   - Penalità scontro diretto ($-5.5\text{ pt}$) se schieri un attaccante di movimento che gioca contro il tuo Portiere Titolare, evitando l'auto-annullamento del bonus imbattibilità.
+
+7. [x] **Fattore Coppe Europee & Turnover Stanchezza:**
+   - Penalità stanchezza ($-2.0\text{ pt}$) per titolari impegnati 90' in Champions/Europa League a metà settimana; bonus freschezza ($+2.5\text{ pt}$) per le seconde linee che partono titolari in Serie A.
+
+8. [x] **Momento di Forma & Trend Recente (Hot-Streak 3 Gare):**
+   - Bonus Momentum ($+3.0\text{ pt}$) per calciatori reduci da fanta-media $> 7.5$ nelle ultime 3 giornate con bonus consecutivi.
+
+9. [x] **Potenziale di Riscatto (Bounce-Back Factor):**
+   - Bonus extra ($+4.5\text{ pt}$) per i Top Player ($\text{OVR} \ge 85$) a secco di bonus da più gare che affrontano retroguardie fragili.
+
+10. [x] **Piazzati & Rigori:**
+    - $+5.0\text{ pt}$ per i 1° Rigoristi ufficiali dal dischetto; $+2.5\text{ pt}$ per i tiratori di punizioni e corner (maggior volume di xA atteso).
+
+11. [x] **Rischio Malus Disciplinare:**
+    - Penalità graduata per calciatori con alta frequenza di cartellini (gialli/rossi) o reduci da sanzioni disciplinari.
+
+12. [x] **Copertura Panchina Antiscivolo (Garanzia 3 Cambi per Reparto):**
+    - Disposizione intelligente della panchina assicurando almeno 1 copertura titolare sicura per reparto (P, D, C, A) nei primi 4 slot, prima dei jolly ad alto xFM, per eliminare del tutto il rischio di giocare in 10.
+
+13. [x] **Impatto Modificatore Difesa sul Modulo Ottimale (Switch 3-4-3 vs 4-3-3 / 4-4-2):**
+    - Se attivo il Modificatore Difesa, l'algoritmo calcola la Media Voto Pura attesa dei 4 difensori. Se $\text{MV} \ge 6.25$, il sistema converte il modulo dal 3-4-3 al 4-3-3/4-4-2 per incassare la fascia bonus ($+1 / +3 / +6\text{ pt}$).
+
+14. [x] **Effetto Domino Assenze Chiave (Gerarchia Rigori & Assist Ereditati):**
+    - Se il 1° rigorista o il rifinitore di un club è infortunato/squalificato, l'algoritmo trasferisce un bonus ereditario ($+3.5\text{ pt}$) al vice-rigorista o al sostituto naturale che prende in mano i piazzati.
+
+15. [x] **Indice di Rischio Orario Match & Certezza Formazione (Anticipi vs Posticipi):**
+    - Penalità rischio scontento ($-2.0\text{ pt}$) per calciatori in ballottaggio 50/50 nei posticipi del lunedì (senza formazione ufficiale al momento della consegna), premiando i titolari certi degli anticipi del venerdì/sabato.
+
+16. [x] **Fattore Super-Sub (12° Uomo d'Oro) & Big Match Pressure Index:**
+    - Neutralizzazione penalità panchina per subentratori ad alto impatto ($+2.5\text{ pt}$ `⚡ SUPER-SUB`), penalizzazione trasferte proibitive vs Top Club ($-3.5\text{ pt}$) e rimozione badge ridondante `🟢 Disponibile` per pulizia UX.
+
 
 

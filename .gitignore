@@ -51,6 +51,7 @@ Thumbs.db
 # === SCRATCH / TEMPORANEI ===
 scratch/*.tmp
 *.log
+.~lock.*
 
 # === ANDROID BUILD ===
 android/.gradle/

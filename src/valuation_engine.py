@@ -475,7 +475,18 @@ def calculate_xfm(p):
             except (ZeroDivisionError, ValueError):
                 shot_placement_mult = 1.0
 
-        bonus_attesi = (xg * shot_placement_mult * 3.0) + (xa * 1.0)
+        # Gerarchia Rigori e Piazzati (apporto predittivo sui bonus attesi)
+        rig_tier = int(p.get('rigorista_tier') or 0)
+        rig_bonus_per_match = 0.08 if rig_tier == 1 else (0.03 if rig_tier == 2 else (0.01 if rig_tier == 3 else 0.0))
+
+        piaz_tier = int(p.get('piazzati_tier') or 0)
+        piaz_bonus_per_match = 0.06 if piaz_tier == 1 else (0.02 if piaz_tier == 2 else (0.01 if piaz_tier == 3 else 0.0))
+
+        # Calcolo bonus attesi scalati sulle presenze
+        expected_penalty_bonus = rig_bonus_per_match * 3.0 * presenze
+        expected_set_piece_bonus = piaz_bonus_per_match * 1.5 * presenze
+
+        bonus_attesi = (xg * shot_placement_mult * 3.0) + (xa * 1.0) + expected_penalty_bonus + expected_set_piece_bonus
         xfm_base = round(float(mv + ((bonus_attesi - malus) / presenze)), 2)
 
     # ── Applica bias corrections apprese dall'AI Evaluator (non-distruttive) ────────

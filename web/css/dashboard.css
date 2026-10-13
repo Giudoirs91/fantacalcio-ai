@@ -12317,11 +12317,27 @@ body.creator-mode-active .visitor-only-item {
    BREAKPOINTS: MAX-WIDTH 768px (SMARTPHONES & SMALL TABLETS)
    ========================================================================== */
 @media (max-width: 768px) {
-    /* Safe Bottom Main Padding */
+    /* Safe Bottom Main Padding & Identical Width with Bottom Nav (12px inset) */
     main {
-        padding: 8px 6px 78px 6px !important;
+        padding: 10px 12px 96px 12px !important;
         max-width: 100vw !important;
-        overflow-x: hidden;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+    }
+
+    .portal-hero-section,
+    .clean-filter-bar,
+    .table-wrapper,
+    .tab-content,
+    .auction-main-layout,
+    .auction-table-column,
+    .my-squad-hero-card,
+    .view-section {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
     }
 
     /* Show Bottom Nav & Hide Top Mobile Trigger (Only Bottom Nav Menu is kept) */
@@ -12761,19 +12777,75 @@ body.creator-mode-active .visitor-only-item {
         display: none;
     }
 
-    /* Sticky Columns on Mobile Auction Table & Ottimizzazione Font */
+    /* ==============================================================================
+       LISTONE MOBILE UNIFICATO: SFONDO CONTINUO SENZA SEPARAZIONE VISIVA
+       ============================================================================== */
     .table-wrapper {
-        border-radius: 10px;
-        max-width: 100vw;
-        margin: 0 -2px;
+        border-radius: 14px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        background: #0d1322 !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
     }
 
-    .main-auction-table th:nth-child(1),
+    .main-auction-table {
+        background: #0d1322 !important;
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+        width: 100% !important;
+    }
+
+    /* THEAD UNIFICATO: colore identico per tutte le intestazioni */
+    .main-auction-table thead th {
+        background: #0b0f19 !important;
+        color: #94a3b8 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        font-size: 10px !important;
+        padding: 8px 6px !important;
+    }
+
+    .main-auction-table thead th:nth-child(1),
+    .main-auction-table thead th:nth-child(2),
+    .main-auction-table thead th:nth-child(3) {
+        position: sticky !important;
+        z-index: 15 !important;
+        background: #0b0f19 !important;
+    }
+
+    .main-auction-table thead th:nth-child(1) { left: 0 !important; }
+    .main-auction-table thead th:nth-child(2) { left: 36px !important; }
+    .main-auction-table thead th:nth-child(3) {
+        left: 64px !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* TBODY CELLE NORMALI: sfondo uniforme #0d1322 per tutta la riga (sia sticky che scroll) */
+    .main-auction-table tbody tr td {
+        background: #0d1322 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+        color: #f1f5f9;
+    }
+
+    /* TBODY RIGHE PARI (ZEBRA): sfondo alternato leggero ma IDENTICO per tutte le colonne */
+    .main-auction-table tbody tr:nth-child(even) td {
+        background: #0a0e1a !important;
+    }
+
+    /* HOVER / ACTIVE AL TOCCO: evidenziazione perfettamente sincronizzata su tutta la riga */
+    .main-auction-table tbody tr:hover td,
+    .main-auction-table tbody tr:active td {
+        background: #182238 !important;
+    }
+
+    /* COLONNE STICKY 1, 2, 3: mantengono position:sticky senza cambiare colore di sfondo */
     .main-auction-table td:nth-child(1) {
         position: sticky !important;
         left: 0 !important;
         z-index: 6 !important;
-        background: #0b1120 !important;
         width: 36px !important;
         min-width: 36px !important;
         max-width: 36px !important;
@@ -12781,12 +12853,10 @@ body.creator-mode-active .visitor-only-item {
         padding: 6px 2px !important;
     }
 
-    .main-auction-table th:nth-child(2),
     .main-auction-table td:nth-child(2) {
         position: sticky !important;
         left: 36px !important;
         z-index: 6 !important;
-        background: #0b1120 !important;
         width: 28px !important;
         min-width: 28px !important;
         max-width: 28px !important;
@@ -12794,23 +12864,15 @@ body.creator-mode-active .visitor-only-item {
         padding: 6px 2px !important;
     }
 
-    .main-auction-table th:nth-child(3),
     .main-auction-table td:nth-child(3) {
         position: sticky !important;
         left: 64px !important;
         z-index: 6 !important;
-        background: #0b1120 !important;
         min-width: 100px !important;
         max-width: 120px !important;
-        box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5) !important;
-        padding: 6px 4px !important;
-    }
-
-    .main-auction-table th:nth-child(1),
-    .main-auction-table th:nth-child(2),
-    .main-auction-table th:nth-child(3) {
-        z-index: 15 !important;
-        background: #0f172a !important;
+        padding: 6px 6px !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-shadow: none !important;
     }
 
     /* Ottimizzazione font e dimensioni celle Listone Mobile */
@@ -13260,6 +13322,18 @@ body.creator-mode-active .visitor-only-item {
 .fut-btn-share:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(16, 185, 129, 0.55);
+}
+
+.fut-share-text-mob,
+.fut-tier-txt-mob,
+.fut-inspect-txt-mob {
+    display: none;
+}
+.fut-share-text-desk,
+.fut-tier-txt-desk,
+.fut-inspect-txt-desk,
+.fut-mode-sub {
+    display: inline;
 }
 
 /* CONTROL BAR */
@@ -14196,99 +14270,273 @@ body.creator-mode-active .visitor-only-item {
 
 
 @media (max-width: 768px) {
-    .matchday-advice-container.fut-gaming-theme {
-        padding: 6px 4px 24px !important;
+    .fut-share-text-desk,
+    .fut-tier-txt-desk,
+    .fut-inspect-txt-desk,
+    .fut-mode-sub,
+    .fut-ctrl-label {
+        display: none !important;
     }
+    .fut-share-text-mob,
+    .fut-tier-txt-mob,
+    .fut-inspect-txt-mob {
+        display: inline !important;
+    }
+
+    .matchday-advice-container.fut-gaming-theme {
+        padding: 4px 0 20px !important;
+    }
+
+    /* HEADER BANNER */
     .fut-header-banner {
         padding: 10px 12px !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 8px !important;
         border-radius: 12px !important;
         gap: 8px !important;
+    }
+    .fut-header-top {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        padding-bottom: 8px !important;
+    }
+    .fut-title-block {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        min-width: 0 !important;
+        flex: 1 !important;
+    }
+    .fut-logo-emblem {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 17px !important;
+        border-radius: 8px !important;
+        flex-shrink: 0 !important;
     }
     .fut-eyebrow {
         display: none !important;
     }
     .fut-main-heading {
-        font-size: 16.5px !important;
-        letter-spacing: -0.3px !important;
+        font-size: 14.5px !important;
+        letter-spacing: -0.2px !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    .fut-header-actions {
+        flex-shrink: 0 !important;
     }
     .fut-btn-share {
         padding: 5px 9px !important;
         font-size: 11px !important;
-        border-radius: 6px !important;
+        border-radius: 7px !important;
+        white-space: nowrap !important;
+        gap: 5px !important;
     }
+
+    /* CONTROLLI (GIORNATA + FORMAT) */
     .fut-control-bar {
+        display: flex !important;
         flex-direction: column !important;
-        gap: 8px !important;
+        gap: 6px !important;
         align-items: stretch !important;
     }
     .fut-ctrl-group {
         display: flex !important;
         align-items: center !important;
-        justify-content: space-between !important;
         width: 100% !important;
+        gap: 6px !important;
+    }
+    .fut-select {
+        width: 100% !important;
+        font-size: 11.5px !important;
+        padding: 7px 10px !important;
+        border-radius: 8px !important;
+        background: rgba(10, 14, 23, 0.9) !important;
+    }
+    .fut-date-badge {
+        display: none !important;
     }
     .fut-mode-toggles {
         width: 100% !important;
         display: flex !important;
+        padding: 2px !important;
+        border-radius: 8px !important;
+        background: rgba(10, 14, 23, 0.75) !important;
     }
     .fut-toggle-btn {
         flex: 1 !important;
         text-align: center !important;
         padding: 6px 4px !important;
         font-size: 11px !important;
+        border-radius: 6px !important;
+        letter-spacing: 0.2px !important;
     }
+
+    /* FIXTURES RIBBON SENZA SCROLLBAR */
     .fut-fixtures-row {
-        padding: 4px 6px !important;
+        padding: 2px 0 !important;
         gap: 6px !important;
+        margin-top: 2px !important;
     }
     .fut-fixtures-label {
         display: none !important;
     }
-    .fut-chips-bar {
-        padding: 2px 0 4px !important;
-        gap: 5px !important;
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch !important;
+    .fut-fixtures-scroll {
+        gap: 6px !important;
+        padding-bottom: 2px !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
     }
-    .fut-filter-chip {
-        padding: 4px 9px !important;
-        font-size: 11px !important;
+    .fut-fixtures-scroll::-webkit-scrollbar {
+        display: none !important;
+    }
+    .fut-fixture-chip {
+        padding: 3px 8px !important;
+        font-size: 10px !important;
+        border-radius: 6px !important;
         flex-shrink: 0 !important;
     }
+
+    /* CHIPS RUOLI */
+    .fut-chips-bar {
+        padding: 6px 0 2px !important;
+        margin-top: 0 !important;
+        gap: 5px !important;
+        overflow-x: auto !important;
+        flex-wrap: nowrap !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+    .fut-chips-bar::-webkit-scrollbar {
+        display: none !important;
+    }
+    .fut-filter-chip {
+        padding: 5px 9px !important;
+        font-size: 10.5px !important;
+        border-radius: 7px !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* TIER FILTER SEGMENTED BAR */
+    .fut-tier-filter-row {
+        padding: 3px !important;
+        margin-top: 4px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 4px !important;
+        background: rgba(10, 14, 23, 0.75) !important;
+        border-radius: 8px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .fut-tier-filter-label {
+        display: none !important;
+    }
+    .fut-tier-btn {
+        flex: 1 1 0 !important;
+        justify-content: center !important;
+        padding: 6px 2px !important;
+        font-size: 10.5px !important;
+        border-radius: 6px !important;
+        white-space: nowrap !important;
+        text-align: center !important;
+        letter-spacing: 0.1px !important;
+    }
+
+    /* SEZIONI RUOLI */
     .fut-section-header {
-        padding: 4px 6px !important;
+        padding: 4px 4px !important;
         margin-top: 10px !important;
         margin-bottom: 6px !important;
     }
     .fut-section-title h2 {
-        font-size: 15px !important;
+        font-size: 14.5px !important;
+    }
+    .fut-sec-icon {
+        font-size: 18px !important;
     }
     .fut-sec-sub {
         display: none !important;
     }
     .fut-sec-badge {
-        font-size: 8.5px !important;
+        font-size: 8px !important;
         padding: 2px 6px !important;
+        letter-spacing: 0.5px !important;
     }
+
+    /* AUDIT BANNER COMPATTO */
+    .fut-audit-banner {
+        padding: 8px 10px !important;
+        gap: 6px !important;
+        margin-bottom: 8px !important;
+        border-radius: 10px !important;
+    }
+    .fut-audit-header {
+        gap: 6px !important;
+    }
+    .fut-audit-icon {
+        font-size: 18px !important;
+    }
+    .fut-audit-tag {
+        font-size: 8px !important;
+        letter-spacing: 0.8px !important;
+    }
+    .fut-audit-heading {
+        font-size: 13px !important;
+        line-height: 1.25 !important;
+    }
+    .fut-audit-score-pill {
+        padding: 4px 8px !important;
+        border-radius: 6px !important;
+    }
+    .fut-audit-score-pill .score-lbl {
+        font-size: 7.5px !important;
+    }
+    .fut-audit-score-pill .score-val {
+        font-size: 12px !important;
+    }
+    .fut-audit-note {
+        font-size: 10px !important;
+        line-height: 1.35 !important;
+        padding-top: 3px !important;
+    }
+
+    /* PLAYER ROW COMPATTA & SLEEK */
     .fut-player-row {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 10px !important;
-        padding: 10px 10px !important;
+        display: grid !important;
+        grid-template-columns: 1fr auto !important;
+        grid-template-rows: auto auto auto auto !important;
+        gap: 7px !important;
+        padding: 10px 11px !important;
         border-radius: 12px !important;
+        margin-bottom: 4px !important;
+        box-sizing: border-box !important;
+        background: linear-gradient(135deg, rgba(17, 24, 39, 0.96) 0%, rgba(12, 16, 26, 0.94) 100%) !important;
     }
+
+    /* COLONNA 1: IDENTITÀ SULLA SINISTRA DELLA RIGA 1 */
     .fut-col-identity {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
         width: 100% !important;
         display: flex !important;
         align-items: center !important;
-        gap: 10px !important;
+        gap: 9px !important;
+        min-width: 0 !important;
     }
+
     .fut-card-shield {
-        width: 46px !important;
-        height: 52px !important;
+        width: 44px !important;
+        height: 50px !important;
         padding: 3px 2px !important;
+        border-radius: 6px !important;
+        flex-shrink: 0 !important;
     }
     .fut-shield-ovr {
         font-size: 14px !important;
@@ -14297,92 +14545,198 @@ body.creator-mode-active .visitor-only-item {
         font-size: 8px !important;
     }
     .fut-shield-avatar {
-        width: 20px !important;
-        height: 20px !important;
-        font-size: 10px !important;
+        width: 18px !important;
+        height: 18px !important;
+        font-size: 9.5px !important;
     }
     .fut-shield-medal {
-        font-size: 10px !important;
+        font-size: 9px !important;
     }
+
     .fut-identity-info {
         flex: 1 !important;
         min-width: 0 !important;
         gap: 2px !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
+
     .fut-identity-badges {
-        gap: 5px !important;
+        gap: 4px !important;
+        flex-wrap: nowrap !important;
+        overflow: hidden !important;
     }
+
+    .fut-tier-tag {
+        font-size: 8px !important;
+        padding: 1px 4px !important;
+        letter-spacing: 0.2px !important;
+        white-space: nowrap !important;
+    }
+
+    .fut-team-pill {
+        font-size: 9.5px !important;
+        white-space: nowrap !important;
+    }
+
     .fut-player-name {
-        font-size: 18.5px !important;
+        font-size: 16.5px !important;
         font-weight: 900 !important;
-        line-height: 1.25 !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        margin: 1px 0 !important;
+    }
+
+    .fut-matchup-strip {
+        font-size: 10px !important;
+        gap: 4px !important;
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
     }
-    .fut-matchup-strip {
-        font-size: 10.5px !important;
-        gap: 5px !important;
+    .fut-matchup-loc {
+        font-size: 7.5px !important;
+        padding: 1px 4px !important;
     }
+
+    /* COLONNA 2: UNPACK VIA DISPLAY: CONTENTS */
     .fut-col-rating {
-        width: 100% !important;
-        display: grid !important;
-        grid-template-columns: 108px 1fr !important;
-        align-items: center !important;
-        gap: 10px !important;
+        display: contents !important;
     }
+
+    /* RATING HERO BOX SULLA DESTRA DELLA RIGA 1 (AFFIANCATO ALL'IDENTITÀ) */
     .fut-rating-hero-box {
-        min-width: 0 !important;
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        width: 82px !important;
+        min-width: 82px !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 8px !important;
+    }
+    .rating-hero-top {
+        gap: 3px !important;
+    }
+    .rating-hero-icon {
+        font-size: 8px !important;
+    }
+    .rating-hero-lbl {
+        font-size: 7px !important;
+        letter-spacing: 0.5px !important;
+    }
+    .rating-hero-val {
+        font-size: 19px !important;
+        margin: 1px 0 !important;
+        line-height: 1 !important;
+    }
+    .rating-hero-val .rating-base {
+        font-size: 9px !important;
+    }
+    .rating-hero-sub {
+        font-size: 7px !important;
+        letter-spacing: 0.2px !important;
+    }
+
+    /* RIGA 2: RANGE + KEY STAT A TUTTA LARGHEZZA IN SINGOLA RIGA */
+    .fut-rating-meta {
+        grid-column: 1 / -1 !important;
+        grid-row: 2 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 6px !important;
+    }
+    .fut-range-box {
+        flex: 1 1 auto !important;
+        padding: 3px 6px !important;
+        font-size: 9.5px !important;
+        border-radius: 5px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+    .range-tag {
+        font-size: 7.5px !important;
+    }
+    .range-numbers {
+        font-size: 10px !important;
+    }
+    .range-vol {
+        font-size: 7.5px !important;
+        padding: 1px 3px !important;
+    }
+    .fut-key-metric-badge {
+        flex: 1 1 auto !important;
+        font-size: 9.5px !important;
+        padding: 3px 6px !important;
+        border-radius: 5px !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    /* RIGA 3: TACTICAL INSIGHT A TUTTA LARGHEZZA */
+    .fut-col-tactics {
+        grid-column: 1 / -1 !important;
+        grid-row: 3 !important;
         width: 100% !important;
         padding: 6px 8px !important;
         box-sizing: border-box !important;
+        border-radius: 7px !important;
+        gap: 3px !important;
+        background: rgba(15, 23, 42, 0.45) !important;
     }
-    .rating-hero-val {
-        font-size: 22px !important;
-    }
-    .rating-hero-val .rating-base {
-        font-size: 10px !important;
-    }
-    .fut-rating-meta {
-        width: 100% !important;
-        min-width: 0 !important;
-        display: flex !important;
-        flex-direction: column !important;
+    .fut-tactical-header {
         gap: 4px !important;
+        align-items: center !important;
     }
-    .fut-range-box {
-        padding: 3px 6px !important;
-        font-size: 10px !important;
-    }
-    .range-numbers {
-        font-size: 10.5px !important;
-    }
-    .fut-key-metric-badge {
+    .tactical-badge-icon {
         font-size: 9.5px !important;
-        padding: 3px 6px !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
     }
-    .fut-col-tactics {
-        width: 100% !important;
-        padding: 8px 10px !important;
-        box-sizing: border-box !important;
+    .tactical-badge-title {
+        font-size: 8px !important;
+        letter-spacing: 0.3px !important;
     }
     .fut-tactical-body {
-        font-size: 11.5px !important;
-        line-height: 1.45 !important;
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+        color: #e2e8f0 !important;
     }
+
+    /* RIGA 4: AZIONE SCHEDA (SLEEK COMPACT PILL BUTTON) */
     .fut-col-action {
+        grid-column: 1 / -1 !important;
+        grid-row: 4 !important;
         width: 100% !important;
+        margin-top: 1px !important;
     }
     .fut-btn-inspect {
         width: 100% !important;
-        text-align: center !important;
-        padding: 8px 12px !important;
-        font-size: 12px !important;
+        padding: 5px 10px !important;
+        font-size: 11px !important;
         font-weight: 800 !important;
-        border-radius: 8px !important;
+        border-radius: 20px !important;
+        background: rgba(0, 242, 254, 0.08) !important;
+        border: 1px solid rgba(0, 242, 254, 0.28) !important;
+        color: #38bdf8 !important;
+        text-align: center !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        box-shadow: none !important;
+        transition: all 0.2s ease !important;
+    }
+    .fut-btn-inspect:active {
+        background: rgba(0, 242, 254, 0.2) !important;
     }
 }
 
@@ -14390,10 +14744,11 @@ body.creator-mode-active .visitor-only-item {
    ULTIMATE MOBILE OPTIMIZATIONS (PITCH 2D, HEADER & TOUCH HUD — MAX-WIDTH 768px)
    ============================================================================== */
 @media (max-width: 768px) {
-    /* Safe Bottom Main Padding to avoid Bottom Bar overlap */
+    /* Safe Bottom Main Padding to avoid Bottom Bar overlap & 12px lateral alignment */
     main {
-        padding: 6px 4px 96px 4px !important;
+        padding: 10px 12px 96px 12px !important;
         max-width: 100vw !important;
+        box-sizing: border-box !important;
         overflow-x: hidden !important;
     }
 

@@ -346,8 +346,8 @@ def send_telegram_photo(token, chat_id, photo_path, caption=None):
         return None
 
 
-def send_telegram_message(token, chat_id, text):
-    """Invia un messaggio di testo con formattazione Markdown."""
+def send_telegram_message(token, chat_id, text, reply_markup=None):
+    """Invia un messaggio di testo con formattazione Markdown e bottoni opzionali."""
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = {
         'chat_id': chat_id,
@@ -355,6 +355,9 @@ def send_telegram_message(token, chat_id, text):
         'parse_mode': 'Markdown',
         'disable_web_page_preview': False
     }
+    if reply_markup:
+        payload['reply_markup'] = reply_markup
+
     data = json.dumps(payload).encode('utf-8')
     req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json', 'User-Agent': 'FantaMasterAI/1.0'})
     try:

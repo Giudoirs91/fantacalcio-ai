@@ -24,10 +24,26 @@ TEAM_STATS_PATH = os.path.join(ROOT_DIR, "data", "raw", "fotmob_team_stats_2026_
 OUTPUT_PATH = os.path.join(ROOT_DIR, "data", "processed", "matchday_advice_accuracy.json")
 FEEDBACK_LOG_PATH = os.path.join(ROOT_DIR, "data", "processed", "matchday_learning_feedback.json")
 BIAS_CORRECTIONS_PATH = os.path.join(ROOT_DIR, "config", "ai_bias_corrections.json")
+EUROPEAN_CUPS_PATH = os.path.join(ROOT_DIR, "config", "european_cups.json")
 
 LEAGUE_AVG_XGA = 6.03
 LEAGUE_AVG_XG = 6.04
 LEAGUE_AVG_GC = 1.54
+
+_EUROPEAN_CUPS_CACHE = None
+
+def _get_european_cups():
+    global _EUROPEAN_CUPS_CACHE
+    if _EUROPEAN_CUPS_CACHE is None:
+        if os.path.exists(EUROPEAN_CUPS_PATH):
+            try:
+                with open(EUROPEAN_CUPS_PATH, 'r', encoding='utf-8') as f:
+                    _EUROPEAN_CUPS_CACHE = json.load(f)
+            except Exception:
+                _EUROPEAN_CUPS_CACHE = {}
+        else:
+            _EUROPEAN_CUPS_CACHE = {}
+    return _EUROPEAN_CUPS_CACHE
 
 
 def calculate_advice_score(player, match_info, team_stats):
@@ -73,27 +89,50 @@ def calculate_advice_score(player, match_info, team_stats):
         score -= (opp_bc / 4.0) * 3.0
         return round(score, 1)
 
-    elif role == 'D':
+    rig_tier = int(player.get('rigorista_tier') or 0)
+    piaz_tier = int(player.get('piazzati_tier') or 0)
+
+    rig_bonus = 8.0 if rig_tier == 1 else (3.0 if rig_tier == 2 else (1.0 if rig_tier == 3 else 0.0))
+    piaz_bonus = 4.5 if piaz_tier == 1 else (2.0 if piaz_tier == 2 else (0.5 if piaz_tier == 3 else 0.0))
+
+    if role == 'D':
         score = 60.0 + (ovr * 0.22) + (fm * 3.5) + (mv * 3.0)
         box_diff = (opp_box - 80.0) / 20.0
         score -= box_diff * 4.0
         score += (opp_xga / LEAGUE_AVG_XGA) * 6.0
         if is_home: score += 5.0
-        return round(score, 1)
+        # Boost difensore rigorista o tiratore piazzati
+        if rig_tier == 1: score += 6.0
+        if piaz_tier == 1: score += 4.0
+        elif piaz_tier == 2: score += 1.5
 
     elif role == 'C':
         score = 55.0 + (ovr * 0.25) + (fm * 4.0) + (xg90 * 25.0) + (xa90 * 20.0)
         score += (opp_xga / LEAGUE_AVG_XGA) * 8.0
         if is_home: score += 6.0
-        return round(score, 1)
+        score += rig_bonus + piaz_bonus
 
     elif role == 'A':
         score = 50.0 + (ovr * 0.28) + (fm * 4.5) + (xg90 * 35.0) + (xa90 * 15.0)
         score += (opp_xga / LEAGUE_AVG_XGA) * 10.0
         if is_home: score += 7.0
-        return round(score, 1)
+        score += (rig_bonus * 0.9) + (piaz_bonus * 0.7)
 
-    return 0.0
+    # Penalità stanchezza e allerta turnover Coppe Europee infrasettimanali
+    round_num = match_info.get('round_num')
+    if round_num and score > 0:
+        euro_data = _get_european_cups()
+        comps = euro_data.get('competitions', {})
+        for comp_name, comp_info in comps.items():
+            if team in comp_info.get('teams', []):
+                pre = round_num in comp_info.get('matchdays_preceded_by_cup', [])
+                post = round_num in comp_info.get('matchdays_followed_by_cup', [])
+                if pre or post:
+                    fatigue_pen = 3.5 if comp_info.get('impact_level') == 'HIGH' else 2.0
+                    score -= fatigue_pen
+                    break
+
+    return round(score, 1)
 
 
 def evaluate_round(round_num, players, calendar, team_stats):
@@ -104,8 +143,8 @@ def evaluate_round(round_num, players, calendar, team_stats):
 
     fixture_map = {}
     for m in r_data.get('matches', []):
-        fixture_map[m['home']] = {'opp': m['away'], 'is_home': True, 'match': f"{m['home']} vs {m['away']}"}
-        fixture_map[m['away']] = {'opp': m['home'], 'is_home': False, 'match': f"{m['home']} vs {m['away']}"}
+        fixture_map[m['home']] = {'opp': m['away'], 'is_home': True, 'match': f"{m['home']} vs {m['away']}", 'round_num': round_num}
+        fixture_map[m['away']] = {'opp': m['home'], 'is_home': False, 'match': f"{m['home']} vs {m['away']}", 'round_num': round_num}
 
     by_role = {'P': [], 'D': [], 'C': [], 'A': []}
     for p in players:

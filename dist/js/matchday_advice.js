@@ -43,22 +43,22 @@ function getMatchdayFixturesMap(roundNum) {
 function normalizeMatchdayScore100(rawScore, role, isBet = false, tierIndex = 0) {
     if (!rawScore || rawScore <= 0) return 60.0;
     const bases = {
-        'P': [80, 115],
-        'Por': [80, 115],
-        'D': [105, 165],
-        'Dd': [105, 165],
-        'Ds': [105, 165],
-        'Dc': [105, 165],
-        'B': [105, 165],
-        'E': [105, 165],
-        'C': [120, 190],
-        'M': [115, 180],
-        'T': [120, 190],
-        'W': [120, 190],
-        'A': [135, 235],
-        'Pc': [135, 235]
+        'P': [65, 105],
+        'Por': [65, 105],
+        'D': [90, 145],
+        'Dd': [90, 145],
+        'Ds': [90, 145],
+        'Dc': [90, 145],
+        'B': [90, 145],
+        'E': [90, 145],
+        'C': [110, 175],
+        'M': [105, 165],
+        'T': [110, 175],
+        'W': [110, 175],
+        'A': [120, 200],
+        'Pc': [120, 200]
     };
-    const [low, high] = bases[role] || [100, 200];
+    const [low, high] = bases[role] || [100, 180];
     const pct = Math.max(0, Math.min(1.0, (rawScore - low) / (high - low)));
     let score;
     if (!isBet) {
@@ -77,6 +77,38 @@ function normalizeMatchdayScore100(rawScore, role, isBet = false, tierIndex = 0)
     const clamped = Math.min(99.0, Math.max(65.0, score));
     return Math.round(clamped * 10) / 10;
 }
+function getTeamStrengthProfile(teamName) {
+    const rawRatings = (typeof TEAM_RATINGS_DB !== 'undefined' && TEAM_RATINGS_DB && TEAM_RATINGS_DB[teamName])
+        ? TEAM_RATINGS_DB[teamName]
+        : { multiplier: 1.0, dif_stars: 3, att_stars: 3 };
+    const stats = (typeof TEAM_STATS_DB !== 'undefined' && TEAM_STATS_DB && TEAM_STATS_DB[teamName])
+        ? TEAM_STATS_DB[teamName]
+        : {};
+    const xg = Number(stats.xg_team) || LEAGUE_AVG_XG;
+    const xga = Number(stats.xga_team) || LEAGUE_AVG_XGA;
+    const gc = Number(stats.goals_conceded_match) || LEAGUE_AVG_GC;
+    const cs = Number(stats.clean_sheets) || 0;
+    const attStars = rawRatings.att_stars || 3;
+    const difStars = rawRatings.dif_stars || 3;
+    const attStarCoeff = 0.55 + (attStars * 0.16);
+    const xgCoeff = xg / LEAGUE_AVG_XG;
+    const attPower = (attStarCoeff * 0.60) + (xgCoeff * 0.40);
+    const difStarCoeff = 1.65 - (difStars * 0.19);
+    const xgaCoeff = (xga / LEAGUE_AVG_XGA * 0.6) + (gc / LEAGUE_AVG_GC * 0.4);
+    const defVuln = (difStarCoeff * 0.50) + (xgaCoeff * 0.50);
+    return {
+        attPower: Math.max(0.65, Math.min(1.85, attPower)),
+        defVuln: Math.max(0.55, Math.min(1.95, defVuln)),
+        rawRatings,
+        stats,
+        cs,
+        gc,
+        xg,
+        xga,
+        att_stars: attStars,
+        dif_stars: difStars
+    };
+}
 function calcMatchdayAdviceScore(player, matchInfo) {
     if (!matchInfo || player.is_injured) return -999;
     const tit = (player.titolarita !== undefined && player.titolarita !== null && player.titolarita !== '')
@@ -88,16 +120,8 @@ function calcMatchdayAdviceScore(player, matchInfo) {
     const opp = matchInfo.opp;
     const isHome = matchInfo.isHome;
     const role = player.role;
-    const myStats = (typeof TEAM_STATS_DB !== 'undefined' && TEAM_STATS_DB[team]) ? TEAM_STATS_DB[team] : {};
-    const oppStats = (typeof TEAM_STATS_DB !== 'undefined' && TEAM_STATS_DB[opp]) ? TEAM_STATS_DB[opp] : {};
-    const myXga = Number(myStats.xga_team) || LEAGUE_AVG_XGA;
-    const myGc = Number(myStats.goals_conceded_match) || LEAGUE_AVG_GC;
-    const myCs = Number(myStats.clean_sheets) || 0;
-    const oppXg = Number(oppStats.xg_team) || LEAGUE_AVG_XG;
-    const oppXga = Number(oppStats.xga_team) || LEAGUE_AVG_XGA;
-    const oppGc = Number(oppStats.goals_conceded_match) || LEAGUE_AVG_GC;
-    const oppBc = Number(oppStats.big_chances) || 5.0;
-    const oppBox = Number(oppStats.touches_opp_box) || 80.0;
+    const my = getTeamStrengthProfile(team);
+    const oppProf = getTeamStrengthProfile(opp);
     const ovr = Number(player.ovr) || 75;
     const fm = Number(player.fm_2627) || Number(player.fm) || 6.0;
     const mv = Number(player.mv_2627) || Number(player.mv) || 6.0;
@@ -106,44 +130,55 @@ function calcMatchdayAdviceScore(player, matchInfo) {
     const gol = Number(player.gol_2627) || 0;
     const ass = Number(player.assist_2627) || 0;
     if (role === 'P') {
-        let score = 65.0 + (ovr * 0.18) + (fm * 2.5);
-        const csFactor = (myCs * 8.0) - (myGc * 6.0) - ((myXga / LEAGUE_AVG_XGA) * 5.0);
-        score += csFactor;
-        if (isHome) score += 10.0;
-        const xgDiff = oppXg - LEAGUE_AVG_XG;
-        if (xgDiff > 0) {
-            score -= Math.pow(xgDiff, 1.35) * 8.5; // Malus drastico per i portieri contro super attacchi
+        let score = 55.0 + (ovr * 0.12) + (fm * 2.0);
+        score += (my.cs * 6.0) - (my.gc * 5.0) - (my.defVuln * 8.0);
+        if (isHome) score += 7.0;
+        const locMod = isHome ? 0.85 : 1.15;
+        const xgcEst = oppProf.attPower * my.defVuln * locMod;
+        if (xgcEst > 0.95) {
+            score -= Math.pow(xgcEst - 0.95, 1.4) * 32.0;
         } else {
-            score += Math.abs(xgDiff) * 6.0; // Premialità se l'avversario crea pochissimo
+            score += (0.95 - xgcEst) * 16.0;
         }
-        score -= (oppBc / 4.0) * 3.0;
+        if (oppProf.att_stars >= 5) {
+            score -= 16.0;
+        } else if (oppProf.att_stars === 4) {
+            score -= 7.0;
+        } else if (oppProf.att_stars <= 2) {
+            score += 12.0; // Bonus clean sheet contro attacchi anemici
+        }
         return Math.round(score * 10) / 10;
     }
     else if (role === 'D') {
-        let score = 60.0 + (ovr * 0.22) + (fm * 3.5) + (mv * 3.0);
-        const boxDiff = (oppBox - 80.0) / 20.0;
-        score -= boxDiff * 4.0;
-        score += (oppXga / LEAGUE_AVG_XGA) * 6.0;
-        if (isHome) score += 6.0;
-        if (player.is_oop) score += 14.0;
-        if (player.is_punizioni || player.is_corner) score += 7.0;
-        score += (xg90 * 20.0) + (xa90 * 20.0) + (gol * 8.0) + (ass * 6.0);
+        let score = 52.0 + (ovr * 0.16) + (fm * 2.8) + (mv * 2.2);
+        const locMod = isHome ? 0.88 : 1.15;
+        const defStress = oppProf.attPower * my.defVuln * locMod;
+        if (defStress > 1.05) {
+            score -= Math.pow(defStress - 1.05, 1.3) * 30.0;
+        } else {
+            score += (1.05 - defStress) * 14.0;
+        }
+        if (isHome) score += 4.0;
+        if (player.is_oop) score += 12.0;
+        if (player.is_punizioni || player.is_corner) score += 6.0;
+        if (player.is_rigorista_1) score += 14.0;
+        else if (player.is_rigorista_2) score += 6.0;
+        score += (xg90 * 18.0) + (xa90 * 16.0) + (Math.min(gol, 2) * 2.5) + (Math.min(ass, 2) * 2.0);
         return Math.round(score * 10) / 10;
     }
     else {
-        let score = 55.0 + (ovr * 0.22) + (fm * 4.0) + (mv * 2.5);
-        const xgaRatio = oppXga / LEAGUE_AVG_XGA;
-        const gcRatio = oppGc / LEAGUE_AVG_GC;
-        score += (xgaRatio - 1.0) * 22.0;
-        score += (gcRatio - 1.0) * 16.0;
-        if (isHome) score += 7.0;
-        if (player.is_rigorista_1) score += 18.0;
-        else if (player.is_rigorista_2) score += 8.0;
-        if (player.is_oop) score += 12.0;
-        if (player.is_punizioni || player.is_corner) score += 6.0;
-        score += (xg90 * xgaRatio) * 25.0;
-        score += (xa90 * xgaRatio) * 20.0;
-        score += (gol * 7.0) + (ass * 5.0);
+        let score = 48.0 + (ovr * 0.18) + (fm * 3.2) + (mv * 2.0);
+        const locMod = isHome ? 1.10 : 0.92;
+        const oppConcession = oppProf.defVuln * locMod;
+        score += (oppConcession - 1.0) * 18.0;
+        if (isHome) score += 5.0;
+        if (player.is_rigorista_1) score += 16.0;
+        else if (player.is_rigorista_2) score += 7.0;
+        if (player.is_oop) score += 10.0;
+        if (player.is_punizioni || player.is_corner) score += 5.0;
+        score += (xg90 * oppConcession) * 22.0;
+        score += (xa90 * oppConcession) * 16.0;
+        score += (Math.min(gol, 4) * 3.5) + (Math.min(ass, 3) * 2.5);
         return Math.round(score * 10) / 10;
     }
 }
@@ -161,32 +196,35 @@ function calcMatchdayOpportunityScore(player, matchInfo) {
     const opp = matchInfo.opp;
     const isHome = matchInfo.isHome;
     const role = player.role;
-    const oppStats = (typeof TEAM_STATS_DB !== 'undefined' && TEAM_STATS_DB[opp]) ? TEAM_STATS_DB[opp] : {};
-    const myStats = (typeof TEAM_STATS_DB !== 'undefined' && TEAM_STATS_DB[team]) ? TEAM_STATS_DB[team] : {};
-    const oppXga = Number(oppStats.xga_team) || LEAGUE_AVG_XGA;
-    const oppGc = Number(oppStats.goals_conceded_match) || LEAGUE_AVG_GC;
-    const oppXg = Number(oppStats.xg_team) || LEAGUE_AVG_XG;
+    const my = getTeamStrengthProfile(team);
+    const oppProf = getTeamStrengthProfile(opp);
+    const locMod = isHome ? 0.88 : 1.15;
+    const defStress = oppProf.attPower * my.defVuln * locMod;
+    if ((role === 'D' || role === 'P') && defStress > 1.12) {
+        return -500; // Escluso categoricamente (es. difensori del Venezia contro il Napoli)
+    }
+    if (role === 'P' && oppProf.att_stars >= 4) {
+        return -500; // Nessun portiere scommessa tra i pali contro attacchi a 4 o 5 stelle
+    }
     const fm = Number(player.fm_2627) || Number(player.fm) || 6.0;
     const gol = Number(player.gol_2627) || 0;
     const ass = Number(player.assist_2627) || 0;
     const xg90 = Number(player.xg90_2627) || Number(player.xg90) || 0;
     const xa90 = Number(player.xa90_2627) || Number(player.xa90) || 0;
-    let score = 50.0 + (fm * 3.5) + (tit * 0.12);
-    if (isHome) score += 8.0;
-    if (player.is_rigorista_1) score += 20.0;
-    else if (player.is_rigorista_2) score += 10.0;
-    if (player.is_oop) score += 16.0;
-    if (player.is_punizioni || player.is_corner) score += 10.0;
+    let score = 42.0 + (fm * 3.0) + (tit * 0.10);
+    if (isHome) score += 6.0;
+    if (player.is_rigorista_1) score += 18.0;
+    if (player.is_oop) score += 14.0;
+    if (player.is_punizioni || player.is_corner) score += 8.0;
     if (role === 'P') {
-        if (oppXg < 5.5) score += 18.0;
-        if (isHome) score += 10.0;
+        score += ((1.10 - defStress) * 22.0);
     } else if (role === 'D') {
-        score += ((oppXga / LEAGUE_AVG_XGA) * 12.0) + (oppGc * 6.0);
-        score += (gol * 10.0) + (ass * 7.0);
+        score += ((1.10 - defStress) * 16.0);
+        score += (oppProf.defVuln * 6.0);
+        score += (xg90 * 16.0) + (xa90 * 14.0) + (Math.min(gol, 2) * 2.0);
     } else {
-        score += ((oppXga / LEAGUE_AVG_XGA) * 16.0) + (oppGc * 8.0);
-        score += (xg90 * 20.0) + (xa90 * 18.0);
-        score += (gol * 8.0) + (ass * 5.0);
+        score += (oppProf.defVuln * 12.0);
+        score += (xg90 * 18.0) + (xa90 * 15.0) + (Math.min(gol, 3) * 2.5);
     }
     return Math.round(score * 10) / 10;
 }

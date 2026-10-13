@@ -53,6 +53,12 @@ def build_standalone_dashboard(sync_android=False):
         with open(team_stats_path, 'r', encoding='utf-8') as f:
             team_stats_data = json.load(f)
 
+    team_ratings_path = os.path.join(root_dir, "config", "team_ratings.json")
+    team_ratings_data = {}
+    if os.path.exists(team_ratings_path):
+        with open(team_ratings_path, 'r', encoding='utf-8') as f:
+            team_ratings_data = json.load(f)
+
     top_flop_path = os.path.join(root_dir, "data", "processed", "top_flop_rounds.json")
     top_flop_data = {}
     if os.path.exists(top_flop_path):
@@ -115,6 +121,7 @@ def build_standalone_dashboard(sync_android=False):
     gk_json = json.dumps(gk_data, ensure_ascii=False)
     tactical_json = json.dumps(tactical_data, ensure_ascii=False)
     team_stats_json = json.dumps(team_stats_data, ensure_ascii=False)
+    team_ratings_json = json.dumps(team_ratings_data, ensure_ascii=False)
     top_flop_json = json.dumps(top_flop_data, ensure_ascii=False)
     cal_json = json.dumps(cal_data, ensure_ascii=False)
     accuracy_json = json.dumps(accuracy_data, ensure_ascii=False)
@@ -1624,6 +1631,7 @@ def build_standalone_dashboard(sync_android=False):
         const GK_DATA = {gk_json};
         const TACTICAL_DB = {tactical_json};
         const TEAM_STATS_DB = {team_stats_json};
+        const TEAM_RATINGS_DB = {team_ratings_json};
         const TOP_FLOP_DATA = {top_flop_json};
         const OFFICIAL_CALENDAR_2026_27 = {cal_json};
         const MATCHDAY_ACCURACY_DATA = {accuracy_json};

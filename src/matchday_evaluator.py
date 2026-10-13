@@ -46,6 +46,51 @@ def _get_european_cups():
     return _EUROPEAN_CUPS_CACHE
 
 
+TEAM_RATINGS_PATH = os.path.join(ROOT_DIR, "config", "team_ratings.json")
+_TEAM_RATINGS_CACHE = None
+
+def _get_team_ratings():
+    global _TEAM_RATINGS_CACHE
+    if _TEAM_RATINGS_CACHE is None:
+        if os.path.exists(TEAM_RATINGS_PATH):
+            try:
+                with open(TEAM_RATINGS_PATH, 'r', encoding='utf-8') as f:
+                    _TEAM_RATINGS_CACHE = json.load(f)
+            except Exception:
+                _TEAM_RATINGS_CACHE = {}
+        else:
+            _TEAM_RATINGS_CACHE = {}
+    return _TEAM_RATINGS_CACHE
+
+
+def get_team_profile(team, team_stats):
+    tr = _get_team_ratings().get(team, {'multiplier': 1.0, 'dif_stars': 3, 'att_stars': 3})
+    st = team_stats.get(team, {})
+    xg = float(st.get('xg_team') or LEAGUE_AVG_XG)
+    xga = float(st.get('xga_team') or LEAGUE_AVG_XGA)
+    gc = float(st.get('goals_conceded_match') or LEAGUE_AVG_GC)
+    cs = float(st.get('clean_sheets') or 0)
+
+    att_star_coeff = 0.55 + (tr.get('att_stars', 3) * 0.16)
+    xg_coeff = xg / LEAGUE_AVG_XG
+    att_power = (att_star_coeff * 0.60) + (xg_coeff * 0.40)
+
+    dif_star_coeff = 1.65 - (tr.get('dif_stars', 3) * 0.19)
+    xga_coeff = (xga / LEAGUE_AVG_XGA * 0.6) + (gc / LEAGUE_AVG_GC * 0.4)
+    def_vuln = (dif_star_coeff * 0.50) + (xga_coeff * 0.50)
+
+    return {
+        'att_power': max(0.65, min(1.85, att_power)),
+        'def_vuln': max(0.55, min(1.95, def_vuln)),
+        'cs': cs,
+        'gc': gc,
+        'xg': xg,
+        'xga': xga,
+        'att_stars': tr.get('att_stars', 3),
+        'dif_stars': tr.get('dif_stars', 3)
+    }
+
+
 def calculate_advice_score(player, match_info, team_stats):
     """Calcola il punteggio predittivo per un calciatore nella specifica giornata."""
     if not match_info or player.get('is_injured'):
@@ -53,41 +98,24 @@ def calculate_advice_score(player, match_info, team_stats):
     tit = float(player.get('titolarita', 50))
     if tit < 50:
         return -500.0
+    role = player.get('role', 'C')
+    if role == 'P' and tit < 70:
+        return -500.0
 
     team = player.get('team')
     opp = match_info.get('opp')
     is_home = match_info.get('is_home', True)
-    role = player.get('role', 'C')
+
+    my = get_team_profile(team, team_stats)
+    opp_prof = get_team_profile(opp, team_stats)
 
     ovr = float(player.get('ovr', 75))
     fm = float(player.get('fm_2627') or player.get('fm') or 6.0)
     mv = float(player.get('mv_2627') or player.get('mv') or 6.0)
     xg90 = float(player.get('xg90_2627') or player.get('xg90') or 0.0)
     xa90 = float(player.get('xa90_2627') or player.get('xa90') or 0.0)
-
-    my_stats = team_stats.get(team, {})
-    opp_stats = team_stats.get(opp, {})
-
-    my_xga = float(my_stats.get('xga_team') or LEAGUE_AVG_XGA)
-    my_gc = float(my_stats.get('goals_conceded_match') or LEAGUE_AVG_GC)
-    my_cs = float(my_stats.get('clean_sheets') or 0)
-
-    opp_xg = float(opp_stats.get('xg_team') or LEAGUE_AVG_XG)
-    opp_xga = float(opp_stats.get('xga_team') or LEAGUE_AVG_XGA)
-    opp_bc = float(opp_stats.get('big_chances') or 5.0)
-    opp_box = float(opp_stats.get('touches_opp_box') or 80.0)
-
-    if role == 'P':
-        score = 65.0 + (ovr * 0.18) + (fm * 2.5)
-        score += (my_cs * 8.0) - (my_gc * 6.0) - ((my_xga / LEAGUE_AVG_XGA) * 5.0)
-        if is_home: score += 10.0
-        xg_diff = opp_xg - LEAGUE_AVG_XG
-        if xg_diff > 0:
-            score -= (xg_diff ** 1.35) * 8.5
-        else:
-            score += abs(xg_diff) * 6.0
-        score -= (opp_bc / 4.0) * 3.0
-        return round(score, 1)
+    gol = float(player.get('gol_2627') or 0.0)
+    ass = float(player.get('assist_2627') or 0.0)
 
     rig_tier = int(player.get('rigorista_tier') or 0)
     piaz_tier = int(player.get('piazzati_tier') or 0)
@@ -95,28 +123,60 @@ def calculate_advice_score(player, match_info, team_stats):
     rig_bonus = 8.0 if rig_tier == 1 else (3.0 if rig_tier == 2 else (1.0 if rig_tier == 3 else 0.0))
     piaz_bonus = 4.5 if piaz_tier == 1 else (2.0 if piaz_tier == 2 else (0.5 if piaz_tier == 3 else 0.0))
 
-    if role == 'D':
-        score = 60.0 + (ovr * 0.22) + (fm * 3.5) + (mv * 3.0)
-        box_diff = (opp_box - 80.0) / 20.0
-        score -= box_diff * 4.0
-        score += (opp_xga / LEAGUE_AVG_XGA) * 6.0
-        if is_home: score += 5.0
-        # Boost difensore rigorista o tiratore piazzati
-        if rig_tier == 1: score += 6.0
-        if piaz_tier == 1: score += 4.0
-        elif piaz_tier == 2: score += 1.5
-
-    elif role == 'C':
-        score = 55.0 + (ovr * 0.25) + (fm * 4.0) + (xg90 * 25.0) + (xa90 * 20.0)
-        score += (opp_xga / LEAGUE_AVG_XGA) * 8.0
-        if is_home: score += 6.0
-        score += rig_bonus + piaz_bonus
-
-    elif role == 'A':
-        score = 50.0 + (ovr * 0.28) + (fm * 4.5) + (xg90 * 35.0) + (xa90 * 15.0)
-        score += (opp_xga / LEAGUE_AVG_XGA) * 10.0
+    if role == 'P':
+        score = 55.0 + (ovr * 0.12) + (fm * 2.0)
+        score += (my['cs'] * 6.0) - (my['gc'] * 5.0) - (my['def_vuln'] * 8.0)
         if is_home: score += 7.0
-        score += (rig_bonus * 0.9) + (piaz_bonus * 0.7)
+
+        loc_mod = 0.85 if is_home else 1.15
+        xgc_est = opp_prof['att_power'] * my['def_vuln'] * loc_mod
+
+        if xgc_est > 0.95:
+            score -= ((xgc_est - 0.95) ** 1.4) * 32.0
+        else:
+            score += ((0.95 - xgc_est) * 16.0)
+
+        if opp_prof['att_stars'] >= 5:
+            score -= 16.0
+        elif opp_prof['att_stars'] == 4:
+            score -= 7.0
+        elif opp_prof['att_stars'] <= 2:
+            score += 12.0
+
+    elif role == 'D':
+        score = 52.0 + (ovr * 0.16) + (fm * 2.8) + (mv * 2.2)
+        loc_mod = 0.88 if is_home else 1.15
+        def_stress = opp_prof['att_power'] * my['def_vuln'] * loc_mod
+
+        if def_stress > 1.05:
+            score -= ((def_stress - 1.05) ** 1.3) * 30.0
+        else:
+            score += ((1.05 - def_stress) * 14.0)
+
+        if is_home: score += 4.0
+
+        if player.get('is_oop'): score += 12.0
+        if player.get('is_punizioni') or player.get('is_corner'): score += 6.0
+        if rig_tier == 1: score += 14.0
+        elif rig_tier == 2: score += 6.0
+        if piaz_tier == 1: score += 4.0
+
+        score += (xg90 * 18.0) + (xa90 * 16.0) + (min(gol, 2) * 2.5) + (min(ass, 2) * 2.0)
+
+    else: # C e A
+        score = 48.0 + (ovr * 0.18) + (fm * 3.2) + (mv * 2.0)
+        loc_mod = 1.10 if is_home else 0.92
+        opp_concession = opp_prof['def_vuln'] * loc_mod
+
+        score += (opp_concession - 1.0) * 18.0
+        if is_home: score += 5.0
+
+        score += rig_bonus + piaz_bonus
+        if player.get('is_oop'): score += 10.0
+
+        score += (xg90 * opp_concession) * 22.0
+        score += (xa90 * opp_concession) * 16.0
+        score += (min(gol, 4) * 3.5) + (min(ass, 3) * 2.5)
 
     # Penalità stanchezza e allerta turnover Coppe Europee infrasettimanali
     round_num = match_info.get('round_num')

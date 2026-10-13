@@ -578,7 +578,7 @@ function renderDeleteStep2(leagueId) {
             </div>
             <div style="display:flex;justify-content:flex-end;gap:10px;border-top:1px solid rgba(255,255,255,0.08);padding-top:14px;">
                 <button type="button" class="btn-action" onclick="closeDeleteLeagueModal()">✕ Annulla</button>
-                <button type="button" class="btn-action" onclick="executeDeleteLeague('${l.id}')" style="background:linear-gradient(135deg, #ef4444, #b91c1c);color:#fff;border:none;font-weight:900;padding:10px 20px;box-shadow:0 0 16px rgba(239,68,68,0.4);">
+                <button type="button" class="btn-action" onclick="executeDeleteLeague('${l.id}')" style="background:linear-gradient(135deg, #ef4444, #b91c1c);color:#fff;border:none;font-weight:900;padding:10px 20px;">
                     🗑️ SÌ, ELIMINA DEFINITIVAMENTE
                 </button>
             </div>

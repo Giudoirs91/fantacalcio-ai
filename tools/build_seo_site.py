@@ -223,7 +223,7 @@ body {
 .brand-badge:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(245, 158, 11, 0.4);
-    box-shadow: 0 0 16px rgba(245, 158, 11, 0.15);
+    
 }
 
 .brand-icon {
@@ -612,7 +612,7 @@ body {
 }
 .pillar-search-input:focus {
     border-color: #38bdf8;
-    box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+    
     background: rgba(0, 0, 0, 0.65);
 }
 .pillar-search-input::placeholder {
@@ -661,7 +661,7 @@ body {
     background: rgba(56, 189, 248, 0.2);
     border-color: #38bdf8;
     color: #38bdf8;
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+    
 }
 
 /* Glass Table Card */
@@ -763,7 +763,7 @@ body {
 }
 .player-main-name:hover {
     color: #38bdf8;
-    text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+    
 }
 .player-meta-sub {
     font-size: 11px;
@@ -832,7 +832,7 @@ body {
     background: linear-gradient(135deg, rgba(239, 68, 68, 0.18), rgba(185, 28, 28, 0.28));
     border: 1px solid #ef4444;
     color: #fca5a5;
-    box-shadow: 0 0 10px rgba(239, 68, 68, 0.25);
+    
 }
 .tier-FRAGILE {
     background: linear-gradient(135deg, rgba(249, 115, 22, 0.18), rgba(194, 65, 12, 0.28));
@@ -870,7 +870,7 @@ body {
     background: #38bdf8;
     color: #0b0f19;
     border-color: #38bdf8;
-    box-shadow: 0 0 16px rgba(56, 189, 248, 0.45);
+    
     transform: translateX(2px);
 }
 
@@ -947,7 +947,7 @@ body {
     background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.3));
     border: 1px solid #fbbf24;
     color: #fbbf24;
-    box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+    
 }
 .taker-2 {
     background: rgba(255, 255, 255, 0.07);
@@ -994,7 +994,7 @@ body {
     font-weight: 800;
     font-size: 11.5px;
     white-space: nowrap;
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+    
 }
 .gk-badge-elite {
     background: rgba(56, 189, 248, 0.14);
@@ -1267,12 +1267,12 @@ body {
     padding: 12px 26px;
     border-radius: 10px;
     text-decoration: none !important;
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+    
     transition: all 0.2s ease;
 }
 .btn-cta-main:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 28px rgba(6, 182, 212, 0.6);
+    
 }
 
 .site-footer {
@@ -1510,7 +1510,7 @@ body {
 }
 .pitch-card:hover {
     border-color: rgba(56, 189, 248, 0.6) !important;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.8), 0 0 16px rgba(56, 189, 248, 0.3) !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.8) !important;
 }
 
 .pitch-card-header {

@@ -262,7 +262,7 @@ def generate_duel_page(p1, p2, tactical_db, calendar_data, base_url="https://www
             border-radius: 20px;
             padding: 24px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 25px rgba(16, 185, 129, 0.15);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }}
         .verdict-header {{
             display: flex;
@@ -322,7 +322,7 @@ def generate_duel_page(p1, p2, tactical_db, calendar_data, base_url="https://www
             font-size: 24px;
             font-weight: 900;
             color: #f59e0b;
-            text-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+            
         }}
         .player-card {{
             background: rgba(18, 24, 38, 0.85);

@@ -85,7 +85,7 @@
                 border: 1px solid rgba(56, 189, 248, 0.35);
                 border-radius: 16px;
                 padding: 16px 18px 14px 18px;
-                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.18);
+                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
                 z-index: 99999;
                 color: #f8fafc;
                 font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -141,7 +141,6 @@
                 height: 6px;
                 border-radius: 50%;
                 background: #00e676;
-                box-shadow: 0 0 6px #00e676;
                 animation: fantaTgPulse 1.8s infinite;
             }
             @keyframes fantaTgPulse {

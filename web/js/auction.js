@@ -1889,7 +1889,7 @@ function renderResetAuctionModal() {
                         Svincola tutti i <b>${rivalCount}</b> calciatori assegnati alle altre squadre e ripristina i loro crediti. <span style="color:#10b981;font-weight:700;">La tua rosa (${myCount} giocatori) resta intatta!</span>
                     </div>
                 </div>
-                <button type="button" class="btn-action" style="background:rgba(56,189,248,0.18);border-color:#38bdf8;color:#38bdf8;font-weight:800;font-size:12px;padding:9px 15px;white-space:nowrap;cursor:pointer;border-radius:8px;box-shadow:0 0 10px rgba(56,189,248,0.2);" onclick="confirmResetRivalsTaken()" ${rivalCount === 0 ? 'disabled style="opacity:0.4;cursor:not-allowed;"' : ''}>
+                <button type="button" class="btn-action" style="background:rgba(56,189,248,0.18);border-color:#38bdf8;color:#38bdf8;font-weight:800;font-size:12px;padding:9px 15px;white-space:nowrap;cursor:pointer;border-radius:8px;" onclick="confirmResetRivalsTaken()" ${rivalCount === 0 ? 'disabled style="opacity:0.4;cursor:not-allowed;"' : ''}>
                     ↩️ Ripristina Altri
                 </button>
             </div>

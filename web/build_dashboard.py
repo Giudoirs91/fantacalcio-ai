@@ -1187,10 +1187,10 @@ def build_standalone_dashboard(sync_android=False):
                     <label style="font-size:12px;font-weight:800;color:var(--text-secondary);">SELEZIONA CLUB:</label>
                     <select id="selectPitchTeam" class="select-filter" onchange="renderPitchTeam(this.value)">
                     </select>
-                    <button class="btn-action creator-only-control" id="btnEditPitchLineup" onclick="openTacticalEditorModal()" style="background:linear-gradient(135deg, rgba(0,242,254,0.18) 0%, rgba(56,189,248,0.25) 100%);border:1px solid var(--accent-cyan);color:#fff;font-weight:800;padding:6px 14px;border-radius:8px;align-items:center;gap:7px;box-shadow:0 0 14px rgba(0,242,254,0.2);cursor:pointer;transition:all 0.2s ease;">
+                    <button class="btn-action creator-only-control" id="btnEditPitchLineup" onclick="openTacticalEditorModal()" style="background:linear-gradient(135deg, rgba(0,242,254,0.18) 0%, rgba(56,189,248,0.25) 100%);border:1px solid var(--accent-cyan);color:#fff;font-weight:800;padding:6px 14px;border-radius:8px;align-items:center;gap:7px;cursor:pointer;transition:all 0.2s ease;">
                         ⚙️ Modifica Formazione & Sostituti
                     </button>
-                    <button class="btn-action creator-only-control" onclick="autoFillAndSaveCurrentTeam()" style="background:linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(109,40,217,0.3) 100%);border:1px solid rgba(139,92,246,0.5);color:#c084fc;font-weight:800;padding:6px 14px;border-radius:8px;align-items:center;gap:7px;box-shadow:0 0 14px rgba(139,92,246,0.2);cursor:pointer;transition:all 0.2s ease;" title="Popola e salva automaticamente titolari e sostituti da dati reali 2026/27">
+                    <button class="btn-action creator-only-control" onclick="autoFillAndSaveCurrentTeam()" style="background:linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(109,40,217,0.3) 100%);border:1px solid rgba(139,92,246,0.5);color:#c084fc;font-weight:800;padding:6px 14px;border-radius:8px;align-items:center;gap:7px;cursor:pointer;transition:all 0.2s ease;" title="Popola e salva automaticamente titolari e sostituti da dati reali 2026/27">
                         🤖 Auto-Fill da Titolarità
                     </button>
                 </div>
@@ -1201,7 +1201,7 @@ def build_standalone_dashboard(sync_android=False):
                     <button class="btn-action creator-only-control" onclick="exportTacticalDbJson()" style="font-size:11.5px;background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.15);" title="Scarica il file tactical_db.json ufficiale aggiornato">
                         📥 Esporta Database Tattico
                     </button>
-                    <button class="btn-action" id="btnSharePitch" onclick="exportPitchScreenshot()" style="font-size:12px;background:linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(5,150,105,0.3) 100%);border:1px solid #10b981;color:#34d399;font-weight:800;padding:6px 14px;border-radius:8px;display:flex;align-items:center;gap:6px;cursor:pointer;box-shadow:0 0 14px rgba(16,185,129,0.25);" title="Scarica o condividi l'immagine grafica del campo da calcetto su WhatsApp">
+                    <button class="btn-action" id="btnSharePitch" onclick="exportPitchScreenshot()" style="font-size:12px;background:linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(5,150,105,0.3) 100%);border:1px solid #10b981;color:#34d399;font-weight:800;padding:6px 14px;border-radius:8px;display:flex;align-items:center;gap:6px;cursor:pointer;" title="Scarica o condividi l'immagine grafica del campo da calcetto su WhatsApp">
                         <span>📸</span> <span>Condividi Formazione</span>
                     </button>
                     <div style="font-size:12px;color:var(--text-secondary);">
@@ -1470,8 +1470,8 @@ def build_standalone_dashboard(sync_android=False):
 
     <!-- Modal Coming Soon / Funzionalità in Arrivo -->
     <div id="comingSoonModal" class="modal-backdrop" style="display:none;z-index:100050;" onclick="if(event.target === this) closeComingSoonModal()">
-        <div class="modal-card" style="max-width:520px;width:92%;background:rgba(18,22,29,0.98);backdrop-filter:blur(24px);border:1px solid rgba(245,158,11,0.35);padding:28px 24px;border-radius:20px;box-shadow:0 25px 60px rgba(0,0,0,0.9), 0 0 35px rgba(245,158,11,0.12);text-align:center;">
-            <div style="width:64px;height:64px;margin:0 auto 16px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 0 20px rgba(245,158,11,0.2);">
+        <div class="modal-card" style="max-width:520px;width:92%;background:rgba(18,22,29,0.98);backdrop-filter:blur(24px);border:1px solid rgba(245,158,11,0.35);padding:28px 24px;border-radius:20px;box-shadow:0 25px 60px rgba(0,0,0,0.9);text-align:center;">
+            <div style="width:64px;height:64px;margin:0 auto 16px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;">
                 🔒
             </div>
             <div style="display:inline-block;padding:3px 10px;border-radius:20px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.35);color:#fbbf24;font-size:11px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:12px;">

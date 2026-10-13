@@ -1487,10 +1487,10 @@ function renderTacticalEditorBody(teamName, modulo, coach, teamPlayers, team) {
             <!-- Footer Azioni -->
             <div class="tactical-editor-footer">
                 <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                    <button class="btn-action" style="background:linear-gradient(135deg, #10b981 0%, #059669 100%);color:#fff;font-weight:900;border:none;padding:9px 18px;font-size:12.5px;box-shadow:0 0 16px rgba(16,185,129,0.35);" onclick="saveTacticalEditor('${teamName}')">
+                    <button class="btn-action" style="background:linear-gradient(135deg, #10b981 0%, #059669 100%);color:#fff;font-weight:900;border:none;padding:9px 18px;font-size:12.5px;" onclick="saveTacticalEditor('${teamName}')">
                         💾 Salva Formazione Ufficiale & Ricalcola Listone
                     </button>
-                    <button class="btn-action" style="background:linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);color:#fff;font-weight:900;border:none;padding:9px 18px;font-size:12.5px;box-shadow:0 0 16px rgba(139,92,246,0.35);" onclick="autoFillLineupFromTitolarita('${teamName}')" title="Popola automaticamente titolari e sostituti basandosi sui dati reali 2026/27 (presenze, titolarità, starts)">
+                    <button class="btn-action" style="background:linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);color:#fff;font-weight:900;border:none;padding:9px 18px;font-size:12.5px;" onclick="autoFillLineupFromTitolarita('${teamName}')" title="Popola automaticamente titolari e sostituti basandosi sui dati reali 2026/27 (presenze, titolarità, starts)">
                         🤖 Auto-Fill da Titolarità Reale 26/27
                     </button>
                     <button class="btn-action" style="background:rgba(0,242,254,0.1);border-color:var(--accent-cyan);color:var(--accent-cyan);font-weight:700;padding:8px 14px;font-size:12px;" onclick="exportTacticalDbJson()">

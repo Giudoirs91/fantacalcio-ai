@@ -104,7 +104,7 @@ function renderStatsSerieAView() {
                     </div>
                 </div>
                 <div class="leader-stat-box" style="text-align:right;padding-left:10px;flex-shrink:0;">
-                    <div class="leader-stat-val" style="color:${highlightColor};font-size:22px;font-weight:950;letter-spacing:-0.5px;text-shadow:0 0 16px ${highlightColor}40;">
+                    <div class="leader-stat-val" style="color:${highlightColor};font-size:22px;font-weight:950;letter-spacing:-0.5px;">
                         ${leaderDisplayVal}
                     </div>
                     ${unitLabel ? `<div class="leader-metric-unit" style="font-size:9.5px;font-weight:800;color:#64748b;text-transform:uppercase;margin-top:2px;letter-spacing:0.5px;">${unitLabel}</div>` : ''}

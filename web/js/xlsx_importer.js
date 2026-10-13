@@ -479,7 +479,7 @@ function renderXlsxImportModalContent() {
             ` : '';
 
             return `
-                <div class="xlsx-team-card ${isMyTeam ? 'is-my-team' : ''}" onclick="setXlsxMyTeam('${tName}')" style="cursor:pointer;position:relative;border:2px solid ${isMyTeam ? 'var(--accent-cyan)' : 'rgba(255,255,255,0.08)'};background:${isMyTeam ? 'linear-gradient(135deg, rgba(0,242,254,0.14), rgba(18,24,38,0.98))' : 'rgba(255,255,255,0.03)'};border-radius:12px;padding:14px;box-shadow:${isMyTeam ? '0 0 24px rgba(0,242,254,0.3)' : 'none'};transition:all 0.2s ease;">
+                <div class="xlsx-team-card ${isMyTeam ? 'is-my-team' : ''}" onclick="setXlsxMyTeam('${tName}')" style="cursor:pointer;position:relative;border:2px solid ${isMyTeam ? 'var(--accent-cyan)' : 'rgba(255,255,255,0.08)'};background:${isMyTeam ? 'linear-gradient(135deg, rgba(0,242,254,0.14), rgba(18,24,38,0.98))' : 'rgba(255,255,255,0.03)'};border-radius:12px;padding:14px;box-shadow:${isMyTeam ? '0 4px 16px rgba(0,0,0,0.4)' : 'none'};transition:all 0.2s ease;">
                     
                     <!-- BADGE STATO SQUADRA -->
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
@@ -543,7 +543,7 @@ function renderXlsxImportModalContent() {
         previewHtml = `
             <div style="margin-top:18px;">
                 <!-- PROMINENT QUESTION BANNER -->
-                <div style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg, rgba(0,242,254,0.18), rgba(2,132,199,0.3));border:2px solid var(--accent-cyan);border-radius:14px;padding:16px 20px;box-shadow:0 0 25px rgba(0,242,254,0.2);margin-bottom:18px;">
+                <div style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg, rgba(0,242,254,0.18), rgba(2,132,199,0.3));border:2px solid var(--accent-cyan);border-radius:14px;padding:16px 20px;margin-bottom:18px;">
                     <span style="font-size:36px;">🎯</span>
                     <div style="flex:1;">
                         <h3 style="margin:0;font-size:19px;font-weight:900;color:#fff;letter-spacing:0.3px;">

@@ -259,7 +259,7 @@ function renderGemsView() {
 
             let clusterBadgeStyle = 'background:rgba(139,92,246,0.15);border-color:rgba(139,92,246,0.4);color:#c084fc;';
             if (pred.cluster === 'RATING_7') {
-                clusterBadgeStyle = 'background:rgba(251,191,36,0.15);border-color:rgba(251,191,36,0.4);color:#fbbf24;box-shadow:0 0 8px rgba(251,191,36,0.2);';
+                clusterBadgeStyle = 'background:rgba(251,191,36,0.15);border-color:rgba(251,191,36,0.4);color:#fbbf24;';
             } else if (pred.cluster === 'OOP') {
                 clusterBadgeStyle = 'background:rgba(236,72,153,0.15);border-color:rgba(236,72,153,0.4);color:#f472b6;';
             } else if (pred.cluster === 'ASSIST_MACHINE') {
@@ -394,7 +394,7 @@ function renderGemsView() {
 
             let clusterBadgeStyle = 'background:rgba(139,92,246,0.15);border-color:rgba(139,92,246,0.4);color:#c084fc;';
             if (pred.cluster === 'RATING_7') {
-                clusterBadgeStyle = 'background:rgba(251,191,36,0.15);border-color:rgba(251,191,36,0.4);color:#fbbf24;box-shadow:0 0 10px rgba(251,191,36,0.2);';
+                clusterBadgeStyle = 'background:rgba(251,191,36,0.15);border-color:rgba(251,191,36,0.4);color:#fbbf24;';
             } else if (pred.cluster === 'OOP') {
                 clusterBadgeStyle = 'background:rgba(236,72,153,0.15);border-color:rgba(236,72,153,0.4);color:#f472b6;';
             } else if (pred.cluster === 'ASSIST_MACHINE') {

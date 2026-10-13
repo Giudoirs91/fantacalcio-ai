@@ -18,7 +18,7 @@ function renderTopFlopView() {
         const isCurrent = (r === currentTopFlopRound);
         return `
             <button class="btn-action ${isCurrent ? 'active' : ''}" 
-                    style="${isCurrent ? 'background:linear-gradient(135deg, var(--accent-cyan), #0284c7);color:#031327;font-weight:900;box-shadow:0 0 12px rgba(0,242,254,0.4);' : 'background:rgba(255,255,255,0.05);color:var(--text-secondary);border:1px solid rgba(255,255,255,0.1);'}padding:7px 16px;border-radius:8px;font-size:12.5px;cursor:pointer;transition:all 0.15s ease;" 
+                    style="${isCurrent ? 'background:linear-gradient(135deg, var(--accent-cyan), #0284c7);color:#031327;font-weight:900;' : 'background:rgba(255,255,255,0.05);color:var(--text-secondary);border:1px solid rgba(255,255,255,0.1);'}padding:7px 16px;border-radius:8px;font-size:12.5px;cursor:pointer;transition:all 0.15s ease;" 
                     onclick="setTopFlopRound(${r})">
                 Giornata ${r} ${r === availableRounds[availableRounds.length - 1] ? '🔥 (Ultima)' : ''}
             </button>

@@ -223,7 +223,7 @@ def build_html(dummy_data):
         .footer-text {{ font-family: 'Outfit', sans-serif; font-size: 40px; font-weight: 800; color: var(--text-primary); letter-spacing: 2px; }}
         .slide-indicator {{ display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; }}
         .dot {{ width: 20px; height: 20px; border-radius: 50%; background: rgba(255,255,255,0.2); }}
-        .dot.active {{ background: var(--accent-green); box-shadow: 0 0 15px var(--accent-green); }}
+        .dot.active {{ background: var(--accent-green); box-shadow: none; }}
     </style>
 </head>
 <body>

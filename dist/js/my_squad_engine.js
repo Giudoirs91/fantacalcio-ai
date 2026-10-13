@@ -733,7 +733,7 @@ function renderMySquadModalContent() {
                     <span style="color:#38bdf8; font-size:12.5px; font-weight:900; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:6px;">
                         <span>🛡️</span> SQUADRA ATTIVA:
                     </span>
-                    <select onchange="switchActiveSquad(this.value)" style="background:#05070a; color:#ffffff; border:1px solid #38bdf8; padding:7px 14px; border-radius:10px; font-weight:800; font-size:14px; font-family:'Outfit',sans-serif; cursor:pointer; outline:none; box-shadow:0 0 10px rgba(56,189,248,0.15);">
+                    <select onchange="switchActiveSquad(this.value)" style="background:#05070a; color:#ffffff; border:1px solid #38bdf8; padding:7px 14px; border-radius:10px; font-weight:800; font-size:14px; font-family:'Outfit',sans-serif; cursor:pointer; outline:none; ">
                         ${squadOptionsHtml}
                     </select>
                     <span style="background:rgba(16,185,129,0.15); color:#4ade80; border:1px solid rgba(16,185,129,0.3); padding:4px 10px; border-radius:8px; font-size:12px; font-weight:800;">

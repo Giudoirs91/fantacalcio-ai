@@ -99,7 +99,7 @@ def generate_html():
             height: 8px;
             border-radius: 50%;
             background: #10b981;
-            box-shadow: 0 0 10px #10b981;
+            box-shadow: none;
         }
 
         .date-badge {
@@ -125,7 +125,7 @@ def generate_html():
 
         .main-title span.accent-red {
             color: #f87171;
-            text-shadow: 0 0 25px rgba(248, 113, 113, 0.4);
+            text-shadow: none;
         }
 
         .subtitle {
@@ -143,7 +143,7 @@ def generate_html():
             border: 1.5px solid rgba(239, 68, 68, 0.35);
             border-radius: 26px;
             padding: 26px 30px;
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 35px rgba(239, 68, 68, 0.12);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(16px);
         }
 

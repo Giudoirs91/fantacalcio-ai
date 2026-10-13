@@ -155,7 +155,7 @@ def generate_html(by_xg, by_xa, by_delta):
         /* Header */
         .header {{ position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }}
         .brand {{ font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 900; color: #38bdf8; letter-spacing: 1px; display: flex; align-items: center; gap: 12px; }}
-        .brand-dot {{ width: 12px; height: 12px; background: #38bdf8; border-radius: 50%; box-shadow: 0 0 12px #38bdf8; }}
+        .brand-dot {{ width: 12px; height: 12px; background: #38bdf8; border-radius: 50%; box-shadow: none; }}
         .top-tag {{ background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.35); padding: 8px 20px; border-radius: 99px; color: #c084fc; font-weight: 800; font-size: 15px; letter-spacing: 1.5px; text-transform: uppercase; }}
 
         .title-block {{ margin-bottom: 30px; }}

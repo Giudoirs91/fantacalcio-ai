@@ -1774,7 +1774,7 @@ function renderMySquadModalContent() {
                     <span style="color:#38bdf8; font-size:12.5px; font-weight:900; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:6px;">
                         <span>🛡️</span> SQUADRA ATTIVA:
                     </span>
-                    <select onchange="switchActiveSquad(this.value)" style="background:#05070a; color:#ffffff; border:1px solid #38bdf8; padding:7px 14px; border-radius:10px; font-weight:800; font-size:14px; font-family:'Outfit',sans-serif; cursor:pointer; outline:none; box-shadow:0 0 10px rgba(56,189,248,0.15);">
+                    <select onchange="switchActiveSquad(this.value)" style="background:#05070a; color:#ffffff; border:1px solid #38bdf8; padding:7px 14px; border-radius:10px; font-weight:800; font-size:14px; font-family:'Outfit',sans-serif; cursor:pointer; outline:none; ">
                         ${squadOptionsHtml}
                     </select>
                     <span style="background:rgba(16,185,129,0.15); color:#4ade80; border:1px solid rgba(16,185,129,0.3); padding:4px 10px; border-radius:8px; font-size:12px; font-weight:800;">
@@ -3012,7 +3012,7 @@ function renderDeleteStep2(leagueId) {
             </div>
             <div style="display:flex;justify-content:flex-end;gap:10px;border-top:1px solid rgba(255,255,255,0.08);padding-top:14px;">
                 <button type="button" class="btn-action" onclick="closeDeleteLeagueModal()">✕ Annulla</button>
-                <button type="button" class="btn-action" onclick="executeDeleteLeague('${l.id}')" style="background:linear-gradient(135deg, #ef4444, #b91c1c);color:#fff;border:none;font-weight:900;padding:10px 20px;box-shadow:0 0 16px rgba(239,68,68,0.4);">
+                <button type="button" class="btn-action" onclick="executeDeleteLeague('${l.id}')" style="background:linear-gradient(135deg, #ef4444, #b91c1c);color:#fff;border:none;font-weight:900;padding:10px 20px;">
                     🗑️ SÌ, ELIMINA DEFINITIVAMENTE
                 </button>
             </div>
@@ -3459,7 +3459,7 @@ function renderXlsxImportModalContent() {
                 </div>
             ` : '';
             return `
-                <div class="xlsx-team-card ${isMyTeam ? 'is-my-team' : ''}" onclick="setXlsxMyTeam('${tName}')" style="cursor:pointer;position:relative;border:2px solid ${isMyTeam ? 'var(--accent-cyan)' : 'rgba(255,255,255,0.08)'};background:${isMyTeam ? 'linear-gradient(135deg, rgba(0,242,254,0.14), rgba(18,24,38,0.98))' : 'rgba(255,255,255,0.03)'};border-radius:12px;padding:14px;box-shadow:${isMyTeam ? '0 0 24px rgba(0,242,254,0.3)' : 'none'};transition:all 0.2s ease;">
+                <div class="xlsx-team-card ${isMyTeam ? 'is-my-team' : ''}" onclick="setXlsxMyTeam('${tName}')" style="cursor:pointer;position:relative;border:2px solid ${isMyTeam ? 'var(--accent-cyan)' : 'rgba(255,255,255,0.08)'};background:${isMyTeam ? 'linear-gradient(135deg, rgba(0,242,254,0.14), rgba(18,24,38,0.98))' : 'rgba(255,255,255,0.03)'};border-radius:12px;padding:14px;box-shadow:${isMyTeam ? '0 4px 16px rgba(0,0,0,0.4)' : 'none'};transition:all 0.2s ease;">
                     <!-- BADGE STATO SQUADRA -->
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
                         <span style="font-size:11px;font-weight:900;padding:3px 8px;border-radius:6px;letter-spacing:0.3px;${isMyTeam ? 'background:#00f2fe;color:#031327;' : 'background:rgba(255,255,255,0.08);color:var(--text-muted);'}">
@@ -3513,7 +3513,7 @@ function renderXlsxImportModalContent() {
         previewHtml = `
             <div style="margin-top:18px;">
                 <!-- PROMINENT QUESTION BANNER -->
-                <div style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg, rgba(0,242,254,0.18), rgba(2,132,199,0.3));border:2px solid var(--accent-cyan);border-radius:14px;padding:16px 20px;box-shadow:0 0 25px rgba(0,242,254,0.2);margin-bottom:18px;">
+                <div style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg, rgba(0,242,254,0.18), rgba(2,132,199,0.3));border:2px solid var(--accent-cyan);border-radius:14px;padding:16px 20px;margin-bottom:18px;">
                     <span style="font-size:36px;">🎯</span>
                     <div style="flex:1;">
                         <h3 style="margin:0;font-size:19px;font-weight:900;color:#fff;letter-spacing:0.3px;">
@@ -7562,10 +7562,10 @@ function renderTacticalEditorBody(teamName, modulo, coach, teamPlayers, team) {
             <!-- Footer Azioni -->
             <div class="tactical-editor-footer">
                 <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                    <button class="btn-action" style="background:linear-gradient(135deg, #10b981 0%, #059669 100%);color:#fff;font-weight:900;border:none;padding:9px 18px;font-size:12.5px;box-shadow:0 0 16px rgba(16,185,129,0.35);" onclick="saveTacticalEditor('${teamName}')">
+                    <button class="btn-action" style="background:linear-gradient(135deg, #10b981 0%, #059669 100%);color:#fff;font-weight:900;border:none;padding:9px 18px;font-size:12.5px;" onclick="saveTacticalEditor('${teamName}')">
                         💾 Salva Formazione Ufficiale & Ricalcola Listone
                     </button>
-                    <button class="btn-action" style="background:linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);color:#fff;font-weight:900;border:none;padding:9px 18px;font-size:12.5px;box-shadow:0 0 16px rgba(139,92,246,0.35);" onclick="autoFillLineupFromTitolarita('${teamName}')" title="Popola automaticamente titolari e sostituti basandosi sui dati reali 2026/27 (presenze, titolarità, starts)">
+                    <button class="btn-action" style="background:linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);color:#fff;font-weight:900;border:none;padding:9px 18px;font-size:12.5px;" onclick="autoFillLineupFromTitolarita('${teamName}')" title="Popola automaticamente titolari e sostituti basandosi sui dati reali 2026/27 (presenze, titolarità, starts)">
                         🤖 Auto-Fill da Titolarità Reale 26/27
                     </button>
                     <button class="btn-action" style="background:rgba(0,242,254,0.1);border-color:var(--accent-cyan);color:var(--accent-cyan);font-weight:700;padding:8px 14px;font-size:12px;" onclick="exportTacticalDbJson()">
@@ -10348,7 +10348,7 @@ function renderResetAuctionModal() {
                         Svincola tutti i <b>${rivalCount}</b> calciatori assegnati alle altre squadre e ripristina i loro crediti. <span style="color:#10b981;font-weight:700;">La tua rosa (${myCount} giocatori) resta intatta!</span>
                     </div>
                 </div>
-                <button type="button" class="btn-action" style="background:rgba(56,189,248,0.18);border-color:#38bdf8;color:#38bdf8;font-weight:800;font-size:12px;padding:9px 15px;white-space:nowrap;cursor:pointer;border-radius:8px;box-shadow:0 0 10px rgba(56,189,248,0.2);" onclick="confirmResetRivalsTaken()" ${rivalCount === 0 ? 'disabled style="opacity:0.4;cursor:not-allowed;"' : ''}>
+                <button type="button" class="btn-action" style="background:rgba(56,189,248,0.18);border-color:#38bdf8;color:#38bdf8;font-weight:800;font-size:12px;padding:9px 15px;white-space:nowrap;cursor:pointer;border-radius:8px;" onclick="confirmResetRivalsTaken()" ${rivalCount === 0 ? 'disabled style="opacity:0.4;cursor:not-allowed;"' : ''}>
                     ↩️ Ripristina Altri
                 </button>
             </div>
@@ -13755,9 +13755,9 @@ function renderAiSquadsTab() {
         }
         container.innerHTML = `
             ${adminBannerHtml}
-            <div style="width: 100%; max-width: 900px; margin: 20px auto; padding: 42px 28px; background: rgba(18, 24, 38, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(139, 92, 246, 0.35); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 35px rgba(139, 92, 246, 0.15); text-align: center;">
+            <div style="width: 100%; max-width: 900px; margin: 20px auto; padding: 42px 28px; background: rgba(18, 24, 38, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(139, 92, 246, 0.35); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.65); text-align: center;">
                 <!-- Lock Animated Icon -->
-                <div style="width: 88px; height: 88px; margin: 0 auto 22px; border-radius: 50%; background: linear-gradient(135deg, rgba(239,68,68,0.2) 0%, rgba(139,92,246,0.25) 100%); border: 2px solid rgba(239,68,68,0.5); display: flex; align-items: center; justify-content: center; font-size: 40px; box-shadow: 0 0 35px rgba(239,68,68,0.3);">
+                <div style="width: 88px; height: 88px; margin: 0 auto 22px; border-radius: 50%; background: linear-gradient(135deg, rgba(239,68,68,0.2) 0%, rgba(139,92,246,0.25) 100%); border: 2px solid rgba(239,68,68,0.5); display: flex; align-items: center; justify-content: center; font-size: 40px; ">
                     🔒
                 </div>
                 <!-- Status Badge -->
@@ -14737,7 +14737,7 @@ function renderGemsView() {
             const pred = p._aiPrediction;
             let clusterBadgeStyle = 'background:rgba(139,92,246,0.15);border-color:rgba(139,92,246,0.4);color:#c084fc;';
             if (pred.cluster === 'RATING_7') {
-                clusterBadgeStyle = 'background:rgba(251,191,36,0.15);border-color:rgba(251,191,36,0.4);color:#fbbf24;box-shadow:0 0 8px rgba(251,191,36,0.2);';
+                clusterBadgeStyle = 'background:rgba(251,191,36,0.15);border-color:rgba(251,191,36,0.4);color:#fbbf24;';
             } else if (pred.cluster === 'OOP') {
                 clusterBadgeStyle = 'background:rgba(236,72,153,0.15);border-color:rgba(236,72,153,0.4);color:#f472b6;';
             } else if (pred.cluster === 'ASSIST_MACHINE') {
@@ -14865,7 +14865,7 @@ function renderGemsView() {
             const pred = p._aiPrediction;
             let clusterBadgeStyle = 'background:rgba(139,92,246,0.15);border-color:rgba(139,92,246,0.4);color:#c084fc;';
             if (pred.cluster === 'RATING_7') {
-                clusterBadgeStyle = 'background:rgba(251,191,36,0.15);border-color:rgba(251,191,36,0.4);color:#fbbf24;box-shadow:0 0 10px rgba(251,191,36,0.2);';
+                clusterBadgeStyle = 'background:rgba(251,191,36,0.15);border-color:rgba(251,191,36,0.4);color:#fbbf24;';
             } else if (pred.cluster === 'OOP') {
                 clusterBadgeStyle = 'background:rgba(236,72,153,0.15);border-color:rgba(236,72,153,0.4);color:#f472b6;';
             } else if (pred.cluster === 'ASSIST_MACHINE') {
@@ -18937,7 +18937,7 @@ function renderTopFlopView() {
         const isCurrent = (r === currentTopFlopRound);
         return `
             <button class="btn-action ${isCurrent ? 'active' : ''}" 
-                    style="${isCurrent ? 'background:linear-gradient(135deg, var(--accent-cyan), #0284c7);color:#031327;font-weight:900;box-shadow:0 0 12px rgba(0,242,254,0.4);' : 'background:rgba(255,255,255,0.05);color:var(--text-secondary);border:1px solid rgba(255,255,255,0.1);'}padding:7px 16px;border-radius:8px;font-size:12.5px;cursor:pointer;transition:all 0.15s ease;" 
+                    style="${isCurrent ? 'background:linear-gradient(135deg, var(--accent-cyan), #0284c7);color:#031327;font-weight:900;' : 'background:rgba(255,255,255,0.05);color:var(--text-secondary);border:1px solid rgba(255,255,255,0.1);'}padding:7px 16px;border-radius:8px;font-size:12.5px;cursor:pointer;transition:all 0.15s ease;" 
                     onclick="setTopFlopRound(${r})">
                 Giornata ${r} ${r === availableRounds[availableRounds.length - 1] ? '🔥 (Ultima)' : ''}
             </button>
@@ -19178,7 +19178,7 @@ function renderStatsSerieAView() {
                     </div>
                 </div>
                 <div class="leader-stat-box" style="text-align:right;padding-left:10px;flex-shrink:0;">
-                    <div class="leader-stat-val" style="color:${highlightColor};font-size:22px;font-weight:950;letter-spacing:-0.5px;text-shadow:0 0 16px ${highlightColor}40;">
+                    <div class="leader-stat-val" style="color:${highlightColor};font-size:22px;font-weight:950;letter-spacing:-0.5px;">
                         ${leaderDisplayVal}
                     </div>
                     ${unitLabel ? `<div class="leader-metric-unit" style="font-size:9.5px;font-weight:800;color:#64748b;text-transform:uppercase;margin-top:2px;letter-spacing:0.5px;">${unitLabel}</div>` : ''}

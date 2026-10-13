@@ -428,9 +428,9 @@ function renderAiSquadsTab() {
         }
         container.innerHTML = `
             ${adminBannerHtml}
-            <div style="width: 100%; max-width: 900px; margin: 20px auto; padding: 42px 28px; background: rgba(18, 24, 38, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(139, 92, 246, 0.35); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 35px rgba(139, 92, 246, 0.15); text-align: center;">
+            <div style="width: 100%; max-width: 900px; margin: 20px auto; padding: 42px 28px; background: rgba(18, 24, 38, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(139, 92, 246, 0.35); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.65); text-align: center;">
                 <!-- Lock Animated Icon -->
-                <div style="width: 88px; height: 88px; margin: 0 auto 22px; border-radius: 50%; background: linear-gradient(135deg, rgba(239,68,68,0.2) 0%, rgba(139,92,246,0.25) 100%); border: 2px solid rgba(239,68,68,0.5); display: flex; align-items: center; justify-content: center; font-size: 40px; box-shadow: 0 0 35px rgba(239,68,68,0.3);">
+                <div style="width: 88px; height: 88px; margin: 0 auto 22px; border-radius: 50%; background: linear-gradient(135deg, rgba(239,68,68,0.2) 0%, rgba(139,92,246,0.25) 100%); border: 2px solid rgba(239,68,68,0.5); display: flex; align-items: center; justify-content: center; font-size: 40px; ">
                     🔒
                 </div>
                 <!-- Status Badge -->

@@ -3128,22 +3128,47 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
         html_nodes = "".join([x['html'] for x in sorted_items])
         return f'<div class="pitch-band band-count-{cnt}" id="{band_key}">{html_nodes}</div>'
 
-    # 4. Ballottaggi
+    # 4. Gerarchie Tattiche & Staffette di Reparto
     ballottaggi_html = ""
     ball_list = team_data.get("ballottaggi", [])
     if ball_list:
         for b in ball_list:
-            bp = clean_html(b.get("player", ""))
+            bp_raw = b.get("player", "")
+            bp = clean_html(bp_raw)
             pct = int(b.get("pct", 50))
-            vs_txt = clean_html(b.get("vs", ""))
+            vs_txt_raw = b.get("vs", "")
+            vs_txt = clean_html(vs_txt_raw)
+
+            # Neutralizzazione automatica infortuni per evitare la "bugia bianca"
+            p1_obj = find_p(bp_raw)
+            m_rival = re.search(r'([A-Za-z\s\.\'-]+)', vs_txt_raw)
+            rival_name = m_rival.group(1).strip() if m_rival else vs_txt_raw
+            p2_obj = find_p(rival_name)
+
+            p1_inj = p1_obj.get("is_injured") if p1_obj else False
+            p2_inj = p2_obj.get("is_injured") if p2_obj else False
+
+            neutralized_tag = ""
+            bar_color = "linear-gradient(90deg,#0284c7,#38bdf8)"
+            if p2_inj and not p1_inj:
+                pct = 95
+                r_date = p2_obj.get("infortunio_rientro", "TBD") if p2_obj else "TBD"
+                neutralized_tag = f'<span style="color:#f87171;font-size:10px;font-weight:700;margin-left:4px;">(Rivale 🩹 fino al {clean_html(r_date)})</span>'
+                bar_color = "linear-gradient(90deg,#10b981,#34d399)"
+            elif p1_inj and not p2_inj:
+                pct = 5
+                r_date = p1_obj.get("infortunio_rientro", "TBD") if p1_obj else "TBD"
+                neutralized_tag = f'<span style="color:#f87171;font-size:10px;font-weight:700;margin-left:4px;">(🩹 Indisponibile fino al {clean_html(r_date)})</span>'
+                bar_color = "linear-gradient(90deg,#ef4444,#f87171)"
+
             ballottaggi_html += f"""
             <div class="ballottaggio-item" style="padding:9px 12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;margin-bottom:8px;">
                 <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:700;">
-                    <span style="color:#fff;">{bp} <b style="color:var(--accent-cyan);">{pct}%</b></span>
+                    <span style="color:#fff;">{bp} <b style="color:var(--accent-cyan);">{pct}%</b> {neutralized_tag}</span>
                     <span style="color:var(--text-muted);font-size:11.5px;">vs {vs_txt}</span>
                 </div>
                 <div style="height:5px;background:rgba(255,255,255,0.08);border-radius:3px;margin-top:6px;overflow:hidden;">
-                    <div style="width:{pct}%;height:100%;background:linear-gradient(90deg,#0284c7,#38bdf8);border-radius:3px;"></div>
+                    <div style="width:{pct}%;height:100%;background:{bar_color};border-radius:3px;"></div>
                 </div>
             </div>
             """
@@ -3446,7 +3471,7 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
                 <div class="tactics-card tactics-card-ballottaggi">
                     <div class="tactics-card-header">
                         <span style="font-size:16px;">🔄</span>
-                        <h4>Ballottaggi &amp; Percentuali Titolari</h4>
+                        <h4>Gerarchie Tattiche &amp; Staffette di Reparto (Stagione 2026/27)</h4>
                     </div>
                     <div style="padding-top:4px;">
                         {ballottaggi_html}
@@ -4169,7 +4194,40 @@ def build_all():
         f.write(generate_gk_pillar(gk_matrix_data))
     print("  ✓ Generata pagina Pillar: dist/griglia-portieri/index.html")
 
-    # 4b. Genera 20 Pagine Dedicate Club & Probabili Formazioni (Cluster Squadra)
+    # 4b. Genera Hub & Pagine Match: Probabili Formazioni & Ballottaggi Consensus (5 Fonti)
+    consensus_path = os.path.join(ROOT_DIR, "config", "matchday_consensus.json")
+    if os.path.exists(consensus_path):
+        try:
+            from tools.seo_probabili_template import generate_probabili_formazioni_hub, generate_match_probabili_page
+            with open(consensus_path, "r", encoding="utf-8") as f:
+                consensus_data = json.load(f)
+            
+            # 1. Hub Principale dist/probabili-formazioni/index.html
+            prob_dir = os.path.join(DIST_DIR, "probabili-formazioni")
+            os.makedirs(prob_dir, exist_ok=True)
+            hub_html = generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, BASE_URL, render_unified_header('../'))
+            with open(os.path.join(prob_dir, "index.html"), "w", encoding="utf-8") as f:
+                f.write(hub_html)
+            sitemap_urls.append(f"{BASE_URL}/probabili-formazioni/")
+            print("  ✓ Generato Hub Consensus: dist/probabili-formazioni/index.html")
+
+            # 2. Pagine Singolo Match dist/probabili-formazioni/<match-slug>/index.html
+            match_count = 0
+            for m in consensus_data.get("matches", []):
+                m_slug = m.get("slug")
+                if m_slug:
+                    m_dir = os.path.join(prob_dir, m_slug)
+                    os.makedirs(m_dir, exist_ok=True)
+                    m_html = generate_match_probabili_page(m, consensus_data, BASE_URL, render_unified_header('../../'))
+                    with open(os.path.join(m_dir, "index.html"), "w", encoding="utf-8") as f:
+                        f.write(m_html)
+                    sitemap_urls.append(f"{BASE_URL}/probabili-formazioni/{m_slug}/")
+                    match_count += 1
+            print(f"  ✓ Generate {match_count} pagine partita 1vs1 Consensus in dist/probabili-formazioni/<match-slug>/")
+        except Exception as e:
+            print(f"  [WARN] Errore nella generazione di probabili-formazioni hub: {e}")
+
+    # 4c. Genera 20 Pagine Dedicate Club & Probabili Formazioni (Cluster Squadra)
     all_teams_list = sorted(list(tactical_db.keys()))
     team_count = 0
     for team_name, t_data in sorted(tactical_db.items()):

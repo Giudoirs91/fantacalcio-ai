@@ -503,17 +503,33 @@ function renderPitchTeam(teamName, updateUrl = false) {
 
                 if (allContenders.length === 2) {
                     const [p1, p2] = allContenders;
+
+                    // Neutralizzazione infortuni per evitare falsi ballottaggi
+                    const p1Obj = (window.RAW_DATA || []).find(p => (p.name || '').toLowerCase() === p1.name.toLowerCase());
+                    const p2Obj = (window.RAW_DATA || []).find(p => (p.name || '').toLowerCase() === p2.name.toLowerCase());
+                    let injTag1 = '';
+                    let injTag2 = '';
+                    if (p2Obj && p2Obj.is_injured && (!p1Obj || !p1Obj.is_injured)) {
+                        p1.pct = 95;
+                        p2.pct = 5;
+                        injTag2 = ' 🩹';
+                    } else if (p1Obj && p1Obj.is_injured && (!p2Obj || !p2Obj.is_injured)) {
+                        p1.pct = 5;
+                        p2.pct = 95;
+                        injTag1 = ' 🩹';
+                    }
+
                     ballottaggiHtml += `
                         <div class="modern-duel-card">
                             <div class="duel-contenders-row">
                                 <span class="duel-player p1" onclick="openPlayerProfileByName('${p1.name}', '${teamName}')" style="cursor:pointer;" title="Apri scheda di ${p1.name}">
-                                    <span class="duel-name">${p1.name}</span>
+                                    <span class="duel-name">${p1.name}${injTag1}</span>
                                     <span class="duel-pct-chip pct-fav">${p1.pct}%</span>
                                 </span>
                                 <span class="duel-vs-chip">VS</span>
                                 <span class="duel-player p2" onclick="openPlayerProfileByName('${p2.name}', '${teamName}')" style="cursor:pointer;" title="Apri scheda di ${p2.name}">
                                     <span class="duel-pct-chip pct-sub">${p2.pct}%</span>
-                                    <span class="duel-name">${p2.name}</span>
+                                    <span class="duel-name">${p2.name}${injTag2}</span>
                                 </span>
                             </div>
                             <div class="modern-duel-gauge">
@@ -598,8 +614,8 @@ function renderPitchTeam(teamName, updateUrl = false) {
             <div class="tactics-card-col">
                 <div class="tactics-hub-header">
                     <div class="tactics-hub-title-wrap">
-                        <span class="hub-pill-tag">DUELLI VOTO</span>
-                        <h3 class="tactics-hub-title">Ballottaggi Chiave</h3>
+                        <span class="hub-pill-tag">GERARCHIE TATTICHE</span>
+                        <h3 class="tactics-hub-title">Staffette &amp; Reparti</h3>
                     </div>
                     <span class="hub-pill-count">Serie A</span>
                 </div>

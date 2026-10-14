@@ -41,8 +41,17 @@ def render_probabili_css():
    PROBABILI FORMAZIONI & CONSENSUS 5 FONTI - DESIGN SYSTEM
    ========================================================================== */
 
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 .prob-container {
     max-width: 1480px;
+    width: 100%;
     margin: 0 auto;
     padding: 16px 16px 40px 16px;
     box-sizing: border-box;
@@ -121,6 +130,9 @@ def render_probabili_css():
 /* Match Carousel / Bar */
 .match-carousel-wrapper {
     margin-bottom: 24px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
 }
 .carousel-label {
     font-size: 11px;
@@ -132,6 +144,8 @@ def render_probabili_css():
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 .match-carousel {
     display: flex;
@@ -240,6 +254,10 @@ def render_probabili_css():
     padding: 20px 24px;
     margin-bottom: 28px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 .match-detail-header {
     display: flex;
@@ -250,11 +268,14 @@ def render_probabili_css():
     padding-bottom: 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     margin-bottom: 18px;
+    width: 100%;
+    box-sizing: border-box;
 }
 .match-title-wrap {
     display: flex;
     align-items: center;
     gap: 14px;
+    max-width: 100%;
 }
 .match-headline {
     font-family: 'Outfit', sans-serif;
@@ -262,11 +283,13 @@ def render_probabili_css():
     font-weight: 900;
     color: #fff;
     margin: 0;
+    word-break: break-word;
 }
 .match-subinfo {
     font-size: 11.5px;
     color: #94a3b8;
     margin-top: 2px;
+    word-break: break-word;
 }
 .match-view-switcher {
     display: flex;
@@ -276,6 +299,8 @@ def render_probabili_css():
     border-radius: 10px;
     padding: 3px;
     gap: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 .view-switch-btn {
     background: transparent;
@@ -300,13 +325,83 @@ def render_probabili_css():
     font-weight: 800;
 }
 
-/* 1vs1 Head-to-Head Duels */
-.duels-container {
+/* 1vs1 Head-to-Head Duels & Two-Column Team Layout */
+.match-teams-columns {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 14px;
-    margin-bottom: 20px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 24px;
+    width: 100%;
 }
+.team-duels-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+    width: 100%;
+}
+.team-column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.team-column-header.home-header {
+    border-left: 4px solid #38bdf8;
+    background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, rgba(15, 23, 42, 0.7) 100%);
+}
+.team-column-header.away-header {
+    border-left: 4px solid #a855f7;
+    background: linear-gradient(90deg, rgba(168, 85, 247, 0.12) 0%, rgba(15, 23, 42, 0.7) 100%);
+}
+.team-col-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.team-col-icon {
+    font-size: 16px;
+}
+.team-col-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+}
+.team-col-badge {
+    font-size: 9.5px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+}
+.team-col-count {
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+}
+.team-duels-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.no-duels-notice {
+    font-size: 12px;
+    color: #94a3b8;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    line-height: 1.45;
+}
+
 .duel-card-h2h {
     background: rgba(11, 15, 23, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -316,6 +411,8 @@ def render_probabili_css():
     flex-direction: column;
     gap: 10px;
     transition: border-color 0.2s ease, transform 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
 }
 .duel-card-h2h:hover {
     border-color: rgba(56, 189, 248, 0.3);
@@ -325,28 +422,33 @@ def render_probabili_css():
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
 }
 .duel-team-tag {
-    font-size: 10.5px;
+    font-size: 11px;
     font-weight: 800;
     color: #94a3b8;
     text-transform: uppercase;
 }
 .duel-h2h-players {
     display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+}
+.h2h-player-row {
+    display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     gap: 10px;
 }
-.h2h-player {
+.h2h-player-lead {
     display: flex;
     align-items: center;
     gap: 8px;
-    max-width: 44%;
-}
-.h2h-player.right {
-    flex-direction: row-reverse;
-    text-align: right;
+    min-width: 0;
+    flex: 1;
 }
 .h2h-info {
     display: flex;
@@ -354,7 +456,7 @@ def render_probabili_css():
     min-width: 0;
 }
 .h2h-name {
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 800;
     color: #ffffff;
     white-space: nowrap;
@@ -375,21 +477,26 @@ def render_probabili_css():
 .h2h-meta b {
     color: #e2e8f0;
 }
-.h2h-player.right .h2h-meta {
-    justify-content: flex-end;
-}
 .h2h-pct {
     font-family: 'Outfit', sans-serif;
     font-size: 17px;
     font-weight: 900;
-    color: #fff;
     flex-shrink: 0;
+    text-align: right;
+    min-width: 44px;
 }
 .h2h-pct.fav {
     color: #4ade80;
 }
 .h2h-pct.under {
     color: #fbbf24;
+}
+.h2h-center-divider {
+    font-size: 10px;
+    font-weight: 900;
+    color: #64748b;
+    flex-shrink: 0;
+    padding: 0 4px;
 }
 
 /* Dual Color Gauge */
@@ -430,7 +537,7 @@ def render_probabili_css():
 .verdict-tag {
     font-size: 10px;
     font-weight: 800;
-    padding: 1px 6px;
+    padding: 2px 7px;
     border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
@@ -488,6 +595,7 @@ def render_probabili_css():
 /* Consensus Table - The Anti-FCO View */
 .consensus-table-wrapper {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: #0f1217;
@@ -647,18 +755,165 @@ def render_probabili_css():
     font-weight: 800;
 }
 
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM - SMARTPHONE & TABLET OPTIMIZATION
+   ========================================================================== */
+
+/* Tablet & Smaller Screens (<= 960px) */
+@media (max-width: 960px) {
+    .match-teams-columns {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+}
+
+/* Smartphone Landscape & Tablet Portrait (<= 768px) */
 @media (max-width: 768px) {
+    .prob-container {
+        padding: 10px 8px 32px 8px;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    .prob-hero {
+        padding: 16px 14px;
+        border-radius: 14px;
+        margin-bottom: 14px;
+    }
     .prob-hero-title {
-        font-size: 22px;
+        font-size: 20px;
+        line-height: 1.25;
+    }
+    .prob-hero-desc {
+        font-size: 12px;
+        line-height: 1.45;
+        margin-bottom: 10px;
+    }
+    .prob-sources-bar {
+        font-size: 10px;
+        gap: 5px;
+    }
+    .source-chip {
+        padding: 2px 6px;
+    }
+    .match-detail-section {
+        padding: 12px 10px;
+        border-radius: 14px;
+        margin-bottom: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .match-detail-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding-bottom: 12px;
+        width: 100%;
     }
     .match-headline {
         font-size: 18px;
+        word-break: break-word;
     }
-    .duels-container {
+    .match-subinfo {
+        font-size: 11px;
+    }
+    .match-view-switcher {
+        width: 100%;
+        display: flex;
+    }
+    .view-switch-btn {
+        flex: 1;
+        min-width: 0;
+        justify-content: center;
+        padding: 7px 4px;
+        font-size: 11px;
+        min-height: 38px;
+        white-space: normal;
+        text-align: center;
+    }
+    .match-teams-columns {
         grid-template-columns: 1fr;
+        gap: 14px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .team-duels-column {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .duel-card-h2h {
+        padding: 10px 12px;
+        border-radius: 12px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .team-column-header {
+        padding: 8px 10px;
+    }
+    .match-bottom-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .consensus-table-wrapper {
+        border-radius: 8px;
+    }
+    .consensus-table .col-player {
+        position: sticky;
+        left: 0;
+        background: #141822;
+        z-index: 2;
+        box-shadow: 2px 0 6px rgba(0,0,0,0.4);
+    }
+}
+
+/* Smartphone Portrait (<= 580px) */
+@media (max-width: 580px) {
+    .duel-card-h2h {
+        padding: 12px;
+        gap: 8px;
+    }
+    .duel-h2h-players {
+        gap: 6px;
     }
     .h2h-name {
-        max-width: 100px;
+        font-size: 13px;
+    }
+    .h2h-pct {
+        font-size: 16px;
+    }
+    .duel-gauge-bar {
+        height: 6px;
+        margin: 2px 0;
+    }
+    .verdict-desc {
+        font-size: 10.5px;
+    }
+    .btn-duel-compare {
+        font-size: 10px;
+    }
+    .hot-ballots-box {
+        padding: 12px 10px;
+        border-radius: 12px;
+    }
+    .hot-ballots-grid {
+        grid-template-columns: 1fr;
+    }
+    .match-pill-card {
+        min-width: 120px;
+        padding: 6px 8px;
+    }
+    .match-pill-teams {
+        font-size: 12px;
+    }
+    .taker-item-row {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    .injury-mini-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
     }
 }
 """
@@ -667,7 +922,7 @@ def render_probabili_js():
     return """
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Switcher viste per match (Pitch vs Duels vs Table)
+    // 1. Switcher viste per match (Duelli vs Tabellone Fonti)
     document.querySelectorAll('.view-switch-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             var matchId = this.getAttribute('data-match');
@@ -733,38 +988,41 @@ def render_h2h_duel(duel, team_name):
             <span class="duel-team-tag">⚽ {clean_html(team_name)}</span>
             <span class="verdict-tag {verdict.get('tone', 'safe')}">{clean_html(verdict.get('tag', 'Ballottaggio'))}</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge {p1.get('role', 'C')}">{p1.get('role', 'C')}</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/{p1_slug}/" class="h2h-name" title="Scheda {clean_html(p1['name'])}">{clean_html(p1['name'])}{inj_badge1}</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>{p1.get('ovr', 75)}</b></span> &bull; <span>xFM <b>{p1.get('xfm', 6.2):.2f}</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge {p1.get('role', 'C')}">{p1.get('role', 'C')}</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/{p1_slug}/" class="h2h-name" title="Scheda {clean_html(p1['name'])}">{clean_html(p1['name'])}{inj_badge1}</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>{p1.get('ovr', 75)}</b></span> &bull; <span>xFM <b>{p1.get('xfm', 6.2):.2f}</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct {p1_cls}">{pct1}%</div>
             </div>
-            <div class="h2h-pct {p1_cls}">{pct1}%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct {p2_cls}">{pct2}%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: {pct1}%;"></div>
+                <div class="gauge-part-right" style="width: {pct2}%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge {p2.get('role', 'C')}">{p2.get('role', 'C')}</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/{p2_slug}/" class="h2h-name" title="Scheda {clean_html(p2['name'])}">{clean_html(p2['name'])}{inj_badge2}</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>{p2.get('ovr', 74)}</b></span> &bull; <span>xFM <b>{p2.get('xfm', 6.0):.2f}</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge {p2.get('role', 'C')}">{p2.get('role', 'C')}</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/{p2_slug}/" class="h2h-name" title="Scheda {clean_html(p2['name'])}">{clean_html(p2['name'])}{inj_badge2}</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>{p2.get('ovr', 74)}</b></span> &bull; <span>xFM <b>{p2.get('xfm', 6.0):.2f}</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct {p2_cls}">{pct2}%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: {pct1}%;"></div>
-            <div class="gauge-part-right" style="width: {pct2}%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -883,62 +1141,6 @@ def render_consensus_team_table(team_data):
     </div>
     """
 
-def render_pitch_2d_duo(home_team, away_team):
-    """Rappresentazione grafica delle formazioni dei due club a confronto."""
-    def render_squad_pitch_cards(team):
-        starters = team.get('starters', [])
-        cards_html = ""
-        for s in starters[:11]:
-            name = s['name']
-            slug = get_player_slug_from_name(name)
-            role = s.get('role', 'C')
-            ovr = s.get('ovr', 75)
-            pct = s.get('consensus_pct', 90)
-            xfm = s.get('xfm', 6.2)
-            tit_col = "#4ade80" if pct >= 75 else ("#fbbf24" if pct >= 50 else "#f87171")
-            
-            cards_html += f"""
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge {role}" style="width:16px;height:16px;font-size:9px;">{role}</span>
-                    <span style="font-size:9px;font-weight:800;color:{tit_col};">{pct}% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR {ovr}</span>
-                </div>
-                <a href="/calciatore/{slug}/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{clean_html(name)}</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM {xfm:.2f}</span>
-                    <span style="color:#cbd5e1;">{clean_html(s.get('sub_txt',''))}</span>
-                </div>
-            </div>
-            """
-        return cards_html
-
-    return f"""
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:16px;background:radial-gradient(ellipse at 50% 50%, rgba(34,197,94,0.1), rgba(6,78,59,0.4) 60%, #021a10 100%);border:2px solid rgba(255,255,255,0.3);border-radius:14px;padding:16px;box-shadow:inset 0 0 40px rgba(0,0,0,0.8);">
-        <!-- Home -->
-        <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.5);padding:6px 10px;border-radius:8px;">
-                <span style="font-family:'Outfit';font-size:14px;font-weight:900;color:#fff;">🏠 {clean_html(home_team['team'])}</span>
-                <span style="font-size:11px;font-weight:800;color:#38bdf8;background:rgba(56,189,248,0.15);padding:2px 7px;border-radius:4px;">{clean_html(home_team.get('formation',''))}</span>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(100px, 1fr));gap:6px;">
-                {render_squad_pitch_cards(home_team)}
-            </div>
-        </div>
-        
-        <!-- Away -->
-        <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.5);padding:6px 10px;border-radius:8px;">
-                <span style="font-family:'Outfit';font-size:14px;font-weight:900;color:#fff;">✈️ {clean_html(away_team['team'])}</span>
-                <span style="font-size:11px;font-weight:800;color:#38bdf8;background:rgba(56,189,248,0.15);padding:2px 7px;border-radius:4px;">{clean_html(away_team.get('formation',''))}</span>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(100px, 1fr));gap:6px;">
-                {render_squad_pitch_cards(away_team)}
-            </div>
-        </div>
-    </div>
-    """
-
 def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, base_url="https://www.fantamasterai.it", header_html=""):
     """Genera l'hub principale /probabili-formazioni/index.html."""
     round_label = consensus_data.get('round_label', '7ª Giornata Serie A')
@@ -989,14 +1191,54 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
         h_data = m['home']
         a_data = m['away']
 
-        # Duelli del Match
-        duels_html = ""
-        for b in h_data.get('ballots', []):
-            duels_html += render_h2h_duel(b, m['home_team'])
-        for b in a_data.get('ballots', []):
-            duels_html += render_h2h_duel(b, m['away_team'])
-        if not duels_html:
-            duels_html = '<div style="color:#94a3b8;font-size:12.5px;padding:12px;background:rgba(255,255,255,0.03);border-radius:10px;">Gerarchie definite al 95%: nessun ballottaggio serrato segnalato dalle 5 testate.</div>'
+        # Duelli Squadra Casa
+        h_duels_list = h_data.get('ballots', [])
+        if h_duels_list:
+            home_duels_html = "".join(render_h2h_duel(b, m['home_team']) for b in h_duels_list)
+        else:
+            home_duels_html = f'<div class="no-duels-notice">✓ Formazione tipo di {clean_html(m["home_team"])} definita: nessun ballottaggio aperto segnalato dalle 5 testate.</div>'
+
+        # Duelli Squadra Trasferta
+        a_duels_list = a_data.get('ballots', [])
+        if a_duels_list:
+            away_duels_html = "".join(render_h2h_duel(b, m['away_team']) for b in a_duels_list)
+        else:
+            away_duels_html = f'<div class="no-duels-notice">✓ Formazione tipo di {clean_html(m["away_team"])} definita: nessun ballottaggio aperto segnalato dalle 5 testate.</div>'
+
+        # Layout a due colonne: Casa a sinistra, Trasferta a destra
+        two_col_duels_html = f"""
+        <div class="match-teams-columns">
+            <!-- Colonna Sinistra: Squadra di Casa -->
+            <div class="team-duels-column team-home">
+                <div class="team-column-header home-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">🏠</span>
+                        <span class="team-col-name">{clean_html(m['home_team'])}</span>
+                        <span class="team-col-badge">CASA</span>
+                    </div>
+                    <span class="team-col-count">{len(h_duels_list)} duelli</span>
+                </div>
+                <div class="team-duels-list">
+                    {home_duels_html}
+                </div>
+            </div>
+
+            <!-- Colonna Destra: Squadra Fuori Casa -->
+            <div class="team-duels-column team-away">
+                <div class="team-column-header away-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">✈️</span>
+                        <span class="team-col-name">{clean_html(m['away_team'])}</span>
+                        <span class="team-col-badge">TRASFERTA</span>
+                    </div>
+                    <span class="team-col-count">{len(a_duels_list)} duelli</span>
+                </div>
+                <div class="team-duels-list">
+                    {away_duels_html}
+                </div>
+            </div>
+        </div>
+        """
 
         # Tabella comparativa (Anti-FCO)
         table_html = f"""
@@ -1005,9 +1247,6 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
             {render_consensus_team_table(a_data)}
         </div>
         """
-
-        # Campo Tattico 2D
-        pitch_html = render_pitch_2d_duo(h_data, a_data)
 
         # Piazzati
         def render_setpieces(t_data):
@@ -1052,25 +1291,20 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                 <!-- View Switcher -->
                 <div class="match-view-switcher">
                     <button class="view-switch-btn active" data-match="{m_slug}" data-view="duels">⚔️ Duelli 1vs1</button>
-                    <button class="view-switch-btn" data-match="{m_slug}" data-view="pitch">⚽ Campo 2D</button>
-                    <button class="view-switch-btn" data-match="{m_slug}" data-view="table">📊 Tabellone Fonti</button>
+                    <button class="view-switch-btn" data-match="{m_slug}" data-view="table">📊 Tabellone Fonti (Anti-FCO)</button>
                 </div>
             </div>
 
-            <!-- Pane 1: Duelli 1vs1 (Default) -->
+            <!-- Pane 1: Duelli 1vs1 (Default - 2 Colonne Casa vs Fuori Casa) -->
             <div class="match-view-pane view-pane-duels" style="display:block;">
-                <div class="duels-container">
-                    {duels_html}
-                </div>
+                {two_col_duels_html}
             </div>
 
-            <!-- Pane 2: Campo Tattico 2D -->
-            <div class="match-view-pane view-pane-pitch" style="display:none;">
-                {pitch_html}
-            </div>
-
-            <!-- Pane 3: Tabellone Fonti a Confronto (Anti-FCO) -->
+            <!-- Pane 2: Tabellone Fonti a Confronto (Anti-FCO) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
+                <div style="font-size:11.5px;color:#94a3b8;margin-bottom:8px;">
+                    💡 Scorri orizzontalmente per confrontare le percentuali delle 5 testate di riferimento.
+                </div>
                 {table_html}
             </div>
 
@@ -1243,14 +1477,54 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
         </a>
         """
 
-    # Duelli del Match
-    duels_html = ""
-    for b in h_data.get('ballots', []):
-        duels_html += render_h2h_duel(b, h_team)
-    for b in a_data.get('ballots', []):
-        duels_html += render_h2h_duel(b, a_team)
-    if not duels_html:
-        duels_html = '<div style="color:#94a3b8;font-size:12.5px;padding:12px;background:rgba(255,255,255,0.03);border-radius:10px;">Gerarchie definite al 95%: nessun ballottaggio serrato segnalato dalle 5 testate.</div>'
+    # Duelli Squadra Casa
+    h_duels_list = h_data.get('ballots', [])
+    if h_duels_list:
+        home_duels_html = "".join(render_h2h_duel(b, h_team) for b in h_duels_list)
+    else:
+        home_duels_html = f'<div class="no-duels-notice">✓ Formazione tipo di {clean_html(h_team)} definita: nessun ballottaggio aperto segnalato dalle 5 testate.</div>'
+
+    # Duelli Squadra Trasferta
+    a_duels_list = a_data.get('ballots', [])
+    if a_duels_list:
+        away_duels_html = "".join(render_h2h_duel(b, a_team) for b in a_duels_list)
+    else:
+        away_duels_html = f'<div class="no-duels-notice">✓ Formazione tipo di {clean_html(a_team)} definita: nessun ballottaggio aperto segnalato dalle 5 testate.</div>'
+
+    # Layout a due colonne: Casa a sinistra, Trasferta a destra
+    two_col_duels_html = f"""
+    <div class="match-teams-columns">
+        <!-- Colonna Sinistra: Squadra di Casa -->
+        <div class="team-duels-column team-home">
+            <div class="team-column-header home-header">
+                <div class="team-col-title-wrap">
+                    <span class="team-col-icon">🏠</span>
+                    <span class="team-col-name">{clean_html(h_team)}</span>
+                    <span class="team-col-badge">CASA</span>
+                </div>
+                <span class="team-col-count">{len(h_duels_list)} duelli</span>
+            </div>
+            <div class="team-duels-list">
+                {home_duels_html}
+            </div>
+        </div>
+
+        <!-- Colonna Destra: Squadra Fuori Casa -->
+        <div class="team-duels-column team-away">
+            <div class="team-column-header away-header">
+                <div class="team-col-title-wrap">
+                    <span class="team-col-icon">✈️</span>
+                    <span class="team-col-name">{clean_html(a_team)}</span>
+                    <span class="team-col-badge">TRASFERTA</span>
+                </div>
+                <span class="team-col-count">{len(a_duels_list)} duelli</span>
+            </div>
+            <div class="team-duels-list">
+                {away_duels_html}
+            </div>
+        </div>
+    </div>
+    """
 
     # Tabella comparativa (Anti-FCO)
     table_html = f"""
@@ -1259,9 +1533,6 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
         {render_consensus_team_table(a_data)}
     </div>
     """
-
-    # Campo Tattico 2D
-    pitch_html = render_pitch_2d_duo(h_data, a_data)
 
     # Piazzati
     def render_setpieces(t_data):
@@ -1402,28 +1673,20 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
                 <!-- View Switcher -->
                 <div class="match-view-switcher">
                     <button class="view-switch-btn active" data-match="{m_slug}" data-view="duels">⚔️ Duelli 1vs1</button>
-                    <button class="view-switch-btn" data-match="{m_slug}" data-view="pitch">⚽ Campo 2D</button>
-                    <button class="view-switch-btn" data-match="{m_slug}" data-view="table">📊 Tabellone Fonti</button>
+                    <button class="view-switch-btn" data-match="{m_slug}" data-view="table">📊 Tabellone Fonti (Anti-FCO)</button>
                 </div>
             </div>
 
-            <!-- Pane 1: Duelli 1vs1 (Default) -->
+            <!-- Pane 1: Duelli 1vs1 (Default - 2 Colonne Casa vs Fuori Casa) -->
             <div class="match-view-pane view-pane-duels" style="display:block;">
-                <div style="font-size:11.5px;font-weight:700;color:#94a3b8;margin-bottom:10px;">
-                    ⚔️ Ballottaggi Caldi &amp; Duelli di Reparto ({clean_html(h_team)} e {clean_html(a_team)}):
-                </div>
-                <div class="duels-container">
-                    {duels_html}
-                </div>
+                {two_col_duels_html}
             </div>
 
-            <!-- Pane 2: Campo Tattico 2D -->
-            <div class="match-view-pane view-pane-pitch" style="display:none;">
-                {pitch_html}
-            </div>
-
-            <!-- Pane 3: Tabellone Fonti a Confronto (Anti-FCO) -->
+            <!-- Pane 2: Tabellone Fonti a Confronto (Anti-FCO) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
+                <div style="font-size:11.5px;color:#94a3b8;margin-bottom:8px;">
+                    💡 Scorri orizzontalmente per confrontare le percentuali delle 5 testate di riferimento.
+                </div>
                 {table_html}
             </div>
 

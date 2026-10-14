@@ -24,8 +24,17 @@
    PROBABILI FORMAZIONI & CONSENSUS 5 FONTI - DESIGN SYSTEM
    ========================================================================== */
 
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 .prob-container {
     max-width: 1480px;
+    width: 100%;
     margin: 0 auto;
     padding: 16px 16px 40px 16px;
     box-sizing: border-box;
@@ -104,6 +113,9 @@
 /* Match Carousel / Bar */
 .match-carousel-wrapper {
     margin-bottom: 24px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
 }
 .carousel-label {
     font-size: 11px;
@@ -115,6 +127,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 .match-carousel {
     display: flex;
@@ -223,6 +237,10 @@
     padding: 20px 24px;
     margin-bottom: 28px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 .match-detail-header {
     display: flex;
@@ -233,11 +251,14 @@
     padding-bottom: 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     margin-bottom: 18px;
+    width: 100%;
+    box-sizing: border-box;
 }
 .match-title-wrap {
     display: flex;
     align-items: center;
     gap: 14px;
+    max-width: 100%;
 }
 .match-headline {
     font-family: 'Outfit', sans-serif;
@@ -245,11 +266,13 @@
     font-weight: 900;
     color: #fff;
     margin: 0;
+    word-break: break-word;
 }
 .match-subinfo {
     font-size: 11.5px;
     color: #94a3b8;
     margin-top: 2px;
+    word-break: break-word;
 }
 .match-view-switcher {
     display: flex;
@@ -259,6 +282,8 @@
     border-radius: 10px;
     padding: 3px;
     gap: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 .view-switch-btn {
     background: transparent;
@@ -283,13 +308,83 @@
     font-weight: 800;
 }
 
-/* 1vs1 Head-to-Head Duels */
-.duels-container {
+/* 1vs1 Head-to-Head Duels & Two-Column Team Layout */
+.match-teams-columns {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 14px;
-    margin-bottom: 20px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 24px;
+    width: 100%;
 }
+.team-duels-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+    width: 100%;
+}
+.team-column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.team-column-header.home-header {
+    border-left: 4px solid #38bdf8;
+    background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, rgba(15, 23, 42, 0.7) 100%);
+}
+.team-column-header.away-header {
+    border-left: 4px solid #a855f7;
+    background: linear-gradient(90deg, rgba(168, 85, 247, 0.12) 0%, rgba(15, 23, 42, 0.7) 100%);
+}
+.team-col-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.team-col-icon {
+    font-size: 16px;
+}
+.team-col-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+}
+.team-col-badge {
+    font-size: 9.5px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+}
+.team-col-count {
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+}
+.team-duels-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.no-duels-notice {
+    font-size: 12px;
+    color: #94a3b8;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    line-height: 1.45;
+}
+
 .duel-card-h2h {
     background: rgba(11, 15, 23, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -299,6 +394,8 @@
     flex-direction: column;
     gap: 10px;
     transition: border-color 0.2s ease, transform 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
 }
 .duel-card-h2h:hover {
     border-color: rgba(56, 189, 248, 0.3);
@@ -308,28 +405,33 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
 }
 .duel-team-tag {
-    font-size: 10.5px;
+    font-size: 11px;
     font-weight: 800;
     color: #94a3b8;
     text-transform: uppercase;
 }
 .duel-h2h-players {
     display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+}
+.h2h-player-row {
+    display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     gap: 10px;
 }
-.h2h-player {
+.h2h-player-lead {
     display: flex;
     align-items: center;
     gap: 8px;
-    max-width: 44%;
-}
-.h2h-player.right {
-    flex-direction: row-reverse;
-    text-align: right;
+    min-width: 0;
+    flex: 1;
 }
 .h2h-info {
     display: flex;
@@ -337,7 +439,7 @@
     min-width: 0;
 }
 .h2h-name {
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 800;
     color: #ffffff;
     white-space: nowrap;
@@ -358,21 +460,26 @@
 .h2h-meta b {
     color: #e2e8f0;
 }
-.h2h-player.right .h2h-meta {
-    justify-content: flex-end;
-}
 .h2h-pct {
     font-family: 'Outfit', sans-serif;
     font-size: 17px;
     font-weight: 900;
-    color: #fff;
     flex-shrink: 0;
+    text-align: right;
+    min-width: 44px;
 }
 .h2h-pct.fav {
     color: #4ade80;
 }
 .h2h-pct.under {
     color: #fbbf24;
+}
+.h2h-center-divider {
+    font-size: 10px;
+    font-weight: 900;
+    color: #64748b;
+    flex-shrink: 0;
+    padding: 0 4px;
 }
 
 /* Dual Color Gauge */
@@ -413,7 +520,7 @@
 .verdict-tag {
     font-size: 10px;
     font-weight: 800;
-    padding: 1px 6px;
+    padding: 2px 7px;
     border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
@@ -471,6 +578,7 @@
 /* Consensus Table - The Anti-FCO View */
 .consensus-table-wrapper {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: #0f1217;
@@ -630,18 +738,165 @@
     font-weight: 800;
 }
 
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM - SMARTPHONE & TABLET OPTIMIZATION
+   ========================================================================== */
+
+/* Tablet & Smaller Screens (<= 960px) */
+@media (max-width: 960px) {
+    .match-teams-columns {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+}
+
+/* Smartphone Landscape & Tablet Portrait (<= 768px) */
 @media (max-width: 768px) {
+    .prob-container {
+        padding: 10px 8px 32px 8px;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    .prob-hero {
+        padding: 16px 14px;
+        border-radius: 14px;
+        margin-bottom: 14px;
+    }
     .prob-hero-title {
-        font-size: 22px;
+        font-size: 20px;
+        line-height: 1.25;
+    }
+    .prob-hero-desc {
+        font-size: 12px;
+        line-height: 1.45;
+        margin-bottom: 10px;
+    }
+    .prob-sources-bar {
+        font-size: 10px;
+        gap: 5px;
+    }
+    .source-chip {
+        padding: 2px 6px;
+    }
+    .match-detail-section {
+        padding: 12px 10px;
+        border-radius: 14px;
+        margin-bottom: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .match-detail-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding-bottom: 12px;
+        width: 100%;
     }
     .match-headline {
         font-size: 18px;
+        word-break: break-word;
     }
-    .duels-container {
+    .match-subinfo {
+        font-size: 11px;
+    }
+    .match-view-switcher {
+        width: 100%;
+        display: flex;
+    }
+    .view-switch-btn {
+        flex: 1;
+        min-width: 0;
+        justify-content: center;
+        padding: 7px 4px;
+        font-size: 11px;
+        min-height: 38px;
+        white-space: normal;
+        text-align: center;
+    }
+    .match-teams-columns {
         grid-template-columns: 1fr;
+        gap: 14px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .team-duels-column {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .duel-card-h2h {
+        padding: 10px 12px;
+        border-radius: 12px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .team-column-header {
+        padding: 8px 10px;
+    }
+    .match-bottom-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .consensus-table-wrapper {
+        border-radius: 8px;
+    }
+    .consensus-table .col-player {
+        position: sticky;
+        left: 0;
+        background: #141822;
+        z-index: 2;
+        box-shadow: 2px 0 6px rgba(0,0,0,0.4);
+    }
+}
+
+/* Smartphone Portrait (<= 580px) */
+@media (max-width: 580px) {
+    .duel-card-h2h {
+        padding: 12px;
+        gap: 8px;
+    }
+    .duel-h2h-players {
+        gap: 6px;
     }
     .h2h-name {
-        max-width: 100px;
+        font-size: 13px;
+    }
+    .h2h-pct {
+        font-size: 16px;
+    }
+    .duel-gauge-bar {
+        height: 6px;
+        margin: 2px 0;
+    }
+    .verdict-desc {
+        font-size: 10.5px;
+    }
+    .btn-duel-compare {
+        font-size: 10px;
+    }
+    .hot-ballots-box {
+        padding: 12px 10px;
+        border-radius: 12px;
+    }
+    .hot-ballots-grid {
+        grid-template-columns: 1fr;
+    }
+    .match-pill-card {
+        min-width: 120px;
+        padding: 6px 8px;
+    }
+    .match-pill-teams {
+        font-size: 12px;
+    }
+    .taker-item-row {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    .injury-mini-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
     }
 }
 
@@ -751,7 +1006,7 @@
                         <a href="../../statistiche-serie-a/" class="dropdown-item">📊 Statistiche Serie A &amp; xG</a>
                         <a href="../../top-flop/" class="dropdown-item">⚡ Top &amp; Flop di Giornata</a>
                         <a href="../../football-analytics/" class="dropdown-item">📈 Matrice &amp; Scatter Analytics</a>
-                        <a href="../../probabili-formazioni/" class="dropdown-item">⚽ Campo 2D &amp; Schemi Club</a>
+                        <a href="../../probabili-formazioni/" class="dropdown-item">📋 Probabili Formazioni &amp; Ballottaggi</a>
                         <a href="../../confronto-calciatori/" class="dropdown-item">⚔️ Matchup 1vs1 Calciatori</a>
                         <a href="../../griglia-portieri/" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
                         <div class="dropdown-divider"></div>
@@ -791,6 +1046,7 @@
         <!-- MOBILE SUBNAV -->
         <nav class="mobile-subnav">
             <a href="../../">📊 Listone</a>
+            <a href="../../probabili-formazioni/">📋 Probabili</a>
             <a href="../../consigli-fantacalcio/">🎯 Consigli</a>
             <a href="../../top-flop/">⚡ Top/Flop</a>
             <a href="../../infortunati-serie-a/">🩺 Infortuni</a>
@@ -942,55 +1198,66 @@
                 <!-- View Switcher -->
                 <div class="match-view-switcher">
                     <button class="view-switch-btn active" data-match="bologna-inter" data-view="duels">⚔️ Duelli 1vs1</button>
-                    <button class="view-switch-btn" data-match="bologna-inter" data-view="pitch">⚽ Campo 2D</button>
-                    <button class="view-switch-btn" data-match="bologna-inter" data-view="table">📊 Tabellone Fonti</button>
+                    <button class="view-switch-btn" data-match="bologna-inter" data-view="table">📊 Tabellone Fonti (Anti-FCO)</button>
                 </div>
             </div>
 
-            <!-- Pane 1: Duelli 1vs1 (Default) -->
+            <!-- Pane 1: Duelli 1vs1 (Default - 2 Colonne Casa vs Fuori Casa) -->
             <div class="match-view-pane view-pane-duels" style="display:block;">
-                <div style="font-size:11.5px;font-weight:700;color:#94a3b8;margin-bottom:10px;">
-                    ⚔️ Ballottaggi Caldi &amp; Duelli di Reparto (Bologna e Inter):
+                
+    <div class="match-teams-columns">
+        <!-- Colonna Sinistra: Squadra di Casa -->
+        <div class="team-duels-column team-home">
+            <div class="team-column-header home-header">
+                <div class="team-col-title-wrap">
+                    <span class="team-col-icon">🏠</span>
+                    <span class="team-col-name">Bologna</span>
+                    <span class="team-col-badge">CASA</span>
                 </div>
-                <div class="duels-container">
-                    
+                <span class="team-col-count">12 duelli</span>
+            </div>
+            <div class="team-duels-list">
+                
     <div class="duel-card-h2h">
         <div class="duel-card-top">
             <span class="duel-team-tag">⚽ Bologna</span>
             <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge P">P</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/pessina-mas-2026/" class="h2h-name" title="Scheda Pessina Mas.">Pessina Mas.</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>51</b></span> &bull; <span>xFM <b>4.42</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge P">P</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/pessina-mas-2026/" class="h2h-name" title="Scheda Pessina Mas.">Pessina Mas.</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>51</b></span> &bull; <span>xFM <b>4.42</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">58%</div>
             </div>
-            <div class="h2h-pct fav">58%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">42%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 58%;"></div>
+                <div class="gauge-part-right" style="width: 42%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge P">P</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/skorupski-2026/" class="h2h-name" title="Scheda Skorupski">Skorupski</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>68</b></span> &bull; <span>xFM <b>4.53</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge P">P</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/skorupski-2026/" class="h2h-name" title="Scheda Skorupski">Skorupski</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>68</b></span> &bull; <span>xFM <b>4.53</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">42%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 58%;"></div>
-            <div class="gauge-part-right" style="width: 42%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1010,38 +1277,41 @@
             <span class="duel-team-tag">⚽ Bologna</span>
             <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/pobega-2026/" class="h2h-name" title="Scheda Pobega">Pobega</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>59</b></span> &bull; <span>xFM <b>7.59</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/pobega-2026/" class="h2h-name" title="Scheda Pobega">Pobega</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>59</b></span> &bull; <span>xFM <b>7.59</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">59%</div>
             </div>
-            <div class="h2h-pct fav">59%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">41%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 59%;"></div>
+                <div class="gauge-part-right" style="width: 41%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/el-azzouzi-o-2026/" class="h2h-name" title="Scheda El Azzouzi O.">El Azzouzi O.</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>56</b></span> &bull; <span>xFM <b>5.42</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/el-azzouzi-o-2026/" class="h2h-name" title="Scheda El Azzouzi O.">El Azzouzi O.</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>56</b></span> &bull; <span>xFM <b>5.42</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">41%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 59%;"></div>
-            <div class="gauge-part-right" style="width: 41%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1061,38 +1331,41 @@
             <span class="duel-team-tag">⚽ Bologna</span>
             <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge P">P</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/happonen-2026/" class="h2h-name" title="Scheda Happonen">Happonen</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>51</b></span> &bull; <span>xFM <b>6.20</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge P">P</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/happonen-2026/" class="h2h-name" title="Scheda Happonen">Happonen</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>51</b></span> &bull; <span>xFM <b>6.20</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">23%</div>
             </div>
-            <div class="h2h-pct under">23%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct fav">77%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 23%;"></div>
+                <div class="gauge-part-right" style="width: 77%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge P">P</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/skorupski-2026/" class="h2h-name" title="Scheda Skorupski">Skorupski</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>68</b></span> &bull; <span>xFM <b>4.53</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge P">P</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/skorupski-2026/" class="h2h-name" title="Scheda Skorupski">Skorupski</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>68</b></span> &bull; <span>xFM <b>4.53</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">77%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 23%;"></div>
-            <div class="gauge-part-right" style="width: 77%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1112,38 +1385,41 @@
             <span class="duel-team-tag">⚽ Bologna</span>
             <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/zortea-2026/" class="h2h-name" title="Scheda Zortea">Zortea</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>75</b></span> &bull; <span>xFM <b>6.12</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/zortea-2026/" class="h2h-name" title="Scheda Zortea">Zortea</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>75</b></span> &bull; <span>xFM <b>6.12</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">59%</div>
             </div>
-            <div class="h2h-pct fav">59%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">41%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 59%;"></div>
+                <div class="gauge-part-right" style="width: 41%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/darmian-2026/" class="h2h-name" title="Scheda Darmian">Darmian</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>63</b></span> &bull; <span>xFM <b>5.90</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/darmian-2026/" class="h2h-name" title="Scheda Darmian">Darmian</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>63</b></span> &bull; <span>xFM <b>5.90</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">41%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 59%;"></div>
-            <div class="gauge-part-right" style="width: 41%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1163,38 +1439,41 @@
             <span class="duel-team-tag">⚽ Bologna</span>
             <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/heggem-2026/" class="h2h-name" title="Scheda Heggem">Heggem</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>71</b></span> &bull; <span>xFM <b>5.64</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/heggem-2026/" class="h2h-name" title="Scheda Heggem">Heggem</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>71</b></span> &bull; <span>xFM <b>5.64</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">61%</div>
             </div>
-            <div class="h2h-pct fav">61%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">39%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 61%;"></div>
+                <div class="gauge-part-right" style="width: 39%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/helland-2026/" class="h2h-name" title="Scheda Helland">Helland</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>67</b></span> &bull; <span>xFM <b>6.33</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/helland-2026/" class="h2h-name" title="Scheda Helland">Helland</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>67</b></span> &bull; <span>xFM <b>6.33</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">39%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 61%;"></div>
-            <div class="gauge-part-right" style="width: 39%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1214,38 +1493,41 @@
             <span class="duel-team-tag">⚽ Bologna</span>
             <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/theate-2026/" class="h2h-name" title="Scheda Theate">Theate</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>74</b></span> &bull; <span>xFM <b>6.20</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/theate-2026/" class="h2h-name" title="Scheda Theate">Theate</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>74</b></span> &bull; <span>xFM <b>6.20</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">62%</div>
             </div>
-            <div class="h2h-pct fav">62%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">38%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 62%;"></div>
+                <div class="gauge-part-right" style="width: 38%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/vitik-2026/" class="h2h-name" title="Scheda Vitik">Vitik</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>64</b></span> &bull; <span>xFM <b>6.00</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/vitik-2026/" class="h2h-name" title="Scheda Vitik">Vitik</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>64</b></span> &bull; <span>xFM <b>6.00</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">38%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 62%;"></div>
-            <div class="gauge-part-right" style="width: 38%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1265,38 +1547,41 @@
             <span class="duel-team-tag">⚽ Bologna</span>
             <span class="verdict-tag hot">Staffetta con Voto Garantito</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/miranda-j-2026/" class="h2h-name" title="Scheda Miranda J.">Miranda J.</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>79</b></span> &bull; <span>xFM <b>7.07</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/miranda-j-2026/" class="h2h-name" title="Scheda Miranda J.">Miranda J.</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>79</b></span> &bull; <span>xFM <b>7.07</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">51%</div>
             </div>
-            <div class="h2h-pct fav">51%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">49%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 51%;"></div>
+                <div class="gauge-part-right" style="width: 49%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/alhassane-2026/" class="h2h-name" title="Scheda Alhassane">Alhassane</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>60</b></span> &bull; <span>xFM <b>5.75</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/alhassane-2026/" class="h2h-name" title="Scheda Alhassane">Alhassane</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>60</b></span> &bull; <span>xFM <b>5.75</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">49%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 51%;"></div>
-            <div class="gauge-part-right" style="width: 49%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1316,38 +1601,41 @@
             <span class="duel-team-tag">⚽ Bologna</span>
             <span class="verdict-tag jolly">Jolly Spacca-Partita</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/amondarain-2026/" class="h2h-name" title="Scheda Amondarain">Amondarain</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>57</b></span> &bull; <span>xFM <b>5.71</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/amondarain-2026/" class="h2h-name" title="Scheda Amondarain">Amondarain</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>57</b></span> &bull; <span>xFM <b>5.71</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">31%</div>
             </div>
-            <div class="h2h-pct under">31%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct fav">69%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 31%;"></div>
+                <div class="gauge-part-right" style="width: 69%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/pobega-2026/" class="h2h-name" title="Scheda Pobega">Pobega</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>59</b></span> &bull; <span>xFM <b>7.59</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/pobega-2026/" class="h2h-name" title="Scheda Pobega">Pobega</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>59</b></span> &bull; <span>xFM <b>7.59</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">69%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 31%;"></div>
-            <div class="gauge-part-right" style="width: 69%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1367,38 +1655,41 @@
             <span class="duel-team-tag">⚽ Bologna</span>
             <span class="verdict-tag safe">Titolare Inamovibile</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/orsolini-2026/" class="h2h-name" title="Scheda Orsolini">Orsolini</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>98</b></span> &bull; <span>xFM <b>6.70</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/orsolini-2026/" class="h2h-name" title="Scheda Orsolini">Orsolini</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>98</b></span> &bull; <span>xFM <b>6.70</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">79%</div>
             </div>
-            <div class="h2h-pct fav">79%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">21%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 79%;"></div>
+                <div class="gauge-part-right" style="width: 21%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/bernardeschi-2026/" class="h2h-name" title="Scheda Bernardeschi">Bernardeschi</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>70</b></span> &bull; <span>xFM <b>7.51</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/bernardeschi-2026/" class="h2h-name" title="Scheda Bernardeschi">Bernardeschi</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>70</b></span> &bull; <span>xFM <b>7.51</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">21%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 79%;"></div>
-            <div class="gauge-part-right" style="width: 21%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1418,38 +1709,41 @@
             <span class="duel-team-tag">⚽ Bologna</span>
             <span class="verdict-tag danger">Indisponibile</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/odgaard-2026/" class="h2h-name" title="Scheda Odgaard">Odgaard 🩹</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>60</b></span> &bull; <span>xFM <b>8.43</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/odgaard-2026/" class="h2h-name" title="Scheda Odgaard">Odgaard 🩹</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>60</b></span> &bull; <span>xFM <b>8.43</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">5%</div>
             </div>
-            <div class="h2h-pct under">5%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct fav">95%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 5%;"></div>
+                <div class="gauge-part-right" style="width: 95%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/el-azzouzi-o-2026/" class="h2h-name" title="Scheda El Azzouzi O.">El Azzouzi O.</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>56</b></span> &bull; <span>xFM <b>5.42</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/el-azzouzi-o-2026/" class="h2h-name" title="Scheda El Azzouzi O.">El Azzouzi O.</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>56</b></span> &bull; <span>xFM <b>5.42</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">95%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 5%;"></div>
-            <div class="gauge-part-right" style="width: 95%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1469,38 +1763,41 @@
             <span class="duel-team-tag">⚽ Bologna</span>
             <span class="verdict-tag safe">Titolare Blindato</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/cambiaghi-2026/" class="h2h-name" title="Scheda Cambiaghi">Cambiaghi</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>71</b></span> &bull; <span>xFM <b>7.43</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/cambiaghi-2026/" class="h2h-name" title="Scheda Cambiaghi">Cambiaghi</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>71</b></span> &bull; <span>xFM <b>7.43</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">95%</div>
             </div>
-            <div class="h2h-pct fav">95%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">5%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 95%;"></div>
+                <div class="gauge-part-right" style="width: 5%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/mbangula-2026/" class="h2h-name" title="Scheda Mbangula">Mbangula 🩹</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>67</b></span> &bull; <span>xFM <b>6.00</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/mbangula-2026/" class="h2h-name" title="Scheda Mbangula">Mbangula 🩹</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>67</b></span> &bull; <span>xFM <b>6.00</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">5%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 95%;"></div>
-            <div class="gauge-part-right" style="width: 5%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1520,38 +1817,41 @@
             <span class="duel-team-tag">⚽ Bologna</span>
             <span class="verdict-tag jolly">Jolly Spacca-Partita</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge A">A</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/dovbyk-2026/" class="h2h-name" title="Scheda Dovbyk">Dovbyk</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>76</b></span> &bull; <span>xFM <b>7.99</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge A">A</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/dovbyk-2026/" class="h2h-name" title="Scheda Dovbyk">Dovbyk</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>76</b></span> &bull; <span>xFM <b>7.99</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">63%</div>
             </div>
-            <div class="h2h-pct fav">63%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">37%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 63%;"></div>
+                <div class="gauge-part-right" style="width: 37%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge A">A</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/piccoli-2026/" class="h2h-name" title="Scheda Piccoli">Piccoli</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>69</b></span> &bull; <span>xFM <b>7.95</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge A">A</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/piccoli-2026/" class="h2h-name" title="Scheda Piccoli">Piccoli</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>69</b></span> &bull; <span>xFM <b>7.95</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">37%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 63%;"></div>
-            <div class="gauge-part-right" style="width: 37%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1566,43 +1866,61 @@
         </div>
     </div>
     
+            </div>
+        </div>
+
+        <!-- Colonna Destra: Squadra Fuori Casa -->
+        <div class="team-duels-column team-away">
+            <div class="team-column-header away-header">
+                <div class="team-col-title-wrap">
+                    <span class="team-col-icon">✈️</span>
+                    <span class="team-col-name">Inter</span>
+                    <span class="team-col-badge">TRASFERTA</span>
+                </div>
+                <span class="team-col-count">8 duelli</span>
+            </div>
+            <div class="team-duels-list">
+                
     <div class="duel-card-h2h">
         <div class="duel-card-top">
             <span class="duel-team-tag">⚽ Inter</span>
             <span class="verdict-tag jolly">Jolly Spacca-Partita</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/dimarco-2026/" class="h2h-name" title="Scheda Dimarco">Dimarco</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>98</b></span> &bull; <span>xFM <b>8.40</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/dimarco-2026/" class="h2h-name" title="Scheda Dimarco">Dimarco</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>98</b></span> &bull; <span>xFM <b>8.40</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">58%</div>
             </div>
-            <div class="h2h-pct fav">58%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">42%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 58%;"></div>
+                <div class="gauge-part-right" style="width: 42%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/carlos-augusto-2026/" class="h2h-name" title="Scheda Carlos Augusto">Carlos Augusto</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>78</b></span> &bull; <span>xFM <b>7.23</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/carlos-augusto-2026/" class="h2h-name" title="Scheda Carlos Augusto">Carlos Augusto</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>78</b></span> &bull; <span>xFM <b>7.23</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">42%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 58%;"></div>
-            <div class="gauge-part-right" style="width: 42%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1622,38 +1940,41 @@
             <span class="duel-team-tag">⚽ Inter</span>
             <span class="verdict-tag hot">Staffetta con Voto Garantito</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/calhanoglu-2026/" class="h2h-name" title="Scheda Calhanoglu">Calhanoglu</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>98</b></span> &bull; <span>xFM <b>8.27</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/calhanoglu-2026/" class="h2h-name" title="Scheda Calhanoglu">Calhanoglu</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>98</b></span> &bull; <span>xFM <b>8.27</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">52%</div>
             </div>
-            <div class="h2h-pct fav">52%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">48%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 52%;"></div>
+                <div class="gauge-part-right" style="width: 48%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/sucic-p-2026/" class="h2h-name" title="Scheda Sucic P.">Sucic P.</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>68</b></span> &bull; <span>xFM <b>6.79</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/sucic-p-2026/" class="h2h-name" title="Scheda Sucic P.">Sucic P.</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>68</b></span> &bull; <span>xFM <b>6.79</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">48%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 52%;"></div>
-            <div class="gauge-part-right" style="width: 48%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1673,38 +1994,41 @@
             <span class="duel-team-tag">⚽ Inter</span>
             <span class="verdict-tag jolly">Jolly Spacca-Partita</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge A">A</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/thuram-2026/" class="h2h-name" title="Scheda Thuram">Thuram</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>96</b></span> &bull; <span>xFM <b>11.05</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge A">A</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/thuram-2026/" class="h2h-name" title="Scheda Thuram">Thuram</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>96</b></span> &bull; <span>xFM <b>11.05</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">59%</div>
             </div>
-            <div class="h2h-pct fav">59%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">41%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 59%;"></div>
+                <div class="gauge-part-right" style="width: 41%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge A">A</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/esposito-f-p-2026/" class="h2h-name" title="Scheda Esposito F.P.">Esposito F.P.</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>84</b></span> &bull; <span>xFM <b>10.59</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge A">A</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/esposito-f-p-2026/" class="h2h-name" title="Scheda Esposito F.P.">Esposito F.P.</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>84</b></span> &bull; <span>xFM <b>10.59</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">41%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 59%;"></div>
-            <div class="gauge-part-right" style="width: 41%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1724,38 +2048,41 @@
             <span class="duel-team-tag">⚽ Inter</span>
             <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge P">P</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/martinez-jo-2026/" class="h2h-name" title="Scheda Martinez Jo.">Martinez Jo.</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>93</b></span> &bull; <span>xFM <b>6.42</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge P">P</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/martinez-jo-2026/" class="h2h-name" title="Scheda Martinez Jo.">Martinez Jo.</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>93</b></span> &bull; <span>xFM <b>6.42</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">68%</div>
             </div>
-            <div class="h2h-pct fav">68%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">32%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 68%;"></div>
+                <div class="gauge-part-right" style="width: 32%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge P">P</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/provedel-2026/" class="h2h-name" title="Scheda Provedel">Provedel</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>54</b></span> &bull; <span>xFM <b>6.00</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge P">P</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/provedel-2026/" class="h2h-name" title="Scheda Provedel">Provedel</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>54</b></span> &bull; <span>xFM <b>6.00</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">32%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 68%;"></div>
-            <div class="gauge-part-right" style="width: 32%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1775,38 +2102,41 @@
             <span class="duel-team-tag">⚽ Inter</span>
             <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/bisseck-2026/" class="h2h-name" title="Scheda Bisseck">Bisseck</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>82</b></span> &bull; <span>xFM <b>7.01</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/bisseck-2026/" class="h2h-name" title="Scheda Bisseck">Bisseck</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>82</b></span> &bull; <span>xFM <b>7.01</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">71%</div>
             </div>
-            <div class="h2h-pct fav">71%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">29%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 71%;"></div>
+                <div class="gauge-part-right" style="width: 29%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/pavard-2026/" class="h2h-name" title="Scheda Pavard">Pavard</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>69</b></span> &bull; <span>xFM <b>5.93</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/pavard-2026/" class="h2h-name" title="Scheda Pavard">Pavard</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>69</b></span> &bull; <span>xFM <b>5.93</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">29%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 71%;"></div>
-            <div class="gauge-part-right" style="width: 29%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1826,38 +2156,41 @@
             <span class="duel-team-tag">⚽ Inter</span>
             <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/diouf-2026/" class="h2h-name" title="Scheda Diouf">Diouf</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>78</b></span> &bull; <span>xFM <b>8.64</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/diouf-2026/" class="h2h-name" title="Scheda Diouf">Diouf</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>78</b></span> &bull; <span>xFM <b>8.64</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">61%</div>
             </div>
-            <div class="h2h-pct fav">61%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct under">39%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 61%;"></div>
+                <div class="gauge-part-right" style="width: 39%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/spence-2026/" class="h2h-name" title="Scheda Spence">Spence</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>82</b></span> &bull; <span>xFM <b>5.75</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/spence-2026/" class="h2h-name" title="Scheda Spence">Spence</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>82</b></span> &bull; <span>xFM <b>5.75</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">39%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 61%;"></div>
-            <div class="gauge-part-right" style="width: 39%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1877,38 +2210,41 @@
             <span class="duel-team-tag">⚽ Inter</span>
             <span class="verdict-tag jolly">Jolly Spacca-Partita</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/zielinski-2026/" class="h2h-name" title="Scheda Zielinski">Zielinski</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>77</b></span> &bull; <span>xFM <b>8.09</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/zielinski-2026/" class="h2h-name" title="Scheda Zielinski">Zielinski</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>77</b></span> &bull; <span>xFM <b>8.09</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">33%</div>
             </div>
-            <div class="h2h-pct under">33%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct fav">67%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 33%;"></div>
+                <div class="gauge-part-right" style="width: 67%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge C">C</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/calhanoglu-2026/" class="h2h-name" title="Scheda Calhanoglu">Calhanoglu</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>98</b></span> &bull; <span>xFM <b>8.27</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge C">C</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/calhanoglu-2026/" class="h2h-name" title="Scheda Calhanoglu">Calhanoglu</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>98</b></span> &bull; <span>xFM <b>8.27</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">67%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 33%;"></div>
-            <div class="gauge-part-right" style="width: 67%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1928,38 +2264,41 @@
             <span class="duel-team-tag">⚽ Inter</span>
             <span class="verdict-tag hot">Staffetta con Voto Garantito</span>
         </div>
+        
         <div class="duel-h2h-players">
             <!-- Giocatore 1 -->
-            <div class="h2h-player left">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/bastoni-2026/" class="h2h-name" title="Scheda Bastoni">Bastoni</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>83</b></span> &bull; <span>xFM <b>7.86</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/bastoni-2026/" class="h2h-name" title="Scheda Bastoni">Bastoni</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>83</b></span> &bull; <span>xFM <b>7.86</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct under">48%</div>
             </div>
-            <div class="h2h-pct under">48%</div>
             
-            <div style="font-size:10px;font-weight:900;color:#64748b;">VS</div>
-            
-            <div class="h2h-pct fav">52%</div>
+            <!-- Bicolor Gauge -->
+            <div class="duel-gauge-bar">
+                <div class="gauge-part-left" style="width: 48%;"></div>
+                <div class="gauge-part-right" style="width: 52%;"></div>
+            </div>
+
             <!-- Giocatore 2 -->
-            <div class="h2h-player right">
-                <span class="pitch-role-badge D">D</span>
-                <div class="h2h-info">
-                    <a href="/calciatore/carlos-augusto-2026/" class="h2h-name" title="Scheda Carlos Augusto">Carlos Augusto</a>
-                    <div class="h2h-meta">
-                        <span>OVR <b>78</b></span> &bull; <span>xFM <b>7.23</b></span>
+            <div class="h2h-player-row">
+                <div class="h2h-player-lead">
+                    <span class="pitch-role-badge D">D</span>
+                    <div class="h2h-info">
+                        <a href="/calciatore/carlos-augusto-2026/" class="h2h-name" title="Scheda Carlos Augusto">Carlos Augusto</a>
+                        <div class="h2h-meta">
+                            <span>OVR <b>78</b></span> &bull; <span>xFM <b>7.23</b></span>
+                        </div>
                     </div>
                 </div>
+                <div class="h2h-pct fav">52%</div>
             </div>
-        </div>
-        
-        <!-- Bicolor Gauge -->
-        <div class="duel-gauge-bar">
-            <div class="gauge-part-left" style="width: 48%;"></div>
-            <div class="gauge-part-right" style="width: 52%;"></div>
         </div>
         
         <!-- Verdetto AI -->
@@ -1974,326 +2313,17 @@
         </div>
     </div>
     
-                </div>
-            </div>
-
-            <!-- Pane 2: Campo Tattico 2D -->
-            <div class="match-view-pane view-pane-pitch" style="display:none;">
-                
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:16px;background:radial-gradient(ellipse at 50% 50%, rgba(34,197,94,0.1), rgba(6,78,59,0.4) 60%, #021a10 100%);border:2px solid rgba(255,255,255,0.3);border-radius:14px;padding:16px;box-shadow:inset 0 0 40px rgba(0,0,0,0.8);">
-        <!-- Home -->
-        <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.5);padding:6px 10px;border-radius:8px;">
-                <span style="font-family:'Outfit';font-size:14px;font-weight:900;color:#fff;">🏠 Bologna</span>
-                <span style="font-size:11px;font-weight:800;color:#38bdf8;background:rgba(56,189,248,0.15);padding:2px 7px;border-radius:4px;">3-4-2-1</span>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(100px, 1fr));gap:6px;">
-                
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge P" style="width:16px;height:16px;font-size:9px;">P</span>
-                    <span style="font-size:9px;font-weight:800;color:#fbbf24;">58% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 51</span>
-                </div>
-                <a href="/calciatore/pessina-mas-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Pessina Mas.</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 4.42</span>
-                    <span style="color:#cbd5e1;">vs Skorupski</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;">D</span>
-                    <span style="font-size:9px;font-weight:800;color:#f87171;">41% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 63</span>
-                </div>
-                <a href="/calciatore/darmian-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Darmian</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 5.90</span>
-                    <span style="color:#cbd5e1;">vs Zortea</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;">D</span>
-                    <span style="font-size:9px;font-weight:800;color:#4ade80;">92% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 56</span>
-                </div>
-                <a href="/calciatore/casale-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Casale</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 6.46</span>
-                    <span style="color:#cbd5e1;">Panchina coperta</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;">D</span>
-                    <span style="font-size:9px;font-weight:800;color:#fbbf24;">61% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 71</span>
-                </div>
-                <a href="/calciatore/heggem-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Heggem</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 5.64</span>
-                    <span style="color:#cbd5e1;">vs Helland</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;">D</span>
-                    <span style="font-size:9px;font-weight:800;color:#fbbf24;">59% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 75</span>
-                </div>
-                <a href="/calciatore/zortea-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Zortea</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 6.12</span>
-                    <span style="color:#cbd5e1;">vs Darmian</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;">C</span>
-                    <span style="font-size:9px;font-weight:800;color:#fbbf24;">59% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 59</span>
-                </div>
-                <a href="/calciatore/pobega-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Pobega</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 7.59</span>
-                    <span style="color:#cbd5e1;">vs El Azzouzi O.</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;">C</span>
-                    <span style="font-size:9px;font-weight:800;color:#4ade80;">92% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 68</span>
-                </div>
-                <a href="/calciatore/ferguson-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Ferguson</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 7.11</span>
-                    <span style="color:#cbd5e1;">Panchina coperta</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;">D</span>
-                    <span style="font-size:9px;font-weight:800;color:#fbbf24;">51% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 79</span>
-                </div>
-                <a href="/calciatore/miranda-j-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Miranda J.</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 7.07</span>
-                    <span style="color:#cbd5e1;">vs Alhassane</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;">C</span>
-                    <span style="font-size:9px;font-weight:800;color:#f87171;">21% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 70</span>
-                </div>
-                <a href="/calciatore/bernardeschi-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Bernardeschi</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 7.51</span>
-                    <span style="color:#cbd5e1;">vs Orsolini</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;">C</span>
-                    <span style="font-size:9px;font-weight:800;color:#4ade80;">95% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 71</span>
-                </div>
-                <a href="/calciatore/cambiaghi-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Cambiaghi</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 7.43</span>
-                    <span style="color:#cbd5e1;">vs Mbangula</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge A" style="width:16px;height:16px;font-size:9px;">A</span>
-                    <span style="font-size:9px;font-weight:800;color:#f87171;">37% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 69</span>
-                </div>
-                <a href="/calciatore/piccoli-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Piccoli</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 7.95</span>
-                    <span style="color:#cbd5e1;">vs Dovbyk</span>
-                </div>
-            </div>
-            
-            </div>
-        </div>
-        
-        <!-- Away -->
-        <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.5);padding:6px 10px;border-radius:8px;">
-                <span style="font-family:'Outfit';font-size:14px;font-weight:900;color:#fff;">✈️ Inter</span>
-                <span style="font-size:11px;font-weight:800;color:#38bdf8;background:rgba(56,189,248,0.15);padding:2px 7px;border-radius:4px;">3-5-2</span>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(100px, 1fr));gap:6px;">
-                
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge P" style="width:16px;height:16px;font-size:9px;">P</span>
-                    <span style="font-size:9px;font-weight:800;color:#fbbf24;">68% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 93</span>
-                </div>
-                <a href="/calciatore/martinez-jo-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Martinez Jo.</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 6.42</span>
-                    <span style="color:#cbd5e1;">vs Provedel</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;">D</span>
-                    <span style="font-size:9px;font-weight:800;color:#f87171;">29% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 69</span>
-                </div>
-                <a href="/calciatore/pavard-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Pavard</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 5.93</span>
-                    <span style="color:#cbd5e1;">vs Bisseck</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;">D</span>
-                    <span style="font-size:9px;font-weight:800;color:#4ade80;">92% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 84</span>
-                </div>
-                <a href="/calciatore/akanji-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Akanji</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 8.66</span>
-                    <span style="color:#cbd5e1;">Panchina coperta</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;">D</span>
-                    <span style="font-size:9px;font-weight:800;color:#f87171;">48% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 83</span>
-                </div>
-                <a href="/calciatore/bastoni-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Bastoni</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 7.86</span>
-                    <span style="color:#cbd5e1;">vs Carlos Augusto</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;">D</span>
-                    <span style="font-size:9px;font-weight:800;color:#f87171;">39% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 82</span>
-                </div>
-                <a href="/calciatore/spence-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Spence</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 5.75</span>
-                    <span style="color:#cbd5e1;">vs Diouf</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;">C</span>
-                    <span style="font-size:9px;font-weight:800;color:#4ade80;">92% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 85</span>
-                </div>
-                <a href="/calciatore/barella-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Barella</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 8.89</span>
-                    <span style="color:#cbd5e1;">Panchina coperta</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;">C</span>
-                    <span style="font-size:9px;font-weight:800;color:#fbbf24;">52% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 98</span>
-                </div>
-                <a href="/calciatore/calhanoglu-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Calhanoglu</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 8.27</span>
-                    <span style="color:#cbd5e1;">vs Sucic P.</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;">C</span>
-                    <span style="font-size:9px;font-weight:800;color:#f87171;">33% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 77</span>
-                </div>
-                <a href="/calciatore/zielinski-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Zielinski</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 8.09</span>
-                    <span style="color:#cbd5e1;">vs Calhanoglu</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;">D</span>
-                    <span style="font-size:9px;font-weight:800;color:#fbbf24;">58% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 98</span>
-                </div>
-                <a href="/calciatore/dimarco-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dimarco</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 8.40</span>
-                    <span style="color:#cbd5e1;">vs Carlos Augusto</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge A" style="width:16px;height:16px;font-size:9px;">A</span>
-                    <span style="font-size:9px;font-weight:800;color:#4ade80;">92% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 98</span>
-                </div>
-                <a href="/calciatore/martinez-l-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Martinez L.</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 13.37</span>
-                    <span style="color:#cbd5e1;">Panchina coperta</span>
-                </div>
-            </div>
-            
-            <div style="background:rgba(11,18,32,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;min-width:105px;display:flex;flex-direction:column;gap:2px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span class="pitch-role-badge A" style="width:16px;height:16px;font-size:9px;">A</span>
-                    <span style="font-size:9px;font-weight:800;color:#fbbf24;">59% Tit</span>
-                    <span style="font-size:9px;font-weight:800;color:#38bdf8;">OVR 96</span>
-                </div>
-                <a href="/calciatore/thuram-2026/" style="font-size:11px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Thuram</a>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px;padding-top:2px;">
-                    <span>xFM 11.05</span>
-                    <span style="color:#cbd5e1;">vs Esposito F.P.</span>
-                </div>
-            </div>
-            
             </div>
         </div>
     </div>
     
             </div>
 
-            <!-- Pane 3: Tabellone Fonti a Confronto (Anti-FCO) -->
+            <!-- Pane 2: Tabellone Fonti a Confronto (Anti-FCO) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
+                <div style="font-size:11.5px;color:#94a3b8;margin-bottom:8px;">
+                    💡 Scorri orizzontalmente per confrontare le percentuali delle 5 testate di riferimento.
+                </div>
                 
     <div style="display:flex;flex-direction:column;gap:16px;">
         
@@ -3020,7 +3050,7 @@
     
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Switcher viste per match (Pitch vs Duels vs Table)
+    // 1. Switcher viste per match (Duelli vs Tabellone Fonti)
     document.querySelectorAll('.view-switch-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             var matchId = this.getAttribute('data-match');

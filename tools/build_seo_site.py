@@ -403,6 +403,7 @@ body {
 @media (max-width: 820px) {
     .header-nav-groups { display: none !important; }
     .header-main-row { padding: 6px 12px !important; }
+    .header-squad-pill { display: none !important; }
     .mobile-subnav {
         display: flex !important;
         background: rgba(15, 23, 42, 0.98);
@@ -1812,7 +1813,7 @@ def render_unified_header(rel_path=""):
                         <a href="{rel_path}statistiche-serie-a/" class="dropdown-item">📊 Statistiche Serie A &amp; xG</a>
                         <a href="{rel_path}top-flop/" class="dropdown-item">⚡ Top &amp; Flop di Giornata</a>
                         <a href="{rel_path}football-analytics/" class="dropdown-item">📈 Matrice &amp; Scatter Analytics</a>
-                        <a href="{rel_path}probabili-formazioni/" class="dropdown-item">⚽ Campo 2D &amp; Schemi Club</a>
+                        <a href="{rel_path}probabili-formazioni/" class="dropdown-item">📋 Probabili Formazioni &amp; Ballottaggi</a>
                         <a href="{rel_path}confronto-calciatori/" class="dropdown-item">⚔️ Matchup 1vs1 Calciatori</a>
                         <a href="{rel_path}griglia-portieri/" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
                         <div class="dropdown-divider"></div>
@@ -1852,6 +1853,7 @@ def render_unified_header(rel_path=""):
         <!-- MOBILE SUBNAV -->
         <nav class="mobile-subnav">
             <a href="{rel_path}">📊 Listone</a>
+            <a href="{rel_path}probabili-formazioni/">📋 Probabili</a>
             <a href="{rel_path}consigli-fantacalcio/">🎯 Consigli</a>
             <a href="{rel_path}top-flop/">⚡ Top/Flop</a>
             <a href="{rel_path}infortunati-serie-a/">🩺 Infortuni</a>

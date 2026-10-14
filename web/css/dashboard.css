@@ -17706,6 +17706,586 @@ body.mode-pro .easy-only-data {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
+/* ==========================================================================
+   TOP & FLOP — OTTIMIZZAZIONE RESPONSIVE MOBILE & DESKTOP (FANTAMASTER AI)
+   ========================================================================== */
+.top-flop-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 16px 14px 110px 14px;
+    box-sizing: border-box;
+}
+
+.tf-header-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 18px;
+    background: rgba(18, 24, 38, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 16px 18px;
+    backdrop-filter: blur(12px);
+}
+
+.tf-header-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tf-header-icon {
+    font-size: 32px;
+    line-height: 1;
+}
+
+.tf-header-h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    color: var(--accent-cyan);
+    letter-spacing: -0.2px;
+}
+
+.tf-header-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    line-height: 1.45;
+}
+
+/* Navigazione Giornate Mobile & Desktop */
+.tf-nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(11, 15, 25, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 6px 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.tf-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.tf-nav-btn:hover:not(:disabled) {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: var(--accent-cyan);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.tf-nav-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.tf-pills-scroll {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex: 1;
+    padding: 2px 0;
+}
+
+.tf-pills-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.tf-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.18s ease;
+}
+
+.tf-pill-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tf-pill-btn.active {
+    background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+    color: #031327;
+    font-weight: 900;
+    border-color: #38bdf8;
+    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.35);
+}
+
+.tf-pill-badge-ultima {
+    font-size: 10px;
+    background: rgba(239, 68, 68, 0.25);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-weight: 800;
+}
+
+.tf-pill-btn.active .tf-pill-badge-ultima {
+    background: rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    border-color: rgba(0, 0, 0, 0.35);
+}
+
+.tf-mobile-select-wrapper {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    .tf-mobile-select-wrapper {
+        display: block;
+        width: 100%;
+        margin-top: 8px;
+    }
+    .tf-mobile-round-select {
+        width: 100%;
+        background: #111726;
+        border: 1px solid rgba(56, 189, 248, 0.4);
+        color: #fff;
+        padding: 9px 12px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 800;
+        outline: none;
+    }
+}
+
+/* Info Banner Turno */
+.tf-meta-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tf-meta-left {
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tf-meta-round-tag {
+    color: var(--accent-cyan);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+}
+
+.tf-meta-right {
+    font-size: 11.5px;
+    color: var(--text-secondary);
+}
+
+/* Tab Switcher per Mobile (Top / Flop / Tutti) */
+.tf-mobile-view-tabs {
+    display: none;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 860px) {
+    .tf-mobile-view-tabs {
+        display: flex;
+        gap: 6px;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 4px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .tf-mob-tab-btn {
+        flex: 1;
+        padding: 8px 6px;
+        border-radius: 7px;
+        border: 1px solid transparent;
+        background: transparent;
+        color: var(--text-secondary);
+        font-size: 12px;
+        font-weight: 800;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.15s ease;
+    }
+    .tf-mob-tab-btn.active {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+    .tf-mob-tab-btn.active.top {
+        background: rgba(16, 185, 129, 0.2);
+        color: #34d399;
+        border-color: rgba(16, 185, 129, 0.4);
+    }
+    .tf-mob-tab-btn.active.flop {
+        background: rgba(239, 68, 68, 0.2);
+        color: #f87171;
+        border-color: rgba(239, 68, 68, 0.4);
+    }
+}
+
+/* Griglia 2 Colonne (Desktop) o 1 Colonna (Mobile) */
+.tf-grid-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 860px) {
+    .tf-grid-columns {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+.tf-column-box {
+    background: rgba(18, 24, 38, 0.7);
+    border-radius: 16px;
+    padding: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.tf-column-box.top-col {
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.tf-column-box.flop-col {
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.tf-col-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+}
+
+.tf-col-header.top-head {
+    border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.tf-col-header.flop-head {
+    border-bottom: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.tf-col-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.2px;
+}
+
+.tf-col-title.top-title {
+    color: #34d399;
+}
+
+.tf-col-title.flop-title {
+    color: #f87171;
+}
+
+.tf-col-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* CARD CALCIATORE OTTIMIZZATA MOBILE & DESKTOP */
+.tf-card {
+    background: rgba(15, 21, 33, 0.85);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+.tf-card.top-card {
+    border: 1px solid rgba(16, 185, 129, 0.24);
+}
+
+.tf-card.top-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.15);
+}
+
+.tf-card.flop-card {
+    border: 1px solid rgba(239, 68, 68, 0.24);
+}
+
+.tf-card.flop-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(239, 68, 68, 0.6);
+    box-shadow: 0 6px 18px rgba(239, 68, 68, 0.15);
+}
+
+/* Header della Card: Rank + Ruolo + Nome/Club a sinistra, Punteggi a destra */
+.tf-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.tf-card-player-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+}
+
+.tf-rank-badge {
+    font-size: 13.5px;
+    font-weight: 900;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tf-rank-badge.top-rank {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.tf-rank-badge.flop-rank {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.tf-name-and-club {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.tf-player-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: -0.1px;
+}
+
+.tf-player-club {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Punteggi Voto e Fantavoto (Compatto e Visibile) */
+.tf-card-scores-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.tf-vote-pill {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.tf-score-label {
+    font-size: 9px;
+    color: var(--text-muted);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tf-vote-num {
+    font-size: 13px;
+    color: #e2e8f0;
+    font-weight: 800;
+}
+
+.tf-fantavoto-pill {
+    padding: 3px 8px;
+    border-radius: 7px;
+    text-align: center;
+    min-width: 58px;
+}
+
+.tf-fantavoto-pill.top-fv {
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.45);
+}
+
+.tf-fantavoto-pill.flop-fv {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.45);
+}
+
+.tf-fv-label {
+    font-size: 8.5px;
+    text-transform: uppercase;
+    font-weight: 800;
+    display: block;
+}
+
+.tf-fantavoto-pill.top-fv .tf-fv-label {
+    color: #34d399;
+}
+
+.tf-fantavoto-pill.flop-fv .tf-fv-label {
+    color: #fca5a5;
+}
+
+.tf-fv-num {
+    font-size: 16px;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.1;
+    display: block;
+}
+
+.tf-fantavoto-pill.top-fv .tf-fv-num {
+    color: #10b981;
+}
+
+.tf-fantavoto-pill.flop-fv .tf-fv-num {
+    color: #f87171;
+}
+
+/* Motivo / Bonus Tag (A piena larghezza) */
+.tf-card-motivo-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.tf-motivo-tag {
+    font-size: 11.5px;
+    font-weight: 750;
+    padding: 3px 8px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.tf-motivo-tag.top-motivo {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.tf-motivo-tag.flop-motivo {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.tf-match-tag {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* Commento Narrativo (Full Width, Spazio Ampio e Leggibile) */
+.tf-card-comment-box {
+    width: 100%;
+    font-size: 12.5px;
+    line-height: 1.5;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    box-sizing: border-box;
+}
+
+.tf-card-comment-box.top-comment {
+    color: #d1fae5;
+    border-left: 3px solid #10b981;
+}
+
+.tf-card-comment-box.flop-comment {
+    color: #fee2e2;
+    border-left: 3px solid #ef4444;
+}
+
+/* Footer Card */
+.tf-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 2px;
+}
+
+.tf-card-footer-link {
+    font-size: 11px;
+    color: var(--accent-cyan);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: opacity 0.15s ease;
+}
+
+.tf-card-footer-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
 
 
 

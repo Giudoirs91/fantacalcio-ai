@@ -49,7 +49,7 @@ Thumbs.db
 *.code-workspace
 
 # === SCRATCH / TEMPORANEI ===
-scratch/*.tmp
+scratch/
 *.log
 .~lock.*
 

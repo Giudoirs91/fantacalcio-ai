@@ -3885,16 +3885,16 @@ def build_all():
         {
             "route": "top-flop",
             "tab": "top_flop",
-            "title": "Top & Flop 5ª Giornata Serie A 2026/27 | Pagelle e Statistiche | Fanta Master AI",
-            "desc": "I migliori e peggiori calciatori della 5ª giornata di Serie A 2026/27: voti ufficiali, FantaMedia, bonus, malus e analisi algoritmica Fanta Master AI.",
-            "keywords": "top flop serie a, pagelle fantacalcio 5 giornata, voti fantacalcio, migliori fantacalcio 5 giornata"
+            "title": "Top & Flop 6ª Giornata Serie A 2026/27 | Pagelle e Statistiche | Fanta Master AI",
+            "desc": "I migliori e peggiori calciatori dell'ultima giornata di Serie A 2026/27: voti ufficiali, FantaMedia, bonus, malus e analisi algoritmica Fanta Master AI.",
+            "keywords": "top flop serie a, pagelle fantacalcio 6 giornata, voti fantacalcio, migliori fantacalcio 6 giornata"
         },
         {
             "route": "consigli-fantacalcio",
             "tab": "matchday_advice",
-            "title": "Consigli Fantacalcio 6ª Giornata Serie A | Chi Schierare | Fanta Master AI",
-            "desc": "Chi schierare nella 6ª giornata di Serie A: indici di schierabilità, titolarità, verifiche predittive e consigli ruolo per ruolo con intelligenza artificiale.",
-            "keywords": "consigli fantacalcio 6 giornata, chi schierare 6 giornata, formazioni consigliate fantacalcio"
+            "title": "Consigli Fantacalcio 7ª Giornata Serie A | Chi Schierare | Fanta Master AI",
+            "desc": "Chi schierare nella 7ª giornata di Serie A: indici di schierabilità, titolarità, verifiche predittive e consigli ruolo per ruolo con intelligenza artificiale.",
+            "keywords": "consigli fantacalcio 7 giornata, chi schierare 7 giornata, formazioni consigliate fantacalcio"
         },
         {
             "route": "chi-schiero",

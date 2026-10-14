@@ -337,7 +337,7 @@ def send_telegram_photo(token, chat_id, photo_path, caption=None):
     )
 
     try:
-        with urllib.request.urlopen(req) as resp:
+        with urllib.request.urlopen(req, timeout=20) as resp:
             data = json.loads(resp.read().decode('utf-8'))
             print("✓ [TelegramEngine] Immagine inviata con successo:", data.get('ok'))
             return data
@@ -361,7 +361,7 @@ def send_telegram_message(token, chat_id, text, reply_markup=None):
     data = json.dumps(payload).encode('utf-8')
     req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json', 'User-Agent': 'FantaMasterAI/1.0'})
     try:
-        with urllib.request.urlopen(req) as resp:
+        with urllib.request.urlopen(req, timeout=20) as resp:
             res = json.loads(resp.read().decode('utf-8'))
             print("✓ [TelegramEngine] Messaggio inviato con successo:", res.get('ok'))
             return res

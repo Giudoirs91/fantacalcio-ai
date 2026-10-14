@@ -29,10 +29,35 @@ NAME_OVERRIDES = {
     ('Roma', 'PELLEGRINI Lorenzo'): 'Pellegrini Lo.',
     ('Fiorentina', 'OULAI Christ Ravynel Inao'): 'Oulai',
     ('Napoli', 'GIOVANE Santana do Nascimento'): 'Giovane',
-    ('Napoli', 'ANGUISSA André Zambo'): 'Anguissa',
+    ('Napoli', 'ANGUISSA André Zambo'): 'Zambo Anguissa',
     ('Napoli', 'SANTOS Alisson'): 'Santos A.',
     ('Parma', 'NICOLUSSI CAVIGLIA Hans'): 'Nicolussi Caviglia',
+    ('Cagliari', 'IDRISSI Riyad'): 'Idrissi R.',
+    ('Juventus', 'THURAM Khéphren'): 'Thuram K.',
+    ('Inter', 'JONES Curtis'): 'Jones C.',
 }
+
+def load_calendar_dates():
+    cal_path = os.path.join(ROOT_DIR, "config", "calendario_serie_a_2026_27.json")
+    if os.path.exists(cal_path):
+        try:
+            with open(cal_path, 'r', encoding='utf-8') as f:
+                cal = json.load(f)
+            dates = []
+            for r in cal:
+                d_str = r.get('date')
+                if d_str:
+                    try:
+                        dates.append((r['giornata'], datetime.strptime(d_str, "%d/%m/%Y")))
+                    except Exception:
+                        pass
+            dates.sort(key=lambda x: x[0])
+            return dates
+        except Exception:
+            pass
+    return []
+
+CALENDAR_DATES = load_calendar_dates()
 
 def fetch_html():
     print(f"-> [InjuriesSync] Download da {URL}...")
@@ -48,13 +73,8 @@ def fetch_html():
             return html
     except Exception as e:
         print(f"-> [InjuriesSync] Avviso: Errore nel download live ({e}). Tento backup locale...")
-        # Check brain step path or local backup
-        brain_path = r'C:\Users\dorsi\.gemini\antigravity-ide\brain\5669a18c-ff6d-45d7-87f2-c433188ebe8a\.system_generated\steps\713\content.md'
         if os.path.exists(LOCAL_BACKUP_HTML):
             with open(LOCAL_BACKUP_HTML, 'r', encoding='utf-8', errors='ignore') as f:
-                return f.read()
-        elif os.path.exists(brain_path):
-            with open(brain_path, 'r', encoding='utf-8', errors='ignore') as f:
                 return f.read()
         raise e
 
@@ -89,7 +109,9 @@ def parse_injuries(html):
     print(f"-> [InjuriesSync] Estratti {len(injuries)} infortuni ufficiali dalla tabella.")
     return injuries
 
-def calculate_injury_metrics(motivo, rientro_str):
+def calculate_injury_metrics(motivo, rientro_str, ref_date=None):
+    if ref_date is None:
+        ref_date = datetime(2026, 10, 14)
     m_lower = motivo.lower()
     r_date = None
     try:
@@ -104,21 +126,14 @@ def calculate_injury_metrics(motivo, rientro_str):
     ])
 
     if r_date:
-        if r_date >= datetime(2027, 1, 1):
-            severity = 'red'
-            giornate_perse = 18
-        elif r_date >= datetime(2026, 11, 1):
-            severity = 'red'
-            giornate_perse = 8
-        elif r_date >= datetime(2026, 10, 10) or is_grave:
-            severity = 'red'
-            giornate_perse = 5
-        elif r_date >= datetime(2026, 9, 20):
-            severity = 'orange'
-            giornate_perse = 2
-        else:
-            severity = 'orange'
-            giornate_perse = 1
+        future_rounds = [rd for rd in CALENDAR_DATES if rd[1] >= ref_date.replace(hour=0, minute=0)]
+        missed = sum(1 for g, d in future_rounds if d <= r_date)
+        if missed == 0:
+            missed = 1  # In dubbio per il turno imminente
+        if is_grave and missed < 5:
+            missed = 5
+        severity = 'red' if (missed >= 4 or is_grave) else 'orange'
+        giornate_perse = missed
     else:
         if is_grave:
             severity = 'red'
@@ -139,12 +154,11 @@ def sync_injuries():
     with open(PLAYERS_MASTER, 'r', encoding='utf-8') as f:
         players = json.load(f)
 
-    # Reset infortuni per tutti i giocatori (per azzerare chi è guarito)
-    # Conserviamo lo stato precedente per il log
     previously_injured = {p['id']: p for p in players if p.get('is_injured')}
 
     new_injured_ids = set()
     matched_log = []
+    unmatched_log = []
 
     for item in scraped_injuries:
         team_orig = item['team']
@@ -190,10 +204,11 @@ def sync_injuries():
                         matched_p = p
                         break
 
+        sev, g_perse, status_str = calculate_injury_metrics(item['motivo'], item['rientro'])
+
         if matched_p:
             pid = matched_p['id']
             new_injured_ids.add(pid)
-            sev, g_perse, status_str = calculate_injury_metrics(item['motivo'], item['rientro'])
 
             matched_p['is_injured'] = True
             matched_p['infortunio_motivo'] = item['motivo']
@@ -203,11 +218,23 @@ def sync_injuries():
             matched_p['infortunio_status'] = status_str
 
             matched_log.append({
+                'id': pid,
                 'name': matched_p['name'],
                 'team': matched_p['team'],
                 'rientro': item['rientro'],
                 'motivo': item['motivo'],
-                'gravita': sev
+                'gravita': sev,
+                'giornate_perse': g_perse
+            })
+        else:
+            unmatched_log.append({
+                'id': None,
+                'name': raw_name,
+                'team': team_orig,
+                'rientro': item['rientro'],
+                'motivo': item['motivo'],
+                'gravita': sev,
+                'giornate_perse': g_perse
             })
 
     # Calciatori guariti / non più in lista infortuni
@@ -219,7 +246,7 @@ def sync_injuries():
                 p['is_injured'] = False
                 p['infortunio_motivo'] = None
                 p['infortunio_rientro'] = None
-                p['infortunio_status'] = "Disponibile"
+                p['infortunio_status'] = "🟢 Disponibile"
                 p['infortunio_gravita'] = "green"
                 p['giornate_perse_stimate'] = 0
 
@@ -235,31 +262,32 @@ def sync_injuries():
     with open(ROOT_MASTER, 'w', encoding='utf-8') as f:
         json.dump(players, f, ensure_ascii=False, indent=2)
 
-    # Salva anche in config/injuries.json per consentire alla pipeline di ricalcolare l'OVR con gli infortuni corretti
+    # Salva anche in config/injuries.json (tutti i 54 infortuni ufficiali)
     config_inj_path = os.path.join(ROOT_DIR, "config", "injuries.json")
     config_injuries = []
-    for item in matched_log:
+    for item in matched_log + unmatched_log:
         config_injuries.append({
             "player": item['name'],
-            "player_id": None,
+            "player_id": item['id'],
             "team": item['team'],
             "motivo": item['motivo'],
             "rientro": item['rientro'],
             "severity": item['gravita'],
             "tipo_stop": "Infortunato",
-            "fonte": "fantacalcio-online.com"
+            "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
         })
     with open(config_inj_path, 'w', encoding='utf-8') as f:
         json.dump(config_injuries, f, ensure_ascii=False, indent=2)
-    print(f"-> [InjuriesSync] Aggiornato {config_inj_path} ({len(config_injuries)} infortunati).")
+    print(f"-> [InjuriesSync] Aggiornato {config_inj_path} ({len(config_injuries)} infortuni totali registrati: {len(matched_log)} calciatori master, {len(unmatched_log)} riserve/primavera).")
 
     print(f"\n=======================================================")
-    print(f"✓ Sincronizzazione Infortuni Completata con Successo!")
-    print(f"-> Totale infortuni ufficiali registrati: {len(new_injured_ids)}")
+    print(f"✓ Sincronizzazione Infortuni al 14/10/2026 Completata!")
+    print(f"-> Totale infortuni ufficiali estratti: {len(scraped_injuries)}")
+    print(f"-> Calciatori master infortunati: {len(new_injured_ids)}")
     print(f"-> Calciatori guariti / tornati disponibili: {recovered_count}")
     print(f"=======================================================\n")
 
-    return matched_log
+    return matched_log, unmatched_log
 
 if __name__ == '__main__':
     sync_injuries()

@@ -1,8 +1,9 @@
 window.matchdayAdviceState = {
-    selectedRound: 6,
+    selectedRound: null, // Default automatico calcolato dinamicamente sulla prossima giornata
     mode: 'classic',  // 'classic' | 'mantra'
     activeRoleFilter: 'ALL',
-    tierFilter: 'ALL' // 'ALL' | 'TOP_ONLY' | 'BETS_ONLY'
+    tierFilter: 'ALL', // 'ALL' | 'TOP_ONLY' | 'BETS_ONLY'
+    _hasManualRound: false
 };
 const LEAGUE_AVG_XGA = 6.03;
 const LEAGUE_AVG_XG = 6.04;
@@ -16,10 +17,23 @@ function getUpcomingMatchdayRound() {
                 return Math.min(38, maxPlayed + 1);
             }
         }
+        if (typeof PLAYERS !== 'undefined' && Array.isArray(PLAYERS)) {
+            const played = new Set();
+            for (const p of PLAYERS) {
+                for (const v of (p.voti_dettaglio_2627 || [])) {
+                    if (v.giornata && v.voto !== null && v.voto !== undefined) {
+                        played.add(Number(v.giornata));
+                    }
+                }
+            }
+            if (played.size > 0) {
+                return Math.min(38, Math.max(...played) + 1);
+            }
+        }
     } catch (e) {
         console.warn('Errore calcolo turno:', e);
     }
-    return 6;
+    return 7;
 }
 function getMatchdayFixturesMap(roundNum) {
     const fixtureMap = {};
@@ -576,7 +590,9 @@ function computePlayerRoundOutcome(player, roundNum) {
     };
 }
 function onMatchdayRoundChange(newRound) {
-    window.matchdayAdviceState.selectedRound = parseInt(newRound, 10) || 6;
+    const upcoming = getUpcomingMatchdayRound();
+    window.matchdayAdviceState.selectedRound = parseInt(newRound, 10) || upcoming;
+    window.matchdayAdviceState._hasManualRound = true;
     renderMatchdayAdviceView();
 }
 function setMatchdayAdviceMode(mode) {
@@ -669,8 +685,8 @@ function renderMatchdayAdviceView() {
             window.matchdayAdviceState._hasManualRound = true;
         }
     } catch(e) {}
-    const upcomingRound = getUpcomingMatchdayRound(); // es. 7 (se 6 conclusa) o 6
-    if (!window.matchdayAdviceState.selectedRound) {
+    const upcomingRound = getUpcomingMatchdayRound(); // es. 7 (se 6 conclusa)
+    if (!window.matchdayAdviceState.selectedRound || !window.matchdayAdviceState._hasManualRound) {
         window.matchdayAdviceState.selectedRound = upcomingRound;
     }
     const currentRound = window.matchdayAdviceState.selectedRound;

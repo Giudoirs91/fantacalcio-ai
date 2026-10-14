@@ -1,199 +1,316 @@
 // --- top_flop.js ---
-// Vista Top & Flop per Giornata con navigazione dinamica (1°-4° turno)
-// Include commenti narrativi approfonditi, dettaglio bonus/malus e apertura scheda calciatore al click.
+// Vista Top & Flop per Giornata con navigazione fluida (Mobile & Desktop)
+// Default automatico all'ultima giornata disputata, navigazione rapida tra tutti i turni
+// e layout card a piena larghezza per smartphone con commenti completi e leggibili.
 
-let currentTopFlopRound = 4;
+let currentTopFlopRound = null;
+let topFlopActiveTab = 'ALL'; // 'ALL' | 'TOP' | 'FLOP'
+
+function getAvailableTopFlopRounds() {
+    const data = (typeof TOP_FLOP_DATA !== 'undefined' && TOP_FLOP_DATA) ? TOP_FLOP_DATA : {};
+    const rounds = Object.keys(data).map(k => parseInt(k, 10)).filter(n => !isNaN(n)).sort((a, b) => a - b);
+    return rounds.length > 0 ? rounds : [1, 2, 3, 4, 5, 6];
+}
 
 function setTopFlopRound(roundNum) {
-    currentTopFlopRound = parseInt(roundNum, 10) || 4;
-    renderTopFlopView();
+    const num = parseInt(roundNum, 10);
+    const available = getAvailableTopFlopRounds();
+    if (available.includes(num)) {
+        currentTopFlopRound = num;
+        renderTopFlopView();
+    }
+}
+
+function setTopFlopMobileTab(tab) {
+    topFlopActiveTab = tab;
+    const colTop = document.getElementById('tfColTop');
+    const colFlop = document.getElementById('tfColFlop');
+    const btnAll = document.getElementById('tfMobTabAll');
+    const btnTop = document.getElementById('tfMobTabTop');
+    const btnFlop = document.getElementById('tfMobTabFlop');
+
+    if (btnAll) btnAll.classList.toggle('active', tab === 'ALL');
+    if (btnTop) btnTop.classList.toggle('active', tab === 'TOP');
+    if (btnFlop) btnFlop.classList.toggle('active', tab === 'FLOP');
+
+    if (colTop) colTop.style.display = (tab === 'ALL' || tab === 'TOP') ? 'block' : 'none';
+    if (colFlop) colFlop.style.display = (tab === 'ALL' || tab === 'FLOP') ? 'block' : 'none';
 }
 
 function renderTopFlopView() {
     const container = document.getElementById('viewTopFlop');
     if (!container) return;
 
-    const data = (typeof TOP_FLOP_DATA !== 'undefined') ? TOP_FLOP_DATA : {};
-    const availableRounds = Object.keys(data).map(k => parseInt(k, 10)).sort((a, b) => a - b);
-    
-    // Se non impostato, mostra sempre l'ultima giornata
-    if (!currentTopFlopRound || !data[currentTopFlopRound]) {
-        currentTopFlopRound = availableRounds.length > 0 ? availableRounds[availableRounds.length - 1] : 4;
+    const data = (typeof TOP_FLOP_DATA !== 'undefined' && TOP_FLOP_DATA) ? TOP_FLOP_DATA : {};
+    const availableRounds = getAvailableTopFlopRounds();
+    const latestPlayedRound = availableRounds[availableRounds.length - 1];
+
+    // Se non ancora impostato manualmente, controlla eventuale parametro URL ?giornata=X o ?g=X
+    if (currentTopFlopRound === null) {
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            const rParam = urlParams.get('giornata') || urlParams.get('g');
+            if (rParam) {
+                const parsed = parseInt(rParam, 10);
+                if (availableRounds.includes(parsed)) {
+                    currentTopFlopRound = parsed;
+                }
+            }
+        } catch (e) {}
+    }
+
+    // Se ancora nullo o non valido, default AUTOMATICO all'ULTIMA GIORNATA DISPUTATA
+    if (currentTopFlopRound === null || !data[currentTopFlopRound]) {
+        currentTopFlopRound = latestPlayedRound;
     }
 
     const roundInfo = data[currentTopFlopRound] || { top: [], flop: [], total_players_voted: 0 };
     const topList = roundInfo.top || [];
     const flopList = roundInfo.flop || [];
 
-    // Genera bottoni selettore giornata
-    const roundButtonsHtml = availableRounds.map(r => {
+    // Tasti Precedente e Successivo
+    const prevRound = currentTopFlopRound - 1;
+    const nextRound = currentTopFlopRound + 1;
+    const hasPrev = availableRounds.includes(prevRound);
+    const hasNext = availableRounds.includes(nextRound);
+
+    // Bottoni Pills orizzontali
+    const roundPillsHtml = availableRounds.map(r => {
         const isCurrent = (r === currentTopFlopRound);
+        const isLatest = (r === latestPlayedRound);
         return `
-            <button class="btn-action ${isCurrent ? 'active' : ''}" 
-                    style="${isCurrent ? 'background:linear-gradient(135deg, var(--accent-cyan), #0284c7);color:#031327;font-weight:900;' : 'background:rgba(255,255,255,0.05);color:var(--text-secondary);border:1px solid rgba(255,255,255,0.1);'}padding:7px 16px;border-radius:8px;font-size:12.5px;cursor:pointer;transition:all 0.15s ease;" 
-                    onclick="setTopFlopRound(${r})">
-                Giornata ${r} ${r === availableRounds[availableRounds.length - 1] ? '🔥 (Ultima)' : ''}
+            <button class="tf-pill-btn ${isCurrent ? 'active' : ''}" 
+                    data-round="${r}"
+                    onclick="setTopFlopRound(${r})"
+                    title="Visualizza Top & Flop Giornata ${r}">
+                <span>G${r}</span>
+                ${isLatest ? '<span class="tf-pill-badge-ultima">🔥 Ultima</span>' : ''}
             </button>
         `;
     }).join('');
 
-    // Riquadri TOP
+    // Dropdown veloce per smartphone
+    const selectOptionsHtml = availableRounds.map(r => {
+        const isCurrent = (r === currentTopFlopRound);
+        const isLatest = (r === latestPlayedRound);
+        return `<option value="${r}" ${isCurrent ? 'selected' : ''}>⚽ Giornata ${r} ${isLatest ? '🔥 (Ultima Conclusa)' : '(Conclusa)'}</option>`;
+    }).join('');
+
+    // Render Cards TOP
     const topCardsHtml = topList.map((p, idx) => {
         const roleClass = p.role || 'C';
-        const teamText = p.team ? `${p.role} - ${p.team}` : p.role;
+        const teamText = p.team ? `${p.role} • ${p.team}` : p.role;
         const commentText = p.commento || p.motivo || 'Prestazione di altissimo livello.';
+        const matchLabel = p.match || (p.opponent ? `vs ${p.opponent}` : '');
         return `
-            <div class="top-flop-row top-row" 
+            <div class="tf-card top-card" 
                  onclick="openPlayerProfileModal(${p.cod})" 
-                 title="Clicca per aprire la scheda di ${p.name}" 
-                 style="cursor:pointer;padding:12px 14px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.22);border-radius:12px;margin-bottom:10px;transition:all 0.2s ease;">
-                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
-                    <div style="display:flex;align-items:flex-start;gap:10px;flex:1;">
-                        <span style="font-size:14px;font-weight:900;color:#10b981;width:24px;text-align:center;margin-top:2px;">#${idx + 1}</span>
-                        <span class="role-badge ${roleClass}" style="font-size:11px;padding:2px 7px;margin-top:2px;">${p.role}</span>
-                        <div style="flex:1;">
-                            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                                <span style="font-size:14px;font-weight:800;color:#fff;" class="player-link">${p.name}</span>
-                                <span style="font-size:11.5px;color:var(--text-muted);font-weight:600;">(${teamText})</span>
-                                <span style="font-size:11px;background:rgba(16,185,129,0.2);color:#34d399;padding:1px 6px;border-radius:4px;font-weight:700;">✨ ${p.motivo}</span>
-                            </div>
-                            
-                            <!-- Commento Giornalistico / Fantacalcistico -->
-                            <div style="margin-top:6px;font-size:12px;color:#d1fae5;line-height:1.45;background:rgba(0,0,0,0.3);padding:7px 10px;border-radius:7px;border-left:3px solid #10b981;">
-                                “${commentText}”
-                            </div>
+                 title="Clicca per aprire la scheda di ${p.name}">
+                
+                <!-- Intestazione Card: Dati Calciatore e Punteggi -->
+                <div class="tf-card-header">
+                    <div class="tf-card-player-group">
+                        <span class="tf-rank-badge top-rank">#${idx + 1}</span>
+                        <span class="role-badge ${roleClass}">${p.role}</span>
+                        <div class="tf-name-and-club">
+                            <span class="tf-player-name">${p.name}</span>
+                            <span class="tf-player-club">${teamText}</span>
                         </div>
                     </div>
 
-                    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;min-width:90px;">
-                        <div style="display:flex;align-items:center;gap:10px;">
-                            <div style="text-align:right;">
-                                <span style="font-size:9.5px;color:var(--text-muted);text-transform:uppercase;display:block;">Voto</span>
-                                <b style="font-size:13.5px;color:#e2e8f0;">${p.voto}</b>
-                            </div>
-                            <div style="text-align:right;background:rgba(16,185,129,0.2);padding:3px 8px;border-radius:6px;border:1px solid rgba(16,185,129,0.45);">
-                                <span style="font-size:9px;color:#34d399;text-transform:uppercase;display:block;font-weight:700;">FantaVoto</span>
-                                <b style="font-size:15px;color:#10b981;font-weight:900;">${p.fantavoto}</b>
-                            </div>
+                    <div class="tf-card-scores-group">
+                        <div class="tf-vote-pill">
+                            <span class="tf-score-label">VOTO</span>
+                            <span class="tf-vote-num">${p.voto}</span>
                         </div>
-                        <div style="font-size:10.5px;color:var(--accent-cyan);display:flex;align-items:center;gap:4px;opacity:0.85;margin-top:2px;">
-                            <span>Apri scheda</span> <span style="font-size:11px;">➔</span>
+                        <div class="tf-fantavoto-pill top-fv">
+                            <span class="tf-fv-label">FANTAVOTO</span>
+                            <span class="tf-fv-num">${p.fantavoto}</span>
                         </div>
                     </div>
+                </div>
+
+                <!-- Dettaglio Bonus / Match -->
+                <div class="tf-card-motivo-row">
+                    <span class="tf-motivo-tag top-motivo">✨ ${p.motivo}</span>
+                    ${matchLabel ? `<span class="tf-match-tag">(${matchLabel})</span>` : ''}
+                </div>
+
+                <!-- Commento Narrativo a Piena Larghezza -->
+                <div class="tf-card-comment-box top-comment">
+                    “${commentText}”
+                </div>
+
+                <!-- Link Scheda Calciatore -->
+                <div class="tf-card-footer">
+                    <span class="tf-card-footer-link">Apri scheda calciatore ➔</span>
                 </div>
             </div>
         `;
     }).join('');
 
-    // Riquadri FLOP
+    // Render Cards FLOP
     const flopCardsHtml = flopList.map((p, idx) => {
         const roleClass = p.role || 'C';
-        const teamText = p.team ? `${p.role} - ${p.team}` : p.role;
+        const teamText = p.team ? `${p.role} • ${p.team}` : p.role;
         const commentText = p.commento || p.motivo || 'Prestazione insufficiente.';
+        const matchLabel = p.match || (p.opponent ? `vs ${p.opponent}` : '');
         return `
-            <div class="top-flop-row flop-row" 
+            <div class="tf-card flop-card" 
                  onclick="openPlayerProfileModal(${p.cod})" 
-                 title="Clicca per aprire la scheda di ${p.name}" 
-                 style="cursor:pointer;padding:12px 14px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.22);border-radius:12px;margin-bottom:10px;transition:all 0.2s ease;">
-                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
-                    <div style="display:flex;align-items:flex-start;gap:10px;flex:1;">
-                        <span style="font-size:14px;font-weight:900;color:#f87171;width:24px;text-align:center;margin-top:2px;">#${idx + 1}</span>
-                        <span class="role-badge ${roleClass}" style="font-size:11px;padding:2px 7px;margin-top:2px;">${p.role}</span>
-                        <div style="flex:1;">
-                            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                                <span style="font-size:14px;font-weight:800;color:#fff;" class="player-link">${p.name}</span>
-                                <span style="font-size:11.5px;color:var(--text-muted);font-weight:600;">(${teamText})</span>
-                                <span style="font-size:11px;background:rgba(239,68,68,0.2);color:#fca5a5;padding:1px 6px;border-radius:4px;font-weight:700;">⚠️ ${p.motivo}</span>
-                            </div>
-                            
-                            <!-- Commento Giornalistico / Fantacalcistico -->
-                            <div style="margin-top:6px;font-size:12px;color:#fee2e2;line-height:1.45;background:rgba(0,0,0,0.3);padding:7px 10px;border-radius:7px;border-left:3px solid #ef4444;">
-                                “${commentText}”
-                            </div>
+                 title="Clicca per aprire la scheda di ${p.name}">
+                
+                <!-- Intestazione Card: Dati Calciatore e Punteggi -->
+                <div class="tf-card-header">
+                    <div class="tf-card-player-group">
+                        <span class="tf-rank-badge flop-rank">#${idx + 1}</span>
+                        <span class="role-badge ${roleClass}">${p.role}</span>
+                        <div class="tf-name-and-club">
+                            <span class="tf-player-name">${p.name}</span>
+                            <span class="tf-player-club">${teamText}</span>
                         </div>
                     </div>
 
-                    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;min-width:90px;">
-                        <div style="display:flex;align-items:center;gap:10px;">
-                            <div style="text-align:right;">
-                                <span style="font-size:9.5px;color:var(--text-muted);text-transform:uppercase;display:block;">Voto</span>
-                                <b style="font-size:13.5px;color:#e2e8f0;">${p.voto}</b>
-                            </div>
-                            <div style="text-align:right;background:rgba(239,68,68,0.2);padding:3px 8px;border-radius:6px;border:1px solid rgba(239,68,68,0.45);">
-                                <span style="font-size:9px;color:#fca5a5;text-transform:uppercase;display:block;font-weight:700;">FantaVoto</span>
-                                <b style="font-size:15px;color:#f87171;font-weight:900;">${p.fantavoto}</b>
-                            </div>
+                    <div class="tf-card-scores-group">
+                        <div class="tf-vote-pill">
+                            <span class="tf-score-label">VOTO</span>
+                            <span class="tf-vote-num">${p.voto}</span>
                         </div>
-                        <div style="font-size:10.5px;color:var(--accent-cyan);display:flex;align-items:center;gap:4px;opacity:0.85;margin-top:2px;">
-                            <span>Apri scheda</span> <span style="font-size:11px;">➔</span>
+                        <div class="tf-fantavoto-pill flop-fv">
+                            <span class="tf-fv-label">FANTAVOTO</span>
+                            <span class="tf-fv-num">${p.fantavoto}</span>
                         </div>
                     </div>
+                </div>
+
+                <!-- Dettaglio Malus / Match -->
+                <div class="tf-card-motivo-row">
+                    <span class="tf-motivo-tag flop-motivo">⚠️ ${p.motivo}</span>
+                    ${matchLabel ? `<span class="tf-match-tag">(${matchLabel})</span>` : ''}
+                </div>
+
+                <!-- Commento Narrativo a Piena Larghezza -->
+                <div class="tf-card-comment-box flop-comment">
+                    “${commentText}”
+                </div>
+
+                <!-- Link Scheda Calciatore -->
+                <div class="tf-card-footer">
+                    <span class="tf-card-footer-link">Apri scheda calciatore ➔</span>
                 </div>
             </div>
         `;
     }).join('');
 
     container.innerHTML = `
-        <div class="top-flop-container" style="max-width:1240px;margin:0 auto;padding:16px 20px;">
-            <!-- HEADER -->
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:14px;">
-                <div style="display:flex;align-items:center;gap:12px;">
-                    <span style="font-size:36px;">⚡</span>
+        <div class="top-flop-container">
+            <!-- HEADER PRINCIPALE -->
+            <div class="tf-header-card">
+                <div class="tf-header-title-row">
+                    <span class="tf-header-icon">⚡</span>
                     <div>
-                        <h2 class="font-title" style="margin:0;font-size:22px;color:var(--accent-cyan);">Top & Flop Ufficiali Serie A</h2>
-                        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">
-                            I migliori exploit con bonus e i tracolli fantacalcistici con commento dettagliato. Clicca su qualsiasi calciatore per aprire la sua scheda e analizzare l'andamento.
+                        <h2 class="tf-header-h2">Top & Flop Ufficiali Serie A</h2>
+                        <div class="tf-header-desc">
+                            I migliori exploit con bonus e i tracolli fantacalcistici con pagelle e commento dettagliato.
                         </div>
                     </div>
                 </div>
 
-                <!-- SELECTOR GIORNATA -->
-                <div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.3);padding:4px 8px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);">
-                    <span style="font-size:11.5px;color:var(--text-muted);font-weight:700;margin-right:4px;">Seleziona Turno:</span>
-                    ${roundButtonsHtml}
+                <!-- BARRA NAVIGAZIONE GIORNATE (Prev / Scroll / Next) -->
+                <div class="tf-nav-bar">
+                    <button class="tf-nav-btn" 
+                            ${!hasPrev ? 'disabled' : ''} 
+                            onclick="setTopFlopRound(${prevRound})"
+                            title="Vai alla giornata precedente">
+                        ◀ Prec
+                    </button>
+
+                    <div class="tf-pills-scroll" id="tfPillsScroll">
+                        ${roundPillsHtml}
+                    </div>
+
+                    <button class="tf-nav-btn" 
+                            ${!hasNext ? 'disabled' : ''} 
+                            onclick="setTopFlopRound(${nextRound})"
+                            title="Vai alla giornata successiva">
+                        Succ ▶
+                    </button>
+                </div>
+
+                <!-- SELECTOR ALTERNATIVO PER SMARTPHONE -->
+                <div class="tf-mobile-select-wrapper">
+                    <select class="tf-mobile-round-select" onchange="setTopFlopRound(this.value)">
+                        ${selectOptionsHtml}
+                    </select>
                 </div>
             </div>
 
             <!-- RIEPILOGO TURNO BADGE -->
-            <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.02);padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);margin-bottom:20px;">
-                <span style="font-size:13px;font-weight:800;color:#fff;">
-                    📅 Analisi Dettagliata: <span style="color:var(--accent-cyan);">GIORNATA ${currentTopFlopRound}</span>
-                </span>
-                <span style="font-size:12px;color:var(--text-secondary);">
-                    Calciatori a voto nel turno: <b style="color:#fff;">${roundInfo.total_players_voted}</b> &nbsp;•&nbsp; 
-                    <span style="color:var(--accent-cyan);">💡 Clicca su un calciatore per aprire la scheda e vedere l'andamento</span>
-                </span>
+            <div class="tf-meta-banner">
+                <div class="tf-meta-left">
+                    <span>📅 Verdetto Turno:</span>
+                    <span class="tf-meta-round-tag">GIORNATA ${currentTopFlopRound}</span>
+                    ${currentTopFlopRound === latestPlayedRound ? '<span class="tf-pill-badge-ultima">🔥 Ultima Conclusa</span>' : ''}
+                </div>
+                <div class="tf-meta-right">
+                    Calciatori a voto: <b style="color:#fff;">${roundInfo.total_players_voted || 0}</b> &nbsp;•&nbsp;
+                    <span style="color:var(--accent-cyan);">💡 Clicca su una scheda per aprirla</span>
+                </div>
+            </div>
+
+            <!-- TAB SWITCHER MOBILE (Solo Top / Solo Flop / Tutti) -->
+            <div class="tf-mobile-view-tabs">
+                <button id="tfMobTabAll" class="tf-mob-tab-btn ${topFlopActiveTab === 'ALL' ? 'active' : ''}" onclick="setTopFlopMobileTab('ALL')">
+                    ⚡ Tutti
+                </button>
+                <button id="tfMobTabTop" class="tf-mob-tab-btn top ${topFlopActiveTab === 'TOP' ? 'active' : ''}" onclick="setTopFlopMobileTab('TOP')">
+                    🔥 Solo Top (UP)
+                </button>
+                <button id="tfMobTabFlop" class="tf-mob-tab-btn flop ${topFlopActiveTab === 'FLOP' ? 'active' : ''}" onclick="setTopFlopMobileTab('FLOP')">
+                    ❄️ Solo Flop (DOWN)
+                </button>
             </div>
 
             <!-- GRIGLIA 2 COLONNE: TOP (VERDE) & FLOP (ROSSO) -->
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div class="tf-grid-columns">
                 <!-- COLONNA TOP -->
-                <div style="background:rgba(18,24,38,0.7);border:1px solid rgba(16,185,129,0.3);border-radius:14px;padding:18px;">
-                    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;border-bottom:1px solid rgba(16,185,129,0.2);padding-bottom:10px;">
-                        <span style="font-size:22px;">🔥</span>
+                <div id="tfColTop" class="tf-column-box top-col" style="${(topFlopActiveTab === 'FLOP') ? 'display:none;' : ''}">
+                    <div class="tf-col-header top-head">
+                        <span style="font-size:24px;">🔥</span>
                         <div>
-                            <h3 style="margin:0;font-size:16px;font-weight:900;color:#34d399;">I MIGLIORI DELLA GIORNATA (UP)</h3>
-                            <div style="font-size:11px;color:var(--text-muted);">Bonus gol, assist e voti top con commenti e pagelle</div>
+                            <h3 class="tf-col-title top-title">I MIGLIORI DELLA GIORNATA (UP)</h3>
+                            <div class="tf-col-sub">Bonus gol, assist e voti top con commenti e pagelle</div>
                         </div>
                     </div>
-                    ${topCardsHtml || '<div style="color:var(--text-muted);font-size:12px;">Nessun dato per questo turno.</div>'}
+                    ${topCardsHtml || '<div style="color:var(--text-muted);font-size:12.5px;padding:20px;text-align:center;">Nessun dato registrato per questo turno.</div>'}
                 </div>
 
                 <!-- COLONNA FLOP -->
-                <div style="background:rgba(18,24,38,0.7);border:1px solid rgba(239,68,68,0.3);border-radius:14px;padding:18px;">
-                    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;border-bottom:1px solid rgba(239,68,68,0.2);padding-bottom:10px;">
-                        <span style="font-size:22px;">❄️</span>
+                <div id="tfColFlop" class="tf-column-box flop-col" style="${(topFlopActiveTab === 'TOP') ? 'display:none;' : ''}">
+                    <div class="tf-col-header flop-head">
+                        <span style="font-size:24px;">❄️</span>
                         <div>
-                            <h3 style="margin:0;font-size:16px;font-weight:900;color:#f87171;">I PEGGIORI DELLA GIORNATA (DOWN)</h3>
-                            <div style="font-size:11px;color:var(--text-muted);">Insufficienze, malus, rigori falliti e disattenzioni</div>
+                            <h3 class="tf-col-title flop-title">I PEGGIORI DELLA GIORNATA (DOWN)</h3>
+                            <div class="tf-col-sub">Insufficienze, malus, rigori falliti e disattenzioni</div>
                         </div>
                     </div>
-                    ${flopCardsHtml || '<div style="color:var(--text-muted);font-size:12px;">Nessun dato per questo turno.</div>'}
+                    ${flopCardsHtml || '<div style="color:var(--text-muted);font-size:12.5px;padding:20px;text-align:center;">Nessun dato registrato per questo turno.</div>'}
                 </div>
             </div>
         </div>
     `;
+
+    // Auto-scroll del pill attivo al centro del viewport orizzontale su smartphone
+    try {
+        setTimeout(() => {
+            const activePill = container.querySelector('.tf-pill-btn.active');
+            if (activePill && typeof activePill.scrollIntoView === 'function') {
+                activePill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+        }, 50);
+    } catch (e) {}
 }
 
 window.setTopFlopRound = setTopFlopRound;
+window.setTopFlopMobileTab = setTopFlopMobileTab;
 window.renderTopFlopView = renderTopFlopView;

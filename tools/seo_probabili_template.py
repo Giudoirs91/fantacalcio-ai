@@ -37,6 +37,178 @@ def get_player_slug_from_name(name):
 
 def render_probabili_css():
     return """
+/* Core App Header Styles (Self-contained) */
+.app-header-unified {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background: rgba(10, 14, 22, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+}
+.header-main-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 52px;
+    min-height: 52px;
+    max-width: 1560px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+.brand-logo-modern,
+.brand-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s ease;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+.brand-logo-modern:hover,
+.brand-logo-modern:visited,
+.brand-logo-modern:active {
+    color: #ffffff !important;
+    opacity: 0.92;
+    text-decoration: none !important;
+}
+.brand-icon-box {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    max-width: 30px !important;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(0, 230, 118, 0.2), rgba(0, 242, 254, 0.2));
+    border: 1px solid rgba(0, 242, 254, 0.35);
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 15px;
+    flex-shrink: 0 !important;
+    padding: 2px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+.brand-icon-box img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 30px !important;
+    max-height: 30px !important;
+    object-fit: cover !important;
+    border-radius: 5px !important;
+    display: block !important;
+}
+.brand-main-name {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 15px !important;
+    color: #ffffff !important;
+    letter-spacing: -0.2px;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+}
+.brand-gradient-tag {
+    background: linear-gradient(135deg, #00e676, #00f2fe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #00f2fe !important;
+    font-weight: 900 !important;
+}
+.brand-season-capsule {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    color: #94a3b8 !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 2px 7px !important;
+    border-radius: 9999px !important;
+    letter-spacing: 0.3px !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+.social-header-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+.mobile-subnav {
+    display: none;
+}
+@media (max-width: 1024px) {
+    .header-nav-groups { display: none !important; }
+    .header-main-row { padding: 0 12px !important; height: 50px !important; min-height: 50px !important; }
+    .app-header-unified { min-height: 50px !important; height: auto !important; flex-direction: column !important; }
+    .header-squad-pill { display: none !important; }
+    .brand-season-capsule { display: none !important; }
+    .brand-icon-box { width: 28px !important; height: 28px !important; min-width: 28px !important; max-width: 28px !important; }
+    .brand-icon-box img { max-width: 28px !important; max-height: 28px !important; }
+    .brand-main-name { font-size: 13.5px !important; }
+    .mobile-subnav {
+        display: flex !important;
+        background: rgba(10, 14, 22, 0.98);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 7px 10px;
+        gap: 7px;
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 100%;
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .mobile-subnav::-webkit-scrollbar { display: none; }
+    .mobile-subnav a {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        color: #cbd5e1;
+        text-decoration: none;
+        padding: 4px 10px;
+        border-radius: 9999px;
+        font-size: 11.5px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    .mobile-subnav a:hover, .mobile-subnav a.active {
+        background: rgba(56, 189, 248, 0.18);
+        border-color: rgba(56, 189, 248, 0.4);
+        color: #38bdf8;
+    }
+}
+
 /* ==========================================================================
    PROBABILI FORMAZIONI & CONSENSUS 5 FONTI - DESIGN SYSTEM
    ========================================================================== */
@@ -2180,7 +2352,7 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
     <meta name="twitter:image" content="{base_url}/static/og-image.jpg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/css/seo.css">
+    <link rel="stylesheet" href="../css/seo.css?v=20261015-v4">
     <style>
     {render_probabili_css()}
     </style>
@@ -2482,7 +2654,7 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
     <meta name="twitter:image" content="{base_url}/static/og-image.jpg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../css/seo.css">
+    <link rel="stylesheet" href="../../css/seo.css?v=20261015-v4">
     <style>
     {render_probabili_css()}
     .prob-breadcrumbs {{

@@ -28,6 +28,7 @@ if os.path.exists(CALENDAR_PATH):
 
 
 BASE_URL = "https://www.fantamasterai.it"
+CSS_VERSION = "?v=20261015-v4"
 GA_MEASUREMENT_ID = "G-4QNYJ5YZXY"
 GA_TAG_SNIPPET = f"""    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
@@ -217,10 +218,11 @@ body {
 /* Brand Logo Modern */
 .brand-logo-modern,
 .brand-badge {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    text-decoration: none;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
     cursor: pointer;
     user-select: none;
     transition: opacity 0.2s ease;
@@ -230,53 +232,74 @@ body {
 }
 
 .brand-logo-modern:hover,
-.brand-badge:hover {
+.brand-badge:hover,
+.brand-logo-modern:visited,
+.brand-badge:visited,
+.brand-logo-modern:active,
+.brand-badge:active {
+    color: #ffffff !important;
     opacity: 0.92;
+    text-decoration: none !important;
 }
 
 .brand-icon-box {
-    width: 32px;
-    height: 32px;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
     border-radius: 9px;
     background: linear-gradient(135deg, rgba(0, 230, 118, 0.2), rgba(0, 242, 254, 0.2));
     border: 1px solid rgba(0, 242, 254, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     font-size: 15px;
-    flex-shrink: 0;
-    padding: 2px;
-    overflow: hidden;
-    box-sizing: border-box;
+    flex-shrink: 0 !important;
+    padding: 2px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+.brand-icon-box img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+    object-fit: cover !important;
+    border-radius: 6px !important;
+    display: block !important;
 }
 
 .brand-main-name {
-    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
-    font-weight: 800;
-    font-size: 15px;
-    color: #fff;
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 15px !important;
+    color: #ffffff !important;
     letter-spacing: -0.2px;
-    white-space: nowrap;
+    white-space: nowrap !important;
+    text-decoration: none !important;
 }
 
 .brand-gradient-tag {
     background: linear-gradient(135deg, #00e676, #00f2fe);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: 900;
+    color: #00f2fe !important;
+    font-weight: 900 !important;
 }
 
 .brand-season-capsule {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    color: #94a3b8;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 2px 7px;
-    border-radius: 9999px;
-    letter-spacing: 0.3px;
-    white-space: nowrap;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    color: #94a3b8 !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 2px 7px !important;
+    border-radius: 9999px !important;
+    letter-spacing: 0.3px !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
 }
 
 /* Backward compatibility for brand-badge classes if markup not updated */
@@ -523,9 +546,13 @@ body {
 /* Mobile & Tablet (< 1024px) */
 @media (max-width: 1024px) {
     .header-nav-groups { display: none !important; }
-    .header-main-row { padding: 0 12px !important; height: 50px !important; }
+    .header-main-row { padding: 0 12px !important; height: 50px !important; min-height: 50px !important; }
     .app-header-unified { min-height: 50px !important; height: auto !important; flex-direction: column !important; }
     .header-squad-pill { display: none !important; }
+    .brand-season-capsule { display: none !important; }
+    .brand-icon-box { width: 28px !important; height: 28px !important; min-width: 28px !important; max-width: 28px !important; }
+    .brand-icon-box img { max-width: 28px !important; max-height: 28px !important; }
+    .brand-main-name { font-size: 13.5px !important; }
     .mobile-subnav {
         display: flex !important;
         background: rgba(10, 14, 22, 0.98);
@@ -1914,18 +1941,18 @@ body {
 def render_unified_header(rel_path=""):
     return f"""
     <!-- Unified App Header -->
-    <header class="app-header-unified">
-        <div class="header-main-row">
+    <header class="app-header-unified" style="position:sticky;top:0;z-index:9999;background:rgba(10,14,22,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08);width:100%;">
+        <div class="header-main-row" style="display:flex;align-items:center;justify-content:space-between;padding:0 14px;height:52px;min-height:52px;max-width:1560px;margin:0 auto;width:100%;box-sizing:border-box;">
             <!-- LEFT: MODERN BRAND LOGO -->
-            <div class="header-left">
-                <a href="{rel_path}" class="brand-logo-modern" title="Fanta Master AI — Serie A 2026/27">
-                    <div class="brand-icon-box">
-                        <img src="{rel_path}static/icon-192.png" alt="Fanta Master AI Logo" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
+            <div class="header-left" style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+                <a href="{rel_path}" class="brand-logo-modern" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#ffffff;line-height:1;flex-shrink:0;" title="Fanta Master AI — Serie A 2026/27">
+                    <div class="brand-icon-box" style="width:30px;height:30px;min-width:30px;min-height:30px;max-width:30px;max-height:30px;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(0,230,118,0.2),rgba(0,242,254,0.2));border:1px solid rgba(0,242,254,0.35);padding:2px;box-sizing:border-box;flex-shrink:0;">
+                        <img src="{rel_path}static/icon-192.png" alt="Logo" width="30" height="30" style="width:30px;height:30px;max-width:30px;max-height:30px;min-width:30px;min-height:30px;object-fit:cover;border-radius:5px;display:block;">
                     </div>
-                    <div class="brand-text-wrap">
-                        <span class="brand-main-name">Fanta Master <span class="brand-gradient-tag">AI</span></span>
+                    <div class="brand-text-wrap" style="display:inline-flex;align-items:baseline;gap:6px;line-height:1;">
+                        <span class="brand-main-name" style="font-family:'Outfit',system-ui,-apple-system,sans-serif;font-weight:800;font-size:15px;color:#ffffff;letter-spacing:-0.2px;white-space:nowrap;text-decoration:none;">Fanta Master <span class="brand-gradient-tag" style="background:linear-gradient(135deg,#00e676,#00f2fe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;color:#00f2fe;font-weight:900;">AI</span></span>
                     </div>
-                    <span class="brand-season-capsule">2026/27</span>
+                    <span class="brand-season-capsule" style="font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:10px;font-weight:700;color:#94a3b8;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:2px 7px;border-radius:9999px;letter-spacing:0.3px;white-space:nowrap;text-decoration:none;">2026/27</span>
                 </a>
             </div>
 
@@ -2300,7 +2327,7 @@ def generate_injuries_pillar(players, injuries_db):
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/seo.css">
+    <link rel="stylesheet" href="../css/seo.css{CSS_VERSION}">
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -2669,7 +2696,7 @@ def generate_rigoristi_pillar(tactical_db):
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/seo.css">
+    <link rel="stylesheet" href="../css/seo.css{CSS_VERSION}">
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -2941,7 +2968,7 @@ def generate_gk_pillar(gk_matrix_data):
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/seo.css">
+    <link rel="stylesheet" href="../css/seo.css{CSS_VERSION}">
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -3534,7 +3561,7 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
     <meta name="twitter:image" content="{base_url}/static/og-image.jpg">
     
     <!-- CSS Completo Dashboard -->
-    <link rel="stylesheet" href="../../css/seo.css">
+    <link rel="stylesheet" href="../../css/seo.css{CSS_VERSION}">
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -3766,7 +3793,7 @@ def generate_privacy_policy_page():
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/seo.css">
+    <link rel="stylesheet" href="../css/seo.css{CSS_VERSION}">
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {{

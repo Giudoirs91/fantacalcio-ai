@@ -54,18 +54,18 @@ def slugify(text):
 def render_unified_header(rel_path=""):
     return f"""
     <!-- Unified App Header -->
-    <header class="app-header-unified">
-        <div class="header-main-row">
+    <header class="app-header-unified" style="position:sticky;top:0;z-index:9999;background:rgba(10,14,22,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08);width:100%;">
+        <div class="header-main-row" style="display:flex;align-items:center;justify-content:space-between;padding:0 14px;height:52px;min-height:52px;max-width:1560px;margin:0 auto;width:100%;box-sizing:border-box;">
             <!-- LEFT: MODERN BRAND LOGO -->
-            <div class="header-left">
-                <a href="{rel_path}" class="brand-logo-modern" title="Fanta Master AI — Serie A 2026/27">
-                    <div class="brand-icon-box">
-                        <img src="{rel_path}static/icon-192.png" alt="Fanta Master AI Logo" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
+            <div class="header-left" style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+                <a href="{rel_path}" class="brand-logo-modern" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#ffffff;line-height:1;flex-shrink:0;" title="Fanta Master AI — Serie A 2026/27">
+                    <div class="brand-icon-box" style="width:30px;height:30px;min-width:30px;min-height:30px;max-width:30px;max-height:30px;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(0,230,118,0.2),rgba(0,242,254,0.2));border:1px solid rgba(0,242,254,0.35);padding:2px;box-sizing:border-box;flex-shrink:0;">
+                        <img src="{rel_path}static/icon-192.png" alt="Logo" width="30" height="30" style="width:30px;height:30px;max-width:30px;max-height:30px;min-width:30px;min-height:30px;object-fit:cover;border-radius:5px;display:block;">
                     </div>
-                    <div class="brand-text-wrap">
-                        <span class="brand-main-name">Fanta Master <span class="brand-gradient-tag">AI</span></span>
+                    <div class="brand-text-wrap" style="display:inline-flex;align-items:baseline;gap:6px;line-height:1;">
+                        <span class="brand-main-name" style="font-family:'Outfit',system-ui,-apple-system,sans-serif;font-weight:800;font-size:15px;color:#ffffff;letter-spacing:-0.2px;white-space:nowrap;text-decoration:none;">Fanta Master <span class="brand-gradient-tag" style="background:linear-gradient(135deg,#00e676,#00f2fe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;color:#00f2fe;font-weight:900;">AI</span></span>
                     </div>
-                    <span class="brand-season-capsule">2026/27</span>
+                    <span class="brand-season-capsule" style="font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:10px;font-weight:700;color:#94a3b8;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:2px 7px;border-radius:9999px;letter-spacing:0.3px;white-space:nowrap;text-decoration:none;">2026/27</span>
                 </a>
             </div>
 
@@ -1422,7 +1422,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     <meta name="twitter:image" content="{base_url}/static/og-image.jpg">
     
     <!-- CSS Completo Dashboard -->
-    <link rel="stylesheet" href="../../css/seo.css">
+    <link rel="stylesheet" href="../../css/seo.css?v=20261015-v4">
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">

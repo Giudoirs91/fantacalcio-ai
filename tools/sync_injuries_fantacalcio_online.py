@@ -35,7 +35,20 @@ NAME_OVERRIDES = {
     ('Cagliari', 'IDRISSI Riyad'): 'Idrissi R.',
     ('Juventus', 'THURAM Khéphren'): 'Thuram K.',
     ('Inter', 'JONES Curtis'): 'Jones C.',
+    ('Inter', 'MARTINEZ Lautaro'): 'Martinez L.',
+    ('Inter', 'Lautaro Martinez'): 'Martinez L.',
+    ('Inter', 'Martinez L.'): 'Martinez L.',
 }
+
+MANUAL_INJURIES = [
+    {
+        'team': 'Inter',
+        'raw_name': 'Martinez L.',
+        'motivo': 'Risentimento muscolare ai flessori della coscia sinistra',
+        'rientro': '25/10/2026',
+        'fonte': 'Fantacalcio.it (Aggiornato 15/10/2026)'
+    }
+]
 
 def load_calendar_dates():
     cal_path = os.path.join(ROOT_DIR, "config", "calendario_serie_a_2026_27.json")
@@ -150,6 +163,10 @@ def calculate_injury_metrics(motivo, rientro_str, ref_date=None):
 def sync_injuries():
     html = fetch_html()
     scraped_injuries = parse_injuries(html)
+
+    for m in MANUAL_INJURIES:
+        if not any(inj['team'].lower() == m['team'].lower() and ('martinez' in inj['raw_name'].lower()) for inj in scraped_injuries):
+            scraped_injuries.append(m)
 
     with open(PLAYERS_MASTER, 'r', encoding='utf-8') as f:
         players = json.load(f)

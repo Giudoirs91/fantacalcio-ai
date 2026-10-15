@@ -1481,17 +1481,17 @@
       "name": "Martinez L.",
       "team": "Inter",
       "ruolo": "A",
-      "partite_saltate_totali": 5,
+      "partite_saltate_totali": 8,
       "partite_saltate_2025_26": 5,
-      "giorni_stop_totali": 42,
-      "disponibilita_pct": 86.8,
+      "giorni_stop_totali": 72,
+      "disponibilita_pct": 78.9,
       "recidive_muscolari": 1,
-      "indice_fragilita_score": 39.5,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 5 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 68.0,
+      "livello_fragilita": "FRAGILE",
+      "fragility_label": "🔴 Fragile (Rischio Elevato)",
+      "fragility_badge": "fragile",
+      "consiglio_medico_ai": "Profilo a rischio elevato: 8 partite saltate con 1 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -1515,6 +1515,15 @@
           "giornate": [
             33
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Risentimento muscolare ai flessori della coscia sinistra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "25/10/2026",
+          "in_corso": true
         }
       ]
     },
@@ -11770,18 +11779,28 @@
       "name": "Martin",
       "team": "Genoa",
       "ruolo": "D",
-      "partite_saltate_totali": 0,
+      "partite_saltate_totali": 3,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 0,
-      "disponibilita_pct": 100,
+      "giorni_stop_totali": 30,
+      "disponibilita_pct": 92.1,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 5.0,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
-      "cronistoria_infortuni": []
+      "indice_fragilita_score": 33.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": true,
+      "cronistoria_infortuni": [
+        {
+          "stagione": "2026/27",
+          "motivo": "Risentimento muscolare ai flessori della coscia sinistra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "25/10/2026",
+          "in_corso": true
+        }
+      ]
     },
     "Mitaj": {
       "id": 7537,

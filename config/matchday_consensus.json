@@ -1,7 +1,7 @@
 {
   "round": 7,
   "round_label": "7ª Giornata Serie A 2026/27",
-  "last_updated": "15/10/2026 10:36",
+  "last_updated": "15/10/2026 16:54",
   "sources_tracked": [
     "Fantacalcio.it",
     "Gazzetta dello Sport",
@@ -967,6 +967,17 @@
             "injury_return": ""
           },
           {
+            "name": "Walukiewicz",
+            "role": "D",
+            "ovr": 59,
+            "xfm": 5.8,
+            "consensus_pct": 15,
+            "sub_txt": "Panchina",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
             "name": "Dominguez B.",
             "role": "C",
             "ovr": 60,
@@ -1031,17 +1042,6 @@
             "is_injured": true,
             "injury_reason": "Lesione di grado moderato al quadricipite della gamba sinistra",
             "injury_return": "15/10/2026"
-          },
-          {
-            "name": "Walukiewicz",
-            "role": "D",
-            "ovr": 59,
-            "xfm": 5.8,
-            "consensus_pct": 0,
-            "sub_txt": "🩹 14/10/2026",
-            "is_injured": true,
-            "injury_reason": "Dead leg (contusione alla coscia)",
-            "injury_return": "14/10/2026"
           },
           {
             "name": "Candè",
@@ -1438,16 +1438,6 @@
             "motivo": "Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro",
             "rientro": "30/10/2026",
             "severity": "red",
-            "tipo_stop": "Infortunato",
-            "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-          },
-          {
-            "player": "Walukiewicz",
-            "player_id": 4374,
-            "team": "Sassuolo",
-            "motivo": "Dead leg (contusione alla coscia)",
-            "rientro": "14/10/2026",
-            "severity": "orange",
             "tipo_stop": "Infortunato",
             "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
           }
@@ -2156,7 +2146,7 @@
             "role": "A",
             "ovr": 96,
             "xfm": 6.2,
-            "consensus_pct": 55,
+            "consensus_pct": 56,
             "sub_txt": "vs Lucca",
             "is_injured": false,
             "injury_reason": "",
@@ -2191,7 +2181,7 @@
             "role": "A",
             "ovr": 58,
             "xfm": 5.8,
-            "consensus_pct": 45,
+            "consensus_pct": 44,
             "sub_txt": "vs Hojlund",
             "is_injured": false,
             "injury_reason": "",
@@ -2460,8 +2450,8 @@
                 "p2": 43
               },
               "sosfanta": {
-                "p1": 54,
-                "p2": 46
+                "p1": 60,
+                "p2": 40
               },
               "fantapazz": {
                 "p1": 55,
@@ -2472,8 +2462,8 @@
                 "p2": 45
               }
             },
-            "consensus_pct1": 55,
-            "consensus_pct2": 45,
+            "consensus_pct1": 56,
+            "consensus_pct2": 44,
             "verdict": {
               "tag": "Ballottaggio Aperto (Rischio SV)",
               "desc": "Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.",
@@ -2510,8 +2500,8 @@
                 "p2": 43
               },
               "sosfanta": {
-                "p1": 54,
-                "p2": 46
+                "p1": 51,
+                "p2": 49
               },
               "fantapazz": {
                 "p1": 55,
@@ -2851,7 +2841,7 @@
             "role": "D",
             "ovr": 73,
             "xfm": 6.2,
-            "consensus_pct": 62,
+            "consensus_pct": 64,
             "sub_txt": "vs Vitik",
             "is_injured": false,
             "injury_reason": "",
@@ -2873,7 +2863,7 @@
             "role": "C",
             "ovr": 57,
             "xfm": 6.2,
-            "consensus_pct": 59,
+            "consensus_pct": 58,
             "sub_txt": "vs El Azzouzi O.",
             "is_injured": false,
             "injury_reason": "",
@@ -2970,6 +2960,17 @@
             "injury_return": ""
           },
           {
+            "name": "El Azzouzi O.",
+            "role": "C",
+            "ovr": 55,
+            "xfm": 5.8,
+            "consensus_pct": 42,
+            "sub_txt": "vs Pobega",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
             "name": "Skorupski",
             "role": "P",
             "ovr": 66,
@@ -2992,12 +2993,12 @@
             "injury_return": ""
           },
           {
-            "name": "El Azzouzi O.",
-            "role": "C",
-            "ovr": 55,
+            "name": "Piccoli",
+            "role": "A",
+            "ovr": 68,
             "xfm": 5.8,
-            "consensus_pct": 41,
-            "sub_txt": "vs Pobega",
+            "consensus_pct": 37,
+            "sub_txt": "vs Dovbyk",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -3007,19 +3008,8 @@
             "role": "D",
             "ovr": 63,
             "xfm": 5.8,
-            "consensus_pct": 38,
+            "consensus_pct": 36,
             "sub_txt": "vs Theate",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
-            "name": "Piccoli",
-            "role": "A",
-            "ovr": 68,
-            "xfm": 5.8,
-            "consensus_pct": 37,
-            "sub_txt": "vs Dovbyk",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -3250,8 +3240,8 @@
                 "p2": 40
               },
               "gazzetta": {
-                "p1": 62,
-                "p2": 38
+                "p1": 55,
+                "p2": 45
               },
               "sosfanta": {
                 "p1": 60,
@@ -3266,8 +3256,8 @@
                 "p2": 40
               }
             },
-            "consensus_pct1": 59,
-            "consensus_pct2": 41,
+            "consensus_pct1": 58,
+            "consensus_pct2": 42,
             "verdict": {
               "tag": "Leggero Vantaggio",
               "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
@@ -3350,8 +3340,8 @@
                 "p2": 30
               },
               "gazzetta": {
-                "p1": 60,
-                "p2": 40
+                "p1": 72,
+                "p2": 28
               },
               "sosfanta": {
                 "p1": 55,
@@ -3366,8 +3356,8 @@
                 "p2": 30
               }
             },
-            "consensus_pct1": 62,
-            "consensus_pct2": 38,
+            "consensus_pct1": 64,
+            "consensus_pct2": 36,
             "verdict": {
               "tag": "Leggero Vantaggio",
               "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
@@ -3729,9 +3719,9 @@
             "injury_return": ""
           },
           {
-            "name": "Martinez L.",
+            "name": "Esposito F.P.",
             "role": "A",
-            "ovr": 98,
+            "ovr": 81,
             "xfm": 6.2,
             "consensus_pct": 92,
             "sub_txt": "Titolare inamovibile",
@@ -3745,7 +3735,7 @@
             "ovr": 92,
             "xfm": 6.2,
             "consensus_pct": 59,
-            "sub_txt": "vs Esposito F.P.",
+            "sub_txt": "vs Bonny",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -3775,9 +3765,9 @@
             "injury_return": ""
           },
           {
-            "name": "Esposito F.P.",
+            "name": "Bonny",
             "role": "A",
-            "ovr": 81,
+            "ovr": 61,
             "xfm": 5.8,
             "consensus_pct": 41,
             "sub_txt": "vs Thuram",
@@ -3841,17 +3831,6 @@
             "injury_return": ""
           },
           {
-            "name": "Bonny",
-            "role": "A",
-            "ovr": 61,
-            "xfm": 5.8,
-            "consensus_pct": 15,
-            "sub_txt": "Panchina",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
             "name": "Provedel",
             "role": "P",
             "ovr": 53,
@@ -3894,6 +3873,17 @@
             "is_injured": true,
             "injury_reason": "Risentimento muscolare all'adduttore",
             "injury_return": "29/10/2026"
+          },
+          {
+            "name": "Martinez L.",
+            "role": "A",
+            "ovr": 98,
+            "xfm": 5.8,
+            "consensus_pct": 0,
+            "sub_txt": "🩹 25/10/2026",
+            "is_injured": true,
+            "injury_reason": "Risentimento muscolare ai flessori della coscia sinistra",
+            "injury_return": "25/10/2026"
           }
         ],
         "ballots": [
@@ -4008,9 +3998,9 @@
               "injury_return": ""
             },
             "player2": {
-              "name": "Esposito F.P.",
+              "name": "Bonny",
               "role": "A",
-              "ovr": 81,
+              "ovr": 61,
               "xfm": 6.0,
               "is_injured": false,
               "injury_desc": "",
@@ -4165,6 +4155,16 @@
             "team": "Inter",
             "motivo": "Risentimento ai flessori della coscia sinistra",
             "rientro": "17/10/2026",
+            "severity": "orange",
+            "tipo_stop": "Infortunato",
+            "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+          },
+          {
+            "player": "Martinez L.",
+            "player_id": 2764,
+            "team": "Inter",
+            "motivo": "Risentimento muscolare ai flessori della coscia sinistra",
+            "rientro": "25/10/2026",
             "severity": "orange",
             "tipo_stop": "Infortunato",
             "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
@@ -8593,7 +8593,7 @@
             "role": "A",
             "ovr": 80,
             "xfm": 6.2,
-            "consensus_pct": 79,
+            "consensus_pct": 71,
             "sub_txt": "vs Elmas",
             "is_injured": false,
             "injury_reason": "",
@@ -8604,7 +8604,7 @@
             "role": "C",
             "ovr": 73,
             "xfm": 6.2,
-            "consensus_pct": 55,
+            "consensus_pct": 54,
             "sub_txt": "vs Pasalic",
             "is_injured": false,
             "injury_reason": "",
@@ -8635,6 +8635,17 @@
         ],
         "reserves": [
           {
+            "name": "Pasalic",
+            "role": "C",
+            "ovr": 65,
+            "xfm": 5.8,
+            "consensus_pct": 46,
+            "sub_txt": "vs Samardzic",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
             "name": "Bernasconi",
             "role": "D",
             "ovr": 73,
@@ -8652,17 +8663,6 @@
             "xfm": 5.8,
             "consensus_pct": 45,
             "sub_txt": "vs Kessiè",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
-            "name": "Pasalic",
-            "role": "C",
-            "ovr": 65,
-            "xfm": 5.8,
-            "consensus_pct": 45,
-            "sub_txt": "vs Samardzic",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -8694,7 +8694,7 @@
             "role": "C",
             "ovr": 65,
             "xfm": 5.8,
-            "consensus_pct": 21,
+            "consensus_pct": 29,
             "sub_txt": "vs De Ketelaere",
             "is_injured": false,
             "injury_reason": "",
@@ -8908,8 +8908,8 @@
                 "p2": 43
               },
               "sosfanta": {
-                "p1": 54,
-                "p2": 46
+                "p1": 49,
+                "p2": 51
               },
               "fantapazz": {
                 "p1": 55,
@@ -8920,8 +8920,8 @@
                 "p2": 45
               }
             },
-            "consensus_pct1": 55,
-            "consensus_pct2": 45,
+            "consensus_pct1": 54,
+            "consensus_pct2": 46,
             "verdict": {
               "tag": "Ballottaggio Aperto (Rischio SV)",
               "desc": "Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.",
@@ -9054,8 +9054,8 @@
                 "p2": 15
               },
               "gazzetta": {
-                "p1": 87,
-                "p2": 13
+                "p1": 45,
+                "p2": 55
               },
               "sosfanta": {
                 "p1": 84,
@@ -9070,13 +9070,13 @@
                 "p2": 15
               }
             },
-            "consensus_pct1": 79,
-            "consensus_pct2": 21,
+            "consensus_pct1": 71,
+            "consensus_pct2": 29,
             "verdict": {
-              "tag": "Titolare Inamovibile",
-              "desc": "Ampio margine nelle preferenze delle testate giornalistiche.",
-              "tone": "safe",
-              "action": "Schiera titolare sereno"
+              "tag": "Leggero Vantaggio",
+              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
+              "tone": "neutral",
+              "action": "Preferisci il titolare ma mantieni copertura"
             }
           },
           {
@@ -11329,12 +11329,12 @@
             "injury_return": ""
           },
           {
-            "name": "Massolin",
+            "name": "Fazzini",
             "role": "C",
-            "ovr": 57,
+            "ovr": 67,
             "xfm": 6.2,
-            "consensus_pct": 54,
-            "sub_txt": "vs Fazzini",
+            "consensus_pct": 53,
+            "sub_txt": "vs Massolin",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -11353,12 +11353,12 @@
         ],
         "reserves": [
           {
-            "name": "Fazzini",
+            "name": "Massolin",
             "role": "C",
-            "ovr": 67,
+            "ovr": 57,
             "xfm": 5.8,
-            "consensus_pct": 46,
-            "sub_txt": "vs Massolin",
+            "consensus_pct": 47,
+            "sub_txt": "vs Fazzini",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -11532,18 +11532,18 @@
         "ballots": [
           {
             "player1": {
-              "name": "Massolin",
+              "name": "Fazzini",
               "role": "C",
-              "ovr": 57,
+              "ovr": 67,
               "xfm": 6.2,
               "is_injured": false,
               "injury_desc": "",
               "injury_return": ""
             },
             "player2": {
-              "name": "Fazzini",
+              "name": "Massolin",
               "role": "C",
-              "ovr": 67,
+              "ovr": 57,
               "xfm": 6.0,
               "is_injured": false,
               "injury_desc": "",
@@ -11551,28 +11551,28 @@
             },
             "sources": {
               "fantacalcio": {
-                "p1": 55,
-                "p2": 45
+                "p1": 45,
+                "p2": 55
               },
               "gazzetta": {
-                "p1": 57,
-                "p2": 43
+                "p1": 80,
+                "p2": 20
               },
               "sosfanta": {
-                "p1": 49,
-                "p2": 51
+                "p1": 51,
+                "p2": 49
               },
               "fantapazz": {
-                "p1": 55,
-                "p2": 45
+                "p1": 45,
+                "p2": 55
               },
               "sky": {
-                "p1": 55,
-                "p2": 45
+                "p1": 45,
+                "p2": 55
               }
             },
-            "consensus_pct1": 54,
-            "consensus_pct2": 46,
+            "consensus_pct1": 53,
+            "consensus_pct2": 47,
             "verdict": {
               "tag": "Ballottaggio Aperto (Rischio SV)",
               "desc": "Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.",

@@ -185,10 +185,10 @@ def determine_advice_tag(p):
     motivo_inf = str(p.get('infortunio_motivo', '')).lower()
     if is_injured and (giornate_perse >= 10 or 'mesi' in motivo_inf or 'crociato' in motivo_inf or 'operazione' in motivo_inf):
         return "⛔ LUNGA DEGENZA (EVITARE)", "avoid"
-    if is_injured and titolarita < 40:
-        return "⚠️ INFORTUNATO (NON COMPRARE)", "avoid"
     if is_injured and (slot_num <= 2 or ovr >= 82):
         return "⚠️ INFORTUNATO (TOP DA SCONTO)", "warning"
+    if is_injured and titolarita < 40:
+        return "⚠️ INFORTUNATO (NON COMPRARE)", "avoid"
     if is_injured:
         return "⚠️ INFORTUNATO (ATTENDERE RIENTRO)", "warning"
 

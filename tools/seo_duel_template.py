@@ -55,10 +55,28 @@ def get_match_info(calendar_data, team_name, round_num=6):
     return None
 
 def compute_duel_verdict(p1, p2, calendar_data):
-    # Round 6 upcoming
-    round_num = 6
+    # Round 7 upcoming
+    round_num = 7
     m1 = get_match_info(calendar_data, p1.get('team'), round_num)
     m2 = get_match_info(calendar_data, p2.get('team'), round_num)
+
+    # Infortuni prioritari
+    if p1.get('is_injured') and not p2.get('is_injured'):
+        winner = p2
+        loser = p1
+        w_pct = 95
+        l_pct = 5
+        motivo = p1.get('infortunio_motivo') or 'Indisponibile per infortunio'
+        reason = f"{p2['name']} è la scelta obbligata e consigliata dall'AI: {p1['name']} è out per infortunio ({motivo}) e non andrà a voto nella {round_num}ª giornata."
+        return winner, loser, w_pct, l_pct, reason, m1, m2
+    elif p2.get('is_injured') and not p1.get('is_injured'):
+        winner = p1
+        loser = p2
+        w_pct = 95
+        l_pct = 5
+        motivo = p2.get('infortunio_motivo') or 'Indisponibile per infortunio'
+        reason = f"{p1['name']} è la scelta obbligata e consigliata dall'AI: {p2['name']} è out per infortunio ({motivo}) e non andrà a voto nella {round_num}ª giornata."
+        return winner, loser, w_pct, l_pct, reason, m1, m2
 
     xfm1 = float(p1.get('xfm') or p1.get('fm_2627') or p1.get('fm') or 6.0)
     xfm2 = float(p2.get('xfm') or p2.get('fm_2627') or p2.get('fm') or 6.0)

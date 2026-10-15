@@ -13266,17 +13266,17 @@
       "name": "Walukiewicz",
       "team": "Sassuolo",
       "ruolo": "D",
-      "partite_saltate_totali": 6,
+      "partite_saltate_totali": 3,
       "partite_saltate_2025_26": 3,
-      "giorni_stop_totali": 58,
-      "disponibilita_pct": 84.2,
+      "giorni_stop_totali": 28,
+      "disponibilita_pct": 92.1,
       "recidive_muscolari": 1,
-      "indice_fragilita_score": 59.0,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 6 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 30.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -13298,15 +13298,6 @@
             37,
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Dead leg (contusione alla coscia)",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "muscolare",
-          "rientro_previsto": "14/10/2026",
-          "in_corso": true
         }
       ]
     },

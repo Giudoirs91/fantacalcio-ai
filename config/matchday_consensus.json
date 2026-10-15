@@ -1,7 +1,7 @@
 {
   "round": 7,
   "round_label": "7ª Giornata Serie A 2026/27",
-  "last_updated": "15/10/2026 16:54",
+  "last_updated": "15/10/2026 17:21",
   "sources_tracked": [
     "Fantacalcio.it",
     "Gazzetta dello Sport",
@@ -1455,7 +1455,7 @@
       "home": {
         "team": "Venezia",
         "formation": "3-5-2",
-        "coach": "Giovanni Stroppa",
+        "coach": "Davide Nicola",
         "rigoristi": [
           "Adams A.",
           "Yeboah J.",
@@ -2892,12 +2892,12 @@
             "injury_return": ""
           },
           {
-            "name": "Orsolini",
+            "name": "Bernardeschi",
             "role": "C",
-            "ovr": 98,
+            "ovr": 68,
             "xfm": 6.2,
-            "consensus_pct": 79,
-            "sub_txt": "vs Bernardeschi",
+            "consensus_pct": 95,
+            "sub_txt": "vs Orsolini",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -3015,17 +3015,6 @@
             "injury_return": ""
           },
           {
-            "name": "Bernardeschi",
-            "role": "C",
-            "ovr": 68,
-            "xfm": 5.8,
-            "consensus_pct": 21,
-            "sub_txt": "vs Orsolini",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
             "name": "De Silvestri",
             "role": "D",
             "ovr": 56,
@@ -3090,6 +3079,17 @@
             "is_injured": true,
             "injury_reason": "Lesione al bicipite femorale della coscia destra",
             "injury_return": "29/01/2027"
+          },
+          {
+            "name": "Orsolini",
+            "role": "C",
+            "ovr": 98,
+            "xfm": 5.8,
+            "consensus_pct": 0,
+            "sub_txt": "🩹 07/11/2026",
+            "is_injured": true,
+            "injury_reason": "Lesione di primo grado al bicipite femorale della coscia destra",
+            "injury_return": "07/11/2026"
           },
           {
             "name": "Mbangula",
@@ -3417,52 +3417,52 @@
           },
           {
             "player1": {
-              "name": "Orsolini",
+              "name": "Bernardeschi",
               "role": "C",
-              "ovr": 98,
+              "ovr": 68,
               "xfm": 6.2,
               "is_injured": false,
               "injury_desc": "",
               "injury_return": ""
             },
             "player2": {
-              "name": "Bernardeschi",
+              "name": "Orsolini",
               "role": "C",
-              "ovr": 68,
+              "ovr": 98,
               "xfm": 6.0,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
+              "is_injured": true,
+              "injury_desc": "Lesione di primo grado al bicipite femorale della coscia destra",
+              "injury_return": "07/11/2026"
             },
             "sources": {
               "fantacalcio": {
-                "p1": 85,
-                "p2": 15
+                "p1": 15,
+                "p2": 85
               },
               "gazzetta": {
-                "p1": 87,
-                "p2": 13
+                "p1": 13,
+                "p2": 87
               },
               "sosfanta": {
-                "p1": 84,
-                "p2": 16
+                "p1": 16,
+                "p2": 84
               },
               "fantapazz": {
-                "p1": 55,
-                "p2": 45
+                "p1": 45,
+                "p2": 55
               },
               "sky": {
-                "p1": 85,
-                "p2": 15
+                "p1": 15,
+                "p2": 85
               }
             },
-            "consensus_pct1": 79,
-            "consensus_pct2": 21,
+            "consensus_pct1": 95,
+            "consensus_pct2": 5,
             "verdict": {
-              "tag": "Titolare Inamovibile",
-              "desc": "Ampio margine nelle preferenze delle testate giornalistiche.",
+              "tag": "Titolare Blindato",
+              "desc": "Titolare certo al 100%: il rivale di reparto è attualmente indisponibile.",
               "tone": "safe",
-              "action": "Schiera titolare sereno"
+              "action": "Schiera titolare senza riserve"
             }
           },
           {
@@ -3594,6 +3594,16 @@
             "motivo": "Lesione ai flessori della coscia destra",
             "rientro": "21/10/2026",
             "severity": "orange",
+            "tipo_stop": "Infortunato",
+            "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+          },
+          {
+            "player": "Orsolini",
+            "player_id": 2167,
+            "team": "Bologna",
+            "motivo": "Lesione di primo grado al bicipite femorale della coscia destra",
+            "rientro": "07/11/2026",
+            "severity": "red",
             "tipo_stop": "Infortunato",
             "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
           }
@@ -3880,10 +3890,10 @@
             "ovr": 98,
             "xfm": 5.8,
             "consensus_pct": 0,
-            "sub_txt": "🩹 25/10/2026",
+            "sub_txt": "🩹 22/11/2026",
             "is_injured": true,
-            "injury_reason": "Risentimento muscolare ai flessori della coscia sinistra",
-            "injury_return": "25/10/2026"
+            "injury_reason": "Risentimento muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)",
+            "injury_return": "22/11/2026"
           }
         ],
         "ballots": [
@@ -4163,9 +4173,9 @@
             "player": "Martinez L.",
             "player_id": 2764,
             "team": "Inter",
-            "motivo": "Risentimento muscolare ai flessori della coscia sinistra",
-            "rientro": "25/10/2026",
-            "severity": "orange",
+            "motivo": "Risentimento muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)",
+            "rientro": "22/11/2026",
+            "severity": "red",
             "tipo_stop": "Infortunato",
             "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
           }

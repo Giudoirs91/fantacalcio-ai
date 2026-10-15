@@ -38,14 +38,24 @@ NAME_OVERRIDES = {
     ('Inter', 'MARTINEZ Lautaro'): 'Martinez L.',
     ('Inter', 'Lautaro Martinez'): 'Martinez L.',
     ('Inter', 'Martinez L.'): 'Martinez L.',
+    ('Bologna', 'ORSOLINI Riccardo'): 'Orsolini',
+    ('Bologna', 'Riccardo Orsolini'): 'Orsolini',
+    ('Bologna', 'Orsolini'): 'Orsolini',
 }
 
 MANUAL_INJURIES = [
     {
         'team': 'Inter',
         'raw_name': 'Martinez L.',
-        'motivo': 'Risentimento muscolare ai flessori della coscia sinistra',
-        'rientro': '25/10/2026',
+        'motivo': 'Risentimento muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)',
+        'rientro': '22/11/2026',
+        'fonte': 'Fantacalcio.it (Aggiornato 15/10/2026)'
+    },
+    {
+        'team': 'Bologna',
+        'raw_name': 'Orsolini',
+        'motivo': 'Lesione di primo grado al bicipite femorale della coscia destra',
+        'rientro': '07/11/2026',
         'fonte': 'Fantacalcio.it (Aggiornato 15/10/2026)'
     }
 ]
@@ -165,7 +175,16 @@ def sync_injuries():
     scraped_injuries = parse_injuries(html)
 
     for m in MANUAL_INJURIES:
-        if not any(inj['team'].lower() == m['team'].lower() and ('martinez' in inj['raw_name'].lower()) for inj in scraped_injuries):
+        target_token = m['raw_name'].lower().split()[0]
+        found = False
+        for inj in scraped_injuries:
+            if inj['team'].lower() == m['team'].lower() and target_token in inj['raw_name'].lower():
+                inj['motivo'] = m['motivo']
+                inj['rientro'] = m['rientro']
+                inj['fonte'] = m['fonte']
+                found = True
+                break
+        if not found:
             scraped_injuries.append(m)
 
     with open(PLAYERS_MASTER, 'r', encoding='utf-8') as f:

@@ -1483,7 +1483,7 @@
       "ruolo": "A",
       "partite_saltate_totali": 8,
       "partite_saltate_2025_26": 5,
-      "giorni_stop_totali": 72,
+      "giorni_stop_totali": 222,
       "disponibilita_pct": 78.9,
       "recidive_muscolari": 1,
       "indice_fragilita_score": 68.0,
@@ -1518,11 +1518,11 @@
         },
         {
           "stagione": "2026/27",
-          "motivo": "Risentimento muscolare ai flessori della coscia sinistra",
-          "partite_perse": 3,
-          "giorni_stop": 30,
+          "motivo": "Risentimento muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)",
+          "partite_perse": 15,
+          "giorni_stop": 180,
           "tipo": "muscolare",
-          "rientro_previsto": "25/10/2026",
+          "rientro_previsto": "22/11/2026",
           "in_corso": true
         }
       ]
@@ -7219,17 +7219,17 @@
       "name": "Orsolini",
       "team": "Bologna",
       "ruolo": "C",
-      "partite_saltate_totali": 1,
+      "partite_saltate_totali": 4,
       "partite_saltate_2025_26": 1,
-      "giorni_stop_totali": 6,
-      "disponibilita_pct": 97.4,
+      "giorni_stop_totali": 186,
+      "disponibilita_pct": 89.5,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 9.5,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 38.0,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (4 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -7240,6 +7240,15 @@
           "giornate": [
             38
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Lesione di primo grado al bicipite femorale della coscia destra",
+          "partite_perse": 15,
+          "giorni_stop": 180,
+          "tipo": "muscolare",
+          "rientro_previsto": "07/11/2026",
+          "in_corso": true
         }
       ]
     },
@@ -11781,7 +11790,7 @@
       "ruolo": "D",
       "partite_saltate_totali": 3,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 30,
+      "giorni_stop_totali": 180,
       "disponibilita_pct": 92.1,
       "recidive_muscolari": 0,
       "indice_fragilita_score": 33.5,
@@ -11793,11 +11802,11 @@
       "cronistoria_infortuni": [
         {
           "stagione": "2026/27",
-          "motivo": "Risentimento muscolare ai flessori della coscia sinistra",
-          "partite_perse": 3,
-          "giorni_stop": 30,
+          "motivo": "Risentimento muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)",
+          "partite_perse": 15,
+          "giorni_stop": 180,
           "tipo": "muscolare",
-          "rientro_previsto": "25/10/2026",
+          "rientro_previsto": "22/11/2026",
           "in_corso": true
         }
       ]

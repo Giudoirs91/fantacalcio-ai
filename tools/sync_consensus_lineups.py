@@ -25,9 +25,14 @@ import sys
 import re
 import ssl
 import json
+import socket
+import hashlib
+import subprocess
 import urllib.request
 from datetime import datetime
 from difflib import SequenceMatcher
+
+socket.setdefaulttimeout(8)
 
 if sys.stdout.encoding != 'utf-8':
     try:
@@ -139,14 +144,53 @@ def match_player_master(raw_name, team_name, players_by_team, aliases):
             
     return best_p
 
-def fetch_html(url, timeout=12):
+def fetch_html(url, timeout=10):
+    cache_dir = os.path.join(ROOT_DIR, "data", "raw", "consensus_cache")
+    os.makedirs(cache_dir, exist_ok=True)
+    cache_file = os.path.join(cache_dir, hashlib.md5(url.encode()).hexdigest() + ".html")
+    
+    # 1. Prova con curl.exe (veloce, affidabile su Windows con TLS 1.3)
+    try:
+        print(f"    -> Download da {url}...", flush=True)
+        res = subprocess.run(
+            ["curl.exe", "-s", "-L", "-A", HEADERS['User-Agent'], url],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="ignore",
+            timeout=timeout
+        )
+        if res.returncode == 0 and len(res.stdout) > 1000:
+            with open(cache_file, "w", encoding="utf-8") as f:
+                f.write(res.stdout)
+            print(f"    ✓ OK ({len(res.stdout)} bytes)", flush=True)
+            return res.stdout
+    except Exception as e:
+        pass
+
+    # 2. Prova fallback urllib
     try:
         req = urllib.request.Request(url, headers=HEADERS)
         with urllib.request.urlopen(req, context=CTX, timeout=timeout) as resp:
-            return resp.read().decode('utf-8', errors='ignore')
+            data = resp.read().decode('utf-8', errors='ignore')
+            if len(data) > 1000:
+                with open(cache_file, "w", encoding="utf-8") as f:
+                    f.write(data)
+                print(f"    ✓ OK ({len(data)} bytes)", flush=True)
+                return data
     except Exception as e:
-        print(f"  [WARN] Impossibile recuperare {url}: {e}")
-        return ""
+        print(f"  [WARN] Download fallito ({e}), tento cache locale...", flush=True)
+        
+    # 3. Prova fallback cache su disco
+    if os.path.exists(cache_file):
+        try:
+            with open(cache_file, "r", encoding="utf-8") as f:
+                data = f.read()
+            print(f"    ✓ Recuperato da cache locale ({len(data)} bytes)", flush=True)
+            return data
+        except Exception:
+            pass
+    return ""
 
 def parse_fantacalcio_it(html):
     """Estrae formazioni e ballottaggi da Fantacalcio.it."""

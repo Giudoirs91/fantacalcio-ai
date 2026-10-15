@@ -56,16 +56,17 @@ def render_unified_header(rel_path=""):
     <!-- Unified App Header -->
     <header class="app-header-unified">
         <div class="header-main-row">
-            <!-- LEFT: BRANDING & HOME -->
+            <!-- LEFT: MODERN BRAND LOGO -->
             <div class="header-left">
-                <a href="{rel_path}" class="brand-badge" style="text-decoration:none;display:flex;align-items:center;gap:8px;" title="Fanta Master AI — Portale Statistico Serie A 2026/27">
-                    <img src="{rel_path}static/icon-192.png" alt="Fanta Master AI Logo" style="width:30px;height:30px;border-radius:6px;object-fit:cover;flex-shrink:0;">
-                    <div>
-                        <div class="brand-title">FANTA MASTER AI</div>
-                        <div class="brand-sub">Portale Statistico</div>
+                <a href="{rel_path}" class="brand-logo-modern" title="Fanta Master AI — Serie A 2026/27">
+                    <div class="brand-icon-box">
+                        <img src="{rel_path}static/icon-192.png" alt="Fanta Master AI Logo" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
                     </div>
+                    <div class="brand-text-wrap">
+                        <span class="brand-main-name">Fanta Master <span class="brand-gradient-tag">AI</span></span>
+                    </div>
+                    <span class="brand-season-capsule">2026/27</span>
                 </a>
-
             </div>
 
             <!-- CENTER: DIRECT & INTUITIVE NAVIGATION -->

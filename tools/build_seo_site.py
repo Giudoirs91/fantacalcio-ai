@@ -177,139 +177,211 @@ body {
     padding-bottom: 60px;
 }
 
-/* Unified App Header Styles across all pages */
+/* Unified App Header Styles across all pages (Modern SaaS Pill Design) */
 .app-header-unified {
     position: sticky;
     top: 0;
     z-index: 9999;
-    background: rgba(12, 14, 18, 0.96);
+    background: rgba(10, 14, 22, 0.92);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     width: 100%;
     box-sizing: border-box;
+    min-height: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
 }
 
 .header-main-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 18px;
-    gap: 16px;
+    padding: 0 20px;
+    gap: 14px;
     max-width: 1560px;
-    width: 96%;
+    width: 100%;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .header-left {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
 }
 
+/* Brand Logo Modern */
+.brand-logo-modern,
 .brand-badge {
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 6px 12px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    gap: 9px;
     text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s ease;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
 }
 
+.brand-logo-modern:hover,
 .brand-badge:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(245, 158, 11, 0.4);
-    
+    opacity: 0.92;
 }
 
-.brand-icon {
-    font-size: 16px;
+.brand-icon-box {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, rgba(0, 230, 118, 0.2), rgba(0, 242, 254, 0.2));
+    border: 1px solid rgba(0, 242, 254, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+    padding: 2px;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
-.brand-title {
-    font-family: system-ui, -apple-system, sans-serif;
-    font-weight: 900;
-    font-size: 13.5px;
+.brand-main-name {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    font-weight: 800;
+    font-size: 15px;
     color: #fff;
-    letter-spacing: 0.5px;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
 }
 
-.brand-sub {
+.brand-gradient-tag {
+    background: linear-gradient(135deg, #00e676, #00f2fe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+}
+
+.brand-season-capsule {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-size: 10px;
+    font-weight: 700;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2px 7px;
+    border-radius: 9999px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/* Backward compatibility for brand-badge classes if markup not updated */
+.brand-icon {
+    font-size: 18px;
+}
+.brand-title {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+.brand-sub {
+    font-size: 9.5px;
     font-weight: 800;
     color: #f59e0b;
-    margin-left: 3px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
-.nav-btn-icon {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #cbd5e1;
-    padding: 6px 11px;
-    border-radius: 8px;
-    font-size: 12.5px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.nav-btn-icon:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
-}
-
+/* Center Nav Groups: Segmented Modern Capsule Pill Bar */
 .header-nav-groups {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 3px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 3px 6px;
+    border-radius: 9999px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+    flex-shrink: 0;
 }
 
 .nav-dropdown {
     position: relative;
+    display: inline-flex;
 }
 
+.nav-direct-btn,
 .nav-group-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #cbd5e1;
-    padding: 7px 13px;
-    border-radius: 8px;
+    padding: 6px 13px;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #94a3b8;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-size: 12.5px;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    text-decoration: none;
+    transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap !important;
+    user-select: none;
+    flex-shrink: 0;
+    line-height: 1.2;
 }
 
-.nav-group-btn:hover, .nav-group-btn.active {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.22);
-    color: #fff;
+.nav-direct-btn:hover,
+.nav-group-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #f8fafc;
+}
+
+.nav-direct-btn.active,
+.nav-group-btn.active {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.caret, .nav-caret {
+    font-size: 9px;
+    opacity: 0.6;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.nav-dropdown:hover .caret,
+.nav-dropdown:hover .nav-caret {
+    transform: rotate(180deg);
+    opacity: 1;
+    color: #00f2fe;
 }
 
 .nav-dropdown-menu {
     display: none;
     position: absolute;
-    top: calc(100% + 4px);
+    top: calc(100% + 6px);
     left: 0;
-    min-width: 250px;
-    background: rgba(18, 22, 29, 0.98);
+    min-width: 260px;
+    background: rgba(15, 20, 30, 0.98);
     backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 6px;
+    border-radius: 14px;
+    padding: 7px;
     box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85);
     z-index: 10000;
 }
@@ -328,7 +400,7 @@ body {
     text-decoration: none;
     font-size: 12px;
     font-weight: 600;
-    border-radius: 7px;
+    border-radius: 8px;
     transition: all 0.15s ease;
     white-space: nowrap;
 }
@@ -353,82 +425,141 @@ body {
     margin: 5px 0;
 }
 
-.coming-soon-pill {
-    background: rgba(245, 158, 11, 0.15);
-    border: 1px solid rgba(245, 158, 11, 0.4);
-    color: #fbbf24;
-    font-size: 9px;
-    font-weight: 800;
-    padding: 1px 6px;
-    border-radius: 9999px;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
-    margin-left: 6px;
-}
-
 .header-right {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
+}
+
+.social-header-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.social-header-btn:hover {
+    transform: translateY(-2px);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+.social-btn-telegram:hover {
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.4);
+}
+
+.social-btn-instagram:hover {
+    color: #fff;
+    background: linear-gradient(135deg, rgba(225, 48, 108, 0.25), rgba(131, 58, 180, 0.25));
+    border-color: rgba(225, 48, 108, 0.5);
 }
 
 .header-squad-pill {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 7px;
-    background: rgba(0, 242, 254, 0.06);
+    background: rgba(0, 242, 254, 0.07);
     border: 1px solid rgba(0, 242, 254, 0.25);
     padding: 6px 14px;
-    border-radius: 8px;
+    border-radius: 9999px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.18s ease;
     text-decoration: none;
+    white-space: nowrap !important;
+    flex-shrink: 0;
+    line-height: 1.2;
 }
 
 .header-squad-pill:hover {
     border-color: #00f2fe;
     background: rgba(0, 242, 254, 0.15);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .pill-credits {
-    font-size: 12.5px;
-    font-weight: 800;
+    font-size: 12px;
+    font-weight: 700;
     color: #00f2fe;
+    white-space: nowrap !important;
 }
 
 .mobile-subnav {
     display: none;
 }
 
-@media (max-width: 820px) {
+/* Medium Desktop (1024px to 1340px) - Compact Pill Spacing to prevent any squeeze */
+@media (max-width: 1340px) and (min-width: 1025px) {
+    .header-main-row {
+        padding: 0 12px !important;
+        gap: 8px !important;
+    }
+    .header-nav-groups {
+        padding: 2px 4px !important;
+        gap: 1px !important;
+    }
+    .nav-direct-btn,
+    .nav-group-btn {
+        padding: 5px 9px !important;
+        font-size: 11.5px !important;
+        gap: 4px !important;
+    }
+    .brand-season-capsule {
+        display: none !important;
+    }
+}
+
+/* Mobile & Tablet (< 1024px) */
+@media (max-width: 1024px) {
     .header-nav-groups { display: none !important; }
-    .header-main-row { padding: 6px 12px !important; }
+    .header-main-row { padding: 0 12px !important; height: 50px !important; }
+    .app-header-unified { min-height: 50px !important; height: auto !important; flex-direction: column !important; }
     .header-squad-pill { display: none !important; }
     .mobile-subnav {
         display: flex !important;
-        background: rgba(15, 23, 42, 0.98);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 6px 10px;
-        gap: 8px;
+        background: rgba(10, 14, 22, 0.98);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 7px 10px;
+        gap: 7px;
         overflow-x: auto;
         white-space: nowrap;
+        width: 100%;
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .mobile-subnav::-webkit-scrollbar {
+        display: none;
     }
     .mobile-subnav a {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.07);
         color: #cbd5e1;
         text-decoration: none;
         padding: 4px 10px;
-        border-radius: 6px;
-        font-size: 11px;
-        font-weight: 700;
+        border-radius: 9999px;
+        font-size: 11.5px;
+        font-weight: 600;
         display: inline-flex;
         align-items: center;
-        gap: 4px;
+        gap: 5px;
+        white-space: nowrap;
+        flex-shrink: 0;
     }
     .mobile-subnav a:hover, .mobile-subnav a.active {
-        background: rgba(56, 189, 248, 0.2);
-        border-color: rgba(56, 189, 248, 0.5);
+        background: rgba(56, 189, 248, 0.18);
+        border-color: rgba(56, 189, 248, 0.4);
         color: #38bdf8;
     }
 }
@@ -1785,16 +1916,17 @@ def render_unified_header(rel_path=""):
     <!-- Unified App Header -->
     <header class="app-header-unified">
         <div class="header-main-row">
-            <!-- LEFT: BRANDING & HOME -->
+            <!-- LEFT: MODERN BRAND LOGO -->
             <div class="header-left">
-                <a href="{rel_path}" class="brand-badge" style="text-decoration:none;" title="Fanta Master AI — Portale Statistico Serie A 2026/27">
-                    <span class="brand-icon">⚡</span>
-                    <div>
-                        <div class="brand-title">FANTA MASTER AI</div>
-                        <div class="brand-sub">Portale Statistico</div>
+                <a href="{rel_path}" class="brand-logo-modern" title="Fanta Master AI — Serie A 2026/27">
+                    <div class="brand-icon-box">
+                        <img src="{rel_path}static/icon-192.png" alt="Fanta Master AI Logo" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
                     </div>
+                    <div class="brand-text-wrap">
+                        <span class="brand-main-name">Fanta Master <span class="brand-gradient-tag">AI</span></span>
+                    </div>
+                    <span class="brand-season-capsule">2026/27</span>
                 </a>
-
             </div>
 
             <!-- CENTER: DIRECT & INTUITIVE NAVIGATION -->

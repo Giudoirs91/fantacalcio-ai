@@ -1,7 +1,7 @@
 {
   "round": 7,
   "round_label": "7ª Giornata Serie A 2026/27",
-  "last_updated": "15/10/2026 09:32",
+  "last_updated": "15/10/2026 10:36",
   "sources_tracked": [
     "Fantacalcio.it",
     "Gazzetta dello Sport",
@@ -43,8 +43,8 @@
             "role": "P",
             "ovr": 56,
             "xfm": 6.2,
-            "consensus_pct": 79,
-            "sub_txt": "vs Lolic",
+            "consensus_pct": 95,
+            "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -228,17 +228,6 @@
             "injury_return": ""
           },
           {
-            "name": "Lolic",
-            "role": "P",
-            "ovr": 50,
-            "xfm": 5.8,
-            "consensus_pct": 21,
-            "sub_txt": "vs Palmisani",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
             "name": "Tchato",
             "role": "D",
             "ovr": 61,
@@ -327,12 +316,23 @@
             "injury_return": ""
           },
           {
+            "name": "Lolic",
+            "role": "P",
+            "ovr": 50,
+            "xfm": 5.8,
+            "consensus_pct": 5,
+            "sub_txt": "Secondo portiere",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
             "name": "Pisseri",
             "role": "P",
             "ovr": 50,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -343,7 +343,7 @@
             "ovr": 49,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -420,56 +420,6 @@
               "desc": "Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.",
               "tone": "warning",
               "action": "Schiera solo con copertura titolare sicura"
-            }
-          },
-          {
-            "player1": {
-              "name": "Palmisani",
-              "role": "P",
-              "ovr": 56,
-              "xfm": 6.2,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "player2": {
-              "name": "Lolic",
-              "role": "P",
-              "ovr": 50,
-              "xfm": 6.0,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "sources": {
-              "fantacalcio": {
-                "p1": 85,
-                "p2": 15
-              },
-              "gazzetta": {
-                "p1": 87,
-                "p2": 13
-              },
-              "sosfanta": {
-                "p1": 84,
-                "p2": 16
-              },
-              "fantapazz": {
-                "p1": 55,
-                "p2": 45
-              },
-              "sky": {
-                "p1": 85,
-                "p2": 15
-              }
-            },
-            "consensus_pct1": 79,
-            "consensus_pct2": 21,
-            "verdict": {
-              "tag": "Titolare Inamovibile",
-              "desc": "Ampio margine nelle preferenze delle testate giornalistiche.",
-              "tone": "safe",
-              "action": "Schiera titolare sereno"
             }
           },
           {
@@ -821,19 +771,19 @@
             "role": "P",
             "ovr": 58,
             "xfm": 6.2,
-            "consensus_pct": 92,
+            "consensus_pct": 95,
             "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
           },
           {
-            "name": "Van Der Brempt",
+            "name": "Cinquegrano",
             "role": "D",
-            "ovr": 64,
+            "ovr": 55,
             "xfm": 6.2,
-            "consensus_pct": 55,
-            "sub_txt": "vs Cinquegrano",
+            "consensus_pct": 54,
+            "sub_txt": "vs Van Der Brempt",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -876,8 +826,8 @@
             "role": "C",
             "ovr": 61,
             "xfm": 6.2,
-            "consensus_pct": 54,
-            "sub_txt": "vs Thorstvedt",
+            "consensus_pct": 56,
+            "sub_txt": "vs Lipani",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -899,7 +849,7 @@
             "ovr": 65,
             "xfm": 6.2,
             "consensus_pct": 55,
-            "sub_txt": "vs Sulemana I.",
+            "sub_txt": "vs Thorstvedt",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -916,12 +866,12 @@
             "injury_return": ""
           },
           {
-            "name": "Bowie",
+            "name": "Esposito Se.",
             "role": "A",
             "ovr": 71,
             "xfm": 6.2,
-            "consensus_pct": 62,
-            "sub_txt": "vs Esposito Se.",
+            "consensus_pct": 60,
+            "sub_txt": "vs Bowie",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -951,34 +901,34 @@
             "injury_return": ""
           },
           {
+            "name": "Van Der Brempt",
+            "role": "D",
+            "ovr": 64,
+            "xfm": 5.8,
+            "consensus_pct": 46,
+            "sub_txt": "vs Cinquegrano",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
             "name": "Thorstvedt",
             "role": "C",
             "ovr": 74,
             "xfm": 5.8,
-            "consensus_pct": 46,
-            "sub_txt": "vs Bakola",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
-            "name": "Cinquegrano",
-            "role": "D",
-            "ovr": 55,
-            "xfm": 5.8,
-            "consensus_pct": 45,
-            "sub_txt": "vs Van Der Brempt",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
-            "name": "Sulemana I.",
-            "role": "C",
-            "ovr": 55,
-            "xfm": 5.8,
             "consensus_pct": 45,
             "sub_txt": "vs Adzic",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
+            "name": "Lipani",
+            "role": "C",
+            "ovr": 54,
+            "xfm": 5.8,
+            "consensus_pct": 44,
+            "sub_txt": "vs Bakola",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -995,12 +945,12 @@
             "injury_return": ""
           },
           {
-            "name": "Esposito Se.",
+            "name": "Bowie",
             "role": "A",
             "ovr": 71,
             "xfm": 5.8,
-            "consensus_pct": 38,
-            "sub_txt": "vs Bowie",
+            "consensus_pct": 40,
+            "sub_txt": "vs Esposito Se.",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -1028,9 +978,9 @@
             "injury_return": ""
           },
           {
-            "name": "Lipani",
+            "name": "Sulemana I.",
             "role": "C",
-            "ovr": 54,
+            "ovr": 55,
             "xfm": 5.8,
             "consensus_pct": 15,
             "sub_txt": "Panchina",
@@ -1044,7 +994,7 @@
             "ovr": 50,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -1055,7 +1005,7 @@
             "ovr": 50,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -1066,7 +1016,7 @@
             "ovr": 50,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -1141,18 +1091,68 @@
         "ballots": [
           {
             "player1": {
-              "name": "Van Der Brempt",
+              "name": "Cinquegrano",
               "role": "D",
-              "ovr": 64,
+              "ovr": 55,
               "xfm": 6.2,
               "is_injured": false,
               "injury_desc": "",
               "injury_return": ""
             },
             "player2": {
-              "name": "Cinquegrano",
+              "name": "Van Der Brempt",
               "role": "D",
-              "ovr": 55,
+              "ovr": 64,
+              "xfm": 6.0,
+              "is_injured": false,
+              "injury_desc": "",
+              "injury_return": ""
+            },
+            "sources": {
+              "fantacalcio": {
+                "p1": 55,
+                "p2": 45
+              },
+              "gazzetta": {
+                "p1": 57,
+                "p2": 43
+              },
+              "sosfanta": {
+                "p1": 49,
+                "p2": 51
+              },
+              "fantapazz": {
+                "p1": 55,
+                "p2": 45
+              },
+              "sky": {
+                "p1": 55,
+                "p2": 45
+              }
+            },
+            "consensus_pct1": 54,
+            "consensus_pct2": 46,
+            "verdict": {
+              "tag": "Ballottaggio Aperto (Rischio SV)",
+              "desc": "Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.",
+              "tone": "warning",
+              "action": "Schiera solo con copertura titolare sicura"
+            }
+          },
+          {
+            "player1": {
+              "name": "Adzic",
+              "role": "C",
+              "ovr": 65,
+              "xfm": 6.2,
+              "is_injured": false,
+              "injury_desc": "",
+              "injury_return": ""
+            },
+            "player2": {
+              "name": "Thorstvedt",
+              "role": "C",
+              "ovr": 74,
               "xfm": 6.0,
               "is_injured": false,
               "injury_desc": "",
@@ -1191,18 +1191,18 @@
           },
           {
             "player1": {
-              "name": "Bakola",
-              "role": "C",
-              "ovr": 61,
+              "name": "Esposito Se.",
+              "role": "A",
+              "ovr": 71,
               "xfm": 6.2,
               "is_injured": false,
               "injury_desc": "",
               "injury_return": ""
             },
             "player2": {
-              "name": "Thorstvedt",
-              "role": "C",
-              "ovr": 74,
+              "name": "Bowie",
+              "role": "A",
+              "ovr": 71,
               "xfm": 6.0,
               "is_injured": false,
               "injury_desc": "",
@@ -1210,33 +1210,33 @@
             },
             "sources": {
               "fantacalcio": {
-                "p1": 60,
-                "p2": 40
+                "p1": 65,
+                "p2": 35
               },
               "gazzetta": {
-                "p1": 45,
-                "p2": 55
+                "p1": 55,
+                "p2": 45
               },
               "sosfanta": {
-                "p1": 51,
-                "p2": 49
+                "p1": 60,
+                "p2": 40
               },
               "fantapazz": {
                 "p1": 55,
                 "p2": 45
               },
               "sky": {
-                "p1": 60,
-                "p2": 40
+                "p1": 65,
+                "p2": 35
               }
             },
-            "consensus_pct1": 54,
-            "consensus_pct2": 46,
+            "consensus_pct1": 60,
+            "consensus_pct2": 40,
             "verdict": {
-              "tag": "Ballottaggio Aperto (Rischio SV)",
-              "desc": "Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.",
-              "tone": "warning",
-              "action": "Schiera solo con copertura titolare sicura"
+              "tag": "Leggero Vantaggio",
+              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
+              "tone": "neutral",
+              "action": "Preferisci il titolare ma mantieni copertura"
             }
           },
           {
@@ -1291,18 +1291,18 @@
           },
           {
             "player1": {
-              "name": "Adzic",
+              "name": "Bakola",
               "role": "C",
-              "ovr": 65,
+              "ovr": 61,
               "xfm": 6.2,
               "is_injured": false,
               "injury_desc": "",
               "injury_return": ""
             },
             "player2": {
-              "name": "Sulemana I.",
+              "name": "Lipani",
               "role": "C",
-              "ovr": 55,
+              "ovr": 54,
               "xfm": 6.0,
               "is_injured": false,
               "injury_desc": "",
@@ -1310,12 +1310,12 @@
             },
             "sources": {
               "fantacalcio": {
-                "p1": 55,
-                "p2": 45
+                "p1": 65,
+                "p2": 35
               },
               "gazzetta": {
-                "p1": 57,
-                "p2": 43
+                "p1": 45,
+                "p2": 55
               },
               "sosfanta": {
                 "p1": 51,
@@ -1326,12 +1326,12 @@
                 "p2": 45
               },
               "sky": {
-                "p1": 55,
-                "p2": 45
+                "p1": 65,
+                "p2": 35
               }
             },
-            "consensus_pct1": 55,
-            "consensus_pct2": 45,
+            "consensus_pct1": 56,
+            "consensus_pct2": 44,
             "verdict": {
               "tag": "Ballottaggio Aperto (Rischio SV)",
               "desc": "Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.",
@@ -1387,56 +1387,6 @@
               "desc": "Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.",
               "tone": "warning",
               "action": "Schiera solo con copertura titolare sicura"
-            }
-          },
-          {
-            "player1": {
-              "name": "Bowie",
-              "role": "A",
-              "ovr": 71,
-              "xfm": 6.2,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "player2": {
-              "name": "Esposito Se.",
-              "role": "A",
-              "ovr": 71,
-              "xfm": 6.0,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "sources": {
-              "fantacalcio": {
-                "p1": 85,
-                "p2": 15
-              },
-              "gazzetta": {
-                "p1": 45,
-                "p2": 55
-              },
-              "sosfanta": {
-                "p1": 40,
-                "p2": 60
-              },
-              "fantapazz": {
-                "p1": 55,
-                "p2": 45
-              },
-              "sky": {
-                "p1": 85,
-                "p2": 15
-              }
-            },
-            "consensus_pct1": 62,
-            "consensus_pct2": 38,
-            "verdict": {
-              "tag": "Leggero Vantaggio",
-              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
-              "tone": "neutral",
-              "action": "Preferisci il titolare ma mantieni copertura"
             }
           }
         ],
@@ -1537,7 +1487,7 @@
             "role": "P",
             "ovr": 53,
             "xfm": 6.2,
-            "consensus_pct": 92,
+            "consensus_pct": 95,
             "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
@@ -1599,9 +1549,9 @@
             "injury_return": ""
           },
           {
-            "name": "Basic",
+            "name": "Sohm",
             "role": "C",
-            "ovr": 64,
+            "ovr": 56,
             "xfm": 6.2,
             "consensus_pct": 92,
             "sub_txt": "Titolare inamovibile",
@@ -1610,9 +1560,9 @@
             "injury_return": ""
           },
           {
-            "name": "Sohm",
+            "name": "Basic",
             "role": "C",
-            "ovr": 56,
+            "ovr": 64,
             "xfm": 6.2,
             "consensus_pct": 92,
             "sub_txt": "Titolare inamovibile",
@@ -1804,7 +1754,7 @@
             "ovr": 48,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -1815,7 +1765,7 @@
             "ovr": 48,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -1826,7 +1776,7 @@
             "ovr": 48,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -2073,7 +2023,7 @@
       },
       "away": {
         "team": "Napoli",
-        "formation": "4-3-3",
+        "formation": "3-4-2-1",
         "coach": "Massimiliano Allegri",
         "rigoristi": [
           "De Bruyne",
@@ -2096,8 +2046,8 @@
             "role": "P",
             "ovr": 77,
             "xfm": 6.2,
-            "consensus_pct": 71,
-            "sub_txt": "vs Milinkovic-Savic V.",
+            "consensus_pct": 95,
+            "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -2107,8 +2057,8 @@
             "role": "D",
             "ovr": 82,
             "xfm": 6.2,
-            "consensus_pct": 92,
-            "sub_txt": "Titolare inamovibile",
+            "consensus_pct": 59,
+            "sub_txt": "vs Beukema",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -2136,12 +2086,12 @@
             "injury_return": ""
           },
           {
-            "name": "Spinazzola",
-            "role": "D",
-            "ovr": 77,
+            "name": "Politano",
+            "role": "C",
+            "ovr": 75,
             "xfm": 6.2,
-            "consensus_pct": 95,
-            "sub_txt": "vs Olivera",
+            "consensus_pct": 72,
+            "sub_txt": "vs Neres",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -2169,6 +2119,17 @@
             "injury_return": "15/10/2026"
           },
           {
+            "name": "Spinazzola",
+            "role": "D",
+            "ovr": 77,
+            "xfm": 6.2,
+            "consensus_pct": 95,
+            "sub_txt": "vs Olivera",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
             "name": "De Bruyne",
             "role": "C",
             "ovr": 91,
@@ -2180,12 +2141,12 @@
             "injury_return": ""
           },
           {
-            "name": "Politano",
-            "role": "C",
-            "ovr": 75,
+            "name": "Lang",
+            "role": "A",
+            "ovr": 60,
             "xfm": 6.2,
-            "consensus_pct": 72,
-            "sub_txt": "vs Neres",
+            "consensus_pct": 95,
+            "sub_txt": "vs Santos A.",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -2195,19 +2156,8 @@
             "role": "A",
             "ovr": 96,
             "xfm": 6.2,
-            "consensus_pct": 59,
+            "consensus_pct": 55,
             "sub_txt": "vs Lucca",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
-            "name": "Lang",
-            "role": "A",
-            "ovr": 60,
-            "xfm": 6.2,
-            "consensus_pct": 95,
-            "sub_txt": "vs Santos A.",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -2241,19 +2191,19 @@
             "role": "A",
             "ovr": 58,
             "xfm": 5.8,
-            "consensus_pct": 41,
+            "consensus_pct": 45,
             "sub_txt": "vs Hojlund",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
           },
           {
-            "name": "Milinkovic-Savic V.",
-            "role": "P",
-            "ovr": 53,
+            "name": "Beukema",
+            "role": "D",
+            "ovr": 65,
             "xfm": 5.8,
-            "consensus_pct": 29,
-            "sub_txt": "vs Meret",
+            "consensus_pct": 41,
+            "sub_txt": "vs Di Lorenzo",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -2265,17 +2215,6 @@
             "xfm": 5.8,
             "consensus_pct": 28,
             "sub_txt": "vs Politano",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
-            "name": "Beukema",
-            "role": "D",
-            "ovr": 65,
-            "xfm": 5.8,
-            "consensus_pct": 15,
-            "sub_txt": "Panchina",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -2314,12 +2253,23 @@
             "injury_return": ""
           },
           {
+            "name": "Milinkovic-Savic V.",
+            "role": "P",
+            "ovr": 53,
+            "xfm": 5.8,
+            "consensus_pct": 5,
+            "sub_txt": "Secondo portiere",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
             "name": "Contini",
             "role": "P",
             "ovr": 51,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -2383,6 +2333,56 @@
         "ballots": [
           {
             "player1": {
+              "name": "Di Lorenzo",
+              "role": "D",
+              "ovr": 82,
+              "xfm": 6.2,
+              "is_injured": false,
+              "injury_desc": "",
+              "injury_return": ""
+            },
+            "player2": {
+              "name": "Beukema",
+              "role": "D",
+              "ovr": 65,
+              "xfm": 6.0,
+              "is_injured": false,
+              "injury_desc": "",
+              "injury_return": ""
+            },
+            "sources": {
+              "fantacalcio": {
+                "p1": 60,
+                "p2": 40
+              },
+              "gazzetta": {
+                "p1": 62,
+                "p2": 38
+              },
+              "sosfanta": {
+                "p1": 59,
+                "p2": 41
+              },
+              "fantapazz": {
+                "p1": 55,
+                "p2": 45
+              },
+              "sky": {
+                "p1": 60,
+                "p2": 40
+              }
+            },
+            "consensus_pct1": 59,
+            "consensus_pct2": 41,
+            "verdict": {
+              "tag": "Leggero Vantaggio",
+              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
+              "tone": "neutral",
+              "action": "Preferisci il titolare ma mantieni copertura"
+            }
+          },
+          {
+            "player1": {
               "name": "Marin R.",
               "role": "D",
               "ovr": 60,
@@ -2395,6 +2395,56 @@
               "name": "Badiashile",
               "role": "D",
               "ovr": 70,
+              "xfm": 6.0,
+              "is_injured": false,
+              "injury_desc": "",
+              "injury_return": ""
+            },
+            "sources": {
+              "fantacalcio": {
+                "p1": 55,
+                "p2": 45
+              },
+              "gazzetta": {
+                "p1": 57,
+                "p2": 43
+              },
+              "sosfanta": {
+                "p1": 54,
+                "p2": 46
+              },
+              "fantapazz": {
+                "p1": 55,
+                "p2": 45
+              },
+              "sky": {
+                "p1": 55,
+                "p2": 45
+              }
+            },
+            "consensus_pct1": 55,
+            "consensus_pct2": 45,
+            "verdict": {
+              "tag": "Ballottaggio Aperto (Rischio SV)",
+              "desc": "Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.",
+              "tone": "warning",
+              "action": "Schiera solo con copertura titolare sicura"
+            }
+          },
+          {
+            "player1": {
+              "name": "Hojlund",
+              "role": "A",
+              "ovr": 96,
+              "xfm": 6.2,
+              "is_injured": false,
+              "injury_desc": "",
+              "injury_return": ""
+            },
+            "player2": {
+              "name": "Lucca",
+              "role": "A",
+              "ovr": 58,
               "xfm": 6.0,
               "is_injured": false,
               "injury_desc": "",
@@ -2479,106 +2529,6 @@
               "desc": "Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.",
               "tone": "warning",
               "action": "Schiera solo con copertura titolare sicura"
-            }
-          },
-          {
-            "player1": {
-              "name": "Hojlund",
-              "role": "A",
-              "ovr": 96,
-              "xfm": 6.2,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "player2": {
-              "name": "Lucca",
-              "role": "A",
-              "ovr": 58,
-              "xfm": 6.0,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "sources": {
-              "fantacalcio": {
-                "p1": 60,
-                "p2": 40
-              },
-              "gazzetta": {
-                "p1": 62,
-                "p2": 38
-              },
-              "sosfanta": {
-                "p1": 59,
-                "p2": 41
-              },
-              "fantapazz": {
-                "p1": 55,
-                "p2": 45
-              },
-              "sky": {
-                "p1": 60,
-                "p2": 40
-              }
-            },
-            "consensus_pct1": 59,
-            "consensus_pct2": 41,
-            "verdict": {
-              "tag": "Leggero Vantaggio",
-              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
-              "tone": "neutral",
-              "action": "Preferisci il titolare ma mantieni copertura"
-            }
-          },
-          {
-            "player1": {
-              "name": "Meret",
-              "role": "P",
-              "ovr": 77,
-              "xfm": 6.2,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "player2": {
-              "name": "Milinkovic-Savic V.",
-              "role": "P",
-              "ovr": 53,
-              "xfm": 6.0,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "sources": {
-              "fantacalcio": {
-                "p1": 75,
-                "p2": 25
-              },
-              "gazzetta": {
-                "p1": 77,
-                "p2": 23
-              },
-              "sosfanta": {
-                "p1": 74,
-                "p2": 26
-              },
-              "fantapazz": {
-                "p1": 55,
-                "p2": 45
-              },
-              "sky": {
-                "p1": 75,
-                "p2": 25
-              }
-            },
-            "consensus_pct1": 71,
-            "consensus_pct2": 29,
-            "verdict": {
-              "tag": "Leggero Vantaggio",
-              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
-              "tone": "neutral",
-              "action": "Preferisci il titolare ma mantieni copertura"
             }
           },
           {
@@ -2886,23 +2836,23 @@
             "injury_return": ""
           },
           {
-            "name": "Casale",
+            "name": "Heggem",
             "role": "D",
-            "ovr": 55,
+            "ovr": 69,
             "xfm": 6.2,
-            "consensus_pct": 92,
-            "sub_txt": "Titolare inamovibile",
+            "consensus_pct": 58,
+            "sub_txt": "vs Casale",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
           },
           {
-            "name": "Heggem",
+            "name": "Theate",
             "role": "D",
-            "ovr": 69,
+            "ovr": 73,
             "xfm": 6.2,
-            "consensus_pct": 61,
-            "sub_txt": "vs Helland",
+            "consensus_pct": 62,
+            "sub_txt": "vs Vitik",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -2930,12 +2880,12 @@
             "injury_return": ""
           },
           {
-            "name": "Theate",
-            "role": "D",
-            "ovr": 73,
+            "name": "Ferguson",
+            "role": "C",
+            "ovr": 66,
             "xfm": 6.2,
-            "consensus_pct": 62,
-            "sub_txt": "vs Vitik",
+            "consensus_pct": 92,
+            "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -2985,9 +2935,9 @@
             "injury_return": ""
           },
           {
-            "name": "Ferguson",
-            "role": "C",
-            "ovr": 66,
+            "name": "Helland",
+            "role": "D",
+            "ovr": 65,
             "xfm": 6.2,
             "consensus_pct": 92,
             "sub_txt": "Titolare inamovibile",
@@ -3004,6 +2954,17 @@
             "xfm": 5.8,
             "consensus_pct": 49,
             "sub_txt": "vs Miranda J.",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
+            "name": "Casale",
+            "role": "D",
+            "ovr": 55,
+            "xfm": 5.8,
+            "consensus_pct": 42,
+            "sub_txt": "vs Heggem",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -3037,17 +2998,6 @@
             "xfm": 5.8,
             "consensus_pct": 41,
             "sub_txt": "vs Pobega",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
-            "name": "Helland",
-            "role": "D",
-            "ovr": 65,
-            "xfm": 5.8,
-            "consensus_pct": 39,
-            "sub_txt": "vs Heggem",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -3135,7 +3085,7 @@
             "ovr": 50,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -3189,6 +3139,56 @@
               "name": "Skorupski",
               "role": "P",
               "ovr": 66,
+              "xfm": 6.0,
+              "is_injured": false,
+              "injury_desc": "",
+              "injury_return": ""
+            },
+            "sources": {
+              "fantacalcio": {
+                "p1": 60,
+                "p2": 40
+              },
+              "gazzetta": {
+                "p1": 62,
+                "p2": 38
+              },
+              "sosfanta": {
+                "p1": 51,
+                "p2": 49
+              },
+              "fantapazz": {
+                "p1": 55,
+                "p2": 45
+              },
+              "sky": {
+                "p1": 60,
+                "p2": 40
+              }
+            },
+            "consensus_pct1": 58,
+            "consensus_pct2": 42,
+            "verdict": {
+              "tag": "Leggero Vantaggio",
+              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
+              "tone": "neutral",
+              "action": "Preferisci il titolare ma mantieni copertura"
+            }
+          },
+          {
+            "player1": {
+              "name": "Heggem",
+              "role": "D",
+              "ovr": 69,
+              "xfm": 6.2,
+              "is_injured": false,
+              "injury_desc": "",
+              "injury_return": ""
+            },
+            "player2": {
+              "name": "Casale",
+              "role": "D",
+              "ovr": 55,
               "xfm": 6.0,
               "is_injured": false,
               "injury_desc": "",
@@ -3318,56 +3318,6 @@
             },
             "consensus_pct1": 59,
             "consensus_pct2": 41,
-            "verdict": {
-              "tag": "Leggero Vantaggio",
-              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
-              "tone": "neutral",
-              "action": "Preferisci il titolare ma mantieni copertura"
-            }
-          },
-          {
-            "player1": {
-              "name": "Heggem",
-              "role": "D",
-              "ovr": 69,
-              "xfm": 6.2,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "player2": {
-              "name": "Helland",
-              "role": "D",
-              "ovr": 65,
-              "xfm": 6.0,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "sources": {
-              "fantacalcio": {
-                "p1": 65,
-                "p2": 35
-              },
-              "gazzetta": {
-                "p1": 67,
-                "p2": 33
-              },
-              "sosfanta": {
-                "p1": 51,
-                "p2": 49
-              },
-              "fantapazz": {
-                "p1": 55,
-                "p2": 45
-              },
-              "sky": {
-                "p1": 65,
-                "p2": 35
-              }
-            },
-            "consensus_pct1": 61,
-            "consensus_pct2": 39,
             "verdict": {
               "tag": "Leggero Vantaggio",
               "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
@@ -3684,8 +3634,8 @@
             "role": "P",
             "ovr": 89,
             "xfm": 6.2,
-            "consensus_pct": 66,
-            "sub_txt": "vs Provedel",
+            "consensus_pct": 95,
+            "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -3847,17 +3797,6 @@
             "injury_return": ""
           },
           {
-            "name": "Provedel",
-            "role": "P",
-            "ovr": 53,
-            "xfm": 5.8,
-            "consensus_pct": 34,
-            "sub_txt": "vs Martinez Jo.",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
             "name": "Pavard",
             "role": "D",
             "ovr": 68,
@@ -3913,12 +3852,23 @@
             "injury_return": ""
           },
           {
+            "name": "Provedel",
+            "role": "P",
+            "ovr": 53,
+            "xfm": 5.8,
+            "consensus_pct": 5,
+            "sub_txt": "Secondo portiere",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
             "name": "Di Gennaro",
             "role": "P",
             "ovr": 50,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -4099,56 +4049,6 @@
           },
           {
             "player1": {
-              "name": "Martinez Jo.",
-              "role": "P",
-              "ovr": 89,
-              "xfm": 6.2,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "player2": {
-              "name": "Provedel",
-              "role": "P",
-              "ovr": 53,
-              "xfm": 6.0,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "sources": {
-              "fantacalcio": {
-                "p1": 85,
-                "p2": 15
-              },
-              "gazzetta": {
-                "p1": 55,
-                "p2": 45
-              },
-              "sosfanta": {
-                "p1": 51,
-                "p2": 49
-              },
-              "fantapazz": {
-                "p1": 55,
-                "p2": 45
-              },
-              "sky": {
-                "p1": 85,
-                "p2": 15
-              }
-            },
-            "consensus_pct1": 66,
-            "consensus_pct2": 34,
-            "verdict": {
-              "tag": "Leggero Vantaggio",
-              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
-              "tone": "neutral",
-              "action": "Preferisci il titolare ma mantieni copertura"
-            }
-          },
-          {
-            "player1": {
               "name": "Bisseck",
               "role": "D",
               "ovr": 79,
@@ -4305,7 +4205,7 @@
             "role": "P",
             "ovr": 51,
             "xfm": 6.2,
-            "consensus_pct": 92,
+            "consensus_pct": 95,
             "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
@@ -4327,7 +4227,7 @@
             "role": "D",
             "ovr": 81,
             "xfm": 6.2,
-            "consensus_pct": 58,
+            "consensus_pct": 57,
             "sub_txt": "vs Balerdi",
             "is_injured": false,
             "injury_reason": "",
@@ -4393,8 +4293,8 @@
             "role": "A",
             "ovr": 75,
             "xfm": 6.2,
-            "consensus_pct": 92,
-            "sub_txt": "Titolare inamovibile",
+            "consensus_pct": 59,
+            "sub_txt": "vs Pellegrini Lo.",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -4404,8 +4304,8 @@
             "role": "C",
             "ovr": 87,
             "xfm": 6.2,
-            "consensus_pct": 54,
-            "sub_txt": "vs Pellegrini Lo.",
+            "consensus_pct": 92,
+            "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -4435,12 +4335,12 @@
             "injury_return": ""
           },
           {
-            "name": "Pellegrini Lo.",
-            "role": "C",
-            "ovr": 65,
+            "name": "Balerdi",
+            "role": "D",
+            "ovr": 64,
             "xfm": 5.8,
-            "consensus_pct": 46,
-            "sub_txt": "vs Mora",
+            "consensus_pct": 43,
+            "sub_txt": "vs N'Dicka",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -4457,12 +4357,12 @@
             "injury_return": ""
           },
           {
-            "name": "Balerdi",
-            "role": "D",
-            "ovr": 64,
+            "name": "Pellegrini Lo.",
+            "role": "C",
+            "ovr": 65,
             "xfm": 5.8,
-            "consensus_pct": 42,
-            "sub_txt": "vs N'Dicka",
+            "consensus_pct": 41,
+            "sub_txt": "vs Soulè",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -4528,7 +4428,7 @@
             "ovr": 51,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -4586,8 +4486,8 @@
                 "p2": 38
               },
               "sosfanta": {
-                "p1": 51,
-                "p2": 49
+                "p1": 49,
+                "p2": 51
               },
               "fantapazz": {
                 "p1": 55,
@@ -4598,13 +4498,13 @@
                 "p2": 40
               }
             },
-            "consensus_pct1": 58,
-            "consensus_pct2": 42,
+            "consensus_pct1": 57,
+            "consensus_pct2": 43,
             "verdict": {
-              "tag": "Leggero Vantaggio",
-              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
-              "tone": "neutral",
-              "action": "Preferisci il titolare ma mantieni copertura"
+              "tag": "Ballottaggio Aperto (Rischio SV)",
+              "desc": "Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.",
+              "tone": "warning",
+              "action": "Schiera solo con copertura titolare sicura"
             }
           },
           {
@@ -4659,9 +4559,9 @@
           },
           {
             "player1": {
-              "name": "Mora",
-              "role": "C",
-              "ovr": 87,
+              "name": "Soulè",
+              "role": "A",
+              "ovr": 75,
               "xfm": 6.2,
               "is_injured": false,
               "injury_desc": "",
@@ -4678,33 +4578,33 @@
             },
             "sources": {
               "fantacalcio": {
-                "p1": 55,
-                "p2": 45
+                "p1": 60,
+                "p2": 40
               },
               "gazzetta": {
-                "p1": 57,
-                "p2": 43
+                "p1": 62,
+                "p2": 38
               },
               "sosfanta": {
-                "p1": 49,
-                "p2": 51
+                "p1": 59,
+                "p2": 41
               },
               "fantapazz": {
                 "p1": 55,
                 "p2": 45
               },
               "sky": {
-                "p1": 55,
-                "p2": 45
+                "p1": 60,
+                "p2": 40
               }
             },
-            "consensus_pct1": 54,
-            "consensus_pct2": 46,
+            "consensus_pct1": 59,
+            "consensus_pct2": 41,
             "verdict": {
-              "tag": "Ballottaggio Aperto (Rischio SV)",
-              "desc": "Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.",
-              "tone": "warning",
-              "action": "Schiera solo con copertura titolare sicura"
+              "tag": "Leggero Vantaggio",
+              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
+              "tone": "neutral",
+              "action": "Preferisci il titolare ma mantieni copertura"
             }
           },
           {
@@ -4819,7 +4719,7 @@
             "role": "P",
             "ovr": 57,
             "xfm": 6.2,
-            "consensus_pct": 92,
+            "consensus_pct": 95,
             "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
@@ -5053,7 +4953,7 @@
             "ovr": 49,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -5064,7 +4964,7 @@
             "ovr": 49,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -5564,7 +5464,7 @@
             "role": "P",
             "ovr": 65,
             "xfm": 6.2,
-            "consensus_pct": 92,
+            "consensus_pct": 95,
             "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
@@ -5787,7 +5687,7 @@
             "ovr": 49,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -5798,7 +5698,7 @@
             "ovr": 49,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -5809,7 +5709,7 @@
             "ovr": 49,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -6182,7 +6082,7 @@
             "role": "P",
             "ovr": 65,
             "xfm": 6.2,
-            "consensus_pct": 92,
+            "consensus_pct": 95,
             "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
@@ -6460,7 +6360,7 @@
             "ovr": 49,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -6471,7 +6371,7 @@
             "ovr": 49,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -6765,7 +6665,7 @@
             "role": "P",
             "ovr": 68,
             "xfm": 6.2,
-            "consensus_pct": 92,
+            "consensus_pct": 95,
             "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
@@ -6794,12 +6694,12 @@
             "injury_return": ""
           },
           {
-            "name": "Ranieri L.",
+            "name": "Pongracic",
             "role": "D",
-            "ovr": 62,
+            "ovr": 59,
             "xfm": 6.2,
-            "consensus_pct": 58,
-            "sub_txt": "vs Viery",
+            "consensus_pct": 66,
+            "sub_txt": "vs Ranieri L.",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -6809,8 +6709,8 @@
             "role": "D",
             "ovr": 68,
             "xfm": 6.2,
-            "consensus_pct": 92,
-            "sub_txt": "Titolare inamovibile",
+            "consensus_pct": 58,
+            "sub_txt": "vs Viery",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -6922,7 +6822,7 @@
             "ovr": 64,
             "xfm": 5.8,
             "consensus_pct": 42,
-            "sub_txt": "vs Ranieri L.",
+            "sub_txt": "vs Valdepenas",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -6939,20 +6839,20 @@
             "injury_return": ""
           },
           {
-            "name": "Joao Mario",
+            "name": "Ranieri L.",
             "role": "D",
-            "ovr": 66,
+            "ovr": 62,
             "xfm": 5.8,
-            "consensus_pct": 15,
-            "sub_txt": "Panchina",
+            "consensus_pct": 34,
+            "sub_txt": "vs Pongracic",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
           },
           {
-            "name": "Pongracic",
+            "name": "Joao Mario",
             "role": "D",
-            "ovr": 59,
+            "ovr": 66,
             "xfm": 5.8,
             "consensus_pct": 15,
             "sub_txt": "Panchina",
@@ -6988,7 +6888,7 @@
             "ovr": 50,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -6999,7 +6899,7 @@
             "ovr": 50,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -7019,9 +6919,9 @@
         "ballots": [
           {
             "player1": {
-              "name": "Ranieri L.",
+              "name": "Valdepenas",
               "role": "D",
-              "ovr": 62,
+              "ovr": 68,
               "xfm": 6.2,
               "is_injured": false,
               "injury_desc": "",
@@ -7219,6 +7119,59 @@
           },
           {
             "player1": {
+              "name": "Pongracic",
+              "role": "D",
+              "ovr": 59,
+              "xfm": 6.2,
+              "is_injured": false,
+              "injury_desc": "",
+              "injury_return": ""
+            },
+            "player2": {
+              "name": "Ranieri L.",
+              "role": "D",
+              "ovr": 62,
+              "xfm": 6.0,
+              "is_injured": false,
+              "injury_desc": "",
+              "injury_return": ""
+            },
+            "sources": {
+              "fantacalcio": {
+                "p1": 80,
+                "p2": 20
+              },
+              "gazzetta": {
+                "p1": 78,
+                "p2": 22
+              },
+              "sosfanta": {
+                "p1": 49,
+                "p2": 51
+              },
+              "fantapazz": {
+                "p1": [
+                  45,
+                  55
+                ],
+                "p2": 55
+              },
+              "sky": {
+                "p1": 80,
+                "p2": 20
+              }
+            },
+            "consensus_pct1": 66,
+            "consensus_pct2": 34,
+            "verdict": {
+              "tag": "Leggero Vantaggio",
+              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
+              "tone": "neutral",
+              "action": "Preferisci il titolare ma mantieni copertura"
+            }
+          },
+          {
+            "player1": {
               "name": "Fagioli",
               "role": "C",
               "ovr": 65,
@@ -7306,8 +7259,8 @@
             "role": "P",
             "ovr": 79,
             "xfm": 6.2,
-            "consensus_pct": 74,
-            "sub_txt": "vs Sanchez Ro.",
+            "consensus_pct": 95,
+            "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -7480,17 +7433,6 @@
             "injury_return": ""
           },
           {
-            "name": "Sanchez Ro.",
-            "role": "P",
-            "ovr": 64,
-            "xfm": 5.8,
-            "consensus_pct": 26,
-            "sub_txt": "vs Butez",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
             "name": "Smolcic I.",
             "role": "D",
             "ovr": 64,
@@ -7568,12 +7510,23 @@
             "injury_return": ""
           },
           {
+            "name": "Sanchez Ro.",
+            "role": "P",
+            "ovr": 64,
+            "xfm": 5.8,
+            "consensus_pct": 5,
+            "sub_txt": "Secondo portiere",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
             "name": "Vigorito",
             "role": "P",
             "ovr": 50,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -7684,56 +7637,6 @@
             },
             "consensus_pct1": 58,
             "consensus_pct2": 42,
-            "verdict": {
-              "tag": "Leggero Vantaggio",
-              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
-              "tone": "neutral",
-              "action": "Preferisci il titolare ma mantieni copertura"
-            }
-          },
-          {
-            "player1": {
-              "name": "Butez",
-              "role": "P",
-              "ovr": 79,
-              "xfm": 6.2,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "player2": {
-              "name": "Sanchez Ro.",
-              "role": "P",
-              "ovr": 64,
-              "xfm": 6.0,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "sources": {
-              "fantacalcio": {
-                "p1": 85,
-                "p2": 15
-              },
-              "gazzetta": {
-                "p1": 87,
-                "p2": 13
-              },
-              "sosfanta": {
-                "p1": 60,
-                "p2": 40
-              },
-              "fantapazz": {
-                "p1": 55,
-                "p2": 45
-              },
-              "sky": {
-                "p1": 85,
-                "p2": 15
-              }
-            },
-            "consensus_pct1": 74,
-            "consensus_pct2": 26,
             "verdict": {
               "tag": "Leggero Vantaggio",
               "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
@@ -7989,8 +7892,8 @@
             "role": "P",
             "ovr": 81,
             "xfm": 6.2,
-            "consensus_pct": 79,
-            "sub_txt": "vs Terracciano",
+            "consensus_pct": 95,
+            "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -8163,17 +8066,6 @@
             "injury_return": ""
           },
           {
-            "name": "Terracciano",
-            "role": "P",
-            "ovr": 52,
-            "xfm": 5.8,
-            "consensus_pct": 21,
-            "sub_txt": "vs Maignan",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
             "name": "Tomori",
             "role": "D",
             "ovr": 61,
@@ -8251,12 +8143,23 @@
             "injury_return": ""
           },
           {
+            "name": "Terracciano",
+            "role": "P",
+            "ovr": 52,
+            "xfm": 5.8,
+            "consensus_pct": 5,
+            "sub_txt": "Secondo portiere",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
             "name": "Torriani",
             "role": "P",
             "ovr": 52,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -8274,56 +8177,6 @@
           }
         ],
         "ballots": [
-          {
-            "player1": {
-              "name": "Maignan",
-              "role": "P",
-              "ovr": 81,
-              "xfm": 6.2,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "player2": {
-              "name": "Terracciano",
-              "role": "P",
-              "ovr": 52,
-              "xfm": 6.0,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "sources": {
-              "fantacalcio": {
-                "p1": 85,
-                "p2": 15
-              },
-              "gazzetta": {
-                "p1": 87,
-                "p2": 13
-              },
-              "sosfanta": {
-                "p1": 84,
-                "p2": 16
-              },
-              "fantapazz": {
-                "p1": 55,
-                "p2": 45
-              },
-              "sky": {
-                "p1": 85,
-                "p2": 15
-              }
-            },
-            "consensus_pct1": 79,
-            "consensus_pct2": 21,
-            "verdict": {
-              "tag": "Titolare Inamovibile",
-              "desc": "Ampio margine nelle preferenze delle testate giornalistiche.",
-              "tone": "safe",
-              "action": "Schiera titolare sereno"
-            }
-          },
           {
             "player1": {
               "name": "De Winter",
@@ -8663,7 +8516,7 @@
             "role": "P",
             "ovr": 82,
             "xfm": 6.2,
-            "consensus_pct": 92,
+            "consensus_pct": 95,
             "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
@@ -8886,7 +8739,7 @@
             "ovr": 50,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -8897,7 +8750,7 @@
             "ovr": 50,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -9384,7 +9237,7 @@
             "role": "P",
             "ovr": 91,
             "xfm": 6.2,
-            "consensus_pct": 92,
+            "consensus_pct": 95,
             "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
@@ -9629,7 +9482,7 @@
             "ovr": 51,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -10120,7 +9973,7 @@
             "role": "P",
             "ovr": 71,
             "xfm": 6.2,
-            "consensus_pct": 92,
+            "consensus_pct": 95,
             "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
@@ -10376,7 +10229,7 @@
             "ovr": 51,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -10387,7 +10240,7 @@
             "ovr": 51,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -11024,7 +10877,7 @@
             "ovr": 49,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -11358,7 +11211,7 @@
       },
       "away": {
         "team": "Cagliari",
-        "formation": "4-3-3",
+        "formation": "4-3-2-1",
         "coach": "Fabio Pisacane",
         "rigoristi": [
           "Maldini",
@@ -11381,8 +11234,8 @@
             "role": "P",
             "ovr": 65,
             "xfm": 6.2,
-            "consensus_pct": 79,
-            "sub_txt": "vs Sherri",
+            "consensus_pct": 95,
+            "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -11476,23 +11329,23 @@
             "injury_return": ""
           },
           {
-            "name": "Kevin Carlos",
-            "role": "A",
-            "ovr": 70,
-            "xfm": 6.2,
-            "consensus_pct": 63,
-            "sub_txt": "vs Mendy P.",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
             "name": "Massolin",
             "role": "C",
             "ovr": 57,
             "xfm": 6.2,
             "consensus_pct": 54,
             "sub_txt": "vs Fazzini",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
+            "name": "Kevin Carlos",
+            "role": "A",
+            "ovr": 70,
+            "xfm": 6.2,
+            "consensus_pct": 63,
+            "sub_txt": "vs Mendy P.",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -11517,17 +11370,6 @@
             "xfm": 5.8,
             "consensus_pct": 37,
             "sub_txt": "vs Kevin Carlos",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
-            "name": "Sherri",
-            "role": "P",
-            "ovr": 50,
-            "xfm": 5.8,
-            "consensus_pct": 21,
-            "sub_txt": "vs Caprile",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -11643,12 +11485,23 @@
             "injury_return": ""
           },
           {
+            "name": "Sherri",
+            "role": "P",
+            "ovr": 50,
+            "xfm": 5.8,
+            "consensus_pct": 5,
+            "sub_txt": "Secondo portiere",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
             "name": "Radunovic",
             "role": "P",
             "ovr": 49,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -11725,56 +11578,6 @@
               "desc": "Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.",
               "tone": "warning",
               "action": "Schiera solo con copertura titolare sicura"
-            }
-          },
-          {
-            "player1": {
-              "name": "Caprile",
-              "role": "P",
-              "ovr": 65,
-              "xfm": 6.2,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "player2": {
-              "name": "Sherri",
-              "role": "P",
-              "ovr": 50,
-              "xfm": 6.0,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "sources": {
-              "fantacalcio": {
-                "p1": 85,
-                "p2": 15
-              },
-              "gazzetta": {
-                "p1": 87,
-                "p2": 13
-              },
-              "sosfanta": {
-                "p1": 84,
-                "p2": 16
-              },
-              "fantapazz": {
-                "p1": 55,
-                "p2": 45
-              },
-              "sky": {
-                "p1": 85,
-                "p2": 15
-              }
-            },
-            "consensus_pct1": 79,
-            "consensus_pct2": 21,
-            "verdict": {
-              "tag": "Titolare Inamovibile",
-              "desc": "Ampio margine nelle preferenze delle testate giornalistiche.",
-              "tone": "safe",
-              "action": "Schiera titolare sereno"
             }
           },
           {
@@ -11935,7 +11738,7 @@
             "role": "P",
             "ovr": 54,
             "xfm": 6.2,
-            "consensus_pct": 92,
+            "consensus_pct": 95,
             "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
@@ -12202,7 +12005,7 @@
             "ovr": 53,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -12213,7 +12016,7 @@
             "ovr": 49,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -12494,8 +12297,8 @@
             "role": "P",
             "ovr": 64,
             "xfm": 6.2,
-            "consensus_pct": 79,
-            "sub_txt": "vs Mascardi",
+            "consensus_pct": 95,
+            "sub_txt": "Titolare inamovibile",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -12668,17 +12471,6 @@
             "injury_return": ""
           },
           {
-            "name": "Mascardi",
-            "role": "P",
-            "ovr": 52,
-            "xfm": 5.8,
-            "consensus_pct": 21,
-            "sub_txt": "vs Perri",
-            "is_injured": false,
-            "injury_reason": "",
-            "injury_return": ""
-          },
-          {
             "name": "Patterson",
             "role": "D",
             "ovr": 66,
@@ -12767,12 +12559,23 @@
             "injury_return": ""
           },
           {
+            "name": "Mascardi",
+            "role": "P",
+            "ovr": 52,
+            "xfm": 5.8,
+            "consensus_pct": 5,
+            "sub_txt": "Secondo portiere",
+            "is_injured": false,
+            "injury_reason": "",
+            "injury_return": ""
+          },
+          {
             "name": "Siviero",
             "role": "P",
             "ovr": 50,
             "xfm": 5.8,
             "consensus_pct": 5,
-            "sub_txt": "Panchina",
+            "sub_txt": "Secondo portiere",
             "is_injured": false,
             "injury_reason": "",
             "injury_return": ""
@@ -12877,56 +12680,6 @@
               "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
               "tone": "neutral",
               "action": "Preferisci il titolare ma mantieni copertura"
-            }
-          },
-          {
-            "player1": {
-              "name": "Perri",
-              "role": "P",
-              "ovr": 64,
-              "xfm": 6.2,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "player2": {
-              "name": "Mascardi",
-              "role": "P",
-              "ovr": 52,
-              "xfm": 6.0,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "sources": {
-              "fantacalcio": {
-                "p1": 85,
-                "p2": 15
-              },
-              "gazzetta": {
-                "p1": 87,
-                "p2": 13
-              },
-              "sosfanta": {
-                "p1": 84,
-                "p2": 16
-              },
-              "fantapazz": {
-                "p1": 55,
-                "p2": 45
-              },
-              "sky": {
-                "p1": 85,
-                "p2": 15
-              }
-            },
-            "consensus_pct1": 79,
-            "consensus_pct2": 21,
-            "verdict": {
-              "tag": "Titolare Inamovibile",
-              "desc": "Ampio margine nelle preferenze delle testate giornalistiche.",
-              "tone": "safe",
-              "action": "Schiera titolare sereno"
             }
           },
           {

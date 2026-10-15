@@ -1342,6 +1342,16 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 """
 
+def is_valid_ballot(b):
+    if not b:
+        return False
+    p1 = b.get('player1', {})
+    p2 = b.get('player2', {})
+    # Elimina ballottaggio portieri se il titolare ha oltre il 60%
+    if (p1.get('role') == 'P' or p2.get('role') == 'P') and b.get('consensus_pct1', 50) > 60:
+        return False
+    return True
+
 def render_h2h_duel(duel, team_name):
     p1 = duel['player1']
     p2 = duel['player2']
@@ -1556,9 +1566,9 @@ def generate_match_editorial_summary(match_data, round_label):
     a_mod = a_data.get('formation', '3-5-2')
     stadium = match_data.get('stadium', 'Stadio')
 
-    # Top Ballots
-    h_ballots = h_data.get('ballots', [])
-    a_ballots = a_data.get('ballots', [])
+    # Top Ballots (esclusi ballottaggi fittizi portieri > 60%)
+    h_ballots = [b for b in h_data.get('ballots', []) if is_valid_ballot(b)]
+    a_ballots = [b for b in a_data.get('ballots', []) if is_valid_ballot(b)]
     
     top_ballot_text = ""
     if h_ballots:
@@ -1940,9 +1950,11 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
     all_round_ballots = []
     for m in matches:
         for b in m['home'].get('ballots', []):
-            all_round_ballots.append((b, m['home_team'], m['slug']))
+            if is_valid_ballot(b):
+                all_round_ballots.append((b, m['home_team'], m['slug']))
         for b in m['away'].get('ballots', []):
-            all_round_ballots.append((b, m['away_team'], m['slug']))
+            if is_valid_ballot(b):
+                all_round_ballots.append((b, m['away_team'], m['slug']))
 
     # Ordina per margine più stretto (differenza percentuale minore)
     hot_5 = sorted(all_round_ballots, key=lambda x: abs(x[0]['consensus_pct1'] - x[0]['consensus_pct2']))[:6]
@@ -1957,15 +1969,15 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
         h_data = m['home']
         a_data = m['away']
 
-        # Duelli Squadra Casa
-        h_duels_list = h_data.get('ballots', [])
+        # Duelli Squadra Casa (esclusi ballottaggi portieri > 60%)
+        h_duels_list = [b for b in h_data.get('ballots', []) if is_valid_ballot(b)]
         if h_duels_list:
             home_duels_html = "".join(render_h2h_duel(b, m['home_team']) for b in h_duels_list)
         else:
             home_duels_html = f'<div class="no-duels-notice">✓ Formazione tipo di {clean_html(m["home_team"])} definita: nessun ballottaggio aperto segnalato dalle 5 testate.</div>'
 
-        # Duelli Squadra Trasferta
-        a_duels_list = a_data.get('ballots', [])
+        # Duelli Squadra Trasferta (esclusi ballottaggi portieri > 60%)
+        a_duels_list = [b for b in a_data.get('ballots', []) if is_valid_ballot(b)]
         if a_duels_list:
             away_duels_html = "".join(render_h2h_duel(b, m['away_team']) for b in a_duels_list)
         else:
@@ -2292,15 +2304,15 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
         </a>
         """
 
-    # Duelli Squadra Casa
-    h_duels_list = h_data.get('ballots', [])
+    # Duelli Squadra Casa (esclusi ballottaggi portieri > 60%)
+    h_duels_list = [b for b in h_data.get('ballots', []) if is_valid_ballot(b)]
     if h_duels_list:
         home_duels_html = "".join(render_h2h_duel(b, h_team) for b in h_duels_list)
     else:
         home_duels_html = f'<div class="no-duels-notice">✓ Formazione tipo di {clean_html(h_team)} definita: nessun ballottaggio aperto segnalato dalle 5 testate.</div>'
 
-    # Duelli Squadra Trasferta
-    a_duels_list = a_data.get('ballots', [])
+    # Duelli Squadra Trasferta (esclusi ballottaggi portieri > 60%)
+    a_duels_list = [b for b in a_data.get('ballots', []) if is_valid_ballot(b)]
     if a_duels_list:
         away_duels_html = "".join(render_h2h_duel(b, a_team) for b in a_duels_list)
     else:

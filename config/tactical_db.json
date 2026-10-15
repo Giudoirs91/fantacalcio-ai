@@ -361,16 +361,6 @@
     ],
     "ballottaggi": [
       {
-        "player": "Skorupski",
-        "pct": 85,
-        "vs": "Happonen (15%)"
-      },
-      {
-        "player": "Happonen",
-        "pct": 15,
-        "vs": "Skorupski (85%)"
-      },
-      {
         "player": "Zortea",
         "pct": 60,
         "vs": "Darmian (40%)"
@@ -668,16 +658,6 @@
     ],
     "ballottaggi": [
       {
-        "player": "Caprile",
-        "pct": 85,
-        "vs": "Sherri (15%)"
-      },
-      {
-        "player": "Sherri",
-        "pct": 15,
-        "vs": "Caprile (85%)"
-      },
-      {
         "player": "Sugawara",
         "pct": 70,
         "vs": "Zè Pedro (30%)"
@@ -944,16 +924,6 @@
       }
     ],
     "ballottaggi": [
-      {
-        "player": "Butez",
-        "pct": 85,
-        "vs": "Sanchez Ro. (15%)"
-      },
-      {
-        "player": "Sanchez Ro.",
-        "pct": 15,
-        "vs": "Butez (85%)"
-      },
       {
         "player": "Valle",
         "pct": 50,
@@ -1510,16 +1480,6 @@
       }
     ],
     "ballottaggi": [
-      {
-        "player": "Palmisani",
-        "pct": 85,
-        "vs": "Lolic (15%)"
-      },
-      {
-        "player": "Lolic",
-        "pct": 15,
-        "vs": "Palmisani (85%)"
-      },
       {
         "player": "Oyono A.",
         "pct": 65,
@@ -2132,16 +2092,6 @@
       }
     ],
     "ballottaggi": [
-      {
-        "player": "Martinez Jo.",
-        "pct": 85,
-        "vs": "Provedel (15%)"
-      },
-      {
-        "player": "Provedel",
-        "pct": 15,
-        "vs": "Martinez Jo. (85%)"
-      },
       {
         "player": "Bisseck",
         "pct": 75,
@@ -3328,16 +3278,6 @@
     ],
     "ballottaggi": [
       {
-        "player": "Maignan",
-        "pct": 85,
-        "vs": "Terracciano (15%)"
-      },
-      {
-        "player": "Terracciano",
-        "pct": 15,
-        "vs": "Maignan (85%)"
-      },
-      {
         "player": "De Winter",
         "pct": 75,
         "vs": "Gabbia (25%)"
@@ -3925,16 +3865,6 @@
       }
     ],
     "ballottaggi": [
-      {
-        "player": "Meret",
-        "pct": 75,
-        "vs": "Milinkovic-Savic V. (25%)"
-      },
-      {
-        "player": "Milinkovic-Savic V.",
-        "pct": 25,
-        "vs": "Meret (75%)"
-      },
       {
         "player": "Marin R.",
         "pct": 75,
@@ -4989,16 +4919,6 @@
       }
     ],
     "ballottaggi": [
-      {
-        "player": "Perri",
-        "pct": 85,
-        "vs": "Mascardi (15%)"
-      },
-      {
-        "player": "Mascardi",
-        "pct": 15,
-        "vs": "Perri (85%)"
-      },
       {
         "player": "Belghali",
         "pct": 65,

@@ -602,9 +602,16 @@ def run_consensus_engine():
                 })
 
             # Enforce: ogni calciatore partecipa al massimo a 1 ballottaggio principale per matchday
+            # Elimina ballottaggi fittizi per i portieri: se un portiere ha oltre il 60% di titolarità, è titolare inamovibile
             processed_ballots = []
             seen_ballot_players = set()
             for b in unfiltered_ballots:
+                p1_role = b['player1'].get('role', '')
+                p2_role = b['player2'].get('role', '')
+                is_gk_ballot = (p1_role == 'P' or p2_role == 'P')
+                if is_gk_ballot and b.get('consensus_pct1', 50) > 60:
+                    continue
+
                 p1_low = b['player1']['name'].lower()
                 p2_low = b['player2']['name'].lower()
                 if p1_low in seen_ballot_players or p2_low in seen_ballot_players:
@@ -736,7 +743,7 @@ def run_consensus_engine():
                         ballot_found = (b['consensus_pct2'], b['player1']['name'])
                         break
 
-                tit_pct = 92
+                tit_pct = 95 if s.get('role') == 'P' else 92
                 sub_txt = "Titolare inamovibile"
                 if ballot_found:
                     tit_pct = ballot_found[0]
@@ -778,7 +785,7 @@ def run_consensus_engine():
                         break
 
                 res_pct = 15 if p.get('role') != 'P' else 5
-                sub_txt = "Panchina"
+                sub_txt = "Panchina" if p.get('role') != 'P' else "Secondo portiere"
                 if ballot_found:
                     res_pct = ballot_found[0]
                     sub_txt = f"vs {ballot_found[1]}"

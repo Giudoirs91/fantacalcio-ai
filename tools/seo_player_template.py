@@ -70,8 +70,18 @@ def render_unified_header(rel_path=""):
 
             <!-- CENTER: DIRECT & INTUITIVE NAVIGATION -->
             <nav class="header-nav-groups">
-                <!-- 1. LISTONE CALCIATORI -->
-                <a href="{rel_path}" class="nav-direct-btn" title="Tabellone &amp; Listone Calciatori">
+                <!-- 0. HOME -->
+                <a href="{rel_path}" class="nav-direct-btn" title="Home — Statistiche Principali &amp; Leader">
+                    <span>🏠</span> Home
+                </a>
+
+                <!-- 1. PROBABILI FORMAZIONI (DIRETTO) -->
+                <a href="{rel_path}probabili-formazioni/" class="nav-direct-btn" title="Probabili Formazioni Serie A &amp; Ballottaggi Consensus 5 Fonti">
+                    <span>⚽</span> Probabili Formazioni
+                </a>
+
+                <!-- 2. LISTONE CALCIATORI -->
+                <a href="{rel_path}listone/" class="nav-direct-btn" title="Tabellone &amp; Listone Calciatori">
                     <span>📋</span> Listone Calciatori
                 </a>
 

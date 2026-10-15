@@ -114,7 +114,7 @@
       "@type": "WebPage",
       "name": "Probabile Formazione Fiorentina 2026/27: Titolari, Ballottaggi, Infortunati e Rigoristi | Fanta Master AI",
       "url": "https://www.fantamasterai.it/probabili-formazioni/fiorentina/",
-      "dateModified": "2026-10-14",
+      "dateModified": "2026-10-15",
       "description": "Probabile formazione Fiorentina 2026/27 aggiornata: modulo 4-3-3, 11 titolari con percentuali, ballottaggi di reparto, infortunati e tempi di recupero, rigoristi e rosa Fantacalcio."
     },
     {
@@ -282,12 +282,17 @@
                     <span>📋</span> La Mia Rosa
                 </button>
 
-                <!-- 1. LISTONE CALCIATORI -->
+                <!-- 1. PROBABILI FORMAZIONI (DIRETTO) -->
+                <a href="/probabili-formazioni/" class="nav-direct-btn" id="tabProbabiliNavBtn" title="Probabili Formazioni Serie A &amp; Ballottaggi Consensus 5 Fonti">
+                    <span>⚽</span> Probabili Formazioni
+                </a>
+
+                <!-- 2. LISTONE CALCIATORI -->
                 <a href="/listone/" class="nav-direct-btn" id="tabAuctionBtn" onclick="onNavClick(event, 'auction')" title="Tabellone & Listone Calciatori">
                     <span>📋</span> Listone Calciatori
                 </a>
 
-                <!-- 2. STATISTICHE SERIE A -->
+                <!-- 3. STATISTICHE SERIE A -->
                 <div class="nav-dropdown">
                     <button class="nav-group-btn active" id="navGroupTactics" onclick="onNavClick(event, 'stats')">
                         <span>📈</span> Statistiche Serie A <span class="nav-caret">▾</span>
@@ -296,7 +301,7 @@
                         <a href="/statistiche-serie-a/" class="dropdown-item" id="tabStatsBtn" onclick="onNavClick(event, 'stats')">📊 Statistiche & xG Serie A</a>
                         <a href="/top-flop/" class="dropdown-item" id="tabTopFlopBtn" onclick="onNavClick(event, 'top_flop')">⚡ Top & Flop di Giornata</a>
                         <a href="/football-analytics/" class="dropdown-item" id="tabMatrixBtn" onclick="onNavClick(event, 'matrix')">📈 Matrice & Scatter Analytics</a>
-                        <a href="/probabili-formazioni/" class="dropdown-item active" id="tabPitchBtn" onclick="onNavClick(event, 'pitch')">⚽ Campo 2D & Schemi Club</a>
+                        <a href="/probabili-formazioni/" class="dropdown-item active" id="tabPitchBtn">📋 Probabili Formazioni &amp; Ballottaggi</a>
                         <a href="/confronto-calciatori/" class="dropdown-item" id="tabMatchupBtn" onclick="onNavClick(event, 'matchup')">⚔️ Matchup 1vs1 Calciatori</a>
                         <a href="/griglia-portieri/" class="dropdown-item" id="tabGkBtn" onclick="onNavClick(event, 'gk')">🧤 Griglia Portieri 38/38</a>
                         <div class="dropdown-divider"></div>
@@ -416,7 +421,10 @@
                         </span>
                         <span class="ai-badge-chip tech">🧠 Motore Predittivo xFM v2.4</span>
                         <span class="ai-badge-chip purple">📊 534 Calciatori Modellati</span>
-                        <span class="ai-badge-chip tech">🏟️ Le 20 Formazioni Tipo</span>
+                        <a href="/probabili-formazioni/" class="ai-badge-chip live" style="text-decoration:none;">
+                            <span class="pulse-dot-green"></span>
+                            ⚽ Probabili Formazioni Live (5 Fonti)
+                        </a>
                     </div>
 
                     <!-- Main Catchy Title -->
@@ -448,13 +456,13 @@
                         <button class="hub-chip-btn" onclick="openPlayerByName('Woltemade')">🔮 Woltemade</button>
                     </div>
 
-                    <!-- Primary CTAs (senza il pulsante duplicato Importa Rosa) -->
+                    <!-- Primary CTAs -->
                     <div class="ai-hub-cta-bar">
-                        <button class="hub-cta-btn primary" onclick="switchTab('chi_schiero')">
-                            <span>⚔️ Risolvi un Ballottaggio (Chi Schiero 1vs1)</span>
-                        </button>
-                        <button class="hub-cta-btn secondary" onclick="switchTab('pitch')">
-                            <span>🏟️ Le 20 Formazioni Tipo</span>
+                        <a href="/probabili-formazioni/" class="hub-cta-btn primary" style="text-decoration:none;background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%);box-shadow:0 8px 24px rgba(2,132,199,0.4);">
+                            <span>⚽ Probabili Formazioni &amp; Ballottaggi</span>
+                        </a>
+                        <button class="hub-cta-btn secondary" onclick="switchTab('chi_schiero')">
+                            <span>⚔️ Chi Schiero (1vs1)</span>
                         </button>
                         <button class="hub-cta-btn secondary" onclick="switchTab('auction')">
                             <span>📋 Listone &amp; Valutazioni FVM</span>
@@ -478,6 +486,38 @@
                             <button class="btn-primary" onclick="openMySquadModal()" style="font-size:1rem; padding:14px 26px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); border:none; border-radius:14px; font-weight:800; cursor:pointer; box-shadow:0 8px 20px rgba(16,185,129,0.35); color:#fff; white-space:nowrap;">
                                 ⚡ Importa Rosa &amp; Schiera AI
                             </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HERO CARD 2: PROBABILI FORMAZIONI & BALLOTTAGGI CONSENSUS 5 FONTI -->
+                <div class="probabili-hub-hero-card" style="width: 100%; box-sizing: border-box; background: radial-gradient(120% 120% at 50% 0%, rgba(56,189,248,0.18) 0%, rgba(15,23,42,0.95) 100%); border: 1px solid rgba(56,189,248,0.35); border-radius: 24px; padding: 26px 36px; box-shadow: 0 12px 36px rgba(0,0,0,0.55);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+                        <div style="flex:1; min-width:280px;">
+                            <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.4); padding:4px 14px; border-radius:99px; color:#38bdf8; font-size:12px; font-weight:800; text-transform:uppercase; margin-bottom:10px; letter-spacing:0.5px;">
+                                ⚡ NUOVO &bull; CONSENSUS 5 FONTI UFFICIALI SERIE A
+                            </div>
+                            <h2 style="font-size: 1.65rem; font-weight: 900; color: #f8fafc; font-family:'Outfit',sans-serif; margin:0 0 8px 0;">
+                                ⚽ Probabili Formazioni Serie A &amp; Ballottaggi 1vs1
+                            </h2>
+                            <p style="color: #94a3b8; font-size: 0.95rem; max-width: 760px; margin:0 0 14px 0; line-height:1.5;">
+                                Percentuali di titolarità ponderate incrociando i dati live di <b>Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta e FantaPazz</b>. Analisi testa a testa di tutti i duelli di reparto, rigoristi e tempi di recupero infortunati per tutte le 10 partite del turno.
+                            </p>
+                            <!-- Quick match chips -->
+                            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+                                <span style="font-size:11px; font-weight:800; color:#64748b; text-transform:uppercase;">Partite del Turno:</span>
+                                <a href="/probabili-formazioni/milan-atalanta/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff; border-radius:8px;">⭐ Milan - Atalanta</a>
+                                <a href="/probabili-formazioni/juventus-lazio/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff; border-radius:8px;">⭐ Juve - Lazio</a>
+                                <a href="/probabili-formazioni/roma-genoa/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff; border-radius:8px;">Roma - Genoa</a>
+                                <a href="/probabili-formazioni/bologna-inter/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff; border-radius:8px;">Bologna - Inter</a>
+                                <a href="/probabili-formazioni/venezia-napoli/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff; border-radius:8px;">Venezia - Napoli</a>
+                            </div>
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:10px; align-items:stretch;">
+                            <a href="/probabili-formazioni/" style="font-size:1rem; padding:15px 28px; background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border:none; border-radius:14px; font-weight:800; cursor:pointer; box-shadow:0 8px 24px rgba(2,132,199,0.45); color:#fff; white-space:nowrap; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:8px;">
+                                <span>📊 Apri le 10 Partite</span> &rarr;
+                            </a>
+                            <span style="font-size:11px; color:#64748b; text-align:center;">Titolari, ballottaggi e 5 fonti</span>
                         </div>
                     </div>
                 </div>
@@ -630,19 +670,19 @@
                             </div>
                         </div>
 
-                        <!-- Tool 2: Le 20 Formazioni Tipo -->
-                        <div class="ai-cap-card" onclick="switchTab('pitch')">
+                        <!-- Tool 2: Probabili Formazioni & Ballottaggi Consensus -->
+                        <div class="ai-cap-card" onclick="window.location.href='/probabili-formazioni/'">
                             <div>
                                 <div class="cap-card-top">
-                                    <div class="cap-icon-box" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#38bdf8;">🏟️</div>
-                                    <span class="cap-badge-tag">20 Club 2D</span>
+                                    <div class="cap-icon-box" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#38bdf8;">⚽</div>
+                                    <span class="cap-badge-tag">Consensus 5 Fonti</span>
                                 </div>
-                                <h3 class="cap-title">Le 20 Formazioni Tipo</h3>
-                                <p class="cap-desc">Lavagna tattica interattiva con le 20 formazioni tipo dei club di Serie A. Percentuali di titolarità stimate, ballottaggi aperti, gerarchie rigoristi e tiratori piazzati.</p>
+                                <h3 class="cap-title">Probabili Formazioni &amp; Ballottaggi</h3>
+                                <p class="cap-desc">Percentuali di titolarità aggregate da Fantacalcio.it, Gazzetta, Sky Sport, SOS Fanta e FantaPazz. Duelli 1vs1 testa a testa, tiratori piazzati e tempi di recupero infortunati.</p>
                             </div>
                             <div class="cap-card-footer" style="color:#38bdf8;">
-                                <span>Vedi Schemi Club &rarr;</span>
-                                <span style="font-size:11px;color:var(--text-muted);">Live 2026/27</span>
+                                <span>Vedi Tutte le 10 Partite &rarr;</span>
+                                <span style="font-size:11px;color:var(--text-muted);">Live 7ª Giornata</span>
                             </div>
                         </div>
 
@@ -1564,10 +1604,10 @@
             <span class="mob-icon">📋</span>
             <span class="mob-label">Listone</span>
         </button>
-        <button class="mobile-nav-item" id="mobNavPitch" onclick="switchTabMobile('pitch')">
+        <a href="/probabili-formazioni/" class="mobile-nav-item" id="mobNavProbabili" style="text-decoration:none;">
             <span class="mob-icon">⚽</span>
-            <span class="mob-label">Campo 2D</span>
-        </button>
+            <span class="mob-label">Probabili</span>
+        </a>
         <button class="mobile-nav-item" id="mobNavAdvice" onclick="switchTabMobile('matchday_advice')">
             <span class="mob-icon">🎯</span>
             <span class="mob-label">Consigli AI</span>
@@ -1603,8 +1643,9 @@
 
                 <!-- Section 1: Calciatori & Listone -->
                 <div class="mobile-menu-section">
-                    <div class="mobile-menu-section-title"><span>📋</span> Listone Principale</div>
+                    <div class="mobile-menu-section-title"><span>📋</span> Listone & Probabili</div>
                     <div class="mobile-menu-links">
+                        <a href="/probabili-formazioni/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;background:rgba(56,189,248,0.15);border-color:rgba(56,189,248,0.4);color:#38bdf8;font-weight:800;">⚽ Probabili Formazioni &amp; Ballottaggi (5 Fonti)</a>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('auction')">📋 Listone Calciatori & OVR</button>
                     </div>
                 </div>
@@ -1613,11 +1654,10 @@
                 <div class="mobile-menu-section">
                     <div class="mobile-menu-section-title"><span>📖</span> Statistiche & Analisi</div>
                     <div class="mobile-menu-links">
-                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('auction')">📋 Listone Calciatori & OVR</button>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('stats')">📊 Statistiche Serie A & xG</button>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('top_flop')">⚡ Top & Flop Giornata</button>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('matrix')">📈 Matrice Analytics</button>
-                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('pitch')">⚽ Campo 2D & Schemi</button>
+                        <a href="/probabili-formazioni/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">⚽ Probabili Formazioni Live</a>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('matchup')">⚔️ Matchup 1vs1 Calciatori</button>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('gk')">🧤 Griglia Portieri 38/38</button>
                     </div>
@@ -1675,9 +1715,9 @@
     </div>
 
     <!-- Data Injection & Engine Scripts -->
-    <script src="/js/dashboard_data.js?v=1791992358" defer></script>
-    <script src="/js/dashboard_app.js?v=1791992358" defer></script>
-    <script src="/js/tracker.js?v=1791992358" defer></script>
+    <script src="/js/dashboard_data.js?v=1792044617" defer></script>
+    <script src="/js/dashboard_app.js?v=1792044617" defer></script>
+    <script src="/js/tracker.js?v=1792044617" defer></script>
 
     <!-- ==================== FOOTER & LEGAL DISCLAIMER ==================== -->
     <footer class="app-site-footer">

@@ -1409,7 +1409,7 @@ def render_h2h_duel(duel, team_name):
         
         <div class="duel-cta-row">
             <a href="/chi-schiero/{duel_slug}/" class="btn-duel-compare">
-                <span>⚔️ Confronta 1vs1 su Chi Schiero</span> &rarr;
+                <span>⚔️ Analizza Ballottaggio su Chi Schiero</span> &rarr;
             </a>
         </div>
     </div>
@@ -1439,6 +1439,14 @@ def render_consensus_team_table(team_data):
         else:
             pct_txt = f"{pct}%"
 
+        sub_txt = s.get('sub_txt', 'Titolare')
+        if 'vs ' in sub_txt:
+            sub_col_html = f'<span style="color:#38bdf8;font-weight:700;">⚔️ {clean_html(sub_txt)}</span>'
+        elif s.get('is_injured'):
+            sub_col_html = f'<span style="color:#f87171;">{clean_html(sub_txt)}</span>'
+        else:
+            sub_col_html = f'<span style="color:#cbd5e1;">{clean_html(sub_txt)}</span>'
+
         rows_starters += f"""
         <tr>
             <td class="col-player">
@@ -1453,12 +1461,12 @@ def render_consensus_team_table(team_data):
             <td class="col-source">{fp_p}%</td>
             <td class="col-consensus"><span class="consensus-chip {chip_cls}">{pct_txt}</span></td>
             <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">{xfm:.2f}</td>
-            <td style="font-size:11px;color:#cbd5e1;">{clean_html(s.get('sub_txt', 'Titolare'))}</td>
+            <td style="font-size:11px;">{sub_col_html}</td>
         </tr>
         """
 
     rows_reserves = ""
-    for r in team_data.get('reserves', [])[:8]:
+    for r in team_data.get('reserves', []):
         name = r['name']
         slug = get_player_slug_from_name(name)
         role = r.get('role', 'C')
@@ -1472,6 +1480,14 @@ def render_consensus_team_table(team_data):
             pct_txt = "OUT 🩹"
         else:
             pct_txt = f"{pct}%"
+
+        sub_txt = r.get('sub_txt', 'Panchina')
+        if 'vs ' in sub_txt:
+            sub_col_html = f'<span style="color:#38bdf8;font-weight:700;">⚔️ {clean_html(sub_txt)}</span>'
+        elif r.get('is_injured'):
+            sub_col_html = f'<span style="color:#f87171;">{clean_html(sub_txt)}</span>'
+        else:
+            sub_col_html = f'<span style="color:#64748b;">{clean_html(sub_txt)}</span>'
 
         rows_reserves += f"""
         <tr>
@@ -1487,7 +1503,7 @@ def render_consensus_team_table(team_data):
             <td class="col-source">{pct}%</td>
             <td class="col-consensus"><span class="consensus-chip {chip_cls}">{pct_txt}</span></td>
             <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">{xfm:.2f}</td>
-            <td style="font-size:11px;color:#64748b;">Subentrante</td>
+            <td style="font-size:11px;">{sub_col_html}</td>
         </tr>
         """
 
@@ -1550,7 +1566,7 @@ def generate_match_editorial_summary(match_data, round_label):
         top_ballot_text += f"Nel {clean_html(h_team)} ballottaggio serrato tra <b>{clean_html(b['player1']['name'])}</b> ({b['consensus_pct1']}%) e <b>{clean_html(b['player2']['name'])}</b> ({b['consensus_pct2']}%)."
     if a_ballots:
         b = a_ballots[0]
-        top_ballot_text += f" Per il {clean_html(a_team)} duello aperto tra <b>{clean_html(b['player1']['name'])}</b> ({b['consensus_pct1']}%) e <b>{clean_html(b['player2']['name'])}</b> ({b['consensus_pct2']}%)."
+        top_ballot_text += f" Per il {clean_html(a_team)} ballottaggio aperto tra <b>{clean_html(b['player1']['name'])}</b> ({b['consensus_pct1']}%) e <b>{clean_html(b['player2']['name'])}</b> ({b['consensus_pct2']}%)."
 
     # Injured
     h_injs = [inj.get('player') for inj in h_data.get('injuries', [])]
@@ -1718,7 +1734,7 @@ def generate_match_faqs(match_data, round_label):
         },
         {
             "q": f"Quali sono i ballottaggi aperti di {h_team}-{a_team}?",
-            "a": f"I duelli più incerti monitorati dalle 5 testate di riferimento (Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta, FantaPazz) sono: {ballot_summary}. Le percentuali indicano la probabilità di titolarità dal 1' minuto."
+            "a": f"I ballottaggi più incerti monitorati dalle 5 testate di riferimento (Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta, FantaPazz) sono: {ballot_summary}. Le percentuali indicano la probabilità di titolarità dal 1' minuto."
         },
         {
             "q": f"Chi batte i calci di rigore e i piazzati in {h_team} e {a_team}?",
@@ -1969,7 +1985,7 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                         <a href="/probabili-formazioni/{h_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(m['home_team'])}">{clean_html(m['home_team'])}</a>
                         <span class="team-col-badge">CASA</span>
                     </div>
-                    <span class="team-col-count">{len(h_duels_list)} duelli</span>
+                    <span class="team-col-count">{len(h_duels_list)} ballottaggi</span>
                 </div>
                 <div class="team-duels-list">
                     {home_duels_html}
@@ -1984,7 +2000,7 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                         <a href="/probabili-formazioni/{a_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(m['away_team'])}">{clean_html(m['away_team'])}</a>
                         <span class="team-col-badge">TRASFERTA</span>
                     </div>
-                    <span class="team-col-count">{len(a_duels_list)} duelli</span>
+                    <span class="team-col-count">{len(a_duels_list)} ballottaggi</span>
                 </div>
                 <div class="team-duels-list">
                     {away_duels_html}
@@ -2045,8 +2061,8 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                 
                 <!-- View Switcher -->
                 <div class="match-view-switcher">
-                    <button class="view-switch-btn active" data-match="{m_slug}" data-view="duels">⚔️ Duelli 1vs1</button>
-                    <button class="view-switch-btn" data-match="{m_slug}" data-view="table">📊 Tabellone Fonti (Anti-FCO)</button>
+                    <button class="view-switch-btn active" data-match="{m_slug}" data-view="duels">⚔️ Ballottaggi</button>
+                    <button class="view-switch-btn" data-match="{m_slug}" data-view="table">📋 Formazioni</button>
                 </div>
             </div>
 
@@ -2208,7 +2224,7 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                 <div class="hot-ballots-title">
                     <span>🔥 I Ballottaggi più Caldi del Weekend</span>
                 </div>
-                <span style="font-size:11px;color:#94a3b8;">Duelli con margine &le; 15% tra i titolari</span>
+                <span style="font-size:11px;color:#94a3b8;">Ballottaggi aperti con margine &le; 15% tra i titolari</span>
             </div>
             <div class="hot-ballots-grid">
                 {hot_ballots_html}
@@ -2304,7 +2320,7 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
                     <a href="/probabili-formazioni/{h_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(h_team)}">{clean_html(h_team)}</a>
                     <span class="team-col-badge">CASA</span>
                 </div>
-                <span class="team-col-count">{len(h_duels_list)} duelli</span>
+                <span class="team-col-count">{len(h_duels_list)} ballottaggi</span>
             </div>
             <div class="team-duels-list">
                 {home_duels_html}
@@ -2319,7 +2335,7 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
                     <a href="/probabili-formazioni/{a_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(a_team)}">{clean_html(a_team)}</a>
                     <span class="team-col-badge">TRASFERTA</span>
                 </div>
-                <span class="team-col-count">{len(a_duels_list)} duelli</span>
+                <span class="team-col-count">{len(a_duels_list)} ballottaggi</span>
             </div>
             <div class="team-duels-list">
                 {away_duels_html}
@@ -2513,8 +2529,8 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
                 
                 <!-- View Switcher -->
                 <div class="match-view-switcher">
-                    <button class="view-switch-btn active" data-match="{m_slug}" data-view="duels">⚔️ Duelli 1vs1</button>
-                    <button class="view-switch-btn" data-match="{m_slug}" data-view="table">📊 Tabellone Fonti (Anti-FCO)</button>
+                    <button class="view-switch-btn active" data-match="{m_slug}" data-view="duels">⚔️ Ballottaggi</button>
+                    <button class="view-switch-btn" data-match="{m_slug}" data-view="table">📋 Formazioni</button>
                 </div>
             </div>
 
@@ -2532,7 +2548,7 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
             <!-- Sezione Duelli 1vs1 -->
             <div class="seo-section-heading" style="margin-top:24px;">
                 <span class="icon">⚔️</span>
-                <span>Confronto Duelli &amp; Ballottaggi 1vs1 — Consensus 5 Fonti</span>
+                <span>Ballottaggi &amp; Percentuali Titolarità — Consensus 5 Fonti</span>
                 <span class="badge">Live Ponderato</span>
             </div>
 

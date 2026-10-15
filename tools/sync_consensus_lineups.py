@@ -454,6 +454,7 @@ def run_consensus_engine():
         def process_team_consensus(team_name, parsed_info, tac_info, opp_team):
             formation = parsed_info.get('formation') or tac_info.get('modulo', '4-3-3')
             coach = tac_info.get('all', 'Allenatore')
+            team_squad = players_by_team.get(team_name, [])
             
             raw_starters = parsed_info.get('starters', [])
             raw_reserves = parsed_info.get('reserves', [])
@@ -463,41 +464,54 @@ def run_consensus_engine():
             if not raw_starters and tac_info.get('lineup'):
                 raw_starters = [item.get('starter', '') for item in tac_info['lineup']]
 
-            # Elabora Ballottaggi del Club
-            processed_ballots = []
-            
-            # Unisci i ballottaggi trovati da Fantacalcio.it con Gazzetta e SOS Fanta per questa squadra
+            # 1. Unisci e deduplica le coppie di ballottaggio da tutte le fonti
             all_ballot_pairs = []
+            seen_pairs = set()
+
             for b in raw_ballots:
-                all_ballot_pairs.append((b['p1'], b['p2'], b.get('pct1', 60), b.get('pct2', 40)))
-                
-            # Cerca anche in tactical_db per completare le coppie
+                p1_raw = b.get('p1', '')
+                p2_raw = b.get('p2', '')
+                pct1 = b.get('pct1', 60)
+                pct2 = b.get('pct2', 40)
+                p1_m = match_player_master(p1_raw, team_name, players_by_team, aliases)
+                p2_m = match_player_master(p2_raw, team_name, players_by_team, aliases)
+                n1 = p1_m.get('name') if p1_m else p1_raw
+                n2 = p2_m.get('name') if p2_m else p2_raw
+                if not n1 or not n2 or n1.lower() == n2.lower():
+                    continue
+                pair_key = tuple(sorted([n1.lower(), n2.lower()]))
+                if pair_key not in seen_pairs:
+                    seen_pairs.add(pair_key)
+                    all_ballot_pairs.append((p1_raw, p2_raw, pct1, pct2, p1_m, p2_m, n1, n2))
+
             for tb in tac_info.get('ballottaggi', []):
-                p1 = tb.get('player', '')
+                p1_raw = tb.get('player', '')
                 vs_raw = tb.get('vs', '')
                 m_vs = re.search(r'([A-Za-z\s\.\'-]+)', vs_raw)
-                p2 = m_vs.group(1).strip() if m_vs else ""
+                p2_raw = m_vs.group(1).strip() if m_vs else ""
                 pct1 = int(tb.get('pct', 60))
-                # Verifica se la coppia è già presente
-                if not any((clean_name(p1).lower() in [clean_name(x[0]).lower(), clean_name(x[1]).lower()]) for x in all_ballot_pairs):
-                    all_ballot_pairs.append((p1, p2, pct1, 100 - pct1))
+                pct2 = 100 - pct1
+                p1_m = match_player_master(p1_raw, team_name, players_by_team, aliases)
+                p2_m = match_player_master(p2_raw, team_name, players_by_team, aliases)
+                n1 = p1_m.get('name') if p1_m else p1_raw
+                n2 = p2_m.get('name') if p2_m else p2_raw
+                if not n1 or not n2 or n1.lower() == n2.lower():
+                    continue
+                pair_key = tuple(sorted([n1.lower(), n2.lower()]))
+                if pair_key not in seen_pairs:
+                    seen_pairs.add(pair_key)
+                    all_ballot_pairs.append((p1_raw, p2_raw, pct1, pct2, p1_m, p2_m, n1, n2))
 
-            for p1_raw, p2_raw, base_pct1, base_pct2 in all_ballot_pairs:
-                p1_master = match_player_master(p1_raw, team_name, players_by_team, aliases)
-                p2_master = match_player_master(p2_raw, team_name, players_by_team, aliases)
-                
-                n1 = p1_master.get('name') if p1_master else p1_raw
-                n2 = p2_master.get('name') if p2_master else p2_raw
-                
-                # Check Infortuni
+            # Calcolo consensus 5 fonti con normalizzazione rigorosa
+            unfiltered_ballots = []
+            for p1_raw, p2_raw, base_pct1, base_pct2, p1_master, p2_master, n1, n2 in all_ballot_pairs:
                 inj1 = injuries_map.get(n1.lower()) or injuries_map.get(p1_raw.lower())
                 inj2 = injuries_map.get(n2.lower()) or injuries_map.get(p2_raw.lower())
-                
-                # Consensus across sources
+
                 # 1. Fantacalcio.it
                 fc_pct1 = base_pct1
                 fc_pct2 = base_pct2
-                
+
                 # 2. Gazzetta
                 gaz_pct1, gaz_pct2 = None, None
                 for gb in gaz_ballots:
@@ -510,7 +524,7 @@ def run_consensus_engine():
                 if gaz_pct1 is None:
                     gaz_pct1 = min(90, max(10, fc_pct1 + 2))
                     gaz_pct2 = 100 - gaz_pct1
-                    
+
                 # 3. SOS Fanta
                 sos_pct1, sos_pct2 = None, None
                 for sb in sos_ballots:
@@ -542,9 +556,21 @@ def run_consensus_engine():
                     avg_pct1 = round((fc_pct1 + gaz_pct1 + sos_pct1 + fp_pct1 + sky_pct1) / 5.0)
                     avg_pct2 = 100 - avg_pct1
 
+                # Normalizzazione: player1 deve SEMPRE essere il favorito (>= 50%)
+                if avg_pct2 > avg_pct1 or (avg_pct1 == avg_pct2 and safe_ovr(p2_master) > safe_ovr(p1_master)):
+                    p1_master, p2_master = p2_master, p1_master
+                    n1, n2 = n2, n1
+                    inj1, inj2 = inj2, inj1
+                    avg_pct1, avg_pct2 = avg_pct2, avg_pct1
+                    fc_pct1, fc_pct2 = fc_pct2, fc_pct1
+                    gaz_pct1, gaz_pct2 = gaz_pct2, gaz_pct1
+                    sos_pct1, sos_pct2 = sos_pct2, sos_pct1
+                    fp_pct1, fp_pct2 = fp_pct2, fp_pct1
+                    sky_pct1, sky_pct2 = sky_pct2, sky_pct1
+
                 ai_verdict = build_ai_verdict(p1_master, p2_master, avg_pct1, avg_pct2, bool(inj1), bool(inj2))
 
-                processed_ballots.append({
+                unfiltered_ballots.append({
                     "player1": {
                         "name": n1,
                         "role": p1_master.get('role', 'C') if p1_master else 'C',
@@ -575,14 +601,132 @@ def run_consensus_engine():
                     "verdict": ai_verdict
                 })
 
-            # Titolari Consensus List
-            final_starters = []
-            for s_raw in raw_starters[:11]:
+            # Enforce: ogni calciatore partecipa al massimo a 1 ballottaggio principale per matchday
+            processed_ballots = []
+            seen_ballot_players = set()
+            for b in unfiltered_ballots:
+                p1_low = b['player1']['name'].lower()
+                p2_low = b['player2']['name'].lower()
+                if p1_low in seen_ballot_players or p2_low in seen_ballot_players:
+                    continue
+                seen_ballot_players.add(p1_low)
+                seen_ballot_players.add(p2_low)
+                processed_ballots.append(b)
+
+            ballot_w_names = {b['player1']['name'].lower() for b in processed_ballots}
+            ballot_l_names = {b['player2']['name'].lower() for b in processed_ballots}
+
+            # 2. Riconciliazione XI Titolare con i Ballottaggi
+            candidate_starters = []
+            seen_starter_names = set()
+
+            for s_raw in raw_starters:
                 p_m = match_player_master(s_raw, team_name, players_by_team, aliases)
-                p_name = p_m.get('name') if p_m else s_raw
-                inj = injuries_map.get(p_name.lower()) or injuries_map.get(s_raw.lower())
-                
-                # Check se il giocatore è in ballottaggio
+                if p_m and p_m['name'].lower() not in seen_starter_names:
+                    seen_starter_names.add(p_m['name'].lower())
+                    candidate_starters.append(p_m)
+
+            if len(candidate_starters) < 11 and tac_info.get('lineup'):
+                for item in tac_info['lineup']:
+                    s_raw = item.get('starter', '')
+                    p_m = match_player_master(s_raw, team_name, players_by_team, aliases)
+                    if p_m and p_m['name'].lower() not in seen_starter_names:
+                        seen_starter_names.add(p_m['name'].lower())
+                        candidate_starters.append(p_m)
+
+            # Completa il pool candidati con i migliori della rosa evitando perdenti certi dei ballottaggi
+            for p in sorted(team_squad, key=lambda x: -safe_ovr(x)):
+                if len(candidate_starters) >= 15:
+                    break
+                p_low = p['name'].lower()
+                if p_low not in seen_starter_names and p_low not in ballot_l_names:
+                    seen_starter_names.add(p_low)
+                    candidate_starters.append(p)
+
+            current_starters = candidate_starters[:11]
+
+            # APPLICA REGOLA DEI BALLOTTAGGI AI TITOLARI:
+            # - player1 (favorito, >= 50%) DEVE essere titolare
+            # - player2 (sfavorito, <= 50%) NON DEVE MAI essere titolare (va in panchina)
+            for b in processed_ballots:
+                w_name = b['player1']['name']
+                l_name = b['player2']['name']
+                w_pm = match_player_master(w_name, team_name, players_by_team, aliases)
+                w_obj = w_pm if w_pm else {'name': w_name, 'role': b['player1']['role'], 'ovr': b['player1']['ovr'], 'xfm': b['player1']['xfm']}
+
+                w_in = any(s['name'].lower() == w_name.lower() for s in current_starters)
+                l_in = any(s['name'].lower() == l_name.lower() for s in current_starters)
+
+                if l_in and not w_in:
+                    # Sostituisci il perdente con il vincitore
+                    idx = next(i for i, s in enumerate(current_starters) if s['name'].lower() == l_name.lower())
+                    current_starters[idx] = w_obj
+                elif l_in and w_in:
+                    # Erano entrambi titolari! Rimuovi il perdente (deve andare in panchina)
+                    current_starters = [s for s in current_starters if s['name'].lower() != l_name.lower()]
+                elif not l_in and not w_in:
+                    # Inserisci il vincitore al posto di un titolare di ruolo affine senza ballottaggio
+                    ballot_active_names = ballot_w_names | ballot_l_names
+                    cand_idx = None
+                    for i in range(len(current_starters) - 1, -1, -1):
+                        s = current_starters[i]
+                        if s['name'].lower() not in ballot_active_names and s.get('role') != 'P':
+                            cand_idx = i
+                            break
+                    if cand_idx is not None:
+                        current_starters[cand_idx] = w_obj
+
+            # Rimuovi eventuali infortunati dai titolari (tranne se sono player1 legittimi)
+            current_starters = [s for s in current_starters if (not injuries_map.get(s['name'].lower()) or s['name'].lower() in ballot_w_names)]
+
+            # Garantisci esattamente 1 Portiere (P)
+            gk_starters = [s for s in current_starters if s.get('role') == 'P']
+            if not gk_starters:
+                gk_pool = [p for p in team_squad if p.get('role') == 'P' and not injuries_map.get(p['name'].lower())]
+                if gk_pool:
+                    current_starters.insert(0, max(gk_pool, key=lambda x: safe_ovr(x)))
+            elif len(gk_starters) > 1:
+                first_gk = False
+                new_s = []
+                for s in current_starters:
+                    if s.get('role') == 'P':
+                        if not first_gk:
+                            first_gk = True
+                            new_s.append(s)
+                    else:
+                        new_s.append(s)
+                current_starters = new_s
+
+            # Garantisci esattamente 11 titolari (senza mai pescare perdenti dei ballottaggi o infortunati)
+            used_st = {s['name'].lower() for s in current_starters}
+            forbidden_filler = used_st | ballot_l_names | {p.lower() for p in injuries_map}
+            if len(current_starters) < 11:
+                for p in sorted(team_squad, key=lambda x: (-safe_ovr(x), -safe_xfm(x))):
+                    if p.get('role') != 'P' and p['name'].lower() not in forbidden_filler:
+                        current_starters.append(p)
+                        forbidden_filler.add(p['name'].lower())
+                        if len(current_starters) == 11:
+                            break
+
+            while len(current_starters) > 11:
+                cand_idx = None
+                min_ovr = 999
+                for i, s in enumerate(current_starters):
+                    if s.get('role') != 'P' and s['name'].lower() not in ballot_w_names:
+                        if safe_ovr(s) < min_ovr:
+                            min_ovr = safe_ovr(s)
+                            cand_idx = i
+                if cand_idx is not None:
+                    current_starters.pop(cand_idx)
+                else:
+                    current_starters.pop()
+
+            # Costruisci final_starters con statistiche e percentuali perfette
+            final_starters = []
+            for s in current_starters:
+                p_name = s['name']
+                inj = injuries_map.get(p_name.lower())
+
                 ballot_found = None
                 for b in processed_ballots:
                     if b['player1']['name'].lower() == p_name.lower():
@@ -591,21 +735,21 @@ def run_consensus_engine():
                     elif b['player2']['name'].lower() == p_name.lower():
                         ballot_found = (b['consensus_pct2'], b['player1']['name'])
                         break
-                        
+
                 tit_pct = 92
-                sub_txt = "Panchina coperta"
+                sub_txt = "Titolare inamovibile"
                 if ballot_found:
                     tit_pct = ballot_found[0]
                     sub_txt = f"vs {ballot_found[1]}"
                 if inj:
-                    tit_pct = 10
+                    tit_pct = 15
                     sub_txt = f"🩹 {inj.get('rientro', 'Infortunato')}"
 
                 final_starters.append({
                     "name": p_name,
-                    "role": p_m.get('role', 'C') if p_m else 'C',
-                    "ovr": safe_ovr(p_m, 75),
-                    "xfm": safe_xfm(p_m, 6.2),
+                    "role": s.get('role', 'C'),
+                    "ovr": safe_ovr(s, 75),
+                    "xfm": safe_xfm(s, 6.2),
                     "consensus_pct": tit_pct,
                     "sub_txt": sub_txt,
                     "is_injured": bool(inj),
@@ -613,38 +757,60 @@ def run_consensus_engine():
                     "injury_return": inj.get('rientro', '') if inj else ''
                 })
 
-            # Riserve Consensus List
+            # 3. Costruisci final_reserves con TUTTI i restanti calciatori della rosa (Panchina Completa)
             final_reserves = []
-            for r_raw in raw_reserves[:14]:
-                p_m = match_player_master(r_raw, team_name, players_by_team, aliases)
-                p_name = p_m.get('name') if p_m else r_raw
-                inj = injuries_map.get(p_name.lower()) or injuries_map.get(r_raw.lower())
+            starter_names_set = {s['name'].lower() for s in final_starters}
+
+            for p in team_squad:
+                p_name = p['name']
+                if p_name.lower() in starter_names_set:
+                    continue
+
+                inj = injuries_map.get(p_name.lower())
 
                 ballot_found = None
                 for b in processed_ballots:
-                    if b['player1']['name'].lower() == p_name.lower():
-                        ballot_found = b['consensus_pct1']
+                    if b['player2']['name'].lower() == p_name.lower():
+                        ballot_found = (b['consensus_pct2'], b['player1']['name'])
                         break
-                    elif b['player2']['name'].lower() == p_name.lower():
-                        ballot_found = b['consensus_pct2']
+                    elif b['player1']['name'].lower() == p_name.lower():
+                        ballot_found = (b['consensus_pct1'], b['player2']['name'])
                         break
 
-                res_pct = 15
+                res_pct = 15 if p.get('role') != 'P' else 5
+                sub_txt = "Panchina"
                 if ballot_found:
-                    res_pct = ballot_found
+                    res_pct = ballot_found[0]
+                    sub_txt = f"vs {ballot_found[1]}"
                 if inj:
                     res_pct = 0
+                    sub_txt = f"🩹 {inj.get('rientro', 'Infortunato')}"
 
                 final_reserves.append({
                     "name": p_name,
-                    "role": p_m.get('role', 'C') if p_m else 'C',
-                    "ovr": safe_ovr(p_m, 70),
-                    "xfm": safe_xfm(p_m, 5.8),
+                    "role": p.get('role', 'C'),
+                    "ovr": safe_ovr(p, 70),
+                    "xfm": safe_xfm(p, 5.8),
                     "consensus_pct": res_pct,
+                    "sub_txt": sub_txt,
                     "is_injured": bool(inj),
                     "injury_reason": inj.get('motivo', '') if inj else '',
                     "injury_return": inj.get('rientro', '') if inj else ''
                 })
+
+            # Ordina le riserve in modo razionale:
+            # 1. Contendenti di ballottaggio attivi in cima (ordinati per consensus_pct decrescente)
+            # 2. Giocatori di movimento sani (D -> C -> A, OVR decrescente)
+            # 3. Portieri di riserva
+            # 4. Infortunati in fondo
+            role_order = {'D': 1, 'C': 2, 'A': 3, 'P': 4}
+            def reserve_sort_key(r):
+                is_ballot = 0 if ('vs ' in r.get('sub_txt', '') and not r['is_injured']) else 1
+                is_inj = 1 if r['is_injured'] else 0
+                r_order = role_order.get(r['role'], 5)
+                return (is_inj, is_ballot, -r['consensus_pct'], r_order, -r['ovr'])
+
+            final_reserves.sort(key=reserve_sort_key)
 
             # Infortunati del Club
             team_injuries = [inj for inj in injuries if inj.get('team', '').lower() == team_name.lower()]

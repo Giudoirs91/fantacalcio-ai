@@ -1798,26 +1798,46 @@ def generate_match_ai_advice(match_data):
     for r in a_data.get('reserves', []):
         all_reserves.append({**r, 'team': a_team})
 
-    # 1. Top pick: Starter non infortunato con xfm più alto
+    # 1. Top pick: Starter di movimento (non portiere!), con titolarità solida e score predittivo ponderato (OVR + xFM)
     valid_starters = [s for s in all_starters if not s.get('is_injured')]
-    if valid_starters:
-        top_pick = max(valid_starters, key=lambda x: x.get('xfm', 6.0))
+    outfield_starters = [
+        s for s in valid_starters 
+        if s.get('role') != 'P' and s.get('consensus_pct', 0) >= 55
+    ]
+    if not outfield_starters:
+        outfield_starters = [s for s in valid_starters if s.get('role') != 'P']
+        
+    def pick_score(s):
+        role_mult = 1.15 if s.get('role') == 'A' else (1.08 if s.get('role') == 'C' else 1.0)
+        tit_mult = 1.1 if s.get('consensus_pct', 0) >= 80 else 1.0
+        return (s.get('ovr', 70) * 0.4 + s.get('xfm', 6.0) * 10.0 * 0.6) * role_mult * tit_mult
+
+    if outfield_starters:
+        top_pick = max(outfield_starters, key=pick_score)
     else:
         top_pick = {'name': 'Top Player', 'team': h_team, 'role': 'A', 'xfm': 7.6, 'ovr': 82}
 
-    # 2. Rischio flop: Difensore o centrocampista con xfm basso o duello incerto
-    defensive_starters = [s for s in valid_starters if s.get('role') in ('D', 'C')]
-    if defensive_starters:
-        risk_player = min(defensive_starters, key=lambda x: x.get('xfm', 6.0))
-    else:
-        risk_player = min(valid_starters, key=lambda x: x.get('xfm', 6.0)) if valid_starters else {'name': 'Rischio Flop', 'team': a_team, 'role': 'D', 'xfm': 5.4, 'ovr': 67}
+    # 2. Rischio flop: Difensore o centrocampista (o portiere a rischio), con ballottaggio aperto o OVR basso
+    defensive_candidates = [
+        s for s in valid_starters 
+        if s != top_pick and (s.get('role') in ('D', 'C') or (s.get('role') == 'P' and s.get('consensus_pct', 100) < 65))
+    ]
+    def risk_score(s):
+        ballot_pen = 0.85 if s.get('consensus_pct', 100) < 60 else 1.0
+        return (s.get('ovr', 70) * 0.5 + s.get('xfm', 6.0) * 10.0 * 0.5) * ballot_pen
 
-    # 3. Jolly: Riserva con xfm più alto
-    valid_reserves = [r for r in all_reserves if not r.get('is_injured')]
-    if valid_reserves:
-        jolly_player = max(valid_reserves, key=lambda x: (x.get('xfm', 5.5), x.get('consensus_pct', 15)))
+    if defensive_candidates:
+        risk_player = min(defensive_candidates, key=risk_score)
     else:
-        jolly_player = {'name': 'Super Sub', 'team': h_team, 'role': 'A', 'xfm': 6.6, 'ovr': 75}
+        risk_player = min(valid_starters, key=lambda x: x.get('ovr', 70)) if valid_starters else {'name': 'Rischio Flop', 'team': a_team, 'role': 'D', 'xfm': 5.4, 'ovr': 67}
+
+    # 3. Jolly: Riserva offensiva o di centrocampo non infortunata con xfm e minutaggio potenziale elevato
+    outfield_reserves = [r for r in all_reserves if not r.get('is_injured') and r.get('role') in ('A', 'C')]
+    if outfield_reserves:
+        jolly_player = max(outfield_reserves, key=lambda x: (x.get('consensus_pct', 15) * 0.4 + x.get('xfm', 5.5) * 10.0 * 0.6))
+    else:
+        valid_reserves = [r for r in all_reserves if not r.get('is_injured')]
+        jolly_player = max(valid_reserves, key=lambda x: (x.get('xfm', 5.5), x.get('consensus_pct', 15))) if valid_reserves else {'name': 'Super Sub', 'team': h_team, 'role': 'A', 'xfm': 6.6, 'ovr': 75}
 
     pick_slug = get_player_slug_from_name(top_pick['name'])
     risk_slug = get_player_slug_from_name(risk_player['name'])

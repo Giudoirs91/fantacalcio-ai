@@ -264,9 +264,10 @@ def parse_fantacalcio_it(html):
 def safe_xfm(p_master, default=6.0):
     if not p_master:
         return float(default)
-    val = p_master.get('xfm')
-    if val is None:
-        return float(default)
+    val = p_master.get('xfm') or p_master.get('fm_2627') or p_master.get('fm')
+    if val is None or float(val) == 0.0:
+        ovr = safe_ovr(p_master, 70)
+        val = 5.5 + (ovr - 50) * 0.035
     try:
         return round(float(val), 2)
     except Exception:

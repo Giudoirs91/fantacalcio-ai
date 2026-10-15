@@ -1274,6 +1274,127 @@ html, body {
     margin: 0;
 }
 
+/* Analisi Portieri, Clean Sheet & Modificatore Difesa */
+.gk-analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+@media (max-width: 768px) {
+    .gk-analysis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.gk-analysis-card {
+    background: #0f1217;
+    border-radius: 12px;
+    padding: 15px 18px;
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: linear-gradient(180deg, rgba(56, 189, 248, 0.04) 0%, rgba(15, 18, 23, 0.96) 100%);
+    position: relative;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.gk-analysis-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(56, 189, 248, 0.4);
+}
+.gk-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.gk-verdict-badge {
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+.gk-verdict-badge.clean-sheet {
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.35);
+}
+.gk-verdict-badge.modificatore {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+}
+.gk-verdict-badge.risk {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.35);
+}
+.gk-verdict-badge.neutral {
+    background: rgba(148, 163, 184, 0.15);
+    color: #cbd5e1;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+}
+.gk-player-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.gk-name-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.gk-status-tag {
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 600;
+}
+.gk-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.gk-metric-box {
+    text-align: center;
+}
+.gk-metric-val {
+    font-size: 14.5px;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    color: #f8fafc;
+}
+.gk-metric-lbl {
+    font-size: 9.5px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-top: 2px;
+}
+.gk-bar-wrap {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 4px;
+}
+.gk-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+}
+.gk-desc-text {
+    font-size: 11.5px;
+    color: #cbd5e1;
+    line-height: 1.45;
+    margin: 0;
+}
+
 /* FAQ Accordion Section */
 .seo-faq-wrap {
     display: flex;
@@ -1919,6 +2040,99 @@ html, body {
                 Spacca-partita designato: l'algoritmo prevede un ingresso a gara in corso con impatto elevato contro linee difensive stanche. Ottimo terzo o quarto slot con copertura.
             </p>
         </div>
+    </div>
+    
+
+            <!-- Analisi Portieri, Clean Sheet & Modificatore Difesa -->
+            
+    <div class="seo-section-heading" style="margin-top:24px;">
+        <span class="icon">🛡️</span>
+        <span>Analisi Portieri &amp; Modificatore Difesa — Proiezioni 1vs1</span>
+        <span class="badge">Clean Sheet &amp; Modificatore</span>
+    </div>
+    <div class="gk-analysis-grid">
+        
+        <div class="gk-analysis-card">
+            <div class="gk-card-header">
+                <span class="gk-verdict-badge neutral">⚖️ Opzione Equilibrata</span>
+                <span style="font-size:11px;color:#94a3b8;font-weight:700;">Parma &bull; 🏠 In Casa</span>
+            </div>
+            <div class="gk-player-row">
+                <div class="gk-name-wrap">
+                    <span class="pitch-role-badge P">P</span>
+                    <a href="/calciatore/corvi-2026/" class="advice-name">Corvi</a>
+                </div>
+                <span class="gk-status-tag">95% Tit</span>
+            </div>
+            <div class="gk-metrics-row">
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:#4ade80;">35.1%</div>
+                    <div class="gk-metric-lbl">Clean Sheet</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:52%;background:#4ade80;"></div>
+                    </div>
+                </div>
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:#fbbf24;">7.4<span style="font-size:10px;color:#94a3b8;">/10</span></div>
+                    <div class="gk-metric-lbl">Modificatore</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:74%;background:#fbbf24;"></div>
+                    </div>
+                </div>
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:#f87171;">1.01</div>
+                    <div class="gk-metric-lbl">xGA Subiti</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:35%;background:#f87171;"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="gk-desc-text">
+                Sfida da punteggio medio. Buona affidabilità tra i pali con coefficiente di rischio moderato.
+            </p>
+        </div>
+        
+        
+        <div class="gk-analysis-card">
+            <div class="gk-card-header">
+                <span class="gk-verdict-badge neutral">⚖️ Opzione Equilibrata</span>
+                <span style="font-size:11px;color:#94a3b8;font-weight:700;">Torino &bull; ✈️ In Trasferta</span>
+            </div>
+            <div class="gk-player-row">
+                <div class="gk-name-wrap">
+                    <span class="pitch-role-badge P">P</span>
+                    <a href="/calciatore/perri-2026/" class="advice-name">Perri</a>
+                </div>
+                <span class="gk-status-tag">95% Tit</span>
+            </div>
+            <div class="gk-metrics-row">
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:#facc15;">29.0%</div>
+                    <div class="gk-metric-lbl">Clean Sheet</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:43%;background:#facc15;"></div>
+                    </div>
+                </div>
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:#fbbf24;">7.0<span style="font-size:10px;color:#94a3b8;">/10</span></div>
+                    <div class="gk-metric-lbl">Modificatore</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:70%;background:#fbbf24;"></div>
+                    </div>
+                </div>
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:#f87171;">1.26</div>
+                    <div class="gk-metric-lbl">xGA Subiti</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:44%;background:#f87171;"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="gk-desc-text">
+                Sfida da punteggio medio. Buona affidabilità tra i pali con coefficiente di rischio moderato.
+            </p>
+        </div>
+        
     </div>
     
 
@@ -3462,6 +3676,7 @@ html, body {
     </div>
 
     
+<script src="/js/tracker.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // 1. Switcher viste per match (Duelli vs Tabellone Fonti)

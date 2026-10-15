@@ -23,7 +23,7 @@ from .valuation_engine import (
     calculate_xfm
 )
 from .gk_engine import extract_gk_grid
-from .ai_evaluator import save_predictions_snapshot, evaluate_predictions
+from .ai_evaluator import save_predictions_snapshot, save_round_snapshot, evaluate_predictions
 from .advanced_metrics import (
     compute_floor_and_ceiling, compute_sub_impact_metrics, compute_matchup_vulnerability
 )
@@ -1025,6 +1025,24 @@ def run_master_pipeline():
         if not tot_malus_2627 and (gol_subiti_2627 > 0 or amm_2627 > 0 or esp_2627 > 0):
             tot_malus_2627 = round((gol_subiti_2627 * 1.0) + (amm_2627 * 0.5) + (esp_2627 * 1.0), 2)
 
+        if v2627_entry and partite_voto_2627 > 0:
+            has_data_2627 = True
+            presenze_2627 = max(presenze_2627, partite_voto_2627)
+            if v2627_entry.get('voti_dettaglio'):
+                vd = v2627_entry['voti_dettaglio']
+                vd_gf = sum(int(x.get('gf', 0) or 0) for x in vd)
+                vd_ass = sum(int(x.get('ass', 0) or 0) for x in vd)
+                vd_gs = sum(int(x.get('gs', 0) or 0) for x in vd)
+                vd_amm = sum(int(x.get('amm', 0) or 0) for x in vd)
+                vd_esp = sum(int(x.get('esp', 0) or 0) for x in vd)
+                vd_cs = sum(1 for x in vd if x.get('voto') is not None and int(x.get('gs', 0) or 0) == 0) if role == 'P' else 0
+                gol_2627 = max(gol_2627, vd_gf)
+                assist_2627 = max(assist_2627, vd_ass)
+                gol_subiti_2627 = max(gol_subiti_2627, vd_gs)
+                amm_2627 = max(amm_2627, vd_amm)
+                esp_2627 = max(esp_2627, vd_esp)
+                clean_sheets_2627 = max(clean_sheets_2627, vd_cs)
+
         # Lookup Metriche Avanzate FotMob 2026/27 (xG/90, xA/90, Big Chances, ecc.)
         target_name = aliases.get(raw_name, raw_name)
         target_clean = clean_text(target_name)
@@ -1498,6 +1516,9 @@ def run_master_pipeline():
     if current_round >= 5:
         # T+N: valuta predizioni e aggiorna bias corrections
         evaluate_predictions(processed_players, round_num=current_round)
+        # Salva snapshot predittivo pre-partita congelato per la prossima giornata (G7)
+        next_round = current_round + 1
+        save_round_snapshot(processed_players, round_num=next_round)
         try:
             from src.matchday_evaluator import run_learning_and_accuracy_evaluation
             run_learning_and_accuracy_evaluation()

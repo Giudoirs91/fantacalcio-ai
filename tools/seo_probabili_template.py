@@ -15,6 +15,8 @@ import re
 import json
 from datetime import datetime
 
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 def clean_html(text):
     if text is None:
         return ""
@@ -1282,6 +1284,127 @@ html, body {
     margin: 0;
 }
 
+/* Analisi Portieri, Clean Sheet & Modificatore Difesa */
+.gk-analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+@media (max-width: 768px) {
+    .gk-analysis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.gk-analysis-card {
+    background: #0f1217;
+    border-radius: 12px;
+    padding: 15px 18px;
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: linear-gradient(180deg, rgba(56, 189, 248, 0.04) 0%, rgba(15, 18, 23, 0.96) 100%);
+    position: relative;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.gk-analysis-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(56, 189, 248, 0.4);
+}
+.gk-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.gk-verdict-badge {
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+.gk-verdict-badge.clean-sheet {
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.35);
+}
+.gk-verdict-badge.modificatore {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+}
+.gk-verdict-badge.risk {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.35);
+}
+.gk-verdict-badge.neutral {
+    background: rgba(148, 163, 184, 0.15);
+    color: #cbd5e1;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+}
+.gk-player-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.gk-name-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.gk-status-tag {
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 600;
+}
+.gk-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.gk-metric-box {
+    text-align: center;
+}
+.gk-metric-val {
+    font-size: 14.5px;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    color: #f8fafc;
+}
+.gk-metric-lbl {
+    font-size: 9.5px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-top: 2px;
+}
+.gk-bar-wrap {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 4px;
+}
+.gk-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+}
+.gk-desc-text {
+    font-size: 11.5px;
+    color: #cbd5e1;
+    line-height: 1.45;
+    margin: 0;
+}
+
 /* FAQ Accordion Section */
 .seo-faq-wrap {
     display: flex;
@@ -1469,6 +1592,7 @@ html, body {
 
 def render_probabili_js():
     return """
+<script src="/js/tracker.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // 1. Switcher viste per match (Duelli vs Tabellone Fonti)
@@ -1898,6 +2022,146 @@ def generate_match_ai_advice(match_data):
                 Spacca-partita designato: l'algoritmo prevede un ingresso a gara in corso con impatto elevato contro linee difensive stanche. Ottimo terzo o quarto slot con copertura.
             </p>
         </div>
+    </div>
+    """
+
+def calc_single_gk_metrics(gk, team, opp_team, is_home):
+    team_stats_path = os.path.join(ROOT_DIR, "data", "raw", "fotmob_team_stats_2026_27.json")
+    t_stats = {}
+    if os.path.exists(team_stats_path):
+        try:
+            with open(team_stats_path, "r", encoding="utf-8") as f:
+                t_stats = json.load(f)
+        except Exception:
+            pass
+
+    ts = t_stats.get(team, {})
+    opp_ts = t_stats.get(opp_team, {})
+
+    ovr = gk.get('ovr', 70) if gk else 70
+    
+    # 1. Probabilità Clean Sheet (PCS %)
+    base_pcs = 32.0 if is_home else 24.0
+    def_rank = ts.get('difesa_rank_medio', 10.0)
+    opp_att_rank = opp_ts.get('attacco_rank_medio', 10.0)
+    
+    pcs = base_pcs + (10.0 - def_rank) * 2.2 + (opp_att_rank - 10.0) * 1.8
+    if ovr >= 85: pcs += 5.0
+    elif ovr < 65: pcs -= 5.0
+    pcs = round(max(8.0, min(68.0, pcs)), 1)
+    
+    # 2. Expected Goals Conceded (xGA)
+    opp_xg_match = opp_ts.get('xg_team', 6.0) / max(1, opp_ts.get('partite_giocate', 5))
+    team_conceded_match = ts.get('goals_conceded_match', 1.2)
+    home_factor = 0.85 if is_home else 1.15
+    xga = round(max(0.4, (team_conceded_match * 0.45 + opp_xg_match * 0.55) * home_factor), 2)
+    
+    # 3. Indice Modificatore Difesa (IMD: 1-10)
+    saves = ts.get('saves_per_match', 2.8)
+    imd_base = 5.0 + (saves * 0.75) + ((ovr - 65) * 0.07)
+    if xga > 1.8:
+        imd_base -= 0.8
+    elif xga < 0.9:
+        imd_base += 0.5
+    imd = round(max(3.5, min(9.6, imd_base)), 1)
+    
+    # 4. Verdetto AI Portiere
+    if pcs >= 42.0:
+        verdict = ("🛡️ Porta Blindata", "clean-sheet", "Ottima probabilità di clean sheet (+1). Scelta di prima fascia consigliata per questa giornata.")
+    elif imd >= 7.6:
+        verdict = ("🌟 Miniera da Modificatore", "modificatore", "Volume di interventi elevato. Ideale per massimizzare il bonus del modificatore difesa (+1 o +3).")
+    elif xga >= 1.7 or pcs < 18.0:
+        verdict = ("⚠️ Rischio Malus Pesante", "risk", "Reparto sotto costante pressione contro un attacco prolifico. Da schierare con cautela o in assenza di alternative.")
+    else:
+        verdict = ("⚖️ Opzione Equilibrata", "neutral", "Sfida da punteggio medio. Buona affidabilità tra i pali con coefficiente di rischio moderato.")
+        
+    return {
+        "pcs": pcs,
+        "xga": xga,
+        "imd": imd,
+        "verdict_title": verdict[0],
+        "verdict_tag": verdict[1],
+        "verdict_desc": verdict[2]
+    }
+
+def generate_match_gk_analysis(match_data):
+    """Genera la sezione 'Analisi Portieri & Modificatore Difesa' 1vs1."""
+    h_team = match_data['home_team']
+    a_team = match_data['away_team']
+    h_data = match_data['home']
+    a_data = match_data['away']
+
+    h_gk = next((s for s in h_data.get('starters', []) if s.get('role') == 'P'), None)
+    if not h_gk:
+        h_gk = next((r for r in h_data.get('reserves', []) if r.get('role') == 'P'), {'name': 'Portiere Casa', 'role': 'P', 'ovr': 70, 'consensus_pct': 90})
+        
+    a_gk = next((s for s in a_data.get('starters', []) if s.get('role') == 'P'), None)
+    if not a_gk:
+        a_gk = next((r for r in a_data.get('reserves', []) if r.get('role') == 'P'), {'name': 'Portiere Ospite', 'role': 'P', 'ovr': 70, 'consensus_pct': 90})
+
+    h_m = calc_single_gk_metrics(h_gk, h_team, a_team, True)
+    a_m = calc_single_gk_metrics(a_gk, a_team, h_team, False)
+
+    h_slug = get_player_slug_from_name(h_gk['name'])
+    a_slug = get_player_slug_from_name(a_gk['name'])
+
+    def render_gk_card(gk, team, is_home, m, slug):
+        bar_color = "#4ade80" if m['pcs'] >= 35 else ("#facc15" if m['pcs'] >= 20 else "#f87171")
+        imd_color = "#38bdf8" if m['imd'] >= 7.6 else ("#fbbf24" if m['imd'] >= 6.5 else "#94a3b8")
+        loc_label = "🏠 In Casa" if is_home else "✈️ In Trasferta"
+        tit_label = f"{gk.get('consensus_pct', 90)}% Tit"
+        
+        return f"""
+        <div class="gk-analysis-card">
+            <div class="gk-card-header">
+                <span class="gk-verdict-badge {m['verdict_tag']}">{m['verdict_title']}</span>
+                <span style="font-size:11px;color:#94a3b8;font-weight:700;">{clean_html(team)} &bull; {loc_label}</span>
+            </div>
+            <div class="gk-player-row">
+                <div class="gk-name-wrap">
+                    <span class="pitch-role-badge P">P</span>
+                    <a href="/calciatore/{slug}/" class="advice-name">{clean_html(gk['name'])}</a>
+                </div>
+                <span class="gk-status-tag">{tit_label}</span>
+            </div>
+            <div class="gk-metrics-row">
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:{bar_color};">{m['pcs']}%</div>
+                    <div class="gk-metric-lbl">Clean Sheet</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:{min(100, int(m['pcs'] * 1.5))}%;background:{bar_color};"></div>
+                    </div>
+                </div>
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:{imd_color};">{m['imd']}<span style="font-size:10px;color:#94a3b8;">/10</span></div>
+                    <div class="gk-metric-lbl">Modificatore</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:{int(m['imd'] * 10)}%;background:{imd_color};"></div>
+                    </div>
+                </div>
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:#f87171;">{m['xga']}</div>
+                    <div class="gk-metric-lbl">xGA Subiti</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:{min(100, int(m['xga'] * 35))}%;background:#f87171;"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="gk-desc-text">
+                {m['verdict_desc']}
+            </p>
+        </div>
+        """
+
+    return f"""
+    <div class="seo-section-heading" style="margin-top:24px;">
+        <span class="icon">🛡️</span>
+        <span>Analisi Portieri &amp; Modificatore Difesa — Proiezioni 1vs1</span>
+        <span class="badge">Clean Sheet &amp; Modificatore</span>
+    </div>
+    <div class="gk-analysis-grid">
+        {render_gk_card(h_gk, h_team, True, h_m, h_slug)}
+        {render_gk_card(a_gk, a_team, False, a_m, a_slug)}
     </div>
     """
 
@@ -2748,6 +3012,9 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
                 <span class="badge">Predittivo xFM</span>
             </div>
             {generate_match_ai_advice(match_data)}
+
+            <!-- Analisi Portieri, Clean Sheet & Modificatore Difesa -->
+            {generate_match_gk_analysis(match_data)}
 
             <!-- Sezione Duelli 1vs1 -->
             <div class="seo-section-heading" style="margin-top:24px;">

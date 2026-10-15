@@ -42,7 +42,7 @@
 
     // Traccia click di navigazione / interazioni
     document.addEventListener("click", function(e) {
-        var target = e.target.closest("[data-track], a, button, .role-tab, .slot-pill, .nav-item");
+        var target = e.target.closest("[data-track], a, button, .role-tab, .slot-pill, .nav-item, .view-switch-btn, .pill-btn, .seo-advice-card, .gk-analysis-card");
         if (!target) return;
 
         var tipo = target.getAttribute("data-track") || "click";
@@ -53,6 +53,13 @@
         if (target.classList && target.classList.contains("role-tab")) {
             tipo = "filter_role";
             ruolo = target.getAttribute("data-role") || label;
+        } else if (target.classList && target.classList.contains("view-switch-btn")) {
+            tipo = "switch_view_consensus";
+        } else if (target.classList && target.classList.contains("gk-analysis-card")) {
+            tipo = "click_gk_analysis";
+            ruolo = "P";
+        } else if (target.classList && target.classList.contains("seo-advice-card")) {
+            tipo = "click_ai_advice";
         }
 
         inviaEvento(tipo, {

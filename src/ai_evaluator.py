@@ -98,6 +98,47 @@ def save_predictions_snapshot(players, round_num=0, force=False):
     return True
 
 
+def save_round_snapshot(players, round_num):
+    """
+    Salva uno snapshot predittivo dedicato prima dell'avvio della giornata N (pre-partita).
+    Permette di congelare i verdetti e l'xFM del turno per misurare poi l'accuratezza post-giornata.
+    """
+    path = os.path.join(CONFIG_DIR, f"ai_predictions_snapshot_g{round_num}.json")
+    snapshot_fields = [
+        "id", "name", "role", "mantra", "team",
+        "fvm", "qta", "ovr", "prezzo_cons", "max_bid",
+        "xfm", "delta_xfm",
+        "ai_advice", "ai_advice_type",
+        "fascia", "slot_num",
+        "titolarita",
+        "fragility_score", "fragility_tier", "fragilita_score",
+        "disponibilita_pct", "is_injured", "is_chronic_fragile",
+        "oop_tier", "is_oop",
+        "is_rigorista_1", "is_punizioni",
+        "is_top", "is_sleeper", "is_flop",
+        "league_2526",
+        "xg90_2627", "xa90_2627", "xg90_2526", "xa90_2526",
+        "fm", "mv",
+    ]
+
+    snapshot = {
+        "metadata": {
+            "saved_at": datetime.now().isoformat(),
+            "round_num": round_num,
+            "n_players": len(players),
+            "description": f"Snapshot predizioni AI prima della Giornata {round_num}",
+        },
+        "players": [{k: p.get(k) for k in snapshot_fields} for p in players]
+    }
+
+    os.makedirs(CONFIG_DIR, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(snapshot, f, ensure_ascii=False, indent=2)
+
+    print(f"[AI Evaluator] Snapshot Giornata {round_num} salvato: {len(players)} calciatori -> {path}")
+    return True
+
+
 def load_predictions_snapshot():
     """Carica lo snapshot T0. Ritorna None se non esiste."""
     if not os.path.exists(SNAPSHOT_PATH):

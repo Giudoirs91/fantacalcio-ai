@@ -120,6 +120,16 @@
     "fonte": "ricerca sulle testate"
   },
   {
+    "player": "Kone B.",
+    "player_id": 5725,
+    "team": "Frosinone",
+    "motivo": "Lesione al flessore della coscia destra",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+  },
+  {
     "player": "Amorim",
     "player_id": 7341,
     "team": "Genoa",
@@ -188,6 +198,16 @@
     "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "Fantacalcio.it / Ufficiale (Aggiornato 16/10/2026)"
+  },
+  {
+    "player": "Martinez L.",
+    "player_id": 2764,
+    "team": "Inter",
+    "motivo": "Risentimento muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
   },
   {
     "player": "Stones",

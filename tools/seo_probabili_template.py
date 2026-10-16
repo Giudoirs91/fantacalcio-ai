@@ -783,7 +783,7 @@ html, body {
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: #0f1217;
-    margin-bottom: 18px;
+    margin-bottom: 0px;
 }
 .consensus-table {
     width: 100%;
@@ -887,10 +887,7 @@ html, body {
 
 /* Match Bottom Panels: Piazzati & Infermeria */
 .match-bottom-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 16px;
-    margin-top: 20px;
+    margin-top: 16px;
 }
 .subpanel-card {
     background: rgba(11, 15, 23, 0.85);
@@ -2471,11 +2468,34 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
         </div>
         """
 
-        # Tabella comparativa (Anti-FCO)
+        # Tabella comparativa a 2 Colonne (Casa a SX, Fuori a DX)
         table_html = f"""
-        <div style="display:flex;flex-direction:column;gap:16px;">
-            {render_consensus_team_table(h_data)}
-            {render_consensus_team_table(a_data)}
+        <div class="match-teams-columns">
+            <!-- Colonna Sinistra: Formazione Casa -->
+            <div class="team-duels-column team-home">
+                <div class="team-column-header home-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">🏠</span>
+                        <a href="/probabili-formazioni/{h_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(m['home_team'])}">{clean_html(m['home_team'])}</a>
+                        <span class="team-col-badge">CASA</span>
+                    </div>
+                    <span class="team-col-count">{clean_html(h_data.get('formation', ''))}</span>
+                </div>
+                {render_consensus_team_table(h_data)}
+            </div>
+
+            <!-- Colonna Destra: Formazione Fuori Casa -->
+            <div class="team-duels-column team-away">
+                <div class="team-column-header away-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">✈️</span>
+                        <a href="/probabili-formazioni/{a_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(m['away_team'])}">{clean_html(m['away_team'])}</a>
+                        <span class="team-col-badge">TRASFERTA</span>
+                    </div>
+                    <span class="team-col-count">{clean_html(a_data.get('formation', ''))}</span>
+                </div>
+                {render_consensus_team_table(a_data)}
+            </div>
         </div>
         """
 
@@ -2538,21 +2558,23 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                 {table_html}
             </div>
 
-            <!-- Pannelli Inferiori: Piazzati & Infermeria -->
-            <div class="match-bottom-grid">
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🎯 Piazzati &amp; Tiratori</div>
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:2px;">🏠 {clean_html(m['home_team'])}</div>
-                    {render_setpieces(h_data)}
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:6px;">✈️ {clean_html(m['away_team'])}</div>
-                    {render_setpieces(a_data)}
+            <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
+            <div class="match-teams-columns match-bottom-grid">
+                <div class="team-duels-column team-home">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — 🏠 {clean_html(m['home_team'])}</div>
+                        {render_setpieces(h_data)}
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — 🏠 {clean_html(m['home_team'])}</div>
+                        {render_injuries(h_data)}
+                    </div>
                 </div>
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🩺 Infermeria del Match (Live)</div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:2px;">🏠 {clean_html(m['home_team'])}</div>
-                    {render_injuries(h_data)}
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:6px;">✈️ {clean_html(m['away_team'])}</div>
-                    {render_injuries(a_data)}
+                <div class="team-duels-column team-away">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — ✈️ {clean_html(m['away_team'])}</div>
+                        {render_setpieces(a_data)}
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — ✈️ {clean_html(m['away_team'])}</div>
+                        {render_injuries(a_data)}
+                    </div>
                 </div>
             </div>
         </section>
@@ -2802,11 +2824,34 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
     </div>
     """
 
-    # Tabella comparativa (Anti-FCO)
+    # Tabella comparativa a 2 Colonne (Casa a SX, Fuori a DX)
     table_html = f"""
-    <div style="display:flex;flex-direction:column;gap:16px;">
-        {render_consensus_team_table(h_data)}
-        {render_consensus_team_table(a_data)}
+    <div class="match-teams-columns">
+        <!-- Colonna Sinistra: Formazione Casa -->
+        <div class="team-duels-column team-home">
+            <div class="team-column-header home-header">
+                <div class="team-col-title-wrap">
+                    <span class="team-col-icon">🏠</span>
+                    <a href="/probabili-formazioni/{h_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(h_team)}">{clean_html(h_team)}</a>
+                    <span class="team-col-badge">CASA</span>
+                </div>
+                <span class="team-col-count">{clean_html(h_data.get('formation', ''))}</span>
+            </div>
+            {render_consensus_team_table(h_data)}
+        </div>
+
+        <!-- Colonna Destra: Formazione Fuori Casa -->
+        <div class="team-duels-column team-away">
+            <div class="team-column-header away-header">
+                <div class="team-col-title-wrap">
+                    <span class="team-col-icon">✈️</span>
+                    <a href="/probabili-formazioni/{a_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(a_team)}">{clean_html(a_team)}</a>
+                    <span class="team-col-badge">TRASFERTA</span>
+                </div>
+                <span class="team-col-count">{clean_html(a_data.get('formation', ''))}</span>
+            </div>
+            {render_consensus_team_table(a_data)}
+        </div>
     </div>
     """
 
@@ -3002,21 +3047,23 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
                 {table_html}
             </div>
 
-            <!-- Pannelli Inferiori: Piazzati & Infermeria -->
-            <div class="match-bottom-grid">
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🎯 Piazzati &amp; Tiratori Ufficiali</div>
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:2px;">🏠 {clean_html(h_team)}</div>
-                    {render_setpieces(h_data)}
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:6px;">✈️ {clean_html(a_team)}</div>
-                    {render_setpieces(a_data)}
+            <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
+            <div class="match-teams-columns match-bottom-grid">
+                <div class="team-duels-column team-home">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori Ufficiali — 🏠 {clean_html(h_team)}</div>
+                        {render_setpieces(h_data)}
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Tempi di Recupero — 🏠 {clean_html(h_team)}</div>
+                        {render_injuries(h_data)}
+                    </div>
                 </div>
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🩺 Infermeria &amp; Tempi di Recupero</div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:2px;">🏠 {clean_html(h_team)}</div>
-                    {render_injuries(h_data)}
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:6px;">✈️ {clean_html(a_team)}</div>
-                    {render_injuries(a_data)}
+                <div class="team-duels-column team-away">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori Ufficiali — ✈️ {clean_html(a_team)}</div>
+                        {render_setpieces(a_data)}
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Tempi di Recupero — ✈️ {clean_html(a_team)}</div>
+                        {render_injuries(a_data)}
+                    </div>
                 </div>
             </div>
 

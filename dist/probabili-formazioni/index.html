@@ -765,7 +765,7 @@ html, body {
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: #0f1217;
-    margin-bottom: 18px;
+    margin-bottom: 0px;
 }
 .consensus-table {
     width: 100%;
@@ -869,10 +869,7 @@ html, body {
 
 /* Match Bottom Panels: Piazzati & Infermeria */
 .match-bottom-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 16px;
-    margin-top: 20px;
+    margin-top: 16px;
 }
 .subpanel-card {
     background: rgba(11, 15, 23, 0.85);
@@ -3072,8 +3069,18 @@ html, body {
             <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
                 
-        <div style="display:flex;flex-direction:column;gap:16px;">
-            
+        <div class="match-teams-columns">
+            <!-- Colonna Sinistra: Formazione Casa -->
+            <div class="team-duels-column team-home">
+                <div class="team-column-header home-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">🏠</span>
+                        <a href="/probabili-formazioni/frosinone/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Frosinone">Frosinone</a>
+                        <span class="team-col-badge">CASA</span>
+                    </div>
+                    <span class="team-col-count">4-2-3-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -3424,7 +3431,19 @@ html, body {
         </table>
     </div>
     
-            
+            </div>
+
+            <!-- Colonna Destra: Formazione Fuori Casa -->
+            <div class="team-duels-column team-away">
+                <div class="team-column-header away-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">✈️</span>
+                        <a href="/probabili-formazioni/sassuolo/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Sassuolo">Sassuolo</a>
+                        <span class="team-col-badge">TRASFERTA</span>
+                    </div>
+                    <span class="team-col-count">4-3-3</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -3764,35 +3783,25 @@ html, body {
         </table>
     </div>
     
+            </div>
         </div>
         
             </div>
 
-            <!-- Pannelli Inferiori: Piazzati & Infermeria -->
-            <div class="match-bottom-grid">
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🎯 Piazzati &amp; Tiratori</div>
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:2px;">🏠 Frosinone</div>
-                    
+            <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
+            <div class="match-teams-columns match-bottom-grid">
+                <div class="team-duels-column team-home">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — 🏠 Frosinone</div>
+                        
             <div class="takers-list-flow">
                 <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Calò, Raimondo, Kvernadze</span></div>
                 <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Calò, Kvernadze, Schmid</span></div>
                 <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Calò, Schmid, Kvernadze</span></div>
             </div>
             
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:6px;">✈️ Sassuolo</div>
-                    
-            <div class="takers-list-flow">
-                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Berardi, Laurientè, Thorstvedt</span></div>
-                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Berardi, Laurientè, Adzic</span></div>
-                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Berardi, Laurientè, Doig</span></div>
-            </div>
-            
-                </div>
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🩺 Infermeria del Match (Live)</div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:2px;">🏠 Frosinone</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — 🏠 Frosinone</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Birligea</span>
                     <span class="inj-meta">Lesione del vasto interme &bull; <b class="inj-return-date">31/10/2026</b></span>
@@ -3808,8 +3817,20 @@ html, body {
                     <span class="inj-meta">Lesione al flessore della &bull; <b class="inj-return-date">22/11/2026</b></span>
                 </div>
                 </div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:6px;">✈️ Sassuolo</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                    </div>
+                </div>
+                <div class="team-duels-column team-away">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — ✈️ Sassuolo</div>
+                        
+            <div class="takers-list-flow">
+                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Berardi, Laurientè, Thorstvedt</span></div>
+                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Berardi, Laurientè, Adzic</span></div>
+                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Berardi, Laurientè, Doig</span></div>
+            </div>
+            
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — ✈️ Sassuolo</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Boloca</span>
                     <span class="inj-meta">Intervento in artroscopia &bull; <b class="inj-return-date">30/10/2026</b></span>
@@ -3830,6 +3851,7 @@ html, body {
                     <span class="inj-meta">Intervento di ricostruzio &bull; <b class="inj-return-date">30/10/2026</b></span>
                 </div>
                 </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -4321,8 +4343,18 @@ html, body {
             <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
                 
-        <div style="display:flex;flex-direction:column;gap:16px;">
-            
+        <div class="match-teams-columns">
+            <!-- Colonna Sinistra: Formazione Casa -->
+            <div class="team-duels-column team-home">
+                <div class="team-column-header home-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">🏠</span>
+                        <a href="/probabili-formazioni/venezia/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Venezia">Venezia</a>
+                        <span class="team-col-badge">CASA</span>
+                    </div>
+                    <span class="team-col-count">3-5-2</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -4684,7 +4716,19 @@ html, body {
         </table>
     </div>
     
-            
+            </div>
+
+            <!-- Colonna Destra: Formazione Fuori Casa -->
+            <div class="team-duels-column team-away">
+                <div class="team-column-header away-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">✈️</span>
+                        <a href="/probabili-formazioni/napoli/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Napoli">Napoli</a>
+                        <span class="team-col-badge">TRASFERTA</span>
+                    </div>
+                    <span class="team-col-count">3-4-2-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -4991,35 +5035,25 @@ html, body {
         </table>
     </div>
     
+            </div>
         </div>
         
             </div>
 
-            <!-- Pannelli Inferiori: Piazzati & Infermeria -->
-            <div class="match-bottom-grid">
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🎯 Piazzati &amp; Tiratori</div>
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:2px;">🏠 Venezia</div>
-                    
+            <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
+            <div class="match-teams-columns match-bottom-grid">
+                <div class="team-duels-column team-home">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — 🏠 Venezia</div>
+                        
             <div class="takers-list-flow">
                 <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Adams A., Yeboah J., Basic</span></div>
                 <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Basic, Busio, Mazzocchi</span></div>
                 <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Basic, Busio, Haps</span></div>
             </div>
             
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:6px;">✈️ Napoli</div>
-                    
-            <div class="takers-list-flow">
-                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">De Bruyne, Hojlund, Politano</span></div>
-                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">De Bruyne, Politano, Di Lorenzo</span></div>
-                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">De Bruyne, Politano, Spinazzola</span></div>
-            </div>
-            
-                </div>
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🩺 Infermeria del Match (Live)</div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:2px;">🏠 Venezia</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — 🏠 Venezia</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Adorante</span>
                     <span class="inj-meta">Operato per un problema a &bull; <b class="inj-return-date">17/10/2026</b></span>
@@ -5040,8 +5074,20 @@ html, body {
                     <span class="inj-meta">Infortunio alle anche &bull; <b class="inj-return-date">17/10/2026</b></span>
                 </div>
                 </div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:6px;">✈️ Napoli</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                    </div>
+                </div>
+                <div class="team-duels-column team-away">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — ✈️ Napoli</div>
+                        
+            <div class="takers-list-flow">
+                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">De Bruyne, Hojlund, Politano</span></div>
+                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">De Bruyne, Politano, Di Lorenzo</span></div>
+                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">De Bruyne, Politano, Spinazzola</span></div>
+            </div>
+            
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — ✈️ Napoli</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Buongiorno</span>
                     <span class="inj-meta">Intervento di riparazione &bull; <b class="inj-return-date">31/10/2026</b></span>
@@ -5057,6 +5103,7 @@ html, body {
                     <span class="inj-meta">Lesione distrattiva di me &bull; <b class="inj-return-date">08/11/2026</b></span>
                 </div>
                 </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -5665,8 +5712,18 @@ html, body {
             <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
                 
-        <div style="display:flex;flex-direction:column;gap:16px;">
-            
+        <div class="match-teams-columns">
+            <!-- Colonna Sinistra: Formazione Casa -->
+            <div class="team-duels-column team-home">
+                <div class="team-column-header home-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">🏠</span>
+                        <a href="/probabili-formazioni/bologna/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Bologna">Bologna</a>
+                        <span class="team-col-badge">CASA</span>
+                    </div>
+                    <span class="team-col-count">3-4-2-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -5984,7 +6041,19 @@ html, body {
         </table>
     </div>
     
-            
+            </div>
+
+            <!-- Colonna Destra: Formazione Fuori Casa -->
+            <div class="team-duels-column team-away">
+                <div class="team-column-header away-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">✈️</span>
+                        <a href="/probabili-formazioni/inter/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Inter">Inter</a>
+                        <span class="team-col-badge">TRASFERTA</span>
+                    </div>
+                    <span class="team-col-count">3-5-2</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -6269,35 +6338,25 @@ html, body {
         </table>
     </div>
     
+            </div>
         </div>
         
             </div>
 
-            <!-- Pannelli Inferiori: Piazzati & Infermeria -->
-            <div class="match-bottom-grid">
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🎯 Piazzati &amp; Tiratori</div>
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:2px;">🏠 Bologna</div>
-                    
+            <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
+            <div class="match-teams-columns match-bottom-grid">
+                <div class="team-duels-column team-home">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — 🏠 Bologna</div>
+                        
             <div class="takers-list-flow">
                 <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Orsolini, Dovbyk, Piccoli</span></div>
                 <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Orsolini, Miranda J., Bernardeschi</span></div>
                 <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Orsolini, Miranda J., Cambiaghi</span></div>
             </div>
             
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:6px;">✈️ Inter</div>
-                    
-            <div class="takers-list-flow">
-                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Calhanoglu, Martinez L., Thuram</span></div>
-                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Calhanoglu, Dimarco, Zielinski</span></div>
-                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Calhanoglu, Dimarco, Barella</span></div>
-            </div>
-            
-                </div>
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🩺 Infermeria del Match (Live)</div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:2px;">🏠 Bologna</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — 🏠 Bologna</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Holm</span>
                     <span class="inj-meta">Lesione al bicipite femor &bull; <b class="inj-return-date">29/01/2027</b></span>
@@ -6318,8 +6377,20 @@ html, body {
                     <span class="inj-meta">Lesione di primo grado al &bull; <b class="inj-return-date">07/11/2026</b></span>
                 </div>
                 </div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:6px;">✈️ Inter</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                    </div>
+                </div>
+                <div class="team-duels-column team-away">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — ✈️ Inter</div>
+                        
+            <div class="takers-list-flow">
+                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Calhanoglu, Martinez L., Thuram</span></div>
+                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Calhanoglu, Dimarco, Zielinski</span></div>
+                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Calhanoglu, Dimarco, Barella</span></div>
+            </div>
+            
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — ✈️ Inter</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Jones C.</span>
                     <span class="inj-meta">Risentimento muscolare al &bull; <b class="inj-return-date">29/10/2026</b></span>
@@ -6340,6 +6411,7 @@ html, body {
                     <span class="inj-meta">Risentimento agli addutto &bull; <b class="inj-return-date">01/11/2026</b></span>
                 </div>
                 </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -6792,8 +6864,18 @@ html, body {
             <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
                 
-        <div style="display:flex;flex-direction:column;gap:16px;">
-            
+        <div class="match-teams-columns">
+            <!-- Colonna Sinistra: Formazione Casa -->
+            <div class="team-duels-column team-home">
+                <div class="team-column-header home-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">🏠</span>
+                        <a href="/probabili-formazioni/roma/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Roma">Roma</a>
+                        <span class="team-col-badge">CASA</span>
+                    </div>
+                    <span class="team-col-count">3-4-2-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -7067,7 +7149,19 @@ html, body {
         </table>
     </div>
     
-            
+            </div>
+
+            <!-- Colonna Destra: Formazione Fuori Casa -->
+            <div class="team-duels-column team-away">
+                <div class="team-column-header away-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">✈️</span>
+                        <a href="/probabili-formazioni/genoa/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Genoa">Genoa</a>
+                        <span class="team-col-badge">TRASFERTA</span>
+                    </div>
+                    <span class="team-col-count">3-4-2-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -7385,35 +7479,25 @@ html, body {
         </table>
     </div>
     
+            </div>
         </div>
         
             </div>
 
-            <!-- Pannelli Inferiori: Piazzati & Infermeria -->
-            <div class="match-bottom-grid">
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🎯 Piazzati &amp; Tiratori</div>
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:2px;">🏠 Roma</div>
-                    
+            <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
+            <div class="match-teams-columns match-bottom-grid">
+                <div class="team-duels-column team-home">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — 🏠 Roma</div>
+                        
             <div class="takers-list-flow">
                 <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Dybala, Malen, Soulè</span></div>
                 <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Dybala, Soulè, Mora</span></div>
                 <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Dybala, Soulè, Molina N.</span></div>
             </div>
             
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:6px;">✈️ Genoa</div>
-                    
-            <div class="takers-list-flow">
-                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Baldanzi, Vitinha O., Colombo</span></div>
-                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Baldanzi, Messias, Traorè Hj.</span></div>
-                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Baldanzi, Messias, Drameh</span></div>
-            </div>
-            
-                </div>
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🩺 Infermeria del Match (Live)</div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:2px;">🏠 Roma</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — 🏠 Roma</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Cristante</span>
                     <span class="inj-meta">Lombalgia &bull; <b class="inj-return-date">26/10/2026</b></span>
@@ -7429,8 +7513,20 @@ html, body {
                     <span class="inj-meta">Rottura del legamento cro &bull; <b class="inj-return-date">02/05/2027</b></span>
                 </div>
                 </div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:6px;">✈️ Genoa</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                    </div>
+                </div>
+                <div class="team-duels-column team-away">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — ✈️ Genoa</div>
+                        
+            <div class="takers-list-flow">
+                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Baldanzi, Vitinha O., Colombo</span></div>
+                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Baldanzi, Messias, Traorè Hj.</span></div>
+                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Baldanzi, Messias, Drameh</span></div>
+            </div>
+            
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — ✈️ Genoa</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Amorim</span>
                     <span class="inj-meta">Fastidio alla caviglia (c &bull; <b class="inj-return-date">16/10/2026</b></span>
@@ -7461,6 +7557,7 @@ html, body {
                     <span class="inj-meta">Rottura del legamento cro &bull; <b class="inj-return-date">25/10/2026</b></span>
                 </div>
                 </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -7913,8 +8010,18 @@ html, body {
             <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
                 
-        <div style="display:flex;flex-direction:column;gap:16px;">
-            
+        <div class="match-teams-columns">
+            <!-- Colonna Sinistra: Formazione Casa -->
+            <div class="team-duels-column team-home">
+                <div class="team-column-header home-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">🏠</span>
+                        <a href="/probabili-formazioni/udinese/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Udinese">Udinese</a>
+                        <span class="team-col-badge">CASA</span>
+                    </div>
+                    <span class="team-col-count">3-4-2-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -8232,7 +8339,19 @@ html, body {
         </table>
     </div>
     
-            
+            </div>
+
+            <!-- Colonna Destra: Formazione Fuori Casa -->
+            <div class="team-duels-column team-away">
+                <div class="team-column-header away-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">✈️</span>
+                        <a href="/probabili-formazioni/lecce/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Lecce">Lecce</a>
+                        <span class="team-col-badge">TRASFERTA</span>
+                    </div>
+                    <span class="team-col-count">4-3-3</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -8550,35 +8669,25 @@ html, body {
         </table>
     </div>
     
+            </div>
         </div>
         
             </div>
 
-            <!-- Pannelli Inferiori: Piazzati & Infermeria -->
-            <div class="match-bottom-grid">
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🎯 Piazzati &amp; Tiratori</div>
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:2px;">🏠 Udinese</div>
-                    
+            <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
+            <div class="match-teams-columns match-bottom-grid">
+                <div class="team-duels-column team-home">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — 🏠 Udinese</div>
+                        
             <div class="takers-list-flow">
                 <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Davis K., Zaniolo, Ekkelenkamp</span></div>
                 <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Alaba, Zaniolo, Ekkelenkamp</span></div>
                 <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Ekkelenkamp, Zaniolo, Kamara H.</span></div>
             </div>
             
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:6px;">✈️ Lecce</div>
-                    
-            <div class="takers-list-flow">
-                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Stulic, Geubbels, Pierotti</span></div>
-                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Berisha M., Gorter, Gallo</span></div>
-                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Gallo, Pierotti, Berisha M.</span></div>
-            </div>
-            
-                </div>
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🩺 Infermeria del Match (Live)</div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:2px;">🏠 Udinese</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — 🏠 Udinese</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Gueye</span>
                     <span class="inj-meta">Distorsione alla caviglia &bull; <b class="inj-return-date">05/01/2027</b></span>
@@ -8599,8 +8708,21 @@ html, body {
                     <span class="inj-meta">Intervento per la lesione &bull; <b class="inj-return-date">31/10/2026</b></span>
                 </div>
                 </div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:6px;">✈️ Lecce</div>
-                    <div style="color:#4ade80;font-size:11.5px;font-weight:700;">🟢 Tutta la rosa a disposizione</div>
+                    </div>
+                </div>
+                <div class="team-duels-column team-away">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — ✈️ Lecce</div>
+                        
+            <div class="takers-list-flow">
+                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Stulic, Geubbels, Pierotti</span></div>
+                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Berisha M., Gorter, Gallo</span></div>
+                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Gallo, Pierotti, Berisha M.</span></div>
+            </div>
+            
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — ✈️ Lecce</div>
+                        <div style="color:#4ade80;font-size:11.5px;font-weight:700;">🟢 Tutta la rosa a disposizione</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -9092,8 +9214,18 @@ html, body {
             <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
                 
-        <div style="display:flex;flex-direction:column;gap:16px;">
-            
+        <div class="match-teams-columns">
+            <!-- Colonna Sinistra: Formazione Casa -->
+            <div class="team-duels-column team-home">
+                <div class="team-column-header home-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">🏠</span>
+                        <a href="/probabili-formazioni/fiorentina/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Fiorentina">Fiorentina</a>
+                        <span class="team-col-badge">CASA</span>
+                    </div>
+                    <span class="team-col-count">4-3-2-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -9367,7 +9499,19 @@ html, body {
         </table>
     </div>
     
-            
+            </div>
+
+            <!-- Colonna Destra: Formazione Fuori Casa -->
+            <div class="team-duels-column team-away">
+                <div class="team-column-header away-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">✈️</span>
+                        <a href="/probabili-formazioni/como/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Como">Como</a>
+                        <span class="team-col-badge">TRASFERTA</span>
+                    </div>
+                    <span class="team-col-count">4-2-3-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -9674,47 +9818,50 @@ html, body {
         </table>
     </div>
     
+            </div>
         </div>
         
             </div>
 
-            <!-- Pannelli Inferiori: Piazzati & Infermeria -->
-            <div class="match-bottom-grid">
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🎯 Piazzati &amp; Tiratori</div>
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:2px;">🏠 Fiorentina</div>
-                    
+            <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
+            <div class="match-teams-columns match-bottom-grid">
+                <div class="team-duels-column team-home">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — 🏠 Fiorentina</div>
+                        
             <div class="takers-list-flow">
                 <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Mastantuono, Pellegrino M., Beto</span></div>
                 <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Mastantuono, Fagioli, Atta</span></div>
                 <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Mastantuono, Goncalves P., Atta</span></div>
             </div>
             
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:6px;">✈️ Como</div>
-                    
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — 🏠 Fiorentina</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
+                <div class="injury-mini-item">
+                    <span class="inj-name">🩹 Parisi</span>
+                    <span class="inj-meta">Intervento di ricostruzio &bull; <b class="inj-return-date">01/11/2026</b></span>
+                </div>
+                </div>
+                    </div>
+                </div>
+                <div class="team-duels-column team-away">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — ✈️ Como</div>
+                        
             <div class="takers-list-flow">
                 <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Paz N., Kean, Douvikas</span></div>
                 <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Paz N., Baturina, Da Cunha</span></div>
                 <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Paz N., Baturina, Couto</span></div>
             </div>
             
-                </div>
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🩺 Infermeria del Match (Live)</div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:2px;">🏠 Fiorentina</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
-                <div class="injury-mini-item">
-                    <span class="inj-name">🩹 Parisi</span>
-                    <span class="inj-meta">Intervento di ricostruzio &bull; <b class="inj-return-date">01/11/2026</b></span>
-                </div>
-                </div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:6px;">✈️ Como</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — ✈️ Como</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Kean</span>
                     <span class="inj-meta">Problema alla tibia &bull; <b class="inj-return-date">20/10/2026</b></span>
                 </div>
                 </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -10284,8 +10431,18 @@ html, body {
             <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
                 
-        <div style="display:flex;flex-direction:column;gap:16px;">
-            
+        <div class="match-teams-columns">
+            <!-- Colonna Sinistra: Formazione Casa -->
+            <div class="team-duels-column team-home">
+                <div class="team-column-header home-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">🏠</span>
+                        <a href="/probabili-formazioni/milan/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Milan">Milan</a>
+                        <span class="team-col-badge">CASA</span>
+                    </div>
+                    <span class="team-col-count">4-4-1-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -10592,7 +10749,19 @@ html, body {
         </table>
     </div>
     
-            
+            </div>
+
+            <!-- Colonna Destra: Formazione Fuori Casa -->
+            <div class="team-duels-column team-away">
+                <div class="team-column-header away-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">✈️</span>
+                        <a href="/probabili-formazioni/atalanta/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Atalanta">Atalanta</a>
+                        <span class="team-col-badge">TRASFERTA</span>
+                    </div>
+                    <span class="team-col-count">4-2-3-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -10877,42 +11046,44 @@ html, body {
         </table>
     </div>
     
+            </div>
         </div>
         
             </div>
 
-            <!-- Pannelli Inferiori: Piazzati & Infermeria -->
-            <div class="match-bottom-grid">
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🎯 Piazzati &amp; Tiratori</div>
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:2px;">🏠 Milan</div>
-                    
+            <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
+            <div class="match-teams-columns match-bottom-grid">
+                <div class="team-duels-column team-home">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — 🏠 Milan</div>
+                        
             <div class="takers-list-flow">
                 <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Pulisic, Ramos G., Modric</span></div>
                 <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Modric, Pulisic, Rabiot</span></div>
                 <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Modric, Pulisic, Chukwueze</span></div>
             </div>
             
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:6px;">✈️ Atalanta</div>
-                    
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — 🏠 Milan</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
+                <div class="injury-mini-item">
+                    <span class="inj-name">🩹 Saelemaekers</span>
+                    <span class="inj-meta">Distorsione alla caviglia &bull; <b class="inj-return-date">08/02/2027</b></span>
+                </div>
+                </div>
+                    </div>
+                </div>
+                <div class="team-duels-column team-away">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — ✈️ Atalanta</div>
+                        
             <div class="takers-list-flow">
                 <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Kessiè, Scamacca, De Ketelaere</span></div>
                 <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Gaetano, Samardzic, Zalewski</span></div>
                 <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Gaetano, Zalewski, De Ketelaere</span></div>
             </div>
             
-                </div>
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🩺 Infermeria del Match (Live)</div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:2px;">🏠 Milan</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
-                <div class="injury-mini-item">
-                    <span class="inj-name">🩹 Saelemaekers</span>
-                    <span class="inj-meta">Distorsione alla caviglia &bull; <b class="inj-return-date">08/02/2027</b></span>
-                </div>
-                </div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:6px;">✈️ Atalanta</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — ✈️ Atalanta</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Hien</span>
                     <span class="inj-meta">Lesione del tendine del s &bull; <b class="inj-return-date">09/11/2026</b></span>
@@ -10933,6 +11104,7 @@ html, body {
                     <span class="inj-meta">Distrazione di basso grad &bull; <b class="inj-return-date">25/10/2026</b></span>
                 </div>
                 </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -11463,8 +11635,18 @@ html, body {
             <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
                 
-        <div style="display:flex;flex-direction:column;gap:16px;">
-            
+        <div class="match-teams-columns">
+            <!-- Colonna Sinistra: Formazione Casa -->
+            <div class="team-duels-column team-home">
+                <div class="team-column-header home-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">🏠</span>
+                        <a href="/probabili-formazioni/juventus/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Juventus">Juventus</a>
+                        <span class="team-col-badge">CASA</span>
+                    </div>
+                    <span class="team-col-count">4-2-3-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -11793,7 +11975,19 @@ html, body {
         </table>
     </div>
     
-            
+            </div>
+
+            <!-- Colonna Destra: Formazione Fuori Casa -->
+            <div class="team-duels-column team-away">
+                <div class="team-column-header away-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">✈️</span>
+                        <a href="/probabili-formazioni/lazio/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Lazio">Lazio</a>
+                        <span class="team-col-badge">TRASFERTA</span>
+                    </div>
+                    <span class="team-col-count">4-3-3</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -12111,35 +12305,25 @@ html, body {
         </table>
     </div>
     
+            </div>
         </div>
         
             </div>
 
-            <!-- Pannelli Inferiori: Piazzati & Infermeria -->
-            <div class="match-bottom-grid">
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🎯 Piazzati &amp; Tiratori</div>
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:2px;">🏠 Juventus</div>
-                    
+            <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
+            <div class="match-teams-columns match-bottom-grid">
+                <div class="team-duels-column team-home">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — 🏠 Juventus</div>
+                        
             <div class="takers-list-flow">
                 <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Kolo Muani, Douglas Luiz, Conceicao</span></div>
                 <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Douglas Luiz, Conceicao, Locatelli</span></div>
                 <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Conceicao, Douglas Luiz, Cambiaso</span></div>
             </div>
             
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:6px;">✈️ Lazio</div>
-                    
-            <div class="takers-list-flow">
-                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Zaccagni, Gudmundsson A., Pinamonti</span></div>
-                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Zaccagni, Gudmundsson A., Rovella</span></div>
-                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Zaccagni, Gudmundsson A., Tavares N.</span></div>
-            </div>
-            
-                </div>
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🩺 Infermeria del Match (Live)</div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:2px;">🏠 Juventus</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — 🏠 Juventus</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Ekhator</span>
                     <span class="inj-meta">Lesione di basso grado de &bull; <b class="inj-return-date">02/11/2026</b></span>
@@ -12165,13 +12349,26 @@ html, body {
                     <span class="inj-meta">Infortunio al piede sinis &bull; <b class="inj-return-date">26/11/2026</b></span>
                 </div>
                 </div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:6px;">✈️ Lazio</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                    </div>
+                </div>
+                <div class="team-duels-column team-away">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — ✈️ Lazio</div>
+                        
+            <div class="takers-list-flow">
+                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Zaccagni, Gudmundsson A., Pinamonti</span></div>
+                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Zaccagni, Gudmundsson A., Rovella</span></div>
+                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Zaccagni, Gudmundsson A., Tavares N.</span></div>
+            </div>
+            
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — ✈️ Lazio</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Cataldi</span>
                     <span class="inj-meta">Infiammazione dell&#39;os &bull; <b class="inj-return-date">22/10/2026</b></span>
                 </div>
                 </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -12585,8 +12782,18 @@ html, body {
             <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
                 
-        <div style="display:flex;flex-direction:column;gap:16px;">
-            
+        <div class="match-teams-columns">
+            <!-- Colonna Sinistra: Formazione Casa -->
+            <div class="team-duels-column team-home">
+                <div class="team-column-header home-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">🏠</span>
+                        <a href="/probabili-formazioni/monza/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Monza">Monza</a>
+                        <span class="team-col-badge">CASA</span>
+                    </div>
+                    <span class="team-col-count">3-4-2-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -12926,7 +13133,19 @@ html, body {
         </table>
     </div>
     
-            
+            </div>
+
+            <!-- Colonna Destra: Formazione Fuori Casa -->
+            <div class="team-duels-column team-away">
+                <div class="team-column-header away-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">✈️</span>
+                        <a href="/probabili-formazioni/cagliari/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Cagliari">Cagliari</a>
+                        <span class="team-col-badge">TRASFERTA</span>
+                    </div>
+                    <span class="team-col-count">4-3-2-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -13244,42 +13463,44 @@ html, body {
         </table>
     </div>
     
+            </div>
         </div>
         
             </div>
 
-            <!-- Pannelli Inferiori: Piazzati & Infermeria -->
-            <div class="match-bottom-grid">
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🎯 Piazzati &amp; Tiratori</div>
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:2px;">🏠 Monza</div>
-                    
+            <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
+            <div class="match-teams-columns match-bottom-grid">
+                <div class="team-duels-column team-home">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — 🏠 Monza</div>
+                        
             <div class="takers-list-flow">
                 <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Colpani, Varela G., Cutrone</span></div>
                 <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Colpani, Birindelli, Folorunsho</span></div>
                 <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Colpani, Birindelli, Mangas</span></div>
             </div>
             
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:6px;">✈️ Cagliari</div>
-                    
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — 🏠 Monza</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
+                <div class="injury-mini-item">
+                    <span class="inj-name">🩹 Pessina</span>
+                    <span class="inj-meta">Operato per la lussazione &bull; <b class="inj-return-date">28/10/2026</b></span>
+                </div>
+                </div>
+                    </div>
+                </div>
+                <div class="team-duels-column team-away">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — ✈️ Cagliari</div>
+                        
             <div class="takers-list-flow">
                 <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Maldini, Winks, Kevin Carlos</span></div>
                 <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Maldini, Winks, Fazzini</span></div>
                 <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Maldini, Fazzini, Sugawara</span></div>
             </div>
             
-                </div>
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🩺 Infermeria del Match (Live)</div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:2px;">🏠 Monza</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
-                <div class="injury-mini-item">
-                    <span class="inj-name">🩹 Pessina</span>
-                    <span class="inj-meta">Operato per la lussazione &bull; <b class="inj-return-date">28/10/2026</b></span>
-                </div>
-                </div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:6px;">✈️ Cagliari</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — ✈️ Cagliari</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Felici</span>
                     <span class="inj-meta">Nuovo infortunio al ginoc &bull; <b class="inj-return-date">09/02/2027</b></span>
@@ -13290,6 +13511,7 @@ html, body {
                     <span class="inj-meta">Intervento di ricostruzio &bull; <b class="inj-return-date">30/10/2026</b></span>
                 </div>
                 </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -13703,8 +13925,18 @@ html, body {
             <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
                 
-        <div style="display:flex;flex-direction:column;gap:16px;">
-            
+        <div class="match-teams-columns">
+            <!-- Colonna Sinistra: Formazione Casa -->
+            <div class="team-duels-column team-home">
+                <div class="team-column-header home-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">🏠</span>
+                        <a href="/probabili-formazioni/parma/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Parma">Parma</a>
+                        <span class="team-col-badge">CASA</span>
+                    </div>
+                    <span class="team-col-count">3-5-2</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -14033,7 +14265,19 @@ html, body {
         </table>
     </div>
     
-            
+            </div>
+
+            <!-- Colonna Destra: Formazione Fuori Casa -->
+            <div class="team-duels-column team-away">
+                <div class="team-column-header away-header">
+                    <div class="team-col-title-wrap">
+                        <span class="team-col-icon">✈️</span>
+                        <a href="/probabili-formazioni/torino/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Torino">Torino</a>
+                        <span class="team-col-badge">TRASFERTA</span>
+                    </div>
+                    <span class="team-col-count">3-4-2-1</span>
+                </div>
+                
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -14340,35 +14584,25 @@ html, body {
         </table>
     </div>
     
+            </div>
         </div>
         
             </div>
 
-            <!-- Pannelli Inferiori: Piazzati & Infermeria -->
-            <div class="match-bottom-grid">
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🎯 Piazzati &amp; Tiratori</div>
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:2px;">🏠 Parma</div>
-                    
+            <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
+            <div class="match-teams-columns match-bottom-grid">
+                <div class="team-duels-column team-home">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — 🏠 Parma</div>
+                        
             <div class="takers-list-flow">
                 <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Bernabè, Romero D., Tourè E.</span></div>
                 <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Bernabè, Valeri, Fabbian</span></div>
                 <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Bernabè, Valeri, Delprato</span></div>
             </div>
             
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:6px;">✈️ Torino</div>
-                    
-            <div class="takers-list-flow">
-                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Simeone, Mandragora, Vlasic</span></div>
-                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Mandragora, Vlasic, Cacciamani</span></div>
-                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Vlasic, Mandragora, Cacciamani</span></div>
-            </div>
-            
-                </div>
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🩺 Infermeria del Match (Live)</div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:2px;">🏠 Parma</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — 🏠 Parma</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 Almqvist</span>
                     <span class="inj-meta">Lesione di basso grado de &bull; <b class="inj-return-date">30/10/2026</b></span>
@@ -14379,13 +14613,26 @@ html, body {
                     <span class="inj-meta">Lesione di medio grado al &bull; <b class="inj-return-date">02/11/2026</b></span>
                 </div>
                 </div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:6px;">✈️ Torino</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                    </div>
+                </div>
+                <div class="team-duels-column team-away">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori — ✈️ Torino</div>
+                        
+            <div class="takers-list-flow">
+                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Simeone, Mandragora, Vlasic</span></div>
+                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Mandragora, Vlasic, Cacciamani</span></div>
+                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Vlasic, Mandragora, Cacciamani</span></div>
+            </div>
+            
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Indisponibili — ✈️ Torino</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
                 <div class="injury-mini-item">
                     <span class="inj-name">🩹 ISRAEL Franco</span>
                     <span class="inj-meta">Infortunio alla spalla &bull; <b class="inj-return-date">04/12/2026</b></span>
                 </div>
                 </div>
+                    </div>
                 </div>
             </div>
         </section>

@@ -765,7 +765,7 @@ html, body {
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: #0f1217;
-    margin-bottom: 18px;
+    margin-bottom: 0px;
 }
 .consensus-table {
     width: 100%;
@@ -869,10 +869,7 @@ html, body {
 
 /* Match Bottom Panels: Piazzati & Infermeria */
 .match-bottom-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 16px;
-    margin-top: 20px;
+    margin-top: 16px;
 }
 .subpanel-card {
     background: rgba(11, 15, 23, 0.85);
@@ -2368,8 +2365,18 @@ html, body {
             <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
                 
-    <div style="display:flex;flex-direction:column;gap:16px;">
-        
+    <div class="match-teams-columns">
+        <!-- Colonna Sinistra: Formazione Casa -->
+        <div class="team-duels-column team-home">
+            <div class="team-column-header home-header">
+                <div class="team-col-title-wrap">
+                    <span class="team-col-icon">🏠</span>
+                    <a href="/probabili-formazioni/parma/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Parma">Parma</a>
+                    <span class="team-col-badge">CASA</span>
+                </div>
+                <span class="team-col-count">3-5-2</span>
+            </div>
+            
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -2698,7 +2705,19 @@ html, body {
         </table>
     </div>
     
-        
+        </div>
+
+        <!-- Colonna Destra: Formazione Fuori Casa -->
+        <div class="team-duels-column team-away">
+            <div class="team-column-header away-header">
+                <div class="team-col-title-wrap">
+                    <span class="team-col-icon">✈️</span>
+                    <a href="/probabili-formazioni/torino/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Torino">Torino</a>
+                    <span class="team-col-badge">TRASFERTA</span>
+                </div>
+                <span class="team-col-count">3-4-2-1</span>
+            </div>
+            
     <div class="consensus-table-wrapper">
         <table class="consensus-table">
             <thead>
@@ -3005,35 +3024,25 @@ html, body {
         </table>
     </div>
     
+        </div>
     </div>
     
             </div>
 
-            <!-- Pannelli Inferiori: Piazzati & Infermeria -->
-            <div class="match-bottom-grid">
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🎯 Piazzati &amp; Tiratori Ufficiali</div>
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:2px;">🏠 Parma</div>
-                    
+            <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
+            <div class="match-teams-columns match-bottom-grid">
+                <div class="team-duels-column team-home">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori Ufficiali — 🏠 Parma</div>
+                        
         <div class="takers-list-flow">
             <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Bernabè, Romero D., Tourè E.</span></div>
             <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Bernabè, Valeri, Fabbian</span></div>
             <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Bernabè, Valeri, Delprato</span></div>
         </div>
         
-                    <div style="font-size:11px;font-weight:800;color:#38bdf8;margin-top:6px;">✈️ Torino</div>
-                    
-        <div class="takers-list-flow">
-            <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Simeone, Mandragora, Vlasic</span></div>
-            <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Mandragora, Vlasic, Cacciamani</span></div>
-            <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Vlasic, Mandragora, Cacciamani</span></div>
-        </div>
-        
-                </div>
-                <div class="subpanel-card">
-                    <div class="subpanel-title">🩺 Infermeria &amp; Tempi di Recupero</div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:2px;">🏠 Parma</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Tempi di Recupero — 🏠 Parma</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
             <div class="injury-mini-item">
                 <span class="inj-name">🩹 Almqvist</span>
                 <span class="inj-meta">Lesione di basso grado de &bull; <b class="inj-return-date">30/10/2026</b></span>
@@ -3044,13 +3053,26 @@ html, body {
                 <span class="inj-meta">Lesione di medio grado al &bull; <b class="inj-return-date">02/11/2026</b></span>
             </div>
             </div>
-                    <div style="font-size:11px;font-weight:800;color:#f87171;margin-top:6px;">✈️ Torino</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;">
+                    </div>
+                </div>
+                <div class="team-duels-column team-away">
+                    <div class="subpanel-card">
+                        <div class="subpanel-title">🎯 Piazzati &amp; Tiratori Ufficiali — ✈️ Torino</div>
+                        
+        <div class="takers-list-flow">
+            <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Simeone, Mandragora, Vlasic</span></div>
+            <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Mandragora, Vlasic, Cacciamani</span></div>
+            <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Vlasic, Mandragora, Cacciamani</span></div>
+        </div>
+        
+                        <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Tempi di Recupero — ✈️ Torino</div>
+                        <div style="display:flex;flex-direction:column;gap:5px;">
             <div class="injury-mini-item">
                 <span class="inj-name">🩹 ISRAEL Franco</span>
                 <span class="inj-meta">Infortunio alla spalla &bull; <b class="inj-return-date">04/12/2026</b></span>
             </div>
             </div>
+                    </div>
                 </div>
             </div>
 

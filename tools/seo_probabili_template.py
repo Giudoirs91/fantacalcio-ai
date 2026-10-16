@@ -13,6 +13,7 @@ Genera:
 import os
 import re
 import json
+import unicodedata
 from datetime import datetime
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,12 +31,19 @@ def clean_html(text):
 def slugify(text):
     if not text:
         return "calciatore"
-    clean = re.sub(r'[^a-zA-Z0-9]+', '-', str(text).strip()).lower().strip('-')
+    text = str(text).strip()
+    text = (text.replace('đ', 'dj').replace('Đ', 'dj')
+                .replace('ß', 'ss')
+                .replace('ø', 'o').replace('Ø', 'o')
+                .replace('ł', 'l').replace('Ł', 'l')
+                .replace('æ', 'ae').replace('Æ', 'ae'))
+    nfkd = unicodedata.normalize('NFKD', text)
+    ascii_text = ''.join([c for c in nfkd if not unicodedata.combining(c)])
+    clean = re.sub(r'[^a-zA-Z0-9]+', '-', ascii_text).lower().strip('-')
     return clean or "calciatore"
 
 def get_player_slug_from_name(name):
-    clean = re.sub(r'[^a-zA-Z0-9]+', '-', str(name).strip()).lower().strip('-')
-    return f"{clean}-2026"
+    return slugify(name)
 
 def render_probabili_css():
     return """

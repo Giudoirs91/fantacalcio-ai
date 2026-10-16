@@ -110,6 +110,16 @@
     "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
   },
   {
+    "player": "Kone B.",
+    "player_id": 5725,
+    "team": "Frosinone",
+    "motivo": "Lesione al flessore della coscia destra",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+  },
+  {
     "player": "Amorim",
     "player_id": 7341,
     "team": "Genoa",
@@ -166,6 +176,16 @@
     "motivo": "Risentimento muscolare all'adduttore",
     "rientro": "29/10/2026",
     "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+  },
+  {
+    "player": "Martinez L.",
+    "player_id": 2764,
+    "team": "Inter",
+    "motivo": "Risentimento muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)",
+    "rientro": "22/11/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
   },
@@ -240,16 +260,6 @@
     "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
   },
   {
-    "player": "Rovella",
-    "player_id": 4459,
-    "team": "Lazio",
-    "motivo": "Problema al polpaccio destro",
-    "rientro": "15/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-  },
-  {
     "player": "Saelemaekers",
     "player_id": 4892,
     "team": "Milan",
@@ -270,16 +280,6 @@
     "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
   },
   {
-    "player": "Zambo Anguissa",
-    "player_id": 4220,
-    "team": "Napoli",
-    "motivo": "Problema all'adduttore",
-    "rientro": "15/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-  },
-  {
     "player": "Buongiorno",
     "player_id": 2724,
     "team": "Napoli",
@@ -296,26 +296,6 @@
     "motivo": "Lesione muscolare (rientrato al Napoli dopo valutazione medica con la Nazionale U21)",
     "rientro": "30/11/2026",
     "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-  },
-  {
-    "player": "Olivera",
-    "player_id": 5840,
-    "team": "Napoli",
-    "motivo": "Lesione distrattiva del muscolo otturatore esterno destro",
-    "rientro": "05/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-  },
-  {
-    "player": "Santos A.",
-    "player_id": 7351,
-    "team": "Napoli",
-    "motivo": "Lesione di medio grado del bicipite femorale sinistro",
-    "rientro": "15/10/2026",
-    "severity": "orange",
     "tipo_stop": "Infortunato",
     "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
   },
@@ -386,16 +366,6 @@
     "motivo": "Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro",
     "rientro": "19/10/2026",
     "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-  },
-  {
-    "player": "Idzes",
-    "player_id": 6672,
-    "team": "Sassuolo",
-    "motivo": "Lesione di grado moderato al quadricipite della gamba sinistra",
-    "rientro": "15/10/2026",
-    "severity": "orange",
     "tipo_stop": "Infortunato",
     "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
   },
@@ -496,16 +466,6 @@
     "motivo": "Infortunio alle anche",
     "rientro": "17/10/2026",
     "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-  },
-  {
-    "player": "Martinez L.",
-    "player_id": 2764,
-    "team": "Inter",
-    "motivo": "Risentimento muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)",
-    "rientro": "22/11/2026",
-    "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
   },

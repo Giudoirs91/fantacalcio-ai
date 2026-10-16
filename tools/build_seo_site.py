@@ -4309,7 +4309,13 @@ def build_all():
     
     player_count = 0
     seen_slugs = set()
+    seen_ids = set()
     for p in players:
+        pid = p.get("id")
+        if pid and pid in seen_ids:
+            continue
+        if pid:
+            seen_ids.add(pid)
         slug, p_html = generate_player_page(p, injuries_db, tactical_db, CALENDAR_DATA, BASE_URL)
         if not slug or slug in seen_slugs:
             slug = f"{slug}-{p.get('id')}"

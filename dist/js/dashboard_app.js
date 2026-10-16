@@ -6467,10 +6467,13 @@ function renderPitchTeam(teamName, updateUrl = false) {
         State.currentTeamPitch = teamName;
     }
     if (updateUrl && typeof window !== 'undefined' && window.history && window.history.pushState) {
-        const slug = teamName.toLowerCase().replace(/\s+/g, '-');
-        const targetUrl = `/probabili-formazioni/${slug}/`;
-        if (window.location.pathname !== targetUrl) {
-            window.history.pushState({ team: teamName }, '', targetUrl);
+        const isFile = window.location.protocol === 'file:';
+        if (!isFile) {
+            const slug = teamName.toLowerCase().replace(/\s+/g, '-');
+            const targetUrl = `/probabili-formazioni/${slug}/`;
+            if (window.location.pathname !== targetUrl) {
+                window.history.pushState({ team: teamName }, '', targetUrl);
+            }
         }
         document.title = `Probabile Formazione ${teamName} 2026/27: Titolari, Ballottaggi e Schemi | Fanta Master AI`;
     }
@@ -21243,6 +21246,9 @@ window.addEventListener('DOMContentLoaded', () => {
             '/app.html': 'home',
             '/home': 'home',
             '/home/': 'home',
+            '/probabili-formazioni': 'pitch',
+            '/probabili-formazioni/': 'pitch',
+            '/probabili-formazioni/index.html': 'pitch',
             '/listone': 'auction',
             '/listone/': 'auction',
             '/listone/index.html': 'auction',
@@ -21276,12 +21282,12 @@ window.addEventListener('DOMContentLoaded', () => {
             '/scommesse-talenti/': 'gems',
             '/scommesse-talenti/index.html': 'gems',
             // Direct identifiers & legacy hashes
+            'pitch': 'pitch',
             'top_flop': 'top_flop',
             'matchday_advice': 'matchday_advice',
             'chi_schiero': 'chi_schiero',
             'matrix': 'matrix',
             'stats': 'stats',
-            'pitch': 'pitch',
             'matchup': 'matchup',
             'gk': 'gk',
             'ai_squads': 'ai_squads',
@@ -21295,6 +21301,34 @@ window.addEventListener('DOMContentLoaded', () => {
             if (e && e.preventDefault) e.preventDefault();
             switchTab(tabId, true);
         }
+
+        // Intercetta tutti i click su link assoluti quando il file è aperto localmente (file://)
+        document.addEventListener('click', function(e) {
+            if (window.location.protocol !== 'file:') return;
+            const a = e.target.closest('a');
+            if (!a) return;
+            const href = a.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http://') || href.startsWith('https://')) return;
+            
+            if (href.startsWith('/')) {
+                // 1. Pagine dedicate e strutturate del portale (Probabili Formazioni, Infortunati, Rigoristi, Griglia Portieri, Privacy)
+                if (href.startsWith('/probabili-formazioni') || href.startsWith('/infortunati-serie-a') || href.startsWith('/rigoristi-serie-a') || href.startsWith('/griglia-portieri') || href.startsWith('/privacy-policy')) {
+                    e.preventDefault();
+                    const cleanPath = href.replace(/\/index\.html$/, '');
+                    const rel = './dist' + (cleanPath.endsWith('/') ? cleanPath : cleanPath + '/') + 'index.html';
+                    window.location.href = rel;
+                    return;
+                }
+                // 2. Moduli interni della Dashboard gestiti come Tab SPA
+                const clean = href.replace(/[/]+$/, '') || '/';
+                const tab = PATH_TO_TAB[clean] || PATH_TO_TAB[clean + '/'] || PATH_TO_TAB[href];
+                if (tab && tab !== 'pitch') {
+                    e.preventDefault();
+                    switchTab(tab, true);
+                    return;
+                }
+            }
+        });
 
         // Router & UI Handlers
         function switchTabMobile(tabId) {
@@ -21397,13 +21431,13 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (e) {}
 
-            ['tabHomeNavBtn', 'tabLeaguesBtn', 'tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabChiSchieroBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {
+            ['tabHomeNavBtn', 'tabProbabiliNavBtn', 'tabLeaguesBtn', 'tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabChiSchieroBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active');
             });
 
             // Reset mobile bottom nav active tabs
-            ['mobNavHome', 'mobNavStats', 'mobNavAuction', 'mobNavAdvice', 'mobNavPitch'].forEach(id => {
+            ['mobNavHome', 'mobNavStats', 'mobNavAuction', 'mobNavAdvice', 'mobNavPitch', 'mobNavProbabili'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active');
             });
@@ -21516,11 +21550,13 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
                 if (typeof renderAnalyticsMatrixView === 'function') renderAnalyticsMatrixView();
             } else if (tabId === 'pitch') {
+                const btnNav = document.getElementById('tabProbabiliNavBtn');
+                if (btnNav) btnNav.classList.add('active');
                 const btn = document.getElementById('tabPitchBtn');
                 if (btn) btn.classList.add('active');
                 const grp = document.getElementById('navGroupTactics');
                 if (grp) grp.classList.add('active');
-                const mob = document.getElementById('mobNavPitch');
+                const mob = document.getElementById('mobNavPitch') || document.getElementById('mobNavProbabili');
                 if (mob) mob.classList.add('active');
                 const view = document.getElementById('viewPitch');
                 if (view) {

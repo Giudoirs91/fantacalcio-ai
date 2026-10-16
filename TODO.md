@@ -101,9 +101,14 @@ File di tracciamento persistente delle attività pianificate per il progetto Fan
 
 Metodologia completa in ordine di priorità logica e computazionale per anticipare bonus, eliminare rimpianti e massimizzare il punteggio della rosa:
 
-1. [x] **Controllo Assoluto Probabili Formazioni (`Fantapazz.com`):**
-   - Scraping/parsing continuo delle probabili formazioni ufficiali da `https://www.fantapazz.com/calcio/fantacalcio/serie-a/probabili-formazioni`.
-   - Verifica titolarità stimate, ballottaggi aperti e percentuali di subentro per i 20 club di Serie A.
+1. [x] **Controllo Assoluto Probabili Formazioni (Le 4 Fonti Ufficiali):**
+   - Scraping/parsing live delle 4 testate ufficiali di riferimento:
+     1. `https://www.fantacalcio.it/probabili-formazioni-serie-a` (Formazioni, panchine e % ballottaggi live)
+     2. `http://gazzetta.it/Calcio/prob_form/` (Formazioni e percentuali duelli titolari)
+     3. `https://sport.sky.it/calcio/serie-a/probabili-formazioni` (Lineup editoriali e aggiornamenti campo)
+     4. `https://www.sosfanta.com/lista-formazioni/probabili-formazioni-serie-a/` (Indicazioni panchina e % split)
+   - Calcolo della media consensus su base 4 fonti: `(fc + gazzetta + sky + sosfanta) / 4`.
+   - Verifica titolarità stimate, ballottaggi aperti e percentuali per tutti i 20 club di Serie A.
 
 2. [x] **Audit Infortunati, Squalificati & Riatletizzazione:**
    - Controllo sanitario DB (`config/injuries.json`, 66 report monitorati).

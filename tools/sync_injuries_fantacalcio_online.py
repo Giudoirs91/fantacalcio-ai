@@ -41,15 +41,22 @@ NAME_OVERRIDES = {
     ('Bologna', 'ORSOLINI Riccardo'): 'Orsolini',
     ('Bologna', 'Riccardo Orsolini'): 'Orsolini',
     ('Bologna', 'Orsolini'): 'Orsolini',
+    ('Atalanta', 'RASPADORI Giacomo'): 'Raspadori',
+    ('Atalanta', 'Raspadori'): 'Raspadori',
+    ('Inter', 'PAVARD Benjamin'): 'Pavard',
+    ('Inter', 'Pavard'): 'Pavard',
+    ('Atalanta', 'KESSIE Franck'): 'Kessiè',
+    ('Atalanta', 'Kessiè'): 'Kessiè',
+    ('Atalanta', 'Kessie'): 'Kessiè',
 }
 
 MANUAL_INJURIES = [
     {
         'team': 'Inter',
         'raw_name': 'Martinez L.',
-        'motivo': 'Risentimento muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)',
+        'motivo': 'Lesione muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)',
         'rientro': '22/11/2026',
-        'fonte': 'Fantacalcio.it (Aggiornato 15/10/2026)'
+        'fonte': 'Fantacalcio.it / Ufficiale (Aggiornato 16/10/2026)'
     },
     {
         'team': 'Bologna',
@@ -57,6 +64,27 @@ MANUAL_INJURIES = [
         'motivo': 'Lesione di primo grado al bicipite femorale della coscia destra',
         'rientro': '07/11/2026',
         'fonte': 'Fantacalcio.it (Aggiornato 15/10/2026)'
+    },
+    {
+        'team': 'Atalanta',
+        'raw_name': 'Raspadori',
+        'motivo': 'Problema ai flessori (se lesione rientro dopo la sosta nazionali)',
+        'rientro': '22/11/2026',
+        'fonte': 'Staff Medico Atalanta (Aggiornato 16/10/2026)'
+    },
+    {
+        'team': 'Inter',
+        'raw_name': 'Pavard',
+        'motivo': 'Risentimento agli adduttori della coscia destra (recupero inizio novembre)',
+        'rientro': '01/11/2026',
+        'fonte': 'Staff Medico Inter (Aggiornato 16/10/2026)'
+    },
+    {
+        'team': 'Atalanta',
+        'raw_name': 'Kessiè',
+        'motivo': 'Distrazione di basso grado al polpaccio della gamba destra',
+        'rientro': '25/10/2026',
+        'fonte': 'Staff Medico Atalanta (Aggiornato 16/10/2026)'
     }
 ]
 
@@ -134,7 +162,7 @@ def parse_injuries(html):
 
 def calculate_injury_metrics(motivo, rientro_str, ref_date=None):
     if ref_date is None:
-        ref_date = datetime(2026, 10, 14)
+        ref_date = datetime(2026, 10, 16)
     m_lower = motivo.lower()
     r_date = None
     try:
@@ -253,6 +281,7 @@ def sync_injuries():
             matched_p['giornate_perse_stimate'] = g_perse
             matched_p['infortunio_status'] = status_str
 
+            fonte_str = item.get('fonte') or "fantacalcio-online.com (Aggiornato 16/10/2026)"
             matched_log.append({
                 'id': pid,
                 'name': matched_p['name'],
@@ -260,9 +289,11 @@ def sync_injuries():
                 'rientro': item['rientro'],
                 'motivo': item['motivo'],
                 'gravita': sev,
-                'giornate_perse': g_perse
+                'giornate_perse': g_perse,
+                'fonte': fonte_str
             })
         else:
+            fonte_str = item.get('fonte') or "fantacalcio-online.com (Aggiornato 16/10/2026)"
             unmatched_log.append({
                 'id': None,
                 'name': raw_name,
@@ -270,7 +301,8 @@ def sync_injuries():
                 'rientro': item['rientro'],
                 'motivo': item['motivo'],
                 'gravita': sev,
-                'giornate_perse': g_perse
+                'giornate_perse': g_perse,
+                'fonte': fonte_str
             })
 
     # Calciatori guariti / non più in lista infortuni
@@ -298,7 +330,7 @@ def sync_injuries():
     with open(ROOT_MASTER, 'w', encoding='utf-8') as f:
         json.dump(players, f, ensure_ascii=False, indent=2)
 
-    # Salva anche in config/injuries.json (tutti i 54 infortuni ufficiali)
+    # Salva anche in config/injuries.json
     config_inj_path = os.path.join(ROOT_DIR, "config", "injuries.json")
     config_injuries = []
     for item in matched_log + unmatched_log:
@@ -310,14 +342,14 @@ def sync_injuries():
             "rientro": item['rientro'],
             "severity": item['gravita'],
             "tipo_stop": "Infortunato",
-            "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+            "fonte": item.get('fonte', "fantacalcio-online.com (Aggiornato 16/10/2026)")
         })
     with open(config_inj_path, 'w', encoding='utf-8') as f:
         json.dump(config_injuries, f, ensure_ascii=False, indent=2)
     print(f"-> [InjuriesSync] Aggiornato {config_inj_path} ({len(config_injuries)} infortuni totali registrati: {len(matched_log)} calciatori master, {len(unmatched_log)} riserve/primavera).")
 
     print(f"\n=======================================================")
-    print(f"✓ Sincronizzazione Infortuni al 14/10/2026 Completata!")
+    print(f"✓ Sincronizzazione Infortuni al 16/10/2026 Completata!")
     print(f"-> Totale infortuni ufficiali estratti: {len(scraped_injuries)}")
     print(f"-> Calciatori master infortunati: {len(new_injured_ids)}")
     print(f"-> Calciatori guariti / tornati disponibili: {recovered_count}")

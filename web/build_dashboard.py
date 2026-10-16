@@ -231,8 +231,8 @@ def build_standalone_dashboard(sync_android=False):
                     <span>📋</span> La Mia Rosa
                 </button>
 
-                <!-- 1. PROBABILI FORMAZIONI (DIRETTO) -->
-                <a href="/probabili-formazioni/" class="nav-direct-btn" id="tabProbabiliNavBtn" title="Probabili Formazioni Serie A &amp; Ballottaggi Consensus 5 Fonti">
+                <!-- 1. PROBABILI FORMAZIONI (DIRETTO ALLA PAGINA DEDICATA) -->
+                <a href="/probabili-formazioni/" class="nav-direct-btn" id="tabProbabiliNavBtn" title="Probabili Formazioni Serie A &amp; Ballottaggi Consensus 4 Fonti">
                     <span>⚽</span> Probabili Formazioni
                 </a>
 
@@ -372,7 +372,7 @@ def build_standalone_dashboard(sync_android=False):
                         <span class="ai-badge-chip purple">📊 534 Calciatori Modellati</span>
                         <a href="/probabili-formazioni/" class="ai-badge-chip live" style="text-decoration:none;">
                             <span class="pulse-dot-green"></span>
-                            ⚽ Probabili Formazioni Live (5 Fonti)
+                            ⚽ Probabili Formazioni Live (4 Fonti)
                         </a>
                     </div>
 
@@ -441,18 +441,18 @@ def build_standalone_dashboard(sync_android=False):
                     </div>
                 </div>
 
-                <!-- HERO CARD 2: PROBABILI FORMAZIONI & BALLOTTAGGI CONSENSUS 5 FONTI -->
+                <!-- HERO CARD 2: PROBABILI FORMAZIONI & BALLOTTAGGI CONSENSUS 4 FONTI -->
                 <div class="probabili-hub-hero-card" style="width: 100%; box-sizing: border-box; background: radial-gradient(120% 120% at 50% 0%, rgba(56,189,248,0.18) 0%, rgba(15,23,42,0.95) 100%); border: 1px solid rgba(56,189,248,0.35); border-radius: 24px; padding: 26px 36px; box-shadow: 0 12px 36px rgba(0,0,0,0.55);">
                     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
                         <div style="flex:1; min-width:280px;">
                             <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.4); padding:4px 14px; border-radius:99px; color:#38bdf8; font-size:12px; font-weight:800; text-transform:uppercase; margin-bottom:10px; letter-spacing:0.5px;">
-                                ⚡ NUOVO &bull; CONSENSUS 5 FONTI UFFICIALI SERIE A
+                                ⚡ CONSENSUS 4 FONTI UFFICIALI SERIE A
                             </div>
                             <h2 style="font-size: 1.65rem; font-weight: 900; color: #f8fafc; font-family:'Outfit',sans-serif; margin:0 0 8px 0;">
                                 ⚽ Probabili Formazioni Serie A &amp; Ballottaggi 1vs1
                             </h2>
                             <p style="color: #94a3b8; font-size: 0.95rem; max-width: 760px; margin:0 0 14px 0; line-height:1.5;">
-                                Percentuali di titolarità ponderate incrociando i dati live di <b>Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta e FantaPazz</b>. Analisi testa a testa di tutti i duelli di reparto, rigoristi e tempi di recupero infortunati per tutte le 10 partite del turno.
+                                Percentuali di titolarità ponderate incrociando i dati live delle 4 fonti ufficiali (<b>Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta</b>). Analisi testa a testa di tutti i duelli di reparto, rigoristi e tempi di recupero infortunati per tutte le 10 partite del turno.
                             </p>
                             <!-- Quick match chips -->
                             <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
@@ -468,7 +468,7 @@ def build_standalone_dashboard(sync_android=False):
                             <a href="/probabili-formazioni/" style="font-size:1rem; padding:15px 28px; background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border:none; border-radius:14px; font-weight:800; cursor:pointer; box-shadow:0 8px 24px rgba(2,132,199,0.45); color:#fff; white-space:nowrap; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:8px;">
                                 <span>📊 Apri le 10 Partite</span> &rarr;
                             </a>
-                            <span style="font-size:11px; color:#64748b; text-align:center;">Titolari, ballottaggi e 5 fonti</span>
+                            <span style="font-size:11px; color:#64748b; text-align:center;">Titolari, ballottaggi e 4 fonti</span>
                         </div>
                     </div>
                 </div>
@@ -622,14 +622,14 @@ def build_standalone_dashboard(sync_android=False):
                         </div>
 
                         <!-- Tool 2: Probabili Formazioni & Ballottaggi Consensus -->
-                        <div class="ai-cap-card" onclick="window.location.href='/probabili-formazioni/'">
+                        <div class="ai-cap-card" onclick="if(window.location.protocol==='file:'){{window.location.href='./dist/probabili-formazioni/index.html';}}else{{window.location.href='/probabili-formazioni/';}}">
                             <div>
                                 <div class="cap-card-top">
                                     <div class="cap-icon-box" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#38bdf8;">⚽</div>
-                                    <span class="cap-badge-tag">Consensus 5 Fonti</span>
+                                    <span class="cap-badge-tag">Consensus 4 Fonti</span>
                                 </div>
                                 <h3 class="cap-title">Probabili Formazioni &amp; Ballottaggi</h3>
-                                <p class="cap-desc">Percentuali di titolarità aggregate da Fantacalcio.it, Gazzetta, Sky Sport, SOS Fanta e FantaPazz. Duelli 1vs1 testa a testa, tiratori piazzati e tempi di recupero infortunati.</p>
+                                <p class="cap-desc">Percentuali di titolarità aggregate dalle 4 fonti ufficiali (Fantacalcio.it, Gazzetta, Sky Sport, SOS Fanta). Duelli 1vs1 testa a testa, tiratori piazzati e tempi di recupero infortunati.</p>
                             </div>
                             <div class="cap-card-footer" style="color:#38bdf8;">
                                 <span>Vedi Tutte le 10 Partite &rarr;</span>
@@ -1596,7 +1596,7 @@ def build_standalone_dashboard(sync_android=False):
                 <div class="mobile-menu-section">
                     <div class="mobile-menu-section-title"><span>📋</span> Listone & Probabili</div>
                     <div class="mobile-menu-links">
-                        <a href="/probabili-formazioni/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;background:rgba(56,189,248,0.15);border-color:rgba(56,189,248,0.4);color:#38bdf8;font-weight:800;">⚽ Probabili Formazioni &amp; Ballottaggi (5 Fonti)</a>
+                        <a href="/probabili-formazioni/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;background:rgba(56,189,248,0.15);border-color:rgba(56,189,248,0.4);color:#38bdf8;font-weight:800;">⚽ Probabili Formazioni &amp; Ballottaggi (4 Fonti)</a>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('auction')">📋 Listone Calciatori & OVR</button>
                     </div>
                 </div>
@@ -1716,6 +1716,9 @@ def build_standalone_dashboard(sync_android=False):
             '/app.html': 'home',
             '/home': 'home',
             '/home/': 'home',
+            '/probabili-formazioni': 'pitch',
+            '/probabili-formazioni/': 'pitch',
+            '/probabili-formazioni/index.html': 'pitch',
             '/listone': 'auction',
             '/listone/': 'auction',
             '/listone/index.html': 'auction',
@@ -1749,12 +1752,12 @@ def build_standalone_dashboard(sync_android=False):
             '/scommesse-talenti/': 'gems',
             '/scommesse-talenti/index.html': 'gems',
             // Direct identifiers & legacy hashes
+            'pitch': 'pitch',
             'top_flop': 'top_flop',
             'matchday_advice': 'matchday_advice',
             'chi_schiero': 'chi_schiero',
             'matrix': 'matrix',
             'stats': 'stats',
-            'pitch': 'pitch',
             'matchup': 'matchup',
             'gk': 'gk',
             'ai_squads': 'ai_squads',
@@ -1768,6 +1771,34 @@ def build_standalone_dashboard(sync_android=False):
             if (e && e.preventDefault) e.preventDefault();
             switchTab(tabId, true);
         }}
+
+        // Intercetta tutti i click su link assoluti quando il file è aperto localmente (file://)
+        document.addEventListener('click', function(e) {{
+            if (window.location.protocol !== 'file:') return;
+            const a = e.target.closest('a');
+            if (!a) return;
+            const href = a.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http://') || href.startsWith('https://')) return;
+            
+            if (href.startsWith('/')) {{
+                // 1. Pagine dedicate e strutturate del portale (Probabili Formazioni, Infortunati, Rigoristi, Griglia Portieri, Privacy)
+                if (href.startsWith('/probabili-formazioni') || href.startsWith('/infortunati-serie-a') || href.startsWith('/rigoristi-serie-a') || href.startsWith('/griglia-portieri') || href.startsWith('/privacy-policy')) {{
+                    e.preventDefault();
+                    const cleanPath = href.replace(/\/index\.html$/, '');
+                    const rel = './dist' + (cleanPath.endsWith('/') ? cleanPath : cleanPath + '/') + 'index.html';
+                    window.location.href = rel;
+                    return;
+                }}
+                // 2. Moduli interni della Dashboard gestiti come Tab SPA
+                const clean = href.replace(/[/]+$/, '') || '/';
+                const tab = PATH_TO_TAB[clean] || PATH_TO_TAB[clean + '/'] || PATH_TO_TAB[href];
+                if (tab && tab !== 'pitch') {{
+                    e.preventDefault();
+                    switchTab(tab, true);
+                    return;
+                }}
+            }}
+        }});
 
         // Router & UI Handlers
         function switchTabMobile(tabId) {{
@@ -1870,13 +1901,13 @@ def build_standalone_dashboard(sync_android=False):
                 }}
             }} catch (e) {{}}
 
-            ['tabHomeNavBtn', 'tabLeaguesBtn', 'tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabChiSchieroBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {{
+            ['tabHomeNavBtn', 'tabProbabiliNavBtn', 'tabLeaguesBtn', 'tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabChiSchieroBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {{
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active');
             }});
 
             // Reset mobile bottom nav active tabs
-            ['mobNavHome', 'mobNavStats', 'mobNavAuction', 'mobNavAdvice', 'mobNavPitch'].forEach(id => {{
+            ['mobNavHome', 'mobNavStats', 'mobNavAuction', 'mobNavAdvice', 'mobNavPitch', 'mobNavProbabili'].forEach(id => {{
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active');
             }});
@@ -1989,11 +2020,13 @@ def build_standalone_dashboard(sync_android=False):
                 }}
                 if (typeof renderAnalyticsMatrixView === 'function') renderAnalyticsMatrixView();
             }} else if (tabId === 'pitch') {{
+                const btnNav = document.getElementById('tabProbabiliNavBtn');
+                if (btnNav) btnNav.classList.add('active');
                 const btn = document.getElementById('tabPitchBtn');
                 if (btn) btn.classList.add('active');
                 const grp = document.getElementById('navGroupTactics');
                 if (grp) grp.classList.add('active');
-                const mob = document.getElementById('mobNavPitch');
+                const mob = document.getElementById('mobNavPitch') || document.getElementById('mobNavProbabili');
                 if (mob) mob.classList.add('active');
                 const view = document.getElementById('viewPitch');
                 if (view) {{
@@ -2340,11 +2373,11 @@ def build_standalone_dashboard(sync_android=False):
                 <div class="footer-links-col">
                     <div class="footer-heading">Navigazione Portale</div>
                     <ul class="footer-nav-list">
-                        <li><a href="/" class="footer-link">🏟️ Formazione &amp; Asta AI</a></li>
-                        <li><a href="/consigli-fantacalcio/" class="footer-link">🎯 Consigli di Giornata</a></li>
-                        <li><a href="/probabili-formazioni/" class="footer-link">⚽ Probabili Formazioni 2D</a></li>
-                        <li><a href="/top-flop/" class="footer-link">⭐ Top &amp; Flop Settimanali</a></li>
-                        <li><a href="/football-analytics/" class="footer-link">📊 Scatter Matrix xG &amp; xA</a></li>
+                        <li><a href="/" class="footer-link" onclick="onNavClick(event, 'home')">🏟️ Formazione &amp; Asta AI</a></li>
+                        <li><a href="/consigli-fantacalcio/" class="footer-link" onclick="onNavClick(event, 'matchday_advice')">🎯 Consigli di Giornata</a></li>
+                        <li><a href="/probabili-formazioni/" class="footer-link" onclick="onNavClick(event, 'pitch')">⚽ Probabili Formazioni 2D</a></li>
+                        <li><a href="/top-flop/" class="footer-link" onclick="onNavClick(event, 'top_flop')">⭐ Top &amp; Flop Settimanali</a></li>
+                        <li><a href="/football-analytics/" class="footer-link" onclick="onNavClick(event, 'matrix')">📊 Scatter Matrix xG &amp; xA</a></li>
                     </ul>
                 </div>
 
@@ -2352,10 +2385,10 @@ def build_standalone_dashboard(sync_android=False):
                     <div class="footer-heading">Strumenti Tattici</div>
                     <ul class="footer-nav-list">
                         <li><a href="/rigoristi-serie-a/" class="footer-link">🎯 Tabella Rigoristi &amp; Tiratori</a></li>
-                        <li><a href="/griglia-portieri/" class="footer-link">🧤 Griglia Portieri 38 Turni</a></li>
+                        <li><a href="/griglia-portieri/" class="footer-link" onclick="onNavClick(event, 'gk')">🧤 Griglia Portieri 38 Turni</a></li>
                         <li><a href="/infortunati-serie-a/" class="footer-link">🏥 Report Infortunati &amp; Rientri</a></li>
-                        <li><a href="/scommesse-talenti/" class="footer-link">💎 Talenti Low-Cost</a></li>
-                        <li><a href="/confronto-calciatori/" class="footer-link">⚔️ Head-to-Head 1vs1</a></li>
+                        <li><a href="/scommesse-talenti/" class="footer-link" onclick="onNavClick(event, 'gems')">💎 Talenti Low-Cost</a></li>
+                        <li><a href="/confronto-calciatori/" class="footer-link" onclick="onNavClick(event, 'matchup')">⚔️ Head-to-Head 1vs1</a></li>
                     </ul>
                 </div>
 

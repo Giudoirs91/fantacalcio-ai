@@ -40,3 +40,18 @@
 ## Stagione Corrente
 - La stagione è **2026/27**. I dati storici di riferimento sono **2025/26**.
 - I match report disponibili coprono le **prime giornate** della stagione corrente.
+
+## Probabili Formazioni: Le 4 Fonti Ufficiali e Protocollo
+Quando l'utente chiede di controllare le probabili formazioni, le uniche 4 fonti ufficiali da visionare per calcolare le percentuali sono:
+1. **Fantacalcio.it:** `https://www.fantacalcio.it/probabili-formazioni-serie-a`
+2. **Gazzetta dello Sport:** `http://gazzetta.it/Calcio/prob_form/`
+3. **Sky Sport:** `https://sport.sky.it/calcio/serie-a/probabili-formazioni`
+4. **SOS Fanta:** `https://www.sosfanta.com/lista-formazioni/probabili-formazioni-serie-a/`
+
+**Protocollo Obbligatorio:**
+1. Consultare i 4 link e raccogliere formazioni titolari e ballottaggi per i 10 match del turno.
+2. Calcolare la media percentuale consensus su base 4 fonti: `(fc + gazzetta + sky + sosfanta) / 4`.
+3. Verificare e neutralizzare gli infortuni incrociando `config/injuries.json` (se un giocatore è infortunato, il sostituto sale al 95%).
+4. Aggiornare i file locali `config/matchday_consensus.json` e `tactical_db.json`.
+5. Fornire all'utente il riepilogo ordinato dei 10 match con titolari, ballottaggi e percentuali.
+

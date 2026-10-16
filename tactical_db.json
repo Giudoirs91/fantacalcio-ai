@@ -39,7 +39,7 @@
         "fpp_fpn": "FPP",
         "oop": true,
         "oop_type": "FPP_C_IN_A",
-        "oop_desc": "Quotato C ➜ Ala d'attacco tridente (40% vs Raspadori 60%)"
+        "oop_desc": "Quotato C ➜ Ala d'attacco tridente (85% titolare con Raspadori infortunato)"
       },
       {
         "name": "Zalewski",
@@ -124,14 +124,14 @@
         "vs": "Scamacca (75%)"
       },
       {
-        "player": "Raspadori",
-        "pct": 60,
-        "vs": "Rowe (40%)"
+        "player": "Rowe",
+        "pct": 85,
+        "vs": "Raspadori (Infortunato)"
       },
       {
-        "player": "Rowe",
-        "pct": 40,
-        "vs": "Raspadori (60%)"
+        "player": "Raspadori",
+        "pct": 0,
+        "vs": "Rowe (Infortunato flessori)"
       }
     ],
     "lineup": [
@@ -258,14 +258,16 @@
       {
         "pos": "AS",
         "pos_label": "Ala Sinistra",
-        "name": "Raspadori",
-        "role": "A",
-        "sub_name": "Rowe",
-        "sub_role": "C",
-        "status": "Titolare (60% vs Rowe 40%)",
-        "pct": 60,
-        "fpp_fpn": "NONE",
-        "oop": false
+        "name": "Rowe",
+        "role": "C",
+        "sub_name": "Raspadori",
+        "sub_role": "A",
+        "status": "Titolare (Rowe 85% - Raspadori Infortunato)",
+        "pct": 85,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_desc": "Quotato C ➜ Ala d'attacco tridente (85% titolare con Raspadori out)",
+        "oop_tier": "ORO"
       }
     ]
   },
@@ -1955,13 +1957,13 @@
       },
       {
         "player": "Bisseck",
-        "pct": 75,
-        "vs": "Pavard (25%)"
+        "pct": 95,
+        "vs": "Pavard (Infortunato)"
       },
       {
         "player": "Pavard",
-        "pct": 25,
-        "vs": "Bisseck (75%)"
+        "pct": 0,
+        "vs": "Bisseck (Infortunato adduttori)"
       },
       {
         "player": "Diouf",
@@ -2024,8 +2026,8 @@
         "role": "D",
         "sub_name": "Pavard",
         "sub_role": "D",
-        "status": "Titolare (75% vs Pavard 25%)",
-        "pct": 75,
+        "status": "Titolare (Bisseck 95% - Pavard Infortunato)",
+        "pct": 95,
         "fpp_fpn": "NONE",
         "oop": false
       },

@@ -199,10 +199,13 @@ function renderPitchTeam(teamName, updateUrl = false) {
         State.currentTeamPitch = teamName;
     }
     if (updateUrl && typeof window !== 'undefined' && window.history && window.history.pushState) {
-        const slug = teamName.toLowerCase().replace(/\s+/g, '-');
-        const targetUrl = `/probabili-formazioni/${slug}/`;
-        if (window.location.pathname !== targetUrl) {
-            window.history.pushState({ team: teamName }, '', targetUrl);
+        const isFile = window.location.protocol === 'file:';
+        if (!isFile) {
+            const slug = teamName.toLowerCase().replace(/\s+/g, '-');
+            const targetUrl = `/probabili-formazioni/${slug}/`;
+            if (window.location.pathname !== targetUrl) {
+                window.history.pushState({ team: teamName }, '', targetUrl);
+            }
         }
         document.title = `Probabile Formazione ${teamName} 2026/27: Titolari, Ballottaggi e Schemi | Fanta Master AI`;
     }

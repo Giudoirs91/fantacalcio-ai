@@ -3,7 +3,7 @@
 tools/seo_probabili_template.py
 ================================
 Template e generatore per il modulo Probabili Formazioni & Ballottaggi Consensus
-a 5 Fonti (Fantacalcio.it, Gazzetta, Sky Sport, SOS Fanta, FantaPazz).
+a 4 Fonti Ufficiali (Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta).
 
 Genera:
  1. Hub Principale: /probabili-formazioni/index.html (10 match, top ballottaggi, tabellone comparativo)
@@ -579,18 +579,19 @@ html, body {
 .duel-card-h2h {
     background: rgba(11, 15, 23, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 14px 16px;
+    border-radius: 12px;
+    padding: 11px 14px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    gap: 8px;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     box-sizing: border-box;
     width: 100%;
 }
 .duel-card-h2h:hover {
-    border-color: rgba(56, 189, 248, 0.3);
+    border-color: rgba(56, 189, 248, 0.35);
     transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 .duel-card-top {
     display: flex;
@@ -603,31 +604,30 @@ html, body {
     font-weight: 800;
     color: #94a3b8;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
-.duel-h2h-players {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    width: 100%;
-}
-.h2h-player-row {
+
+/* Nomi calciatori sulla stessa riga (P1 a sinistra, P2 a destra) */
+.duel-players-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     gap: 10px;
+    width: 100%;
 }
-.h2h-player-lead {
+.duel-player-side {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     min-width: 0;
     flex: 1;
 }
-.h2h-info {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
+.duel-player-side.left {
+    justify-content: flex-start;
+}
+.duel-player-side.right {
+    justify-content: flex-end;
+    text-align: right;
 }
 .h2h-name {
     font-size: 13.5px;
@@ -641,72 +641,74 @@ html, body {
 .h2h-name:hover {
     color: #38bdf8;
 }
-.h2h-meta {
+.h2h-ovr-pill {
     font-size: 10px;
+    font-weight: 700;
     color: #94a3b8;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-.h2h-meta b {
-    color: #e2e8f0;
-}
-.h2h-pct {
-    font-family: 'Outfit', sans-serif;
-    font-size: 17px;
-    font-weight: 900;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1px 5px;
+    border-radius: 4px;
     flex-shrink: 0;
-    text-align: right;
-    min-width: 44px;
-}
-.h2h-pct.fav {
-    color: #4ade80;
-}
-.h2h-pct.under {
-    color: #fbbf24;
-}
-.h2h-center-divider {
-    font-size: 10px;
-    font-weight: 900;
-    color: #64748b;
-    flex-shrink: 0;
-    padding: 0 4px;
+    white-space: nowrap;
 }
 
-/* Dual Color Gauge */
-.duel-gauge-bar {
+/* Barra percentuale più alta con valore dentro */
+.duel-gauge-bar-thick {
     width: 100%;
-    height: 7px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 9999px;
+    height: 26px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 7px;
     overflow: hidden;
     display: flex;
-}
-.gauge-part-left {
-    height: 100%;
-    background: linear-gradient(90deg, #10b981, #34d399);
-    border-radius: 9999px 0 0 9999px;
-}
-.gauge-part-right {
-    height: 100%;
-    background: linear-gradient(90deg, #f59e0b, #fbbf24);
-    border-radius: 0 9999px 9999px 0;
-}
-
-/* AI Verdict Box */
-.duel-verdict-box {
-    background: rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 8px;
-    padding: 8px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
 }
-.verdict-header {
+.duel-gauge-bar-thick .gauge-part-left {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #059669);
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+    box-sizing: border-box;
+    transition: width 0.3s ease;
+    min-width: 38px;
+}
+.duel-gauge-bar-thick .gauge-part-left.under {
+    background: linear-gradient(90deg, #d97706, #b45309);
+}
+.duel-gauge-bar-thick .gauge-part-right {
+    height: 100%;
+    background: linear-gradient(90deg, #b45309, #d97706);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    box-sizing: border-box;
+    transition: width 0.3s ease;
+    min-width: 38px;
+}
+.duel-gauge-bar-thick .gauge-part-right.fav {
+    background: linear-gradient(90deg, #059669, #10b981);
+}
+.gauge-pct-val {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
+}
+
+/* Footer riga compatta (verdetto + Chi Schiero) */
+.duel-footer-row {
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding-top: 1px;
 }
 .verdict-tag {
     font-size: 10px;
@@ -715,6 +717,7 @@ html, body {
     border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    white-space: nowrap;
 }
 .verdict-tag.safe {
     background: rgba(34, 197, 94, 0.15);
@@ -745,11 +748,8 @@ html, body {
     font-size: 11px;
     color: #cbd5e1;
     line-height: 1.35;
-}
-.duel-cta-row {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 2px;
+    flex: 1;
+    min-width: 0;
 }
 .btn-duel-compare {
     font-size: 10.5px;
@@ -759,6 +759,8 @@ html, body {
     display: inline-flex;
     align-items: center;
     gap: 4px;
+    flex-shrink: 0;
+    white-space: nowrap;
     transition: color 0.15s ease;
 }
 .btn-duel-compare:hover {
@@ -766,24 +768,24 @@ html, body {
     text-decoration: underline;
 }
 
-/* Consensus Table - The Anti-FCO View */
+/* Formazioni Consensus Table - Chiara & Diretta */
 .consensus-table-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: #0f1217;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 .consensus-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 12.5px;
     text-align: left;
 }
 .consensus-table th {
     background: #141822;
-    padding: 9px 10px;
+    padding: 9px 12px;
     font-size: 10.5px;
     font-weight: 800;
     color: #94a3b8;
@@ -793,17 +795,16 @@ html, body {
     white-space: nowrap;
 }
 .consensus-table td {
-    padding: 8px 10px;
+    padding: 8px 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    white-space: nowrap;
     vertical-align: middle;
 }
 .consensus-table tr:hover td {
     background: rgba(255, 255, 255, 0.02);
 }
 .col-player {
-    min-width: 180px;
     font-weight: 700;
+    white-space: nowrap;
 }
 .col-player a {
     color: #ffffff;
@@ -812,22 +813,39 @@ html, body {
 .col-player a:hover {
     color: #38bdf8;
 }
-.col-source {
+.col-ovr {
     text-align: center;
-    color: #cbd5e1;
-    font-weight: 600;
-    font-size: 11.5px;
+    width: 55px;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
 }
-.col-consensus {
+.col-tit {
     text-align: center;
+    width: 80px;
+    white-space: nowrap;
+}
+.col-xfm {
+    text-align: center;
+    width: 60px;
+    color: #fbbf24;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    white-space: nowrap;
+}
+.col-status {
+    font-size: 11.5px;
 }
 .consensus-chip {
     display: inline-block;
-    padding: 2px 7px;
+    padding: 2px 8px;
     border-radius: 6px;
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
     font-size: 12px;
+    letter-spacing: 0.2px;
 }
 .consensus-chip.high {
     background: rgba(34, 197, 94, 0.18);
@@ -856,7 +874,7 @@ html, body {
     color: #38bdf8;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    padding: 6px 10px;
+    padding: 7px 12px;
 }
 
 /* Match Bottom Panels: Piazzati & Infermeria */
@@ -1044,27 +1062,27 @@ html, body {
 /* Smartphone Portrait (<= 580px) */
 @media (max-width: 580px) {
     .duel-card-h2h {
-        padding: 12px;
-        gap: 8px;
-    }
-    .duel-h2h-players {
+        padding: 9px 11px;
         gap: 6px;
     }
     .h2h-name {
-        font-size: 13px;
+        font-size: 12.5px;
     }
-    .h2h-pct {
-        font-size: 16px;
+    .h2h-ovr-pill {
+        font-size: 9px;
+        padding: 1px 4px;
     }
-    .duel-gauge-bar {
-        height: 6px;
-        margin: 2px 0;
+    .duel-gauge-bar-thick {
+        height: 22px;
+    }
+    .gauge-pct-val {
+        font-size: 11.5px;
     }
     .verdict-desc {
-        font-size: 10.5px;
+        font-size: 10px;
     }
     .btn-duel-compare {
-        font-size: 10px;
+        font-size: 9.5px;
     }
     .hot-ballots-box {
         padding: 12px 10px;
@@ -1665,6 +1683,11 @@ def render_h2h_duel(duel, team_name):
     inj_badge1 = " 🩹" if p1.get('is_injured') else ""
     inj_badge2 = " 🩹" if p2.get('is_injured') else ""
 
+    p1_role = p1.get('role', 'C')
+    p2_role = p2.get('role', 'C')
+    p1_ovr = p1.get('ovr', 75)
+    p2_ovr = p2.get('ovr', 74)
+
     return f"""
     <div class="duel-card-h2h">
         <div class="duel-card-top">
@@ -1672,50 +1695,35 @@ def render_h2h_duel(duel, team_name):
             <span class="verdict-tag {verdict.get('tone', 'safe')}">{clean_html(verdict.get('tag', 'Ballottaggio'))}</span>
         </div>
         
-        <div class="duel-h2h-players">
-            <!-- Giocatore 1 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge {p1.get('role', 'C')}">{p1.get('role', 'C')}</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/{p1_slug}/" class="h2h-name" title="Scheda {clean_html(p1['name'])}">{clean_html(p1['name'])}{inj_badge1}</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>{p1.get('ovr', 75)}</b></span> &bull; <span>xFM <b>{p1.get('xfm', 6.2):.2f}</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct {p1_cls}">{pct1}%</div>
+        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
+        <div class="duel-players-row">
+            <div class="duel-player-side left">
+                <span class="pitch-role-badge {p1_role}">{p1_role}</span>
+                <a href="/calciatore/{p1_slug}/" class="h2h-name" title="Scheda {clean_html(p1['name'])}">{clean_html(p1['name'])}{inj_badge1}</a>
+                <span class="h2h-ovr-pill">OVR {p1_ovr}</span>
             </div>
-            
-            <!-- Bicolor Gauge -->
-            <div class="duel-gauge-bar">
-                <div class="gauge-part-left" style="width: {pct1}%;"></div>
-                <div class="gauge-part-right" style="width: {pct2}%;"></div>
-            </div>
-
-            <!-- Giocatore 2 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge {p2.get('role', 'C')}">{p2.get('role', 'C')}</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/{p2_slug}/" class="h2h-name" title="Scheda {clean_html(p2['name'])}">{clean_html(p2['name'])}{inj_badge2}</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>{p2.get('ovr', 74)}</b></span> &bull; <span>xFM <b>{p2.get('xfm', 6.0):.2f}</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct {p2_cls}">{pct2}%</div>
+            <div class="duel-player-side right">
+                <span class="h2h-ovr-pill">OVR {p2_ovr}</span>
+                <a href="/calciatore/{p2_slug}/" class="h2h-name" title="Scheda {clean_html(p2['name'])}">{clean_html(p2['name'])}{inj_badge2}</a>
+                <span class="pitch-role-badge {p2_role}">{p2_role}</span>
             </div>
         </div>
         
-        <!-- Verdetto AI -->
-        <div class="duel-verdict-box">
+        <!-- Barra percentuale più alta con valore dentro -->
+        <div class="duel-gauge-bar-thick">
+            <div class="gauge-part-left {p1_cls}" style="width: {pct1}%;">
+                <span class="gauge-pct-val">{pct1}%</span>
+            </div>
+            <div class="gauge-part-right {p2_cls}" style="width: {pct2}%;">
+                <span class="gauge-pct-val">{pct2}%</span>
+            </div>
+        </div>
+        
+        <!-- Verdetto AI & CTA compatti su una riga -->
+        <div class="duel-footer-row">
             <div class="verdict-desc">💡 {clean_html(verdict.get('desc', ''))}</div>
-        </div>
-        
-        <div class="duel-cta-row">
-            <a href="/chi-schiero/{duel_slug}/" class="btn-duel-compare">
-                <span>⚔️ Analizza Ballottaggio su Chi Schiero</span> &rarr;
+            <a href="/chi-schiero/{duel_slug}/" class="btn-duel-compare" title="Analizza Ballottaggio">
+                <span>⚔️ Chi Schiero</span> &rarr;
             </a>
         </div>
     </div>
@@ -1731,13 +1739,6 @@ def render_consensus_team_table(team_data):
         xfm = s.get('xfm', 6.2)
         pct = s.get('consensus_pct', 90)
         
-        # Stima quote fonti
-        fc_p = pct
-        gaz_p = min(95, max(15, pct + 2))
-        sky_p = pct
-        sos_p = min(95, max(15, pct - 2))
-        fp_p = pct
-        
         chip_cls = "high" if pct >= 80 else ("mid" if pct >= 60 else ("low" if pct >= 40 else "out"))
         if s.get('is_injured'):
             chip_cls = "out"
@@ -1749,25 +1750,20 @@ def render_consensus_team_table(team_data):
         if 'vs ' in sub_txt:
             sub_col_html = f'<span style="color:#38bdf8;font-weight:700;">⚔️ {clean_html(sub_txt)}</span>'
         elif s.get('is_injured'):
-            sub_col_html = f'<span style="color:#f87171;">{clean_html(sub_txt)}</span>'
+            sub_col_html = f'<span style="color:#f87171;font-weight:600;">{clean_html(sub_txt)}</span>'
         else:
             sub_col_html = f'<span style="color:#cbd5e1;">{clean_html(sub_txt)}</span>'
 
         rows_starters += f"""
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge {role}" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">{role}</span>
+                <span class="pitch-role-badge {role}" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">{role}</span>
                 <a href="/calciatore/{slug}/">{clean_html(name)}</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR {ovr}</td>
-            <td class="col-source">{fc_p}%</td>
-            <td class="col-source">{gaz_p}%</td>
-            <td class="col-source">{sky_p}%</td>
-            <td class="col-source">{sos_p}%</td>
-            <td class="col-source">{fp_p}%</td>
-            <td class="col-consensus"><span class="consensus-chip {chip_cls}">{pct_txt}</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">{xfm:.2f}</td>
-            <td style="font-size:11px;">{sub_col_html}</td>
+            <td class="col-ovr">{ovr}</td>
+            <td class="col-tit"><span class="consensus-chip {chip_cls}">{pct_txt}</span></td>
+            <td class="col-xfm">{xfm:.2f}</td>
+            <td class="col-status">{sub_col_html}</td>
         </tr>
         """
 
@@ -1791,25 +1787,20 @@ def render_consensus_team_table(team_data):
         if 'vs ' in sub_txt:
             sub_col_html = f'<span style="color:#38bdf8;font-weight:700;">⚔️ {clean_html(sub_txt)}</span>'
         elif r.get('is_injured'):
-            sub_col_html = f'<span style="color:#f87171;">{clean_html(sub_txt)}</span>'
+            sub_col_html = f'<span style="color:#f87171;font-weight:600;">{clean_html(sub_txt)}</span>'
         else:
             sub_col_html = f'<span style="color:#64748b;">{clean_html(sub_txt)}</span>'
 
         rows_reserves += f"""
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge {role}" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">{role}</span>
+                <span class="pitch-role-badge {role}" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">{role}</span>
                 <a href="/calciatore/{slug}/" style="color:#94a3b8;">{clean_html(name)}</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR {ovr}</td>
-            <td class="col-source">{pct}%</td>
-            <td class="col-source">{pct}%</td>
-            <td class="col-source">{pct}%</td>
-            <td class="col-source">{pct}%</td>
-            <td class="col-source">{pct}%</td>
-            <td class="col-consensus"><span class="consensus-chip {chip_cls}">{pct_txt}</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">{xfm:.2f}</td>
-            <td style="font-size:11px;">{sub_col_html}</td>
+            <td class="col-ovr" style="color:#64748b;">{ovr}</td>
+            <td class="col-tit"><span class="consensus-chip {chip_cls}">{pct_txt}</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">{xfm:.2f}</td>
+            <td class="col-status">{sub_col_html}</td>
         </tr>
         """
 
@@ -1819,21 +1810,16 @@ def render_consensus_team_table(team_data):
             <thead>
                 <tr>
                     <th>Calciatore</th>
-                    <th>OVR</th>
-                    <th class="col-source">FC.it</th>
-                    <th class="col-source">GAZ</th>
-                    <th class="col-source">SKY</th>
-                    <th class="col-source">SOS</th>
-                    <th class="col-source">FP</th>
-                    <th class="col-consensus">MEDIA CONSENSUS</th>
-                    <th>xFM</th>
-                    <th>Status / Consiglio</th>
+                    <th class="col-ovr">OVR</th>
+                    <th class="col-tit">% TIT</th>
+                    <th class="col-xfm">xFM</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="section-subhead-row"><td colspan="10">🌟 11 Titolari Probabili — {clean_html(team_data['team'])} ({clean_html(team_data.get('formation', '4-3-3'))})</td></tr>
+                <tr class="section-subhead-row"><td colspan="5">🌟 11 Titolari Probabili — {clean_html(team_data['team'])} ({clean_html(team_data.get('formation', '4-3-3'))})</td></tr>
                 {rows_starters}
-                <tr class="section-subhead-row"><td colspan="10">🪑 In Panchina &amp; Rotazioni</td></tr>
+                <tr class="section-subhead-row"><td colspan="5">🪑 In Panchina &amp; Rotazioni</td></tr>
                 {rows_reserves}
             </tbody>
         </table>
@@ -2200,7 +2186,7 @@ def generate_match_faqs(match_data, round_label):
         },
         {
             "q": f"Quali sono i ballottaggi aperti di {h_team}-{a_team}?",
-            "a": f"I ballottaggi più incerti monitorati dalle 5 testate di riferimento (Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta, FantaPazz) sono: {ballot_summary}. Le percentuali indicano la probabilità di titolarità dal 1' minuto."
+            "a": f"I ballottaggi più incerti monitorati dalle 4 testate ufficiali di riferimento (Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta) sono: {ballot_summary}. Le percentuali indicano la probabilità di titolarità dal 1' minuto calcolata come media delle 4 fonti."
         },
         {
             "q": f"Chi batte i calci di rigore e i piazzati in {h_team} e {a_team}?",
@@ -2211,8 +2197,8 @@ def generate_match_faqs(match_data, round_label):
             "a": f"{inj_text} Tutti i tempi di recupero e gli aggiornamenti dai centri sportivi sono sincronizzati in tempo reale prima di ogni turno."
         },
         {
-            "q": f"Come calcola Fanta Master AI il Consensus a 5 Fonti per {h_team}-{a_team}?",
-            "a": "Fanta Master AI aggrega e normalizza le percentuali di titolarità pubblicate da Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta e FantaPazz. Il nostro algoritmo proprietario calcola media ponderata e deviazione standard, fornendo un verdetto predittivo che neutralizza gli errori delle singole testate."
+            "q": f"Come calcola Fanta Master AI il Consensus a 4 Fonti per {h_team}-{a_team}?",
+            "a": "Fanta Master AI raccoglie e normalizza le percentuali di titolarità pubblicate dalle 4 fonti ufficiali: Fantacalcio.it, Gazzetta dello Sport, Sky Sport e SOS Fanta. Il nostro algoritmo proprietario calcola la media consensus a 4 fonti (fc + gaz + sky + sos) / 4 e neutralizza automaticamente le assenze da infortunio."
         }
     ]
 
@@ -2296,9 +2282,9 @@ def generate_hub_editorial_guide(round_label):
         </div>
         <div class="guide-grid">
             <div class="guide-card">
-                <h3 class="guide-card-title"><span>📊</span> 1. Il Modello Consensus 5 Fonti: Superare l'Errore del Singolo Giornale</h3>
+                <h3 class="guide-card-title"><span>📊</span> 1. Il Modello Consensus 4 Fonti: Superare l'Errore del Singolo Giornale</h3>
                 <p class="guide-card-body">
-                    Affidarsi a una sola testata espone i fantallenatori a un margine d'errore medio del 32% sulle formazioni di partenza. Ogni redazione (Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta, FantaPazz) si basa su inviati differenti. L'algoritmo di Fanta Master AI calcola la deviazione standard fra le 5 percentuali e isola le divergenze critiche: quando 4 fonti danno un giocatore titolare all'80% e una al 40%, il nostro motore neutralizza l'anomalia per offrirti la reale probabilità statistica.
+                    Affidarsi a una sola testata espone i fantallenatori a un margine d'errore medio del 32% sulle formazioni di partenza. Incrociando le 4 fonti ufficiali (Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta), l'algoritmo di Fanta Master AI calcola la media consensus (fc + gaz + sky + sos) / 4 e neutralizza le anomalie editoriali per offrirti la reale probabilità statistica di titolarità.
                 </p>
             </div>
             <div class="guide-card">
@@ -2327,12 +2313,12 @@ def generate_hub_faqs(round_label, consensus_data):
     """Genera le FAQ strutturate per l'Hub (HTML accordion + JSON-LD FAQPage)."""
     faq_list = [
         {
-            "q": "Cosa sono le Probabili Formazioni Consensus a 5 Fonti di Fanta Master AI?",
-            "a": "Il Consensus di Fanta Master AI è il primo aggregatore statistico predittivo in Italia che raccoglie in tempo reale le formazioni di Serie A da Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta e FantaPazz. Calcola una media ponderata della titolarità, evidenzia i ballottaggi più incerti e fornisce consigli tattici basati sull'algoritmo predittivo xFM."
+            "q": "Cosa sono le Probabili Formazioni Consensus a 4 Fonti di Fanta Master AI?",
+            "a": "Il Consensus di Fanta Master AI è l'aggregatore statistico predittivo che raccoglie in tempo reale le formazioni di Serie A dalle 4 fonti ufficiali: Fantacalcio.it, Gazzetta dello Sport, Sky Sport e SOS Fanta. Calcola la media aritmetica (fc + gaz + sky + sos) / 4, evidenzia i ballottaggi più incerti e fornisce consigli tattici basati sull'algoritmo predittivo xFM."
         },
         {
-            "q": "Quali sono le 5 testate giornalistiche monitorate dall'algoritmo?",
-            "a": "Le 5 fonti storiche monitorate sono: 1) Fantacalcio.it (piattaforma ufficiale delle leghe), 2) La Gazzetta dello Sport (quotidiano sportivo nazionale), 3) Sky Sport (inviati h24 sui campi di allenamento), 4) SOS Fanta (community specialistica sul Fantacalcio), 5) FantaPazz (database voti e formazioni)."
+            "q": "Quali sono le 4 testate ufficiali monitorate dall'algoritmo?",
+            "a": "Le 4 fonti ufficiali monitorate sono: 1) Fantacalcio.it (piattaforma ufficiale delle leghe), 2) La Gazzetta dello Sport (quotidiano sportivo nazionale), 3) Sky Sport (inviati h24 sui campi di allenamento), 4) SOS Fanta (community specialistica sul Fantacalcio)."
         },
         {
             "q": "A che ora e con quale frequenza vengono sincronizzate le probabili formazioni?",
@@ -2379,8 +2365,8 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
     last_updated = consensus_data.get('last_updated', datetime.now().strftime("%d/%m/%Y %H:%M"))
     matches = consensus_data.get('matches', [])
 
-    meta_title = f"Probabili Formazioni Serie A 2026/27: Ballottaggi Consensus 5 Fonti & Titolarità | Fanta Master AI"
-    meta_desc = f"Probabili formazioni {round_label} aggiornate: percentuali di titolarità da Fantacalcio.it, Gazzetta, Sky Sport, SOS Fanta e FantaPazz con verdetti predittivi AI, ballottaggi, rigoristi e infortunati."
+    meta_title = f"Probabili Formazioni Serie A 2026/27: Ballottaggi Consensus 4 Fonti & Titolarità | Fanta Master AI"
+    meta_desc = f"Probabili formazioni {round_label} aggiornate: percentuali di titolarità da Fantacalcio.it, Gazzetta dello Sport, Sky Sport e SOS Fanta con verdetti predittivi AI, ballottaggi, rigoristi e infortunati."
     page_url = f"{base_url}/probabili-formazioni/"
 
     # Carousel Pills
@@ -2539,11 +2525,8 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                 {two_col_duels_html}
             </div>
 
-            <!-- Pane 2: Tabellone Fonti a Confronto (Anti-FCO) -->
+            <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
-                <div style="font-size:11.5px;color:#94a3b8;margin-bottom:8px;">
-                    💡 Scorri orizzontalmente per confrontare le percentuali delle 5 testate di riferimento.
-                </div>
                 {table_html}
             </div>
 
@@ -2651,10 +2634,10 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
     <div class="prob-container">
         <!-- Hero Header -->
         <header class="prob-hero">
-            <div class="prob-hero-badge">⚡ Consensus Engine 5 Fonti Live</div>
+            <div class="prob-hero-badge">⚡ Consensus Engine 4 Fonti Live</div>
             <h1 class="prob-hero-title">Probabili Formazioni Serie A — {clean_html(round_label)}</h1>
             <p class="prob-hero-desc">
-                Aggregazione statistica in tempo reale dai 5 portali di riferimento: <b>Fantacalcio.it</b>, <b>Gazzetta dello Sport</b>, <b>Sky Sport</b>, <b>SOS Fanta</b> e <b>FantaPazz</b>. Percentuali di titolarità ponderate, verdetti tattici AI e neutralizzazione automatica degli infortunati.
+                Aggregazione statistica in tempo reale dalle 4 fonti ufficiali di riferimento: <b>Fantacalcio.it</b>, <b>Gazzetta dello Sport</b>, <b>Sky Sport</b> e <b>SOS Fanta</b>. Percentuali di titolarità ponderate, verdetti tattici AI e neutralizzazione automatica degli infortunati.
             </p>
             <div class="prob-sources-bar">
                 <span>Fonti Monitorate:</span>
@@ -2662,7 +2645,6 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                 <span class="source-chip">Gazzetta dello Sport</span>
                 <span class="source-chip">Sky Sport</span>
                 <span class="source-chip">SOS Fanta</span>
-                <span class="source-chip">FantaPazz</span>
                 <span style="color:#fbbf24;margin-left:auto;">🕒 Ultimo sync: <b>{clean_html(last_updated)}</b></span>
             </div>
         </header>
@@ -2703,7 +2685,7 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
         <div class="seo-section-heading" style="margin-top:32px;">
             <span class="icon">⚽</span>
             <span>Analisi Tattica &amp; Formazioni Squadra per Squadra</span>
-            <span class="badge">Consensus 5 Fonti</span>
+            <span class="badge">Consensus 4 Fonti</span>
         </div>
         {matches_sections_html}
 
@@ -2738,7 +2720,7 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
     last_updated = consensus_data.get('last_updated', datetime.now().strftime("%d/%m/%Y %H:%M"))
     
     meta_title = f"Probabili Formazioni {h_team} {a_team} ({round_label}): Titolari, Ballottaggi e Consigli AI | Fanta Master AI"
-    meta_desc = f"Probabili formazioni {h_team} - {a_team} ({round_label}): titolari, ballottaggi caldi con percentuali da 5 fonti (Fantacalcio.it, Gazzetta, Sky, SOS, FantaPazz), rigoristi, consigli AI e infortunati."
+    meta_desc = f"Probabili formazioni {h_team} - {a_team} ({round_label}): titolari, ballottaggi caldi con percentuali da 4 fonti (Fantacalcio.it, Gazzetta, Sky Sport, SOS Fanta), rigoristi, consigli AI e infortunati."
     page_url = f"{base_url}/probabili-formazioni/{m_slug}/"
 
     # Carousel delle altre partite
@@ -2765,14 +2747,14 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
     if h_duels_list:
         home_duels_html = "".join(render_h2h_duel(b, h_team) for b in h_duels_list)
     else:
-        home_duels_html = f'<div class="no-duels-notice">✓ Formazione tipo di {clean_html(h_team)} definita: nessun ballottaggio aperto segnalato dalle 5 testate.</div>'
+        home_duels_html = f'<div class="no-duels-notice">✓ Formazione tipo di {clean_html(h_team)} definita: nessun ballottaggio aperto segnalato dalle 4 testate.</div>'
 
     # Duelli Squadra Trasferta (esclusi ballottaggi portieri > 60%)
     a_duels_list = [b for b in a_data.get('ballots', []) if is_valid_ballot(b)]
     if a_duels_list:
         away_duels_html = "".join(render_h2h_duel(b, a_team) for b in a_duels_list)
     else:
-        away_duels_html = f'<div class="no-duels-notice">✓ Formazione tipo di {clean_html(a_team)} definita: nessun ballottaggio aperto segnalato dalle 5 testate.</div>'
+        away_duels_html = f'<div class="no-duels-notice">✓ Formazione tipo di {clean_html(a_team)} definita: nessun ballottaggio aperto segnalato dalle 4 testate.</div>'
 
     # Layout a due colonne con link cluster squadra
     h_slug = slugify(h_team)
@@ -2989,7 +2971,7 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
             <div class="match-detail-header">
                 <div class="match-title-wrap">
                     <div>
-                        <div class="prob-hero-badge" style="margin-bottom:4px;">Consensus 5 Fonti Ufficiali</div>
+                        <div class="prob-hero-badge" style="margin-bottom:4px;">Consensus 4 Fonti Ufficiali</div>
                         <h1 class="match-headline">{clean_html(h_team)} vs {clean_html(a_team)} {big_tag}</h1>
                         <div class="match-subinfo">📅 {clean_html(match_data['date'])} ore {clean_html(match_data['time'])} &bull; 🏟️ {clean_html(match_data.get('stadium','Stadio'))} &bull; 🕒 Ultimo sync: {clean_html(last_updated)}</div>
                     </div>
@@ -3002,37 +2984,13 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
                 </div>
             </div>
 
-            <!-- Featured Snippet Position 0 Summary Card -->
-            {generate_match_editorial_summary(match_data, round_label)}
-
-            <!-- Consigli Fantacalcio AI Bento Grid -->
-            <div class="seo-section-heading">
-                <span class="icon">🤖</span>
-                <span>Consigli Fantacalcio AI — Scelte Chiave per {clean_html(h_team)} vs {clean_html(a_team)}</span>
-                <span class="badge">Predittivo xFM</span>
-            </div>
-            {generate_match_ai_advice(match_data)}
-
-            <!-- Analisi Portieri, Clean Sheet & Modificatore Difesa -->
-            {generate_match_gk_analysis(match_data)}
-
-            <!-- Sezione Duelli 1vs1 -->
-            <div class="seo-section-heading" style="margin-top:24px;">
-                <span class="icon">⚔️</span>
-                <span>Ballottaggi &amp; Percentuali Titolarità — Consensus 5 Fonti</span>
-                <span class="badge">Live Ponderato</span>
-            </div>
-
             <!-- Pane 1: Duelli 1vs1 (Default - 2 Colonne Casa vs Fuori Casa) -->
             <div class="match-view-pane view-pane-duels" style="display:block;">
                 {two_col_duels_html}
             </div>
 
-            <!-- Pane 2: Tabellone Fonti a Confronto (Anti-FCO) -->
+            <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
-                <div style="font-size:11.5px;color:#94a3b8;margin-bottom:8px;">
-                    💡 Scorri orizzontalmente per confrontare le percentuali delle 5 testate di riferimento.
-                </div>
                 {table_html}
             </div>
 
@@ -3053,6 +3011,25 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
                     {render_injuries(a_data)}
                 </div>
             </div>
+
+            <!-- Consigli Fantacalcio AI Bento Grid -->
+            <div class="seo-section-heading" style="margin-top:28px;">
+                <span class="icon">🤖</span>
+                <span>Consigli Fantacalcio AI — Scelte Chiave per {clean_html(h_team)} vs {clean_html(a_team)}</span>
+                <span class="badge">Predittivo xFM</span>
+            </div>
+            {generate_match_ai_advice(match_data)}
+
+            <!-- Analisi Portieri, Clean Sheet & Modificatore Difesa -->
+            {generate_match_gk_analysis(match_data)}
+
+            <!-- Approfondimento Editoriale & Sintesi Fatti Chiave (In fondo alla pagina per SEO) -->
+            <div class="seo-section-heading" style="margin-top:28px;">
+                <span class="icon">⚡</span>
+                <span>Sintesi Tattica &amp; Fatti Chiave del Match</span>
+                <span class="badge">Analisi Esperta</span>
+            </div>
+            {generate_match_editorial_summary(match_data, round_label)}
 
             <!-- Domande Frequenti (FAQ) -->
             <div class="seo-section-heading" style="margin-top:28px;">

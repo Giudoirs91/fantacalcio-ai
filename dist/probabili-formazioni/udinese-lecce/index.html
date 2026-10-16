@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Probabili Formazioni Udinese Lecce (7ª Giornata Serie A 2026/27): Titolari, Ballottaggi e Consigli AI | Fanta Master AI</title>
-    <meta name="description" content="Probabili formazioni Udinese - Lecce (7ª Giornata Serie A 2026/27): titolari, ballottaggi caldi con percentuali da 5 fonti (Fantacalcio.it, Gazzetta, Sky, SOS, FantaPazz), rigoristi, consigli AI e infortunati.">
+    <meta name="description" content="Probabili formazioni Udinese - Lecce (7ª Giornata Serie A 2026/27): titolari, ballottaggi caldi con percentuali da 4 fonti (Fantacalcio.it, Gazzetta, Sky Sport, SOS Fanta), rigoristi, consigli AI e infortunati.">
     <meta name="keywords" content="probabili formazioni udinese lecce, formazioni udinese lecce, ballottaggi udinese lecce, titolari udinese, titolari lecce, fantacalcio udinese lecce, infortunati udinese, infortunati lecce, rigoristi udinese, rigoristi lecce, consigli fantacalcio udinese lecce">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://www.fantamasterai.it/probabili-formazioni/udinese-lecce/">
@@ -13,7 +13,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="Probabili Formazioni Udinese Lecce (7ª Giornata Serie A 2026/27): Titolari, Ballottaggi e Consigli AI | Fanta Master AI">
-    <meta property="og:description" content="Probabili formazioni Udinese - Lecce (7ª Giornata Serie A 2026/27): titolari, ballottaggi caldi con percentuali da 5 fonti (Fantacalcio.it, Gazzetta, Sky, SOS, FantaPazz), rigoristi, consigli AI e infortunati.">
+    <meta property="og:description" content="Probabili formazioni Udinese - Lecce (7ª Giornata Serie A 2026/27): titolari, ballottaggi caldi con percentuali da 4 fonti (Fantacalcio.it, Gazzetta, Sky Sport, SOS Fanta), rigoristi, consigli AI e infortunati.">
     <meta property="og:url" content="https://www.fantamasterai.it/probabili-formazioni/udinese-lecce/">
     <meta property="og:site_name" content="Fanta Master AI">
     <meta property="og:locale" content="it_IT">
@@ -22,7 +22,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Probabili Formazioni Udinese Lecce (7ª Giornata Serie A 2026/27): Titolari, Ballottaggi e Consigli AI | Fanta Master AI">
-    <meta name="twitter:description" content="Probabili formazioni Udinese - Lecce (7ª Giornata Serie A 2026/27): titolari, ballottaggi caldi con percentuali da 5 fonti (Fantacalcio.it, Gazzetta, Sky, SOS, FantaPazz), rigoristi, consigli AI e infortunati.">
+    <meta name="twitter:description" content="Probabili formazioni Udinese - Lecce (7ª Giornata Serie A 2026/27): titolari, ballottaggi caldi con percentuali da 4 fonti (Fantacalcio.it, Gazzetta, Sky Sport, SOS Fanta), rigoristi, consigli AI e infortunati.">
     <meta name="twitter:image" content="https://www.fantamasterai.it/static/og-image.jpg">
 
     <!-- Styles -->
@@ -569,18 +569,19 @@ html, body {
 .duel-card-h2h {
     background: rgba(11, 15, 23, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 14px 16px;
+    border-radius: 12px;
+    padding: 11px 14px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    gap: 8px;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     box-sizing: border-box;
     width: 100%;
 }
 .duel-card-h2h:hover {
-    border-color: rgba(56, 189, 248, 0.3);
+    border-color: rgba(56, 189, 248, 0.35);
     transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 .duel-card-top {
     display: flex;
@@ -593,31 +594,30 @@ html, body {
     font-weight: 800;
     color: #94a3b8;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
-.duel-h2h-players {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    width: 100%;
-}
-.h2h-player-row {
+
+/* Nomi calciatori sulla stessa riga (P1 a sinistra, P2 a destra) */
+.duel-players-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     gap: 10px;
+    width: 100%;
 }
-.h2h-player-lead {
+.duel-player-side {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     min-width: 0;
     flex: 1;
 }
-.h2h-info {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
+.duel-player-side.left {
+    justify-content: flex-start;
+}
+.duel-player-side.right {
+    justify-content: flex-end;
+    text-align: right;
 }
 .h2h-name {
     font-size: 13.5px;
@@ -631,72 +631,74 @@ html, body {
 .h2h-name:hover {
     color: #38bdf8;
 }
-.h2h-meta {
+.h2h-ovr-pill {
     font-size: 10px;
+    font-weight: 700;
     color: #94a3b8;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-.h2h-meta b {
-    color: #e2e8f0;
-}
-.h2h-pct {
-    font-family: 'Outfit', sans-serif;
-    font-size: 17px;
-    font-weight: 900;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1px 5px;
+    border-radius: 4px;
     flex-shrink: 0;
-    text-align: right;
-    min-width: 44px;
-}
-.h2h-pct.fav {
-    color: #4ade80;
-}
-.h2h-pct.under {
-    color: #fbbf24;
-}
-.h2h-center-divider {
-    font-size: 10px;
-    font-weight: 900;
-    color: #64748b;
-    flex-shrink: 0;
-    padding: 0 4px;
+    white-space: nowrap;
 }
 
-/* Dual Color Gauge */
-.duel-gauge-bar {
+/* Barra percentuale più alta con valore dentro */
+.duel-gauge-bar-thick {
     width: 100%;
-    height: 7px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 9999px;
+    height: 26px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 7px;
     overflow: hidden;
     display: flex;
-}
-.gauge-part-left {
-    height: 100%;
-    background: linear-gradient(90deg, #10b981, #34d399);
-    border-radius: 9999px 0 0 9999px;
-}
-.gauge-part-right {
-    height: 100%;
-    background: linear-gradient(90deg, #f59e0b, #fbbf24);
-    border-radius: 0 9999px 9999px 0;
-}
-
-/* AI Verdict Box */
-.duel-verdict-box {
-    background: rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 8px;
-    padding: 8px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
 }
-.verdict-header {
+.duel-gauge-bar-thick .gauge-part-left {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #059669);
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+    box-sizing: border-box;
+    transition: width 0.3s ease;
+    min-width: 38px;
+}
+.duel-gauge-bar-thick .gauge-part-left.under {
+    background: linear-gradient(90deg, #d97706, #b45309);
+}
+.duel-gauge-bar-thick .gauge-part-right {
+    height: 100%;
+    background: linear-gradient(90deg, #b45309, #d97706);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    box-sizing: border-box;
+    transition: width 0.3s ease;
+    min-width: 38px;
+}
+.duel-gauge-bar-thick .gauge-part-right.fav {
+    background: linear-gradient(90deg, #059669, #10b981);
+}
+.gauge-pct-val {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
+}
+
+/* Footer riga compatta (verdetto + Chi Schiero) */
+.duel-footer-row {
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding-top: 1px;
 }
 .verdict-tag {
     font-size: 10px;
@@ -705,6 +707,7 @@ html, body {
     border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    white-space: nowrap;
 }
 .verdict-tag.safe {
     background: rgba(34, 197, 94, 0.15);
@@ -735,11 +738,8 @@ html, body {
     font-size: 11px;
     color: #cbd5e1;
     line-height: 1.35;
-}
-.duel-cta-row {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 2px;
+    flex: 1;
+    min-width: 0;
 }
 .btn-duel-compare {
     font-size: 10.5px;
@@ -749,6 +749,8 @@ html, body {
     display: inline-flex;
     align-items: center;
     gap: 4px;
+    flex-shrink: 0;
+    white-space: nowrap;
     transition: color 0.15s ease;
 }
 .btn-duel-compare:hover {
@@ -756,24 +758,24 @@ html, body {
     text-decoration: underline;
 }
 
-/* Consensus Table - The Anti-FCO View */
+/* Formazioni Consensus Table - Chiara & Diretta */
 .consensus-table-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: #0f1217;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 .consensus-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 12.5px;
     text-align: left;
 }
 .consensus-table th {
     background: #141822;
-    padding: 9px 10px;
+    padding: 9px 12px;
     font-size: 10.5px;
     font-weight: 800;
     color: #94a3b8;
@@ -783,17 +785,16 @@ html, body {
     white-space: nowrap;
 }
 .consensus-table td {
-    padding: 8px 10px;
+    padding: 8px 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    white-space: nowrap;
     vertical-align: middle;
 }
 .consensus-table tr:hover td {
     background: rgba(255, 255, 255, 0.02);
 }
 .col-player {
-    min-width: 180px;
     font-weight: 700;
+    white-space: nowrap;
 }
 .col-player a {
     color: #ffffff;
@@ -802,22 +803,39 @@ html, body {
 .col-player a:hover {
     color: #38bdf8;
 }
-.col-source {
+.col-ovr {
     text-align: center;
-    color: #cbd5e1;
-    font-weight: 600;
-    font-size: 11.5px;
+    width: 55px;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
 }
-.col-consensus {
+.col-tit {
     text-align: center;
+    width: 80px;
+    white-space: nowrap;
+}
+.col-xfm {
+    text-align: center;
+    width: 60px;
+    color: #fbbf24;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    white-space: nowrap;
+}
+.col-status {
+    font-size: 11.5px;
 }
 .consensus-chip {
     display: inline-block;
-    padding: 2px 7px;
+    padding: 2px 8px;
     border-radius: 6px;
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
     font-size: 12px;
+    letter-spacing: 0.2px;
 }
 .consensus-chip.high {
     background: rgba(34, 197, 94, 0.18);
@@ -846,7 +864,7 @@ html, body {
     color: #38bdf8;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    padding: 6px 10px;
+    padding: 7px 12px;
 }
 
 /* Match Bottom Panels: Piazzati & Infermeria */
@@ -1034,27 +1052,27 @@ html, body {
 /* Smartphone Portrait (<= 580px) */
 @media (max-width: 580px) {
     .duel-card-h2h {
-        padding: 12px;
-        gap: 8px;
-    }
-    .duel-h2h-players {
+        padding: 9px 11px;
         gap: 6px;
     }
     .h2h-name {
-        font-size: 13px;
+        font-size: 12.5px;
     }
-    .h2h-pct {
-        font-size: 16px;
+    .h2h-ovr-pill {
+        font-size: 9px;
+        padding: 1px 4px;
     }
-    .duel-gauge-bar {
-        height: 6px;
-        margin: 2px 0;
+    .duel-gauge-bar-thick {
+        height: 22px;
+    }
+    .gauge-pct-val {
+        font-size: 11.5px;
     }
     .verdict-desc {
-        font-size: 10.5px;
+        font-size: 10px;
     }
     .btn-duel-compare {
-        font-size: 10px;
+        font-size: 9.5px;
     }
     .hot-ballots-box {
         padding: 12px 10px;
@@ -1623,8 +1641,8 @@ html, body {
       "@type": "WebPage",
       "name": "Probabili Formazioni Udinese Lecce (7ª Giornata Serie A 2026/27): Titolari, Ballottaggi e Consigli AI | Fanta Master AI",
       "url": "https://www.fantamasterai.it/probabili-formazioni/udinese-lecce/",
-      "dateModified": "2026-10-15",
-      "description": "Probabili formazioni Udinese - Lecce (7ª Giornata Serie A 2026/27): titolari, ballottaggi caldi con percentuali da 5 fonti (Fantacalcio.it, Gazzetta, Sky, SOS, FantaPazz), rigoristi, consigli AI e infortunati."
+      "dateModified": "2026-10-16",
+      "description": "Probabili formazioni Udinese - Lecce (7ª Giornata Serie A 2026/27): titolari, ballottaggi caldi con percentuali da 4 fonti (Fantacalcio.it, Gazzetta, Sky Sport, SOS Fanta), rigoristi, consigli AI e infortunati."
     },
     {
       "@type": "BreadcrumbList",
@@ -1665,7 +1683,7 @@ html, body {
           "name": "Quali sono i ballottaggi aperti di Udinese-Lecce?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "I ballottaggi più incerti monitorati dalle 5 testate di riferimento (Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta, FantaPazz) sono: Ebosse vs Alaba (Udinese); Geubbels vs Esteban (Lecce). Le percentuali indicano la probabilità di titolarità dal 1' minuto."
+            "text": "I ballottaggi più incerti monitorati dalle 4 testate ufficiali di riferimento (Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta) sono: Ebosse vs Alaba (Udinese); Geubbels vs Esteban (Lecce). Le percentuali indicano la probabilità di titolarità dal 1' minuto calcolata come media delle 4 fonti."
           }
         },
         {
@@ -1686,10 +1704,10 @@ html, body {
         },
         {
           "@type": "Question",
-          "name": "Come calcola Fanta Master AI il Consensus a 5 Fonti per Udinese-Lecce?",
+          "name": "Come calcola Fanta Master AI il Consensus a 4 Fonti per Udinese-Lecce?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Fanta Master AI aggrega e normalizza le percentuali di titolarità pubblicate da Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta e FantaPazz. Il nostro algoritmo proprietario calcola media ponderata e deviazione standard, fornendo un verdetto predittivo che neutralizza gli errori delle singole testate."
+            "text": "Fanta Master AI raccoglie e normalizza le percentuali di titolarità pubblicate dalle 4 fonti ufficiali: Fantacalcio.it, Gazzetta dello Sport, Sky Sport e SOS Fanta. Il nostro algoritmo proprietario calcola la media consensus a 4 fonti (fc + gaz + sky + sos) / 4 e neutralizza automaticamente le assenze da infortunio."
           }
         }
       ]
@@ -1697,9 +1715,9 @@ html, body {
     {
       "@type": "Article",
       "headline": "Probabili Formazioni Udinese Lecce (7ª Giornata Serie A 2026/27): Titolari, Ballottaggi e Consigli AI | Fanta Master AI",
-      "datePublished": "2026-10-15T08:00:00+02:00",
-      "dateModified": "2026-10-15",
-      "description": "Probabili formazioni Udinese - Lecce (7ª Giornata Serie A 2026/27): titolari, ballottaggi caldi con percentuali da 5 fonti (Fantacalcio.it, Gazzetta, Sky, SOS, FantaPazz), rigoristi, consigli AI e infortunati.",
+      "datePublished": "2026-10-16T08:00:00+02:00",
+      "dateModified": "2026-10-16",
+      "description": "Probabili formazioni Udinese - Lecce (7ª Giornata Serie A 2026/27): titolari, ballottaggi caldi con percentuali da 4 fonti (Fantacalcio.it, Gazzetta, Sky Sport, SOS Fanta), rigoristi, consigli AI e infortunati.",
       "mainEntityOfPage": "https://www.fantamasterai.it/probabili-formazioni/udinese-lecce/",
       "author": {
         "@type": "Organization",
@@ -1946,9 +1964,9 @@ html, body {
             <div class="match-detail-header">
                 <div class="match-title-wrap">
                     <div>
-                        <div class="prob-hero-badge" style="margin-bottom:4px;">Consensus 5 Fonti Ufficiali</div>
+                        <div class="prob-hero-badge" style="margin-bottom:4px;">Consensus 4 Fonti Ufficiali</div>
                         <h1 class="match-headline">Udinese vs Lecce </h1>
-                        <div class="match-subinfo">📅 18/10/2026 ore 12:30 &bull; 🏟️ Bluenergy Stadium &bull; 🕒 Ultimo sync: 15/10/2026 17:32</div>
+                        <div class="match-subinfo">📅 18/10/2026 ore 12:30 &bull; 🏟️ Bluenergy Stadium &bull; 🕒 Ultimo sync: 16/10/2026 15:51</div>
                     </div>
                 </div>
                 
@@ -1957,190 +1975,6 @@ html, body {
                     <button class="view-switch-btn active" data-match="udinese-lecce" data-view="duels">⚔️ Ballottaggi</button>
                     <button class="view-switch-btn" data-match="udinese-lecce" data-view="table">📋 Formazioni</button>
                 </div>
-            </div>
-
-            <!-- Featured Snippet Position 0 Summary Card -->
-            
-    <div class="seo-summary-card">
-        <div class="seo-summary-badge">⚡ Sintesi Fatti Chiave &bull; Featured Snippet Google</div>
-        <h2 class="seo-summary-title">Sintesi Formazioni Udinese - Lecce (7ª Giornata Serie A 2026/27)</h2>
-        <p class="seo-summary-text">
-            Per la <b>7ª Giornata Serie A 2026/27</b>, il <b>Udinese</b> di Kosta Runjaic affronta al Bluenergy Stadium il <b>Lecce</b> guidato da Eusebio Di Francesco. 
-            Assetto tattico probabile: <b>3-4-2-1</b> per i padroni di casa contro il <b>4-3-3</b> degli ospiti. 
-            Nel Udinese ballottaggio serrato tra <b>Ebosse</b> (58%) e <b>Alaba</b> (42%). Per il Lecce ballottaggio aperto tra <b>Geubbels</b> (58%) e <b>Esteban</b> (42%). Assenti segnalati: Gueye, Piotrowski, Zaniolo, Zanoli. 
-            Primi rigoristi designati: <b>Davis K.</b> (Udinese) e <b>Stulic</b> (Lecce).
-        </p>
-        <div class="seo-summary-pills">
-            <span class="seo-summary-pill">📋 Modulo Casa: <b>3-4-2-1</b></span>
-            <span class="seo-summary-pill">📋 Modulo Trasferta: <b>4-3-3</b></span>
-            <span class="seo-summary-pill">🎯 1° Rigorista Udinese: <b>Davis K.</b></span>
-            <span class="seo-summary-pill">🎯 1° Rigorista Lecce: <b>Stulic</b></span>
-        </div>
-    </div>
-    
-
-            <!-- Consigli Fantacalcio AI Bento Grid -->
-            <div class="seo-section-heading">
-                <span class="icon">🤖</span>
-                <span>Consigli Fantacalcio AI — Scelte Chiave per Udinese vs Lecce</span>
-                <span class="badge">Predittivo xFM</span>
-            </div>
-            
-    <div class="seo-advice-grid">
-        <!-- Card 1: Top Pick -->
-        <div class="seo-advice-card advice-pick">
-            <div class="advice-header">
-                <span class="advice-badge">🌟 TOP PICK AI</span>
-                <span class="advice-team-tag">Udinese</span>
-            </div>
-            <div class="advice-player-row">
-                <span class="pitch-role-badge C">C</span>
-                <a href="/calciatore/ekkelenkamp-2026/" class="advice-name">Ekkelenkamp</a>
-            </div>
-            <div class="advice-meta">
-                <span>OVR <b>79</b></span> &bull; <span>xFM <b>6.61</b></span>
-            </div>
-            <p class="advice-text">
-                Indice predittivo più alto della sfida. Schieralo titolare assoluto: le proiezioni algoritmiche evidenziano massima probabilità di bonus pesante o voto sopra la media.
-            </p>
-        </div>
-
-        <!-- Card 2: Rischio Flop / Trappola -->
-        <div class="seo-advice-card advice-risk">
-            <div class="advice-header">
-                <span class="advice-badge">⚠️ ATTENZIONE FLOP</span>
-                <span class="advice-team-tag">Udinese</span>
-            </div>
-            <div class="advice-player-row">
-                <span class="pitch-role-badge C">C</span>
-                <a href="/calciatore/chakvetadze-2026/" class="advice-name">Chakvetadze</a>
-            </div>
-            <div class="advice-meta">
-                <span>OVR <b>54</b></span> &bull; <span>xFM <b>5.64</b></span>
-            </div>
-            <p class="advice-text">
-                Reparto ad alto coefficiente di difficoltà. Elevato rischio di malus o insufficienza contro la manovra offensiva avversaria. Valuta alternative più sicure.
-            </p>
-        </div>
-
-        <!-- Card 3: Jolly Subentrante -->
-        <div class="seo-advice-card advice-jolly">
-            <div class="advice-header">
-                <span class="advice-badge">🔮 JOLLY SUPER-SUB</span>
-                <span class="advice-team-tag">Lecce</span>
-            </div>
-            <div class="advice-player-row">
-                <span class="pitch-role-badge C">C</span>
-                <a href="/calciatore/gandelman-2026/" class="advice-name">Gandelman</a>
-            </div>
-            <div class="advice-meta">
-                <span>OVR <b>56</b></span> &bull; <span>xFM <b>6.34</b></span>
-            </div>
-            <p class="advice-text">
-                Spacca-partita designato: l'algoritmo prevede un ingresso a gara in corso con impatto elevato contro linee difensive stanche. Ottimo terzo o quarto slot con copertura.
-            </p>
-        </div>
-    </div>
-    
-
-            <!-- Analisi Portieri, Clean Sheet & Modificatore Difesa -->
-            
-    <div class="seo-section-heading" style="margin-top:24px;">
-        <span class="icon">🛡️</span>
-        <span>Analisi Portieri &amp; Modificatore Difesa — Proiezioni 1vs1</span>
-        <span class="badge">Clean Sheet &amp; Modificatore</span>
-    </div>
-    <div class="gk-analysis-grid">
-        
-        <div class="gk-analysis-card">
-            <div class="gk-card-header">
-                <span class="gk-verdict-badge modificatore">🌟 Miniera da Modificatore</span>
-                <span style="font-size:11px;color:#94a3b8;font-weight:700;">Udinese &bull; 🏠 In Casa</span>
-            </div>
-            <div class="gk-player-row">
-                <div class="gk-name-wrap">
-                    <span class="pitch-role-badge P">P</span>
-                    <a href="/calciatore/okoye-2026/" class="advice-name">Okoye</a>
-                </div>
-                <span class="gk-status-tag">95% Tit</span>
-            </div>
-            <div class="gk-metrics-row">
-                <div class="gk-metric-box">
-                    <div class="gk-metric-val" style="color:#4ade80;">35.1%</div>
-                    <div class="gk-metric-lbl">Clean Sheet</div>
-                    <div class="gk-bar-wrap">
-                        <div class="gk-bar-fill" style="width:52%;background:#4ade80;"></div>
-                    </div>
-                </div>
-                <div class="gk-metric-box">
-                    <div class="gk-metric-val" style="color:#38bdf8;">8.0<span style="font-size:10px;color:#94a3b8;">/10</span></div>
-                    <div class="gk-metric-lbl">Modificatore</div>
-                    <div class="gk-bar-wrap">
-                        <div class="gk-bar-fill" style="width:80%;background:#38bdf8;"></div>
-                    </div>
-                </div>
-                <div class="gk-metric-box">
-                    <div class="gk-metric-val" style="color:#f87171;">1.34</div>
-                    <div class="gk-metric-lbl">xGA Subiti</div>
-                    <div class="gk-bar-wrap">
-                        <div class="gk-bar-fill" style="width:46%;background:#f87171;"></div>
-                    </div>
-                </div>
-            </div>
-            <p class="gk-desc-text">
-                Volume di interventi elevato. Ideale per massimizzare il bonus del modificatore difesa (+1 o +3).
-            </p>
-        </div>
-        
-        
-        <div class="gk-analysis-card">
-            <div class="gk-card-header">
-                <span class="gk-verdict-badge modificatore">🌟 Miniera da Modificatore</span>
-                <span style="font-size:11px;color:#94a3b8;font-weight:700;">Lecce &bull; ✈️ In Trasferta</span>
-            </div>
-            <div class="gk-player-row">
-                <div class="gk-name-wrap">
-                    <span class="pitch-role-badge P">P</span>
-                    <a href="/calciatore/falcone-2026/" class="advice-name">Falcone</a>
-                </div>
-                <span class="gk-status-tag">95% Tit</span>
-            </div>
-            <div class="gk-metrics-row">
-                <div class="gk-metric-box">
-                    <div class="gk-metric-val" style="color:#facc15;">20.1%</div>
-                    <div class="gk-metric-lbl">Clean Sheet</div>
-                    <div class="gk-bar-wrap">
-                        <div class="gk-bar-fill" style="width:30%;background:#facc15;"></div>
-                    </div>
-                </div>
-                <div class="gk-metric-box">
-                    <div class="gk-metric-val" style="color:#38bdf8;">8.2<span style="font-size:10px;color:#94a3b8;">/10</span></div>
-                    <div class="gk-metric-lbl">Modificatore</div>
-                    <div class="gk-bar-wrap">
-                        <div class="gk-bar-fill" style="width:82%;background:#38bdf8;"></div>
-                    </div>
-                </div>
-                <div class="gk-metric-box">
-                    <div class="gk-metric-val" style="color:#f87171;">1.92</div>
-                    <div class="gk-metric-lbl">xGA Subiti</div>
-                    <div class="gk-bar-wrap">
-                        <div class="gk-bar-fill" style="width:67%;background:#f87171;"></div>
-                    </div>
-                </div>
-            </div>
-            <p class="gk-desc-text">
-                Volume di interventi elevato. Ideale per massimizzare il bonus del modificatore difesa (+1 o +3).
-            </p>
-        </div>
-        
-    </div>
-    
-
-            <!-- Sezione Duelli 1vs1 -->
-            <div class="seo-section-heading" style="margin-top:24px;">
-                <span class="icon">⚔️</span>
-                <span>Ballottaggi &amp; Percentuali Titolarità — Consensus 5 Fonti</span>
-                <span class="badge">Live Ponderato</span>
             </div>
 
             <!-- Pane 1: Duelli 1vs1 (Default - 2 Colonne Casa vs Fuori Casa) -->
@@ -2162,269 +1996,194 @@ html, body {
     <div class="duel-card-h2h">
         <div class="duel-card-top">
             <span class="duel-team-tag">⚽ Udinese</span>
-            <span class="verdict-tag jolly">Jolly Spacca-Partita</span>
-        </div>
-        
-        <div class="duel-h2h-players">
-            <!-- Giocatore 1 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge D">D</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/ebosse-2026/" class="h2h-name" title="Scheda Ebosse">Ebosse</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>55</b></span> &bull; <span>xFM <b>5.71</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct fav">58%</div>
-            </div>
-            
-            <!-- Bicolor Gauge -->
-            <div class="duel-gauge-bar">
-                <div class="gauge-part-left" style="width: 58%;"></div>
-                <div class="gauge-part-right" style="width: 42%;"></div>
-            </div>
-
-            <!-- Giocatore 2 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge D">D</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/alaba-2026/" class="h2h-name" title="Scheda Alaba">Alaba</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>76</b></span> &bull; <span>xFM <b>6.41</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct under">42%</div>
-            </div>
-        </div>
-        
-        <!-- Verdetto AI -->
-        <div class="duel-verdict-box">
-            <div class="verdict-desc">💡 Subentrante letale da bonus: può incidere e prendere voto anche da panchinaro.</div>
-        </div>
-        
-        <div class="duel-cta-row">
-            <a href="/chi-schiero/ebosse-vs-alaba/" class="btn-duel-compare">
-                <span>⚔️ Analizza Ballottaggio su Chi Schiero</span> &rarr;
-            </a>
-        </div>
-    </div>
-    
-    <div class="duel-card-h2h">
-        <div class="duel-card-top">
-            <span class="duel-team-tag">⚽ Udinese</span>
-            <span class="verdict-tag warning">Ballottaggio Aperto (Rischio SV)</span>
-        </div>
-        
-        <div class="duel-h2h-players">
-            <!-- Giocatore 1 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge C">C</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/miller-l-2026/" class="h2h-name" title="Scheda Miller L.">Miller L.</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>57</b></span> &bull; <span>xFM <b>5.94</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct fav">55%</div>
-            </div>
-            
-            <!-- Bicolor Gauge -->
-            <div class="duel-gauge-bar">
-                <div class="gauge-part-left" style="width: 55%;"></div>
-                <div class="gauge-part-right" style="width: 45%;"></div>
-            </div>
-
-            <!-- Giocatore 2 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge C">C</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/zarraga-2026/" class="h2h-name" title="Scheda Zarraga">Zarraga</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>52</b></span> &bull; <span>xFM <b>5.85</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct under">45%</div>
-            </div>
-        </div>
-        
-        <!-- Verdetto AI -->
-        <div class="duel-verdict-box">
-            <div class="verdict-desc">💡 Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.</div>
-        </div>
-        
-        <div class="duel-cta-row">
-            <a href="/chi-schiero/miller-l-vs-zarraga/" class="btn-duel-compare">
-                <span>⚔️ Analizza Ballottaggio su Chi Schiero</span> &rarr;
-            </a>
-        </div>
-    </div>
-    
-    <div class="duel-card-h2h">
-        <div class="duel-card-top">
-            <span class="duel-team-tag">⚽ Udinese</span>
-            <span class="verdict-tag warning">Ballottaggio Aperto (Rischio SV)</span>
-        </div>
-        
-        <div class="duel-h2h-players">
-            <!-- Giocatore 1 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge C">C</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/chakvetadze-2026/" class="h2h-name" title="Scheda Chakvetadze">Chakvetadze</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>54</b></span> &bull; <span>xFM <b>5.64</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct fav">54%</div>
-            </div>
-            
-            <!-- Bicolor Gauge -->
-            <div class="duel-gauge-bar">
-                <div class="gauge-part-left" style="width: 54%;"></div>
-                <div class="gauge-part-right" style="width: 46%;"></div>
-            </div>
-
-            <!-- Giocatore 2 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge C">C</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/unai-gomez-2026/" class="h2h-name" title="Scheda Unai Gomez">Unai Gomez</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>61</b></span> &bull; <span>xFM <b>5.88</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct under">46%</div>
-            </div>
-        </div>
-        
-        <!-- Verdetto AI -->
-        <div class="duel-verdict-box">
-            <div class="verdict-desc">💡 Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.</div>
-        </div>
-        
-        <div class="duel-cta-row">
-            <a href="/chi-schiero/chakvetadze-vs-unai-gomez/" class="btn-duel-compare">
-                <span>⚔️ Analizza Ballottaggio su Chi Schiero</span> &rarr;
-            </a>
-        </div>
-    </div>
-    
-    <div class="duel-card-h2h">
-        <div class="duel-card-top">
-            <span class="duel-team-tag">⚽ Udinese</span>
-            <span class="verdict-tag warning">Ballottaggio Aperto (Rischio SV)</span>
-        </div>
-        
-        <div class="duel-h2h-players">
-            <!-- Giocatore 1 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge D">D</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/abankwah-2026/" class="h2h-name" title="Scheda Abankwah">Abankwah</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>62</b></span> &bull; <span>xFM <b>5.92</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct fav">51%</div>
-            </div>
-            
-            <!-- Bicolor Gauge -->
-            <div class="duel-gauge-bar">
-                <div class="gauge-part-left" style="width: 51%;"></div>
-                <div class="gauge-part-right" style="width: 49%;"></div>
-            </div>
-
-            <!-- Giocatore 2 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge D">D</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/bertola-2026/" class="h2h-name" title="Scheda Bertola">Bertola</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>62</b></span> &bull; <span>xFM <b>5.86</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct under">49%</div>
-            </div>
-        </div>
-        
-        <!-- Verdetto AI -->
-        <div class="duel-verdict-box">
-            <div class="verdict-desc">💡 Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.</div>
-        </div>
-        
-        <div class="duel-cta-row">
-            <a href="/chi-schiero/abankwah-vs-bertola/" class="btn-duel-compare">
-                <span>⚔️ Analizza Ballottaggio su Chi Schiero</span> &rarr;
-            </a>
-        </div>
-    </div>
-    
-    <div class="duel-card-h2h">
-        <div class="duel-card-top">
-            <span class="duel-team-tag">⚽ Udinese</span>
             <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
         
-        <div class="duel-h2h-players">
-            <!-- Giocatore 1 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge D">D</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/kabasele-2026/" class="h2h-name" title="Scheda Kabasele">Kabasele</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>64</b></span> &bull; <span>xFM <b>6.17</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct fav">59%</div>
+        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
+        <div class="duel-players-row">
+            <div class="duel-player-side left">
+                <span class="pitch-role-badge D">D</span>
+                <a href="/calciatore/ebosse-2026/" class="h2h-name" title="Scheda Ebosse">Ebosse</a>
+                <span class="h2h-ovr-pill">OVR 56</span>
             </div>
-            
-            <!-- Bicolor Gauge -->
-            <div class="duel-gauge-bar">
-                <div class="gauge-part-left" style="width: 59%;"></div>
-                <div class="gauge-part-right" style="width: 41%;"></div>
-            </div>
-
-            <!-- Giocatore 2 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge D">D</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/palma-2026/" class="h2h-name" title="Scheda Palma">Palma</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>63</b></span> &bull; <span>xFM <b>5.60</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct under">41%</div>
+            <div class="duel-player-side right">
+                <span class="h2h-ovr-pill">OVR 76</span>
+                <a href="/calciatore/alaba-2026/" class="h2h-name" title="Scheda Alaba">Alaba</a>
+                <span class="pitch-role-badge D">D</span>
             </div>
         </div>
         
-        <!-- Verdetto AI -->
-        <div class="duel-verdict-box">
+        <!-- Barra percentuale più alta con valore dentro -->
+        <div class="duel-gauge-bar-thick">
+            <div class="gauge-part-left fav" style="width: 58%;">
+                <span class="gauge-pct-val">58%</span>
+            </div>
+            <div class="gauge-part-right under" style="width: 42%;">
+                <span class="gauge-pct-val">42%</span>
+            </div>
+        </div>
+        
+        <!-- Verdetto AI & CTA compatti su una riga -->
+        <div class="duel-footer-row">
             <div class="verdict-desc">💡 Gerarchia orientata verso il favorito, rotazione possibile al 70&#39;.</div>
+            <a href="/chi-schiero/ebosse-vs-alaba/" class="btn-duel-compare" title="Analizza Ballottaggio">
+                <span>⚔️ Chi Schiero</span> &rarr;
+            </a>
+        </div>
+    </div>
+    
+    <div class="duel-card-h2h">
+        <div class="duel-card-top">
+            <span class="duel-team-tag">⚽ Udinese</span>
+            <span class="verdict-tag warning">Ballottaggio Aperto (Rischio SV)</span>
         </div>
         
-        <div class="duel-cta-row">
-            <a href="/chi-schiero/kabasele-vs-palma/" class="btn-duel-compare">
-                <span>⚔️ Analizza Ballottaggio su Chi Schiero</span> &rarr;
+        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
+        <div class="duel-players-row">
+            <div class="duel-player-side left">
+                <span class="pitch-role-badge C">C</span>
+                <a href="/calciatore/miller-l-2026/" class="h2h-name" title="Scheda Miller L.">Miller L.</a>
+                <span class="h2h-ovr-pill">OVR 57</span>
+            </div>
+            <div class="duel-player-side right">
+                <span class="h2h-ovr-pill">OVR 52</span>
+                <a href="/calciatore/zarraga-2026/" class="h2h-name" title="Scheda Zarraga">Zarraga</a>
+                <span class="pitch-role-badge C">C</span>
+            </div>
+        </div>
+        
+        <!-- Barra percentuale più alta con valore dentro -->
+        <div class="duel-gauge-bar-thick">
+            <div class="gauge-part-left fav" style="width: 54%;">
+                <span class="gauge-pct-val">54%</span>
+            </div>
+            <div class="gauge-part-right under" style="width: 46%;">
+                <span class="gauge-pct-val">46%</span>
+            </div>
+        </div>
+        
+        <!-- Verdetto AI & CTA compatti su una riga -->
+        <div class="duel-footer-row">
+            <div class="verdict-desc">💡 Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.</div>
+            <a href="/chi-schiero/miller-l-vs-zarraga/" class="btn-duel-compare" title="Analizza Ballottaggio">
+                <span>⚔️ Chi Schiero</span> &rarr;
+            </a>
+        </div>
+    </div>
+    
+    <div class="duel-card-h2h">
+        <div class="duel-card-top">
+            <span class="duel-team-tag">⚽ Udinese</span>
+            <span class="verdict-tag warning">Ballottaggio Aperto (Rischio SV)</span>
+        </div>
+        
+        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
+        <div class="duel-players-row">
+            <div class="duel-player-side left">
+                <span class="pitch-role-badge C">C</span>
+                <a href="/calciatore/chakvetadze-2026/" class="h2h-name" title="Scheda Chakvetadze">Chakvetadze</a>
+                <span class="h2h-ovr-pill">OVR 54</span>
+            </div>
+            <div class="duel-player-side right">
+                <span class="h2h-ovr-pill">OVR 63</span>
+                <a href="/calciatore/unai-gomez-2026/" class="h2h-name" title="Scheda Unai Gomez">Unai Gomez</a>
+                <span class="pitch-role-badge C">C</span>
+            </div>
+        </div>
+        
+        <!-- Barra percentuale più alta con valore dentro -->
+        <div class="duel-gauge-bar-thick">
+            <div class="gauge-part-left fav" style="width: 54%;">
+                <span class="gauge-pct-val">54%</span>
+            </div>
+            <div class="gauge-part-right under" style="width: 46%;">
+                <span class="gauge-pct-val">46%</span>
+            </div>
+        </div>
+        
+        <!-- Verdetto AI & CTA compatti su una riga -->
+        <div class="duel-footer-row">
+            <div class="verdict-desc">💡 Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.</div>
+            <a href="/chi-schiero/chakvetadze-vs-unai-gomez/" class="btn-duel-compare" title="Analizza Ballottaggio">
+                <span>⚔️ Chi Schiero</span> &rarr;
+            </a>
+        </div>
+    </div>
+    
+    <div class="duel-card-h2h">
+        <div class="duel-card-top">
+            <span class="duel-team-tag">⚽ Udinese</span>
+            <span class="verdict-tag warning">Ballottaggio Aperto (Rischio SV)</span>
+        </div>
+        
+        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
+        <div class="duel-players-row">
+            <div class="duel-player-side left">
+                <span class="pitch-role-badge D">D</span>
+                <a href="/calciatore/abankwah-2026/" class="h2h-name" title="Scheda Abankwah">Abankwah</a>
+                <span class="h2h-ovr-pill">OVR 63</span>
+            </div>
+            <div class="duel-player-side right">
+                <span class="h2h-ovr-pill">OVR 62</span>
+                <a href="/calciatore/bertola-2026/" class="h2h-name" title="Scheda Bertola">Bertola</a>
+                <span class="pitch-role-badge D">D</span>
+            </div>
+        </div>
+        
+        <!-- Barra percentuale più alta con valore dentro -->
+        <div class="duel-gauge-bar-thick">
+            <div class="gauge-part-left fav" style="width: 54%;">
+                <span class="gauge-pct-val">54%</span>
+            </div>
+            <div class="gauge-part-right under" style="width: 46%;">
+                <span class="gauge-pct-val">46%</span>
+            </div>
+        </div>
+        
+        <!-- Verdetto AI & CTA compatti su una riga -->
+        <div class="duel-footer-row">
+            <div class="verdict-desc">💡 Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.</div>
+            <a href="/chi-schiero/abankwah-vs-bertola/" class="btn-duel-compare" title="Analizza Ballottaggio">
+                <span>⚔️ Chi Schiero</span> &rarr;
+            </a>
+        </div>
+    </div>
+    
+    <div class="duel-card-h2h">
+        <div class="duel-card-top">
+            <span class="duel-team-tag">⚽ Udinese</span>
+            <span class="verdict-tag jolly">Jolly Spacca-Partita</span>
+        </div>
+        
+        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
+        <div class="duel-players-row">
+            <div class="duel-player-side left">
+                <span class="pitch-role-badge D">D</span>
+                <a href="/calciatore/kabasele-2026/" class="h2h-name" title="Scheda Kabasele">Kabasele</a>
+                <span class="h2h-ovr-pill">OVR 64</span>
+            </div>
+            <div class="duel-player-side right">
+                <span class="h2h-ovr-pill">OVR 64</span>
+                <a href="/calciatore/palma-2026/" class="h2h-name" title="Scheda Palma">Palma</a>
+                <span class="pitch-role-badge D">D</span>
+            </div>
+        </div>
+        
+        <!-- Barra percentuale più alta con valore dentro -->
+        <div class="duel-gauge-bar-thick">
+            <div class="gauge-part-left fav" style="width: 60%;">
+                <span class="gauge-pct-val">60%</span>
+            </div>
+            <div class="gauge-part-right under" style="width: 40%;">
+                <span class="gauge-pct-val">40%</span>
+            </div>
+        </div>
+        
+        <!-- Verdetto AI & CTA compatti su una riga -->
+        <div class="duel-footer-row">
+            <div class="verdict-desc">💡 Subentrante letale da bonus: può incidere e prendere voto anche da panchinaro.</div>
+            <a href="/chi-schiero/kabasele-vs-palma/" class="btn-duel-compare" title="Analizza Ballottaggio">
+                <span>⚔️ Chi Schiero</span> &rarr;
             </a>
         </div>
     </div>
@@ -2450,104 +2209,35 @@ html, body {
             <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
         
-        <div class="duel-h2h-players">
-            <!-- Giocatore 1 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge A">A</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/geubbels-2026/" class="h2h-name" title="Scheda Geubbels">Geubbels</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>66</b></span> &bull; <span>xFM <b>6.06</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct fav">58%</div>
+        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
+        <div class="duel-players-row">
+            <div class="duel-player-side left">
+                <span class="pitch-role-badge A">A</span>
+                <a href="/calciatore/geubbels-2026/" class="h2h-name" title="Scheda Geubbels">Geubbels</a>
+                <span class="h2h-ovr-pill">OVR 66</span>
             </div>
-            
-            <!-- Bicolor Gauge -->
-            <div class="duel-gauge-bar">
-                <div class="gauge-part-left" style="width: 58%;"></div>
-                <div class="gauge-part-right" style="width: 42%;"></div>
-            </div>
-
-            <!-- Giocatore 2 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge C">C</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/esteban-2026/" class="h2h-name" title="Scheda Esteban">Esteban</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>74</b></span> &bull; <span>xFM <b>6.00</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct under">42%</div>
+            <div class="duel-player-side right">
+                <span class="h2h-ovr-pill">OVR 74</span>
+                <a href="/calciatore/esteban-2026/" class="h2h-name" title="Scheda Esteban">Esteban</a>
+                <span class="pitch-role-badge C">C</span>
             </div>
         </div>
         
-        <!-- Verdetto AI -->
-        <div class="duel-verdict-box">
+        <!-- Barra percentuale più alta con valore dentro -->
+        <div class="duel-gauge-bar-thick">
+            <div class="gauge-part-left fav" style="width: 59%;">
+                <span class="gauge-pct-val">59%</span>
+            </div>
+            <div class="gauge-part-right under" style="width: 41%;">
+                <span class="gauge-pct-val">41%</span>
+            </div>
+        </div>
+        
+        <!-- Verdetto AI & CTA compatti su una riga -->
+        <div class="duel-footer-row">
             <div class="verdict-desc">💡 Gerarchia orientata verso il favorito, rotazione possibile al 70&#39;.</div>
-        </div>
-        
-        <div class="duel-cta-row">
-            <a href="/chi-schiero/geubbels-vs-esteban/" class="btn-duel-compare">
-                <span>⚔️ Analizza Ballottaggio su Chi Schiero</span> &rarr;
-            </a>
-        </div>
-    </div>
-    
-    <div class="duel-card-h2h">
-        <div class="duel-card-top">
-            <span class="duel-team-tag">⚽ Lecce</span>
-            <span class="verdict-tag warning">Ballottaggio Aperto (Rischio SV)</span>
-        </div>
-        
-        <div class="duel-h2h-players">
-            <!-- Giocatore 1 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge D">D</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/gaspar-k-2026/" class="h2h-name" title="Scheda Gaspar K.">Gaspar K.</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>63</b></span> &bull; <span>xFM <b>5.67</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct fav">57%</div>
-            </div>
-            
-            <!-- Bicolor Gauge -->
-            <div class="duel-gauge-bar">
-                <div class="gauge-part-left" style="width: 57%;"></div>
-                <div class="gauge-part-right" style="width: 43%;"></div>
-            </div>
-
-            <!-- Giocatore 2 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge D">D</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/siebert-2026/" class="h2h-name" title="Scheda Siebert">Siebert</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>64</b></span> &bull; <span>xFM <b>5.79</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct under">43%</div>
-            </div>
-        </div>
-        
-        <!-- Verdetto AI -->
-        <div class="duel-verdict-box">
-            <div class="verdict-desc">💡 Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.</div>
-        </div>
-        
-        <div class="duel-cta-row">
-            <a href="/chi-schiero/gaspar-k-vs-siebert/" class="btn-duel-compare">
-                <span>⚔️ Analizza Ballottaggio su Chi Schiero</span> &rarr;
+            <a href="/chi-schiero/geubbels-vs-esteban/" class="btn-duel-compare" title="Analizza Ballottaggio">
+                <span>⚔️ Chi Schiero</span> &rarr;
             </a>
         </div>
     </div>
@@ -2558,50 +2248,35 @@ html, body {
             <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
         
-        <div class="duel-h2h-players">
-            <!-- Giocatore 1 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge C">C</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/ngom-2026/" class="h2h-name" title="Scheda Ngom">Ngom</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>56</b></span> &bull; <span>xFM <b>5.70</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct fav">63%</div>
+        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
+        <div class="duel-players-row">
+            <div class="duel-player-side left">
+                <span class="pitch-role-badge D">D</span>
+                <a href="/calciatore/gaspar-k-2026/" class="h2h-name" title="Scheda Gaspar K.">Gaspar K.</a>
+                <span class="h2h-ovr-pill">OVR 64</span>
             </div>
-            
-            <!-- Bicolor Gauge -->
-            <div class="duel-gauge-bar">
-                <div class="gauge-part-left" style="width: 63%;"></div>
-                <div class="gauge-part-right" style="width: 37%;"></div>
-            </div>
-
-            <!-- Giocatore 2 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge C">C</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/gorter-2026/" class="h2h-name" title="Scheda Gorter">Gorter</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>58</b></span> &bull; <span>xFM <b>5.75</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct under">37%</div>
+            <div class="duel-player-side right">
+                <span class="h2h-ovr-pill">OVR 65</span>
+                <a href="/calciatore/siebert-2026/" class="h2h-name" title="Scheda Siebert">Siebert</a>
+                <span class="pitch-role-badge D">D</span>
             </div>
         </div>
         
-        <!-- Verdetto AI -->
-        <div class="duel-verdict-box">
+        <!-- Barra percentuale più alta con valore dentro -->
+        <div class="duel-gauge-bar-thick">
+            <div class="gauge-part-left fav" style="width: 58%;">
+                <span class="gauge-pct-val">58%</span>
+            </div>
+            <div class="gauge-part-right under" style="width: 42%;">
+                <span class="gauge-pct-val">42%</span>
+            </div>
+        </div>
+        
+        <!-- Verdetto AI & CTA compatti su una riga -->
+        <div class="duel-footer-row">
             <div class="verdict-desc">💡 Gerarchia orientata verso il favorito, rotazione possibile al 70&#39;.</div>
-        </div>
-        
-        <div class="duel-cta-row">
-            <a href="/chi-schiero/ngom-vs-gorter/" class="btn-duel-compare">
-                <span>⚔️ Analizza Ballottaggio su Chi Schiero</span> &rarr;
+            <a href="/chi-schiero/gaspar-k-vs-siebert/" class="btn-duel-compare" title="Analizza Ballottaggio">
+                <span>⚔️ Chi Schiero</span> &rarr;
             </a>
         </div>
     </div>
@@ -2612,50 +2287,35 @@ html, body {
             <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
         
-        <div class="duel-h2h-players">
-            <!-- Giocatore 1 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge C">C</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/pierotti-2026/" class="h2h-name" title="Scheda Pierotti">Pierotti</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>66</b></span> &bull; <span>xFM <b>5.85</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct fav">59%</div>
+        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
+        <div class="duel-players-row">
+            <div class="duel-player-side left">
+                <span class="pitch-role-badge C">C</span>
+                <a href="/calciatore/ngom-2026/" class="h2h-name" title="Scheda Ngom">Ngom</a>
+                <span class="h2h-ovr-pill">OVR 57</span>
             </div>
-            
-            <!-- Bicolor Gauge -->
-            <div class="duel-gauge-bar">
-                <div class="gauge-part-left" style="width: 59%;"></div>
-                <div class="gauge-part-right" style="width: 41%;"></div>
-            </div>
-
-            <!-- Giocatore 2 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge C">C</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/monteiro-j-2026/" class="h2h-name" title="Scheda Monteiro J.">Monteiro J.</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>65</b></span> &bull; <span>xFM <b>6.03</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct under">41%</div>
+            <div class="duel-player-side right">
+                <span class="h2h-ovr-pill">OVR 60</span>
+                <a href="/calciatore/gorter-2026/" class="h2h-name" title="Scheda Gorter">Gorter</a>
+                <span class="pitch-role-badge C">C</span>
             </div>
         </div>
         
-        <!-- Verdetto AI -->
-        <div class="duel-verdict-box">
+        <!-- Barra percentuale più alta con valore dentro -->
+        <div class="duel-gauge-bar-thick">
+            <div class="gauge-part-left fav" style="width: 65%;">
+                <span class="gauge-pct-val">65%</span>
+            </div>
+            <div class="gauge-part-right under" style="width: 35%;">
+                <span class="gauge-pct-val">35%</span>
+            </div>
+        </div>
+        
+        <!-- Verdetto AI & CTA compatti su una riga -->
+        <div class="duel-footer-row">
             <div class="verdict-desc">💡 Gerarchia orientata verso il favorito, rotazione possibile al 70&#39;.</div>
-        </div>
-        
-        <div class="duel-cta-row">
-            <a href="/chi-schiero/pierotti-vs-monteiro-j/" class="btn-duel-compare">
-                <span>⚔️ Analizza Ballottaggio su Chi Schiero</span> &rarr;
+            <a href="/chi-schiero/ngom-vs-gorter/" class="btn-duel-compare" title="Analizza Ballottaggio">
+                <span>⚔️ Chi Schiero</span> &rarr;
             </a>
         </div>
     </div>
@@ -2663,53 +2323,77 @@ html, body {
     <div class="duel-card-h2h">
         <div class="duel-card-top">
             <span class="duel-team-tag">⚽ Lecce</span>
-            <span class="verdict-tag warning">Ballottaggio Aperto (Rischio SV)</span>
+            <span class="verdict-tag neutral">Leggero Vantaggio</span>
         </div>
         
-        <div class="duel-h2h-players">
-            <!-- Giocatore 1 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge C">C</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/coulibaly-l-2026/" class="h2h-name" title="Scheda Coulibaly L.">Coulibaly L.</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>62</b></span> &bull; <span>xFM <b>6.29</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct fav">55%</div>
+        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
+        <div class="duel-players-row">
+            <div class="duel-player-side left">
+                <span class="pitch-role-badge C">C</span>
+                <a href="/calciatore/pierotti-2026/" class="h2h-name" title="Scheda Pierotti">Pierotti</a>
+                <span class="h2h-ovr-pill">OVR 67</span>
             </div>
-            
-            <!-- Bicolor Gauge -->
-            <div class="duel-gauge-bar">
-                <div class="gauge-part-left" style="width: 55%;"></div>
-                <div class="gauge-part-right" style="width: 45%;"></div>
-            </div>
-
-            <!-- Giocatore 2 -->
-            <div class="h2h-player-row">
-                <div class="h2h-player-lead">
-                    <span class="pitch-role-badge C">C</span>
-                    <div class="h2h-info">
-                        <a href="/calciatore/gandelman-2026/" class="h2h-name" title="Scheda Gandelman">Gandelman</a>
-                        <div class="h2h-meta">
-                            <span>OVR <b>56</b></span> &bull; <span>xFM <b>6.34</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h2h-pct under">45%</div>
+            <div class="duel-player-side right">
+                <span class="h2h-ovr-pill">OVR 66</span>
+                <a href="/calciatore/monteiro-j-2026/" class="h2h-name" title="Scheda Monteiro J.">Monteiro J.</a>
+                <span class="pitch-role-badge C">C</span>
             </div>
         </div>
         
-        <!-- Verdetto AI -->
-        <div class="duel-verdict-box">
-            <div class="verdict-desc">💡 Duello serratissimo 50/50: chi parte fuori ha scarso minutaggio.</div>
+        <!-- Barra percentuale più alta con valore dentro -->
+        <div class="duel-gauge-bar-thick">
+            <div class="gauge-part-left fav" style="width: 59%;">
+                <span class="gauge-pct-val">59%</span>
+            </div>
+            <div class="gauge-part-right under" style="width: 41%;">
+                <span class="gauge-pct-val">41%</span>
+            </div>
         </div>
         
-        <div class="duel-cta-row">
-            <a href="/chi-schiero/coulibaly-l-vs-gandelman/" class="btn-duel-compare">
-                <span>⚔️ Analizza Ballottaggio su Chi Schiero</span> &rarr;
+        <!-- Verdetto AI & CTA compatti su una riga -->
+        <div class="duel-footer-row">
+            <div class="verdict-desc">💡 Gerarchia orientata verso il favorito, rotazione possibile al 70&#39;.</div>
+            <a href="/chi-schiero/pierotti-vs-monteiro-j/" class="btn-duel-compare" title="Analizza Ballottaggio">
+                <span>⚔️ Chi Schiero</span> &rarr;
+            </a>
+        </div>
+    </div>
+    
+    <div class="duel-card-h2h">
+        <div class="duel-card-top">
+            <span class="duel-team-tag">⚽ Lecce</span>
+            <span class="verdict-tag hot">Staffetta con Voto Garantito</span>
+        </div>
+        
+        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
+        <div class="duel-players-row">
+            <div class="duel-player-side left">
+                <span class="pitch-role-badge C">C</span>
+                <a href="/calciatore/coulibaly-l-2026/" class="h2h-name" title="Scheda Coulibaly L.">Coulibaly L.</a>
+                <span class="h2h-ovr-pill">OVR 65</span>
+            </div>
+            <div class="duel-player-side right">
+                <span class="h2h-ovr-pill">OVR 57</span>
+                <a href="/calciatore/gandelman-2026/" class="h2h-name" title="Scheda Gandelman">Gandelman</a>
+                <span class="pitch-role-badge C">C</span>
+            </div>
+        </div>
+        
+        <!-- Barra percentuale più alta con valore dentro -->
+        <div class="duel-gauge-bar-thick">
+            <div class="gauge-part-left fav" style="width: 55%;">
+                <span class="gauge-pct-val">55%</span>
+            </div>
+            <div class="gauge-part-right under" style="width: 45%;">
+                <span class="gauge-pct-val">45%</span>
+            </div>
+        </div>
+        
+        <!-- Verdetto AI & CTA compatti su una riga -->
+        <div class="duel-footer-row">
+            <div class="verdict-desc">💡 Staffetta programmata 60&#39;/30&#39;: alto impatto offensivo da subentrante.</div>
+            <a href="/chi-schiero/coulibaly-l-vs-gandelman/" class="btn-duel-compare" title="Analizza Ballottaggio">
+                <span>⚔️ Chi Schiero</span> &rarr;
             </a>
         </div>
     </div>
@@ -2720,11 +2404,8 @@ html, body {
     
             </div>
 
-            <!-- Pane 2: Tabellone Fonti a Confronto (Anti-FCO) -->
+            <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
             <div class="match-view-pane view-pane-table" style="display:none;">
-                <div style="font-size:11.5px;color:#94a3b8;margin-bottom:8px;">
-                    💡 Scorri orizzontalmente per confrontare le percentuali delle 5 testate di riferimento.
-                </div>
                 
     <div style="display:flex;flex-direction:column;gap:16px;">
         
@@ -2733,452 +2414,312 @@ html, body {
             <thead>
                 <tr>
                     <th>Calciatore</th>
-                    <th>OVR</th>
-                    <th class="col-source">FC.it</th>
-                    <th class="col-source">GAZ</th>
-                    <th class="col-source">SKY</th>
-                    <th class="col-source">SOS</th>
-                    <th class="col-source">FP</th>
-                    <th class="col-consensus">MEDIA CONSENSUS</th>
-                    <th>xFM</th>
-                    <th>Status / Consiglio</th>
+                    <th class="col-ovr">OVR</th>
+                    <th class="col-tit">% TIT</th>
+                    <th class="col-xfm">xFM</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="section-subhead-row"><td colspan="10">🌟 11 Titolari Probabili — Udinese (3-4-2-1)</td></tr>
+                <tr class="section-subhead-row"><td colspan="5">🌟 11 Titolari Probabili — Udinese (3-4-2-1)</td></tr>
                 
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge P" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">P</span>
+                <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">P</span>
                 <a href="/calciatore/okoye-2026/">Okoye</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 65</td>
-            <td class="col-source">95%</td>
-            <td class="col-source">95%</td>
-            <td class="col-source">95%</td>
-            <td class="col-source">93%</td>
-            <td class="col-source">95%</td>
-            <td class="col-consensus"><span class="consensus-chip high">95%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.08</td>
-            <td style="font-size:11px;"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+            <td class="col-ovr">68</td>
+            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
+            <td class="col-xfm">3.74</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/abankwah-2026/">Abankwah</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 62</td>
-            <td class="col-source">51%</td>
-            <td class="col-source">53%</td>
-            <td class="col-source">51%</td>
-            <td class="col-source">49%</td>
-            <td class="col-source">51%</td>
-            <td class="col-consensus"><span class="consensus-chip low">51%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.92</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Bertola</span></td>
+            <td class="col-ovr">63</td>
+            <td class="col-tit"><span class="consensus-chip low">54%</span></td>
+            <td class="col-xfm">6.19</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Bertola</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/solet-2026/">Solet</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 82</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">94%</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">90%</td>
-            <td class="col-source">92%</td>
-            <td class="col-consensus"><span class="consensus-chip high">92%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">6.39</td>
-            <td style="font-size:11px;"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+            <td class="col-ovr">83</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm">6.05</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/ebosse-2026/">Ebosse</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 55</td>
-            <td class="col-source">58%</td>
-            <td class="col-source">60%</td>
-            <td class="col-source">58%</td>
-            <td class="col-source">56%</td>
-            <td class="col-source">58%</td>
-            <td class="col-consensus"><span class="consensus-chip low">58%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.71</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Alaba</span></td>
+            <td class="col-ovr">56</td>
+            <td class="col-tit"><span class="consensus-chip low">58%</span></td>
+            <td class="col-xfm">5.72</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Alaba</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/vojvoda-2026/">Vojvoda</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 75</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">94%</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">90%</td>
-            <td class="col-source">92%</td>
-            <td class="col-consensus"><span class="consensus-chip high">92%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">6.22</td>
-            <td style="font-size:11px;"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+            <td class="col-ovr">76</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm">5.86</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/karlstrom-2026/">Karlstrom</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 63</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">94%</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">90%</td>
-            <td class="col-source">92%</td>
-            <td class="col-consensus"><span class="consensus-chip high">92%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.96</td>
-            <td style="font-size:11px;"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+            <td class="col-ovr">65</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm">6.16</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/miller-l-2026/">Miller L.</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 57</td>
-            <td class="col-source">55%</td>
-            <td class="col-source">57%</td>
-            <td class="col-source">55%</td>
-            <td class="col-source">53%</td>
-            <td class="col-source">55%</td>
-            <td class="col-consensus"><span class="consensus-chip low">55%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.94</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Zarraga</span></td>
+            <td class="col-ovr">57</td>
+            <td class="col-tit"><span class="consensus-chip low">54%</span></td>
+            <td class="col-xfm">5.67</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Zarraga</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/kamara-h-2026/">Kamara H.</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 66</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">94%</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">90%</td>
-            <td class="col-source">92%</td>
-            <td class="col-consensus"><span class="consensus-chip high">92%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.87</td>
-            <td style="font-size:11px;"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+            <td class="col-ovr">70</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm">6.56</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/chakvetadze-2026/">Chakvetadze</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 54</td>
-            <td class="col-source">54%</td>
-            <td class="col-source">56%</td>
-            <td class="col-source">54%</td>
-            <td class="col-source">52%</td>
-            <td class="col-source">54%</td>
-            <td class="col-consensus"><span class="consensus-chip low">54%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.64</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Unai Gomez</span></td>
+            <td class="col-ovr">54</td>
+            <td class="col-tit"><span class="consensus-chip low">54%</span></td>
+            <td class="col-xfm">5.84</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Unai Gomez</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/ekkelenkamp-2026/">Ekkelenkamp</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 79</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">94%</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">90%</td>
-            <td class="col-source">92%</td>
-            <td class="col-consensus"><span class="consensus-chip high">92%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">6.61</td>
-            <td style="font-size:11px;"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+            <td class="col-ovr">83</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm">7.20</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/kabasele-2026/">Kabasele</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 64</td>
-            <td class="col-source">59%</td>
-            <td class="col-source">61%</td>
-            <td class="col-source">59%</td>
-            <td class="col-source">57%</td>
-            <td class="col-source">59%</td>
-            <td class="col-consensus"><span class="consensus-chip low">59%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">6.17</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Palma</span></td>
+            <td class="col-ovr">64</td>
+            <td class="col-tit"><span class="consensus-chip mid">60%</span></td>
+            <td class="col-xfm">5.35</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Palma</span></td>
         </tr>
         
-                <tr class="section-subhead-row"><td colspan="10">🪑 In Panchina &amp; Rotazioni</td></tr>
+                <tr class="section-subhead-row"><td colspan="5">🪑 In Panchina &amp; Rotazioni</td></tr>
                 
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/bertola-2026/" style="color:#94a3b8;">Bertola</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 62</td>
-            <td class="col-source">49%</td>
-            <td class="col-source">49%</td>
-            <td class="col-source">49%</td>
-            <td class="col-source">49%</td>
-            <td class="col-source">49%</td>
-            <td class="col-consensus"><span class="consensus-chip mid">49%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.86</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Abankwah</span></td>
+            <td class="col-ovr" style="color:#64748b;">62</td>
+            <td class="col-tit"><span class="consensus-chip mid">46%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.66</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Abankwah</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/unai-gomez-2026/" style="color:#94a3b8;">Unai Gomez</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 61</td>
-            <td class="col-source">46%</td>
-            <td class="col-source">46%</td>
-            <td class="col-source">46%</td>
-            <td class="col-source">46%</td>
-            <td class="col-source">46%</td>
-            <td class="col-consensus"><span class="consensus-chip mid">46%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.88</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Chakvetadze</span></td>
+            <td class="col-ovr" style="color:#64748b;">63</td>
+            <td class="col-tit"><span class="consensus-chip mid">46%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.66</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Chakvetadze</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/zarraga-2026/" style="color:#94a3b8;">Zarraga</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 52</td>
-            <td class="col-source">45%</td>
-            <td class="col-source">45%</td>
-            <td class="col-source">45%</td>
-            <td class="col-source">45%</td>
-            <td class="col-source">45%</td>
-            <td class="col-consensus"><span class="consensus-chip mid">45%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.85</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Miller L.</span></td>
+            <td class="col-ovr" style="color:#64748b;">52</td>
+            <td class="col-tit"><span class="consensus-chip mid">46%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.90</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Miller L.</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/alaba-2026/" style="color:#94a3b8;">Alaba</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 76</td>
-            <td class="col-source">42%</td>
-            <td class="col-source">42%</td>
-            <td class="col-source">42%</td>
-            <td class="col-source">42%</td>
-            <td class="col-source">42%</td>
-            <td class="col-consensus"><span class="consensus-chip mid">42%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">6.41</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Ebosse</span></td>
+            <td class="col-ovr" style="color:#64748b;">76</td>
+            <td class="col-tit"><span class="consensus-chip mid">42%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">6.01</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Ebosse</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/palma-2026/" style="color:#94a3b8;">Palma</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 63</td>
-            <td class="col-source">41%</td>
-            <td class="col-source">41%</td>
-            <td class="col-source">41%</td>
-            <td class="col-source">41%</td>
-            <td class="col-source">41%</td>
-            <td class="col-consensus"><span class="consensus-chip mid">41%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.60</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Kabasele</span></td>
+            <td class="col-ovr" style="color:#64748b;">64</td>
+            <td class="col-tit"><span class="consensus-chip mid">40%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">6.45</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Kabasele</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/arizala-2026/" style="color:#94a3b8;">Arizala</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 60</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.90</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">61</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.90</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/jovanovic-2026/" style="color:#94a3b8;">Jovanovic</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 54</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.64</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">55</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.48</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge A" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">A</span>
+                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
                 <a href="/calciatore/davis-k-2026/" style="color:#94a3b8;">Davis K.</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 85</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">7.37</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">86</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">6.54</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge A" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">A</span>
+                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
                 <a href="/calciatore/bayo-v-2026/" style="color:#94a3b8;">Bayo V.</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 51</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.87</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">52</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">6.20</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge P" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">P</span>
+                <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">P</span>
                 <a href="/calciatore/padelli-2026/" style="color:#94a3b8;">Padelli</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 49</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-consensus"><span class="consensus-chip out">5%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.25</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Secondo portiere</span></td>
+            <td class="col-ovr" style="color:#64748b;">50</td>
+            <td class="col-tit"><span class="consensus-chip out">5%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.25</td>
+            <td class="col-status"><span style="color:#64748b;">Secondo portiere</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge P" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">P</span>
+                <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">P</span>
                 <a href="/calciatore/piana-2026/" style="color:#94a3b8;">Piana</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 49</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-consensus"><span class="consensus-chip out">5%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.46</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Secondo portiere</span></td>
+            <td class="col-ovr" style="color:#64748b;">50</td>
+            <td class="col-tit"><span class="consensus-chip out">5%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.50</td>
+            <td class="col-status"><span style="color:#64748b;">Secondo portiere</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge P" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">P</span>
+                <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">P</span>
                 <a href="/calciatore/mrozek-2026/" style="color:#94a3b8;">Mrozek</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 49</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-consensus"><span class="consensus-chip out">5%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.46</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Secondo portiere</span></td>
+            <td class="col-ovr" style="color:#64748b;">50</td>
+            <td class="col-tit"><span class="consensus-chip out">5%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.50</td>
+            <td class="col-status"><span style="color:#64748b;">Secondo portiere</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/zanoli-2026/" style="color:#94a3b8;">Zanoli</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 57</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-consensus"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">6.29</td>
-            <td style="font-size:11px;"><span style="color:#f87171;">🩹 31/10/2026</span></td>
+            <td class="col-ovr" style="color:#64748b;">57</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">6.70</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 31/10/2026</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/zaniolo-2026/" style="color:#94a3b8;">Zaniolo</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 84</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-consensus"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">6.75</td>
-            <td style="font-size:11px;"><span style="color:#f87171;">🩹 19/10/2026</span></td>
+            <td class="col-ovr" style="color:#64748b;">84</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">6.53</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 19/10/2026</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/piotrowski-2026/" style="color:#94a3b8;">Piotrowski</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 56</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-consensus"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.95</td>
-            <td style="font-size:11px;"><span style="color:#f87171;">🩹 18/10/2026</span></td>
+            <td class="col-ovr" style="color:#64748b;">58</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">6.22</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 18/10/2026</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge A" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">A</span>
+                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
                 <a href="/calciatore/gueye-2026/" style="color:#94a3b8;">Gueye</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 46</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-source">0%</td>
-            <td class="col-consensus"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.95</td>
-            <td style="font-size:11px;"><span style="color:#f87171;">🩹 05/01/2027</span></td>
+            <td class="col-ovr" style="color:#64748b;">46</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">6.93</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 05/01/2027</span></td>
         </tr>
         
             </tbody>
@@ -3191,452 +2732,312 @@ html, body {
             <thead>
                 <tr>
                     <th>Calciatore</th>
-                    <th>OVR</th>
-                    <th class="col-source">FC.it</th>
-                    <th class="col-source">GAZ</th>
-                    <th class="col-source">SKY</th>
-                    <th class="col-source">SOS</th>
-                    <th class="col-source">FP</th>
-                    <th class="col-consensus">MEDIA CONSENSUS</th>
-                    <th>xFM</th>
-                    <th>Status / Consiglio</th>
+                    <th class="col-ovr">OVR</th>
+                    <th class="col-tit">% TIT</th>
+                    <th class="col-xfm">xFM</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="section-subhead-row"><td colspan="10">🌟 11 Titolari Probabili — Lecce (4-3-3)</td></tr>
+                <tr class="section-subhead-row"><td colspan="5">🌟 11 Titolari Probabili — Lecce (4-3-3)</td></tr>
                 
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge P" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">P</span>
+                <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">P</span>
                 <a href="/calciatore/falcone-2026/">Falcone</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 65</td>
-            <td class="col-source">95%</td>
-            <td class="col-source">95%</td>
-            <td class="col-source">95%</td>
-            <td class="col-source">93%</td>
-            <td class="col-source">95%</td>
-            <td class="col-consensus"><span class="consensus-chip high">95%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.22</td>
-            <td style="font-size:11px;"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+            <td class="col-ovr">67</td>
+            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
+            <td class="col-xfm">3.99</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/veiga-d-2026/">Veiga D.</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 66</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">94%</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">90%</td>
-            <td class="col-source">92%</td>
-            <td class="col-consensus"><span class="consensus-chip high">92%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.69</td>
-            <td style="font-size:11px;"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+            <td class="col-ovr">68</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm">5.69</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/tiago-gabriel-2026/">Tiago Gabriel</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 72</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">94%</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">90%</td>
-            <td class="col-source">92%</td>
-            <td class="col-consensus"><span class="consensus-chip high">92%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">6.01</td>
-            <td style="font-size:11px;"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+            <td class="col-ovr">74</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm">6.51</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/gaspar-k-2026/">Gaspar K.</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 63</td>
-            <td class="col-source">57%</td>
-            <td class="col-source">59%</td>
-            <td class="col-source">57%</td>
-            <td class="col-source">55%</td>
-            <td class="col-source">57%</td>
-            <td class="col-consensus"><span class="consensus-chip low">57%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.67</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Siebert</span></td>
+            <td class="col-ovr">64</td>
+            <td class="col-tit"><span class="consensus-chip low">58%</span></td>
+            <td class="col-xfm">5.18</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Siebert</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/gallo-2026/">Gallo</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 67</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">94%</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">90%</td>
-            <td class="col-source">92%</td>
-            <td class="col-consensus"><span class="consensus-chip high">92%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.99</td>
-            <td style="font-size:11px;"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+            <td class="col-ovr">68</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm">5.78</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/coulibaly-l-2026/">Coulibaly L.</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 62</td>
-            <td class="col-source">55%</td>
-            <td class="col-source">57%</td>
-            <td class="col-source">55%</td>
-            <td class="col-source">53%</td>
-            <td class="col-source">55%</td>
-            <td class="col-consensus"><span class="consensus-chip low">55%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">6.29</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Gandelman</span></td>
+            <td class="col-ovr">65</td>
+            <td class="col-tit"><span class="consensus-chip low">55%</span></td>
+            <td class="col-xfm">6.83</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Gandelman</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/ngom-2026/">Ngom</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 56</td>
-            <td class="col-source">63%</td>
-            <td class="col-source">65%</td>
-            <td class="col-source">63%</td>
-            <td class="col-source">61%</td>
-            <td class="col-source">63%</td>
-            <td class="col-consensus"><span class="consensus-chip mid">63%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.70</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Gorter</span></td>
+            <td class="col-ovr">57</td>
+            <td class="col-tit"><span class="consensus-chip mid">65%</span></td>
+            <td class="col-xfm">5.57</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Gorter</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/maleh-2026/">Maleh</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 53</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">94%</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">90%</td>
-            <td class="col-source">92%</td>
-            <td class="col-consensus"><span class="consensus-chip high">92%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.74</td>
-            <td style="font-size:11px;"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+            <td class="col-ovr">54</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm">5.99</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/pierotti-2026/">Pierotti</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 66</td>
-            <td class="col-source">59%</td>
-            <td class="col-source">61%</td>
-            <td class="col-source">59%</td>
-            <td class="col-source">57%</td>
-            <td class="col-source">59%</td>
-            <td class="col-consensus"><span class="consensus-chip low">59%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.85</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Monteiro J.</span></td>
+            <td class="col-ovr">67</td>
+            <td class="col-tit"><span class="consensus-chip low">59%</span></td>
+            <td class="col-xfm">5.96</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Monteiro J.</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge A" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">A</span>
+                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
                 <a href="/calciatore/geubbels-2026/">Geubbels</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 66</td>
-            <td class="col-source">58%</td>
-            <td class="col-source">60%</td>
-            <td class="col-source">58%</td>
-            <td class="col-source">56%</td>
-            <td class="col-source">58%</td>
-            <td class="col-consensus"><span class="consensus-chip low">58%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">6.06</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Esteban</span></td>
+            <td class="col-ovr">66</td>
+            <td class="col-tit"><span class="consensus-chip low">59%</span></td>
+            <td class="col-xfm">6.37</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Esteban</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge A" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">A</span>
+                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
                 <a href="/calciatore/fatah-2026/">Fatah</a>
             </td>
-            <td style="color:#94a3b8;font-size:11px;">OVR 57</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">94%</td>
-            <td class="col-source">92%</td>
-            <td class="col-source">90%</td>
-            <td class="col-source">92%</td>
-            <td class="col-consensus"><span class="consensus-chip high">92%</span></td>
-            <td style="color:#fbbf24;font-weight:800;font-family:'Outfit';">5.75</td>
-            <td style="font-size:11px;"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+            <td class="col-ovr">59</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm">6.12</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
         </tr>
         
-                <tr class="section-subhead-row"><td colspan="10">🪑 In Panchina &amp; Rotazioni</td></tr>
+                <tr class="section-subhead-row"><td colspan="5">🪑 In Panchina &amp; Rotazioni</td></tr>
                 
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/gandelman-2026/" style="color:#94a3b8;">Gandelman</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 56</td>
-            <td class="col-source">45%</td>
-            <td class="col-source">45%</td>
-            <td class="col-source">45%</td>
-            <td class="col-source">45%</td>
-            <td class="col-source">45%</td>
-            <td class="col-consensus"><span class="consensus-chip mid">45%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">6.34</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Coulibaly L.</span></td>
+            <td class="col-ovr" style="color:#64748b;">57</td>
+            <td class="col-tit"><span class="consensus-chip mid">45%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.98</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Coulibaly L.</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/siebert-2026/" style="color:#94a3b8;">Siebert</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 64</td>
-            <td class="col-source">43%</td>
-            <td class="col-source">43%</td>
-            <td class="col-source">43%</td>
-            <td class="col-source">43%</td>
-            <td class="col-source">43%</td>
-            <td class="col-consensus"><span class="consensus-chip mid">43%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.79</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Gaspar K.</span></td>
+            <td class="col-ovr" style="color:#64748b;">65</td>
+            <td class="col-tit"><span class="consensus-chip mid">42%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.52</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Gaspar K.</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/monteiro-j-2026/" style="color:#94a3b8;">Monteiro J.</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 65</td>
-            <td class="col-source">41%</td>
-            <td class="col-source">41%</td>
-            <td class="col-source">41%</td>
-            <td class="col-source">41%</td>
-            <td class="col-source">41%</td>
-            <td class="col-consensus"><span class="consensus-chip mid">41%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">6.03</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Pierotti</span></td>
+            <td class="col-ovr" style="color:#64748b;">66</td>
+            <td class="col-tit"><span class="consensus-chip mid">41%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.68</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Pierotti</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/gorter-2026/" style="color:#94a3b8;">Gorter</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 58</td>
-            <td class="col-source">37%</td>
-            <td class="col-source">37%</td>
-            <td class="col-source">37%</td>
-            <td class="col-source">37%</td>
-            <td class="col-source">37%</td>
-            <td class="col-consensus"><span class="consensus-chip low">37%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.75</td>
-            <td style="font-size:11px;"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Ngom</span></td>
+            <td class="col-ovr" style="color:#64748b;">60</td>
+            <td class="col-tit"><span class="consensus-chip low">35%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">6.12</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Ngom</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/ndaba-2026/" style="color:#94a3b8;">Ndaba</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 56</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.68</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">57</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.40</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/jean-2026/" style="color:#94a3b8;">Jean</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 52</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.79</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">53</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.79</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge D" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">D</span>
+                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
                 <a href="/calciatore/dembel-a-2026/" style="color:#94a3b8;">Dembelè A.</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 52</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.50</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">53</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.50</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/berisha-m-2026/" style="color:#94a3b8;">Berisha M.</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 58</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">6.85</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">59</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.93</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/ilic-2026/" style="color:#94a3b8;">Ilic</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 53</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.88</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">55</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.70</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/laerke-2026/" style="color:#94a3b8;">Laerke</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 50</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.50</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">51</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.54</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/kaba-2026/" style="color:#94a3b8;">Kaba</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 49</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.80</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">50</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">6.01</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge C" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">C</span>
+                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
                 <a href="/calciatore/fofana-sa-2026/" style="color:#94a3b8;">Fofana Sa.</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 48</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.80</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">49</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.80</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge A" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">A</span>
+                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
                 <a href="/calciatore/stulic-2026/" style="color:#94a3b8;">Stulic</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 61</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">6.10</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">61</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">6.01</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge A" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">A</span>
+                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
                 <a href="/calciatore/n-dri-2026/" style="color:#94a3b8;">N&#39;Dri</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 57</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-source">15%</td>
-            <td class="col-consensus"><span class="consensus-chip low">15%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">6.06</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Panchina</span></td>
+            <td class="col-ovr" style="color:#64748b;">57</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.89</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge P" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">P</span>
+                <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">P</span>
                 <a href="/calciatore/penev-2026/" style="color:#94a3b8;">Penev</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 49</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-consensus"><span class="consensus-chip out">5%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.46</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Secondo portiere</span></td>
+            <td class="col-ovr" style="color:#64748b;">50</td>
+            <td class="col-tit"><span class="consensus-chip out">5%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.50</td>
+            <td class="col-status"><span style="color:#64748b;">Secondo portiere</span></td>
         </tr>
         
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge P" style="width:16px;height:16px;font-size:9px;display:inline-flex;margin-right:4px;">P</span>
+                <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">P</span>
                 <a href="/calciatore/bleve-2026/" style="color:#94a3b8;">Bleve</a>
             </td>
-            <td style="color:#64748b;font-size:11px;">OVR 49</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-source">5%</td>
-            <td class="col-consensus"><span class="consensus-chip out">5%</span></td>
-            <td style="color:#94a3b8;font-weight:700;font-family:'Outfit';">5.46</td>
-            <td style="font-size:11px;"><span style="color:#64748b;">Secondo portiere</span></td>
+            <td class="col-ovr" style="color:#64748b;">50</td>
+            <td class="col-tit"><span class="consensus-chip out">5%</span></td>
+            <td class="col-xfm" style="color:#94a3b8;">5.50</td>
+            <td class="col-status"><span style="color:#64748b;">Secondo portiere</span></td>
         </tr>
         
             </tbody>
@@ -3697,6 +3098,188 @@ html, body {
                 </div>
             </div>
 
+            <!-- Consigli Fantacalcio AI Bento Grid -->
+            <div class="seo-section-heading" style="margin-top:28px;">
+                <span class="icon">🤖</span>
+                <span>Consigli Fantacalcio AI — Scelte Chiave per Udinese vs Lecce</span>
+                <span class="badge">Predittivo xFM</span>
+            </div>
+            
+    <div class="seo-advice-grid">
+        <!-- Card 1: Top Pick -->
+        <div class="seo-advice-card advice-pick">
+            <div class="advice-header">
+                <span class="advice-badge">🌟 TOP PICK AI</span>
+                <span class="advice-team-tag">Udinese</span>
+            </div>
+            <div class="advice-player-row">
+                <span class="pitch-role-badge C">C</span>
+                <a href="/calciatore/ekkelenkamp-2026/" class="advice-name">Ekkelenkamp</a>
+            </div>
+            <div class="advice-meta">
+                <span>OVR <b>83</b></span> &bull; <span>xFM <b>7.20</b></span>
+            </div>
+            <p class="advice-text">
+                Indice predittivo più alto della sfida. Schieralo titolare assoluto: le proiezioni algoritmiche evidenziano massima probabilità di bonus pesante o voto sopra la media.
+            </p>
+        </div>
+
+        <!-- Card 2: Rischio Flop / Trappola -->
+        <div class="seo-advice-card advice-risk">
+            <div class="advice-header">
+                <span class="advice-badge">⚠️ ATTENZIONE FLOP</span>
+                <span class="advice-team-tag">Udinese</span>
+            </div>
+            <div class="advice-player-row">
+                <span class="pitch-role-badge C">C</span>
+                <a href="/calciatore/chakvetadze-2026/" class="advice-name">Chakvetadze</a>
+            </div>
+            <div class="advice-meta">
+                <span>OVR <b>54</b></span> &bull; <span>xFM <b>5.84</b></span>
+            </div>
+            <p class="advice-text">
+                Reparto ad alto coefficiente di difficoltà. Elevato rischio di malus o insufficienza contro la manovra offensiva avversaria. Valuta alternative più sicure.
+            </p>
+        </div>
+
+        <!-- Card 3: Jolly Subentrante -->
+        <div class="seo-advice-card advice-jolly">
+            <div class="advice-header">
+                <span class="advice-badge">🔮 JOLLY SUPER-SUB</span>
+                <span class="advice-team-tag">Lecce</span>
+            </div>
+            <div class="advice-player-row">
+                <span class="pitch-role-badge C">C</span>
+                <a href="/calciatore/gandelman-2026/" class="advice-name">Gandelman</a>
+            </div>
+            <div class="advice-meta">
+                <span>OVR <b>57</b></span> &bull; <span>xFM <b>5.98</b></span>
+            </div>
+            <p class="advice-text">
+                Spacca-partita designato: l'algoritmo prevede un ingresso a gara in corso con impatto elevato contro linee difensive stanche. Ottimo terzo o quarto slot con copertura.
+            </p>
+        </div>
+    </div>
+    
+
+            <!-- Analisi Portieri, Clean Sheet & Modificatore Difesa -->
+            
+    <div class="seo-section-heading" style="margin-top:24px;">
+        <span class="icon">🛡️</span>
+        <span>Analisi Portieri &amp; Modificatore Difesa — Proiezioni 1vs1</span>
+        <span class="badge">Clean Sheet &amp; Modificatore</span>
+    </div>
+    <div class="gk-analysis-grid">
+        
+        <div class="gk-analysis-card">
+            <div class="gk-card-header">
+                <span class="gk-verdict-badge modificatore">🌟 Miniera da Modificatore</span>
+                <span style="font-size:11px;color:#94a3b8;font-weight:700;">Udinese &bull; 🏠 In Casa</span>
+            </div>
+            <div class="gk-player-row">
+                <div class="gk-name-wrap">
+                    <span class="pitch-role-badge P">P</span>
+                    <a href="/calciatore/okoye-2026/" class="advice-name">Okoye</a>
+                </div>
+                <span class="gk-status-tag">95% Tit</span>
+            </div>
+            <div class="gk-metrics-row">
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:#4ade80;">35.1%</div>
+                    <div class="gk-metric-lbl">Clean Sheet</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:52%;background:#4ade80;"></div>
+                    </div>
+                </div>
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:#38bdf8;">8.2<span style="font-size:10px;color:#94a3b8;">/10</span></div>
+                    <div class="gk-metric-lbl">Modificatore</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:82%;background:#38bdf8;"></div>
+                    </div>
+                </div>
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:#f87171;">1.34</div>
+                    <div class="gk-metric-lbl">xGA Subiti</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:46%;background:#f87171;"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="gk-desc-text">
+                Volume di interventi elevato. Ideale per massimizzare il bonus del modificatore difesa (+1 o +3).
+            </p>
+        </div>
+        
+        
+        <div class="gk-analysis-card">
+            <div class="gk-card-header">
+                <span class="gk-verdict-badge modificatore">🌟 Miniera da Modificatore</span>
+                <span style="font-size:11px;color:#94a3b8;font-weight:700;">Lecce &bull; ✈️ In Trasferta</span>
+            </div>
+            <div class="gk-player-row">
+                <div class="gk-name-wrap">
+                    <span class="pitch-role-badge P">P</span>
+                    <a href="/calciatore/falcone-2026/" class="advice-name">Falcone</a>
+                </div>
+                <span class="gk-status-tag">95% Tit</span>
+            </div>
+            <div class="gk-metrics-row">
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:#facc15;">20.1%</div>
+                    <div class="gk-metric-lbl">Clean Sheet</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:30%;background:#facc15;"></div>
+                    </div>
+                </div>
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:#38bdf8;">8.4<span style="font-size:10px;color:#94a3b8;">/10</span></div>
+                    <div class="gk-metric-lbl">Modificatore</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:84%;background:#38bdf8;"></div>
+                    </div>
+                </div>
+                <div class="gk-metric-box">
+                    <div class="gk-metric-val" style="color:#f87171;">1.92</div>
+                    <div class="gk-metric-lbl">xGA Subiti</div>
+                    <div class="gk-bar-wrap">
+                        <div class="gk-bar-fill" style="width:67%;background:#f87171;"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="gk-desc-text">
+                Volume di interventi elevato. Ideale per massimizzare il bonus del modificatore difesa (+1 o +3).
+            </p>
+        </div>
+        
+    </div>
+    
+
+            <!-- Approfondimento Editoriale & Sintesi Fatti Chiave (In fondo alla pagina per SEO) -->
+            <div class="seo-section-heading" style="margin-top:28px;">
+                <span class="icon">⚡</span>
+                <span>Sintesi Tattica &amp; Fatti Chiave del Match</span>
+                <span class="badge">Analisi Esperta</span>
+            </div>
+            
+    <div class="seo-summary-card">
+        <div class="seo-summary-badge">⚡ Sintesi Fatti Chiave &bull; Featured Snippet Google</div>
+        <h2 class="seo-summary-title">Sintesi Formazioni Udinese - Lecce (7ª Giornata Serie A 2026/27)</h2>
+        <p class="seo-summary-text">
+            Per la <b>7ª Giornata Serie A 2026/27</b>, il <b>Udinese</b> di Kosta Runjaic affronta al Bluenergy Stadium il <b>Lecce</b> guidato da Eusebio Di Francesco. 
+            Assetto tattico probabile: <b>3-4-2-1</b> per i padroni di casa contro il <b>4-3-3</b> degli ospiti. 
+            Nel Udinese ballottaggio serrato tra <b>Ebosse</b> (58%) e <b>Alaba</b> (42%). Per il Lecce ballottaggio aperto tra <b>Geubbels</b> (59%) e <b>Esteban</b> (41%). Assenti segnalati: Gueye, Piotrowski, Zaniolo, Zanoli. 
+            Primi rigoristi designati: <b>Davis K.</b> (Udinese) e <b>Stulic</b> (Lecce).
+        </p>
+        <div class="seo-summary-pills">
+            <span class="seo-summary-pill">📋 Modulo Casa: <b>3-4-2-1</b></span>
+            <span class="seo-summary-pill">📋 Modulo Trasferta: <b>4-3-3</b></span>
+            <span class="seo-summary-pill">🎯 1° Rigorista Udinese: <b>Davis K.</b></span>
+            <span class="seo-summary-pill">🎯 1° Rigorista Lecce: <b>Stulic</b></span>
+        </div>
+    </div>
+    
+
             <!-- Domande Frequenti (FAQ) -->
             <div class="seo-section-heading" style="margin-top:28px;">
                 <span class="icon">❓</span>
@@ -3712,7 +3295,7 @@ html, body {
         
         <details class="seo-faq-item">
             <summary class="seo-faq-question">Quali sono i ballottaggi aperti di Udinese-Lecce?</summary>
-            <div class="seo-faq-answer">I ballottaggi più incerti monitorati dalle 5 testate di riferimento (Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta, FantaPazz) sono: Ebosse vs Alaba (Udinese); Geubbels vs Esteban (Lecce). Le percentuali indicano la probabilità di titolarità dal 1&#39; minuto.</div>
+            <div class="seo-faq-answer">I ballottaggi più incerti monitorati dalle 4 testate ufficiali di riferimento (Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta) sono: Ebosse vs Alaba (Udinese); Geubbels vs Esteban (Lecce). Le percentuali indicano la probabilità di titolarità dal 1&#39; minuto calcolata come media delle 4 fonti.</div>
         </details>
         
         <details class="seo-faq-item">
@@ -3726,8 +3309,8 @@ html, body {
         </details>
         
         <details class="seo-faq-item">
-            <summary class="seo-faq-question">Come calcola Fanta Master AI il Consensus a 5 Fonti per Udinese-Lecce?</summary>
-            <div class="seo-faq-answer">Fanta Master AI aggrega e normalizza le percentuali di titolarità pubblicate da Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta e FantaPazz. Il nostro algoritmo proprietario calcola media ponderata e deviazione standard, fornendo un verdetto predittivo che neutralizza gli errori delle singole testate.</div>
+            <summary class="seo-faq-question">Come calcola Fanta Master AI il Consensus a 4 Fonti per Udinese-Lecce?</summary>
+            <div class="seo-faq-answer">Fanta Master AI raccoglie e normalizza le percentuali di titolarità pubblicate dalle 4 fonti ufficiali: Fantacalcio.it, Gazzetta dello Sport, Sky Sport e SOS Fanta. Il nostro algoritmo proprietario calcola la media consensus a 4 fonti (fc + gaz + sky + sos) / 4 e neutralizza automaticamente le assenze da infortunio.</div>
         </details>
         </div>
 

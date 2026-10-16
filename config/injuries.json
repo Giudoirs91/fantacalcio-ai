@@ -7,7 +7,7 @@
     "rientro": "09/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Kossounou",
@@ -17,7 +17,7 @@
     "rientro": "29/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Holm",
@@ -27,7 +27,7 @@
     "rientro": "29/01/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Mbangula",
@@ -37,7 +37,7 @@
     "rientro": "16/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
   },
   {
     "player": "Odgaard",
@@ -47,7 +47,7 @@
     "rientro": "21/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Felici",
@@ -57,7 +57,7 @@
     "rientro": "09/02/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Idrissi R.",
@@ -67,7 +67,7 @@
     "rientro": "30/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Kean",
@@ -77,7 +77,7 @@
     "rientro": "20/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Parisi",
@@ -87,7 +87,7 @@
     "rientro": "01/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Birligea",
@@ -97,7 +97,7 @@
     "rientro": "31/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
   },
   {
     "player": "Grillitsch",
@@ -107,7 +107,17 @@
     "rientro": "02/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
+  },
+  {
+    "player": "Kone B.",
+    "player_id": 5725,
+    "team": "Frosinone",
+    "motivo": "Lesione al flessore della coscia destra",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Amorim",
@@ -117,7 +127,7 @@
     "rientro": "16/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
   },
   {
     "player": "Colombo",
@@ -127,7 +137,7 @@
     "rientro": "01/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Havel",
@@ -137,7 +147,7 @@
     "rientro": "16/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
   },
   {
     "player": "Sow",
@@ -147,7 +157,7 @@
     "rientro": "02/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
   },
   {
     "player": "Venturino",
@@ -157,7 +167,7 @@
     "rientro": "30/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
   },
   {
     "player": "Jones C.",
@@ -167,7 +177,17 @@
     "rientro": "29/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
+  },
+  {
+    "player": "Martinez L.",
+    "player_id": 2764,
+    "team": "Inter",
+    "motivo": "Lesione muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it / Ufficiale (Aggiornato 16/10/2026)"
   },
   {
     "player": "Stones",
@@ -177,7 +197,7 @@
     "rientro": "17/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Ekhator",
@@ -187,7 +207,7 @@
     "rientro": "02/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
   },
   {
     "player": "Grabara",
@@ -197,7 +217,7 @@
     "rientro": "31/07/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
   },
   {
     "player": "Locatelli",
@@ -207,7 +227,7 @@
     "rientro": "08/02/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Thuram K.",
@@ -217,7 +237,7 @@
     "rientro": "01/01/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
   },
   {
     "player": "Yildiz",
@@ -227,7 +247,7 @@
     "rientro": "26/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Cataldi",
@@ -237,17 +257,7 @@
     "rientro": "22/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-  },
-  {
-    "player": "Rovella",
-    "player_id": 4459,
-    "team": "Lazio",
-    "motivo": "Problema al polpaccio destro",
-    "rientro": "15/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
   },
   {
     "player": "Saelemaekers",
@@ -257,7 +267,7 @@
     "rientro": "08/02/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Pessina",
@@ -267,17 +277,7 @@
     "rientro": "28/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-  },
-  {
-    "player": "Zambo Anguissa",
-    "player_id": 4220,
-    "team": "Napoli",
-    "motivo": "Problema all'adduttore",
-    "rientro": "15/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Buongiorno",
@@ -287,7 +287,7 @@
     "rientro": "31/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "Transfermarkt"
   },
   {
     "player": "Favasuli",
@@ -297,27 +297,7 @@
     "rientro": "30/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-  },
-  {
-    "player": "Olivera",
-    "player_id": 5840,
-    "team": "Napoli",
-    "motivo": "Lesione distrattiva del muscolo otturatore esterno destro",
-    "rientro": "05/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-  },
-  {
-    "player": "Santos A.",
-    "player_id": 7351,
-    "team": "Napoli",
-    "motivo": "Lesione di medio grado del bicipite femorale sinistro",
-    "rientro": "15/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
   },
   {
     "player": "Vergara",
@@ -327,7 +307,7 @@
     "rientro": "08/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Almqvist",
@@ -337,7 +317,7 @@
     "rientro": "30/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
   },
   {
     "player": "Nicolussi Caviglia",
@@ -347,7 +327,7 @@
     "rientro": "02/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Cristante",
@@ -357,7 +337,7 @@
     "rientro": "26/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Svilar",
@@ -367,7 +347,7 @@
     "rientro": "10/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Boloca",
@@ -377,7 +357,7 @@
     "rientro": "30/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Candè",
@@ -387,17 +367,7 @@
     "rientro": "19/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-  },
-  {
-    "player": "Idzes",
-    "player_id": 6672,
-    "team": "Sassuolo",
-    "motivo": "Lesione di grado moderato al quadricipite della gamba sinistra",
-    "rientro": "15/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "Transfermarkt"
   },
   {
     "player": "Konè I.",
@@ -407,7 +377,7 @@
     "rientro": "17/01/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Pieragnolo",
@@ -417,7 +387,7 @@
     "rientro": "30/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Gueye",
@@ -427,7 +397,7 @@
     "rientro": "05/01/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Piotrowski",
@@ -437,7 +407,7 @@
     "rientro": "18/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Zaniolo",
@@ -447,7 +417,7 @@
     "rientro": "19/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "redazione"
   },
   {
     "player": "Zanoli",
@@ -457,7 +427,7 @@
     "rientro": "31/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Adorante",
@@ -467,7 +437,7 @@
     "rientro": "17/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Busio",
@@ -477,7 +447,7 @@
     "rientro": "27/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Franjic",
@@ -487,7 +457,7 @@
     "rientro": "10/12/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Sverko",
@@ -497,17 +467,7 @@
     "rientro": "17/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-  },
-  {
-    "player": "Martinez L.",
-    "player_id": 2764,
-    "team": "Inter",
-    "motivo": "Risentimento muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)",
-    "rientro": "22/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "Orsolini",
@@ -517,7 +477,37 @@
     "rientro": "07/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "Fantacalcio.it (Aggiornato 15/10/2026)"
+  },
+  {
+    "player": "Raspadori",
+    "player_id": 4371,
+    "team": "Atalanta",
+    "motivo": "Problema ai flessori (se lesione rientro dopo la sosta nazionali)",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Staff Medico Atalanta (Aggiornato 16/10/2026)"
+  },
+  {
+    "player": "Pavard",
+    "player_id": 4177,
+    "team": "Inter",
+    "motivo": "Risentimento agli adduttori della coscia destra (recupero inizio novembre)",
+    "rientro": "01/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Staff Medico Inter (Aggiornato 16/10/2026)"
+  },
+  {
+    "player": "Kessiè",
+    "player_id": 1850,
+    "team": "Atalanta",
+    "motivo": "Distrazione di basso grado al polpaccio della gamba destra",
+    "rientro": "25/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Staff Medico Atalanta (Aggiornato 16/10/2026)"
   },
   {
     "player": "NUREDINI Joi",
@@ -527,7 +517,7 @@
     "rientro": "25/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "BAH Muhammed",
@@ -537,7 +527,7 @@
     "rientro": "02/05/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "ricerca sulle testate"
   },
   {
     "player": "ISRAEL Franco",
@@ -547,6 +537,6 @@
     "rientro": "04/12/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
+    "fonte": "Transfermarkt"
   }
 ]

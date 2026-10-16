@@ -3,12 +3,11 @@
 tools/sync_consensus_lineups.py
 ================================
 Consensus Multi-Fonte Engine per Probabili Formazioni & Ballottaggi Serie A.
-Aggrega dati da 5 testate di riferimento:
- 1. Fantacalcio.it (Starters, Reserves, % Ballottaggi live)
- 2. La Gazzetta dello Sport (% Ballottaggi e titolarità)
- 3. SOS Fanta (% Ballottaggi e indicazioni panchina)
- 4. FantaPazz (Coppie di ballottaggio e split)
- 5. Sky Sport (Indicazioni editoriali e formazioni)
+Aggrega dati dalle 4 testate ufficiali:
+ 1. Fantacalcio.it: https://www.fantacalcio.it/probabili-formazioni-serie-a
+ 2. La Gazzetta dello Sport: http://gazzetta.it/Calcio/prob_form/
+ 3. Sky Sport: https://sport.sky.it/calcio/serie-a/probabili-formazioni
+ 4. SOS Fanta: https://www.sosfanta.com/lista-formazioni/probabili-formazioni-serie-a/
 
 Arricchisce i dati con:
  - Metriche predittive dell'algoritmo (OVR, xFM, FDR) da processed_players_master.json
@@ -428,31 +427,27 @@ def run_consensus_engine():
         p_name = inj.get('player', '')
         injuries_map[p_name.lower()] = inj
         
-    # 1. Fetch 5 Sources
-    print("\n[1/5] Fetching 5 testate di riferimento...")
+    # 1. Fetch 4 Sources
+    print("\n[1/5] Fetching 4 testate ufficiali...")
     fc_html = fetch_html('https://www.fantacalcio.it/probabili-formazioni-serie-a')
-    gaz_html = fetch_html('https://www.gazzetta.it/Calcio/prob_form/')
-    sos_html = fetch_html('https://www.sosfanta.com/lista-formazioni/probabili-formazioni-serie-a/')
-    fp_html = fetch_html('https://www.fantapazz.com/calcio/fantacalcio/serie-a/probabili-formazioni')
+    gaz_html = fetch_html('http://gazzetta.it/Calcio/prob_form/')
     sky_html = fetch_html('https://sport.sky.it/calcio/serie-a/probabili-formazioni')
+    sos_html = fetch_html('https://www.sosfanta.com/lista-formazioni/probabili-formazioni-serie-a/')
     
     print(f"  • Fantacalcio.it: {len(fc_html)} bytes")
     print(f"  • Gazzetta: {len(gaz_html)} bytes")
-    print(f"  • SOS Fanta: {len(sos_html)} bytes")
-    print(f"  • FantaPazz: {len(fp_html)} bytes")
     print(f"  • Sky Sport: {len(sky_html)} bytes")
+    print(f"  • SOS Fanta: {len(sos_html)} bytes")
     
     # 2. Parse Sources
     print("\n[2/5] Parsing dati e duelli...")
     fc_matches = parse_fantacalcio_it(fc_html)
     gaz_ballots = parse_gazzetta_ballots(gaz_html)
     sos_ballots = parse_sosfanta_ballots(sos_html)
-    fp_ballots = parse_fantapazz_ballots(fp_html)
     
     print(f"  • FC Matches parsed: {len(fc_matches)}")
     print(f"  • Gazzetta duelli trovati: {len(gaz_ballots)}")
     print(f"  • SOS Fanta duelli trovati: {len(sos_ballots)}")
-    print(f"  • FantaPazz duelli trovati: {len(fp_ballots)}")
 
     # 3. Aggregazione per Giornata 7 (10 Match Ufficiali)
     g7_matches = [
@@ -472,7 +467,7 @@ def run_consensus_engine():
         "round": 7,
         "round_label": "7ª Giornata Serie A 2026/27",
         "last_updated": datetime.now().strftime("%d/%m/%Y %H:%M"),
-        "sources_tracked": ["Fantacalcio.it", "Gazzetta dello Sport", "Sky Sport", "SOS Fanta", "FantaPazz"],
+        "sources_tracked": ["Fantacalcio.it", "Gazzetta dello Sport", "Sky Sport", "SOS Fanta"],
         "matches": []
     }
 
@@ -583,10 +578,7 @@ def run_consensus_engine():
                     sos_pct1 = min(90, max(10, fc_pct1 - 1))
                     sos_pct2 = 100 - sos_pct1
 
-                # 4. FantaPazz
-                fp_pct1, fp_pct2 = 55, 45 if fc_pct1 >= 50 else (45, 55)
-
-                # 5. Sky Sport
+                # 4. Sky Sport
                 sky_pct1 = fc_pct1
                 sky_pct2 = fc_pct2
 
@@ -598,7 +590,7 @@ def run_consensus_engine():
                     avg_pct1 = 5
                     avg_pct2 = 95
                 else:
-                    avg_pct1 = round((fc_pct1 + gaz_pct1 + sos_pct1 + fp_pct1 + sky_pct1) / 5.0)
+                    avg_pct1 = round((fc_pct1 + gaz_pct1 + sos_pct1 + sky_pct1) / 4.0)
                     avg_pct2 = 100 - avg_pct1
 
                 # Normalizzazione: player1 deve SEMPRE essere il favorito (>= 50%)
@@ -610,7 +602,6 @@ def run_consensus_engine():
                     fc_pct1, fc_pct2 = fc_pct2, fc_pct1
                     gaz_pct1, gaz_pct2 = gaz_pct2, gaz_pct1
                     sos_pct1, sos_pct2 = sos_pct2, sos_pct1
-                    fp_pct1, fp_pct2 = fp_pct2, fp_pct1
                     sky_pct1, sky_pct2 = sky_pct2, sky_pct1
 
                 ai_verdict = build_ai_verdict(p1_master, p2_master, avg_pct1, avg_pct2, bool(inj1), bool(inj2))
@@ -637,9 +628,8 @@ def run_consensus_engine():
                     "sources": {
                         "fantacalcio": {"p1": fc_pct1, "p2": fc_pct2},
                         "gazzetta": {"p1": gaz_pct1, "p2": gaz_pct2},
-                        "sosfanta": {"p1": sos_pct1, "p2": sos_pct2},
-                        "fantapazz": {"p1": fp_pct1, "p2": fp_pct2},
-                        "sky": {"p1": sky_pct1, "p2": sky_pct2}
+                        "skysport": {"p1": sky_pct1, "p2": sky_pct2},
+                        "sosfanta": {"p1": sos_pct1, "p2": sos_pct2}
                     },
                     "consensus_pct1": avg_pct1,
                     "consensus_pct2": avg_pct2,

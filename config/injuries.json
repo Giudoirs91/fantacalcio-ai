@@ -30,16 +30,6 @@
     "fonte": "ricerca sulle testate"
   },
   {
-    "player": "Mbangula",
-    "player_id": 6833,
-    "team": "Bologna",
-    "motivo": "—",
-    "rientro": "16/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "redazione"
-  },
-  {
     "player": "Odgaard",
     "player_id": 2765,
     "team": "Bologna",
@@ -120,26 +110,6 @@
     "fonte": "ricerca sulle testate"
   },
   {
-    "player": "Kone B.",
-    "player_id": 5725,
-    "team": "Frosinone",
-    "motivo": "Lesione al flessore della coscia destra",
-    "rientro": "22/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
-  },
-  {
-    "player": "Amorim",
-    "player_id": 7341,
-    "team": "Genoa",
-    "motivo": "Fastidio alla caviglia (colpo subito nel finale di Genoa-Sudtirol, Coppa Italia)",
-    "rientro": "16/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "redazione"
-  },
-  {
     "player": "Colombo",
     "player_id": 4923,
     "team": "Genoa",
@@ -148,16 +118,6 @@
     "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Havel",
-    "player_id": 7453,
-    "team": "Genoa",
-    "motivo": "Contusione al polpaccio",
-    "rientro": "16/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "redazione"
   },
   {
     "player": "Sow",
@@ -198,16 +158,6 @@
     "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "Fantacalcio.it / Ufficiale (Aggiornato 16/10/2026)"
-  },
-  {
-    "player": "Martinez L.",
-    "player_id": 2764,
-    "team": "Inter",
-    "motivo": "Risentimento muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)",
-    "rientro": "22/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "fantacalcio-online.com (Aggiornato 14/10/2026)"
   },
   {
     "player": "Stones",
@@ -356,6 +306,16 @@
     "motivo": "Lombalgia",
     "rientro": "26/10/2026",
     "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "ricerca sulle testate"
+  },
+  {
+    "player": "Konè M.",
+    "player_id": 5589,
+    "team": "Roma",
+    "motivo": "Fastidio al ginocchio (sostituito al 53' in Fenerbahce-Roma)",
+    "rientro": "08/11/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
   },
@@ -536,6 +496,16 @@
     "motivo": "Rottura del legamento crociato anteriore del ginocchio destro",
     "rientro": "25/10/2026",
     "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "ricerca sulle testate"
+  },
+  {
+    "player": "OWUSU Seedorf Augusto",
+    "player_id": null,
+    "team": "Juventus",
+    "motivo": "Lesione al retto femorale",
+    "rientro": "20/10/2026",
+    "severity": "orange",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
   },

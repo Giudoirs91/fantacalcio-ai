@@ -489,17 +489,17 @@
       "name": "Konè M.",
       "team": "Roma",
       "ruolo": "C",
-      "partite_saltate_totali": 9,
+      "partite_saltate_totali": 12,
       "partite_saltate_2025_26": 9,
-      "giorni_stop_totali": 70,
-      "disponibilita_pct": 76.3,
+      "giorni_stop_totali": 250,
+      "disponibilita_pct": 68.4,
       "recidive_muscolari": 2,
-      "indice_fragilita_score": 69.5,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 9 partite saltate con 2 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 89.0,
+      "livello_fragilita": "CRISTALLO",
+      "fragility_label": "🚨 Cristallo (Altissimo Rischio)",
+      "fragility_badge": "cristallo",
+      "consiglio_medico_ai": "Altissimo rischio infortuni o lungo degenza in corso. Prezzo d'asta da svalutare fortemente e obbligo assoluto di copertura.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -536,6 +536,15 @@
           "giornate": [
             37
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Fastidio al ginocchio (sostituito al 53' in Fenerbahce-Roma)",
+          "partite_perse": 15,
+          "giorni_stop": 180,
+          "tipo": "articolare",
+          "rientro_previsto": "08/11/2026",
+          "in_corso": true
         }
       ]
     },
@@ -12070,28 +12079,18 @@
       "name": "Amorim",
       "team": "Genoa",
       "ruolo": "C",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 30,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Fastidio alla caviglia (colpo subito nel finale di Genoa-Sudtirol, Coppa Italia)",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "articolare",
-          "rientro_previsto": "16/10/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Meichtry": {
       "id": 7409,
@@ -12312,17 +12311,17 @@
       "name": "Havel",
       "team": "Genoa",
       "ruolo": "A",
-      "partite_saltate_totali": 5,
+      "partite_saltate_totali": 2,
       "partite_saltate_2025_26": 2,
-      "giorni_stop_totali": 42,
-      "disponibilita_pct": 86.8,
+      "giorni_stop_totali": 12,
+      "disponibilita_pct": 94.7,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 42.5,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 5 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 14.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -12331,15 +12330,6 @@
           "giorni_stop": 12,
           "tipo": "medico",
           "giornate": []
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Contusione al polpaccio",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "muscolare",
-          "rientro_previsto": "16/10/2026",
-          "in_corso": true
         }
       ]
     }

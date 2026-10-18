@@ -1062,17 +1062,17 @@
       "name": "Stones",
       "team": "Inter",
       "ruolo": "D",
-      "partite_saltate_totali": 27,
+      "partite_saltate_totali": 24,
       "partite_saltate_2025_26": 24,
-      "giorni_stop_totali": 198,
-      "disponibilita_pct": 28.9,
+      "giorni_stop_totali": 168,
+      "disponibilita_pct": 36.8,
       "recidive_muscolari": 2,
-      "indice_fragilita_score": 89.0,
-      "livello_fragilita": "CRISTALLO",
-      "fragility_label": "🚨 Cristallo (Altissimo Rischio)",
-      "fragility_badge": "cristallo",
-      "consiglio_medico_ai": "Altissimo rischio infortuni o lungo degenza in corso. Prezzo d'asta da svalutare fortemente e obbligo assoluto di copertura.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 74.0,
+      "livello_fragilita": "FRAGILE",
+      "fragility_label": "🔴 Fragile (Rischio Elevato)",
+      "fragility_badge": "fragile",
+      "consiglio_medico_ai": "Profilo a rischio elevato: 24 partite saltate con 2 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -1097,15 +1097,6 @@
           "giorni_stop": 21,
           "tipo": "muscolare",
           "giornate": []
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Risentimento ai flessori della coscia sinistra",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "muscolare",
-          "rientro_previsto": "17/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -3187,17 +3178,17 @@
       "name": "Diao",
       "team": "Como",
       "ruolo": "A",
-      "partite_saltate_totali": 20,
+      "partite_saltate_totali": 23,
       "partite_saltate_2025_26": 20,
-      "giorni_stop_totali": 133,
-      "disponibilita_pct": 47.4,
+      "giorni_stop_totali": 313,
+      "disponibilita_pct": 39.5,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 50.0,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 20 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 65.0,
+      "livello_fragilita": "FRAGILE",
+      "fragility_label": "🔴 Fragile (Rischio Elevato)",
+      "fragility_badge": "fragile",
+      "consiglio_medico_ai": "Profilo a rischio elevato: 23 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -3245,6 +3236,15 @@
           "giornate": [
             28
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Problema muscolare alla coscia sinistra",
+          "partite_perse": 15,
+          "giorni_stop": 180,
+          "tipo": "muscolare",
+          "rientro_previsto": "08/11/2026",
+          "in_corso": true
         }
       ]
     },
@@ -9314,18 +9314,28 @@
       "name": "Dia",
       "team": "Lazio",
       "ruolo": "A",
-      "partite_saltate_totali": 0,
+      "partite_saltate_totali": 3,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 0,
-      "disponibilita_pct": 100,
+      "giorni_stop_totali": 180,
+      "disponibilita_pct": 92.1,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 5.0,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
-      "cronistoria_infortuni": []
+      "indice_fragilita_score": 33.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": true,
+      "cronistoria_infortuni": [
+        {
+          "stagione": "2026/27",
+          "motivo": "Problema muscolare alla coscia sinistra",
+          "partite_perse": 15,
+          "giorni_stop": 180,
+          "tipo": "muscolare",
+          "rientro_previsto": "08/11/2026",
+          "in_corso": true
+        }
+      ]
     },
     "Ratkov": {
       "id": 7313,
@@ -14286,28 +14296,18 @@
       "name": "Sverko",
       "team": "Venezia",
       "ruolo": "D",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 30,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Infortunio alle anche",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "medico",
-          "rientro_previsto": "17/10/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Hainaut": {
       "id": 6821,
@@ -14704,28 +14704,18 @@
       "name": "Adorante",
       "team": "Venezia",
       "ruolo": "A",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Operato per un problema alla schiena",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "chirurgico",
-          "rientro_previsto": "17/10/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Lisman": {
       "id": 7408,

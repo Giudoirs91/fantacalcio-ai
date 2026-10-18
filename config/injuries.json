@@ -20,6 +20,16 @@
     "fonte": "ricerca sulle testate"
   },
   {
+    "player": "Raspadori",
+    "player_id": 4371,
+    "team": "Atalanta",
+    "motivo": "Problema ai flessori (se lesione rientro dopo la sosta nazionali)",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Staff Medico Atalanta (Aggiornato 16/10/2026)"
+  },
+  {
     "player": "Holm",
     "player_id": 5678,
     "team": "Bologna",
@@ -55,6 +65,16 @@
     "team": "Cagliari",
     "motivo": "Intervento di ricostruzione del legamento crociato anteriore del ginocchio sinistro",
     "rientro": "30/10/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "ricerca sulle testate"
+  },
+  {
+    "player": "Diao",
+    "player_id": 6967,
+    "team": "Como",
+    "motivo": "Problema muscolare alla coscia sinistra",
+    "rientro": "08/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
@@ -160,14 +180,14 @@
     "fonte": "Fantacalcio.it / Ufficiale (Aggiornato 16/10/2026)"
   },
   {
-    "player": "Stones",
-    "player_id": 2514,
+    "player": "Pavard",
+    "player_id": 4177,
     "team": "Inter",
-    "motivo": "Risentimento ai flessori della coscia sinistra",
-    "rientro": "17/10/2026",
-    "severity": "orange",
+    "motivo": "Risentimento agli adduttori della coscia destra (recupero inizio novembre)",
+    "rientro": "01/11/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
+    "fonte": "Staff Medico Inter (Aggiornato 16/10/2026)"
   },
   {
     "player": "Ekhator",
@@ -410,16 +430,6 @@
     "fonte": "ricerca sulle testate"
   },
   {
-    "player": "Adorante",
-    "player_id": 4387,
-    "team": "Venezia",
-    "motivo": "Operato per un problema alla schiena",
-    "rientro": "17/10/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
     "player": "Busio",
     "player_id": 5507,
     "team": "Venezia",
@@ -440,16 +450,6 @@
     "fonte": "ricerca sulle testate"
   },
   {
-    "player": "Sverko",
-    "player_id": 6673,
-    "team": "Venezia",
-    "motivo": "Infortunio alle anche",
-    "rientro": "17/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
     "player": "Orsolini",
     "player_id": 2167,
     "team": "Bologna",
@@ -458,26 +458,6 @@
     "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "Fantacalcio.it (Aggiornato 15/10/2026)"
-  },
-  {
-    "player": "Raspadori",
-    "player_id": 4371,
-    "team": "Atalanta",
-    "motivo": "Problema ai flessori (se lesione rientro dopo la sosta nazionali)",
-    "rientro": "22/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "Staff Medico Atalanta (Aggiornato 16/10/2026)"
-  },
-  {
-    "player": "Pavard",
-    "player_id": 4177,
-    "team": "Inter",
-    "motivo": "Risentimento agli adduttori della coscia destra (recupero inizio novembre)",
-    "rientro": "01/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "Staff Medico Inter (Aggiornato 16/10/2026)"
   },
   {
     "player": "Kessiè",

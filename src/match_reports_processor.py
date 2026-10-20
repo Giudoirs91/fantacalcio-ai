@@ -46,6 +46,11 @@ def load_and_aggregate_match_reports():
                 'falli_subiti_2627': 0,
                 'passaggi_riusciti_2627': 0,
                 'passaggi_avanti_2627': 0,
+                'crosses_2627': 0,
+                'dribbles_2627': 0,
+                'passes_final_third_2627': 0,
+                'km_distance_2627': 0.0,
+                'sprint_speed_max_2627': 0.0,
                 'ammonizioni_2627': 0,
                 'espulsioni_2627': 0,
                 'gol_subiti_2627': 0,
@@ -73,6 +78,11 @@ def load_and_aggregate_match_reports():
         rec['ammonizioni_2627'] += int(row.get('yellow_cards', 0))
         rec['espulsioni_2627'] += int(row.get('red_cards', 0)) + int(row.get('double_yellows', 0))
         
+        km_val = float(row.get('km_distance', 0.0) or 0.0)
+        sp_val = float(row.get('sprint_speed_max', 0.0) or 0.0)
+        rec['km_distance_2627'] = round(rec['km_distance_2627'] + km_val, 2)
+        rec['sprint_speed_max_2627'] = max(rec['sprint_speed_max_2627'], sp_val)
+
         if is_gk:
             rec['gol_subiti_2627'] += int(row.get('goals_conceded', 0))
             rec['parate_2627'] += int(row.get('saves', 0))
@@ -89,6 +99,9 @@ def load_and_aggregate_match_reports():
             rec['falli_subiti_2627'] += int(row.get('fouls_drawn', 0))
             rec['passaggi_riusciti_2627'] += int(row.get('passes_completed', 0))
             rec['passaggi_avanti_2627'] += int(row.get('forward_passes', 0))
+            rec['crosses_2627'] += int(row.get('crosses', 0) or 0)
+            rec['dribbles_2627'] += int(row.get('dribbles', 0) or 0)
+            rec['passes_final_third_2627'] += int(row.get('passes_final_third', 0) or 0)
             
     print(f"[MatchReportsProcessor] Aggregati dati 2026/27 (Match Reports Ufficiali) per {len(player_agg)} calciatori.")
     return player_agg

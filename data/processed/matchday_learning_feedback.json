@@ -1,21 +1,22 @@
 {
-  "timestamp": "2026-10-16T15:38:25.589282",
+  "timestamp": "2026-10-20T10:52:43.640540",
   "rounds_analyzed": [
     1,
     2,
     3,
     4,
     5,
-    6
+    6,
+    7
   ],
-  "overall_hit_rate": 63.9,
+  "overall_hit_rate": 60.7,
   "role_hit_rates": {
-    "P": 77.8,
-    "D": 66.7,
-    "C": 44.4,
-    "A": 66.7
+    "P": 66.7,
+    "D": 52.4,
+    "C": 61.9,
+    "A": 61.9
   },
-  "miss_count": 26,
+  "miss_count": 33,
   "misses_diagnostic": [
     {
       "round": 1,
@@ -33,6 +34,13 @@
     },
     {
       "round": 1,
+      "player": "Carlos Augusto",
+      "team": "Inter",
+      "role": "D",
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+    },
+    {
+      "round": 1,
       "player": "Tavares N.",
       "team": "Lazio",
       "role": "D",
@@ -40,17 +48,52 @@
     },
     {
       "round": 1,
-      "player": "Adzic",
-      "team": "Sassuolo",
+      "player": "Moreira",
+      "team": "Milan",
+      "role": "C",
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+    },
+    {
+      "round": 1,
+      "player": "Thuram",
+      "team": "Inter",
+      "role": "A",
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+    },
+    {
+      "round": 1,
+      "player": "Bonny",
+      "team": "Inter",
+      "role": "A",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 2,
+      "player": "Rabiot",
+      "team": "Milan",
       "role": "C",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 2,
-      "player": "Mastantuono",
-      "team": "Fiorentina",
+      "player": "Pulisic",
+      "team": "Milan",
       "role": "C",
-      "reason": "Prestazione gravemente insufficiente"
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+    },
+    {
+      "round": 2,
+      "player": "Moreira",
+      "team": "Milan",
+      "role": "C",
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+    },
+    {
+      "round": 2,
+      "player": "Thuram",
+      "team": "Inter",
+      "role": "A",
+      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 3,
@@ -61,6 +104,13 @@
     },
     {
       "round": 3,
+      "player": "Molina N.",
+      "team": "Roma",
+      "role": "D",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 3,
       "player": "Mastantuono",
       "team": "Fiorentina",
       "role": "C",
@@ -68,8 +118,8 @@
     },
     {
       "round": 3,
-      "player": "Ekkelenkamp",
-      "team": "Udinese",
+      "player": "Mora",
+      "team": "Roma",
       "role": "C",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
@@ -102,20 +152,6 @@
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
-      "round": 4,
-      "player": "Calhanoglu",
-      "team": "Inter",
-      "role": "C",
-      "reason": "Panchina inattesa / Senza Voto (S.V.)"
-    },
-    {
-      "round": 4,
-      "player": "Varela G.",
-      "team": "Monza",
-      "role": "A",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
       "round": 5,
       "player": "Mangas",
       "team": "Monza",
@@ -127,20 +163,6 @@
       "player": "Kamara H.",
       "team": "Udinese",
       "role": "D",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
-      "round": 5,
-      "player": "Frattesi",
-      "team": "Lazio",
-      "role": "C",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
-      "round": 5,
-      "player": "Ekkelenkamp",
-      "team": "Udinese",
-      "role": "C",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
@@ -173,31 +195,59 @@
     },
     {
       "round": 6,
-      "player": "Adzic",
-      "team": "Sassuolo",
-      "role": "C",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
-      "round": 6,
-      "player": "Zaccagni",
-      "team": "Lazio",
-      "role": "C",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
-      "round": 6,
       "player": "Malen",
       "team": "Roma",
       "role": "A",
       "reason": "Prestazione gravemente insufficiente"
     },
     {
-      "round": 6,
-      "player": "Adams C.",
-      "team": "Torino",
+      "round": 7,
+      "player": "Vicario",
+      "team": "Juventus",
+      "role": "P",
+      "reason": "Collasso difensivo di squadra"
+    },
+    {
+      "round": 7,
+      "player": "Meret",
+      "team": "Napoli",
+      "role": "P",
+      "reason": "Malus disciplinare decisivo"
+    },
+    {
+      "round": 7,
+      "player": "Caprile",
+      "team": "Cagliari",
+      "role": "P",
+      "reason": "Collasso difensivo di squadra"
+    },
+    {
+      "round": 7,
+      "player": "Kamara H.",
+      "team": "Udinese",
+      "role": "D",
+      "reason": "Malus disciplinare decisivo"
+    },
+    {
+      "round": 7,
+      "player": "Molina N.",
+      "team": "Roma",
+      "role": "D",
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+    },
+    {
+      "round": 7,
+      "player": "De Bruyne",
+      "team": "Napoli",
+      "role": "C",
+      "reason": "Prestazione gravemente insufficiente"
+    },
+    {
+      "round": 7,
+      "player": "Malen",
+      "team": "Roma",
       "role": "A",
-      "reason": "Voto ordinario senza bonus (6.0)"
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
     }
   ],
   "learned_bias_adjustments": {

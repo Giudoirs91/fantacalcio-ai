@@ -88,7 +88,8 @@
       "poss_won_att_3rd_2627": 87,
       "fouls_2627": 174,
       "yellow_cards_fotmob_2627": 40,
-      "red_cards_fotmob_2627": 2
+      "red_cards_fotmob_2627": 2,
+      "xg_xa90_rank": 4
     }
   },
   "1256534": {
@@ -128,7 +129,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.54,
+      "xg_xa90_2627": 0.67,
       "xg_xa90_2627_sub": 0.75,
       "big_chance_missed_2627": 1.0,
       "big_chance_missed_2627_sub": 22.2,
@@ -177,7 +178,8 @@
       "ball_recovery_fotmob_2627": 287,
       "poss_won_att_3rd_2627": 37,
       "fouls_2627": 40,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 24
     }
   },
   "690230": {
@@ -269,7 +271,8 @@
       "ball_recovery_fotmob_2627": 321,
       "poss_won_att_3rd_2627": 108,
       "fouls_2627": 108,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 2
     }
   },
   "1072054": {
@@ -309,7 +312,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.07,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.67,
+      "xg_xa90_2627": 0.61,
       "xg_xa90_2627_sub": 0.82,
       "won_contest_2627": 1.0,
       "won_contest_2627_sub": 31.3,
@@ -355,7 +358,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 77,
       "poss_won_att_3rd_2627": 71,
-      "fouls_2627": 160
+      "fouls_2627": 160,
+      "xg_xa90_rank": 33
     }
   },
   "1585676": {
@@ -397,7 +401,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.06,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.52,
+      "xg_xa90_2627": 0.59,
       "xg_xa90_2627_sub": 0.84,
       "won_contest_2627": 1.3,
       "won_contest_2627_sub": 40.0,
@@ -447,7 +451,8 @@
       "ball_recovery_fotmob_2627": 311,
       "poss_won_att_3rd_2627": 187,
       "fouls_2627": 136,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 38
     }
   },
   "352879": {
@@ -491,7 +496,7 @@
       "accurate_long_balls_per_90_2627_sub": 30.8,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.5,
-      "xg_xa90_2627": 0.29,
+      "xg_xa90_2627": 0.37,
       "xg_xa90_2627_sub": 1.14,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 50.0,
@@ -542,7 +547,8 @@
       "outfielder_block_2627": 84,
       "ball_recovery_fotmob_2627": 224,
       "poss_won_att_3rd_2627": 185,
-      "fouls_2627": 144
+      "fouls_2627": 144,
+      "xg_xa90_rank": 87
     }
   },
   "815431": {
@@ -584,7 +590,7 @@
       "accurate_long_balls_per_90_2627_sub": 25.0,
       "xa90_2627": 0.18,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.51,
+      "xg_xa90_2627": 0.43,
       "xg_xa90_2627_sub": 0.61,
       "won_contest_2627": 0.4,
       "won_contest_2627_sub": 25.0,
@@ -634,7 +640,8 @@
       "outfielder_block_2627": 65,
       "ball_recovery_fotmob_2627": 165,
       "poss_won_att_3rd_2627": 73,
-      "fouls_2627": 160
+      "fouls_2627": 160,
+      "xg_xa90_rank": 72
     }
   },
   "1342754": {
@@ -676,7 +683,7 @@
       "accurate_long_balls_per_90_2627_sub": 20.0,
       "xa90_2627": 0.21,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.59,
+      "xg_xa90_2627": 0.5,
       "xg_xa90_2627_sub": 1.24,
       "won_contest_2627": 3.3,
       "won_contest_2627_sub": 61.5,
@@ -720,7 +727,8 @@
       "effective_clearance_2627": 183,
       "ball_recovery_fotmob_2627": 106,
       "poss_won_att_3rd_2627": 137,
-      "fouls_2627": 265
+      "fouls_2627": 265,
+      "xg_xa90_rank": 52
     }
   },
   "1607566": {
@@ -762,7 +770,7 @@
       "accurate_long_balls_per_90_2627_sub": 20.0,
       "xa90_2627": 0.14,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.59,
+      "xg_xa90_2627": 0.57,
       "xg_xa90_2627_sub": 0.58,
       "won_contest_2627": 2.3,
       "won_contest_2627_sub": 42.9,
@@ -806,7 +814,8 @@
       "interception_2627": 131,
       "ball_recovery_fotmob_2627": 270,
       "fouls_2627": 193,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 41
     }
   },
   "1342748": {
@@ -901,7 +910,8 @@
       "ball_recovery_fotmob_2627": 111,
       "poss_won_att_3rd_2627": 173,
       "fouls_2627": 93,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 55
     }
   },
   "934156": {
@@ -945,7 +955,7 @@
       "accurate_long_balls_per_90_2627_sub": 90.9,
       "xa90_2627": 0.08,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.28,
+      "xg_xa90_2627": 0.26,
       "xg_xa90_2627_sub": 0.69,
       "won_contest_2627": 0.9,
       "won_contest_2627_sub": 38.5,
@@ -990,7 +1000,8 @@
       "effective_clearance_2627": 232,
       "ball_recovery_fotmob_2627": 98,
       "poss_won_att_3rd_2627": 33,
-      "fouls_2627": 252
+      "fouls_2627": 252,
+      "xg_xa90_rank": 137
     }
   },
   "621562": {
@@ -1032,7 +1043,7 @@
       "accurate_long_balls_per_90_2627_sub": 66.7,
       "xa90_2627": 0.08,
       "xa90_2627_sub": 0.6,
-      "xg_xa90_2627": 0.88,
+      "xg_xa90_2627": 0.77,
       "xg_xa90_2627_sub": 1.55,
       "won_contest_2627": 0.9,
       "won_contest_2627_sub": 75.0,
@@ -1070,7 +1081,8 @@
       "total_tackle_2627": 232,
       "defensive_contributions_2627": 273,
       "effective_clearance_2627": 255,
-      "fouls_2627": 13
+      "fouls_2627": 13,
+      "xg_xa90_rank": 15
     }
   },
   "936603": {
@@ -1112,7 +1124,7 @@
       "xa_2627_sub": 1.0,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.35,
+      "xg_xa90_2627": 0.33,
       "xg_xa90_2627_sub": 0.93,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 50.0,
@@ -1153,7 +1165,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 308,
       "poss_won_att_3rd_2627": 106,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 102
     }
   },
   "833638": {
@@ -1197,7 +1210,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.08,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.62,
+      "xg_xa90_2627": 0.64,
       "xg_xa90_2627_sub": 1.28,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 25.0,
@@ -1245,7 +1258,8 @@
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 262,
       "fouls_2627": 42,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 29
     }
   },
   "1382375": {
@@ -1337,7 +1351,8 @@
       "effective_clearance_2627": 165,
       "ball_recovery_fotmob_2627": 262,
       "poss_won_att_3rd_2627": 21,
-      "fouls_2627": 115
+      "fouls_2627": 115,
+      "xg_xa90_rank": 16
     }
   },
   "304733": {
@@ -1379,7 +1394,7 @@
       "accurate_long_balls_per_90_2627_sub": 68.2,
       "xa90_2627": 0.18,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.59,
+      "xg_xa90_2627": 0.56,
       "xg_xa90_2627_sub": 1.36,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 50.0,
@@ -1426,7 +1441,8 @@
       "ball_recovery_fotmob_2627": 6,
       "poss_won_att_3rd_2627": 24,
       "fouls_2627": 174,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 42
     }
   },
   "169200": {
@@ -1470,7 +1486,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.32,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.82,
+      "xg_xa90_2627": 1.08,
       "xg_xa90_2627_sub": 1.02,
       "won_contest_2627": 0.8,
       "won_contest_2627_sub": 75.0,
@@ -1518,7 +1534,8 @@
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 104,
       "poss_won_att_3rd_2627": 17,
-      "fouls_2627": 160
+      "fouls_2627": 160,
+      "xg_xa90_rank": 9
     }
   },
   "1445650": {
@@ -1601,7 +1618,8 @@
       "ball_recovery_fotmob_2627": 264,
       "poss_won_att_3rd_2627": 63,
       "fouls_2627": 136,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 118
     }
   },
   "873270": {
@@ -1639,7 +1657,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.52,
+      "xg_xa90_2627": 0.51,
       "xg_xa90_2627_sub": 0.44,
       "won_contest_2627": 0.4,
       "won_contest_2627_sub": 50.0,
@@ -1678,7 +1696,8 @@
       "effective_clearance_2627": 208,
       "ball_recovery_fotmob_2627": 329,
       "poss_won_att_3rd_2627": 188,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 51
     }
   },
   "1290968": {
@@ -1722,7 +1741,7 @@
       "accurate_long_balls_per_90_2627_sub": 60.0,
       "xa90_2627": 0.24,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.37,
+      "xg_xa90_2627": 0.33,
       "xg_xa90_2627_sub": 0.5,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 37.5,
@@ -1773,7 +1792,8 @@
       "outfielder_block_2627": 78,
       "ball_recovery_fotmob_2627": 143,
       "poss_won_att_3rd_2627": 92,
-      "fouls_2627": 44
+      "fouls_2627": 44,
+      "xg_xa90_rank": 105
     }
   },
   "1434889": {
@@ -1865,7 +1885,8 @@
       "ball_recovery_fotmob_2627": 242,
       "poss_won_att_3rd_2627": 50,
       "fouls_2627": 108,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 103
     }
   },
   "1079501": {
@@ -1888,7 +1909,8 @@
       "chances_created_2627": 1.0,
       "chances_created_2627_sub": 0.6,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.35
     },
     "ranks": {
       "gol_fotmob_2627": 18,
@@ -1897,7 +1919,8 @@
       "goals_and_assists_2627": 59,
       "xgot_2627": 43,
       "chances_created_2627": 289,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 92
     }
   },
   "599353": {
@@ -1937,7 +1960,7 @@
       "accurate_long_balls_per_90_2627_sub": 75.0,
       "xa90_2627": 0.1,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.43,
+      "xg_xa90_2627": 0.55,
       "xg_xa90_2627_sub": 0.7,
       "won_contest_2627": 0.4,
       "won_contest_2627_sub": 100.0,
@@ -1977,7 +2000,8 @@
       "defensive_contributions_2627": 261,
       "effective_clearance_2627": 193,
       "ball_recovery_fotmob_2627": 325,
-      "fouls_2627": 144
+      "fouls_2627": 144,
+      "xg_xa90_rank": 44
     }
   },
   "1233748": {
@@ -2015,7 +2039,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.5,
+      "xg_xa90_2627": 0.49,
       "xg_xa90_2627_sub": 0.92,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 16.7,
@@ -2057,7 +2081,8 @@
       "interception_2627": 123,
       "ball_recovery_fotmob_2627": 135,
       "poss_won_att_3rd_2627": 84,
-      "fouls_2627": 97
+      "fouls_2627": 97,
+      "xg_xa90_rank": 61
     }
   },
   "862616": {
@@ -2101,7 +2126,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.44,
       "xa90_2627_sub": 0.8,
-      "xg_xa90_2627": 0.94,
+      "xg_xa90_2627": 0.84,
       "xg_xa90_2627_sub": 2.31,
       "won_contest_2627": 3.8,
       "won_contest_2627_sub": 38.5,
@@ -2140,7 +2165,8 @@
       "defensive_contributions_2627": 169,
       "effective_clearance_2627": 146,
       "ball_recovery_fotmob_2627": 49,
-      "fouls_2627": 198
+      "fouls_2627": 198,
+      "xg_xa90_rank": 13
     }
   },
   "1367618": {
@@ -2184,7 +2210,7 @@
       "accurate_long_balls_per_90_2627_sub": 66.7,
       "xa90_2627": 0.08,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.66,
+      "xg_xa90_2627": 0.63,
       "xg_xa90_2627_sub": 0.77,
       "big_chance_missed_2627": 2.0,
       "big_chance_missed_2627_sub": 14.3,
@@ -2229,7 +2255,8 @@
       "ball_recovery_fotmob_2627": 321,
       "penalty_won_2627": 1,
       "poss_won_att_3rd_2627": 156,
-      "fouls_2627": 252
+      "fouls_2627": 252,
+      "xg_xa90_rank": 30
     }
   },
   "857269": {
@@ -2271,7 +2298,7 @@
       "accurate_long_balls_per_90_2627_sub": 46.2,
       "xa90_2627": 0.06,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.17,
+      "xg_xa90_2627": 0.15,
       "xg_xa90_2627_sub": 0.33,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 100.0,
@@ -2318,7 +2345,8 @@
       "effective_clearance_2627": 30,
       "outfielder_block_2627": 110,
       "ball_recovery_fotmob_2627": 160,
-      "fouls_2627": 80
+      "fouls_2627": 80,
+      "xg_xa90_rank": 203
     }
   },
   "488415": {
@@ -2360,7 +2388,7 @@
       "accurate_long_balls_per_90_2627_sub": 57.9,
       "xa90_2627": 0.04,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.17,
+      "xg_xa90_2627": 0.16,
       "xg_xa90_2627_sub": 0.53,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 60.0,
@@ -2407,7 +2435,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 189,
       "poss_won_att_3rd_2627": 119,
-      "fouls_2627": 252
+      "fouls_2627": 252,
+      "xg_xa90_rank": 189
     }
   },
   "664587": {
@@ -2449,7 +2478,7 @@
       "accurate_long_balls_per_90_2627_sub": 20.0,
       "xa90_2627": 0.03,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.22,
+      "xg_xa90_2627": 0.21,
       "xg_xa90_2627_sub": 0.5,
       "won_contest_2627": 0.7,
       "won_contest_2627_sub": 36.4,
@@ -2496,7 +2525,8 @@
       "effective_clearance_2627": 232,
       "ball_recovery_fotmob_2627": 72,
       "poss_won_att_3rd_2627": 90,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 161
     }
   },
   "1016132": {
@@ -2585,7 +2615,8 @@
       "ball_recovery_fotmob_2627": 69,
       "poss_won_att_3rd_2627": 168,
       "fouls_2627": 35,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 157
     }
   },
   "1215064": {
@@ -2668,7 +2699,8 @@
       "ball_recovery_fotmob_2627": 80,
       "poss_won_att_3rd_2627": 16,
       "fouls_2627": 152,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 49
     }
   },
   "1224237": {
@@ -2754,7 +2786,8 @@
       "ball_recovery_fotmob_2627": 316,
       "poss_won_att_3rd_2627": 110,
       "fouls_2627": 209,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 152
     }
   },
   "1280082": {
@@ -2796,7 +2829,7 @@
       "accurate_long_balls_per_90_2627_sub": 65.0,
       "xa90_2627": 0.17,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.64,
+      "xg_xa90_2627": 0.66,
       "xg_xa90_2627_sub": 0.83,
       "won_contest_2627": 2.5,
       "won_contest_2627_sub": 60.0,
@@ -2846,7 +2879,8 @@
       "ball_recovery_fotmob_2627": 31,
       "poss_won_att_3rd_2627": 141,
       "fouls_2627": 278,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 27
     }
   },
   "1451196": {
@@ -2886,7 +2920,7 @@
       "accurate_long_balls_per_90_2627_sub": 14.3,
       "xa90_2627": 0.14,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.4,
+      "xg_xa90_2627": 0.3,
       "xg_xa90_2627_sub": 1.16,
       "total_tackle_2627": 1.2,
       "total_tackle_2627_sub": 2.0,
@@ -2932,7 +2966,8 @@
       "ball_recovery_fotmob_2627": 139,
       "poss_won_att_3rd_2627": 13,
       "fouls_2627": 65,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 118
     }
   },
   "1199272": {
@@ -3018,7 +3053,8 @@
       "ball_recovery_fotmob_2627": 328,
       "penalty_won_2627": 4,
       "poss_won_att_3rd_2627": 138,
-      "fouls_2627": 237
+      "fouls_2627": 237,
+      "xg_xa90_rank": 138
     }
   },
   "823113": {
@@ -3043,7 +3079,8 @@
       "xa_2627": 0.0,
       "xa_2627_sub": 0.0,
       "big_chance_missed_2627": 1.0,
-      "big_chance_missed_2627_sub": 40.0
+      "big_chance_missed_2627_sub": 40.0,
+      "xg_xa90_2627": 1.3
     },
     "ranks": {
       "gol_fotmob_2627": 18,
@@ -3053,7 +3090,8 @@
       "goals_and_assists_2627": 43,
       "xgot_2627": 23,
       "xa_2627": 299,
-      "big_chance_missed_2627": 50
+      "big_chance_missed_2627": 50,
+      "xg_xa90_rank": 3
     }
   },
   "1574492": {
@@ -3091,7 +3129,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.3,
+      "xg_xa90_2627": 0.26,
       "xg_xa90_2627_sub": 0.54,
       "total_tackle_2627": 2.4,
       "total_tackle_2627_sub": 9.0,
@@ -3130,7 +3168,8 @@
       "effective_clearance_2627": 23,
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 195,
-      "fouls_2627": 198
+      "fouls_2627": 198,
+      "xg_xa90_rank": 136
     }
   },
   "1282285": {
@@ -3172,7 +3211,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.08,
       "xa90_2627_sub": 0.7,
-      "xg_xa90_2627": 0.64,
+      "xg_xa90_2627": 0.5,
       "xg_xa90_2627_sub": 1.4,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 100.0,
@@ -3219,7 +3258,8 @@
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 318,
       "poss_won_att_3rd_2627": 159,
-      "fouls_2627": 280
+      "fouls_2627": 280,
+      "xg_xa90_rank": 53
     }
   },
   "958640": {
@@ -3261,7 +3301,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.03,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.42,
+      "xg_xa90_2627": 0.45,
       "xg_xa90_2627_sub": 0.18,
       "won_contest_2627": 0.9,
       "won_contest_2627_sub": 55.6,
@@ -3305,7 +3345,8 @@
       "effective_clearance_2627": 277,
       "ball_recovery_fotmob_2627": 310,
       "poss_won_att_3rd_2627": 110,
-      "fouls_2627": 252
+      "fouls_2627": 252,
+      "xg_xa90_rank": 70
     }
   },
   "665188": {
@@ -3385,7 +3426,8 @@
       "effective_clearance_2627": 226,
       "ball_recovery_fotmob_2627": 309,
       "fouls_2627": 1,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 7
     }
   },
   "1705649": {
@@ -3427,7 +3469,7 @@
       "accurate_long_balls_per_90_2627_sub": 46.7,
       "xa90_2627": 0.07,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.11,
+      "xg_xa90_2627": 0.12,
       "xg_xa90_2627_sub": 0.17,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 22.2,
@@ -3474,7 +3516,8 @@
       "outfielder_block_2627": 44,
       "ball_recovery_fotmob_2627": 92,
       "poss_won_att_3rd_2627": 151,
-      "fouls_2627": 160
+      "fouls_2627": 160,
+      "xg_xa90_rank": 237
     }
   },
   "1526689": {
@@ -3518,7 +3561,7 @@
       "accurate_long_balls_per_90_2627_sub": 22.2,
       "xa90_2627": 0.11,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.15,
+      "xg_xa90_2627": 0.14,
       "xg_xa90_2627_sub": 0.48,
       "won_contest_2627": 1.2,
       "won_contest_2627_sub": 55.6,
@@ -3569,7 +3612,8 @@
       "ball_recovery_fotmob_2627": 116,
       "poss_won_att_3rd_2627": 101,
       "fouls_2627": 290,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 213
     }
   },
   "1311977": {
@@ -3609,7 +3653,7 @@
       "accurate_long_balls_per_90_2627_sub": 33.3,
       "xa90_2627": 0.08,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.25,
+      "xg_xa90_2627": 0.31,
       "xg_xa90_2627_sub": 0.51,
       "won_contest_2627": 6.6,
       "won_contest_2627_sub": 72.2,
@@ -3652,7 +3696,8 @@
       "effective_clearance_2627": 272,
       "ball_recovery_fotmob_2627": 295,
       "poss_won_att_3rd_2627": 102,
-      "fouls_2627": 160
+      "fouls_2627": 160,
+      "xg_xa90_rank": 113
     }
   },
   "937462": {
@@ -3694,7 +3739,7 @@
       "accurate_long_balls_per_90_2627_sub": 20.0,
       "xa90_2627": 0.16,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.49,
+      "xg_xa90_2627": 0.46,
       "xg_xa90_2627_sub": 0.35,
       "won_contest_2627": 0.7,
       "won_contest_2627_sub": 40.0,
@@ -3732,7 +3777,8 @@
       "defensive_contributions_2627": 283,
       "interception_2627": 164,
       "effective_clearance_2627": 242,
-      "ball_recovery_fotmob_2627": 252
+      "ball_recovery_fotmob_2627": 252,
+      "xg_xa90_rank": 64
     }
   },
   "750030": {
@@ -3772,7 +3818,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.16,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.68,
+      "xg_xa90_2627": 0.61,
       "xg_xa90_2627_sub": 0.73,
       "defensive_contributions_2627": 0.7,
       "defensive_contributions_2627_sub": 1.0,
@@ -3803,7 +3849,8 @@
       "defensive_contributions_2627": 324,
       "effective_clearance_2627": 238,
       "ball_recovery_fotmob_2627": 314,
-      "fouls_2627": 7
+      "fouls_2627": 7,
+      "xg_xa90_rank": 32
     }
   },
   "1199383": {
@@ -3839,7 +3886,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 1.15,
+      "xg_xa90_2627": 1.52,
       "xg_xa90_2627_sub": 0.93,
       "won_contest_2627": 1.9,
       "won_contest_2627_sub": 50.0,
@@ -3883,7 +3930,8 @@
       "effective_clearance_2627": 214,
       "ball_recovery_fotmob_2627": 299,
       "poss_won_att_3rd_2627": 37,
-      "fouls_2627": 44
+      "fouls_2627": 44,
+      "xg_xa90_rank": 1
     }
   },
   "1320863": {
@@ -3978,7 +4026,8 @@
       "ball_recovery_fotmob_2627": 48,
       "poss_won_att_3rd_2627": 10,
       "fouls_2627": 209,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 86
     }
   },
   "655696": {
@@ -4009,7 +4058,8 @@
       "big_chance_missed_2627": 1.0,
       "big_chance_missed_2627_sub": 25.0,
       "yellow_cards_fotmob_2627": 1.0,
-      "yellow_cards_fotmob_2627_sub": 0.0
+      "yellow_cards_fotmob_2627_sub": 0.0,
+      "xg_xa90_2627": 0.77
     },
     "ranks": {
       "gol_fotmob_2627": 39,
@@ -4022,7 +4072,8 @@
       "chances_created_2627": 272,
       "xa_2627": 226,
       "big_chance_missed_2627": 58,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 17
     }
   },
   "942549": {
@@ -4060,7 +4111,7 @@
       "accurate_long_balls_per_90_2627_sub": 63.6,
       "xa90_2627": 0.09,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.16,
+      "xg_xa90_2627": 0.17,
       "xg_xa90_2627_sub": 0.43,
       "won_contest_2627": 0.9,
       "won_contest_2627_sub": 66.7,
@@ -4099,7 +4150,8 @@
       "interception_2627": 209,
       "effective_clearance_2627": 286,
       "ball_recovery_fotmob_2627": 123,
-      "fouls_2627": 265
+      "fouls_2627": 265,
+      "xg_xa90_rank": 183
     }
   },
   "940829": {
@@ -4143,7 +4195,7 @@
       "accurate_long_balls_per_90_2627_sub": 27.3,
       "xa90_2627": 0.09,
       "xa90_2627_sub": 0.4,
-      "xg_xa90_2627": 0.12,
+      "xg_xa90_2627": 0.49,
       "xg_xa90_2627_sub": 0.74,
       "big_chance_missed_2627": 1.0,
       "big_chance_missed_2627_sub": 50.0,
@@ -4185,7 +4237,8 @@
       "interception_2627": 13,
       "effective_clearance_2627": 43,
       "ball_recovery_fotmob_2627": 220,
-      "fouls_2627": 144
+      "fouls_2627": 144,
+      "xg_xa90_rank": 59
     }
   },
   "688295": {
@@ -4227,7 +4280,7 @@
       "xa_2627_sub": 1.0,
       "xa90_2627": 0.61,
       "xa90_2627_sub": 0.5,
-      "xg_xa90_2627": 0.95,
+      "xg_xa90_2627": 0.69,
       "xg_xa90_2627_sub": 0.94,
       "won_contest_2627": 2.8,
       "won_contest_2627_sub": 66.7,
@@ -4265,7 +4318,8 @@
       "defensive_contributions_2627": 310,
       "ball_recovery_fotmob_2627": 135,
       "fouls_2627": 174,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 21
     }
   },
   "1308909": {
@@ -4307,7 +4361,7 @@
       "accurate_long_balls_per_90_2627_sub": 75.0,
       "xa90_2627": 0.24,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.35,
+      "xg_xa90_2627": 0.38,
       "xg_xa90_2627_sub": 0.48,
       "won_contest_2627": 1.0,
       "won_contest_2627_sub": 33.3,
@@ -4351,7 +4405,8 @@
       "ball_recovery_fotmob_2627": 211,
       "poss_won_att_3rd_2627": 19,
       "fouls_2627": 75,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 85
     }
   },
   "1014980": {
@@ -4393,7 +4448,7 @@
       "accurate_long_balls_per_90_2627_sub": 55.6,
       "xa90_2627": 0.16,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.56,
+      "xg_xa90_2627": 0.45,
       "xg_xa90_2627_sub": 0.48,
       "won_contest_2627": 1.4,
       "won_contest_2627_sub": 60.0,
@@ -4440,7 +4495,8 @@
       "ball_recovery_fotmob_2627": 211,
       "poss_won_att_3rd_2627": 92,
       "fouls_2627": 249,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 69
     }
   },
   "364520": {
@@ -4480,7 +4536,7 @@
       "accurate_long_balls_per_90_2627_sub": 61.5,
       "xa90_2627": 0.14,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.41,
+      "xg_xa90_2627": 0.6,
       "xg_xa90_2627_sub": 0.3,
       "big_chance_missed_2627": 3.0,
       "big_chance_missed_2627_sub": 10.0,
@@ -4526,7 +4582,8 @@
       "ball_recovery_fotmob_2627": 19,
       "poss_won_att_3rd_2627": 7,
       "fouls_2627": 232,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 35
     }
   },
   "957203": {
@@ -4609,7 +4666,8 @@
       "effective_clearance_2627": 175,
       "ball_recovery_fotmob_2627": 152,
       "poss_won_att_3rd_2627": 170,
-      "fouls_2627": 125
+      "fouls_2627": 125,
+      "xg_xa90_rank": 276
     }
   },
   "1110044": {
@@ -4680,7 +4738,7 @@
       "accurate_long_balls_per_90_2627_sub": 80.0,
       "xa90_2627": 0.17,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.32,
+      "xg_xa90_2627": 0.27,
       "xg_xa90_2627_sub": 0.24,
       "won_contest_2627": 1.0,
       "won_contest_2627_sub": 44.4,
@@ -4727,7 +4785,8 @@
       "effective_clearance_2627": 264,
       "ball_recovery_fotmob_2627": 236,
       "poss_won_att_3rd_2627": 183,
-      "fouls_2627": 160
+      "fouls_2627": 160,
+      "xg_xa90_rank": 133
     }
   },
   "1189288": {
@@ -4803,7 +4862,7 @@
       "accurate_long_balls_per_90_2627_sub": 83.3,
       "xa90_2627": 0.23,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.52,
+      "xg_xa90_2627": 0.5,
       "xg_xa90_2627_sub": 0.44,
       "won_contest_2627": 1.5,
       "won_contest_2627_sub": 43.8,
@@ -4851,7 +4910,8 @@
       "ball_recovery_fotmob_2627": 234,
       "poss_won_att_3rd_2627": 133,
       "fouls_2627": 14,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 56
     }
   },
   "579747": {
@@ -4943,7 +5003,8 @@
       "ball_recovery_fotmob_2627": 33,
       "poss_won_att_3rd_2627": 15,
       "fouls_2627": 54,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 90
     }
   },
   "1396091": {
@@ -5041,7 +5102,8 @@
       "ball_recovery_fotmob_2627": 108,
       "poss_won_att_3rd_2627": 175,
       "fouls_2627": 69,
-      "yellow_cards_fotmob_2627": 1
+      "yellow_cards_fotmob_2627": 1,
+      "xg_xa90_rank": 235
     }
   },
   "746829": {
@@ -5085,7 +5147,7 @@
       "accurate_long_balls_per_90_2627_sub": 41.7,
       "xa90_2627": 0.22,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.36,
+      "xg_xa90_2627": 0.45,
       "xg_xa90_2627_sub": 0.35,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 60.0,
@@ -5133,7 +5195,8 @@
       "outfielder_block_2627": 10,
       "ball_recovery_fotmob_2627": 189,
       "poss_won_att_3rd_2627": 106,
-      "fouls_2627": 125
+      "fouls_2627": 125,
+      "xg_xa90_rank": 68
     }
   },
   "951743": {
@@ -5216,7 +5279,8 @@
       "outfielder_block_2627": 86,
       "ball_recovery_fotmob_2627": 295,
       "poss_won_att_3rd_2627": 102,
-      "fouls_2627": 80
+      "fouls_2627": 80,
+      "xg_xa90_rank": 83
     }
   },
   "721089": {
@@ -5254,7 +5318,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.16,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.25,
+      "xg_xa90_2627": 0.24,
       "xg_xa90_2627_sub": 0.35,
       "total_tackle_2627": 0.7,
       "total_tackle_2627_sub": 2.0,
@@ -5293,7 +5357,8 @@
       "outfielder_block_2627": 55,
       "ball_recovery_fotmob_2627": 318,
       "poss_won_att_3rd_2627": 159,
-      "fouls_2627": 97
+      "fouls_2627": 97,
+      "xg_xa90_rank": 146
     }
   },
   "940087": {
@@ -5337,7 +5402,7 @@
       "accurate_long_balls_per_90_2627_sub": 66.7,
       "xa90_2627": 0.06,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.4,
+      "xg_xa90_2627": 0.6,
       "xg_xa90_2627_sub": 0.34,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 14.3,
@@ -5388,7 +5453,8 @@
       "ball_recovery_fotmob_2627": 303,
       "poss_won_att_3rd_2627": 156,
       "fouls_2627": 75,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 36
     }
   },
   "1016093": {
@@ -5428,7 +5494,7 @@
       "accurate_long_balls_per_90_2627_sub": 83.3,
       "xa90_2627": 0.04,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.32,
+      "xg_xa90_2627": 0.29,
       "xg_xa90_2627_sub": 0.36,
       "big_chance_missed_2627": 2.0,
       "big_chance_missed_2627_sub": 14.3,
@@ -5474,7 +5540,8 @@
       "ball_recovery_fotmob_2627": 186,
       "poss_won_att_3rd_2627": 130,
       "fouls_2627": 54,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 122
     }
   },
   "1532261": {
@@ -5557,7 +5624,8 @@
       "outfielder_block_2627": 86,
       "ball_recovery_fotmob_2627": 267,
       "poss_won_att_3rd_2627": 102,
-      "fouls_2627": 80
+      "fouls_2627": 80,
+      "xg_xa90_rank": 12
     }
   },
   "1413963": {
@@ -5599,7 +5667,7 @@
       "accurate_long_balls_per_90_2627_sub": 57.7,
       "xa90_2627": 0.13,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.31,
+      "xg_xa90_2627": 0.28,
       "xg_xa90_2627_sub": 0.17,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 66.7,
@@ -5646,7 +5714,8 @@
       "effective_clearance_2627": 38,
       "outfielder_block_2627": 78,
       "ball_recovery_fotmob_2627": 160,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 129
     }
   },
   "689987": {
@@ -5686,7 +5755,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.03,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.3,
+      "xg_xa90_2627": 0.27,
       "xg_xa90_2627_sub": 0.62,
       "won_contest_2627": 0.6,
       "won_contest_2627_sub": 50.0,
@@ -5732,7 +5801,8 @@
       "ball_recovery_fotmob_2627": 179,
       "poss_won_att_3rd_2627": 69,
       "fouls_2627": 12,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 131
     }
   },
   "1269329": {
@@ -5818,7 +5888,8 @@
       "outfielder_block_2627": 15,
       "ball_recovery_fotmob_2627": 204,
       "fouls_2627": 75,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 241
     }
   },
   "1344246": {
@@ -5841,7 +5912,8 @@
       "chances_created_2627": 1.0,
       "chances_created_2627_sub": 2.5,
       "xa_2627": 0.1,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 1.16
     },
     "ranks": {
       "gol_fotmob_2627": 39,
@@ -5850,7 +5922,8 @@
       "goals_and_assists_2627": 104,
       "xgot_2627": 57,
       "chances_created_2627": 260,
-      "xa_2627": 226
+      "xa_2627": 226,
+      "xg_xa90_rank": 5
     }
   },
   "1453338": {
@@ -5890,7 +5963,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.06,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.3,
+      "xg_xa90_2627": 0.39,
       "xg_xa90_2627_sub": 0.38,
       "won_contest_2627": 0.8,
       "won_contest_2627_sub": 22.2,
@@ -5933,7 +6006,8 @@
       "outfielder_block_2627": 102,
       "ball_recovery_fotmob_2627": 280,
       "poss_won_att_3rd_2627": 126,
-      "fouls_2627": 265
+      "fouls_2627": 265,
+      "xg_xa90_rank": 82
     }
   },
   "322003": {
@@ -5973,7 +6047,7 @@
       "accurate_long_balls_per_90_2627_sub": 33.3,
       "xa90_2627": 0.03,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.09,
+      "xg_xa90_2627": 0.08,
       "xg_xa90_2627_sub": 0.17,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 50.0,
@@ -6022,7 +6096,8 @@
       "ball_recovery_fotmob_2627": 171,
       "poss_won_att_3rd_2627": 61,
       "fouls_2627": 191,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 266
     }
   },
   "914103": {
@@ -6108,7 +6183,8 @@
       "ball_recovery_fotmob_2627": 114,
       "fouls_2627": 154,
       "yellow_cards_fotmob_2627": 40,
-      "red_cards_fotmob_2627": 2
+      "red_cards_fotmob_2627": 2,
+      "xg_xa90_rank": 288
     }
   },
   "845368": {
@@ -6150,7 +6226,7 @@
       "accurate_long_balls_per_90_2627_sub": 91.7,
       "xa90_2627": 0.17,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.74,
+      "xg_xa90_2627": 0.68,
       "xg_xa90_2627_sub": 0.19,
       "won_contest_2627": 2.1,
       "won_contest_2627_sub": 42.3,
@@ -6194,7 +6270,8 @@
       "ball_recovery_fotmob_2627": 206,
       "penalty_conceded_2627": 5,
       "poss_won_att_3rd_2627": 45,
-      "fouls_2627": 237
+      "fouls_2627": 237,
+      "xg_xa90_rank": 23
     }
   },
   "1130330": {
@@ -6236,7 +6313,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.1,
+      "xg_xa90_2627": 0.09,
       "xg_xa90_2627_sub": 0.18,
       "total_tackle_2627": 1.6,
       "total_tackle_2627_sub": 9.0,
@@ -6277,7 +6354,8 @@
       "effective_clearance_2627": 75,
       "outfielder_block_2627": 92,
       "ball_recovery_fotmob_2627": 301,
-      "fouls_2627": 184
+      "fouls_2627": 184,
+      "xg_xa90_rank": 258
     }
   },
   "1003368": {
@@ -6317,7 +6395,7 @@
       "accurate_long_balls_per_90_2627_sub": 88.9,
       "xa90_2627": 0.12,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.49,
+      "xg_xa90_2627": 0.39,
       "xg_xa90_2627_sub": 0.34,
       "won_contest_2627": 3.7,
       "won_contest_2627_sub": 78.6,
@@ -6363,7 +6441,8 @@
       "outfielder_block_2627": 55,
       "ball_recovery_fotmob_2627": 244,
       "poss_won_att_3rd_2627": 148,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 84
     }
   },
   "1459564": {
@@ -6405,7 +6484,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.26,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.58,
+      "xg_xa90_2627": 0.53,
       "xg_xa90_2627_sub": 0.44,
       "won_contest_2627": 3.1,
       "won_contest_2627_sub": 70.0,
@@ -6452,7 +6531,8 @@
       "effective_clearance_2627": 62,
       "outfielder_block_2627": 33,
       "ball_recovery_fotmob_2627": 76,
-      "fouls_2627": 265
+      "fouls_2627": 265,
+      "xg_xa90_rank": 47
     }
   },
   "982617": {
@@ -6492,7 +6572,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.06,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.59,
+      "xg_xa90_2627": 0.54,
       "xg_xa90_2627_sub": 0.28,
       "big_chance_missed_2627": 2.0,
       "big_chance_missed_2627_sub": 9.1,
@@ -6532,7 +6612,8 @@
       "interception_2627": 223,
       "effective_clearance_2627": 251,
       "ball_recovery_fotmob_2627": 317,
-      "fouls_2627": 97
+      "fouls_2627": 97,
+      "xg_xa90_rank": 45
     }
   },
   "1050178": {
@@ -6572,7 +6653,7 @@
       "accurate_long_balls_per_90_2627_sub": 66.7,
       "xa90_2627": 0.12,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.46,
+      "xg_xa90_2627": 0.4,
       "xg_xa90_2627_sub": 0.31,
       "won_contest_2627": 1.6,
       "won_contest_2627_sub": 45.5,
@@ -6615,7 +6696,8 @@
       "effective_clearance_2627": 251,
       "ball_recovery_fotmob_2627": 210,
       "poss_won_att_3rd_2627": 33,
-      "fouls_2627": 237
+      "fouls_2627": 237,
+      "xg_xa90_rank": 80
     }
   },
   "671203": {
@@ -6707,7 +6789,8 @@
       "ball_recovery_fotmob_2627": 39,
       "poss_won_att_3rd_2627": 112,
       "fouls_2627": 230,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 178
     }
   },
   "1146500": {
@@ -6799,7 +6882,8 @@
       "ball_recovery_fotmob_2627": 251,
       "poss_won_att_3rd_2627": 77,
       "fouls_2627": 54,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 70
     }
   },
   "415539": {
@@ -6843,7 +6927,7 @@
       "accurate_long_balls_per_90_2627_sub": 57.1,
       "xa90_2627": 0.17,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.33,
+      "xg_xa90_2627": 0.34,
       "xg_xa90_2627_sub": 0.52,
       "won_contest_2627": 0.8,
       "won_contest_2627_sub": 60.0,
@@ -6894,7 +6978,8 @@
       "ball_recovery_fotmob_2627": 289,
       "poss_won_att_3rd_2627": 163,
       "fouls_2627": 154,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 99
     }
   },
   "1347574": {
@@ -6938,7 +7023,7 @@
       "accurate_long_balls_per_90_2627_sub": 61.5,
       "xa90_2627": 0.14,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.52,
+      "xg_xa90_2627": 0.5,
       "xg_xa90_2627_sub": 0.35,
       "won_contest_2627": 2.1,
       "won_contest_2627_sub": 60.0,
@@ -6986,7 +7071,8 @@
       "effective_clearance_2627": 299,
       "ball_recovery_fotmob_2627": 223,
       "poss_won_att_3rd_2627": 58,
-      "fouls_2627": 58
+      "fouls_2627": 58,
+      "xg_xa90_rank": 54
     }
   },
   "841672": {
@@ -7028,7 +7114,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.17,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.3,
+      "xg_xa90_2627": 0.28,
       "xg_xa90_2627_sub": 0.31,
       "won_contest_2627": 1.3,
       "won_contest_2627_sub": 44.4,
@@ -7075,7 +7161,8 @@
       "effective_clearance_2627": 169,
       "ball_recovery_fotmob_2627": 70,
       "poss_won_att_3rd_2627": 25,
-      "fouls_2627": 237
+      "fouls_2627": 237,
+      "xg_xa90_rank": 127
     }
   },
   "541820": {
@@ -7119,7 +7206,7 @@
       "accurate_long_balls_per_90_2627_sub": 72.7,
       "xa90_2627": 0.23,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.32,
+      "xg_xa90_2627": 0.34,
       "xg_xa90_2627_sub": 0.4,
       "won_contest_2627": 1.8,
       "won_contest_2627_sub": 81.8,
@@ -7173,7 +7260,8 @@
       "ball_recovery_fotmob_2627": 146,
       "poss_won_att_3rd_2627": 66,
       "fouls_2627": 232,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 98
     }
   },
   "837341": {
@@ -7259,7 +7347,8 @@
       "outfielder_block_2627": 102,
       "ball_recovery_fotmob_2627": 229,
       "poss_won_att_3rd_2627": 140,
-      "fouls_2627": 265
+      "fouls_2627": 265,
+      "xg_xa90_rank": 28
     }
   },
   "957118": {
@@ -7303,7 +7392,7 @@
       "accurate_long_balls_per_90_2627_sub": 55.6,
       "xa90_2627": 0.2,
       "xa90_2627_sub": 0.4,
-      "xg_xa90_2627": 0.26,
+      "xg_xa90_2627": 0.24,
       "xg_xa90_2627_sub": 0.65,
       "won_contest_2627": 1.7,
       "won_contest_2627_sub": 66.7,
@@ -7351,7 +7440,8 @@
       "effective_clearance_2627": 69,
       "outfielder_block_2627": 92,
       "ball_recovery_fotmob_2627": 59,
-      "fouls_2627": 144
+      "fouls_2627": 144,
+      "xg_xa90_rank": 145
     }
   },
   "1414124": {
@@ -7427,7 +7517,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.09,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.31,
+      "xg_xa90_2627": 0.48,
       "xg_xa90_2627_sub": 0.42,
       "won_contest_2627": 0.8,
       "won_contest_2627_sub": 44.4,
@@ -7475,7 +7565,8 @@
       "outfielder_block_2627": 92,
       "ball_recovery_fotmob_2627": 246,
       "poss_won_att_3rd_2627": 126,
-      "fouls_2627": 20
+      "fouls_2627": 20,
+      "xg_xa90_rank": 63
     }
   },
   "1382000": {
@@ -7515,7 +7606,7 @@
       "accurate_long_balls_per_90_2627_sub": 94.1,
       "xa90_2627": 0.13,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.21,
+      "xg_xa90_2627": 0.43,
       "xg_xa90_2627_sub": 0.33,
       "won_contest_2627": 0.7,
       "won_contest_2627_sub": 50.0,
@@ -7561,7 +7652,8 @@
       "outfielder_block_2627": 24,
       "ball_recovery_fotmob_2627": 60,
       "poss_won_att_3rd_2627": 57,
-      "fouls_2627": 280
+      "fouls_2627": 280,
+      "xg_xa90_rank": 73
     }
   },
   "1529222": {
@@ -7647,7 +7739,8 @@
       "effective_clearance_2627": 98,
       "outfielder_block_2627": 7,
       "ball_recovery_fotmob_2627": 93,
-      "fouls_2627": 115
+      "fouls_2627": 115,
+      "xg_xa90_rank": 144
     }
   },
   "362212": {
@@ -7691,7 +7784,7 @@
       "accurate_long_balls_per_90_2627_sub": 87.5,
       "xa90_2627": 0.1,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.2,
+      "xg_xa90_2627": 0.32,
       "xg_xa90_2627_sub": 0.51,
       "total_tackle_2627": 0.8,
       "total_tackle_2627_sub": 3.0,
@@ -7736,7 +7829,8 @@
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 87,
       "poss_won_att_3rd_2627": 44,
-      "fouls_2627": 280
+      "fouls_2627": 280,
+      "xg_xa90_rank": 107
     }
   },
   "822589": {
@@ -7820,7 +7914,7 @@
       "xa_2627_sub": 1.0,
       "xa90_2627": 0.1,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.63,
+      "xg_xa90_2627": 0.62,
       "xg_xa90_2627_sub": 0.33,
       "won_contest_2627": 1.3,
       "won_contest_2627_sub": 36.4,
@@ -7866,7 +7960,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 282,
       "poss_won_att_3rd_2627": 108,
-      "fouls_2627": 36
+      "fouls_2627": 36,
+      "xg_xa90_rank": 31
     }
   },
   "824655": {
@@ -7910,7 +8005,7 @@
       "accurate_long_balls_per_90_2627_sub": 53.8,
       "xa90_2627": 0.14,
       "xa90_2627_sub": 0.4,
-      "xg_xa90_2627": 0.35,
+      "xg_xa90_2627": 0.33,
       "xg_xa90_2627_sub": 0.61,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 12.5,
@@ -7955,7 +8050,8 @@
       "interception_2627": 96,
       "effective_clearance_2627": 105,
       "ball_recovery_fotmob_2627": 191,
-      "fouls_2627": 198
+      "fouls_2627": 198,
+      "xg_xa90_rank": 104
     }
   },
   "661761": {
@@ -8032,7 +8128,8 @@
       "defensive_contributions_2627": 202,
       "effective_clearance_2627": 110,
       "ball_recovery_fotmob_2627": 187,
-      "poss_won_att_3rd_2627": 87
+      "poss_won_att_3rd_2627": 87,
+      "xg_xa90_rank": 141
     }
   },
   "1388039": {
@@ -8115,7 +8212,8 @@
       "interception_2627": 164,
       "effective_clearance_2627": 242,
       "ball_recovery_fotmob_2627": 245,
-      "fouls_2627": 265
+      "fouls_2627": 265,
+      "xg_xa90_rank": 26
     }
   },
   "1017401": {
@@ -8155,7 +8253,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.3,
+      "xg_xa90_2627": 0.28,
       "xg_xa90_2627_sub": 0.21,
       "won_contest_2627": 0.9,
       "won_contest_2627_sub": 50.0,
@@ -8198,7 +8296,8 @@
       "interception_2627": 199,
       "effective_clearance_2627": 185,
       "ball_recovery_fotmob_2627": 311,
-      "fouls_2627": 31
+      "fouls_2627": 31,
+      "xg_xa90_rank": 128
     }
   },
   "1525065": {
@@ -8240,7 +8339,7 @@
       "accurate_long_balls_per_90_2627_sub": 66.7,
       "xa90_2627": 0.19,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.77,
+      "xg_xa90_2627": 0.67,
       "xg_xa90_2627_sub": 0.53,
       "won_contest_2627": 2.1,
       "won_contest_2627_sub": 80.0,
@@ -8278,7 +8377,8 @@
       "defensive_contributions_2627": 247,
       "interception_2627": 194,
       "ball_recovery_fotmob_2627": 178,
-      "poss_won_att_3rd_2627": 6
+      "poss_won_att_3rd_2627": 6,
+      "xg_xa90_rank": 25
     }
   },
   "577911": {
@@ -8320,7 +8420,7 @@
       "accurate_long_balls_per_90_2627_sub": 41.2,
       "xa90_2627": 0.06,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.16,
+      "xg_xa90_2627": 0.21,
       "xg_xa90_2627_sub": 0.46,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 20.0,
@@ -8364,7 +8464,8 @@
       "effective_clearance_2627": 211,
       "ball_recovery_fotmob_2627": 131,
       "poss_won_att_3rd_2627": 166,
-      "fouls_2627": 125
+      "fouls_2627": 125,
+      "xg_xa90_rank": 162
     }
   },
   "1507697": {
@@ -8435,7 +8536,7 @@
       "accurate_long_balls_per_90_2627_sub": 80.0,
       "xa90_2627": 0.23,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.38,
+      "xg_xa90_2627": 0.35,
       "xg_xa90_2627_sub": 0.45,
       "total_tackle_2627": 1.8,
       "total_tackle_2627_sub": 4.0,
@@ -8476,7 +8577,8 @@
       "ball_recovery_fotmob_2627": 259,
       "penalty_conceded_2627": 2,
       "poss_won_att_3rd_2627": 133,
-      "fouls_2627": 115
+      "fouls_2627": 115,
+      "xg_xa90_rank": 93
     }
   },
   "1843609": {
@@ -8518,7 +8620,7 @@
       "accurate_long_balls_per_90_2627_sub": 33.3,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.17,
+      "xg_xa90_2627": 0.18,
       "xg_xa90_2627_sub": 0.26,
       "won_contest_2627": 1.6,
       "won_contest_2627_sub": 54.5,
@@ -8562,7 +8664,8 @@
       "interception_2627": 98,
       "effective_clearance_2627": 270,
       "ball_recovery_fotmob_2627": 209,
-      "fouls_2627": 198
+      "fouls_2627": 198,
+      "xg_xa90_rank": 177
     }
   },
   "308517": {
@@ -8604,7 +8707,7 @@
       "accurate_long_balls_per_90_2627_sub": 58.3,
       "xa90_2627": 0.08,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.17,
+      "xg_xa90_2627": 0.16,
       "xg_xa90_2627_sub": 0.18,
       "won_contest_2627": 0.4,
       "won_contest_2627_sub": 66.7,
@@ -8651,7 +8754,8 @@
       "outfielder_block_2627": 92,
       "ball_recovery_fotmob_2627": 64,
       "poss_won_att_3rd_2627": 114,
-      "fouls_2627": 265
+      "fouls_2627": 265,
+      "xg_xa90_rank": 193
     }
   },
   "866516": {
@@ -8737,7 +8841,8 @@
       "effective_clearance_2627": 164,
       "ball_recovery_fotmob_2627": 35,
       "poss_won_att_3rd_2627": 53,
-      "fouls_2627": 8
+      "fouls_2627": 8,
+      "xg_xa90_rank": 60
     }
   },
   "889535": {
@@ -8777,7 +8882,7 @@
       "accurate_long_balls_per_90_2627_sub": 44.4,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.18,
+      "xg_xa90_2627": 0.15,
       "xg_xa90_2627_sub": 0.24,
       "won_contest_2627": 0.7,
       "won_contest_2627_sub": 100.0,
@@ -8823,7 +8928,8 @@
       "effective_clearance_2627": 55,
       "outfielder_block_2627": 52,
       "ball_recovery_fotmob_2627": 103,
-      "fouls_2627": 291
+      "fouls_2627": 291,
+      "xg_xa90_rank": 206
     }
   },
   "541555": {
@@ -8867,7 +8973,7 @@
       "accurate_long_balls_per_90_2627_sub": 62.5,
       "xa90_2627": 0.28,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.66,
+      "xg_xa90_2627": 0.6,
       "xg_xa90_2627_sub": 0.5,
       "won_contest_2627": 1.2,
       "won_contest_2627_sub": 50.0,
@@ -8921,7 +9027,8 @@
       "ball_recovery_fotmob_2627": 203,
       "poss_won_att_3rd_2627": 51,
       "fouls_2627": 246,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 34
     }
   },
   "915156": {
@@ -8983,7 +9090,8 @@
       "save_pct_2627": 2,
       "goals_prevented_2627": 1,
       "goals_conceded_fotmob_2627": 18,
-      "fouls_2627": 291
+      "fouls_2627": 291,
+      "xg_xa90_rank": 336
     }
   },
   "325916": {
@@ -9069,7 +9177,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 85,
       "poss_won_att_3rd_2627": 3,
-      "fouls_2627": 252
+      "fouls_2627": 252,
+      "xg_xa90_rank": 10
     }
   },
   "958422": {
@@ -9122,7 +9231,8 @@
       "clean_sheet_fotmob_2627": 1,
       "save_pct_2627": 1,
       "goals_prevented_2627": 2,
-      "goals_conceded_fotmob_2627": 20
+      "goals_conceded_fotmob_2627": 20,
+      "xg_xa90_rank": 336
     }
   },
   "624166": {
@@ -9202,7 +9312,8 @@
       "ball_recovery_fotmob_2627": 177,
       "poss_won_att_3rd_2627": 20,
       "fouls_2627": 11,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 91
     }
   },
   "1254297": {
@@ -9242,7 +9353,7 @@
       "accurate_long_balls_per_90_2627_sub": 66.7,
       "xa90_2627": 0.34,
       "xa90_2627_sub": 0.6,
-      "xg_xa90_2627": 0.39,
+      "xg_xa90_2627": 0.37,
       "xg_xa90_2627_sub": 0.65,
       "won_contest_2627": 1.3,
       "won_contest_2627_sub": 50.0,
@@ -9285,7 +9396,8 @@
       "effective_clearance_2627": 254,
       "ball_recovery_fotmob_2627": 207,
       "poss_won_att_3rd_2627": 133,
-      "fouls_2627": 237
+      "fouls_2627": 237,
+      "xg_xa90_rank": 88
     }
   },
   "1800491": {
@@ -9315,7 +9427,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.15,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.18,
+      "xg_xa90_2627": 0.26,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.1,
       "won_contest_2627_sub": 66.7,
@@ -9353,7 +9465,8 @@
       "effective_clearance_2627": 187,
       "ball_recovery_fotmob_2627": 51,
       "poss_won_att_3rd_2627": 42,
-      "fouls_2627": 198
+      "fouls_2627": 198,
+      "xg_xa90_rank": 140
     }
   },
   "1289655": {
@@ -9409,7 +9522,8 @@
       "clean_sheet_fotmob_2627": 7,
       "save_pct_2627": 4,
       "goals_prevented_2627": 3,
-      "goals_conceded_fotmob_2627": 14
+      "goals_conceded_fotmob_2627": 14,
+      "xg_xa90_rank": 336
     }
   },
   "1320176": {
@@ -9445,7 +9559,7 @@
       "accurate_long_balls_per_90_2627_sub": 22.2,
       "xa90_2627": 0.31,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.33,
+      "xg_xa90_2627": 0.32,
       "xg_xa90_2627_sub": 0.21,
       "won_contest_2627": 0.9,
       "won_contest_2627_sub": 57.1,
@@ -9486,7 +9600,8 @@
       "effective_clearance_2627": 299,
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 93,
-      "fouls_2627": 144
+      "fouls_2627": 144,
+      "xg_xa90_rank": 110
     }
   },
   "115067": {
@@ -9522,7 +9637,7 @@
       "accurate_long_balls_per_90_2627_sub": 60.7,
       "xa90_2627": 0.09,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.11,
+      "xg_xa90_2627": 0.1,
       "xg_xa90_2627_sub": 0.19,
       "won_contest_2627": 1.5,
       "won_contest_2627_sub": 72.7,
@@ -9569,7 +9684,8 @@
       "ball_recovery_fotmob_2627": 32,
       "poss_won_att_3rd_2627": 29,
       "fouls_2627": 232,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 252
     }
   },
   "1641041": {
@@ -9609,7 +9725,7 @@
       "accurate_long_balls_per_90_2627_sub": 85.7,
       "xa90_2627": 0.1,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.14,
+      "xg_xa90_2627": 0.15,
       "xg_xa90_2627_sub": 0.23,
       "won_contest_2627": 1.9,
       "won_contest_2627_sub": 66.7,
@@ -9658,7 +9774,8 @@
       "outfielder_block_2627": 52,
       "ball_recovery_fotmob_2627": 30,
       "poss_won_att_3rd_2627": 26,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 202
     }
   },
   "1048023": {
@@ -9698,7 +9815,7 @@
       "accurate_long_balls_per_90_2627_sub": 40.7,
       "xa90_2627": 0.06,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.15,
+      "xg_xa90_2627": 0.13,
       "xg_xa90_2627_sub": 0.17,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 50.0,
@@ -9747,7 +9864,8 @@
       "outfielder_block_2627": 110,
       "ball_recovery_fotmob_2627": 128,
       "fouls_2627": 208,
-      "yellow_cards_fotmob_2627": 1
+      "yellow_cards_fotmob_2627": 1,
+      "xg_xa90_rank": 229
     }
   },
   "1013021": {
@@ -9803,7 +9921,8 @@
       "clean_sheet_fotmob_2627": 12,
       "save_pct_2627": 5,
       "goals_prevented_2627": 4,
-      "goals_conceded_fotmob_2627": 9
+      "goals_conceded_fotmob_2627": 9,
+      "xg_xa90_rank": 336
     }
   },
   "299799": {
@@ -9880,7 +9999,8 @@
       "effective_clearance_2627": 114,
       "ball_recovery_fotmob_2627": 68,
       "poss_won_att_3rd_2627": 117,
-      "fouls_2627": 44
+      "fouls_2627": 44,
+      "xg_xa90_rank": 216
     }
   },
   "688300": {
@@ -9920,7 +10040,7 @@
       "accurate_long_balls_per_90_2627_sub": 55.0,
       "xa90_2627": 0.23,
       "xa90_2627_sub": 0.4,
-      "xg_xa90_2627": 0.35,
+      "xg_xa90_2627": 0.34,
       "xg_xa90_2627_sub": 0.38,
       "won_contest_2627": 1.5,
       "won_contest_2627_sub": 57.1,
@@ -9966,7 +10086,8 @@
       "effective_clearance_2627": 223,
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 88,
-      "poss_won_att_3rd_2627": 169
+      "poss_won_att_3rd_2627": 169,
+      "xg_xa90_rank": 100
     }
   },
   "588687": {
@@ -10055,7 +10176,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 175,
       "poss_won_att_3rd_2627": 123,
-      "fouls_2627": 115
+      "fouls_2627": 115,
+      "xg_xa90_rank": 132
     }
   },
   "1109171": {
@@ -10144,7 +10266,8 @@
       "ball_recovery_fotmob_2627": 174,
       "poss_won_att_3rd_2627": 183,
       "fouls_2627": 249,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 190
     }
   },
   "605224": {
@@ -10184,7 +10307,7 @@
       "accurate_long_balls_per_90_2627_sub": 77.8,
       "xa90_2627": 0.41,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.62,
+      "xg_xa90_2627": 0.59,
       "xg_xa90_2627_sub": 0.23,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 66.7,
@@ -10230,7 +10353,8 @@
       "effective_clearance_2627": 264,
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 224,
-      "fouls_2627": 291
+      "fouls_2627": 291,
+      "xg_xa90_rank": 39
     }
   },
   "1131217": {
@@ -10264,7 +10388,7 @@
       "accurate_long_balls_per_90_2627_sub": 55.6,
       "xa90_2627": 0.08,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.09,
+      "xg_xa90_2627": 0.08,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 50.0,
@@ -10307,7 +10431,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 143,
       "poss_won_att_3rd_2627": 98,
-      "fouls_2627": 280
+      "fouls_2627": 280,
+      "xg_xa90_rank": 267
     }
   },
   "1289961": {
@@ -10381,7 +10506,8 @@
       "effective_clearance_2627": 102,
       "outfielder_block_2627": 78,
       "ball_recovery_fotmob_2627": 98,
-      "fouls_2627": 280
+      "fouls_2627": 280,
+      "xg_xa90_rank": 299
     }
   },
   "521318": {
@@ -10421,7 +10547,7 @@
       "accurate_long_balls_per_90_2627_sub": 82.4,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.25,
+      "xg_xa90_2627": 0.27,
       "xg_xa90_2627_sub": 0.22,
       "big_chance_missed_2627": 1.0,
       "big_chance_missed_2627_sub": 0.0,
@@ -10467,7 +10593,8 @@
       "outfielder_block_2627": 92,
       "ball_recovery_fotmob_2627": 193,
       "fouls_2627": 173,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 134
     }
   },
   "787350": {
@@ -10503,7 +10630,7 @@
       "accurate_long_balls_per_90_2627_sub": 66.7,
       "xa90_2627": 0.12,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.23,
+      "xg_xa90_2627": 0.22,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.7,
       "won_contest_2627_sub": 57.1,
@@ -10550,7 +10677,8 @@
       "ball_recovery_fotmob_2627": 101,
       "poss_won_att_3rd_2627": 83,
       "fouls_2627": 29,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 158
     }
   },
   "1076647": {
@@ -10582,7 +10710,7 @@
       "accurate_long_balls_per_90_2627_sub": 76.0,
       "xa90_2627": 0.1,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.22,
+      "xg_xa90_2627": 0.2,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.9,
       "won_contest_2627_sub": 66.7,
@@ -10621,7 +10749,8 @@
       "effective_clearance_2627": 150,
       "ball_recovery_fotmob_2627": 46,
       "poss_won_att_3rd_2627": 55,
-      "fouls_2627": 252
+      "fouls_2627": 252,
+      "xg_xa90_rank": 169
     }
   },
   "970565": {
@@ -10655,7 +10784,7 @@
       "accurate_long_balls_per_90_2627_sub": 37.5,
       "xa90_2627": 0.1,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.16,
+      "xg_xa90_2627": 0.15,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 42.9,
@@ -10698,7 +10827,8 @@
       "ball_recovery_fotmob_2627": 101,
       "penalty_won_2627": 4,
       "poss_won_att_3rd_2627": 91,
-      "fouls_2627": 125
+      "fouls_2627": 125,
+      "xg_xa90_rank": 209
     }
   },
   "1388071": {
@@ -10732,7 +10862,7 @@
       "accurate_long_balls_per_90_2627_sub": 78.6,
       "xa90_2627": 0.03,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.06,
+      "xg_xa90_2627": 0.05,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 25.0,
@@ -10772,7 +10902,8 @@
       "effective_clearance_2627": 171,
       "ball_recovery_fotmob_2627": 43,
       "fouls_2627": 209,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 299
     }
   },
   "936164": {
@@ -10812,7 +10943,7 @@
       "accurate_long_balls_per_90_2627_sub": 55.6,
       "xa90_2627": 0.06,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.12,
+      "xg_xa90_2627": 0.1,
       "xg_xa90_2627_sub": 0.33,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 42.9,
@@ -10855,7 +10986,8 @@
       "effective_clearance_2627": 118,
       "ball_recovery_fotmob_2627": 121,
       "poss_won_att_3rd_2627": 98,
-      "fouls_2627": 252
+      "fouls_2627": 252,
+      "xg_xa90_rank": 251
     }
   },
   "726345": {
@@ -10938,7 +11070,8 @@
       "effective_clearance_2627": 180,
       "ball_recovery_fotmob_2627": 79,
       "poss_won_att_3rd_2627": 72,
-      "fouls_2627": 125
+      "fouls_2627": 125,
+      "xg_xa90_rank": 184
     }
   },
   "466439": {
@@ -10994,7 +11127,8 @@
       "clean_sheet_fotmob_2627": 4,
       "save_pct_2627": 6,
       "goals_prevented_2627": 5,
-      "goals_conceded_fotmob_2627": 16
+      "goals_conceded_fotmob_2627": 16,
+      "xg_xa90_rank": 336
     }
   },
   "793907": {
@@ -11028,7 +11162,7 @@
       "accurate_long_balls_per_90_2627_sub": 46.2,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.07,
+      "xg_xa90_2627": 0.06,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.4,
       "won_contest_2627_sub": 100.0,
@@ -11068,7 +11202,8 @@
       "effective_clearance_2627": 54,
       "outfielder_block_2627": 92,
       "ball_recovery_fotmob_2627": 182,
-      "fouls_2627": 291
+      "fouls_2627": 291,
+      "xg_xa90_rank": 289
     }
   },
   "873956": {
@@ -11108,7 +11243,7 @@
       "accurate_long_balls_per_90_2627_sub": 47.6,
       "xa90_2627": 0.14,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.16,
+      "xg_xa90_2627": 0.13,
       "xg_xa90_2627_sub": 0.23,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 66.7,
@@ -11154,7 +11289,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 153,
       "poss_won_att_3rd_2627": 37,
-      "fouls_2627": 291
+      "fouls_2627": 291,
+      "xg_xa90_rank": 223
     }
   },
   "768474": {
@@ -11213,7 +11349,8 @@
       "clean_sheet_fotmob_2627": 1,
       "save_pct_2627": 3,
       "goals_prevented_2627": 7,
-      "goals_conceded_fotmob_2627": 19
+      "goals_conceded_fotmob_2627": 19,
+      "xg_xa90_rank": 336
     }
   },
   "737339": {
@@ -11253,7 +11390,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.6,
-      "xg_xa90_2627": 0.93,
+      "xg_xa90_2627": 0.77,
       "xg_xa90_2627_sub": 0.61,
       "won_contest_2627": 1.2,
       "won_contest_2627_sub": 40.0,
@@ -11302,7 +11439,8 @@
       "ball_recovery_fotmob_2627": 179,
       "penalty_won_2627": 2,
       "poss_won_att_3rd_2627": 67,
-      "fouls_2627": 58
+      "fouls_2627": 58,
+      "xg_xa90_rank": 18
     }
   },
   "1307957": {
@@ -11334,7 +11472,7 @@
       "accurate_long_balls_per_90_2627_sub": 60.0,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.06,
+      "xg_xa90_2627": 0.05,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 33.3,
@@ -11379,7 +11517,8 @@
       "ball_recovery_fotmob_2627": 164,
       "poss_won_att_3rd_2627": 125,
       "fouls_2627": 71,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 299
     }
   },
   "867225": {
@@ -11415,7 +11554,7 @@
       "accurate_long_balls_per_90_2627_sub": 40.0,
       "xa90_2627": 0.13,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.14,
+      "xg_xa90_2627": 0.13,
       "xg_xa90_2627_sub": 0.18,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 37.5,
@@ -11462,7 +11601,8 @@
       "ball_recovery_fotmob_2627": 254,
       "poss_won_att_3rd_2627": 176,
       "fouls_2627": 136,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 228
     }
   },
   "1235421": {
@@ -11500,7 +11640,7 @@
       "xa_2627_sub": 1.0,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.12,
+      "xg_xa90_2627": 0.1,
       "xg_xa90_2627_sub": 0.19,
       "won_contest_2627": 0.8,
       "won_contest_2627_sub": 66.7,
@@ -11545,7 +11685,8 @@
       "outfielder_block_2627": 92,
       "ball_recovery_fotmob_2627": 28,
       "fouls_2627": 136,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 253
     }
   },
   "805451": {
@@ -11577,7 +11718,7 @@
       "accurate_long_balls_per_90_2627_sub": 59.3,
       "xa90_2627": 0.15,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.25,
+      "xg_xa90_2627": 0.21,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 100.0,
@@ -11622,7 +11763,8 @@
       "outfielder_block_2627": 52,
       "ball_recovery_fotmob_2627": 40,
       "fouls_2627": 174,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 163
     }
   },
   "724196": {
@@ -11699,7 +11841,8 @@
       "outfielder_block_2627": 18,
       "ball_recovery_fotmob_2627": 284,
       "fouls_2627": 136,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 114
     }
   },
   "544693": {
@@ -11733,7 +11876,7 @@
       "accurate_long_balls_per_90_2627_sub": 40.6,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.04,
+      "xg_xa90_2627": 0.07,
       "xg_xa90_2627_sub": 0.17,
       "total_tackle_2627": 1.8,
       "total_tackle_2627_sub": 11.0,
@@ -11776,7 +11919,8 @@
       "ball_recovery_fotmob_2627": 214,
       "poss_won_att_3rd_2627": 181,
       "fouls_2627": 123,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 278
     }
   },
   "1106074": {
@@ -11810,7 +11954,7 @@
       "accurate_long_balls_per_90_2627_sub": 67.4,
       "xa90_2627": 0.04,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.09,
+      "xg_xa90_2627": 0.14,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 33.3,
@@ -11859,7 +12003,8 @@
       "ball_recovery_fotmob_2627": 162,
       "poss_won_att_3rd_2627": 146,
       "fouls_2627": 154,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 215
     }
   },
   "860913": {
@@ -11889,7 +12034,7 @@
       "accurate_long_balls_per_90_2627_sub": 63.2,
       "xa90_2627": 0.04,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.07,
+      "xg_xa90_2627": 0.06,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 1.2,
       "total_tackle_2627_sub": 5.0,
@@ -11930,7 +12075,8 @@
       "ball_recovery_fotmob_2627": 131,
       "poss_won_att_3rd_2627": 170,
       "fouls_2627": 246,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 289
     }
   },
   "1200630": {
@@ -11960,7 +12106,7 @@
       "accurate_long_balls_per_90_2627_sub": 61.5,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.11,
+      "xg_xa90_2627": 0.09,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 100.0,
@@ -12004,7 +12150,8 @@
       "outfielder_block_2627": 78,
       "ball_recovery_fotmob_2627": 145,
       "fouls_2627": 40,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 260
     }
   },
   "1415326": {
@@ -12075,7 +12222,8 @@
       "ball_recovery_fotmob_2627": 58,
       "poss_won_att_3rd_2627": 172,
       "fouls_2627": 152,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 308
     }
   },
   "935769": {
@@ -12115,7 +12263,7 @@
       "accurate_long_balls_per_90_2627_sub": 55.6,
       "xa90_2627": 0.25,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.45,
+      "xg_xa90_2627": 0.43,
       "xg_xa90_2627_sub": 0.17,
       "won_contest_2627": 1.5,
       "won_contest_2627_sub": 34.6,
@@ -12164,7 +12312,8 @@
       "ball_recovery_fotmob_2627": 237,
       "poss_won_att_3rd_2627": 151,
       "fouls_2627": 154,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 74
     }
   },
   "611223": {
@@ -12226,7 +12375,8 @@
       "interception_2627": 72,
       "effective_clearance_2627": 53,
       "ball_recovery_fotmob_2627": 265,
-      "fouls_2627": 184
+      "fouls_2627": 184,
+      "xg_xa90_rank": 267
     }
   },
   "924431": {
@@ -12306,7 +12456,8 @@
       "ball_recovery_fotmob_2627": 149,
       "poss_won_att_3rd_2627": 32,
       "fouls_2627": 174,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 201
     }
   },
   "414906": {
@@ -12398,7 +12549,8 @@
       "ball_recovery_fotmob_2627": 222,
       "poss_won_att_3rd_2627": 151,
       "fouls_2627": 209,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 238
     }
   },
   "1014630": {
@@ -12466,7 +12618,8 @@
       "effective_clearance_2627": 80,
       "outfielder_block_2627": 24,
       "ball_recovery_fotmob_2627": 25,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 280
     }
   },
   "1607014": {
@@ -12546,7 +12699,8 @@
       "ball_recovery_fotmob_2627": 117,
       "poss_won_att_3rd_2627": 8,
       "fouls_2627": 75,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 40
     }
   },
   "1336582": {
@@ -12582,7 +12736,7 @@
       "accurate_long_balls_per_90_2627_sub": 71.4,
       "xa90_2627": 0.1,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.28,
+      "xg_xa90_2627": 0.26,
       "xg_xa90_2627_sub": 0.25,
       "big_chance_missed_2627": 1.0,
       "big_chance_missed_2627_sub": 0.0,
@@ -12626,7 +12780,8 @@
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 167,
       "poss_won_att_3rd_2627": 98,
-      "fouls_2627": 198
+      "fouls_2627": 198,
+      "xg_xa90_rank": 139
     }
   },
   "760752": {
@@ -12676,7 +12831,8 @@
       "saves_per_90_2627": 4,
       "save_pct_2627": 7,
       "goals_prevented_2627": 9,
-      "goals_conceded_fotmob_2627": 7
+      "goals_conceded_fotmob_2627": 7,
+      "xg_xa90_rank": 336
     }
   },
   "921543": {
@@ -12753,7 +12909,8 @@
       "outfielder_block_2627": 78,
       "ball_recovery_fotmob_2627": 188,
       "poss_won_att_3rd_2627": 173,
-      "fouls_2627": 252
+      "fouls_2627": 252,
+      "xg_xa90_rank": 308
     }
   },
   "1189223": {
@@ -12789,7 +12946,7 @@
       "accurate_long_balls_per_90_2627_sub": 36.4,
       "xa90_2627": 0.14,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.16,
+      "xg_xa90_2627": 0.14,
       "xg_xa90_2627_sub": 0.21,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 50.0,
@@ -12833,7 +12990,8 @@
       "outfielder_block_2627": 22,
       "ball_recovery_fotmob_2627": 74,
       "poss_won_att_3rd_2627": 73,
-      "fouls_2627": 44
+      "fouls_2627": 44,
+      "xg_xa90_rank": 214
     }
   },
   "921341": {
@@ -12910,7 +13068,8 @@
       "effective_clearance_2627": 274,
       "ball_recovery_fotmob_2627": 21,
       "poss_won_att_3rd_2627": 1,
-      "fouls_2627": 80
+      "fouls_2627": 80,
+      "xg_xa90_rank": 112
     }
   },
   "749488": {
@@ -12950,7 +13109,7 @@
       "accurate_long_balls_per_90_2627_sub": 64.3,
       "xa90_2627": 0.06,
       "xa90_2627_sub": 0.6,
-      "xg_xa90_2627": 0.07,
+      "xg_xa90_2627": 0.08,
       "xg_xa90_2627_sub": 0.6,
       "won_contest_2627": 0.6,
       "won_contest_2627_sub": 42.9,
@@ -12996,7 +13155,8 @@
       "ball_recovery_fotmob_2627": 182,
       "poss_won_att_3rd_2627": 124,
       "fouls_2627": 52,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 265
     }
   },
   "560939": {
@@ -13061,7 +13221,8 @@
       "clean_sheet_fotmob_2627": 11,
       "save_pct_2627": 11,
       "goals_prevented_2627": 12,
-      "goals_conceded_fotmob_2627": 15
+      "goals_conceded_fotmob_2627": 15,
+      "xg_xa90_rank": 336
     }
   },
   "866708": {
@@ -13132,7 +13293,8 @@
       "outfielder_block_2627": 32,
       "ball_recovery_fotmob_2627": 54,
       "poss_won_att_3rd_2627": 142,
-      "fouls_2627": 80
+      "fouls_2627": 80,
+      "xg_xa90_rank": 308
     }
   },
   "888921": {
@@ -13166,7 +13328,7 @@
       "accurate_long_balls_per_90_2627_sub": 52.6,
       "xa90_2627": 0.12,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.18,
+      "xg_xa90_2627": 0.16,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 25.0,
@@ -13212,7 +13374,8 @@
       "outfielder_block_2627": 44,
       "ball_recovery_fotmob_2627": 171,
       "poss_won_att_3rd_2627": 155,
-      "fouls_2627": 20
+      "fouls_2627": 20,
+      "xg_xa90_rank": 194
     }
   },
   "1327513": {
@@ -13242,7 +13405,7 @@
       "accurate_long_balls_per_90_2627_sub": 25.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.03,
+      "xg_xa90_2627": 0.02,
       "xg_xa90_2627_sub": 0.0,
       "big_chance_missed_2627": 1.0,
       "big_chance_missed_2627_sub": 0.0,
@@ -13286,7 +13449,8 @@
       "ball_recovery_fotmob_2627": 78,
       "penalty_conceded_2627": 1,
       "fouls_2627": 18,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 326
     }
   },
   "1384881": {
@@ -13366,7 +13530,8 @@
       "outfielder_block_2627": 41,
       "ball_recovery_fotmob_2627": 176,
       "poss_won_att_3rd_2627": 154,
-      "fouls_2627": 198
+      "fouls_2627": 198,
+      "xg_xa90_rank": 212
     }
   },
   "31097": {
@@ -13396,7 +13561,7 @@
       "accurate_long_balls_per_90_2627_sub": 77.4,
       "xa90_2627": 0.14,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.14,
+      "xg_xa90_2627": 0.13,
       "xg_xa90_2627_sub": 0.25,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 40.0,
@@ -13434,7 +13599,8 @@
       "effective_clearance_2627": 264,
       "ball_recovery_fotmob_2627": 44,
       "poss_won_att_3rd_2627": 82,
-      "fouls_2627": 280
+      "fouls_2627": 280,
+      "xg_xa90_rank": 226
     }
   },
   "705484": {
@@ -13508,7 +13674,8 @@
       "effective_clearance_2627": 27,
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 304,
-      "fouls_2627": 237
+      "fouls_2627": 237,
+      "xg_xa90_rank": 319
     }
   },
   "1621219": {
@@ -13576,7 +13743,8 @@
       "outfielder_block_2627": 3,
       "ball_recovery_fotmob_2627": 315,
       "fouls_2627": 193,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 332
     }
   },
   "1107280": {
@@ -13610,7 +13778,7 @@
       "accurate_long_balls_per_90_2627_sub": 66.7,
       "xa90_2627": 0.1,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.18,
+      "xg_xa90_2627": 0.12,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.6,
       "won_contest_2627_sub": 50.0,
@@ -13647,7 +13815,8 @@
       "effective_clearance_2627": 260,
       "ball_recovery_fotmob_2627": 41,
       "poss_won_att_3rd_2627": 65,
-      "fouls_2627": 125
+      "fouls_2627": 125,
+      "xg_xa90_rank": 239
     }
   },
   "1246009": {
@@ -13733,7 +13902,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 73,
       "poss_won_att_3rd_2627": 116,
-      "fouls_2627": 144
+      "fouls_2627": 144,
+      "xg_xa90_rank": 167
     }
   },
   "1186228": {
@@ -13789,7 +13959,8 @@
       "effective_clearance_2627": 5,
       "outfielder_block_2627": 33,
       "ball_recovery_fotmob_2627": 15,
-      "poss_won_att_3rd_2627": 113
+      "poss_won_att_3rd_2627": 113,
+      "xg_xa90_rank": 332
     }
   },
   "1095432": {
@@ -13829,7 +14000,7 @@
       "accurate_long_balls_per_90_2627_sub": 55.6,
       "xa90_2627": 0.15,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.18,
+      "xg_xa90_2627": 0.16,
       "xg_xa90_2627_sub": 0.22,
       "won_contest_2627": 1.5,
       "won_contest_2627_sub": 41.2,
@@ -13875,7 +14046,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 193,
       "poss_won_att_3rd_2627": 60,
-      "fouls_2627": 184
+      "fouls_2627": 184,
+      "xg_xa90_rank": 190
     }
   },
   "787242": {
@@ -13903,7 +14075,7 @@
       "accurate_long_balls_per_90_2627_sub": 75.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.15,
+      "xg_xa90_2627": 0.13,
       "xg_xa90_2627_sub": 0.0,
       "big_chance_missed_2627": 1.0,
       "big_chance_missed_2627_sub": 0.0,
@@ -13943,7 +14115,8 @@
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 55,
       "fouls_2627": 9,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 230
     }
   },
   "1313884": {
@@ -14014,7 +14187,8 @@
       "outfielder_block_2627": 44,
       "ball_recovery_fotmob_2627": 269,
       "fouls_2627": 75,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 308
     }
   },
   "1044029": {
@@ -14054,7 +14228,7 @@
       "accurate_long_balls_per_90_2627_sub": 40.0,
       "xa90_2627": 0.18,
       "xa90_2627_sub": 0.4,
-      "xg_xa90_2627": 0.31,
+      "xg_xa90_2627": 0.28,
       "xg_xa90_2627_sub": 0.41,
       "won_contest_2627": 1.2,
       "won_contest_2627_sub": 75.0,
@@ -14100,7 +14274,8 @@
       "ball_recovery_fotmob_2627": 191,
       "poss_won_att_3rd_2627": 45,
       "fouls_2627": 42,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 126
     }
   },
   "528453": {
@@ -14174,7 +14349,8 @@
       "outfielder_block_2627": 29,
       "ball_recovery_fotmob_2627": 67,
       "poss_won_att_3rd_2627": 167,
-      "fouls_2627": 184
+      "fouls_2627": 184,
+      "xg_xa90_rank": 289
     }
   },
   "951712": {
@@ -14214,7 +14390,7 @@
       "accurate_long_balls_per_90_2627_sub": 42.3,
       "xa90_2627": 0.08,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.15,
+      "xg_xa90_2627": 0.23,
       "xg_xa90_2627_sub": 0.2,
       "won_contest_2627": 1.4,
       "won_contest_2627_sub": 63.6,
@@ -14260,7 +14436,8 @@
       "ball_recovery_fotmob_2627": 53,
       "poss_won_att_3rd_2627": 118,
       "fouls_2627": 123,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 153
     }
   },
   "848266": {
@@ -14294,7 +14471,7 @@
       "accurate_long_balls_per_90_2627_sub": 40.0,
       "xa90_2627": 0.15,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.25,
+      "xg_xa90_2627": 0.2,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.8,
       "won_contest_2627_sub": 66.7,
@@ -14337,7 +14514,8 @@
       "ball_recovery_fotmob_2627": 278,
       "poss_won_att_3rd_2627": 52,
       "fouls_2627": 193,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 169
     }
   },
   "362200": {
@@ -14396,7 +14574,8 @@
       "save_pct_2627": 8,
       "goals_prevented_2627": 8,
       "goals_conceded_fotmob_2627": 5,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 336
     }
   },
   "638090": {
@@ -14467,7 +14646,8 @@
       "effective_clearance_2627": 104,
       "outfielder_block_2627": 24,
       "ball_recovery_fotmob_2627": 185,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 123
     }
   },
   "1333331": {
@@ -14497,7 +14677,7 @@
       "accurate_long_balls_per_90_2627_sub": 47.4,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.04,
+      "xg_xa90_2627": 0.07,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 50.0,
@@ -14538,7 +14718,8 @@
       "outfielder_block_2627": 44,
       "ball_recovery_fotmob_2627": 239,
       "fouls_2627": 28,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 276
     }
   },
   "1684401": {
@@ -14618,7 +14799,8 @@
       "effective_clearance_2627": 294,
       "ball_recovery_fotmob_2627": 105,
       "poss_won_att_3rd_2627": 4,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 75
     }
   },
   "1218556": {
@@ -14692,7 +14874,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 166,
       "poss_won_att_3rd_2627": 30,
-      "fouls_2627": 291
+      "fouls_2627": 291,
+      "xg_xa90_rank": 171
     }
   },
   "1386006": {
@@ -14751,7 +14934,8 @@
       "ball_recovery_fotmob_2627": 119,
       "poss_won_att_3rd_2627": 75,
       "fouls_2627": 111,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 326
     }
   },
   "799497": {
@@ -14791,7 +14975,7 @@
       "accurate_long_balls_per_90_2627_sub": 38.9,
       "xa90_2627": 0.22,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.37,
+      "xg_xa90_2627": 0.32,
       "xg_xa90_2627_sub": 0.34,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 25.0,
@@ -14840,7 +15024,8 @@
       "ball_recovery_fotmob_2627": 137,
       "poss_won_att_3rd_2627": 156,
       "fouls_2627": 209,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 109
     }
   },
   "1481909": {
@@ -14876,7 +15061,7 @@
       "accurate_long_balls_per_90_2627_sub": 66.7,
       "xa90_2627": 0.16,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.17,
+      "xg_xa90_2627": 0.15,
       "xg_xa90_2627_sub": 0.25,
       "won_contest_2627": 1.0,
       "won_contest_2627_sub": 100.0,
@@ -14917,7 +15102,8 @@
       "effective_clearance_2627": 166,
       "ball_recovery_fotmob_2627": 50,
       "poss_won_att_3rd_2627": 81,
-      "fouls_2627": 20
+      "fouls_2627": 20,
+      "xg_xa90_rank": 205
     }
   },
   "1117058": {
@@ -14951,7 +15137,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.11,
+      "xg_xa90_2627": 0.09,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 3.0,
       "total_tackle_2627_sub": 9.0,
@@ -14988,7 +15174,8 @@
       "effective_clearance_2627": 3,
       "outfielder_block_2627": 55,
       "ball_recovery_fotmob_2627": 330,
-      "fouls_2627": 16
+      "fouls_2627": 16,
+      "xg_xa90_rank": 260
     }
   },
   "958464": {
@@ -15016,7 +15203,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.07,
+      "xg_xa90_2627": 0.11,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 2.2,
       "total_tackle_2627_sub": 5.0,
@@ -15053,7 +15240,8 @@
       "outfielder_block_2627": 33,
       "ball_recovery_fotmob_2627": 61,
       "poss_won_att_3rd_2627": 122,
-      "fouls_2627": 265
+      "fouls_2627": 265,
+      "xg_xa90_rank": 242
     }
   },
   "688278": {
@@ -15127,7 +15315,8 @@
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 271,
       "fouls_2627": 63,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 239
     }
   },
   "577912": {
@@ -15180,7 +15369,8 @@
       "clean_sheet_fotmob_2627": 4,
       "save_pct_2627": 10,
       "goals_prevented_2627": 10,
-      "goals_conceded_fotmob_2627": 11
+      "goals_conceded_fotmob_2627": 11,
+      "xg_xa90_rank": 336
     }
   },
   "957107": {
@@ -15210,7 +15400,7 @@
       "accurate_long_balls_per_90_2627_sub": 47.6,
       "xa90_2627": 0.03,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.06,
+      "xg_xa90_2627": 0.08,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 42.9,
@@ -15254,7 +15444,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 283,
       "fouls_2627": 263,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 267
     }
   },
   "1091193": {
@@ -15304,7 +15495,8 @@
       "saves_per_90_2627": 9,
       "save_pct_2627": 15,
       "goals_prevented_2627": 6,
-      "goals_conceded_fotmob_2627": 4
+      "goals_conceded_fotmob_2627": 4,
+      "xg_xa90_rank": 336
     }
   },
   "1203195": {
@@ -15381,7 +15573,8 @@
       "ball_recovery_fotmob_2627": 208,
       "poss_won_att_3rd_2627": 176,
       "fouls_2627": 174,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 320
     }
   },
   "1503574": {
@@ -15411,7 +15604,7 @@
       "accurate_long_balls_per_90_2627_sub": 58.3,
       "xa90_2627": 0.07,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.11,
+      "xg_xa90_2627": 0.1,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 2.6,
       "total_tackle_2627_sub": 8.0,
@@ -15446,7 +15639,8 @@
       "effective_clearance_2627": 6,
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 279,
-      "fouls_2627": 115
+      "fouls_2627": 115,
+      "xg_xa90_rank": 254
     }
   },
   "941953": {
@@ -15523,7 +15717,8 @@
       "effective_clearance_2627": 22,
       "outfielder_block_2627": 44,
       "ball_recovery_fotmob_2627": 216,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 267
     }
   },
   "1117310": {
@@ -15573,7 +15768,8 @@
       "saves_per_90_2627": 7,
       "save_pct_2627": 9,
       "goals_prevented_2627": 11,
-      "goals_conceded_fotmob_2627": 7
+      "goals_conceded_fotmob_2627": 7,
+      "xg_xa90_rank": 336
     }
   },
   "772168": {
@@ -15626,7 +15822,8 @@
       "clean_sheet_fotmob_2627": 8,
       "save_pct_2627": 14,
       "goals_prevented_2627": 16,
-      "goals_conceded_fotmob_2627": 9
+      "goals_conceded_fotmob_2627": 9,
+      "xg_xa90_rank": 336
     }
   },
   "1173250": {
@@ -15688,7 +15885,8 @@
       "effective_clearance_2627": 26,
       "outfielder_block_2627": 55,
       "ball_recovery_fotmob_2627": 257,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 308
     }
   },
   "1137272": {
@@ -15756,7 +15954,8 @@
       "interception_2627": 162,
       "effective_clearance_2627": 237,
       "ball_recovery_fotmob_2627": 115,
-      "fouls_2627": 265
+      "fouls_2627": 265,
+      "xg_xa90_rank": 254
     }
   },
   "1113694": {
@@ -15788,7 +15987,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.1,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.39,
+      "xg_xa90_2627": 0.32,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.9,
       "won_contest_2627_sub": 60.0,
@@ -15824,7 +16023,8 @@
       "defensive_contributions_2627": 306,
       "ball_recovery_fotmob_2627": 196,
       "poss_won_att_3rd_2627": 75,
-      "fouls_2627": 115
+      "fouls_2627": 115,
+      "xg_xa90_rank": 111
     }
   },
   "1520184": {
@@ -15854,7 +16054,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.03,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.04,
+      "xg_xa90_2627": 0.07,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 66.7,
@@ -15895,7 +16095,8 @@
       "outfielder_block_2627": 10,
       "ball_recovery_fotmob_2627": 128,
       "fouls_2627": 191,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 280
     }
   },
   "1332538": {
@@ -15929,7 +16130,7 @@
       "accurate_long_balls_per_90_2627_sub": 61.1,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.1,
+      "xg_xa90_2627": 0.09,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 100.0,
@@ -15972,7 +16173,8 @@
       "ball_recovery_fotmob_2627": 8,
       "poss_won_att_3rd_2627": 64,
       "fouls_2627": 54,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 260
     }
   },
   "538501": {
@@ -16025,7 +16227,8 @@
       "clean_sheet_fotmob_2627": 4,
       "save_pct_2627": 11,
       "goals_prevented_2627": 14,
-      "goals_conceded_fotmob_2627": 16
+      "goals_conceded_fotmob_2627": 16,
+      "xg_xa90_rank": 336
     }
   },
   "902651": {
@@ -16057,7 +16260,7 @@
       "accurate_long_balls_per_90_2627_sub": 55.6,
       "xa90_2627": 0.1,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.11,
+      "xg_xa90_2627": 0.12,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 33.3,
@@ -16102,7 +16305,8 @@
       "ball_recovery_fotmob_2627": 47,
       "poss_won_att_3rd_2627": 86,
       "fouls_2627": 154,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 236
     }
   },
   "867789": {
@@ -16138,7 +16342,7 @@
       "accurate_long_balls_per_90_2627_sub": 30.8,
       "xa90_2627": 0.2,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.22,
+      "xg_xa90_2627": 0.24,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.7,
       "won_contest_2627_sub": 57.1,
@@ -16182,7 +16386,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 214,
       "poss_won_att_3rd_2627": 148,
-      "fouls_2627": 291
+      "fouls_2627": 291,
+      "xg_xa90_rank": 147
     }
   },
   "1523327": {
@@ -16216,7 +16421,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.09,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.33,
+      "xg_xa90_2627": 0.35,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.4,
       "won_contest_2627_sub": 33.3,
@@ -16256,7 +16461,8 @@
       "effective_clearance_2627": 286,
       "ball_recovery_fotmob_2627": 198,
       "poss_won_att_3rd_2627": 58,
-      "fouls_2627": 265
+      "fouls_2627": 265,
+      "xg_xa90_rank": 95
     }
   },
   "935550": {
@@ -16327,7 +16533,8 @@
       "outfielder_block_2627": 15,
       "ball_recovery_fotmob_2627": 138,
       "fouls_2627": 133,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 299
     }
   },
   "244811": {
@@ -16355,7 +16562,7 @@
       "accurate_long_balls_per_90_2627_sub": 16.7,
       "xa90_2627": 0.08,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.14,
+      "xg_xa90_2627": 0.27,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 1.6,
       "total_tackle_2627_sub": 5.0,
@@ -16386,7 +16593,8 @@
       "effective_clearance_2627": 137,
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 273,
-      "fouls_2627": 280
+      "fouls_2627": 280,
+      "xg_xa90_rank": 135
     }
   },
   "449283": {
@@ -16414,7 +16622,7 @@
       "accurate_long_balls_per_90_2627_sub": 52.2,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.03,
+      "xg_xa90_2627": 0.15,
       "xg_xa90_2627_sub": 0.0,
       "big_chance_missed_2627": 1.0,
       "big_chance_missed_2627_sub": 0.0,
@@ -16454,7 +16662,8 @@
       "outfielder_block_2627": 29,
       "ball_recovery_fotmob_2627": 240,
       "fouls_2627": 172,
-      "yellow_cards_fotmob_2627": 1
+      "yellow_cards_fotmob_2627": 1,
+      "xg_xa90_rank": 209
     }
   },
   "937412": {
@@ -16522,7 +16731,8 @@
       "outfielder_block_2627": 24,
       "ball_recovery_fotmob_2627": 252,
       "fouls_2627": 93,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 326
     }
   },
   "942193": {
@@ -16558,7 +16768,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.03,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.1,
+      "xg_xa90_2627": 0.09,
       "xg_xa90_2627_sub": 0.17,
       "won_contest_2627": 1.0,
       "won_contest_2627_sub": 75.0,
@@ -16608,7 +16818,8 @@
       "ball_recovery_fotmob_2627": 260,
       "poss_won_att_3rd_2627": 180,
       "fouls_2627": 93,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 259
     }
   },
   "1746591": {
@@ -16644,7 +16855,7 @@
       "accurate_long_balls_per_90_2627_sub": 33.3,
       "xa90_2627": 0.09,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.11,
+      "xg_xa90_2627": 0.09,
       "xg_xa90_2627_sub": 0.2,
       "won_contest_2627": 1.2,
       "won_contest_2627_sub": 50.0,
@@ -16685,7 +16896,8 @@
       "effective_clearance_2627": 117,
       "outfielder_block_2627": 92,
       "ball_recovery_fotmob_2627": 146,
-      "fouls_2627": 237
+      "fouls_2627": 237,
+      "xg_xa90_rank": 257
     }
   },
   "933768": {
@@ -16756,7 +16968,8 @@
       "effective_clearance_2627": 121,
       "ball_recovery_fotmob_2627": 38,
       "poss_won_att_3rd_2627": 12,
-      "fouls_2627": 125
+      "fouls_2627": 125,
+      "xg_xa90_rank": 179
     }
   },
   "1053714": {
@@ -16794,7 +17007,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.07,
       "xa90_2627_sub": 0.7,
-      "xg_xa90_2627": 0.32,
+      "xg_xa90_2627": 0.33,
       "xg_xa90_2627_sub": 0.68,
       "won_contest_2627": 1.4,
       "won_contest_2627_sub": 40.0,
@@ -16833,7 +17046,8 @@
       "interception_2627": 10,
       "effective_clearance_2627": 157,
       "ball_recovery_fotmob_2627": 213,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 101
     }
   },
   "651435": {
@@ -16869,7 +17083,7 @@
       "accurate_long_balls_per_90_2627_sub": 60.0,
       "xa90_2627": 0.25,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.29,
+      "xg_xa90_2627": 0.23,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.8,
       "won_contest_2627_sub": 100.0,
@@ -16913,7 +17127,8 @@
       "outfielder_block_2627": 102,
       "ball_recovery_fotmob_2627": 258,
       "poss_won_att_3rd_2627": 14,
-      "fouls_2627": 265
+      "fouls_2627": 265,
+      "xg_xa90_rank": 154
     }
   },
   "1012842": {
@@ -16951,7 +17166,7 @@
       "accurate_long_balls_per_90_2627_sub": 44.4,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.03,
+      "xg_xa90_2627": 0.16,
       "xg_xa90_2627_sub": 0.3,
       "won_contest_2627": 0.6,
       "won_contest_2627_sub": 66.7,
@@ -16993,7 +17208,8 @@
       "effective_clearance_2627": 119,
       "ball_recovery_fotmob_2627": 154,
       "fouls_2627": 80,
-      "red_cards_fotmob_2627": 4
+      "red_cards_fotmob_2627": 4,
+      "xg_xa90_rank": 188
     }
   },
   "1735847": {
@@ -17073,7 +17289,8 @@
       "outfielder_block_2627": 65,
       "ball_recovery_fotmob_2627": 218,
       "poss_won_att_3rd_2627": 179,
-      "fouls_2627": 160
+      "fouls_2627": 160,
+      "xg_xa90_rank": 254
     }
   },
   "560945": {
@@ -17138,7 +17355,8 @@
       "defensive_contributions_2627": 152,
       "interception_2627": 144,
       "effective_clearance_2627": 152,
-      "ball_recovery_fotmob_2627": 204
+      "ball_recovery_fotmob_2627": 204,
+      "xg_xa90_rank": 185
     }
   },
   "724368": {
@@ -17178,7 +17396,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.15,
       "xa90_2627_sub": 0.6,
-      "xg_xa90_2627": 0.3,
+      "xg_xa90_2627": 0.25,
       "xg_xa90_2627_sub": 0.65,
       "won_contest_2627": 0.6,
       "won_contest_2627_sub": 50.0,
@@ -17221,7 +17439,8 @@
       "ball_recovery_fotmob_2627": 298,
       "poss_won_att_3rd_2627": 77,
       "fouls_2627": 278,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 142
     }
   },
   "1231029": {
@@ -17251,7 +17470,7 @@
       "accurate_long_balls_per_90_2627_sub": 20.0,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.5,
-      "xg_xa90_2627": 0.02,
+      "xg_xa90_2627": 0.05,
       "xg_xa90_2627_sub": 0.47,
       "won_contest_2627": 0.9,
       "won_contest_2627_sub": 50.0,
@@ -17286,7 +17505,8 @@
       "effective_clearance_2627": 87,
       "ball_recovery_fotmob_2627": 95,
       "fouls_2627": 174,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 297
     }
   },
   "1202358": {
@@ -17348,7 +17568,8 @@
       "effective_clearance_2627": 44,
       "outfielder_block_2627": 44,
       "ball_recovery_fotmob_2627": 275,
-      "fouls_2627": 97
+      "fouls_2627": 97,
+      "xg_xa90_rank": 326
     }
   },
   "1329487": {
@@ -17428,7 +17649,8 @@
       "effective_clearance_2627": 147,
       "ball_recovery_fotmob_2627": 66,
       "fouls_2627": 136,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 176
     }
   },
   "707970": {
@@ -17502,7 +17724,8 @@
       "ball_recovery_fotmob_2627": 247,
       "poss_won_att_3rd_2627": 37,
       "fouls_2627": 174,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 203
     }
   },
   "951714": {
@@ -17532,7 +17755,7 @@
       "accurate_long_balls_per_90_2627_sub": 63.6,
       "xa90_2627": 0.06,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.07,
+      "xg_xa90_2627": 0.31,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.3,
       "won_contest_2627_sub": 60.0,
@@ -17570,7 +17793,8 @@
       "effective_clearance_2627": 172,
       "ball_recovery_fotmob_2627": 84,
       "poss_won_att_3rd_2627": 85,
-      "fouls_2627": 115
+      "fouls_2627": 115,
+      "xg_xa90_rank": 115
     }
   },
   "843099": {
@@ -17606,7 +17830,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.19,
+      "xg_xa90_2627": 0.28,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.0,
       "won_contest_2627_sub": 40.0,
@@ -17647,7 +17871,8 @@
       "effective_clearance_2627": 100,
       "outfielder_block_2627": 28,
       "ball_recovery_fotmob_2627": 267,
-      "fouls_2627": 80
+      "fouls_2627": 80,
+      "xg_xa90_rank": 130
     }
   },
   "629594": {
@@ -17683,7 +17908,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.24,
       "xa90_2627_sub": 0.7,
-      "xg_xa90_2627": 0.29,
+      "xg_xa90_2627": 0.28,
       "xg_xa90_2627_sub": 0.71,
       "won_contest_2627": 1.4,
       "won_contest_2627_sub": 50.0,
@@ -17715,7 +17940,8 @@
       "defensive_contributions_2627": 248,
       "effective_clearance_2627": 97,
       "ball_recovery_fotmob_2627": 293,
-      "fouls_2627": 31
+      "fouls_2627": 31,
+      "xg_xa90_rank": 125
     }
   },
   "740944": {
@@ -17789,7 +18015,8 @@
       "outfielder_block_2627": 2,
       "ball_recovery_fotmob_2627": 275,
       "fouls_2627": 90,
-      "yellow_cards_fotmob_2627": 1
+      "yellow_cards_fotmob_2627": 1,
+      "xg_xa90_rank": 321
     }
   },
   "822440": {
@@ -17821,7 +18048,7 @@
       "accurate_long_balls_per_90_2627_sub": 29.4,
       "xa90_2627": 0.07,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.17,
+      "xg_xa90_2627": 0.16,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 33.3,
@@ -17866,7 +18093,8 @@
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 167,
       "fouls_2627": 108,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 194
     }
   },
   "935380": {
@@ -17896,7 +18124,7 @@
       "accurate_long_balls_per_90_2627_sub": 26.9,
       "xa90_2627": 0.04,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.06,
+      "xg_xa90_2627": 0.08,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 100.0,
@@ -17940,7 +18168,8 @@
       "ball_recovery_fotmob_2627": 250,
       "poss_won_att_3rd_2627": 159,
       "fouls_2627": 246,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 267
     }
   },
   "975242": {
@@ -17974,7 +18203,7 @@
       "accurate_long_balls_per_90_2627_sub": 80.0,
       "xa90_2627": 0.03,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.06,
+      "xg_xa90_2627": 0.05,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.6,
       "won_contest_2627_sub": 50.0,
@@ -18017,7 +18246,8 @@
       "ball_recovery_fotmob_2627": 82,
       "poss_won_att_3rd_2627": 70,
       "fouls_2627": 230,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 298
     }
   },
   "921921": {
@@ -18051,7 +18281,7 @@
       "accurate_long_balls_per_90_2627_sub": 85.7,
       "xa90_2627": 0.08,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.57,
+      "xg_xa90_2627": 0.6,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.7,
       "won_contest_2627_sub": 66.7,
@@ -18097,7 +18327,8 @@
       "ball_recovery_fotmob_2627": 52,
       "poss_won_att_3rd_2627": 54,
       "fouls_2627": 209,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 37
     }
   },
   "1666494": {
@@ -18171,7 +18402,8 @@
       "ball_recovery_fotmob_2627": 124,
       "poss_won_att_3rd_2627": 95,
       "fouls_2627": 71,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 242
     }
   },
   "1306664": {
@@ -18201,7 +18433,7 @@
       "accurate_long_balls_per_90_2627_sub": 37.0,
       "xa90_2627": 0.14,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.14,
+      "xg_xa90_2627": 0.13,
       "xg_xa90_2627_sub": 0.33,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 42.9,
@@ -18245,7 +18477,8 @@
       "ball_recovery_fotmob_2627": 171,
       "poss_won_att_3rd_2627": 178,
       "fouls_2627": 51,
-      "yellow_cards_fotmob_2627": 1
+      "yellow_cards_fotmob_2627": 1,
+      "xg_xa90_rank": 224
     }
   },
   "1393542": {
@@ -18313,7 +18546,8 @@
       "effective_clearance_2627": 92,
       "outfielder_block_2627": 102,
       "ball_recovery_fotmob_2627": 150,
-      "fouls_2627": 265
+      "fouls_2627": 265,
+      "xg_xa90_rank": 154
     }
   },
   "1130600": {
@@ -18363,7 +18597,8 @@
       "saves_per_90_2627": 8,
       "save_pct_2627": 16,
       "goals_prevented_2627": 13,
-      "goals_conceded_fotmob_2627": 1
+      "goals_conceded_fotmob_2627": 1,
+      "xg_xa90_rank": 336
     }
   },
   "741049": {
@@ -18440,7 +18675,8 @@
       "effective_clearance_2627": 215,
       "ball_recovery_fotmob_2627": 200,
       "fouls_2627": 58,
-      "red_cards_fotmob_2627": 4
+      "red_cards_fotmob_2627": 4,
+      "xg_xa90_rank": 234
     }
   },
   "1114635": {
@@ -18470,7 +18706,7 @@
       "accurate_long_balls_per_90_2627_sub": 44.4,
       "xa90_2627": 0.09,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.14,
+      "xg_xa90_2627": 0.19,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.3,
       "won_contest_2627_sub": 66.7,
@@ -18502,7 +18738,8 @@
       "defensive_contributions_2627": 230,
       "interception_2627": 74,
       "effective_clearance_2627": 260,
-      "ball_recovery_fotmob_2627": 7
+      "ball_recovery_fotmob_2627": 7,
+      "xg_xa90_rank": 171
     }
   },
   "790732": {
@@ -18536,7 +18773,7 @@
       "accurate_long_balls_per_90_2627_sub": 70.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.29,
+      "xg_xa90_2627": 0.35,
       "xg_xa90_2627_sub": 0.0,
       "big_chance_missed_2627": 1.0,
       "big_chance_missed_2627_sub": 0.0,
@@ -18576,7 +18813,8 @@
       "effective_clearance_2627": 156,
       "ball_recovery_fotmob_2627": 122,
       "poss_won_att_3rd_2627": 68,
-      "fouls_2627": 36
+      "fouls_2627": 36,
+      "xg_xa90_rank": 94
     }
   },
   "992052": {
@@ -18656,7 +18894,8 @@
       "penalty_won_2627": 3,
       "poss_won_att_3rd_2627": 2,
       "fouls_2627": 18,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 194
     }
   },
   "1036182": {
@@ -18733,7 +18972,8 @@
       "effective_clearance_2627": 189,
       "ball_recovery_fotmob_2627": 71,
       "fouls_2627": 133,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 222
     }
   },
   "888167": {
@@ -18767,7 +19007,7 @@
       "accurate_long_balls_per_90_2627_sub": 60.0,
       "xa90_2627": 0.2,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.21,
+      "xg_xa90_2627": 0.19,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.4,
       "won_contest_2627_sub": 20.0,
@@ -18813,7 +19053,8 @@
       "ball_recovery_fotmob_2627": 130,
       "poss_won_att_3rd_2627": 121,
       "fouls_2627": 70,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 171
     }
   },
   "750880": {
@@ -18866,7 +19107,8 @@
       "effective_clearance_2627": 2,
       "outfielder_block_2627": 72,
       "ball_recovery_fotmob_2627": 184,
-      "fouls_2627": 184
+      "fouls_2627": 184,
+      "xg_xa90_rank": 332
     }
   },
   "1203661": {
@@ -18900,7 +19142,7 @@
       "accurate_long_balls_per_90_2627_sub": 61.5,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.08,
+      "xg_xa90_2627": 0.07,
       "xg_xa90_2627_sub": 0.17,
       "won_contest_2627": 0.2,
       "won_contest_2627_sub": 100.0,
@@ -18946,7 +19188,8 @@
       "ball_recovery_fotmob_2627": 237,
       "poss_won_att_3rd_2627": 186,
       "fouls_2627": 111,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 278
     }
   },
   "879065": {
@@ -18978,7 +19221,7 @@
       "accurate_long_balls_per_90_2627_sub": 35.3,
       "xa90_2627": 0.14,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.15,
+      "xg_xa90_2627": 0.16,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 1.6,
       "total_tackle_2627_sub": 7.0,
@@ -19011,7 +19254,8 @@
       "interception_2627": 199,
       "effective_clearance_2627": 47,
       "outfielder_block_2627": 31,
-      "ball_recovery_fotmob_2627": 234
+      "ball_recovery_fotmob_2627": 234,
+      "xg_xa90_rank": 190
     }
   },
   "1039403": {
@@ -19094,7 +19338,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 36,
       "poss_won_att_3rd_2627": 165,
-      "fouls_2627": 31
+      "fouls_2627": 31,
+      "xg_xa90_rank": 185
     }
   },
   "1445163": {
@@ -19165,7 +19410,8 @@
       "interception_2627": 209,
       "ball_recovery_fotmob_2627": 157,
       "poss_won_att_3rd_2627": 31,
-      "fouls_2627": 67
+      "fouls_2627": 67,
+      "xg_xa90_rank": 194
     }
   },
   "639671": {
@@ -19239,7 +19485,8 @@
       "effective_clearance_2627": 274,
       "ball_recovery_fotmob_2627": 62,
       "poss_won_att_3rd_2627": 27,
-      "fouls_2627": 44
+      "fouls_2627": 44,
+      "xg_xa90_rank": 50
     }
   },
   "1185260": {
@@ -19271,7 +19518,7 @@
       "accurate_long_balls_per_90_2627_sub": 41.7,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.1,
+      "xg_xa90_2627": 0.15,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.4,
       "won_contest_2627_sub": 50.0,
@@ -19319,7 +19566,8 @@
       "ball_recovery_fotmob_2627": 181,
       "poss_won_att_3rd_2627": 126,
       "fouls_2627": 111,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 207
     }
   },
   "263653": {
@@ -19375,7 +19623,8 @@
       "defensive_contributions_2627": 2,
       "effective_clearance_2627": 1,
       "ball_recovery_fotmob_2627": 302,
-      "fouls_2627": 184
+      "fouls_2627": 184,
+      "xg_xa90_rank": 230
     }
   },
   "215242": {
@@ -19452,7 +19701,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 148,
       "poss_won_att_3rd_2627": 95,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 209
     }
   },
   "1624039": {
@@ -19520,7 +19770,8 @@
       "total_tackle_2627": 160,
       "defensive_contributions_2627": 282,
       "ball_recovery_fotmob_2627": 327,
-      "fouls_2627": 160
+      "fouls_2627": 160,
+      "xg_xa90_rank": 76
     }
   },
   "612863": {
@@ -19597,7 +19848,8 @@
       "outfielder_block_2627": 19,
       "ball_recovery_fotmob_2627": 134,
       "poss_won_att_3rd_2627": 114,
-      "fouls_2627": 198
+      "fouls_2627": 198,
+      "xg_xa90_rank": 48
     }
   },
   "1355552": {
@@ -19629,7 +19881,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.13,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.24,
+      "xg_xa90_2627": 0.35,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.0,
       "won_contest_2627_sub": 40.0,
@@ -19659,7 +19911,8 @@
       "total_tackle_2627": 225,
       "defensive_contributions_2627": 235,
       "effective_clearance_2627": 148,
-      "ball_recovery_fotmob_2627": 313
+      "ball_recovery_fotmob_2627": 313,
+      "xg_xa90_rank": 95
     }
   },
   "1676901": {
@@ -19695,7 +19948,7 @@
       "accurate_long_balls_per_90_2627_sub": 25.0,
       "xa90_2627": 0.09,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.15,
+      "xg_xa90_2627": 0.2,
       "xg_xa90_2627_sub": 0.0,
       "big_chance_missed_2627": 2.0,
       "big_chance_missed_2627_sub": 0.0,
@@ -19739,7 +19992,8 @@
       "outfielder_block_2627": 38,
       "ball_recovery_fotmob_2627": 98,
       "fouls_2627": 92,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 168
     }
   },
   "643229": {
@@ -19773,7 +20027,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.4,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.43,
+      "xg_xa90_2627": 0.42,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 2.6,
       "won_contest_2627_sub": 60.0,
@@ -19804,7 +20058,8 @@
       "total_tackle_2627": 236,
       "defensive_contributions_2627": 311,
       "ball_recovery_fotmob_2627": 202,
-      "poss_won_att_3rd_2627": 36
+      "poss_won_att_3rd_2627": 36,
+      "xg_xa90_rank": 76
     }
   },
   "1239749": {
@@ -19875,7 +20130,8 @@
       "ball_recovery_fotmob_2627": 162,
       "poss_won_att_3rd_2627": 102,
       "fouls_2627": 249,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 289
     }
   },
   "1396084": {
@@ -19954,7 +20210,8 @@
       "effective_clearance_2627": 125,
       "ball_recovery_fotmob_2627": 91,
       "fouls_2627": 232,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 336
     }
   },
   "1385856": {
@@ -20013,7 +20270,8 @@
       "effective_clearance_2627": 67,
       "outfielder_block_2627": 63,
       "ball_recovery_fotmob_2627": 125,
-      "fouls_2627": 97
+      "fouls_2627": 97,
+      "xg_xa90_rank": 115
     }
   },
   "1191093": {
@@ -20045,7 +20303,7 @@
       "accurate_long_balls_per_90_2627_sub": 66.7,
       "xa90_2627": 0.04,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.06,
+      "xg_xa90_2627": 0.05,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 0.9,
       "total_tackle_2627_sub": 2.0,
@@ -20078,7 +20336,8 @@
       "interception_2627": 72,
       "effective_clearance_2627": 131,
       "ball_recovery_fotmob_2627": 265,
-      "poss_won_att_3rd_2627": 138
+      "poss_won_att_3rd_2627": 138,
+      "xg_xa90_rank": 299
     }
   },
   "1014496": {
@@ -20140,7 +20399,8 @@
       "effective_clearance_2627": 72,
       "outfielder_block_2627": 23,
       "ball_recovery_fotmob_2627": 109,
-      "fouls_2627": 280
+      "fouls_2627": 280,
+      "xg_xa90_rank": 308
     }
   },
   "604982": {
@@ -20172,7 +20432,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.12,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.23,
+      "xg_xa90_2627": 0.24,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.9,
       "won_contest_2627_sub": 40.0,
@@ -20214,7 +20474,8 @@
       "ball_recovery_fotmob_2627": 305,
       "poss_won_att_3rd_2627": 41,
       "fouls_2627": 174,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 147
     }
   },
   "747926": {
@@ -20294,7 +20555,8 @@
       "defensive_contributions_2627": 327,
       "ball_recovery_fotmob_2627": 326,
       "poss_won_att_3rd_2627": 77,
-      "fouls_2627": 237
+      "fouls_2627": 237,
+      "xg_xa90_rank": 43
     }
   },
   "1187691": {
@@ -20328,7 +20590,7 @@
       "accurate_long_balls_per_90_2627_sub": 80.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.06,
+      "xg_xa90_2627": 0.11,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 2.9,
       "won_contest_2627_sub": 46.7,
@@ -20365,7 +20627,8 @@
       "interception_2627": 209,
       "effective_clearance_2627": 138,
       "ball_recovery_fotmob_2627": 294,
-      "fouls_2627": 16
+      "fouls_2627": 16,
+      "xg_xa90_rank": 242
     }
   },
   "197352": {
@@ -20427,7 +20690,8 @@
       "ball_recovery_fotmob_2627": 56,
       "poss_won_att_3rd_2627": 133,
       "fouls_2627": 52,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 332
     }
   },
   "161328": {
@@ -20489,7 +20753,8 @@
       "total_tackle_2627": 26,
       "defensive_contributions_2627": 203,
       "ball_recovery_fotmob_2627": 169,
-      "fouls_2627": 198
+      "fouls_2627": 198,
+      "xg_xa90_rank": 216
     }
   },
   "446266": {
@@ -20511,7 +20776,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.06,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.06,
+      "xg_xa90_2627": 0.05,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.5,
       "won_contest_2627_sub": 33.3,
@@ -20542,7 +20807,8 @@
       "effective_clearance_2627": 203,
       "outfielder_block_2627": 86,
       "ball_recovery_fotmob_2627": 274,
-      "fouls_2627": 252
+      "fouls_2627": 252,
+      "xg_xa90_rank": 299
     }
   },
   "586474": {
@@ -20607,7 +20873,8 @@
       "effective_clearance_2627": 71,
       "ball_recovery_fotmob_2627": 89,
       "fouls_2627": 193,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 289
     }
   },
   "1425693": {
@@ -20637,7 +20904,7 @@
       "accurate_long_balls_per_90_2627_sub": 54.5,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.08,
+      "xg_xa90_2627": 0.07,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 4.0,
       "total_tackle_2627_sub": 8.0,
@@ -20672,7 +20939,8 @@
       "effective_clearance_2627": 82,
       "ball_recovery_fotmob_2627": 26,
       "poss_won_att_3rd_2627": 87,
-      "fouls_2627": 80
+      "fouls_2627": 80,
+      "xg_xa90_rank": 280
     }
   },
   "837847": {
@@ -20702,7 +20970,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.08,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.23,
+      "xg_xa90_2627": 0.18,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 2.4,
       "total_tackle_2627_sub": 4.0,
@@ -20737,7 +21005,8 @@
       "effective_clearance_2627": 260,
       "outfielder_block_2627": 75,
       "ball_recovery_fotmob_2627": 139,
-      "fouls_2627": 58
+      "fouls_2627": 58,
+      "xg_xa90_rank": 179
     }
   },
   "1642351": {
@@ -20805,7 +21074,8 @@
       "effective_clearance_2627": 169,
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 118,
-      "poss_won_att_3rd_2627": 145
+      "poss_won_att_3rd_2627": 145,
+      "xg_xa90_rank": 260
     }
   },
   "1190023": {
@@ -20835,7 +21105,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.1,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.19,
+      "xg_xa90_2627": 0.3,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.9,
       "won_contest_2627_sub": 66.7,
@@ -20855,7 +21125,8 @@
       "xa90_2627": 119,
       "xg_xa90_2627": 146,
       "won_contest_2627": 24,
-      "ball_recovery_fotmob_2627": 299
+      "ball_recovery_fotmob_2627": 299,
+      "xg_xa90_rank": 121
     }
   },
   "721533": {
@@ -20911,7 +21182,8 @@
       "saves_per_90_2627": 11,
       "save_pct_2627": 17,
       "goals_prevented_2627": 20,
-      "goals_conceded_fotmob_2627": 6
+      "goals_conceded_fotmob_2627": 6,
+      "xg_xa90_rank": 336
     }
   },
   "1027594": {
@@ -20939,7 +21211,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.04,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.12,
+      "xg_xa90_2627": 0.37,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 2.4,
       "won_contest_2627_sub": 40.0,
@@ -20979,7 +21251,8 @@
       "ball_recovery_fotmob_2627": 89,
       "poss_won_att_3rd_2627": 43,
       "fouls_2627": 71,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 89
     }
   },
   "1282008": {
@@ -21009,7 +21282,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.13,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.73,
+      "xg_xa90_2627": 0.53,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.9,
       "won_contest_2627_sub": 100.0,
@@ -21047,7 +21320,8 @@
       "interception_2627": 128,
       "effective_clearance_2627": 218,
       "ball_recovery_fotmob_2627": 307,
-      "fouls_2627": 3
+      "fouls_2627": 3,
+      "xg_xa90_rank": 46
     }
   },
   "1428426": {
@@ -21124,7 +21398,8 @@
       "effective_clearance_2627": 273,
       "ball_recovery_fotmob_2627": 227,
       "poss_won_att_3rd_2627": 45,
-      "fouls_2627": 280
+      "fouls_2627": 280,
+      "xg_xa90_rank": 65
     }
   },
   "1080669": {
@@ -21156,7 +21431,7 @@
       "accurate_long_balls_per_90_2627_sub": 60.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.05,
+      "xg_xa90_2627": 0.24,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.7,
       "won_contest_2627_sub": 50.0,
@@ -21189,7 +21464,8 @@
       "defensive_contributions_2627": 189,
       "effective_clearance_2627": 206,
       "ball_recovery_fotmob_2627": 290,
-      "fouls_2627": 160
+      "fouls_2627": 160,
+      "xg_xa90_rank": 147
     }
   },
   "304345": {
@@ -21257,7 +21533,8 @@
       "ball_recovery_fotmob_2627": 65,
       "penalty_conceded_2627": 4,
       "poss_won_att_3rd_2627": 159,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 321
     }
   },
   "1421505": {
@@ -21291,7 +21568,7 @@
       "accurate_long_balls_per_90_2627_sub": 36.4,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.08,
+      "xg_xa90_2627": 0.07,
       "xg_xa90_2627_sub": 0.32,
       "total_tackle_2627": 1.9,
       "total_tackle_2627_sub": 6.0,
@@ -21331,7 +21608,8 @@
       "ball_recovery_fotmob_2627": 196,
       "poss_won_att_3rd_2627": 146,
       "fouls_2627": 174,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 275
     }
   },
   "992025": {
@@ -21381,7 +21659,7 @@
       "accurate_long_balls_per_90_2627_sub": 41.7,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.01,
+      "xg_xa90_2627": 0.03,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 2.7,
       "total_tackle_2627_sub": 9.0,
@@ -21416,7 +21694,8 @@
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 154,
       "fouls_2627": 29,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 321
     }
   },
   "1301633": {
@@ -21493,7 +21772,8 @@
       "effective_clearance_2627": 77,
       "outfielder_block_2627": 37,
       "ball_recovery_fotmob_2627": 110,
-      "fouls_2627": 184
+      "fouls_2627": 184,
+      "xg_xa90_rank": 65
     }
   },
   "819215": {
@@ -21549,7 +21829,8 @@
       "defensive_contributions_2627": 263,
       "effective_clearance_2627": 121,
       "ball_recovery_fotmob_2627": 34,
-      "fouls_2627": 125
+      "fouls_2627": 125,
+      "xg_xa90_rank": 280
     }
   },
   "570434": {
@@ -21577,7 +21858,7 @@
       "accurate_long_balls_per_90_2627_sub": 43.8,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.06,
+      "xg_xa90_2627": 0.08,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 1.2,
       "total_tackle_2627_sub": 4.0,
@@ -21614,7 +21895,8 @@
       "outfielder_block_2627": 1,
       "ball_recovery_fotmob_2627": 228,
       "penalty_conceded_2627": 3,
-      "fouls_2627": 80
+      "fouls_2627": 80,
+      "xg_xa90_rank": 267
     }
   },
   "1460253": {
@@ -21688,7 +21970,8 @@
       "effective_clearance_2627": 135,
       "ball_recovery_fotmob_2627": 292,
       "poss_won_att_3rd_2627": 95,
-      "fouls_2627": 160
+      "fouls_2627": 160,
+      "xg_xa90_rank": 175
     }
   },
   "1054114": {
@@ -21726,7 +22009,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.2,
-      "xg_xa90_2627": 0.13,
+      "xg_xa90_2627": 0.15,
       "xg_xa90_2627_sub": 0.2,
       "won_contest_2627": 0.6,
       "won_contest_2627_sub": 37.5,
@@ -21771,7 +22054,8 @@
       "outfielder_block_2627": 65,
       "ball_recovery_fotmob_2627": 241,
       "poss_won_att_3rd_2627": 23,
-      "fouls_2627": 97
+      "fouls_2627": 97,
+      "xg_xa90_rank": 208
     }
   },
   "1163219": {
@@ -21805,7 +22089,7 @@
       "accurate_long_balls_per_90_2627_sub": 88.9,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.54,
+      "xg_xa90_2627": 0.5,
       "xg_xa90_2627_sub": 0.0,
       "big_chance_missed_2627": 1.0,
       "big_chance_missed_2627_sub": 0.0,
@@ -21839,7 +22123,8 @@
       "effective_clearance_2627": 202,
       "ball_recovery_fotmob_2627": 249,
       "poss_won_att_3rd_2627": 17,
-      "fouls_2627": 36
+      "fouls_2627": 36,
+      "xg_xa90_rank": 57
     }
   },
   "1469120": {
@@ -21913,7 +22198,8 @@
       "ball_recovery_fotmob_2627": 233,
       "poss_won_att_3rd_2627": 5,
       "fouls_2627": 193,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 242
     }
   },
   "1436270": {
@@ -21953,7 +22239,7 @@
       "accurate_long_balls_per_90_2627_sub": 33.3,
       "xa90_2627": 0.16,
       "xa90_2627_sub": 0.3,
-      "xg_xa90_2627": 0.26,
+      "xg_xa90_2627": 0.3,
       "xg_xa90_2627_sub": 0.33,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 25.0,
@@ -21993,7 +22279,8 @@
       "ball_recovery_fotmob_2627": 248,
       "poss_won_att_3rd_2627": 143,
       "fouls_2627": 111,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 120
     }
   },
   "1206806": {
@@ -22025,7 +22312,7 @@
       "accurate_long_balls_per_90_2627_sub": 15.4,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.08,
+      "xg_xa90_2627": 0.13,
       "xg_xa90_2627_sub": 0.0,
       "big_chance_missed_2627": 1.0,
       "big_chance_missed_2627_sub": 0.0,
@@ -22067,7 +22354,8 @@
       "outfielder_block_2627": 84,
       "ball_recovery_fotmob_2627": 256,
       "fouls_2627": 133,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 226
     }
   },
   "641595": {
@@ -22091,7 +22379,7 @@
       "accurate_long_balls_per_90_2627_sub": 58.8,
       "xa90_2627": 0.07,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.07,
+      "xg_xa90_2627": 0.06,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 1.0,
       "total_tackle_2627_sub": 1.0,
@@ -22120,7 +22408,8 @@
       "interception_2627": 106,
       "effective_clearance_2627": 109,
       "ball_recovery_fotmob_2627": 17,
-      "fouls_2627": 36
+      "fouls_2627": 36,
+      "xg_xa90_rank": 289
     }
   },
   "414232": {
@@ -22160,7 +22449,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.05,
       "xa90_2627_sub": 0.4,
-      "xg_xa90_2627": 0.17,
+      "xg_xa90_2627": 0.13,
       "xg_xa90_2627_sub": 0.35,
       "won_contest_2627": 0.7,
       "won_contest_2627_sub": 66.7,
@@ -22212,7 +22501,8 @@
       "ball_recovery_fotmob_2627": 133,
       "poss_won_att_3rd_2627": 130,
       "fouls_2627": 263,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 225
     }
   },
   "941656": {
@@ -22321,7 +22611,8 @@
       "effective_clearance_2627": 111,
       "ball_recovery_fotmob_2627": 159,
       "fouls_2627": 154,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 6
     }
   },
   "469615": {
@@ -22353,7 +22644,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.29,
+      "xg_xa90_2627": 0.32,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.4,
       "won_contest_2627_sub": 33.3,
@@ -22398,7 +22689,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 288,
       "poss_won_att_3rd_2627": 126,
-      "fouls_2627": 265
+      "fouls_2627": 265,
+      "xg_xa90_rank": 108
     }
   },
   "951765": {
@@ -22463,7 +22755,8 @@
       "effective_clearance_2627": 14,
       "outfielder_block_2627": 86,
       "ball_recovery_fotmob_2627": 231,
-      "fouls_2627": 252
+      "fouls_2627": 252,
+      "xg_xa90_rank": 230
     }
   },
   "846000": {
@@ -22495,7 +22788,7 @@
       "accurate_long_balls_per_90_2627_sub": 75.0,
       "xa90_2627": 0.1,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.16,
+      "xg_xa90_2627": 0.25,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 1.1,
       "total_tackle_2627_sub": 2.0,
@@ -22528,7 +22821,8 @@
       "effective_clearance_2627": 190,
       "ball_recovery_fotmob_2627": 107,
       "fouls_2627": 136,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 143
     }
   },
   "1079485": {
@@ -22566,7 +22860,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.6,
-      "xg_xa90_2627": 0.73,
+      "xg_xa90_2627": 0.69,
       "xg_xa90_2627_sub": 0.55,
       "won_contest_2627": 0.6,
       "won_contest_2627_sub": 20.0,
@@ -22602,7 +22896,8 @@
       "total_tackle_2627": 216,
       "defensive_contributions_2627": 299,
       "ball_recovery_fotmob_2627": 331,
-      "fouls_2627": 144
+      "fouls_2627": 144,
+      "xg_xa90_rank": 22
     }
   },
   "924610": {
@@ -22619,13 +22914,15 @@
       "chances_created_2627": 1.0,
       "chances_created_2627_sub": 1.2,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.07
     },
     "ranks": {
       "rating_fotmob_2627": 291,
       "minuti_fotmob_2627": 377,
       "chances_created_2627": 269,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 280
     }
   },
   "1159233": {
@@ -22659,7 +22956,7 @@
       "accurate_long_balls_per_90_2627_sub": 75.0,
       "xa90_2627": 0.03,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.14,
+      "xg_xa90_2627": 0.33,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.4,
       "won_contest_2627_sub": 50.0,
@@ -22696,7 +22993,8 @@
       "effective_clearance_2627": 238,
       "ball_recovery_fotmob_2627": 57,
       "poss_won_att_3rd_2627": 9,
-      "fouls_2627": 26
+      "fouls_2627": 26,
+      "xg_xa90_rank": 106
     }
   },
   "875133": {
@@ -22715,14 +23013,16 @@
       "chances_created_2627": 2.0,
       "chances_created_2627_sub": 3.3,
       "xa_2627": 0.1,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.5
     },
     "ranks": {
       "rating_fotmob_2627": 291,
       "minuti_fotmob_2627": 393,
       "xg_2627": 196,
       "chances_created_2627": 198,
-      "xa_2627": 226
+      "xa_2627": 226,
+      "xg_xa90_rank": 57
     }
   },
   "769167": {
@@ -22790,7 +23090,8 @@
       "effective_clearance_2627": 81,
       "outfielder_block_2627": 65,
       "ball_recovery_fotmob_2627": 112,
-      "fouls_2627": 160
+      "fouls_2627": 160,
+      "xg_xa90_rank": 280
     }
   },
   "182917": {
@@ -22849,7 +23150,8 @@
       "save_pct_2627": 19,
       "goals_prevented_2627": 19,
       "goals_conceded_fotmob_2627": 2,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 336
     }
   },
   "789243": {
@@ -22885,7 +23187,7 @@
       "accurate_long_balls_per_90_2627_sub": 33.3,
       "xa90_2627": 0.13,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.19,
+      "xg_xa90_2627": 0.16,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 1.6,
       "total_tackle_2627_sub": 6.0,
@@ -22926,7 +23228,8 @@
       "ball_recovery_fotmob_2627": 219,
       "poss_won_att_3rd_2627": 92,
       "fouls_2627": 93,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 194
     }
   },
   "1050163": {
@@ -23012,7 +23315,8 @@
       "effective_clearance_2627": 255,
       "outfielder_block_2627": 72,
       "ball_recovery_fotmob_2627": 324,
-      "fouls_2627": 26
+      "fouls_2627": 26,
+      "xg_xa90_rank": 67
     }
   },
   "1712399": {
@@ -23046,7 +23350,7 @@
       "accurate_long_balls_per_90_2627_sub": 29.4,
       "xa90_2627": 0.07,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.23,
+      "xg_xa90_2627": 0.22,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 16.7,
@@ -23089,7 +23393,8 @@
       "outfielder_block_2627": 115,
       "ball_recovery_fotmob_2627": 243,
       "poss_won_att_3rd_2627": 148,
-      "fouls_2627": 280
+      "fouls_2627": 280,
+      "xg_xa90_rank": 158
     }
   },
   "557677": {
@@ -23125,7 +23430,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.12,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.2,
+      "xg_xa90_2627": 0.19,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.4,
       "won_contest_2627_sub": 33.3,
@@ -23172,7 +23477,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 255,
       "poss_won_att_3rd_2627": 49,
-      "fouls_2627": 97
+      "fouls_2627": 97,
+      "xg_xa90_rank": 171
     }
   },
   "1123969": {
@@ -23208,7 +23514,7 @@
       "accurate_long_balls_per_90_2627_sub": 52.6,
       "xa90_2627": 0.06,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.15,
+      "xg_xa90_2627": 0.16,
       "xg_xa90_2627_sub": 0.0,
       "big_chance_missed_2627": 1.0,
       "big_chance_missed_2627_sub": 0.0,
@@ -23255,7 +23561,8 @@
       "ball_recovery_fotmob_2627": 216,
       "poss_won_att_3rd_2627": 181,
       "fouls_2627": 136,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 194
     }
   },
   "793066": {
@@ -23323,7 +23630,8 @@
       "big_chance_missed_2627": 75,
       "ball_recovery_fotmob_2627": 142,
       "poss_won_att_3rd_2627": 56,
-      "fouls_2627": 97
+      "fouls_2627": 97,
+      "xg_xa90_rank": 19
     }
   },
   "1436436": {
@@ -23394,7 +23702,8 @@
       "outfielder_block_2627": 65,
       "ball_recovery_fotmob_2627": 297,
       "fouls_2627": 232,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 326
     }
   },
   "1352744": {
@@ -23465,7 +23774,8 @@
       "outfielder_block_2627": 136,
       "ball_recovery_fotmob_2627": 86,
       "fouls_2627": 229,
-      "yellow_cards_fotmob_2627": 1
+      "yellow_cards_fotmob_2627": 1,
+      "xg_xa90_rank": 308
     }
   },
   "1078846": {
@@ -23528,7 +23838,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.13,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.19,
+      "xg_xa90_2627": 0.21,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.1,
       "won_contest_2627_sub": 66.7,
@@ -23562,7 +23872,8 @@
       "defensive_contributions_2627": 195,
       "effective_clearance_2627": 139,
       "ball_recovery_fotmob_2627": 332,
-      "fouls_2627": 252
+      "fouls_2627": 252,
+      "xg_xa90_rank": 163
     }
   },
   "1577900": {
@@ -23596,7 +23907,7 @@
       "accurate_long_balls_per_90_2627_sub": 75.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.05,
+      "xg_xa90_2627": 0.04,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.8,
       "won_contest_2627_sub": 100.0,
@@ -23633,7 +23944,8 @@
       "interception_2627": 139,
       "effective_clearance_2627": 229,
       "ball_recovery_fotmob_2627": 75,
-      "fouls_2627": 74
+      "fouls_2627": 74,
+      "xg_xa90_rank": 307
     }
   },
   "1258292": {
@@ -23691,7 +24003,7 @@
       "accurate_long_balls_per_90_2627_sub": 25.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.04,
+      "xg_xa90_2627": 0.05,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 1.4,
       "total_tackle_2627_sub": 2.0,
@@ -23727,7 +24039,8 @@
       "effective_clearance_2627": 93,
       "ball_recovery_fotmob_2627": 125,
       "poss_won_att_3rd_2627": 62,
-      "fouls_2627": 97
+      "fouls_2627": 97,
+      "xg_xa90_rank": 299
     }
   },
   "1369279": {
@@ -23749,7 +24062,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.04,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.04,
+      "xg_xa90_2627": 0.13,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 2.4,
       "total_tackle_2627_sub": 4.0,
@@ -23780,7 +24093,8 @@
       "effective_clearance_2627": 179,
       "ball_recovery_fotmob_2627": 139,
       "fouls_2627": 122,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 230
     }
   },
   "1200591": {
@@ -23854,7 +24168,8 @@
       "interception_2627": 223,
       "effective_clearance_2627": 192,
       "ball_recovery_fotmob_2627": 271,
-      "fouls_2627": 144
+      "fouls_2627": 144,
+      "xg_xa90_rank": 115
     }
   },
   "950596": {
@@ -23886,7 +24201,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.03,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.04,
+      "xg_xa90_2627": 0.17,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.4,
       "won_contest_2627_sub": 100.0,
@@ -23922,7 +24237,8 @@
       "interception_2627": 20,
       "effective_clearance_2627": 157,
       "ball_recovery_fotmob_2627": 201,
-      "fouls_2627": 215
+      "fouls_2627": 215,
+      "xg_xa90_rank": 185
     }
   },
   "850295": {
@@ -23956,7 +24272,7 @@
       "accurate_long_balls_per_90_2627_sub": 28.6,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.1,
+      "xg_xa90_2627": 0.09,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.9,
       "won_contest_2627_sub": 33.3,
@@ -23999,7 +24315,8 @@
       "effective_clearance_2627": 212,
       "ball_recovery_fotmob_2627": 96,
       "poss_won_att_3rd_2627": 27,
-      "fouls_2627": 6
+      "fouls_2627": 6,
+      "xg_xa90_rank": 260
     }
   },
   "1677025": {
@@ -24053,7 +24370,8 @@
       "xa_2627": 0.1,
       "xa_2627_sub": 0.0,
       "big_chance_missed_2627": 2.0,
-      "big_chance_missed_2627_sub": 0.0
+      "big_chance_missed_2627_sub": 0.0,
+      "xg_xa90_2627": 0.93
     },
     "ranks": {
       "rating_fotmob_2627": 316,
@@ -24063,7 +24381,8 @@
       "big_chances_created_2627": 100,
       "chances_created_2627": 269,
       "xa_2627": 226,
-      "big_chance_missed_2627": 35
+      "big_chance_missed_2627": 35,
+      "xg_xa90_rank": 11
     }
   },
   "1106916": {
@@ -24091,7 +24410,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.14,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.15,
+      "xg_xa90_2627": 0.11,
       "xg_xa90_2627_sub": 0.0,
       "ball_recovery_fotmob_2627": 2.3,
       "ball_recovery_fotmob_2627_sub": 3.0
@@ -24107,7 +24426,8 @@
       "xa_2627": 173,
       "xa90_2627": 82,
       "xg_xa90_2627": 187,
-      "ball_recovery_fotmob_2627": 281
+      "ball_recovery_fotmob_2627": 281,
+      "xg_xa90_rank": 242
     }
   },
   "1605748": {
@@ -24137,7 +24457,7 @@
       "accurate_long_balls_per_90_2627_sub": 84.6,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.18,
+      "xg_xa90_2627": 0.14,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.7,
       "won_contest_2627_sub": 40.0,
@@ -24178,7 +24498,8 @@
       "outfielder_block_2627": 19,
       "ball_recovery_fotmob_2627": 156,
       "fouls_2627": 90,
-      "yellow_cards_fotmob_2627": 1
+      "yellow_cards_fotmob_2627": 1,
+      "xg_xa90_rank": 216
     }
   },
   "1215057": {
@@ -24212,7 +24533,7 @@
       "accurate_long_balls_per_90_2627_sub": 28.6,
       "xa90_2627": 0.03,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.18,
+      "xg_xa90_2627": 0.16,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.4,
       "won_contest_2627_sub": 30.8,
@@ -24255,7 +24576,8 @@
       "outfielder_block_2627": 102,
       "ball_recovery_fotmob_2627": 45,
       "poss_won_att_3rd_2627": 10,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 194
     }
   },
   "178732": {
@@ -24305,7 +24627,8 @@
       "saves_per_90_2627": 16,
       "save_pct_2627": 13,
       "goals_prevented_2627": 18,
-      "goals_conceded_fotmob_2627": 11
+      "goals_conceded_fotmob_2627": 11,
+      "xg_xa90_rank": 336
     }
   },
   "1212630": {
@@ -24339,7 +24662,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.04,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.28,
+      "xg_xa90_2627": 0.23,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 2.3,
       "total_tackle_2627_sub": 3.0,
@@ -24373,7 +24696,8 @@
       "interception_2627": 44,
       "effective_clearance_2627": 133,
       "ball_recovery_fotmob_2627": 158,
-      "fouls_2627": 4
+      "fouls_2627": 4,
+      "xg_xa90_rank": 154
     }
   },
   "866165": {
@@ -24410,13 +24734,15 @@
       "xa_2627": 0.0,
       "xa_2627_sub": 0.0,
       "yellow_cards_fotmob_2627": 1.0,
-      "yellow_cards_fotmob_2627_sub": 0.0
+      "yellow_cards_fotmob_2627_sub": 0.0,
+      "xg_xa90_2627": 0.42
     },
     "ranks": {
       "rating_fotmob_2627": 324,
       "minuti_fotmob_2627": 375,
       "xa_2627": 299,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 76
     }
   },
   "1693531": {
@@ -24442,7 +24768,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.03,
+      "xg_xa90_2627": 0.04,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.3,
       "won_contest_2627_sub": 25.0,
@@ -24475,7 +24801,8 @@
       "effective_clearance_2627": 154,
       "ball_recovery_fotmob_2627": 277,
       "poss_won_att_3rd_2627": 144,
-      "fouls_2627": 97
+      "fouls_2627": 97,
+      "xg_xa90_rank": 308
     }
   },
   "1661207": {
@@ -24537,7 +24864,8 @@
       "ball_recovery_fotmob_2627": 96,
       "poss_won_att_3rd_2627": 33,
       "fouls_2627": 5,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 267
     }
   },
   "1178314": {
@@ -24605,7 +24933,8 @@
       "effective_clearance_2627": 242,
       "ball_recovery_fotmob_2627": 290,
       "poss_won_att_3rd_2627": 21,
-      "fouls_2627": 97
+      "fouls_2627": 97,
+      "xg_xa90_rank": 81
     }
   },
   "689680": {
@@ -24685,7 +25014,8 @@
       "ball_recovery_fotmob_2627": 318,
       "poss_won_att_3rd_2627": 163,
       "fouls_2627": 65,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 95
     }
   },
   "637656": {
@@ -24735,7 +25065,8 @@
       "saves_per_90_2627": 18,
       "save_pct_2627": 18,
       "goals_prevented_2627": 15,
-      "goals_conceded_fotmob_2627": 11
+      "goals_conceded_fotmob_2627": 11,
+      "xg_xa90_rank": 336
     }
   },
   "1399969": {
@@ -24815,7 +25146,8 @@
       "ball_recovery_fotmob_2627": 198,
       "poss_won_att_3rd_2627": 119,
       "fouls_2627": 2,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 242
     }
   },
   "634310": {
@@ -24883,7 +25215,8 @@
       "effective_clearance_2627": 124,
       "ball_recovery_fotmob_2627": 83,
       "poss_won_att_3rd_2627": 130,
-      "fouls_2627": 58
+      "fouls_2627": 58,
+      "xg_xa90_rank": 163
     }
   },
   "1524139": {
@@ -24969,7 +25302,8 @@
       "ball_recovery_fotmob_2627": 113,
       "fouls_2627": 24,
       "yellow_cards_fotmob_2627": 8,
-      "red_cards_fotmob_2627": 1
+      "red_cards_fotmob_2627": 1,
+      "xg_xa90_rank": 242
     }
   },
   "1417101": {
@@ -24997,7 +25331,7 @@
       "xa_2627_sub": 0.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.06,
+      "xg_xa90_2627": 0.22,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.7,
       "won_contest_2627_sub": 100.0,
@@ -25028,7 +25362,8 @@
       "defensive_contributions_2627": 244,
       "ball_recovery_fotmob_2627": 285,
       "fouls_2627": 9,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 158
     }
   },
   "1379468": {
@@ -25047,14 +25382,16 @@
       "xgot_2627": 0.0,
       "xgot_2627_sub": 0.0,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.7
     },
     "ranks": {
       "rating_fotmob_2627": 334,
       "minuti_fotmob_2627": 368,
       "xg_2627": 135,
       "xgot_2627": 212,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 20
     }
   },
   "1276505": {
@@ -25084,7 +25421,7 @@
       "accurate_long_balls_per_90_2627_sub": 40.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.1,
+      "xg_xa90_2627": 0.29,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 1.9,
       "total_tackle_2627_sub": 3.0,
@@ -25113,7 +25450,8 @@
       "defensive_contributions_2627": 230,
       "interception_2627": 181,
       "ball_recovery_fotmob_2627": 232,
-      "fouls_2627": 44
+      "fouls_2627": 44,
+      "xg_xa90_rank": 123
     }
   },
   "1298186": {
@@ -25141,7 +25479,7 @@
       "accurate_long_balls_per_90_2627_sub": 75.0,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.08,
+      "xg_xa90_2627": 0.06,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 2.0,
       "total_tackle_2627_sub": 5.0,
@@ -25181,7 +25519,8 @@
       "ball_recovery_fotmob_2627": 230,
       "poss_won_att_3rd_2627": 48,
       "fouls_2627": 14,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 289
     }
   },
   "149219": {
@@ -25252,7 +25591,8 @@
       "effective_clearance_2627": 25,
       "outfielder_block_2627": 8,
       "ball_recovery_fotmob_2627": 305,
-      "fouls_2627": 198
+      "fouls_2627": 198,
+      "xg_xa90_rank": 163
     }
   },
   "883824": {
@@ -25286,7 +25626,7 @@
       "accurate_long_balls_per_90_2627_sub": 100.0,
       "xa90_2627": 0.12,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.74,
+      "xg_xa90_2627": 1.12,
       "xg_xa90_2627_sub": 0.0,
       "big_chance_missed_2627": 2.0,
       "big_chance_missed_2627_sub": 0.0,
@@ -25320,7 +25660,8 @@
       "defensive_contributions_2627": 298,
       "ball_recovery_fotmob_2627": 323,
       "poss_won_att_3rd_2627": 80,
-      "fouls_2627": 20
+      "fouls_2627": 20,
+      "xg_xa90_rank": 8
     }
   },
   "1316088": {
@@ -25339,14 +25680,16 @@
       "xgot_2627": 0.2,
       "xgot_2627_sub": 0.0,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.18
     },
     "ranks": {
       "rating_fotmob_2627": 339,
       "minuti_fotmob_2627": 363,
       "xg_2627": 229,
       "xgot_2627": 161,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 179
     }
   },
   "935406": {
@@ -25417,7 +25760,8 @@
       "effective_clearance_2627": 35,
       "ball_recovery_fotmob_2627": 261,
       "fouls_2627": 63,
-      "yellow_cards_fotmob_2627": 9
+      "yellow_cards_fotmob_2627": 9,
+      "xg_xa90_rank": 308
     }
   },
   "955947": {
@@ -25470,7 +25814,8 @@
       "saves_per_90_2627": 20,
       "save_pct_2627": 20,
       "goals_prevented_2627": 17,
-      "goals_conceded_fotmob_2627": 3
+      "goals_conceded_fotmob_2627": 3,
+      "xg_xa90_rank": 336
     }
   },
   "1355574": {
@@ -25598,7 +25943,8 @@
       "big_chance_missed_2627": 1.0,
       "big_chance_missed_2627_sub": 0.0,
       "yellow_cards_fotmob_2627": 1.0,
-      "yellow_cards_fotmob_2627_sub": 0.0
+      "yellow_cards_fotmob_2627_sub": 0.0,
+      "xg_xa90_2627": 0.41
     },
     "ranks": {
       "assist_fotmob_2627": 87,
@@ -25610,7 +25956,8 @@
       "chances_created_2627": 113,
       "xa_2627": 213,
       "big_chance_missed_2627": 75,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 79
     }
   },
   "1879542": {
@@ -25681,7 +26028,8 @@
       "effective_clearance_2627": 121,
       "outfielder_block_2627": 75,
       "ball_recovery_fotmob_2627": 22,
-      "fouls_2627": 237
+      "fouls_2627": 237,
+      "xg_xa90_rank": 250
     }
   },
   "557799": {
@@ -25701,7 +26049,7 @@
       "accurate_long_balls_per_90_2627_sub": 55.6,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.01,
+      "xg_xa90_2627": 0.05,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 1.4,
       "total_tackle_2627_sub": 3.0,
@@ -25731,7 +26079,8 @@
       "effective_clearance_2627": 18,
       "outfielder_block_2627": 4,
       "ball_recovery_fotmob_2627": 221,
-      "fouls_2627": 160
+      "fouls_2627": 160,
+      "xg_xa90_rank": 299
     }
   },
   "1214915": {
@@ -25789,12 +26138,14 @@
       "xa_2627": 0.0,
       "xa_2627_sub": 0.0,
       "yellow_cards_fotmob_2627": 1.0,
-      "yellow_cards_fotmob_2627_sub": 0.0
+      "yellow_cards_fotmob_2627_sub": 0.0,
+      "xg_xa90_2627": 0.0
     },
     "ranks": {
       "minuti_fotmob_2627": 271,
       "xa_2627": 299,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 336
     }
   },
   "1696050": {
@@ -25824,11 +26175,13 @@
       "minuti_fotmob_2627": 180.0,
       "minuti_fotmob_2627_sub": 2.0,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.0
     },
     "ranks": {
       "minuti_fotmob_2627": 271,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 336
     }
   },
   "1190029": {
@@ -25845,13 +26198,15 @@
       "xa_2627": 0.0,
       "xa_2627_sub": 0.0,
       "yellow_cards_fotmob_2627": 1.0,
-      "yellow_cards_fotmob_2627_sub": 0.0
+      "yellow_cards_fotmob_2627_sub": 0.0,
+      "xg_xa90_2627": 0.14
     },
     "ranks": {
       "minuti_fotmob_2627": 271,
       "xg_2627": 135,
       "xa_2627": 299,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 216
     }
   },
   "543021": {
@@ -25884,11 +26239,13 @@
       "minuti_fotmob_2627": 180.0,
       "minuti_fotmob_2627_sub": 2.0,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.06
     },
     "ranks": {
       "minuti_fotmob_2627": 271,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 289
     }
   },
   "958421": {
@@ -25941,7 +26298,8 @@
       "interception_2627": 101,
       "effective_clearance_2627": 52,
       "ball_recovery_fotmob_2627": 81,
-      "fouls_2627": 80
+      "fouls_2627": 80,
+      "xg_xa90_rank": 267
     }
   },
   "729093": {
@@ -25973,7 +26331,7 @@
       "accurate_long_balls_per_90_2627_sub": 50.0,
       "xa90_2627": 0.33,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.84,
+      "xg_xa90_2627": 0.81,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 0.6,
       "won_contest_2627_sub": 100.0,
@@ -26009,7 +26367,8 @@
       "interception_2627": 94,
       "effective_clearance_2627": 132,
       "ball_recovery_fotmob_2627": 151,
-      "fouls_2627": 67
+      "fouls_2627": 67,
+      "xg_xa90_rank": 14
     }
   },
   "1333066": {
@@ -26077,7 +26436,8 @@
       "effective_clearance_2627": 115,
       "outfielder_block_2627": 9,
       "ball_recovery_fotmob_2627": 119,
-      "fouls_2627": 44
+      "fouls_2627": 44,
+      "xg_xa90_rank": 179
     }
   },
   "1041508": {
@@ -26204,7 +26564,7 @@
       "accurate_long_balls_per_90_2627_sub": 80.0,
       "xa90_2627": 0.04,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.08,
+      "xg_xa90_2627": 0.07,
       "xg_xa90_2627_sub": 0.0,
       "total_tackle_2627": 0.7,
       "total_tackle_2627_sub": 1.0,
@@ -26240,7 +26600,8 @@
       "effective_clearance_2627": 101,
       "outfielder_block_2627": 5,
       "ball_recovery_fotmob_2627": 125,
-      "fouls_2627": 31
+      "fouls_2627": 31,
+      "xg_xa90_rank": 280
     }
   },
   "198559": {
@@ -26262,7 +26623,7 @@
       "accurate_long_balls_per_90_2627_sub": 12.5,
       "xa90_2627": 0.01,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.01,
+      "xg_xa90_2627": 0.02,
       "xg_xa90_2627_sub": 0.0,
       "won_contest_2627": 1.5,
       "won_contest_2627_sub": 100.0,
@@ -26296,7 +26657,8 @@
       "effective_clearance_2627": 245,
       "ball_recovery_fotmob_2627": 285,
       "fouls_2627": 25,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 326
     }
   },
   "355356": {
@@ -26324,7 +26686,7 @@
       "accurate_long_balls_per_90_2627_sub": 66.7,
       "xa90_2627": 0.02,
       "xa90_2627_sub": 0.0,
-      "xg_xa90_2627": 0.06,
+      "xg_xa90_2627": 0.04,
       "xg_xa90_2627_sub": 0.0,
       "defensive_contributions_2627": 7.7,
       "defensive_contributions_2627_sub": 10.0,
@@ -26349,7 +26711,8 @@
       "defensive_contributions_2627": 56,
       "interception_2627": 143,
       "effective_clearance_2627": 9,
-      "ball_recovery_fotmob_2627": 169
+      "ball_recovery_fotmob_2627": 169,
+      "xg_xa90_rank": 308
     }
   },
   "1283469": {
@@ -26393,12 +26756,14 @@
       "xa_2627": 0.0,
       "xa_2627_sub": 0.0,
       "yellow_cards_fotmob_2627": 1.0,
-      "yellow_cards_fotmob_2627_sub": 0.0
+      "yellow_cards_fotmob_2627_sub": 0.0,
+      "xg_xa90_2627": 0.14
     },
     "ranks": {
       "minuti_fotmob_2627": 342,
       "xa_2627": 299,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 216
     }
   },
   "750734": {
@@ -26413,12 +26778,14 @@
       "xg_2627": 0.0,
       "xg_2627_sub": 0.0,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.03
     },
     "ranks": {
       "minuti_fotmob_2627": 342,
       "xg_2627": 314,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 321
     }
   },
   "875672": {
@@ -26604,13 +26971,15 @@
       "chances_created_2627": 2.0,
       "chances_created_2627_sub": 2.1,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.24
     },
     "ranks": {
       "minuti_fotmob_2627": 362,
       "xg_2627": 196,
       "chances_created_2627": 202,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 147
     }
   },
   "1091907": {
@@ -26625,12 +26994,14 @@
       "chances_created_2627": 1.0,
       "chances_created_2627_sub": 1.1,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.13
     },
     "ranks": {
       "minuti_fotmob_2627": 365,
       "chances_created_2627": 272,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 221
     }
   },
   "1112684": {
@@ -26832,11 +27203,13 @@
       "minuti_fotmob_2627": 67.0,
       "minuti_fotmob_2627_sub": 3.0,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.23
     },
     "ranks": {
       "minuti_fotmob_2627": 384,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 151
     }
   },
   "115591": {
@@ -27124,11 +27497,13 @@
       "minuti_fotmob_2627": 40.0,
       "minuti_fotmob_2627_sub": 3.0,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.03
     },
     "ranks": {
       "minuti_fotmob_2627": 405,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 321
     }
   },
   "1405996": {
@@ -27141,11 +27516,13 @@
       "minuti_fotmob_2627": 39.0,
       "minuti_fotmob_2627_sub": 2.0,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.04
     },
     "ranks": {
       "minuti_fotmob_2627": 406,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 308
     }
   },
   "1167529": {
@@ -27275,11 +27652,13 @@
       "minuti_fotmob_2627": 33.0,
       "minuti_fotmob_2627_sub": 2.0,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.07
     },
     "ranks": {
       "minuti_fotmob_2627": 414,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 280
     }
   },
   "1902062": {
@@ -27348,12 +27727,14 @@
       "xa_2627": 0.0,
       "xa_2627_sub": 0.0,
       "yellow_cards_fotmob_2627": 1.0,
-      "yellow_cards_fotmob_2627_sub": 0.0
+      "yellow_cards_fotmob_2627_sub": 0.0,
+      "xg_xa90_2627": 0.11
     },
     "ranks": {
       "minuti_fotmob_2627": 417,
       "xa_2627": 299,
-      "yellow_cards_fotmob_2627": 42
+      "yellow_cards_fotmob_2627": 42,
+      "xg_xa90_rank": 242
     }
   },
   "1396375": {
@@ -27452,14 +27833,16 @@
       "chances_created_2627": 1.0,
       "chances_created_2627_sub": 3.6,
       "xa_2627": 0.0,
-      "xa_2627_sub": 0.0
+      "xa_2627_sub": 0.0,
+      "xg_xa90_2627": 0.48
     },
     "ranks": {
       "minuti_fotmob_2627": 423,
       "xg_2627": 229,
       "xgot_2627": 161,
       "chances_created_2627": 259,
-      "xa_2627": 299
+      "xa_2627": 299,
+      "xg_xa90_rank": 62
     }
   },
   "1299869": {

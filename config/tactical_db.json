@@ -65,23 +65,23 @@
       },
       {
         "player": "Kristensen T.",
-        "pct": 50,
-        "vs": "Kossounou (50%)"
+        "pct": 95,
+        "vs": "Kossounou (Infortunato: Risentimento muscolare ai flessori della coscia sinistra)"
       },
       {
         "player": "Kossounou",
-        "pct": 50,
-        "vs": "Kristensen T. (50%)"
+        "pct": 0,
+        "vs": "Kristensen T. (Infortunato fino a 29/10/2026)"
       },
       {
         "player": "Scalvini",
-        "pct": 65,
-        "vs": "Hien (35%)"
+        "pct": 95,
+        "vs": "Hien (Infortunato: Lesione del tendine del semimembranoso della gamba sinistra)"
       },
       {
         "player": "Hien",
-        "pct": 35,
-        "vs": "Scalvini (65%)"
+        "pct": 0,
+        "vs": "Scalvini (Infortunato fino a 09/11/2026)"
       },
       {
         "player": "Bernasconi",
@@ -125,13 +125,13 @@
       },
       {
         "player": "Rowe",
-        "pct": 85,
-        "vs": "Raspadori (Infortunato)"
+        "pct": 95,
+        "vs": "Raspadori (Infortunato: Distrazione di basso grado del muscolo bicipite femorale della coscia destra)"
       },
       {
         "player": "Raspadori",
         "pct": 0,
-        "vs": "Rowe (Infortunato flessori)"
+        "vs": "Rowe (Infortunato fino a 31/10/2026)"
       }
     ],
     "lineup": [
@@ -277,25 +277,22 @@
     },
     "whoscored_action_zones": {
       "own_third_pct": 28,
-      "middle_third_pct": 42,
-      "opposition_third_pct": 30
+      "middle_third_pct": 41,
+      "opposition_third_pct": 31
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.3,
-      "open_play_pg": 1.0,
-      "counter_attack_pg": 0.0,
-      "set_piece_pg": 0.3,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.53
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 13.3,
+      "out_of_box": 4.9,
+      "six_yard_box": 0.7,
+      "penalty_area": 7.7,
+      "rating": 6.52
     },
-    "whoscored_xg": {
-      "npxg": 6.54,
-      "goals_excl_pen": 8,
-      "npxg_diff": 1.46,
-      "shots": 81,
-      "npxg_per_shot": 0.08,
-      "whoscored_rating": 6.53
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 5,
+      "penalty_area_pct": 58,
+      "outside_box_pct": 37
     }
   },
   "Bologna": {
@@ -423,14 +420,14 @@
         "vs": "Orsolini (85%)"
       },
       {
-        "player": "Odgaard",
-        "pct": 85,
-        "vs": "El Azzouzi O. (15%)"
+        "player": "El Azzouzi O.",
+        "pct": 95,
+        "vs": "Odgaard (Infortunato: Lesione ai flessori della coscia destra)"
       },
       {
-        "player": "El Azzouzi O.",
-        "pct": 15,
-        "vs": "Odgaard (85%)"
+        "player": "Odgaard",
+        "pct": 0,
+        "vs": "El Azzouzi O. (Infortunato fino a 21/10/2026)"
       },
       {
         "player": "Cambiaghi",
@@ -553,12 +550,12 @@
       {
         "pos": "TRQ",
         "pos_label": "Trequartista",
-        "name": "Odgaard",
+        "name": "El Azzouzi O.",
         "role": "C",
-        "sub_name": "El Azzouzi O.",
+        "sub_name": "Odgaard",
         "sub_role": "C",
-        "status": "Titolare (85% vs El Azzouzi O. 15%)",
-        "pct": 85,
+        "status": "Titolare (95% con Odgaard infortunato)",
+        "pct": 95,
         "fpp_fpn": "FPP",
         "oop": true
       },
@@ -593,26 +590,23 @@
       "right_pct": 35
     },
     "whoscored_action_zones": {
-      "own_third_pct": 31,
-      "middle_third_pct": 43,
-      "opposition_third_pct": 25
+      "own_third_pct": 32,
+      "middle_third_pct": 44,
+      "opposition_third_pct": 24
     },
-    "whoscored_goal_situations": {
-      "total_pg": 0.8,
-      "open_play_pg": 0.7,
-      "counter_attack_pg": 0.0,
-      "set_piece_pg": 0.2,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.5
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 12.4,
+      "out_of_box": 4.1,
+      "six_yard_box": 1.3,
+      "penalty_area": 7.0,
+      "rating": 6.47
     },
-    "whoscored_xg": {
-      "npxg": 9.15,
-      "goals_excl_pen": 5,
-      "npxg_diff": -4.15,
-      "shots": 76,
-      "npxg_per_shot": 0.12,
-      "whoscored_rating": 6.5
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 10,
+      "penalty_area_pct": 56,
+      "outside_box_pct": 33
     }
   },
   "Cagliari": {
@@ -825,31 +819,28 @@
       }
     ],
     "whoscored_attack_sides": {
-      "left_pct": 33,
-      "middle_pct": 34,
+      "left_pct": 34,
+      "middle_pct": 33,
       "right_pct": 33
     },
     "whoscored_action_zones": {
-      "own_third_pct": 37,
-      "middle_third_pct": 44,
-      "opposition_third_pct": 19
+      "own_third_pct": 35,
+      "middle_third_pct": 45,
+      "opposition_third_pct": 20
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.0,
-      "open_play_pg": 0.5,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.2,
-      "penalty_scored_pg": 0.2,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.69
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 10.6,
+      "out_of_box": 3.9,
+      "six_yard_box": 0.7,
+      "penalty_area": 6.0,
+      "rating": 6.61
     },
-    "whoscored_xg": {
-      "npxg": 5.18,
-      "goals_excl_pen": 5,
-      "npxg_diff": -0.18,
-      "shots": 57,
-      "npxg_per_shot": 0.09,
-      "whoscored_rating": 6.69
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 7,
+      "penalty_area_pct": 57,
+      "outside_box_pct": 36
     }
   },
   "Como": {
@@ -857,8 +848,8 @@
     "all": "Cesc Fabregas",
     "rigoristi": [
       "Paz N.",
-      "Kean",
-      "Douvikas"
+      "Douvikas",
+      "Kean"
     ],
     "punizioni": [
       "Paz N.",
@@ -947,14 +938,14 @@
         "vs": "Milla (85%)"
       },
       {
-        "player": "Diao",
-        "pct": 75,
-        "vs": "Liberali (25%)"
+        "player": "Liberali",
+        "pct": 95,
+        "vs": "Diao (Infortunato: Problema muscolare alla coscia sinistra)"
       },
       {
-        "player": "Liberali",
-        "pct": 25,
-        "vs": "Diao (75%)"
+        "player": "Diao",
+        "pct": 0,
+        "vs": "Liberali (Infortunato fino a 08/11/2026)"
       },
       {
         "player": "Baturina",
@@ -967,14 +958,14 @@
         "vs": "Baturina (70%)"
       },
       {
-        "player": "Kean",
-        "pct": 75,
-        "vs": "Douvikas (25%)"
+        "player": "Douvikas",
+        "pct": 95,
+        "vs": "Kean (Infortunato: Problema alla tibia)"
       },
       {
-        "player": "Douvikas",
-        "pct": 25,
-        "vs": "Kean (75%)"
+        "player": "Kean",
+        "pct": 0,
+        "vs": "Douvikas (Infortunato fino a 20/10/2026)"
       }
     ],
     "lineup": [
@@ -1017,12 +1008,12 @@
       {
         "pos": "DC_S",
         "pos_label": "Centrale SX",
-        "name": "Chalobah T.",
+        "name": "Goldaniga",
         "role": "D",
-        "sub_name": "Goldaniga",
+        "sub_name": "Chalobah T.",
         "sub_role": "D",
-        "status": "Titolare Inamovibile (100% Tit)",
-        "pct": 100,
+        "status": "Titolare (95% con Chalobah T. infortunato)",
+        "pct": 95,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -1065,12 +1056,12 @@
       {
         "pos": "AD",
         "pos_label": "Ala Destra",
-        "name": "Diao",
+        "name": "Liberali",
         "role": "A",
-        "sub_name": "Liberali",
+        "sub_name": "Diao",
         "sub_role": "C",
-        "status": "Titolare (75% vs Liberali 25%)",
-        "pct": 75,
+        "status": "Titolare (95% con Diao infortunato)",
+        "pct": 95,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -1105,42 +1096,39 @@
       {
         "pos": "PC",
         "pos_label": "Punta Centrale",
-        "name": "Kean",
+        "name": "Douvikas",
         "role": "A",
-        "sub_name": "Douvikas",
+        "sub_name": "Kean",
         "sub_role": "A",
-        "status": "Titolare (75% vs Douvikas 25%)",
-        "pct": 75,
+        "status": "Titolare (95% con Kean infortunato)",
+        "pct": 95,
         "fpp_fpn": "NONE",
         "oop": false
       }
     ],
     "whoscored_attack_sides": {
       "left_pct": 26,
-      "middle_pct": 34,
-      "right_pct": 40
+      "middle_pct": 33,
+      "right_pct": 41
     },
     "whoscored_action_zones": {
-      "own_third_pct": 25,
-      "middle_third_pct": 43,
-      "opposition_third_pct": 32
+      "own_third_pct": 28,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 31
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.5,
-      "open_play_pg": 1.0,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.3,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.74
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 21.7,
+      "out_of_box": 8.0,
+      "six_yard_box": 1.0,
+      "penalty_area": 12.7,
+      "rating": 6.78
     },
-    "whoscored_xg": {
-      "npxg": 12.43,
-      "goals_excl_pen": 9,
-      "npxg_diff": -3.43,
-      "shots": 136,
-      "npxg_per_shot": 0.09,
-      "whoscored_rating": 6.74
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 5,
+      "penalty_area_pct": 59,
+      "outside_box_pct": 37
     }
   },
   "Fiorentina": {
@@ -1391,31 +1379,28 @@
       }
     ],
     "whoscored_attack_sides": {
-      "left_pct": 35,
-      "middle_pct": 28,
+      "left_pct": 34,
+      "middle_pct": 29,
       "right_pct": 38
     },
     "whoscored_action_zones": {
       "own_third_pct": 26,
       "middle_third_pct": 42,
-      "opposition_third_pct": 32
+      "opposition_third_pct": 34
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.2,
-      "open_play_pg": 0.7,
-      "counter_attack_pg": 0.3,
-      "set_piece_pg": 0.0,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.2,
-      "whoscored_rating": 6.4
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 16.6,
+      "out_of_box": 6.3,
+      "six_yard_box": 1.1,
+      "penalty_area": 9.1,
+      "rating": 6.39
     },
-    "whoscored_xg": {
-      "npxg": 8.77,
-      "goals_excl_pen": 6,
-      "npxg_diff": -2.77,
-      "shots": 97,
-      "npxg_per_shot": 0.09,
-      "whoscored_rating": 6.4
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 7,
+      "penalty_area_pct": 55,
+      "outside_box_pct": 38
     }
   },
   "Frosinone": {
@@ -1514,13 +1499,23 @@
       },
       {
         "player": "Calò",
-        "pct": 80,
-        "vs": "Grillitsch (20%)"
+        "pct": 95,
+        "vs": "Grillitsch (Infortunato: Sindrome retto-adduttoria)"
       },
       {
         "player": "Grillitsch",
-        "pct": 20,
-        "vs": "Calò (80%)"
+        "pct": 0,
+        "vs": "Calò (Infortunato fino a 02/11/2026)"
+      },
+      {
+        "player": "Cal",
+        "pct": 95,
+        "vs": "Grillitsch (Infortunato: Sindrome retto-adduttoria)"
+      },
+      {
+        "player": "Grillitsch",
+        "pct": 0,
+        "vs": "Cal (Infortunato fino a 02/11/2026)"
       },
       {
         "player": "Masini",
@@ -1693,30 +1688,27 @@
     ],
     "whoscored_attack_sides": {
       "left_pct": 33,
-      "middle_pct": 24,
-      "right_pct": 42
+      "middle_pct": 25,
+      "right_pct": 43
     },
     "whoscored_action_zones": {
-      "own_third_pct": 31,
+      "own_third_pct": 30,
       "middle_third_pct": 37,
-      "opposition_third_pct": 31
+      "opposition_third_pct": 33
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.5,
-      "open_play_pg": 1.0,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.3,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.77
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 17.4,
+      "out_of_box": 6.6,
+      "six_yard_box": 1.4,
+      "penalty_area": 9.4,
+      "rating": 6.77
     },
-    "whoscored_xg": {
-      "npxg": 9.75,
-      "goals_excl_pen": 9,
-      "npxg_diff": -0.75,
-      "shots": 101,
-      "npxg_per_shot": 0.1,
-      "whoscored_rating": 6.77
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 8,
+      "penalty_area_pct": 54,
+      "outside_box_pct": 38
     }
   },
   "Genoa": {
@@ -1814,14 +1806,14 @@
         "vs": "Drameh (50%)"
       },
       {
-        "player": "Sow",
-        "pct": 60,
-        "vs": "Amorim (40%)"
+        "player": "Amorim",
+        "pct": 95,
+        "vs": "Sow (Infortunato: Problema muscolare durante Svizzera-Macedonia del Nord (da accertare))"
       },
       {
-        "player": "Amorim",
-        "pct": 40,
-        "vs": "Sow (60%)"
+        "player": "Sow",
+        "pct": 0,
+        "vs": "Amorim (Infortunato fino a 02/11/2026)"
       },
       {
         "player": "Ellertsson",
@@ -1854,14 +1846,14 @@
         "vs": "Vitinha O. (60%)"
       },
       {
-        "player": "Colombo",
-        "pct": 65,
-        "vs": "Osmajic (35%)"
+        "player": "Osmajic",
+        "pct": 95,
+        "vs": "Colombo (Infortunato: Trauma distorsivo alla caviglia sinistra)"
       },
       {
-        "player": "Osmajic",
-        "pct": 35,
-        "vs": "Colombo (65%)"
+        "player": "Colombo",
+        "pct": 0,
+        "vs": "Osmajic (Infortunato fino a 01/11/2026)"
       }
     ],
     "lineup": [
@@ -1942,12 +1934,12 @@
       {
         "pos": "MED_S",
         "pos_label": "Mediano SX",
-        "name": "Sow",
+        "name": "Amorim",
         "role": "C",
-        "sub_name": "Amorim",
+        "sub_name": "Sow",
         "sub_role": "C",
-        "status": "Titolare (60% vs Amorim 40%)",
-        "pct": 60,
+        "status": "Titolare (95% con Sow infortunato)",
+        "pct": 95,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -1992,42 +1984,39 @@
       {
         "pos": "PC",
         "pos_label": "Punta Centrale",
-        "name": "Colombo",
+        "name": "Osmajic",
         "role": "A",
-        "sub_name": "Osmajic",
+        "sub_name": "Colombo",
         "sub_role": "A",
-        "status": "Titolare (65% vs Osmajic 35%)",
-        "pct": 65,
+        "status": "Titolare (95% con Colombo infortunato)",
+        "pct": 95,
         "fpp_fpn": "NONE",
         "oop": false
       }
     ],
     "whoscored_attack_sides": {
-      "left_pct": 41,
-      "middle_pct": 26,
-      "right_pct": 34
+      "left_pct": 42,
+      "middle_pct": 25,
+      "right_pct": 33
     },
     "whoscored_action_zones": {
       "own_third_pct": 32,
       "middle_third_pct": 41,
-      "opposition_third_pct": 27
+      "opposition_third_pct": 28
     },
-    "whoscored_goal_situations": {
-      "total_pg": 0.8,
-      "open_play_pg": 0.5,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.2,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.4
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 11.1,
+      "out_of_box": 3.6,
+      "six_yard_box": 0.0,
+      "penalty_area": 7.6,
+      "rating": 6.37
     },
-    "whoscored_xg": {
-      "npxg": 5.76,
-      "goals_excl_pen": 5,
-      "npxg_diff": -0.76,
-      "shots": 68,
-      "npxg_per_shot": 0.08,
-      "whoscored_rating": 6.4
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 0,
+      "penalty_area_pct": 68,
+      "outside_box_pct": 32
     }
   },
   "Inter": {
@@ -2035,8 +2024,8 @@
     "all": "Cristian Chivu",
     "rigoristi": [
       "Calhanoglu",
-      "Martinez L.",
-      "Thuram"
+      "Thuram",
+      "Martinez L."
     ],
     "punizioni": [
       "Calhanoglu",
@@ -2097,12 +2086,12 @@
       {
         "player": "Bisseck",
         "pct": 95,
-        "vs": "Pavard (Infortunato)"
+        "vs": "Pavard (Infortunato: Risentimento agli adduttori della coscia destra)"
       },
       {
         "player": "Pavard",
         "pct": 0,
-        "vs": "Bisseck (Infortunato adduttori)"
+        "vs": "Bisseck (Infortunato fino a 05/11/2026)"
       },
       {
         "player": "Diouf",
@@ -2269,12 +2258,12 @@
       {
         "pos": "PC_D",
         "pos_label": "Punta DX",
-        "name": "Martinez L.",
+        "name": "Bonny",
         "role": "A",
-        "sub_name": "Bonny",
+        "sub_name": "Martinez L.",
         "sub_role": "A",
-        "status": "Titolare Inamovibile (100% Tit)",
-        "pct": 100,
+        "status": "Titolare (95% con Martinez L. infortunato)",
+        "pct": 95,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -2293,30 +2282,27 @@
     ],
     "whoscored_attack_sides": {
       "left_pct": 38,
-      "middle_pct": 29,
+      "middle_pct": 28,
       "right_pct": 33
     },
     "whoscored_action_zones": {
-      "own_third_pct": 25,
+      "own_third_pct": 24,
       "middle_third_pct": 44,
       "opposition_third_pct": 32
     },
-    "whoscored_goal_situations": {
-      "total_pg": 3.0,
-      "open_play_pg": 2.0,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.7,
-      "penalty_scored_pg": 0.2,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.94
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 21.7,
+      "out_of_box": 6.4,
+      "six_yard_box": 2.1,
+      "penalty_area": 13.1,
+      "rating": 6.92
     },
-    "whoscored_xg": {
-      "npxg": 16.65,
-      "goals_excl_pen": 17,
-      "npxg_diff": 0.35,
-      "shots": 134,
-      "npxg_per_shot": 0.12,
-      "whoscored_rating": 6.94
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 10,
+      "penalty_area_pct": 61,
+      "outside_box_pct": 30
     }
   },
   "Juventus": {
@@ -2523,12 +2509,12 @@
       {
         "pos": "MED_D",
         "pos_label": "Mediano DX",
-        "name": "Locatelli",
+        "name": "Koopmeiners",
         "role": "C",
-        "sub_name": "Koopmeiners",
+        "sub_name": "Locatelli",
         "sub_role": "C",
-        "status": "Titolare Inamovibile (100% Tit)",
-        "pct": 100,
+        "status": "Titolare (95% con Locatelli infortunato)",
+        "pct": 95,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -2601,26 +2587,23 @@
       "right_pct": 38
     },
     "whoscored_action_zones": {
-      "own_third_pct": 21,
+      "own_third_pct": 22,
       "middle_third_pct": 42,
       "opposition_third_pct": 36
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.5,
-      "open_play_pg": 1.0,
-      "counter_attack_pg": 0.0,
-      "set_piece_pg": 0.5,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.73
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 17.0,
+      "out_of_box": 8.0,
+      "six_yard_box": 1.7,
+      "penalty_area": 7.3,
+      "rating": 6.65
     },
-    "whoscored_xg": {
-      "npxg": 11.37,
-      "goals_excl_pen": 9,
-      "npxg_diff": -2.37,
-      "shots": 110,
-      "npxg_per_shot": 0.1,
-      "whoscored_rating": 6.73
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 10,
+      "penalty_area_pct": 43,
+      "outside_box_pct": 47
     }
   },
   "Lazio": {
@@ -2864,24 +2847,21 @@
     "whoscored_action_zones": {
       "own_third_pct": 25,
       "middle_third_pct": 45,
-      "opposition_third_pct": 30
+      "opposition_third_pct": 29
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.8,
-      "open_play_pg": 1.3,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.2,
-      "penalty_scored_pg": 0.2,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.8
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 12.9,
+      "out_of_box": 5.9,
+      "six_yard_box": 1.1,
+      "penalty_area": 5.9,
+      "rating": 6.83
     },
-    "whoscored_xg": {
-      "npxg": 9.65,
-      "goals_excl_pen": 10,
-      "npxg_diff": 0.35,
-      "shots": 80,
-      "npxg_per_shot": 0.12,
-      "whoscored_rating": 6.8
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 9,
+      "penalty_area_pct": 46,
+      "outside_box_pct": 46
     }
   },
   "Lecce": {
@@ -3158,31 +3138,28 @@
       }
     ],
     "whoscored_attack_sides": {
-      "left_pct": 37,
+      "left_pct": 36,
       "middle_pct": 27,
-      "right_pct": 36
+      "right_pct": 37
     },
     "whoscored_action_zones": {
       "own_third_pct": 26,
-      "middle_third_pct": 47,
+      "middle_third_pct": 46,
       "opposition_third_pct": 27
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.0,
-      "open_play_pg": 0.3,
-      "counter_attack_pg": 0.0,
-      "set_piece_pg": 0.7,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.45
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 11.1,
+      "out_of_box": 3.6,
+      "six_yard_box": 1.4,
+      "penalty_area": 6.1,
+      "rating": 6.55
     },
-    "whoscored_xg": {
-      "npxg": 7.66,
-      "goals_excl_pen": 6,
-      "npxg_diff": -1.66,
-      "shots": 61,
-      "npxg_per_shot": 0.13,
-      "whoscored_rating": 6.45
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 13,
+      "penalty_area_pct": 55,
+      "outside_box_pct": 32
     }
   },
   "Milan": {
@@ -3281,13 +3258,13 @@
     "ballottaggi": [
       {
         "player": "De Winter",
-        "pct": 75,
-        "vs": "Gabbia (25%)"
+        "pct": 95,
+        "vs": "Gabbia (Infortunato: Problema alla caviglia (natura del problema non specificata))"
       },
       {
         "player": "Gabbia",
-        "pct": 25,
-        "vs": "De Winter (75%)"
+        "pct": 0,
+        "vs": "De Winter (Infortunato fino a 13/01/2027)"
       },
       {
         "player": "Chukwueze",
@@ -3483,31 +3460,28 @@
       }
     ],
     "whoscored_attack_sides": {
-      "left_pct": 39,
-      "middle_pct": 27,
-      "right_pct": 34
+      "left_pct": 38,
+      "middle_pct": 28,
+      "right_pct": 35
     },
     "whoscored_action_zones": {
       "own_third_pct": 29,
       "middle_third_pct": 46,
       "opposition_third_pct": 24
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.8,
-      "open_play_pg": 1.3,
-      "counter_attack_pg": 0.3,
-      "set_piece_pg": 0.0,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.2,
-      "whoscored_rating": 6.75
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 12.3,
+      "out_of_box": 2.7,
+      "six_yard_box": 1.6,
+      "penalty_area": 8.0,
+      "rating": 6.73
     },
-    "whoscored_xg": {
-      "npxg": 11.58,
-      "goals_excl_pen": 10,
-      "npxg_diff": -1.58,
-      "shots": 75,
-      "npxg_per_shot": 0.15,
-      "whoscored_rating": 6.75
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 13,
+      "penalty_area_pct": 66,
+      "outside_box_pct": 21
     }
   },
   "Monza": {
@@ -3786,31 +3760,28 @@
       }
     ],
     "whoscored_attack_sides": {
-      "left_pct": 40,
+      "left_pct": 39,
       "middle_pct": 26,
-      "right_pct": 33
+      "right_pct": 35
     },
     "whoscored_action_zones": {
-      "own_third_pct": 27,
+      "own_third_pct": 26,
       "middle_third_pct": 44,
       "opposition_third_pct": 29
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.5,
-      "open_play_pg": 0.8,
-      "counter_attack_pg": 0.0,
-      "set_piece_pg": 0.5,
-      "penalty_scored_pg": 0.2,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.43
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 14.3,
+      "out_of_box": 4.0,
+      "six_yard_box": 1.1,
+      "penalty_area": 9.1,
+      "rating": 6.56
     },
-    "whoscored_xg": {
-      "npxg": 11.76,
-      "goals_excl_pen": 8,
-      "npxg_diff": -3.76,
-      "shots": 85,
-      "npxg_per_shot": 0.14,
-      "whoscored_rating": 6.43
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 8,
+      "penalty_area_pct": 64,
+      "outside_box_pct": 28
     }
   },
   "Napoli": {
@@ -3889,13 +3860,13 @@
       },
       {
         "player": "Zambo Anguissa",
-        "pct": 55,
-        "vs": "Vergara (45%)"
+        "pct": 95,
+        "vs": "Vergara (Infortunato: Lesione distrattiva di medio grado del soleo destro)"
       },
       {
         "player": "Vergara",
-        "pct": 45,
-        "vs": "Zambo Anguissa (55%)"
+        "pct": 0,
+        "vs": "Zambo Anguissa (Infortunato fino a 08/11/2026)"
       },
       {
         "player": "Politano",
@@ -4055,31 +4026,28 @@
       }
     ],
     "whoscored_attack_sides": {
-      "left_pct": 37,
-      "middle_pct": 28,
+      "left_pct": 38,
+      "middle_pct": 27,
       "right_pct": 35
     },
     "whoscored_action_zones": {
-      "own_third_pct": 29,
-      "middle_third_pct": 41,
-      "opposition_third_pct": 29
+      "own_third_pct": 28,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 30
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.7,
-      "open_play_pg": 1.0,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.3,
-      "penalty_scored_pg": 0.2,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.67
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 16.7,
+      "out_of_box": 4.9,
+      "six_yard_box": 1.6,
+      "penalty_area": 10.3,
+      "rating": 6.64
     },
-    "whoscored_xg": {
-      "npxg": 9.54,
-      "goals_excl_pen": 9,
-      "npxg_diff": -0.54,
-      "shots": 87,
-      "npxg_per_shot": 0.11,
-      "whoscored_rating": 6.67
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 9,
+      "penalty_area_pct": 62,
+      "outside_box_pct": 28
     }
   },
   "Parma": {
@@ -4117,23 +4085,33 @@
     "ballottaggi": [
       {
         "player": "Britschgi",
-        "pct": 75,
-        "vs": "Almqvist (25%)"
+        "pct": 95,
+        "vs": "Almqvist (Infortunato: Lesione di basso grado del polpaccio della gamba sinistra)"
       },
       {
         "player": "Almqvist",
-        "pct": 25,
-        "vs": "Britschgi (75%)"
+        "pct": 0,
+        "vs": "Britschgi (Infortunato fino a 30/10/2026)"
       },
       {
         "player": "Tourè E.",
-        "pct": 85,
-        "vs": "Almqvist (15%)"
+        "pct": 95,
+        "vs": "Almqvist (Infortunato: Lesione di basso grado del polpaccio della gamba sinistra)"
       },
       {
         "player": "Almqvist",
-        "pct": 15,
-        "vs": "Tourè E. (85%)"
+        "pct": 0,
+        "vs": "Tourè E. (Infortunato fino a 30/10/2026)"
+      },
+      {
+        "player": "Tour",
+        "pct": 95,
+        "vs": "Almqvist (Infortunato: Lesione di basso grado del polpaccio della gamba sinistra)"
+      },
+      {
+        "player": "Almqvist",
+        "pct": 0,
+        "vs": "Tour (Infortunato fino a 30/10/2026)"
       },
       {
         "player": "Fabbian",
@@ -4291,40 +4269,37 @@
       }
     ],
     "whoscored_attack_sides": {
-      "left_pct": 30,
+      "left_pct": 31,
       "middle_pct": 29,
-      "right_pct": 42
+      "right_pct": 41
     },
     "whoscored_action_zones": {
-      "own_third_pct": 36,
+      "own_third_pct": 34,
       "middle_third_pct": 43,
-      "opposition_third_pct": 21
+      "opposition_third_pct": 23
     },
-    "whoscored_goal_situations": {
-      "total_pg": 0.7,
-      "open_play_pg": 0.5,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.0,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.33
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 10.7,
+      "out_of_box": 3.1,
+      "six_yard_box": 1.0,
+      "penalty_area": 6.6,
+      "rating": 6.33
     },
-    "whoscored_xg": {
-      "npxg": 5.2,
-      "goals_excl_pen": 4,
-      "npxg_diff": -1.2,
-      "shots": 50,
-      "npxg_per_shot": 0.1,
-      "whoscored_rating": 6.33
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 9,
+      "penalty_area_pct": 61,
+      "outside_box_pct": 29
     }
   },
   "Roma": {
     "modulo": "3-4-2-1",
     "all": "Gian Piero Gasperini",
     "rigoristi": [
-      "Dybala",
       "Malen",
-      "Soulè"
+      "Soulè",
+      "Dybala"
     ],
     "punizioni": [
       "Dybala",
@@ -4417,12 +4392,12 @@
       {
         "pos": "POR",
         "pos_label": "Portiere",
-        "name": "Svilar",
+        "name": "De Marzi",
         "role": "P",
-        "sub_name": "De Marzi",
+        "sub_name": "Svilar",
         "sub_role": "P",
-        "status": "Titolare Inamovibile (100% Tit)",
-        "pct": 100,
+        "status": "Titolare (95% con Svilar infortunato)",
+        "pct": 95,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -4479,24 +4454,24 @@
       {
         "pos": "MED_D",
         "pos_label": "Mediano DX",
-        "name": "Cristante",
+        "name": "De Roon",
         "role": "C",
-        "sub_name": "De Roon",
+        "sub_name": "Cristante",
         "sub_role": "C",
-        "status": "Titolare Inamovibile (100% Tit)",
-        "pct": 100,
+        "status": "Titolare (95% con Cristante infortunato)",
+        "pct": 95,
         "fpp_fpn": "NONE",
         "oop": false
       },
       {
         "pos": "MED_S",
         "pos_label": "Mediano SX",
-        "name": "Konè M.",
+        "name": "Pisilli",
         "role": "C",
-        "sub_name": "Pisilli",
+        "sub_name": "Konè M.",
         "sub_role": "C",
-        "status": "Titolare Inamovibile (100% Tit)",
-        "pct": 100,
+        "status": "Titolare (95% con Konè M. infortunato)",
+        "pct": 95,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -4531,12 +4506,12 @@
       {
         "pos": "TRQ_S",
         "pos_label": "Trequartista SX",
-        "name": "Dybala",
+        "name": "Soulè",
         "role": "A",
-        "sub_name": "Soulè",
+        "sub_name": "Dybala",
         "sub_role": "A",
-        "status": "Titolare Inamovibile (100% Tit)",
-        "pct": 100,
+        "status": "Titolare (95% con Dybala infortunato)",
+        "pct": 95,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -4554,31 +4529,28 @@
       }
     ],
     "whoscored_attack_sides": {
-      "left_pct": 36,
+      "left_pct": 37,
       "middle_pct": 24,
       "right_pct": 39
     },
     "whoscored_action_zones": {
       "own_third_pct": 24,
-      "middle_third_pct": 43,
+      "middle_third_pct": 44,
       "opposition_third_pct": 32
     },
-    "whoscored_goal_situations": {
-      "total_pg": 2.3,
-      "open_play_pg": 2.0,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.2,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.96
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 18.1,
+      "out_of_box": 5.1,
+      "six_yard_box": 1.7,
+      "penalty_area": 11.3,
+      "rating": 6.96
     },
-    "whoscored_xg": {
-      "npxg": 15.53,
-      "goals_excl_pen": 14,
-      "npxg_diff": -1.53,
-      "shots": 112,
-      "npxg_per_shot": 0.14,
-      "whoscored_rating": 6.96
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 9,
+      "penalty_area_pct": 62,
+      "outside_box_pct": 28
     }
   },
   "Sassuolo": {
@@ -4810,31 +4782,28 @@
       }
     ],
     "whoscored_attack_sides": {
-      "left_pct": 42,
+      "left_pct": 41,
       "middle_pct": 25,
       "right_pct": 34
     },
     "whoscored_action_zones": {
-      "own_third_pct": 29,
-      "middle_third_pct": 43,
-      "opposition_third_pct": 28
+      "own_third_pct": 30,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 27
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.7,
-      "open_play_pg": 0.7,
-      "counter_attack_pg": 0.3,
-      "set_piece_pg": 0.7,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.61
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 15.7,
+      "out_of_box": 6.3,
+      "six_yard_box": 0.7,
+      "penalty_area": 8.7,
+      "rating": 6.55
     },
-    "whoscored_xg": {
-      "npxg": 11.21,
-      "goals_excl_pen": 10,
-      "npxg_diff": -1.21,
-      "shots": 96,
-      "npxg_per_shot": 0.12,
-      "whoscored_rating": 6.61
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 5,
+      "penalty_area_pct": 55,
+      "outside_box_pct": 40
     }
   },
   "Torino": {
@@ -5117,31 +5086,28 @@
       }
     ],
     "whoscored_attack_sides": {
-      "left_pct": 34,
-      "middle_pct": 32,
-      "right_pct": 34
+      "left_pct": 36,
+      "middle_pct": 31,
+      "right_pct": 33
     },
     "whoscored_action_zones": {
-      "own_third_pct": 31,
-      "middle_third_pct": 45,
+      "own_third_pct": 33,
+      "middle_third_pct": 44,
       "opposition_third_pct": 23
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.2,
-      "open_play_pg": 0.8,
-      "counter_attack_pg": 0.0,
-      "set_piece_pg": 0.3,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.44
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 9.7,
+      "out_of_box": 3.7,
+      "six_yard_box": 0.7,
+      "penalty_area": 5.3,
+      "rating": 6.52
     },
-    "whoscored_xg": {
-      "npxg": 7.96,
-      "goals_excl_pen": 7,
-      "npxg_diff": -0.96,
-      "shots": 59,
-      "npxg_per_shot": 0.13,
-      "whoscored_rating": 6.44
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 7,
+      "penalty_area_pct": 54,
+      "outside_box_pct": 38
     }
   },
   "Udinese": {
@@ -5381,30 +5347,27 @@
     ],
     "whoscored_attack_sides": {
       "left_pct": 34,
-      "middle_pct": 28,
+      "middle_pct": 27,
       "right_pct": 39
     },
     "whoscored_action_zones": {
-      "own_third_pct": 25,
+      "own_third_pct": 26,
       "middle_third_pct": 45,
-      "opposition_third_pct": 30
+      "opposition_third_pct": 29
     },
-    "whoscored_goal_situations": {
-      "total_pg": 1.5,
-      "open_play_pg": 0.8,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.5,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.48
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 14.3,
+      "out_of_box": 5.0,
+      "six_yard_box": 0.3,
+      "penalty_area": 9.0,
+      "rating": 6.42
     },
-    "whoscored_xg": {
-      "npxg": 7.15,
-      "goals_excl_pen": 9,
-      "npxg_diff": 1.85,
-      "shots": 86,
-      "npxg_per_shot": 0.08,
-      "whoscored_rating": 6.48
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 2,
+      "penalty_area_pct": 63,
+      "outside_box_pct": 35
     }
   },
   "Venezia": {
@@ -5560,12 +5523,12 @@
       {
         "pos": "MED",
         "pos_label": "Mediano",
-        "name": "Busio",
+        "name": "Perez K.",
         "role": "C",
-        "sub_name": "Perez K.",
+        "sub_name": "Busio",
         "sub_role": "C",
-        "status": "Titolare Inamovibile (100% Tit)",
-        "pct": 100,
+        "status": "Titolare (95% con Busio infortunato)",
+        "pct": 95,
         "fpp_fpn": "NONE",
         "oop": false
       },
@@ -5621,31 +5584,28 @@
       }
     ],
     "whoscored_attack_sides": {
-      "left_pct": 35,
+      "left_pct": 36,
       "middle_pct": 25,
-      "right_pct": 40
+      "right_pct": 39
     },
     "whoscored_action_zones": {
-      "own_third_pct": 29,
+      "own_third_pct": 31,
       "middle_third_pct": 42,
-      "opposition_third_pct": 30
+      "opposition_third_pct": 27
     },
-    "whoscored_goal_situations": {
-      "total_pg": 0.8,
-      "open_play_pg": 0.5,
-      "counter_attack_pg": 0.3,
-      "set_piece_pg": 0.0,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.35
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 14.0,
+      "out_of_box": 5.0,
+      "six_yard_box": 1.9,
+      "penalty_area": 7.1,
+      "rating": 6.44
     },
-    "whoscored_xg": {
-      "npxg": 11.42,
-      "goals_excl_pen": 5,
-      "npxg_diff": -6.42,
-      "shots": 88,
-      "npxg_per_shot": 0.13,
-      "whoscored_rating": 6.35
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 13,
+      "penalty_area_pct": 51,
+      "outside_box_pct": 36
     }
   }
 }

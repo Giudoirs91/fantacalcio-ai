@@ -7,6 +7,8 @@ Implementa le 4 metriche avanzate predittive per la Serie A 2026/27:
 4. Indice di Impatto da Subentro (Super-Sub & Probabilità Voto)
 """
 
+import os
+import json
 import math
 import numpy as np
 
@@ -172,96 +174,324 @@ def compute_sub_impact_metrics(player, tactical_db=None):
     }
 
 
-def compute_matchup_vulnerability(player, calendar_data, team_stats_dict, current_round=6):
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_CACHED_TACTICAL_DB = None
+_CACHED_POSITIONAL_STATS = None
+
+def _get_tactical_db():
+    global _CACHED_TACTICAL_DB
+    if _CACHED_TACTICAL_DB is None:
+        p = os.path.join(ROOT_DIR, "config", "tactical_db.json")
+        if os.path.exists(p):
+            try:
+                with open(p, "r", encoding="utf-8") as f:
+                    _CACHED_TACTICAL_DB = json.load(f)
+            except Exception:
+                _CACHED_TACTICAL_DB = {}
+        else:
+            _CACHED_TACTICAL_DB = {}
+    return _CACHED_TACTICAL_DB
+
+def _get_positional_stats():
+    global _CACHED_POSITIONAL_STATS
+    if _CACHED_POSITIONAL_STATS is None:
+        p = os.path.join(ROOT_DIR, "config", "team_positional_stats.json")
+        if not os.path.exists(p):
+            p = os.path.join(ROOT_DIR, "config", "whoscored_teams_2627.json")
+        if os.path.exists(p):
+            try:
+                with open(p, "r", encoding="utf-8") as f:
+                    _CACHED_POSITIONAL_STATS = json.load(f)
+            except Exception:
+                _CACHED_POSITIONAL_STATS = {}
+        else:
+            _CACHED_POSITIONAL_STATS = {}
+    return _CACHED_POSITIONAL_STATS
+
+
+def compute_matchup_vulnerability(player, calendar_data, team_stats_dict, current_round=8, tactical_db=None, positional_stats_dict=None, players_master=None):
     """
-    Calcola l'incrocio tattico asimmetrico per la prossima giornata (G6).
-    Identifica le vulnerabilità specifiche della difesa avversaria.
+    Calcola l'incrocio tattico asimmetrico per la prossima giornata (G8):
+    1. Flank Duel: incrocio corsia d'attacco del giocatore (% volume di squadra)
+       con la debolezza specifica del terzino/braccetto rivale (Media Voto, falli, titolarità).
+    2. Zone di Campo: distribuzione conclusioni (6 yard box, penalty area, tiri da fuori)
+       incrociate con la percentuale di tempo in cui l'avversario è schiacciato nel proprio terzo.
+    3. Vulnerability Score & Badge di Corsia / Reparto.
     """
-    team_name = player.get("team", "").upper().strip()
+    team_name = (player.get("team") or "").strip()
     role = player.get("role", "C")
+    pname = player.get("name", "Giocatore")
     
-    # Trova partita turno 6
+    if tactical_db is None:
+        tactical_db = _get_tactical_db()
+    if positional_stats_dict is None:
+        positional_stats_dict = _get_positional_stats()
+
+    # Trova partita turno indicato nel calendario (default G8)
     next_match = None
     if calendar_data:
         r_obj = next((r for r in calendar_data if r.get('giornata') == current_round), None)
+        if not r_obj:
+            r_obj = next((r for r in calendar_data if r.get('matches')), None)
+            
         if r_obj and r_obj.get('matches'):
             for m in r_obj['matches']:
-                h = (m.get('home') or '').upper().strip()
-                a = (m.get('away') or '').upper().strip()
-                if h == team_name:
-                    next_match = {'opponent': m.get('away'), 'is_home': True, 'match_str': f"{m.get('home')} vs {m.get('away')}"}
+                h = (m.get('home') or '').strip()
+                a = (m.get('away') or '').strip()
+                if h.upper() == team_name.upper():
+                    next_match = {'opponent': a, 'is_home': True, 'match_str': f"{h} vs {a}"}
                     break
-                elif a == team_name:
-                    next_match = {'opponent': m.get('home'), 'is_home': False, 'match_str': f"{m.get('away')} @ {m.get('home')}"}
+                elif a.upper() == team_name.upper():
+                    next_match = {'opponent': h, 'is_home': False, 'match_str': f"{a} @ {h}"}
                     break
 
     if not next_match:
         return {
             "opponent": "N/D",
             "is_home": True,
-            "match_str": "Partita di campionato",
+            "match_str": f"Partita G{current_round}",
             "vulnerability_score": 50,
             "vulnerability_badge": "🟢 MATCHUP NORMALE",
             "favorable_traits": [],
-            "matchup_advice": "Incrocio tattico equilibrato per la prossima giornata."
+            "matchup_advice": "Incrocio tattico equilibrato per la prossima giornata.",
+            "flank_matchup": {},
+            "zone_stats": {}
         }
 
     opp_name = next_match['opponent']
     opp_stats = team_stats_dict.get(opp_name, {}) if isinstance(team_stats_dict, dict) else {}
-
-    # Metriche difensive avversario
-    xga_rank = int(opp_stats.get("xga_team_rank") or 10) # 1 = miglior difesa, 20 = peggior difesa
-    goals_conceded_rank = int(opp_stats.get("goals_conceded_match_rank") or 10)
-    clean_sheets = int(opp_stats.get("clean_sheets") or 1)
-    difesa_tier = opp_stats.get("difesa_tier", "average")
     
-    # Calcolo vulnerabilità (0-100, 100 = difesa colabrodo)
-    # Più il rank è alto (verso 20), più la difesa è vulnerabile
+    # -------------------------------------------------------------
+    # 1. DETERMINAZIONE CORSIA D'ATTACCO DEL GIOCATORE
+    # -------------------------------------------------------------
+    pitch_pos = (player.get("pitch_pos") or "").upper().strip()
+    pos_label = (player.get("pos_label") or "").strip()
+    mantra = (player.get("mantra_role") or "").strip()
+
+    if pitch_pos in ['AS', 'ES', 'TS', 'CS', 'SS'] or any(k in pos_label.upper() for k in ['SINISTRA', 'SX']) or pos_label.upper().endswith(' S'):
+        side_code = 'LEFT'
+        side_label = 'Corsia Sinistra'
+    elif pitch_pos in ['AD', 'ED', 'TD', 'CD'] or any(k in pos_label.upper() for k in ['DESTRA', 'DX']) or pos_label.upper().endswith(' D'):
+        side_code = 'RIGHT'
+        side_label = 'Corsia Destra'
+    else:
+        side_code = 'CENTER'
+        side_label = 'Corridoio Centrale'
+
+    if side_code == 'CENTER' and ('W' in mantra or 'E' in mantra):
+        if 'TS' in pos_label or 'SX' in pos_label:
+            side_code = 'LEFT'
+            side_label = 'Corsia Sinistra'
+        elif 'TD' in pos_label or 'DX' in pos_label:
+            side_code = 'RIGHT'
+            side_label = 'Corsia Destra'
+
+    # -------------------------------------------------------------
+    # 2. INCIDENZA OFFENSIVA DELLA CORSIA (IMAGE 1: ATTACK SIDES)
+    # -------------------------------------------------------------
+    my_pos = positional_stats_dict.get(team_name, {})
+    att_sides = my_pos.get('attack_sides', {})
+    
+    left_pct = int(att_sides.get('left_pct', 35))
+    middle_pct = int(att_sides.get('middle_pct', 28))
+    right_pct = int(att_sides.get('right_pct', 37))
+    
+    if side_code == 'LEFT':
+        flank_attack_pct = left_pct
+    elif side_code == 'RIGHT':
+        flank_attack_pct = right_pct
+    else:
+        flank_attack_pct = middle_pct
+
+    # -------------------------------------------------------------
+    # 3. INCROCIO CON IL DIFENSORE AVVERSARIO DIRETTO
+    # -------------------------------------------------------------
+    # Regola Tattica: chi attacca a SINISTRA affronta il terzino/braccetto DESTRO avversario (TD, ED, DC_D).
+    # Chi attacca a DESTRA affronta il terzino/braccetto SINISTRO avversario (TS, ES, DC_S).
+    # Chi attacca al CENTRO affronta i centrali (DC, DC_C).
+    opp_lineup = tactical_db.get(opp_name, {}).get('lineup', [])
+    opp_def_entry = None
+
+    if side_code == 'LEFT':
+        target_roles = ['TD', 'ED', 'DC_D']
+        opp_def_entry = next((lp for lp in opp_lineup if lp.get('pos') in target_roles), None)
+    elif side_code == 'RIGHT':
+        target_roles = ['TS', 'ES', 'DC_S']
+        opp_def_entry = next((lp for lp in opp_lineup if lp.get('pos') in target_roles), None)
+    else:
+        target_roles = ['DC', 'DC_C', 'DC_D', 'DC_S']
+        opp_def_entry = next((lp for lp in opp_lineup if lp.get('pos') in target_roles), None)
+
+    if not opp_def_entry and opp_lineup:
+        opp_def_entry = next((lp for lp in opp_lineup if lp.get('role') == 'D'), opp_lineup[0])
+
+    opp_def_name = opp_def_entry.get('name', f"Difensore del {opp_name}") if opp_def_entry else f"Difensore del {opp_name}"
+    opp_def_role_label = opp_def_entry.get('pos_label', 'Difensore') if opp_def_entry else 'Difensore'
+    opp_def_pos = opp_def_entry.get('pos', 'D') if opp_def_entry else 'D'
+    opp_def_sub = opp_def_entry.get('sub_name', '') if opp_def_entry else ''
+
+    # Cerca statistiche reali del difensore rivale
+    def_mv = 5.95
+    def_fm = 5.90
+    def_fouls = 0
+    def_tit = 80
+    if players_master and isinstance(players_master, list):
+        clean_target = opp_def_name.strip().lower()
+        matched_def = next((p for p in players_master if p.get('name', '').strip().lower() == clean_target or clean_target in p.get('name', '').strip().lower()), None)
+        if matched_def:
+            def_mv = round(float(matched_def.get('mv_2627') or matched_def.get('mv') or 5.95), 2)
+            def_fm = round(float(matched_def.get('fm_2627') or matched_def.get('fm') or 5.90), 2)
+            def_fouls = int(matched_def.get('fouls_2627') or 0)
+            def_tit = int(matched_def.get('titolarita') or 80)
+
+    # Valutazione debolezza terzino/braccetto rivale
+    if def_mv < 5.85 or def_tit < 60:
+        def_weakness = 'ALTA'
+        def_weakness_badge = '⚠️ DEFENSOR VULNERABILE'
+        def_desc = f"{opp_def_name} ({opp_def_role_label}, MV {def_mv}) soffre in 1vs1 e tenuta"
+    elif def_mv <= 6.10:
+        def_weakness = 'MEDIA'
+        def_weakness_badge = '⚖️ TENUTA MEDIA'
+        def_desc = f"{opp_def_name} ({opp_def_role_label}, MV {def_mv}) garantisce rendimento ordinato"
+    else:
+        def_weakness = 'BASSA'
+        def_weakness_badge = '🧱 MURO DIFENSIVO'
+        def_desc = f"{opp_def_name} ({opp_def_role_label}, MV {def_mv}) solido e attento"
+
+    # -------------------------------------------------------------
+    # 4. ZONE DI CAMPO PER TIRI E AZIONI OFFENSIVE (IMAGES 2, 3, 4)
+    # -------------------------------------------------------------
+    opp_pos = positional_stats_dict.get(opp_name, {})
+    opp_act = opp_pos.get('action_zones', {})
+    opp_own_third_pct = int(opp_act.get('own_third_pct', 28))
+    opp_opp_third_pct = int(opp_act.get('opposition_third_pct', 29))
+
+    shots_zones_pg = my_pos.get('shots_zones_pg', {})
+    team_shots_total_pg = float(shots_zones_pg.get('total', 14.0))
+    team_shots_oob_pg = float(shots_zones_pg.get('out_of_box', 4.5))
+    team_shots_6y_pg = float(shots_zones_pg.get('six_yard_box', 1.1))
+    team_shots_pa_pg = float(shots_zones_pg.get('penalty_area', 8.4))
+
+    shot_zones_pct = my_pos.get('shot_zones_pct', {})
+    six_yard_pct = int(shot_zones_pct.get('six_yard_box_pct', 8))
+    penalty_area_pct = int(shot_zones_pct.get('penalty_area_pct', 58))
+    outside_box_pct = int(shot_zones_pct.get('outside_box_pct', 34))
+    in_box_pct = six_yard_pct + penalty_area_pct
+
+    if opp_own_third_pct >= 31:
+        zone_summary_note = f"Il {opp_name} trascorre il {opp_own_third_pct}% della gara schiacciato nella propria 3/4: baricentro basso che concede costante pressione e palloni in area."
+    else:
+        zone_summary_note = f"Il {opp_name} difende compatto ({opp_own_third_pct}% nel terzo difensivo): gara aperta a duelli sulle corsie e ripartenze."
+
+    # -------------------------------------------------------------
+    # 5. CALCOLO FLANK ADVANTAGE SCORE & MATCHUP VULNERABILITY
+    # -------------------------------------------------------------
+    base_flank_score = 50.0
+    flank_vol_delta = (flank_attack_pct - 33.0) * 1.4
+    base_flank_score += flank_vol_delta
+
+    if def_weakness == 'ALTA':
+        base_flank_score += 15.0
+    elif def_weakness == 'MEDIA':
+        base_flank_score += 3.0
+    else:
+        base_flank_score -= 10.0
+
+    base_flank_score += (opp_own_third_pct - 28.0) * 1.1
+
+    if next_match['is_home']:
+        base_flank_score += 4.0
+    else:
+        base_flank_score -= 4.0
+
+    dribbles = float(player.get('dribbles_2627') or player.get('won_contest_2627') or 0)
+    chances = float(player.get('chances_created_2627') or 0)
+    box_idx = float(player.get('box_presence_index_2627') or 0)
+    if dribbles >= 4 or chances >= 6 or box_idx >= 8.0:
+        base_flank_score += 4.5
+
+    flank_score = int(np.clip(round(base_flank_score), 15, 95))
+
+    if flank_score >= 72:
+        flank_badge = "🚀 DOMINIO CORSIA (Mismatch Favorevole)"
+    elif flank_score >= 56:
+        flank_badge = "⚔️ DUELLO FAVOREVOLE"
+    elif flank_score >= 42:
+        flank_badge = "⚖️ TEST EQUILIBRATO"
+    else:
+        flank_badge = "🛡️ CORSIA BLINDATA"
+
+    xga_rank = int(opp_stats.get("xga_team_rank") or 10)
+    goals_conceded_rank = int(opp_stats.get("goals_conceded_match_rank") or 10)
     raw_vuln = (xga_rank * 3.0) + (goals_conceded_rank * 2.0)
     if not next_match['is_home']:
-        raw_vuln -= 8 # Fuori casa è leggermente più ostica
+        raw_vuln -= 8
     else:
-        raw_vuln += 8 # In casa si beneficia del fattore campo
-
+        raw_vuln += 8
     vuln_score = int(np.clip(raw_vuln, 15, 95))
-    favorable_traits = []
 
     if vuln_score >= 70:
         vuln_badge = "🔥 DIFESA VULNERABILE"
-        if role in ['A', 'C']:
-            favorable_traits.append("💥 Reparto rivale ad alta concessione tiri (xGA alto)")
-        else:
-            favorable_traits.append("🛡️ Alta probabilità di Clean Sheet difensivo")
     elif vuln_score <= 35:
         vuln_badge = "🧱 MURO DIFENSIVO"
-        favorable_traits.append("⚠️ Difesa avversaria ermetica (Basso tasso gol subiti)")
     else:
         vuln_badge = "⚖️ MATCHUP EQUILIBRATO"
 
-    # Tratti specifici
-    if player.get("is_rigorista_1") or player.get("is_punizioni"):
-        if goals_conceded_rank >= 12:
-            favorable_traits.append("🎯 Specialista Piazzati: avversario incline a falli in area/limite")
+    favorable_traits = []
+    if flank_attack_pct >= 38:
+        favorable_traits.append(f"⚡ Corsia Primaria: {flank_attack_pct}% del volume offensivo su questo lato")
+    if def_weakness == 'ALTA':
+        favorable_traits.append(f"🎯 Target Tattico: {opp_def_name} punto debole rivale (MV {def_mv})")
+    elif def_weakness == 'BASSA':
+        favorable_traits.append(f"🛡️ Duello Fisico: scontro diretto contro {opp_def_name} (MV {def_mv})")
+        
+    if opp_own_third_pct >= 31:
+        favorable_traits.append(f"🏰 Pressione Continua: rivale rintanato nella propria trequarti ({opp_own_third_pct}%)")
+    if in_box_pct >= 66:
+        favorable_traits.append(f"💥 Concretizzazione in Area ({in_box_pct}% delle conclusioni nei 16m)")
+    elif outside_box_pct >= 38:
+        favorable_traits.append(f"🎯 Pericolo dal Limite: {outside_box_pct}% conclusioni da fuori area")
 
-    if player.get("is_oop") and role in ['D', 'C']:
-        favorable_traits.append("⚡ Spinta offensiva: la corsia avversaria concede spazio")
-
-    matchup_advice = f"Matchday G{current_round} ({next_match['match_str']}): "
-    if vuln_score >= 70:
-        matchup_advice += f"La difesa del {opp_name} presenta gravi falle tattiche. Schierabilità caldamente consigliata (+15% indice atteso)."
-    elif vuln_score <= 35:
-        matchup_advice += f"Incrocio severo contro il {opp_name}, tra le difese più solide della Serie A. Schierare con prudenza."
-    else:
-        matchup_advice += f"Gara bilanciata contro il {opp_name}, fattori individuali determinanti."
+    matchup_advice = (
+        f"Matchday G{current_round} ({next_match['match_str']}): {pname} opera su {side_label} ({flank_attack_pct}% degli attacchi squadra). "
+        f"Incrocio diretto con {opp_def_name} ({opp_def_role_label}, MV {def_mv}). {def_desc}. {zone_summary_note}"
+    )
 
     return {
         "opponent": opp_name,
         "is_home": next_match['is_home'],
         "match_str": next_match['match_str'],
+        "current_round": current_round,
         "vulnerability_score": vuln_score,
         "vulnerability_badge": vuln_badge,
         "favorable_traits": favorable_traits,
-        "matchup_advice": matchup_advice
+        "matchup_advice": matchup_advice,
+        "flank_matchup": {
+            "side_code": side_code,
+            "side_label": side_label,
+            "flank_attack_pct": flank_attack_pct,
+            "opp_defender_name": opp_def_name,
+            "opp_defender_role": opp_def_role_label,
+            "opp_defender_pos": opp_def_pos,
+            "opp_defender_mv": def_mv,
+            "opp_defender_fm": def_fm,
+            "opp_defender_weakness": def_weakness,
+            "opp_defender_weakness_badge": def_weakness_badge,
+            "flank_score": flank_score,
+            "flank_badge": flank_badge,
+            "flank_desc": def_desc
+        },
+        "zone_stats": {
+            "team_shots_total_pg": team_shots_total_pg,
+            "six_yard_box_pct": six_yard_pct,
+            "penalty_area_pct": penalty_area_pct,
+            "outside_box_pct": outside_box_pct,
+            "in_box_pct": in_box_pct,
+            "opp_own_third_pct": opp_own_third_pct,
+            "opp_mid_third_pct": int(opp_act.get('middle_third_pct', 43)),
+            "opp_opp_third_pct": opp_opp_third_pct,
+            "zone_summary_note": zone_summary_note
+        }
     }
 
 

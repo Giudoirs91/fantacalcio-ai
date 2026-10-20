@@ -1452,9 +1452,11 @@ function openPlayerProfileModal(playerId) {
     const oppName = matchupData.opponent || 'Avversario';
     const vulnScore = matchupData.vulnerability_score || 50;
     const vulnBadge = matchupData.vulnerability_badge || '⚖️ MATCHUP EQUILIBRATO';
-    const matchStr = matchupData.match_str || 'Partita Turno 6';
+    const matchStr = matchupData.match_str || 'Partita di Campionato';
     const matchupAdvice = matchupData.matchup_advice || `Incrocio equilibrato contro il ${oppName}.`;
     const favorableTraits = Array.isArray(matchupData.favorable_traits) ? matchupData.favorable_traits : [];
+    const flankMatch = matchupData.flank_matchup || {};
+    const zoneStats = matchupData.zone_stats || {};
     const advancedPredictiveCardHtml = `
         <div class="profile-advanced-predictive-box" style="margin:16px 0;background:rgba(18,24,38,0.75);border:1px solid rgba(56,189,248,0.22);border-radius:14px;padding:14px;box-shadow:0 8px 24px rgba(0,0,0,0.35);">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;flex-wrap:wrap;gap:6px;">
@@ -1502,16 +1504,68 @@ function openPlayerProfileModal(playerId) {
                     <b style="font-size:15px;color:${subVoteProb >= 80 ? '#34d399' : (subVoteProb >= 60 ? '#fbbf24' : '#f87171')};">${subVoteProb}%</b>
                 </div>
             </div>
-            <!-- 3. MATCHUP VULNERABILITY G6 -->
-            <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.04);">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:6px;">
-                    <span style="font-size:12px;font-weight:700;color:#fff;">Incrocio Tattico Prossimo Turno: <b style="color:#38bdf8;">${matchStr}</b></span>
+            <!-- 3. MATCHUP VULNERABILITY, INCROCIO CORSIA & ZONE DI CAMPO -->
+            <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.04);">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px;">
+                    <div style="display:flex;align-items:center;gap:6px;">
+                        <span style="font-size:13px;">⚔️</span>
+                        <span style="font-size:12px;font-weight:700;color:#fff;">Incrocio Tattico Prossimo Turno: <b style="color:#38bdf8;">${matchStr}</b></span>
+                    </div>
                     <span style="font-size:11px;font-weight:800;color:${vulnScore >= 70 ? '#f43f5e' : (vulnScore <= 35 ? '#10b981' : '#fbbf24')};">${vulnBadge} (${vulnScore}/100)</span>
                 </div>
-                <div style="font-size:11.5px;color:#94a3b8;line-height:1.4;margin-bottom:6px;">${matchupAdvice}</div>
+                <!-- DUELLO DIRETTO DI CORSIA (Terzino / Braccetto Avversario) -->
+                ${flankMatch.opp_defender_name ? `
+                    <div style="margin:8px 0;background:rgba(15,23,42,0.65);border:1px solid rgba(56,189,248,0.25);border-radius:8px;padding:8px 10px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px;">
+                            <span style="font-size:10px;text-transform:uppercase;font-weight:800;color:#38bdf8;letter-spacing:0.3px;">Duello di Corsia / Mismatch Tattico</span>
+                            <span style="font-size:10.5px;font-weight:800;color:${flankMatch.flank_score >= 70 ? '#34d399' : (flankMatch.flank_score <= 40 ? '#f87171' : '#fbbf24')};">${flankMatch.flank_badge || 'DUELLO'} (${flankMatch.flank_score || 50}/100)</span>
+                        </div>
+                        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;">
+                            <div style="background:rgba(56,189,248,0.1);border-radius:6px;padding:4px 8px;border:1px solid rgba(56,189,248,0.2);">
+                                <span style="font-size:9.5px;color:#94a3b8;display:block;">Corsia Attacco</span>
+                                <b style="font-size:11px;color:#38bdf8;">${flankMatch.side_label || 'Corsia'} (${flankMatch.flank_attack_pct || 33}%)</b>
+                            </div>
+                            <span style="font-size:12px;color:#64748b;font-weight:800;">VS</span>
+                            <div style="background:rgba(239,68,68,0.08);border-radius:6px;padding:4px 8px;border:1px solid rgba(239,68,68,0.2);text-align:right;">
+                                <span style="font-size:9.5px;color:#fca5a5;display:block;">Avversario Diretto</span>
+                                <b style="font-size:11px;color:#fff;">${flankMatch.opp_defender_name} <span style="font-size:9.5px;color:#94a3b8;">(${flankMatch.opp_defender_role}, MV ${flankMatch.opp_defender_mv})</span></b>
+                            </div>
+                        </div>
+                        <div style="font-size:10.5px;color:#cbd5e1;margin-top:6px;line-height:1.35;">
+                            ${flankMatch.flank_desc || ''}
+                        </div>
+                    </div>
+                ` : ''}
+                <!-- ZONE DI CAMPO PER TIRI & PRESSIONE OFFENSIVA -->
+                ${zoneStats.team_shots_total_pg ? `
+                    <div style="margin:8px 0;background:rgba(0,0,0,0.35);border-radius:8px;padding:8px 10px;border:1px solid rgba(255,255,255,0.04);">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:4px;">
+                            <span style="font-size:10px;text-transform:uppercase;font-weight:800;color:#94a3b8;letter-spacing:0.3px;">Zone Tiri & Presidio Campo</span>
+                            <span style="font-size:10px;color:#a78bfa;font-weight:700;">Tiri Tot: ${zoneStats.team_shots_total_pg}/pg</span>
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;text-align:center;margin-bottom:6px;">
+                            <div style="background:rgba(255,255,255,0.03);border-radius:6px;padding:4px 2px;">
+                                <span style="font-size:8.5px;color:#94a3b8;display:block;">Area Piccola</span>
+                                <b style="font-size:11px;color:#38bdf8;">${zoneStats.six_yard_box_pct || 8}%</b>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.03);border-radius:6px;padding:4px 2px;">
+                                <span style="font-size:8.5px;color:#94a3b8;display:block;">Area Rigore</span>
+                                <b style="font-size:11px;color:#34d399;">${zoneStats.penalty_area_pct || 58}%</b>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.03);border-radius:6px;padding:4px 2px;">
+                                <span style="font-size:8.5px;color:#94a3b8;display:block;">Fuori Area</span>
+                                <b style="font-size:11px;color:#fbbf24;">${zoneStats.outside_box_pct || 34}%</b>
+                            </div>
+                        </div>
+                        <div style="font-size:10px;color:#94a3b8;line-height:1.35;">
+                            Baricentro rivale: <b style="color:#e2e8f0;">${zoneStats.opp_own_third_pct || 28}%</b> del tempo nel proprio terzo difensivo.
+                        </div>
+                    </div>
+                ` : ''}
+                <div style="font-size:11.5px;color:#cbd5e1;line-height:1.4;margin:8px 0 6px 0;">${matchupAdvice}</div>
                 ${favorableTraits.length > 0 ? `
-                    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;">
-                        ${favorableTraits.map(t => `<span style="font-size:10.5px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25);color:#7dd3fc;padding:2px 8px;border-radius:12px;">${t}</span>`).join('')}
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
+                        ${favorableTraits.map(t => `<span style="font-size:10px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25);color:#7dd3fc;padding:2px 8px;border-radius:12px;">${t}</span>`).join('')}
                     </div>
                 ` : ''}
             </div>

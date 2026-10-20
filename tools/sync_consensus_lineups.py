@@ -449,23 +449,23 @@ def run_consensus_engine():
     print(f"  • Gazzetta duelli trovati: {len(gaz_ballots)}")
     print(f"  • SOS Fanta duelli trovati: {len(sos_ballots)}")
 
-    # 3. Aggregazione per Giornata 7 (10 Match Ufficiali)
-    g7_matches = [
-        {"home": "Frosinone", "away": "Sassuolo", "date": "16/10/2026", "time": "20:45", "stadium": "Benito Stirpe"},
-        {"home": "Venezia", "away": "Napoli", "date": "17/10/2026", "time": "15:00", "stadium": "Pier Luigi Penzo"},
-        {"home": "Bologna", "away": "Inter", "date": "17/10/2026", "time": "18:00", "stadium": "Renato Dall'Ara"},
-        {"home": "Roma", "away": "Genoa", "date": "17/10/2026", "time": "20:45", "stadium": "Olimpico"},
-        {"home": "Udinese", "away": "Lecce", "date": "18/10/2026", "time": "12:30", "stadium": "Bluenergy Stadium"},
-        {"home": "Fiorentina", "away": "Como", "date": "18/10/2026", "time": "15:00", "stadium": "Artemio Franchi"},
-        {"home": "Milan", "away": "Atalanta", "date": "18/10/2026", "time": "18:00", "stadium": "San Siro", "big_match": True},
-        {"home": "Juventus", "away": "Lazio", "date": "18/10/2026", "time": "20:45", "stadium": "Allianz Stadium", "big_match": True},
-        {"home": "Monza", "away": "Cagliari", "date": "19/10/2026", "time": "18:30", "stadium": "U-Power Stadium"},
-        {"home": "Parma", "away": "Torino", "date": "19/10/2026", "time": "20:45", "stadium": "Ennio Tardini"}
+    # 3. Aggregazione per Giornata 8 (10 Match Ufficiali)
+    g8_matches = [
+        {"home": "Torino", "away": "Monza", "date": "24/10/2026", "time": "15:00", "stadium": "Olimpico Grande Torino"},
+        {"home": "Cagliari", "away": "Bologna", "date": "24/10/2026", "time": "18:00", "stadium": "Unipol Domus"},
+        {"home": "Como", "away": "Sassuolo", "date": "24/10/2026", "time": "20:45", "stadium": "Giuseppe Sinigaglia"},
+        {"home": "Genoa", "away": "Venezia", "date": "25/10/2026", "time": "12:30", "stadium": "Luigi Ferraris"},
+        {"home": "Atalanta", "away": "Frosinone", "date": "25/10/2026", "time": "15:00", "stadium": "Gewiss Stadium"},
+        {"home": "Lazio", "away": "Parma", "date": "25/10/2026", "time": "15:00", "stadium": "Olimpico"},
+        {"home": "Inter", "away": "Fiorentina", "date": "25/10/2026", "time": "18:00", "stadium": "San Siro", "big_match": True},
+        {"home": "Lecce", "away": "Juventus", "date": "25/10/2026", "time": "20:45", "stadium": "Via del Mare", "big_match": True},
+        {"home": "Napoli", "away": "Roma", "date": "26/10/2026", "time": "18:30", "stadium": "Diego Armando Maradona", "big_match": True},
+        {"home": "Udinese", "away": "Milan", "date": "26/10/2026", "time": "20:45", "stadium": "Bluenergy Stadium", "big_match": True}
     ]
 
     consensus_round_output = {
-        "round": 7,
-        "round_label": "7ª Giornata Serie A 2026/27",
+        "round": 8,
+        "round_label": "8ª Giornata Serie A 2026/27",
         "last_updated": datetime.now().strftime("%d/%m/%Y %H:%M"),
         "sources_tracked": ["Fantacalcio.it", "Gazzetta dello Sport", "Sky Sport", "SOS Fanta"],
         "matches": []
@@ -478,7 +478,7 @@ def run_consensus_engine():
             parsed_teams_dict[tname] = tinfo
 
     print("\n[3/5] Elaborazione Consensus 10 Match...")
-    for match_meta in g7_matches:
+    for match_meta in g8_matches:
         h_team = match_meta['home']
         a_team = match_meta['away']
         

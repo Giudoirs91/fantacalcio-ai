@@ -49,26 +49,42 @@ def clean_num(val):
 
 
 def parse_fbref_csv_or_html(file_path):
-    """Estrae righe e colonne da un file CSV o HTML esportato da FBref."""
+    """Estrae righe e colonne da un file CSV o HTML esportato da FBref con disambiguazione per 90."""
     if not os.path.exists(file_path):
         return []
 
     results = []
     if file_path.endswith('.csv'):
         with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
-            lines = f.readlines()
-            # Rimuovi eventuali righe di commento FBref
-            clean_lines = [l for l in lines if not l.startswith('#') and not l.startswith('---')]
-            reader = csv.reader(clean_lines)
-            header = None
-            for row in reader:
-                if not row or len(row) < 5:
-                    continue
-                # Trova la riga di header reale
-                if 'Player' in row or 'Giocatore' in row:
-                    header = [c.strip() for c in row]
-                    continue
-                if header and len(row) == len(header):
+            lines = [l for l in f.readlines() if not l.startswith('#') and not l.startswith('---')]
+            reader = csv.reader(lines)
+            all_rows = [r for r in reader if r and len(r) >= 5]
+            if len(all_rows) < 2:
+                return []
+            
+            # Check if row 0 has super headers like 'Per 90 Minutes'
+            super_header = all_rows[0]
+            sub_header = all_rows[1]
+            if 'Player' in sub_header or 'Giocatore' in sub_header:
+                header = []
+                seen = {}
+                for sup, sub in zip(super_header, sub_header):
+                    sub_clean = sub.strip()
+                    sup_clean = sup.strip() if sup else ''
+                    if 'Per 90' in sup_clean or seen.get(sub_clean, 0) > 0:
+                        col_name = f"{sub_clean}_per90"
+                    else:
+                        col_name = sub_clean
+                    seen[sub_clean] = seen.get(sub_clean, 0) + 1
+                    header.append(col_name)
+                data_rows = all_rows[2:]
+            else:
+                # Single header row
+                header = [c.strip() for c in all_rows[0]]
+                data_rows = all_rows[1:]
+
+            for row in data_rows:
+                if len(row) == len(header):
                     results.append(dict(zip(header, [c.strip() for c in row])))
     else: # HTML
         with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -93,10 +109,18 @@ def parse_fbref_csv_or_html(file_path):
 
 
 def import_fbref_standard(master_players):
-    """Importa npxG, G-PK (Gol su azione non da rigore) da fbref_standard (CSV o HTML)."""
-    p_csv = os.path.join(IMPORTS_DIR, "fbref_standard.csv")
-    p_html = os.path.join(IMPORTS_DIR, "fbref_standard.html")
-    path = p_csv if os.path.exists(p_csv) else (p_html if os.path.exists(p_html) else None)
+    """Importa npxG, G-PK (Gol su azione non da rigore) da stats_serie_a_7g.csv o fbref_standard (CSV o HTML)."""
+    candidates = [
+        os.path.join(IMPORTS_DIR, "stats_serie_a_7g.csv"),
+        os.path.join(IMPORTS_DIR, "fbref_standard.csv"),
+        os.path.join(IMPORTS_DIR, "fbref_standard.html")
+    ]
+    # Check any stats_serie_a_*.csv
+    for f in sorted(os.listdir(IMPORTS_DIR) if os.path.exists(IMPORTS_DIR) else []):
+        if f.startswith('stats_serie_a_') and f.endswith('.csv'):
+            candidates.insert(0, os.path.join(IMPORTS_DIR, f))
+
+    path = next((p for p in candidates if os.path.exists(p)), None)
     if not path:
         return 0
 
@@ -117,6 +141,10 @@ def import_fbref_standard(master_players):
         pk_scored = clean_num(r.get('PK'))
         pk_att = clean_num(r.get('PKatt'))
         min_played = clean_num(r.get('Min'))
+        g_pk_per90 = clean_num(r.get('G-PK_per90'))
+        ga_per90 = clean_num(r.get('G+A_per90') or r.get('G+A-PK_per90'))
+        mp_val = clean_num(r.get('MP'))
+        starts_val = clean_num(r.get('Starts'))
 
         for p in master_players:
             p_name = clean_text(p.get('name') or '').lower()
@@ -128,10 +156,17 @@ def import_fbref_standard(master_players):
                 p['goals_non_penalty_2627'] = g_minus_pk
                 p['pk_scored_fbref_2627'] = pk_scored
                 p['pk_attempted_fbref_2627'] = pk_att
+                if g_pk_per90 > 0:
+                    p['g_minus_pk_per90_2627'] = g_pk_per90
+                if ga_per90 > 0:
+                    p['g_plus_a_per90_2627'] = ga_per90
+                p['mp_fbref_2627'] = mp_val
+                p['starts_fbref_2627'] = starts_val
+                p['mins_fbref_2627'] = min_played
                 matched += 1
                 break
 
-    print(f"  ✓ {matched} calciatori aggiornati con metriche FBref Standard (G-PK, npxG)!")
+    print(f"  ✓ {matched} calciatori aggiornati con metriche FBref Standard (G-PK, npxG, Per90) da {os.path.basename(path)}!")
     return matched
 
 
@@ -223,7 +258,10 @@ def run_all_imports():
     if total_updated > 0:
         with open(MASTER_PLAYERS_PATH, 'w', encoding='utf-8') as f:
             json.dump(master_players, f, indent=2, ensure_ascii=False)
-        print(f"\n✓ Master database aggiornato con successo ({total_updated} record arricchiti)!")
+        root_path = os.path.join(ROOT_DIR, "processed_players_master.json")
+        with open(root_path, 'w', encoding='utf-8') as f:
+            json.dump(master_players, f, indent=2, ensure_ascii=False)
+        print(f"\n✓ Master database aggiornato con successo ({total_updated} record arricchiti su entrambi i file)!")
     else:
         print("\nNessun nuovo file FBref trovato in data/raw/scouting_imports/.")
         print("Istruzioni: posiziona i file fbref_standard.csv, fbref_gca.csv o fbref_possession.csv nella cartella per avviare l'import automatico.")

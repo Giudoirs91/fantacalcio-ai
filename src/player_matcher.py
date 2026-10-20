@@ -25,7 +25,7 @@ def match_player_name(a, b):
     cb = clean_text(b)
     if not ca or not cb:
         return False
-    if ca == cb or ca in cb or cb in ca:
+    if ca == cb or ca in cb or cb in ca or ca.replace(' ', '') == cb.replace(' ', ''):
         return True
     
     ta = ca.split()

@@ -36,6 +36,16 @@ def main():
         print("[Main] Esecuzione Completa (Pipeline + Dashboard)...")
         run_master_pipeline()
         try:
+            from tools.import_advanced_scouting_data import run_all_imports
+            run_all_imports()
+        except Exception as e:
+            print(f"[Main] Avviso importazione scouting FBref: {e}")
+        try:
+            from tools.enrich_internal_scouting_metrics import enrich_internal_and_tactical_metrics
+            enrich_internal_and_tactical_metrics()
+        except Exception as e:
+            print(f"[Main] Avviso arricchimento metriche: {e}")
+        try:
             from tools.build_top_flop_data import run_pipeline as run_top_flop
             run_top_flop()
         except Exception as e:

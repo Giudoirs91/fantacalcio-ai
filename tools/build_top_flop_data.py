@@ -390,15 +390,15 @@ def run_pipeline():
                 tot_malus += m
         p['tot_bonus_2627'] = round(tot_bonus, 2)
         p['tot_malus_2627'] = round(tot_malus, 2)
-        p['gol_2627'] = tot_gf
-        p['assist_2627'] = tot_ass
-        p['gol_subiti_2627'] = tot_gs
-        p['amm_2627'] = tot_amm
-        p['esp_2627'] = tot_esp
-        p['rigori_sbagliati_2627'] = tot_rs
+        p['gol_2627'] = max(p.get('gol_2627', 0), tot_gf)
+        p['assist_2627'] = max(p.get('assist_2627', 0), tot_ass)
+        p['gol_subiti_2627'] = max(p.get('gol_subiti_2627', 0), tot_gs)
+        p['amm_2627'] = max(p.get('amm_2627', 0), tot_amm)
+        p['esp_2627'] = max(p.get('esp_2627', 0), tot_esp)
+        p['rigori_sbagliati_2627'] = max(p.get('rigori_sbagliati_2627', 0), tot_rs)
 
-        p['presenze_2627'] = len(valid_voti)
-        p['starts_2627'] = len(valid_voti)
+        p['presenze_2627'] = max(p.get('presenze_2627', 0), len(valid_voti))
+        p['starts_2627'] = max(p.get('starts_2627', 0), len(valid_voti))
         if valid_voti:
             p['mv_2627'] = round(float(np.mean(valid_voti)), 2)
             p['fm_2627'] = round(float(np.mean(valid_fv)), 2)

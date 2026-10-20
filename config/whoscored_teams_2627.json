@@ -5,34 +5,22 @@
       "middle_pct": 25,
       "right_pct": 30
     },
+    "shots_zones_pg": {
+      "total": 12.9,
+      "out_of_box": 5.9,
+      "six_yard_box": 1.1,
+      "penalty_area": 5.9,
+      "rating": 6.83
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 9,
+      "penalty_area_pct": 46,
+      "outside_box_pct": 46
+    },
     "action_zones": {
       "own_third_pct": 25,
       "middle_third_pct": 45,
-      "opposition_third_pct": 30
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.8,
-      "open_play_pg": 1.3,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.2,
-      "penalty_scored_pg": 0.2,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.8
-    },
-    "goal_types_total": {
-      "open_play": 8,
-      "counter_attack": 1,
-      "set_piece": 1,
-      "penalty": 1,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 9.65,
-      "goals_excl_pen": 10,
-      "npxg_diff": 0.35,
-      "shots": 80,
-      "npxg_per_shot": 0.12,
-      "whoscored_rating": 6.8
+      "opposition_third_pct": 29
     }
   },
   "Bologna": {
@@ -41,538 +29,358 @@
       "middle_pct": 23,
       "right_pct": 35
     },
-    "action_zones": {
-      "own_third_pct": 31,
-      "middle_third_pct": 43,
-      "opposition_third_pct": 25
+    "shots_zones_pg": {
+      "total": 12.4,
+      "out_of_box": 4.1,
+      "six_yard_box": 1.3,
+      "penalty_area": 7.0,
+      "rating": 6.47
     },
-    "goal_situations_pg": {
-      "total_pg": 0.8,
-      "open_play_pg": 0.7,
-      "counter_attack_pg": 0.0,
-      "set_piece_pg": 0.2,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.5
-    },
-    "goal_types_total": {
-      "open_play": 4,
-      "counter_attack": 0,
-      "set_piece": 1,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 9.15,
-      "goals_excl_pen": 5,
-      "npxg_diff": -4.15,
-      "shots": 76,
-      "npxg_per_shot": 0.12,
-      "whoscored_rating": 6.5
-    }
-  },
-  "Sassuolo": {
-    "attack_sides": {
-      "left_pct": 42,
-      "middle_pct": 25,
-      "right_pct": 34
+    "shot_zones_pct": {
+      "six_yard_box_pct": 10,
+      "penalty_area_pct": 56,
+      "outside_box_pct": 33
     },
     "action_zones": {
-      "own_third_pct": 29,
-      "middle_third_pct": 43,
-      "opposition_third_pct": 28
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.7,
-      "open_play_pg": 0.7,
-      "counter_attack_pg": 0.3,
-      "set_piece_pg": 0.7,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.61
-    },
-    "goal_types_total": {
-      "open_play": 4,
-      "counter_attack": 2,
-      "set_piece": 4,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 11.21,
-      "goals_excl_pen": 10,
-      "npxg_diff": -1.21,
-      "shots": 96,
-      "npxg_per_shot": 0.12,
-      "whoscored_rating": 6.61
+      "own_third_pct": 32,
+      "middle_third_pct": 44,
+      "opposition_third_pct": 24
     }
   },
   "Genoa": {
     "attack_sides": {
-      "left_pct": 41,
-      "middle_pct": 26,
-      "right_pct": 34
+      "left_pct": 42,
+      "middle_pct": 25,
+      "right_pct": 33
+    },
+    "shots_zones_pg": {
+      "total": 11.1,
+      "out_of_box": 3.6,
+      "six_yard_box": 0.0,
+      "penalty_area": 7.6,
+      "rating": 6.37
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 0,
+      "penalty_area_pct": 68,
+      "outside_box_pct": 32
     },
     "action_zones": {
       "own_third_pct": 32,
       "middle_third_pct": 41,
+      "opposition_third_pct": 28
+    }
+  },
+  "Sassuolo": {
+    "attack_sides": {
+      "left_pct": 41,
+      "middle_pct": 25,
+      "right_pct": 34
+    },
+    "shots_zones_pg": {
+      "total": 15.7,
+      "out_of_box": 6.3,
+      "six_yard_box": 0.7,
+      "penalty_area": 8.7,
+      "rating": 6.55
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 5,
+      "penalty_area_pct": 55,
+      "outside_box_pct": 40
+    },
+    "action_zones": {
+      "own_third_pct": 30,
+      "middle_third_pct": 42,
       "opposition_third_pct": 27
-    },
-    "goal_situations_pg": {
-      "total_pg": 0.8,
-      "open_play_pg": 0.5,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.2,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.4
-    },
-    "goal_types_total": {
-      "open_play": 3,
-      "counter_attack": 1,
-      "set_piece": 1,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 5.76,
-      "goals_excl_pen": 5,
-      "npxg_diff": -0.76,
-      "shots": 68,
-      "npxg_per_shot": 0.08,
-      "whoscored_rating": 6.4
     }
   },
   "Monza": {
     "attack_sides": {
-      "left_pct": 40,
+      "left_pct": 39,
       "middle_pct": 26,
-      "right_pct": 33
+      "right_pct": 35
+    },
+    "shots_zones_pg": {
+      "total": 14.3,
+      "out_of_box": 4.0,
+      "six_yard_box": 1.1,
+      "penalty_area": 9.1,
+      "rating": 6.56
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 8,
+      "penalty_area_pct": 64,
+      "outside_box_pct": 28
     },
     "action_zones": {
-      "own_third_pct": 27,
+      "own_third_pct": 26,
       "middle_third_pct": 44,
       "opposition_third_pct": 29
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.5,
-      "open_play_pg": 0.8,
-      "counter_attack_pg": 0.0,
-      "set_piece_pg": 0.5,
-      "penalty_scored_pg": 0.2,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.43
-    },
-    "goal_types_total": {
-      "open_play": 5,
-      "counter_attack": 0,
-      "set_piece": 3,
-      "penalty": 1,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 11.76,
-      "goals_excl_pen": 8,
-      "npxg_diff": -3.76,
-      "shots": 85,
-      "npxg_per_shot": 0.14,
-      "whoscored_rating": 6.43
-    }
-  },
-  "Milan": {
-    "attack_sides": {
-      "left_pct": 39,
-      "middle_pct": 27,
-      "right_pct": 34
-    },
-    "action_zones": {
-      "own_third_pct": 29,
-      "middle_third_pct": 46,
-      "opposition_third_pct": 24
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.8,
-      "open_play_pg": 1.3,
-      "counter_attack_pg": 0.3,
-      "set_piece_pg": 0.0,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.2,
-      "whoscored_rating": 6.75
-    },
-    "goal_types_total": {
-      "open_play": 8,
-      "counter_attack": 2,
-      "set_piece": 0,
-      "penalty": 0,
-      "own_goal": 1
-    },
-    "xg_non_penalty": {
-      "npxg": 11.58,
-      "goals_excl_pen": 10,
-      "npxg_diff": -1.58,
-      "shots": 75,
-      "npxg_per_shot": 0.15,
-      "whoscored_rating": 6.75
     }
   },
   "Inter": {
     "attack_sides": {
       "left_pct": 38,
-      "middle_pct": 29,
+      "middle_pct": 28,
       "right_pct": 33
     },
+    "shots_zones_pg": {
+      "total": 21.7,
+      "out_of_box": 6.4,
+      "six_yard_box": 2.1,
+      "penalty_area": 13.1,
+      "rating": 6.92
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 10,
+      "penalty_area_pct": 61,
+      "outside_box_pct": 30
+    },
     "action_zones": {
-      "own_third_pct": 25,
+      "own_third_pct": 24,
       "middle_third_pct": 44,
       "opposition_third_pct": 32
-    },
-    "goal_situations_pg": {
-      "total_pg": 3.0,
-      "open_play_pg": 2.0,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.7,
-      "penalty_scored_pg": 0.2,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.94
-    },
-    "goal_types_total": {
-      "open_play": 12,
-      "counter_attack": 1,
-      "set_piece": 4,
-      "penalty": 1,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 16.65,
-      "goals_excl_pen": 17,
-      "npxg_diff": 0.35,
-      "shots": 134,
-      "npxg_per_shot": 0.12,
-      "whoscored_rating": 6.94
     }
   },
-  "Lecce": {
+  "Milan": {
     "attack_sides": {
-      "left_pct": 37,
-      "middle_pct": 27,
-      "right_pct": 36
+      "left_pct": 38,
+      "middle_pct": 28,
+      "right_pct": 35
+    },
+    "shots_zones_pg": {
+      "total": 12.3,
+      "out_of_box": 2.7,
+      "six_yard_box": 1.6,
+      "penalty_area": 8.0,
+      "rating": 6.73
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 13,
+      "penalty_area_pct": 66,
+      "outside_box_pct": 21
     },
     "action_zones": {
-      "own_third_pct": 26,
-      "middle_third_pct": 47,
-      "opposition_third_pct": 27
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.0,
-      "open_play_pg": 0.3,
-      "counter_attack_pg": 0.0,
-      "set_piece_pg": 0.7,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.45
-    },
-    "goal_types_total": {
-      "open_play": 2,
-      "counter_attack": 0,
-      "set_piece": 4,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 7.66,
-      "goals_excl_pen": 6,
-      "npxg_diff": -1.66,
-      "shots": 61,
-      "npxg_per_shot": 0.13,
-      "whoscored_rating": 6.45
+      "own_third_pct": 29,
+      "middle_third_pct": 46,
+      "opposition_third_pct": 24
     }
   },
   "Napoli": {
     "attack_sides": {
-      "left_pct": 37,
-      "middle_pct": 28,
+      "left_pct": 38,
+      "middle_pct": 27,
       "right_pct": 35
     },
+    "shots_zones_pg": {
+      "total": 16.7,
+      "out_of_box": 4.9,
+      "six_yard_box": 1.6,
+      "penalty_area": 10.3,
+      "rating": 6.64
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 9,
+      "penalty_area_pct": 62,
+      "outside_box_pct": 28
+    },
     "action_zones": {
-      "own_third_pct": 29,
-      "middle_third_pct": 41,
-      "opposition_third_pct": 29
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.7,
-      "open_play_pg": 1.0,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.3,
-      "penalty_scored_pg": 0.2,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.67
-    },
-    "goal_types_total": {
-      "open_play": 6,
-      "counter_attack": 1,
-      "set_piece": 2,
-      "penalty": 1,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 9.54,
-      "goals_excl_pen": 9,
-      "npxg_diff": -0.54,
-      "shots": 87,
-      "npxg_per_shot": 0.11,
-      "whoscored_rating": 6.67
+      "own_third_pct": 28,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 30
     }
   },
   "Roma": {
     "attack_sides": {
-      "left_pct": 36,
+      "left_pct": 37,
       "middle_pct": 24,
       "right_pct": 39
     },
+    "shots_zones_pg": {
+      "total": 18.1,
+      "out_of_box": 5.1,
+      "six_yard_box": 1.7,
+      "penalty_area": 11.3,
+      "rating": 6.96
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 9,
+      "penalty_area_pct": 62,
+      "outside_box_pct": 28
+    },
     "action_zones": {
       "own_third_pct": 24,
-      "middle_third_pct": 43,
+      "middle_third_pct": 44,
       "opposition_third_pct": 32
-    },
-    "goal_situations_pg": {
-      "total_pg": 2.3,
-      "open_play_pg": 2.0,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.2,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.96
-    },
-    "goal_types_total": {
-      "open_play": 12,
-      "counter_attack": 1,
-      "set_piece": 1,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 15.53,
-      "goals_excl_pen": 14,
-      "npxg_diff": -1.53,
-      "shots": 112,
-      "npxg_per_shot": 0.14,
-      "whoscored_rating": 6.96
-    }
-  },
-  "Fiorentina": {
-    "attack_sides": {
-      "left_pct": 35,
-      "middle_pct": 28,
-      "right_pct": 38
-    },
-    "action_zones": {
-      "own_third_pct": 26,
-      "middle_third_pct": 42,
-      "opposition_third_pct": 32
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.2,
-      "open_play_pg": 0.7,
-      "counter_attack_pg": 0.3,
-      "set_piece_pg": 0.0,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.2,
-      "whoscored_rating": 6.4
-    },
-    "goal_types_total": {
-      "open_play": 4,
-      "counter_attack": 2,
-      "set_piece": 0,
-      "penalty": 0,
-      "own_goal": 1
-    },
-    "xg_non_penalty": {
-      "npxg": 8.77,
-      "goals_excl_pen": 6,
-      "npxg_diff": -2.77,
-      "shots": 97,
-      "npxg_per_shot": 0.09,
-      "whoscored_rating": 6.4
-    }
-  },
-  "Venezia": {
-    "attack_sides": {
-      "left_pct": 35,
-      "middle_pct": 25,
-      "right_pct": 40
-    },
-    "action_zones": {
-      "own_third_pct": 29,
-      "middle_third_pct": 42,
-      "opposition_third_pct": 30
-    },
-    "goal_situations_pg": {
-      "total_pg": 0.8,
-      "open_play_pg": 0.5,
-      "counter_attack_pg": 0.3,
-      "set_piece_pg": 0.0,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.35
-    },
-    "goal_types_total": {
-      "open_play": 3,
-      "counter_attack": 2,
-      "set_piece": 0,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 11.42,
-      "goals_excl_pen": 5,
-      "npxg_diff": -6.42,
-      "shots": 88,
-      "npxg_per_shot": 0.13,
-      "whoscored_rating": 6.35
     }
   },
   "Torino": {
     "attack_sides": {
-      "left_pct": 34,
-      "middle_pct": 32,
-      "right_pct": 34
+      "left_pct": 36,
+      "middle_pct": 31,
+      "right_pct": 33
+    },
+    "shots_zones_pg": {
+      "total": 9.7,
+      "out_of_box": 3.7,
+      "six_yard_box": 0.7,
+      "penalty_area": 5.3,
+      "rating": 6.52
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 7,
+      "penalty_area_pct": 54,
+      "outside_box_pct": 38
+    },
+    "action_zones": {
+      "own_third_pct": 33,
+      "middle_third_pct": 44,
+      "opposition_third_pct": 23
+    }
+  },
+  "Lecce": {
+    "attack_sides": {
+      "left_pct": 36,
+      "middle_pct": 27,
+      "right_pct": 37
+    },
+    "shots_zones_pg": {
+      "total": 11.1,
+      "out_of_box": 3.6,
+      "six_yard_box": 1.4,
+      "penalty_area": 6.1,
+      "rating": 6.55
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 13,
+      "penalty_area_pct": 55,
+      "outside_box_pct": 32
+    },
+    "action_zones": {
+      "own_third_pct": 26,
+      "middle_third_pct": 46,
+      "opposition_third_pct": 27
+    }
+  },
+  "Venezia": {
+    "attack_sides": {
+      "left_pct": 36,
+      "middle_pct": 25,
+      "right_pct": 39
+    },
+    "shots_zones_pg": {
+      "total": 14.0,
+      "out_of_box": 5.0,
+      "six_yard_box": 1.9,
+      "penalty_area": 7.1,
+      "rating": 6.44
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 13,
+      "penalty_area_pct": 51,
+      "outside_box_pct": 36
     },
     "action_zones": {
       "own_third_pct": 31,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 27
+    }
+  },
+  "Fiorentina": {
+    "attack_sides": {
+      "left_pct": 34,
+      "middle_pct": 29,
+      "right_pct": 38
+    },
+    "shots_zones_pg": {
+      "total": 16.6,
+      "out_of_box": 6.3,
+      "six_yard_box": 1.1,
+      "penalty_area": 9.1,
+      "rating": 6.39
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 7,
+      "penalty_area_pct": 55,
+      "outside_box_pct": 38
+    },
+    "action_zones": {
+      "own_third_pct": 26,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 34
+    }
+  },
+  "Cagliari": {
+    "attack_sides": {
+      "left_pct": 34,
+      "middle_pct": 33,
+      "right_pct": 33
+    },
+    "shots_zones_pg": {
+      "total": 10.6,
+      "out_of_box": 3.9,
+      "six_yard_box": 0.7,
+      "penalty_area": 6.0,
+      "rating": 6.61
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 7,
+      "penalty_area_pct": 57,
+      "outside_box_pct": 36
+    },
+    "action_zones": {
+      "own_third_pct": 35,
       "middle_third_pct": 45,
-      "opposition_third_pct": 23
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.2,
-      "open_play_pg": 0.8,
-      "counter_attack_pg": 0.0,
-      "set_piece_pg": 0.3,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.44
-    },
-    "goal_types_total": {
-      "open_play": 5,
-      "counter_attack": 0,
-      "set_piece": 2,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 7.96,
-      "goals_excl_pen": 7,
-      "npxg_diff": -0.96,
-      "shots": 59,
-      "npxg_per_shot": 0.13,
-      "whoscored_rating": 6.44
+      "opposition_third_pct": 20
     }
   },
   "Udinese": {
     "attack_sides": {
       "left_pct": 34,
-      "middle_pct": 28,
+      "middle_pct": 27,
       "right_pct": 39
     },
+    "shots_zones_pg": {
+      "total": 14.3,
+      "out_of_box": 5.0,
+      "six_yard_box": 0.3,
+      "penalty_area": 9.0,
+      "rating": 6.42
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 2,
+      "penalty_area_pct": 63,
+      "outside_box_pct": 35
+    },
     "action_zones": {
-      "own_third_pct": 25,
+      "own_third_pct": 26,
       "middle_third_pct": 45,
-      "opposition_third_pct": 30
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.5,
-      "open_play_pg": 0.8,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.5,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.48
-    },
-    "goal_types_total": {
-      "open_play": 5,
-      "counter_attack": 1,
-      "set_piece": 3,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 7.15,
-      "goals_excl_pen": 9,
-      "npxg_diff": 1.85,
-      "shots": 86,
-      "npxg_per_shot": 0.08,
-      "whoscored_rating": 6.48
-    }
-  },
-  "Cagliari": {
-    "attack_sides": {
-      "left_pct": 33,
-      "middle_pct": 34,
-      "right_pct": 33
-    },
-    "action_zones": {
-      "own_third_pct": 37,
-      "middle_third_pct": 44,
-      "opposition_third_pct": 19
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.0,
-      "open_play_pg": 0.5,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.2,
-      "penalty_scored_pg": 0.2,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.69
-    },
-    "goal_types_total": {
-      "open_play": 3,
-      "counter_attack": 1,
-      "set_piece": 1,
-      "penalty": 1,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 5.18,
-      "goals_excl_pen": 5,
-      "npxg_diff": -0.18,
-      "shots": 57,
-      "npxg_per_shot": 0.09,
-      "whoscored_rating": 6.69
+      "opposition_third_pct": 29
     }
   },
   "Frosinone": {
     "attack_sides": {
       "left_pct": 33,
-      "middle_pct": 24,
-      "right_pct": 42
+      "middle_pct": 25,
+      "right_pct": 43
+    },
+    "shots_zones_pg": {
+      "total": 17.4,
+      "out_of_box": 6.6,
+      "six_yard_box": 1.4,
+      "penalty_area": 9.4,
+      "rating": 6.77
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 8,
+      "penalty_area_pct": 54,
+      "outside_box_pct": 38
     },
     "action_zones": {
-      "own_third_pct": 31,
+      "own_third_pct": 30,
       "middle_third_pct": 37,
-      "opposition_third_pct": 31
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.5,
-      "open_play_pg": 1.0,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.3,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.77
-    },
-    "goal_types_total": {
-      "open_play": 6,
-      "counter_attack": 1,
-      "set_piece": 2,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 9.75,
-      "goals_excl_pen": 9,
-      "npxg_diff": -0.75,
-      "shots": 101,
-      "npxg_per_shot": 0.1,
-      "whoscored_rating": 6.77
+      "opposition_third_pct": 33
     }
   },
   "Juventus": {
@@ -581,70 +389,46 @@
       "middle_pct": 31,
       "right_pct": 38
     },
+    "shots_zones_pg": {
+      "total": 17.0,
+      "out_of_box": 8.0,
+      "six_yard_box": 1.7,
+      "penalty_area": 7.3,
+      "rating": 6.65
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 10,
+      "penalty_area_pct": 43,
+      "outside_box_pct": 47
+    },
     "action_zones": {
-      "own_third_pct": 21,
+      "own_third_pct": 22,
       "middle_third_pct": 42,
       "opposition_third_pct": 36
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.5,
-      "open_play_pg": 1.0,
-      "counter_attack_pg": 0.0,
-      "set_piece_pg": 0.5,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.73
-    },
-    "goal_types_total": {
-      "open_play": 6,
-      "counter_attack": 0,
-      "set_piece": 3,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 11.37,
-      "goals_excl_pen": 9,
-      "npxg_diff": -2.37,
-      "shots": 110,
-      "npxg_per_shot": 0.1,
-      "whoscored_rating": 6.73
     }
   },
   "Parma": {
     "attack_sides": {
-      "left_pct": 30,
+      "left_pct": 31,
       "middle_pct": 29,
-      "right_pct": 42
+      "right_pct": 41
+    },
+    "shots_zones_pg": {
+      "total": 10.7,
+      "out_of_box": 3.1,
+      "six_yard_box": 1.0,
+      "penalty_area": 6.6,
+      "rating": 6.33
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 9,
+      "penalty_area_pct": 61,
+      "outside_box_pct": 29
     },
     "action_zones": {
-      "own_third_pct": 36,
+      "own_third_pct": 34,
       "middle_third_pct": 43,
-      "opposition_third_pct": 21
-    },
-    "goal_situations_pg": {
-      "total_pg": 0.7,
-      "open_play_pg": 0.5,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.0,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.33
-    },
-    "goal_types_total": {
-      "open_play": 3,
-      "counter_attack": 1,
-      "set_piece": 0,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 5.2,
-      "goals_excl_pen": 4,
-      "npxg_diff": -1.2,
-      "shots": 50,
-      "npxg_per_shot": 0.1,
-      "whoscored_rating": 6.33
+      "opposition_third_pct": 23
     }
   },
   "Atalanta": {
@@ -653,70 +437,46 @@
       "middle_pct": 32,
       "right_pct": 39
     },
+    "shots_zones_pg": {
+      "total": 13.3,
+      "out_of_box": 4.9,
+      "six_yard_box": 0.7,
+      "penalty_area": 7.7,
+      "rating": 6.52
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 5,
+      "penalty_area_pct": 58,
+      "outside_box_pct": 37
+    },
     "action_zones": {
       "own_third_pct": 28,
-      "middle_third_pct": 42,
-      "opposition_third_pct": 30
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.3,
-      "open_play_pg": 1.0,
-      "counter_attack_pg": 0.0,
-      "set_piece_pg": 0.3,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.53
-    },
-    "goal_types_total": {
-      "open_play": 6,
-      "counter_attack": 0,
-      "set_piece": 2,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 6.54,
-      "goals_excl_pen": 8,
-      "npxg_diff": 1.46,
-      "shots": 81,
-      "npxg_per_shot": 0.08,
-      "whoscored_rating": 6.53
+      "middle_third_pct": 41,
+      "opposition_third_pct": 31
     }
   },
   "Como": {
     "attack_sides": {
       "left_pct": 26,
-      "middle_pct": 34,
-      "right_pct": 40
+      "middle_pct": 33,
+      "right_pct": 41
+    },
+    "shots_zones_pg": {
+      "total": 21.7,
+      "out_of_box": 8.0,
+      "six_yard_box": 1.0,
+      "penalty_area": 12.7,
+      "rating": 6.78
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 5,
+      "penalty_area_pct": 59,
+      "outside_box_pct": 37
     },
     "action_zones": {
-      "own_third_pct": 25,
-      "middle_third_pct": 43,
-      "opposition_third_pct": 32
-    },
-    "goal_situations_pg": {
-      "total_pg": 1.5,
-      "open_play_pg": 1.0,
-      "counter_attack_pg": 0.2,
-      "set_piece_pg": 0.3,
-      "penalty_scored_pg": 0.0,
-      "own_goal_pg": 0.0,
-      "whoscored_rating": 6.74
-    },
-    "goal_types_total": {
-      "open_play": 6,
-      "counter_attack": 1,
-      "set_piece": 2,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "npxg": 12.43,
-      "goals_excl_pen": 9,
-      "npxg_diff": -3.43,
-      "shots": 136,
-      "npxg_per_shot": 0.09,
-      "whoscored_rating": 6.74
+      "own_third_pct": 28,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 31
     }
   }
 }

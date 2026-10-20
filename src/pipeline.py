@@ -343,7 +343,8 @@ def compute_predictive_titolarita(
     titolarita_storica,
     is_in_11,
     is_new_arrival,
-    fvm
+    fvm,
+    team_rounds=None
 ):
     """
     Calcolo quantitativo predittivo della titolarità (0.0 - 1.0) suddiviso in 3 metriche ponderate:
@@ -426,11 +427,15 @@ def compute_predictive_titolarita(
             )
             return 1.0, desc, 100, 100, int(round(prior * 100)), dettaglio
 
-        # Suddivisione rigorosa nelle 3 Fasce Temporali:
-        # Fascia 1: Ultime 3 giornate (es. se n_matches=5, sono G3, G4, G5)
-        last_3_rounds = [g for g in range(max(1, n_matches - 2), n_matches + 1)]
-        # Fascia 2: Giornate 4-8 all'indietro (es. G1 e G2)
-        mid_rounds = [g for g in range(max(1, n_matches - 7), max(1, n_matches - 2))]
+        # Suddivisione rigorosa nelle 3 Fasce Temporali basate sui turni effettivi:
+        if team_rounds and len(team_rounds) > 0:
+            last_3_rounds = team_rounds[-3:]
+            mid_rounds = team_rounds[-8:-3] if len(team_rounds) > 3 else []
+        else:
+            # Fascia 1: Ultime 3 giornate (es. se n_matches=5, sono G3, G4, G5)
+            last_3_rounds = [g for g in range(max(1, n_matches - 2), n_matches + 1)]
+            # Fascia 2: Giornate 4-8 all'indietro (es. G1 e G2)
+            mid_rounds = [g for g in range(max(1, n_matches - 7), max(1, n_matches - 2))]
         # Fascia 3: Storico 2025/26 / Prior Tattico
 
         def eval_round(g):
@@ -441,7 +446,8 @@ def compute_predictive_titolarita(
                 mins = int(h.get('minutes', 0))
                 return 0.60 if mins >= 25 else (0.35 if mins > 0 else 0.0)
             else:
-                if is_injured and g >= max(1, n_matches - 1):
+                latest_g = team_rounds[-1] if (team_rounds and len(team_rounds) > 0) else n_matches
+                if is_injured and g >= max(1, latest_g - 1):
                     return None # Non penalizzare se assente per infortunio
                 return 0.0
 
@@ -542,6 +548,29 @@ def run_master_pipeline():
     fotmob_2627_lookup = load_fotmob_2026_27_stats()
     team_stats_lookup = load_fotmob_team_stats()
 
+    pos_stats_path = os.path.join(ROOT_DIR, "config", "team_positional_stats.json")
+    if not os.path.exists(pos_stats_path):
+        pos_stats_path = os.path.join(ROOT_DIR, "config", "whoscored_teams_2627.json")
+    positional_stats_lookup = {}
+    if os.path.exists(pos_stats_path):
+        try:
+            with open(pos_stats_path, 'r', encoding='utf-8') as f:
+                positional_stats_lookup = json.load(f)
+            print(f"-> Metriche Posizionali & Corsie Tattiche caricate per {len(positional_stats_lookup)} club.")
+        except Exception as e:
+            print(f"[Pipeline] Errore caricamento metriche posizionali: {e}")
+
+    # Determina la prossima giornata di campionato (target prediction G8)
+    max_played_round = 0
+    for rec in voti_2627_lookup.values():
+        if isinstance(rec, dict):
+            for v_item in rec.get('giornate_dettaglio', []):
+                g_val = v_item.get('giornata', 0)
+                if g_val > max_played_round:
+                    max_played_round = g_val
+    target_round = (max_played_round + 1) if max_played_round > 0 else 8
+    print(f"-> Turni con voti ufficiali: G1..G{max_played_round}. Target Predittivo Matchup: G{target_round}.")
+
     alias_path = os.path.join(ROOT_DIR, "config", "player_aliases.json")
     aliases = {}
     if os.path.exists(alias_path):
@@ -560,11 +589,14 @@ def run_master_pipeline():
                     fotmob_2627_by_clean[clean_text(nm)] = fm_item
 
     team_matches_map = {}
+    team_rounds_map = {}
     reports_csv = os.path.join(ROOT_DIR, "data", "raw", "match_reports_players_g1_g2.csv")
     if os.path.exists(reports_csv):
         df_rep_raw = pd.read_csv(reports_csv)
         for t_name, grp in df_rep_raw.groupby('team'):
-            team_matches_map[t_name.upper()] = int(grp['match_name'].nunique())
+            t_rounds = sorted([int(x) for x in grp['giornata'].unique()])
+            team_matches_map[t_name.upper()] = len(t_rounds)
+            team_rounds_map[t_name.upper()] = t_rounds
 
     # Carica Calendario Ufficiale Serie A 2026/27 per arricchire voti_dettaglio
     cal_file = os.path.join(ROOT_DIR, "data", "processed", "calendario_serie_a_2026_27.json")
@@ -847,7 +879,17 @@ def run_master_pipeline():
         clean_sheets_2627 = 0
         parate_2627 = 0
         gol_subiti_2627 = 0
+        legni_2627 = 0
+        occasioni_create_2627 = 0
+        passaggi_riusciti_2627 = 0
+        passaggi_avanti_2627 = 0
+        crosses_2627 = 0
+        dribbles_2627 = 0
+        passes_final_third_2627 = 0
+        km_distance_2627 = 0.0
+        sprint_speed_max_2627 = 0.0
         n_team_matches = team_matches_map.get(team.upper(), 5)
+        team_rounds = team_rounds_map.get(team.upper(), [])
 
         is_new_arrival = (clean_pname == 'alaba' or pid == 59016 or 'alaba' in raw_name.lower())
 
@@ -860,9 +902,18 @@ def run_master_pipeline():
             assist_2627 = rep_data['assist_2627']
             tiri_2627 = rep_data['tiri_2627']
             tiri_porta_2627 = rep_data['tiri_porta_2627']
+            legni_2627 = rep_data.get('legni_2627', 0)
             key_passes_2627 = rep_data['key_passes_2627']
+            occasioni_create_2627 = rep_data.get('occasioni_create_2627', 0)
             recuperi_2627 = rep_data['recuperi_2627']
             falli_subiti_2627 = rep_data['falli_subiti_2627']
+            passaggi_riusciti_2627 = rep_data.get('passaggi_riusciti_2627', 0)
+            passaggi_avanti_2627 = rep_data.get('passaggi_avanti_2627', 0)
+            crosses_2627 = rep_data.get('crosses_2627', 0)
+            dribbles_2627 = rep_data.get('dribbles_2627', 0)
+            passes_final_third_2627 = rep_data.get('passes_final_third_2627', 0)
+            km_distance_2627 = rep_data.get('km_distance_2627', 0.0)
+            sprint_speed_max_2627 = rep_data.get('sprint_speed_max_2627', 0.0)
             amm_2627 = rep_data['ammonizioni_2627']
             esp_2627 = rep_data['espulsioni_2627']
             clean_sheets_2627 = rep_data['clean_sheets_2627']
@@ -881,7 +932,8 @@ def run_master_pipeline():
             titolarita_storica=titolarita_storica,
             is_in_11=is_in_11,
             is_new_arrival=is_new_arrival,
-            fvm=fvm
+            fvm=fvm,
+            team_rounds=team_rounds
         )
 
         # ---------------------------------------------------------------------
@@ -1068,6 +1120,7 @@ def run_master_pipeline():
         xg90_2627 = safe_float(fm26_stats.get('xg90_2627', fm26_stats.get('expected_goals_per_90'))) if (fm26_stats.get('xg90_2627') is not None or fm26_stats.get('expected_goals_per_90') is not None) else None
         xa_2627 = safe_float(fm26_stats.get('xa_2627', fm26_stats.get('expected_assists'))) if (fm26_stats.get('xa_2627') is not None or fm26_stats.get('expected_assists') is not None) else None
         xa90_2627 = safe_float(fm26_stats.get('xa90_2627', fm26_stats.get('expected_assists_per_90'))) if (fm26_stats.get('xa90_2627') is not None or fm26_stats.get('expected_assists_per_90') is not None) else None
+        xg_xa90_2627 = safe_float(fm26_stats.get('xg_xa90_2627', fm26_stats.get('_expected_goals_and_expected_assists_per_90'))) if (fm26_stats.get('xg_xa90_2627') is not None or fm26_stats.get('_expected_goals_and_expected_assists_per_90') is not None) else None
         xgot_2627 = safe_float(fm26_stats.get('xgot_2627', fm26_stats.get('expected_goalsontarget'))) if (fm26_stats.get('xgot_2627') is not None or fm26_stats.get('expected_goalsontarget') is not None) else None
         big_chances_created_2627 = safe_int(fm26_stats.get('big_chances_created_2627', fm26_stats.get('big_chance_created'))) if (fm26_stats.get('big_chances_created_2627') is not None or fm26_stats.get('big_chance_created') is not None) else None
         chances_created_2627 = safe_int(fm26_stats.get('chances_created_2627', fm26_stats.get('total_att_assist'))) if (fm26_stats.get('chances_created_2627') is not None or fm26_stats.get('total_att_assist') is not None) else None
@@ -1320,9 +1373,18 @@ def run_master_pipeline():
             "assist_2627": assist_2627,
             "tiri_2627": tiri_2627,
             "tiri_porta_2627": tiri_porta_2627,
+            "legni_2627": legni_2627,
             "key_passes_2627": key_passes_2627,
+            "occasioni_create_2627": occasioni_create_2627,
             "recuperi_2627": recuperi_2627,
             "falli_subiti_2627": falli_subiti_2627,
+            "passaggi_riusciti_2627": passaggi_riusciti_2627,
+            "passaggi_avanti_2627": passaggi_avanti_2627,
+            "crosses_2627": crosses_2627,
+            "dribbles_2627": dribbles_2627,
+            "passes_final_third_2627": passes_final_third_2627,
+            "km_distance_2627": km_distance_2627,
+            "sprint_speed_max_2627": sprint_speed_max_2627,
             "amm_2627": amm_2627,
             "esp_2627": esp_2627,
             "clean_sheets_2627": clean_sheets_2627,
@@ -1340,6 +1402,7 @@ def run_master_pipeline():
             "xg90_2627": xg90_2627,
             "xa_2627": xa_2627,
             "xa90_2627": xa90_2627,
+            "xg_xa90_2627": xg_xa90_2627,
             "xgot_2627": xgot_2627,
             "big_chances_created_2627": big_chances_created_2627,
             "chances_created_2627": chances_created_2627,
@@ -1452,7 +1515,12 @@ def run_master_pipeline():
         sub_data = compute_sub_impact_metrics(temp_record, tactical_db)
         temp_record.update(sub_data)
 
-        vuln_data = compute_matchup_vulnerability(temp_record, cal_data, team_stats_lookup, current_round=6)
+        vuln_data = compute_matchup_vulnerability(
+            temp_record, cal_data, team_stats_lookup,
+            current_round=target_round,
+            tactical_db=tactical_db,
+            positional_stats_dict=positional_stats_lookup
+        )
         temp_record["matchup_vulnerability"] = vuln_data
 
         processed_players.append(temp_record)
@@ -1473,6 +1541,16 @@ def run_master_pipeline():
 
     # Associa a ogni calciatore il suo sostituto naturale / compagno di staffetta e viceversa
     processed_players = compute_substitute_pairings(processed_players, tactical_db, reports_csv)
+
+    # 2° Passaggio: Arricchimento Matchup Asimmetrico con statistiche reali del difensore rivale
+    for p in processed_players:
+        p["matchup_vulnerability"] = compute_matchup_vulnerability(
+            p, cal_data, team_stats_lookup,
+            current_round=target_round,
+            tactical_db=tactical_db,
+            positional_stats_dict=positional_stats_lookup,
+            players_master=processed_players
+        )
 
     # Calcola Griglia Portieri
     gk_data = extract_gk_grid()

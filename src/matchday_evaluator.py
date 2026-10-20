@@ -25,6 +25,7 @@ OUTPUT_PATH = os.path.join(ROOT_DIR, "data", "processed", "matchday_advice_accur
 FEEDBACK_LOG_PATH = os.path.join(ROOT_DIR, "data", "processed", "matchday_learning_feedback.json")
 BIAS_CORRECTIONS_PATH = os.path.join(ROOT_DIR, "config", "ai_bias_corrections.json")
 EUROPEAN_CUPS_PATH = os.path.join(ROOT_DIR, "config", "european_cups.json")
+MATCHDAY_CONSENSUS_PATH = os.path.join(ROOT_DIR, "config", "matchday_consensus.json")
 
 LEAGUE_AVG_XGA = 6.03
 LEAGUE_AVG_XG = 6.04
@@ -44,6 +45,128 @@ def _get_european_cups():
         else:
             _EUROPEAN_CUPS_CACHE = {}
     return _EUROPEAN_CUPS_CACHE
+
+
+_CONSENSUS_CACHE = None
+
+def _get_matchday_consensus():
+    global _CONSENSUS_CACHE
+    if _CONSENSUS_CACHE is None:
+        if os.path.exists(MATCHDAY_CONSENSUS_PATH):
+            try:
+                with open(MATCHDAY_CONSENSUS_PATH, 'r', encoding='utf-8') as f:
+                    _CONSENSUS_CACHE = json.load(f)
+            except Exception:
+                _CONSENSUS_CACHE = {}
+        else:
+            _CONSENSUS_CACHE = {}
+    return _CONSENSUS_CACHE
+
+
+_LEARNED_FEEDBACK_CACHE = None
+
+def _get_learned_feedback():
+    global _LEARNED_FEEDBACK_CACHE
+    if _LEARNED_FEEDBACK_CACHE is None:
+        if os.path.exists(FEEDBACK_LOG_PATH):
+            try:
+                with open(FEEDBACK_LOG_PATH, 'r', encoding='utf-8') as f:
+                    _LEARNED_FEEDBACK_CACHE = json.load(f)
+            except Exception:
+                _LEARNED_FEEDBACK_CACHE = {}
+        else:
+            _LEARNED_FEEDBACK_CACHE = {}
+    return _LEARNED_FEEDBACK_CACHE
+
+
+def get_player_matchday_status(player_name, team_name, round_num=None):
+    """
+    Interroga il consensus ufficiale a 4 fonti (Fantacalcio.it, Gazzetta, Sky, SOS Fanta)
+    da config/matchday_consensus.json se disponibile per il round indicato.
+    """
+    consensus = _get_matchday_consensus()
+    if not consensus:
+        return {'in_consensus': False, 'status': 'UNKNOWN', 'consensus_pct': None, 'is_injured': False, 'ballot_verdict': ''}
+
+    cons_round = consensus.get('round')
+    if round_num is not None and cons_round is not None and int(round_num) != int(cons_round):
+        return {'in_consensus': False, 'status': 'UNKNOWN', 'consensus_pct': None, 'is_injured': False, 'ballot_verdict': ''}
+
+    p_name_lower = (player_name or "").strip().lower()
+    t_name_lower = (team_name or "").strip().lower()
+
+    for m in consensus.get('matches', []):
+        for side in ['home', 'away']:
+            side_data = m.get(side, {})
+            side_team = (side_data.get('team') or '').strip().lower()
+            if t_name_lower and side_team and side_team != t_name_lower:
+                continue
+
+            # 1. Infortunati accertati
+            for inj in side_data.get('injuries', []):
+                if not inj: continue
+                inj_name = ((inj.get('name') or '') if isinstance(inj, dict) else str(inj or '')).strip().lower()
+                if inj_name and (inj_name in p_name_lower or p_name_lower in inj_name):
+                    return {'in_consensus': True, 'status': 'INJURED', 'consensus_pct': 0.0, 'is_injured': True, 'ballot_verdict': 'Infortunato accertato'}
+
+            # 2. Titolari confermati dalle 4 fonti
+            for st in side_data.get('starters', []):
+                if not st: continue
+                st_name = ((st.get('name') or '') if isinstance(st, dict) else str(st or '')).strip().lower()
+                if st_name and (st_name in p_name_lower or p_name_lower in st_name):
+                    pct = float(st.get('consensus_pct', 85) or 85)
+                    is_inj = bool(st.get('is_injured'))
+                    return {
+                        'in_consensus': True,
+                        'status': 'STARTER',
+                        'consensus_pct': pct,
+                        'is_injured': is_inj,
+                        'ballot_verdict': st.get('sub_txt', '')
+                    }
+
+            # 3. Ballottaggi aperti
+            for bl in side_data.get('ballots', []):
+                if not bl:
+                    continue
+                p1 = bl.get('player1', {}) or {}
+                p2 = bl.get('player2', {}) or {}
+                p1_name = ((p1.get('name') or '') if isinstance(p1, dict) else str(p1 or '')).strip().lower()
+                p2_name = ((p2.get('name') or '') if isinstance(p2, dict) else str(p2 or '')).strip().lower()
+                v_tag = (bl.get('verdict', {}) or {}).get('tag', '')
+
+                if p1_name and (p1_name in p_name_lower or p_name_lower in p1_name):
+                    pct = float(bl.get('consensus_pct1', 50) or 50)
+                    return {
+                        'in_consensus': True,
+                        'status': 'BALLOT',
+                        'consensus_pct': pct,
+                        'is_injured': bool(p1.get('is_injured')),
+                        'ballot_verdict': v_tag
+                    }
+                elif p2_name and (p2_name in p_name_lower or p_name_lower in p2_name):
+                    pct = float(bl.get('consensus_pct2', 50) or 50)
+                    return {
+                        'in_consensus': True,
+                        'status': 'BALLOT',
+                        'consensus_pct': pct,
+                        'is_injured': bool(p2.get('is_injured')),
+                        'ballot_verdict': v_tag
+                    }
+
+            # 4. Riserve
+            for res in side_data.get('reserves', []):
+                if not res: continue
+                res_name = ((res.get('name') or '') if isinstance(res, dict) else str(res or '')).strip().lower()
+                if res_name and (res_name in p_name_lower or p_name_lower in res_name):
+                    return {
+                        'in_consensus': True,
+                        'status': 'RESERVE',
+                        'consensus_pct': 30.0,
+                        'is_injured': False,
+                        'ballot_verdict': 'Panchina prevista'
+                    }
+
+    return {'in_consensus': False, 'status': 'UNKNOWN', 'consensus_pct': None, 'is_injured': False, 'ballot_verdict': ''}
 
 
 TEAM_RATINGS_PATH = os.path.join(ROOT_DIR, "config", "team_ratings.json")
@@ -91,18 +214,82 @@ def get_team_profile(team, team_stats):
     }
 
 
-def calculate_advice_score(player, match_info, team_stats):
+def is_high_ceiling_jolly(player):
+    """
+    Riconosce i calciatori 'Jolly Spaccapartita' ad alto ceiling:
+    - Non portieri
+    - Con comprovata pericolosità offensiva, bonus realizzati o fantamedia di vertice
+    """
+    if player.get('role') == 'P' or player.get('is_injured'):
+        return False
+    fm = float(player.get('fm_2627') or player.get('fm') or 6.0)
+    gol = float(player.get('gol_2627') or 0.0)
+    ass = float(player.get('assist_2627') or 0.0)
+    xg = float(player.get('xg90_2627') or player.get('xg90') or 0.0)
+    xa = float(player.get('xa90_2627') or player.get('xa90') or 0.0)
+    ovr = float(player.get('ovr') or 70.0)
+    adv_type = str(player.get('ai_advice_type', '')).lower()
+
+    has_top_fm = (fm >= 7.2)
+    has_bonus = (gol >= 1 or ass >= 1)
+    has_high_threat = ((xg + xa) >= 0.22)
+    is_elite = (ovr >= 80 or player.get('is_oop') or adv_type in ['hot', 'top', 'supersub'])
+    return (has_top_fm or has_bonus) and (has_high_threat or is_elite)
+
+
+def calculate_advice_score(player, match_info, team_stats, return_details=False):
     """Calcola il punteggio predittivo per un calciatore nella specifica giornata."""
     if not match_info or player.get('is_injured'):
-        return -999.0
-    tit = float(player.get('titolarita', 50))
-    if tit < 50:
-        return -500.0
-    role = player.get('role', 'C')
-    if role == 'P' and tit < 70:
-        return -500.0
+        return (-999.0, 'SCONSIGLIATO', 'Infortunato', '') if return_details else -999.0
 
+    round_num = match_info.get('round_num')
     team = player.get('team')
+    name = player.get('name', '')
+    role = player.get('role', 'C')
+
+    # Incrocio con consensus 4 fonti ufficiali (Fantacalcio.it, Gazzetta, Sky, SOS Fanta)
+    c_status = get_player_matchday_status(name, team, round_num)
+    if c_status.get('is_injured'):
+        return (-999.0, 'SCONSIGLIATO', 'Infortunato', '') if return_details else -999.0
+
+    # Calcolo titolarità effettiva con fallback su presenze/starts reali
+    tit = float(player.get('titolarita') or 0)
+    starts = int(player.get('starts_2627') or 0)
+    pres = int(player.get('presenze_2627') or 0)
+    if tit <= 0 and starts > 0:
+        tit = min(95.0, (starts / 7.0) * 100.0)
+    elif tit <= 0 and pres > 0:
+        tit = min(80.0, (pres / 7.0) * 85.0)
+    elif tit <= 0:
+        tit = 50.0
+
+    if c_status.get('in_consensus'):
+        c_pct = c_status['consensus_pct']
+        if c_status['status'] == 'STARTER':
+            effective_tit = max(tit, c_pct)
+        elif c_status['status'] == 'BALLOT':
+            effective_tit = c_pct
+        elif c_status['status'] == 'RESERVE':
+            effective_tit = 25.0
+        else:
+            effective_tit = tit
+    else:
+        effective_tit = tit
+
+    high_ceiling = is_high_ceiling_jolly(player)
+
+    # Filtri di sicurezza differenziati:
+    # Portieri: devono essere titolari certi (>= 70%)
+    if role == 'P' and effective_tit < 70:
+        return (-500.0, 'SCONSIGLIATO', 'Panchina', '') if return_details else -500.0
+
+    # Giocatori di movimento:
+    # Se il giocatore ha un Alto Ceiling (Jolly/Super-Sub con gol/assist o FM alta),
+    # tolleriamo un ballottaggio o ingresso a gara in corso fino al 30% di titolarità
+    min_tit = 30.0 if high_ceiling else 50.0
+    if effective_tit < min_tit:
+        return (-500.0, 'SCONSIGLIATO', 'Panchina', '') if return_details else -500.0
+
     opp = match_info.get('opp')
     is_home = match_info.get('is_home', True)
 
@@ -179,7 +366,6 @@ def calculate_advice_score(player, match_info, team_stats):
         score += (min(gol, 4) * 3.5) + (min(ass, 3) * 2.5)
 
     # Penalità stanchezza e allerta turnover Coppe Europee infrasettimanali
-    round_num = match_info.get('round_num')
     if round_num and score > 0:
         euro_data = _get_european_cups()
         comps = euro_data.get('competitions', {})
@@ -192,7 +378,44 @@ def calculate_advice_score(player, match_info, team_stats):
                     score -= fatigue_pen
                     break
 
-    return round(score, 1)
+    # Pesi appresi dal feedback loop di autovalutazione
+    feedback = _get_learned_feedback()
+    learned_biases = feedback.get('learned_bias_adjustments', {})
+    tit_boost = float(learned_biases.get('titolarita_weight_boost', 1.0))
+    def_caution = float(learned_biases.get('fragile_defense_caution', 1.0))
+
+    advice_category = 'PILASTRO'
+    advice_tag = '🔒 TITOLARE CERTO'
+    advice_note = 'Titolare inamovibile con voto garantito'
+
+    if score > 0:
+        if effective_tit >= 75:
+            # Profilo Pilastro: titolarità sicura
+            advice_category = 'PILASTRO'
+            advice_tag = '🔒 TITOLARE CERTO'
+            advice_note = 'Titolare inamovibile con voto garantito'
+            score += (effective_tit - 75.0) * 0.15
+        elif high_ceiling:
+            # Profilo Jolly Spaccapartita: alto bonus ma ballottaggio/subentro
+            advice_category = 'JOLLY_CEILING'
+            advice_tag = '⚡ JOLLY SPACCAPARTITA'
+            advice_note = 'Alto Ceiling da subentrante: bonus elevato, schierare con copertura sicura'
+            score -= ((75.0 - effective_tit) ** 0.95) * (0.35 * tit_boost)
+        else:
+            # Rotazione ordinaria / riserva a basso ceiling
+            advice_category = 'ROTAZIONE'
+            advice_tag = '⚠️ BALLOTTAGGIO'
+            advice_note = 'Ballottaggio aperto con minutaggio a rischio'
+            score -= ((75.0 - effective_tit) ** 1.15) * (0.45 * tit_boost)
+
+        if def_caution < 1.0 and role in ['P', 'D']:
+            if my.get('def_vuln', 1.0) > 1.05:
+                score *= def_caution
+
+    final_score = round(score, 1)
+    if return_details:
+        return (final_score, advice_category, advice_tag, advice_note)
+    return final_score
 
 
 def evaluate_round(round_num, players, calendar, team_stats):
@@ -211,12 +434,15 @@ def evaluate_round(round_num, players, calendar, team_stats):
         team = p.get('team')
         m_info = fixture_map.get(team)
         if m_info:
-            score = calculate_advice_score(p, m_info, team_stats)
+            score, cat, tag, note = calculate_advice_score(p, m_info, team_stats, return_details=True)
             if score > 0:
                 by_role[p.get('role', 'C')].append({
                     'score': score,
                     'player': p,
-                    'match_info': m_info
+                    'match_info': m_info,
+                    'category': cat,
+                    'tag': tag,
+                    'note': note
                 })
 
     role_results = {}
@@ -235,6 +461,8 @@ def evaluate_round(round_num, players, calendar, team_stats):
             p = item['player']
             m_info = item['match_info']
             score = item['score']
+            cat = item.get('category', 'PILASTRO')
+            tag = item.get('tag', '🔒 TITOLARE CERTO')
 
             v_obj = next((v for v in (p.get('voti_dettaglio_2627') or []) if v.get('giornata') == round_num), None)
             voto = float(v_obj.get('voto')) if (v_obj and v_obj.get('voto') is not None) else None
@@ -268,7 +496,10 @@ def evaluate_round(round_num, players, calendar, team_stats):
                     else:
                         error_category = "Voto ordinario senza bonus (6.0)"
             else:
-                error_category = "Panchina inattesa / Senza Voto (S.V.)"
+                if cat == 'JOLLY_CEILING':
+                    error_category = "S.V. (Jolly con copertura in panchina)"
+                else:
+                    error_category = "Panchina inattesa / Senza Voto (S.V.)"
 
             total_advice += 1
             if is_hit: 
@@ -279,6 +510,7 @@ def evaluate_round(round_num, players, calendar, team_stats):
                     'player': p.get('name'),
                     'team': p.get('team'),
                     'role': role,
+                    'category': cat,
                     'reason': error_category or "Sconosciuto"
                 })
 
@@ -296,6 +528,8 @@ def evaluate_round(round_num, players, calendar, team_stats):
                 'opponent': m_info.get('opp'),
                 'is_home': m_info.get('is_home'),
                 'score_ai': score,
+                'category': cat,
+                'tag': tag,
                 'voto_reale': voto,
                 'fantavoto_reale': fv,
                 'bonus_malus': bm_str,

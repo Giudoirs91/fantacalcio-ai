@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-20T10:52:43.640540",
+  "timestamp": "2026-10-20T19:23:59.352222",
   "rounds_analyzed": [
     1,
     2,
@@ -9,20 +9,29 @@
     6,
     7
   ],
-  "overall_hit_rate": 60.7,
+  "overall_hit_rate": 61.9,
   "role_hit_rates": {
-    "P": 66.7,
-    "D": 52.4,
+    "P": 61.9,
+    "D": 61.9,
     "C": 61.9,
     "A": 61.9
   },
-  "miss_count": 33,
+  "miss_count": 32,
   "misses_diagnostic": [
     {
       "round": 1,
       "player": "Martinez Jo.",
       "team": "Inter",
       "role": "P",
+      "category": "PILASTRO",
+      "reason": "Malus disciplinare decisivo"
+    },
+    {
+      "round": 1,
+      "player": "Maignan",
+      "team": "Milan",
+      "role": "P",
+      "category": "PILASTRO",
       "reason": "Malus disciplinare decisivo"
     },
     {
@@ -30,6 +39,15 @@
       "player": "Dimarco",
       "team": "Inter",
       "role": "D",
+      "category": "PILASTRO",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 1,
+      "player": "Tavares N.",
+      "team": "Lazio",
+      "role": "D",
+      "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
@@ -37,41 +55,31 @@
       "player": "Carlos Augusto",
       "team": "Inter",
       "role": "D",
-      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+      "category": "JOLLY_CEILING",
+      "reason": "S.V. (Jolly con copertura in panchina)"
     },
     {
       "round": 1,
-      "player": "Tavares N.",
-      "team": "Lazio",
-      "role": "D",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
-      "round": 1,
-      "player": "Moreira",
-      "team": "Milan",
+      "player": "Paz N.",
+      "team": "Como",
       "role": "C",
-      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+      "category": "PILASTRO",
+      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 1,
       "player": "Thuram",
       "team": "Inter",
       "role": "A",
+      "category": "PILASTRO",
       "reason": "Panchina inattesa / Senza Voto (S.V.)"
-    },
-    {
-      "round": 1,
-      "player": "Bonny",
-      "team": "Inter",
-      "role": "A",
-      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 2,
       "player": "Rabiot",
       "team": "Milan",
       "role": "C",
+      "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
@@ -79,20 +87,23 @@
       "player": "Pulisic",
       "team": "Milan",
       "role": "C",
-      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+      "category": "JOLLY_CEILING",
+      "reason": "S.V. (Jolly con copertura in panchina)"
     },
     {
       "round": 2,
       "player": "Moreira",
       "team": "Milan",
       "role": "C",
-      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+      "category": "JOLLY_CEILING",
+      "reason": "S.V. (Jolly con copertura in panchina)"
     },
     {
       "round": 2,
       "player": "Thuram",
       "team": "Inter",
       "role": "A",
+      "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
@@ -100,27 +111,15 @@
       "player": "Palmisani",
       "team": "Frosinone",
       "role": "P",
+      "category": "PILASTRO",
       "reason": "Collasso difensivo di squadra"
-    },
-    {
-      "round": 3,
-      "player": "Molina N.",
-      "team": "Roma",
-      "role": "D",
-      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 3,
       "player": "Mastantuono",
       "team": "Fiorentina",
       "role": "C",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
-      "round": 3,
-      "player": "Mora",
-      "team": "Roma",
-      "role": "C",
+      "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
@@ -128,6 +127,7 @@
       "player": "Malen",
       "team": "Roma",
       "role": "A",
+      "category": "JOLLY_CEILING",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
@@ -135,20 +135,31 @@
       "player": "Vicario",
       "team": "Juventus",
       "role": "P",
+      "category": "PILASTRO",
       "reason": "Collasso difensivo di squadra"
-    },
-    {
-      "round": 4,
-      "player": "Dimarco",
-      "team": "Inter",
-      "role": "D",
-      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 4,
       "player": "Tavares N.",
       "team": "Lazio",
       "role": "D",
+      "category": "PILASTRO",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 4,
+      "player": "Dimarco",
+      "team": "Inter",
+      "role": "D",
+      "category": "PILASTRO",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 4,
+      "player": "Krstovic",
+      "team": "Atalanta",
+      "role": "A",
+      "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
@@ -156,6 +167,7 @@
       "player": "Mangas",
       "team": "Monza",
       "role": "D",
+      "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
@@ -163,6 +175,7 @@
       "player": "Kamara H.",
       "team": "Udinese",
       "role": "D",
+      "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
@@ -170,6 +183,7 @@
       "player": "Malen",
       "team": "Roma",
       "role": "A",
+      "category": "JOLLY_CEILING",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
@@ -177,6 +191,7 @@
       "player": "Raimondo",
       "team": "Frosinone",
       "role": "A",
+      "category": "PILASTRO",
       "reason": "Malus disciplinare decisivo"
     },
     {
@@ -184,6 +199,7 @@
       "player": "Vicario",
       "team": "Juventus",
       "role": "P",
+      "category": "PILASTRO",
       "reason": "Malus disciplinare decisivo"
     },
     {
@@ -191,20 +207,31 @@
       "player": "Frattesi",
       "team": "Lazio",
       "role": "C",
+      "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 6,
-      "player": "Malen",
-      "team": "Roma",
+      "player": "Krstovic",
+      "team": "Atalanta",
       "role": "A",
-      "reason": "Prestazione gravemente insufficiente"
+      "category": "PILASTRO",
+      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 7,
       "player": "Vicario",
       "team": "Juventus",
       "role": "P",
+      "category": "PILASTRO",
+      "reason": "Collasso difensivo di squadra"
+    },
+    {
+      "round": 7,
+      "player": "Caprile",
+      "team": "Cagliari",
+      "role": "P",
+      "category": "PILASTRO",
       "reason": "Collasso difensivo di squadra"
     },
     {
@@ -212,34 +239,31 @@
       "player": "Meret",
       "team": "Napoli",
       "role": "P",
+      "category": "ROTAZIONE",
       "reason": "Malus disciplinare decisivo"
     },
     {
       "round": 7,
-      "player": "Caprile",
-      "team": "Cagliari",
-      "role": "P",
-      "reason": "Collasso difensivo di squadra"
+      "player": "Dimarco",
+      "team": "Inter",
+      "role": "D",
+      "category": "PILASTRO",
+      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 7,
-      "player": "Kamara H.",
+      "player": "Ekkelenkamp",
       "team": "Udinese",
-      "role": "D",
-      "reason": "Malus disciplinare decisivo"
-    },
-    {
-      "round": 7,
-      "player": "Molina N.",
-      "team": "Roma",
-      "role": "D",
-      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+      "role": "C",
+      "category": "PILASTRO",
+      "reason": "Prestazione gravemente insufficiente"
     },
     {
       "round": 7,
       "player": "De Bruyne",
       "team": "Napoli",
       "role": "C",
+      "category": "JOLLY_CEILING",
       "reason": "Prestazione gravemente insufficiente"
     },
     {
@@ -247,7 +271,8 @@
       "player": "Malen",
       "team": "Roma",
       "role": "A",
-      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+      "category": "JOLLY_CEILING",
+      "reason": "S.V. (Jolly con copertura in panchina)"
     }
   ],
   "learned_bias_adjustments": {

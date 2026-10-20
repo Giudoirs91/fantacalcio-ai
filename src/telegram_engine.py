@@ -74,13 +74,13 @@ def get_round_fixtures(round_num):
     matches_list = r_data.get('matches', [])
     round_date = r_data.get('date', '')
     for m in matches_list:
-        fixture_map[m['home']] = {'opp': m['away'], 'is_home': True, 'label': f"vs {m['away']} 🏠"}
-        fixture_map[m['away']] = {'opp': m['home'], 'is_home': False, 'label': f"@ {m['home']} ✈️"}
+        fixture_map[m['home']] = {'opp': m['away'], 'is_home': True, 'label': f"vs {m['away']} 🏠", 'round_num': round_num}
+        fixture_map[m['away']] = {'opp': m['home'], 'is_home': False, 'label': f"@ {m['home']} ✈️", 'round_num': round_num}
     return fixture_map, round_date, matches_list
 
 
 def get_top_advice_by_role(round_num):
-    """Calcola i 4 top consigliati dell'AI per ruolo per la giornata."""
+    """Calcola i top consigliati (Pilastri certi + Jolly Spaccapartita) dell'AI per ruolo per la giornata."""
     from src.matchday_evaluator import calculate_advice_score
     if not os.path.exists(PLAYERS_PATH):
         return {}
@@ -92,40 +92,65 @@ def get_top_advice_by_role(round_num):
             team_stats = json.load(f)
 
     fixture_map, _, _ = get_round_fixtures(round_num)
-    by_role = {'P': [], 'D': [], 'C': [], 'A': []}
+    by_role_pilastri = {'P': [], 'D': [], 'C': [], 'A': []}
+    by_role_jollies = {'P': [], 'D': [], 'C': [], 'A': []}
 
     for p in players:
         team = p.get('team')
         fix = fixture_map.get(team)
         role = p.get('role', 'C')
-        min_tit = 70.0 if role == 'P' else 50.0
-        p_tit = float(p.get('titolarita') if p.get('titolarita') is not None else 0)
-        if fix and not p.get('is_injured') and p_tit >= min_tit:
-            score = calculate_advice_score(p, fix, team_stats)
-            by_role[role].append({
-                'player': p,
-                'score': score,
-                'fixture': fix
-            })
+        if fix and not p.get('is_injured'):
+            score, cat, tag, note = calculate_advice_score(p, fix, team_stats, return_details=True)
+            if score > 0:
+                item = {
+                    'player': p,
+                    'score': score,
+                    'fixture': fix,
+                    'category': cat,
+                    'tag': tag,
+                    'note': note
+                }
+                if cat == 'PILASTRO':
+                    by_role_pilastri[role].append(item)
+                elif cat == 'JOLLY_CEILING':
+                    by_role_jollies[role].append(item)
 
     top_advice = {}
-    for role, plist in by_role.items():
+    for role in ['P', 'D', 'C', 'A']:
+        plist = by_role_pilastri[role]
         plist.sort(key=lambda x: -x['score'])
-        # Deduplicate goalkeepers by club
-        if role == 'P':
-            seen_teams = set()
-            filtered_p = []
-            for item in plist:
-                t = item['player'].get('team')
-                if t in seen_teams:
-                    continue
-                seen_teams.add(t)
-                filtered_p.append(item)
-                if len(filtered_p) == 3:
+        seen_names = set()
+        seen_teams = set()
+        filtered = []
+        for item in plist:
+            name = item['player'].get('name')
+            t = item['player'].get('team')
+            if name in seen_names or (role == 'P' and t in seen_teams):
+                continue
+            seen_names.add(name)
+            if role == 'P': seen_teams.add(t)
+            filtered.append(item)
+            if len(filtered) == 3:
+                break
+        top_advice[role] = filtered
+
+        # Seleziona il miglior Jolly Spaccapartita ad alto ceiling
+        jlist = by_role_jollies[role]
+        if jlist:
+            def _jolly_ceiling_rank(x):
+                p_item = x['player']
+                fm = float(p_item.get('fm_2627') or p_item.get('fm') or 6.0)
+                g = float(p_item.get('gol_2627') or 0.0)
+                a = float(p_item.get('assist_2627') or 0.0)
+                return x['score'] + ((fm - 6.0) * 8.0) + (g * 4.0) + (a * 2.0)
+
+            jlist.sort(key=_jolly_ceiling_rank, reverse=True)
+            for jitem in jlist:
+                jname = jitem['player'].get('name')
+                if jname not in seen_names:
+                    top_advice[f"{role}_jolly"] = jitem
                     break
-            top_advice[role] = filtered_p
-        else:
-            top_advice[role] = plist[:3]
+
     return top_advice
 
 
@@ -284,6 +309,23 @@ def build_friday_briefing_text(round_num):
 
     msg += f"⚡ *ATTACCANTE BOMBER:* *{p_fw.get('name', 'N/D')}* ({p_fw.get('team', '')})\n"
     msg += f"   ↳ _{f_fw.get('label', '')} • OVR {p_fw.get('ovr', 90)}: volume di xG e rigori nei piedi_\n\n"
+
+    # Sezione Jolly Spaccapartita (Alto Ceiling con Copertura)
+    j_df = top_advice.get('D_jolly', {}).get('player')
+    j_mf = top_advice.get('C_jolly', {}).get('player')
+    j_fw = top_advice.get('A_jolly', {}).get('player')
+    if j_df or j_mf or j_fw:
+        msg += f"💥 *I JOLLY SPACCAPARTITA (Alto Ceiling da schierare con Copertura):*\n"
+        if j_df:
+            fm_d = float(j_df.get('fm_2627') or j_df.get('fm') or 0)
+            msg += f"   🛡️ *{j_df.get('name')}* ({j_df.get('team')} • FM {fm_d:.1f}): spinta e bonus a gara in corso! _Schierare con copertura sicura al 100% in panchina._\n"
+        if j_mf:
+            fm_m = float(j_mf.get('fm_2627') or j_mf.get('fm') or 0)
+            msg += f"   🪄 *{j_mf.get('name')}* ({j_mf.get('team')} • FM {fm_m:.1f}): inserimenti e bonus letali anche da subentrante! _Copriti con riserva garantita._\n"
+        if j_fw:
+            fm_a = float(j_fw.get('fm_2627') or j_fw.get('fm') or 0)
+            msg += f"   ⚡ *{j_fw.get('name')}* ({j_fw.get('team')} • FM {fm_a:.1f}): potenziale +3 devastante su difese stanche!\n"
+        msg += "\n"
 
     msg += f"══════════════════════════════\n"
     msg += f"⚔️ *DUBBI DI FORMAZIONE? CHI SCHIERO?*\n"

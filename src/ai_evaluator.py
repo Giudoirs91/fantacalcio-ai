@@ -31,20 +31,34 @@ MIN_SEGMENT_SIZE = 8
 LEARNING_RATE = 0.5
 
 ADVICE_THRESHOLDS = {
-    "top":           lambda fm, pres, rounds: fm > 8.0 and pres >= rounds * 0.80,
-    "leader":        lambda fm, pres, rounds: fm > 7.0 and pres >= rounds * 0.70,
-    "buy":           lambda fm, pres, rounds: fm > 6.5 or pres >= rounds * 0.65,
-    "sleeper":       lambda fm, pres, rounds: fm > 7.0,
-    "warning":       lambda fm, pres, rounds: fm < 6.5 or pres < rounds * 0.60,
-    "flop":          lambda fm, pres, rounds: fm < 6.0,
-    "avoid":         lambda fm, pres, rounds: fm < 5.5 or pres < rounds * 0.40,
-    "titolarissimo": lambda fm, pres, rounds: pres >= rounds * 0.90,
-    "titolare":      lambda fm, pres, rounds: pres >= rounds * 0.70,
-    "hot":           lambda fm, pres, rounds: fm >= 7.0 and pres >= rounds * 0.60,
-    "supersub":      lambda fm, pres, rounds: pres >= rounds * 0.60 and fm >= 6.0,
-    "benched":       lambda fm, pres, rounds: pres < rounds * 0.35,
-    "rotation":      lambda fm, pres, rounds: pres >= rounds * 0.40 and pres < rounds * 0.75,
-    "lowcost":       lambda fm, pres, rounds: pres >= rounds * 0.30,
+    # Top: tarato sui percentili reali della Serie A (P >= 5.8, D >= 6.8, C >= 7.2, A >= 7.6 con titolarità continua)
+    "top":           lambda fm, pres, rounds, role="": (fm >= (5.8 if role == "P" else (6.8 if role == "D" else (7.2 if role == "C" else 7.6)))) and pres >= rounds * 0.70 if role else (fm >= 7.3 and pres >= rounds * 0.70),
+    # Leader: colonna portante di rendimento e titolarità garantita
+    "leader":        lambda fm, pres, rounds, role="": (fm >= (6.0 if role in ["P", "D"] else 6.5) and pres >= rounds * 0.70),
+    # Buy: acquisto a rendimento solido o presenze stabili
+    "buy":           lambda fm, pres, rounds, role="": (fm >= 6.4 or pres >= rounds * 0.65),
+    # Sleeper: scommessa a basso costo che sovraperforma (fm >= 6.0 per P/D, >= 6.4 per C/A con impiego significativo)
+    "sleeper":       lambda fm, pres, rounds, role="": (fm >= (6.0 if role in ["P", "D"] else 6.4) and pres >= rounds * 0.40),
+    # Warning: giocatore a rischio insufficienza o panchina frequente
+    "warning":       lambda fm, pres, rounds, role="": (fm < 6.5 or pres < rounds * 0.60),
+    # Flop: rendimento gravemente sotto la media
+    "flop":          lambda fm, pres, rounds, role="": (fm < 6.0),
+    # Avoid: profilo da evitare assolutamente per presenze o fantamedia
+    "avoid":         lambda fm, pres, rounds, role="": (fm < 5.8 or pres < rounds * 0.40),
+    # Titolarissimo: certezza quasi assoluta di minutaggio
+    "titolarissimo": lambda fm, pres, rounds, role="": (pres >= rounds * 0.85),
+    # Titolare: maglia da titolare garantita
+    "titolare":      lambda fm, pres, rounds, role="": (pres >= rounds * 0.70),
+    # Hot: momento di forma / bonus
+    "hot":           lambda fm, pres, rounds, role="": (fm >= 6.8 and pres >= rounds * 0.50),
+    # Supersub: dodicesimo uomo di grande impatto
+    "supersub":      lambda fm, pres, rounds, role="": (pres >= rounds * 0.50 and fm >= 6.0),
+    # Benched: riserva fissa
+    "benched":       lambda fm, pres, rounds, role="": (pres < rounds * 0.40),
+    # Rotation: rotazione sistematica
+    "rotation":      lambda fm, pres, rounds, role="": (pres >= rounds * 0.35 and pres < rounds * 0.75),
+    # Lowcost: titolare o riserva low-cost a prezzo base
+    "lowcost":       lambda fm, pres, rounds, role="": (pres >= rounds * 0.30),
 }
 
 
@@ -195,7 +209,12 @@ def evaluate_predictions(players_current, round_num):
         titolarita_error = round(float(titolarita_pred) - titolarita_actual_pct, 2)
 
         advice_fn = ADVICE_THRESHOLDS.get(advice_type)
-        advice_correct = advice_fn(float(fm_actual), presenze_actual, round_num) if advice_fn else None
+        advice_correct = None
+        if advice_fn:
+            try:
+                advice_correct = advice_fn(float(fm_actual), presenze_actual, round_num, role=p_snap.get("role", ""))
+            except TypeError:
+                advice_correct = advice_fn(float(fm_actual), presenze_actual, round_num)
 
         injury_occurred = presenze_actual < round_num * 0.5
         high_fragility_pred = (fragility_score_pred >= 65 or str(p_snap.get("fragility_tier", "")).upper() in ["FRAGILE", "CRISTALLO"] or bool(p_snap.get("is_chronic_fragile")))

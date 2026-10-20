@@ -692,17 +692,17 @@
       "name": "Dybala",
       "team": "Roma",
       "ruolo": "A",
-      "partite_saltate_totali": 14,
+      "partite_saltate_totali": 17,
       "partite_saltate_2025_26": 14,
-      "giorni_stop_totali": 108,
-      "disponibilita_pct": 63.2,
+      "giorni_stop_totali": 288,
+      "disponibilita_pct": 55.3,
       "recidive_muscolari": 1,
-      "indice_fragilita_score": 62.0,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 14 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 77.0,
+      "livello_fragilita": "FRAGILE",
+      "fragility_label": "🔴 Fragile (Rischio Elevato)",
+      "fragility_badge": "fragile",
+      "consiglio_medico_ai": "Profilo a rischio elevato: 17 partite saltate con 1 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -753,6 +753,15 @@
             32,
             33
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Risentimento muscolare al polpaccio destro",
+          "partite_perse": 15,
+          "giorni_stop": 180,
+          "tipo": "muscolare",
+          "rientro_previsto": "02/11/2026",
+          "in_corso": true
         }
       ]
     },
@@ -4376,17 +4385,17 @@
       "name": "Gabbia",
       "team": "Milan",
       "ruolo": "D",
-      "partite_saltate_totali": 6,
+      "partite_saltate_totali": 9,
       "partite_saltate_2025_26": 6,
-      "giorni_stop_totali": 59,
-      "disponibilita_pct": 84.2,
+      "giorni_stop_totali": 239,
+      "disponibilita_pct": 76.3,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 32.0,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (6 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 60.5,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 9 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -4420,6 +4429,15 @@
             30,
             31
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Problema alla caviglia (natura del problema non specificata)",
+          "partite_perse": 15,
+          "giorni_stop": 180,
+          "tipo": "articolare",
+          "rientro_previsto": "13/01/2027",
+          "in_corso": true
         }
       ]
     },
@@ -10460,17 +10478,17 @@
       "name": "Zaniolo",
       "team": "Udinese",
       "ruolo": "C",
-      "partite_saltate_totali": 7,
+      "partite_saltate_totali": 4,
       "partite_saltate_2025_26": 4,
-      "giorni_stop_totali": 54,
-      "disponibilita_pct": 81.6,
+      "giorni_stop_totali": 24,
+      "disponibilita_pct": 89.5,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 51.5,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 7 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 23.0,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (4 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -10493,15 +10511,6 @@
             37,
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Sospetto stiramento muscolare (accusato nel finale di Udinese-Como, in attesa di esami strumentali)",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "muscolare",
-          "rientro_previsto": "19/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -13325,17 +13334,17 @@
       "name": "Candè",
       "team": "Sassuolo",
       "ruolo": "D",
-      "partite_saltate_totali": 23,
+      "partite_saltate_totali": 20,
       "partite_saltate_2025_26": 20,
-      "giorni_stop_totali": 444,
-      "disponibilita_pct": 39.5,
+      "giorni_stop_totali": 264,
+      "disponibilita_pct": 47.4,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 85.0,
-      "livello_fragilita": "CRISTALLO",
-      "fragility_label": "🚨 Cristallo (Altissimo Rischio)",
-      "fragility_badge": "cristallo",
-      "consiglio_medico_ai": "Altissimo rischio infortuni o lungo degenza in corso. Prezzo d'asta da svalutare fortemente e obbligo assoluto di copertura.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 70.0,
+      "livello_fragilita": "FRAGILE",
+      "fragility_label": "🔴 Fragile (Rischio Elevato)",
+      "fragility_badge": "fragile",
+      "consiglio_medico_ai": "Profilo a rischio elevato: 20 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -13374,15 +13383,6 @@
             37,
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "19/10/2026",
-          "in_corso": true
         }
       ]
     },

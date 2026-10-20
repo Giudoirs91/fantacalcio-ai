@@ -5,7 +5,7 @@
     "team": "Atalanta",
     "motivo": "Lesione del tendine del semimembranoso della gamba sinistra",
     "rientro": "09/11/2026",
-    "severity": "orange",
+    "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
   },
@@ -23,11 +23,11 @@
     "player": "Raspadori",
     "player_id": 4371,
     "team": "Atalanta",
-    "motivo": "Distrazione di basso grado del muscolo bicipite femorale della coscia destra",
-    "rientro": "31/10/2026",
-    "severity": "orange",
+    "motivo": "Problema ai flessori (se lesione rientro dopo la sosta nazionali)",
+    "rientro": "22/11/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
+    "fonte": "Staff Medico Atalanta (Aggiornato 16/10/2026)"
   },
   {
     "player": "Holm",
@@ -36,16 +36,6 @@
     "motivo": "Lesione al bicipite femorale della coscia destra",
     "rientro": "29/01/2027",
     "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Odgaard",
-    "player_id": 2765,
-    "team": "Bologna",
-    "motivo": "Lesione ai flessori della coscia destra",
-    "rientro": "21/10/2026",
-    "severity": "orange",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
   },
@@ -75,7 +65,7 @@
     "team": "Como",
     "motivo": "Problema muscolare alla coscia sinistra",
     "rientro": "08/11/2026",
-    "severity": "orange",
+    "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
   },
@@ -115,7 +105,7 @@
     "team": "Frosinone",
     "motivo": "Sindrome retto-adduttoria",
     "rientro": "02/11/2026",
-    "severity": "orange",
+    "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "redazione"
   },
@@ -125,7 +115,7 @@
     "team": "Frosinone",
     "motivo": "Lesione al flessore della coscia destra",
     "rientro": "22/11/2026",
-    "severity": "orange",
+    "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
   },
@@ -135,16 +125,6 @@
     "team": "Genoa",
     "motivo": "Trauma distorsivo alla caviglia sinistra",
     "rientro": "01/11/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Nuredini Joi",
-    "player_id": null,
-    "team": "Genoa",
-    "motivo": "Rottura del legamento crociato anteriore del ginocchio destro",
-    "rientro": "25/10/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
@@ -155,7 +135,7 @@
     "team": "Genoa",
     "motivo": "Problema muscolare durante Svizzera-Macedonia del Nord (da accertare)",
     "rientro": "02/11/2026",
-    "severity": "orange",
+    "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "redazione"
   },
@@ -183,21 +163,21 @@
     "player": "Martinez L.",
     "player_id": 2764,
     "team": "Inter",
-    "motivo": "Lesione muscolare ai flessori della coscia sinistra",
+    "motivo": "Lesione muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)",
     "rientro": "22/11/2026",
-    "severity": "orange",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
+    "fonte": "Fantacalcio.it / Ufficiale (Aggiornato 16/10/2026)"
   },
   {
     "player": "Pavard",
     "player_id": 4177,
     "team": "Inter",
-    "motivo": "Risentimento agli adduttori della coscia destra",
-    "rientro": "05/11/2026",
-    "severity": "orange",
+    "motivo": "Risentimento agli adduttori della coscia destra (recupero inizio novembre)",
+    "rientro": "01/11/2026",
+    "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
+    "fonte": "Staff Medico Inter (Aggiornato 16/10/2026)"
   },
   {
     "player": "Ekhator",
@@ -205,7 +185,7 @@
     "team": "Juventus",
     "motivo": "Lesione di basso grado del bicipite femorale della gamba destra",
     "rientro": "02/11/2026",
-    "severity": "orange",
+    "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "redazione"
   },
@@ -226,16 +206,6 @@
     "motivo": "Problema al menisco del ginocchio destro (in valutazione, possibile intervento chirurgico o terapia conservativa)",
     "rientro": "08/02/2027",
     "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Owusu Seedorf Augusto",
-    "player_id": null,
-    "team": "Juventus",
-    "motivo": "Lesione al retto femorale",
-    "rientro": "20/10/2026",
-    "severity": "orange",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
   },
@@ -305,7 +275,7 @@
     "team": "Napoli",
     "motivo": "Intervento di riparazione della radice del menisco mediale del ginocchio destro",
     "rientro": "31/10/2026",
-    "severity": "red",
+    "severity": "orange",
     "tipo_stop": "Infortunato",
     "fonte": "Transfermarkt"
   },
@@ -315,7 +285,7 @@
     "team": "Napoli",
     "motivo": "Lesione muscolare (rientrato al Napoli dopo valutazione medica con la Nazionale U21)",
     "rientro": "30/11/2026",
-    "severity": "orange",
+    "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "redazione"
   },
@@ -325,7 +295,7 @@
     "team": "Napoli",
     "motivo": "Lesione distrattiva di medio grado del soleo destro",
     "rientro": "08/11/2026",
-    "severity": "orange",
+    "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
   },
@@ -345,16 +315,6 @@
     "team": "Parma",
     "motivo": "Lesione di medio grado alla coscia destra",
     "rientro": "02/11/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Chalobah T.",
-    "player_id": 5641,
-    "team": "Como",
-    "motivo": "Rottura del legamento crociato",
-    "rientro": "02/05/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
@@ -375,7 +335,7 @@
     "team": "Roma",
     "motivo": "Risentimento muscolare al polpaccio destro",
     "rientro": "02/11/2026",
-    "severity": "orange",
+    "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
   },
@@ -385,7 +345,7 @@
     "team": "Roma",
     "motivo": "Fastidio al ginocchio (sostituito al 53' in Fenerbahce-Roma)",
     "rientro": "08/11/2026",
-    "severity": "orange",
+    "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
   },
@@ -405,7 +365,7 @@
     "team": "Sassuolo",
     "motivo": "Intervento in artroscopia al ginocchio sinistro per la pulizia meniscale",
     "rientro": "30/10/2026",
-    "severity": "red",
+    "severity": "orange",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
   },
@@ -428,16 +388,6 @@
     "severity": "red",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Israel Franco",
-    "player_id": null,
-    "team": "Torino",
-    "motivo": "Infortunio alla spalla",
-    "rientro": "04/12/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "Transfermarkt"
   },
   {
     "player": "Gueye",
@@ -475,8 +425,78 @@
     "team": "Venezia",
     "motivo": "Dislocazione della clavicola",
     "rientro": "10/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "ricerca sulle testate"
+  },
+  {
+    "player": "Orsolini",
+    "player_id": 2167,
+    "team": "Bologna",
+    "motivo": "Lesione di primo grado al bicipite femorale della coscia destra",
+    "rientro": "07/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 15/10/2026)"
+  },
+  {
+    "player": "Kessiè",
+    "player_id": 1850,
+    "team": "Atalanta",
+    "motivo": "Distrazione di basso grado al polpaccio della gamba destra",
+    "rientro": "25/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Staff Medico Atalanta (Aggiornato 16/10/2026)"
+  },
+  {
+    "player": "ODGAARD Jens",
+    "player_id": null,
+    "team": "Bologna",
+    "motivo": "Lesione ai flessori della coscia destra",
+    "rientro": "21/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
     "fonte": "ricerca sulle testate"
+  },
+  {
+    "player": "NUREDINI Joi",
+    "player_id": null,
+    "team": "Genoa",
+    "motivo": "Rottura del legamento crociato anteriore del ginocchio destro",
+    "rientro": "25/10/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "ricerca sulle testate"
+  },
+  {
+    "player": "OWUSU Seedorf Augusto",
+    "player_id": null,
+    "team": "Juventus",
+    "motivo": "Lesione al retto femorale",
+    "rientro": "20/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "ricerca sulle testate"
+  },
+  {
+    "player": "BAH Muhammed",
+    "player_id": null,
+    "team": "Roma",
+    "motivo": "Rottura del legamento crociato",
+    "rientro": "02/05/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "ricerca sulle testate"
+  },
+  {
+    "player": "ISRAEL Franco",
+    "player_id": null,
+    "team": "Torino",
+    "motivo": "Infortunio alla spalla",
+    "rientro": "04/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Transfermarkt"
   }
 ]

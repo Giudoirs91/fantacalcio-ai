@@ -1769,8 +1769,8 @@
               "injury_return": ""
             },
             "player2": {
-              "name": "Z",
-              "role": "C",
+              "name": "Zè Pedro",
+              "role": "D",
               "ovr": 74,
               "xfm": 6.0,
               "is_injured": false,
@@ -4313,52 +4313,6 @@
           },
           {
             "player1": {
-              "name": "Traorè Hj.",
-              "role": "C",
-              "ovr": 57,
-              "xfm": 5.75,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "player2": {
-              "name": "Wiafe",
-              "role": "C",
-              "ovr": 74,
-              "xfm": 6.0,
-              "is_injured": false,
-              "injury_desc": "",
-              "injury_return": ""
-            },
-            "sources": {
-              "fantacalcio": {
-                "p1": 60,
-                "p2": 40
-              },
-              "gazzetta": {
-                "p1": 62,
-                "p2": 38
-              },
-              "skysport": {
-                "p1": 60,
-                "p2": 40
-              },
-              "sosfanta": {
-                "p1": 59,
-                "p2": 41
-              }
-            },
-            "consensus_pct1": 60,
-            "consensus_pct2": 40,
-            "verdict": {
-              "tag": "Leggero Vantaggio",
-              "desc": "Gerarchia orientata verso il favorito, rotazione possibile al 70'.",
-              "tone": "neutral",
-              "action": "Preferisci il titolare ma mantieni copertura"
-            }
-          },
-          {
-            "player1": {
               "name": "Amorim",
               "role": "C",
               "ovr": 55,
@@ -4460,7 +4414,7 @@
               "injury_return": ""
             },
             "player2": {
-              "name": "Traor",
+              "name": "Traorè Hj.",
               "role": "C",
               "ovr": 74,
               "xfm": 6.0,
@@ -12352,10 +12306,10 @@
               "injury_return": ""
             },
             "player2": {
-              "name": "Ciss",
+              "name": "Chukwueze",
               "role": "C",
-              "ovr": 74,
-              "xfm": 6.0,
+              "ovr": 76,
+              "xfm": 6.45,
               "is_injured": false,
               "injury_desc": "",
               "injury_return": ""

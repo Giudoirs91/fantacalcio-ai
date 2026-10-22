@@ -42,8 +42,18 @@ def slugify(text):
     clean = re.sub(r'[^a-zA-Z0-9]+', '-', ascii_text).lower().strip('-')
     return clean or "calciatore"
 
+PLAYER_SLUG_ALIASES = {
+    "ciss": "cisse-a",
+    "ciss-a": "cisse-a",
+    "traor": "traore-hj",
+    "traor-hj": "traore-hj",
+    "z": "ze-pedro",
+    "z-pedro": "ze-pedro",
+}
+
 def get_player_slug_from_name(name):
-    return slugify(name)
+    slug = slugify(name)
+    return PLAYER_SLUG_ALIASES.get(slug, slug)
 
 def render_probabili_css():
     return """
@@ -1693,6 +1703,12 @@ def render_h2h_duel(duel, team_name):
     p1_ovr = p1.get('ovr', 75)
     p2_ovr = p2.get('ovr', 74)
 
+    calciatore_dist = os.path.join(ROOT_DIR, "dist", "calciatore")
+    p1_exists = os.path.isdir(os.path.join(calciatore_dist, p1_slug))
+    p2_exists = os.path.isdir(os.path.join(calciatore_dist, p2_slug))
+    p1_html_link = f'<a href="/calciatore/{p1_slug}/" class="h2h-name" title="Scheda {clean_html(p1["name"])}">{clean_html(p1["name"])}{inj_badge1}</a>' if p1_exists else f'<span class="h2h-name" title="{clean_html(p1["name"])}">{clean_html(p1["name"])}{inj_badge1}</span>'
+    p2_html_link = f'<a href="/calciatore/{p2_slug}/" class="h2h-name" title="Scheda {clean_html(p2["name"])}">{clean_html(p2["name"])}{inj_badge2}</a>' if p2_exists else f'<span class="h2h-name" title="{clean_html(p2["name"])}">{clean_html(p2["name"])}{inj_badge2}</span>'
+
     return f"""
     <div class="duel-card-h2h">
         <div class="duel-card-top">
@@ -1704,12 +1720,12 @@ def render_h2h_duel(duel, team_name):
         <div class="duel-players-row">
             <div class="duel-player-side left">
                 <span class="pitch-role-badge {p1_role}">{p1_role}</span>
-                <a href="/calciatore/{p1_slug}/" class="h2h-name" title="Scheda {clean_html(p1['name'])}">{clean_html(p1['name'])}{inj_badge1}</a>
+                {p1_html_link}
                 <span class="h2h-ovr-pill">OVR {p1_ovr}</span>
             </div>
             <div class="duel-player-side right">
                 <span class="h2h-ovr-pill">OVR {p2_ovr}</span>
-                <a href="/calciatore/{p2_slug}/" class="h2h-name" title="Scheda {clean_html(p2['name'])}">{clean_html(p2['name'])}{inj_badge2}</a>
+                {p2_html_link}
                 <span class="pitch-role-badge {p2_role}">{p2_role}</span>
             </div>
         </div>

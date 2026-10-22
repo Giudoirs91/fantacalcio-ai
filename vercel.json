@@ -3,13 +3,51 @@
   "framework": null,
   "outputDirectory": "dist",
   "cleanUrls": true,
-  "trailingSlash": false,
+  "trailingSlash": true,
 
   "functions": {
     "api/*.py": {
       "excludeFiles": "{dist/**,Dashboard_Fanta_1000.html}"
     }
   },
+
+  "redirects": [
+    {
+      "source": "/calciatore/ciss",
+      "destination": "/calciatore/cisse-a/",
+      "permanent": true
+    },
+    {
+      "source": "/calciatore/traor",
+      "destination": "/calciatore/traore-hj/",
+      "permanent": true
+    },
+    {
+      "source": "/calciatore/z",
+      "destination": "/calciatore/ze-pedro/",
+      "permanent": true
+    },
+    {
+      "source": "/calciatore/wiafe",
+      "destination": "/probabili-formazioni/",
+      "permanent": true
+    },
+    {
+      "source": "/calciatore/:slug-2026",
+      "destination": "/calciatore/:slug/",
+      "permanent": true
+    },
+    {
+      "source": "/calciatore/:slug(.*)-2026",
+      "destination": "/calciatore/:slug/",
+      "permanent": true
+    },
+    {
+      "source": "/calciatore/:slug(.*)-:id(\\d{4})",
+      "destination": "/calciatore/:slug/",
+      "permanent": true
+    }
+  ],
 
   "rewrites": [
     {

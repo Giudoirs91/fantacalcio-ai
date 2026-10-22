@@ -18,7 +18,17 @@
       "permanent": true
     },
     {
+      "source": "/calciatore/ciss/",
+      "destination": "/calciatore/cisse-a/",
+      "permanent": true
+    },
+    {
       "source": "/calciatore/traor",
+      "destination": "/calciatore/traore-hj/",
+      "permanent": true
+    },
+    {
+      "source": "/calciatore/traor/",
       "destination": "/calciatore/traore-hj/",
       "permanent": true
     },
@@ -28,12 +38,17 @@
       "permanent": true
     },
     {
-      "source": "/calciatore/wiafe",
-      "destination": "/probabili-formazioni/",
+      "source": "/calciatore/z/",
+      "destination": "/calciatore/ze-pedro/",
       "permanent": true
     },
     {
       "source": "/calciatore/:slug-2026",
+      "destination": "/calciatore/:slug/",
+      "permanent": true
+    },
+    {
+      "source": "/calciatore/:slug-2026/",
       "destination": "/calciatore/:slug/",
       "permanent": true
     },
@@ -43,7 +58,7 @@
       "permanent": true
     },
     {
-      "source": "/calciatore/:slug(.*)-:id(\\d{4})",
+      "source": "/calciatore/:slug(.*)-2026/",
       "destination": "/calciatore/:slug/",
       "permanent": true
     }

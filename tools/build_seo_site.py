@@ -4350,6 +4350,19 @@ def build_all():
             with open(os.path.join(legacy_dir, "index.html"), "w", encoding="utf-8") as f:
                 f.write(p_html)
 
+    # 3b. Alias di sicurezza per slug storici/troncati noti
+    static_aliases = {
+        "ciss": "cisse-a",
+        "traor": "traore-hj",
+        "z": "ze-pedro",
+    }
+    for alias_slug, target_slug in static_aliases.items():
+        target_dir = os.path.join(calciatori_dir, target_slug)
+        if os.path.exists(target_dir):
+            alias_dir = os.path.join(calciatori_dir, alias_slug)
+            os.makedirs(alias_dir, exist_ok=True)
+            shutil.copyfile(os.path.join(target_dir, "index.html"), os.path.join(alias_dir, "index.html"))
+
     print(f"  ✓ Generate {player_count} schede calciatore complete di grafica, Radar SVG, Metriche Avanzate e Infortuni!")
 
     # 4. Genera Pagine Pillar

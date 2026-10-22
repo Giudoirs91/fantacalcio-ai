@@ -1,502 +1,692 @@
 [
   {
-    "player": "Hien",
-    "player_id": 6046,
+    "player": "Scalvini",
+    "player_id": 5526,
     "team": "Atalanta",
-    "motivo": "Lesione del tendine del semimembranoso della gamba sinistra",
-    "rientro": "09/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Kossounou",
-    "player_id": 5578,
-    "team": "Atalanta",
-    "motivo": "Risentimento muscolare ai flessori della coscia sinistra",
+    "motivo": "Distrazione di basso grado dei muscoli flessori della gamba sinistra",
     "rientro": "29/10/2026",
     "severity": "orange",
     "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Hien",
+    "player_id": 6046,
+    "team": "Atalanta",
+    "motivo": "Lesione del tendine prossimale del muscolo semimembranoso della coscia sinistra",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Pompei",
+    "player_id": 7626,
+    "team": "Atalanta",
+    "motivo": "Frattura della falange della mano destra",
+    "rientro": "29/10/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
   },
   {
     "player": "Raspadori",
     "player_id": 4371,
     "team": "Atalanta",
-    "motivo": "Problema ai flessori (se lesione rientro dopo la sosta nazionali)",
+    "motivo": "Distrazione muscolare di basso grado al bicipite femorale della coscia destra",
+    "rientro": "08/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Kolasinac",
+    "player_id": 2640,
+    "team": "Atalanta",
+    "motivo": "Distrazione muscolare al retto femorale della coscia sinistra",
     "rientro": "22/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "Staff Medico Atalanta (Aggiornato 16/10/2026)"
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Sulemana K.",
+    "player_id": 5918,
+    "team": "Atalanta",
+    "motivo": "Lesione del collaterale mediale di secondo grado del ginocchio sinistro",
+    "rientro": "25/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Kossounou",
+    "player_id": 5578,
+    "team": "Atalanta",
+    "motivo": "Lesione muscolare di medio-alto grado del bicipite femorale della coscia sinistra alla vigilia della sfida di campionato contro la Juventus (del 20 settembre)",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
   },
   {
     "player": "Holm",
     "player_id": 5678,
     "team": "Bologna",
-    "motivo": "Lesione al bicipite femorale della coscia destra",
-    "rientro": "29/01/2027",
+    "motivo": "Problema al tendine della coscia destra",
+    "rientro": "28/02/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Felici",
-    "player_id": 6640,
-    "team": "Cagliari",
-    "motivo": "Nuovo infortunio al ginocchio (da accertare con esami strumentali)",
-    "rientro": "09/02/2027",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Idrissi R.",
-    "player_id": 7125,
-    "team": "Cagliari",
-    "motivo": "Intervento di ricostruzione del legamento crociato anteriore del ginocchio sinistro",
-    "rientro": "30/10/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Diao",
-    "player_id": 6967,
-    "team": "Como",
-    "motivo": "Problema muscolare alla coscia sinistra",
-    "rientro": "08/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Kean",
-    "player_id": 2097,
-    "team": "Como",
-    "motivo": "Problema alla tibia",
-    "rientro": "20/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Parisi",
-    "player_id": 5449,
-    "team": "Fiorentina",
-    "motivo": "Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro",
-    "rientro": "01/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Birligea",
-    "player_id": 7610,
-    "team": "Frosinone",
-    "motivo": "Lesione del vasto intermedio del quadricipite sinistro",
-    "rientro": "31/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "redazione"
-  },
-  {
-    "player": "Grillitsch",
-    "player_id": 7550,
-    "team": "Frosinone",
-    "motivo": "Sindrome retto-adduttoria",
-    "rientro": "02/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "redazione"
-  },
-  {
-    "player": "Kone B.",
-    "player_id": 5725,
-    "team": "Frosinone",
-    "motivo": "Lesione al flessore della coscia destra",
-    "rientro": "22/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Colombo",
-    "player_id": 4923,
-    "team": "Genoa",
-    "motivo": "Trauma distorsivo alla caviglia sinistra",
-    "rientro": "01/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Sow",
-    "player_id": 5946,
-    "team": "Genoa",
-    "motivo": "Problema muscolare durante Svizzera-Macedonia del Nord (da accertare)",
-    "rientro": "02/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "redazione"
-  },
-  {
-    "player": "Venturino",
-    "player_id": 6980,
-    "team": "Genoa",
-    "motivo": "Operato al ginocchio",
-    "rientro": "30/10/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "redazione"
-  },
-  {
-    "player": "Jones C.",
-    "player_id": 5172,
-    "team": "Inter",
-    "motivo": "Risentimento muscolare all'adduttore",
-    "rientro": "29/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Martinez L.",
-    "player_id": 2764,
-    "team": "Inter",
-    "motivo": "Lesione muscolare ai flessori della coscia sinistra (recupero verso la 12ª giornata post-sosta)",
-    "rientro": "22/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "Fantacalcio.it / Ufficiale (Aggiornato 16/10/2026)"
-  },
-  {
-    "player": "Pavard",
-    "player_id": 4177,
-    "team": "Inter",
-    "motivo": "Risentimento agli adduttori della coscia destra (recupero inizio novembre)",
-    "rientro": "01/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "Staff Medico Inter (Aggiornato 16/10/2026)"
-  },
-  {
-    "player": "Ekhator",
-    "player_id": 6822,
-    "team": "Juventus",
-    "motivo": "Lesione di basso grado del bicipite femorale della gamba destra",
-    "rientro": "02/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "redazione"
-  },
-  {
-    "player": "Grabara",
-    "player_id": 7603,
-    "team": "Juventus",
-    "motivo": "Rottura del legamento crociato del ginocchio destro, da trauma distorsivo in allenamento",
-    "rientro": "31/07/2027",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "redazione"
-  },
-  {
-    "player": "Locatelli",
-    "player_id": 827,
-    "team": "Juventus",
-    "motivo": "Problema al menisco del ginocchio destro (in valutazione, possibile intervento chirurgico o terapia conservativa)",
-    "rientro": "08/02/2027",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Thuram K.",
-    "player_id": 5562,
-    "team": "Juventus",
-    "motivo": "Sindrome femoro-rotulea al ginocchio",
-    "rientro": "01/01/2027",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "redazione"
-  },
-  {
-    "player": "Yildiz",
-    "player_id": 6434,
-    "team": "Juventus",
-    "motivo": "Infortunio al piede sinistro, possibile intervento chirurgico",
-    "rientro": "26/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Cataldi",
-    "player_id": 333,
-    "team": "Lazio",
-    "motivo": "Infiammazione dell'osso pubico (pubalgia)",
-    "rientro": "22/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "redazione"
-  },
-  {
-    "player": "Gabbia",
-    "player_id": 4401,
-    "team": "Milan",
-    "motivo": "Problema alla caviglia (natura del problema non specificata)",
-    "rientro": "13/01/2027",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Saelemaekers",
-    "player_id": 4892,
-    "team": "Milan",
-    "motivo": "Distorsione alla caviglia destra senza lesioni ossee né danni capsulo-legamentosi",
-    "rientro": "08/02/2027",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Pessina",
-    "player_id": 2741,
-    "team": "Monza",
-    "motivo": "Operato per la lussazione della rotula del ginocchio destro",
-    "rientro": "28/10/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Buongiorno",
-    "player_id": 2724,
-    "team": "Napoli",
-    "motivo": "Intervento di riparazione della radice del menisco mediale del ginocchio destro",
-    "rientro": "31/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "Transfermarkt"
-  },
-  {
-    "player": "Favasuli",
-    "player_id": 7563,
-    "team": "Napoli",
-    "motivo": "Lesione muscolare (rientrato al Napoli dopo valutazione medica con la Nazionale U21)",
-    "rientro": "30/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "redazione"
-  },
-  {
-    "player": "Vergara",
-    "player_id": 7223,
-    "team": "Napoli",
-    "motivo": "Lesione distrattiva di medio grado del soleo destro",
-    "rientro": "08/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Almqvist",
-    "player_id": 6207,
-    "team": "Parma",
-    "motivo": "Lesione di basso grado del polpaccio della gamba sinistra",
-    "rientro": "30/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "redazione"
-  },
-  {
-    "player": "Nicolussi Caviglia",
-    "player_id": 4349,
-    "team": "Parma",
-    "motivo": "Lesione di medio grado alla coscia destra",
-    "rientro": "02/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Cristante",
-    "player_id": 779,
-    "team": "Roma",
-    "motivo": "Lombalgia",
-    "rientro": "26/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Dybala",
-    "player_id": 309,
-    "team": "Roma",
-    "motivo": "Risentimento muscolare al polpaccio destro",
-    "rientro": "02/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Konè M.",
-    "player_id": 5589,
-    "team": "Roma",
-    "motivo": "Fastidio al ginocchio (sostituito al 53' in Fenerbahce-Roma)",
-    "rientro": "08/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Svilar",
-    "player_id": 5841,
-    "team": "Roma",
-    "motivo": "Frattura a un dito",
-    "rientro": "10/11/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Boloca",
-    "player_id": 6219,
-    "team": "Sassuolo",
-    "motivo": "Intervento in artroscopia al ginocchio sinistro per la pulizia meniscale",
-    "rientro": "30/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Konè I.",
-    "player_id": 6717,
-    "team": "Sassuolo",
-    "motivo": "Intervento di riduzione della frattura della gamba sinistra",
-    "rientro": "17/01/2027",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Pieragnolo",
-    "player_id": 7156,
-    "team": "Sassuolo",
-    "motivo": "Intervento di ricostruzione del legamento crociato anteriore del ginocchio destro",
-    "rientro": "30/10/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Gueye",
-    "player_id": 7272,
-    "team": "Udinese",
-    "motivo": "Distorsione alla caviglia destra, con sospetto interessamento dei legamenti da accertare",
-    "rientro": "05/01/2027",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Zanoli",
-    "player_id": 5527,
-    "team": "Udinese",
-    "motivo": "Intervento per la lesione del legamento crociato anteriore del ginocchio destro",
-    "rientro": "31/10/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Busio",
-    "player_id": 5507,
-    "team": "Venezia",
-    "motivo": "Lesione muscolare alla coscia destra (problema ai flessori)",
-    "rientro": "27/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "Franjic",
-    "player_id": 7478,
-    "team": "Venezia",
-    "motivo": "Dislocazione della clavicola",
-    "rientro": "10/12/2026",
-    "severity": "red",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
   },
   {
     "player": "Orsolini",
     "player_id": 2167,
     "team": "Bologna",
     "motivo": "Lesione di primo grado al bicipite femorale della coscia destra",
-    "rientro": "07/11/2026",
+    "rientro": "22/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "Fantacalcio.it (Aggiornato 15/10/2026)"
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
   },
   {
-    "player": "Kessiè",
-    "player_id": 1850,
-    "team": "Atalanta",
-    "motivo": "Distrazione di basso grado al polpaccio della gamba destra",
-    "rientro": "25/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "Staff Medico Atalanta (Aggiornato 16/10/2026)"
-  },
-  {
-    "player": "ODGAARD Jens",
-    "player_id": null,
+    "player": "Piccoli",
+    "player_id": 4359,
     "team": "Bologna",
-    "motivo": "Lesione ai flessori della coscia destra",
-    "rientro": "21/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "NUREDINI Joi",
-    "player_id": null,
-    "team": "Genoa",
-    "motivo": "Rottura del legamento crociato anteriore del ginocchio destro",
-    "rientro": "25/10/2026",
+    "motivo": "Guaio muscolare al bicipite femorale della coscia destra",
+    "rientro": "22/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
   },
   {
-    "player": "OWUSU Seedorf Augusto",
-    "player_id": null,
-    "team": "Juventus",
-    "motivo": "Lesione al retto femorale",
-    "rientro": "20/10/2026",
-    "severity": "orange",
-    "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
-  },
-  {
-    "player": "BAH Muhammed",
-    "player_id": null,
-    "team": "Roma",
+    "player": "Idrissi R.",
+    "player_id": 7125,
+    "team": "Cagliari",
     "motivo": "Rottura del legamento crociato",
-    "rientro": "02/05/2027",
+    "rientro": "22/11/2026",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "ricerca sulle testate"
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
   },
   {
-    "player": "ISRAEL Franco",
-    "player_id": null,
-    "team": "Torino",
-    "motivo": "Infortunio alla spalla",
-    "rientro": "04/12/2026",
+    "player": "Felici",
+    "player_id": 6640,
+    "team": "Cagliari",
+    "motivo": "Rottura del legamento crociato anteriore",
+    "rientro": "14/03/2027",
     "severity": "red",
     "tipo_stop": "Infortunato",
-    "fonte": "Transfermarkt"
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Rodriguez Je.",
+    "player_id": 7129,
+    "team": "Como",
+    "motivo": "Il calciatore si è infortunato in allenamento il 20 ottobre, rimane da valutare per stabilire i tempi di recupero",
+    "rientro": "29/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Diao",
+    "player_id": 6967,
+    "team": "Como",
+    "motivo": "Lesione muscolare al flessore della gamba",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Chalobah T.",
+    "player_id": 5641,
+    "team": "Como",
+    "motivo": "Guaio muscolare alla gamba",
+    "rientro": "08/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Parisi",
+    "player_id": 5449,
+    "team": "Fiorentina",
+    "motivo": "Infortunio al legamento crociato al ginocchio",
+    "rientro": "06/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Atta",
+    "player_id": 6908,
+    "team": "Fiorentina",
+    "motivo": "Sovraccarico funzionale dell'addome",
+    "rientro": "29/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Grillitsch",
+    "player_id": 7550,
+    "team": "Frosinone",
+    "motivo": "Sindrome retto-adduttoria",
+    "rientro": "08/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Venturino",
+    "player_id": 6980,
+    "team": "Genoa",
+    "motivo": "Operato al tendine rotuleo",
+    "rientro": "08/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Meichtry",
+    "player_id": 7409,
+    "team": "Genoa",
+    "motivo": "Distrazione della muscolatura di un'anca",
+    "rientro": "25/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Colombo",
+    "player_id": 4923,
+    "team": "Genoa",
+    "motivo": "Problema alla caviglia",
+    "rientro": "08/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Havel",
+    "player_id": 7453,
+    "team": "Genoa",
+    "motivo": "L'attaccante ha deciso di operarsi alla caviglia e dovrebbe tornare arruolabile dalla fine di ottobre",
+    "rientro": "29/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Sow",
+    "player_id": 5946,
+    "team": "Genoa",
+    "motivo": "Distrazione muscolare al bicipite femorale della coscia sinistra",
+    "rientro": "08/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Jones C.",
+    "player_id": 5172,
+    "team": "Inter",
+    "motivo": "Risentimento miofasciale agli adduttori della coscia destra",
+    "rientro": "29/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Martinez L.",
+    "player_id": 2764,
+    "team": "Inter",
+    "motivo": "Risentimento muscolare ai flessori della coscia sinistra",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Pavard",
+    "player_id": 4177,
+    "team": "Inter",
+    "motivo": "Risentimento agli adduttori della coscia destra",
+    "rientro": "08/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Locatelli",
+    "player_id": 827,
+    "team": "Juventus",
+    "motivo": "Rottura del menisco esterno",
+    "rientro": "28/02/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Thuram K.",
+    "player_id": 5562,
+    "team": "Juventus",
+    "motivo": "Sindrome femoro-rotulea e",
+    "rientro": "31/01/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Conceicao",
+    "player_id": 6884,
+    "team": "Juventus",
+    "motivo": "Lussazione alla spalla sinistra",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Ekhator",
+    "player_id": 6822,
+    "team": "Juventus",
+    "motivo": "Lesione di medio grado del muscolo semitendinoso",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Yildiz",
+    "player_id": 6434,
+    "team": "Juventus",
+    "motivo": "Frattura della base del V metatarso del piede sinistro",
+    "rientro": "06/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Grabara",
+    "player_id": 7603,
+    "team": "Juventus",
+    "motivo": "Lesione al crociato anteriore",
+    "rientro": "18/04/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Gudmundsson A.",
+    "player_id": 5800,
+    "team": "Lazio",
+    "motivo": "Problema alla spalla destra",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Coulibaly L.",
+    "player_id": 5504,
+    "team": "Lecce",
+    "motivo": "Lesione muscolare al bicipite femorale della coscia destra",
+    "rientro": "08/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Berisha M.",
+    "player_id": 6015,
+    "team": "Lecce",
+    "motivo": "Sovraccarico muscolare alla gamba",
+    "rientro": "29/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Ilic",
+    "player_id": 5007,
+    "team": "Lecce",
+    "motivo": "Lesione muscolare al retto femorale della coscia sinistra",
+    "rientro": "08/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Gabbia",
+    "player_id": 4401,
+    "team": "Milan",
+    "motivo": "Lesione del flessore della coscia sinistra con parziale interessamento tendineo",
+    "rientro": "28/02/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Saelemaekers",
+    "player_id": 4892,
+    "team": "Milan",
+    "motivo": "Problema alla caviglia destra e operata",
+    "rientro": "28/02/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Chukwueze",
+    "player_id": 4856,
+    "team": "Milan",
+    "motivo": "Problema all'anca sinistra",
+    "rientro": "08/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Pessina",
+    "player_id": 2741,
+    "team": "Monza",
+    "motivo": "Lussazione della rotula del ginocchio",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Ziolkowski",
+    "player_id": 7260,
+    "team": "Monza",
+    "motivo": "Fascite plantare",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Maye",
+    "player_id": 7604,
+    "team": "Monza",
+    "motivo": "Noie fisiche, assente nel precedente turno di campionato e ora da valutare in vista di venerdì a Torino",
+    "rientro": "29/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Favasuli",
+    "player_id": 7563,
+    "team": "Napoli",
+    "motivo": "Lesione muscolare di secondo grado del retto femorale della coscia destra",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Neres",
+    "player_id": 6831,
+    "team": "Napoli",
+    "motivo": "Lesione di basso grado al muscolo semimembranoso della coscia destra",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Buongiorno",
+    "player_id": 2724,
+    "team": "Napoli",
+    "motivo": "Nella seconda metà di luglio al menisco del ginocchio destro",
+    "rientro": "20/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Santos A.",
+    "player_id": 7351,
+    "team": "Napoli",
+    "motivo": "Lesione distrattiva di medio grado del bicipite femorale sinistro",
+    "rientro": "06/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Elphege",
+    "player_id": 7342,
+    "team": "Parma",
+    "motivo": "Appendicite acuta l'11 ottobre",
+    "rientro": "29/10/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Almqvist",
+    "player_id": 6207,
+    "team": "Parma",
+    "motivo": "Lesione muscolare al polpaccio sinistro",
+    "rientro": "29/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Nicolussi Caviglia",
+    "player_id": 4349,
+    "team": "Parma",
+    "motivo": "Lesione di medio grado alla coscia destra",
+    "rientro": "06/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Konè M.",
+    "player_id": 5589,
+    "team": "Roma",
+    "motivo": "Lesione di primo grado al bicipite femorale destro",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Dybala",
+    "player_id": 309,
+    "team": "Roma",
+    "motivo": "Lesione al gemello del polpaccio destro",
+    "rientro": "08/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Pellegrini Lo.",
+    "player_id": 530,
+    "team": "Roma",
+    "motivo": "Lesione di alto grado in corrispondenza della giunzione muscolo - tendinea distale del muscolo semitendinoso della coscia destra",
+    "rientro": "20/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Svilar",
+    "player_id": 5841,
+    "team": "Roma",
+    "motivo": "Frattura a un dito del piede",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Idzes",
+    "player_id": 6672,
+    "team": "Sassuolo",
+    "motivo": "Lesione di grado moderato al quadricipite della gamba sinistra",
+    "rientro": "25/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Boloca",
+    "player_id": 6219,
+    "team": "Sassuolo",
+    "motivo": "Problema al ginocchio",
+    "rientro": "29/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Konè I.",
+    "player_id": 6717,
+    "team": "Sassuolo",
+    "motivo": "Rottura di tibia e perone",
+    "rientro": "06/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Leysen F.",
+    "player_id": 7564,
+    "team": "Sassuolo",
+    "motivo": "Lesione al crociato anteriore",
+    "rientro": "18/04/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Ilkhan",
+    "player_id": 6005,
+    "team": "Torino",
+    "motivo": "Fastidio muscolare alla gamba",
+    "rientro": "29/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Rodriguez R.",
+    "player_id": 2169,
+    "team": "Torino",
+    "motivo": "Lesione tendinea di basso grado ai muscoli flessori della coscia sinistra",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Fortini",
+    "player_id": 7069,
+    "team": "Torino",
+    "motivo": "Affaticamento muscolare all'adduttore",
+    "rientro": "25/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Bayo V.",
+    "player_id": 7161,
+    "team": "Udinese",
+    "motivo": "Lesione al bicipite femorale della coscia destra",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Gueye",
+    "player_id": 7272,
+    "team": "Udinese",
+    "motivo": "Problema alla caviglia",
+    "rientro": "31/01/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Alaba",
+    "player_id": 59016,
+    "team": "Udinese",
+    "motivo": "Risentimento muscolare al polpaccio destro",
+    "rientro": "22/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Bella-Kotchap",
+    "player_id": 7253,
+    "team": "Venezia",
+    "motivo": "Il difensore in ripresa da noie fisiche che lo hanno condizionato nelle ultime settimane, proverà a esserci dall'8a giornata di A domenica a Genova",
+    "rientro": "25/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Sverko",
+    "player_id": 6673,
+    "team": "Venezia",
+    "motivo": "Estate per il perdurare di un problema all'anca e recuperabile da fine ottobre",
+    "rientro": "29/10/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Franjic",
+    "player_id": 7478,
+    "team": "Venezia",
+    "motivo": "Guaio alla spalla che ha richiesto l'intervento chirurgico",
+    "rientro": "13/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Correia T.",
+    "player_id": 4845,
+    "team": "Venezia",
+    "motivo": "Risentimento muscolare al flessore della gamba sinistra",
+    "rientro": "29/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Busio",
+    "player_id": 5507,
+    "team": "Venezia",
+    "motivo": "Distrazione intratendinea del bicipite femorale destro",
+    "rientro": "25/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
+  },
+  {
+    "player": "Adorante",
+    "player_id": 4387,
+    "team": "Venezia",
+    "motivo": "Problema alla schiena",
+    "rientro": "29/10/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 22/10/2026)"
   }
 ]

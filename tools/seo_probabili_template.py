@@ -1857,6 +1857,115 @@ def parse_match_datetime_iso(date_str, time_str):
         pass
     return f"2026-10-18T{time_str}:00"
 
+SERIE_A_STADIUMS_INFO = {
+    "Atalanta": {"name": "Gewiss Stadium", "city": "Bergamo", "region": "Lombardia"},
+    "Bologna": {"name": "Stadio Renato Dall'Ara", "city": "Bologna", "region": "Emilia-Romagna"},
+    "Cagliari": {"name": "Unipol Domus", "city": "Cagliari", "region": "Sardegna"},
+    "Como": {"name": "Stadio Giuseppe Sinigaglia", "city": "Como", "region": "Lombardia"},
+    "Fiorentina": {"name": "Stadio Artemio Franchi", "city": "Firenze", "region": "Toscana"},
+    "Frosinone": {"name": "Stadio Benito Stirpe", "city": "Frosinone", "region": "Lazio"},
+    "Genoa": {"name": "Stadio Luigi Ferraris", "city": "Genova", "region": "Liguria"},
+    "Inter": {"name": "Stadio Giuseppe Meazza", "city": "Milano", "region": "Lombardia"},
+    "Juventus": {"name": "Allianz Stadium", "city": "Torino", "region": "Piemonte"},
+    "Lazio": {"name": "Stadio Olimpico", "city": "Roma", "region": "Lazio"},
+    "Lecce": {"name": "Stadio Ettore Giardiniero - Via del Mare", "city": "Lecce", "region": "Puglia"},
+    "Milan": {"name": "Stadio Giuseppe Meazza", "city": "Milano", "region": "Lombardia"},
+    "Monza": {"name": "U-Power Stadium", "city": "Monza", "region": "Lombardia"},
+    "Napoli": {"name": "Stadio Diego Armando Maradona", "city": "Napoli", "region": "Campania"},
+    "Parma": {"name": "Stadio Ennio Tardini", "city": "Parma", "region": "Emilia-Romagna"},
+    "Roma": {"name": "Stadio Olimpico", "city": "Roma", "region": "Lazio"},
+    "Sassuolo": {"name": "Mapei Stadium - Città del Tricolore", "city": "Reggio Emilia", "region": "Emilia-Romagna"},
+    "Torino": {"name": "Stadio Olimpico Grande Torino", "city": "Torino", "region": "Piemonte"},
+    "Udinese": {"name": "Bluenergy Stadium", "city": "Udine", "region": "Friuli-Venezia Giulia"},
+    "Venezia": {"name": "Stadio Pier Luigi Penzo", "city": "Venezia", "region": "Veneto"},
+}
+
+def calculate_match_end_time(time_str):
+    """Calcola l'orario di fine presunto (circa 1h50m dopo il calcio d'inizio)."""
+    try:
+        parts = str(time_str).split(':')
+        h = int(parts[0])
+        m = int(parts[1]) if len(parts) > 1 else 0
+        total_mins = h * 60 + m + 110
+        end_h = (total_mins // 60) % 24
+        end_m = total_mins % 60
+        return f"{str(end_h).zfill(2)}:{str(end_m).zfill(2)}"
+    except Exception:
+        return "22:45"
+
+def build_sports_event_schema(match_data, round_label, base_url, event_url):
+    """Genera lo schema SportsEvent completo e conforme a Google Event rich results."""
+    h_team = match_data.get('home_team') or (match_data.get('home', {}).get('team') if isinstance(match_data.get('home'), dict) else 'Squadra Casa')
+    a_team = match_data.get('away_team') or (match_data.get('away', {}).get('team') if isinstance(match_data.get('away'), dict) else 'Squadra Ospite')
+    
+    stadium_info = SERIE_A_STADIUMS_INFO.get(h_team, {})
+    stadium_name = match_data.get('stadium') or stadium_info.get('name', f"Stadio di {h_team}")
+    city = stadium_info.get('city', h_team)
+    region = stadium_info.get('region', 'Italia')
+    
+    time_str = match_data.get('time', '15:00')
+    iso_start = parse_match_datetime_iso(match_data.get('date'), time_str)
+    end_time_str = calculate_match_end_time(time_str)
+    iso_end = parse_match_datetime_iso(match_data.get('date'), end_time_str)
+    
+    valid_from_date = iso_start.split('T')[0] if 'T' in iso_start else datetime.now().strftime('%Y-%m-%d')
+    
+    return {
+        "@type": "SportsEvent",
+        "name": f"{h_team} vs {a_team}",
+        "description": f"Partita di Serie A 2026/27 ({round_label}): {h_team} vs {a_team} presso {stadium_name}. Probabili formazioni, ballottaggi, rigoristi e consigli Fantacalcio.",
+        "startDate": iso_start,
+        "endDate": iso_end,
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "image": [
+            f"{base_url}/static/og-image.jpg"
+        ],
+        "location": {
+            "@type": "Place",
+            "name": stadium_name,
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": city,
+                "addressRegion": region,
+                "addressCountry": "IT"
+            }
+        },
+        "homeTeam": {
+            "@type": "SportsTeam",
+            "name": h_team
+        },
+        "awayTeam": {
+            "@type": "SportsTeam",
+            "name": a_team
+        },
+        "performer": [
+            {
+                "@type": "SportsTeam",
+                "name": h_team
+            },
+            {
+                "@type": "SportsTeam",
+                "name": a_team
+            }
+        ],
+        "organizer": {
+            "@type": "Organization",
+            "name": "Lega Serie A",
+            "url": "https://www.legaseriea.it"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": event_url,
+            "price": "0",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "validFrom": f"{valid_from_date}T00:00:00+02:00",
+            "description": f"Consultazione online gratuita probabili formazioni e statistiche {h_team} vs {a_team}"
+        },
+        "url": event_url
+    }
+
 def generate_match_editorial_summary(match_data, round_label):
     """Genera il box sintesi ottimizzato per il Featured Snippet (Posizione 0) di Google."""
     h_team = match_data['home_team']
@@ -2602,16 +2711,9 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
     # Schema JSON-LD
     schema_events = []
     for m in matches:
-        iso_start = parse_match_datetime_iso(m.get('date'), m.get('time', '15:00'))
-        schema_events.append({
-            "@type": "SportsEvent",
-            "name": f"{m['home_team']} vs {m['away_team']}",
-            "startDate": iso_start,
-            "location": {"@type": "Place", "name": m.get('stadium', 'Serie A Stadium')},
-            "homeTeam": {"@type": "SportsTeam", "name": m['home_team']},
-            "awayTeam": {"@type": "SportsTeam", "name": m['away_team']},
-            "url": f"{base_url}/probabili-formazioni/{m['slug']}/"
-        })
+        m_slug = m.get('slug', f"{slugify(m.get('home_team', ''))}-{slugify(m.get('away_team', ''))}")
+        event_url = f"{base_url}/probabili-formazioni/{m_slug}/"
+        schema_events.append(build_sports_event_schema(m, round_label, base_url, event_url))
 
     schema_data = {
         "@context": "https://schema.org",
@@ -2906,18 +3008,11 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
     iso_start = parse_match_datetime_iso(match_data.get('date'), match_data.get('time', '15:00'))
 
     # Schema JSON-LD
+    event_schema = build_sports_event_schema(match_data, round_label, base_url, page_url)
     schema_data = {
         "@context": "https://schema.org",
         "@graph": [
-            {
-                "@type": "SportsEvent",
-                "name": f"{h_team} vs {a_team}",
-                "startDate": iso_start,
-                "location": {"@type": "Place", "name": match_data.get('stadium', 'Serie A Stadium')},
-                "homeTeam": {"@type": "SportsTeam", "name": h_team},
-                "awayTeam": {"@type": "SportsTeam", "name": a_team},
-                "url": page_url
-            },
+            event_schema,
             {
                 "@type": "WebPage",
                 "name": meta_title,

@@ -50,6 +50,11 @@ def main():
             run_top_flop()
         except Exception as e:
             print(f"[Main] Avviso top/flop: {e}")
+        try:
+            from tools.build_match_reports_hub import build_match_reports_hub
+            build_match_reports_hub()
+        except Exception as e:
+            print(f"[Main] Avviso match reports hub: {e}")
         build_standalone_dashboard(sync_android=False)
         print("\n--> Processo completato con successo! Puoi aprire 'Dashboard_Fanta_1000.html' nel tuo browser.")
 

@@ -165,6 +165,7 @@ def parse_pdf_match_report(pdf_path):
                         'minutes': mins,
                         'is_starter': is_starter,
                         'goals': 0,
+                        'own_goals': 0,
                         'assists': 0,
                         'total_shots': 0,
                         'shots_on_target': 0,
@@ -225,6 +226,7 @@ def parse_pdf_match_report(pdf_path):
                         'minutes': mins,
                         'is_starter': is_starter,
                         'goals': g,
+                        'own_goals': aut,
                         'assists': as_v,
                         'total_shots': t,
                         'shots_on_target': tp,
@@ -638,7 +640,7 @@ def sync_all_match_reports():
         df_combined = df_new_parsed
 
     # Assicura presenza di tutte le colonne metriche
-    for col in ['crosses', 'dribbles', 'passes_final_third']:
+    for col in ['crosses', 'dribbles', 'passes_final_third', 'own_goals']:
         if col not in df_combined.columns:
             df_combined[col] = 0
         df_combined[col] = df_combined[col].fillna(0).astype(int)
@@ -660,20 +662,44 @@ def sync_all_match_reports():
     print(f"✓ Salvato {PLAYERS_CSV} ({len(df_combined)} righe prestazione totali).")
 
     # 7. Salva TEAMS_JSON e TEAMS_CSV (Statistiche Ufficiali di Squadra)
-    if parsed_teams:
-        df_teams = pd.DataFrame(parsed_teams)
+    existing_teams = []
+    if os.path.exists(TEAMS_JSON):
+        try:
+            with open(TEAMS_JSON, 'r', encoding='utf-8') as f:
+                existing_teams = json.load(f)
+        except Exception:
+            pass
+
+    parsed_team_keys = {(t['match_name'], t['team'], t['giornata']) for t in parsed_teams}
+    final_teams = list(parsed_teams) + [t for t in existing_teams if (t.get('match_name'), t.get('team'), t.get('giornata')) not in parsed_team_keys]
+    final_teams.sort(key=lambda x: (x.get('giornata', 1), x.get('match_name', ''), x.get('team', '')))
+
+    if final_teams:
+        df_teams = pd.DataFrame(final_teams)
         df_teams.drop_duplicates(subset=['match_name', 'team', 'giornata'], inplace=True)
         df_teams.sort_values(by=['giornata', 'match_name', 'team'], ascending=[True, True, True], inplace=True)
         with open(TEAMS_JSON, 'w', encoding='utf-8') as f:
-            json.dump(parsed_teams, f, ensure_ascii=False, indent=2)
+            json.dump(final_teams, f, ensure_ascii=False, indent=2)
         df_teams.to_csv(TEAMS_CSV, index=False, encoding='utf-8')
-        print(f"✓ Salvato {TEAMS_JSON} e {TEAMS_CSV} ({len(df_teams)} record statistici di squadra estratti da Pagina 4).")
+        print(f"✓ Salvato {TEAMS_JSON} e {TEAMS_CSV} ({len(df_teams)} record statistici di squadra totali).")
 
     # 8. Salva RANKINGS_PHYSICAL_JSON (Ranking Dribbling, Cross, 3/4 e Performance Chilometriche)
-    if parsed_rankings:
+    existing_rankings = []
+    if os.path.exists(RANKINGS_PHYSICAL_JSON):
+        try:
+            with open(RANKINGS_PHYSICAL_JSON, 'r', encoding='utf-8') as f:
+                existing_rankings = json.load(f)
+        except Exception:
+            pass
+
+    parsed_ranking_keys = {(r['match_name'], r['giornata']) for r in parsed_rankings}
+    final_rankings = list(parsed_rankings) + [r for r in existing_rankings if (r.get('match_name'), r.get('giornata')) not in parsed_ranking_keys]
+    final_rankings.sort(key=lambda x: (x.get('giornata', 1), x.get('match_name', '')))
+
+    if final_rankings:
         with open(RANKINGS_PHYSICAL_JSON, 'w', encoding='utf-8') as f:
-            json.dump(parsed_rankings, f, ensure_ascii=False, indent=2)
-        print(f"✓ Salvato {RANKINGS_PHYSICAL_JSON} ({len(parsed_rankings)} partite con ranking e metriche fisico-atletiche).")
+            json.dump(final_rankings, f, ensure_ascii=False, indent=2)
+        print(f"✓ Salvato {RANKINGS_PHYSICAL_JSON} ({len(final_rankings)} partite totali con ranking e metriche fisico-atletiche).")
 
     # Statistiche di riepilogo
     g_counts = df_combined['giornata'].value_counts().to_dict()

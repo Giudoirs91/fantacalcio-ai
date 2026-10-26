@@ -1,0 +1,5086 @@
+{
+  "Atalanta": {
+    "modulo": "4-3-3",
+    "all": "Maurizio Sarri",
+    "rigoristi": [
+      "Kessiè",
+      "Scamacca",
+      "De Ketelaere"
+    ],
+    "punizioni": [
+      "Gaetano",
+      "Samardzic",
+      "Zalewski"
+    ],
+    "corner": [
+      "Gaetano",
+      "Zalewski",
+      "De Ketelaere"
+    ],
+    "dif_stars": 4,
+    "att_stars": 5,
+    "top": [
+      "Scamacca",
+      "De Ketelaere",
+      "Ederson D.S."
+    ],
+    "sleeper": [
+      "Rowe",
+      "Bernasconi",
+      "Samardzic"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Rowe",
+        "role": "C",
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco tridente (85% titolare con Raspadori infortunato)"
+      },
+      {
+        "name": "Zalewski",
+        "role": "C",
+        "pos": "AD",
+        "pos_label": "Ala Destra / Esterno",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco Sarri / Jolly esterno"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Gaetano",
+        "pct": 58,
+        "vs": "Pasalic (42%)"
+      },
+      {
+        "player": "Rowe",
+        "pct": 58,
+        "vs": "Zalewski (42%)"
+      },
+      {
+        "player": "Krstovic",
+        "pct": 55,
+        "vs": "Scamacca (45%)"
+      },
+      {
+        "player": "Zappacosta",
+        "pct": 95,
+        "vs": "Bellanova (Infortunato: il terzino KO il 25 ottobre per un risentimento muscolare all’inguine. Di certo out giovedì nel turno infrasettimanale a Firenze, tempi di recupero da valutare.)"
+      },
+      {
+        "player": "Kristensen T.",
+        "pct": 95,
+        "vs": "Kossounou (Infortunato: Il difensore frenato da una lesione muscolare di medio-alto grado del bicipite femorale della coscia sinistra alla vigilia della sfida di campionato contro la Juventus (del 20 settembre). Lungo stop, rientro dalla seconda metà di novembre.)"
+      },
+      {
+        "player": "Scalvini",
+        "pct": 95,
+        "vs": "Hien (Infortunato: il difensore operato a fine giugno per una lesione del tendine prossimale del muscolo semimembranoso della coscia sinistra, in recupero e pronto a tornare in campo dalla metà di novembre.)"
+      },
+      {
+        "player": "Bernasconi",
+        "pct": 95,
+        "vs": "Kolasinac (Infortunato: il difensore KO il 18 ottobre a Milano vittima di una distrazione muscolare al retto femorale della coscia sinistra, recuperabile dalla metà di novembre.)"
+      },
+      {
+        "player": "De Ketelaere",
+        "pct": 77,
+        "vs": "Elmas (23%)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Carnesecchi",
+        "role": "P",
+        "sub_name": "Sportiello",
+        "sub_role": "P",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TD",
+        "pos_label": "Terzino DX",
+        "name": "Zappacosta",
+        "role": "D",
+        "sub_name": "Bellanova",
+        "sub_role": "D",
+        "status": "Titolare (65% vs Bellanova 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Centrale DX",
+        "name": "Kristensen T.",
+        "role": "D",
+        "sub_name": "Kossounou",
+        "sub_role": "D",
+        "status": "Titolare (50% vs Kossounou 50%)",
+        "pct": 50,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Centrale SX",
+        "name": "Scalvini",
+        "role": "D",
+        "sub_name": "Hien",
+        "sub_role": "D",
+        "status": "Titolare (65% vs Hien 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TS",
+        "pos_label": "Terzino SX",
+        "name": "Bernasconi",
+        "role": "D",
+        "sub_name": "Kolasinac",
+        "sub_role": "D",
+        "status": "Titolare (50% vs Kolasinac 50%)",
+        "pct": 50,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "CC_D",
+        "pos_label": "Mezzala DX",
+        "name": "Samardzic",
+        "role": "C",
+        "sub_name": "Zalewski",
+        "sub_role": "C",
+        "status": "Titolare (65% vs Zalewski 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED",
+        "pos_label": "Regista",
+        "name": "Gaetano",
+        "role": "C",
+        "sub_name": "Samardzic",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "CC_S",
+        "pos_label": "Mezzala SX",
+        "name": "Ederson D.S.",
+        "role": "C",
+        "sub_name": "Pasalic",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "name": "De Ketelaere",
+        "role": "A",
+        "sub_name": "Elmas",
+        "sub_role": "C",
+        "status": "Titolare (85% vs Elmas 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Scamacca",
+        "role": "A",
+        "sub_name": "Krstovic",
+        "sub_role": "A",
+        "status": "Titolare (75% vs Krstovic 25%)",
+        "pct": 75,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "name": "Rowe",
+        "role": "C",
+        "sub_name": "Raspadori",
+        "sub_role": "A",
+        "status": "Titolare (Rowe 85% - Raspadori Infortunato)",
+        "pct": 85,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_desc": "Quotato C ➜ Ala d'attacco tridente (85% titolare con Raspadori out)",
+        "oop_tier": "ORO"
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 29,
+      "middle_pct": 32,
+      "right_pct": 39
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 28,
+      "middle_third_pct": 41,
+      "opposition_third_pct": 31
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 13.3,
+      "out_of_box": 4.9,
+      "six_yard_box": 0.7,
+      "penalty_area": 7.7,
+      "rating": 6.52
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 5,
+      "penalty_area_pct": 58,
+      "outside_box_pct": 37
+    }
+  },
+  "Bologna": {
+    "modulo": "4-2-3-1",
+    "all": "Raffaele Palladino",
+    "rigoristi": [
+      "Orsolini",
+      "Dovbyk",
+      "Piccoli"
+    ],
+    "punizioni": [
+      "Orsolini",
+      "Miranda J.",
+      "Bernardeschi"
+    ],
+    "corner": [
+      "Orsolini",
+      "Miranda J.",
+      "Cambiaghi"
+    ],
+    "dif_stars": 4,
+    "att_stars": 4,
+    "top": [
+      "Orsolini",
+      "Theate",
+      "Ferguson"
+    ],
+    "sleeper": [
+      "Mbangula",
+      "Cambiaghi",
+      "Odgaard"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Orsolini",
+        "role": "C",
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco tridente Palladino & 1° Rigorista (100% Tit)"
+      },
+      {
+        "name": "Cambiaghi",
+        "role": "C",
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco tridente (55% vs Mbangula 45%)"
+      },
+      {
+        "name": "Mbangula",
+        "role": "C",
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco tridente (45% vs Cambiaghi 55%)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Theate",
+        "pct": 60,
+        "vs": "Heggem (40%)"
+      },
+      {
+        "player": "Ferguson",
+        "pct": 55,
+        "vs": "Moro N. (45%)"
+      },
+      {
+        "player": "Bernardeschi",
+        "pct": 60,
+        "vs": "Odgaard (40%)"
+      },
+      {
+        "player": "Zortea",
+        "pct": 60,
+        "vs": "Darmian (40%)"
+      },
+      {
+        "player": "Miranda J.",
+        "pct": 50,
+        "vs": "Alhassane (50%)"
+      },
+      {
+        "player": "Pobega",
+        "pct": 75,
+        "vs": "Amondarain (25%)"
+      },
+      {
+        "player": "Cambiaghi",
+        "pct": 55,
+        "vs": "Mbangula (45%)"
+      },
+      {
+        "player": "Dovbyk",
+        "pct": 95,
+        "vs": "Piccoli (Infortunato: l'attaccante indisponibile a causa di un guaio muscolare al bicipite femorale della coscia destra. Recuperabile dalla metà di novembre.)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Skorupski",
+        "role": "P",
+        "sub_name": "Happonen",
+        "sub_role": "P",
+        "status": "Titolare (85% vs Happonen 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TS",
+        "pos_label": "Terzino SX",
+        "name": "Zortea",
+        "role": "D",
+        "sub_name": "Darmian",
+        "sub_role": "D",
+        "status": "Titolare (60% vs Darmian 40%)",
+        "pct": 60,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Centrale SX",
+        "name": "Heggem",
+        "role": "D",
+        "sub_name": "Helland",
+        "sub_role": "D",
+        "status": "Titolare (65% vs Helland 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Centrale DX",
+        "name": "Theate",
+        "role": "D",
+        "sub_name": "Vitik",
+        "sub_role": "D",
+        "status": "Titolare (70% vs Vitik 30%)",
+        "pct": 70,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TD",
+        "pos_label": "Terzino DX",
+        "name": "Miranda J.",
+        "role": "D",
+        "sub_name": "Alhassane",
+        "sub_role": "D",
+        "status": "Titolare (50% vs Alhassane 50%)",
+        "pct": 50,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_S",
+        "pos_label": "Mediano SX",
+        "name": "Pobega",
+        "role": "C",
+        "sub_name": "Amondarain",
+        "sub_role": "C",
+        "status": "Titolare (75% vs Amondarain 25%)",
+        "pct": 75,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_D",
+        "pos_label": "Mediano DX",
+        "name": "Ferguson",
+        "role": "C",
+        "sub_name": "Moro N.",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "name": "Orsolini",
+        "role": "C",
+        "sub_name": "Bernardeschi",
+        "sub_role": "C",
+        "status": "Titolare (85% vs Bernardeschi 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TRQ",
+        "pos_label": "Trequartista",
+        "name": "El Azzouzi O.",
+        "role": "C",
+        "sub_name": "Odgaard",
+        "sub_role": "C",
+        "status": "Titolare (95% con Odgaard infortunato)",
+        "pct": 95,
+        "fpp_fpn": "FPP",
+        "oop": true
+      },
+      {
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "name": "Cambiaghi",
+        "role": "C",
+        "sub_name": "Mbangula",
+        "sub_role": "C",
+        "status": "Titolare (55% vs Mbangula 45%)",
+        "pct": 55,
+        "fpp_fpn": "FPP",
+        "oop": true
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Dovbyk",
+        "role": "A",
+        "sub_name": "Piccoli",
+        "sub_role": "A",
+        "status": "Titolare (65% vs Piccoli 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 42,
+      "middle_pct": 23,
+      "right_pct": 35
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 32,
+      "middle_third_pct": 44,
+      "opposition_third_pct": 24
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 12.4,
+      "out_of_box": 4.1,
+      "six_yard_box": 1.3,
+      "penalty_area": 7.0,
+      "rating": 6.47
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 10,
+      "penalty_area_pct": 56,
+      "outside_box_pct": 33
+    }
+  },
+  "Cagliari": {
+    "modulo": "4-3-2-1",
+    "all": "Fabio Pisacane",
+    "rigoristi": [
+      "Maldini",
+      "Winks",
+      "Kevin Carlos"
+    ],
+    "punizioni": [
+      "Maldini",
+      "Winks",
+      "Fazzini"
+    ],
+    "corner": [
+      "Maldini",
+      "Fazzini",
+      "Sugawara"
+    ],
+    "dif_stars": 3,
+    "att_stars": 3,
+    "top": [
+      "Maldini",
+      "Caprile",
+      "Mina"
+    ],
+    "sleeper": [
+      "Kevin Carlos",
+      "Fazzini",
+      "Sugawara"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Fadera",
+        "role": "C",
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista / Ala",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista offensivo Pisacane (40% vs Fazzini 60%)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Zè Pedro",
+        "pct": 60,
+        "vs": "Sugawara (40%)"
+      },
+      {
+        "player": "Rodriguez Ju.",
+        "pct": 55,
+        "vs": "Deiola (45%)"
+      },
+      {
+        "player": "Maldini",
+        "pct": 59,
+        "vs": "Mendy P. (41%)"
+      },
+      {
+        "player": "Fazzini",
+        "pct": 60,
+        "vs": "Fadera (40%)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Caprile",
+        "role": "P",
+        "sub_name": "Sherri",
+        "sub_role": "P",
+        "status": "Titolare (85% vs Sherri 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TD",
+        "pos_label": "Terzino DX",
+        "name": "Sugawara",
+        "role": "D",
+        "sub_name": "Zè Pedro",
+        "sub_role": "D",
+        "status": "Titolare (70% vs Zè Pedro 30%)",
+        "pct": 70,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Centrale DX",
+        "name": "Mina",
+        "role": "D",
+        "sub_name": "Kofler",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Centrale SX",
+        "name": "Rodriguez Ju.",
+        "role": "D",
+        "sub_name": "Zè Pedro",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TS",
+        "pos_label": "Terzino SX",
+        "name": "Obert",
+        "role": "D",
+        "sub_name": "Zè Pedro",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_D",
+        "pos_label": "Mezzala DX",
+        "name": "Adopo",
+        "role": "C",
+        "sub_name": "Deiola",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_C",
+        "pos_label": "Regista",
+        "name": "Winks",
+        "role": "C",
+        "sub_name": "Massolin",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_S",
+        "pos_label": "Mezzala SX",
+        "name": "Romano",
+        "role": "C",
+        "sub_name": "Gagliardini",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista DX",
+        "name": "Fazzini",
+        "role": "C",
+        "sub_name": "Fadera",
+        "sub_role": "C",
+        "status": "Titolare (60% vs Fadera 40%)",
+        "pct": 60,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TRQ_S",
+        "pos_label": "Trequartista SX",
+        "name": "Maldini",
+        "role": "A",
+        "sub_name": "Fadera",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Kevin Carlos",
+        "role": "A",
+        "sub_name": "Mendy P.",
+        "sub_role": "A",
+        "status": "Titolare (65% vs Mendy P. 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 34,
+      "middle_pct": 33,
+      "right_pct": 33
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 35,
+      "middle_third_pct": 45,
+      "opposition_third_pct": 20
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 10.6,
+      "out_of_box": 3.9,
+      "six_yard_box": 0.7,
+      "penalty_area": 6.0,
+      "rating": 6.61
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 7,
+      "penalty_area_pct": 57,
+      "outside_box_pct": 36
+    }
+  },
+  "Como": {
+    "modulo": "4-2-3-1",
+    "all": "Cesc Fabregas",
+    "rigoristi": [
+      "Paz N.",
+      "Douvikas",
+      "Kean"
+    ],
+    "punizioni": [
+      "Paz N.",
+      "Baturina",
+      "Da Cunha"
+    ],
+    "corner": [
+      "Paz N.",
+      "Baturina",
+      "Couto"
+    ],
+    "dif_stars": 4,
+    "att_stars": 5,
+    "top": [
+      "Paz N.",
+      "Kean",
+      "Douvikas"
+    ],
+    "sleeper": [
+      "Baturina",
+      "Diao",
+      "Couto"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Paz N.",
+        "role": "C",
+        "pos": "TRQ",
+        "pos_label": "Trequartista / Seconda Punta",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Stella offensiva Fabregas & 1° Rigorista (100% Tit)"
+      },
+      {
+        "name": "Baturina",
+        "role": "C",
+        "pos": "AS",
+        "pos_label": "Ala Sinistra / Trequartista",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista/Ala sinistra (70% vs J. Rodriguez 30%)"
+      },
+      {
+        "name": "Da Cunha",
+        "role": "C",
+        "pos": "MED_D",
+        "pos_label": "Regista Offensivo",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Mezzala di palleggio / Trequarti (45% vs Milla 55%)"
+      },
+      {
+        "name": "Rodriguez Je.",
+        "role": "C",
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco sinistra (30% vs Baturina 70%)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Couto",
+        "pct": 58,
+        "vs": "Smolcic I. (42%)"
+      },
+      {
+        "player": "Da Cunha",
+        "pct": 54,
+        "vs": "Addai (46%)"
+      },
+      {
+        "player": "Douvikas",
+        "pct": 60,
+        "vs": "Caqueret (40%)"
+      },
+      {
+        "player": "Kaiki",
+        "pct": 53,
+        "vs": "Valle (47%)"
+      },
+      {
+        "player": "Liberali",
+        "pct": 95,
+        "vs": "Diao (Infortunato: L'attaccante KO il 14 ottobre in Champions League, costretto al cambio per una lesione muscolare al flessore della gamba, rientro tra i convocati dalla metà di novembre.)"
+      },
+      {
+        "player": "Baturina",
+        "pct": 95,
+        "vs": "Rodriguez Je. (Infortunato: Il calciatore si è infortunato in allenamento il 20 ottobre, rimane da valutare per stabilire i tempi di recupero. Si ipotizza un ritorno in campo da metà dicembre.)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Butez",
+        "role": "P",
+        "sub_name": "Sanchez Ro.",
+        "sub_role": "P",
+        "status": "Titolare (85% vs Sanchez Ro. 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TD",
+        "pos_label": "Terzino DX",
+        "name": "Couto",
+        "role": "D",
+        "sub_name": "Kaiki",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Centrale DX",
+        "name": "Ramon",
+        "role": "D",
+        "sub_name": "Kempf",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Centrale SX",
+        "name": "Goldaniga",
+        "role": "D",
+        "sub_name": "Chalobah T.",
+        "sub_role": "D",
+        "status": "Titolare (95% con Chalobah T. infortunato)",
+        "pct": 95,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TS",
+        "pos_label": "Terzino SX",
+        "name": "Valle",
+        "role": "D",
+        "sub_name": "Kaiki",
+        "sub_role": "D",
+        "status": "Titolare (50% vs Kaiki 50%)",
+        "pct": 50,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_D",
+        "pos_label": "Mediano DX",
+        "name": "Milla",
+        "role": "C",
+        "sub_name": "Da Cunha",
+        "sub_role": "C",
+        "status": "Titolare (85% vs Da Cunha 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_S",
+        "pos_label": "Mediano SX",
+        "name": "Perrone",
+        "role": "C",
+        "sub_name": "Da Cunha",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "name": "Liberali",
+        "role": "A",
+        "sub_name": "Diao",
+        "sub_role": "C",
+        "status": "Titolare (95% con Diao infortunato)",
+        "pct": 95,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TRQ",
+        "pos_label": "Trequartista",
+        "name": "Paz N.",
+        "role": "C",
+        "sub_name": "Milla",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Stella offensiva Fabregas & 1° Rigorista"
+      },
+      {
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "name": "Baturina",
+        "role": "C",
+        "sub_name": "Rodriguez Je.",
+        "sub_role": "C",
+        "status": "Titolare (70% vs Rodriguez Je. 30%)",
+        "pct": 70,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista/Ala sinistra (70% vs J. Rodriguez 30%)"
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Douvikas",
+        "role": "A",
+        "sub_name": "Kean",
+        "sub_role": "A",
+        "status": "Titolare (95% con Kean infortunato)",
+        "pct": 95,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 26,
+      "middle_pct": 33,
+      "right_pct": 41
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 28,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 31
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 21.7,
+      "out_of_box": 8.0,
+      "six_yard_box": 1.0,
+      "penalty_area": 12.7,
+      "rating": 6.78
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 5,
+      "penalty_area_pct": 59,
+      "outside_box_pct": 37
+    }
+  },
+  "Fiorentina": {
+    "modulo": "4-3-3",
+    "all": "Paolo Vanoli",
+    "rigoristi": [
+      "Mastantuono",
+      "Pellegrino M.",
+      "Beto"
+    ],
+    "punizioni": [
+      "Mastantuono",
+      "Fagioli",
+      "Atta"
+    ],
+    "corner": [
+      "Mastantuono",
+      "Goncalves P.",
+      "Atta"
+    ],
+    "dif_stars": 3,
+    "att_stars": 4,
+    "top": [
+      "De Gea",
+      "Atta",
+      "Mastantuono"
+    ],
+    "sleeper": [
+      "Pellegrino M.",
+      "Goncalves P.",
+      "Jimenez A."
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Mastantuono",
+        "role": "C",
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco tridente & 1° Rigorista (100% Tit)"
+      },
+      {
+        "name": "Goncalves P.",
+        "role": "C",
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco sinistra (60% vs Njie 40%)"
+      },
+      {
+        "name": "Njie",
+        "role": "C",
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco sinistra (40% vs Goncalves P. 60%)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Jimenez A.",
+        "pct": 58,
+        "vs": "Dodò (42%)"
+      },
+      {
+        "player": "Brescianini",
+        "pct": 54,
+        "vs": "Oulai (46%)"
+      },
+      {
+        "player": "Pellegrino M.",
+        "pct": 51,
+        "vs": "Beto (49%)"
+      },
+      {
+        "player": "Viery",
+        "pct": 95,
+        "vs": "Pongracic (Infortunato: il difensore il 15 ottobre contro l'Inter ha rimediato un problema al bicipite femorale della coscia destra, che andrà valutato. Forfait nel frattempo per giovedì contro l'Atalanta al Franchi.)"
+      },
+      {
+        "player": "Goncalves P.",
+        "pct": 60,
+        "vs": "Njie (40%)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "De Gea",
+        "role": "P",
+        "sub_name": "Christensen O.",
+        "sub_role": "P",
+        "fpp_fpn": "NONE",
+        "status": "Titolare Inamovibile",
+        "oop": false
+      },
+      {
+        "pos": "TD",
+        "pos_label": "Terzino DX",
+        "name": "Jimenez A.",
+        "role": "D",
+        "sub_name": "Dodô",
+        "sub_role": "D",
+        "fpp_fpn": "NONE",
+        "status": "Titolare (60% vs Dodô 40%)",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Centrale DX",
+        "name": "Dragusin",
+        "role": "D",
+        "sub_name": "Ranieri L.",
+        "sub_role": "D",
+        "fpp_fpn": "NONE",
+        "status": "Leader Difesa (100% Tit)",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Centrale SX",
+        "name": "Pongracic",
+        "role": "D",
+        "sub_name": "Viery",
+        "sub_role": "D",
+        "fpp_fpn": "NONE",
+        "status": "Titolare (40% vs Viery 40% / Ranieri L. 20%)",
+        "oop": false
+      },
+      {
+        "pos": "TS",
+        "pos_label": "Terzino SX",
+        "name": "Valdepenas",
+        "role": "D",
+        "sub_name": "Joao Mario",
+        "sub_role": "D",
+        "fpp_fpn": "NONE",
+        "status": "Terzino SX (100% Tit)",
+        "oop": false
+      },
+      {
+        "pos": "CC_D",
+        "pos_label": "Mezzala DX",
+        "name": "Atta",
+        "role": "C",
+        "sub_name": "Mandragora",
+        "sub_role": "C",
+        "fpp_fpn": "NONE",
+        "status": "Inamovibile (100% Tit)",
+        "oop": false
+      },
+      {
+        "pos": "MED",
+        "pos_label": "Regista",
+        "name": "Fagioli",
+        "role": "C",
+        "sub_name": "Oulai",
+        "sub_role": "C",
+        "fpp_fpn": "NONE",
+        "status": "Regista (50% vs Oulai 50%)",
+        "oop": false
+      },
+      {
+        "pos": "CC_S",
+        "pos_label": "Mezzala SX",
+        "name": "Ndour",
+        "role": "C",
+        "sub_name": "Brescianini",
+        "sub_role": "C",
+        "fpp_fpn": "NONE",
+        "status": "Mezzala SX (100% Tit)",
+        "oop": false
+      },
+      {
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "name": "Mastantuono",
+        "role": "C",
+        "sub_name": "Gnonto",
+        "sub_role": "A",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala Destra tridente & 1° Rigorista",
+        "status": "Top Player & 1° Rigorista (100% Tit)"
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Pellegrino M.",
+        "role": "A",
+        "sub_name": "Beto",
+        "sub_role": "A",
+        "fpp_fpn": "NONE",
+        "status": "Punta Centrale (60% vs Beto 40%)",
+        "oop": false
+      },
+      {
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "name": "Goncalves P.",
+        "role": "C",
+        "sub_name": "Njie",
+        "sub_role": "C",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala Sinistra tridente (60% vs Njie 40%)",
+        "status": "Titolare (60% vs Njie 40%)"
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 34,
+      "middle_pct": 29,
+      "right_pct": 38
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 26,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 34
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 16.6,
+      "out_of_box": 6.3,
+      "six_yard_box": 1.1,
+      "penalty_area": 9.1,
+      "rating": 6.39
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 7,
+      "penalty_area_pct": 55,
+      "outside_box_pct": 38
+    }
+  },
+  "Frosinone": {
+    "modulo": "4-2-3-1",
+    "all": "Massimiliano Alvini",
+    "rigoristi": [
+      "Calò",
+      "Raimondo",
+      "Kvernadze"
+    ],
+    "punizioni": [
+      "Calò",
+      "Kvernadze",
+      "Schmid"
+    ],
+    "corner": [
+      "Calò",
+      "Schmid",
+      "Kvernadze"
+    ],
+    "dif_stars": 3,
+    "att_stars": 3,
+    "top": [
+      "Calò",
+      "Raimondo",
+      "Kvernadze"
+    ],
+    "sleeper": [
+      "Schmid",
+      "Bracaglia",
+      "Monterisi"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Schmid",
+        "role": "C",
+        "pos": "TRQ",
+        "pos_label": "Trequartista",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista centrale d'inserimento (100% Tit)"
+      },
+      {
+        "name": "Fini ",
+        "role": "C",
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco destra (55% vs Zerbin 45%)"
+      },
+      {
+        "name": "Zerbin",
+        "role": "C",
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco destra (45% vs Fini 55%)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Calvani",
+        "pct": 58,
+        "vs": "Cittadini (42%)"
+      },
+      {
+        "player": "Bracaglia",
+        "pct": 52,
+        "vs": "Terzic (48%)"
+      },
+      {
+        "player": "Oyono A.",
+        "pct": 65,
+        "vs": "Amey (35%)"
+      },
+      {
+        "player": "Calò",
+        "pct": 95,
+        "vs": "Grillitsch (Infortunato: il centrocampista non convocato dalla gara di Genova (12 settembre) a causa di una sindrome retto-adduttoria, ha poi deciso di operarsi. Stop di circa sei settimane, può tornare convocabile da metà novembre.)"
+      },
+      {
+        "player": "Masini",
+        "pct": 63,
+        "vs": "Cichella (37%)"
+      },
+      {
+        "player": "Fini",
+        "pct": 85,
+        "vs": "Zerbin (15%)"
+      },
+      {
+        "player": "Kvernadze",
+        "pct": 77,
+        "vs": "Bobcek (23%)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Palmisani",
+        "role": "P",
+        "sub_name": "Lolic",
+        "sub_role": "P",
+        "status": "Titolare (85% vs Lolic 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TD",
+        "pos_label": "Terzino DX",
+        "name": "Oyono A.",
+        "role": "D",
+        "sub_name": "Amey",
+        "sub_role": "D",
+        "status": "Titolare (65% vs Amey 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Centrale DX",
+        "name": "Calvani",
+        "role": "D",
+        "sub_name": "Cittadini",
+        "sub_role": "D",
+        "status": "Titolare (55% vs Cittadini 45%)",
+        "pct": 55,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Centrale SX",
+        "name": "Monterisi",
+        "role": "D",
+        "sub_name": "Omar Fayed",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TS",
+        "pos_label": "Terzino SX",
+        "name": "Bracaglia",
+        "role": "D",
+        "sub_name": "Terzic",
+        "sub_role": "D",
+        "status": "Titolare (55% vs Terzic 45%)",
+        "pct": 55,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_D",
+        "pos_label": "Mediano DX",
+        "name": "Calò",
+        "role": "C",
+        "sub_name": "Grillitsch",
+        "sub_role": "C",
+        "status": "Titolare (80% vs Grillitsch 20%)",
+        "pct": 80,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_S",
+        "pos_label": "Mediano SX",
+        "name": "Masini",
+        "role": "C",
+        "sub_name": "Cichella",
+        "sub_role": "C",
+        "status": "Titolare (65% vs Cichella 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "name": "Fini",
+        "role": "C",
+        "sub_name": "Zerbin",
+        "sub_role": "C",
+        "status": "Titolare (85% vs Zerbin 15%)",
+        "pct": 85,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco destra (55% vs Zerbin 45%)"
+      },
+      {
+        "pos": "TRQ",
+        "pos_label": "Trequartista",
+        "name": "Schmid",
+        "role": "C",
+        "sub_name": "Zerbin",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista d'inserimento (100% Tit)"
+      },
+      {
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "name": "Kvernadze",
+        "role": "A",
+        "sub_name": "Bobcek",
+        "sub_role": "A",
+        "status": "Titolare (85% vs Bobcek 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Raimondo",
+        "role": "A",
+        "sub_name": "Bobcek",
+        "sub_role": "A",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 33,
+      "middle_pct": 25,
+      "right_pct": 43
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 30,
+      "middle_third_pct": 37,
+      "opposition_third_pct": 33
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 17.4,
+      "out_of_box": 6.6,
+      "six_yard_box": 1.4,
+      "penalty_area": 9.4,
+      "rating": 6.77
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 8,
+      "penalty_area_pct": 54,
+      "outside_box_pct": 38
+    }
+  },
+  "Genoa": {
+    "modulo": "3-4-2-1",
+    "all": "Daniele De Rossi",
+    "rigoristi": [
+      "Baldanzi",
+      "Vitinha O.",
+      "Colombo"
+    ],
+    "punizioni": [
+      "Baldanzi",
+      "Messias",
+      "Traorè Hj."
+    ],
+    "corner": [
+      "Baldanzi",
+      "Messias",
+      "Drameh"
+    ],
+    "dif_stars": 3,
+    "att_stars": 3,
+    "top": [
+      "Ostigard",
+      "Vasquez",
+      "Baldanzi"
+    ],
+    "sleeper": [
+      "Drameh",
+      "Colombo",
+      "Vitinha O."
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Drameh",
+        "role": "D",
+        "pos": "ED",
+        "pos_label": "Esterno Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia d'attacco"
+      },
+      {
+        "name": "Mitaj",
+        "role": "D",
+        "pos": "ES",
+        "pos_label": "Esterno Sinistro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia (50% vs Ellertsson 50%)"
+      },
+      {
+        "name": "Baldanzi",
+        "role": "C",
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista d'attacco & 1° Rigorista (55% vs Traorè Hj. 45%)"
+      },
+      {
+        "name": "Traorè Hj.",
+        "role": "C",
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista d'attacco (45% vs Baldanzi 55%)"
+      },
+      {
+        "name": "Messias",
+        "role": "C",
+        "pos": "TRQ_S",
+        "pos_label": "Trequartista Sinistro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista d'attacco (40% vs Vitinha O. 60%)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Messias",
+        "pct": 58,
+        "vs": "Wiafe (42%)"
+      },
+      {
+        "player": "Traorè Hj.",
+        "pct": 55,
+        "vs": "Amorim (45%)"
+      },
+      {
+        "player": "Colombo",
+        "pct": 54,
+        "vs": "Vitinha O. (46%)"
+      },
+      {
+        "player": "Drameh",
+        "pct": 95,
+        "vs": "Ehizibue (Infortunato: Il difensore out domenica scorsa contro il Venezia per noie fisiche. Da valutare in vista del turno infrasettimanale di mercoledì.)"
+      },
+      {
+        "player": "Mitaj",
+        "pct": 50,
+        "vs": "Ellertsson (50%)"
+      },
+      {
+        "player": "Baldanzi",
+        "pct": 54,
+        "vs": "Traor (46%)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Bijlow",
+        "role": "P",
+        "sub_name": "Sommariva",
+        "sub_role": "P",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Braccetto DX",
+        "name": "Marcandalli",
+        "role": "D",
+        "sub_name": "Mitaj",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_C",
+        "pos_label": "Centrale",
+        "name": "Ostigard",
+        "role": "D",
+        "sub_name": "Puczka",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Braccetto SX",
+        "name": "Vasquez",
+        "role": "D",
+        "sub_name": "Otoa",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ED",
+        "pos_label": "Esterno DX",
+        "name": "Drameh",
+        "role": "D",
+        "sub_name": "Ehizibue",
+        "sub_role": "D",
+        "status": "Titolare (50% vs Ehizibue 50%)",
+        "pct": 50,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia"
+      },
+      {
+        "pos": "MED_D",
+        "pos_label": "Mediano DX",
+        "name": "Frendrup",
+        "role": "C",
+        "sub_name": "El Shaarawy",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_S",
+        "pos_label": "Mediano SX",
+        "name": "Amorim",
+        "role": "C",
+        "sub_name": "Sow",
+        "sub_role": "C",
+        "status": "Titolare (95% con Sow infortunato)",
+        "pct": 95,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ES",
+        "pos_label": "Esterno SX",
+        "name": "Ellertsson",
+        "role": "C",
+        "sub_name": "Mitaj",
+        "sub_role": "D",
+        "status": "Titolare (50% vs Mitaj 50%)",
+        "pct": 50,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista DX",
+        "name": "Baldanzi",
+        "role": "C",
+        "sub_name": "Traorè Hj.",
+        "sub_role": "C",
+        "status": "Titolare (55% vs Traorè Hj. 45%)",
+        "pct": 55,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista d'attacco & 1° Rigorista"
+      },
+      {
+        "pos": "TRQ_S",
+        "pos_label": "Trequartista SX",
+        "name": "Vitinha O.",
+        "role": "A",
+        "sub_name": "Messias",
+        "sub_role": "C",
+        "status": "Titolare (60% vs Messias 40%)",
+        "pct": 60,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Osmajic",
+        "role": "A",
+        "sub_name": "Colombo",
+        "sub_role": "A",
+        "status": "Titolare (95% con Colombo infortunato)",
+        "pct": 95,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 42,
+      "middle_pct": 25,
+      "right_pct": 33
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 32,
+      "middle_third_pct": 41,
+      "opposition_third_pct": 28
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 11.1,
+      "out_of_box": 3.6,
+      "six_yard_box": 0.0,
+      "penalty_area": 7.6,
+      "rating": 6.37
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 0,
+      "penalty_area_pct": 68,
+      "outside_box_pct": 32
+    }
+  },
+  "Inter": {
+    "modulo": "3-5-2",
+    "all": "Cristian Chivu",
+    "rigoristi": [
+      "Calhanoglu",
+      "Thuram",
+      "Martinez L."
+    ],
+    "punizioni": [
+      "Calhanoglu",
+      "Dimarco",
+      "Zielinski"
+    ],
+    "corner": [
+      "Calhanoglu",
+      "Dimarco",
+      "Barella"
+    ],
+    "dif_stars": 5,
+    "att_stars": 5,
+    "top": [
+      "Martinez L.",
+      "Calhanoglu",
+      "Dimarco"
+    ],
+    "sleeper": [
+      "Thuram",
+      "Akanji",
+      "Bastoni"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Dimarco",
+        "role": "D",
+        "pos": "ES",
+        "pos_label": "Esterno Sinistro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia offensivo d'élite (Top 1 D)"
+      },
+      {
+        "name": "Diouf",
+        "role": "C",
+        "pos": "ED",
+        "pos_label": "Esterno Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Quinto a tutta fascia (35% vs Spence 45% / Luis Henrique 30%)"
+      },
+      {
+        "name": "Luis Henrique",
+        "role": "C",
+        "pos": "ED",
+        "pos_label": "Esterno Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Quinto a tutta fascia (30% vs Spence 45% / Diouf 35%)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Bastoni",
+        "pct": 52,
+        "vs": "Akanji (48%)"
+      },
+      {
+        "player": "Stankovic A.",
+        "pct": 54,
+        "vs": "Barella (46%)"
+      },
+      {
+        "player": "Esposito F.P.",
+        "pct": 58,
+        "vs": "Thuram (42%)"
+      },
+      {
+        "player": "Bisseck",
+        "pct": 95,
+        "vs": "Pavard (Infortunato: il difensore out per un risentimento agli adduttori della coscia destra, recuperabile dalla fine di ottobre.)"
+      },
+      {
+        "player": "Diouf",
+        "pct": 64,
+        "vs": "Spence (36%)"
+      },
+      {
+        "player": "Calhanoglu",
+        "pct": 66,
+        "vs": "Zielinski (34%)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Martinez Jo.",
+        "role": "P",
+        "sub_name": "Provedel",
+        "sub_role": "P",
+        "status": "Titolare (85% vs Provedel 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Braccetto DX",
+        "name": "Bisseck",
+        "role": "D",
+        "sub_name": "Pavard",
+        "sub_role": "D",
+        "status": "Titolare (Bisseck 95% - Pavard Infortunato)",
+        "pct": 95,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_C",
+        "pos_label": "Centrale",
+        "name": "Akanji",
+        "role": "D",
+        "sub_name": "Stones",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Terzino/Braccetto SX",
+        "name": "Carlos Augusto",
+        "role": "D",
+        "sub_name": "Carlos Augusto",
+        "sub_role": "D",
+        "status": "Titolare (55% vs Bastoni 45%)",
+        "pct": 55,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ED",
+        "pos_label": "Esterno DX",
+        "name": "Diouf",
+        "role": "C",
+        "sub_name": "Spence",
+        "sub_role": "D",
+        "status": "Titolare (65% vs Spence 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "CC_D",
+        "pos_label": "Mezzala DX",
+        "name": "Barella",
+        "role": "C",
+        "sub_name": "Stankovic A.",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED",
+        "pos_label": "Regista",
+        "name": "Calhanoglu",
+        "role": "C",
+        "sub_name": "Zielinski",
+        "sub_role": "C",
+        "status": "Titolare (80% vs Zielinski 20%)",
+        "pct": 80,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "CC_S",
+        "pos_label": "Mezzala SX",
+        "name": "Zielinski",
+        "role": "C",
+        "sub_name": "Sucic P.",
+        "sub_role": "C",
+        "status": "Titolare (65% vs Sucic P. 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ES",
+        "pos_label": "Esterno SX",
+        "name": "Dimarco",
+        "role": "D",
+        "sub_name": "Carlos Augusto",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Ala/Quinto offensivo d'élite"
+      },
+      {
+        "pos": "PC_D",
+        "pos_label": "Punta DX",
+        "name": "Bonny",
+        "role": "A",
+        "sub_name": "Martinez L.",
+        "sub_role": "A",
+        "status": "Titolare (95% con Martinez L. infortunato)",
+        "pct": 95,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC_S",
+        "pos_label": "Punta SX",
+        "name": "Thuram",
+        "role": "A",
+        "sub_name": "Esposito F.P.",
+        "sub_role": "A",
+        "status": "Titolare (65% vs Esposito F.P. 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 38,
+      "middle_pct": 28,
+      "right_pct": 33
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 24,
+      "middle_third_pct": 44,
+      "opposition_third_pct": 32
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 21.7,
+      "out_of_box": 6.4,
+      "six_yard_box": 2.1,
+      "penalty_area": 13.1,
+      "rating": 6.92
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 10,
+      "penalty_area_pct": 61,
+      "outside_box_pct": 30
+    }
+  },
+  "Juventus": {
+    "modulo": "4-2-3-1",
+    "all": "Luciano Spalletti",
+    "rigoristi": [
+      "Kolo Muani",
+      "Douglas Luiz",
+      "Conceicao"
+    ],
+    "punizioni": [
+      "Douglas Luiz",
+      "Conceicao",
+      "Locatelli"
+    ],
+    "corner": [
+      "Conceicao",
+      "Douglas Luiz",
+      "Cambiaso"
+    ],
+    "dif_stars": 5,
+    "att_stars": 5,
+    "top": [
+      "Kolo Muani",
+      "Bremer",
+      "Conceicao"
+    ],
+    "sleeper": [
+      "McKennie",
+      "Woltemade",
+      "Kalulu"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Conceicao",
+        "role": "C",
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco destra Spalletti (100% Tit)"
+      },
+      {
+        "name": "Alajbegovic",
+        "role": "C",
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco sinistra (45% vs Boga 55%)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Bremer",
+        "pct": 60,
+        "vs": "Kelly L. (40%)"
+      },
+      {
+        "player": "McKennie",
+        "pct": 60,
+        "vs": "Koopmeiners (40%)"
+      },
+      {
+        "player": "Cambiaso",
+        "pct": 60,
+        "vs": "Cabal (40%)"
+      },
+      {
+        "player": "Lucumì",
+        "pct": 70,
+        "vs": "Gatti (30%)"
+      },
+      {
+        "player": "Douglas Luiz",
+        "pct": 60,
+        "vs": "Sarr P. (40%)"
+      },
+      {
+        "player": "Zhegrova",
+        "pct": 95,
+        "vs": "Conceicao (Infortunato: il portoghese KO il 18 ottobre contro la Lazio vittima di una lussazione alla spalla sinistra, prontamente ridotta. Recuperabile dalla metà di novembre.)"
+      },
+      {
+        "player": "Alajbegovic",
+        "pct": 75,
+        "vs": "Boga (25%)"
+      },
+      {
+        "player": "Kolo Muani",
+        "pct": 65,
+        "vs": "Woltemade (35%)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Vicario",
+        "role": "P",
+        "sub_name": "Neto",
+        "sub_role": "P",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TD",
+        "pos_label": "Terzino DX",
+        "name": "Kalulu",
+        "role": "D",
+        "sub_name": "Cambiaso",
+        "sub_role": "D",
+        "status": "Titolare (85% vs Cambiaso 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Centrale DX",
+        "name": "Bremer",
+        "role": "D",
+        "sub_name": "Kelly L.",
+        "sub_role": "D",
+        "status": "Titolare (85% vs Kelly L. 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Centrale SX",
+        "name": "Lucumì",
+        "role": "D",
+        "sub_name": "Gatti",
+        "sub_role": "D",
+        "status": "Titolare (70% vs Gatti 30%)",
+        "pct": 70,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TS",
+        "pos_label": "Terzino/Esterno DX",
+        "name": "Cambiaso",
+        "role": "D",
+        "sub_name": "Cambiaso",
+        "sub_role": "D",
+        "status": "Titolare (65% vs Celik 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_D",
+        "pos_label": "Mediano DX",
+        "name": "Koopmeiners",
+        "role": "C",
+        "sub_name": "Locatelli",
+        "sub_role": "C",
+        "status": "Titolare (95% con Locatelli infortunato)",
+        "pct": 95,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_S",
+        "pos_label": "Mediano SX",
+        "name": "Douglas Luiz",
+        "role": "C",
+        "sub_name": "Sarr P.",
+        "sub_role": "C",
+        "status": "Titolare (60% vs Sarr P. 40%)",
+        "pct": 60,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "name": "Conceicao",
+        "role": "C",
+        "sub_name": "Zhegrova",
+        "sub_role": "C",
+        "status": "Titolare (75% vs Zhegrova 25%)",
+        "pct": 75,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco"
+      },
+      {
+        "pos": "TRQ",
+        "pos_label": "Trequartista",
+        "name": "Gonzalez N.",
+        "role": "C",
+        "sub_name": "McKennie",
+        "sub_role": "C",
+        "status": "Titolare (75% vs McKennie 25%)",
+        "pct": 75,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "name": "Alajbegovic",
+        "role": "C",
+        "sub_name": "Boga",
+        "sub_role": "A",
+        "status": "Titolare (75% vs Boga 25%)",
+        "pct": 75,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Kolo Muani",
+        "role": "A",
+        "sub_name": "Woltemade",
+        "sub_role": "A",
+        "status": "Titolare (65% vs Woltemade 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 31,
+      "middle_pct": 31,
+      "right_pct": 38
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 22,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 36
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 17.0,
+      "out_of_box": 8.0,
+      "six_yard_box": 1.7,
+      "penalty_area": 7.3,
+      "rating": 6.65
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 10,
+      "penalty_area_pct": 43,
+      "outside_box_pct": 47
+    }
+  },
+  "Lazio": {
+    "modulo": "4-3-3",
+    "all": "Gennaro Gattuso",
+    "rigoristi": [
+      "Zaccagni",
+      "Gudmundsson A.",
+      "Pinamonti"
+    ],
+    "punizioni": [
+      "Zaccagni",
+      "Gudmundsson A.",
+      "Rovella"
+    ],
+    "corner": [
+      "Zaccagni",
+      "Gudmundsson A.",
+      "Tavares N."
+    ],
+    "dif_stars": 4,
+    "att_stars": 4,
+    "top": [
+      "Zaccagni",
+      "Frattesi",
+      "Tavares N."
+    ],
+    "sleeper": [
+      "Gudmundsson A.",
+      "Pinamonti",
+      "Taylor K."
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Zaccagni",
+        "role": "C",
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala Sinistra tridente & 1° Rigorista (100% Tit)"
+      },
+      {
+        "name": "Gudmundsson A.",
+        "role": "C",
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala Destra tridente Gattuso (100% Tit)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Provstgaard",
+        "pct": 54,
+        "vs": "Doekhi (46%)"
+      },
+      {
+        "player": "Tavares N.",
+        "pct": 60,
+        "vs": "Pedraza (40%)"
+      },
+      {
+        "player": "Taylor K.",
+        "pct": 60,
+        "vs": "Dele-Bashiru (40%)"
+      },
+      {
+        "player": "Floriani Mussolini",
+        "pct": 95,
+        "vs": "Marusic (Infortunato: il terzino dei biancocelesti KO il 24 agosto a Bologna vittima di una lesione muscolare alla coscia. Recuperabile dalla fine di ottobre.)"
+      },
+      {
+        "player": "Isaksen",
+        "pct": 95,
+        "vs": "Gudmundsson A. (Infortunato: L'islandese in Nazionale il 26 settembre vittima di un problema alla spalla destra dopo una caduta fortuita in partita. Condizioni da monitorare, si confida di riaverlo a disposizione dalla metà di novembre.)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Mandas",
+        "role": "P",
+        "sub_name": "Renzetti",
+        "sub_role": "P",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TD",
+        "pos_label": "Terzino DX",
+        "name": "Marusic",
+        "role": "D",
+        "sub_name": "Floriani Mussolini",
+        "sub_role": "D",
+        "status": "Titolare (65% vs Floriani Mussolini 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Centrale DX",
+        "name": "Sutalo J.",
+        "role": "D",
+        "sub_name": "Doekhi",
+        "sub_role": "D",
+        "status": "Titolare (55% vs Doekhi 45%)",
+        "pct": 55,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Centrale SX",
+        "name": "Diogo Leite",
+        "role": "D",
+        "sub_name": "Provstgaard",
+        "sub_role": "D",
+        "status": "Titolare (65% vs Provstgaard 35%)",
+        "pct": 55,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TS",
+        "pos_label": "Terzino SX",
+        "name": "Tavares N.",
+        "role": "D",
+        "sub_name": "Pedraza",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "CC_D",
+        "pos_label": "Mezzala DX",
+        "name": "Frattesi",
+        "role": "C",
+        "sub_name": "Dele-Bashiru",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED",
+        "pos_label": "Regista",
+        "name": "Rovella",
+        "role": "C",
+        "sub_name": "Cataldi",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "CC_S",
+        "pos_label": "Mezzala SX",
+        "name": "Taylor K.",
+        "role": "C",
+        "sub_name": "Przyborek",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "name": "Gudmundsson A.",
+        "role": "C",
+        "sub_name": "Isaksen",
+        "sub_role": "C",
+        "status": "Titolare (65% vs Isaksen 35%)",
+        "pct": 65,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco tridente"
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Pinamonti",
+        "role": "A",
+        "sub_name": "Noslin",
+        "sub_role": "A",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "name": "Zaccagni",
+        "role": "C",
+        "sub_name": "Cancellieri",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala Sinistra & 1° Rigorista"
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 45,
+      "middle_pct": 25,
+      "right_pct": 30
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 25,
+      "middle_third_pct": 45,
+      "opposition_third_pct": 29
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 12.9,
+      "out_of_box": 5.9,
+      "six_yard_box": 1.1,
+      "penalty_area": 5.9,
+      "rating": 6.83
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 9,
+      "penalty_area_pct": 46,
+      "outside_box_pct": 46
+    }
+  },
+  "Lecce": {
+    "modulo": "4-2-3-1",
+    "all": "Eusebio Di Francesco",
+    "rigoristi": [
+      "Stulic",
+      "Geubbels",
+      "Pierotti"
+    ],
+    "punizioni": [
+      "Berisha M.",
+      "Gorter",
+      "Gallo"
+    ],
+    "corner": [
+      "Gallo",
+      "Pierotti",
+      "Berisha M."
+    ],
+    "dif_stars": 3,
+    "att_stars": 3,
+    "top": [
+      "Falcone",
+      "Tiago Gabriel",
+      "Pierotti"
+    ],
+    "sleeper": [
+      "Stulic",
+      "N'Dri",
+      "Veiga D."
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Pierotti",
+        "role": "C",
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco destra (60% vs Monteiro J. 40%)"
+      },
+      {
+        "name": "Monteiro J.",
+        "role": "C",
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco destra (40% vs Pierotti 60%)"
+      },
+      {
+        "name": "Gorter",
+        "role": "C",
+        "pos": "TRQ",
+        "pos_label": "Trequartista",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista centrale (55% vs Gandelman 45%)"
+      },
+      {
+        "name": "Gandelman",
+        "role": "C",
+        "pos": "TRQ",
+        "pos_label": "Trequartista",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista centrale (45% vs Gorter 55%)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Kaba",
+        "pct": 58,
+        "vs": "Gorter (42%)"
+      },
+      {
+        "player": "Geubbels",
+        "pct": 58,
+        "vs": "Esteban (42%)"
+      },
+      {
+        "player": "Siebert",
+        "pct": 95,
+        "vs": "Gaspar K. (Infortunato: squalificato nella 9a e 10a giornata di campionato)"
+      },
+      {
+        "player": "Monteiro J.",
+        "pct": 95,
+        "vs": "Pierotti (Infortunato: l'ala offensiva dei salentini ferma ai box per la frattura composta del malleolo mediale della caviglia destra rimediata nella seconda metà di ottobre. Si prospetta un lungo stop, ipotizziamo un rientro in campo da gennaio.)"
+      },
+      {
+        "player": "Gandelman",
+        "pct": 95,
+        "vs": "Coulibaly L. (Infortunato: il centrocampista costretto al cambio il 18 ottobre a Udine per una lesione muscolare al bicipite femorale della coscia destra, recuperabile dall'inizio di novembre.)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Falcone",
+        "role": "P",
+        "sub_name": "Penev",
+        "sub_role": "P",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TD",
+        "pos_label": "Terzino DX",
+        "name": "Veiga D.",
+        "role": "D",
+        "sub_name": "Dembelè A.",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Centrale DX",
+        "name": "Gaspar K.",
+        "role": "D",
+        "sub_name": "Siebert",
+        "sub_role": "D",
+        "status": "Titolare (60% vs Siebert 40%)",
+        "pct": 60,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Centrale SX",
+        "name": "Tiago Gabriel",
+        "role": "D",
+        "sub_name": "Dembelè A.",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TS",
+        "pos_label": "Terzino SX",
+        "name": "Gallo",
+        "role": "D",
+        "sub_name": "Siebert",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_D",
+        "pos_label": "Mediano DX",
+        "name": "Ilic",
+        "role": "C",
+        "sub_name": "Fofana Sa.",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_S",
+        "pos_label": "Mediano SX",
+        "name": "Ngom",
+        "role": "C",
+        "sub_name": "Gorter",
+        "sub_role": "C",
+        "status": "Titolare (65% vs Gorter 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "name": "Pierotti",
+        "role": "C",
+        "sub_name": "Monteiro J.",
+        "sub_role": "C",
+        "status": "Titolare (60% vs Monteiro J. 40%)",
+        "pct": 60,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco"
+      },
+      {
+        "pos": "TRQ",
+        "pos_label": "Trequartista",
+        "name": "Coulibaly L.",
+        "role": "C",
+        "sub_name": "Gandelman",
+        "sub_role": "C",
+        "status": "Titolare (55% vs Gandelman 45%)",
+        "pct": 55,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista"
+      },
+      {
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "name": "Fatah",
+        "role": "A",
+        "sub_name": "Monteiro J.",
+        "sub_role": "C",
+        "status": "Titolare (65% vs Monteiro J. 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Stulic",
+        "role": "A",
+        "sub_name": "Geubbels",
+        "sub_role": "A",
+        "status": "Titolare (50% vs Geubbels 50%)",
+        "pct": 50,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 36,
+      "middle_pct": 27,
+      "right_pct": 37
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 26,
+      "middle_third_pct": 46,
+      "opposition_third_pct": 27
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 11.1,
+      "out_of_box": 3.6,
+      "six_yard_box": 1.4,
+      "penalty_area": 6.1,
+      "rating": 6.55
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 13,
+      "penalty_area_pct": 55,
+      "outside_box_pct": 32
+    }
+  },
+  "Milan": {
+    "modulo": "3-4-2-1",
+    "all": "Ruben Amorim",
+    "rigoristi": [
+      "Pulisic",
+      "Ramos G.",
+      "Modric"
+    ],
+    "punizioni": [
+      "Modric",
+      "Pulisic",
+      "Rabiot"
+    ],
+    "corner": [
+      "Modric",
+      "Pulisic",
+      "Chukwueze"
+    ],
+    "dif_stars": 4,
+    "att_stars": 5,
+    "top": [
+      "Ramos G.",
+      "Pulisic",
+      "Rabiot"
+    ],
+    "sleeper": [
+      "Pavlovic",
+      "Modric",
+      "Gila"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Pulisic",
+        "role": "C",
+        "pos": "TRQ_S",
+        "pos_label": "Trequartista Sinistro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Stella offensiva Amorim & 1° Rigorista (100% Tit)"
+      },
+      {
+        "name": "Bartesaghi",
+        "role": "D",
+        "pos": "ES",
+        "pos_label": "Esterno Sinistro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia (60% vs Moreira 40%)"
+      },
+      {
+        "name": "Chukwueze",
+        "role": "C",
+        "pos": "ED",
+        "pos_label": "Esterno Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Quinto a tutta fascia d'attacco (60% vs Moreira 40%)"
+      },
+      {
+        "name": "Moreira",
+        "role": "C",
+        "pos": "ED",
+        "pos_label": "Esterno Fascia",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Quinto a tutta fascia (40% su entrambe le corsie)"
+      },
+      {
+        "name": "Cissè A.",
+        "role": "C",
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista d'attacco (50% vs Loftus-Cheek/Hutchinson)"
+      },
+      {
+        "name": "Loftus-Cheek",
+        "role": "C",
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista d'attacco (30% vs Cissè A./Hutchinson)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Gila",
+        "pct": 55,
+        "vs": "Tomori (45%)"
+      },
+      {
+        "player": "Bartesaghi",
+        "pct": 60,
+        "vs": "Diawara S. (40%)"
+      },
+      {
+        "player": "Cissè A.",
+        "pct": 60,
+        "vs": "Pulisic (40%)"
+      },
+      {
+        "player": "De Winter",
+        "pct": 95,
+        "vs": "Gabbia (Infortunato: il difensore KO l'11 ottobre contro il Sassuolo vittima di una lesione del flessore della coscia sinistra con parziale interessamento tendineo. Lo stop sarà lungo, anche con la terapia conservativa. Ipotesi rientro in campo da fine febbraio.)"
+      },
+      {
+        "player": "Moreira",
+        "pct": 95,
+        "vs": "Chukwueze (Infortunato: Il nigeriano dal 21 ottobre fermo per un problema all'anca sinistra. Iniziato un trattamento infiltrativo all'anca, a inizio novembre nuovi controlli medici per stabilire i tempi di rientro.)"
+      },
+      {
+        "player": "Modric",
+        "pct": 85,
+        "vs": "Jashari (15%)"
+      },
+      {
+        "player": "Ciss",
+        "pct": 95,
+        "vs": "Loftus-Cheek (Infortunato: il centrocampista non al meglio per un problema alla gamba destra ravvisato sul finire del match di Udine (25 ottobre). Condizioni da valutare, ma viaggia verso il forfait per mercoledì contro il Bologna.)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Maignan",
+        "role": "P",
+        "sub_name": "Terracciano",
+        "sub_role": "P",
+        "status": "Titolare (85% vs Terracciano 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Braccetto DX",
+        "name": "Gila",
+        "role": "D",
+        "sub_name": "Tomori",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_C",
+        "pos_label": "Centrale",
+        "name": "De Winter",
+        "role": "D",
+        "sub_name": "Gabbia",
+        "sub_role": "D",
+        "status": "Titolare (75% vs Gabbia 25%)",
+        "pct": 75,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Braccetto SX",
+        "name": "Pavlovic",
+        "role": "D",
+        "sub_name": "Terracciano F.",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ED",
+        "pos_label": "Esterno DX",
+        "name": "Chukwueze",
+        "role": "C",
+        "sub_name": "Moreira",
+        "sub_role": "C",
+        "status": "Titolare (50% vs Moreira 50%)",
+        "pct": 50,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Esterno super offensivo"
+      },
+      {
+        "pos": "MED_D",
+        "pos_label": "Mediano DX",
+        "name": "Modric",
+        "role": "C",
+        "sub_name": "Jashari",
+        "sub_role": "C",
+        "status": "Titolare (85% vs Jashari 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_S",
+        "pos_label": "Mediano SX",
+        "name": "Rabiot",
+        "role": "C",
+        "sub_name": "Musah",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ES",
+        "pos_label": "Esterno SX",
+        "name": "Estupinan",
+        "role": "D",
+        "sub_name": "Bartesaghi",
+        "sub_role": "D",
+        "status": "Titolare (65% vs Bartesaghi 35%)",
+        "pct": 65,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia"
+      },
+      {
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista DX",
+        "name": "Cissè A.",
+        "role": "C",
+        "sub_name": "Loftus-Cheek",
+        "sub_role": "C",
+        "status": "Titolare (50% vs Loftus-Cheek 50%)",
+        "pct": 50,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista d'attacco"
+      },
+      {
+        "pos": "TRQ_S",
+        "pos_label": "Trequartista SX",
+        "name": "Pulisic",
+        "role": "C",
+        "sub_name": "Cissè A.",
+        "sub_role": "C",
+        "status": "Titolare (85% vs Cissè A. 15%)",
+        "pct": 85,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista/Seconda Punta & 1° Rigorista"
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Ramos G.",
+        "role": "A",
+        "sub_name": "Camarda",
+        "sub_role": "A",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 38,
+      "middle_pct": 28,
+      "right_pct": 35
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 29,
+      "middle_third_pct": 46,
+      "opposition_third_pct": 24
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 12.3,
+      "out_of_box": 2.7,
+      "six_yard_box": 1.6,
+      "penalty_area": 8.0,
+      "rating": 6.73
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 13,
+      "penalty_area_pct": 66,
+      "outside_box_pct": 21
+    }
+  },
+  "Monza": {
+    "modulo": "3-4-2-1",
+    "all": "Ivan Juric",
+    "rigoristi": [
+      "Colpani",
+      "Varela G.",
+      "Cutrone"
+    ],
+    "punizioni": [
+      "Colpani",
+      "Birindelli",
+      "Folorunsho"
+    ],
+    "corner": [
+      "Colpani",
+      "Birindelli",
+      "Mangas"
+    ],
+    "dif_stars": 3,
+    "att_stars": 3,
+    "top": [
+      "Colpani",
+      "Varela G.",
+      "Folorunsho"
+    ],
+    "sleeper": [
+      "Birindelli",
+      "Ziolkowski",
+      "Ngonge"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Birindelli",
+        "role": "D",
+        "pos": "ED",
+        "pos_label": "Esterno Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia Juric"
+      },
+      {
+        "name": "Mangas",
+        "role": "D",
+        "pos": "ES",
+        "pos_label": "Esterno Sinistro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia Juric"
+      },
+      {
+        "name": "Colpani",
+        "role": "C",
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Stella d'attacco Juric & 1° Rigorista (70% vs Zeballos 30%)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Lucchesi",
+        "pct": 58,
+        "vs": "Goglichidze (42%)"
+      },
+      {
+        "player": "Foe Ondoa",
+        "pct": 58,
+        "vs": "Folorunsho (42%)"
+      },
+      {
+        "player": "Robinson J.",
+        "pct": 58,
+        "vs": "Ngonge (42%)"
+      },
+      {
+        "player": "Tornqvist",
+        "pct": 50,
+        "vs": "Thiam (50%)"
+      },
+      {
+        "player": "Carboni A.",
+        "pct": 95,
+        "vs": "Ziolkowski (Infortunato: Il difensore condizionato da una fastidiosa fascite plantare, recuperabile dalla metà di novembre.)"
+      },
+      {
+        "player": "Mout",
+        "pct": 50,
+        "vs": "Akinsanmiro (50%)"
+      },
+      {
+        "player": "Colpani",
+        "pct": 70,
+        "vs": "Zeballos (30%)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Tornqvist",
+        "role": "P",
+        "sub_name": "Thiam",
+        "sub_role": "P",
+        "status": "Titolare (50% vs Thiam 50%)",
+        "pct": 50,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Braccetto DX",
+        "name": "Kouadio",
+        "role": "D",
+        "sub_name": "Goglichidze",
+        "sub_role": "D",
+        "status": "Titolare (60% vs Goglichidze 40%)",
+        "pct": 60,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_C",
+        "pos_label": "Centrale",
+        "name": "Lucchesi",
+        "role": "D",
+        "sub_name": "Carboni A.",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Braccetto SX",
+        "name": "Ziolkowski",
+        "role": "D",
+        "sub_name": "Carboni A.",
+        "sub_role": "D",
+        "status": "Titolare (75% vs Carboni A. 25%)",
+        "pct": 75,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ED",
+        "pos_label": "Esterno DX",
+        "name": "Birindelli",
+        "role": "D",
+        "sub_name": "Carboni A.",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia"
+      },
+      {
+        "pos": "MED_D",
+        "pos_label": "Mediano DX",
+        "name": "Folorunsho",
+        "role": "C",
+        "sub_name": "Foe Ondoa",
+        "sub_role": "C",
+        "status": "Titolare (65% vs Foe Ondoa 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_S",
+        "pos_label": "Mediano SX",
+        "name": "Mout",
+        "role": "C",
+        "sub_name": "Akinsanmiro",
+        "sub_role": "C",
+        "status": "Titolare (50% vs Akinsanmiro 50%)",
+        "pct": 50,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ES",
+        "pos_label": "Esterno SX",
+        "name": "Mangas",
+        "role": "D",
+        "sub_name": "Carboni A.",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia"
+      },
+      {
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista DX",
+        "name": "Colpani",
+        "role": "C",
+        "sub_name": "Zeballos",
+        "sub_role": "A",
+        "status": "Titolare (70% vs Zeballos 30%)",
+        "pct": 70,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Stella offensiva Juric & 1° Rigorista"
+      },
+      {
+        "pos": "TRQ_S",
+        "pos_label": "Trequartista SX",
+        "name": "Forson O.",
+        "role": "C",
+        "sub_name": "Zeballos",
+        "sub_role": "A",
+        "status": "Titolare (50% vs Zeballos 50%)",
+        "pct": 50,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Varela G.",
+        "role": "A",
+        "sub_name": "Cutrone",
+        "sub_role": "A",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 39,
+      "middle_pct": 26,
+      "right_pct": 35
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 26,
+      "middle_third_pct": 44,
+      "opposition_third_pct": 29
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 14.3,
+      "out_of_box": 4.0,
+      "six_yard_box": 1.1,
+      "penalty_area": 9.1,
+      "rating": 6.56
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 8,
+      "penalty_area_pct": 64,
+      "outside_box_pct": 28
+    }
+  },
+  "Napoli": {
+    "modulo": "4-3-3",
+    "all": "Massimiliano Allegri",
+    "rigoristi": [
+      "De Bruyne",
+      "Hojlund",
+      "Politano"
+    ],
+    "punizioni": [
+      "De Bruyne",
+      "Politano",
+      "Di Lorenzo"
+    ],
+    "corner": [
+      "De Bruyne",
+      "Politano",
+      "Spinazzola"
+    ],
+    "dif_stars": 5,
+    "att_stars": 5,
+    "top": [
+      "Hojlund",
+      "McTominay",
+      "De Bruyne"
+    ],
+    "sleeper": [
+      "Santos A.",
+      "Rrahmani",
+      "Politano"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Politano",
+        "role": "C",
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco tridente Allegri (60% vs Vergara 40%)"
+      },
+      {
+        "name": "Vergara",
+        "role": "C",
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco tridente (40% vs Politano 60%)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "De Bruyne",
+        "pct": 54,
+        "vs": "Zambo Anguissa (46%)"
+      },
+      {
+        "player": "Hojlund",
+        "pct": 60,
+        "vs": "Lucca (40%)"
+      },
+      {
+        "player": "Lang",
+        "pct": 57,
+        "vs": "Giovane (43%)"
+      },
+      {
+        "player": "Di Lorenzo",
+        "pct": 55,
+        "vs": "Beukema (45%)"
+      },
+      {
+        "player": "Marin R.",
+        "pct": 95,
+        "vs": "Badiashile (Infortunato: il difensore KO il 24 ottobre contro la Roma per una lesione distrattiva di medio grado del retto femorale destro, recuperabile dalla fine di novembre.)"
+      },
+      {
+        "player": "Olivera",
+        "pct": 95,
+        "vs": "Spinazzola (Infortunato: Il terzino vittima di una lesione di basso grado del bicipite femorale della coscia destra, recuperabile dalla metà di novembre.)"
+      },
+      {
+        "player": "Politano",
+        "pct": 95,
+        "vs": "Neres (Infortunato: L'ala offensiva azzurra ai box per una lesione di basso grado al muscolo semimembranoso della coscia destra, tentativo di rientro tra i convocati dalla prima metà di novembre.)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Meret",
+        "role": "P",
+        "sub_name": "Milinkovic-Savic V.",
+        "sub_role": "P",
+        "status": "Titolare (75% vs Milinkovic-Savic V. 25%)",
+        "pct": 75,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TD",
+        "pos_label": "Terzino DX",
+        "name": "Di Lorenzo",
+        "role": "D",
+        "sub_name": "Favasuli",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Centrale DX",
+        "name": "Rrahmani",
+        "role": "D",
+        "sub_name": "Beukema",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Centrale SX",
+        "name": "Marin R.",
+        "role": "D",
+        "sub_name": "Badiashile",
+        "sub_role": "D",
+        "status": "Titolare (75% vs Badiashile 25%)",
+        "pct": 75,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TS",
+        "pos_label": "Terzino SX",
+        "name": "Spinazzola",
+        "role": "D",
+        "sub_name": "Olivera",
+        "sub_role": "D",
+        "status": "Titolare (65% vs Olivera 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "CC_D",
+        "pos_label": "Mezzala DX",
+        "name": "Zambo Anguissa",
+        "role": "C",
+        "sub_name": "Vergara",
+        "sub_role": "C",
+        "status": "Titolare (55% vs Vergara 45%)",
+        "pct": 55,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED",
+        "pos_label": "Regista",
+        "name": "Lobotka",
+        "role": "C",
+        "sub_name": "Gilmour",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "CC_S",
+        "pos_label": "Mezzala SX",
+        "name": "McTominay",
+        "role": "C",
+        "sub_name": "De Bruyne",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "name": "Politano",
+        "role": "C",
+        "sub_name": "Neres",
+        "sub_role": "A",
+        "status": "Titolare (85% vs Neres 15%)",
+        "pct": 85,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Ala d'attacco tridente"
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Hojlund",
+        "role": "A",
+        "sub_name": "Lucca",
+        "sub_role": "A",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "name": "Santos A.",
+        "role": "A",
+        "sub_name": "Lang",
+        "sub_role": "A",
+        "status": "Titolare (50% vs Lang 50%)",
+        "pct": 50,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 38,
+      "middle_pct": 27,
+      "right_pct": 35
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 28,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 30
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 16.7,
+      "out_of_box": 4.9,
+      "six_yard_box": 1.6,
+      "penalty_area": 10.3,
+      "rating": 6.64
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 9,
+      "penalty_area_pct": 62,
+      "outside_box_pct": 28
+    }
+  },
+  "Parma": {
+    "modulo": "3-4-2-1",
+    "all": "Alberto Gilardino",
+    "rigoristi": [
+      "Bernabè",
+      "Romero D.",
+      "Tourè E."
+    ],
+    "punizioni": [
+      "Bernabè",
+      "Valeri",
+      "Fabbian"
+    ],
+    "corner": [
+      "Bernabè",
+      "Valeri",
+      "Delprato"
+    ],
+    "dif_stars": 3,
+    "att_stars": 3,
+    "top": [
+      "Bernabè",
+      "Diego Carlos",
+      "Valeri"
+    ],
+    "sleeper": [
+      "Romero D.",
+      "Fabbian",
+      "Tourè E."
+    ],
+    "flop": [],
+    "oop_players": [],
+    "ballottaggi": [
+      {
+        "player": "Sierro",
+        "pct": 60,
+        "vs": "Fabbian (40%)"
+      },
+      {
+        "player": "Romero D.",
+        "pct": 55,
+        "vs": "Lontani (45%)"
+      },
+      {
+        "player": "Britschgi",
+        "pct": 58,
+        "vs": "Drobnic (42%)"
+      },
+      {
+        "player": "Tourè E.",
+        "pct": 95,
+        "vs": "Almqvist (Infortunato: L'ala offensiva dei ducali KO dal 6 ottobre per una lesione muscolare al polpaccio sinistro, recuperabile dalla fine di ottobre.)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Corvi",
+        "role": "P",
+        "sub_name": "Daffara",
+        "sub_role": "P",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Braccetto SX",
+        "name": "Delprato",
+        "role": "D",
+        "sub_name": "Valenti",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_C",
+        "pos_label": "Centrale Difesa",
+        "name": "Troilo",
+        "role": "D",
+        "sub_name": "Ndiaye",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Braccetto DX",
+        "name": "Diego Carlos",
+        "role": "D",
+        "sub_name": "Britschgi",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ES",
+        "pos_label": "Esterno SX",
+        "name": "Valeri",
+        "role": "D",
+        "sub_name": "Britschgi",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_S",
+        "pos_label": "Mediano SX",
+        "name": "Bernabè",
+        "role": "C",
+        "sub_name": "Nicolussi Caviglia",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_D",
+        "pos_label": "Mediano DX",
+        "name": "Keita M.",
+        "role": "C",
+        "sub_name": "Ordonez C.",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ED",
+        "pos_label": "Esterno DX",
+        "name": "Britschgi",
+        "role": "D",
+        "sub_name": "Almqvist",
+        "sub_role": "C",
+        "status": "Titolare (75% vs Almqvist 25%)",
+        "pct": 75,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TRQ_S",
+        "pos_label": "Trequartista SX",
+        "name": "Tourè E.",
+        "role": "A",
+        "sub_name": "Almqvist",
+        "sub_role": "C",
+        "status": "Titolare (85% vs Almqvist 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista DX",
+        "name": "Fabbian",
+        "role": "C",
+        "sub_name": "Elphege",
+        "sub_role": "A",
+        "status": "Titolare (85% vs Elphege 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Romero D.",
+        "role": "A",
+        "sub_name": "Lontani",
+        "sub_role": "A",
+        "status": "Titolare (55% vs Lontani 45%)",
+        "pct": 55,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 31,
+      "middle_pct": 29,
+      "right_pct": 41
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 34,
+      "middle_third_pct": 43,
+      "opposition_third_pct": 23
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 10.7,
+      "out_of_box": 3.1,
+      "six_yard_box": 1.0,
+      "penalty_area": 6.6,
+      "rating": 6.33
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 9,
+      "penalty_area_pct": 61,
+      "outside_box_pct": 29
+    }
+  },
+  "Roma": {
+    "modulo": "3-4-2-1",
+    "all": "Gian Piero Gasperini",
+    "rigoristi": [
+      "Malen",
+      "Soulè",
+      "Dybala"
+    ],
+    "punizioni": [
+      "Dybala",
+      "Soulè",
+      "Mora"
+    ],
+    "corner": [
+      "Dybala",
+      "Soulè",
+      "Molina N."
+    ],
+    "dif_stars": 5,
+    "att_stars": 5,
+    "top": [
+      "Malen",
+      "Dybala",
+      "Svilar"
+    ],
+    "sleeper": [
+      "Molina N.",
+      "Wesley",
+      "Mora"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Molina N.",
+        "role": "D",
+        "pos": "ED",
+        "pos_label": "Esterno Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia offensivo Gasperini"
+      },
+      {
+        "name": "Wesley",
+        "role": "D",
+        "pos": "ES",
+        "pos_label": "Esterno Sinistro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia offensivo Gasperini"
+      },
+      {
+        "name": "Mora",
+        "role": "C",
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista/Seconda punta Gasperini (50% vs Soulè 50%)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Hermoso",
+        "pct": 60,
+        "vs": "N'Dicka (40%)"
+      },
+      {
+        "player": "Cristante",
+        "pct": 56,
+        "vs": "De Roon (44%)"
+      },
+      {
+        "player": "Mora",
+        "pct": 57,
+        "vs": "Dybala (43%)"
+      },
+      {
+        "player": "Ghilardi",
+        "pct": 52,
+        "vs": "Mancini (48%)"
+      },
+      {
+        "player": "Molina N.",
+        "pct": 51,
+        "vs": "Lulli (49%)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "De Marzi",
+        "role": "P",
+        "sub_name": "Svilar",
+        "sub_role": "P",
+        "status": "Titolare (95% con Svilar infortunato)",
+        "pct": 95,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Braccetto DX",
+        "name": "N'Dicka",
+        "role": "D",
+        "sub_name": "Balerdi",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_C",
+        "pos_label": "Centrale",
+        "name": "Hermoso",
+        "role": "D",
+        "sub_name": "Koulierakis",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Braccetto SX",
+        "name": "Mancini",
+        "role": "D",
+        "sub_name": "Ghilardi",
+        "sub_role": "D",
+        "status": "Titolare (45% vs Ghilardi 55%)",
+        "pct": 45,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ED",
+        "pos_label": "Esterno DX",
+        "name": "Lulli",
+        "role": "D",
+        "sub_name": "Molina N.",
+        "sub_role": "D",
+        "status": "Titolare (50% vs Molina N. 50%)",
+        "pct": 50,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia"
+      },
+      {
+        "pos": "MED_D",
+        "pos_label": "Mediano DX",
+        "name": "De Roon",
+        "role": "C",
+        "sub_name": "Cristante",
+        "sub_role": "C",
+        "status": "Titolare (95% con Cristante infortunato)",
+        "pct": 95,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_S",
+        "pos_label": "Mediano SX",
+        "name": "Pisilli",
+        "role": "C",
+        "sub_name": "Konè M.",
+        "sub_role": "C",
+        "status": "Titolare (95% con Konè M. infortunato)",
+        "pct": 95,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ES",
+        "pos_label": "Esterno SX",
+        "name": "Wesley",
+        "role": "D",
+        "sub_name": "Rensch",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia"
+      },
+      {
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista DX",
+        "name": "Mora",
+        "role": "C",
+        "sub_name": "Soulè",
+        "sub_role": "A",
+        "status": "Titolare (50% vs Soulè 50%)",
+        "pct": 50,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista Gasperini"
+      },
+      {
+        "pos": "TRQ_S",
+        "pos_label": "Trequartista SX",
+        "name": "Soulè",
+        "role": "A",
+        "sub_name": "Dybala",
+        "sub_role": "A",
+        "status": "Titolare (95% con Dybala infortunato)",
+        "pct": 95,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Malen",
+        "role": "A",
+        "sub_name": "Castro S.",
+        "sub_role": "A",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 37,
+      "middle_pct": 24,
+      "right_pct": 39
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 24,
+      "middle_third_pct": 44,
+      "opposition_third_pct": 32
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 18.1,
+      "out_of_box": 5.1,
+      "six_yard_box": 1.7,
+      "penalty_area": 11.3,
+      "rating": 6.96
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 9,
+      "penalty_area_pct": 62,
+      "outside_box_pct": 28
+    }
+  },
+  "Sassuolo": {
+    "modulo": "4-3-3",
+    "all": "Alberto Aquilani",
+    "rigoristi": [
+      "Berardi",
+      "Laurientè",
+      "Thorstvedt"
+    ],
+    "punizioni": [
+      "Berardi",
+      "Laurientè",
+      "Adzic"
+    ],
+    "corner": [
+      "Berardi",
+      "Laurientè",
+      "Doig"
+    ],
+    "dif_stars": 3,
+    "att_stars": 4,
+    "top": [
+      "Berardi",
+      "Laurientè",
+      "Thorstvedt"
+    ],
+    "sleeper": [
+      "Bowie",
+      "Adzic",
+      "Idzes"
+    ],
+    "flop": [],
+    "oop_players": [],
+    "ballottaggi": [
+      {
+        "player": "Van Der Brempt",
+        "pct": 54,
+        "vs": "Cinquegrano (46%)"
+      },
+      {
+        "player": "Doig",
+        "pct": 58,
+        "vs": "Obrador (42%)"
+      },
+      {
+        "player": "Bakola",
+        "pct": 58,
+        "vs": "Adzic (42%)"
+      },
+      {
+        "player": "Berardi",
+        "pct": 50,
+        "vs": "Volpato (50%)"
+      },
+      {
+        "player": "Bowie",
+        "pct": 76,
+        "vs": "Esposito Se. (24%)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Muric",
+        "role": "P",
+        "sub_name": "Russo A.",
+        "sub_role": "P",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TD",
+        "pos_label": "Terzino DX",
+        "name": "Van Der Brempt",
+        "role": "D",
+        "sub_name": "Cinquegrano",
+        "sub_role": "D",
+        "status": "Titolare (65% vs Cinquegrano 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Centrale DX",
+        "name": "Leysen F.",
+        "role": "D",
+        "sub_name": "Caleta-Car",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Centrale SX",
+        "name": "Idzes",
+        "role": "D",
+        "sub_name": "Odenthal",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "TS",
+        "pos_label": "Terzino SX",
+        "name": "Doig",
+        "role": "D",
+        "sub_name": "Obrador",
+        "sub_role": "D",
+        "status": "Titolare (60% vs Obrador 40%)",
+        "pct": 60,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "CC_D",
+        "pos_label": "Mezzala DX",
+        "name": "Bakola",
+        "role": "C",
+        "sub_name": "Lipani",
+        "sub_role": "C",
+        "status": "Titolare (65% vs Lipani 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED",
+        "pos_label": "Regista",
+        "name": "Matic",
+        "role": "C",
+        "sub_name": "Thorstvedt",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "CC_S",
+        "pos_label": "Mezzala SX",
+        "name": "Adzic",
+        "role": "C",
+        "sub_name": "Sulemana I.",
+        "sub_role": "C",
+        "status": "Titolare (55% vs Sulemana I. 45%)",
+        "pct": 55,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AD",
+        "pos_label": "Ala Destra",
+        "name": "Berardi",
+        "role": "A",
+        "sub_name": "Volpato",
+        "sub_role": "C",
+        "status": "Titolare (50% vs Volpato 50%)",
+        "pct": 50,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Bowie",
+        "role": "A",
+        "sub_name": "Esposito Se.",
+        "sub_role": "A",
+        "status": "Titolare (85% vs Esposito Se. 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "AS",
+        "pos_label": "Ala Sinistra",
+        "name": "Laurientè",
+        "role": "A",
+        "sub_name": "Esposito Se.",
+        "sub_role": "A",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 41,
+      "middle_pct": 25,
+      "right_pct": 34
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 30,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 27
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 15.7,
+      "out_of_box": 6.3,
+      "six_yard_box": 0.7,
+      "penalty_area": 8.7,
+      "rating": 6.55
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 5,
+      "penalty_area_pct": 55,
+      "outside_box_pct": 40
+    }
+  },
+  "Torino": {
+    "modulo": "3-5-2",
+    "all": "Ignazio Abate",
+    "rigoristi": [
+      "Simeone",
+      "Mandragora",
+      "Vlasic"
+    ],
+    "punizioni": [
+      "Mandragora",
+      "Vlasic",
+      "Cacciamani"
+    ],
+    "corner": [
+      "Vlasic",
+      "Mandragora",
+      "Cacciamani"
+    ],
+    "dif_stars": 3,
+    "att_stars": 4,
+    "top": [
+      "Simeone",
+      "Vlasic",
+      "Mandragora"
+    ],
+    "sleeper": [
+      "Casadei",
+      "Belghali",
+      "Comuzzo"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Belghali",
+        "role": "D",
+        "pos": "ED",
+        "pos_label": "Esterno Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia (65% vs Fortini 35%)"
+      },
+      {
+        "name": "Fortini",
+        "role": "D",
+        "pos": "ED",
+        "pos_label": "Esterno Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia (35% vs Belghali 65%)"
+      },
+      {
+        "name": "Cacciamani",
+        "role": "C",
+        "pos": "ES",
+        "pos_label": "Esterno Sinistro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Quinto a tutta fascia d'attacco"
+      },
+      {
+        "name": "Vlasic",
+        "role": "C",
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista d'attacco Abate (100% Tit)"
+      },
+      {
+        "name": "Casadei",
+        "role": "C",
+        "pos": "TRQ_S",
+        "pos_label": "Trequartista Sinistro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Trequartista d'incursione (60% vs Adams C. 40%)"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Ismajli",
+        "pct": 55,
+        "vs": "Comert (45%)"
+      },
+      {
+        "player": "Cacciamani",
+        "pct": 60,
+        "vs": "Patterson (40%)"
+      },
+      {
+        "player": "Adams C.",
+        "pct": 60,
+        "vs": "Kulenovic (40%)"
+      },
+      {
+        "player": "Belghali",
+        "pct": 95,
+        "vs": "Fortini (Infortunato: Il cursore di fascia dei granata rientrato in anticipo dagli impegni con l'U21 azzurra a inizio ottobre a causa di un affaticamento muscolare all'adduttore. Da valutare nei prossimi allenamenti le possibilità di convocazione per martedì in casa contro il Como.)"
+      },
+      {
+        "player": "Oristanio",
+        "pct": 95,
+        "vs": "Mandragora (Infortunato: il centrocampista granata fermato il 23 ottobre contro il Monza da un problema muscolare al flessore sinistro. Condizioni da valutare, di certo out martedì in campionato contro il Como.)"
+      },
+      {
+        "player": "Gineitis",
+        "pct": 70,
+        "vs": "Casadei (30%)"
+      },
+      {
+        "player": "Simeone",
+        "pct": 65,
+        "vs": "Zapata D. (35%)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Perri",
+        "role": "P",
+        "sub_name": "Mascardi",
+        "sub_role": "P",
+        "status": "Titolare (85% vs Mascardi 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Braccetto SX",
+        "name": "Comuzzo",
+        "role": "D",
+        "sub_name": "Rodriguez R.",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_C",
+        "pos_label": "Centrale Difesa",
+        "name": "Comert",
+        "role": "D",
+        "sub_name": "Ismajli",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Braccetto DX",
+        "name": "Coco",
+        "role": "D",
+        "sub_name": "Patterson",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ES",
+        "pos_label": "Esterno SX",
+        "name": "Belghali",
+        "role": "D",
+        "sub_name": "Fortini",
+        "sub_role": "D",
+        "status": "Titolare (65% vs Fortini 35%)",
+        "pct": 65,
+        "fpp_fpn": "FPP",
+        "oop": true
+      },
+      {
+        "pos": "CC_S",
+        "pos_label": "Mezzala SX",
+        "name": "Mandragora",
+        "role": "C",
+        "sub_name": "Oristanio",
+        "sub_role": "C",
+        "status": "Titolare (60% vs Oristanio 40%)",
+        "pct": 60,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED",
+        "pos_label": "Regista",
+        "name": "Gineitis",
+        "role": "C",
+        "sub_name": "Casadei",
+        "sub_role": "C",
+        "status": "Titolare (75% vs Casadei 25%)",
+        "pct": 75,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "CC_D",
+        "pos_label": "Mezzala DX",
+        "name": "Fitz-Jim",
+        "role": "C",
+        "sub_name": "Ilkhan",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "FPP",
+        "oop": true
+      },
+      {
+        "pos": "ED",
+        "pos_label": "Esterno DX",
+        "name": "Cacciamani",
+        "role": "C",
+        "sub_name": "Belghali",
+        "sub_role": "D",
+        "status": "Titolare (85% vs Belghali 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC_S",
+        "pos_label": "Punta SX",
+        "name": "Vlasic",
+        "role": "C",
+        "sub_name": "Adams C.",
+        "sub_role": "A",
+        "status": "Titolare (85% vs Adams C. 15%)",
+        "pct": 85,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC_D",
+        "pos_label": "Punta DX",
+        "name": "Simeone",
+        "role": "A",
+        "sub_name": "Zapata D.",
+        "sub_role": "A",
+        "status": "Titolare (65% vs Zapata D. 35%)",
+        "pct": 65,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 36,
+      "middle_pct": 31,
+      "right_pct": 33
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 33,
+      "middle_third_pct": 44,
+      "opposition_third_pct": 23
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 9.7,
+      "out_of_box": 3.7,
+      "six_yard_box": 0.7,
+      "penalty_area": 5.3,
+      "rating": 6.52
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 7,
+      "penalty_area_pct": 54,
+      "outside_box_pct": 38
+    }
+  },
+  "Udinese": {
+    "modulo": "3-4-2-1",
+    "all": "Kosta Runjaic",
+    "rigoristi": [
+      "Davis K.",
+      "Zaniolo",
+      "Ekkelenkamp"
+    ],
+    "punizioni": [
+      "Alaba",
+      "Zaniolo",
+      "Ekkelenkamp",
+      "Vojvoda"
+    ],
+    "corner": [
+      "Ekkelenkamp",
+      "Zaniolo",
+      "Kamara H."
+    ],
+    "dif_stars": 3,
+    "att_stars": 4,
+    "top": [
+      "Davis K.",
+      "Zaniolo",
+      "Solet"
+    ],
+    "sleeper": [
+      "Ekkelenkamp",
+      "Vojvoda",
+      "Okoye"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Zaniolo",
+        "role": "C",
+        "pos": "PC_D",
+        "pos_label": "Seconda Punta",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_C_IN_A",
+        "oop_desc": "Quotato C ➜ Seconda punta tandem Runjaic (100% Tit)"
+      },
+      {
+        "name": "Vojvoda",
+        "role": "D",
+        "pos": "ED",
+        "pos_label": "Esterno Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia"
+      },
+      {
+        "name": "Kamara H.",
+        "role": "D",
+        "pos": "ES",
+        "pos_label": "Esterno Sinistro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Palma",
+        "pct": 60,
+        "vs": "Ebosse (40%)"
+      },
+      {
+        "player": "Kamara H.",
+        "pct": 59,
+        "vs": "Arizala (41%)"
+      },
+      {
+        "player": "Miller L.",
+        "pct": 53,
+        "vs": "Piotrowski (47%)"
+      },
+      {
+        "player": "Abankwah",
+        "pct": 95,
+        "vs": "Alaba (Infortunato: il difensore sostituito nell'intervallo della sfida contro il Lecce (18 ottobre) per un risentimento muscolare al polpaccio destro. Recuperabile dalla metà di novembre.)"
+      },
+      {
+        "player": "Zaniolo",
+        "pct": 77,
+        "vs": "Unai Gomez (23%)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Okoye",
+        "role": "P",
+        "sub_name": "Piana",
+        "sub_role": "P",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Braccetto SX",
+        "name": "Alaba",
+        "role": "D",
+        "sub_name": "Abankwah",
+        "sub_role": "D",
+        "status": "Titolare (75% vs Abankwah 25%)",
+        "pct": 75,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_C",
+        "pos_label": "Centrale Difesa",
+        "name": "Kabasele",
+        "role": "D",
+        "sub_name": "Palma",
+        "sub_role": "D",
+        "status": "Titolare (60% vs Palma 40%)",
+        "pct": 60,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Braccetto DX",
+        "name": "Solet",
+        "role": "D",
+        "sub_name": "Ebosse",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ES",
+        "pos_label": "Esterno SX",
+        "name": "Vojvoda",
+        "role": "D",
+        "sub_name": "Zanoli",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "FPP",
+        "oop": true
+      },
+      {
+        "pos": "MED_S",
+        "pos_label": "Mediano SX",
+        "name": "Piotrowski",
+        "role": "C",
+        "sub_name": "Zarraga",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED_D",
+        "pos_label": "Mediano DX",
+        "name": "Karlstrom",
+        "role": "C",
+        "sub_name": "Miller L.",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ED",
+        "pos_label": "Esterno DX",
+        "name": "Kamara H.",
+        "role": "D",
+        "sub_name": "Bertola",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "FPP",
+        "oop": true
+      },
+      {
+        "pos": "TRQ_S",
+        "pos_label": "Trequartista SX",
+        "name": "Ekkelenkamp",
+        "role": "C",
+        "sub_name": "Chakvetadze",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "FPP",
+        "oop": true
+      },
+      {
+        "pos": "TRQ_D",
+        "pos_label": "Trequartista DX",
+        "name": "Zaniolo",
+        "role": "C",
+        "sub_name": "Unai Gomez",
+        "sub_role": "C",
+        "status": "Titolare (85% vs Unai Gomez 15%)",
+        "pct": 85,
+        "fpp_fpn": "FPP",
+        "oop": true
+      },
+      {
+        "pos": "PC",
+        "pos_label": "Punta Centrale",
+        "name": "Davis K.",
+        "role": "A",
+        "sub_name": "Gueye",
+        "sub_role": "A",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 34,
+      "middle_pct": 27,
+      "right_pct": 39
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 26,
+      "middle_third_pct": 45,
+      "opposition_third_pct": 29
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 14.3,
+      "out_of_box": 5.0,
+      "six_yard_box": 0.3,
+      "penalty_area": 9.0,
+      "rating": 6.42
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 2,
+      "penalty_area_pct": 63,
+      "outside_box_pct": 35
+    }
+  },
+  "Venezia": {
+    "modulo": "3-5-2",
+    "all": "Davide Nicola",
+    "rigoristi": [
+      "Adams A.",
+      "Yeboah J.",
+      "Basic"
+    ],
+    "punizioni": [
+      "Basic",
+      "Busio",
+      "Mazzocchi"
+    ],
+    "corner": [
+      "Basic",
+      "Busio",
+      "Haps"
+    ],
+    "dif_stars": 3,
+    "att_stars": 3,
+    "top": [
+      "Basic",
+      "Adams A.",
+      "Busio"
+    ],
+    "sleeper": [
+      "Yeboah J.",
+      "Mazzocchi",
+      "Bella-Kotchap"
+    ],
+    "flop": [],
+    "oop_players": [
+      {
+        "name": "Mazzocchi",
+        "role": "D",
+        "pos": "ED",
+        "pos_label": "Esterno Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia (70% vs Correia T. 30%, jolly anche a SX)"
+      },
+      {
+        "name": "Correia T.",
+        "role": "D",
+        "pos": "ED",
+        "pos_label": "Esterno Destro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia (30% vs Mazzocchi 70%)"
+      },
+      {
+        "name": "Haps",
+        "role": "D",
+        "pos": "ES",
+        "pos_label": "Esterno Sinistro",
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia sinistra"
+      }
+    ],
+    "ballottaggi": [
+      {
+        "player": "Halhal",
+        "pct": 60,
+        "vs": "Bella-Kotchap (40%)"
+      },
+      {
+        "player": "Hainaut",
+        "pct": 60,
+        "vs": "Haps (40%)"
+      },
+      {
+        "player": "Yeboah J.",
+        "pct": 60,
+        "vs": "Rrahmani Al. (40%)"
+      }
+    ],
+    "lineup": [
+      {
+        "pos": "POR",
+        "pos_label": "Portiere",
+        "name": "Stankovic F.",
+        "role": "P",
+        "sub_name": "Grandi",
+        "sub_role": "P",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_D",
+        "pos_label": "Braccetto DX",
+        "name": "Bella-Kotchap",
+        "role": "D",
+        "sub_name": "Sagrado",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_C",
+        "pos_label": "Centrale",
+        "name": "Schingtienne",
+        "role": "D",
+        "sub_name": "Moreno M.",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "DC_S",
+        "pos_label": "Braccetto SX",
+        "name": "Juan Jesus",
+        "role": "D",
+        "sub_name": "Halhal",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ED",
+        "pos_label": "Esterno DX",
+        "name": "Hainaut",
+        "role": "D",
+        "sub_name": "Mazzocchi",
+        "sub_role": "D",
+        "status": "Titolare (70% vs Mazzocchi 30%)",
+        "pct": 70,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia"
+      },
+      {
+        "pos": "CC_D",
+        "pos_label": "Mezzala DX",
+        "name": "Basic",
+        "role": "C",
+        "sub_name": "Helgason",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "MED",
+        "pos_label": "Mediano",
+        "name": "Perez K.",
+        "role": "C",
+        "sub_name": "Busio",
+        "sub_role": "C",
+        "status": "Titolare (95% con Busio infortunato)",
+        "pct": 95,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "CC_S",
+        "pos_label": "Mezzala SX",
+        "name": "Sohm",
+        "role": "C",
+        "sub_name": "Fernandez T.",
+        "sub_role": "C",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "ES",
+        "pos_label": "Esterno SX",
+        "name": "Haps",
+        "role": "D",
+        "sub_name": "Moreno M.",
+        "sub_role": "D",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "FPP",
+        "oop": true,
+        "oop_type": "FPP_D_IN_C",
+        "oop_desc": "Quotato D ➜ Quinto a tutta fascia"
+      },
+      {
+        "pos": "PC_D",
+        "pos_label": "Punta DX",
+        "name": "Adams A.",
+        "role": "A",
+        "sub_name": "Lauberbach",
+        "sub_role": "A",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      },
+      {
+        "pos": "PC_S",
+        "pos_label": "Punta SX",
+        "name": "Yeboah J.",
+        "role": "A",
+        "sub_name": "Rrahmani Al.",
+        "sub_role": "A",
+        "status": "Titolare Inamovibile (100% Tit)",
+        "pct": 100,
+        "fpp_fpn": "NONE",
+        "oop": false
+      }
+    ],
+    "whoscored_attack_sides": {
+      "left_pct": 36,
+      "middle_pct": 25,
+      "right_pct": 39
+    },
+    "whoscored_action_zones": {
+      "own_third_pct": 31,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 27
+    },
+    "whoscored_goal_situations": {},
+    "whoscored_xg": {},
+    "whoscored_shots_zones_pg": {
+      "total": 14.0,
+      "out_of_box": 5.0,
+      "six_yard_box": 1.9,
+      "penalty_area": 7.1,
+      "rating": 6.44
+    },
+    "whoscored_shot_zones_pct": {
+      "six_yard_box_pct": 13,
+      "penalty_area_pct": 51,
+      "outside_box_pct": 36
+    }
+  }
+}

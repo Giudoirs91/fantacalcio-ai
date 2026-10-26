@@ -54,84 +54,44 @@
     ],
     "ballottaggi": [
       {
-        "player": "Zappacosta",
-        "pct": 65,
-        "vs": "Bellanova (35%)"
+        "player": "Gaetano",
+        "pct": 58,
+        "vs": "Pasalic (42%)"
       },
       {
-        "player": "Bellanova",
-        "pct": 35,
-        "vs": "Zappacosta (65%)"
+        "player": "Rowe",
+        "pct": 58,
+        "vs": "Zalewski (42%)"
+      },
+      {
+        "player": "Krstovic",
+        "pct": 55,
+        "vs": "Scamacca (45%)"
+      },
+      {
+        "player": "Zappacosta",
+        "pct": 95,
+        "vs": "Bellanova (Infortunato: il terzino KO il 25 ottobre per un risentimento muscolare all’inguine. Di certo out giovedì nel turno infrasettimanale a Firenze, tempi di recupero da valutare.)"
       },
       {
         "player": "Kristensen T.",
         "pct": 95,
-        "vs": "Kossounou (Infortunato: Risentimento muscolare ai flessori della coscia sinistra)"
-      },
-      {
-        "player": "Kossounou",
-        "pct": 0,
-        "vs": "Kristensen T. (Infortunato fino a 29/10/2026)"
+        "vs": "Kossounou (Infortunato: Il difensore frenato da una lesione muscolare di medio-alto grado del bicipite femorale della coscia sinistra alla vigilia della sfida di campionato contro la Juventus (del 20 settembre). Lungo stop, rientro dalla seconda metà di novembre.)"
       },
       {
         "player": "Scalvini",
         "pct": 95,
-        "vs": "Hien (Infortunato: Lesione del tendine del semimembranoso della gamba sinistra)"
-      },
-      {
-        "player": "Hien",
-        "pct": 0,
-        "vs": "Scalvini (Infortunato fino a 09/11/2026)"
+        "vs": "Hien (Infortunato: il difensore operato a fine giugno per una lesione del tendine prossimale del muscolo semimembranoso della coscia sinistra, in recupero e pronto a tornare in campo dalla metà di novembre.)"
       },
       {
         "player": "Bernasconi",
-        "pct": 50,
-        "vs": "Kolasinac (50%)"
-      },
-      {
-        "player": "Kolasinac",
-        "pct": 50,
-        "vs": "Bernasconi (50%)"
-      },
-      {
-        "player": "Samardzic",
-        "pct": 65,
-        "vs": "Zalewski (35%)"
-      },
-      {
-        "player": "Zalewski",
-        "pct": 35,
-        "vs": "Samardzic (65%)"
+        "pct": 95,
+        "vs": "Kolasinac (Infortunato: il difensore KO il 18 ottobre a Milano vittima di una distrazione muscolare al retto femorale della coscia sinistra, recuperabile dalla metà di novembre.)"
       },
       {
         "player": "De Ketelaere",
-        "pct": 85,
-        "vs": "Elmas (15%)"
-      },
-      {
-        "player": "Elmas",
-        "pct": 15,
-        "vs": "De Ketelaere (85%)"
-      },
-      {
-        "player": "Scamacca",
-        "pct": 75,
-        "vs": "Krstovic (25%)"
-      },
-      {
-        "player": "Krstovic",
-        "pct": 25,
-        "vs": "Scamacca (75%)"
-      },
-      {
-        "player": "Rowe",
-        "pct": 95,
-        "vs": "Raspadori (Infortunato: Distrazione di basso grado del muscolo bicipite femorale della coscia destra)"
-      },
-      {
-        "player": "Raspadori",
-        "pct": 0,
-        "vs": "Rowe (Infortunato fino a 31/10/2026)"
+        "pct": 77,
+        "vs": "Elmas (23%)"
       }
     ],
     "lineup": [
@@ -360,34 +320,24 @@
     ],
     "ballottaggi": [
       {
+        "player": "Theate",
+        "pct": 60,
+        "vs": "Heggem (40%)"
+      },
+      {
+        "player": "Ferguson",
+        "pct": 55,
+        "vs": "Moro N. (45%)"
+      },
+      {
+        "player": "Bernardeschi",
+        "pct": 60,
+        "vs": "Odgaard (40%)"
+      },
+      {
         "player": "Zortea",
         "pct": 60,
         "vs": "Darmian (40%)"
-      },
-      {
-        "player": "Darmian",
-        "pct": 40,
-        "vs": "Zortea (60%)"
-      },
-      {
-        "player": "Heggem",
-        "pct": 65,
-        "vs": "Helland (35%)"
-      },
-      {
-        "player": "Helland",
-        "pct": 35,
-        "vs": "Heggem (65%)"
-      },
-      {
-        "player": "Theate",
-        "pct": 70,
-        "vs": "Vitik (30%)"
-      },
-      {
-        "player": "Vitik",
-        "pct": 30,
-        "vs": "Theate (70%)"
       },
       {
         "player": "Miranda J.",
@@ -395,39 +345,9 @@
         "vs": "Alhassane (50%)"
       },
       {
-        "player": "Alhassane",
-        "pct": 50,
-        "vs": "Miranda J. (50%)"
-      },
-      {
         "player": "Pobega",
         "pct": 75,
         "vs": "Amondarain (25%)"
-      },
-      {
-        "player": "Amondarain",
-        "pct": 25,
-        "vs": "Pobega (75%)"
-      },
-      {
-        "player": "Orsolini",
-        "pct": 85,
-        "vs": "Bernardeschi (15%)"
-      },
-      {
-        "player": "Bernardeschi",
-        "pct": 15,
-        "vs": "Orsolini (85%)"
-      },
-      {
-        "player": "El Azzouzi O.",
-        "pct": 95,
-        "vs": "Odgaard (Infortunato: Lesione ai flessori della coscia destra)"
-      },
-      {
-        "player": "Odgaard",
-        "pct": 0,
-        "vs": "El Azzouzi O. (Infortunato fino a 21/10/2026)"
       },
       {
         "player": "Cambiaghi",
@@ -435,19 +355,9 @@
         "vs": "Mbangula (45%)"
       },
       {
-        "player": "Mbangula",
-        "pct": 45,
-        "vs": "Cambiaghi (55%)"
-      },
-      {
         "player": "Dovbyk",
-        "pct": 65,
-        "vs": "Piccoli (35%)"
-      },
-      {
-        "player": "Piccoli",
-        "pct": 35,
-        "vs": "Dovbyk (65%)"
+        "pct": 95,
+        "vs": "Piccoli (Infortunato: l'attaccante indisponibile a causa di un guaio muscolare al bicipite femorale della coscia destra. Recuperabile dalla metà di novembre.)"
       }
     ],
     "lineup": [
@@ -654,34 +564,24 @@
     ],
     "ballottaggi": [
       {
-        "player": "Sugawara",
-        "pct": 70,
-        "vs": "Zè Pedro (30%)"
+        "player": "Zè Pedro",
+        "pct": 60,
+        "vs": "Sugawara (40%)"
       },
       {
-        "player": "Zè Pedro",
-        "pct": 30,
-        "vs": "Sugawara (70%)"
+        "player": "Rodriguez Ju.",
+        "pct": 55,
+        "vs": "Deiola (45%)"
+      },
+      {
+        "player": "Maldini",
+        "pct": 59,
+        "vs": "Mendy P. (41%)"
       },
       {
         "player": "Fazzini",
         "pct": 60,
         "vs": "Fadera (40%)"
-      },
-      {
-        "player": "Fadera",
-        "pct": 40,
-        "vs": "Fazzini (60%)"
-      },
-      {
-        "player": "Kevin Carlos",
-        "pct": 65,
-        "vs": "Mendy P. (35%)"
-      },
-      {
-        "player": "Mendy P.",
-        "pct": 35,
-        "vs": "Kevin Carlos (65%)"
       }
     ],
     "lineup": [
@@ -918,54 +818,34 @@
     ],
     "ballottaggi": [
       {
-        "player": "Valle",
-        "pct": 50,
-        "vs": "Kaiki (50%)"
-      },
-      {
-        "player": "Kaiki",
-        "pct": 50,
-        "vs": "Valle (50%)"
-      },
-      {
-        "player": "Milla",
-        "pct": 85,
-        "vs": "Da Cunha (15%)"
+        "player": "Couto",
+        "pct": 58,
+        "vs": "Smolcic I. (42%)"
       },
       {
         "player": "Da Cunha",
-        "pct": 15,
-        "vs": "Milla (85%)"
+        "pct": 54,
+        "vs": "Addai (46%)"
+      },
+      {
+        "player": "Douvikas",
+        "pct": 60,
+        "vs": "Caqueret (40%)"
+      },
+      {
+        "player": "Kaiki",
+        "pct": 53,
+        "vs": "Valle (47%)"
       },
       {
         "player": "Liberali",
         "pct": 95,
-        "vs": "Diao (Infortunato: Problema muscolare alla coscia sinistra)"
-      },
-      {
-        "player": "Diao",
-        "pct": 0,
-        "vs": "Liberali (Infortunato fino a 08/11/2026)"
+        "vs": "Diao (Infortunato: L'attaccante KO il 14 ottobre in Champions League, costretto al cambio per una lesione muscolare al flessore della gamba, rientro tra i convocati dalla metà di novembre.)"
       },
       {
         "player": "Baturina",
-        "pct": 70,
-        "vs": "Rodriguez Je. (30%)"
-      },
-      {
-        "player": "Rodriguez Je.",
-        "pct": 30,
-        "vs": "Baturina (70%)"
-      },
-      {
-        "player": "Douvikas",
         "pct": 95,
-        "vs": "Kean (Infortunato: Problema alla tibia)"
-      },
-      {
-        "player": "Kean",
-        "pct": 0,
-        "vs": "Douvikas (Infortunato fino a 20/10/2026)"
+        "vs": "Rodriguez Je. (Infortunato: Il calciatore si è infortunato in allenamento il 20 ottobre, rimane da valutare per stabilire i tempi di recupero. Si ipotizza un ritorno in campo da metà dicembre.)"
       }
     ],
     "lineup": [
@@ -1197,58 +1077,28 @@
     "ballottaggi": [
       {
         "player": "Jimenez A.",
-        "pct": 60,
-        "vs": "Dodô (40%)"
+        "pct": 58,
+        "vs": "Dodò (42%)"
       },
       {
-        "player": "Dodô",
-        "pct": 40,
-        "vs": "Jimenez A. (60%)"
-      },
-      {
-        "player": "Pongracic",
-        "pct": 40,
-        "vs": "Viery (40%) / Ranieri L. (20%)"
-      },
-      {
-        "player": "Viery",
-        "pct": 40,
-        "vs": "Pongracic (40%) / Ranieri L. (20%)"
-      },
-      {
-        "player": "Ranieri L.",
-        "pct": 20,
-        "vs": "Pongracic (40%) / Viery (40%)"
-      },
-      {
-        "player": "Fagioli",
-        "pct": 50,
-        "vs": "Oulai (50%)"
-      },
-      {
-        "player": "Oulai",
-        "pct": 50,
-        "vs": "Fagioli (50%)"
+        "player": "Brescianini",
+        "pct": 54,
+        "vs": "Oulai (46%)"
       },
       {
         "player": "Pellegrino M.",
-        "pct": 60,
-        "vs": "Beto (40%)"
+        "pct": 51,
+        "vs": "Beto (49%)"
       },
       {
-        "player": "Beto",
-        "pct": 40,
-        "vs": "Pellegrino M. (60%)"
+        "player": "Viery",
+        "pct": 95,
+        "vs": "Pongracic (Infortunato: il difensore il 15 ottobre contro l'Inter ha rimediato un problema al bicipite femorale della coscia destra, che andrà valutato. Forfait nel frattempo per giovedì contro l'Atalanta al Franchi.)"
       },
       {
         "player": "Goncalves P.",
         "pct": 60,
         "vs": "Njie (40%)"
-      },
-      {
-        "player": "Njie",
-        "pct": 40,
-        "vs": "Goncalves P. (60%)"
       }
     ],
     "lineup": [
@@ -1468,64 +1318,29 @@
     ],
     "ballottaggi": [
       {
+        "player": "Calvani",
+        "pct": 58,
+        "vs": "Cittadini (42%)"
+      },
+      {
+        "player": "Bracaglia",
+        "pct": 52,
+        "vs": "Terzic (48%)"
+      },
+      {
         "player": "Oyono A.",
         "pct": 65,
         "vs": "Amey (35%)"
       },
       {
-        "player": "Amey",
-        "pct": 35,
-        "vs": "Oyono A. (65%)"
-      },
-      {
-        "player": "Calvani",
-        "pct": 55,
-        "vs": "Cittadini (45%)"
-      },
-      {
-        "player": "Cittadini",
-        "pct": 45,
-        "vs": "Calvani (55%)"
-      },
-      {
-        "player": "Bracaglia",
-        "pct": 55,
-        "vs": "Terzic (45%)"
-      },
-      {
-        "player": "Terzic",
-        "pct": 45,
-        "vs": "Bracaglia (55%)"
-      },
-      {
         "player": "Calò",
         "pct": 95,
-        "vs": "Grillitsch (Infortunato: Sindrome retto-adduttoria)"
-      },
-      {
-        "player": "Grillitsch",
-        "pct": 0,
-        "vs": "Calò (Infortunato fino a 02/11/2026)"
-      },
-      {
-        "player": "Cal",
-        "pct": 95,
-        "vs": "Grillitsch (Infortunato: Sindrome retto-adduttoria)"
-      },
-      {
-        "player": "Grillitsch",
-        "pct": 0,
-        "vs": "Cal (Infortunato fino a 02/11/2026)"
+        "vs": "Grillitsch (Infortunato: il centrocampista non convocato dalla gara di Genova (12 settembre) a causa di una sindrome retto-adduttoria, ha poi deciso di operarsi. Stop di circa sei settimane, può tornare convocabile da metà novembre.)"
       },
       {
         "player": "Masini",
-        "pct": 65,
-        "vs": "Cichella (35%)"
-      },
-      {
-        "player": "Cichella",
-        "pct": 35,
-        "vs": "Masini (65%)"
+        "pct": 63,
+        "vs": "Cichella (37%)"
       },
       {
         "player": "Fini",
@@ -1533,19 +1348,9 @@
         "vs": "Zerbin (15%)"
       },
       {
-        "player": "Zerbin",
-        "pct": 15,
-        "vs": "Fini (85%)"
-      },
-      {
         "player": "Kvernadze",
-        "pct": 85,
-        "vs": "Bobcek (15%)"
-      },
-      {
-        "player": "Bobcek",
-        "pct": 15,
-        "vs": "Kvernadze (85%)"
+        "pct": 77,
+        "vs": "Bobcek (23%)"
       }
     ],
     "lineup": [
@@ -1796,29 +1601,24 @@
     ],
     "ballottaggi": [
       {
+        "player": "Messias",
+        "pct": 58,
+        "vs": "Wiafe (42%)"
+      },
+      {
+        "player": "Traorè Hj.",
+        "pct": 55,
+        "vs": "Amorim (45%)"
+      },
+      {
+        "player": "Colombo",
+        "pct": 54,
+        "vs": "Vitinha O. (46%)"
+      },
+      {
         "player": "Drameh",
-        "pct": 50,
-        "vs": "Ehizibue (50%)"
-      },
-      {
-        "player": "Ehizibue",
-        "pct": 50,
-        "vs": "Drameh (50%)"
-      },
-      {
-        "player": "Amorim",
         "pct": 95,
-        "vs": "Sow (Infortunato: Problema muscolare durante Svizzera-Macedonia del Nord (da accertare))"
-      },
-      {
-        "player": "Sow",
-        "pct": 0,
-        "vs": "Amorim (Infortunato fino a 02/11/2026)"
-      },
-      {
-        "player": "Ellertsson",
-        "pct": 50,
-        "vs": "Mitaj (50%)"
+        "vs": "Ehizibue (Infortunato: Il difensore out domenica scorsa contro il Venezia per noie fisiche. Da valutare in vista del turno infrasettimanale di mercoledì.)"
       },
       {
         "player": "Mitaj",
@@ -1827,33 +1627,8 @@
       },
       {
         "player": "Baldanzi",
-        "pct": 55,
-        "vs": "Traorè Hj. (45%)"
-      },
-      {
-        "player": "Traorè Hj.",
-        "pct": 45,
-        "vs": "Baldanzi (55%)"
-      },
-      {
-        "player": "Vitinha O.",
-        "pct": 60,
-        "vs": "Messias (40%)"
-      },
-      {
-        "player": "Messias",
-        "pct": 40,
-        "vs": "Vitinha O. (60%)"
-      },
-      {
-        "player": "Osmajic",
-        "pct": 95,
-        "vs": "Colombo (Infortunato: Trauma distorsivo alla caviglia sinistra)"
-      },
-      {
-        "player": "Colombo",
-        "pct": 0,
-        "vs": "Osmajic (Infortunato fino a 01/11/2026)"
+        "pct": 54,
+        "vs": "Traor (46%)"
       }
     ],
     "lineup": [
@@ -2084,64 +1859,34 @@
     ],
     "ballottaggi": [
       {
-        "player": "Bisseck",
-        "pct": 95,
-        "vs": "Pavard (Infortunato: Risentimento agli adduttori della coscia destra)"
+        "player": "Bastoni",
+        "pct": 52,
+        "vs": "Akanji (48%)"
       },
       {
-        "player": "Pavard",
-        "pct": 0,
-        "vs": "Bisseck (Infortunato fino a 05/11/2026)"
-      },
-      {
-        "player": "Diouf",
-        "pct": 65,
-        "vs": "Spence (35%)"
-      },
-      {
-        "player": "Spence",
-        "pct": 35,
-        "vs": "Diouf (65%)"
-      },
-      {
-        "player": "Calhanoglu",
-        "pct": 80,
-        "vs": "Zielinski (20%)"
-      },
-      {
-        "player": "Zielinski",
-        "pct": 20,
-        "vs": "Calhanoglu (80%)"
-      },
-      {
-        "player": "Zielinski",
-        "pct": 65,
-        "vs": "Sucic P. (35%)"
-      },
-      {
-        "player": "Sucic P.",
-        "pct": 35,
-        "vs": "Zielinski (65%)"
-      },
-      {
-        "player": "Thuram",
-        "pct": 65,
-        "vs": "Esposito F.P. (35%)"
+        "player": "Stankovic A.",
+        "pct": 54,
+        "vs": "Barella (46%)"
       },
       {
         "player": "Esposito F.P.",
-        "pct": 35,
-        "vs": "Thuram (65%)"
+        "pct": 58,
+        "vs": "Thuram (42%)"
       },
       {
-        "player": "Bastoni",
-        "pct": 45,
-        "vs": "Carlos Augusto (55%)"
+        "player": "Bisseck",
+        "pct": 95,
+        "vs": "Pavard (Infortunato: il difensore out per un risentimento agli adduttori della coscia destra, recuperabile dalla fine di ottobre.)"
       },
       {
-        "player": "Carlos Augusto",
-        "pct": 55,
-        "vs": "Bastoni (45%)"
+        "player": "Diouf",
+        "pct": 64,
+        "vs": "Spence (36%)"
+      },
+      {
+        "player": "Calhanoglu",
+        "pct": 66,
+        "vs": "Zielinski (34%)"
       }
     ],
     "lineup": [
@@ -2360,19 +2105,19 @@
     ],
     "ballottaggi": [
       {
-        "player": "Kalulu",
-        "pct": 85,
-        "vs": "Cambiaso (15%)"
-      },
-      {
         "player": "Bremer",
-        "pct": 85,
-        "vs": "Kelly L. (15%)"
+        "pct": 60,
+        "vs": "Kelly L. (40%)"
       },
       {
-        "player": "Kelly L.",
-        "pct": 15,
-        "vs": "Bremer (85%)"
+        "player": "McKennie",
+        "pct": 60,
+        "vs": "Koopmeiners (40%)"
+      },
+      {
+        "player": "Cambiaso",
+        "pct": 60,
+        "vs": "Cabal (40%)"
       },
       {
         "player": "Lucumì",
@@ -2380,39 +2125,14 @@
         "vs": "Gatti (30%)"
       },
       {
-        "player": "Gatti",
-        "pct": 30,
-        "vs": "Lucumì (70%)"
-      },
-      {
         "player": "Douglas Luiz",
         "pct": 60,
         "vs": "Sarr P. (40%)"
       },
       {
-        "player": "Sarr P.",
-        "pct": 40,
-        "vs": "Douglas Luiz (60%)"
-      },
-      {
-        "player": "Conceicao",
-        "pct": 75,
-        "vs": "Zhegrova (25%)"
-      },
-      {
         "player": "Zhegrova",
-        "pct": 25,
-        "vs": "Conceicao (75%)"
-      },
-      {
-        "player": "Gonzalez N.",
-        "pct": 75,
-        "vs": "McKennie (25%)"
-      },
-      {
-        "player": "McKennie",
-        "pct": 25,
-        "vs": "Gonzalez N. (75%)"
+        "pct": 95,
+        "vs": "Conceicao (Infortunato: il portoghese KO il 18 ottobre contro la Lazio vittima di una lussazione alla spalla sinistra, prontamente ridotta. Recuperabile dalla metà di novembre.)"
       },
       {
         "player": "Alajbegovic",
@@ -2420,29 +2140,9 @@
         "vs": "Boga (25%)"
       },
       {
-        "player": "Boga",
-        "pct": 25,
-        "vs": "Alajbegovic (75%)"
-      },
-      {
         "player": "Kolo Muani",
         "pct": 65,
         "vs": "Woltemade (35%)"
-      },
-      {
-        "player": "Woltemade",
-        "pct": 35,
-        "vs": "Kolo Muani (65%)"
-      },
-      {
-        "player": "Celik",
-        "pct": 35,
-        "vs": "Cambiaso (65%)"
-      },
-      {
-        "player": "Cambiaso",
-        "pct": 65,
-        "vs": "Celik (35%)"
       }
     ],
     "lineup": [
@@ -2661,44 +2361,29 @@
     ],
     "ballottaggi": [
       {
-        "player": "Marusic",
-        "pct": 65,
-        "vs": "Floriani Mussolini (35%)"
+        "player": "Provstgaard",
+        "pct": 54,
+        "vs": "Doekhi (46%)"
+      },
+      {
+        "player": "Tavares N.",
+        "pct": 60,
+        "vs": "Pedraza (40%)"
+      },
+      {
+        "player": "Taylor K.",
+        "pct": 60,
+        "vs": "Dele-Bashiru (40%)"
       },
       {
         "player": "Floriani Mussolini",
-        "pct": 35,
-        "vs": "Marusic (65%)"
-      },
-      {
-        "player": "Sutalo J.",
-        "pct": 55,
-        "vs": "Doekhi (45%)"
-      },
-      {
-        "player": "Doekhi",
-        "pct": 45,
-        "vs": "Sutalo J. (55%)"
-      },
-      {
-        "player": "Gudmundsson A.",
-        "pct": 65,
-        "vs": "Isaksen (35%)"
+        "pct": 95,
+        "vs": "Marusic (Infortunato: il terzino dei biancocelesti KO il 24 agosto a Bologna vittima di una lesione muscolare alla coscia. Recuperabile dalla fine di ottobre.)"
       },
       {
         "player": "Isaksen",
-        "pct": 35,
-        "vs": "Gudmundsson A. (65%)"
-      },
-      {
-        "player": "Diogo Leite",
-        "pct": 65,
-        "vs": "Provstgaard (35%)"
-      },
-      {
-        "player": "Provstgaard",
-        "pct": 35,
-        "vs": "Diogo Leite (65%)"
+        "pct": 95,
+        "vs": "Gudmundsson A. (Infortunato: L'islandese in Nazionale il 26 settembre vittima di un problema alla spalla destra dopo una caduta fortuita in partita. Condizioni da monitorare, si confida di riaverlo a disposizione dalla metà di novembre.)"
       }
     ],
     "lineup": [
@@ -2939,64 +2624,29 @@
     ],
     "ballottaggi": [
       {
-        "player": "Gaspar K.",
-        "pct": 60,
-        "vs": "Siebert (40%)"
-      },
-      {
-        "player": "Siebert",
-        "pct": 40,
-        "vs": "Gaspar K. (60%)"
-      },
-      {
-        "player": "Ngom",
-        "pct": 65,
-        "vs": "Gorter (35%)"
-      },
-      {
-        "player": "Gorter",
-        "pct": 35,
-        "vs": "Ngom (65%)"
-      },
-      {
-        "player": "Pierotti",
-        "pct": 60,
-        "vs": "Monteiro J. (40%)"
-      },
-      {
-        "player": "Monteiro J.",
-        "pct": 40,
-        "vs": "Pierotti (60%)"
-      },
-      {
-        "player": "Coulibaly L.",
-        "pct": 55,
-        "vs": "Gandelman (45%)"
-      },
-      {
-        "player": "Gandelman",
-        "pct": 45,
-        "vs": "Coulibaly L. (55%)"
-      },
-      {
-        "player": "Fatah",
-        "pct": 65,
-        "vs": "Monteiro J. (35%)"
-      },
-      {
-        "player": "Monteiro J.",
-        "pct": 35,
-        "vs": "Fatah (65%)"
-      },
-      {
-        "player": "Stulic",
-        "pct": 50,
-        "vs": "Geubbels (50%)"
+        "player": "Kaba",
+        "pct": 58,
+        "vs": "Gorter (42%)"
       },
       {
         "player": "Geubbels",
-        "pct": 50,
-        "vs": "Stulic (50%)"
+        "pct": 58,
+        "vs": "Esteban (42%)"
+      },
+      {
+        "player": "Siebert",
+        "pct": 95,
+        "vs": "Gaspar K. (Infortunato: squalificato nella 9a e 10a giornata di campionato)"
+      },
+      {
+        "player": "Monteiro J.",
+        "pct": 95,
+        "vs": "Pierotti (Infortunato: l'ala offensiva dei salentini ferma ai box per la frattura composta del malleolo mediale della caviglia destra rimediata nella seconda metà di ottobre. Si prospetta un lungo stop, ipotizziamo un rientro in campo da gennaio.)"
+      },
+      {
+        "player": "Gandelman",
+        "pct": 95,
+        "vs": "Coulibaly L. (Infortunato: il centrocampista costretto al cambio il 18 ottobre a Udine per una lesione muscolare al bicipite femorale della coscia destra, recuperabile dall'inizio di novembre.)"
       }
     ],
     "lineup": [
@@ -3257,24 +2907,29 @@
     ],
     "ballottaggi": [
       {
+        "player": "Gila",
+        "pct": 55,
+        "vs": "Tomori (45%)"
+      },
+      {
+        "player": "Bartesaghi",
+        "pct": 60,
+        "vs": "Diawara S. (40%)"
+      },
+      {
+        "player": "Cissè A.",
+        "pct": 60,
+        "vs": "Pulisic (40%)"
+      },
+      {
         "player": "De Winter",
         "pct": 95,
-        "vs": "Gabbia (Infortunato: Problema alla caviglia (natura del problema non specificata))"
-      },
-      {
-        "player": "Gabbia",
-        "pct": 0,
-        "vs": "De Winter (Infortunato fino a 13/01/2027)"
-      },
-      {
-        "player": "Chukwueze",
-        "pct": 50,
-        "vs": "Moreira (50%)"
+        "vs": "Gabbia (Infortunato: il difensore KO l'11 ottobre contro il Sassuolo vittima di una lesione del flessore della coscia sinistra con parziale interessamento tendineo. Lo stop sarà lungo, anche con la terapia conservativa. Ipotesi rientro in campo da fine febbraio.)"
       },
       {
         "player": "Moreira",
-        "pct": 50,
-        "vs": "Chukwueze (50%)"
+        "pct": 95,
+        "vs": "Chukwueze (Infortunato: Il nigeriano dal 21 ottobre fermo per un problema all'anca sinistra. Iniziato un trattamento infiltrativo all'anca, a inizio novembre nuovi controlli medici per stabilire i tempi di rientro.)"
       },
       {
         "player": "Modric",
@@ -3282,39 +2937,9 @@
         "vs": "Jashari (15%)"
       },
       {
-        "player": "Jashari",
-        "pct": 15,
-        "vs": "Modric (85%)"
-      },
-      {
-        "player": "Estupinan",
-        "pct": 65,
-        "vs": "Bartesaghi (35%)"
-      },
-      {
-        "player": "Bartesaghi",
-        "pct": 35,
-        "vs": "Estupinan (65%)"
-      },
-      {
-        "player": "Cissè A.",
-        "pct": 50,
-        "vs": "Loftus-Cheek (50%)"
-      },
-      {
-        "player": "Loftus-Cheek",
-        "pct": 50,
-        "vs": "Cissè A. (50%)"
-      },
-      {
-        "player": "Pulisic",
-        "pct": 85,
-        "vs": "Cissè A. (15%)"
-      },
-      {
-        "player": "Cissè A.",
-        "pct": 15,
-        "vs": "Pulisic (85%)"
+        "player": "Ciss",
+        "pct": 95,
+        "vs": "Loftus-Cheek (Infortunato: il centrocampista non al meglio per un problema alla gamba destra ravvisato sul finire del match di Udine (25 ottobre). Condizioni da valutare, ma viaggia verso il forfait per mercoledì contro il Bologna.)"
       }
     ],
     "lineup": [
@@ -3549,44 +3174,29 @@
     ],
     "ballottaggi": [
       {
+        "player": "Lucchesi",
+        "pct": 58,
+        "vs": "Goglichidze (42%)"
+      },
+      {
+        "player": "Foe Ondoa",
+        "pct": 58,
+        "vs": "Folorunsho (42%)"
+      },
+      {
+        "player": "Robinson J.",
+        "pct": 58,
+        "vs": "Ngonge (42%)"
+      },
+      {
         "player": "Tornqvist",
         "pct": 50,
         "vs": "Thiam (50%)"
       },
       {
-        "player": "Thiam",
-        "pct": 50,
-        "vs": "Tornqvist (50%)"
-      },
-      {
-        "player": "Kouadio",
-        "pct": 60,
-        "vs": "Goglichidze (40%)"
-      },
-      {
-        "player": "Goglichidze",
-        "pct": 40,
-        "vs": "Kouadio (60%)"
-      },
-      {
-        "player": "Ziolkowski",
-        "pct": 75,
-        "vs": "Carboni A. (25%)"
-      },
-      {
         "player": "Carboni A.",
-        "pct": 25,
-        "vs": "Ziolkowski (75%)"
-      },
-      {
-        "player": "Folorunsho",
-        "pct": 65,
-        "vs": "Foe Ondoa (35%)"
-      },
-      {
-        "player": "Foe Ondoa",
-        "pct": 35,
-        "vs": "Folorunsho (65%)"
+        "pct": 95,
+        "vs": "Ziolkowski (Infortunato: Il difensore condizionato da una fastidiosa fascite plantare, recuperabile dalla metà di novembre.)"
       },
       {
         "player": "Mout",
@@ -3594,29 +3204,9 @@
         "vs": "Akinsanmiro (50%)"
       },
       {
-        "player": "Akinsanmiro",
-        "pct": 50,
-        "vs": "Mout (50%)"
-      },
-      {
         "player": "Colpani",
         "pct": 70,
         "vs": "Zeballos (30%)"
-      },
-      {
-        "player": "Zeballos",
-        "pct": 30,
-        "vs": "Colpani (70%)"
-      },
-      {
-        "player": "Forson O.",
-        "pct": 50,
-        "vs": "Zeballos (50%)"
-      },
-      {
-        "player": "Zeballos",
-        "pct": 50,
-        "vs": "Forson O. (50%)"
       }
     ],
     "lineup": [
@@ -3839,54 +3429,39 @@
     ],
     "ballottaggi": [
       {
-        "player": "Marin R.",
-        "pct": 75,
-        "vs": "Badiashile (25%)"
+        "player": "De Bruyne",
+        "pct": 54,
+        "vs": "Zambo Anguissa (46%)"
       },
       {
-        "player": "Badiashile",
-        "pct": 25,
-        "vs": "Marin R. (75%)"
-      },
-      {
-        "player": "Spinazzola",
-        "pct": 65,
-        "vs": "Olivera (35%)"
-      },
-      {
-        "player": "Olivera",
-        "pct": 35,
-        "vs": "Spinazzola (65%)"
-      },
-      {
-        "player": "Zambo Anguissa",
-        "pct": 95,
-        "vs": "Vergara (Infortunato: Lesione distrattiva di medio grado del soleo destro)"
-      },
-      {
-        "player": "Vergara",
-        "pct": 0,
-        "vs": "Zambo Anguissa (Infortunato fino a 08/11/2026)"
-      },
-      {
-        "player": "Politano",
-        "pct": 85,
-        "vs": "Neres (15%)"
-      },
-      {
-        "player": "Neres",
-        "pct": 15,
-        "vs": "Politano (85%)"
-      },
-      {
-        "player": "Santos A.",
-        "pct": 50,
-        "vs": "Lang (50%)"
+        "player": "Hojlund",
+        "pct": 60,
+        "vs": "Lucca (40%)"
       },
       {
         "player": "Lang",
-        "pct": 50,
-        "vs": "Santos A. (50%)"
+        "pct": 57,
+        "vs": "Giovane (43%)"
+      },
+      {
+        "player": "Di Lorenzo",
+        "pct": 55,
+        "vs": "Beukema (45%)"
+      },
+      {
+        "player": "Marin R.",
+        "pct": 95,
+        "vs": "Badiashile (Infortunato: il difensore KO il 24 ottobre contro la Roma per una lesione distrattiva di medio grado del retto femorale destro, recuperabile dalla fine di novembre.)"
+      },
+      {
+        "player": "Olivera",
+        "pct": 95,
+        "vs": "Spinazzola (Infortunato: Il terzino vittima di una lesione di basso grado del bicipite femorale della coscia destra, recuperabile dalla metà di novembre.)"
+      },
+      {
+        "player": "Politano",
+        "pct": 95,
+        "vs": "Neres (Infortunato: L'ala offensiva azzurra ai box per una lesione di basso grado al muscolo semimembranoso della coscia destra, tentativo di rientro tra i convocati dalla prima metà di novembre.)"
       }
     ],
     "lineup": [
@@ -4084,44 +3659,9 @@
     "oop_players": [],
     "ballottaggi": [
       {
-        "player": "Britschgi",
-        "pct": 95,
-        "vs": "Almqvist (Infortunato: Lesione di basso grado del polpaccio della gamba sinistra)"
-      },
-      {
-        "player": "Almqvist",
-        "pct": 0,
-        "vs": "Britschgi (Infortunato fino a 30/10/2026)"
-      },
-      {
-        "player": "Tourè E.",
-        "pct": 95,
-        "vs": "Almqvist (Infortunato: Lesione di basso grado del polpaccio della gamba sinistra)"
-      },
-      {
-        "player": "Almqvist",
-        "pct": 0,
-        "vs": "Tourè E. (Infortunato fino a 30/10/2026)"
-      },
-      {
-        "player": "Tour",
-        "pct": 95,
-        "vs": "Almqvist (Infortunato: Lesione di basso grado del polpaccio della gamba sinistra)"
-      },
-      {
-        "player": "Almqvist",
-        "pct": 0,
-        "vs": "Tour (Infortunato fino a 30/10/2026)"
-      },
-      {
-        "player": "Fabbian",
-        "pct": 85,
-        "vs": "Elphege (15%)"
-      },
-      {
-        "player": "Elphege",
-        "pct": 15,
-        "vs": "Fabbian (85%)"
+        "player": "Sierro",
+        "pct": 60,
+        "vs": "Fabbian (40%)"
       },
       {
         "player": "Romero D.",
@@ -4129,9 +3669,14 @@
         "vs": "Lontani (45%)"
       },
       {
-        "player": "Lontani",
-        "pct": 45,
-        "vs": "Romero D. (55%)"
+        "player": "Britschgi",
+        "pct": 58,
+        "vs": "Drobnic (42%)"
+      },
+      {
+        "player": "Tourè E.",
+        "pct": 95,
+        "vs": "Almqvist (Infortunato: L'ala offensiva dei ducali KO dal 6 ottobre per una lesione muscolare al polpaccio sinistro, recuperabile dalla fine di ottobre.)"
       }
     ],
     "lineup": [
@@ -4358,34 +3903,29 @@
     ],
     "ballottaggi": [
       {
-        "player": "Mancini",
-        "pct": 45,
-        "vs": "Ghilardi (55%)"
+        "player": "Hermoso",
+        "pct": 60,
+        "vs": "N'Dicka (40%)"
       },
       {
-        "player": "Ghilardi",
-        "pct": 55,
-        "vs": "Mancini (45%)"
-      },
-      {
-        "player": "Lulli",
-        "pct": 50,
-        "vs": "Molina N. (50%)"
-      },
-      {
-        "player": "Molina N.",
-        "pct": 50,
-        "vs": "Lulli (50%)"
+        "player": "Cristante",
+        "pct": 56,
+        "vs": "De Roon (44%)"
       },
       {
         "player": "Mora",
-        "pct": 50,
-        "vs": "Soulè (50%)"
+        "pct": 57,
+        "vs": "Dybala (43%)"
       },
       {
-        "player": "Soulè",
-        "pct": 50,
-        "vs": "Mora (50%)"
+        "player": "Ghilardi",
+        "pct": 52,
+        "vs": "Mancini (48%)"
+      },
+      {
+        "player": "Molina N.",
+        "pct": 51,
+        "vs": "Lulli (49%)"
       }
     ],
     "lineup": [
@@ -4588,43 +4128,18 @@
     "ballottaggi": [
       {
         "player": "Van Der Brempt",
-        "pct": 65,
-        "vs": "Cinquegrano (35%)"
-      },
-      {
-        "player": "Cinquegrano",
-        "pct": 35,
-        "vs": "Van Der Brempt (65%)"
+        "pct": 54,
+        "vs": "Cinquegrano (46%)"
       },
       {
         "player": "Doig",
-        "pct": 60,
-        "vs": "Obrador (40%)"
-      },
-      {
-        "player": "Obrador",
-        "pct": 40,
-        "vs": "Doig (60%)"
+        "pct": 58,
+        "vs": "Obrador (42%)"
       },
       {
         "player": "Bakola",
-        "pct": 65,
-        "vs": "Lipani (35%)"
-      },
-      {
-        "player": "Lipani",
-        "pct": 35,
-        "vs": "Bakola (65%)"
-      },
-      {
-        "player": "Adzic",
-        "pct": 55,
-        "vs": "Sulemana I. (45%)"
-      },
-      {
-        "player": "Sulemana I.",
-        "pct": 45,
-        "vs": "Adzic (55%)"
+        "pct": 58,
+        "vs": "Adzic (42%)"
       },
       {
         "player": "Berardi",
@@ -4632,19 +4147,9 @@
         "vs": "Volpato (50%)"
       },
       {
-        "player": "Volpato",
-        "pct": 50,
-        "vs": "Berardi (50%)"
-      },
-      {
         "player": "Bowie",
-        "pct": 85,
-        "vs": "Esposito Se. (15%)"
-      },
-      {
-        "player": "Esposito Se.",
-        "pct": 15,
-        "vs": "Bowie (85%)"
+        "pct": 76,
+        "vs": "Esposito Se. (24%)"
       }
     ],
     "lineup": [
@@ -4891,64 +4396,39 @@
     ],
     "ballottaggi": [
       {
-        "player": "Belghali",
-        "pct": 65,
-        "vs": "Fortini (35%)"
-      },
-      {
-        "player": "Fortini",
-        "pct": 35,
-        "vs": "Belghali (65%)"
-      },
-      {
-        "player": "Mandragora",
-        "pct": 60,
-        "vs": "Oristanio (40%)"
-      },
-      {
-        "player": "Oristanio",
-        "pct": 40,
-        "vs": "Mandragora (60%)"
-      },
-      {
-        "player": "Gineitis",
-        "pct": 75,
-        "vs": "Casadei (25%)"
-      },
-      {
-        "player": "Casadei",
-        "pct": 25,
-        "vs": "Gineitis (75%)"
+        "player": "Ismajli",
+        "pct": 55,
+        "vs": "Comert (45%)"
       },
       {
         "player": "Cacciamani",
-        "pct": 85,
-        "vs": "Belghali (15%)"
-      },
-      {
-        "player": "Belghali",
-        "pct": 15,
-        "vs": "Cacciamani (85%)"
-      },
-      {
-        "player": "Vlasic",
-        "pct": 85,
-        "vs": "Adams C. (15%)"
+        "pct": 60,
+        "vs": "Patterson (40%)"
       },
       {
         "player": "Adams C.",
-        "pct": 15,
-        "vs": "Vlasic (85%)"
+        "pct": 60,
+        "vs": "Kulenovic (40%)"
+      },
+      {
+        "player": "Belghali",
+        "pct": 95,
+        "vs": "Fortini (Infortunato: Il cursore di fascia dei granata rientrato in anticipo dagli impegni con l'U21 azzurra a inizio ottobre a causa di un affaticamento muscolare all'adduttore. Da valutare nei prossimi allenamenti le possibilità di convocazione per martedì in casa contro il Como.)"
+      },
+      {
+        "player": "Oristanio",
+        "pct": 95,
+        "vs": "Mandragora (Infortunato: il centrocampista granata fermato il 23 ottobre contro il Monza da un problema muscolare al flessore sinistro. Condizioni da valutare, di certo out martedì in campionato contro il Como.)"
+      },
+      {
+        "player": "Gineitis",
+        "pct": 70,
+        "vs": "Casadei (30%)"
       },
       {
         "player": "Simeone",
         "pct": 65,
         "vs": "Zapata D. (35%)"
-      },
-      {
-        "player": "Zapata D.",
-        "pct": 35,
-        "vs": "Simeone (65%)"
       }
     ],
     "lineup": [
@@ -5176,39 +4656,29 @@
     ],
     "ballottaggi": [
       {
-        "player": "Alaba",
-        "pct": 75,
-        "vs": "Abankwah (25%)"
+        "player": "Palma",
+        "pct": 60,
+        "vs": "Ebosse (40%)"
+      },
+      {
+        "player": "Kamara H.",
+        "pct": 59,
+        "vs": "Arizala (41%)"
+      },
+      {
+        "player": "Miller L.",
+        "pct": 53,
+        "vs": "Piotrowski (47%)"
       },
       {
         "player": "Abankwah",
-        "pct": 25,
-        "vs": "Alaba (75%)"
-      },
-      {
-        "player": "Bertola",
-        "pct": 45,
-        "vs": "Abankwah (55%)"
-      },
-      {
-        "player": "Kabasele",
-        "pct": 60,
-        "vs": "Palma (40%)"
-      },
-      {
-        "player": "Palma",
-        "pct": 40,
-        "vs": "Kabasele (60%)"
+        "pct": 95,
+        "vs": "Alaba (Infortunato: il difensore sostituito nell'intervallo della sfida contro il Lecce (18 ottobre) per un risentimento muscolare al polpaccio destro. Recuperabile dalla metà di novembre.)"
       },
       {
         "player": "Zaniolo",
-        "pct": 85,
-        "vs": "Unai Gomez (15%)"
-      },
-      {
-        "player": "Unai Gomez",
-        "pct": 15,
-        "vs": "Zaniolo (85%)"
+        "pct": 77,
+        "vs": "Unai Gomez (23%)"
       }
     ],
     "lineup": [
@@ -5435,14 +4905,19 @@
     ],
     "ballottaggi": [
       {
-        "player": "Hainaut",
-        "pct": 70,
-        "vs": "Mazzocchi (30%)"
+        "player": "Halhal",
+        "pct": 60,
+        "vs": "Bella-Kotchap (40%)"
       },
       {
-        "player": "Mazzocchi",
-        "pct": 30,
-        "vs": "Hainaut (70%)"
+        "player": "Hainaut",
+        "pct": 60,
+        "vs": "Haps (40%)"
+      },
+      {
+        "player": "Yeboah J.",
+        "pct": 60,
+        "vs": "Rrahmani Al. (40%)"
       }
     ],
     "lineup": [

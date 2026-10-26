@@ -3973,13 +3973,18 @@ def optimize_dashboard_for_web(dash_content, dist_dir):
         idx_script_end = dash_content.find('</script>', idx_data)
         
         idx_accuracy = dash_content.find('const MATCHDAY_ACCURACY_DATA =', idx_data)
-        idx_accuracy_end = dash_content.find(';', idx_accuracy)
+        idx_split = dash_content.find(';', idx_accuracy) if idx_accuracy != -1 else idx_data
+        idx_mr = dash_content.find('const MATCH_REPORTS_DATA =', idx_data)
+        if idx_mr != -1:
+            idx_mr_end = dash_content.find(';', idx_mr)
+            if idx_mr_end != -1:
+                idx_split = idx_mr_end
         
-        raw_data_code = dash_content[idx_script_start + 8 : idx_accuracy_end + 1].strip()
+        raw_data_code = dash_content[idx_script_start + 8 : idx_split + 1].strip()
         # Assicura accessibilità globale con window e var
         data_code = re.sub(r'\bconst\s+(\w+)\s*=', r'var \1 = window.\1 =', raw_data_code)
         
-        app_code = dash_content[idx_accuracy_end + 1 : idx_script_end].strip()
+        app_code = dash_content[idx_split + 1 : idx_script_end].strip()
         
         js_dir = os.path.join(dist_dir, "js")
         os.makedirs(js_dir, exist_ok=True)
@@ -4081,16 +4086,23 @@ def build_all():
         {
             "route": "top-flop",
             "tab": "top_flop",
-            "title": "Top & Flop 6ª Giornata Serie A 2026/27 | Pagelle e Statistiche | Fanta Master AI",
-            "desc": "I migliori e peggiori calciatori dell'ultima giornata di Serie A 2026/27: voti ufficiali, FantaMedia, bonus, malus e analisi algoritmica Fanta Master AI.",
-            "keywords": "top flop serie a, pagelle fantacalcio 6 giornata, voti fantacalcio, migliori fantacalcio 6 giornata"
+            "title": "Top & Flop 8ª Giornata Serie A 2026/27 | Pagelle e Statistiche | Fanta Master AI",
+            "desc": "I migliori e peggiori calciatori dell'8ª giornata di Serie A 2026/27: voti ufficiali, FantaMedia, bonus, malus e analisi algoritmica Fanta Master AI.",
+            "keywords": "top flop serie a, pagelle fantacalcio 8 giornata, voti fantacalcio, migliori fantacalcio 8 giornata"
         },
         {
             "route": "consigli-fantacalcio",
             "tab": "matchday_advice",
-            "title": "Consigli Fantacalcio 7ª Giornata Serie A | Chi Schierare | Fanta Master AI",
-            "desc": "Chi schierare nella 7ª giornata di Serie A: indici di schierabilità, titolarità, verifiche predittive e consigli ruolo per ruolo con intelligenza artificiale.",
-            "keywords": "consigli fantacalcio 7 giornata, chi schierare 7 giornata, formazioni consigliate fantacalcio"
+            "title": "Consigli Fantacalcio 9ª Giornata Serie A | Chi Schierare | Fanta Master AI",
+            "desc": "Chi schierare nella 9ª giornata di Serie A (Turno Infrasettimanale): indici di schierabilità, titolarità, verifiche predittive e consigli ruolo per ruolo con intelligenza artificiale.",
+            "keywords": "consigli fantacalcio 9 giornata, chi schierare 9 giornata, formazioni consigliate fantacalcio"
+        },
+        {
+            "route": "match-report",
+            "tab": "match_reports",
+            "title": "Match Report Serie A 2026/27 | Tabellini e Statistiche Ufficiali | Fanta Master AI",
+            "desc": "Archivio interattivo dei Match Report ufficiali di Serie A 2026/27: tabellini, statistiche di squadra, performance fisiche, Fanta AI e voti ufficiali.",
+            "keywords": "match report serie a, tabellini serie a, statistiche partite serie a, referti ufficiali lega serie a"
         },
         {
             "route": "chi-schiero",
@@ -4295,12 +4307,23 @@ def build_all():
     # 2d. Copia i dati JSON elaborati in dist/data per endpoint e fetch
     dist_data_dir = os.path.join(DIST_DIR, "data")
     os.makedirs(dist_data_dir, exist_ok=True)
-    for json_name in ["processed_players_master.json", "top_flop_rounds.json", "gk_matrix_2026_27.json"]:
-        src_json = os.path.join(ROOT_DIR, "data", "processed", json_name)
-        if not os.path.exists(src_json):
-            src_json = os.path.join(ROOT_DIR, json_name)
-        if os.path.exists(src_json):
-            shutil.copy(src_json, os.path.join(dist_data_dir, json_name))
+    json_targets = [
+        ("processed_players_master.json", ["data/processed", ""]),
+        ("top_flop_rounds.json", ["data/processed", ""]),
+        ("gk_matrix_2026_27.json", ["data/processed", ""]),
+        ("match_reports_hub.json", ["data/processed", ""]),
+        ("matchday_consensus.json", ["config", "data/processed", ""]),
+        ("injuries.json", ["config", ""]),
+        ("tactical_db.json", ["config", ""]),
+        ("calendario_serie_a_2026_27.json", ["config", "data/processed", ""]),
+        ("ai_predictions_snapshot_g9.json", ["config", ""]),
+    ]
+    for json_name, candidate_subdirs in json_targets:
+        for sub in candidate_subdirs:
+            src_json = os.path.join(ROOT_DIR, sub, json_name) if sub else os.path.join(ROOT_DIR, json_name)
+            if os.path.exists(src_json):
+                shutil.copy(src_json, os.path.join(dist_data_dir, json_name))
+                break
     print("  ✓ Dati JSON elaborati copiati in dist/data/")
 
     # 3. Genera le 532 pagine calciatore complete

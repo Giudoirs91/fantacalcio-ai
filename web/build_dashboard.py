@@ -79,6 +79,12 @@ def build_standalone_dashboard(sync_android=False):
         with open(accuracy_path, 'r', encoding='utf-8') as f:
             accuracy_data = json.load(f)
 
+    match_reports_path = os.path.join(root_dir, "data", "processed", "match_reports_hub.json")
+    match_reports_data = {}
+    if os.path.exists(match_reports_path):
+        with open(match_reports_path, 'r', encoding='utf-8') as f:
+            match_reports_data = json.load(f)
+
     # 2. Carica CSS e JS modulari minificati
     css_path = os.path.join(root_dir, "web", "css", "dashboard.css")
     with open(css_path, 'r', encoding='utf-8') as f:
@@ -105,6 +111,7 @@ def build_standalone_dashboard(sync_android=False):
         "repair_auction.js",
         "league_report.js",
         "top_flop.js",
+        "match_reports.js",
         "stats_seriea.js",
         "analytics_matrix.js",
         "home_hub.js",
@@ -123,6 +130,7 @@ def build_standalone_dashboard(sync_android=False):
     team_stats_json = json.dumps(team_stats_data, ensure_ascii=False)
     team_ratings_json = json.dumps(team_ratings_data, ensure_ascii=False)
     top_flop_json = json.dumps(top_flop_data, ensure_ascii=False)
+    match_reports_json = json.dumps(match_reports_data, ensure_ascii=False)
     cal_json = json.dumps(cal_data, ensure_ascii=False)
     accuracy_json = json.dumps(accuracy_data, ensure_ascii=False)
 
@@ -249,6 +257,7 @@ def build_standalone_dashboard(sync_android=False):
                     <div class="nav-dropdown-menu">
                         <a href="/statistiche-serie-a/" class="dropdown-item" id="tabStatsBtn" onclick="onNavClick(event, 'stats')">📊 Statistiche & xG Serie A</a>
                         <a href="/top-flop/" class="dropdown-item" id="tabTopFlopBtn" onclick="onNavClick(event, 'top_flop')">⚡ Top & Flop di Giornata</a>
+                        <a href="/match-reports/" class="dropdown-item" id="tabMatchReportsBtn" onclick="onNavClick(event, 'match_reports')">📑 Match Reports &amp; Tabellini</a>
                         <a href="/football-analytics/" class="dropdown-item" id="tabMatrixBtn" onclick="onNavClick(event, 'matrix')">📈 Matrice & Scatter Analytics</a>
                         <a href="/probabili-formazioni/" class="dropdown-item" id="tabPitchBtn">📋 Probabili Formazioni &amp; Ballottaggi</a>
                         <a href="/confronto-calciatori/" class="dropdown-item" id="tabMatchupBtn" onclick="onNavClick(event, 'matchup')">⚔️ Matchup 1vs1 Calciatori</a>
@@ -958,6 +967,15 @@ def build_standalone_dashboard(sync_android=False):
                             </div>
                             <span class="hero-card-action">➔</span>
                         </div>
+
+                        <div class="hero-card" onclick="switchTab('match_reports')" style="border-color:rgba(56,189,248,0.45);">
+                            <div class="hero-card-icon" style="background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(14,165,233,0.3));color:#38bdf8;">📑</div>
+                            <div class="hero-card-content">
+                                <div class="hero-card-title">Match Reports G8 <span style="font-size:10px;background:rgba(239,68,68,0.25);color:#f87171;padding:1px 5px;border-radius:4px;font-weight:800;margin-left:4px;">Nuovo</span></div>
+                                <div class="hero-card-desc">Tabellini ufficiali, km corsi, formazioni e analisi AI dei 6 match</div>
+                            </div>
+                            <span class="hero-card-action">➔</span>
+                        </div>
                     </div>
                 </div>
 
@@ -1372,7 +1390,11 @@ def build_standalone_dashboard(sync_android=False):
         <section id="viewTopFlop" class="tab-content" style="display:none;width:100%;">
         </section>
 
-        <!-- Tab 9b: Matrice & Scatter Analytics -->
+        <!-- Tab 9b: Match Reports & Analisi Partite Ufficiali -->
+        <section id="viewMatchReports" class="tab-content" style="display:none;width:100%;">
+        </section>
+
+        <!-- Tab 9c: Matrice & Scatter Analytics -->
         <section id="viewMatrix" class="tab-content" style="display:none;width:100%;">
         </section>
 
@@ -1607,6 +1629,7 @@ def build_standalone_dashboard(sync_android=False):
                     <div class="mobile-menu-links">
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('stats')">📊 Statistiche Serie A & xG</button>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('top_flop')">⚡ Top & Flop Giornata</button>
+                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('match_reports')">📑 Match Reports &amp; Tabellini</button>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('matrix')">📈 Matrice Analytics</button>
                         <a href="/probabili-formazioni/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">⚽ Probabili Formazioni Live</a>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('matchup')">⚔️ Matchup 1vs1 Calciatori</button>
@@ -1675,6 +1698,7 @@ def build_standalone_dashboard(sync_android=False):
         const TOP_FLOP_DATA = {top_flop_json};
         const OFFICIAL_CALENDAR_2026_27 = {cal_json};
         const MATCHDAY_ACCURACY_DATA = {accuracy_json};
+        const MATCH_REPORTS_DATA = {match_reports_json};
 
 {js_content}
 
@@ -1698,6 +1722,7 @@ def build_standalone_dashboard(sync_android=False):
             'home': '/',
             'auction': '/listone/',
             'top_flop': '/top-flop/',
+            'match_reports': '/match-reports/',
             'matchday_advice': '/consigli-fantacalcio/',
             'chi_schiero': '/chi-schiero/',
             'matrix': '/football-analytics/',
@@ -1727,6 +1752,9 @@ def build_standalone_dashboard(sync_android=False):
             '/top-flop': 'top_flop',
             '/top-flop/': 'top_flop',
             '/top-flop/index.html': 'top_flop',
+            '/match-reports': 'match_reports',
+            '/match-reports/': 'match_reports',
+            '/match-reports/index.html': 'match_reports',
             '/consigli-fantacalcio': 'matchday_advice',
             '/consigli-fantacalcio/': 'matchday_advice',
             '/consigli-fantacalcio/index.html': 'matchday_advice',
@@ -1754,6 +1782,7 @@ def build_standalone_dashboard(sync_android=False):
             // Direct identifiers & legacy hashes
             'pitch': 'pitch',
             'top_flop': 'top_flop',
+            'match_reports': 'match_reports',
             'matchday_advice': 'matchday_advice',
             'chi_schiero': 'chi_schiero',
             'matrix': 'matrix',
@@ -1857,6 +1886,7 @@ def build_standalone_dashboard(sync_android=False):
                 'auction': 'Listone Calciatori',
                 'stats': 'Statistiche & xG',
                 'top_flop': 'Top & Flop',
+                'match_reports': 'Match Reports — Analisi Partite',
                 'matrix': 'Matrice Analytics',
                 'pitch': 'Campo 2D & Schemi',
                 'matchup': 'Matchup 1vs1',
@@ -1901,7 +1931,7 @@ def build_standalone_dashboard(sync_android=False):
                 }}
             }} catch (e) {{}}
 
-            ['tabHomeNavBtn', 'tabProbabiliNavBtn', 'tabLeaguesBtn', 'tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabChiSchieroBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {{
+            ['tabHomeNavBtn', 'tabProbabiliNavBtn', 'tabLeaguesBtn', 'tabHomeBtn', 'tabAuctionBtn', 'tabAiSquadsBtn', 'tabMatchdayAdviceBtn', 'tabChiSchieroBtn', 'tabSquadBuilderBtn', 'tabTopFlopBtn', 'tabMatchReportsBtn', 'tabMatrixBtn', 'tabStatsBtn', 'tabPitchBtn', 'tabMatchupBtn', 'tabGkBtn', 'tabGemsBtn', 'tabTradeBtn', 'tabRepairBtn', 'tabReportBtn'].forEach(id => {{
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active');
             }});
@@ -1918,7 +1948,7 @@ def build_standalone_dashboard(sync_android=False):
                 if (el) el.classList.remove('active');
             }});
 
-            ['viewHome', 'viewHomeHub', 'viewAuction', 'viewMatchdayAdvice', 'viewChiSchiero', 'viewAiSquads', 'viewSquadBuilder', 'viewTopFlop', 'viewMatrix', 'viewStats', 'viewPitch', 'viewMatchup', 'viewGk', 'viewGems', 'viewTradeMachine', 'viewRepairAuction', 'viewLeagueReport'].forEach(id => {{
+            ['viewHome', 'viewHomeHub', 'viewAuction', 'viewMatchdayAdvice', 'viewChiSchiero', 'viewAiSquads', 'viewSquadBuilder', 'viewTopFlop', 'viewMatchReports', 'viewMatrix', 'viewStats', 'viewPitch', 'viewMatchup', 'viewGk', 'viewGems', 'viewTradeMachine', 'viewRepairAuction', 'viewLeagueReport'].forEach(id => {{
                 const el = document.getElementById(id);
                 if (el) {{
                     el.style.display = 'none';
@@ -2008,6 +2038,17 @@ def build_standalone_dashboard(sync_android=False):
                     view.style.display = 'block';
                 }}
                 if (typeof renderTopFlopView === 'function') renderTopFlopView();
+            }} else if (tabId === 'match_reports') {{
+                const btn = document.getElementById('tabMatchReportsBtn');
+                if (btn) btn.classList.add('active');
+                const grp = document.getElementById('navGroupTactics');
+                if (grp) grp.classList.add('active');
+                const view = document.getElementById('viewMatchReports');
+                if (view) {{
+                    view.classList.add('active');
+                    view.style.display = 'block';
+                }}
+                if (typeof renderMatchReportsView === 'function') renderMatchReportsView();
             }} else if (tabId === 'matrix') {{
                 const btn = document.getElementById('tabMatrixBtn');
                 if (btn) btn.classList.add('active');

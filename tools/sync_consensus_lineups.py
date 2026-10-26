@@ -421,12 +421,19 @@ def run_consensus_engine():
             players_by_team[t] = []
         players_by_team[t].append(p)
         
-    # Mappa infortunati per nome normalizzato
+    # Mappa infortunati per nome normalizzato, cognome e ID
     injuries_map = {}
     for inj in injuries:
         p_name = inj.get('player', '')
+        c_p = clean_name(p_name).lower()
         injuries_map[p_name.lower()] = inj
-        
+        injuries_map[c_p] = inj
+        tokens = c_p.split()
+        if len(tokens) > 1 and len(tokens[-1]) > 3:
+            injuries_map[tokens[-1]] = inj
+        if inj.get('player_id'):
+            injuries_map[str(inj['player_id'])] = inj
+
     # 1. Fetch 4 Sources
     print("\n[1/5] Fetching 4 testate ufficiali...")
     fc_html = fetch_html('https://www.fantacalcio.it/probabili-formazioni-serie-a')
@@ -449,23 +456,23 @@ def run_consensus_engine():
     print(f"  • Gazzetta duelli trovati: {len(gaz_ballots)}")
     print(f"  • SOS Fanta duelli trovati: {len(sos_ballots)}")
 
-    # 3. Aggregazione per Giornata 8 (10 Match Ufficiali)
-    g8_matches = [
-        {"home": "Torino", "away": "Monza", "date": "24/10/2026", "time": "15:00", "stadium": "Olimpico Grande Torino"},
-        {"home": "Cagliari", "away": "Bologna", "date": "24/10/2026", "time": "18:00", "stadium": "Unipol Domus"},
-        {"home": "Como", "away": "Sassuolo", "date": "24/10/2026", "time": "20:45", "stadium": "Giuseppe Sinigaglia"},
-        {"home": "Genoa", "away": "Venezia", "date": "25/10/2026", "time": "12:30", "stadium": "Luigi Ferraris"},
-        {"home": "Atalanta", "away": "Frosinone", "date": "25/10/2026", "time": "15:00", "stadium": "Gewiss Stadium"},
-        {"home": "Lazio", "away": "Parma", "date": "25/10/2026", "time": "15:00", "stadium": "Olimpico"},
-        {"home": "Inter", "away": "Fiorentina", "date": "25/10/2026", "time": "18:00", "stadium": "San Siro", "big_match": True},
-        {"home": "Lecce", "away": "Juventus", "date": "25/10/2026", "time": "20:45", "stadium": "Via del Mare", "big_match": True},
-        {"home": "Napoli", "away": "Roma", "date": "26/10/2026", "time": "18:30", "stadium": "Diego Armando Maradona", "big_match": True},
-        {"home": "Udinese", "away": "Milan", "date": "26/10/2026", "time": "20:45", "stadium": "Bluenergy Stadium", "big_match": True}
+    # 3. Aggregazione per Giornata 9 (Turno Infrasettimanale del 27-29 Ottobre 2026)
+    g9_matches = [
+        {"home": "Sassuolo", "away": "Lazio", "date": "27/10/2026", "time": "18:30", "stadium": "Mapei Stadium"},
+        {"home": "Roma", "away": "Cagliari", "date": "27/10/2026", "time": "20:45", "stadium": "Stadio Olimpico", "big_match": True},
+        {"home": "Torino", "away": "Como", "date": "28/10/2026", "time": "18:30", "stadium": "Olimpico Grande Torino"},
+        {"home": "Milan", "away": "Bologna", "date": "28/10/2026", "time": "18:30", "stadium": "San Siro", "big_match": True},
+        {"home": "Parma", "away": "Udinese", "date": "28/10/2026", "time": "18:30", "stadium": "Ennio Tardini"},
+        {"home": "Genoa", "away": "Juventus", "date": "28/10/2026", "time": "20:45", "stadium": "Luigi Ferraris", "big_match": True},
+        {"home": "Monza", "away": "Napoli", "date": "28/10/2026", "time": "20:45", "stadium": "U-Power Stadium", "big_match": True},
+        {"home": "Venezia", "away": "Inter", "date": "28/10/2026", "time": "20:45", "stadium": "Pier Luigi Penzo", "big_match": True},
+        {"home": "Frosinone", "away": "Lecce", "date": "29/10/2026", "time": "18:30", "stadium": "Benito Stirpe"},
+        {"home": "Fiorentina", "away": "Atalanta", "date": "29/10/2026", "time": "20:45", "stadium": "Artemio Franchi", "big_match": True}
     ]
 
     consensus_round_output = {
-        "round": 8,
-        "round_label": "8ª Giornata Serie A 2026/27",
+        "round": 9,
+        "round_label": "9ª Giornata Serie A 2026/27 (Turno Infrasettimanale)",
         "last_updated": datetime.now().strftime("%d/%m/%Y %H:%M"),
         "sources_tracked": ["Fantacalcio.it", "Gazzetta dello Sport", "Sky Sport", "SOS Fanta"],
         "matches": []
@@ -478,7 +485,7 @@ def run_consensus_engine():
             parsed_teams_dict[tname] = tinfo
 
     print("\n[3/5] Elaborazione Consensus 10 Match...")
-    for match_meta in g8_matches:
+    for match_meta in g9_matches:
         h_team = match_meta['home']
         a_team = match_meta['away']
         
@@ -885,12 +892,54 @@ def run_consensus_engine():
             "away": away_data
         })
 
-    # 4. Salva output
+    # 4. Salva output config/matchday_consensus.json
     os.makedirs(CONFIG_DIR, exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(consensus_round_output, f, ensure_ascii=False, indent=2)
 
     print(f"\n[4/5] ✓ Salvato con successo config/matchday_consensus.json con {len(consensus_round_output['matches'])} match!")
+
+    # 4b. Sincronizza e neutralizza infortuni su tactical_db.json
+    for m in consensus_round_output["matches"]:
+        for side in ["home", "away"]:
+            team_data = m[side]
+            t_name = team_data["team"]
+            if t_name in tactical_db:
+                # Sincronizza ballottaggi
+                updated_ballots = []
+                seen_b = set()
+                for b in team_data.get("ballots", []):
+                    p1 = b["player1"]["name"]
+                    p2 = b["player2"]["name"]
+                    pct1 = b["consensus_pct1"]
+                    pct2 = b["consensus_pct2"]
+                    if b["player2"]["is_injured"]:
+                        vs_txt = f"{p2} (Infortunato: {b['player2']['injury_desc'] or 'Indisponibile'})"
+                    else:
+                        vs_txt = f"{p2} ({pct2}%)"
+                    pair = tuple(sorted([p1.lower(), p2.lower()]))
+                    if pair not in seen_b:
+                        seen_b.add(pair)
+                        updated_ballots.append({
+                            "player": p1,
+                            "pct": pct1,
+                            "vs": vs_txt
+                        })
+                if updated_ballots:
+                    tactical_db[t_name]["ballottaggi"] = updated_ballots
+
+                # Neutralizza eventuali titolari infortunati nella lineup
+                for l_pos in tactical_db[t_name].get("lineup", []):
+                    st = l_pos.get("starter", "")
+                    if injuries_map.get(st.lower()):
+                        role = l_pos.get("role", "C")
+                        avail = [s['name'] for s in team_data.get('starters', []) if s.get('role') == role and not s.get('is_injured')]
+                        if avail:
+                            l_pos["starter"] = avail[0]
+
+    with open(TACTICAL_DB_PATH, "w", encoding="utf-8") as f:
+        json.dump(tactical_db, f, ensure_ascii=False, indent=2)
+    print("  ✓ Salvato con successo config/tactical_db.json sincronizzato!")
     
     # Stampa anteprima
     print("\n[5/5] Anteprima Ballottaggi Caldi Generati:")

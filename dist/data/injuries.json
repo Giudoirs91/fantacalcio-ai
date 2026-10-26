@@ -1,0 +1,832 @@
+[
+  {
+    "player": "Kossounou",
+    "player_id": 5578,
+    "team": "Atalanta",
+    "motivo": "Il difensore frenato da una lesione muscolare di medio-alto grado del bicipite femorale della coscia sinistra alla vigilia della sfida di campionato contro la Juventus (del 20 settembre). Lungo stop, rientro dalla seconda metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Kolasinac",
+    "player_id": 2640,
+    "team": "Atalanta",
+    "motivo": "il difensore KO il 18 ottobre a Milano vittima di una distrazione muscolare al retto femorale della coscia sinistra, recuperabile dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Bellanova",
+    "player_id": 4887,
+    "team": "Atalanta",
+    "motivo": "il terzino KO il 25 ottobre per un risentimento muscolare all’inguine. Di certo out giovedì nel turno infrasettimanale a Firenze, tempi di recupero da valutare.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Raspadori",
+    "player_id": 4371,
+    "team": "Atalanta",
+    "motivo": "Nuovo stop muscolare per l'attaccante, frenato il 15 ottobre in Conference League da una distrazione muscolare di basso grado al bicipite femorale della coscia destra, rientro dall'inizio di novembre.",
+    "rientro": "15/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Pompei",
+    "player_id": 7626,
+    "team": "Atalanta",
+    "motivo": "Il portiere fermo da inizio ottobre per la frattura della falange della mano destra, out nel prossimo turno di campionato. Tempi di recupero da valutare.",
+    "rientro": "01/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Hien",
+    "player_id": 6046,
+    "team": "Atalanta",
+    "motivo": "il difensore operato a fine giugno per una lesione del tendine prossimale del muscolo semimembranoso della coscia sinistra, in recupero e pronto a tornare in campo dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Orsolini",
+    "player_id": 2167,
+    "team": "Bologna",
+    "motivo": "il capitano dei felsinei KO l'11 ottobre a Lecce sul finale di match per una lesione di primo grado al bicipite femorale della coscia destra, stop di circa tre settimane. Recuperabile dalla prima metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Piccoli",
+    "player_id": 4359,
+    "team": "Bologna",
+    "motivo": "l'attaccante indisponibile a causa di un guaio muscolare al bicipite femorale della coscia destra. Recuperabile dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Holm",
+    "player_id": 5678,
+    "team": "Bologna",
+    "motivo": "Lo svedese KO in Nazionale il 26 settembre vittima di un problema al tendine della coscia destra. Ha deciso di operarsi e affronterà un lungo stop. Ipotesi di rientro in campo da fine febbraio.",
+    "rientro": "15/02/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Idrissi R.",
+    "player_id": 7125,
+    "team": "Cagliari",
+    "motivo": "il calciatore in ripresa dalla rottura del legamento crociato, può tornare arruolabile dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Winks",
+    "player_id": 4260,
+    "team": "Cagliari",
+    "motivo": "Il regista dei sardi non convocato per Roma a causa di una fastidiosa lombalgia. Punta a recuperare però già nella 10a giornata di campionato.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Felici",
+    "player_id": 6640,
+    "team": "Cagliari",
+    "motivo": "il centrocampista KO il 7 settembre contro il Lecce in casa vittima della rottura del legamento crociato anteriore. Verrà operato e costretto a un lungo stop (ipotizziamo un rientro da marzo).",
+    "rientro": "15/03/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Rodriguez Je.",
+    "player_id": 7129,
+    "team": "Como",
+    "motivo": "Il calciatore si è infortunato in allenamento il 20 ottobre, rimane da valutare per stabilire i tempi di recupero. Si ipotizza un ritorno in campo da metà dicembre.",
+    "rientro": "15/12/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Diao",
+    "player_id": 6967,
+    "team": "Como",
+    "motivo": "L'attaccante KO il 14 ottobre in Champions League, costretto al cambio per una lesione muscolare al flessore della gamba, rientro tra i convocati dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Chalobah T.",
+    "player_id": 5641,
+    "team": "Como",
+    "motivo": "il difensore il 18 ottobre a Firenze costretto al cambio per un guaio muscolare alla gamba, rientro da inizio novembre.",
+    "rientro": "08/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Pongracic",
+    "player_id": 5603,
+    "team": "Fiorentina",
+    "motivo": "il difensore il 15 ottobre contro l'Inter ha rimediato un problema al bicipite femorale della coscia destra, che andrà valutato. Forfait nel frattempo per giovedì contro l'Atalanta al Franchi.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Parisi",
+    "player_id": 5449,
+    "team": "Fiorentina",
+    "motivo": "il cursore di fascia della Viola sta svolgendo l'iter di recupero dall'infortunio al legamento crociato al ginocchio, punta a tornare convocabile da dicembre.",
+    "rientro": "15/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Atta",
+    "player_id": 6908,
+    "team": "Fiorentina",
+    "motivo": "il centrocampista non al meglio per un sovraccarico funzionale dell'addome, assente contro Inter, Genoa e Como. Da valutare nei prossimi allenamenti, ma va verso il forfait anche per giovedì contro l'Atalanta.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Grillitsch",
+    "player_id": 7550,
+    "team": "Frosinone",
+    "motivo": "il centrocampista non convocato dalla gara di Genova (12 settembre) a causa di una sindrome retto-adduttoria, ha poi deciso di operarsi. Stop di circa sei settimane, può tornare convocabile da metà novembre.",
+    "rientro": "15/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Ehizibue",
+    "player_id": 6047,
+    "team": "Genoa",
+    "motivo": "Il difensore out domenica scorsa contro il Venezia per noie fisiche. Da valutare in vista del turno infrasettimanale di mercoledì.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Sow",
+    "player_id": 5946,
+    "team": "Genoa",
+    "motivo": "Il centrocampista svizzero il 6 ottobre in Nazionale vittima di una distrazione muscolare al bicipite femorale della coscia sinistra, rientro in campo da inizio novembre.",
+    "rientro": "08/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Venturino",
+    "player_id": 6980,
+    "team": "Genoa",
+    "motivo": "il calciatore operato al tendine rotuleo e ora in fase di recupero. Di certo assente nel prossimo turno di campionato, rientro da inizio novembre.",
+    "rientro": "08/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Havel",
+    "player_id": 7453,
+    "team": "Genoa",
+    "motivo": "L'attaccante ha deciso di operarsi alla caviglia e dovrebbe tornare arruolabile dall'inizio di novembre.",
+    "rientro": "15/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Stones",
+    "player_id": 2514,
+    "team": "Inter",
+    "motivo": "il difensore alle prese con un risentimento ai flessori della coscia sinistra, recuperabile dalla fine di ottobre. Da valutare nei prossimi allenamenti le possibilità di convocazione per mercoledì a Venezia.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Pavard",
+    "player_id": 4177,
+    "team": "Inter",
+    "motivo": "il difensore out per un risentimento agli adduttori della coscia destra, recuperabile dalla fine di ottobre.",
+    "rientro": "15/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Luis Henrique",
+    "player_id": 5301,
+    "team": "Inter",
+    "motivo": "l'esterno nerazzurro sottoposto il 23 ottobre a esami medici che hanno evidenziato un risentimento all'adduttore lungo della coscia sinistra. Ipotesi di recupero da metà novembre.",
+    "rientro": "15/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Martinez L.",
+    "player_id": 2764,
+    "team": "Inter",
+    "motivo": "L'argentino sottoposto il 15 ottobre a controlli medici che hanno evidenziato un risentimento muscolare ai flessori della coscia sinistra. Recuperabile dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Jones C.",
+    "player_id": 5172,
+    "team": "Inter",
+    "motivo": "Il centrocampista fermato da un risentimento miofasciale agli adduttori della coscia destra, tentativo rientro tra i convocati dalla fine di ottobre.",
+    "rientro": "15/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Ekhator",
+    "player_id": 6822,
+    "team": "Juventus",
+    "motivo": "l'attaccante vittima di una lesione di medio grado del muscolo semitendinoso, rientro dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Gonzalez N.",
+    "player_id": 4179,
+    "team": "Juventus",
+    "motivo": "l'argentino ai box per una lesione di basso grado del soleo destro, recuperabile da metà novembre.",
+    "rientro": "15/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Grabara",
+    "player_id": 7603,
+    "team": "Juventus",
+    "motivo": "Il portiere out dal 20 settembre per una lesione al crociato anteriore del ginocchio destro. Operazione chirurgica e lungo stop, rientro da aprile.",
+    "rientro": "15/04/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Yildiz",
+    "player_id": 6434,
+    "team": "Juventus",
+    "motivo": "l'attaccante turco, dopo la gara di Frosinone (23 agosto), ha lamentato un problema al piede. Operato il 31 agosto di osteosintesi della frattura della base del V metatarso del piede sinistro, stop di circa tre mesi. Rientro in campo da inizio dicembre.",
+    "rientro": "05/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Conceicao",
+    "player_id": 6884,
+    "team": "Juventus",
+    "motivo": "il portoghese KO il 18 ottobre contro la Lazio vittima di una lussazione alla spalla sinistra, prontamente ridotta. Recuperabile dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Thuram K.",
+    "player_id": 5562,
+    "team": "Juventus",
+    "motivo": "il centrocampista condizionato da una sindrome femoro-rotulea e, dopo un consulto medico a fine agosto, è stato sottoposto il 3 settembre a operazione chirurgica. Lungo stop, ipotizziamo un rientro da gennaio.",
+    "rientro": "15/01/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Locatelli",
+    "player_id": 827,
+    "team": "Juventus",
+    "motivo": "il metronomo del centrocampo bianconero ha rimediato la rottura del menisco esterno del ginocchio. Verrà operato a Lione a stretto giro. Lungo stop e possibilità di rivederlo in campo da febbraio.",
+    "rientro": "15/02/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Celik",
+    "player_id": 4657,
+    "team": "Juventus",
+    "motivo": "Il turco il 22 ottobre in Europa League ha lamentato una lesione di basso grado del bicipite femorale sinistro, recuperabile da metà novembre.",
+    "rientro": "15/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Marusic",
+    "player_id": 2188,
+    "team": "Lazio",
+    "motivo": "il terzino dei biancocelesti KO il 24 agosto a Bologna vittima di una lesione muscolare alla coscia. Recuperabile dalla fine di ottobre.",
+    "rientro": "15/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Rovella",
+    "player_id": 4459,
+    "team": "Lazio",
+    "motivo": "il regista dei biancocelesti KO il 30 agosto contro il Genoa vittima di una lesione muscolare al polpaccio, ai box fino alla fine di ottobre.",
+    "rientro": "15/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Gudmundsson A.",
+    "player_id": 5800,
+    "team": "Lazio",
+    "motivo": "L'islandese in Nazionale il 26 settembre vittima di un problema alla spalla destra dopo una caduta fortuita in partita. Condizioni da monitorare, si confida di riaverlo a disposizione dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Pierotti",
+    "player_id": 6549,
+    "team": "Lecce",
+    "motivo": "l'ala offensiva dei salentini ferma ai box per la frattura composta del malleolo mediale della caviglia destra rimediata nella seconda metà di ottobre. Si prospetta un lungo stop, ipotizziamo un rientro in campo da gennaio.",
+    "rientro": "15/01/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Ilic",
+    "player_id": 5007,
+    "team": "Lecce",
+    "motivo": "il regista dei salentini KO l'11 ottobre in casa contro il Bologna vittima di una lesione miotendinea del retto femorale sinistro con lesione parziale del tendine, rientro da fine marzo.",
+    "rientro": "15/03/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Berisha M.",
+    "player_id": 6015,
+    "team": "Lecce",
+    "motivo": "Il centrocampista ha lamentato un sovraccarico muscolare alla gamba e non ha preso parte alle sfide contro Monza e Milan, out anche domenica contro il Bologna. Recuperabile da inizio novembre.",
+    "rientro": "08/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Coulibaly L.",
+    "player_id": 5504,
+    "team": "Lecce",
+    "motivo": "il centrocampista costretto al cambio il 18 ottobre a Udine per una lesione muscolare al bicipite femorale della coscia destra, recuperabile dall'inizio di novembre.",
+    "rientro": "15/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Gaspar K.",
+    "player_id": 6632,
+    "team": "Lecce",
+    "motivo": "squalificato nella 9a e 10a giornata di campionato",
+    "rientro": "01/11/2026",
+    "severity": "red",
+    "tipo_stop": "Squalificato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Chukwueze",
+    "player_id": 4856,
+    "team": "Milan",
+    "motivo": "Il nigeriano dal 21 ottobre fermo per un problema all'anca sinistra. Iniziato un trattamento infiltrativo all'anca, a inizio novembre nuovi controlli medici per stabilire i tempi di rientro.",
+    "rientro": "08/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Rabiot",
+    "player_id": 2379,
+    "team": "Milan",
+    "motivo": "Il francese out domenica scorsa a Udine per un affaticamento muscolare al polpaccio rimediato nella rifinitura, salterà anche il turno infrasettimanale contro il Bologna. Da valutare, ma l'obiettivo è averlo a disposizione per il derby di sabato.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Loftus-Cheek",
+    "player_id": 4199,
+    "team": "Milan",
+    "motivo": "il centrocampista non al meglio per un problema alla gamba destra ravvisato sul finire del match di Udine (25 ottobre). Condizioni da valutare, ma viaggia verso il forfait per mercoledì contro il Bologna.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Gabbia",
+    "player_id": 4401,
+    "team": "Milan",
+    "motivo": "il difensore KO l'11 ottobre contro il Sassuolo vittima di una lesione del flessore della coscia sinistra con parziale interessamento tendineo. Lo stop sarà lungo, anche con la terapia conservativa. Ipotesi rientro in campo da fine febbraio.",
+    "rientro": "15/02/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Terracciano F.",
+    "player_id": 5812,
+    "team": "Milan",
+    "motivo": "il portiere non al meglio per noie fisiche, forfait nel prossimo turno di campionato. Tempi di recupero da valutare.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Saelemaekers",
+    "player_id": 4892,
+    "team": "Milan",
+    "motivo": "Il belga fermo da inizio ottobre per un problema alla caviglia destra e operata il 13 ottobre. Stop lungo e lo rivedremo in campo nel 2027 inoltrato (ipotesi da febbraio).",
+    "rientro": "15/02/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Pessina",
+    "player_id": 2741,
+    "team": "Monza",
+    "motivo": "Il centrocampista costretto a saltare l'inizio di campionato per una lussazione della rotula del ginocchio destro rimediata nella prima metà di agosto in allenamento. Tempi di recupero da monitorare, ma proverà a tornare arruolabile dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Maye",
+    "player_id": 7604,
+    "team": "Monza",
+    "motivo": "Il difensore ai box per noie fisiche, assente nelle ultime due sfide di campionato e ora da valutare in vista di mercoledì in casa contro il Napoli.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Ziolkowski",
+    "player_id": 7260,
+    "team": "Monza",
+    "motivo": "Il difensore condizionato da una fastidiosa fascite plantare, recuperabile dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Buongiorno",
+    "player_id": 2724,
+    "team": "Napoli",
+    "motivo": "il difensore operato nella seconda metà di luglio al menisco del ginocchio destro. Sta recuperando lentamente, ipotizziamo possa tornare arruolabile da fine dicembre.",
+    "rientro": "31/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Spinazzola",
+    "player_id": 1852,
+    "team": "Napoli",
+    "motivo": "Il terzino vittima di una lesione di basso grado del bicipite femorale della coscia destra, recuperabile dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Santos A.",
+    "player_id": 7351,
+    "team": "Napoli",
+    "motivo": "l'ala offensiva azzurra KO il 18 ottobre a Venezia, vittima di una lesione distrattiva di medio grado del bicipite femorale sinistro. Recuperabile dall'inizio di dicembre.",
+    "rientro": "05/12/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Neres",
+    "player_id": 6831,
+    "team": "Napoli",
+    "motivo": "L'ala offensiva azzurra ai box per una lesione di basso grado al muscolo semimembranoso della coscia destra, tentativo di rientro tra i convocati dalla prima metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Favasuli",
+    "player_id": 7563,
+    "team": "Napoli",
+    "motivo": "Il cursore di fascia degli azzurri ai box da inizio ottobre per una lesione muscolare di secondo grado del retto femorale della coscia destra. Recuperabile dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Badiashile",
+    "player_id": 4664,
+    "team": "Napoli",
+    "motivo": "il difensore KO il 24 ottobre contro la Roma per una lesione distrattiva di medio grado del retto femorale destro, recuperabile dalla fine di novembre.",
+    "rientro": "15/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Nicolussi Caviglia",
+    "player_id": 4349,
+    "team": "Parma",
+    "motivo": "il centrocampista alle prese dalla seconda metà di luglio con una lesione di medio grado alla coscia destra, ma a fine agosto ha deciso, assieme allo staff medico ducale, di operarsi. Lungo stop e ipotesi di ritorno in campo da dicembre.",
+    "rientro": "15/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Almqvist",
+    "player_id": 6207,
+    "team": "Parma",
+    "motivo": "L'ala offensiva dei ducali KO dal 6 ottobre per una lesione muscolare al polpaccio sinistro, recuperabile dalla fine di ottobre.",
+    "rientro": "15/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Elphege",
+    "player_id": 7342,
+    "team": "Parma",
+    "motivo": "l'attaccante operato per una appendicite acuta l'11 ottobre, condizioni ora da valutare per stabilire i tempi di rientro in campo. Di certo assente mercoledì al Tardini contro l'Udinese.",
+    "rientro": "01/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Konè M.",
+    "player_id": 5589,
+    "team": "Roma",
+    "motivo": "Il centrocampista frenato il 14 ottobre in Champions League contro il Real Madrid da una lesione di primo grado al bicipite femorale destro, tentativo di rientro tra i convocati in campionato dalla prima metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Pellegrini Lo.",
+    "player_id": 530,
+    "team": "Roma",
+    "motivo": "Il centrocampista dei giallorossi il 20 ottobre in Champions League ha rimediato una lesione di alto grado in corrispondenza della giunzione muscolo - tendinea distale del muscolo semitendinoso della coscia destra. Stop lungo, ipotizziamo un rientro dalla fine di dicembre.",
+    "rientro": "15/12/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Svilar",
+    "player_id": 5841,
+    "team": "Roma",
+    "motivo": "Il portiere condizionato da una frattura a un dito del piede e fuori dal match contro il Como. Ipotesi di rientro a disposizione dall'inizio di novembre.",
+    "rientro": "15/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Idzes",
+    "player_id": 6672,
+    "team": "Sassuolo",
+    "motivo": "Il difensore ai box per una lesione di grado moderato al quadricipite della gamba sinistra, proverà a tornerà arruolabile dalla fine di ottobre.",
+    "rientro": "15/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Boloca",
+    "player_id": 6219,
+    "team": "Sassuolo",
+    "motivo": "il centrocampista fuori causa per un problema al ginocchio e fuori causa in questo inizio di campionato. Da valutare rientro da fine ottobre.",
+    "rientro": "31/10/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Konè I.",
+    "player_id": 6717,
+    "team": "Sassuolo",
+    "motivo": "il centrocampista canadese vittima a giugno nella gara dei Mondiali di una rottura di tibia e perone. Operato, punta a tornare in campo da dicembre.",
+    "rientro": "15/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Leysen F.",
+    "player_id": 7564,
+    "team": "Sassuolo",
+    "motivo": "il difensore KO l'11 ottobre contro il Milan vittima di una lesione al crociato anteriore del ginocchio sinistro. Lungo stop, ipotesi rientro in campo da aprile.",
+    "rientro": "15/04/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Ilkhan",
+    "player_id": 6005,
+    "team": "Torino",
+    "motivo": "il centrocampista il 12 ottobre costretto al cambio contro l'Udinese per un fastidio muscolare alla gamba. Fuori già contro Monza e Parma, non ci sarà neppure martedì contro il Como.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Fortini",
+    "player_id": 7069,
+    "team": "Torino",
+    "motivo": "Il cursore di fascia dei granata rientrato in anticipo dagli impegni con l'U21 azzurra a inizio ottobre a causa di un affaticamento muscolare all'adduttore. Da valutare nei prossimi allenamenti le possibilità di convocazione per martedì in casa contro il Como.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Mandragora",
+    "player_id": 1933,
+    "team": "Torino",
+    "motivo": "il centrocampista granata fermato il 23 ottobre contro il Monza da un problema muscolare al flessore sinistro. Condizioni da valutare, di certo out martedì in campionato contro il Como.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Rodriguez R.",
+    "player_id": 2169,
+    "team": "Torino",
+    "motivo": "Il difensore svizzero ai box per una lesione tendinea di basso grado ai muscoli flessori della coscia sinistra, rientro possibile dalla prima metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Alaba",
+    "player_id": 59016,
+    "team": "Udinese",
+    "motivo": "il difensore sostituito nell'intervallo della sfida contro il Lecce (18 ottobre) per un risentimento muscolare al polpaccio destro. Recuperabile dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Gueye",
+    "player_id": 7272,
+    "team": "Udinese",
+    "motivo": "L'attaccante vittima di un problema alla caviglia a fine settembre. Ha deciso di operarsi, lungo stop di circa tre mesi e possibile ritorno in campo da fine gennaio.",
+    "rientro": "15/01/2027",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Zanoli",
+    "player_id": 5527,
+    "team": "Udinese",
+    "motivo": "Il cursore di fascia dei friulani out domenica scorsa contro il Milan per noie muscolari. Da valutare, ma rischia il forfait anche mercoledì a Parma.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Solet",
+    "player_id": 6956,
+    "team": "Udinese",
+    "motivo": "Il difensore non al meglio per un risentimento muscolare alla gamba, out contro il Milan domenica scorsa e non ci sarà neppure mercoledì a Parma. Tempi di recupero da valutare dopo ulteriori controlli medici.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Bayo V.",
+    "player_id": 7161,
+    "team": "Udinese",
+    "motivo": "l'attaccante assente a Torino il 12 ottobre a causa di una lesione al bicipite femorale della coscia destra, rientro tra i convocati da metà novembre.",
+    "rientro": "15/11/2026",
+    "severity": "orange",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Sverko",
+    "player_id": 6673,
+    "team": "Venezia",
+    "motivo": "il difensore operato in estate per il perdurare di un problema all'anca e recuperabile dalla metà di novembre.",
+    "rientro": "20/11/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Franjic",
+    "player_id": 7478,
+    "team": "Venezia",
+    "motivo": "il difensore costretto al cambio a Milano contro i rossoneri a fine agosto per un guaio alla spalla che ha richiesto l'intervento chirurgico. Lungo stop e rientro dalla metà di dicembre.",
+    "rientro": "15/12/2026",
+    "severity": "red",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Correia T.",
+    "player_id": 4845,
+    "team": "Venezia",
+    "motivo": "il cursore di fascia dei veneti KO il 12 ottobre a Bergamo vittima di un risentimento muscolare al flessore della gamba sinistra, sarà out anche mercoledì contro l'Inter. Da valutare.",
+    "rientro": "01/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Adorante",
+    "player_id": 4387,
+    "team": "Venezia",
+    "motivo": "l'attaccante a fine luglio ha deciso di operarsi per un problema alla schiena, che lo costringerà a stare ai box per buona parte del girone d'andata del campionato. Tentativo di rientro dalla fine di ottobre.",
+    "rientro": "15/11/2026",
+    "severity": "yellow",
+    "tipo_stop": "Infortunato",
+    "fonte": "Fantacalcio.it (Aggiornato 26/10/2026)"
+  },
+  {
+    "player": "Ederson D.S.",
+    "player_id": 5792,
+    "team": "Atalanta",
+    "motivo": "Espulso per doppia ammonizione al 69' nell'8ª giornata contro il Frosinone",
+    "rientro": "01/11/2026",
+    "severity": "red",
+    "tipo_stop": "Squalificato",
+    "fonte": "Lega Serie A Match Report (Aggiornato 26/10/2026)"
+  }
+]

@@ -28,7 +28,7 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
 
-from src.player_matcher import clean_text
+from src.player_matcher import clean_text, match_player_name
 
 IMPORTS_DIR = os.path.join(ROOT_DIR, "data", "raw", "scouting_imports")
 MASTER_PLAYERS_PATH = os.path.join(ROOT_DIR, "data", "processed", "processed_players_master.json")
@@ -109,17 +109,13 @@ def parse_fbref_csv_or_html(file_path):
 
 
 def import_fbref_standard(master_players):
-    """Importa npxG, G-PK (Gol su azione non da rigore) da stats_serie_a_7g.csv o fbref_standard (CSV o HTML)."""
+    """Importa presenze, minutaggi, gol non su rigore (G-PK), rigori e metriche per90 da standard_stats.csv o fbref_standard."""
     candidates = [
-        os.path.join(IMPORTS_DIR, "stats_serie_a_7g.csv"),
+        os.path.join(IMPORTS_DIR, "standard_stats.csv"),
         os.path.join(IMPORTS_DIR, "fbref_standard.csv"),
+        os.path.join(IMPORTS_DIR, "stats_serie_a_7g.csv"),
         os.path.join(IMPORTS_DIR, "fbref_standard.html")
     ]
-    # Check any stats_serie_a_*.csv
-    for f in sorted(os.listdir(IMPORTS_DIR) if os.path.exists(IMPORTS_DIR) else []):
-        if f.startswith('stats_serie_a_') and f.endswith('.csv'):
-            candidates.insert(0, os.path.join(IMPORTS_DIR, f))
-
     path = next((p for p in candidates if os.path.exists(p)), None)
     if not path:
         return 0
@@ -147,8 +143,9 @@ def import_fbref_standard(master_players):
         starts_val = clean_num(r.get('Starts'))
 
         for p in master_players:
-            p_name = clean_text(p.get('name') or '').lower()
-            if norm_name == p_name or norm_name in p_name or p_name in norm_name:
+            p_name = p.get('name') or ''
+            clean_pn = clean_text(p_name).lower()
+            if norm_name == clean_pn or norm_name in clean_pn or clean_pn in norm_name or match_player_name(p_name, name):
                 if npxg > 0:
                     p['npxg_2627'] = npxg
                 if npxg90 > 0:
@@ -167,6 +164,106 @@ def import_fbref_standard(master_players):
                 break
 
     print(f"  ✓ {matched} calciatori aggiornati con metriche FBref Standard (G-PK, npxG, Per90) da {os.path.basename(path)}!")
+    return matched
+
+
+def import_fbref_miscellaneous(master_players):
+    """Importa Cross, Intercetti, Tackle vinti, Falli, Fuorigioco, Rigori concessi/procurati, Autogol da stats_miscellanous.csv."""
+    candidates = [
+        os.path.join(IMPORTS_DIR, "stats_miscellanous.csv"),
+        os.path.join(IMPORTS_DIR, "fbref_miscellaneous.csv"),
+        os.path.join(IMPORTS_DIR, "fbref_miscellaneous.html")
+    ]
+    path = next((p for p in candidates if os.path.exists(p)), None)
+    if not path:
+        return 0
+
+    print(f"[Import] Elaborazione {os.path.basename(path)}...")
+    rows = parse_fbref_csv_or_html(path)
+    matched = 0
+
+    for r in rows:
+        name = r.get('Player') or r.get('player') or ''
+        if not name or name == 'Player':
+            continue
+        norm_name = clean_text(name).lower()
+
+        crs = clean_num(r.get('Crs'))
+        interc = clean_num(r.get('Int'))
+        tklw = clean_num(r.get('TklW'))
+        fls = clean_num(r.get('Fls'))
+        fld = clean_num(r.get('Fld'))
+        off = clean_num(r.get('Off'))
+        pkwon = clean_num(r.get('PKwon'))
+        pkcon = clean_num(r.get('PKcon'))
+        og = clean_num(r.get('OG'))
+        crd2y = clean_num(r.get('2CrdY'))
+
+        for p in master_players:
+            p_name = p.get('name') or ''
+            clean_pn = clean_text(p_name).lower()
+            if norm_name == clean_pn or norm_name in clean_pn or clean_pn in norm_name or match_player_name(p_name, name):
+                p['crosses_fbref_2627'] = crs
+                p['interceptions_fbref_2627'] = interc
+                p['tackles_won_fbref_2627'] = tklw
+                p['fouls_committed_fbref_2627'] = fls
+                p['fouls_drawn_fbref_2627'] = fld
+                p['offsides_fbref_2627'] = off
+                p['penalties_won_fbref_2627'] = pkwon
+                p['penalties_conceded_fbref_2627'] = pkcon
+                p['autogol_fbref_2627'] = og
+                p['double_yellow_fbref_2627'] = crd2y
+                matched += 1
+                break
+
+    print(f"  ✓ {matched} calciatori aggiornati con metriche FBref Miscellaneous (Cross, Intercetti, Tackle, Rigori, Autogol)!")
+    return matched
+
+
+def import_fbref_shooting(master_players):
+    """Importa Tiri totali, Tiri in porta, % precisione tiro, Tiri/90 da Player_Shooting.csv."""
+    candidates = [
+        os.path.join(IMPORTS_DIR, "Player_Shooting.csv"),
+        os.path.join(IMPORTS_DIR, "fbref_shooting.csv"),
+        os.path.join(IMPORTS_DIR, "fbref_shooting.html")
+    ]
+    path = next((p for p in candidates if os.path.exists(p)), None)
+    if not path:
+        return 0
+
+    print(f"[Import] Elaborazione {os.path.basename(path)}...")
+    rows = parse_fbref_csv_or_html(path)
+    matched = 0
+
+    for r in rows:
+        name = r.get('Player') or r.get('player') or ''
+        if not name or name == 'Player':
+            continue
+        norm_name = clean_text(name).lower()
+
+        sh = clean_num(r.get('Sh'))
+        sot = clean_num(r.get('SoT'))
+        sot_pct = clean_num(r.get('SoT%'))
+        sh90 = clean_num(r.get('Sh/90') or r.get('Sh_per90'))
+        sot90 = clean_num(r.get('SoT/90') or r.get('SoT_per90'))
+        g_sh = clean_num(r.get('G/Sh'))
+        g_sot = clean_num(r.get('G/SoT'))
+
+        for p in master_players:
+            p_name = p.get('name') or ''
+            clean_pn = clean_text(p_name).lower()
+            if norm_name == clean_pn or norm_name in clean_pn or clean_pn in norm_name or match_player_name(p_name, name):
+                p['shots_fbref_2627'] = sh
+                p['shots_on_target_fbref_2627'] = sot
+                p['shots_on_target_pct_fbref_2627'] = sot_pct
+                p['shots_per90_fbref_2627'] = sh90
+                p['shots_on_target_per90_fbref_2627'] = sot90
+                p['goals_per_shot_fbref_2627'] = g_sh
+                p['goals_per_sot_fbref_2627'] = g_sot
+                matched += 1
+                break
+
+    print(f"  ✓ {matched} calciatori aggiornati con metriche FBref Shooting (Tiri, Tiri specchio, SoT%, Sh/90)!")
     return matched
 
 
@@ -194,8 +291,9 @@ def import_fbref_gca(master_players):
         gca90 = clean_num(r.get('gca_per90') or r.get('GCA/90') or r.get('GCA90'))
 
         for p in master_players:
-            p_name = clean_text(p.get('name') or '').lower()
-            if norm_name == p_name or norm_name in p_name or p_name in norm_name:
+            p_name = p.get('name') or ''
+            clean_pn = clean_text(p_name).lower()
+            if norm_name == clean_pn or norm_name in clean_pn or clean_pn in norm_name or match_player_name(p_name, name):
                 p['sca_2627'] = sca
                 p['sca90_2627'] = sca90
                 p['gca_2627'] = gca
@@ -229,8 +327,9 @@ def import_fbref_possession(master_players):
         att_pen = clean_num(r.get('touches_att_pen_area') or r.get('Att Pen') or r.get('att_pen_touches'))
 
         for p in master_players:
-            p_name = clean_text(p.get('name') or '').lower()
-            if norm_name == p_name or norm_name in p_name or p_name in norm_name:
+            p_name = p.get('name') or ''
+            clean_pn = clean_text(p_name).lower()
+            if norm_name == clean_pn or norm_name in clean_pn or clean_pn in norm_name or match_player_name(p_name, name):
                 p['touches_att_pen_2627'] = att_pen
                 matched += 1
                 break
@@ -251,10 +350,12 @@ def run_all_imports():
         master_players = json.load(f)
 
     c_std = import_fbref_standard(master_players)
+    c_misc = import_fbref_miscellaneous(master_players)
+    c_shoot = import_fbref_shooting(master_players)
     c_gca = import_fbref_gca(master_players)
     c_poss = import_fbref_possession(master_players)
 
-    total_updated = c_std + c_gca + c_poss
+    total_updated = c_std + c_misc + c_shoot + c_gca + c_poss
     if total_updated > 0:
         with open(MASTER_PLAYERS_PATH, 'w', encoding='utf-8') as f:
             json.dump(master_players, f, indent=2, ensure_ascii=False)
@@ -264,7 +365,7 @@ def run_all_imports():
         print(f"\n✓ Master database aggiornato con successo ({total_updated} record arricchiti su entrambi i file)!")
     else:
         print("\nNessun nuovo file FBref trovato in data/raw/scouting_imports/.")
-        print("Istruzioni: posiziona i file fbref_standard.csv, fbref_gca.csv o fbref_possession.csv nella cartella per avviare l'import automatico.")
+        print("Istruzioni: posiziona i file fbref_standard.csv, stats_miscellanous.csv, Player_Shooting.csv nella cartella per avviare l'import automatico.")
 
 
 if __name__ == "__main__":

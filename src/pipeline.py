@@ -868,6 +868,7 @@ def run_master_pipeline():
         starts_2627 = 0
         minuti_2627 = 0
         gol_2627 = 0
+        autogol_2627 = 0
         assist_2627 = 0
         tiri_2627 = 0
         tiri_porta_2627 = 0
@@ -919,6 +920,7 @@ def run_master_pipeline():
             clean_sheets_2627 = rep_data['clean_sheets_2627']
             parate_2627 = rep_data['parate_2627']
             gol_subiti_2627 = rep_data['gol_subiti_2627']
+            autogol_2627 = rep_data.get('autogol_2627', 0)
 
         # CALCOLO DINAMICO E PREDITTIVO DELLA TITOLARITA' (3 FASCE PONDERATE)
         titolarita, titolarita_desc_2627, tit_u3, tit_mid, tit_hist, tit_dettaglio = compute_predictive_titolarita(
@@ -1370,6 +1372,7 @@ def run_master_pipeline():
             "titolarita_desc_2627": titolarita_desc_2627,
             "minuti_2627": minuti_2627,
             "gol_2627": gol_2627,
+            "autogol_2627": autogol_2627,
             "assist_2627": assist_2627,
             "tiri_2627": tiri_2627,
             "tiri_porta_2627": tiri_porta_2627,

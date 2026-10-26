@@ -36,6 +36,7 @@ def load_and_aggregate_match_reports():
                 'titolarita_count_2627': 0,
                 'minuti_2627': 0,
                 'gol_2627': 0,
+                'autogol_2627': 0,
                 'assist_2627': 0,
                 'tiri_2627': 0,
                 'tiri_porta_2627': 0,
@@ -89,6 +90,7 @@ def load_and_aggregate_match_reports():
             rec['clean_sheets_2627'] += int(row.get('clean_sheet', 0))
         else:
             rec['gol_2627'] += int(row.get('goals', 0))
+            rec['autogol_2627'] += int(row.get('own_goals', 0) or 0)
             rec['assist_2627'] += int(row.get('assists', 0))
             rec['tiri_2627'] += int(row.get('total_shots', 0))
             rec['tiri_porta_2627'] += int(row.get('shots_on_target', 0))

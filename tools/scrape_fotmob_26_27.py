@@ -20,31 +20,54 @@ HEADERS = {
 BASE_URL = "https://www.fotmob.com/it/leagues/55/stats/season/36072/players/"
 API_BASE = "https://data.fotmob.com/stats/55/season/36072/"
 
-# Comprehensive list: 13 user targets + complementary metrics
+# Comprehensive list of all 41 FotMob Player metrics for Serie A 2026/27 (Season 36072)
 TARGET_STATS = [
-    # 13 Richieste specifiche dell'utente:
-    'expected_assists_per_90',
-    'total_scoring_att',
-    'ontarget_scoring_att',
-    'expected_goalsontarget',
+    # 5 Richieste specifiche dell'utente + Top Stat:
     'expected_goals_per_90',
+    'ontarget_scoring_att',
     'big_chance_created',
-    'won_contest',
-    'big_chance_missed',
-    'poss_won_att_3rd',
-    'goals_conceded',
-    '_save_percentage',
-    'clean_sheet',
-    'total_tackle',
-    # Metriche complementari essenziali già censite:
-    'total_att_assist',
+    'expected_assists_per_90',
+    '_expected_goals_and_expected_assists_per_90',
+    # Produzione offensiva & Rifinitura:
     'expected_goals',
     'expected_assists',
-    '_expected_goals_and_expected_assists_per_90',
+    'expected_goalsontarget',
+    'goals',
+    'goal_assist',
+    '_goals_and_goal_assist',
+    'goals_per_90',
+    'total_scoring_att',
+    'total_att_assist',
+    'big_chance_missed',
+    'won_contest',
+    'accurate_pass',
+    'accurate_long_balls',
+    'lbp_total',
+    'penalty_won',
+    # Metriche Difensive & Recuperi:
+    'defensive_contributions',
+    'total_tackle',
+    'interception',
+    'effective_clearance',
+    'outfielder_block',
+    'ball_recovery',
+    'poss_won_att_3rd',
+    'penalty_conceded',
+    # Metriche Portieri & Solidità Difensiva:
+    'clean_sheet',
+    '_save_percentage',
+    'saves',
+    '_goals_prevented',
+    'goals_conceded',
+    'total_high_claim',
+    'total_keeper_sweeper',
+    'penalty_save',
+    # Disciplina, Minuti & Rating:
     'rating',
     'mins_played',
-    'defensive_contributions',
-    'ball_recovery'
+    'fouls',
+    'yellow_card',
+    'red_card'
 ]
 
 def fetch_metric_data(stat_name):

@@ -21547,9 +21547,100 @@ function renderLiveIntelligencePulseCards() {
         </div>
     `;
 }
+function renderHomeLeaders() {
+    if (typeof PLAYERS === 'undefined' || !Array.isArray(PLAYERS) || PLAYERS.length === 0) return;
+    const grid = document.getElementById('homeLeadersGrid');
+    if (!grid) return;
+    const roleMap = { 'P': 'Portiere', 'D': 'Difensore', 'C': 'Centrocampista', 'A': 'Attaccante' };
+    const categories = [
+        {
+            title: '⚽ Più Gol Segnati',
+            key: p => Number(p.gol_2627 !== undefined ? p.gol_2627 : (p.gol || 0)),
+            minPres: 0,
+            valStr: v => Math.round(v),
+            sub: p => `${p.team || ''} • ${p.role_desc || roleMap[p.role] || 'Attaccante'}`,
+            runner: (p, v) => `${p.name} (${p.team}, ${Math.round(v)} gol)`
+        },
+        {
+            title: '🎯 Più Assist Forniti',
+            key: p => Number(p.assist_2627 !== undefined ? p.assist_2627 : (p.assist || 0)),
+            minPres: 0,
+            valStr: v => Math.round(v),
+            sub: p => `${p.team || ''} • ${p.role_desc || roleMap[p.role] || 'Centrocampista'}`,
+            runner: (p, v) => `${p.name} (${p.team}, ${Math.round(v)} assist)`
+        },
+        {
+            title: '⚡ Più xGoals (xG)',
+            key: p => Number(p.xg_2627 !== undefined ? p.xg_2627 : (p.xg || 0)),
+            minPres: 0,
+            valStr: v => v.toFixed(1),
+            sub: p => `${p.team || ''} • ${p.role_desc || roleMap[p.role] || 'Attaccante'}`,
+            runner: (p, v) => `${p.name} (${p.team}, ${v.toFixed(1)} xG)`
+        },
+        {
+            title: '🎨 Più xAssists (xA)',
+            key: p => Number(p.xa_2627 !== undefined ? p.xa_2627 : (p.xa || 0)),
+            minPres: 0,
+            valStr: v => v.toFixed(1),
+            sub: p => `${p.team || ''} • ${p.role_desc || roleMap[p.role] || 'Centrocampista'}`,
+            runner: (p, v) => `${p.name} (${p.team}, ${v.toFixed(1)} xA)`
+        },
+        {
+            title: '⭐ Miglior FantaMedia (FM)',
+            key: p => Number(p.fm_2627 !== undefined ? p.fm_2627 : (p.fm || 0)),
+            minPres: 4,
+            valStr: v => v.toFixed(2),
+            sub: p => `${p.team || ''} • FM ${Number(p.fm_2627 || p.fm || 0).toFixed(2)} (${Number(p.presenze_2627 || p.presenze || 0)} presenze)`,
+            runner: (p, v) => `${p.name} (${p.team}, ${v.toFixed(2)} FM)`
+        },
+        {
+            title: '💎 Più Bonus Totali (+Gol & +Assist)',
+            key: p => Number(p.tot_bonus_2627 !== undefined ? p.tot_bonus_2627 : ((p.gol_2627 || 0) * 3 + (p.assist_2627 || 0))),
+            minPres: 0,
+            valStr: v => `+${v.toFixed(1)}`,
+            sub: p => `${p.team || ''} • ${Number(p.gol_2627 || 0)} gol, ${Number(p.assist_2627 || 0)} assist (+${Number(p.tot_bonus_2627 || 0).toFixed(1)} pt)`,
+            runner: (p, v) => `${p.name} (+${v.toFixed(1)} bonus)`
+        }
+    ];
+    const cardsHtml = categories.map(cat => {
+        const pool = PLAYERS.filter(p => Number(p.presenze_2627 || p.presenze || 0) >= cat.minPres);
+        pool.sort((a, b) => cat.key(b) - cat.key(a));
+        const top1 = pool[0];
+        if (!top1) return '';
+        const val1 = cat.key(top1);
+        const p2 = pool[1];
+        const p3 = pool[2];
+        const r2Str = p2 ? `<span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(${p2.id});" style="cursor:pointer;" title="Vedi scheda ${p2.name}">2° ${cat.runner(p2, cat.key(p2))}</span>` : '';
+        const r3Str = p3 ? `<span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(${p3.id});" style="cursor:pointer;" title="Vedi scheda ${p3.name}">3° ${cat.runner(p3, cat.key(p3))}</span>` : '';
+        const runnersHtml = [r2Str, r3Str].filter(Boolean).join(' • ');
+        const ovrClass = typeof getOvrClass === 'function' ? getOvrClass(top1.ovr) : 'ovr-tier-good';
+        return `
+            <div class="leader-card" onclick="openPlayerProfileModal(${top1.id})" style="cursor:pointer;" title="Clicca per aprire la scheda di ${top1.name}">
+                <div class="leader-card-header">
+                    <span class="leader-stat-badge">${cat.title}</span>
+                    <span class="leader-val">${cat.valStr(val1)}</span>
+                </div>
+                <div class="leader-player-info">
+                    <span class="role-badge ${top1.role}">${top1.role}</span>
+                    <div>
+                        <div class="leader-player-name">${top1.name} <span class="ovr-pill ${ovrClass}" style="font-size:10px;margin-left:4px;">OVR ${top1.ovr || '-'}</span></div>
+                        <div class="leader-player-team">${cat.sub(top1)}</div>
+                    </div>
+                </div>
+                <div class="leader-podium">
+                    <strong>Inseguitori:</strong> ${runnersHtml}
+                </div>
+            </div>
+        `;
+    }).join('\n');
+    grid.innerHTML = cardsHtml;
+}
 if (typeof window !== 'undefined') {
     window.addEventListener('DOMContentLoaded', () => {
-        setTimeout(renderLiveIntelligencePulseCards, 150);
+        setTimeout(() => {
+            renderLiveIntelligencePulseCards();
+            renderHomeLeaders();
+        }, 150);
     });
 }
 const CLIENT_ID = 'client_' + Math.random().toString(36).substring(2, 9) + '_' + Date.now().toString(36);
@@ -22059,6 +22150,8 @@ window.addEventListener('DOMContentLoaded', () => {
                     view.classList.add('active');
                     view.style.display = 'flex';
                 }
+                if (typeof renderHomeLeaders === 'function') renderHomeLeaders();
+                if (typeof renderLiveIntelligencePulseCards === 'function') renderLiveIntelligencePulseCards();
             } else if (tabId === 'leagues') {
                 const btn = document.getElementById('tabLeaguesBtn') || document.getElementById('tabHomeBtn');
                 if (btn) btn.classList.add('active');

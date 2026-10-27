@@ -22,6 +22,114 @@ def minify_js(js: str) -> str:
     cleaned = re.sub(r'/\*[\s\S]*?\*/', '', cleaned)
     return cleaned
 
+def generate_home_leaders_html(players_data: list) -> str:
+    """Genera dinamicamente le 6 card dei leader statistici della Serie A 2026/27."""
+    def get_ovr_tier(ovr):
+        try:
+            val = int(ovr)
+        except Exception:
+            val = 0
+        if val >= 90: return 'ovr-tier-elite'
+        if val >= 85: return 'ovr-tier-top'
+        if val >= 80: return 'ovr-tier-high'
+        if val >= 75: return 'ovr-tier-good'
+        if val >= 70: return 'ovr-tier-mid'
+        if val >= 65: return 'ovr-tier-low'
+        return 'ovr-tier-bench'
+
+    role_map = {'P': 'Portiere', 'D': 'Difensore', 'C': 'Centrocampista', 'A': 'Attaccante'}
+
+    categories = [
+        {
+            'title': '⚽ Più Gol Segnati',
+            'key': lambda p: float(p.get('gol_2627') if p.get('gol_2627') is not None else p.get('gol', 0)),
+            'min_p': 0,
+            'val_str': lambda v: f"{int(v)}",
+            'sub': lambda p: f"{p.get('team', '')} • {p.get('role_desc') or role_map.get(p.get('role', 'A'), 'Attaccante')}",
+            'runner': lambda p, v: f"{p.get('name', '')} ({p.get('team', '')}, {int(v)} gol)"
+        },
+        {
+            'title': '🎯 Più Assist Forniti',
+            'key': lambda p: float(p.get('assist_2627') if p.get('assist_2627') is not None else p.get('assist', 0)),
+            'min_p': 0,
+            'val_str': lambda v: f"{int(v)}",
+            'sub': lambda p: f"{p.get('team', '')} • {p.get('role_desc') or role_map.get(p.get('role', 'C'), 'Centrocampista')}",
+            'runner': lambda p, v: f"{p.get('name', '')} ({p.get('team', '')}, {int(v)} assist)"
+        },
+        {
+            'title': '⚡ Più xGoals (xG)',
+            'key': lambda p: float(p.get('xg_2627') if p.get('xg_2627') is not None else p.get('xg', 0)),
+            'min_p': 0,
+            'val_str': lambda v: f"{v:.1f}",
+            'sub': lambda p: f"{p.get('team', '')} • {p.get('role_desc') or role_map.get(p.get('role', 'A'), 'Attaccante')}",
+            'runner': lambda p, v: f"{p.get('name', '')} ({p.get('team', '')}, {v:.1f} xG)"
+        },
+        {
+            'title': '🎨 Più xAssists (xA)',
+            'key': lambda p: float(p.get('xa_2627') if p.get('xa_2627') is not None else p.get('xa', 0)),
+            'min_p': 0,
+            'val_str': lambda v: f"{v:.1f}",
+            'sub': lambda p: f"{p.get('team', '')} • {p.get('role_desc') or role_map.get(p.get('role', 'C'), 'Centrocampista')}",
+            'runner': lambda p, v: f"{p.get('name', '')} ({p.get('team', '')}, {v:.1f} xA)"
+        },
+        {
+            'title': '⭐ Miglior FantaMedia (FM)',
+            'key': lambda p: float(p.get('fm_2627') if p.get('fm_2627') is not None else p.get('fm', 0)),
+            'min_p': 4,
+            'val_str': lambda v: f"{v:.2f}",
+            'sub': lambda p: f"{p.get('team', '')} • FM {float(p.get('fm_2627') or p.get('fm', 0)):.2f} ({int(p.get('presenze_2627') or p.get('presenze', 0))} presenze)",
+            'runner': lambda p, v: f"{p.get('name', '')} ({p.get('team', '')}, {v:.2f} FM)"
+        },
+        {
+            'title': '💎 Più Bonus Totali (+Gol & +Assist)',
+            'key': lambda p: float(p.get('tot_bonus_2627') if p.get('tot_bonus_2627') is not None else (float(p.get('gol_2627', 0))*3.0 + float(p.get('assist_2627', 0)))),
+            'min_p': 0,
+            'val_str': lambda v: f"+{v:.1f}",
+            'sub': lambda p: f"{p.get('team', '')} • {int(p.get('gol_2627', 0))} gol, {int(p.get('assist_2627', 0))} assist (+{float(p.get('tot_bonus_2627', 0)):.1f} pt)",
+            'runner': lambda p, v: f"{p.get('name', '')} (+{v:.1f} bonus)"
+        }
+    ]
+
+    cards_html = []
+    for c in categories:
+        pool = [p for p in players_data if int(p.get('presenze_2627') or p.get('presenze', 0)) >= c['min_p']]
+        sorted_p = sorted(pool, key=lambda x: c['key'](x), reverse=True)
+        if not sorted_p:
+            continue
+        top1 = sorted_p[0]
+        val1 = c['key'](top1)
+        p2 = sorted_p[1] if len(sorted_p) > 1 else None
+        p3 = sorted_p[2] if len(sorted_p) > 2 else None
+
+        runners_parts = []
+        if p2:
+            val2 = c['key'](p2)
+            runners_parts.append(f"<span onclick=\"event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal({p2.get('id', 0)});\" style=\"cursor:pointer;\" title=\"Vedi scheda {p2.get('name', '')}\">2° {c['runner'](p2, val2)}</span>")
+        if p3:
+            val3 = c['key'](p3)
+            runners_parts.append(f"<span onclick=\"event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal({p3.get('id', 0)});\" style=\"cursor:pointer;\" title=\"Vedi scheda {p3.get('name', '')}\">3° {c['runner'](p3, val3)}</span>")
+        runners_str = " • ".join(runners_parts)
+
+        card = f'''                        <div class="leader-card" onclick="openPlayerProfileModal({top1.get('id', 0)})" style="cursor:pointer;" title="Clicca per aprire la scheda di {top1.get('name', '')}">
+                            <div class="leader-card-header">
+                                <span class="leader-stat-badge">{c['title']}</span>
+                                <span class="leader-val">{c['val_str'](val1)}</span>
+                            </div>
+                            <div class="leader-player-info">
+                                <span class="role-badge {top1.get('role', 'A')}">{top1.get('role', 'A')}</span>
+                                <div>
+                                    <div class="leader-player-name">{top1.get('name', '')} <span class="ovr-pill {get_ovr_tier(top1.get('ovr', 75))}" style="font-size:10px;margin-left:4px;">OVR {top1.get('ovr', '-')}</span></div>
+                                    <div class="leader-player-team">{c['sub'](top1)}</div>
+                                </div>
+                            </div>
+                            <div class="leader-podium">
+                                <strong>Inseguitori:</strong> {runners_str}
+                            </div>
+                        </div>'''
+        cards_html.append(card)
+
+    return "\n".join(cards_html)
+
 def build_standalone_dashboard(sync_android=False):
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     
@@ -133,6 +241,7 @@ def build_standalone_dashboard(sync_android=False):
     match_reports_json = json.dumps(match_reports_data, ensure_ascii=False)
     cal_json = json.dumps(cal_data, ensure_ascii=False)
     accuracy_json = json.dumps(accuracy_data, ensure_ascii=False)
+    home_leaders_html = generate_home_leaders_html(players_data)
 
     # 3. Costruisci il documento HTML completo
     html_template = f"""<!DOCTYPE html>
@@ -804,114 +913,8 @@ def build_standalone_dashboard(sync_android=False):
                         <p class="ai-section-subtitle">Le 6 metriche più determinanti: clicca su qualsiasi calciatore per aprire la sua scheda analitica con Radar.</p>
                     </div>
 
-                    <div class="leader-grid">
-                        <!-- 1. Capocannoniere -->
-                        <div class="leader-card" onclick="openPlayerByName('Malen')" style="cursor:pointer;">
-                            <div class="leader-card-header">
-                                <span class="leader-stat-badge">⚽ Più Gol Segnati</span>
-                                <span class="leader-val">6</span>
-                            </div>
-                            <div class="leader-player-info">
-                                <span class="role-badge A">A</span>
-                                <div>
-                                    <div class="leader-player-name">Donyell Malen <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 88</span></div>
-                                    <div class="leader-player-team">Roma • Attaccante</div>
-                                </div>
-                            </div>
-                            <div class="leader-podium">
-                                <strong>Inseguitori:</strong> 2° L. Martinez (Inter, 4 gol) • 3° Varela G. (Monza, 4 gol)
-                            </div>
-                        </div>
-
-                        <!-- 2. Miglior Assistman -->
-                        <div class="leader-card" onclick="openPlayerByName('Dybala')" style="cursor:pointer;">
-                            <div class="leader-card-header">
-                                <span class="leader-stat-badge">🎯 Più Assist Forniti</span>
-                                <span class="leader-val">4</span>
-                            </div>
-                            <div class="leader-player-info">
-                                <span class="role-badge A">A</span>
-                                <div>
-                                    <div class="leader-player-name">Paulo Dybala <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 87</span></div>
-                                    <div class="leader-player-team">Roma • Seconda Punta</div>
-                                </div>
-                            </div>
-                            <div class="leader-podium">
-                                <strong>Inseguitori:</strong> 2° Diouf (Inter, 3 assist) • 3° Schmid (Frosinone, 3 assist)
-                            </div>
-                        </div>
-
-                        <!-- 3. Più xGoals (xG) -->
-                        <div class="leader-card" onclick="openPlayerByName('Lautaro')" style="cursor:pointer;">
-                            <div class="leader-card-header">
-                                <span class="leader-stat-badge">⚡ Più xGoals (xG)</span>
-                                <span class="leader-val">4.7</span>
-                            </div>
-                            <div class="leader-player-info">
-                                <span class="role-badge A">A</span>
-                                <div>
-                                    <div class="leader-player-name">Lautaro Martinez <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 94</span></div>
-                                    <div class="leader-player-team">Inter • Punta Centrale</div>
-                                </div>
-                            </div>
-                            <div class="leader-podium">
-                                <strong>Inseguitori:</strong> 2° Malen (Roma, 4.6 xG) • 3° Raimondo (Frosinone, 2.5 xG)
-                            </div>
-                        </div>
-
-                        <!-- 4. Più xAssists (xA) -->
-                        <div class="leader-card" onclick="openPlayerByName('Dybala')" style="cursor:pointer;">
-                            <div class="leader-card-header">
-                                <span class="leader-stat-badge">🎨 Più xAssists (xA)</span>
-                                <span class="leader-val">3.4</span>
-                            </div>
-                            <div class="leader-player-info">
-                                <span class="role-badge A">A</span>
-                                <div>
-                                    <div class="leader-player-name">Paulo Dybala <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 87</span></div>
-                                    <div class="leader-player-team">Roma • Trequartista / Punta</div>
-                                </div>
-                            </div>
-                            <div class="leader-podium">
-                                <strong>Inseguitori:</strong> 2° Dimarco (Inter, 1.6 xA) • 3° Diouf (Inter, 1.5 xA)
-                            </div>
-                        </div>
-
-                        <!-- 5. Miglior FantaMedia -->
-                        <div class="leader-card" onclick="openPlayerByName('Malen')" style="cursor:pointer;">
-                            <div class="leader-card-header">
-                                <span class="leader-stat-badge">⭐ Miglior FantaMedia (FM)</span>
-                                <span class="leader-val">10.6</span>
-                            </div>
-                            <div class="leader-player-info">
-                                <span class="role-badge A">A</span>
-                                <div>
-                                    <div class="leader-player-name">Donyell Malen <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 88</span></div>
-                                    <div class="leader-player-team">Roma • FM 10.60 (6 presenze)</div>
-                                </div>
-                            </div>
-                            <div class="leader-podium">
-                                <strong>Inseguitori:</strong> 2° L. Martinez (Inter, 8.85 FM) • 3° Dybala (Roma, 7.90 FM)
-                            </div>
-                        </div>
-
-                        <!-- 6. Più Bonus Totali -->
-                        <div class="leader-card" onclick="openPlayerByName('Malen')" style="cursor:pointer;">
-                            <div class="leader-card-header">
-                                <span class="leader-stat-badge">💎 Più Bonus Totali (+Gol &amp; +Assist)</span>
-                                <span class="leader-val">+18.0</span>
-                            </div>
-                            <div class="leader-player-info">
-                                <span class="role-badge A">A</span>
-                                <div>
-                                    <div class="leader-player-name">Donyell Malen <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 88</span></div>
-                                    <div class="leader-player-team">Roma • 6 gol (+18 pt bonus)</div>
-                                </div>
-                            </div>
-                            <div class="leader-podium">
-                                <strong>Inseguitori:</strong> 2° L. Martinez (+12.0 bonus) • 3° Raimondo (+12.0 bonus)
-                            </div>
-                        </div>
+                    <div class="leader-grid" id="homeLeadersGrid">
+{home_leaders_html}
                     </div>
                 </div>
 
@@ -1999,6 +2002,8 @@ def build_standalone_dashboard(sync_android=False):
                     view.classList.add('active');
                     view.style.display = 'flex';
                 }}
+                if (typeof renderHomeLeaders === 'function') renderHomeLeaders();
+                if (typeof renderLiveIntelligencePulseCards === 'function') renderLiveIntelligencePulseCards();
             }} else if (tabId === 'leagues') {{
                 const btn = document.getElementById('tabLeaguesBtn') || document.getElementById('tabHomeBtn');
                 if (btn) btn.classList.add('active');

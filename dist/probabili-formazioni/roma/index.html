@@ -845,27 +845,24 @@
                         <p class="ai-section-subtitle">Le 6 metriche più determinanti: clicca su qualsiasi calciatore per aprire la sua scheda analitica con Radar.</p>
                     </div>
 
-                    <div class="leader-grid">
-                        <!-- 1. Capocannoniere -->
-                        <div class="leader-card" onclick="openPlayerByName('Malen')" style="cursor:pointer;">
+                    <div class="leader-grid" id="homeLeadersGrid">
+                        <div class="leader-card" onclick="openPlayerProfileModal(5436)" style="cursor:pointer;" title="Clicca per aprire la scheda di Raimondo">
                             <div class="leader-card-header">
                                 <span class="leader-stat-badge">⚽ Più Gol Segnati</span>
-                                <span class="leader-val">6</span>
+                                <span class="leader-val">7</span>
                             </div>
                             <div class="leader-player-info">
                                 <span class="role-badge A">A</span>
                                 <div>
-                                    <div class="leader-player-name">Donyell Malen <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 88</span></div>
-                                    <div class="leader-player-team">Roma • Attaccante</div>
+                                    <div class="leader-player-name">Raimondo <span class="ovr-pill ovr-tier-good" style="font-size:10px;margin-left:4px;">OVR 78</span></div>
+                                    <div class="leader-player-team">Frosinone • Attaccante</div>
                                 </div>
                             </div>
                             <div class="leader-podium">
-                                <strong>Inseguitori:</strong> 2° L. Martinez (Inter, 4 gol) • 3° Varela G. (Monza, 4 gol)
+                                <strong>Inseguitori:</strong> <span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(5585);" style="cursor:pointer;" title="Vedi scheda Malen">2° Malen (Roma, 6 gol)</span> • <span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(6435);" style="cursor:pointer;" title="Vedi scheda Krstovic">3° Krstovic (Atalanta, 6 gol)</span>
                             </div>
                         </div>
-
-                        <!-- 2. Miglior Assistman -->
-                        <div class="leader-card" onclick="openPlayerByName('Dybala')" style="cursor:pointer;">
+                        <div class="leader-card" onclick="openPlayerProfileModal(309)" style="cursor:pointer;" title="Clicca per aprire la scheda di Dybala">
                             <div class="leader-card-header">
                                 <span class="leader-stat-badge">🎯 Più Assist Forniti</span>
                                 <span class="leader-val">4</span>
@@ -873,35 +870,31 @@
                             <div class="leader-player-info">
                                 <span class="role-badge A">A</span>
                                 <div>
-                                    <div class="leader-player-name">Paulo Dybala <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 87</span></div>
-                                    <div class="leader-player-team">Roma • Seconda Punta</div>
+                                    <div class="leader-player-name">Dybala <span class="ovr-pill ovr-tier-top" style="font-size:10px;margin-left:4px;">OVR 85</span></div>
+                                    <div class="leader-player-team">Roma • Attaccante</div>
                                 </div>
                             </div>
                             <div class="leader-podium">
-                                <strong>Inseguitori:</strong> 2° Diouf (Inter, 3 assist) • 3° Schmid (Frosinone, 3 assist)
+                                <strong>Inseguitori:</strong> <span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(6274);" style="cursor:pointer;" title="Vedi scheda Diouf">2° Diouf (Inter, 4 assist)</span> • <span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(6530);" style="cursor:pointer;" title="Vedi scheda Ghedjemis">3° Ghedjemis (Frosinone, 3 assist)</span>
                             </div>
                         </div>
-
-                        <!-- 3. Più xGoals (xG) -->
-                        <div class="leader-card" onclick="openPlayerByName('Lautaro')" style="cursor:pointer;">
+                        <div class="leader-card" onclick="openPlayerProfileModal(5585)" style="cursor:pointer;" title="Clicca per aprire la scheda di Malen">
                             <div class="leader-card-header">
                                 <span class="leader-stat-badge">⚡ Più xGoals (xG)</span>
-                                <span class="leader-val">4.7</span>
+                                <span class="leader-val">5.4</span>
                             </div>
                             <div class="leader-player-info">
                                 <span class="role-badge A">A</span>
                                 <div>
-                                    <div class="leader-player-name">Lautaro Martinez <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 94</span></div>
-                                    <div class="leader-player-team">Inter • Punta Centrale</div>
+                                    <div class="leader-player-name">Malen <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 98</span></div>
+                                    <div class="leader-player-team">Roma • Attaccante</div>
                                 </div>
                             </div>
                             <div class="leader-podium">
-                                <strong>Inseguitori:</strong> 2° Malen (Roma, 4.6 xG) • 3° Raimondo (Frosinone, 2.5 xG)
+                                <strong>Inseguitori:</strong> <span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(2764);" style="cursor:pointer;" title="Vedi scheda Martinez L.">2° Martinez L. (Inter, 4.9 xG)</span> • <span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(5436);" style="cursor:pointer;" title="Vedi scheda Raimondo">3° Raimondo (Frosinone, 4.5 xG)</span>
                             </div>
                         </div>
-
-                        <!-- 4. Più xAssists (xA) -->
-                        <div class="leader-card" onclick="openPlayerByName('Dybala')" style="cursor:pointer;">
+                        <div class="leader-card" onclick="openPlayerProfileModal(309)" style="cursor:pointer;" title="Clicca per aprire la scheda di Dybala">
                             <div class="leader-card-header">
                                 <span class="leader-stat-badge">🎨 Più xAssists (xA)</span>
                                 <span class="leader-val">3.4</span>
@@ -909,48 +902,44 @@
                             <div class="leader-player-info">
                                 <span class="role-badge A">A</span>
                                 <div>
-                                    <div class="leader-player-name">Paulo Dybala <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 87</span></div>
-                                    <div class="leader-player-team">Roma • Trequartista / Punta</div>
+                                    <div class="leader-player-name">Dybala <span class="ovr-pill ovr-tier-top" style="font-size:10px;margin-left:4px;">OVR 85</span></div>
+                                    <div class="leader-player-team">Roma • Attaccante</div>
                                 </div>
                             </div>
                             <div class="leader-podium">
-                                <strong>Inseguitori:</strong> 2° Dimarco (Inter, 1.6 xA) • 3° Diouf (Inter, 1.5 xA)
+                                <strong>Inseguitori:</strong> <span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(632);" style="cursor:pointer;" title="Vedi scheda Zaccagni">2° Zaccagni (Lazio, 2.3 xA)</span> • <span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(254);" style="cursor:pointer;" title="Vedi scheda Dimarco">3° Dimarco (Inter, 2.1 xA)</span>
                             </div>
                         </div>
-
-                        <!-- 5. Miglior FantaMedia -->
-                        <div class="leader-card" onclick="openPlayerByName('Malen')" style="cursor:pointer;">
+                        <div class="leader-card" onclick="openPlayerProfileModal(7523)" style="cursor:pointer;" title="Clicca per aprire la scheda di Varela G.">
                             <div class="leader-card-header">
                                 <span class="leader-stat-badge">⭐ Miglior FantaMedia (FM)</span>
-                                <span class="leader-val">10.6</span>
+                                <span class="leader-val">9.64</span>
                             </div>
                             <div class="leader-player-info">
                                 <span class="role-badge A">A</span>
                                 <div>
-                                    <div class="leader-player-name">Donyell Malen <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 88</span></div>
-                                    <div class="leader-player-team">Roma • FM 10.60 (6 presenze)</div>
+                                    <div class="leader-player-name">Varela G. <span class="ovr-pill ovr-tier-high" style="font-size:10px;margin-left:4px;">OVR 81</span></div>
+                                    <div class="leader-player-team">Monza • FM 9.64 (7 presenze)</div>
                                 </div>
                             </div>
                             <div class="leader-podium">
-                                <strong>Inseguitori:</strong> 2° L. Martinez (Inter, 8.85 FM) • 3° Dybala (Roma, 7.90 FM)
+                                <strong>Inseguitori:</strong> <span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(4871);" style="cursor:pointer;" title="Vedi scheda Thuram">2° Thuram (Inter, 9.21 FM)</span> • <span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(5585);" style="cursor:pointer;" title="Vedi scheda Malen">3° Malen (Roma, 9.00 FM)</span>
                             </div>
                         </div>
-
-                        <!-- 6. Più Bonus Totali -->
-                        <div class="leader-card" onclick="openPlayerByName('Malen')" style="cursor:pointer;">
+                        <div class="leader-card" onclick="openPlayerProfileModal(5436)" style="cursor:pointer;" title="Clicca per aprire la scheda di Raimondo">
                             <div class="leader-card-header">
-                                <span class="leader-stat-badge">💎 Più Bonus Totali (+Gol &amp; +Assist)</span>
-                                <span class="leader-val">+18.0</span>
+                                <span class="leader-stat-badge">💎 Più Bonus Totali (+Gol & +Assist)</span>
+                                <span class="leader-val">+21.0</span>
                             </div>
                             <div class="leader-player-info">
                                 <span class="role-badge A">A</span>
                                 <div>
-                                    <div class="leader-player-name">Donyell Malen <span class="ovr-pill ovr-tier-elite" style="font-size:10px;margin-left:4px;">OVR 88</span></div>
-                                    <div class="leader-player-team">Roma • 6 gol (+18 pt bonus)</div>
+                                    <div class="leader-player-name">Raimondo <span class="ovr-pill ovr-tier-good" style="font-size:10px;margin-left:4px;">OVR 78</span></div>
+                                    <div class="leader-player-team">Frosinone • 7 gol, 0 assist (+21.0 pt)</div>
                                 </div>
                             </div>
                             <div class="leader-podium">
-                                <strong>Inseguitori:</strong> 2° L. Martinez (+12.0 bonus) • 3° Raimondo (+12.0 bonus)
+                                <strong>Inseguitori:</strong> <span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(6435);" style="cursor:pointer;" title="Vedi scheda Krstovic">2° Krstovic (+20.0 bonus)</span> • <span onclick="event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal(5585);" style="cursor:pointer;" title="Vedi scheda Malen">3° Malen (+19.0 bonus)</span>
                             </div>
                         </div>
                     </div>
@@ -1747,9 +1736,9 @@
     </div>
 
     <!-- Data Injection & Engine Scripts -->
-    <script src="/js/dashboard_data.js?v=1793087682" defer></script>
-    <script src="/js/dashboard_app.js?v=1793087682" defer></script>
-    <script src="/js/tracker.js?v=1793087682" defer></script>
+    <script src="/js/dashboard_data.js?v=1793089373" defer></script>
+    <script src="/js/dashboard_app.js?v=1793089373" defer></script>
+    <script src="/js/tracker.js?v=1793089373" defer></script>
 
     <!-- ==================== FOOTER & LEGAL DISCLAIMER ==================== -->
     <footer class="app-site-footer">

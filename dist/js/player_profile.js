@@ -624,7 +624,7 @@ window.setPlayerProfileViewMode = function(mode) {
         openPlayerProfileModal(window._currentOpenPlayerId);
     }
 };
-function openPlayerProfileModal(playerId) {
+function openPlayerProfileModal(playerId, forceModal) {
     if (!playerId && playerId !== 0) return;
     window._currentOpenPlayerId = playerId;
     const targetId = typeof playerId === 'object' && playerId !== null ? (playerId.id || playerId.cod) : playerId;
@@ -637,6 +637,19 @@ function openPlayerProfileModal(playerId) {
     if (!p) {
         console.warn('Player not found for modal:', playerId);
         return;
+    }
+    if (!forceModal && typeof window !== 'undefined' && window.location && window.location.protocol.startsWith('http')) {
+        const rawName = p.name || '';
+        const slug = rawName
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+        if (slug) {
+            window.location.href = `/calciatore/${slug}/`;
+            return;
+        }
     }
     const modal = document.getElementById('playerDetailModal');
     const modalBody = document.getElementById('playerDetailModalBody');

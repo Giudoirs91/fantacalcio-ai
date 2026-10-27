@@ -344,7 +344,8 @@ def compute_predictive_titolarita(
     is_in_11,
     is_new_arrival,
     fvm,
-    team_rounds=None
+    team_rounds=None,
+    is_in_ballottaggio=False
 ):
     """
     Calcolo quantitativo predittivo della titolarità (0.0 - 1.0) suddiviso in 3 metriche ponderate:
@@ -415,8 +416,8 @@ def compute_predictive_titolarita(
         subs = max(0, presenze - starts)
         history = rep_data.get('history_by_round', {})
 
-        # Titolarissimo assoluto 100% (es. 5 su 5 dall'inizio)
-        if starts >= n_matches:
+        # Titolarissimo assoluto 100% (solo per titolari indiscussi senza ballottaggio)
+        if starts >= n_matches and is_in_11 and not is_in_ballottaggio and prior >= 0.85:
             tit_val = 1.0
             desc = f"{starts}/{n_matches} Titolare (100%)"
             dettaglio = (
@@ -481,8 +482,14 @@ def compute_predictive_titolarita(
             dettaglio = f"Titolarità: 0% (0 presenze su {n_matches} partite disputate)"
             return 0.0, desc, 0, 0, int(round(prior * 100)), dettaglio
 
-        if starts >= 4 and is_in_11:
+        if starts >= 4 and is_in_11 and not is_in_ballottaggio:
             tit_raw = max(tit_raw, 0.82)
+
+        # Regole di coerenza tattica: una riserva non nell'11 o chi è in ballottaggio non può avere 100%
+        if not is_in_11:
+            tit_raw = min(0.78, tit_raw)
+        if is_in_ballottaggio:
+            tit_raw = min(max(0.72, titolarita_tactical), tit_raw)
 
         tit_val = min(1.0, max(0.0, round(tit_raw, 2)))
         pct = int(round(tit_val * 100))
@@ -490,7 +497,7 @@ def compute_predictive_titolarita(
         mid_pct = int(round(t_mid * 100))
         hist_pct = int(round(t_storico * 100))
 
-        if starts == n_matches:
+        if starts == n_matches and is_in_11 and not is_in_ballottaggio and pct >= 95:
             desc = f"{starts}/{n_matches} Titolare (100%)"
         elif starts > 0:
             sub_part = f" + {subs} Sub" if subs > 0 else ""
@@ -588,15 +595,24 @@ def run_master_pipeline():
                 if nm:
                     fotmob_2627_by_clean[clean_text(nm)] = fm_item
 
+    actual_rounds_played = max_played_round if max_played_round > 0 else 8
     team_matches_map = {}
     team_rounds_map = {}
     reports_csv = os.path.join(ROOT_DIR, "data", "raw", "match_reports_players_g1_g2.csv")
-    if os.path.exists(reports_csv):
-        df_rep_raw = pd.read_csv(reports_csv)
+    df_rep_raw = pd.read_csv(reports_csv) if os.path.exists(reports_csv) else None
+
+    # Inizializza per tutti i club basandosi sulle giornate effettivamente disputate nel campionato
+    for t_name in df_quot['Squadra'].dropna().unique():
+        t_up = str(t_name).upper().strip()
+        team_matches_map[t_up] = actual_rounds_played
+        team_rounds_map[t_up] = list(range(1, actual_rounds_played + 1))
+
+    if df_rep_raw is not None and not df_rep_raw.empty:
         for t_name, grp in df_rep_raw.groupby('team'):
             t_rounds = sorted([int(x) for x in grp['giornata'].unique()])
-            team_matches_map[t_name.upper()] = len(t_rounds)
-            team_rounds_map[t_name.upper()] = t_rounds
+            all_r = sorted(list(set(t_rounds).union(range(1, actual_rounds_played + 1))))
+            team_matches_map[t_name.upper()] = len(all_r)
+            team_rounds_map[t_name.upper()] = all_r
 
     # Carica Calendario Ufficiale Serie A 2026/27 per arricchire voti_dettaglio
     cal_file = os.path.join(ROOT_DIR, "data", "processed", "calendario_serie_a_2026_27.json")
@@ -922,6 +938,106 @@ def run_master_pipeline():
             gol_subiti_2627 = rep_data['gol_subiti_2627']
             autogol_2627 = rep_data.get('autogol_2627', 0)
 
+        # Lookup Metriche Avanzate FotMob 2026/27 (xG/90, xA/90, Big Chances, minuti reali)
+        target_name = aliases.get(raw_name, raw_name)
+        target_clean = clean_text(target_name)
+
+        fm26_entry = None
+        if target_clean in fotmob_2627_by_clean:
+            fm26_entry = fotmob_2627_by_clean[target_clean]
+        elif clean_pname in fotmob_2627_by_clean:
+            fm26_entry = fotmob_2627_by_clean[clean_pname]
+        else:
+            for c_fm, fm_obj in fotmob_2627_by_clean.items():
+                if match_player_name(target_name, fm_obj.get('name', '')) or match_player_name(raw_name, fm_obj.get('name', '')):
+                    fm_t = fm_obj.get('team_name', '')
+                    if not fm_t or not team or team.lower() in fm_t.lower() or fm_t.lower() in team.lower():
+                        fm26_entry = fm_obj
+                        break
+
+        fm26_stats = {}
+        if fm26_entry:
+            fm26_stats = fm26_entry.get('stats', {}) or fm26_entry.get('stats_2627', {})
+
+        xg_2627 = safe_float(fm26_stats.get('xg_2627', fm26_stats.get('expected_goals'))) if (fm26_stats.get('xg_2627') is not None or fm26_stats.get('expected_goals') is not None) else None
+        xg90_2627 = safe_float(fm26_stats.get('xg90_2627', fm26_stats.get('expected_goals_per_90'))) if (fm26_stats.get('xg90_2627') is not None or fm26_stats.get('expected_goals_per_90') is not None) else None
+        xa_2627 = safe_float(fm26_stats.get('xa_2627', fm26_stats.get('expected_assists'))) if (fm26_stats.get('xa_2627') is not None or fm26_stats.get('expected_assists') is not None) else None
+        xa90_2627 = safe_float(fm26_stats.get('xa90_2627', fm26_stats.get('expected_assists_per_90'))) if (fm26_stats.get('xa90_2627') is not None or fm26_stats.get('expected_assists_per_90') is not None) else None
+        xg_xa90_2627 = safe_float(fm26_stats.get('xg_xa90_2627', fm26_stats.get('_expected_goals_and_expected_assists_per_90'))) if (fm26_stats.get('xg_xa90_2627') is not None or fm26_stats.get('_expected_goals_and_expected_assists_per_90') is not None) else None
+        xgot_2627 = safe_float(fm26_stats.get('xgot_2627', fm26_stats.get('expected_goalsontarget'))) if (fm26_stats.get('xgot_2627') is not None or fm26_stats.get('expected_goalsontarget') is not None) else None
+        big_chances_created_2627 = safe_int(fm26_stats.get('big_chances_created_2627', fm26_stats.get('big_chance_created'))) if (fm26_stats.get('big_chances_created_2627') is not None or fm26_stats.get('big_chance_created') is not None) else None
+        chances_created_2627 = safe_int(fm26_stats.get('chances_created_2627', fm26_stats.get('total_att_assist'))) if (fm26_stats.get('chances_created_2627') is not None or fm26_stats.get('total_att_assist') is not None) else None
+        rating_fotmob_2627 = safe_float(fm26_stats.get('rating_fotmob_2627', fm26_stats.get('rating'))) if (fm26_stats.get('rating_fotmob_2627') is not None or fm26_stats.get('rating') is not None) else None
+        total_scoring_att_2627 = safe_float(fm26_stats.get('total_scoring_att_2627', fm26_stats.get('total_scoring_att'))) if (fm26_stats.get('total_scoring_att_2627') is not None or fm26_stats.get('total_scoring_att') is not None) else None
+        ontarget_scoring_att_2627 = safe_float(fm26_stats.get('ontarget_scoring_att_2627', fm26_stats.get('ontarget_scoring_att'))) if (fm26_stats.get('ontarget_scoring_att_2627') is not None or fm26_stats.get('ontarget_scoring_att') is not None) else None
+        won_contest_2627 = safe_float(fm26_stats.get('won_contest_2627', fm26_stats.get('won_contest'))) if (fm26_stats.get('won_contest_2627') is not None or fm26_stats.get('won_contest') is not None) else None
+        big_chance_missed_2627 = safe_int(fm26_stats.get('big_chance_missed_2627', fm26_stats.get('big_chance_missed'))) if (fm26_stats.get('big_chance_missed_2627') is not None or fm26_stats.get('big_chance_missed') is not None) else None
+        poss_won_att_3rd_2627 = safe_float(fm26_stats.get('poss_won_att_3rd_2627', fm26_stats.get('poss_won_att_3rd'))) if (fm26_stats.get('poss_won_att_3rd_2627') is not None or fm26_stats.get('poss_won_att_3rd') is not None) else None
+        goals_conceded_fotmob_2627 = safe_int(fm26_stats.get('goals_conceded_fotmob_2627', fm26_stats.get('goals_conceded'))) if (fm26_stats.get('goals_conceded_fotmob_2627') is not None or fm26_stats.get('goals_conceded') is not None) else None
+        save_pct_2627 = safe_float(fm26_stats.get('save_pct_2627', fm26_stats.get('_save_percentage'))) if (fm26_stats.get('save_pct_2627') is not None or fm26_stats.get('_save_percentage') is not None) else None
+        clean_sheet_fotmob_2627 = safe_int(fm26_stats.get('clean_sheet_fotmob_2627', fm26_stats.get('clean_sheet'))) if (fm26_stats.get('clean_sheet_fotmob_2627') is not None or fm26_stats.get('clean_sheet') is not None) else None
+        total_tackle_2627 = safe_float(fm26_stats.get('total_tackle_2627', fm26_stats.get('total_tackle'))) if (fm26_stats.get('total_tackle_2627') is not None or fm26_stats.get('total_tackle') is not None) else None
+        defensive_contributions_2627 = safe_float(fm26_stats.get('defensive_contributions_2627', fm26_stats.get('defensive_contributions'))) if (fm26_stats.get('defensive_contributions_2627') is not None or fm26_stats.get('defensive_contributions') is not None) else None
+        ball_recovery_fotmob_2627 = safe_float(fm26_stats.get('ball_recovery_fotmob_2627', fm26_stats.get('ball_recovery'))) if (fm26_stats.get('ball_recovery_fotmob_2627') is not None or fm26_stats.get('ball_recovery') is not None) else None
+        goals_prevented_2627 = safe_float(fm26_stats.get('goals_prevented_2627', fm26_stats.get('_goals_prevented'))) if (fm26_stats.get('goals_prevented_2627') is not None or fm26_stats.get('_goals_prevented') is not None) else None
+        minuti_fotmob_2627 = safe_int(fm26_stats.get('minuti_fotmob_2627', fm26_entry.get('minutes_played') if fm26_entry else 0))
+        fouls_2627 = safe_float(fm26_stats.get('fouls_2627', fm26_stats.get('fouls'))) if (fm26_stats.get('fouls_2627') is not None or fm26_stats.get('fouls') is not None) else None
+
+        partite_fotmob_2627 = fm26_entry.get('matches_played', 0) if fm26_entry else 0
+        avg_mins_2627 = (minuti_fotmob_2627 / partite_fotmob_2627) if partite_fotmob_2627 > 0 else 0.0
+
+        # Lookup Voti Ufficiali Fantacalcio.it 2026/27 (anticipato per titolarità e presenze reali del campionato)
+        v2627_entry = voti_2627_lookup.get(f"cod_{pid}") or voti_2627_lookup.get(clean_pname)
+        partite_voto_2627 = v2627_entry.get('partite_a_voto', 0) if v2627_entry else 0
+        if v2627_entry and partite_voto_2627 > 0:
+            has_data_2627 = True
+            presenze_2627 = max(presenze_2627, partite_voto_2627)
+            vd_list = v2627_entry.get('voti_dettaglio', [])
+            
+            if not rep_data:
+                # Nessun match report nei 4 turni disponibili: stima da status tattico e minutaggio FotMob
+                if is_in_11:
+                    st_count = partite_voto_2627 if (avg_mins_2627 >= 55 or avg_mins_2627 == 0) else max(1, int(round(partite_voto_2627 * 0.60)))
+                else:
+                    st_count = max(0, int(round(partite_voto_2627 * 0.50))) if avg_mins_2627 >= 70 else 0
+                rep_data = {
+                    'name': raw_name,
+                    'team': team,
+                    'is_gk': role == 'P',
+                    'presenze_2627': partite_voto_2627,
+                    'titolarita_count_2627': st_count,
+                    'minuti_2627': minuti_fotmob_2627 if minuti_fotmob_2627 > 0 else (partite_voto_2627 * (75 if is_in_11 else 30)),
+                    'history_by_round': {
+                        vd['giornata']: {
+                            'is_starter': (idx < st_count),
+                            'minutes': 75 if (idx < st_count) else 30,
+                            'is_gk': role == 'P'
+                        }
+                        for idx, vd in enumerate(vd_list) if vd.get('voto') is not None
+                    }
+                }
+                starts_2627 = st_count
+                minuti_2627 = rep_data['minuti_2627']
+            else:
+                rep_data['presenze_2627'] = max(rep_data['presenze_2627'], partite_voto_2627)
+                hist_map = rep_data.setdefault('history_by_round', {})
+                for vd in vd_list:
+                    g_val = vd.get('giornata')
+                    if vd.get('voto') is not None and g_val and g_val not in hist_map:
+                        # Turno non coperto dal CSV di match report: decidiamo starter o sub con rigore
+                        if is_in_11:
+                            is_st = True if (avg_mins_2627 >= 50 or avg_mins_2627 == 0) else False
+                        else:
+                            is_st = True if (avg_mins_2627 >= 70) else False
+                        hist_map[g_val] = {
+                            'is_starter': is_st,
+                            'minutes': 75 if is_st else 30,
+                            'is_gk': role == 'P'
+                        }
+                        if is_st:
+                            starts_2627 += 1
+                            rep_data['titolarita_count_2627'] = starts_2627
+
         # CALCOLO DINAMICO E PREDITTIVO DELLA TITOLARITA' (3 FASCE PONDERATE)
         titolarita, titolarita_desc_2627, tit_u3, tit_mid, tit_hist, tit_dettaglio = compute_predictive_titolarita(
             clean_pname=clean_pname,
@@ -935,7 +1051,8 @@ def run_master_pipeline():
             is_in_11=is_in_11,
             is_new_arrival=is_new_arrival,
             fvm=fvm,
-            team_rounds=team_rounds
+            team_rounds=team_rounds,
+            is_in_ballottaggio=is_in_ballottaggio
         )
 
         # ---------------------------------------------------------------------
@@ -1096,51 +1213,6 @@ def run_master_pipeline():
                 amm_2627 = max(amm_2627, vd_amm)
                 esp_2627 = max(esp_2627, vd_esp)
                 clean_sheets_2627 = max(clean_sheets_2627, vd_cs)
-
-        # Lookup Metriche Avanzate FotMob 2026/27 (xG/90, xA/90, Big Chances, ecc.)
-        target_name = aliases.get(raw_name, raw_name)
-        target_clean = clean_text(target_name)
-
-        fm26_entry = None
-        if target_clean in fotmob_2627_by_clean:
-            fm26_entry = fotmob_2627_by_clean[target_clean]
-        elif clean_pname in fotmob_2627_by_clean:
-            fm26_entry = fotmob_2627_by_clean[clean_pname]
-        else:
-            for c_fm, fm_obj in fotmob_2627_by_clean.items():
-                if match_player_name(target_name, fm_obj.get('name', '')) or match_player_name(raw_name, fm_obj.get('name', '')):
-                    fm_t = fm_obj.get('team_name', '')
-                    if not fm_t or not team or team.lower() in fm_t.lower() or fm_t.lower() in team.lower():
-                        fm26_entry = fm_obj
-                        break
-
-        fm26_stats = {}
-        if fm26_entry:
-            fm26_stats = fm26_entry.get('stats', {}) or fm26_entry.get('stats_2627', {})
-
-        xg_2627 = safe_float(fm26_stats.get('xg_2627', fm26_stats.get('expected_goals'))) if (fm26_stats.get('xg_2627') is not None or fm26_stats.get('expected_goals') is not None) else None
-        xg90_2627 = safe_float(fm26_stats.get('xg90_2627', fm26_stats.get('expected_goals_per_90'))) if (fm26_stats.get('xg90_2627') is not None or fm26_stats.get('expected_goals_per_90') is not None) else None
-        xa_2627 = safe_float(fm26_stats.get('xa_2627', fm26_stats.get('expected_assists'))) if (fm26_stats.get('xa_2627') is not None or fm26_stats.get('expected_assists') is not None) else None
-        xa90_2627 = safe_float(fm26_stats.get('xa90_2627', fm26_stats.get('expected_assists_per_90'))) if (fm26_stats.get('xa90_2627') is not None or fm26_stats.get('expected_assists_per_90') is not None) else None
-        xg_xa90_2627 = safe_float(fm26_stats.get('xg_xa90_2627', fm26_stats.get('_expected_goals_and_expected_assists_per_90'))) if (fm26_stats.get('xg_xa90_2627') is not None or fm26_stats.get('_expected_goals_and_expected_assists_per_90') is not None) else None
-        xgot_2627 = safe_float(fm26_stats.get('xgot_2627', fm26_stats.get('expected_goalsontarget'))) if (fm26_stats.get('xgot_2627') is not None or fm26_stats.get('expected_goalsontarget') is not None) else None
-        big_chances_created_2627 = safe_int(fm26_stats.get('big_chances_created_2627', fm26_stats.get('big_chance_created'))) if (fm26_stats.get('big_chances_created_2627') is not None or fm26_stats.get('big_chance_created') is not None) else None
-        chances_created_2627 = safe_int(fm26_stats.get('chances_created_2627', fm26_stats.get('total_att_assist'))) if (fm26_stats.get('chances_created_2627') is not None or fm26_stats.get('total_att_assist') is not None) else None
-        rating_fotmob_2627 = safe_float(fm26_stats.get('rating_fotmob_2627', fm26_stats.get('rating'))) if (fm26_stats.get('rating_fotmob_2627') is not None or fm26_stats.get('rating') is not None) else None
-        total_scoring_att_2627 = safe_float(fm26_stats.get('total_scoring_att_2627', fm26_stats.get('total_scoring_att'))) if (fm26_stats.get('total_scoring_att_2627') is not None or fm26_stats.get('total_scoring_att') is not None) else None
-        ontarget_scoring_att_2627 = safe_float(fm26_stats.get('ontarget_scoring_att_2627', fm26_stats.get('ontarget_scoring_att'))) if (fm26_stats.get('ontarget_scoring_att_2627') is not None or fm26_stats.get('ontarget_scoring_att') is not None) else None
-        won_contest_2627 = safe_float(fm26_stats.get('won_contest_2627', fm26_stats.get('won_contest'))) if (fm26_stats.get('won_contest_2627') is not None or fm26_stats.get('won_contest') is not None) else None
-        big_chance_missed_2627 = safe_int(fm26_stats.get('big_chance_missed_2627', fm26_stats.get('big_chance_missed'))) if (fm26_stats.get('big_chance_missed_2627') is not None or fm26_stats.get('big_chance_missed') is not None) else None
-        poss_won_att_3rd_2627 = safe_float(fm26_stats.get('poss_won_att_3rd_2627', fm26_stats.get('poss_won_att_3rd'))) if (fm26_stats.get('poss_won_att_3rd_2627') is not None or fm26_stats.get('poss_won_att_3rd') is not None) else None
-        goals_conceded_fotmob_2627 = safe_int(fm26_stats.get('goals_conceded_fotmob_2627', fm26_stats.get('goals_conceded'))) if (fm26_stats.get('goals_conceded_fotmob_2627') is not None or fm26_stats.get('goals_conceded') is not None) else None
-        save_pct_2627 = safe_float(fm26_stats.get('save_pct_2627', fm26_stats.get('_save_percentage'))) if (fm26_stats.get('save_pct_2627') is not None or fm26_stats.get('_save_percentage') is not None) else None
-        clean_sheet_fotmob_2627 = safe_int(fm26_stats.get('clean_sheet_fotmob_2627', fm26_stats.get('clean_sheet'))) if (fm26_stats.get('clean_sheet_fotmob_2627') is not None or fm26_stats.get('clean_sheet') is not None) else None
-        total_tackle_2627 = safe_float(fm26_stats.get('total_tackle_2627', fm26_stats.get('total_tackle'))) if (fm26_stats.get('total_tackle_2627') is not None or fm26_stats.get('total_tackle') is not None) else None
-        defensive_contributions_2627 = safe_float(fm26_stats.get('defensive_contributions_2627', fm26_stats.get('defensive_contributions'))) if (fm26_stats.get('defensive_contributions_2627') is not None or fm26_stats.get('defensive_contributions') is not None) else None
-        ball_recovery_fotmob_2627 = safe_float(fm26_stats.get('ball_recovery_fotmob_2627', fm26_stats.get('ball_recovery'))) if (fm26_stats.get('ball_recovery_fotmob_2627') is not None or fm26_stats.get('ball_recovery') is not None) else None
-        goals_prevented_2627 = safe_float(fm26_stats.get('goals_prevented_2627', fm26_stats.get('_goals_prevented'))) if (fm26_stats.get('goals_prevented_2627') is not None or fm26_stats.get('_goals_prevented') is not None) else None
-        minuti_fotmob_2627 = safe_int(fm26_stats.get('minuti_fotmob_2627', fm26_entry.get('minutes_played') if fm26_entry else 0))
-        fouls_2627 = safe_float(fm26_stats.get('fouls_2627', fm26_stats.get('fouls'))) if (fm26_stats.get('fouls_2627') is not None or fm26_stats.get('fouls') is not None) else None
 
         # Lookup Statistiche Squadra FotMob 2026/27 (Ecosistema Tattico)
         t_stats = team_stats_lookup.get(team, {})

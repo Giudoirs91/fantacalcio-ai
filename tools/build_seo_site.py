@@ -4024,7 +4024,13 @@ def build_all():
                     with open(dst_f, "w", encoding="utf-8") as js_out:
                         js_out.write(minify_js(js_code))
 
-    # 2b. Ottimizza e compila l'applicazione interattiva principale in dist/app.html e dist/index.html
+    # 2b. Compila e ottimizza l'applicazione interattiva principale in dist/app.html e dist/index.html
+    try:
+        from web.build_dashboard import build_standalone_dashboard
+        build_standalone_dashboard()
+    except Exception as e:
+        print(f"  [WARN] Impossibile ricompilare dashboard standalone: {e}")
+
     dash_content = ""
     if os.path.exists(DASHBOARD_HTML_PATH):
         with open(DASHBOARD_HTML_PATH, "r", encoding="utf-8") as f:
@@ -4305,7 +4311,7 @@ def build_all():
             continue
         if pid:
             seen_ids.add(pid)
-        slug, p_html = generate_player_page(p, injuries_db, tactical_db, CALENDAR_DATA, BASE_URL)
+        slug, p_html = generate_player_page(p, injuries_db, tactical_db, CALENDAR_DATA, BASE_URL, all_players=players)
         if not slug or slug in seen_slugs:
             slug = f"{slug}-{p.get('id')}"
         seen_slugs.add(slug)

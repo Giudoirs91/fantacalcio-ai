@@ -6,6 +6,20 @@ from .player_matcher import clean_text, resolve_player
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+def safe_int(val, default=0):
+    try:
+        if pd.isna(val): return default
+        return int(float(val))
+    except Exception:
+        return default
+
+def safe_float(val, default=0.0):
+    try:
+        if pd.isna(val): return default
+        return float(val)
+    except Exception:
+        return default
+
 def load_and_aggregate_match_reports():
     reports_csv = os.path.join(ROOT_DIR, "data", "raw", "match_reports_players_g1_g2.csv")
     if not os.path.exists(reports_csv):
@@ -17,6 +31,21 @@ def load_and_aggregate_match_reports():
             return {}
         
     df = pd.read_csv(reports_csv)
+    
+    # Integrazione G1 se presente e non ancora inclusa nel CSV principale
+    g1_csv = os.path.join(ROOT_DIR, "data", "raw", "seriea_2026_27_giornata_1_players.csv")
+    if not os.path.exists(g1_csv):
+        g1_csv = "data/raw/seriea_2026_27_giornata_1_players.csv"
+    if os.path.exists(g1_csv):
+        try:
+            df_g1 = pd.read_csv(g1_csv)
+            if 'giornata' not in df_g1.columns:
+                df_g1['giornata'] = 1
+            if 1 not in df['giornata'].values:
+                df = pd.concat([df, df_g1], ignore_index=True)
+                print("[MatchReportsProcessor] Integrata Giornata 1 dai dati ufficiali.")
+        except Exception as eg1:
+            print(f"[MatchReportsProcessor] Avviso lettura G1: {eg1}")
     
     player_agg = {}
     
@@ -63,47 +92,47 @@ def load_and_aggregate_match_reports():
             
         rec = player_agg[key]
         rec['presenze_2627'] += 1
-        g_num = int(row.get('giornata', 1))
+        g_num = safe_int(row.get('giornata', 1), 1)
         rec['giornate_giocate'].append(g_num)
         
         is_starter = bool(row.get('is_starter', False))
         if is_starter:
             rec['titolarita_count_2627'] += 1
             
-        rec['minuti_2627'] += int(row.get('minutes', 0))
+        rec['minuti_2627'] += safe_int(row.get('minutes', 0))
         rec['history_by_round'][g_num] = {
             'is_starter': is_starter,
-            'minutes': int(row.get('minutes', 0)),
+            'minutes': safe_int(row.get('minutes', 0)),
             'is_gk': is_gk
         }
-        rec['ammonizioni_2627'] += int(row.get('yellow_cards', 0))
-        rec['espulsioni_2627'] += int(row.get('red_cards', 0)) + int(row.get('double_yellows', 0))
+        rec['ammonizioni_2627'] += safe_int(row.get('yellow_cards', 0))
+        rec['espulsioni_2627'] += safe_int(row.get('red_cards', 0)) + safe_int(row.get('double_yellows', 0))
         
-        km_val = float(row.get('km_distance', 0.0) or 0.0)
-        sp_val = float(row.get('sprint_speed_max', 0.0) or 0.0)
+        km_val = safe_float(row.get('km_distance', 0.0))
+        sp_val = safe_float(row.get('sprint_speed_max', 0.0))
         rec['km_distance_2627'] = round(rec['km_distance_2627'] + km_val, 2)
         rec['sprint_speed_max_2627'] = max(rec['sprint_speed_max_2627'], sp_val)
 
         if is_gk:
-            rec['gol_subiti_2627'] += int(row.get('goals_conceded', 0))
-            rec['parate_2627'] += int(row.get('saves', 0))
-            rec['clean_sheets_2627'] += int(row.get('clean_sheet', 0))
+            rec['gol_subiti_2627'] += safe_int(row.get('goals_conceded', 0))
+            rec['parate_2627'] += safe_int(row.get('saves', 0))
+            rec['clean_sheets_2627'] += safe_int(row.get('clean_sheet', 0))
         else:
-            rec['gol_2627'] += int(row.get('goals', 0))
-            rec['autogol_2627'] += int(row.get('own_goals', 0) or 0)
-            rec['assist_2627'] += int(row.get('assists', 0))
-            rec['tiri_2627'] += int(row.get('total_shots', 0))
-            rec['tiri_porta_2627'] += int(row.get('shots_on_target', 0))
-            rec['legni_2627'] += int(row.get('woodworks', 0))
-            rec['key_passes_2627'] += int(row.get('key_passes', 0))
-            rec['occasioni_create_2627'] += int(row.get('chances_created', 0))
-            rec['recuperi_2627'] += int(row.get('ball_recoveries', 0))
-            rec['falli_subiti_2627'] += int(row.get('fouls_drawn', 0))
-            rec['passaggi_riusciti_2627'] += int(row.get('passes_completed', 0))
-            rec['passaggi_avanti_2627'] += int(row.get('forward_passes', 0))
-            rec['crosses_2627'] += int(row.get('crosses', 0) or 0)
-            rec['dribbles_2627'] += int(row.get('dribbles', 0) or 0)
-            rec['passes_final_third_2627'] += int(row.get('passes_final_third', 0) or 0)
+            rec['gol_2627'] += safe_int(row.get('goals', 0))
+            rec['autogol_2627'] += safe_int(row.get('own_goals', 0))
+            rec['assist_2627'] += safe_int(row.get('assists', 0))
+            rec['tiri_2627'] += safe_int(row.get('total_shots', 0))
+            rec['tiri_porta_2627'] += safe_int(row.get('shots_on_target', 0))
+            rec['legni_2627'] += safe_int(row.get('woodworks', 0))
+            rec['key_passes_2627'] += safe_int(row.get('key_passes', 0))
+            rec['occasioni_create_2627'] += safe_int(row.get('chances_created', 0))
+            rec['recuperi_2627'] += safe_int(row.get('ball_recoveries', 0))
+            rec['falli_subiti_2627'] += safe_int(row.get('fouls_drawn', 0))
+            rec['passaggi_riusciti_2627'] += safe_int(row.get('passes_completed', 0))
+            rec['passaggi_avanti_2627'] += safe_int(row.get('forward_passes', 0))
+            rec['crosses_2627'] += safe_int(row.get('crosses', 0))
+            rec['dribbles_2627'] += safe_int(row.get('dribbles', 0))
+            rec['passes_final_third_2627'] += safe_int(row.get('passes_final_third', 0))
             
     print(f"[MatchReportsProcessor] Aggregati dati 2026/27 (Match Reports Ufficiali) per {len(player_agg)} calciatori.")
     return player_agg

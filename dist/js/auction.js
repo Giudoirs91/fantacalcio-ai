@@ -743,11 +743,44 @@ function renderTable() {
         if (State.filterOnlyAvailable && !isPlayerAvailable(p.id)) return false;
         if (State.filterOnlyFavorites && !isFavorite(p.id)) return false;
         if (State.searchQuery) {
-            const q = State.searchQuery.toLowerCase();
-            const matchName = p.name.toLowerCase().includes(q);
+            const q = State.searchQuery.toLowerCase().trim();
+            const pName = p.name.toLowerCase();
+            const matchName = pName.includes(q);
             const matchTeam = p.team.toLowerCase().includes(q);
             const matchMantra = (p.mantra || '').toLowerCase().includes(q);
-            if (!matchName && !matchTeam && !matchMantra) return false;
+            const aliases = {
+                'lautaro': 'martinez l.',
+                'khvicha': 'kvaratskhelia',
+                'kvara': 'kvaratskhelia',
+                'donyell': 'malen',
+                'marcus': 'thuram',
+                'alvaro': 'morata',
+                'teun': 'koopmeiners',
+                'christian': 'pulisic',
+                'kenan': 'yildiz',
+                'hakan': 'calhanoglu',
+                'matias': 'soule',
+                'charles': 'de ketelaere',
+                'mateo': 'retegui',
+                'duvan': 'zapata d.',
+                'artem': 'dovbyk',
+                'scott': 'mctominay',
+                'nicolo': 'barella',
+                'federico': 'dimarco',
+                'alessandro': 'bastoni',
+                'gleison': 'bremer',
+                'mile': 'svilar'
+            };
+            let matchAlias = false;
+            for (const [aliasKey, target] of Object.entries(aliases)) {
+                if ((q.length >= 3 && aliasKey.includes(q)) || q.includes(aliasKey)) {
+                    if (pName.includes(target) || target.includes(pName)) {
+                        matchAlias = true;
+                        break;
+                    }
+                }
+            }
+            if (!matchName && !matchTeam && !matchMantra && !matchAlias) return false;
         }
         return true;
     });

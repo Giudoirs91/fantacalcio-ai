@@ -89,8 +89,8 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Probabili Formazioni Serie A",
-          "item": "https://www.fantamasterai.it/probabili-formazioni/"
+          "name": "Listone Calciatori",
+          "item": "https://www.fantamasterai.it/listone/"
         },
         {
           "@type": "ListItem",
@@ -211,10 +211,15 @@
     <main class="site-container" style="padding-top:16px;">
         <nav class="breadcrumbs">
             <a href="../../">Home</a> <span>/</span> 
-            <a href="../../probabili-formazioni/">Probabili Formazioni</a> <span>/</span> 
+            <a href="../../listone/">Listone Calciatori</a> <span>/</span> 
             <a href="../../probabili-formazioni/lecce/">Lecce</a> <span>/</span> 
             <span style="color:#fff;">Gorter</span>
         </nav>
+
+        <div class="player-nav-action-bar">
+            <a href="../../listone/" class="back-to-listone-btn">← Torna al Listone Calciatori</a>
+            <a href="../../probabili-formazioni/lecce/" class="back-to-club-btn">Rosa Lecce →</a>
+        </div>
 
         <!-- Profile Header (Identico a Modal App) -->
         <div class="profile-header-container" style="margin-top:10px;">
@@ -253,8 +258,8 @@
 
                     <div class="profile-hero-metric-card card-titolarita">
                         <span class="hero-card-label">TITOLARITÀ</span>
-                        <div class="hero-card-value" style="color:#ef4444;">22%</div>
-                        <span class="hero-card-sub" style="color:#ef4444;">1/4 Subentrato (22%)</span>
+                        <div class="hero-card-value" style="color:#ef4444;">12%</div>
+                        <span class="hero-card-sub" style="color:#ef4444;">1/8 Tit + 1 Sub (12%)</span>
                     </div>
 
                     <div class="profile-hero-metric-card card-price">
@@ -301,38 +306,92 @@
         <!-- Tab Panes -->
         
     <div id="profileTabPane_overview" class="profile-tab-pane" style="display:block;">
-        <!-- 3 Pill Bar Gauges (Titolarità, Affidabilità Voto, Integrità Fisica) -->
+        <!-- Fantasolidità & Indici di Rischio Showcase (Visual Bars + Pin Badges + AI Targets) -->
         
-        <div class="profile-quick-gauges-bar">
-            <div class="quick-gauge-item" title="Titolarità Predittiva: 22%
-• Ultime 3 giornate: 0% (peso 50%)
-• Giornate 4-8: 60% (peso 35%)
-• Storico/Àncora: 5% (peso 15%)">
-                <div class="gauge-header">
-                    <span class="gauge-lbl">Titolarità ℹ️</span>
-                    <b class="gauge-val" style="color:#ef4444;">22%</b>
+    <div class="fantasolidita-showcase">
+        <div class="fantasolidita-header">
+            <h2 class="fantasolidita-title">🛡️ Fantasolidità &amp; Indici di Rischio AI &mdash; Gorter</h2>
+            <p class="fantasolidita-desc">Valutazione oggettiva proprietaria Fanta Master AI: analisi incrociata tra potenziale puro, resa attesa xFM, garanzia titolarità e tenuta atletica.</p>
+        </div>
+
+        <div class="fcp-skill-group">
+            <!-- 1. ALG OVR -->
+            <div class="fcp-skill-row">
+                <div class="fcp-skill-head">
+                    <span>🧠 Algoritmo Predittivo OVR</span>
                 </div>
-                <div class="gauge-track"><div class="gauge-fill" style="width:22%;background:#ef4444;"></div></div>
-                <span class="gauge-sub">1/4 Subentrato (22%)</span>
+                <div class="fcp-track-wrap">
+                    <div class="fcp-track-bg">
+                        <div class="fcp-track-fill fill-ovr" style="width: 61%;"></div>
+                    </div>
+                    <div class="fcp-track-pin" style="left: clamp(30px, 61%, calc(100% - 30px));">61/100</div>
+                </div>
+                <div class="fcp-skill-sub">Forza complessiva e potenziale fantacalcistico nel modello neurale Serie A 2026/27.</div>
             </div>
-            <div class="quick-gauge-item">
-                <div class="gauge-header">
-                    <span class="gauge-lbl">Affidabilità Voto</span>
-                    <b class="gauge-val" style="color:#f59e0b;">50%</b>
+
+            <!-- 2. EXPECTED FANTAMEDIA (xFM) -->
+            <div class="fcp-skill-row">
+                <div class="fcp-skill-head">
+                    <span>📈 Expected FantaMedia (xFM)</span>
                 </div>
-                <div class="gauge-track"><div class="gauge-fill" style="width:50%;background:#f59e0b;"></div></div>
-                <span class="gauge-sub">1/2 gare sufficienza</span>
+                <div class="fcp-track-wrap">
+                    <div class="fcp-track-bg">
+                        <div class="fcp-track-fill fill-xfm" style="width: 62%;"></div>
+                    </div>
+                    <div class="fcp-track-pin" style="left: clamp(34px, 62%, calc(100% - 34px));">6.15 xFM</div>
+                </div>
+                <div class="fcp-skill-sub">Rendimento medio bonus/malus atteso per 90&#39; basato su volume xG e xA (FM reale: <b>7.50</b>).</div>
             </div>
-            <div class="quick-gauge-item">
-                <div class="gauge-header">
-                    <span class="gauge-lbl">Integrità Fisica</span>
-                    <b class="gauge-val" style="color:#10b981;">100%</b>
+
+            <!-- 3. TITOLARITÀ & CONTINUITÀ -->
+            <div class="fcp-skill-row">
+                <div class="fcp-skill-head">
+                    <span>🛡️ Titolarità &amp; Continuità Voto</span>
                 </div>
-                <div class="gauge-track"><div class="gauge-fill" style="width:100%;background:#10b981;"></div></div>
-                <span class="gauge-sub">Tenuta solida</span>
+                <div class="fcp-track-wrap">
+                    <div class="fcp-track-bg">
+                        <div class="fcp-track-fill fill-tit" style="width: 25%;"></div>
+                    </div>
+                    <div class="fcp-track-pin" style="left: clamp(26px, 25%, calc(100% - 26px));">12%</div>
+                </div>
+                <div class="fcp-skill-sub">Probabilità di voto costante nelle 38 giornate (<b>1/8 Tit + 1 Sub (12%)</b>).</div>
+            </div>
+
+            <!-- 4. RESISTENZA INFORTUNI -->
+            <div class="fcp-skill-row">
+                <div class="fcp-skill-head">
+                    <span>🩺 Resistenza Infortuni &amp; Integrità</span>
+                </div>
+                <div class="fcp-track-wrap">
+                    <div class="fcp-track-bg">
+                        <div class="fcp-track-fill fill-disp-green" style="width: 98%;"></div>
+                    </div>
+                    <div class="fcp-track-pin" style="left: clamp(26px, 98%, calc(100% - 26px));">100%</div>
+                </div>
+                <div class="fcp-skill-sub">Tenuta atletica e storico assenze (<b>🟢 Roccia</b> &bull; 0 gare saltate storiche).</div>
             </div>
         </div>
-    
+
+        <!-- Target Previsionali AI -->
+        <div class="ai-target-grid">
+            <div class="ai-target-card">
+                <span class="ai-target-label">⚽ Gol Previsti</span>
+                <span class="ai-target-val" style="color:#fbbf24;">0 - 1</span>
+            </div>
+            <div class="ai-target-card">
+                <span class="ai-target-label">🪄 Assist Previsti</span>
+                <span class="ai-target-val" style="color:#38bdf8;">1 - 3</span>
+            </div>
+            <div class="ai-target-card">
+                <span class="ai-target-label">⏱️ Gare a Voto AI</span>
+                <span class="ai-target-val" style="color:#4ade80;">6 - 8</span>
+            </div>
+            <div class="ai-target-card">
+                <span class="ai-target-label">🏷️ Asta &amp; Valore CR</span>
+                <span class="ai-target-val" style="font-size:13px;color:#cbd5e1;">1 CR (Max 2 CR)</span>
+            </div>
+        </div>
+    </div>
 
         <!-- Live Season Summary Bar -->
         <div class="profile-season-summary-bar">
@@ -366,7 +425,7 @@
                 </div>
                 <div class="kpi-mini-card">
                     <span class="kpi-mini-lbl">Minuti</span>
-                    <b class="kpi-mini-val" style="color:#fff;">49&#39;</b>
+                    <b class="kpi-mini-val" style="color:#fff;">113&#39;</b>
                 </div>
             </div>
         </div>
@@ -515,7 +574,7 @@
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                     <span class="inspector-badge">GIORNATA 2</span>
                     <span class="inspector-venue">🏠 Casa</span>
-                    <b class="inspector-match-title">LECCE 0-4 ROMA</b>
+                    <b class="inspector-match-title">Lecce vs Roma</b>
                 </div>
                 <span class="inspector-hint-text"><span class="hint-desktop">Passa il mouse</span><span class="hint-mobile">Tocca</span> sulle barre per ispezionare</span>
             </div>
@@ -534,11 +593,11 @@
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Gol / Assist</span>
-                    <b class="val">0 Gol &bull; 0 Ass</b>
+                    <b class="val">0.0 Gol &bull; 0.0 Ass</b>
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Disciplina</span>
-                    <span class="val" style="color:var(--text-secondary);">0 Amm &bull; 0 Esp</span>
+                    <span class="val" style="color:var(--text-secondary);">0.0 Amm &bull; 0.0 Esp</span>
                 </div>
             </div>
         </div>
@@ -570,7 +629,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G2</td>
-                <td style="font-weight:700;color:#fff;">LECCE 0-4 ROMA</td>
+                <td style="font-weight:700;color:#fff;">Lecce vs Roma</td>
                 <td style="color:var(--text-muted);font-size:11px;">🏠 Casa</td>
                 <td style="font-weight:900;color:#f87171;">5.0</td>
                 <td><span class="table-bonus-tag">Nessun bonus</span></td>
@@ -683,6 +742,70 @@
         </div>
         <div class="injury-empty-banner"><span style="font-size:16px;">🛡️</span><span><b>Integrità Fisica Impeccabile:</b> Nessun infortunio significativo registrato negli ultimi 3 anni. Calciatore integro ad alta affidabilità.</span></div>
     </div>
+
+        <!-- Compagni di Reparto & Ballottaggi Club -->
+        
+    <div class="reparto-teammates-card">
+        <h3 class="reparto-card-title">
+            <span>⚔️</span>
+            <span>Compagni di Reparto &amp; Ballottaggi Lecce</span>
+        </h3>
+        <div class="reparto-grid">
+            
+        <a href="../../calciatore/monteiro-j/" class="reparto-item" title="Vedi scheda di Monteiro J.">
+            <div class="reparto-item-left">
+                <span class="profile-role-circle C" style="width:28px;height:28px;font-size:11px;min-width:28px;">C</span>
+                <div>
+                    <div class="reparto-item-name">Monteiro J.</div>
+                    <div class="reparto-item-sub">Titolarità: <b>57%</b> &bull; FVM: <b>23.0 CR</b></div>
+                </div>
+            </div>
+            <div class="reparto-item-right">
+                <span class="ovr-pill silver" style="font-size:10px;padding:2px 7px;">OVR 68</span>
+                <span style="font-size:11px;color:#38bdf8;font-weight:800;">Scheda &rarr;</span>
+            </div>
+        </a>
+        <a href="../../calciatore/coulibaly-l/" class="reparto-item" title="Vedi scheda di Coulibaly L.">
+            <div class="reparto-item-left">
+                <span class="profile-role-circle C" style="width:28px;height:28px;font-size:11px;min-width:28px;">C</span>
+                <div>
+                    <div class="reparto-item-name">Coulibaly L.</div>
+                    <div class="reparto-item-sub">Titolarità: <b>98%</b> &bull; FVM: <b>17.0 CR</b></div>
+                </div>
+            </div>
+            <div class="reparto-item-right">
+                <span class="ovr-pill silver" style="font-size:10px;padding:2px 7px;">OVR 62</span>
+                <span style="font-size:11px;color:#38bdf8;font-weight:800;">Scheda &rarr;</span>
+            </div>
+        </a>
+        <a href="../../calciatore/pierotti/" class="reparto-item" title="Vedi scheda di Pierotti">
+            <div class="reparto-item-left">
+                <span class="profile-role-circle C" style="width:28px;height:28px;font-size:11px;min-width:28px;">C</span>
+                <div>
+                    <div class="reparto-item-name">Pierotti</div>
+                    <div class="reparto-item-sub">Titolarità: <b>87%</b> &bull; FVM: <b>19.0 CR</b></div>
+                </div>
+            </div>
+            <div class="reparto-item-right">
+                <span class="ovr-pill silver" style="font-size:10px;padding:2px 7px;">OVR 59</span>
+                <span style="font-size:11px;color:#38bdf8;font-weight:800;">Scheda &rarr;</span>
+            </div>
+        </a>
+        <a href="../../calciatore/gandelman/" class="reparto-item" title="Vedi scheda di Gandelman">
+            <div class="reparto-item-left">
+                <span class="profile-role-circle C" style="width:28px;height:28px;font-size:11px;min-width:28px;">C</span>
+                <div>
+                    <div class="reparto-item-name">Gandelman</div>
+                    <div class="reparto-item-sub">Titolarità: <b>20%</b> &bull; FVM: <b>10.0 CR</b></div>
+                </div>
+            </div>
+            <div class="reparto-item-right">
+                <span class="ovr-pill silver" style="font-size:10px;padding:2px 7px;">OVR 58</span>
+                <span style="font-size:11px;color:#38bdf8;font-weight:800;">Scheda &rarr;</span>
+            </div>
+        </a>
+        </div>
+    </div>
     </div>
         
     <div id="profileTabPane_advanced" class="profile-tab-pane" style="display:none;">
@@ -708,7 +831,7 @@
                     <span class="hero-val" style="color:#fbbf24;">1 Gol <small>(0.1 xG)</small></span>
                 </div>
                 <div class="pillar-stat-list">
-                    <div class="pillar-stat-item"><span class="stat-name">Tiri Totali</span><span class="stat-num">0</span></div>
+                    <div class="pillar-stat-item"><span class="stat-name">Tiri Totali</span><span class="stat-num">1</span></div>
                     <div class="pillar-stat-item"><span class="stat-name">Qualità Tiro (xGOT)</span><span class="stat-num" style="color:#f472b6;">0.8</span></div>
                     
                 </div>
@@ -737,7 +860,7 @@
                 <div class="pillar-title"><span>🛡️ PRESENZA &amp; RENDIMENTO</span><span class="source-tag">Sul Campo</span></div>
                 <div class="pillar-hero-stat">
                     <span class="hero-label">MINUTI GIOCATI</span>
-                    <span class="hero-val">49&#39; <small>(2 tit)</small></span>
+                    <span class="hero-val">113&#39; <small>(1 tit)</small></span>
                 </div>
                 <div class="pillar-stat-list">
                     <div class="pillar-stat-item"><span class="stat-name">Palle Recuperate</span><span class="stat-num">0</span></div>
@@ -810,7 +933,7 @@
             </div>
             <div class="tactics-meta-row">
                 <span class="lbl">Titolarità Stimata:</span>
-                <b class="val" style="color:#ef4444;">22% (1/4 Subentrato (22%))</b>
+                <b class="val" style="color:#ef4444;">12% (1/8 Tit + 1 Sub (12%))</b>
             </div>
             <div class="tactics-meta-row">
                 <span class="lbl">Compagno di Staffetta:</span>
@@ -828,19 +951,13 @@
         <section class="cta-banner">
             <h2>Vuoi simulare l'asta con Gorter?</h2>
             <p>Accedi alla suite completa di Fanta Master AI con visualizzazione live di xG, xA, griglia portieri a 20 squadre e simulatore d'asta in tempo reale.</p>
-            <a href="../../index.html" class="nav-btn-icon" style="font-size:14px;padding:10px 22px;background:rgba(0,242,254,0.15);border-color:#00f2fe;color:#00f2fe;text-decoration:none;display:inline-flex;">Vai al Listone &amp; Dashboard Completa 🚀</a>
+            <a href="../../listone/" class="nav-btn-icon" style="font-size:14px;padding:10px 22px;background:rgba(0,242,254,0.15);border-color:#00f2fe;color:#00f2fe;text-decoration:none;display:inline-flex;">Vai al Listone &amp; Tabellone Calciatori 🚀</a>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="site-container">
-            <p>&copy; 2026/2027 Fanta Master AI &bull; Statistiche e Storico Infortuni Serie A &bull; Tutti i marchi appartengono ai rispettivi proprietari.</p>
-        </div>
-    </footer>
-
     <!-- Interactive Scripts for Tabs, Accordion & Season Inspector -->
     <script>
-    var VOTI_DATA = [{"giornata": 1, "match": "Lecce @ Venezia", "opponent": "Venezia", "is_home": false, "voto": 7.0, "fantavoto": 10.0, "gf": 1, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "+3 (1G)"}, {"giornata": 2, "match": "LECCE 0-4 ROMA", "opponent": "Roma", "is_home": true, "voto": 5.0, "fantavoto": 5.0, "gf": 0, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "Nessun bonus"}];
+    var VOTI_DATA = [{"giornata": 1, "voto": 7.0, "fantavoto": 10.0, "gf": 1.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "+3 (1G)", "opponent": "Venezia", "is_home": false, "match": "Lecce @ Venezia"}, {"giornata": 2, "voto": 5.0, "fantavoto": 5.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Roma", "is_home": true, "match": "Lecce vs Roma"}];
     
     function switchProfileTab(tabName) {
         var tabs = ['overview', 'advanced', 'tactics'];

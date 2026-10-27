@@ -308,7 +308,224 @@ def generate_radar_chart_svg(player):
     poly = f'<polygon points="{" ".join(poly_pts)}" fill="{poly_color}" fill-opacity="0.25" stroke="{poly_color}" stroke-width="2.5" />'
     return f'<svg viewBox="0 0 {size} 320" style="width:100%;max-width:350px;display:block;margin:0 auto;">{circles}{lines}{poly}{labels}</svg>'
 
-def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_url="https://www.fantamasterai.it"):
+def compute_ai_seasonal_targets(player, slot_desc, prezzo_cons, max_bid):
+    role = player.get("role", "C")
+    tit_val = float(player.get("titolarita", 65))
+    disp_val = float(player.get("disponibilita_pct", 85) or 85)
+    
+    # Presenze stimate su 38 giornate
+    pres_base = 38.0 * (tit_val / 100.0) * (disp_val / 100.0)
+    pres_min = max(6, int(round(pres_base * 0.88)))
+    pres_max = min(38, int(round(pres_base * 1.08)))
+    if pres_max < pres_min: pres_max = pres_min + 2
+    
+    xg90 = safe_float(player.get("xg90_2627") or player.get("xg90_2526") or player.get("xg_2627"), 0.0)
+    xa90 = safe_float(player.get("xa90_2627") or player.get("xa90_2526") or player.get("xa_2627"), 0.0)
+    hist_gf = safe_float(player.get("gf") or player.get("gol_2627"), 0)
+    hist_ass = safe_float(player.get("ass") or player.get("assist_2627"), 0)
+    
+    if role == 'A':
+        expected_g = (xg90 * (pres_base * 0.8)) if xg90 > 0.1 else (hist_gf if hist_gf > 0 else 8.0)
+        expected_a = (xa90 * (pres_base * 0.8)) if xa90 > 0.05 else (hist_ass if hist_ass > 0 else 3.0)
+        g_min = max(1, int(round(expected_g * 0.85)))
+        g_max = max(g_min + 2, int(round(expected_g * 1.20)))
+        a_min = max(0, int(round(expected_a * 0.80)))
+        a_max = max(a_min + 1, int(round(expected_a * 1.25)))
+        stat1_lbl = "⚽ Gol Previsti"
+        stat1_val = f"{g_min} - {g_max}"
+        stat2_lbl = "🪄 Assist Previsti"
+        stat2_val = f"{a_min} - {a_max}"
+    elif role == 'C':
+        expected_g = (xg90 * (pres_base * 0.8)) if xg90 > 0.05 else (hist_gf if hist_gf > 0 else 3.0)
+        expected_a = (xa90 * (pres_base * 0.8)) if xa90 > 0.05 else (hist_ass if hist_ass > 0 else 4.0)
+        g_min = max(0, int(round(expected_g * 0.85)))
+        g_max = max(g_min + 1, int(round(expected_g * 1.25)))
+        a_min = max(1, int(round(expected_a * 0.85)))
+        a_max = max(a_min + 2, int(round(expected_a * 1.25)))
+        stat1_lbl = "⚽ Gol Previsti"
+        stat1_val = f"{g_min} - {g_max}"
+        stat2_lbl = "🪄 Assist Previsti"
+        stat2_val = f"{a_min} - {a_max}"
+    elif role == 'D':
+        expected_g = (xg90 * (pres_base * 0.8)) if xg90 > 0.02 else (hist_gf if hist_gf > 0 else 1.0)
+        expected_a = (xa90 * (pres_base * 0.8)) if xa90 > 0.02 else (hist_ass if hist_ass > 0 else 2.0)
+        g_min = max(0, int(round(expected_g * 0.80)))
+        g_max = max(g_min + 1, int(round(expected_g * 1.30)))
+        stat1_lbl = "⚽ Gol/Bonus Dif."
+        stat1_val = f"{g_min} - {g_max}"
+        mv_val = safe_float(player.get("mv_2627") or player.get("mv"), 6.1)
+        stat2_lbl = "⭐ Media Voto Attesa"
+        stat2_val = f"{mv_val:.2f} MV"
+    else: # P (Portiere)
+        cs_expected = max(5, int(round(pres_base * 0.35)))
+        stat1_lbl = "🧤 Clean Sheet Stimati"
+        stat1_val = f"{max(3, cs_expected - 3)} - {cs_expected + 3}"
+        stat2_lbl = "🛡️ Gol Subiti /90"
+        stat2_val = f"{safe_float(player.get('goals_conceded_per_match_2627') or 1.15, 1.15):.2f}"
+
+    return {
+        "pres": f"{pres_min} - {pres_max}",
+        "stat1_lbl": stat1_lbl,
+        "stat1_val": stat1_val,
+        "stat2_lbl": stat2_lbl,
+        "stat2_val": stat2_val,
+        "fascia": clean_html(str(slot_desc)),
+        "price": f"{prezzo_cons} CR (Max {max_bid} CR)"
+    }
+
+def render_fantasolidita_and_rischi(player, xfm_data, ovr, tit_val, titolarita_desc, integrita_val, frag_tier, tot_missed, slot_desc, prezzo_cons, max_bid, full_name):
+    ovr_pct = min(98, max(25, int(ovr)))
+    xfm_val = float(xfm_data["xfm"])
+    xfm_pct = min(98, max(25, int(round(min(10.0, max(5.0, xfm_val)) * 10.0))))
+    tit_pct = min(98, max(25, int(tit_val)))
+    integrita_pct = min(98, max(20, int(integrita_val)))
+
+    disp_fill_class = "fill-disp-green" if integrita_val >= 85 else ("fill-disp-yellow" if integrita_val >= 70 else "fill-disp-red")
+    disp_color = "#10b981" if integrita_val >= 85 else ("#fbbf24" if integrita_val >= 70 else "#ef4444")
+
+    targets = compute_ai_seasonal_targets(player, slot_desc, prezzo_cons, max_bid)
+
+    return f'''
+    <div class="fantasolidita-showcase">
+        <div class="fantasolidita-header">
+            <h2 class="fantasolidita-title">🛡️ Fantasolidità &amp; Indici di Rischio AI &mdash; {clean_html(full_name)}</h2>
+            <p class="fantasolidita-desc">Valutazione oggettiva proprietaria Fanta Master AI: analisi incrociata tra potenziale puro, resa attesa xFM, garanzia titolarità e tenuta atletica.</p>
+        </div>
+
+        <div class="fcp-skill-group">
+            <!-- 1. ALG OVR -->
+            <div class="fcp-skill-row">
+                <div class="fcp-skill-head">
+                    <span>🧠 Algoritmo Predittivo OVR</span>
+                </div>
+                <div class="fcp-track-wrap">
+                    <div class="fcp-track-bg">
+                        <div class="fcp-track-fill fill-ovr" style="width: {ovr_pct}%;"></div>
+                    </div>
+                    <div class="fcp-track-pin" style="left: clamp(30px, {ovr_pct}%, calc(100% - 30px));">{ovr}/100</div>
+                </div>
+                <div class="fcp-skill-sub">Forza complessiva e potenziale fantacalcistico nel modello neurale Serie A 2026/27.</div>
+            </div>
+
+            <!-- 2. EXPECTED FANTAMEDIA (xFM) -->
+            <div class="fcp-skill-row">
+                <div class="fcp-skill-head">
+                    <span>📈 Expected FantaMedia (xFM)</span>
+                </div>
+                <div class="fcp-track-wrap">
+                    <div class="fcp-track-bg">
+                        <div class="fcp-track-fill fill-xfm" style="width: {xfm_pct}%;"></div>
+                    </div>
+                    <div class="fcp-track-pin" style="left: clamp(34px, {xfm_pct}%, calc(100% - 34px));">{xfm_val:.2f} xFM</div>
+                </div>
+                <div class="fcp-skill-sub">Rendimento medio bonus/malus atteso per 90&#39; basato su volume xG e xA (FM reale: <b>{xfm_data['realFm']:.2f}</b>).</div>
+            </div>
+
+            <!-- 3. TITOLARITÀ & CONTINUITÀ -->
+            <div class="fcp-skill-row">
+                <div class="fcp-skill-head">
+                    <span>🛡️ Titolarità &amp; Continuità Voto</span>
+                </div>
+                <div class="fcp-track-wrap">
+                    <div class="fcp-track-bg">
+                        <div class="fcp-track-fill fill-tit" style="width: {tit_pct}%;"></div>
+                    </div>
+                    <div class="fcp-track-pin" style="left: clamp(26px, {tit_pct}%, calc(100% - 26px));">{tit_val}%</div>
+                </div>
+                <div class="fcp-skill-sub">Probabilità di voto costante nelle 38 giornate (<b>{clean_html(titolarita_desc)}</b>).</div>
+            </div>
+
+            <!-- 4. RESISTENZA INFORTUNI -->
+            <div class="fcp-skill-row">
+                <div class="fcp-skill-head">
+                    <span>🩺 Resistenza Infortuni &amp; Integrità</span>
+                </div>
+                <div class="fcp-track-wrap">
+                    <div class="fcp-track-bg">
+                        <div class="fcp-track-fill {disp_fill_class}" style="width: {integrita_pct}%;"></div>
+                    </div>
+                    <div class="fcp-track-pin" style="left: clamp(26px, {integrita_pct}%, calc(100% - 26px));">{integrita_val}%</div>
+                </div>
+                <div class="fcp-skill-sub">Tenuta atletica e storico assenze (<b>{clean_html(frag_tier)}</b> &bull; {tot_missed} gare saltate storiche).</div>
+            </div>
+        </div>
+
+        <!-- Target Previsionali AI -->
+        <div class="ai-target-grid">
+            <div class="ai-target-card">
+                <span class="ai-target-label">{targets['stat1_lbl']}</span>
+                <span class="ai-target-val" style="color:#fbbf24;">{targets['stat1_val']}</span>
+            </div>
+            <div class="ai-target-card">
+                <span class="ai-target-label">{targets['stat2_lbl']}</span>
+                <span class="ai-target-val" style="color:#38bdf8;">{targets['stat2_val']}</span>
+            </div>
+            <div class="ai-target-card">
+                <span class="ai-target-label">⏱️ Gare a Voto AI</span>
+                <span class="ai-target-val" style="color:#4ade80;">{targets['pres']}</span>
+            </div>
+            <div class="ai-target-card">
+                <span class="ai-target-label">🏷️ Asta &amp; Valore CR</span>
+                <span class="ai-target-val" style="font-size:13px;color:#cbd5e1;">{targets['price']}</span>
+            </div>
+        </div>
+    </div>'''
+
+def render_reparto_teammates(player, all_players):
+    if not all_players:
+        return ""
+    team = player.get("team")
+    role = player.get("role")
+    p_id = player.get("id")
+    if not team or not role:
+        return ""
+    
+    teammates = [
+        other for other in all_players 
+        if other.get("team") == team and other.get("role") == role and other.get("id") != p_id
+    ]
+    if not teammates:
+        return ""
+    
+    teammates.sort(key=lambda x: safe_float(x.get("ovr"), 50), reverse=True)
+    top_teammates = teammates[:4]
+    
+    items_html = []
+    for tm in top_teammates:
+        tm_name = tm.get("name", "")
+        tm_slug = slugify(tm_name)
+        tm_ovr = int(tm.get("ovr", 70))
+        tm_tit = int(tm.get("titolarita", 50))
+        tm_fvm = tm.get("fvm", 1)
+        ovr_cls = "elite" if tm_ovr >= 90 else ("gold" if tm_ovr >= 82 else ("cyan" if tm_ovr >= 75 else "silver"))
+        
+        items_html.append(f'''
+        <a href="../../calciatore/{tm_slug}/" class="reparto-item" title="Vedi scheda di {clean_html(tm_name)}">
+            <div class="reparto-item-left">
+                <span class="profile-role-circle {role}" style="width:28px;height:28px;font-size:11px;min-width:28px;">{role}</span>
+                <div>
+                    <div class="reparto-item-name">{clean_html(tm_name)}</div>
+                    <div class="reparto-item-sub">Titolarità: <b>{tm_tit}%</b> &bull; FVM: <b>{tm_fvm} CR</b></div>
+                </div>
+            </div>
+            <div class="reparto-item-right">
+                <span class="ovr-pill {ovr_cls}" style="font-size:10px;padding:2px 7px;">OVR {tm_ovr}</span>
+                <span style="font-size:11px;color:#38bdf8;font-weight:800;">Scheda &rarr;</span>
+            </div>
+        </a>''')
+        
+    return f'''
+    <div class="reparto-teammates-card">
+        <h3 class="reparto-card-title">
+            <span>⚔️</span>
+            <span>Compagni di Reparto &amp; Ballottaggi {clean_html(team)}</span>
+        </h3>
+        <div class="reparto-grid">
+            {"".join(items_html)}
+        </div>
+    </div>'''
+
+def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_url="https://www.fantamasterai.it", all_players=None):
     name = player.get("name", "")
     p_id = player.get("id")
     team = player.get("team", "")
@@ -797,6 +1014,13 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     disp_color = "#ef4444" if integrita_val < 75 else ("#f59e0b" if integrita_val < 88 else "#10b981")
     aff_color = "#34d399" if suff_pct >= 75 else ("#f59e0b" if suff_pct < 55 else "#38bdf8")
 
+    fantasolidita_html = render_fantasolidita_and_rischi(
+        player, xfm_data, ovr, tit_val, titolarita_desc, 
+        integrita_val, frag_tier, tot_missed, slot_desc, 
+        prezzo_cons, max_bid, full_name
+    )
+    reparto_teammates_html = render_reparto_teammates(player, all_players)
+
     quick_gauges_html = f"""
         <div class="profile-quick-gauges-bar">
             <div class="quick-gauge-item" title="{clean_html(player.get('titolarita_dettaglio') or titolarita_desc or f'Titolarità: {tit_val}%')}">
@@ -889,8 +1113,8 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
 
     tab_overview_html = f"""
     <div id="profileTabPane_overview" class="profile-tab-pane" style="display:block;">
-        <!-- 3 Pill Bar Gauges (Titolarità, Affidabilità Voto, Integrità Fisica) -->
-        {quick_gauges_html}
+        <!-- Fantasolidità & Indici di Rischio Showcase (Visual Bars + Pin Badges + AI Targets) -->
+        {fantasolidita_html}
 
         <!-- Live Season Summary Bar -->
         <div class="profile-season-summary-bar">
@@ -1033,6 +1257,9 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
 
         <!-- Multi-Season Injury & Physical Reliability Hub -->
         {injury_history_html}
+
+        <!-- Compagni di Reparto & Ballottaggi Club -->
+        {reparto_teammates_html}
     </div>"""
 
     # TAB 2: ADVANCED STATS + RADAR
@@ -1337,7 +1564,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{base_url}/"},
-                    {"@type": "ListItem", "position": 2, "name": "Probabili Formazioni Serie A", "item": f"{base_url}/probabili-formazioni/"},
+                    {"@type": "ListItem", "position": 2, "name": "Listone Calciatori", "item": f"{base_url}/listone/"},
                     {"@type": "ListItem", "position": 3, "name": team, "item": f"{base_url}/probabili-formazioni/{team_slug}/"},
                     {"@type": "ListItem", "position": 4, "name": full_name, "item": page_url}
                 ]
@@ -1395,10 +1622,15 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     <main class="site-container" style="padding-top:16px;">
         <nav class="breadcrumbs">
             <a href="../../">Home</a> <span>/</span> 
-            <a href="../../probabili-formazioni/">Probabili Formazioni</a> <span>/</span> 
+            <a href="../../listone/">Listone Calciatori</a> <span>/</span> 
             <a href="../../probabili-formazioni/{team_slug}/">{clean_html(team)}</a> <span>/</span> 
             <span style="color:#fff;">{clean_html(full_name)}</span>
         </nav>
+
+        <div class="player-nav-action-bar">
+            <a href="../../listone/" class="back-to-listone-btn">← Torna al Listone Calciatori</a>
+            <a href="../../probabili-formazioni/{team_slug}/" class="back-to-club-btn">Rosa {clean_html(team)} →</a>
+        </div>
 
         <!-- Profile Header (Identico a Modal App) -->
         <div class="profile-header-container" style="margin-top:10px;">
@@ -1491,15 +1723,9 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
         <section class="cta-banner">
             <h2>Vuoi simulare l'asta con {clean_html(full_name)}?</h2>
             <p>Accedi alla suite completa di Fanta Master AI con visualizzazione live di xG, xA, griglia portieri a 20 squadre e simulatore d'asta in tempo reale.</p>
-            <a href="../../index.html" class="nav-btn-icon" style="font-size:14px;padding:10px 22px;background:rgba(0,242,254,0.15);border-color:#00f2fe;color:#00f2fe;text-decoration:none;display:inline-flex;">Vai al Listone &amp; Dashboard Completa 🚀</a>
+            <a href="../../listone/" class="nav-btn-icon" style="font-size:14px;padding:10px 22px;background:rgba(0,242,254,0.15);border-color:#00f2fe;color:#00f2fe;text-decoration:none;display:inline-flex;">Vai al Listone &amp; Tabellone Calciatori 🚀</a>
         </section>
     </main>
-
-    <footer class="site-footer">
-        <div class="site-container">
-            <p>&copy; 2026/2027 Fanta Master AI &bull; Statistiche e Storico Infortuni Serie A &bull; Tutti i marchi appartengono ai rispettivi proprietari.</p>
-        </div>
-    </footer>
 
     <!-- Interactive Scripts for Tabs, Accordion & Season Inspector -->
     <script>

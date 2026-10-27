@@ -19733,6 +19733,469 @@ body.mode-pro .easy-only-data {
     color: #f8fafc;
 }
 
+/* ==============================================================================
+   FANTASOLIDITÀ & INDICI DI RISCHIO AI (SCHEDA CALCIATORE)
+   ============================================================================== */
+.fantasolidita-showcase {
+    background: radial-gradient(135% 100% at 50% 0%, rgba(56, 189, 248, 0.09) 0%, rgba(15, 23, 42, 0.88) 55%, rgba(10, 14, 22, 0.98) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    border-radius: 20px;
+    padding: 24px 26px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+    margin: 18px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.fantasolidita-showcase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #10b981 0%, #38bdf8 50%, #f59e0b 100%);
+}
+
+.fantasolidita-header {
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.fantasolidita-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.3;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.2px;
+}
+
+.fantasolidita-desc {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.45;
+    margin: 0;
+}
+
+.fcp-skill-group {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 24px;
+}
+
+.fcp-skill-row {
+    position: relative;
+    text-align: left;
+}
+
+.fcp-skill-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #e2e8f0;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.fcp-track-wrap {
+    position: relative;
+    width: 100%;
+    height: 12px;
+    margin: 26px 0 8px 0;
+}
+
+.fcp-track-bg {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+}
+
+.fcp-track-fill {
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fcp-track-fill.fill-ovr {
+    background: linear-gradient(90deg, #0284c7 0%, #10b981 100%);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+}
+.fcp-track-fill.fill-xfm {
+    background: linear-gradient(90deg, #fde047 0%, #fbbf24 100%);
+    box-shadow: 0 0 12px rgba(251, 191, 36, 0.4);
+}
+.fcp-track-fill.fill-tit {
+    background: linear-gradient(90deg, #38bdf8 0%, #0284c7 100%);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+.fcp-track-fill.fill-disp-green {
+    background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.4);
+}
+.fcp-track-fill.fill-disp-yellow {
+    background: linear-gradient(90deg, #fde047 0%, #f59e0b 100%);
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+}
+.fcp-track-fill.fill-disp-red {
+    background: linear-gradient(90deg, #fb7185 0%, #ef4444 100%);
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+}
+
+.fcp-track-pin {
+    position: absolute;
+    top: -26px;
+    transform: translateX(-50%);
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: #ffffff;
+    font-size: 11.5px;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
+    line-height: 1.2;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.fcp-track-pin::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px 4.5px 0 4.5px;
+    border-style: solid;
+    border-color: #0f172a transparent transparent transparent;
+}
+
+.fcp-skill-sub {
+    font-size: 12px;
+    color: #94a3b8;
+    line-height: 1.4;
+    margin-top: 5px;
+}
+
+.fcp-skill-sub b {
+    color: #e2e8f0;
+}
+
+/* AI Target Box */
+.ai-target-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-top: 10px;
+}
+
+.ai-target-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+}
+
+.ai-target-label {
+    font-size: 10.5px;
+    font-weight: 800;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.ai-target-val {
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+/* Teammates reparto */
+.reparto-teammates-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.reparto-card-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.reparto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
+}
+
+.reparto-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.reparto-item:hover {
+    background: rgba(56, 189, 248, 0.08);
+    border-color: rgba(56, 189, 248, 0.3);
+    transform: translateY(-2px);
+}
+
+.reparto-item-left {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.reparto-item-name {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.reparto-item-sub {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.reparto-item-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Nav Action Bar & Back to Listone */
+.player-nav-action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 8px 0 14px 0;
+    flex-wrap: wrap;
+}
+
+.back-to-listone-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    color: #38bdf8;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 7px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.back-to-listone-btn:hover {
+    background: rgba(56, 189, 248, 0.25);
+    color: #ffffff;
+    border-color: #38bdf8;
+    transform: translateX(-2px);
+}
+
+.back-to-club-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.back-to-club-btn:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Mobile Responsive Adjustments for Player Profile & Showcase */
+@media (max-width: 768px) {
+    .site-container {
+        padding: 12px 14px 40px !important;
+    }
+
+    .breadcrumbs {
+        font-size: 11.5px !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding-bottom: 4px !important;
+        gap: 6px !important;
+    }
+
+    .player-nav-action-bar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 8px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .back-to-listone-btn,
+    .back-to-club-btn {
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 9px 14px !important;
+        font-size: 12px !important;
+    }
+
+    .fantasolidita-showcase {
+        padding: 16px 14px !important;
+        border-radius: 16px !important;
+        margin: 14px 0 !important;
+    }
+
+    .fantasolidita-header {
+        margin-bottom: 16px !important;
+    }
+
+    .fantasolidita-title {
+        font-size: 16px !important;
+        line-height: 1.35 !important;
+    }
+
+    .fantasolidita-desc {
+        font-size: 11.5px !important;
+        line-height: 1.4 !important;
+    }
+
+    .fcp-skill-group {
+        gap: 18px !important;
+        margin-bottom: 18px !important;
+    }
+
+    .fcp-skill-head {
+        font-size: 11px !important;
+    }
+
+    .fcp-track-wrap {
+        height: 11px !important;
+        margin: 26px 0 6px 0 !important;
+    }
+
+    .fcp-track-pin {
+        font-size: 10px !important;
+        padding: 2px 7px !important;
+        top: -24px !important;
+    }
+
+    .fcp-skill-sub {
+        font-size: 11px !important;
+        line-height: 1.35 !important;
+    }
+
+    .ai-target-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        padding: 10px !important;
+        border-radius: 12px !important;
+    }
+
+    .ai-target-card {
+        padding: 8px 6px !important;
+    }
+
+    .ai-target-label {
+        font-size: 9.5px !important;
+    }
+
+    .ai-target-val {
+        font-size: 14px !important;
+    }
+
+    .summary-kpis-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 6px !important;
+    }
+
+    .kpi-mini-card {
+        padding: 6px 4px !important;
+    }
+
+    .kpi-mini-val {
+        font-size: 14px !important;
+    }
+
+    .profile-quick-info-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+    }
+
+    .quick-info-box {
+        padding: 10px !important;
+    }
+
+    .quick-badge {
+        font-size: 11px !important;
+        padding: 3px 8px !important;
+    }
+
+    .reparto-teammates-card {
+        padding: 14px 12px !important;
+        border-radius: 14px !important;
+    }
+
+    .reparto-card-title {
+        font-size: 13.5px !important;
+    }
+
+    .reparto-grid {
+        grid-template-columns: 1fr !important;
+        gap: 6px !important;
+    }
+
+    .reparto-item {
+        padding: 8px 10px !important;
+    }
+
+    .reparto-item-name {
+        font-size: 12.5px !important;
+    }
+
+    .reparto-item-sub {
+        font-size: 10.5px !important;
+    }
+}
+
 
 
 

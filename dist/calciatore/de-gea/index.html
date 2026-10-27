@@ -72,7 +72,7 @@
           "name": "Quanto pagare De Gea all'asta del Fantacalcio?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Il prezzo consigliato dall'algoritmo AI per De Gea è di 21 crediti su un budget di 1000 CR (FVM 30.0 CR), con rilancio massimo stimato a 24 crediti."
+            "text": "Il prezzo consigliato dall'algoritmo AI per De Gea è di 31 crediti su un budget di 1000 CR (FVM 30.0 CR), con rilancio massimo stimato a 36 crediti."
           }
         }
       ]
@@ -89,8 +89,8 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Probabili Formazioni Serie A",
-          "item": "https://www.fantamasterai.it/probabili-formazioni/"
+          "name": "Listone Calciatori",
+          "item": "https://www.fantamasterai.it/listone/"
         },
         {
           "@type": "ListItem",
@@ -211,10 +211,15 @@
     <main class="site-container" style="padding-top:16px;">
         <nav class="breadcrumbs">
             <a href="../../">Home</a> <span>/</span> 
-            <a href="../../probabili-formazioni/">Probabili Formazioni</a> <span>/</span> 
+            <a href="../../listone/">Listone Calciatori</a> <span>/</span> 
             <a href="../../probabili-formazioni/fiorentina/">Fiorentina</a> <span>/</span> 
             <span style="color:#fff;">De Gea</span>
         </nav>
+
+        <div class="player-nav-action-bar">
+            <a href="../../listone/" class="back-to-listone-btn">← Torna al Listone Calciatori</a>
+            <a href="../../probabili-formazioni/fiorentina/" class="back-to-club-btn">Rosa Fiorentina →</a>
+        </div>
 
         <!-- Profile Header (Identico a Modal App) -->
         <div class="profile-header-container" style="margin-top:10px;">
@@ -247,20 +252,20 @@
                 <div class="profile-hero-triple-cards">
                     <div class="profile-hero-metric-card card-ovr">
                         <span class="hero-card-label">OVR RATING</span>
-                        <div class="hero-card-value ovr-text silver">70</div>
+                        <div class="hero-card-value ovr-text silver">72</div>
                         <span class="hero-card-sub">Rotazione</span>
                     </div>
 
                     <div class="profile-hero-metric-card card-titolarita">
                         <span class="hero-card-label">TITOLARITÀ</span>
                         <div class="hero-card-value" style="color:#4ade80;">100%</div>
-                        <span class="hero-card-sub" style="color:#4ade80;">4/4 Titolare (100%)</span>
+                        <span class="hero-card-sub" style="color:#4ade80;">8/8 Titolare (100%)</span>
                     </div>
 
                     <div class="profile-hero-metric-card card-price">
                         <span class="hero-card-label">PREZZO CONS.</span>
-                        <div class="hero-card-value price-text">21 <span style="font-size:11px;color:rgba(255,255,255,0.6);">CR</span></div>
-                        <span class="hero-card-sub" style="color:#f43f5e;">Max: <b>24 CR</b></span>
+                        <div class="hero-card-value price-text">31 <span style="font-size:11px;color:rgba(255,255,255,0.6);">CR</span></div>
+                        <span class="hero-card-sub" style="color:#f43f5e;">Max: <b>36 CR</b></span>
                     </div>
                 </div>
 
@@ -301,38 +306,92 @@
         <!-- Tab Panes -->
         
     <div id="profileTabPane_overview" class="profile-tab-pane" style="display:block;">
-        <!-- 3 Pill Bar Gauges (Titolarità, Affidabilità Voto, Integrità Fisica) -->
+        <!-- Fantasolidità & Indici di Rischio Showcase (Visual Bars + Pin Badges + AI Targets) -->
         
-        <div class="profile-quick-gauges-bar">
-            <div class="quick-gauge-item" title="Titolarità Assoluta: 100% (4/4 dal 1&#39; minuto)
-• Ultime 3 giornate: 100% (peso 50%)
-• Giornate 4-8: 100% (peso 35%)
-• Storico/Àncora: 97% (peso 15%)">
-                <div class="gauge-header">
-                    <span class="gauge-lbl">Titolarità ℹ️</span>
-                    <b class="gauge-val" style="color:#4ade80;">100%</b>
+    <div class="fantasolidita-showcase">
+        <div class="fantasolidita-header">
+            <h2 class="fantasolidita-title">🛡️ Fantasolidità &amp; Indici di Rischio AI &mdash; De Gea</h2>
+            <p class="fantasolidita-desc">Valutazione oggettiva proprietaria Fanta Master AI: analisi incrociata tra potenziale puro, resa attesa xFM, garanzia titolarità e tenuta atletica.</p>
+        </div>
+
+        <div class="fcp-skill-group">
+            <!-- 1. ALG OVR -->
+            <div class="fcp-skill-row">
+                <div class="fcp-skill-head">
+                    <span>🧠 Algoritmo Predittivo OVR</span>
                 </div>
-                <div class="gauge-track"><div class="gauge-fill" style="width:100%;background:#4ade80;"></div></div>
-                <span class="gauge-sub">4/4 Titolare (100%)</span>
+                <div class="fcp-track-wrap">
+                    <div class="fcp-track-bg">
+                        <div class="fcp-track-fill fill-ovr" style="width: 72%;"></div>
+                    </div>
+                    <div class="fcp-track-pin" style="left: clamp(30px, 72%, calc(100% - 30px));">72/100</div>
+                </div>
+                <div class="fcp-skill-sub">Forza complessiva e potenziale fantacalcistico nel modello neurale Serie A 2026/27.</div>
             </div>
-            <div class="quick-gauge-item">
-                <div class="gauge-header">
-                    <span class="gauge-lbl">Affidabilità Voto</span>
-                    <b class="gauge-val" style="color:#f59e0b;">50%</b>
+
+            <!-- 2. EXPECTED FANTAMEDIA (xFM) -->
+            <div class="fcp-skill-row">
+                <div class="fcp-skill-head">
+                    <span>📈 Expected FantaMedia (xFM)</span>
                 </div>
-                <div class="gauge-track"><div class="gauge-fill" style="width:50%;background:#f59e0b;"></div></div>
-                <span class="gauge-sub">4/8 gare sufficienza</span>
+                <div class="fcp-track-wrap">
+                    <div class="fcp-track-bg">
+                        <div class="fcp-track-fill fill-xfm" style="width: 50%;"></div>
+                    </div>
+                    <div class="fcp-track-pin" style="left: clamp(34px, 50%, calc(100% - 34px));">3.47 xFM</div>
+                </div>
+                <div class="fcp-skill-sub">Rendimento medio bonus/malus atteso per 90&#39; basato su volume xG e xA (FM reale: <b>3.56</b>).</div>
             </div>
-            <div class="quick-gauge-item">
-                <div class="gauge-header">
-                    <span class="gauge-lbl">Integrità Fisica</span>
-                    <b class="gauge-val" style="color:#10b981;">100%</b>
+
+            <!-- 3. TITOLARITÀ & CONTINUITÀ -->
+            <div class="fcp-skill-row">
+                <div class="fcp-skill-head">
+                    <span>🛡️ Titolarità &amp; Continuità Voto</span>
                 </div>
-                <div class="gauge-track"><div class="gauge-fill" style="width:100%;background:#10b981;"></div></div>
-                <span class="gauge-sub">Tenuta solida</span>
+                <div class="fcp-track-wrap">
+                    <div class="fcp-track-bg">
+                        <div class="fcp-track-fill fill-tit" style="width: 98%;"></div>
+                    </div>
+                    <div class="fcp-track-pin" style="left: clamp(26px, 98%, calc(100% - 26px));">100%</div>
+                </div>
+                <div class="fcp-skill-sub">Probabilità di voto costante nelle 38 giornate (<b>8/8 Titolare (100%)</b>).</div>
+            </div>
+
+            <!-- 4. RESISTENZA INFORTUNI -->
+            <div class="fcp-skill-row">
+                <div class="fcp-skill-head">
+                    <span>🩺 Resistenza Infortuni &amp; Integrità</span>
+                </div>
+                <div class="fcp-track-wrap">
+                    <div class="fcp-track-bg">
+                        <div class="fcp-track-fill fill-disp-green" style="width: 98%;"></div>
+                    </div>
+                    <div class="fcp-track-pin" style="left: clamp(26px, 98%, calc(100% - 26px));">100%</div>
+                </div>
+                <div class="fcp-skill-sub">Tenuta atletica e storico assenze (<b>🟢 Roccia</b> &bull; 0 gare saltate storiche).</div>
             </div>
         </div>
-    
+
+        <!-- Target Previsionali AI -->
+        <div class="ai-target-grid">
+            <div class="ai-target-card">
+                <span class="ai-target-label">🧤 Clean Sheet Stimati</span>
+                <span class="ai-target-val" style="color:#fbbf24;">10 - 16</span>
+            </div>
+            <div class="ai-target-card">
+                <span class="ai-target-label">🛡️ Gol Subiti /90</span>
+                <span class="ai-target-val" style="color:#38bdf8;">1.15</span>
+            </div>
+            <div class="ai-target-card">
+                <span class="ai-target-label">⏱️ Gare a Voto AI</span>
+                <span class="ai-target-val" style="color:#4ade80;">33 - 38</span>
+            </div>
+            <div class="ai-target-card">
+                <span class="ai-target-label">🏷️ Asta &amp; Valore CR</span>
+                <span class="ai-target-val" style="font-size:13px;color:#cbd5e1;">31 CR (Max 36 CR)</span>
+            </div>
+        </div>
+    </div>
 
         <!-- Live Season Summary Bar -->
         <div class="profile-season-summary-bar">
@@ -362,11 +421,11 @@
                 </div>
                 <div class="kpi-mini-card">
                     <span class="kpi-mini-lbl">Bonus Tot</span>
-                    <b class="kpi-mini-val" style="color:#fde047;">+0.0</b>
+                    <b class="kpi-mini-val" style="color:#fde047;">+12.0</b>
                 </div>
                 <div class="kpi-mini-card">
                     <span class="kpi-mini-lbl">Minuti</span>
-                    <b class="kpi-mini-val" style="color:#fff;">401&#39;</b>
+                    <b class="kpi-mini-val" style="color:#fff;">788&#39;</b>
                 </div>
             </div>
         </div>
@@ -556,7 +615,7 @@
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                     <span class="inspector-badge">GIORNATA 8</span>
                     <span class="inspector-venue">✈️ Fuori</span>
-                    <b class="inspector-match-title">INTER 2-1 FIORENTINA</b>
+                    <b class="inspector-match-title">Fiorentina @ Inter</b>
                 </div>
                 <span class="inspector-hint-text"><span class="hint-desktop">Passa il mouse</span><span class="hint-mobile">Tocca</span> sulle barre per ispezionare</span>
             </div>
@@ -575,11 +634,11 @@
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Gol / Assist</span>
-                    <b class="val">0 Gol &bull; 0 Ass</b>
+                    <b class="val">0.0 Gol &bull; 0.0 Ass</b>
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Disciplina</span>
-                    <span class="val" style="color:var(--text-secondary);">0 Amm &bull; 0 Esp</span>
+                    <span class="val" style="color:var(--text-secondary);">0.0 Amm &bull; 0.0 Esp</span>
                 </div>
             </div>
         </div>
@@ -611,7 +670,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G2</td>
-                <td style="font-weight:700;color:#fff;">FIORENTINA 0-3 FROSINONE</td>
+                <td style="font-weight:700;color:#fff;">Fiorentina vs Frosinone</td>
                 <td style="color:var(--text-muted);font-size:11px;">🏠 Casa</td>
                 <td style="font-weight:900;color:#f87171;">5.0</td>
                 <td><span class="table-bonus-tag">-3 (3GS)</span></td>
@@ -643,7 +702,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G6</td>
-                <td style="font-weight:700;color:#fff;">GENOA 2-1 FIORENTINA</td>
+                <td style="font-weight:700;color:#fff;">Fiorentina @ Genoa</td>
                 <td style="color:var(--text-muted);font-size:11px;">✈️ Fuori</td>
                 <td style="font-weight:900;color:#fbbf24;">5.5</td>
                 <td><span class="table-bonus-tag">-2 (2GS)</span></td>
@@ -651,7 +710,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G7</td>
-                <td style="font-weight:700;color:#fff;">FIORENTINA 1-3 COMO</td>
+                <td style="font-weight:700;color:#fff;">Fiorentina vs Como</td>
                 <td style="color:var(--text-muted);font-size:11px;">🏠 Casa</td>
                 <td style="font-weight:900;color:#fbbf24;">5.5</td>
                 <td><span class="table-bonus-tag">-3 (3GS)</span></td>
@@ -659,7 +718,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G8</td>
-                <td style="font-weight:700;color:#fff;">INTER 2-1 FIORENTINA</td>
+                <td style="font-weight:700;color:#fff;">Fiorentina @ Inter</td>
                 <td style="color:var(--text-muted);font-size:11px;">✈️ Fuori</td>
                 <td style="font-weight:900;color:#34d399;">7.5</td>
                 <td><span class="table-bonus-tag">-2 (2GS)</span></td>
@@ -772,6 +831,44 @@
         </div>
         <div class="injury-empty-banner"><span style="font-size:16px;">🛡️</span><span><b>Integrità Fisica Impeccabile:</b> Nessun infortunio significativo registrato negli ultimi 3 anni. Calciatore integro ad alta affidabilità.</span></div>
     </div>
+
+        <!-- Compagni di Reparto & Ballottaggi Club -->
+        
+    <div class="reparto-teammates-card">
+        <h3 class="reparto-card-title">
+            <span>⚔️</span>
+            <span>Compagni di Reparto &amp; Ballottaggi Fiorentina</span>
+        </h3>
+        <div class="reparto-grid">
+            
+        <a href="../../calciatore/christensen-o/" class="reparto-item" title="Vedi scheda di Christensen O.">
+            <div class="reparto-item-left">
+                <span class="profile-role-circle P" style="width:28px;height:28px;font-size:11px;min-width:28px;">P</span>
+                <div>
+                    <div class="reparto-item-name">Christensen O.</div>
+                    <div class="reparto-item-sub">Titolarità: <b>0%</b> &bull; FVM: <b>1.0 CR</b></div>
+                </div>
+            </div>
+            <div class="reparto-item-right">
+                <span class="ovr-pill silver" style="font-size:10px;padding:2px 7px;">OVR 50</span>
+                <span style="font-size:11px;color:#38bdf8;font-weight:800;">Scheda &rarr;</span>
+            </div>
+        </a>
+        <a href="../../calciatore/lezzerini/" class="reparto-item" title="Vedi scheda di Lezzerini">
+            <div class="reparto-item-left">
+                <span class="profile-role-circle P" style="width:28px;height:28px;font-size:11px;min-width:28px;">P</span>
+                <div>
+                    <div class="reparto-item-name">Lezzerini</div>
+                    <div class="reparto-item-sub">Titolarità: <b>0%</b> &bull; FVM: <b>1.0 CR</b></div>
+                </div>
+            </div>
+            <div class="reparto-item-right">
+                <span class="ovr-pill silver" style="font-size:10px;padding:2px 7px;">OVR 50</span>
+                <span style="font-size:11px;color:#38bdf8;font-weight:800;">Scheda &rarr;</span>
+            </div>
+        </a>
+        </div>
+    </div>
     </div>
         
     <div id="profileTabPane_advanced" class="profile-tab-pane" style="display:none;">
@@ -798,7 +895,7 @@
                 </div>
                 <div class="pillar-stat-list">
                     <div class="pillar-stat-item"><span class="stat-name">% Parate</span><span class="stat-num" style="color:#38bdf8;">61.2%</span></div>
-                    <div class="pillar-stat-item"><span class="stat-name">Parate Effettuate</span><span class="stat-num" style="color:#4ade80;">19</span></div>
+                    <div class="pillar-stat-item"><span class="stat-name">Parate Effettuate</span><span class="stat-num" style="color:#4ade80;">26</span></div>
                     <div class="pillar-stat-item"><span class="stat-name">Gol Evitati (Goals Prevented)</span><span class="stat-num" style="color:#f87171;font-weight:800;">-2.4</span></div>
                 </div>
                 <div class="pillar-comparison-chip">
@@ -826,11 +923,11 @@
                 <div class="pillar-title"><span>⏱️ MINUTAGGIO &amp; PRESENZA</span><span class="source-tag">Stagione</span></div>
                 <div class="pillar-hero-stat">
                     <span class="hero-label">MINUTI GIOCATI</span>
-                    <span class="hero-val">401&#39;</span>
+                    <span class="hero-val">788&#39;</span>
                 </div>
                 <div class="pillar-stat-list">
                     <div class="pillar-stat-item"><span class="stat-name">Presenze / Titolarità</span><span class="stat-num">8 (8 tit)</span></div>
-                    <div class="pillar-stat-item"><span class="stat-name">Status Tattico</span><span class="stat-num" style="color:#4ade80;">4/4 Titolare (100%)</span></div>
+                    <div class="pillar-stat-item"><span class="stat-name">Status Tattico</span><span class="stat-num" style="color:#4ade80;">8/8 Titolare (100%)</span></div>
                 </div>
                 <div class="pillar-comparison-chip">
                     <span>Storico 2025/26</span><b>37 presenze a voto</b>
@@ -898,7 +995,7 @@
             </div>
             <div class="tactics-meta-row">
                 <span class="lbl">Titolarità Stimata:</span>
-                <b class="val" style="color:#4ade80;">100% (4/4 Titolare (100%))</b>
+                <b class="val" style="color:#4ade80;">100% (8/8 Titolare (100%))</b>
             </div>
             <div class="tactics-meta-row">
                 <span class="lbl">Compagno di Staffetta:</span>
@@ -916,19 +1013,13 @@
         <section class="cta-banner">
             <h2>Vuoi simulare l'asta con De Gea?</h2>
             <p>Accedi alla suite completa di Fanta Master AI con visualizzazione live di xG, xA, griglia portieri a 20 squadre e simulatore d'asta in tempo reale.</p>
-            <a href="../../index.html" class="nav-btn-icon" style="font-size:14px;padding:10px 22px;background:rgba(0,242,254,0.15);border-color:#00f2fe;color:#00f2fe;text-decoration:none;display:inline-flex;">Vai al Listone &amp; Dashboard Completa 🚀</a>
+            <a href="../../listone/" class="nav-btn-icon" style="font-size:14px;padding:10px 22px;background:rgba(0,242,254,0.15);border-color:#00f2fe;color:#00f2fe;text-decoration:none;display:inline-flex;">Vai al Listone &amp; Tabellone Calciatori 🚀</a>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="site-container">
-            <p>&copy; 2026/2027 Fanta Master AI &bull; Statistiche e Storico Infortuni Serie A &bull; Tutti i marchi appartengono ai rispettivi proprietari.</p>
-        </div>
-    </footer>
-
     <!-- Interactive Scripts for Tabs, Accordion & Season Inspector -->
     <script>
-    var VOTI_DATA = [{"giornata": 1, "match": "Fiorentina @ Roma", "opponent": "Roma", "is_home": false, "voto": 5.5, "fantavoto": 1.5, "gf": 0, "gs": 4, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "-4 (4GS)"}, {"giornata": 2, "match": "FIORENTINA 0-3 FROSINONE", "opponent": "Frosinone", "is_home": true, "voto": 5.0, "fantavoto": 2.0, "gf": 0, "gs": 3, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "-3 (3GS)"}, {"giornata": 3, "match": "Fiorentina vs Torino", "opponent": "Torino", "is_home": true, "voto": 6.0, "fantavoto": 4.0, "gf": 0, "gs": 2, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "-2 (2GS)"}, {"giornata": 4, "match": "Fiorentina @ Venezia", "opponent": "Venezia", "is_home": false, "voto": 6.0, "fantavoto": 4.0, "gf": 0, "gs": 2, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "-2 (2GS)"}, {"giornata": 5, "match": "Fiorentina vs Napoli", "opponent": "Napoli", "is_home": true, "voto": 7.0, "fantavoto": 5.5, "gf": 0, "gs": 1, "ass": 0, "amm": 1, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "-1 (1GS), -0.5 (Amm)"}, {"giornata": 6, "match": "GENOA 2-1 FIORENTINA", "opponent": "Genoa", "is_home": false, "voto": 5.5, "fantavoto": 3.5, "gf": 0, "gs": 2, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "-2 (2GS)"}, {"giornata": 7, "match": "FIORENTINA 1-3 COMO", "opponent": "Como", "is_home": true, "voto": 5.5, "fantavoto": 2.5, "gf": 0, "gs": 3, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "-3 (3GS)"}, {"giornata": 8, "match": "INTER 2-1 FIORENTINA", "opponent": "Inter", "is_home": false, "voto": 7.5, "fantavoto": 5.5, "gf": 0, "gs": 2, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "-2 (2GS)"}];
+    var VOTI_DATA = [{"giornata": 1, "voto": 5.5, "fantavoto": 1.5, "gf": 0.0, "gs": 4.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "-4 (4GS)", "opponent": "Roma", "is_home": false, "match": "Fiorentina @ Roma"}, {"giornata": 2, "voto": 5.0, "fantavoto": 2.0, "gf": 0.0, "gs": 3.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "-3 (3GS)", "opponent": "Frosinone", "is_home": true, "match": "Fiorentina vs Frosinone"}, {"giornata": 3, "voto": 6.0, "fantavoto": 4.0, "gf": 0.0, "gs": 2.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "-2 (2GS)", "opponent": "Torino", "is_home": true, "match": "Fiorentina vs Torino"}, {"giornata": 4, "voto": 6.0, "fantavoto": 4.0, "gf": 0.0, "gs": 2.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "-2 (2GS)", "opponent": "Venezia", "is_home": false, "match": "Fiorentina @ Venezia"}, {"giornata": 5, "voto": 7.0, "fantavoto": 5.5, "gf": 0.0, "gs": 1.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 1.0, "esp": 0.0, "bonus_malus_str": "-1 (1GS), -0.5 (Amm)", "opponent": "Napoli", "is_home": true, "match": "Fiorentina vs Napoli"}, {"giornata": 6, "voto": 5.5, "fantavoto": 3.5, "gf": 0.0, "gs": 2.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "-2 (2GS)", "opponent": "Genoa", "is_home": false, "match": "Fiorentina @ Genoa"}, {"giornata": 7, "voto": 5.5, "fantavoto": 2.5, "gf": 0.0, "gs": 3.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "-3 (3GS)", "opponent": "Como", "is_home": true, "match": "Fiorentina vs Como"}, {"giornata": 8, "voto": 7.5, "fantavoto": 5.5, "gf": 0.0, "gs": 2.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "-2 (2GS)", "opponent": "Inter", "is_home": false, "match": "Fiorentina @ Inter"}];
     
     function switchProfileTab(tabName) {
         var tabs = ['overview', 'advanced', 'tactics'];

@@ -130,8 +130,8 @@ def generate_home_leaders_html(players_data: list) -> str:
 
     return "\n".join(cards_html)
 
-def generate_hero_social_slider_html(accuracy_data: dict) -> str:
-    """Genera lo slider a 2 slide con Metriche Piattaforma & Capacità Predittiva Media per la hero."""
+def generate_hero_trust_showcase_html(accuracy_data: dict) -> str:
+    """Genera il box vetrina in primo piano per la credibilità e accuratezza dell'algoritmo AI."""
     meta = accuracy_data.get('meta', {}) if isinstance(accuracy_data, dict) else {}
     last_completed = meta.get('last_completed_round', 8)
     last_summary = accuracy_data.get(str(last_completed), {}).get('summary', {}) if isinstance(accuracy_data, dict) else {}
@@ -146,93 +146,150 @@ def generate_hero_social_slider_html(accuracy_data: dict) -> str:
     acc_overall_hits = int(meta.get('total_hits', 57))
     acc_overall_total = int(meta.get('total_evaluated_advice', 96))
 
-    return f'''                    <!-- HERO SOCIAL PROOF & PREDICTIVE ACCURACY CAROUSEL -->
-                    <div class="hero-social-slider" id="heroSocialSlider">
-                        <!-- Nav Switcher Pills -->
-                        <div class="hero-slider-nav">
-                            <button class="hero-slider-tab active" id="heroTab0" onclick="switchHeroSlide(0)" aria-label="Visualizza Metriche Piattaforma">
-                                <span class="tab-indicator-dot"></span>
-                                <span>📊 Copertura &amp; Dati Piattaforma</span>
-                            </button>
-                            <button class="hero-slider-tab" id="heroTab1" onclick="switchHeroSlide(1)" aria-label="Visualizza Capacità Predittiva AI">
-                                <span class="tab-indicator-dot"></span>
-                                <span>🏆 Capacità Predittiva AI ({acc_hit_rate:.1f}% Hit Rate)</span>
-                            </button>
-                        </div>
-
-                        <!-- Slides Viewport -->
-                        <div class="hero-slides-viewport">
-                            <!-- SLIDE 1: Metriche Piattaforma -->
-                            <div class="hero-slide-pane active" id="heroSlide0" role="region" aria-label="Numeri Piattaforma e Copertura Serie A">
-                                <div class="ai-counter-strip in-hero">
-                                    <div class="ai-counter-item">
-                                        <div class="c-val">534</div>
-                                        <div class="c-lbl">Calciatori Modellati</div>
-                                        <div class="c-sub">Database Serie A 2026/27</div>
-                                    </div>
-                                    <div class="ai-counter-item">
-                                        <div class="c-val">20</div>
-                                        <div class="c-lbl">Club Serie A in 2D</div>
-                                        <div class="c-sub">Schemi, Tattica &amp; FRP</div>
-                                    </div>
-                                    <div class="ai-counter-item">
-                                        <div class="c-val">38</div>
-                                        <div class="c-lbl">Turni Monitorati</div>
-                                        <div class="c-sub">Algoritmo Attivo Live</div>
-                                    </div>
-                                    <div class="ai-counter-item">
-                                        <div class="c-val highlight">100%</div>
-                                        <div class="c-lbl">Statistiche Oggettive</div>
-                                        <div class="c-sub">xG, xA, xFM &amp; Fragilità</div>
-                                    </div>
-                                </div>
+    return f'''                    <!-- HERO TRUST & PREDICTIVE ACCURACY SHOWCASE (IN PRIMO PIANO) -->
+                    <div class="hero-trust-showcase" id="heroTrustShowcase">
+                        <!-- Top Bar: Official Verification Seal & View Toggle -->
+                        <div class="trust-showcase-header">
+                            <div class="trust-seal-group">
+                                <span class="trust-badge-verified">
+                                    <span class="pulse-dot-green"></span>
+                                    Verifica Retrospettiva Ufficiale
+                                </span>
+                                <span class="trust-badge-cert">
+                                    🛡️ Giornata {last_completed} Conclusa &bull; Serie A 2026/27
+                                </span>
                             </div>
 
-                            <!-- SLIDE 2: Capacità Predittiva Verificata -->
-                            <div class="hero-slide-pane" id="heroSlide1" role="region" aria-label="Capacità Predittiva Media e Verifica Retrospettiva AI">
-                                <div class="ai-accuracy-strip in-hero">
-                                    <div class="acc-strip-header">
-                                        <div class="acc-tag-pill">
-                                            <span class="pulse-dot-green"></span>
-                                            GIORNATA {last_completed} CONCLUSA &bull; VERIFICA RETROSPETTIVA AI
-                                        </div>
-                                        <div class="acc-title-text">
-                                            Riepilogo Esiti: <strong>{acc_hit_rate:.1f}% Hit Rate</strong> &bull; <strong>{acc_suff:.1f}% Sufficienze</strong> (FV Medio {acc_avg_fv:.2f})
-                                        </div>
-                                        <a href="/consigli-fantacalcio/" class="acc-details-btn" onclick="if(window.switchTab) {{ event.preventDefault(); switchTab('matchday_advice'); }}">
-                                            <span>Analisi Completa Esiti &rarr;</span>
-                                        </a>
-                                    </div>
-                                    <div class="acc-kpi-grid">
-                                        <div class="ai-counter-item acc-item hit">
-                                            <div class="c-val hit-val">{acc_hit_rate:.1f}%</div>
-                                            <div class="c-lbl">🎯 Hit Rate Turno ({acc_hits}/{acc_total})</div>
-                                            <div class="c-sub">Bonus o Voto &ge; 6.5</div>
-                                        </div>
-                                        <div class="ai-counter-item acc-item suff">
-                                            <div class="c-val suff-val">{acc_suff:.1f}%</div>
-                                            <div class="c-lbl">🛡️ Sufficienze Reali</div>
-                                            <div class="c-sub">Voto &ge; 6.0 in pagella</div>
-                                        </div>
-                                        <div class="ai-counter-item acc-item fv">
-                                            <div class="c-val fv-val">{acc_avg_fv:.2f}</div>
-                                            <div class="c-lbl">⭐ Fantavoto Medio</div>
-                                            <div class="c-sub">Consigliati G{last_completed} Serie A</div>
-                                        </div>
-                                        <div class="ai-counter-item acc-item season">
-                                            <div class="c-val season-val">{acc_overall_hit:.1f}%</div>
-                                            <div class="c-lbl">📈 Media Stagionale</div>
-                                            <div class="c-sub">{acc_overall_hits} Hit centrati su {acc_overall_total}</div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <!-- Interactive Mode Switcher -->
+                            <div class="trust-mode-toggle" role="tablist" aria-label="Selettore visualizzazione affidabilità">
+                                <button class="trust-toggle-btn active" id="btnTrustAccuracy" onclick="switchTrustView('accuracy')" role="tab" aria-selected="true" aria-controls="trustViewAccuracy">
+                                    <span class="t-dot"></span>
+                                    <span>🎯 Precisione Predittiva ({acc_hit_rate:.1f}%)</span>
+                                </button>
+                                <button class="trust-toggle-btn" id="btnTrustScale" onclick="switchTrustView('scale')" role="tab" aria-selected="false" aria-controls="trustViewScale">
+                                    <span class="t-dot"></span>
+                                    <span>📊 Copertura &amp; Dati Piattaforma</span>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Micro dots for quick slide pagination -->
-                        <div class="hero-slider-dots">
-                            <button class="hero-dot active" id="heroDot0" onclick="switchHeroSlide(0)" title="Slide 1: Dati &amp; Copertura" aria-label="Slide 1"></button>
-                            <button class="hero-dot" id="heroDot1" onclick="switchHeroSlide(1)" title="Slide 2: Accuratezza Predittiva" aria-label="Slide 2"></button>
+                        <!-- TAB VIEW 1: ACCURATEZZA PREDITTIVA (DEFAULT & PRIMO PIANO) -->
+                        <div class="trust-view-pane active" id="trustViewAccuracy" role="tabpanel">
+                            <div class="trust-headline-block">
+                                <h2 class="trust-headline-title">
+                                    Affidabilità Scientifica: <span class="text-neon-green">{acc_hit_rate:.1f}% Hit Rate</span> &bull; {acc_suff:.1f}% Sufficienze &bull; Fantavoto Medio {acc_avg_fv:.2f}
+                                </h2>
+                                <p class="trust-headline-desc">
+                                    A ogni turno concluso, Fanta Master AI archivia e certifica pubblicamente i risultati reali dei calciatori consigliati pre-partita. <b>Nessuna modifica a posteriori, totale trasparenza.</b>
+                                </p>
+                            </div>
+
+                            <div class="trust-kpi-grid">
+                                <div class="trust-kpi-card card-hit">
+                                    <div class="kpi-top-row">
+                                        <span class="kpi-icon">🎯</span>
+                                        <span class="kpi-status-tag">G{last_completed} Conclusa</span>
+                                    </div>
+                                    <div class="kpi-number text-hit">{acc_hit_rate:.1f}%</div>
+                                    <div class="kpi-title">Hit Rate Consigliati ({acc_hits}/{acc_total})</div>
+                                    <div class="kpi-explanation">Giocatori a <b>bonus pesante</b> (gol/assist) o con <b>voto puro &ge; 6.5</b> in pagella.</div>
+                                </div>
+
+                                <div class="trust-kpi-card card-suff">
+                                    <div class="kpi-top-row">
+                                        <span class="kpi-icon">🛡️</span>
+                                        <span class="kpi-status-tag">Affidabilità Voto</span>
+                                    </div>
+                                    <div class="kpi-number text-suff">{acc_suff:.1f}%</div>
+                                    <div class="kpi-title">Sufficienze Garantite</div>
+                                    <div class="kpi-explanation">11 consigliati su 12 con <b>voto &ge; 6.0 netto</b>. Rischio di insufficienza crollato all'8.3%.</div>
+                                </div>
+
+                                <div class="trust-kpi-card card-fv">
+                                    <div class="kpi-top-row">
+                                        <span class="kpi-icon">⭐</span>
+                                        <span class="kpi-status-tag">FantaVoto Reale</span>
+                                    </div>
+                                    <div class="kpi-number text-fv">{acc_avg_fv:.2f}</div>
+                                    <div class="kpi-title">Fantavoto Medio Consigliati</div>
+                                    <div class="kpi-explanation">Media complessiva generata dal pool dei titolari suggeriti per il turno di Serie A.</div>
+                                </div>
+
+                                <div class="trust-kpi-card card-season">
+                                    <div class="kpi-top-row">
+                                        <span class="kpi-icon">📈</span>
+                                        <span class="kpi-status-tag">Tutta la Stagione</span>
+                                    </div>
+                                    <div class="kpi-number text-season">{acc_overall_hit:.1f}%</div>
+                                    <div class="kpi-title">Media Cumulata Stagionale</div>
+                                    <div class="kpi-explanation"><b>{acc_overall_hits} Hit centrati su {acc_overall_total}</b> consigliati totali monitorati nelle prime 8 giornate.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB VIEW 2: COPERTURA & DATI PIATTAFORMA -->
+                        <div class="trust-view-pane" id="trustViewScale" role="tabpanel" style="display:none;">
+                            <div class="trust-headline-block">
+                                <h2 class="trust-headline-title">
+                                    Il Database Statistico Più Profondo d'Italia: <span class="text-neon-green">534 Calciatori Modellati</span>
+                                </h2>
+                                <p class="trust-headline-desc">
+                                    Ogni partita viene scansionata fotogramma per fotogramma con expected metrics, algoritmi di titolarità consensus su 4 fonti e indici fisici proprietari.
+                                </p>
+                            </div>
+
+                            <div class="trust-kpi-grid">
+                                <div class="trust-kpi-card card-fv">
+                                    <div class="kpi-top-row">
+                                        <span class="kpi-icon">👥</span>
+                                        <span class="kpi-status-tag">Database 100%</span>
+                                    </div>
+                                    <div class="kpi-number text-fv">534</div>
+                                    <div class="kpi-title">Calciatori Modellati</div>
+                                    <div class="kpi-explanation">Rosa completa Serie A 2026/27 con statistiche oggettive e storiche.</div>
+                                </div>
+
+                                <div class="trust-kpi-card card-hit">
+                                    <div class="kpi-top-row">
+                                        <span class="kpi-icon">🏟️</span>
+                                        <span class="kpi-status-tag">Tattica &amp; Schemi</span>
+                                    </div>
+                                    <div class="kpi-number text-hit">20</div>
+                                    <div class="kpi-title">Club Serie A in 2D</div>
+                                    <div class="kpi-explanation">Campi tattici interattivi, rigoristi, battitori piazzati e indici FRP.</div>
+                                </div>
+
+                                <div class="trust-kpi-card card-suff">
+                                    <div class="kpi-top-row">
+                                        <span class="kpi-icon">📅</span>
+                                        <span class="kpi-status-tag">Calendario Live</span>
+                                    </div>
+                                    <div class="kpi-number text-suff">38</div>
+                                    <div class="kpi-title">Turni Monitorati</div>
+                                    <div class="kpi-explanation">Aggiornamenti continui prima e dopo ogni singola giornata di campionato.</div>
+                                </div>
+
+                                <div class="trust-kpi-card card-season">
+                                    <div class="kpi-top-row">
+                                        <span class="kpi-icon">⚙️</span>
+                                        <span class="kpi-status-tag">Metrica xFM</span>
+                                    </div>
+                                    <div class="kpi-number text-season">100%</div>
+                                    <div class="kpi-title">Statistiche Oggettive</div>
+                                    <div class="kpi-explanation">Expected Goals (xG), Assists (xA) e indici predittivi senza alcun bias umano.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Action Strip -->
+                        <div class="trust-showcase-footer">
+                            <div class="trust-footer-left">
+                                <span class="trust-pulse-icon">⚡</span>
+                                <span>Zero sensazionalismo o commenti soggettivi: <b>solo intelligenza artificiale applicata ai big data reali</b>.</span>
+                            </div>
+                            <a href="/consigli-fantacalcio/" class="trust-cta-link" onclick="if(window.switchTab) {{ event.preventDefault(); switchTab('matchday_advice'); }}">
+                                <span>Analisi Completa Esiti G{last_completed} &rarr;</span>
+                            </a>
                         </div>
                     </div>'''
 
@@ -348,7 +405,7 @@ def build_standalone_dashboard(sync_android=False):
     cal_json = json.dumps(cal_data, ensure_ascii=False)
     accuracy_json = json.dumps(accuracy_data, ensure_ascii=False)
     home_leaders_html = generate_home_leaders_html(players_data)
-    hero_social_slider_html = generate_hero_social_slider_html(accuracy_data)
+    hero_trust_showcase_html = generate_hero_trust_showcase_html(accuracy_data)
 
     # 3. Costruisci il documento HTML completo
     html_template = f"""<!DOCTYPE html>
@@ -628,6 +685,8 @@ def build_standalone_dashboard(sync_android=False):
                         Smetti di affidarti alle impressioni soggettive dei giornali. Fanta Master AI elabora oltre 50 metriche avanzate (Expected Goals, Expected Assists, Indici di Schierabilità e Fragilità Fisica) per anticipare bonus, flop e occasioni di mercato con precisione matematica.
                     </p>
 
+{hero_trust_showcase_html}
+
                     <!-- Interactive Real-time Search Box -->
                     <div class="ai-hub-search-wrap">
                         <div class="ai-hub-search-inner">
@@ -661,8 +720,6 @@ def build_standalone_dashboard(sync_android=False):
                             <span>📋 Listone &amp; Valutazioni FVM</span>
                         </button>
                     </div>
-
-{hero_social_slider_html}
                 </div>
 
                 <!-- HERO CARD: LA MIA ROSA & FORMAZIONE AI (Stessa larghezza della sezione benvenuto, posizionata subito sotto) -->

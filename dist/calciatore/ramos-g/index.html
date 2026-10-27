@@ -45,7 +45,7 @@
       "@type": "WebPage",
       "name": "Ramos G. (Milan): Statistiche Avanzate, xG, Storico Infortuni e Consigli Asta 2026/27 | Fanta Master AI",
       "url": "https://www.fantamasterai.it/calciatore/ramos-g/",
-      "dateModified": "2026-10-26",
+      "dateModified": "2026-10-27",
       "description": "Scheda tecnica completa di Ramos G. (Milan): radar a 6 assi, xG, xA, storico infortuni e cartella clinica, gerarchie rigori, quotazione FVM e prezzo consigliato asta Fantacalcio 2026/27."
     },
     {
@@ -1059,7 +1059,7 @@
                         <li><a href="../../griglia-portieri/" class="footer-link">🧤 Griglia Portieri 38 Turni</a></li>
                         <li><a href="../../infortunati-serie-a/" class="footer-link">🏥 Report Infortunati &amp; Rientri</a></li>
                         <li><a href="../../scommesse-talenti/" class="footer-link">💎 Talenti Low-Cost</a></li>
-                        <li><a href="../../confronto-calciatori/" class="footer-link">⚔️ Head-to-Head 1vs1</a></li>
+                        <li><a href="../../chi-schiero/" class="footer-link">⚔️ Head-to-Head 1vs1</a></li>
                     </ul>
                 </div>
 
@@ -1100,6 +1100,93 @@
             </div>
         </div>
     </footer>
+
+    <!-- MOBILE BOTTOM NAVIGATION (Persistent Across All Pages) -->
+    <nav class="mobile-bottom-nav" id="mobileBottomNav">
+        <a href="../../" class="mobile-nav-item" id="mobNavHome">
+            <span class="mob-icon">🏠</span>
+            <span class="mob-label">Home</span>
+        </a>
+        <a href="../../listone/" class="mobile-nav-item" id="mobNavAuction">
+            <span class="mob-icon">📋</span>
+            <span class="mob-label">Listone</span>
+        </a>
+        <a href="../../probabili-formazioni/" class="mobile-nav-item" id="mobNavProbabili">
+            <span class="mob-icon">⚽</span>
+            <span class="mob-label">Probabili</span>
+        </a>
+        <a href="../../consigli-fantacalcio/" class="mobile-nav-item" id="mobNavAdvice">
+            <span class="mob-icon">🎯</span>
+            <span class="mob-label">Consigli AI</span>
+        </a>
+        <button type="button" class="mobile-nav-item" id="mobNavMenu" onclick="openMobileMenuModal()">
+            <span class="mob-icon">☰</span>
+            <span class="mob-label">Menu</span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Modal -->
+    <div id="mobileMenuModal" class="modal-backdrop" style="display:none;z-index:100002;" onclick="if(event.target === this) closeMobileMenuModal()">
+        <div class="modal-card" style="max-width:540px;background:rgba(18,22,29,0.98);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.1);padding:20px;border-radius:18px;box-shadow:0 25px 60px rgba(0,0,0,0.9);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:10px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span style="font-size:20px;">🏆</span>
+                    <h3 style="margin:0;font-size:17px;font-weight:900;color:#fff;">Menu Principale & Sezioni</h3>
+                </div>
+                <button class="btn-action" onclick="closeMobileMenuModal()">✕</button>
+            </div>
+            
+            <div class="mobile-menu-grid">
+                <div class="mobile-menu-section">
+                    <div class="mobile-menu-section-title"><span>🏠</span> Home Page</div>
+                    <div class="mobile-menu-links">
+                        <a href="../../" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">🏠 Home &amp; Leader Serie A</a>
+                    </div>
+                </div>
+
+                <div class="mobile-menu-section">
+                    <div class="mobile-menu-section-title"><span>📋</span> Listone & Probabili</div>
+                    <div class="mobile-menu-links">
+                        <a href="../../probabili-formazioni/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;background:rgba(56,189,248,0.15);border-color:rgba(56,189,248,0.4);color:#38bdf8;font-weight:800;">⚽ Probabili Formazioni (4 Fonti)</a>
+                        <a href="../../listone/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">📋 Listone Calciatori & OVR</a>
+                    </div>
+                </div>
+
+                <div class="mobile-menu-section">
+                    <div class="mobile-menu-section-title"><span>📖</span> Statistiche & Analisi</div>
+                    <div class="mobile-menu-links">
+                        <a href="../../statistiche-serie-a/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">📊 Statistiche Serie A & xG</a>
+                        <a href="../../top-flop/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">⚡ Top & Flop Giornata</a>
+                        <a href="../../match-report/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">📑 Match Reports &amp; Tabellini</a>
+                        <a href="../../football-analytics/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">📈 Matrice Analytics</a>
+                        <a href="../../chi-schiero/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">⚔️ Matchup 1vs1 (Chi Schiero)</a>
+                        <a href="../../griglia-portieri/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">🧤 Griglia Portieri 38/38</a>
+                        <a href="../../rigoristi-serie-a/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">🎯 Rigoristi & Tiratori</a>
+                        <a href="../../infortunati-serie-a/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">🏥 Infortunati & Rientri</a>
+                    </div>
+                </div>
+
+                <div class="mobile-menu-section">
+                    <div class="mobile-menu-section-title"><span>🤖</span> Strumenti AI</div>
+                    <div class="mobile-menu-links">
+                        <a href="../../consigli-fantacalcio/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;background:rgba(0,230,118,0.15);border-color:rgba(0,230,118,0.4);color:#00e676;font-weight:800;">🎯 Consigli Formazione & AI Advice</a>
+                        <a href="../../scommesse-talenti/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">💎 Scommesse & Talenti Low-Cost</a>
+                        <a href="../../ottimizzatore-formazione/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">🧠 Ottimizzatore Formazione 2D</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    function openMobileMenuModal() {
+        var m = document.getElementById('mobileMenuModal');
+        if (m) m.style.display = 'flex';
+    }
+    function closeMobileMenuModal() {
+        var m = document.getElementById('mobileMenuModal');
+        if (m) m.style.display = 'none';
+    }
+    </script>
     
     <script src="/js/tracker.js" defer></script>
 </body>

@@ -1,6 +1,7 @@
 import os
 import re
 import json
+from tools.seo_footer import render_unified_footer
 
 def clean_html(text):
     if text is None:
@@ -669,12 +670,7 @@ def generate_duel_page(p1, p2, tactical_db, calendar_data, base_url="https://www
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="site-container">
-            <p>&copy; 2026/2027 Fanta Master AI &bull; Portale Statistico di Fantacalcio &bull; Tutti i marchi appartengono ai rispettivi proprietari.</p>
-        </div>
-    </footer>
+    {render_unified_footer('../../')}
     <script src="../../js/tracker.js" defer></script>
 </body>
 </html>

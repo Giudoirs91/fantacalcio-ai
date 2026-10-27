@@ -239,7 +239,7 @@
             }
             @media (max-width: 480px) {
                 #fanta-tg-toast {
-                    bottom: 12px;
+                    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
                     right: 12px;
                     left: 12px;
                     width: auto;

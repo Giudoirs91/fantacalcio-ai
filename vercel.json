@@ -61,6 +61,16 @@
       "source": "/calciatore/:slug(.*)-2026/",
       "destination": "/calciatore/:slug/",
       "permanent": true
+    },
+    {
+      "source": "/match-reports",
+      "destination": "/match-report/",
+      "permanent": true
+    },
+    {
+      "source": "/match-reports/",
+      "destination": "/match-report/",
+      "permanent": true
     }
   ],
 

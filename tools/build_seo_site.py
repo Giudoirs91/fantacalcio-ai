@@ -393,20 +393,41 @@ body {
     color: #00f2fe;
 }
 
+.nav-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding-bottom: 6px;
+    margin-bottom: -6px;
+}
+
 .nav-dropdown-menu {
     display: none;
     position: absolute;
-    top: calc(100% + 6px);
+    top: 100%;
+    margin-top: 2px;
     left: 0;
     min-width: 260px;
     background: rgba(15, 20, 30, 0.98);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 14px;
     padding: 7px;
     box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85);
     z-index: 10000;
+}
+
+/* Invisible hover bridge to guarantee mouse transition without disappearing */
+.nav-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: transparent;
+    z-index: 1;
 }
 
 .nav-dropdown:hover .nav-dropdown-menu,
@@ -1981,6 +2002,7 @@ def render_unified_header(rel_path=""):
                     <div class="nav-dropdown-menu">
                         <a href="{rel_path}statistiche-serie-a/" class="dropdown-item">📊 Statistiche Serie A &amp; xG</a>
                         <a href="{rel_path}top-flop/" class="dropdown-item">⚡ Top &amp; Flop di Giornata</a>
+                        <a href="{rel_path}match-report/" class="dropdown-item">📑 Match Reports &amp; Tabellini</a>
                         <a href="{rel_path}football-analytics/" class="dropdown-item">📈 Matrice &amp; Scatter Analytics</a>
                         <a href="{rel_path}probabili-formazioni/" class="dropdown-item">📋 Probabili Formazioni &amp; Ballottaggi</a>
                         <a href="{rel_path}confronto-calciatori/" class="dropdown-item">⚔️ Matchup 1vs1 Calciatori</a>
@@ -2031,87 +2053,8 @@ def render_unified_header(rel_path=""):
         </nav>
     </header>
     """
+from tools.seo_footer import render_unified_footer
 
-def render_unified_footer(rel_path=""):
-    return f"""
-    <!-- ==================== FOOTER & LEGAL DISCLAIMER ==================== -->
-    <footer class="app-site-footer">
-        <div class="footer-inner">
-            <div class="footer-top-grid">
-                <div class="footer-brand-col">
-                    <div class="footer-brand">
-                        <span class="footer-logo-badge">⚽ Fanta Master AI</span>
-                        <span class="footer-season-badge">Serie A 2026/27</span>
-                    </div>
-                    <p class="footer-tagline">
-                        Il portale statistico avanzato per il Fantacalcio: expected metrics (xG, xA, xFM), algoritmi predittivi per l'asta e ottimizzatore formazioni 2D con intelligenza artificiale.
-                    </p>
-                    <div class="footer-contact-item">
-                        <span class="footer-contact-icon">✉️</span>
-                        <span>Supporto &amp; Contatti: <a href="mailto:info@fantamasterai.it" class="footer-link-highlight">info@fantamasterai.it</a></span>
-                    </div>
-                </div>
-
-                <div class="footer-links-col">
-                    <div class="footer-heading">Navigazione Portale</div>
-                    <ul class="footer-nav-list">
-                        <li><a href="{rel_path}" class="footer-link">🏟️ Formazione &amp; Asta AI</a></li>
-                        <li><a href="{rel_path}consigli-fantacalcio/" class="footer-link">🎯 Consigli di Giornata</a></li>
-                        <li><a href="{rel_path}probabili-formazioni/" class="footer-link">⚽ Probabili Formazioni 2D</a></li>
-                        <li><a href="{rel_path}top-flop/" class="footer-link">⭐ Top &amp; Flop Settimanali</a></li>
-                        <li><a href="{rel_path}football-analytics/" class="footer-link">📊 Scatter Matrix xG &amp; xA</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-links-col">
-                    <div class="footer-heading">Strumenti Tattici</div>
-                    <ul class="footer-nav-list">
-                        <li><a href="{rel_path}rigoristi-serie-a/" class="footer-link">🎯 Tabella Rigoristi &amp; Tiratori</a></li>
-                        <li><a href="{rel_path}griglia-portieri/" class="footer-link">🧤 Griglia Portieri 38 Turni</a></li>
-                        <li><a href="{rel_path}infortunati-serie-a/" class="footer-link">🏥 Report Infortunati &amp; Rientri</a></li>
-                        <li><a href="{rel_path}scommesse-talenti/" class="footer-link">💎 Talenti Low-Cost</a></li>
-                        <li><a href="{rel_path}confronto-calciatori/" class="footer-link">⚔️ Head-to-Head 1vs1</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-links-col">
-                    <div class="footer-heading">Community &amp; Note Legali</div>
-                    <ul class="footer-nav-list">
-                        <li><a href="https://t.me/fantamasterai" target="_blank" rel="noopener" class="footer-link" style="color:#38bdf8;font-weight:800;">📲 Canale Telegram Ufficiale</a></li>
-                        <li><a href="https://www.instagram.com/fantamasterai" target="_blank" rel="noopener" class="footer-link" style="color:#f43f5e;font-weight:800;">📸 Profilo Instagram Ufficiale</a></li>
-                        <li><a href="{rel_path}privacy-policy/" class="footer-link" id="footer-privacy-link">🔒 Privacy Policy (GDPR)</a></li>
-                        <li><span class="footer-status-pill">🛡️ Privacy by Design</span></li>
-                        <li><span class="footer-status-pill">🚫 No Cookie Pubblicitari</span></li>
-                        <li><span class="footer-status-pill">📊 GA4 IP Anonimizzato</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-disclaimer-box">
-                <div class="disclaimer-title">
-                    <span>⚖️ Disclaimer Legale sui Marchi e Diritto d'Autore (Fair Use)</span>
-                </div>
-                <p class="disclaimer-text">
-                    <strong>Fanta Master AI</strong> (<code>fantamasterai.it</code>) è un progetto editoriale e scientifico-statistico indipendente. Il sito <strong>non è affiliato, sponsorizzato, approvato o collegato</strong> in alcun modo alla <strong>Lega Nazionale Professionisti Serie A</strong>, alla <strong>FIGC</strong> o ai marchi commerciali registrati <em>Fantacalcio®</em> o <em>FantaMaster</em>. Tutti i nomi di calciatori, allenatori, squadre, stadi e competizioni sportive sono impiegati esclusivamente per finalità illustrative, statistiche, di cronaca e di legittima critica sportiva ai sensi della normativa vigente sul diritto d'autore (Fair Use e diritto di cronaca). Tutti i marchi registrati citati appartengono ai rispettivi legittimi titolari.
-                </p>
-                <p class="disclaimer-text" style="margin-top: 8px;">
-                    <strong>Informativa Privacy &amp; Cookie (Linee Guida Garante Privacy 10/06/2021):</strong> Questo sito rispetta rigorosamente la privacy degli utenti. Non viene effettuata alcuna profilazione commerciale né tracciamento pubblicitario; gli indirizzi IP sono mascherati. Il portale adotta metriche statistiche aggregate (Google Analytics 4 con IP anonimizzato e senza combinazione dati) formalmente equiparate a cookie tecnici ai sensi delle Linee Guida del Garante per la Protezione dei Dati Personali del 10 giugno 2021, esentando la piattaforma dall'obbligo di banner cookie preventivo.
-                </p>
-            </div>
-
-            <div class="footer-bottom-bar">
-                <div class="footer-copy">
-                    &copy; 2026/2027 <strong>Fanta Master AI</strong> — <code>fantamasterai.it</code>. Tutti i diritti riservati.
-                </div>
-                <div class="footer-bottom-links">
-                    <a href="{rel_path}privacy-policy/" class="footer-bottom-link">Privacy Policy</a>
-                    <span class="footer-sep">•</span>
-                    <a href="mailto:info@fantamasterai.it" class="footer-bottom-link">info@fantamasterai.it</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    """
 
 
 from tools.seo_player_template import generate_player_page
@@ -3972,19 +3915,33 @@ def optimize_dashboard_for_web(dash_content, dist_dir):
         idx_script_start = dash_content.rfind('<script>', 0, idx_data)
         idx_script_end = dash_content.find('</script>', idx_data)
         
-        idx_accuracy = dash_content.find('const MATCHDAY_ACCURACY_DATA =', idx_data)
-        idx_split = dash_content.find(';', idx_accuracy) if idx_accuracy != -1 else idx_data
-        idx_mr = dash_content.find('const MATCH_REPORTS_DATA =', idx_data)
-        if idx_mr != -1:
-            idx_mr_end = dash_content.find(';', idx_mr)
-            if idx_mr_end != -1:
-                idx_split = idx_mr_end
+        marker = '// === END_DATASET_INJECTION ==='
+        idx_marker = dash_content.find(marker, idx_data)
+        if idx_marker != -1:
+            raw_data_code = dash_content[idx_script_start + 8 : idx_marker].strip()
+            app_code = dash_content[idx_marker + len(marker) : idx_script_end].strip()
+        else:
+            idx_anchor = dash_content.find('const MATCH_REPORTS_DATA =', idx_data)
+            if idx_anchor == -1:
+                idx_anchor = dash_content.find('const MATCHDAY_ACCURACY_DATA =', idx_data)
+            if idx_anchor == -1:
+                idx_anchor = idx_data
+            
+            term_match = re.search(r';\s*\r?\n', dash_content[idx_anchor:])
+            if term_match:
+                idx_split = idx_anchor + term_match.end()
+            else:
+                idx_split = dash_content.find(';\n', idx_anchor)
+                if idx_split != -1:
+                    idx_split += 2
+                else:
+                    idx_split = dash_content.find(';', idx_anchor) + 1
+            
+            raw_data_code = dash_content[idx_script_start + 8 : idx_split].strip()
+            app_code = dash_content[idx_split : idx_script_end].strip()
         
-        raw_data_code = dash_content[idx_script_start + 8 : idx_split + 1].strip()
         # Assicura accessibilità globale con window e var
         data_code = re.sub(r'\bconst\s+(\w+)\s*=', r'var \1 = window.\1 =', raw_data_code)
-        
-        app_code = dash_content[idx_split + 1 : idx_script_end].strip()
         
         js_dir = os.path.join(dist_dir, "js")
         os.makedirs(js_dir, exist_ok=True)
@@ -4303,6 +4260,15 @@ def build_all():
                 f.write(sec_html)
             sitemap_urls.append(f"{BASE_URL}/{route}/")
             print(f"  ✓ Generata pagina Clean URL: dist/{route}/index.html")
+
+            # Dual physical fallback: guarantee /match-reports/ and /match-report/ both exist on disk
+            if route == "match-report":
+                plural_dir = os.path.join(DIST_DIR, "match-reports")
+                os.makedirs(plural_dir, exist_ok=True)
+                with open(os.path.join(plural_dir, "index.html"), "w", encoding="utf-8") as f:
+                    f.write(sec_html)
+                print("  ✓ Generata directory alias fallback: dist/match-reports/index.html")
+
 
     # 2d. Copia i dati JSON elaborati in dist/data per endpoint e fetch
     dist_data_dir = os.path.join(DIST_DIR, "data")

@@ -203,6 +203,23 @@ def build_standalone_dashboard(sync_android=False):
     <style>
 {css_content}
     </style>
+    <script>
+      window.openMobileMenuModal = function() {{
+        var m = document.getElementById('mobileMenuModal');
+        if (m) m.style.display = 'flex';
+      }};
+      window.closeMobileMenuModal = function() {{
+        var m = document.getElementById('mobileMenuModal');
+        if (m) m.style.display = 'none';
+      }};
+      window.switchTabMobile = function(tabId, event) {{
+        if (window.switchTab) {{
+          if (event && event.preventDefault) event.preventDefault();
+          window.switchTab(tabId);
+          window.closeMobileMenuModal();
+        }}
+      }};
+    </script>
 </head>
 <body>
     <header class="app-header-unified" style="position:sticky;top:0;z-index:9999;background:rgba(10,14,22,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08);width:100%;">
@@ -251,13 +268,13 @@ def build_standalone_dashboard(sync_android=False):
 
                 <!-- 3. STATISTICHE SERIE A -->
                 <div class="nav-dropdown">
-                    <button class="nav-group-btn" id="navGroupTactics" onclick="onNavClick(event, 'stats')">
+                    <button class="nav-group-btn" id="navGroupTactics" type="button" aria-haspopup="true">
                         <span>📈</span> Statistiche Serie A <span class="nav-caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
                         <a href="/statistiche-serie-a/" class="dropdown-item" id="tabStatsBtn" onclick="onNavClick(event, 'stats')">📊 Statistiche & xG Serie A</a>
                         <a href="/top-flop/" class="dropdown-item" id="tabTopFlopBtn" onclick="onNavClick(event, 'top_flop')">⚡ Top & Flop di Giornata</a>
-                        <a href="/match-reports/" class="dropdown-item" id="tabMatchReportsBtn" onclick="onNavClick(event, 'match_reports')">📑 Match Reports &amp; Tabellini</a>
+                        <a href="/match-report/" class="dropdown-item" id="tabMatchReportsBtn" onclick="onNavClick(event, 'match_reports')">📑 Match Reports &amp; Tabellini</a>
                         <a href="/football-analytics/" class="dropdown-item" id="tabMatrixBtn" onclick="onNavClick(event, 'matrix')">📈 Matrice & Scatter Analytics</a>
                         <a href="/probabili-formazioni/" class="dropdown-item" id="tabPitchBtn">📋 Probabili Formazioni &amp; Ballottaggi</a>
                         <a href="/confronto-calciatori/" class="dropdown-item" id="tabMatchupBtn" onclick="onNavClick(event, 'matchup')">⚔️ Matchup 1vs1 Calciatori</a>
@@ -270,7 +287,7 @@ def build_standalone_dashboard(sync_android=False):
 
                 <!-- 3. AI & CONSIGLI -->
                 <div class="nav-dropdown">
-                    <button class="nav-group-btn" id="navGroupAi" onclick="onNavClick(event, 'matchday_advice')">
+                    <button class="nav-group-btn" id="navGroupAi" type="button" aria-haspopup="true">
                         <span>🧠</span> AI & Consigli <span class="nav-caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
@@ -1569,23 +1586,23 @@ def build_standalone_dashboard(sync_android=False):
 
     <!-- MOBILE BOTTOM NAVIGATION (Native App Bar - Tabellone Home) -->
     <nav class="mobile-bottom-nav" id="mobileBottomNav">
-        <button class="mobile-nav-item active" id="mobNavHome" onclick="switchTabMobile('home')">
+        <a href="/" class="mobile-nav-item active" id="mobNavHome" onclick="switchTabMobile('home', event)">
             <span class="mob-icon">🏠</span>
             <span class="mob-label">Home</span>
-        </button>
-        <button class="mobile-nav-item" id="mobNavAuction" onclick="switchTabMobile('auction')">
+        </a>
+        <a href="/listone/" class="mobile-nav-item" id="mobNavAuction" onclick="switchTabMobile('auction', event)">
             <span class="mob-icon">📋</span>
             <span class="mob-label">Listone</span>
-        </button>
-        <a href="/probabili-formazioni/" class="mobile-nav-item" id="mobNavProbabili" style="text-decoration:none;">
+        </a>
+        <a href="/probabili-formazioni/" class="mobile-nav-item" id="mobNavProbabili">
             <span class="mob-icon">⚽</span>
             <span class="mob-label">Probabili</span>
         </a>
-        <button class="mobile-nav-item" id="mobNavAdvice" onclick="switchTabMobile('matchday_advice')">
+        <a href="/consigli-fantacalcio/" class="mobile-nav-item" id="mobNavAdvice" onclick="switchTabMobile('matchday_advice', event)">
             <span class="mob-icon">🎯</span>
             <span class="mob-label">Consigli AI</span>
-        </button>
-        <button class="mobile-nav-item" id="mobNavMenu" onclick="openMobileMenuModal()">
+        </a>
+        <button type="button" class="mobile-nav-item" id="mobNavMenu" onclick="openMobileMenuModal()">
             <span class="mob-icon">☰</span>
             <span class="mob-label">Menu</span>
         </button>
@@ -1699,6 +1716,7 @@ def build_standalone_dashboard(sync_android=False):
         const OFFICIAL_CALENDAR_2026_27 = {cal_json};
         const MATCHDAY_ACCURACY_DATA = {accuracy_json};
         const MATCH_REPORTS_DATA = {match_reports_json};
+        // === END_DATASET_INJECTION ===
 
 {js_content}
 
@@ -1722,7 +1740,7 @@ def build_standalone_dashboard(sync_android=False):
             'home': '/',
             'auction': '/listone/',
             'top_flop': '/top-flop/',
-            'match_reports': '/match-reports/',
+            'match_reports': '/match-report/',
             'matchday_advice': '/consigli-fantacalcio/',
             'chi_schiero': '/chi-schiero/',
             'matrix': '/football-analytics/',
@@ -1752,6 +1770,9 @@ def build_standalone_dashboard(sync_android=False):
             '/top-flop': 'top_flop',
             '/top-flop/': 'top_flop',
             '/top-flop/index.html': 'top_flop',
+            '/match-report': 'match_reports',
+            '/match-report/': 'match_reports',
+            '/match-report/index.html': 'match_reports',
             '/match-reports': 'match_reports',
             '/match-reports/': 'match_reports',
             '/match-reports/index.html': 'match_reports',
@@ -1830,7 +1851,8 @@ def build_standalone_dashboard(sync_android=False):
         }});
 
         // Router & UI Handlers
-        function switchTabMobile(tabId) {{
+        function switchTabMobile(tabId, event) {{
+            if (event && event.preventDefault) event.preventDefault();
             closeMobileMenuModal();
             toggleMobileRosterDrawer(false);
             switchTab(tabId, true);
@@ -1876,6 +1898,13 @@ def build_standalone_dashboard(sync_android=False):
                     showComingSoonModal(tabNames[tabId] || 'Modulo Asta');
                     return;
                 }}
+            }}
+
+            // Fallback for standalone pages where SPA views are not in DOM
+            if (!document.getElementById('viewHome')) {{
+                const targetUrl = ROUTE_MAP[tabId] || '/';
+                window.location.href = targetUrl;
+                return;
             }}
 
             State.activeTab = tabId;
@@ -2383,6 +2412,12 @@ def build_standalone_dashboard(sync_android=False):
                 switchTab(PATH_TO_TAB[hTab], true);
             }}
         }});
+
+        // Export navigation functions to window for global availability
+        window.switchTabMobile = switchTabMobile;
+        window.openMobileMenuModal = openMobileMenuModal;
+        window.closeMobileMenuModal = closeMobileMenuModal;
+        window.switchTab = switchTab;
     </script>
 
     <!-- ==================== FOOTER & LEGAL DISCLAIMER ==================== -->

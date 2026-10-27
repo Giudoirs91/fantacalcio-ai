@@ -15,6 +15,7 @@ import re
 import json
 import unicodedata
 from datetime import datetime
+from tools.seo_footer import render_unified_footer
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -2851,6 +2852,8 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
         </section>
     </div>
 
+    {render_unified_footer('../')}
+
     {render_probabili_js()}
 </body>
 </html>
@@ -3206,6 +3209,8 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
             {match_faq_html}
         </section>
     </div>
+
+    {render_unified_footer('../../')}
 
     {render_probabili_js()}
 </body>

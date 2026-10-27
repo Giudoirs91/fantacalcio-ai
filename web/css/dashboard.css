@@ -17722,6 +17722,10 @@ body.creator-mode-active .visitor-only-item {
     box-shadow: 0 0 8px #10b981;
 }
 
+.btn-lbl-mobile {
+    display: none;
+}
+
 /* Headline Block */
 .trust-headline-block {
     text-align: left;
@@ -17985,6 +17989,12 @@ body.creator-mode-active .visitor-only-item {
         font-size: 11px;
         padding: 6px 8px;
         white-space: nowrap;
+    }
+    .btn-lbl-full {
+        display: none;
+    }
+    .btn-lbl-mobile {
+        display: inline;
     }
     .trust-showcase-footer {
         flex-direction: column;

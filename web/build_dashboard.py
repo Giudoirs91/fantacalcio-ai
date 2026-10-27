@@ -164,11 +164,13 @@ def generate_hero_trust_showcase_html(accuracy_data: dict) -> str:
                             <div class="trust-mode-toggle" role="tablist" aria-label="Selettore visualizzazione affidabilità">
                                 <button class="trust-toggle-btn active" id="btnTrustAccuracy" onclick="switchTrustView('accuracy')" role="tab" aria-selected="true" aria-controls="trustViewAccuracy">
                                     <span class="t-dot"></span>
-                                    <span>🎯 Precisione Predittiva ({acc_hit_rate:.1f}%)</span>
+                                    <span class="btn-lbl-full">🎯 Precisione Predittiva ({acc_hit_rate:.1f}%)</span>
+                                    <span class="btn-lbl-mobile">🎯 Precisione AI ({acc_hit_rate:.1f}%)</span>
                                 </button>
                                 <button class="trust-toggle-btn" id="btnTrustScale" onclick="switchTrustView('scale')" role="tab" aria-selected="false" aria-controls="trustViewScale">
                                     <span class="t-dot"></span>
-                                    <span>📊 Copertura &amp; Dati Piattaforma</span>
+                                    <span class="btn-lbl-full">📊 Copertura &amp; Dati Piattaforma</span>
+                                    <span class="btn-lbl-mobile">📊 Dati Piattaforma</span>
                                 </button>
                             </div>
                         </div>

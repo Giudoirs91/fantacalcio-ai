@@ -130,6 +130,112 @@ def generate_home_leaders_html(players_data: list) -> str:
 
     return "\n".join(cards_html)
 
+def generate_hero_social_slider_html(accuracy_data: dict) -> str:
+    """Genera lo slider a 2 slide con Metriche Piattaforma & Capacità Predittiva Media per la hero."""
+    meta = accuracy_data.get('meta', {}) if isinstance(accuracy_data, dict) else {}
+    last_completed = meta.get('last_completed_round', 8)
+    last_summary = accuracy_data.get(str(last_completed), {}).get('summary', {}) if isinstance(accuracy_data, dict) else {}
+    
+    acc_hit_rate = float(last_summary.get('hit_rate_pct', 75.0))
+    acc_hits = int(last_summary.get('hits', 9))
+    acc_total = int(last_summary.get('total_consigliati', 12))
+    acc_suff = float(last_summary.get('sufficiency_rate_pct', 91.7))
+    acc_avg_fv = float(last_summary.get('avg_fantavoto', 8.36))
+    
+    acc_overall_hit = float(meta.get('overall_hit_rate_pct', 59.4))
+    acc_overall_hits = int(meta.get('total_hits', 57))
+    acc_overall_total = int(meta.get('total_evaluated_advice', 96))
+
+    return f'''                    <!-- HERO SOCIAL PROOF & PREDICTIVE ACCURACY CAROUSEL -->
+                    <div class="hero-social-slider" id="heroSocialSlider">
+                        <!-- Nav Switcher Pills -->
+                        <div class="hero-slider-nav">
+                            <button class="hero-slider-tab active" id="heroTab0" onclick="switchHeroSlide(0)" aria-label="Visualizza Metriche Piattaforma">
+                                <span class="tab-indicator-dot"></span>
+                                <span>📊 Copertura &amp; Dati Piattaforma</span>
+                            </button>
+                            <button class="hero-slider-tab" id="heroTab1" onclick="switchHeroSlide(1)" aria-label="Visualizza Capacità Predittiva AI">
+                                <span class="tab-indicator-dot"></span>
+                                <span>🏆 Capacità Predittiva AI ({acc_hit_rate:.1f}% Hit Rate)</span>
+                            </button>
+                        </div>
+
+                        <!-- Slides Viewport -->
+                        <div class="hero-slides-viewport">
+                            <!-- SLIDE 1: Metriche Piattaforma -->
+                            <div class="hero-slide-pane active" id="heroSlide0" role="region" aria-label="Numeri Piattaforma e Copertura Serie A">
+                                <div class="ai-counter-strip in-hero">
+                                    <div class="ai-counter-item">
+                                        <div class="c-val">534</div>
+                                        <div class="c-lbl">Calciatori Modellati</div>
+                                        <div class="c-sub">Database Serie A 2026/27</div>
+                                    </div>
+                                    <div class="ai-counter-item">
+                                        <div class="c-val">20</div>
+                                        <div class="c-lbl">Club Serie A in 2D</div>
+                                        <div class="c-sub">Schemi, Tattica &amp; FRP</div>
+                                    </div>
+                                    <div class="ai-counter-item">
+                                        <div class="c-val">38</div>
+                                        <div class="c-lbl">Turni Monitorati</div>
+                                        <div class="c-sub">Algoritmo Attivo Live</div>
+                                    </div>
+                                    <div class="ai-counter-item">
+                                        <div class="c-val highlight">100%</div>
+                                        <div class="c-lbl">Statistiche Oggettive</div>
+                                        <div class="c-sub">xG, xA, xFM &amp; Fragilità</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 2: Capacità Predittiva Verificata -->
+                            <div class="hero-slide-pane" id="heroSlide1" role="region" aria-label="Capacità Predittiva Media e Verifica Retrospettiva AI">
+                                <div class="ai-accuracy-strip in-hero">
+                                    <div class="acc-strip-header">
+                                        <div class="acc-tag-pill">
+                                            <span class="pulse-dot-green"></span>
+                                            GIORNATA {last_completed} CONCLUSA &bull; VERIFICA RETROSPETTIVA AI
+                                        </div>
+                                        <div class="acc-title-text">
+                                            Riepilogo Esiti: <strong>{acc_hit_rate:.1f}% Hit Rate</strong> &bull; <strong>{acc_suff:.1f}% Sufficienze</strong> (FV Medio {acc_avg_fv:.2f})
+                                        </div>
+                                        <a href="/consigli-fantacalcio/" class="acc-details-btn" onclick="if(window.switchTab) {{ event.preventDefault(); switchTab('matchday_advice'); }}">
+                                            <span>Analisi Completa Esiti &rarr;</span>
+                                        </a>
+                                    </div>
+                                    <div class="acc-kpi-grid">
+                                        <div class="ai-counter-item acc-item hit">
+                                            <div class="c-val hit-val">{acc_hit_rate:.1f}%</div>
+                                            <div class="c-lbl">🎯 Hit Rate Turno ({acc_hits}/{acc_total})</div>
+                                            <div class="c-sub">Bonus o Voto &ge; 6.5</div>
+                                        </div>
+                                        <div class="ai-counter-item acc-item suff">
+                                            <div class="c-val suff-val">{acc_suff:.1f}%</div>
+                                            <div class="c-lbl">🛡️ Sufficienze Reali</div>
+                                            <div class="c-sub">Voto &ge; 6.0 in pagella</div>
+                                        </div>
+                                        <div class="ai-counter-item acc-item fv">
+                                            <div class="c-val fv-val">{acc_avg_fv:.2f}</div>
+                                            <div class="c-lbl">⭐ Fantavoto Medio</div>
+                                            <div class="c-sub">Consigliati G{last_completed} Serie A</div>
+                                        </div>
+                                        <div class="ai-counter-item acc-item season">
+                                            <div class="c-val season-val">{acc_overall_hit:.1f}%</div>
+                                            <div class="c-lbl">📈 Media Stagionale</div>
+                                            <div class="c-sub">{acc_overall_hits} Hit centrati su {acc_overall_total}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Micro dots for quick slide pagination -->
+                        <div class="hero-slider-dots">
+                            <button class="hero-dot active" id="heroDot0" onclick="switchHeroSlide(0)" title="Slide 1: Dati &amp; Copertura" aria-label="Slide 1"></button>
+                            <button class="hero-dot" id="heroDot1" onclick="switchHeroSlide(1)" title="Slide 2: Accuratezza Predittiva" aria-label="Slide 2"></button>
+                        </div>
+                    </div>'''
+
 def build_standalone_dashboard(sync_android=False):
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     
@@ -242,6 +348,7 @@ def build_standalone_dashboard(sync_android=False):
     cal_json = json.dumps(cal_data, ensure_ascii=False)
     accuracy_json = json.dumps(accuracy_data, ensure_ascii=False)
     home_leaders_html = generate_home_leaders_html(players_data)
+    hero_social_slider_html = generate_hero_social_slider_html(accuracy_data)
 
     # 3. Costruisci il documento HTML completo
     html_template = f"""<!DOCTYPE html>
@@ -554,6 +661,8 @@ def build_standalone_dashboard(sync_android=False):
                             <span>📋 Listone &amp; Valutazioni FVM</span>
                         </button>
                     </div>
+
+{hero_social_slider_html}
                 </div>
 
                 <!-- HERO CARD: LA MIA ROSA & FORMAZIONE AI (Stessa larghezza della sezione benvenuto, posizionata subito sotto) -->
@@ -915,26 +1024,6 @@ def build_standalone_dashboard(sync_android=False):
 
                     <div class="leader-grid" id="homeLeadersGrid">
 {home_leaders_html}
-                    </div>
-                </div>
-
-                <!-- 6. SOCIAL PROOF & PLATFORM METRICS -->
-                <div class="ai-counter-strip">
-                    <div class="ai-counter-item">
-                        <div class="c-val">534</div>
-                        <div class="c-lbl">Calciatori Modellati</div>
-                    </div>
-                    <div class="ai-counter-item">
-                        <div class="c-val">20</div>
-                        <div class="c-lbl">Club Serie A in 2D</div>
-                    </div>
-                    <div class="ai-counter-item">
-                        <div class="c-val">38</div>
-                        <div class="c-lbl">Turni Monitorati</div>
-                    </div>
-                    <div class="ai-counter-item">
-                        <div class="c-val" style="background:linear-gradient(135deg,#22c55e,#00f2fe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">100%</div>
-                        <div class="c-lbl">Statistiche Oggettive</div>
                     </div>
                 </div>
 

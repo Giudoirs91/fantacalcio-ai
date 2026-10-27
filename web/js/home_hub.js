@@ -400,14 +400,73 @@ function renderHomeLeaders() {
     grid.innerHTML = cardsHtml;
 }
 
+// ==============================================================================
+// HERO SOCIAL PROOF & ACCURACY SLIDER
+// ==============================================================================
+let _heroSlideIndex = 0;
+let _heroSlideTimer = null;
+
+function switchHeroSlide(idx) {
+    _heroSlideIndex = idx;
+    const s0 = document.getElementById('heroSlide0');
+    const s1 = document.getElementById('heroSlide1');
+    const t0 = document.getElementById('heroTab0');
+    const t1 = document.getElementById('heroTab1');
+    const d0 = document.getElementById('heroDot0');
+    const d1 = document.getElementById('heroDot1');
+    if (!s0 || !s1) return;
+
+    if (idx === 0) {
+        s0.classList.add('active');
+        s1.classList.remove('active');
+        if (t0) t0.classList.add('active');
+        if (t1) t1.classList.remove('active');
+        if (d0) d0.classList.add('active');
+        if (d1) d1.classList.remove('active');
+    } else {
+        s1.classList.add('active');
+        s0.classList.remove('active');
+        if (t1) t1.classList.add('active');
+        if (t0) t0.classList.remove('active');
+        if (d1) d1.classList.add('active');
+        if (d0) d0.classList.remove('active');
+    }
+}
+
+function startHeroSlideAutoplay() {
+    if (_heroSlideTimer) clearInterval(_heroSlideTimer);
+    _heroSlideTimer = setInterval(() => {
+        const next = _heroSlideIndex === 0 ? 1 : 0;
+        switchHeroSlide(next);
+    }, 6000);
+}
+
+function initHeroSlider() {
+    const slider = document.getElementById('heroSocialSlider');
+    if (!slider) return;
+
+    slider.addEventListener('mouseenter', () => {
+        if (_heroSlideTimer) clearInterval(_heroSlideTimer);
+    });
+    slider.addEventListener('mouseleave', () => {
+        startHeroSlideAutoplay();
+    });
+
+    startHeroSlideAutoplay();
+}
+
+window.switchHeroSlide = switchHeroSlide;
+
 // Inizializzazione automatica al caricamento
 if (typeof window !== 'undefined') {
     window.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             renderLiveIntelligencePulseCards();
             renderHomeLeaders();
+            initHeroSlider();
         }, 150);
     });
 }
+
 
 

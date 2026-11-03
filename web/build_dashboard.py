@@ -139,12 +139,13 @@ def generate_hero_trust_showcase_html(accuracy_data: dict) -> str:
     acc_hit_rate = float(last_summary.get('hit_rate_pct', 75.0))
     acc_hits = int(last_summary.get('hits', 9))
     acc_total = int(last_summary.get('total_consigliati', 12))
-    acc_suff = float(last_summary.get('sufficiency_rate_pct', 91.7))
-    acc_avg_fv = float(last_summary.get('avg_fantavoto', 8.36))
+    acc_suff = float(last_summary.get('sufficiency_rate_pct', 75.0))
+    acc_suff_hits = int(last_summary.get('sufficient', int(round(acc_suff * acc_total / 100))))
+    acc_avg_fv = float(last_summary.get('avg_fantavoto', 6.27))
     
-    acc_overall_hit = float(meta.get('overall_hit_rate_pct', 59.4))
-    acc_overall_hits = int(meta.get('total_hits', 57))
-    acc_overall_total = int(meta.get('total_evaluated_advice', 96))
+    acc_overall_hit = float(meta.get('overall_hit_rate_pct', 54.2))
+    acc_overall_hits = int(meta.get('total_hits', 65))
+    acc_overall_total = int(meta.get('total_evaluated_advice', 120))
 
     return f'''                    <!-- HERO TRUST & PREDICTIVE ACCURACY SHOWCASE (IN PRIMO PIANO) -->
                     <div class="hero-trust-showcase" id="heroTrustShowcase">
@@ -204,7 +205,7 @@ def generate_hero_trust_showcase_html(accuracy_data: dict) -> str:
                                     </div>
                                     <div class="kpi-number text-suff">{acc_suff:.1f}%</div>
                                     <div class="kpi-title">Sufficienze Garantite</div>
-                                    <div class="kpi-explanation">11 consigliati su 12 con <b>voto &ge; 6.0 netto</b>. Rischio di insufficienza crollato all'8.3%.</div>
+                                    <div class="kpi-explanation"><b>{acc_suff_hits} consigliati su {acc_total}</b> con <b>voto &ge; 6.0 netto</b>. Solidità certificata al {acc_suff:.1f}%.</div>
                                 </div>
 
                                 <div class="trust-kpi-card card-fv">
@@ -224,7 +225,7 @@ def generate_hero_trust_showcase_html(accuracy_data: dict) -> str:
                                     </div>
                                     <div class="kpi-number text-season">{acc_overall_hit:.1f}%</div>
                                     <div class="kpi-title">Media Cumulata Stagionale</div>
-                                    <div class="kpi-explanation"><b>{acc_overall_hits} Hit centrati su {acc_overall_total}</b> consigliati totali monitorati nelle prime 8 giornate.</div>
+                                    <div class="kpi-explanation"><b>{acc_overall_hits} Hit centrati su {acc_overall_total}</b> consigliati totali monitorati nelle prime {last_completed} giornate (80.0% sufficienze complessive).</div>
                                 </div>
                             </div>
                         </div>
@@ -815,7 +816,7 @@ def build_standalone_dashboard(sync_android=False):
                                 </div>
                             </div>
                             <div class="pulse-quote-box">
-                                <b>Verdetto AI:</b> <i>"Capocannoniere del torneo con 6 reti e miglior volume di tiri nello specchio. Matchup ideale contro difesa a linea alta. Must-have assoluto di giornata."</i>
+                                <b>Verdetto AI:</b> <i>"Vice-capocannoniere del torneo con 8 reti e leader assoluto di Serie A per xG (7.70). Matchup ideale contro difesa a linea alta. Must-have assoluto di giornata."</i>
                             </div>
                             <button class="pulse-action-link" onclick="openPlayerByName('Malen')">
                                 <span>Apri Scheda Calciatore &amp; Radar SVG</span>
@@ -936,7 +937,7 @@ def build_standalone_dashboard(sync_android=False):
                             </div>
                             <div class="cap-card-footer" style="color:#38bdf8;">
                                 <span>Vedi Tutte le 10 Partite &rarr;</span>
-                                <span style="font-size:11px;color:var(--text-muted);">Live 7ª Giornata</span>
+                                <span style="font-size:11px;color:var(--text-muted);">10ª Giornata Conclusa &bull; Verso l'11ª</span>
                             </div>
                         </div>
 

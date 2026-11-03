@@ -4058,14 +4058,14 @@ def build_all():
         {
             "route": "top-flop",
             "tab": "top_flop",
-            "title": "Top & Flop 8ª Giornata Serie A 2026/27 | Pagelle e Statistiche | Fanta Master AI",
-            "desc": "I migliori e peggiori calciatori dell'8ª giornata di Serie A 2026/27: voti ufficiali, FantaMedia, bonus, malus e analisi algoritmica Fanta Master AI.",
+            "title": "Top & Flop 10ª Giornata Serie A 2026/27 | Pagelle e Statistiche | Fanta Master AI",
+            "desc": "I migliori e peggiori calciatori della 10ª giornata di Serie A 2026/27: voti ufficiali, FantaMedia, bonus, malus e analisi algoritmica Fanta Master AI.",
         },
         {
             "route": "consigli-fantacalcio",
             "tab": "matchday_advice",
-            "title": "Consigli Fantacalcio 9ª Giornata Serie A | Chi Schierare | Fanta Master AI",
-            "desc": "Chi schierare nella 9ª giornata di Serie A (Turno Infrasettimanale): indici di schierabilità, titolarità, verifiche predittive e consigli ruolo per ruolo con intelligenza artificiale.",
+            "title": "Consigli Fantacalcio 11ª Giornata Serie A | Chi Schierare | Fanta Master AI",
+            "desc": "Chi schierare nell'11ª giornata di Serie A: indici di schierabilità, titolarità, verifiche predittive e consigli ruolo per ruolo con intelligenza artificiale.",
         },
         {
             "route": "match-report",

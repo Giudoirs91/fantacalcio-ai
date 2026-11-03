@@ -3505,6 +3505,7 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
     
     <!-- CSS Completo Dashboard -->
     <link rel="stylesheet" href="../../css/seo.css{CSS_VERSION}">
+    <link rel="stylesheet" href="../../css/probabili-layout.css{CSS_VERSION}">
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -3982,6 +3983,14 @@ def build_all():
     os.makedirs(css_dir, exist_ok=True)
     with open(os.path.join(css_dir, "seo.css"), "w", encoding="utf-8") as f:
         f.write(generate_seo_css())
+    from tools.seo_probabili_template import render_probabili_css
+    prob_css = render_probabili_css()
+    with open(os.path.join(css_dir, "probabili-layout.css"), "w", encoding="utf-8") as f:
+        f.write(prob_css)
+    web_css_dir = os.path.join(ROOT_DIR, "web", "css")
+    if os.path.exists(web_css_dir):
+        with open(os.path.join(web_css_dir, "probabili-layout.css"), "w", encoding="utf-8") as f:
+            f.write(prob_css)
 
     # Copia assets statici completi (PWA manifest, icone, sw, og-image)
     static_dir = os.path.join(DIST_DIR, "static")
@@ -4051,77 +4060,66 @@ def build_all():
             "tab": "top_flop",
             "title": "Top & Flop 8ª Giornata Serie A 2026/27 | Pagelle e Statistiche | Fanta Master AI",
             "desc": "I migliori e peggiori calciatori dell'8ª giornata di Serie A 2026/27: voti ufficiali, FantaMedia, bonus, malus e analisi algoritmica Fanta Master AI.",
-            "keywords": "top flop serie a, pagelle fantacalcio 8 giornata, voti fantacalcio, migliori fantacalcio 8 giornata"
         },
         {
             "route": "consigli-fantacalcio",
             "tab": "matchday_advice",
             "title": "Consigli Fantacalcio 9ª Giornata Serie A | Chi Schierare | Fanta Master AI",
             "desc": "Chi schierare nella 9ª giornata di Serie A (Turno Infrasettimanale): indici di schierabilità, titolarità, verifiche predittive e consigli ruolo per ruolo con intelligenza artificiale.",
-            "keywords": "consigli fantacalcio 9 giornata, chi schierare 9 giornata, formazioni consigliate fantacalcio"
         },
         {
             "route": "match-report",
             "tab": "match_reports",
             "title": "Match Report Serie A 2026/27 | Tabellini e Statistiche Ufficiali | Fanta Master AI",
             "desc": "Archivio interattivo dei Match Report ufficiali di Serie A 2026/27: tabellini, statistiche di squadra, performance fisiche, Fanta AI e voti ufficiali.",
-            "keywords": "match report serie a, tabellini serie a, statistiche partite serie a, referti ufficiali lega serie a"
         },
         {
             "route": "chi-schiero",
             "tab": "chi_schiero",
             "title": "Chi Schiero? Comparatore 1vs1 Ballottaggi Fantacalcio | Fanta Master AI",
             "desc": "Risolvi i tuoi dubbi di formazione per la prossima giornata: confronto testa a testa, xFM, facilità del calendario, xGA difesa rivale e verdetto percentuale immediato.",
-            "keywords": "chi schiero, chi schierare fantacalcio, ballottaggi fantacalcio, comparatore 1vs1 fantacalcio, consigli formazione serie a"
         },
         {
             "route": "football-analytics",
             "tab": "matrix",
             "title": "Football Analytics Serie A | Scatter Matrix xG, xA e Performance | Fanta Master AI",
             "desc": "Analisi avanzata e matrici di dispersione dei calciatori di Serie A: Expected Goals (xG), Expected Assists (xA), overperformance e metriche avanzate di rendimento.",
-            "keywords": "football analytics serie a, scatter matrix fantacalcio, expected goals serie a, metriche avanzate fantacalcio"
         },
         {
             "route": "statistiche-serie-a",
             "tab": "stats",
             "title": "Statistiche Calciatori Serie A 2026/27 Avanzate & xG | Fanta Master AI",
             "desc": "Tabella completa con tutte le statistiche della Serie A 2026/27: presenze, minuti, gol, assist, ammonizioni, espulsioni, xG, xA e FantaMedia.",
-            "keywords": "statistiche serie a 2026 2027, numeri fantacalcio, fantamedia calciatori, assist gol serie a"
         },
         {
             "route": "probabili-formazioni",
             "tab": "pitch",
             "title": "Probabili Formazioni Serie A 2026/27 & Ballottaggi 2D | Fanta Master AI",
             "desc": "Probabili formazioni delle 20 squadre di Serie A su campo tattico 2D interattivo, schemi dei club e percentuali di titolarità aggiornate.",
-            "keywords": "probabili formazioni serie a, formazioni fantacalcio, titolari ballottaggi serie a, campo 2d formazioni"
         },
         {
             "route": "confronto-calciatori",
             "tab": "matchup",
             "title": "Confronto Calciatori Head-to-Head Serie A | Fanta Master AI",
             "desc": "Confronta testa a testa due calciatori di Serie A: statistiche incrociate, overall (OVR), radar chart, xG, rendimento e metriche predittive.",
-            "keywords": "confronto calciatori fantacalcio, testa a testa calciatori, matchup 1vs1 serie a"
         },
         {
             "route": "top-11-ai",
             "tab": "ai_squads",
             "title": "5 Squadre Perfette AI (In Ricalibrazione Algoritmica) | Fanta Master AI",
             "desc": "Modulo di generazione 5 rose ideali in fase di riaddestramento. Consulta i consigli di giornata, il tabellone e le statistiche predittive Fanta Master AI.",
-            "keywords": "top 11 fantacalcio, squadra ideale fantacalcio, 5 squadre perfette ai, consigli asta fantacalcio"
         },
         {
             "route": "scommesse-talenti",
             "tab": "gems",
             "title": "Talenti Nascosti & Scommesse Low-Cost Serie A | Fanta Master AI",
             "desc": "Scopri i talenti emergenti, le gemme nascoste e le scommesse a basso costo consigliate dall'algoritmo predittivo per il tuo Fantacalcio.",
-            "keywords": "scommesse fantacalcio, talenti nascosti serie a, gemme fantacalcio, sleeper fantacalcio"
         },
         {
             "route": "listone",
             "tab": "auction",
             "title": "Listone Calciatori Serie A 2026/27 | Quotazioni, FVM e Ruoli | Fanta Master AI",
             "desc": "Tabellone completo di tutti i 534 calciatori di Serie A: quotazioni ufficiali, FVM (Fantalive Value Market), ruoli Classic e Mantra, statistiche avanzate e indici predittivi.",
-            "keywords": "listone fantacalcio, quotazioni serie a, fvm fantalive, ruoli mantra classic"
         }
     ]
 
@@ -4398,17 +4396,42 @@ def build_all():
 
             # 2. Pagine Singolo Match dist/probabili-formazioni/<match-slug>/index.html
             match_count = 0
+            generated_slugs = set()
             for m in consensus_data.get("matches", []):
                 m_slug = m.get("slug")
                 if m_slug:
                     m_dir = os.path.join(prob_dir, m_slug)
                     os.makedirs(m_dir, exist_ok=True)
-                    m_html = generate_match_probabili_page(m, consensus_data, BASE_URL, render_unified_header('../../'))
+                    m_html = generate_match_probabili_page(m, consensus_data, BASE_URL, render_unified_header('../../'), is_archived=False)
                     with open(os.path.join(m_dir, "index.html"), "w", encoding="utf-8") as f:
                         f.write(m_html)
                     sitemap_urls.append(f"{BASE_URL}/probabili-formazioni/{m_slug}/")
+                    generated_slugs.add(m_slug)
                     match_count += 1
-            print(f"  ✓ Generate {match_count} pagine partita 1vs1 Consensus in dist/probabili-formazioni/<match-slug>/")
+
+            # 2b. Genera Pagine Singolo Match Storiche (G7, G8...) per preservare URL indicizzati su Google
+            hist_dir = os.path.join(ROOT_DIR, "data", "historical_consensus")
+            if os.path.exists(hist_dir):
+                for h_file in sorted(os.listdir(hist_dir)):
+                    if h_file.endswith(".json"):
+                        try:
+                            with open(os.path.join(hist_dir, h_file), "r", encoding="utf-8") as fh:
+                                h_data = json.load(fh)
+                            for m in h_data.get("matches", []):
+                                m_slug = m.get("slug")
+                                if m_slug and m_slug not in generated_slugs:
+                                    m_dir = os.path.join(prob_dir, m_slug)
+                                    os.makedirs(m_dir, exist_ok=True)
+                                    m_html = generate_match_probabili_page(m, h_data, BASE_URL, render_unified_header('../../'), is_archived=True)
+                                    with open(os.path.join(m_dir, "index.html"), "w", encoding="utf-8") as fh_out:
+                                        fh_out.write(m_html)
+                                    sitemap_urls.append(f"{BASE_URL}/probabili-formazioni/{m_slug}/")
+                                    generated_slugs.add(m_slug)
+                                    match_count += 1
+                        except Exception as eh:
+                            print(f"  [WARN] Errore caricamento archivio {h_file}: {eh}")
+
+            print(f"  ✓ Generate {match_count} pagine partita 1vs1 Consensus (live + archivio storico) in dist/probabili-formazioni/<match-slug>/")
         except Exception as e:
             print(f"  [WARN] Errore nella generazione di probabili-formazioni hub: {e}")
 
@@ -4509,24 +4532,7 @@ def build_all():
         }
         schema_json_str = json.dumps(team_schema, ensure_ascii=False, indent=2)
 
-        if pitch_sec_template:
-            t_html = pitch_sec_template
-            t_html = re.sub(r'<title>.*?</title>', f'<title>{meta_title}</title>', t_html, flags=re.DOTALL)
-            t_html = re.sub(r'<meta name="description" content=".*?">', f'<meta name="description" content="{meta_desc}">', t_html)
-            t_html = re.sub(r'<h1 class="ai-hub-title">.*?</h1>', f'<h1 class="ai-hub-title">Probabili Formazioni {team_name} — Serie A 2026/27</h1>', t_html, flags=re.DOTALL)
-            t_html = re.sub(r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="{meta_title}">', t_html)
-            t_html = re.sub(r'<meta property="og:description" content=".*?">', f'<meta property="og:description" content="{meta_desc}">', t_html)
-            t_html = re.sub(r'<meta property="og:url" content=".*?">', f'<meta property="og:url" content="{t_url}">', t_html)
-            t_html = re.sub(r'<meta name="twitter:title" content=".*?">', f'<meta name="twitter:title" content="{meta_title}">', t_html)
-            t_html = re.sub(r'<meta name="twitter:description" content=".*?">', f'<meta name="twitter:description" content="{meta_desc}">', t_html)
-            t_html = re.sub(r'<link rel="canonical" href=".*?">', f'<link rel="canonical" href="{t_url}">', t_html)
-            if '<script type="application/ld+json">' in t_html:
-                t_html = re.sub(r'<script type="application/ld\+json">.*?</script>', f'<script type="application/ld+json">\n{schema_json_str}\n    </script>', t_html, flags=re.DOTALL, count=1)
-            else:
-                t_html = t_html.replace('</head>', f'    <script type="application/ld+json">\n{schema_json_str}\n    </script>\n</head>')
-            t_html = t_html.replace('</head>', f'    <script>window.INITIAL_PITCH_TEAM = "{team_name}";</script>\n</head>')
-        else:
-            t_html = generate_team_page(team_name, t_data, t_players, all_teams_list, injuries_db, BASE_URL)
+        t_html = generate_team_page(team_name, t_data, t_players, all_teams_list, injuries_db, BASE_URL)
         
         t_dir = os.path.join(DIST_DIR, "probabili-formazioni", t_slug)
         os.makedirs(t_dir, exist_ok=True)

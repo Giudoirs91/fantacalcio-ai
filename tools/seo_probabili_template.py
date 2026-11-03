@@ -2747,7 +2747,6 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{clean_html(meta_title)}</title>
     <meta name="description" content="{clean_html(meta_desc)}">
-    <meta name="keywords" content="probabili formazioni, probabili formazioni serie a, probabili formazioni {clean_html(round_label).lower()}, formazioni fantacalcio, ballottaggi serie a, consensus 5 fonti, titolari fantacalcio, infortunati e squalificati serie a, xFM fantacalcio, serie a 2026 27">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="{page_url}">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -2768,10 +2767,8 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
     <meta name="twitter:image" content="{base_url}/static/og-image.jpg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../css/seo.css?v=20261015-v4">
-    <style>
-    {render_probabili_css()}
-    </style>
+    <link rel="stylesheet" href="../css/seo.css?v=20261103-v1">
+    <link rel="stylesheet" href="../css/probabili-layout.css?v=20261103-v1">
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -2860,7 +2857,7 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
 """
     return full_html
 
-def generate_match_probabili_page(match_data, consensus_data, base_url="https://www.fantamasterai.it", header_html=""):
+def generate_match_probabili_page(match_data, consensus_data, base_url="https://www.fantamasterai.it", header_html="", is_archived=False):
     """Genera la pagina SEO dedicata a una singola partita (es. /probabili-formazioni/milan-atalanta/)."""
     h_team = match_data['home_team']
     a_team = match_data['away_team']
@@ -3059,6 +3056,17 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
         ]
     }
 
+    archive_banner_html = ""
+    if is_archived:
+        archive_banner_html = f"""
+        <div style="background:rgba(234,179,8,0.12);border:1px solid rgba(234,179,8,0.35);border-radius:12px;padding:12px 16px;margin-bottom:16px;color:#fef08a;font-size:13px;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:20px;">⏱️</span>
+            <div>
+                <strong>Partita Conclusa ({clean_html(round_label)})</strong> — Questo report è archiviato a scopo statistico. Per le formazioni aggiornate, i ballottaggi e i consigli dell'ultimo turno, visita le <a href="/probabili-formazioni/" style="color:#38bdf8;font-weight:700;text-decoration:underline;">Probabili Formazioni Serie A</a>.
+            </div>
+        </div>
+        """
+
     full_html = f"""<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -3066,7 +3074,6 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{clean_html(meta_title)}</title>
     <meta name="description" content="{clean_html(meta_desc)}">
-    <meta name="keywords" content="probabili formazioni {clean_html(h_team).lower()} {clean_html(a_team).lower()}, formazioni {clean_html(h_team).lower()} {clean_html(a_team).lower()}, ballottaggi {clean_html(h_team).lower()} {clean_html(a_team).lower()}, titolari {clean_html(h_team).lower()}, titolari {clean_html(a_team).lower()}, fantacalcio {clean_html(h_team).lower()} {clean_html(a_team).lower()}, infortunati {clean_html(h_team).lower()}, infortunati {clean_html(a_team).lower()}, rigoristi {clean_html(h_team).lower()}, rigoristi {clean_html(a_team).lower()}, consigli fantacalcio {clean_html(h_team).lower()} {clean_html(a_team).lower()}">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="{page_url}">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -3087,9 +3094,9 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
     <meta name="twitter:image" content="{base_url}/static/og-image.jpg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../css/seo.css?v=20261015-v4">
+    <link rel="stylesheet" href="../../css/seo.css?v=20261103-v1">
+    <link rel="stylesheet" href="../../css/probabili-layout.css?v=20261103-v1">
     <style>
-    {render_probabili_css()}
     .prob-breadcrumbs {{
         display: flex;
         align-items: center;
@@ -3115,6 +3122,7 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
 <body>
     {header_html}
     <div class="prob-container">
+        {archive_banner_html}
         <!-- Breadcrumbs -->
         <nav class="prob-breadcrumbs">
             <a href="/">Home</a> <span>/</span>

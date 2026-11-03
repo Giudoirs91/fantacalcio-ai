@@ -48,8 +48,10 @@ def enrich_internal_and_tactical_metrics():
         if not voti_list:
             continue
             
-        # A. Rolling Minutes (Ultime 3 giornate: G4, G5, G6)
-        last_3_rounds = [4, 5, 6]
+        # A. Rolling Minutes (Ultime 3 giornate dinamiche)
+        all_r = [v.get('giornata') for v in voti_list if v.get('giornata')]
+        max_r = max(all_r) if all_r else 10
+        last_3_rounds = [max_r - 2, max_r - 1, max_r]
         rolling_mins = sum(v.get('minuti', 90) for v in voti_list if v.get('giornata') in last_3_rounds and v.get('voto') is not None)
         p['rolling_minutes_last3'] = rolling_mins
         

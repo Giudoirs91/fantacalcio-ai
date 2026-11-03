@@ -111,6 +111,8 @@ def parse_fbref_csv_or_html(file_path):
 def import_fbref_standard(master_players):
     """Importa presenze, minutaggi, gol non su rigore (G-PK), rigori e metriche per90 da standard_stats.csv o fbref_standard."""
     candidates = [
+        os.path.join(IMPORTS_DIR, "stats_serie_a_10g.csv"),
+        os.path.join(IMPORTS_DIR, "stats_serie_A10g.csv"),
         os.path.join(IMPORTS_DIR, "standard_stats.csv"),
         os.path.join(IMPORTS_DIR, "fbref_standard.csv"),
         os.path.join(IMPORTS_DIR, "stats_serie_a_7g.csv"),

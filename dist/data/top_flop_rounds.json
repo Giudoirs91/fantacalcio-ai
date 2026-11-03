@@ -442,6 +442,449 @@
       }
     ]
   },
+  "10": {
+    "round": 10,
+    "total_players_voted": 339,
+    "top": [
+      {
+        "cod": 6060,
+        "name": "Laurientè",
+        "role": "A",
+        "team": "Sassuolo",
+        "opponent": "Fiorentina",
+        "match": "SASSUOLO 2-4 FIORENTINA",
+        "voto": 8.0,
+        "fantavoto": 14.0,
+        "gf": 2,
+        "ass": 0,
+        "motivo": "2 Gol (+6)",
+        "commento": "Prestazione dominante condita da una clamorosa doppietta (+6) nel SASSUOLO 2-4 FIORENTINA."
+      },
+      {
+        "cod": 6372,
+        "name": "Moreira",
+        "role": "C",
+        "team": "Milan",
+        "opponent": "Inter",
+        "match": "MILAN 3-1 INTER",
+        "voto": 8.0,
+        "fantavoto": 12.5,
+        "gf": 1,
+        "ass": 2,
+        "motivo": "1 Gol (+3), 2 Assist (+2)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel MILAN 3-1 INTER."
+      },
+      {
+        "cod": 4970,
+        "name": "Messias",
+        "role": "C",
+        "team": "Genoa",
+        "opponent": "Lecce",
+        "match": "LECCE 1-2 GENOA",
+        "voto": 8.0,
+        "fantavoto": 12.0,
+        "gf": 1,
+        "ass": 1,
+        "motivo": "1 Gol (+3), 1 Assist (+1)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel LECCE 1-2 GENOA."
+      },
+      {
+        "cod": 6206,
+        "name": "Fabbian",
+        "role": "C",
+        "team": "Parma",
+        "opponent": "Atalanta",
+        "match": "ATALANTA 0-3 PARMA",
+        "voto": 7.5,
+        "fantavoto": 11.5,
+        "gf": 1,
+        "ass": 1,
+        "motivo": "1 Gol (+3), 1 Assist (+1)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel ATALANTA 0-3 PARMA."
+      },
+      {
+        "cod": 6827,
+        "name": "Njie",
+        "role": "C",
+        "team": "Fiorentina",
+        "opponent": "Sassuolo",
+        "match": "SASSUOLO 2-4 FIORENTINA",
+        "voto": 7.5,
+        "fantavoto": 11.0,
+        "gf": 1,
+        "ass": 1,
+        "motivo": "1 Gol (+3), 1 Assist (+1)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel SASSUOLO 2-4 FIORENTINA."
+      },
+      {
+        "cod": 779,
+        "name": "Cristante",
+        "role": "C",
+        "team": "Roma",
+        "opponent": "Udinese",
+        "match": "UDINESE 2-5 ROMA",
+        "voto": 7.5,
+        "fantavoto": 11.0,
+        "gf": 1,
+        "ass": 1,
+        "motivo": "1 Gol (+3), 1 Assist (+1)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel UDINESE 2-5 ROMA."
+      },
+      {
+        "cod": 7472,
+        "name": "Calò",
+        "role": "C",
+        "team": "Frosinone",
+        "opponent": "Torino",
+        "match": "FROSINONE 2-0 TORINO",
+        "voto": 7.5,
+        "fantavoto": 10.5,
+        "gf": 1,
+        "ass": 0,
+        "motivo": "1 Gol (+3)",
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel FROSINONE 2-0 TORINO."
+      },
+      {
+        "cod": 6530,
+        "name": "Ghedjemis",
+        "role": "A",
+        "team": "Frosinone",
+        "opponent": "Torino",
+        "match": "FROSINONE 2-0 TORINO",
+        "voto": 7.5,
+        "fantavoto": 10.5,
+        "gf": 1,
+        "ass": 0,
+        "motivo": "1 Gol (+3)",
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel FROSINONE 2-0 TORINO."
+      },
+      {
+        "cod": 6398,
+        "name": "Isaksen",
+        "role": "C",
+        "team": "Lazio",
+        "opponent": "Cagliari",
+        "match": "LAZIO 2-1 CAGLIARI",
+        "voto": 7.5,
+        "fantavoto": 10.5,
+        "gf": 1,
+        "ass": 0,
+        "motivo": "1 Gol (+3)",
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel LAZIO 2-1 CAGLIARI."
+      },
+      {
+        "cod": 7436,
+        "name": "Alajbegovic",
+        "role": "C",
+        "team": "Juventus",
+        "opponent": "Napoli",
+        "match": "JUVENTUS 2-0 NAPOLI",
+        "voto": 7.5,
+        "fantavoto": 10.0,
+        "gf": 1,
+        "ass": 0,
+        "motivo": "1 Gol (+3)",
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel JUVENTUS 2-0 NAPOLI."
+      },
+      {
+        "cod": 5336,
+        "name": "Nzola",
+        "role": "A",
+        "team": "Cagliari",
+        "opponent": "Lazio",
+        "match": "LAZIO 2-1 CAGLIARI",
+        "voto": 7.0,
+        "fantavoto": 10.0,
+        "gf": 1,
+        "ass": 0,
+        "motivo": "1 Gol (+3)",
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel LAZIO 2-1 CAGLIARI."
+      },
+      {
+        "cod": 7078,
+        "name": "Mastantuono",
+        "role": "C",
+        "team": "Fiorentina",
+        "opponent": "Sassuolo",
+        "match": "SASSUOLO 2-4 FIORENTINA",
+        "voto": 7.0,
+        "fantavoto": 10.0,
+        "gf": 1,
+        "ass": 0,
+        "motivo": "1 Gol (+3)",
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel SASSUOLO 2-4 FIORENTINA."
+      },
+      {
+        "cod": 7023,
+        "name": "Pellegrino M.",
+        "role": "A",
+        "team": "Fiorentina",
+        "opponent": "Sassuolo",
+        "match": "SASSUOLO 2-4 FIORENTINA",
+        "voto": 7.0,
+        "fantavoto": 10.0,
+        "gf": 1,
+        "ass": 0,
+        "motivo": "1 Gol (+3)",
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel SASSUOLO 2-4 FIORENTINA."
+      },
+      {
+        "cod": 7600,
+        "name": "Osmajic",
+        "role": "A",
+        "team": "Genoa",
+        "opponent": "Lecce",
+        "match": "LECCE 1-2 GENOA",
+        "voto": 7.0,
+        "fantavoto": 10.0,
+        "gf": 1,
+        "ass": 0,
+        "motivo": "1 Gol (+3)",
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel LECCE 1-2 GENOA."
+      },
+      {
+        "cod": 2832,
+        "name": "Boga",
+        "role": "A",
+        "team": "Juventus",
+        "opponent": "Napoli",
+        "match": "JUVENTUS 2-0 NAPOLI",
+        "voto": 7.0,
+        "fantavoto": 10.0,
+        "gf": 1,
+        "ass": 0,
+        "motivo": "1 Gol (+3)",
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel JUVENTUS 2-0 NAPOLI."
+      }
+    ],
+    "flop": [
+      {
+        "cod": 6462,
+        "name": "Okoye",
+        "role": "P",
+        "team": "Udinese",
+        "opponent": "Roma",
+        "match": "UDINESE 2-5 ROMA",
+        "voto": 5.0,
+        "fantavoto": 0.0,
+        "gs": 5,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "5 Gol Subiti (-5)",
+        "commento": "Tracollo difensivo: ben 5 reti al passivo (-5) e difesa completamente travolta nel UDINESE 2-5 ROMA."
+      },
+      {
+        "cod": 2155,
+        "name": "Cutrone",
+        "role": "A",
+        "team": "Monza",
+        "opponent": "Bologna",
+        "match": "BOLOGNA 2-1 MONZA",
+        "voto": 4.5,
+        "fantavoto": 1.5,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Rigore Fallito (-3)",
+        "commento": "Giornata da incubo: rigore fallito dagli undici metri (-3) e grave insufficienza nel BOLOGNA 2-1 MONZA."
+      },
+      {
+        "cod": 4867,
+        "name": "Turati",
+        "role": "P",
+        "team": "Sassuolo",
+        "opponent": "Fiorentina",
+        "match": "SASSUOLO 2-4 FIORENTINA",
+        "voto": 6.0,
+        "fantavoto": 2.0,
+        "gs": 4,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "4 Gol Subiti (-4)",
+        "commento": "Tracollo difensivo: ben 4 reti al passivo (-4) e difesa completamente travolta nel SASSUOLO 2-4 FIORENTINA."
+      },
+      {
+        "cod": 554,
+        "name": "Zappacosta",
+        "role": "D",
+        "team": "Atalanta",
+        "opponent": "Parma",
+        "match": "ATALANTA 0-3 PARMA",
+        "voto": 4.5,
+        "fantavoto": 2.5,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Autogol (-2)",
+        "commento": "Pomeriggio sfortunatissimo: clamoroso autogol (-2) ed errore grave in fase difensiva nel ATALANTA 0-3 PARMA."
+      },
+      {
+        "cod": 4431,
+        "name": "Carnesecchi",
+        "role": "P",
+        "team": "Atalanta",
+        "opponent": "Parma",
+        "match": "ATALANTA 0-3 PARMA",
+        "voto": 5.5,
+        "fantavoto": 2.5,
+        "gs": 3,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "3 Gol Subiti (-3)",
+        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel ATALANTA 0-3 PARMA."
+      },
+      {
+        "cod": 2521,
+        "name": "De Gea",
+        "role": "P",
+        "team": "Fiorentina",
+        "opponent": "Sassuolo",
+        "match": "SASSUOLO 2-4 FIORENTINA",
+        "voto": 5.0,
+        "fantavoto": 3.0,
+        "gs": 2,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "2 Gol Subiti (-2)",
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel SASSUOLO 2-4 FIORENTINA."
+      },
+      {
+        "cod": 5116,
+        "name": "Martinez Jo.",
+        "role": "P",
+        "team": "Inter",
+        "opponent": "Milan",
+        "match": "MILAN 3-1 INTER",
+        "voto": 6.0,
+        "fantavoto": 3.0,
+        "gs": 3,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "3 Gol Subiti (-3)",
+        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel MILAN 3-1 INTER."
+      },
+      {
+        "cod": 6534,
+        "name": "Perri",
+        "role": "P",
+        "team": "Torino",
+        "opponent": "Frosinone",
+        "match": "FROSINONE 2-0 TORINO",
+        "voto": 5.5,
+        "fantavoto": 3.5,
+        "gs": 2,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "2 Gol Subiti (-2)",
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel FROSINONE 2-0 TORINO."
+      },
+      {
+        "cod": 4263,
+        "name": "Kabasele",
+        "role": "D",
+        "team": "Udinese",
+        "opponent": "Roma",
+        "match": "UDINESE 2-5 ROMA",
+        "voto": 4.0,
+        "fantavoto": 4.0,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Insufficienza (4.0)",
+        "commento": "Grave insufficienza sul campo (voto 4.0): mai in partita e costantemente battuto nel UDINESE 2-5 ROMA."
+      },
+      {
+        "cod": 6623,
+        "name": "Runjaic",
+        "role": "ALL",
+        "team": "Serie A",
+        "opponent": "-",
+        "match": "",
+        "voto": 4.0,
+        "fantavoto": 4.0,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Insufficienza (4.0)",
+        "commento": "Grave insufficienza sul campo (voto 4.0): mai in partita e costantemente battuto contro il avversario."
+      },
+      {
+        "cod": 5877,
+        "name": "Carlos Augusto",
+        "role": "D",
+        "team": "Inter",
+        "opponent": "Milan",
+        "match": "MILAN 3-1 INTER",
+        "voto": 4.5,
+        "fantavoto": 4.0,
+        "gs": 0,
+        "amm": 1,
+        "esp": 0,
+        "motivo": "Ammonizione (-0.5)",
+        "commento": "Bocciatura senza appello: prestazione disastrosa (voto 4.5) condita da ammonizione (-0.5) nel MILAN 3-1 INTER."
+      },
+      {
+        "cod": 7240,
+        "name": "Siebert",
+        "role": "D",
+        "team": "Lecce",
+        "opponent": "Genoa",
+        "match": "LECCE 1-2 GENOA",
+        "voto": 4.5,
+        "fantavoto": 4.0,
+        "gs": 0,
+        "amm": 1,
+        "esp": 0,
+        "motivo": "Ammonizione (-0.5)",
+        "commento": "Bocciatura senza appello: prestazione disastrosa (voto 4.5) condita da ammonizione (-0.5) nel LECCE 1-2 GENOA."
+      },
+      {
+        "cod": 5701,
+        "name": "Obert",
+        "role": "D",
+        "team": "Cagliari",
+        "opponent": "Lazio",
+        "match": "LAZIO 2-1 CAGLIARI",
+        "voto": 5.0,
+        "fantavoto": 4.0,
+        "gs": 0,
+        "amm": 0,
+        "esp": 1,
+        "motivo": "Espulsione (-1)",
+        "commento": "Nervi tesi ed espulsione diretta (-1) che compromette la gara e danneggia i compagni nel LAZIO 2-1 CAGLIARI."
+      },
+      {
+        "cod": 6809,
+        "name": "Marianucci",
+        "role": "D",
+        "team": "Napoli",
+        "opponent": "Juventus",
+        "match": "JUVENTUS 2-0 NAPOLI",
+        "voto": 5.0,
+        "fantavoto": 4.0,
+        "gs": 0,
+        "amm": 0,
+        "esp": 1,
+        "motivo": "Espulsione (-1)",
+        "commento": "Nervi tesi ed espulsione diretta (-1) che compromette la gara e danneggia i compagni nel JUVENTUS 2-0 NAPOLI."
+      },
+      {
+        "cod": 2134,
+        "name": "Falcone",
+        "role": "P",
+        "team": "Lecce",
+        "opponent": "Genoa",
+        "match": "LECCE 1-2 GENOA",
+        "voto": 6.0,
+        "fantavoto": 4.0,
+        "gs": 2,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "2 Gol Subiti (-2)",
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel LECCE 1-2 GENOA."
+      }
+    ]
+  },
   "2": {
     "round": 2,
     "total_players_voted": 339,
@@ -895,13 +1338,13 @@
         "role": "A",
         "team": "Como",
         "opponent": "Genoa",
-        "match": "Como @ Genoa",
+        "match": "GENOA 1-4 COMO",
         "voto": 7.5,
         "fantavoto": 13.5,
         "gf": 2,
         "ass": 0,
         "motivo": "2 Gol (+6)",
-        "commento": "Esplosione a sorpresa: devastante doppietta (+6) da subentrato di lusso nel Como @ Genoa."
+        "commento": "Esplosione a sorpresa: devastante doppietta (+6) da subentrato di lusso nel GENOA 1-4 COMO."
       },
       {
         "cod": 5436,
@@ -909,13 +1352,13 @@
         "role": "A",
         "team": "Frosinone",
         "opponent": "Venezia",
-        "match": "Frosinone vs Venezia",
+        "match": "FROSINONE 3-2 VENEZIA",
         "voto": 7.5,
         "fantavoto": 13.5,
         "gf": 2,
         "ass": 0,
         "motivo": "2 Gol (+6)",
-        "commento": "Fiuto del gol da rapace d'area: implacabile doppietta (+6) decisiva nel Frosinone vs Venezia."
+        "commento": "Fiuto del gol da rapace d'area: implacabile doppietta (+6) decisiva nel FROSINONE 3-2 VENEZIA."
       },
       {
         "cod": 2764,
@@ -923,13 +1366,13 @@
         "role": "A",
         "team": "Inter",
         "opponent": "Napoli",
-        "match": "Inter vs Napoli",
+        "match": "INTER 3-2 NAPOLI",
         "voto": 7.5,
         "fantavoto": 13.0,
         "gf": 2,
         "ass": 0,
         "motivo": "2 Gol (+6)",
-        "commento": "Prestazione dominante condita da una clamorosa doppietta (+6) nel Inter vs Napoli."
+        "commento": "Prestazione dominante condita da una clamorosa doppietta (+6) nel INTER 3-2 NAPOLI."
       },
       {
         "cod": 5734,
@@ -937,13 +1380,13 @@
         "role": "A",
         "team": "Roma",
         "opponent": "Atalanta",
-        "match": "Roma vs Atalanta",
+        "match": "ROMA 2-1 ATALANTA",
         "voto": 7.5,
         "fantavoto": 11.5,
         "gf": 1,
         "ass": 1,
         "motivo": "1 Gol (+3), 1 Assist (+1)",
-        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel Roma vs Atalanta."
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel ROMA 2-1 ATALANTA."
       },
       {
         "cod": 1933,
@@ -951,13 +1394,13 @@
         "role": "C",
         "team": "Torino",
         "opponent": "Fiorentina",
-        "match": "Torino @ Fiorentina",
+        "match": "FIORENTINA 1-2 TORINO",
         "voto": 7.5,
         "fantavoto": 10.5,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Torino @ Fiorentina."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel FIORENTINA 1-2 TORINO."
       },
       {
         "cod": 5792,
@@ -965,13 +1408,13 @@
         "role": "C",
         "team": "Atalanta",
         "opponent": "Roma",
-        "match": "Atalanta @ Roma",
+        "match": "ROMA 2-1 ATALANTA",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Atalanta @ Roma."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel ROMA 2-1 ATALANTA."
       },
       {
         "cod": 4896,
@@ -979,13 +1422,13 @@
         "role": "A",
         "team": "Cagliari",
         "opponent": "Lecce",
-        "match": "Cagliari vs Lecce",
+        "match": "CAGLIARI 1-0 LECCE",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Cagliari vs Lecce."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel CAGLIARI 1-0 LECCE."
       },
       {
         "cod": 6875,
@@ -993,13 +1436,13 @@
         "role": "C",
         "team": "Como",
         "opponent": "Genoa",
-        "match": "Como @ Genoa",
+        "match": "GENOA 1-4 COMO",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Como @ Genoa."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel GENOA 1-4 COMO."
       },
       {
         "cod": 6204,
@@ -1007,13 +1450,13 @@
         "role": "A",
         "team": "Frosinone",
         "opponent": "Venezia",
-        "match": "Frosinone vs Venezia",
+        "match": "FROSINONE 3-2 VENEZIA",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Frosinone vs Venezia."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel FROSINONE 3-2 VENEZIA."
       },
       {
         "cod": 4871,
@@ -1021,13 +1464,13 @@
         "role": "A",
         "team": "Inter",
         "opponent": "Napoli",
-        "match": "Inter vs Napoli",
+        "match": "INTER 3-2 NAPOLI",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Inter vs Napoli."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel INTER 3-2 NAPOLI."
       },
       {
         "cod": 2848,
@@ -1035,13 +1478,13 @@
         "role": "C",
         "team": "Lazio",
         "opponent": "Udinese",
-        "match": "Lazio @ Udinese",
+        "match": "UDINESE 1-2 LAZIO",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Lazio @ Udinese."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel UDINESE 1-2 LAZIO."
       },
       {
         "cod": 5800,
@@ -1049,13 +1492,13 @@
         "role": "C",
         "team": "Lazio",
         "opponent": "Udinese",
-        "match": "Lazio @ Udinese",
+        "match": "UDINESE 1-2 LAZIO",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Lazio @ Udinese."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel UDINESE 1-2 LAZIO."
       },
       {
         "cod": 7546,
@@ -1063,13 +1506,13 @@
         "role": "A",
         "team": "Monza",
         "opponent": "Parma",
-        "match": "Monza @ Parma",
+        "match": "PARMA 1-1 MONZA",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Monza @ Parma."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel PARMA 1-1 MONZA."
       },
       {
         "cod": 6052,
@@ -1077,13 +1520,13 @@
         "role": "A",
         "team": "Napoli",
         "opponent": "Inter",
-        "match": "Napoli @ Inter",
+        "match": "INTER 3-2 NAPOLI",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Napoli @ Inter."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel INTER 3-2 NAPOLI."
       },
       {
         "cod": 7561,
@@ -1091,13 +1534,13 @@
         "role": "A",
         "team": "Parma",
         "opponent": "Monza",
-        "match": "Parma vs Monza",
+        "match": "PARMA 1-1 MONZA",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Parma vs Monza."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel PARMA 1-1 MONZA."
       }
     ],
     "flop": [
@@ -1107,14 +1550,14 @@
         "role": "P",
         "team": "Genoa",
         "opponent": "Como",
-        "match": "Genoa vs Como",
+        "match": "GENOA 1-4 COMO",
         "voto": 5.5,
         "fantavoto": 1.5,
         "gs": 4,
         "amm": 0,
         "esp": 0,
         "motivo": "4 Gol Subiti (-4)",
-        "commento": "Tracollo difensivo: ben 4 reti al passivo (-4) e difesa completamente travolta nel Genoa vs Como."
+        "commento": "Tracollo difensivo: ben 4 reti al passivo (-4) e difesa completamente travolta nel GENOA 1-4 COMO."
       },
       {
         "cod": 6248,
@@ -1122,14 +1565,14 @@
         "role": "P",
         "team": "Venezia",
         "opponent": "Frosinone",
-        "match": "Venezia @ Frosinone",
+        "match": "FROSINONE 3-2 VENEZIA",
         "voto": 6.0,
         "fantavoto": 3.0,
         "gs": 3,
         "amm": 0,
         "esp": 0,
         "motivo": "3 Gol Subiti (-3)",
-        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel Venezia @ Frosinone."
+        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel FROSINONE 3-2 VENEZIA."
       },
       {
         "cod": 4236,
@@ -1137,14 +1580,14 @@
         "role": "P",
         "team": "Sassuolo",
         "opponent": "Bologna",
-        "match": "Sassuolo @ Bologna",
+        "match": "BOLOGNA 2-2 SASSUOLO",
         "voto": 5.5,
         "fantavoto": 3.5,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Sassuolo @ Bologna."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel BOLOGNA 2-2 SASSUOLO."
       },
       {
         "cod": 5750,
@@ -1152,14 +1595,14 @@
         "role": "D",
         "team": "Genoa",
         "opponent": "Como",
-        "match": "Genoa vs Como",
+        "match": "GENOA 1-4 COMO",
         "voto": 4.5,
         "fantavoto": 4.0,
         "gs": 0,
         "amm": 1,
         "esp": 0,
         "motivo": "Ammonizione (-0.5)",
-        "commento": "Bocciatura senza appello: prestazione disastrosa (voto 4.5) condita da ammonizione (-0.5) nel Genoa vs Como."
+        "commento": "Bocciatura senza appello: prestazione disastrosa (voto 4.5) condita da ammonizione (-0.5) nel GENOA 1-4 COMO."
       },
       {
         "cod": 7538,
@@ -1167,14 +1610,14 @@
         "role": "D",
         "team": "Venezia",
         "opponent": "Frosinone",
-        "match": "Venezia @ Frosinone",
+        "match": "FROSINONE 3-2 VENEZIA",
         "voto": 4.5,
         "fantavoto": 4.0,
         "gs": 0,
         "amm": 1,
         "esp": 0,
         "motivo": "Ammonizione (-0.5)",
-        "commento": "Bocciatura senza appello: prestazione disastrosa (voto 4.5) condita da ammonizione (-0.5) nel Venezia @ Frosinone."
+        "commento": "Bocciatura senza appello: prestazione disastrosa (voto 4.5) condita da ammonizione (-0.5) nel FROSINONE 3-2 VENEZIA."
       },
       {
         "cod": 2521,
@@ -1182,14 +1625,14 @@
         "role": "P",
         "team": "Fiorentina",
         "opponent": "Torino",
-        "match": "Fiorentina vs Torino",
+        "match": "FIORENTINA 1-2 TORINO",
         "voto": 6.0,
         "fantavoto": 4.0,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Fiorentina vs Torino."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel FIORENTINA 1-2 TORINO."
       },
       {
         "cod": 6415,
@@ -1197,14 +1640,14 @@
         "role": "P",
         "team": "Frosinone",
         "opponent": "Venezia",
-        "match": "Frosinone vs Venezia",
+        "match": "FROSINONE 3-2 VENEZIA",
         "voto": 6.0,
         "fantavoto": 4.0,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Frosinone vs Venezia."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel FROSINONE 3-2 VENEZIA."
       },
       {
         "cod": 6462,
@@ -1212,14 +1655,14 @@
         "role": "P",
         "team": "Udinese",
         "opponent": "Lazio",
-        "match": "Udinese vs Lazio",
+        "match": "UDINESE 1-2 LAZIO",
         "voto": 6.0,
         "fantavoto": 4.0,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Udinese vs Lazio."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel UDINESE 1-2 LAZIO."
       },
       {
         "cod": 572,
@@ -1227,14 +1670,14 @@
         "role": "P",
         "team": "Napoli",
         "opponent": "Inter",
-        "match": "Napoli @ Inter",
+        "match": "INTER 3-2 NAPOLI",
         "voto": 7.0,
         "fantavoto": 4.0,
         "gs": 3,
         "amm": 0,
         "esp": 0,
         "motivo": "3 Gol Subiti (-3)",
-        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel Napoli @ Inter."
+        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel INTER 3-2 NAPOLI."
       },
       {
         "cod": 6660,
@@ -1242,14 +1685,14 @@
         "role": "D",
         "team": "Genoa",
         "opponent": "Como",
-        "match": "Genoa vs Como",
+        "match": "GENOA 1-4 COMO",
         "voto": 4.5,
         "fantavoto": 4.5,
         "gs": 0,
         "amm": 0,
         "esp": 0,
         "motivo": "Insufficienza (4.5)",
-        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel Genoa vs Como."
+        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel GENOA 1-4 COMO."
       },
       {
         "cod": 5951,
@@ -1257,14 +1700,14 @@
         "role": "A",
         "team": "Juventus",
         "opponent": "Milan",
-        "match": "Juventus vs Milan",
+        "match": "JUVENTUS 1-1 MILAN",
         "voto": 4.5,
         "fantavoto": 4.5,
         "gs": 0,
         "amm": 0,
         "esp": 0,
         "motivo": "Insufficienza (4.5)",
-        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel Juventus vs Milan."
+        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel JUVENTUS 1-1 MILAN."
       },
       {
         "cod": 4994,
@@ -1272,14 +1715,14 @@
         "role": "D",
         "team": "Udinese",
         "opponent": "Lazio",
-        "match": "Udinese vs Lazio",
+        "match": "UDINESE 1-2 LAZIO",
         "voto": 4.5,
         "fantavoto": 4.5,
         "gs": 0,
         "amm": 0,
         "esp": 0,
         "motivo": "Insufficienza (4.5)",
-        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel Udinese vs Lazio."
+        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel UDINESE 1-2 LAZIO."
       },
       {
         "cod": 6892,
@@ -1287,14 +1730,14 @@
         "role": "D",
         "team": "Venezia",
         "opponent": "Frosinone",
-        "match": "Venezia @ Frosinone",
+        "match": "FROSINONE 3-2 VENEZIA",
         "voto": 4.5,
         "fantavoto": 4.5,
         "gs": 0,
         "amm": 0,
         "esp": 0,
         "motivo": "Insufficienza (4.5)",
-        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel Venezia @ Frosinone."
+        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel FROSINONE 3-2 VENEZIA."
       },
       {
         "cod": 6632,
@@ -1302,14 +1745,14 @@
         "role": "D",
         "team": "Lecce",
         "opponent": "Cagliari",
-        "match": "Lecce @ Cagliari",
+        "match": "CAGLIARI 1-0 LECCE",
         "voto": 5.0,
         "fantavoto": 4.5,
         "gs": 0,
         "amm": 1,
         "esp": 0,
         "motivo": "Ammonizione (-0.5)",
-        "commento": "In affanno continuo contro gli attaccanti avversari, rimedia cartellino giallo (-0.5) e un pessimo voto nel Lecce @ Cagliari."
+        "commento": "In affanno continuo contro gli attaccanti avversari, rimedia cartellino giallo (-0.5) e un pessimo voto nel CAGLIARI 1-0 LECCE."
       },
       {
         "cod": 4364,
@@ -1317,14 +1760,14 @@
         "role": "C",
         "team": "Atalanta",
         "opponent": "Roma",
-        "match": "Atalanta @ Roma",
+        "match": "ROMA 2-1 ATALANTA",
         "voto": 5.5,
         "fantavoto": 4.5,
         "gs": 0,
         "amm": 0,
         "esp": 1,
         "motivo": "Espulsione (-1)",
-        "commento": "Nervi tesi ed espulsione diretta (-1) che compromette la gara e danneggia i compagni nel Atalanta @ Roma."
+        "commento": "Nervi tesi ed espulsione diretta (-1) che compromette la gara e danneggia i compagni nel ROMA 2-1 ATALANTA."
       }
     ]
   },
@@ -1338,7 +1781,7 @@
         "role": "C",
         "team": "Fiorentina",
         "opponent": "Venezia",
-        "match": "Fiorentina @ Venezia",
+        "match": "VENEZIA 2-4 FIORENTINA",
         "voto": 8.5,
         "fantavoto": 17.5,
         "gf": 3,
@@ -1352,7 +1795,7 @@
         "role": "C",
         "team": "Milan",
         "opponent": "Lazio",
-        "match": "Milan @ Lazio",
+        "match": "LAZIO 2-2 MILAN",
         "voto": 8.0,
         "fantavoto": 14.0,
         "gf": 2,
@@ -1366,7 +1809,7 @@
         "role": "C",
         "team": "Juventus",
         "opponent": "Sassuolo",
-        "match": "Juventus @ Sassuolo",
+        "match": "SASSUOLO 3-2 JUVENTUS",
         "voto": 7.5,
         "fantavoto": 13.5,
         "gf": 2,
@@ -1380,7 +1823,7 @@
         "role": "C",
         "team": "Lecce",
         "opponent": "Monza",
-        "match": "Lecce vs Monza",
+        "match": "LECCE 3-2 MONZA",
         "voto": 7.5,
         "fantavoto": 13.5,
         "gf": 2,
@@ -1394,13 +1837,13 @@
         "role": "A",
         "team": "Inter",
         "opponent": "Udinese",
-        "match": "Inter vs Udinese",
+        "match": "INTER 5-3 UDINESE",
         "voto": 7.5,
         "fantavoto": 11.5,
         "gf": 1,
         "ass": 1,
         "motivo": "1 Gol (+3), 1 Assist (+1)",
-        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel Inter vs Udinese."
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel INTER 5-3 UDINESE."
       },
       {
         "cod": 5877,
@@ -1408,13 +1851,13 @@
         "role": "D",
         "team": "Inter",
         "opponent": "Udinese",
-        "match": "Inter vs Udinese",
+        "match": "INTER 5-3 UDINESE",
         "voto": 7.5,
         "fantavoto": 10.5,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Inter vs Udinese."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel INTER 5-3 UDINESE."
       },
       {
         "cod": 1870,
@@ -1422,13 +1865,13 @@
         "role": "C",
         "team": "Inter",
         "opponent": "Udinese",
-        "match": "Inter vs Udinese",
+        "match": "INTER 5-3 UDINESE",
         "voto": 7.5,
         "fantavoto": 10.5,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Inter vs Udinese."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel INTER 5-3 UDINESE."
       },
       {
         "cod": 4287,
@@ -1436,13 +1879,13 @@
         "role": "C",
         "team": "Napoli",
         "opponent": "Bologna",
-        "match": "Napoli vs Bologna",
+        "match": "NAPOLI 1-0 BOLOGNA",
         "voto": 7.5,
         "fantavoto": 10.5,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Napoli vs Bologna."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel NAPOLI 1-0 BOLOGNA."
       },
       {
         "cod": 4463,
@@ -1450,13 +1893,13 @@
         "role": "A",
         "team": "Sassuolo",
         "opponent": "Juventus",
-        "match": "Sassuolo vs Juventus",
+        "match": "SASSUOLO 3-2 JUVENTUS",
         "voto": 7.5,
         "fantavoto": 10.5,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Sassuolo vs Juventus."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel SASSUOLO 3-2 JUVENTUS."
       },
       {
         "cod": 2137,
@@ -1464,13 +1907,13 @@
         "role": "A",
         "team": "Atalanta",
         "opponent": "Cagliari",
-        "match": "Atalanta vs Cagliari",
+        "match": "ATALANTA 1-2 CAGLIARI",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Atalanta vs Cagliari."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel ATALANTA 1-2 CAGLIARI."
       },
       {
         "cod": 7374,
@@ -1478,13 +1921,13 @@
         "role": "A",
         "team": "Cagliari",
         "opponent": "Atalanta",
-        "match": "Cagliari @ Atalanta",
+        "match": "ATALANTA 1-2 CAGLIARI",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Cagliari @ Atalanta."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel ATALANTA 1-2 CAGLIARI."
       },
       {
         "cod": 6869,
@@ -1492,13 +1935,13 @@
         "role": "D",
         "team": "Como",
         "opponent": "Parma",
-        "match": "Como vs Parma",
+        "match": "COMO 2-1 PARMA",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Como vs Parma."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel COMO 2-1 PARMA."
       },
       {
         "cod": 7023,
@@ -1506,13 +1949,13 @@
         "role": "A",
         "team": "Fiorentina",
         "opponent": "Venezia",
-        "match": "Fiorentina @ Venezia",
+        "match": "VENEZIA 2-4 FIORENTINA",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Fiorentina @ Venezia."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel VENEZIA 2-4 FIORENTINA."
       },
       {
         "cod": 6204,
@@ -1520,13 +1963,13 @@
         "role": "A",
         "team": "Frosinone",
         "opponent": "Genoa",
-        "match": "Frosinone @ Genoa",
+        "match": "GENOA 1-1 FROSINONE",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Frosinone @ Genoa."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel GENOA 1-1 FROSINONE."
       },
       {
         "cod": 6669,
@@ -1534,13 +1977,13 @@
         "role": "A",
         "team": "Inter",
         "opponent": "Udinese",
-        "match": "Inter vs Udinese",
+        "match": "INTER 5-3 UDINESE",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Inter vs Udinese."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel INTER 5-3 UDINESE."
       }
     ],
     "flop": [
@@ -1550,7 +1993,7 @@
         "role": "A",
         "team": "Genoa",
         "opponent": "Frosinone",
-        "match": "Genoa vs Frosinone",
+        "match": "GENOA 1-1 FROSINONE",
         "voto": 5.0,
         "fantavoto": 2.0,
         "gs": 0,
@@ -1565,14 +2008,14 @@
         "role": "P",
         "team": "Inter",
         "opponent": "Udinese",
-        "match": "Inter vs Udinese",
+        "match": "INTER 5-3 UDINESE",
         "voto": 5.0,
         "fantavoto": 2.0,
         "gs": 3,
         "amm": 0,
         "esp": 0,
         "motivo": "3 Gol Subiti (-3)",
-        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel Inter vs Udinese."
+        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel INTER 5-3 UDINESE."
       },
       {
         "cod": 4485,
@@ -1580,14 +2023,14 @@
         "role": "P",
         "team": "Monza",
         "opponent": "Lecce",
-        "match": "Monza @ Lecce",
+        "match": "LECCE 3-2 MONZA",
         "voto": 5.0,
         "fantavoto": 2.0,
         "gs": 3,
         "amm": 0,
         "esp": 0,
         "motivo": "3 Gol Subiti (-3)",
-        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel Monza @ Lecce."
+        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel LECCE 3-2 MONZA."
       },
       {
         "cod": 6248,
@@ -1595,14 +2038,14 @@
         "role": "P",
         "team": "Venezia",
         "opponent": "Fiorentina",
-        "match": "Venezia vs Fiorentina",
+        "match": "VENEZIA 2-4 FIORENTINA",
         "voto": 6.0,
         "fantavoto": 2.0,
         "gs": 4,
         "amm": 0,
         "esp": 0,
         "motivo": "4 Gol Subiti (-4)",
-        "commento": "Tracollo difensivo: ben 4 reti al passivo (-4) e difesa completamente travolta nel Venezia vs Fiorentina."
+        "commento": "Tracollo difensivo: ben 4 reti al passivo (-4) e difesa completamente travolta nel VENEZIA 2-4 FIORENTINA."
       },
       {
         "cod": 6462,
@@ -1610,14 +2053,14 @@
         "role": "P",
         "team": "Udinese",
         "opponent": "Inter",
-        "match": "Udinese @ Inter",
+        "match": "INTER 5-3 UDINESE",
         "voto": 7.0,
         "fantavoto": 2.0,
         "gs": 5,
         "amm": 0,
         "esp": 0,
         "motivo": "5 Gol Subiti (-5)",
-        "commento": "Tracollo difensivo: ben 5 reti al passivo (-5) e difesa completamente travolta nel Udinese @ Inter."
+        "commento": "Tracollo difensivo: ben 5 reti al passivo (-5) e difesa completamente travolta nel INTER 5-3 UDINESE."
       },
       {
         "cod": 4964,
@@ -1625,14 +2068,14 @@
         "role": "P",
         "team": "Juventus",
         "opponent": "Sassuolo",
-        "match": "Juventus @ Sassuolo",
+        "match": "SASSUOLO 3-2 JUVENTUS",
         "voto": 6.0,
         "fantavoto": 3.0,
         "gs": 3,
         "amm": 0,
         "esp": 0,
         "motivo": "3 Gol Subiti (-3)",
-        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel Juventus @ Sassuolo."
+        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel SASSUOLO 3-2 JUVENTUS."
       },
       {
         "cod": 2134,
@@ -1640,14 +2083,14 @@
         "role": "P",
         "team": "Lecce",
         "opponent": "Monza",
-        "match": "Lecce vs Monza",
+        "match": "LECCE 3-2 MONZA",
         "voto": 5.5,
         "fantavoto": 3.5,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Lecce vs Monza."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel LECCE 3-2 MONZA."
       },
       {
         "cod": 4236,
@@ -1655,14 +2098,14 @@
         "role": "P",
         "team": "Sassuolo",
         "opponent": "Juventus",
-        "match": "Sassuolo vs Juventus",
+        "match": "SASSUOLO 3-2 JUVENTUS",
         "voto": 5.5,
         "fantavoto": 3.5,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Sassuolo vs Juventus."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel SASSUOLO 3-2 JUVENTUS."
       },
       {
         "cod": 6534,
@@ -1670,14 +2113,14 @@
         "role": "P",
         "team": "Torino",
         "opponent": "Roma",
-        "match": "Torino vs Roma",
+        "match": "TORINO 0-2 ROMA",
         "voto": 5.5,
         "fantavoto": 3.5,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Torino vs Roma."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel TORINO 0-2 ROMA."
       },
       {
         "cod": 4911,
@@ -1685,14 +2128,14 @@
         "role": "C",
         "team": "Juventus",
         "opponent": "Sassuolo",
-        "match": "Juventus @ Sassuolo",
+        "match": "SASSUOLO 3-2 JUVENTUS",
         "voto": 4.5,
         "fantavoto": 4.0,
         "gs": 0,
         "amm": 1,
         "esp": 0,
         "motivo": "Ammonizione (-0.5)",
-        "commento": "Bocciatura senza appello: prestazione disastrosa (voto 4.5) condita da ammonizione (-0.5) nel Juventus @ Sassuolo."
+        "commento": "Bocciatura senza appello: prestazione disastrosa (voto 4.5) condita da ammonizione (-0.5) nel SASSUOLO 3-2 JUVENTUS."
       },
       {
         "cod": 2521,
@@ -1700,14 +2143,14 @@
         "role": "P",
         "team": "Fiorentina",
         "opponent": "Venezia",
-        "match": "Fiorentina @ Venezia",
+        "match": "VENEZIA 2-4 FIORENTINA",
         "voto": 6.0,
         "fantavoto": 4.0,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Fiorentina @ Venezia."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel VENEZIA 2-4 FIORENTINA."
       },
       {
         "cod": 6662,
@@ -1715,14 +2158,14 @@
         "role": "P",
         "team": "Parma",
         "opponent": "Como",
-        "match": "Parma @ Como",
+        "match": "COMO 2-1 PARMA",
         "voto": 6.0,
         "fantavoto": 4.0,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Parma @ Como."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel COMO 2-1 PARMA."
       },
       {
         "cod": 2640,
@@ -1730,14 +2173,14 @@
         "role": "D",
         "team": "Atalanta",
         "opponent": "Cagliari",
-        "match": "Atalanta vs Cagliari",
+        "match": "ATALANTA 1-2 CAGLIARI",
         "voto": 4.5,
         "fantavoto": 4.5,
         "gs": 0,
         "amm": 0,
         "esp": 0,
         "motivo": "Insufficienza (4.5)",
-        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel Atalanta vs Cagliari."
+        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel ATALANTA 1-2 CAGLIARI."
       },
       {
         "cod": 688,
@@ -1760,14 +2203,14 @@
         "role": "D",
         "team": "Udinese",
         "opponent": "Inter",
-        "match": "Udinese @ Inter",
+        "match": "INTER 5-3 UDINESE",
         "voto": 4.5,
         "fantavoto": 4.5,
         "gs": 0,
         "amm": 0,
         "esp": 0,
         "motivo": "Insufficienza (4.5)",
-        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel Udinese @ Inter."
+        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel INTER 5-3 UDINESE."
       }
     ]
   },
@@ -1781,13 +2224,13 @@
         "role": "A",
         "team": "Inter",
         "opponent": "Roma",
-        "match": "Inter @ Roma",
+        "match": "ROMA 2-2 INTER",
         "voto": 8.0,
         "fantavoto": 14.0,
         "gf": 2,
         "ass": 0,
         "motivo": "2 Gol (+6)",
-        "commento": "Prestazione dominante condita da una clamorosa doppietta (+6) nel Inter @ Roma."
+        "commento": "Prestazione dominante condita da una clamorosa doppietta (+6) nel ROMA 2-2 INTER."
       },
       {
         "cod": 5589,
@@ -1795,13 +2238,13 @@
         "role": "C",
         "team": "Roma",
         "opponent": "Inter",
-        "match": "Roma vs Inter",
+        "match": "ROMA 2-2 INTER",
         "voto": 8.0,
         "fantavoto": 14.0,
         "gf": 2,
         "ass": 0,
         "motivo": "2 Gol (+6)",
-        "commento": "Prestazione dominante condita da una clamorosa doppietta (+6) nel Roma vs Inter."
+        "commento": "Prestazione dominante condita da una clamorosa doppietta (+6) nel ROMA 2-2 INTER."
       },
       {
         "cod": 6482,
@@ -1809,13 +2252,13 @@
         "role": "P",
         "team": "Lazio",
         "opponent": "Venezia",
-        "match": "Lazio @ Venezia",
+        "match": "VENEZIA 0-2 LAZIO",
         "voto": 7.5,
         "fantavoto": 10.5,
         "gf": 0,
         "ass": 0,
         "motivo": "1 Rigore Parato (+3)",
-        "commento": "Eroe assoluto di giornata: rigore parato da campione (+3) che salva il risultato nel Lazio @ Venezia."
+        "commento": "Eroe assoluto di giornata: rigore parato da campione (+3) che salva il risultato nel VENEZIA 0-2 LAZIO."
       },
       {
         "cod": 2423,
@@ -1823,13 +2266,13 @@
         "role": "C",
         "team": "Milan",
         "opponent": "Lecce",
-        "match": "Milan vs Lecce",
+        "match": "MILAN 3-0 LECCE",
         "voto": 7.5,
         "fantavoto": 10.5,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Milan vs Lecce."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel MILAN 3-0 LECCE."
       },
       {
         "cod": 7523,
@@ -1837,13 +2280,13 @@
         "role": "A",
         "team": "Monza",
         "opponent": "Sassuolo",
-        "match": "Monza vs Sassuolo",
+        "match": "MONZA 2-1 SASSUOLO",
         "voto": 7.5,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Monza vs Sassuolo."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel MONZA 2-1 SASSUOLO."
       },
       {
         "cod": 184,
@@ -1851,13 +2294,13 @@
         "role": "C",
         "team": "Bologna",
         "opponent": "Torino",
-        "match": "Bologna vs Torino",
+        "match": "BOLOGNA 1-1 TORINO",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Bologna vs Torino."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel BOLOGNA 1-1 TORINO."
       },
       {
         "cod": 4896,
@@ -1865,13 +2308,13 @@
         "role": "A",
         "team": "Cagliari",
         "opponent": "Udinese",
-        "match": "Cagliari @ Udinese",
+        "match": "UDINESE 0-1 CAGLIARI",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Cagliari @ Udinese."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel UDINESE 0-1 CAGLIARI."
       },
       {
         "cod": 6531,
@@ -1879,13 +2322,13 @@
         "role": "D",
         "team": "Fiorentina",
         "opponent": "Napoli",
-        "match": "Fiorentina vs Napoli",
+        "match": "FIORENTINA 1-1 NAPOLI",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Fiorentina vs Napoli."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel FIORENTINA 1-1 NAPOLI."
       },
       {
         "cod": 7472,
@@ -1893,13 +2336,13 @@
         "role": "C",
         "team": "Frosinone",
         "opponent": "Como",
-        "match": "Frosinone vs Como",
+        "match": "FROSINONE 2-0 COMO",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Frosinone vs Como."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel FROSINONE 2-0 COMO."
       },
       {
         "cod": 7600,
@@ -1907,13 +2350,13 @@
         "role": "A",
         "team": "Genoa",
         "opponent": "Parma",
-        "match": "Genoa @ Parma",
+        "match": "PARMA 2-1 GENOA",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Genoa @ Parma."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel PARMA 2-1 GENOA."
       },
       {
         "cod": 2788,
@@ -1921,13 +2364,13 @@
         "role": "D",
         "team": "Juventus",
         "opponent": "Atalanta",
-        "match": "Juventus vs Atalanta",
+        "match": "JUVENTUS 2-0 ATALANTA",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Juventus vs Atalanta."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel JUVENTUS 2-0 ATALANTA."
       },
       {
         "cod": 6556,
@@ -1935,13 +2378,13 @@
         "role": "A",
         "team": "Lazio",
         "opponent": "Venezia",
-        "match": "Lazio @ Venezia",
+        "match": "VENEZIA 0-2 LAZIO",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Lazio @ Venezia."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel VENEZIA 0-2 LAZIO."
       },
       {
         "cod": 2379,
@@ -1949,13 +2392,13 @@
         "role": "C",
         "team": "Milan",
         "opponent": "Lecce",
-        "match": "Milan vs Lecce",
+        "match": "MILAN 3-0 LECCE",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Milan vs Lecce."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel MILAN 3-0 LECCE."
       },
       {
         "cod": 6372,
@@ -1963,13 +2406,13 @@
         "role": "C",
         "team": "Milan",
         "opponent": "Lecce",
-        "match": "Milan vs Lecce",
+        "match": "MILAN 3-0 LECCE",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Milan vs Lecce."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel MILAN 3-0 LECCE."
       },
       {
         "cod": 5131,
@@ -1977,13 +2420,13 @@
         "role": "C",
         "team": "Napoli",
         "opponent": "Fiorentina",
-        "match": "Napoli @ Fiorentina",
+        "match": "FIORENTINA 1-1 NAPOLI",
         "voto": 7.0,
         "fantavoto": 10.0,
         "gf": 1,
         "ass": 0,
         "motivo": "1 Gol (+3)",
-        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel Napoli @ Fiorentina."
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel FIORENTINA 1-1 NAPOLI."
       }
     ],
     "flop": [
@@ -1993,14 +2436,14 @@
         "role": "A",
         "team": "Venezia",
         "opponent": "Lazio",
-        "match": "Venezia vs Lazio",
+        "match": "VENEZIA 0-2 LAZIO",
         "voto": 4.5,
         "fantavoto": 1.5,
         "gs": 0,
         "amm": 0,
         "esp": 0,
         "motivo": "Rigore Fallito (-3)",
-        "commento": "Giornata da incubo: rigore fallito dagli undici metri (-3) e grave insufficienza nel Venezia vs Lazio."
+        "commento": "Giornata da incubo: rigore fallito dagli undici metri (-3) e grave insufficienza nel VENEZIA 0-2 LAZIO."
       },
       {
         "cod": 4236,
@@ -2008,14 +2451,14 @@
         "role": "P",
         "team": "Sassuolo",
         "opponent": "Monza",
-        "match": "Sassuolo @ Monza",
+        "match": "MONZA 2-1 SASSUOLO",
         "voto": 4.5,
         "fantavoto": 2.5,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Sassuolo @ Monza."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel MONZA 2-1 SASSUOLO."
       },
       {
         "cod": 2134,
@@ -2023,14 +2466,14 @@
         "role": "P",
         "team": "Lecce",
         "opponent": "Milan",
-        "match": "Lecce @ Milan",
+        "match": "MILAN 3-0 LECCE",
         "voto": 6.0,
         "fantavoto": 3.0,
         "gs": 3,
         "amm": 0,
         "esp": 0,
         "motivo": "3 Gol Subiti (-3)",
-        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel Lecce @ Milan."
+        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel MILAN 3-0 LECCE."
       },
       {
         "cod": 133,
@@ -2038,14 +2481,14 @@
         "role": "P",
         "team": "Bologna",
         "opponent": "Torino",
-        "match": "Bologna vs Torino",
+        "match": "BOLOGNA 1-1 TORINO",
         "voto": 5.0,
         "fantavoto": 4.0,
         "gs": 1,
         "amm": 0,
         "esp": 0,
         "motivo": "1 Gol Subiti (-1)",
-        "commento": "Prestazione molto al di sotto degli standard abituali con voto insufficiente (5.0) nel Bologna vs Torino."
+        "commento": "Prestazione molto al di sotto degli standard abituali con voto insufficiente (5.0) nel BOLOGNA 1-1 TORINO."
       },
       {
         "cod": 6966,
@@ -2053,14 +2496,14 @@
         "role": "P",
         "team": "Como",
         "opponent": "Frosinone",
-        "match": "Como @ Frosinone",
+        "match": "FROSINONE 2-0 COMO",
         "voto": 6.0,
         "fantavoto": 4.0,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Como @ Frosinone."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel FROSINONE 2-0 COMO."
       },
       {
         "cod": 7332,
@@ -2068,14 +2511,14 @@
         "role": "P",
         "team": "Genoa",
         "opponent": "Parma",
-        "match": "Genoa @ Parma",
+        "match": "PARMA 2-1 GENOA",
         "voto": 6.0,
         "fantavoto": 4.0,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Genoa @ Parma."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel PARMA 2-1 GENOA."
       },
       {
         "cod": 6248,
@@ -2083,14 +2526,14 @@
         "role": "P",
         "team": "Venezia",
         "opponent": "Lazio",
-        "match": "Venezia vs Lazio",
+        "match": "VENEZIA 0-2 LAZIO",
         "voto": 6.0,
         "fantavoto": 4.0,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Venezia vs Lazio."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel VENEZIA 0-2 LAZIO."
       },
       {
         "cod": 2485,
@@ -2113,14 +2556,14 @@
         "role": "D",
         "team": "Lecce",
         "opponent": "Milan",
-        "match": "Lecce @ Milan",
+        "match": "MILAN 3-0 LECCE",
         "voto": 4.5,
         "fantavoto": 4.5,
         "gs": 0,
         "amm": 0,
         "esp": 0,
         "motivo": "Insufficienza (4.5)",
-        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel Lecce @ Milan."
+        "commento": "Grave insufficienza sul campo (voto 4.5): mai in partita e costantemente battuto nel MILAN 3-0 LECCE."
       },
       {
         "cod": 6660,
@@ -2128,14 +2571,14 @@
         "role": "D",
         "team": "Genoa",
         "opponent": "Parma",
-        "match": "Genoa @ Parma",
+        "match": "PARMA 2-1 GENOA",
         "voto": 5.0,
         "fantavoto": 4.5,
         "gs": 0,
         "amm": 1,
         "esp": 0,
         "motivo": "Ammonizione (-0.5)",
-        "commento": "In affanno continuo contro gli attaccanti avversari, rimedia cartellino giallo (-0.5) e un pessimo voto nel Genoa @ Parma."
+        "commento": "In affanno continuo contro gli attaccanti avversari, rimedia cartellino giallo (-0.5) e un pessimo voto nel PARMA 2-1 GENOA."
       },
       {
         "cod": 4431,
@@ -2143,14 +2586,14 @@
         "role": "P",
         "team": "Atalanta",
         "opponent": "Juventus",
-        "match": "Atalanta @ Juventus",
+        "match": "JUVENTUS 2-0 ATALANTA",
         "voto": 6.5,
         "fantavoto": 4.5,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Atalanta @ Juventus."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel JUVENTUS 2-0 ATALANTA."
       },
       {
         "cod": 5116,
@@ -2158,14 +2601,14 @@
         "role": "P",
         "team": "Inter",
         "opponent": "Roma",
-        "match": "Inter @ Roma",
+        "match": "ROMA 2-2 INTER",
         "voto": 6.5,
         "fantavoto": 4.5,
         "gs": 2,
         "amm": 0,
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
-        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel Inter @ Roma."
+        "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel ROMA 2-2 INTER."
       },
       {
         "cod": 5526,
@@ -2173,14 +2616,14 @@
         "role": "D",
         "team": "Atalanta",
         "opponent": "Juventus",
-        "match": "Atalanta @ Juventus",
+        "match": "JUVENTUS 2-0 ATALANTA",
         "voto": 5.0,
         "fantavoto": 5.0,
         "gs": 0,
         "amm": 0,
         "esp": 0,
         "motivo": "Insufficienza (5.0)",
-        "commento": "Prestazione molto al di sotto degli standard abituali con voto insufficiente (5.0) nel Atalanta @ Juventus."
+        "commento": "Prestazione molto al di sotto degli standard abituali con voto insufficiente (5.0) nel JUVENTUS 2-0 ATALANTA."
       },
       {
         "cod": 6435,
@@ -2188,14 +2631,14 @@
         "role": "A",
         "team": "Atalanta",
         "opponent": "Juventus",
-        "match": "Atalanta @ Juventus",
+        "match": "JUVENTUS 2-0 ATALANTA",
         "voto": 5.0,
         "fantavoto": 5.0,
         "gs": 0,
         "amm": 0,
         "esp": 0,
         "motivo": "Insufficienza (5.0)",
-        "commento": "Prestazione molto al di sotto degli standard abituali con voto insufficiente (5.0) nel Atalanta @ Juventus."
+        "commento": "Prestazione molto al di sotto degli standard abituali con voto insufficiente (5.0) nel JUVENTUS 2-0 ATALANTA."
       },
       {
         "cod": 688,
@@ -3540,6 +3983,449 @@
         "esp": 0,
         "motivo": "2 Gol Subiti (-2)",
         "commento": "Due reti incassate (-2) e disattenzioni fatali che costano punti pesanti nel COMO 2-0 SASSUOLO."
+      }
+    ]
+  },
+  "9": {
+    "round": 9,
+    "total_players_voted": 337,
+    "top": [
+      {
+        "cod": 6833,
+        "name": "Mbangula",
+        "role": "C",
+        "team": "Bologna",
+        "opponent": "Milan",
+        "match": "MILAN 2-4 BOLOGNA",
+        "voto": 9.0,
+        "fantavoto": 18.0,
+        "gf": 3,
+        "ass": 0,
+        "motivo": "3 Gol (+9)",
+        "commento": "Tripletta da sogno e prestazione monumentale (+9) da dominatore assoluto nel MILAN 2-4 BOLOGNA."
+      },
+      {
+        "cod": 6556,
+        "name": "Noslin",
+        "role": "A",
+        "team": "Lazio",
+        "opponent": "Sassuolo",
+        "match": "SASSUOLO 2-6 LAZIO",
+        "voto": 8.0,
+        "fantavoto": 14.0,
+        "gf": 2,
+        "ass": 0,
+        "motivo": "2 Gol (+6)",
+        "commento": "Prestazione dominante condita da una clamorosa doppietta (+6) nel SASSUOLO 2-6 LAZIO."
+      },
+      {
+        "cod": 7610,
+        "name": "Birligea",
+        "role": "A",
+        "team": "Frosinone",
+        "opponent": "Lecce",
+        "match": "FROSINONE 5-1 LECCE",
+        "voto": 7.5,
+        "fantavoto": 13.5,
+        "gf": 2,
+        "ass": 0,
+        "motivo": "2 Gol (+6)",
+        "commento": "Prestazione dominante condita da una clamorosa doppietta (+6) nel FROSINONE 5-1 LECCE."
+      },
+      {
+        "cod": 6618,
+        "name": "Cissè A.",
+        "role": "C",
+        "team": "Milan",
+        "opponent": "Bologna",
+        "match": "MILAN 2-4 BOLOGNA",
+        "voto": 7.5,
+        "fantavoto": 13.5,
+        "gf": 2,
+        "ass": 0,
+        "motivo": "2 Gol (+6)",
+        "commento": "Prestazione dominante condita da una clamorosa doppietta (+6) nel MILAN 2-4 BOLOGNA."
+      },
+      {
+        "cod": 6398,
+        "name": "Isaksen",
+        "role": "C",
+        "team": "Lazio",
+        "opponent": "Sassuolo",
+        "match": "SASSUOLO 2-6 LAZIO",
+        "voto": 8.0,
+        "fantavoto": 12.0,
+        "gf": 1,
+        "ass": 1,
+        "motivo": "1 Gol (+3), 1 Assist (+1)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel SASSUOLO 2-6 LAZIO."
+      },
+      {
+        "cod": 5422,
+        "name": "Zalewski",
+        "role": "C",
+        "team": "Atalanta",
+        "opponent": "Fiorentina",
+        "match": "FIORENTINA 2-2 ATALANTA",
+        "voto": 7.5,
+        "fantavoto": 11.5,
+        "gf": 1,
+        "ass": 1,
+        "motivo": "1 Gol (+3), 1 Assist (+1)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel FIORENTINA 2-2 ATALANTA."
+      },
+      {
+        "cod": 5995,
+        "name": "De Ketelaere",
+        "role": "A",
+        "team": "Atalanta",
+        "opponent": "Fiorentina",
+        "match": "FIORENTINA 2-2 ATALANTA",
+        "voto": 7.5,
+        "fantavoto": 11.5,
+        "gf": 1,
+        "ass": 1,
+        "motivo": "1 Gol (+3), 1 Assist (+1)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel FIORENTINA 2-2 ATALANTA."
+      },
+      {
+        "cod": 6875,
+        "name": "Paz N.",
+        "role": "C",
+        "team": "Como",
+        "opponent": "Torino",
+        "match": "TORINO 1-3 COMO",
+        "voto": 7.5,
+        "fantavoto": 11.5,
+        "gf": 1,
+        "ass": 1,
+        "motivo": "1 Gol (+3), 1 Assist (+1)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel TORINO 1-3 COMO."
+      },
+      {
+        "cod": 6827,
+        "name": "Njie",
+        "role": "C",
+        "team": "Fiorentina",
+        "opponent": "Atalanta",
+        "match": "FIORENTINA 2-2 ATALANTA",
+        "voto": 7.5,
+        "fantavoto": 11.5,
+        "gf": 1,
+        "ass": 1,
+        "motivo": "1 Gol (+3), 1 Assist (+1)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel FIORENTINA 2-2 ATALANTA."
+      },
+      {
+        "cod": 5823,
+        "name": "Baldanzi",
+        "role": "C",
+        "team": "Genoa",
+        "opponent": "Juventus",
+        "match": "GENOA 2-0 JUVENTUS",
+        "voto": 7.5,
+        "fantavoto": 11.5,
+        "gf": 1,
+        "ass": 1,
+        "motivo": "1 Gol (+3), 1 Assist (+1)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel GENOA 2-0 JUVENTUS."
+      },
+      {
+        "cod": 7599,
+        "name": "Lulli",
+        "role": "D",
+        "team": "Roma",
+        "opponent": "Cagliari",
+        "match": "ROMA 4-2 CAGLIARI",
+        "voto": 7.5,
+        "fantavoto": 11.5,
+        "gf": 1,
+        "ass": 1,
+        "motivo": "1 Gol (+3), 1 Assist (+1)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel ROMA 4-2 CAGLIARI."
+      },
+      {
+        "cod": 7314,
+        "name": "Taylor K.",
+        "role": "C",
+        "team": "Lazio",
+        "opponent": "Sassuolo",
+        "match": "SASSUOLO 2-6 LAZIO",
+        "voto": 7.5,
+        "fantavoto": 11.0,
+        "gf": 1,
+        "ass": 1,
+        "motivo": "1 Gol (+3), 1 Assist (+1)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel SASSUOLO 2-6 LAZIO."
+      },
+      {
+        "cod": 536,
+        "name": "Politano",
+        "role": "C",
+        "team": "Napoli",
+        "opponent": "Monza",
+        "match": "MONZA 1-4 NAPOLI",
+        "voto": 7.0,
+        "fantavoto": 11.0,
+        "gf": 1,
+        "ass": 1,
+        "motivo": "1 Gol (+3), 1 Assist (+1)",
+        "commento": "Leader tecnico totale: timbra il gol (+3) e sforna un assist illuminante (+1) nel MONZA 1-4 NAPOLI."
+      },
+      {
+        "cod": 7556,
+        "name": "Mora",
+        "role": "C",
+        "team": "Roma",
+        "opponent": "Cagliari",
+        "match": "ROMA 4-2 CAGLIARI",
+        "voto": 7.5,
+        "fantavoto": 10.5,
+        "gf": 1,
+        "ass": 0,
+        "motivo": "1 Gol (+3)",
+        "commento": "Letale e decisivo: trova il gol vittoria (+3) con un inserimento perfetto nel ROMA 4-2 CAGLIARI."
+      },
+      {
+        "cod": 6204,
+        "name": "Kvernadze",
+        "role": "A",
+        "team": "Frosinone",
+        "opponent": "Lecce",
+        "match": "FROSINONE 5-1 LECCE",
+        "voto": 8.0,
+        "fantavoto": 10.0,
+        "gf": 0,
+        "ass": 2,
+        "motivo": "2 Assist (+2)",
+        "commento": "Visione di gioco stellare: regala 2 assist al bacio (+2) ai compagni nel FROSINONE 5-1 LECCE."
+      }
+    ],
+    "flop": [
+      {
+        "cod": 6666,
+        "name": "Bernabè",
+        "role": "C",
+        "team": "Parma",
+        "opponent": "Udinese",
+        "match": "PARMA 0-0 UDINESE",
+        "voto": 5.0,
+        "fantavoto": 2.0,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Rigore Fallito (-3)",
+        "commento": "Giornata da incubo: rigore fallito dagli undici metri (-3) e grave insufficienza nel PARMA 0-0 UDINESE."
+      },
+      {
+        "cod": 4312,
+        "name": "Maignan",
+        "role": "P",
+        "team": "Milan",
+        "opponent": "Bologna",
+        "match": "MILAN 2-4 BOLOGNA",
+        "voto": 6.0,
+        "fantavoto": 2.0,
+        "gs": 4,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "4 Gol Subiti (-4)",
+        "commento": "Tracollo difensivo: ben 4 reti al passivo (-4) e difesa completamente travolta nel MILAN 2-4 BOLOGNA."
+      },
+      {
+        "cod": 2134,
+        "name": "Falcone",
+        "role": "P",
+        "team": "Lecce",
+        "opponent": "Frosinone",
+        "match": "FROSINONE 5-1 LECCE",
+        "voto": 7.0,
+        "fantavoto": 2.0,
+        "gs": 5,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "5 Gol Subiti (-5)",
+        "commento": "Tracollo difensivo: ben 5 reti al passivo (-5) e difesa completamente travolta nel FROSINONE 5-1 LECCE."
+      },
+      {
+        "cod": 4360,
+        "name": "Caprile",
+        "role": "P",
+        "team": "Cagliari",
+        "opponent": "Roma",
+        "match": "ROMA 4-2 CAGLIARI",
+        "voto": 6.5,
+        "fantavoto": 2.5,
+        "gs": 4,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "4 Gol Subiti (-4)",
+        "commento": "Tracollo difensivo: ben 4 reti al passivo (-4) e difesa completamente travolta nel ROMA 4-2 CAGLIARI."
+      },
+      {
+        "cod": 7301,
+        "name": "Tornqvist",
+        "role": "P",
+        "team": "Monza",
+        "opponent": "Napoli",
+        "match": "MONZA 1-4 NAPOLI",
+        "voto": 6.5,
+        "fantavoto": 2.5,
+        "gs": 4,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "4 Gol Subiti (-4)",
+        "commento": "Tracollo difensivo: ben 4 reti al passivo (-4) e difesa completamente travolta nel MONZA 1-4 NAPOLI."
+      },
+      {
+        "cod": 6496,
+        "name": "Bartesaghi",
+        "role": "D",
+        "team": "Milan",
+        "opponent": "Bologna",
+        "match": "MILAN 2-4 BOLOGNA",
+        "voto": 5.0,
+        "fantavoto": 3.0,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Autogol (-2)",
+        "commento": "Pomeriggio sfortunatissimo: clamoroso autogol (-2) ed errore grave in fase difensiva nel MILAN 2-4 BOLOGNA."
+      },
+      {
+        "cod": 2848,
+        "name": "Frattesi",
+        "role": "C",
+        "team": "Lazio",
+        "opponent": "Sassuolo",
+        "match": "SASSUOLO 2-6 LAZIO",
+        "voto": 6.0,
+        "fantavoto": 3.0,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Rigore Fallito (-3)",
+        "commento": "Giornata da incubo: rigore fallito dagli undici metri (-3) e grave insufficienza nel SASSUOLO 2-6 LAZIO."
+      },
+      {
+        "cod": 6534,
+        "name": "Perri",
+        "role": "P",
+        "team": "Torino",
+        "opponent": "Como",
+        "match": "TORINO 1-3 COMO",
+        "voto": 6.0,
+        "fantavoto": 3.0,
+        "gs": 3,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "3 Gol Subiti (-3)",
+        "commento": "Pomeriggio nero tra i pali: 3 gol subiti (-3) e qualche incertezza nelle uscite nel TORINO 1-3 COMO."
+      },
+      {
+        "cod": 4147,
+        "name": "Caleta-Car",
+        "role": "D",
+        "team": "Sassuolo",
+        "opponent": "Lazio",
+        "match": "SASSUOLO 2-6 LAZIO",
+        "voto": 3.5,
+        "fantavoto": 3.5,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Insufficienza (3.5)",
+        "commento": "Grave insufficienza sul campo (voto 3.5): mai in partita e costantemente battuto nel SASSUOLO 2-6 LAZIO."
+      },
+      {
+        "cod": 7580,
+        "name": "Sutalo J.",
+        "role": "D",
+        "team": "Lazio",
+        "opponent": "Sassuolo",
+        "match": "SASSUOLO 2-6 LAZIO",
+        "voto": 5.5,
+        "fantavoto": 3.5,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Autogol (-2)",
+        "commento": "Pomeriggio sfortunatissimo: clamoroso autogol (-2) ed errore grave in fase difensiva nel SASSUOLO 2-6 LAZIO."
+      },
+      {
+        "cod": 6890,
+        "name": "Moreno M.",
+        "role": "D",
+        "team": "Venezia",
+        "opponent": "Inter",
+        "match": "VENEZIA 0-2 INTER",
+        "voto": 5.5,
+        "fantavoto": 3.5,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Autogol (-2)",
+        "commento": "Pomeriggio sfortunatissimo: clamoroso autogol (-2) ed errore grave in fase difensiva nel VENEZIA 0-2 INTER."
+      },
+      {
+        "cod": 5520,
+        "name": "Cambiaso",
+        "role": "D",
+        "team": "Juventus",
+        "opponent": "Genoa",
+        "match": "GENOA 2-0 JUVENTUS",
+        "voto": 4.0,
+        "fantavoto": 4.0,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Insufficienza (4.0)",
+        "commento": "Grave insufficienza sul campo (voto 4.0): mai in partita e costantemente battuto nel GENOA 2-0 JUVENTUS."
+      },
+      {
+        "cod": 782,
+        "name": "Spalletti",
+        "role": "ALL",
+        "team": "Serie A",
+        "opponent": "-",
+        "match": "",
+        "voto": 4.0,
+        "fantavoto": 4.0,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Insufficienza (4.0)",
+        "commento": "Grave insufficienza sul campo (voto 4.0): mai in partita e costantemente battuto contro il avversario."
+      },
+      {
+        "cod": 7154,
+        "name": "Odenthal",
+        "role": "D",
+        "team": "Sassuolo",
+        "opponent": "Lazio",
+        "match": "SASSUOLO 2-6 LAZIO",
+        "voto": 4.0,
+        "fantavoto": 4.0,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Insufficienza (4.0)",
+        "commento": "Grave insufficienza sul campo (voto 4.0): mai in partita e costantemente battuto nel SASSUOLO 2-6 LAZIO."
+      },
+      {
+        "cod": 6246,
+        "name": "Lipani",
+        "role": "C",
+        "team": "Sassuolo",
+        "opponent": "Lazio",
+        "match": "SASSUOLO 2-6 LAZIO",
+        "voto": 4.0,
+        "fantavoto": 4.0,
+        "gs": 0,
+        "amm": 0,
+        "esp": 0,
+        "motivo": "Insufficienza (4.0)",
+        "commento": "Grave insufficienza sul campo (voto 4.0): mai in partita e costantemente battuto nel SASSUOLO 2-6 LAZIO."
       }
     ]
   }

@@ -571,7 +571,7 @@ def run_master_pipeline():
     max_played_round = 0
     for rec in voti_2627_lookup.values():
         if isinstance(rec, dict):
-            for v_item in rec.get('giornate_dettaglio', []):
+            for v_item in rec.get('voti_dettaglio', rec.get('giornate_dettaglio', [])):
                 g_val = v_item.get('giornata', 0)
                 if g_val > max_played_round:
                     max_played_round = g_val

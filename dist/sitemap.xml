@@ -3307,61 +3307,61 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/sassuolo-lazio/</loc>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/venezia-udinese/</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/roma-cagliari/</loc>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/torino-lecce/</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/torino-como/</loc>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/cagliari-frosinone/</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/milan-bologna/</loc>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/parma-bologna/</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/parma-udinese/</loc>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/roma-sassuolo/</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/genoa-juventus/</loc>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/napoli-lazio/</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/monza-napoli/</loc>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/genoa-milan/</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/venezia-inter/</loc>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/monza-atalanta/</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/frosinone-lecce/</loc>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/inter-como/</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/fiorentina-atalanta/</loc>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/fiorentina-juventus/</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -3482,6 +3482,66 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/probabili-formazioni/udinese-milan/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/sassuolo-lazio/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/roma-cagliari/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/torino-como/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/milan-bologna/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/parma-udinese/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/genoa-juventus/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/monza-napoli/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/venezia-inter/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/frosinone-lecce/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/probabili-formazioni/fiorentina-atalanta/</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>

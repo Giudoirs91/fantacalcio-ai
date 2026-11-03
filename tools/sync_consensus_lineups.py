@@ -286,43 +286,58 @@ def safe_ovr(p_master, default=74):
 def parse_gazzetta_ballots(html):
     """Estrae coppie di ballottaggio e percentuali da Gazzetta."""
     ballots = []
-    matches = re.findall(r'([A-Za-z\s\.\'-]{3,20})\s*-\s*([A-Za-z\s\.\'-]{3,20})\s*(\d{2})\s*-\s*(\d{2})%?', html)
+    seen = set()
+    matches = re.findall(r'([A-Za-z\s\.\'\-À-ú]{3,25})\s*-\s*([A-Za-z\s\.\'\-À-ú]{3,25})\s*(\d{2})\s*-\s*(\d{2})%?', html)
     for p1, p2, pct1, pct2 in matches:
-        p1 = clean_name(p1)
-        p2 = clean_name(p2)
-        if len(p1) > 2 and len(p2) > 2 and not any(kw in p1.lower() for kw in ['probabili', 'gazzetta', 'calcio', 'serie']):
-            try:
-                ballots.append({
-                    'p1': p1,
-                    'pct1': int(pct1),
-                    'p2': p2,
-                    'pct2': int(pct2)
-                })
-            except Exception:
-                pass
+        p1 = clean_name(p1.strip())
+        p2 = clean_name(p2.strip())
+        for kw in ['probabili', 'gazzetta', 'calcio', 'serie', 'modulo', 'allenatore', 'ore', 'stadio']:
+            if kw in p1.lower():
+                p1 = re.sub(rf'(?i){kw}.*', '', p1).strip()
+            if kw in p2.lower():
+                p2 = re.sub(rf'(?i){kw}.*', '', p2).strip()
+        if len(p1) > 2 and len(p2) > 2:
+            key = (p1.lower(), p2.lower())
+            if key not in seen:
+                seen.add(key)
+                try:
+                    ballots.append({
+                        'p1': p1,
+                        'pct1': int(pct1),
+                        'p2': p2,
+                        'pct2': int(pct2)
+                    })
+                except Exception:
+                    pass
     return ballots
 
 def parse_sosfanta_ballots(html):
-    """Estrae ballottaggi da SOS Fanta usando text parsing."""
+    """Estrae ballottaggi da SOS Fanta usando text parsing robusto."""
     from bs4 import BeautifulSoup
     soup = BeautifulSoup(html, 'html.parser')
-    text = soup.get_text(separator=' ')
+    text = soup.get_text(separator='\n')
     ballots = []
-    # Pattern: 51% - 49% Cittadini - Monterisi
-    matches = re.findall(r'(\d{2})%\s*-\s*(\d{2})%\s*([A-Za-z\s\.\'-]{3,25})\s*-\s*([A-Za-z\s\.\'-]{3,25})', text)
+    seen = set()
+    matches = re.findall(r'(\d{2})%\s*-\s*(\d{2})%\s*([^\n\r]+?)\s*-\s*([^\n\r]+)', text)
     for pct1, pct2, p1, p2 in matches:
         p1 = clean_name(p1)
         p2 = clean_name(p2)
-        if len(p1) > 2 and len(p2) > 2 and not any(kw in p1.lower() for kw in ['panchina', 'squalificati', 'infortunati']):
-            try:
-                ballots.append({
-                    'p1': p1,
-                    'pct1': int(pct1),
-                    'p2': p2,
-                    'pct2': int(pct2)
-                })
-            except Exception:
-                pass
+        for kw in ['Panchina', 'Squalificati', 'Infortunati', 'Ballottaggi', 'Indisponibili']:
+            p1 = p1.split(kw)[0].strip()
+            p2 = p2.split(kw)[0].strip()
+        if len(p1) >= 3 and len(p2) >= 3:
+            key = (p1.lower(), p2.lower())
+            if key not in seen:
+                seen.add(key)
+                try:
+                    ballots.append({
+                        'p1': p1,
+                        'pct1': int(pct1),
+                        'p2': p2,
+                        'pct2': int(pct2)
+                    })
+                except Exception:
+                    pass
     return ballots
 
 def parse_fantapazz_ballots(html):
@@ -407,7 +422,7 @@ def build_ai_verdict(p1_master, p2_master, consensus_pct1, consensus_pct2, is_in
 
 def run_consensus_engine():
     print("=" * 65)
-    print("  FANTAMASTERAI: CONSENSUS ENGINE PROBABILI FORMAZIONI (GIORNATA 7)")
+    print("  FANTAMASTERAI: CONSENSUS ENGINE PROBABILI FORMAZIONI (GIORNATA 11)")
     print("=" * 65)
     
     players, tactical_db, injuries, calendar, aliases = load_data()
@@ -456,23 +471,23 @@ def run_consensus_engine():
     print(f"  • Gazzetta duelli trovati: {len(gaz_ballots)}")
     print(f"  • SOS Fanta duelli trovati: {len(sos_ballots)}")
 
-    # 3. Aggregazione per Giornata 9 (Turno Infrasettimanale del 27-29 Ottobre 2026)
-    g9_matches = [
-        {"home": "Sassuolo", "away": "Lazio", "date": "27/10/2026", "time": "18:30", "stadium": "Mapei Stadium"},
-        {"home": "Roma", "away": "Cagliari", "date": "27/10/2026", "time": "20:45", "stadium": "Stadio Olimpico", "big_match": True},
-        {"home": "Torino", "away": "Como", "date": "28/10/2026", "time": "18:30", "stadium": "Olimpico Grande Torino"},
-        {"home": "Milan", "away": "Bologna", "date": "28/10/2026", "time": "18:30", "stadium": "San Siro", "big_match": True},
-        {"home": "Parma", "away": "Udinese", "date": "28/10/2026", "time": "18:30", "stadium": "Ennio Tardini"},
-        {"home": "Genoa", "away": "Juventus", "date": "28/10/2026", "time": "20:45", "stadium": "Luigi Ferraris", "big_match": True},
-        {"home": "Monza", "away": "Napoli", "date": "28/10/2026", "time": "20:45", "stadium": "U-Power Stadium", "big_match": True},
-        {"home": "Venezia", "away": "Inter", "date": "28/10/2026", "time": "20:45", "stadium": "Pier Luigi Penzo", "big_match": True},
-        {"home": "Frosinone", "away": "Lecce", "date": "29/10/2026", "time": "18:30", "stadium": "Benito Stirpe"},
-        {"home": "Fiorentina", "away": "Atalanta", "date": "29/10/2026", "time": "20:45", "stadium": "Artemio Franchi", "big_match": True}
+    # 3. Aggregazione per Giornata 11 (Weekend del 06-08 Novembre 2026)
+    g11_matches = [
+        {"home": "Venezia", "away": "Udinese", "date": "06/11/2026", "time": "20:45", "stadium": "Pier Luigi Penzo"},
+        {"home": "Torino", "away": "Lecce", "date": "07/11/2026", "time": "15:00", "stadium": "Olimpico Grande Torino"},
+        {"home": "Cagliari", "away": "Frosinone", "date": "07/11/2026", "time": "15:00", "stadium": "Unipol Domus"},
+        {"home": "Parma", "away": "Bologna", "date": "07/11/2026", "time": "18:00", "stadium": "Ennio Tardini"},
+        {"home": "Roma", "away": "Sassuolo", "date": "07/11/2026", "time": "20:45", "stadium": "Stadio Olimpico"},
+        {"home": "Napoli", "away": "Lazio", "date": "08/11/2026", "time": "12:30", "stadium": "Diego Armando Maradona", "big_match": True},
+        {"home": "Genoa", "away": "Milan", "date": "08/11/2026", "time": "15:00", "stadium": "Luigi Ferraris", "big_match": True},
+        {"home": "Monza", "away": "Atalanta", "date": "08/11/2026", "time": "15:00", "stadium": "U-Power Stadium"},
+        {"home": "Inter", "away": "Como", "date": "08/11/2026", "time": "18:00", "stadium": "San Siro"},
+        {"home": "Fiorentina", "away": "Juventus", "date": "08/11/2026", "time": "20:45", "stadium": "Artemio Franchi", "big_match": True}
     ]
 
     consensus_round_output = {
-        "round": 9,
-        "round_label": "9ª Giornata Serie A 2026/27 (Turno Infrasettimanale)",
+        "round": 11,
+        "round_label": "11ª Giornata Serie A 2026/27",
         "last_updated": datetime.now().strftime("%d/%m/%Y %H:%M"),
         "sources_tracked": ["Fantacalcio.it", "Gazzetta dello Sport", "Sky Sport", "SOS Fanta"],
         "matches": []
@@ -485,7 +500,7 @@ def run_consensus_engine():
             parsed_teams_dict[tname] = tinfo
 
     print("\n[3/5] Elaborazione Consensus 10 Match...")
-    for match_meta in g9_matches:
+    for match_meta in g11_matches:
         h_team = match_meta['home']
         a_team = match_meta['away']
         

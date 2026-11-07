@@ -112,6 +112,7 @@ def render_unified_header(rel_path=""):
                     </button>
                     <div class="nav-dropdown-menu">
                         <a href="{rel_path}listone/" class="dropdown-item">📋 Listone Calciatori &amp; Valutazioni FVM</a>
+                        <a href="{rel_path}probabili-formazioni/inter/" class="dropdown-item">🏟️ Top 11 Squadre (20 Club)</a>
                         <a href="{rel_path}griglia-portieri/" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
                         <a href="{rel_path}rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
                         <a href="{rel_path}scommesse-talenti/" class="dropdown-item">🔮 Gemme &amp; Scommesse Low-Cost</a>
@@ -137,6 +138,7 @@ def render_unified_header(rel_path=""):
             <a href="{rel_path}statistiche-serie-a/">📊 Statistiche</a>
             <a href="{rel_path}top-flop/">⚡ Top/Flop</a>
             <a href="{rel_path}listone/">💰 Listone</a>
+            <a href="{rel_path}probabili-formazioni/inter/">🏟️ Top 11 Club</a>
             <a href="{rel_path}rigoristi-serie-a/">🎯 Rigoristi</a>
             <a href="{rel_path}griglia-portieri/">🧤 Portieri</a>
         </nav>
@@ -377,104 +379,6 @@ def compute_ai_seasonal_targets(player, slot_desc, prezzo_cons, max_bid):
         "price": f"{prezzo_cons} CR (Max {max_bid} CR)"
     }
 
-def render_fantasolidita_and_rischi(player, xfm_data, ovr, tit_val, titolarita_desc, integrita_val, frag_tier, tot_missed, slot_desc, prezzo_cons, max_bid, full_name):
-    ovr_pct = min(98, max(25, int(ovr)))
-    xfm_val = float(xfm_data["xfm"])
-    xfm_pct = min(98, max(25, int(round(min(10.0, max(5.0, xfm_val)) * 10.0))))
-    tit_pct = min(98, max(25, int(tit_val)))
-    integrita_pct = min(98, max(20, int(integrita_val)))
-
-    disp_fill_class = "fill-disp-green" if integrita_val >= 85 else ("fill-disp-yellow" if integrita_val >= 70 else "fill-disp-red")
-    disp_color = "#10b981" if integrita_val >= 85 else ("#fbbf24" if integrita_val >= 70 else "#ef4444")
-
-    targets = compute_ai_seasonal_targets(player, slot_desc, prezzo_cons, max_bid)
-
-    return f'''
-    <div class="fantasolidita-showcase">
-        <div class="fantasolidita-header">
-            <h2 class="fantasolidita-title">🛡️ Fantasolidità &amp; Indici di Rischio AI &mdash; {clean_html(full_name)}</h2>
-            <p class="fantasolidita-desc">Valutazione oggettiva proprietaria Fanta Master AI: analisi incrociata tra potenziale puro, resa attesa xFM, garanzia titolarità e tenuta atletica.</p>
-        </div>
-
-        <div class="fcp-skill-group">
-            <!-- 1. ALG OVR -->
-            <div class="fcp-skill-row">
-                <div class="fcp-skill-head">
-                    <span>🧠 Algoritmo Predittivo OVR</span>
-                </div>
-                <div class="fcp-track-wrap">
-                    <div class="fcp-track-bg">
-                        <div class="fcp-track-fill fill-ovr" style="width: {ovr_pct}%;"></div>
-                    </div>
-                    <div class="fcp-track-pin" style="left: clamp(30px, {ovr_pct}%, calc(100% - 30px));">{ovr}/100</div>
-                </div>
-                <div class="fcp-skill-sub">Forza complessiva e potenziale fantacalcistico nel modello neurale Serie A 2026/27.</div>
-            </div>
-
-            <!-- 2. EXPECTED FANTAMEDIA (xFM) -->
-            <div class="fcp-skill-row">
-                <div class="fcp-skill-head">
-                    <span>📈 Expected FantaMedia (xFM)</span>
-                </div>
-                <div class="fcp-track-wrap">
-                    <div class="fcp-track-bg">
-                        <div class="fcp-track-fill fill-xfm" style="width: {xfm_pct}%;"></div>
-                    </div>
-                    <div class="fcp-track-pin" style="left: clamp(34px, {xfm_pct}%, calc(100% - 34px));">{xfm_val:.2f} xFM</div>
-                </div>
-                <div class="fcp-skill-sub">Rendimento medio bonus/malus atteso per 90&#39; basato su volume xG e xA (FM reale: <b>{xfm_data['realFm']:.2f}</b>).</div>
-            </div>
-
-            <!-- 3. TITOLARITÀ & CONTINUITÀ -->
-            <div class="fcp-skill-row">
-                <div class="fcp-skill-head">
-                    <span>🛡️ Titolarità &amp; Continuità Voto</span>
-                </div>
-                <div class="fcp-track-wrap">
-                    <div class="fcp-track-bg">
-                        <div class="fcp-track-fill fill-tit" style="width: {tit_pct}%;"></div>
-                    </div>
-                    <div class="fcp-track-pin" style="left: clamp(26px, {tit_pct}%, calc(100% - 26px));">{tit_val}%</div>
-                </div>
-                <div class="fcp-skill-sub">Probabilità di voto costante nelle 38 giornate (<b>{clean_html(titolarita_desc)}</b>).</div>
-            </div>
-
-            <!-- 4. RESISTENZA INFORTUNI -->
-            <div class="fcp-skill-row">
-                <div class="fcp-skill-head">
-                    <span>🩺 Resistenza Infortuni &amp; Integrità</span>
-                </div>
-                <div class="fcp-track-wrap">
-                    <div class="fcp-track-bg">
-                        <div class="fcp-track-fill {disp_fill_class}" style="width: {integrita_pct}%;"></div>
-                    </div>
-                    <div class="fcp-track-pin" style="left: clamp(26px, {integrita_pct}%, calc(100% - 26px));">{integrita_val}%</div>
-                </div>
-                <div class="fcp-skill-sub">Tenuta atletica e storico assenze (<b>{clean_html(frag_tier)}</b> &bull; {tot_missed} gare saltate storiche).</div>
-            </div>
-        </div>
-
-        <!-- Target Previsionali AI -->
-        <div class="ai-target-grid">
-            <div class="ai-target-card">
-                <span class="ai-target-label">{targets['stat1_lbl']}</span>
-                <span class="ai-target-val" style="color:#fbbf24;">{targets['stat1_val']}</span>
-            </div>
-            <div class="ai-target-card">
-                <span class="ai-target-label">{targets['stat2_lbl']}</span>
-                <span class="ai-target-val" style="color:#38bdf8;">{targets['stat2_val']}</span>
-            </div>
-            <div class="ai-target-card">
-                <span class="ai-target-label">⏱️ Gare a Voto AI</span>
-                <span class="ai-target-val" style="color:#4ade80;">{targets['pres']}</span>
-            </div>
-            <div class="ai-target-card">
-                <span class="ai-target-label">🏷️ Asta &amp; Valore CR</span>
-                <span class="ai-target-val" style="font-size:13px;color:#cbd5e1;">{targets['price']}</span>
-            </div>
-        </div>
-    </div>'''
-
 def render_reparto_teammates(player, all_players):
     if not all_players:
         return ""
@@ -500,30 +404,30 @@ def render_reparto_teammates(player, all_players):
         tm_slug = slugify(tm_name)
         tm_ovr = int(tm.get("ovr", 70))
         tm_tit = int(tm.get("titolarita", 50))
-        tm_fvm = tm.get("fvm", 1)
+        tm_fvm = int(round(safe_float(tm.get("fvm"), 1)))
         ovr_cls = "elite" if tm_ovr >= 90 else ("gold" if tm_ovr >= 82 else ("cyan" if tm_ovr >= 75 else "silver"))
         
         items_html.append(f'''
-        <a href="../../calciatore/{tm_slug}/" class="reparto-item" title="Vedi scheda di {clean_html(tm_name)}">
+        <a href="../../calciatore/{tm_slug}/" class="reparto-item" title="{clean_html(tm_name)}">
             <div class="reparto-item-left">
-                <span class="profile-role-circle {role}" style="width:28px;height:28px;font-size:11px;min-width:28px;">{role}</span>
-                <div>
+                <span class="profile-role-circle {role}" style="width:26px;height:26px;font-size:10.5px;min-width:26px;">{role}</span>
+                <div style="min-width:0;">
                     <div class="reparto-item-name">{clean_html(tm_name)}</div>
-                    <div class="reparto-item-sub">Titolarità: <b>{tm_tit}%</b> &bull; FVM: <b>{tm_fvm} CR</b></div>
+                    <div class="reparto-item-sub">Tit <b>{tm_tit}%</b> &bull; <b>{tm_fvm} CR</b></div>
                 </div>
             </div>
             <div class="reparto-item-right">
-                <span class="ovr-pill {ovr_cls}" style="font-size:10px;padding:2px 7px;">OVR {tm_ovr}</span>
-                <span style="font-size:11px;color:#38bdf8;font-weight:800;">Scheda &rarr;</span>
+                <span class="ovr-pill {ovr_cls}">OVR {tm_ovr}</span>
+                <span class="reparto-arrow">&rarr;</span>
             </div>
         </a>''')
         
     return f'''
     <div class="reparto-teammates-card">
-        <h3 class="reparto-card-title">
-            <span>⚔️</span>
-            <span>Compagni di Reparto &amp; Ballottaggi {clean_html(team)}</span>
-        </h3>
+        <div class="reparto-card-title">
+            <span>⚔️ Reparto {clean_html(team)} ({role})</span>
+            <a href="../../probabili-formazioni/{slugify(team)}/" class="reparto-club-link">Top 11 {clean_html(team)} &rarr;</a>
+        </div>
         <div class="reparto-grid">
             {"".join(items_html)}
         </div>
@@ -535,14 +439,14 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     team = player.get("team", "")
     role = player.get("role", "C")
     mantra = player.get("mantra", "")
-    fvm = player.get("fvm", 1)
-    qta = player.get("qta", 1)
-    diff_q = player.get("diff_q", 0)
+    fvm = int(round(safe_float(player.get("fvm"), 1)))
+    qta = int(round(safe_float(player.get("qta"), 1)))
+    diff_q = int(round(safe_float(player.get("diff_q"), 0)))
     diff_q_str = (("+" if diff_q > 0 else "") + str(diff_q)) if diff_q != 0 else ""
-    prezzo_cons = player.get("prezzo_cons", player.get("prezzo_consigliato", qta))
-    max_bid = player.get("max_bid", int(prezzo_cons * 1.35))
-    ovr = player.get("ovr", 70)
-    titolarita = player.get("titolarita", 70)
+    prezzo_cons = int(round(safe_float(player.get("prezzo_cons", player.get("prezzo_consigliato", qta)), qta)))
+    max_bid = int(round(safe_float(player.get("max_bid", int(prezzo_cons * 1.35)), prezzo_cons)))
+    ovr = int(player.get("ovr", 70))
+    titolarita = int(player.get("titolarita", 70))
     titolarita_desc = player.get("titolarita_desc_2627", f"{titolarita}% Titolare")
     slot_desc = player.get("slot_fascia", player.get("slot_desc", "Titolare"))
     is_injured = player.get("is_injured", False)
@@ -557,79 +461,29 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     team_tac = tactical_db.get(team, {})
     mister = team_tac.get("all", "Mister")
     modulo = team_tac.get("modulo", "4-3-3")
-    stile = team_tac.get("stile", "Costruzione organizzata, pressing alto")
+    stile = team_tac.get("stile", "Costruzione organizzata")
 
     tit_color = "#4ade80" if titolarita >= 68 else ("#f59e0b" if titolarita >= 50 else "#ef4444")
     ovr_cls = "elite" if ovr >= 90 else ("gold" if ovr >= 82 else ("cyan" if ovr >= 75 else "silver"))
 
     in_riatlet = is_injured and is_in_riatletizzazione(infort_rientro)
-    inj_badge = f'<span class="badge-tag gold" style="background:rgba(245,158,11,0.2);color:#fbbf24;border:1px solid rgba(245,158,11,0.5);">🟡 In riatletizzazione</span>' if in_riatlet else (f'<span class="badge-tag red">🩹 Rientro: {clean_html(infort_rientro)}</span>' if is_injured else '<span class="badge-tag green">🟢 Integro</span>')
+    inj_badge = f'<span class="ppro-pill amber">🟡 Riatletizzazione ({clean_html(infort_rientro)})</span>' if in_riatlet else (f'<span class="ppro-pill red">🩹 Rientro: {clean_html(infort_rientro)}</span>' if is_injured else '<span class="ppro-pill green">🟢 Disponibile</span>')
     
     rig_badge = ''
-    if player.get("is_rigorista_1"): rig_badge = '<span class="badge-tag gold">👑 1° Rigorista</span>'
-    elif player.get("is_rigorista_2"): rig_badge = '<span class="badge-tag gold">🎯 2° Rigorista</span>'
-    elif player.get("is_rigorista_3"): rig_badge = '<span class="badge-tag blue">🎯 3° Rigorista</span>'
-    elif player.get("is_punizioni") or player.get("is_corner"): rig_badge = '<span class="badge-tag cyan">📐 Piazzati</span>'
+    if player.get("is_rigorista_1"): rig_badge = '<span class="ppro-pill gold">👑 1° Rigorista</span>'
+    elif player.get("is_rigorista_2"): rig_badge = '<span class="ppro-pill gold">🎯 2° Rigorista</span>'
+    elif player.get("is_rigorista_3"): rig_badge = '<span class="ppro-pill cyan">🎯 3° Rigorista</span>'
+    elif player.get("is_punizioni") or player.get("is_corner"): rig_badge = '<span class="ppro-pill cyan">📐 Piazzati</span>'
 
     coppia_badge = ''
     coppia_nome = player.get("coppia_nome")
     coppia_tipo = player.get("coppia_tipo", "")
     if coppia_nome and coppia_nome != '-':
-        icon = '⬇️ Vice' if ('RISERVA' in coppia_tipo or '2°' in coppia_tipo) else ('⬆️ Titolare' if ('TITOLARE' in coppia_tipo or '1°' in coppia_tipo) else '🔄 Staffetta')
-        coppia_badge = f'<span class="badge-tag blue">{icon}: <b>{clean_html(coppia_nome)}</b></span>'
+        icon = '⬇️ Vice' if ('RISERVA' in coppia_tipo or '2°' in coppia_tipo) else ('🔄 Alt.' if ('TITOLARE' in coppia_tipo or '1°' in coppia_tipo) else '🔄 Staffetta')
+        coppia_badge = f'<span class="ppro-pill slate">{icon}: <b>{clean_html(coppia_nome)}</b></span>'
 
-    oop_badge = ''
-    oop_val = player.get("oop_val")
-    if oop_val and oop_val != '-':
-        oop_color = "#f59e0b" if player.get("oop_tier") == "ORO" else ("#cbd5e1" if player.get("oop_tier") == "ARGENTO" else "#d97706")
-        oop_badge = f'<span class="badge-tag oop" style="border-color:{oop_color};color:{oop_color};">💎 {clean_html(oop_val)}</span>'
-
-    # Expected FantaMedia (xFM) & Regression Alert
+    # Expected FantaMedia (xFM)
     xfm_data = compute_expected_fantamedia(player)
-    is_elite = (xfm_data["xfm"] >= 7.8 or (ovr >= 86 and xfm_data["xfm"] >= 7.2)) and xfm_data["realFm"] >= 7.8
-    if is_elite and xfm_data["delta"] >= 0.20:
-        xfm_alert_html = f"""
-        <div class="xfm-alert-box under" style="background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.35);">
-            <div style="display:flex;align-items:center;gap:8px;">
-                <span style="font-size:18px;">🔥</span>
-                <div>
-                    <div style="font-weight:800;color:var(--accent-cyan);font-size:12px;">STATO DI GRAZIA / TOP ASSOLUTO (Efficacia Straordinaria)</div>
-                    <div style="font-size:11px;color:var(--text-secondary);">FM Reale: <b>{xfm_data['realFm']}</b> • xFM Attesa: <b>{xfm_data['xfm']}</b> (Delta: <b style="color:var(--accent-cyan);">+{xfm_data['delta']}</b>). Straordinaria efficacia realizzativa su una mole di occasioni creata d'élite. Titolare inamovibile da schierare sempre!</div>
-                </div>
-            </div>
-        </div>"""
-    elif xfm_data["delta"] <= -0.40:
-        xfm_alert_html = f"""
-        <div class="xfm-alert-box under">
-            <div style="display:flex;align-items:center;gap:8px;">
-                <span style="font-size:18px;">💎</span>
-                <div>
-                    <div style="font-weight:800;color:#34d399;font-size:12px;">SOTTO-RENDIMENTO STATISTICO (Occasione di Mercato / Bonus Imminenti)</div>
-                    <div style="font-size:11px;color:var(--text-secondary);">FM Reale: <b>{xfm_data['realFm']}</b> vs xFM Attesa: <b>{xfm_data['xfm']}</b> (Delta: <b style="color:#34d399;">{xfm_data['delta']}</b>). Produce un volume elevato di occasioni (xG/xA) ma ha raccolto meno del dovuto per sfortuna temporanea. COMPRA ALL'ASTA O SCAMBIA!</div>
-                </div>
-            </div>
-        </div>"""
-    elif xfm_data["delta"] >= 0.60:
-        xfm_alert_html = f"""
-        <div class="xfm-alert-box over">
-            <div style="display:flex;align-items:center;gap:8px;">
-                <span style="font-size:18px;">📈</span>
-                <div>
-                    <div style="font-weight:800;color:#fbbf24;font-size:12px;">SOVRA-RENDIMENTO DA EPISODI (Possibile Regressione Fisiologica)</div>
-                    <div style="font-size:11px;color:var(--text-secondary);">FM Reale: <b>{xfm_data['realFm']}</b> vs xFM Attesa: <b>{xfm_data['xfm']}</b> (Delta: <b style="color:#f87171;">+{xfm_data['delta']}</b>). Ha raccolto più bonus rispetto al volume effettivo di occasioni create: possibile flessione. Ottimo per scambi al massimo valore.</div>
-                </div>
-            </div>
-        </div>"""
-    else:
-        xfm_alert_html = f"""
-        <div class="xfm-alert-box balanced">
-            <div style="display:flex;align-items:center;gap:8px;">
-                <span style="font-size:16px;">⚖️</span>
-                <div style="font-size:11.5px;color:var(--text-secondary);">
-                    FM Reale (<b>{xfm_data['realFm']}</b>) in perfetto equilibrio con la FantaMedia Attesa xFM (<b>{xfm_data['xfm']}</b>). Rendimento costante e sostenibile.
-                </div>
-            </div>
-        </div>"""
 
     # Voti dettaglio & Smart Trend
     voti_list = player.get("voti_dettaglio_2627") or []
@@ -846,20 +700,20 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     else:
         table_rows_html = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:12px;">Nessun dato registrato</td></tr>'
 
-    # Injury History Hub
+    # Injury History Hub (Visual & Zero-Word UX)
     cronistoria = hist_entry.get("cronistoria", []) if hist_entry else []
-    frag_score = hist_entry.get("punteggio_fragilita", 20) if hist_entry else 20
-    frag_tier = hist_entry.get("classe_fragilita", "🟢 Roccia") if hist_entry else "🟢 Roccia"
-    disp_pct = hist_entry.get("disponibilita_pct", 100.0) if hist_entry else 100.0
-    tot_missed = hist_entry.get("partite_saltate_totali", 0) if hist_entry else 0
-    tot_days = hist_entry.get("giorni_stop_totali", 0) if hist_entry else 0
-    recidive = hist_entry.get("recidive_muscolari", 0) if hist_entry else 0
-    medical_advice = hist_entry.get("consiglio_medico_ai") if hist_entry else ("Attualmente ai box con tempi di recupero stimati." if is_injured else "Calciatore integro e solido. Storico infortuni nullo nelle ultime stagioni.")
+    frag_score = int(round(safe_float(hist_entry.get("punteggio_fragilita") if hist_entry else player.get("fragility_score", 20), 20)))
+    frag_tier = (hist_entry.get("classe_fragilita") if hist_entry else None) or player.get("fragilita_val") or "🟢 Roccia"
+    frag_tier_short = re.sub(r"\s*\(.*?\)", "", str(frag_tier)).strip() or "🟢 Roccia"
+    disp_pct = int(round(safe_float(hist_entry.get("disponibilita_pct") if hist_entry else player.get("disponibilita_pct", 100), 100)))
+    tot_missed = int(hist_entry.get("partite_saltate_totali", 0) if hist_entry else player.get("partite_saltate_totali", 0))
+    tot_days = int(hist_entry.get("giorni_stop_totali", 0) if hist_entry else player.get("giorni_stop_totali", 0))
+    recidive = int(hist_entry.get("recidive_muscolari", 0) if hist_entry else player.get("recidive_muscolari", 0))
 
     tier_color = "#f87171" if frag_score >= 80 else ("#fb923c" if frag_score >= 60 else ("#fbbf24" if frag_score >= 40 else "#34d399"))
     disp_color = "#ef4444" if disp_pct < 75 else ("#f59e0b" if disp_pct < 85 else "#10b981")
 
-    # Accordion
+    # Accordion per stagione (solo se ci sono infortuni registrati)
     seasons_map = {}
     for inj in cronistoria:
         s = (inj.get("stagione") or "Altro").strip()
@@ -884,7 +738,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                 cur_badge = '<span class="season-active-chip" style="margin-left:6px;font-size:9.5px;padding:1px 5px;">🔴 In corso</span>' if inj.get("in_corso") else ""
                 sub_rows += f"""
                 <tr>
-                    <td style="font-weight:600;color:#fff;">{diag}{cur_badge}</td>
+                    <td style="font-weight:700;color:#fff;">{diag}{cur_badge}</td>
                     <td><span class="injury-type-pill {tipo_cls}">{clean_html(inj.get('tipo', 'generico'))}</span></td>
                     <td style="color:#f87171;font-weight:700;">{inj.get('giorni_stop', 0)} gg</td>
                     <td style="color:#fbbf24;font-weight:800;text-align:center;">{inj.get('partite_perse', 0)}</td>
@@ -898,13 +752,12 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                         <span class="season-pill">{clean_html(sGroup['stagione'])}</span>
                         {f'<span class="season-active-chip">🔴 In corso</span>' if sGroup['has_in_corso'] else ''}
                         <div class="season-stats-badges">
-                            <span class="season-stat-item"><b>{len(sGroup['infortuni'])}</b> {'infortunio' if len(sGroup['infortuni']) == 1 else 'infortuni'}</span>
-                            <span class="season-stat-item stop"><b>{sGroup['tot_giorni']} gg</b> stop</span>
-                            <span class="season-stat-item missed"><b>{sGroup['tot_partite']}</b> {'gara persa' if sGroup['tot_partite'] == 1 else 'gare perse'}</span>
+                            <span class="season-stat-item"><b>{len(sGroup['infortuni'])}</b> stop</span>
+                            <span class="season-stat-item stop"><b>{sGroup['tot_giorni']} gg</b></span>
+                            <span class="season-stat-item missed"><b>{sGroup['tot_partite']}</b> gare saltate</span>
                         </div>
                     </div>
                     <div class="season-detail-btn">
-                        <span>Dettaglio</span>
                         <span class="season-chevron">▼</span>
                     </div>
                 </div>
@@ -912,10 +765,10 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                     <table class="injury-history-subtable">
                         <thead>
                             <tr>
-                                <th>Diagnosi Infortunio</th>
+                                <th>Diagnosi</th>
                                 <th>Tipo</th>
                                 <th>Stop</th>
-                                <th style="text-align:center;">Gare Perse</th>
+                                <th style="text-align:center;">Gare</th>
                                 <th>Periodo</th>
                             </tr>
                         </thead>
@@ -925,250 +778,201 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                     </table>
                 </div>
             </div>"""
-    
-    injury_history_html = f"""
-    <div class="injury-history-container">
-        <div class="injury-history-header">
-            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-                <span style="font-size:18px;">🩺</span>
-                <h3 style="margin:0;font-size:13.5px;font-weight:800;color:#fff;letter-spacing:0.3px;">Storico Infortuni &amp; Affidabilità Fisica (Multi-Stagione)</h3>
-                <span class="injury-tier-chip" style="background:rgba(255,255,255,0.06);border:1px solid {tier_color};color:{tier_color};">
-                    {clean_html(frag_tier)}
-                </span>
-            </div>
-            <div style="font-size:11.5px;color:var(--text-muted);">
-                Indice Fragilità AI: <b style="color:{tier_color};font-size:13px;">{frag_score}/100</b>
-            </div>
-        </div>
-        <div class="injury-metrics-grid">
-            <div class="injury-metric-card">
-                <span class="lbl">Disponibilità Storica</span>
-                <div style="display:flex;align-items:baseline;gap:6px;margin:4px 0;">
-                    <b class="val" style="color:{disp_color};font-size:19px;">{disp_pct}%</b>
-                    <small style="color:var(--text-muted);font-size:10.5px;">su 3 stagioni</small>
-                </div>
-                <div class="injury-progress-bar-bg">
-                    <div class="injury-progress-bar-fill" style="width:{disp_pct}%;background:{disp_color};"></div>
-                </div>
-            </div>
-            <div class="injury-metric-card">
-                <span class="lbl">Partite Perse Totali</span>
-                <b class="val" style="color:#fbbf24;font-size:19px;margin-top:4px;">{tot_missed} <small style="font-size:11px;color:var(--text-muted);font-weight:normal;">gare</small></b>
-                <span style="font-size:10.5px;color:var(--text-secondary);">{tot_days} giorni di stop</span>
-            </div>
-            <div class="injury-metric-card">
-                <span class="lbl">Recidive Muscolari</span>
-                <b class="val" style="color:{'#ef4444' if recidive > 1 else ('#f59e0b' if recidive == 1 else '#34d399')};font-size:19px;margin-top:4px;">
-                    {recidive} <small style="font-size:11px;color:var(--text-muted);font-weight:normal;">eventi</small>
-                </b>
-                <span style="font-size:10.5px;color:var(--text-secondary);">{'⚠️ Rischio ricadute' if recidive > 1 else 'Tenuta muscolare solida'}</span>
-            </div>
-            <div class="injury-metric-card">
-                <span class="lbl">Stato Attuale</span>
-                <div style="margin-top:4px;">
-                    {f'<span class="health-current-tag riatlet" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;">🟡 In riatletizzazione ({clean_html(infort_rientro)})</span>' if in_riatlet else (f'<span class="health-current-tag injured">🩹 {clean_html(infort_motivo)} ({clean_html(infort_rientro)})</span>' if is_injured else '<span class="health-current-tag healthy">🟢 Pienamente Disponibile</span>')}
-                </div>
-                <span style="font-size:10.5px;color:var(--text-muted);">Serie A 2026/27</span>
-            </div>
-        </div>
-        <div class="injury-advice-box">
-            <div style="display:flex;align-items:flex-start;gap:8px;">
-                <span style="font-size:15px;line-height:1.2;">💡</span>
-                <div>
-                    <b style="color:var(--accent-cyan);font-size:11px;text-transform:uppercase;letter-spacing:0.4px;">Analisi Medica &amp; Consigli Asta AI:</b>
-                    <p style="margin:2px 0 0 0;font-size:11.5px;color:var(--text-secondary);line-height:1.45;">{clean_html(medical_advice)}</p>
-                </div>
-            </div>
-        </div>
-        {f'<div class="injury-seasons-accordion">{season_accordion_html}</div>' if sorted_seasons else '<div class="injury-empty-banner"><span style="font-size:16px;">🛡️</span><span><b>Integrità Fisica Impeccabile:</b> Nessun infortunio significativo registrato negli ultimi 3 anni. Calciatore integro ad alta affidabilità.</span></div>'}
-    </div>"""
 
-    # TAB 1: OVERVIEW HTML
+    # KPI e metriche principali
     fm_val_str = f"{float(player.get('fm_2627') or player.get('fm') or 0):.2f}" if (player.get('fm_2627') or player.get('fm')) else "-"
     mv_val_str = f"{float(player.get('mv_2627') or player.get('mv') or 0):.2f}" if (player.get('mv_2627') or player.get('mv')) else "-"
 
-    # PREDICTIVE INTELLIGENCE METRICS (Floor/Ceiling, Sub-Impact, Matchup G6)
-    floor_val = player.get("floor", 5.0)
-    ceiling_val = player.get("ceiling", 8.0)
-    spread_val = player.get("spread", round(ceiling_val - floor_val, 1))
-    vol_label = player.get("volatility_label", "MEDIA")
-    vol_color = "#f43f5e" if vol_label == "ALTA" else ("#10b981" if vol_label == "BASSA" else "#fbbf24")
-    tactical_prof = player.get("tactical_profile", "Equilibrato")
-    tactical_adv = player.get("tactical_advice", "")
-
-    sub_prob = player.get("sub_vote_prob", 35)
-    sub_score = player.get("sub_impact_score", 45)
-    sub_badge = player.get("super_sub_badge", "⚡ SUBENTRANTE UTILE")
-    sub_verdict = player.get("sub_verdict", "")
+    floor_val = safe_float(player.get("floor"), 5.5)
+    ceiling_val = safe_float(player.get("ceiling"), 8.5)
+    sub_prob = int(round(safe_float(player.get("sub_vote_prob"), 50)))
+    sub_badge = player.get("super_sub_badge", "⚡ Subentrante")
 
     mv_data = player.get("matchup_vulnerability") or {}
-    opp_name = mv_data.get("opponent", "N/D")
-    vuln_score = mv_data.get("vulnerability_score", 50)
-    vuln_badge = mv_data.get("vulnerability_badge", "⚖️ MATCHUP EQUILIBRATO")
-    vuln_advice = mv_data.get("matchup_advice", "")
+    opp_name = mv_data.get("opponent", "")
+    next_round_num = mv_data.get("current_round") or (max_played + 1 if max_played < 38 else 38)
+    next_match_str = mv_data.get("match_str") or (f"{team} vs {opp_name}" if opp_name else f"Giornata {next_round_num}")
+    next_is_home = mv_data.get("is_home", True)
+    vuln_score = int(round(safe_float(mv_data.get("vulnerability_score"), 50)))
+    vuln_badge = mv_data.get("vulnerability_badge", "⚖️ Matchup Equilibrato")
+    vuln_color = "#10b981" if vuln_score >= 65 else ("#ef4444" if vuln_score <= 35 else "#fbbf24")
 
-    floor_pct = max(0, min(100, (floor_val - 3.0) / 12.0 * 100))
-    ceiling_pct = max(0, min(100, (ceiling_val - 3.0) / 12.0 * 100))
-    bar_width = max(4, ceiling_pct - floor_pct)
-
-    tit_val = min(100, max(0, player.get("titolarita", 50)))
+    tit_val = min(100, max(0, int(player.get("titolarita", 50))))
     suff_pct = round((suff_count / len(valid_voti)) * 100) if valid_voti else (min(95, round(float(player.get("rating_2526", 6.0)) * 12)) if player.get("rating_2526") else 75)
-    integrita_val = min(100, max(0, round(float(player.get("disponibilita_pct", 100 - (player.get("fragility_score", 20) or 20))))))
+    integrita_val = min(100, max(0, disp_pct))
 
-    disp_color = "#ef4444" if integrita_val < 75 else ("#f59e0b" if integrita_val < 88 else "#10b981")
-    aff_color = "#34d399" if suff_pct >= 75 else ("#f59e0b" if suff_pct < 55 else "#38bdf8")
-
-    fantasolidita_html = render_fantasolidita_and_rischi(
-        player, xfm_data, ovr, tit_val, titolarita_desc, 
-        integrita_val, frag_tier, tot_missed, slot_desc, 
-        prezzo_cons, max_bid, full_name
-    )
+    targets = compute_ai_seasonal_targets(player, slot_desc, prezzo_cons, max_bid)
     reparto_teammates_html = render_reparto_teammates(player, all_players)
 
-    quick_gauges_html = f"""
-        <div class="profile-quick-gauges-bar">
-            <div class="quick-gauge-item" title="{clean_html(player.get('titolarita_dettaglio') or titolarita_desc or f'Titolarità: {tit_val}%')}">
-                <div class="gauge-header">
-                    <span class="gauge-lbl">Titolarità ℹ️</span>
-                    <b class="gauge-val" style="color:{tit_color};">{tit_val}%</b>
-                </div>
-                <div class="gauge-track"><div class="gauge-fill" style="width:{tit_val}%;background:{tit_color};"></div></div>
-                <span class="gauge-sub">{clean_html(titolarita_desc)}</span>
+    # Delta xFM pill compatto
+    delta_val = xfm_data["delta"]
+    if delta_val >= 0.35:
+        xfm_delta_pill = f'<span class="ppro-delta-tag hot">+{delta_val:.2f} 🔥</span>'
+    elif delta_val <= -0.35:
+        xfm_delta_pill = f'<span class="ppro-delta-tag gem">{delta_val:.2f} 💎</span>'
+    else:
+        xfm_delta_pill = f'<span class="ppro-delta-tag eq">⚖️ In linea</span>'
+
+    # 6-Box Season Output Strip (Icone + Numeri, Zero Parole Inutili)
+    pres_2627 = int(player.get("presenze_2627") or len(valid_voti) or 0)
+    starts_2627 = int(player.get("starts_2627") or 0)
+    mins_2627 = int(player.get("minuti_2627") or 0)
+    amm_2627 = int(player.get("amm_2627") or 0)
+    esp_2627 = int(player.get("esp_2627") or 0)
+    fm_home = safe_float(player.get("fm_casa_2627"), 0)
+    fm_away = safe_float(player.get("fm_trasferta_2627"), 0)
+    split_str = f"{fm_home:.1f} / {fm_away:.1f}" if (fm_home > 0 or fm_away > 0) else f"{fm_val_str}"
+
+    if role == 'P':
+        cs_2627 = int(player.get("clean_sheets_2627") or 0)
+        gs_2627 = int(player.get("gol_subiti_2627") or 0)
+        sv_pct = player.get("save_pct_2627") or 72
+        season_strip_6_html = f"""
+        <div class="ppro-stat-strip-6">
+            <div class="ppro-stat-cell">
+                <span class="sc-lbl">🧤 Clean Sheet</span>
+                <b class="sc-val" style="color:#4ade80;">{cs_2627}</b>
+                <span class="sc-sub">Porte inviolate</span>
             </div>
-            <div class="quick-gauge-item">
-                <div class="gauge-header">
-                    <span class="gauge-lbl">Affidabilità Voto</span>
-                    <b class="gauge-val" style="color:{aff_color};">{suff_pct}%</b>
-                </div>
-                <div class="gauge-track"><div class="gauge-fill" style="width:{suff_pct}%;background:{aff_color};"></div></div>
-                <span class="gauge-sub">{f"{suff_count}/{len(valid_voti)} gare sufficienza" if valid_voti else "Stabilità media voto"}</span>
+            <div class="ppro-stat-cell">
+                <span class="sc-lbl">🥅 Gol Subiti</span>
+                <b class="sc-val" style="color:#f87171;">{gs_2627}</b>
+                <span class="sc-sub">Passivo 26/27</span>
             </div>
-            <div class="quick-gauge-item">
-                <div class="gauge-header">
-                    <span class="gauge-lbl">Integrità Fisica</span>
-                    <b class="gauge-val" style="color:{disp_color};">{integrita_val}%</b>
+            <div class="ppro-stat-cell">
+                <span class="sc-lbl">🛡️ % Parate</span>
+                <b class="sc-val" style="color:#38bdf8;">{sv_pct}%</b>
+                <span class="sc-sub">{int(player.get('parate_2627') or 0)} parate</span>
+            </div>
+            <div class="ppro-stat-cell">
+                <span class="sc-lbl">⏱️ Presenze</span>
+                <b class="sc-val" style="color:#fff;">{pres_2627}</b>
+                <span class="sc-sub">{starts_2627} tit &bull; {mins_2627}&#39;</span>
+            </div>
+            <div class="ppro-stat-cell">
+                <span class="sc-lbl">✅ Sufficienze</span>
+                <b class="sc-val" style="color:#34d399;">{suff_pct}%</b>
+                <span class="sc-sub">{suff_count}/{len(valid_voti)} gare &ge; 6</span>
+            </div>
+            <div class="ppro-stat-cell">
+                <span class="sc-lbl">🏠 Casa / ✈️ Fuori</span>
+                <b class="sc-val" style="color:#fbbf24;">{split_str}</b>
+                <span class="sc-sub">FantaMedia split</span>
+            </div>
+        </div>"""
+    else:
+        gol_2627 = int(player.get("gol_2627") or 0)
+        ass_2627 = int(player.get("assist_2627") or 0)
+        rf_tot = int(player.get("rf") or 0)
+        season_strip_6_html = f"""
+        <div class="ppro-stat-strip-6">
+            <div class="ppro-stat-cell">
+                <span class="sc-lbl">⚽ Gol</span>
+                <b class="sc-val" style="color:#fbbf24;">{gol_2627}</b>
+                <span class="sc-sub">{f'{rf_tot} Rig' if rf_tot > 0 else f"{safe_float(player.get('xg_2627'), 0):.1f} xG"}</span>
+            </div>
+            <div class="ppro-stat-cell">
+                <span class="sc-lbl">🪄 Assist</span>
+                <b class="sc-val" style="color:#38bdf8;">{ass_2627}</b>
+                <span class="sc-sub">{safe_float(player.get('xa_2627'), 0):.1f} xA</span>
+            </div>
+            <div class="ppro-stat-cell">
+                <span class="sc-lbl">⏱️ Presenze</span>
+                <b class="sc-val" style="color:#fff;">{pres_2627}</b>
+                <span class="sc-sub">{starts_2627} tit &bull; {mins_2627}&#39;</span>
+            </div>
+            <div class="ppro-stat-cell">
+                <span class="sc-lbl">✅ Sufficienze</span>
+                <b class="sc-val" style="color:#4ade80;">{suff_pct}%</b>
+                <span class="sc-sub">{suff_count}/{len(valid_voti)} gare &ge; 6</span>
+            </div>
+            <div class="ppro-stat-cell">
+                <span class="sc-lbl">🏠 Casa / ✈️ Fuori</span>
+                <b class="sc-val" style="color:#fde047;">{split_str}</b>
+                <span class="sc-sub">FM Casa / Trasf.</span>
+            </div>
+            <div class="ppro-stat-cell">
+                <span class="sc-lbl">🟨 Disciplina</span>
+                <b class="sc-val" style="color:{'#f87171' if (amm_2627 > 2 or esp_2627 > 0) else '#cbd5e1'};">{amm_2627} / {esp_2627}</b>
+                <span class="sc-sub">Amm / Esp</span>
+            </div>
+        </div>"""
+
+    # Visual Gauges & AI Targets Row (2 Compact Visual Cards, Zero Prose)
+    visual_ai_row_html = f"""
+    <div class="ppro-dual-grid">
+        <!-- Card 1: Range Voto & Indici Chiave -->
+        <div class="ppro-box-card">
+            <div class="ppro-box-head">
+                <span>📊 Range FantaVoto &amp; Affidabilità</span>
+                <span class="ppro-mini-tag">{clean_html(player.get('volatility_label', 'NORMALE'))}</span>
+            </div>
+            <div class="ppro-range-tri">
+                <div class="rt-box floor">
+                    <span class="rt-lbl">🛡️ Base Min</span>
+                    <b class="rt-val">{floor_val:.1f}</b>
                 </div>
-                <div class="gauge-track"><div class="gauge-fill" style="width:{integrita_val}%;background:{disp_color};"></div></div>
-                <span class="gauge-sub">{f"{tot_missed} gare perse storiche" if tot_missed > 0 else ("Infortunato" if is_injured else "Tenuta solida")}</span>
+                <div class="rt-box avg">
+                    <span class="rt-lbl">🎯 Media xFM</span>
+                    <b class="rt-val" style="color:#38bdf8;">{xfm_data['xfm']:.2f}</b>
+                </div>
+                <div class="rt-box ceil">
+                    <span class="rt-lbl">🚀 Picco Max</span>
+                    <b class="rt-val" style="color:#fbbf24;">{ceiling_val:.1f}</b>
+                </div>
+            </div>
+            <div class="ppro-bars-compact">
+                <div class="pbc-row">
+                    <span class="pbc-lbl">Titolarità</span>
+                    <div class="pbc-track"><div class="pbc-fill" style="width:{tit_val}%;background:{tit_color};"></div></div>
+                    <b class="pbc-val" style="color:{tit_color};">{tit_val}%</b>
+                </div>
+                <div class="pbc-row">
+                    <span class="pbc-lbl">Tenuta Fisica</span>
+                    <div class="pbc-track"><div class="pbc-fill" style="width:{integrita_val}%;background:{disp_color};"></div></div>
+                    <b class="pbc-val" style="color:{disp_color};">{integrita_val}%</b>
+                </div>
             </div>
         </div>
-    """
 
-    predictive_card_html = f"""
-        <div class="profile-advanced-predictive-box" style="margin:16px 0;background:rgba(18,24,38,0.75);border:1px solid rgba(56,189,248,0.22);border-radius:14px;padding:14px;box-shadow:0 8px 24px rgba(0,0,0,0.35);">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;flex-wrap:wrap;gap:6px;">
-                <div style="display:flex;align-items:center;gap:7px;">
-                    <span style="font-size:16px;">🔮</span>
-                    <b style="color:#fff;font-family:'Outfit',sans-serif;font-size:13px;letter-spacing:0.2px;">Intelligence Predittiva &amp; Rischio AI</b>
-                </div>
-                <span style="font-size:10.5px;font-weight:800;color:#38bdf8;background:rgba(56,189,248,0.12);padding:2px 7px;border-radius:20px;border:1px solid rgba(56,189,248,0.3);">Serie A 2026/27</span>
+        <!-- Card 2: Proiezione Finale AI (38 Giornate) -->
+        <div class="ppro-box-card">
+            <div class="ppro-box-head">
+                <span>🔮 Proiezione Stagionale AI (38G)</span>
+                <span class="ppro-mini-tag gold">{clean_html(slot_desc)}</span>
             </div>
-
-            <!-- 1. BASE MINIMA VS POTENZIALE MAX -->
-            <div style="margin-bottom:12px;background:rgba(0,0,0,0.25);border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.04);">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:4px;">
-                    <span style="font-size:11px;font-weight:700;color:#94a3b8;">Spettro Rischio / Rendimento:</span>
-                    <b style="font-size:11px;color:#cbd5e1;">{clean_html(tactical_prof)}</b>
+            <div class="ppro-proj-grid">
+                <div class="pp-item">
+                    <span class="pp-lbl">{targets['stat1_lbl']}</span>
+                    <b class="pp-val" style="color:#fbbf24;">{targets['stat1_val']}</b>
                 </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;text-align:center;margin-bottom:8px;">
-                    <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:6px 3px;">
-                        <span style="font-size:9.5px;color:#fca5a5;text-transform:uppercase;font-weight:800;display:block;white-space:nowrap;letter-spacing:0.2px;">🛡️ Base Minima</span>
-                        <b style="font-size:16px;color:#fff;line-height:1.2;display:block;margin:2px 0;">{floor_val}</b>
-                        <span style="font-size:8.5px;color:#94a3b8;display:block;white-space:nowrap;">Senza bonus</span>
-                    </div>
-                    <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);border-radius:8px;padding:6px 3px;">
-                        <span style="font-size:9.5px;color:#7dd3fc;text-transform:uppercase;font-weight:800;display:block;white-space:nowrap;letter-spacing:0.2px;">🎯 Media Attesa</span>
-                        <b style="font-size:16px;color:#38bdf8;line-height:1.2;display:block;margin:2px 0;">{float(player.get('xfm') or player.get('fm_2627') or player.get('fm') or 6.0):.1f}</b>
-                        <span style="font-size:8.5px;color:#94a3b8;display:block;white-space:nowrap;">Valore xFM</span>
-                    </div>
-                    <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:6px 3px;">
-                        <span style="font-size:9.5px;color:#fde68a;text-transform:uppercase;font-weight:800;display:block;white-space:nowrap;letter-spacing:0.2px;">🚀 Potenziale Max</span>
-                        <b style="font-size:16px;color:#fbbf24;line-height:1.2;display:block;margin:2px 0;">{ceiling_val}</b>
-                        <span style="font-size:8.5px;color:#94a3b8;display:block;white-space:nowrap;">Picco con bonus</span>
-                    </div>
+                <div class="pp-item">
+                    <span class="pp-lbl">{targets['stat2_lbl']}</span>
+                    <b class="pp-val" style="color:#38bdf8;">{targets['stat2_val']}</b>
                 </div>
-                <div style="font-size:11px;color:#cbd5e1;line-height:1.4;">{clean_html(tactical_adv)}</div>
-            </div>
-
-            <!-- 2. SUB-IMPACT & SUPER-SUB -->
-            <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(0,0,0,0.25);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.04);flex-wrap:wrap;">
-                <div>
-                    <div style="display:flex;align-items:center;gap:6px;">
-                        <span style="font-size:12.5px;font-weight:800;color:#fff;">{sub_badge}</span>
-                    </div>
-                    <div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">{clean_html(sub_verdict)}</div>
+                <div class="pp-item">
+                    <span class="pp-lbl">⏱️ Gare a Voto</span>
+                    <b class="pp-val" style="color:#4ade80;">{targets['pres']}</b>
                 </div>
-                <div style="text-align:right;">
-                    <span style="font-size:10px;color:#64748b;text-transform:uppercase;font-weight:800;display:block;">Probabilità Voto se in Panca</span>
-                    <b style="font-size:15px;color:{'#34d399' if sub_prob >= 80 else ('#fbbf24' if sub_prob >= 60 else '#f87171')};">{sub_prob}%</b>
+                <div class="pp-item">
+                    <span class="pp-lbl">⚡ Voto da Sub</span>
+                    <b class="pp-val" style="color:#cbd5e1;">{sub_prob}%</b>
                 </div>
-            </div>
-
-            <!-- 3. MATCHUP VULNERABILITY G6 -->
-            <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.04);">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:6px;">
-                    <span style="font-size:12px;font-weight:700;color:#fff;">Incrocio Tattico Prossimo Turno: <b style="color:#38bdf8;">{clean_html(mv_data.get('match_str') or f'vs {opp_name}')}</b></span>
-                    <span style="font-size:11px;font-weight:800;color:{'#f43f5e' if vuln_score >= 70 else ('#10b981' if vuln_score <= 35 else '#fbbf24')};">{vuln_badge} ({vuln_score}/100)</span>
-                </div>
-                <div style="font-size:11.5px;color:#94a3b8;line-height:1.4;margin-bottom:6px;">{clean_html(vuln_advice)}</div>
             </div>
         </div>
-    """
+    </div>"""
 
     tab_overview_html = f"""
     <div id="profileTabPane_overview" class="profile-tab-pane" style="display:block;">
-        <!-- Fantasolidità & Indici di Rischio Showcase (Visual Bars + Pin Badges + AI Targets) -->
-        {fantasolidita_html}
-
-        <!-- Live Season Summary Bar -->
-        <div class="profile-season-summary-bar">
-            <div class="profile-season-header-row">
-                <div style="display:flex;align-items:center;gap:8px;">
-                    <span style="font-size:16px;">📈</span>
-                    <span style="font-size:13px;font-weight:800;color:#fff;">Rendimento Live 2026/27</span>
-                </div>
-                <span class="trend-badge-clean" style="color:{smart_trend['color']};font-weight:800;font-size:12px;" title="{clean_html(smart_trend['desc'])}">{smart_trend['label']}</span>
-            </div>
-            <div class="summary-kpis-grid">
-                <div class="kpi-mini-card">
-                    <span class="kpi-mini-lbl">FM</span>
-                    <b class="kpi-mini-val" style="color:#fbbf24;">{fm_val_str}</b>
-                </div>
-                <div class="kpi-mini-card">
-                    <span class="kpi-mini-lbl">MV</span>
-                    <b class="kpi-mini-val" style="color:#4ade80;">{mv_val_str}</b>
-                </div>
-                <div class="kpi-mini-card">
-                    <span class="kpi-mini-lbl">xFM</span>
-                    <b class="kpi-mini-val" style="color:var(--accent-cyan);">{xfm_data['xfm']}</b>
-                </div>
-                <div class="kpi-mini-card">
-                    <span class="kpi-mini-lbl">Sufficienze</span>
-                    <b class="kpi-mini-val" style="color:#38bdf8;">{suff_pct}% <small style="font-size:9.5px;font-weight:600;color:var(--text-muted);">({suff_count}/{len(valid_voti)})</small></b>
-                </div>
-                <div class="kpi-mini-card">
-                    <span class="kpi-mini-lbl">Bonus Tot</span>
-                    <b class="kpi-mini-val" style="color:#fde047;">+{player.get('tot_bonus_2627', 0)}</b>
-                </div>
-                <div class="kpi-mini-card">
-                    <span class="kpi-mini-lbl">Minuti</span>
-                    <b class="kpi-mini-val" style="color:#fff;">{player.get('minuti_2627', 0)}&#39;</b>
-                </div>
-            </div>
-        </div>
-
-        <!-- Regression Alert Banner -->
-        {xfm_alert_html}
-
-        <!-- Intelligence Predittiva & Rischio AI (Floor/Ceiling, Super-Sub, Matchup G6) -->
-        {predictive_card_html}
+        {season_strip_6_html}
+        {visual_ai_row_html}
 
         <!-- 38-ROUND SEASON PERFORMANCE HUB -->
         <div class="profile-andamento-container">
             <div class="andamento-title">
                 <div class="andamento-title-group">
-                    <span class="andamento-main-title">📊 Rendimento Stagionale</span>
-                    <span class="andamento-sub-info">(G1-G{max_played} Giocate • G{max_played+1}-G38 In Arrivo)</span>
+                    <span class="andamento-main-title">📈 Voti Giornata per Giornata</span>
+                    <span class="andamento-sub-info">(G1–G{max_played})</span>
                 </div>
                 <div class="season-view-toggle">
                     <button id="btnSeasonView_chart" class="season-toggle-btn active" onclick="switchSeasonView('chart')">📈 Grafico</button>
@@ -1176,13 +980,11 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                 </div>
             </div>
 
-            <!-- Legend & Reference -->
             <div class="season-chart-legend">
-                <span class="legend-item"><span class="legend-box green"></span> Voto Base</span>
-                <span class="legend-item"><span class="legend-box gold"></span> Bonus (+Gol/Assist)</span>
-                <span class="legend-item"><span class="legend-box red"></span> Malus Concesso</span>
-                <span class="legend-item"><span class="legend-line"></span> FantaVoto Finale</span>
-                <span class="legend-item"><span class="legend-line dashed cyan"></span> Sufficienza (6.0)</span>
+                <span class="legend-item"><span class="legend-box green"></span> Voto</span>
+                <span class="legend-item"><span class="legend-box gold"></span> Bonus</span>
+                <span class="legend-item"><span class="legend-box red"></span> Malus</span>
+                <span class="legend-item"><span class="legend-line"></span> FantaVoto</span>
             </div>
 
             <!-- View 1: 38-Round SVG Chart -->
@@ -1202,9 +1004,9 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                                 <th>G</th>
                                 <th>Partita</th>
                                 <th>Luogo</th>
-                                <th>Voto Base</th>
+                                <th>Voto</th>
                                 <th>Bonus / Malus</th>
-                                <th>FantaVoto</th>
+                                <th>FV</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1215,171 +1017,87 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
             </div>
         </div>
 
-        <!-- Key Quick Info (4-card Executive Grid) -->
-        <div class="profile-quick-info-grid">
-            <div class="quick-info-box card-advice">
-                <div class="quick-info-header">
-                    <span class="quick-info-icon">💡</span>
-                    <span class="lbl">Consiglio Strategico AI</span>
-                </div>
-                <div class="quick-info-content">
-                    <span class="quick-badge advice-badge {player.get('ai_advice_type', 'regular')}">{clean_html(player.get('ai_advice') or player.get('consiglio') or '-')}</span>
-                </div>
-            </div>
-            <div class="quick-info-box card-slot">
-                <div class="quick-info-header">
-                    <span class="quick-info-icon">🎯</span>
-                    <span class="lbl">Gerarchia &amp; Slot</span>
-                </div>
-                <div class="quick-info-content">
-                    <span class="quick-badge slot-badge">{clean_html(slot_desc)}</span>
-                </div>
-            </div>
-            <div class="quick-info-box card-injury">
-                <div class="quick-info-header">
-                    <span class="quick-info-icon">🩺</span>
-                    <span class="lbl">Integrità Fisica</span>
-                </div>
-                <div class="quick-info-content">
-                    <span class="quick-badge health-badge {'amber' if in_riatlet else ('injured' if is_injured else 'healthy')}" style="{'background:rgba(245,158,11,0.18);border-color:rgba(245,158,11,0.5);color:#fbbf24;' if in_riatlet else ''}">
-                        {f'🟡 In riatletizzazione ({clean_html(infort_rientro)})' if in_riatlet else (f'🩹 Infortunato ({clean_html(infort_rientro)})' if is_injured else '🟢 Integro (Basso Rischio)')}
-                    </span>
-                </div>
-            </div>
-            <div class="quick-info-box card-mantra">
-                <div class="quick-info-header">
-                    <span class="quick-info-icon">💎</span>
-                    <span class="lbl">Ruoli Mantra</span>
-                </div>
-                <div class="quick-info-content">
-                    <div class="mantra-badges-container">
-                        {render_mantra_quick_badges(mantra)}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Multi-Season Injury & Physical Reliability Hub -->
-        {injury_history_html}
-
-        <!-- Compagni di Reparto & Ballottaggi Club -->
         {reparto_teammates_html}
     </div>"""
 
-    # TAB 2: ADVANCED STATS + RADAR
+    # TAB 2: RADAR & STATISTICHE AVANZATE xG (Compatte & Visive)
     radar_chart_html = f"""
     <div class="radar-chart-wrapper">
         <div class="radar-title-bar">
-            <div>
-                <b style="color:#fff;font-size:12.5px;">Radar Percentilare a 6 Assi (vs Pari-Ruolo Serie A)</b>
-                <div style="font-size:10.5px;color:var(--text-muted);">Percentile 0-100: più l&#39;area è espansa, più il calciatore è dominante nel reparto</div>
-            </div>
-            <span class="role-badge {role}" style="font-size:10px;padding:2px 6px;">{role}</span>
+            <b style="color:#fff;font-size:13px;">🎯 Radar Percentili Serie A (0–100 vs Ruolo {role})</b>
+            <span class="role-badge {role}" style="font-size:10px;padding:2px 7px;">{role}</span>
         </div>
-        <div style="display:flex;justify-content:center;align-items:center;padding:10px 0;">
+        <div style="display:flex;justify-content:center;align-items:center;padding:6px 0;">
             {generate_radar_chart_svg(player)}
         </div>
     </div>"""
 
     if role == 'P':
-        advanced_pillars_html = f"""
-        <div class="profile-pillars-row">
-            <div class="profile-pillar-card pillar-gk">
-                <div class="pillar-title"><span>🧤 DIFESA &amp; PASSIVO</span><span class="source-tag">Statistiche</span></div>
-                <div class="pillar-hero-stat">
-                    <span class="hero-label">GOL SUBITI 26/27</span>
-                    <span class="hero-val" style="color:#ef4444;">{player.get('gol_subiti_2627', 0)} <small>({player.get('clean_sheets_2627', 0)} CS)</small></span>
-                </div>
-                <div class="pillar-stat-list">
-                    <div class="pillar-stat-item"><span class="stat-name">% Parate</span><span class="stat-num" style="color:#38bdf8;">{str(player.get('save_pct_2627') or '-') + '%' if player.get('save_pct_2627') else '-'}</span></div>
-                    <div class="pillar-stat-item"><span class="stat-name">Parate Effettuate</span><span class="stat-num" style="color:#4ade80;">{player.get('parate_2627', 0)}</span></div>
-                    <div class="pillar-stat-item"><span class="stat-name">Gol Evitati (Goals Prevented)</span><span class="stat-num" style="color:{'#10b981' if float(player.get('goals_prevented_2627') or 0) >= 0 else '#f87171'};font-weight:800;">{'+' if float(player.get('goals_prevented_2627') or 0) > 0 else ''}{player.get('goals_prevented_2627', 0)}</span></div>
-                </div>
-                <div class="pillar-comparison-chip">
-                    <span>Storico 2025/26</span><b>{player.get('gs', 0)} GS &bull; {player.get('clean_sheets_2526', 0)} Clean Sheet</b>
-                </div>
+        xg_grid_6_html = f"""
+        <div class="ppro-xg-grid-6">
+            <div class="xg-box">
+                <span class="xg-lbl">🥅 Gol Subiti</span>
+                <b class="xg-val" style="color:#f87171;">{player.get('gol_subiti_2627', 0)}</b>
+                <span class="xg-sub">25/26: {player.get('gs', 0)} GS</span>
             </div>
-
-            <div class="profile-pillar-card pillar-ratings">
-                <div class="pillar-title"><span>📊 RENDIMENTO &amp; MODIFICATORE</span><span class="source-tag">Prestazioni</span></div>
-                <div class="pillar-hero-stat">
-                    <span class="hero-label">MEDIA VOTO PURA</span>
-                    <span class="hero-val" style="color:#4ade80;">{mv_val_str}</span>
-                </div>
-                <div class="pillar-stat-list">
-                    <div class="pillar-stat-item"><span class="stat-name">FantaMedia Ufficiale</span><span class="stat-num" style="color:#fbbf24;">{fm_val_str}</span></div>
-                    <div class="pillar-stat-item"><span class="stat-name">Expected FantaMedia (xFM)</span><span class="stat-num" style="color:var(--accent-cyan);font-weight:900;">{xfm_data['xfm']}</span></div>
-                    <div class="pillar-stat-item"><span class="stat-name">Match Rating Statistico</span><span class="stat-num" style="color:#38bdf8;">{f"{float(player.get('rating_live_2627')):.2f}" if player.get('rating_live_2627') else '-'}</span></div>
-                </div>
-                <div class="pillar-comparison-chip">
-                    <span>Storico 2025/26</span><b>MV {player.get('mv', '-')} &bull; FM {player.get('fm', '-')}</b>
-                </div>
+            <div class="xg-box">
+                <span class="xg-lbl">🧤 Clean Sheet</span>
+                <b class="xg-val" style="color:#4ade80;">{player.get('clean_sheets_2627', 0)}</b>
+                <span class="xg-sub">25/26: {player.get('clean_sheets_2526') or 0} CS</span>
             </div>
-
-            <div class="profile-pillar-card pillar-assists">
-                <div class="pillar-title"><span>⏱️ MINUTAGGIO &amp; PRESENZA</span><span class="source-tag">Stagione</span></div>
-                <div class="pillar-hero-stat">
-                    <span class="hero-label">MINUTI GIOCATI</span>
-                    <span class="hero-val">{player.get('minuti_2627', 0)}&#39;</span>
-                </div>
-                <div class="pillar-stat-list">
-                    <div class="pillar-stat-item"><span class="stat-name">Presenze / Titolarità</span><span class="stat-num">{player.get('presenze_2627', 0)} ({player.get('starts_2627', 0)} tit)</span></div>
-                    <div class="pillar-stat-item"><span class="stat-name">Status Tattico</span><span class="stat-num" style="color:#4ade80;">{clean_html(titolarita_desc)}</span></div>
-                </div>
-                <div class="pillar-comparison-chip">
-                    <span>Storico 2025/26</span><b>{player.get('presenze', 0)} presenze a voto</b>
-                </div>
+            <div class="xg-box">
+                <span class="xg-lbl">🛡️ % Parate</span>
+                <b class="xg-val" style="color:#38bdf8;">{player.get('save_pct_2627') or '-'}%</b>
+                <span class="xg-sub">{player.get('parate_2627', 0)} interventi</span>
+            </div>
+            <div class="xg-box">
+                <span class="xg-lbl">🧤 Gol Evitati</span>
+                <b class="xg-val" style="color:#34d399;">{player.get('goals_prevented_2627') or '0.0'}</b>
+                <span class="xg-sub">PSxG +/-</span>
+            </div>
+            <div class="xg-box">
+                <span class="xg-lbl">⭐ Media Voto</span>
+                <b class="xg-val" style="color:#fbbf24;">{mv_val_str}</b>
+                <span class="xg-sub">25/26: {player.get('mv', '-')}</span>
+            </div>
+            <div class="xg-box">
+                <span class="xg-lbl">📈 xFM Attesa</span>
+                <b class="xg-val" style="color:#00f2fe;">{xfm_data['xfm']}</b>
+                <span class="xg-sub">FM: {fm_val_str}</span>
             </div>
         </div>"""
     else:
-        advanced_pillars_html = f"""
-        <div class="profile-pillars-row">
-            <div class="profile-pillar-card pillar-goals">
-                <div class="pillar-title"><span>⚽ ATTACCO &amp; TIRO</span><span class="source-tag">Volume</span></div>
-                <div class="pillar-hero-stat">
-                    <span class="hero-label">GOL SEGNATI 26/27</span>
-                    <span class="hero-val" style="color:#fbbf24;">{player.get('gol_2627', 0)} Gol <small>({str(player.get('xg_2627') or player.get('xg90_2627') or '-') + ' xG'})</small></span>
-                </div>
-                <div class="pillar-stat-list">
-                    <div class="pillar-stat-item"><span class="stat-name">Tiri Totali</span><span class="stat-num">{player.get('tiri_2627') or (str(player.get('total_scoring_att_2627')) + '/90' if player.get('total_scoring_att_2627') else 0)}</span></div>
-                    <div class="pillar-stat-item"><span class="stat-name">Qualità Tiro (xGOT)</span><span class="stat-num" style="color:#f472b6;">{player.get('xgot_2627', '-')}</span></div>
-                    {f"<div class='pillar-stat-item'><span class='stat-name'>Grandi Occasioni Fallite</span><span class='stat-num' style='color:#f87171;'>{player.get('big_chance_missed_2627')}</span></div>" if (player.get("big_chance_missed_2627") or 0) > 0 else ""}
-                </div>
-                <div class="pillar-comparison-chip">
-                    <span>Storico 2025/26</span><b>{player.get('gf', 0)} Gol ({player.get('xg90_2526', 0)} xG/90)</b>
-                </div>
+        xg_grid_6_html = f"""
+        <div class="ppro-xg-grid-6">
+            <div class="xg-box">
+                <span class="xg-lbl">⚽ Expected Goals (xG)</span>
+                <b class="xg-val" style="color:#fbbf24;">{safe_float(player.get('xg_2627'), 0):.2f}</b>
+                <span class="xg-sub">{safe_float(player.get('xg90_2627') or player.get('xg90_2526'), 0):.2f} xG/90</span>
             </div>
-
-            <div class="profile-pillar-card pillar-assists">
-                <div class="pillar-title"><span>🪄 CREATIVITÀ &amp; ASSIST</span><span class="source-tag">Rifinitura</span></div>
-                <div class="pillar-hero-stat">
-                    <span class="hero-label">ASSIST FORNITI 26/27</span>
-                    <span class="hero-val" style="color:#00f2fe;">{player.get('assist_2627', 0)} Assist <small>({str(player.get('xa90_2627') or '-') + ' xA/90'})</small></span>
-                </div>
-                <div class="pillar-stat-list">
-                    <div class="pillar-stat-item"><span class="stat-name">Occasioni Create (Key Passes)</span><span class="stat-num">{player.get('chances_created_2627') or player.get('key_passes_2627') or 0}</span></div>
-                    <div class="pillar-stat-item"><span class="stat-name">Grandi Occasioni Create</span><span class="stat-num" style="color:#fbbf24;">{player.get('big_chances_created_2627', 0)}</span></div>
-                    {f"<div class='pillar-stat-item'><span class='stat-name'>Dribbling Vinti /90</span><span class='stat-num' style='color:#38bdf8;'>{player.get('won_contest_2627')}</span></div>" if player.get("won_contest_2627") else ""}
-                </div>
-                <div class="pillar-comparison-chip">
-                    <span>Storico 2025/26</span><b>{player.get('ass', 0)} Assist ({player.get('xa90_2526', 0)} xA/90)</b>
-                </div>
+            <div class="xg-box">
+                <span class="xg-lbl">🎯 Qualità Tiro (xGOT)</span>
+                <b class="xg-val" style="color:#f472b6;">{safe_float(player.get('xgot_2627'), 0):.2f}</b>
+                <span class="xg-sub">{int(player.get('tiri_porta_2627') or 0)} tiri in porta</span>
             </div>
-
-            <div class="profile-pillar-card pillar-ratings">
-                <div class="pillar-title"><span>🛡️ PRESENZA &amp; RENDIMENTO</span><span class="source-tag">Sul Campo</span></div>
-                <div class="pillar-hero-stat">
-                    <span class="hero-label">MINUTI GIOCATI</span>
-                    <span class="hero-val">{player.get('minuti_2627', 0)}&#39; <small>({player.get('starts_2627', 0)} tit)</small></span>
-                </div>
-                <div class="pillar-stat-list">
-                    <div class="pillar-stat-item"><span class="stat-name">Palle Recuperate</span><span class="stat-num">{player.get('recuperi_2627', 0)}</span></div>
-                    <div class="pillar-stat-item"><span class="stat-name">Expected FantaMedia (xFM)</span><span class="stat-num" style="color:var(--accent-cyan);font-weight:900;">{xfm_data['xfm']}</span></div>
-                    <div class="pillar-stat-item"><span class="stat-name">Disciplina (Amm/Esp)</span><span class="stat-num" style="color:{'#ef4444' if (player.get('amm_2627') or 0) > 0 else 'var(--text-muted)'};">{player.get('amm_2627', 0)} Amm &bull; {player.get('esp_2627', 0)} Esp</span></div>
-                </div>
-                <div class="pillar-comparison-chip">
-                    <span>Storico 2025/26</span><b>MV {player.get('mv', '-')} &bull; FM {player.get('fm', '-')}</b>
-                </div>
+            <div class="xg-box">
+                <span class="xg-lbl">🪄 Expected Assist (xA)</span>
+                <b class="xg-val" style="color:#38bdf8;">{safe_float(player.get('xa_2627'), 0):.2f}</b>
+                <span class="xg-sub">{safe_float(player.get('xa90_2627') or player.get('xa90_2526'), 0):.2f} xA/90</span>
+            </div>
+            <div class="xg-box">
+                <span class="xg-lbl">💥 Tiri Totali</span>
+                <b class="xg-val" style="color:#fff;">{int(player.get('tiri_2627') or 0)}</b>
+                <span class="xg-sub">{safe_float(player.get('total_scoring_att_2627') or player.get('sh90'), 0):.1f} tiri/90</span>
+            </div>
+            <div class="xg-box">
+                <span class="xg-lbl">🔑 Passaggi Chiave</span>
+                <b class="xg-val" style="color:#4ade80;">{int(player.get('chances_created_2627') or player.get('key_passes_2627') or 0)}</b>
+                <span class="xg-sub">{int(player.get('big_chances_created_2627') or 0)} grandi occ.</span>
+            </div>
+            <div class="xg-box">
+                <span class="xg-lbl">🛡️ Recuperi &amp; Drib.</span>
+                <b class="xg-val" style="color:#cbd5e1;">{int(player.get('recuperi_2627') or 0)} / {int(player.get('dribbles_2627') or 0)}</b>
+                <span class="xg-sub">Rec / Dribbling</span>
             </div>
         </div>"""
 
@@ -1387,86 +1105,111 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     team_stats_html = f"""
     <div class="team-ecosystem-bar">
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-            <span>🏟️</span>
-            <b>Ecosistema {clean_html(team)}:</b>
-            <span>Attacco: <b style="color:#f472b6;">#{tCtx.get('xg_team_rank', '-')}</b> ({tCtx.get('xg_team', 0)} xG &bull; {tCtx.get('big_chances_team', 0)} occ.)</span>
+            <span>🏟️ <b>{clean_html(team)}:</b></span>
+            <span>Attacco <b style="color:#f472b6;">#{tCtx.get('xg_team_rank', '-')}</b> ({tCtx.get('xg_team', 0)} xG)</span>
             <span>&bull;</span>
-            <span>Difesa: <b style="color:#38bdf8;">#{tCtx.get('xga_team_rank', '-')}</b> ({tCtx.get('xga_team', 0)} xGA &bull; {tCtx.get('clean_sheets_team', 0)} CS)</span>
+            <span>Difesa <b style="color:#38bdf8;">#{tCtx.get('xga_team_rank', '-')}</b> ({tCtx.get('xga_team', 0)} xGA &bull; {tCtx.get('clean_sheets_team', 0)} CS)</span>
         </div>
-        <div style="font-size:11px;color:var(--text-muted);">Statistiche Live 2026/27</div>
     </div>""" if tCtx and tCtx.get("xg_team") else ""
 
     tab_advanced_html = f"""
     <div id="profileTabPane_advanced" class="profile-tab-pane" style="display:none;">
-        {radar_chart_html}
-        {advanced_pillars_html}
+        <div class="ppro-radar-split">
+            {radar_chart_html}
+            {xg_grid_6_html}
+        </div>
         {team_stats_html}
     </div>"""
 
-    # TAB 3: TACTICS & CLUB CONTEXT
-    tactics_content_html = f"""
+    # TAB 3: FISICA, INFORTUNI & GERARCHIE TATTICHE (Zero Muri di Testo)
+    health_and_tactics_html = f"""
+    <div class="ppro-health-grid-4">
+        <div class="ph-card">
+            <span class="ph-lbl">Disponibilità Storica</span>
+            <b class="ph-val" style="color:{disp_color};">{disp_pct}%</b>
+            <div class="ph-bar"><div style="width:{disp_pct}%;background:{disp_color};height:100%;border-radius:4px;"></div></div>
+        </div>
+        <div class="ph-card">
+            <span class="ph-lbl">Indice Tenuta AI</span>
+            <b class="ph-val" style="color:{tier_color};font-size:15px;">{clean_html(frag_tier_short)}</b>
+            <span class="ph-sub">Rischio {frag_score}/100</span>
+        </div>
+        <div class="ph-card">
+            <span class="ph-lbl">Assenze Storiche</span>
+            <b class="ph-val" style="color:#fbbf24;">{tot_missed} Gare</b>
+            <span class="ph-sub">{tot_days} giorni stop</span>
+        </div>
+        <div class="ph-card">
+            <span class="ph-lbl">Recidive Muscolari</span>
+            <b class="ph-val" style="color:{'#ef4444' if recidive > 1 else '#34d399'};">{recidive}</b>
+            <span class="ph-sub">{'⚠️ Attenzione' if recidive > 1 else '🟢 Regolare'}</span>
+        </div>
+    </div>
+
+    {f'<div class="injury-seasons-accordion" style="margin-bottom:16px;">{season_accordion_html}</div>' if sorted_seasons else '<div class="ppro-clean-banner">🛡️ <b>Nessun infortunio rilevante</b> registrato nelle ultime stagioni.</div>'}
+
     <div class="tactics-overview-grid">
         <div class="tactics-card">
             <div class="tactics-card-header">
-                <span style="font-size:16px;">👔</span>
-                <h4>Guida Tecnica &amp; Assetto</h4>
+                <span>👔</span>
+                <h4>Sistema {clean_html(team)}</h4>
             </div>
             <div class="tactics-meta-row">
-                <span class="lbl">Allenatore:</span>
-                <b class="val" style="color:#fff;">{clean_html(mister)}</b>
+                <span class="lbl">Allenatore</span>
+                <b class="val">{clean_html(mister)}</b>
             </div>
             <div class="tactics-meta-row">
-                <span class="lbl">Modulo Base:</span>
-                <b class="val" style="color:var(--accent-cyan);">{clean_html(modulo)}</b>
+                <span class="lbl">Modulo Base</span>
+                <b class="val" style="color:#38bdf8;">{clean_html(modulo)}</b>
             </div>
             <div class="tactics-meta-row">
-                <span class="lbl">Stile Tattico:</span>
-                <span class="val" style="color:var(--text-secondary);font-size:11.5px;">{clean_html(stile)}</span>
+                <span class="lbl">Posizione</span>
+                <b class="val">{clean_html(player.get('pos_label') or role)}</b>
             </div>
         </div>
 
         <div class="tactics-card">
             <div class="tactics-card-header">
-                <span style="font-size:16px;">🎯</span>
-                <h4>Calci Piazzati &amp; Gerarchie</h4>
+                <span>🎯</span>
+                <h4>Tiratori {clean_html(team)}</h4>
             </div>
             <div class="tactics-meta-row">
-                <span class="lbl">1° Rigorista:</span>
+                <span class="lbl">1° Rigorista</span>
                 <b class="val" style="color:#fbbf24;">{clean_html(team_tac.get('rigorista_1') or player.get('rigorista_val') or '-')}</b>
             </div>
             <div class="tactics-meta-row">
-                <span class="lbl">2°/3° Rigorista:</span>
-                <span class="val">{clean_html(team_tac.get('rigorista_2', '-'))} / {clean_html(team_tac.get('rigorista_3', '-'))}</span>
+                <span class="lbl">2° / 3° Rigorista</span>
+                <span class="val">{clean_html(team_tac.get('rigorista_2', '-'))} &bull; {clean_html(team_tac.get('rigorista_3', '-'))}</span>
             </div>
             <div class="tactics-meta-row">
-                <span class="lbl">Corner &amp; Punizioni:</span>
+                <span class="lbl">Piazzati</span>
                 <span class="val" style="color:#38bdf8;">{clean_html(team_tac.get('punizioni') or team_tac.get('corner') or '-')}</span>
             </div>
         </div>
 
         <div class="tactics-card">
             <div class="tactics-card-header">
-                <span style="font-size:16px;">🔄</span>
-                <h4>Ballottaggio &amp; Copertura</h4>
+                <span>🔄</span>
+                <h4>Ballottaggio &amp; Rotazione</h4>
             </div>
             <div class="tactics-meta-row">
-                <span class="lbl">Titolarità Stimata:</span>
+                <span class="lbl">Titolarità</span>
                 <b class="val" style="color:{tit_color};">{titolarita}% ({clean_html(titolarita_desc)})</b>
             </div>
             <div class="tactics-meta-row">
-                <span class="lbl">Compagno di Staffetta:</span>
-                <b class="val" style="color:#38bdf8;">{clean_html(coppia_nome or 'Nessun ballottaggio diretto')}</b>
+                <span class="lbl">Alternativa</span>
+                <b class="val" style="color:#38bdf8;">{clean_html(coppia_nome or 'Nessun vice diretto')}</b>
             </div>
             <div class="tactics-meta-row">
-                <span class="lbl">Tipo Alternanza:</span>
-                <span class="val">{clean_html(coppia_tipo or 'Titolare inamovibile')}</span>
+                <span class="lbl">Gerarchia</span>
+                <span class="val">{clean_html(coppia_tipo or 'Titolare fisso')}</span>
             </div>
         </div>
-    </div>""" if team_tac else f'<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);padding:16px;border-radius:10px;text-align:center;color:var(--text-muted);font-size:12.5px;">Dati tattici di club non disponibili per {clean_html(team)}.</div>'
+    </div>"""
 
     tab_tactics_html = f"""
     <div id="profileTabPane_tactics" class="profile-tab-pane" style="display:none;">
-        {tactics_content_html}
+        {health_and_tactics_html}
     </div>"""
 
     # FAQ Schema & Dynamic SEO Meta
@@ -1603,7 +1346,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     <meta name="twitter:image" content="{base_url}/static/og-image.jpg">
     
     <!-- CSS Completo Dashboard -->
-    <link rel="stylesheet" href="../../css/seo.css?v=20261015-v4">
+    <link rel="stylesheet" href="../../css/seo.css?v=20261107-v8">
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -1623,98 +1366,103 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
 <body>
     {render_unified_header('../../')}
 
-    <main class="site-container" style="padding-top:16px;">
-        <nav class="breadcrumbs">
-            <a href="../../">Home</a> <span>/</span> 
-            <a href="../../listone/">Listone Calciatori</a> <span>/</span> 
-            <a href="../../probabili-formazioni/{team_slug}/">{clean_html(team)}</a> <span>/</span> 
-            <span style="color:#fff;">{clean_html(full_name)}</span>
-        </nav>
-
-        <div class="player-nav-action-bar">
-            <a href="../../listone/" class="back-to-listone-btn">← Torna al Listone Calciatori</a>
-            <a href="../../probabili-formazioni/{team_slug}/" class="back-to-club-btn">Rosa {clean_html(team)} →</a>
+    <main class="site-container player-pro-container">
+        <!-- Compact Top Navigation Bar -->
+        <div class="ppro-tobar">
+            <a href="../../listone/" class="ppro-back-link">&larr; Listone</a>
+            <div class="ppro-breadcrumb-mini">
+                <a href="../../probabili-formazioni/{team_slug}/">{clean_html(team)}</a>
+                <span>/</span>
+                <b>{clean_html(full_name)}</b>
+            </div>
+            <a href="../../probabili-formazioni/{team_slug}/" class="ppro-back-link">Top 11 {clean_html(team)} &rarr;</a>
         </div>
 
-        <!-- Profile Header (Identico a Modal App) -->
-        <div class="profile-header-container" style="margin-top:10px;">
-            <div class="profile-hero-left">
-                <div class="profile-role-circle {role}">{role}</div>
-                <div class="profile-hero-info">
-                    <div class="profile-hero-title-row">
-                        <h1 class="profile-player-name">{clean_html(full_name)}</h1>
-                    </div>
-                    <div class="profile-player-meta">
-                        <a href="../../probabili-formazioni/{team_slug}/" class="player-meta-team" style="text-decoration:none;border-bottom:1px dashed var(--accent-cyan);color:#fff;" title="Vedi Formazione Titolare e Rosa {clean_html(team)}"><b>{clean_html(team)}</b></a> &bull; Mister: <b>{clean_html(mister)}</b> <span style="color:var(--text-muted);">({clean_html(modulo)})</span>
-                    </div>
-                    <div class="profile-badges-wrapper">
-                        <div class="profile-primary-badges">
-                            <span class="ai-advice-badge {player.get('ai_advice_type', 'regular')}">{clean_html(player.get('ai_advice') or player.get('consiglio') or '-')}</span>
-                            <span class="badge-tag gold">{clean_html(slot_desc)}</span>
+        <!-- PRO PLAYER HERO CARD (VISUAL, ZERO-FLUFF, MOBILE-FIRST) -->
+        <div class="ppro-hero-card">
+            <div class="ppro-hero-top">
+                <div class="ppro-identity">
+                    <div class="profile-role-circle {role} ppro-role-avatar">{role}</div>
+                    <div class="ppro-title-box">
+                        <div class="ppro-name-line">
+                            <h1 class="ppro-name">{clean_html(full_name)}</h1>
+                            {render_mantra_quick_badges(mantra) if mantra and mantra != '-' else ''}
                         </div>
-                        <div class="profile-tactical-pills">
-                            {inj_badge}
-                            {rig_badge}
-                            {coppia_badge}
-                            {oop_badge}
+                        <div class="ppro-sub-line">
+                            <a href="../../probabili-formazioni/{team_slug}/" class="ppro-team-link">{clean_html(team)}</a>
+                            <span>&bull;</span>
+                            <span>{clean_html(modulo)} ({clean_html(mister)})</span>
+                            {f'<span>&bull;</span><span>{clean_html(player.get("pos_label"))}</span>' if player.get("pos_label") else ''}
                         </div>
                     </div>
                 </div>
+                <div class="ppro-ovr-shield {ovr_cls}">
+                    <span class="ovr-num">{ovr}</span>
+                    <span class="ovr-lbl">OVR</span>
+                </div>
             </div>
 
-            <!-- Hero Metrics Deck -->
-            <div class="profile-hero-metrics-section">
-                <div class="profile-hero-triple-cards">
-                    <div class="profile-hero-metric-card card-ovr">
-                        <span class="hero-card-label">OVR RATING</span>
-                        <div class="hero-card-value ovr-text {ovr_cls}">{ovr}</div>
-                        <span class="hero-card-sub">{'Top Assoluto' if ovr >= 90 else ('Titolare Top' if ovr >= 82 else 'Rotazione')}</span>
-                    </div>
+            <!-- Visual Status & Hierarchy Pills -->
+            <div class="ppro-tags-row">
+                {inj_badge}
+                <span class="ppro-pill gold">⭐ {clean_html(slot_desc)}</span>
+                {rig_badge}
+                <span class="ppro-pill" style="color:{smart_trend['color']};border-color:{smart_trend['color']}55;background:rgba(255,255,255,0.03);">{smart_trend['label']}</span>
+                {coppia_badge}
+            </div>
 
-                    <div class="profile-hero-metric-card card-titolarita">
-                        <span class="hero-card-label">TITOLARITÀ</span>
-                        <div class="hero-card-value" style="color:{tit_color};">{titolarita}%</div>
-                        <span class="hero-card-sub" style="color:{tit_color};">{clean_html(titolarita_desc)}</span>
-                    </div>
-
-                    <div class="profile-hero-metric-card card-price">
-                        <span class="hero-card-label">PREZZO CONS.</span>
-                        <div class="hero-card-value price-text">{prezzo_cons} <span style="font-size:11px;color:rgba(255,255,255,0.6);">CR</span></div>
-                        <span class="hero-card-sub" style="color:#f43f5e;">Max: <b>{max_bid} CR</b></span>
-                    </div>
+            <!-- 4 Equal KPI Boxes -->
+            <div class="ppro-kpi-4">
+                <div class="ppro-kpi-box">
+                    <span class="pk-lbl">FANTAMEDIA</span>
+                    <b class="pk-val" style="color:#fbbf24;">{fm_val_str}</b>
+                    <span class="pk-sub">MV: <b>{mv_val_str}</b></span>
                 </div>
-
-                <div class="profile-hero-sub-strip">
-                    <div class="sub-stat-chip">
-                        <span class="sub-stat-lbl">FVM:</span>
-                        <b class="sub-stat-val text-cyan">{fvm} CR</b>
-                    </div>
-                    <span class="sub-stat-dot">&bull;</span>
-                    <div class="sub-stat-chip">
-                        <span class="sub-stat-lbl">Quotazione:</span>
-                        <b class="sub-stat-val text-purple">{qta}</b>
-                        {f'<small class="sub-stat-diff pos">{diff_q_str}</small>' if diff_q > 0 else (f'<small class="sub-stat-diff neg">{diff_q_str}</small>' if diff_q < 0 else '')}
-                    </div>
+                <div class="ppro-kpi-box">
+                    <span class="pk-lbl">xFM ATTESA</span>
+                    <b class="pk-val" style="color:#38bdf8;">{xfm_data['xfm']:.2f}</b>
+                    <span class="pk-sub">{xfm_delta_pill}</span>
                 </div>
+                <div class="ppro-kpi-box">
+                    <span class="pk-lbl">TITOLARITÀ</span>
+                    <b class="pk-val" style="color:{tit_color};">{titolarita}%</b>
+                    <span class="pk-sub">{clean_html(titolarita_desc)}</span>
+                </div>
+                <div class="ppro-kpi-box">
+                    <span class="pk-lbl">VALORE ASTA</span>
+                    <b class="pk-val" style="color:#fff;">{prezzo_cons} <small>CR</small></b>
+                    <span class="pk-sub">FVM <b>{fvm}</b> &bull; Max {max_bid}</span>
+                </div>
+            </div>
+
+            <!-- Next Matchday Integrated Strip -->
+            <div class="ppro-matchday-strip">
+                <div class="ppro-md-left">
+                    <span class="ppro-md-round">G{next_round_num}</span>
+                    <b class="ppro-md-match">{clean_html(next_match_str)}</b>
+                    <span class="ppro-md-venue">{'🏠' if next_is_home else '✈️'}</span>
+                    <span class="ppro-md-vuln" style="color:{vuln_color};border-color:{vuln_color}55;">{clean_html(vuln_badge)} ({vuln_score})</span>
+                </div>
+                <a href="../../chi-schiero/" class="ppro-md-cta">⚔️ Chi Schiero &rarr;</a>
             </div>
         </div>
 
-        <!-- Clean 3-Tab Controls (Identici all'App) -->
-        <div class="profile-3tabs-nav" style="margin-top:20px;">
+        <!-- Clean 3-Tab Switcher -->
+        <div class="profile-3tabs-nav" style="margin-top:14px;">
             <button id="profileTabBtn_overview" class="profile-3tab-btn active" onclick="switchProfileTab('overview')">
-                <span class="tab-icon">📋</span>
-                <span class="tab-txt-desktop">Panoramica &amp; Voti</span>
-                <span class="tab-txt-mobile">Panoramica</span>
+                <span class="tab-icon">📊</span>
+                <span class="tab-txt-desktop">Rendimento &amp; Voti</span>
+                <span class="tab-txt-mobile">Voti &amp; KPI</span>
             </button>
             <button id="profileTabBtn_advanced" class="profile-3tab-btn" onclick="switchProfileTab('advanced')">
-                <span class="tab-icon">📊</span>
-                <span class="tab-txt-desktop">Statistiche Avanzate &amp; Radar</span>
-                <span class="tab-txt-mobile">Statistiche</span>
+                <span class="tab-icon">🎯</span>
+                <span class="tab-txt-desktop">Radar &amp; Statistiche xG</span>
+                <span class="tab-txt-mobile">Radar &amp; xG</span>
             </button>
             <button id="profileTabBtn_tactics" class="profile-3tab-btn" onclick="switchProfileTab('tactics')">
-                <span class="tab-icon">🛡️</span>
-                <span class="tab-txt-desktop">Tattica &amp; Contesto Club</span>
-                <span class="tab-txt-mobile">Tattica</span>
+                <span class="tab-icon">🩺</span>
+                <span class="tab-txt-desktop">Fisica &amp; Gerarchie</span>
+                <span class="tab-txt-mobile">Fisica &amp; Club</span>
             </button>
         </div>
 
@@ -1722,13 +1470,6 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
         {tab_overview_html}
         {tab_advanced_html}
         {tab_tactics_html}
-
-        <!-- CTA Banner verso il Portale Completo -->
-        <section class="cta-banner">
-            <h2>Vuoi simulare l'asta con {clean_html(full_name)}?</h2>
-            <p>Accedi alla suite completa di Fanta Master AI con visualizzazione live di xG, xA, griglia portieri a 20 squadre e simulatore d'asta in tempo reale.</p>
-            <a href="../../listone/" class="nav-btn-icon" style="font-size:14px;padding:10px 22px;background:rgba(0,242,254,0.15);border-color:#00f2fe;color:#00f2fe;text-decoration:none;display:inline-flex;">Vai al Listone &amp; Tabellone Calciatori 🚀</a>
-        </section>
     </main>
 
     <!-- Interactive Scripts for Tabs, Accordion & Season Inspector -->
@@ -1794,7 +1535,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                 '<span class="inspector-venue">' + (isH ? '🏠 Casa' : '✈️ Fuori') + '</span>' +
                 '<b class="inspector-match-title">' + mTitle + '</b>' +
             '</div>' +
-            '<span style="font-size:10.5px;color:var(--text-muted);">Ispezione match disputato</span>' +
+            '<span style="font-size:10.5px;color:var(--text-muted);">G' + match.giornata + '</span>' +
         '</div>' +
         '<div class="inspector-body-grid">' +
             '<div class="inspector-metric">' +

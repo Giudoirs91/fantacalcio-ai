@@ -131,7 +131,7 @@ def generate_home_leaders_html(players_data: list) -> str:
     return "\n".join(cards_html)
 
 def generate_hero_trust_showcase_html(accuracy_data: dict) -> str:
-    """Genera il box vetrina in primo piano per la credibilità e accuratezza dell'algoritmo AI."""
+    """Genera la barra visuale ultra-compatta di accuratezza certificata AI (zero muri di testo)."""
     meta = accuracy_data.get('meta', {}) if isinstance(accuracy_data, dict) else {}
     last_completed = meta.get('last_completed_round', 8)
     last_summary = accuracy_data.get(str(last_completed), {}).get('summary', {}) if isinstance(accuracy_data, dict) else {}
@@ -140,161 +140,69 @@ def generate_hero_trust_showcase_html(accuracy_data: dict) -> str:
     acc_hits = int(last_summary.get('hits', 9))
     acc_total = int(last_summary.get('total_consigliati', 12))
     acc_suff = float(last_summary.get('sufficiency_rate_pct', 75.0))
-    acc_suff_hits = int(last_summary.get('sufficient', int(round(acc_suff * acc_total / 100))))
     acc_avg_fv = float(last_summary.get('avg_fantavoto', 6.27))
-    
-    acc_overall_hit = float(meta.get('overall_hit_rate_pct', 54.2))
-    acc_overall_hits = int(meta.get('total_hits', 65))
-    acc_overall_total = int(meta.get('total_evaluated_advice', 120))
 
-    return f'''                    <!-- HERO TRUST & PREDICTIVE ACCURACY SHOWCASE (IN PRIMO PIANO) -->
-                    <div class="hero-trust-showcase" id="heroTrustShowcase">
-                        <!-- Top Bar: Official Verification Seal & View Toggle -->
-                        <div class="trust-showcase-header">
-                            <div class="trust-seal-group">
-                                <span class="trust-badge-verified">
-                                    <span class="pulse-dot-green"></span>
-                                    Verifica Retrospettiva Ufficiale
-                                </span>
-                                <span class="trust-badge-cert">
-                                    🛡️ Giornata {last_completed} Conclusa &bull; Serie A 2026/27
-                                </span>
+    return f'''                    <!-- BARRA COMPATTA ACCURATEZZA AI CERTIFICATA (VISUAL FIRST) -->
+                    <div class="hpro-trust-strip" id="heroTrustShowcase">
+                        <div class="hpro-trust-left">
+                            <span class="hpro-trust-seal"><span class="pulse-dot-green"></span> G{last_completed} CERTIFICATA</span>
+                        </div>
+                        <div class="hpro-trust-kpis">
+                            <div class="hpro-trust-pill hit">
+                                <span class="ht-val">{acc_hit_rate:.0f}%</span>
+                                <span class="ht-lbl">Hit Bonus ({acc_hits}/{acc_total})</span>
                             </div>
-
-                            <!-- Interactive Mode Switcher -->
-                            <div class="trust-mode-toggle" role="tablist" aria-label="Selettore visualizzazione affidabilità">
-                                <button class="trust-toggle-btn active" id="btnTrustAccuracy" onclick="switchTrustView('accuracy')" role="tab" aria-selected="true" aria-controls="trustViewAccuracy">
-                                    <span class="t-dot"></span>
-                                    <span class="btn-lbl-full">🎯 Precisione Predittiva ({acc_hit_rate:.1f}%)</span>
-                                    <span class="btn-lbl-mobile">🎯 Precisione AI ({acc_hit_rate:.1f}%)</span>
-                                </button>
-                                <button class="trust-toggle-btn" id="btnTrustScale" onclick="switchTrustView('scale')" role="tab" aria-selected="false" aria-controls="trustViewScale">
-                                    <span class="t-dot"></span>
-                                    <span class="btn-lbl-full">📊 Copertura &amp; Dati Piattaforma</span>
-                                    <span class="btn-lbl-mobile">📊 Dati Piattaforma</span>
-                                </button>
+                            <div class="hpro-trust-pill suff">
+                                <span class="ht-val">{acc_suff:.0f}%</span>
+                                <span class="ht-lbl">Voto &ge; 6.0</span>
+                            </div>
+                            <div class="hpro-trust-pill fv">
+                                <span class="ht-val">{acc_avg_fv:.2f}</span>
+                                <span class="ht-lbl">FantaVoto Medio</span>
+                            </div>
+                            <div class="hpro-trust-pill db">
+                                <span class="ht-val">534</span>
+                                <span class="ht-lbl">Calciatori xFM</span>
                             </div>
                         </div>
-
-                        <!-- TAB VIEW 1: ACCURATEZZA PREDITTIVA (DEFAULT & PRIMO PIANO) -->
-                        <div class="trust-view-pane active" id="trustViewAccuracy" role="tabpanel">
-                            <div class="trust-headline-block">
-                                <h2 class="trust-headline-title">
-                                    Affidabilità Scientifica: <span class="text-neon-green">{acc_hit_rate:.1f}% Hit Rate</span> &bull; {acc_suff:.1f}% Sufficienze &bull; Fantavoto Medio {acc_avg_fv:.2f}
-                                </h2>
-                                <p class="trust-headline-desc">
-                                    A ogni turno concluso, Fanta Master AI archivia e certifica pubblicamente i risultati reali dei calciatori consigliati pre-partita. <b>Nessuna modifica a posteriori, totale trasparenza.</b>
-                                </p>
-                            </div>
-
-                            <div class="trust-kpi-grid">
-                                <div class="trust-kpi-card card-hit">
-                                    <div class="kpi-top-row">
-                                        <span class="kpi-icon">🎯</span>
-                                        <span class="kpi-status-tag">G{last_completed} Conclusa</span>
-                                    </div>
-                                    <div class="kpi-number text-hit">{acc_hit_rate:.1f}%</div>
-                                    <div class="kpi-title">Hit Rate Consigliati ({acc_hits}/{acc_total})</div>
-                                    <div class="kpi-explanation">Giocatori a <b>bonus pesante</b> (gol/assist) o con <b>voto puro &ge; 6.5</b> in pagella.</div>
-                                </div>
-
-                                <div class="trust-kpi-card card-suff">
-                                    <div class="kpi-top-row">
-                                        <span class="kpi-icon">🛡️</span>
-                                        <span class="kpi-status-tag">Affidabilità Voto</span>
-                                    </div>
-                                    <div class="kpi-number text-suff">{acc_suff:.1f}%</div>
-                                    <div class="kpi-title">Sufficienze Garantite</div>
-                                    <div class="kpi-explanation"><b>{acc_suff_hits} consigliati su {acc_total}</b> con <b>voto &ge; 6.0 netto</b>. Solidità certificata al {acc_suff:.1f}%.</div>
-                                </div>
-
-                                <div class="trust-kpi-card card-fv">
-                                    <div class="kpi-top-row">
-                                        <span class="kpi-icon">⭐</span>
-                                        <span class="kpi-status-tag">FantaVoto Reale</span>
-                                    </div>
-                                    <div class="kpi-number text-fv">{acc_avg_fv:.2f}</div>
-                                    <div class="kpi-title">Fantavoto Medio Consigliati</div>
-                                    <div class="kpi-explanation">Media complessiva generata dal pool dei titolari suggeriti per il turno di Serie A.</div>
-                                </div>
-
-                                <div class="trust-kpi-card card-season">
-                                    <div class="kpi-top-row">
-                                        <span class="kpi-icon">📈</span>
-                                        <span class="kpi-status-tag">Tutta la Stagione</span>
-                                    </div>
-                                    <div class="kpi-number text-season">{acc_overall_hit:.1f}%</div>
-                                    <div class="kpi-title">Media Cumulata Stagionale</div>
-                                    <div class="kpi-explanation"><b>{acc_overall_hits} Hit centrati su {acc_overall_total}</b> consigliati totali monitorati nelle prime {last_completed} giornate (80.0% sufficienze complessive).</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- TAB VIEW 2: COPERTURA & DATI PIATTAFORMA -->
-                        <div class="trust-view-pane" id="trustViewScale" role="tabpanel" style="display:none;">
-                            <div class="trust-headline-block">
-                                <h2 class="trust-headline-title">
-                                    Il Database Statistico Più Profondo d'Italia: <span class="text-neon-green">534 Calciatori Modellati</span>
-                                </h2>
-                                <p class="trust-headline-desc">
-                                    Ogni partita viene scansionata fotogramma per fotogramma con expected metrics, algoritmi di titolarità consensus su 4 fonti e indici fisici proprietari.
-                                </p>
-                            </div>
-
-                            <div class="trust-kpi-grid">
-                                <div class="trust-kpi-card card-fv">
-                                    <div class="kpi-top-row">
-                                        <span class="kpi-icon">👥</span>
-                                        <span class="kpi-status-tag">Database 100%</span>
-                                    </div>
-                                    <div class="kpi-number text-fv">534</div>
-                                    <div class="kpi-title">Calciatori Modellati</div>
-                                    <div class="kpi-explanation">Rosa completa Serie A 2026/27 con statistiche oggettive e storiche.</div>
-                                </div>
-
-                                <div class="trust-kpi-card card-hit">
-                                    <div class="kpi-top-row">
-                                        <span class="kpi-icon">🏟️</span>
-                                        <span class="kpi-status-tag">Tattica &amp; Schemi</span>
-                                    </div>
-                                    <div class="kpi-number text-hit">20</div>
-                                    <div class="kpi-title">Club Serie A in 2D</div>
-                                    <div class="kpi-explanation">Campi tattici interattivi, rigoristi, battitori piazzati e indici FRP.</div>
-                                </div>
-
-                                <div class="trust-kpi-card card-suff">
-                                    <div class="kpi-top-row">
-                                        <span class="kpi-icon">📅</span>
-                                        <span class="kpi-status-tag">Calendario Live</span>
-                                    </div>
-                                    <div class="kpi-number text-suff">38</div>
-                                    <div class="kpi-title">Turni Monitorati</div>
-                                    <div class="kpi-explanation">Aggiornamenti continui prima e dopo ogni singola giornata di campionato.</div>
-                                </div>
-
-                                <div class="trust-kpi-card card-season">
-                                    <div class="kpi-top-row">
-                                        <span class="kpi-icon">⚙️</span>
-                                        <span class="kpi-status-tag">Metrica xFM</span>
-                                    </div>
-                                    <div class="kpi-number text-season">100%</div>
-                                    <div class="kpi-title">Statistiche Oggettive</div>
-                                    <div class="kpi-explanation">Expected Goals (xG), Assists (xA) e indici predittivi senza alcun bias umano.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Footer Action Strip -->
-                        <div class="trust-showcase-footer">
-                            <div class="trust-footer-left">
-                                <span class="trust-pulse-icon">⚡</span>
-                                <span>Zero sensazionalismo o commenti soggettivi: <b>solo intelligenza artificiale applicata ai big data reali</b>.</span>
-                            </div>
-                            <a href="/consigli-fantacalcio/" class="trust-cta-link" onclick="if(window.switchTab) {{ event.preventDefault(); switchTab('matchday_advice'); }}">
-                                <span>Analisi Completa Esiti G{last_completed} &rarr;</span>
-                            </a>
-                        </div>
+                        <a href="/consigli-fantacalcio/" class="hpro-trust-cta" onclick="if(window.switchTab) {{ event.preventDefault(); switchTab('matchday_advice'); }}">
+                            Storico AI &rarr;
+                        </a>
                     </div>'''
+
+def generate_home_matches_strip_html(consensus_data: dict) -> str:
+    """Genera la griglia visuale delle 10 partite di giornata con link diretti alle probabili formazioni."""
+    matches = consensus_data.get("matches", []) if isinstance(consensus_data, dict) else []
+    if not matches:
+        return ""
+    cards = []
+    for m in matches:
+        slug = m.get("slug", "")
+        h_team = m.get("home_team", "")
+        a_team = m.get("away_team", "")
+        time_str = m.get("time", "20:45")
+        date_str = (m.get("date", "") or "")[:5]
+        is_big = m.get("big_match", False)
+        h_mod = m.get("home", {}).get("formation", "4-3-3")
+        a_mod = m.get("away", {}).get("formation", "4-3-3")
+        n_dubbi = len(m.get("ballottaggi", []))
+        big_badge = '<span class="hpro-match-big">🔥 BIG</span>' if is_big else f'<span class="hpro-match-dubbi">⚖️ {n_dubbi} dubbi</span>'
+        cards.append(f'''                            <a href="/probabili-formazioni/{slug}/" class="hpro-match-card{' is-big' if is_big else ''}" title="Probabili formazioni {h_team} - {a_team}">
+                                <div class="hpro-mc-top">
+                                    <span class="hpro-mc-time">{date_str} • {time_str}</span>
+                                    {big_badge}
+                                </div>
+                                <div class="hpro-mc-teams">
+                                    <span class="hpro-mc-t">{h_team}</span>
+                                    <span class="hpro-mc-vs">vs</span>
+                                    <span class="hpro-mc-t">{a_team}</span>
+                                </div>
+                                <div class="hpro-mc-mods">
+                                    <span>{h_mod} • {a_mod}</span>
+                                    <span class="hpro-mc-arr">&rarr;</span>
+                                </div>
+                            </a>''')
+    return "\n".join(cards)
 
 def build_standalone_dashboard(sync_android=False):
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -359,6 +267,12 @@ def build_standalone_dashboard(sync_android=False):
         with open(match_reports_path, 'r', encoding='utf-8') as f:
             match_reports_data = json.load(f)
 
+    consensus_path = os.path.join(root_dir, "config", "matchday_consensus.json")
+    consensus_data = {}
+    if os.path.exists(consensus_path):
+        with open(consensus_path, 'r', encoding='utf-8') as f:
+            consensus_data = json.load(f)
+
     # 2. Carica CSS e JS modulari minificati
     css_path = os.path.join(root_dir, "web", "css", "dashboard.css")
     with open(css_path, 'r', encoding='utf-8') as f:
@@ -409,6 +323,7 @@ def build_standalone_dashboard(sync_android=False):
     accuracy_json = json.dumps(accuracy_data, ensure_ascii=False)
     home_leaders_html = generate_home_leaders_html(players_data)
     hero_trust_showcase_html = generate_hero_trust_showcase_html(accuracy_data)
+    home_matches_strip_html = generate_home_matches_strip_html(consensus_data)
 
     # 3. Costruisci il documento HTML completo
     html_template = f"""<!DOCTYPE html>
@@ -660,332 +575,212 @@ def build_standalone_dashboard(sync_android=False):
         <section id="viewHomeHub" class="tab-content" style="display:none;width:100%;">
         </section>
 
-        <!-- Tab 0-Bis: Home Page Principale (AI Command Center & Predictive Hub) -->
-        <section id="viewHome" class="tab-content active" style="display:flex;flex-direction:column;gap:20px;width:100%;">
-            <div class="ai-hub-container" style="display:flex; flex-direction:column; gap:24px;">
+        <!-- Tab 0-Bis: Home Page Principale (Visual Command Center — Zero Fluff, 100% SEO) -->
+        <section id="viewHome" class="tab-content active" style="display:flex;flex-direction:column;gap:16px;width:100%;">
+            <div class="ai-hub-container hpro-wrapper">
 
-                <!-- 1. HERO NEURAL COMMAND CENTER (ACTION FIRST + 2 MACRO FASI) -->
-                <div class="ai-hub-hero" style="padding: 28px 32px 24px 32px;">
-                    <!-- Badges Bar -->
-                    <div class="ai-hub-badge-bar">
+                <!-- 1. COMPACT COMMAND HERO (RICERCA ISTANTANEA + SWITCH 2 FASI) -->
+                <div class="ai-hub-hero hpro-command-hero">
+                    <!-- Top Status Strip -->
+                    <div class="hpro-status-strip">
                         <span class="ai-badge-chip live">
                             <span class="pulse-dot-green"></span>
-                            11ª Giornata Serie A • Live Engine
+                            LIVE • 11ª Giornata Serie A
                         </span>
                         <a href="/probabili-formazioni/" class="ai-badge-chip live" style="text-decoration:none;">
-                            <span class="pulse-dot-green"></span>
-                            ⚽ Probabili Formazioni 4 Fonti Aggiornate
+                            ⚽ Probabili 4 Fonti
                         </a>
-                        <span class="ai-badge-chip tech">🧠 Motore Predittivo xFM v2.4</span>
+                        <span class="ai-badge-chip tech">🎯 75% Hit Rate AI</span>
                     </div>
 
-                    <!-- Main Catchy Title -->
-                    <h1 class="ai-hub-title" style="margin-bottom: 8px;">
-                        L'Algoritmo Predittivo N°1 per il <span class="gradient-text">Fantacalcio Serie A</span>
+                    <!-- H1 SEO (1 riga compatta, zero paragrafi prolissi) -->
+                    <h1 class="ai-hub-title hpro-main-h1">
+                        Statistiche Fantacalcio, Probabili Formazioni &amp; <span class="gradient-text">Consigli AI Serie A</span>
                     </h1>
 
-                    <!-- Authoritative Subtitle -->
-                    <p class="ai-hub-subtitle" style="margin-bottom: 18px;">
-                        Expected Goals (xG), Expected FantaMedia (xFM) e Consensus a 4 Fonti Ufficiali per <b>schierare i tuoi 11 migliori ogni giornata</b> e dominare <b>il mercato e l'asta</b> con precisione matematica.
-                    </p>
-
-                    <!-- Interactive Real-time Search Box (Subito in alto) -->
-                    <div class="ai-hub-search-wrap" style="margin-bottom: 10px;">
+                    <!-- Omni-Search Bar Istantanea -->
+                    <div class="ai-hub-search-wrap hpro-search-wrap">
                         <div class="ai-hub-search-inner">
                             <span class="ai-hub-search-icon">🔍</span>
-                            <input type="text" id="hubQuickSearch" class="ai-hub-search-input" placeholder="Cerca qualsiasi calciatore per vedere titolarità, xFM, infortuni e scheda (es. Malen, Nico Paz, Barella, Svilar)..." oninput="filterHubPlayers(this.value)" autocomplete="off">
+                            <input type="text" id="hubQuickSearch" class="ai-hub-search-input" placeholder="Cerca calciatore o club (es. Malen, Nico Paz, Barella, Svilar)..." oninput="filterHubPlayers(this.value)" autocomplete="off">
                         </div>
                         <div id="hubSearchResults" class="ai-hub-search-results"></div>
                     </div>
 
-                    <!-- Quick Chips -->
-                    <div class="ai-hub-quick-chips" style="margin-bottom: 22px;">
-                        <span class="quick-chip-lbl">Ricerche Rapide:</span>
-                        <button class="hub-chip-btn" onclick="openPlayerByName('Malen')">🔥 Malen</button>
-                        <button class="hub-chip-btn" onclick="openPlayerByName('Nico Paz')">💎 Nico Paz</button>
-                        <button class="hub-chip-btn" onclick="openPlayerByName('Barella')">⚡ Barella</button>
-                        <button class="hub-chip-btn" onclick="openPlayerByName('Yildiz')">🎯 Yildiz</button>
-                        <button class="hub-chip-btn" onclick="openPlayerByName('Dimarco')">🛡️ Dimarco</button>
-                        <button class="hub-chip-btn" onclick="openPlayerByName('Svilar')">🧤 Svilar</button>
-                        <button class="hub-chip-btn" onclick="openPlayerByName('Retegui')">⚽ Retegui</button>
+                    <!-- Chip Trending Calciatori (Link SEO + Apertura Rapida) -->
+                    <div class="ai-hub-quick-chips hpro-trending-chips">
+                        <span class="quick-chip-lbl">🔥 Trending:</span>
+                        <a href="/calciatore/malen/" class="hub-chip-btn" onclick="if(typeof openPlayerByName==='function'){{event.preventDefault();openPlayerByName('Malen');}}">🔥 Malen <small>97</small></a>
+                        <a href="/calciatore/paz-n/" class="hub-chip-btn" onclick="if(typeof openPlayerByName==='function'){{event.preventDefault();openPlayerByName('Nico Paz');}}">💎 Paz N. <small>98</small></a>
+                        <a href="/calciatore/barella/" class="hub-chip-btn" onclick="if(typeof openPlayerByName==='function'){{event.preventDefault();openPlayerByName('Barella');}}">⚡ Barella <small>96</small></a>
+                        <a href="/calciatore/pulisic/" class="hub-chip-btn" onclick="if(typeof openPlayerByName==='function'){{event.preventDefault();openPlayerByName('Pulisic');}}">🎯 Pulisic <small>96</small></a>
+                        <a href="/calciatore/dimarco/" class="hub-chip-btn" onclick="if(typeof openPlayerByName==='function'){{event.preventDefault();openPlayerByName('Dimarco');}}">🛡️ Dimarco <small>95</small></a>
+                        <a href="/calciatore/svilar/" class="hub-chip-btn" onclick="if(typeof openPlayerByName==='function'){{event.preventDefault();openPlayerByName('Svilar');}}">🧤 Svilar <small>89</small></a>
                     </div>
 
-                    <!-- =========================================================================
-                         SELETTORE DELLE 2 GRANDI FASI DEL FANTACALCIO (CAMPIONATO vs MERCATO)
-                         ========================================================================= -->
-                    <div style="background: rgba(5, 8, 15, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 18px; padding: 10px; max-width: 960px; margin: 0 auto;">
-                        <div style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.8px; text-align: center; margin-bottom: 8px;">
-                            🧭 Scegli la tua Fase del Fantacalcio (Zero Confusione):
-                        </div>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px;">
-                            <!-- FASE 1 BUTTON: GIORNATA & FORMAZIONE -->
-                            <button type="button" id="btnPhaseMatchday" class="active" onclick="switchHomePhase('matchday')" style="background: linear-gradient(135deg, rgba(0, 230, 118, 0.2) 0%, rgba(56, 189, 248, 0.18) 100%); border: 2px solid #00e676; border-radius: 14px; padding: 14px 18px; cursor: pointer; text-align: left; transition: all 0.2s ease; box-shadow: 0 8px 25px rgba(0, 230, 118, 0.25); display: flex; align-items: center; gap: 14px;">
-                                <span style="font-size: 28px; flex-shrink: 0;">⚽</span>
-                                <div>
-                                    <div style="font-family: 'Outfit', sans-serif; font-size: 15.5px; font-weight: 900; color: #ffffff; display: flex; align-items: center; gap: 8px;">
-                                        <span>1. GIORNATA &amp; FORMAZIONE</span>
-                                        <span style="font-size: 10px; background: #00e676; color: #05070a; padding: 2px 7px; border-radius: 99px; font-weight: 900;">ATTIVA (G11)</span>
-                                    </div>
-                                    <div style="font-size: 12px; color: #cbd5e1; margin-top: 3px; line-height: 1.35;">
-                                        Schiera i tuoi 11 migliori: <b>Probabili Formazioni</b>, <b>Chi Schiero 1vs1</b>, <b>La Mia Rosa AI</b>, <b>Infortuni</b> e <b>Statistiche</b>.
-                                    </div>
-                                </div>
-                            </button>
-
-                            <!-- FASE 2 BUTTON: MERCATO & ASTA -->
-                            <button type="button" id="btnPhaseMarket" onclick="switchHomePhase('market')" style="background: rgba(15, 23, 42, 0.6); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 14px 18px; cursor: pointer; text-align: left; transition: all 0.2s ease; display: flex; align-items: center; gap: 14px;">
-                                <span style="font-size: 28px; flex-shrink: 0;">💰</span>
-                                <div>
-                                    <div style="font-family: 'Outfit', sans-serif; font-size: 15.5px; font-weight: 900; color: #ffffff; display: flex; align-items: center; gap: 8px;">
-                                        <span>2. MERCATO, ASTA &amp; SCAMBI</span>
-                                        <span style="font-size: 10px; background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); padding: 2px 7px; border-radius: 99px; font-weight: 800;">ESTATE &amp; RIPARAZIONE</span>
-                                    </div>
-                                    <div style="font-size: 12px; color: #cbd5e1; margin-top: 3px; line-height: 1.35;">
-                                        Crea o modifica la tua squadra: <b>Listone FVM (1-1000 CR)</b>, <b>Griglia Portieri</b>, <b>Rigoristi</b> e <b>Scommesse</b>.
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
+                    <!-- TACTILE 2-PHASE APP SWITCHER (Zero Testo Inutile) -->
+                    <div class="hpro-phase-switcher">
+                        <button type="button" id="btnPhaseMatchday" class="hpro-phase-btn active" onclick="switchHomePhase('matchday')">
+                            <span class="hpro-p-ico">⚽</span>
+                            <div class="hpro-p-txt">
+                                <span class="hpro-p-title">1. GIORNATA 11 <span class="hpro-p-badge green">LIVE</span></span>
+                                <span class="hpro-p-sub">Probabili • Chi Schiero • La Tua Rosa • Infortuni</span>
+                            </div>
+                        </button>
+                        <button type="button" id="btnPhaseMarket" class="hpro-phase-btn" onclick="switchHomePhase('market')">
+                            <span class="hpro-p-ico">💰</span>
+                            <div class="hpro-p-txt">
+                                <span class="hpro-p-title">2. MERCATO &amp; ASTA <span class="hpro-p-badge amber">ROSA</span></span>
+                                <span class="hpro-p-sub">Listone FVM • Top 11 Club • Portieri • Rigoristi</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
 
                 <!-- =========================================================================
-                     SEZIONE 1 (DEFAULT): FASE CAMPIONATO — GIORNATA & FORMAZIONE (11ª GIORNATA)
+                     FASE 1 (DEFAULT): GIORNATA 11 — SCHIERA I TUOI 11 IN 1 CLICK
                      ========================================================================= -->
-                <div id="homePhaseMatchday" style="display: flex; flex-direction: column; gap: 24px; width: 100%;">
+                <div id="homePhaseMatchday" class="hpro-phase-pane" style="display:flex;">
 
-                    <!-- RIGA AZIONE IMMEDIATA 1: I 2 RISOLUTORI DI FORMAZIONE (CHI SCHIERO 1VS1 + LA MIA ROSA AI) -->
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; width: 100%;">
-                        <!-- Card A: Dubbio Secco 1vs1 ("Chi Schiero?") -->
-                        <div style="background: linear-gradient(135deg, rgba(88, 28, 135, 0.35) 0%, rgba(15, 23, 42, 0.95) 100%); border: 1px solid rgba(192, 132, 252, 0.45); border-radius: 22px; padding: 24px 28px; box-shadow: 0 12px 30px rgba(0,0,0,0.45); display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
-                            <div>
-                                <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(192,132,252,0.18); border:1px solid rgba(192,132,252,0.45); padding:4px 12px; border-radius:99px; color:#e9d5ff; font-size:11.5px; font-weight:800; text-transform:uppercase; margin-bottom:10px;">
-                                    ⚡ RISOLVI UN DUBBIO IN 5 SECONDI
+                    <!-- RIGA 1: DOCK OPERATIVO IMMEDIATO (LA TUA ROSA AI + CHI SCHIERO 1VS1) -->
+                    <div class="hpro-action-dock">
+                        <!-- Card 1: La Tua Rosa AI -->
+                        <div class="hpro-dock-card squad" onclick="openMySquadModal()">
+                            <div class="hpro-dc-top">
+                                <div class="hpro-dc-ico green">📋</div>
+                                <div class="hpro-dc-headings">
+                                    <span class="hpro-dc-tag green">⚡ OTTIMIZZATORE 1-CLICK</span>
+                                    <h2 class="hpro-dc-title">La Tua Rosa &amp; Miglior 11 AI</h2>
                                 </div>
-                                <h2 style="font-size: 1.45rem; font-weight: 900; color: #ffffff; font-family:'Outfit',sans-serif; margin:0 0 8px 0;">
-                                    ⚔️ Dubbio 1vs1: Chi Schiero tra Due Giocatori?
-                                </h2>
-                                <p style="color: #cbd5e1; font-size: 0.92rem; margin:0; line-height:1.5;">
-                                    Indeciso su chi mettere titolare in attacco, a centrocampo o in porta? Seleziona i 2 calciatori in ballottaggio e ottieni subito la <b>percentuale di scelta AI</b> basata su xFM, titolarità e difesa avversaria.
-                                </p>
                             </div>
-                            <button onclick="switchTab('chi_schiero')" style="width:100%; font-size:1rem; padding:14px 22px; background:linear-gradient(135deg, #9333ea 0%, #7e22ce 100%); border:1px solid rgba(216,180,254,0.4); border-radius:14px; font-weight:800; cursor:pointer; box-shadow:0 8px 20px rgba(147,51,234,0.4); color:#fff; display:flex; align-items:center; justify-content:center; gap:8px;">
-                                <span>⚔️ Confronta 2 Giocatori Ora (1vs1)</span> &rarr;
+                            <div class="hpro-dc-pills">
+                                <span class="hpro-mini-pill">🧠 Modulo Ideale</span>
+                                <span class="hpro-mini-pill">👑 Capitano &amp; Panchina</span>
+                                <span class="hpro-mini-pill">🛡️ Zero S.V.</span>
+                            </div>
+                            <button type="button" class="hpro-dc-btn green" onclick="event.stopPropagation(); openMySquadModal();">
+                                <span>⚡ Inserisci Rosa &amp; Calcola 11</span>
+                                <span>&rarr;</span>
                             </button>
                         </div>
 
-                        <!-- Card B: La Mia Rosa & Formazione AI (Mobile-First) -->
-                        <div style="background: linear-gradient(135deg, rgba(6, 78, 59, 0.4) 0%, rgba(15, 23, 42, 0.95) 100%); border: 1px solid rgba(52, 211, 153, 0.45); border-radius: 22px; padding: 24px 28px; box-shadow: 0 12px 30px rgba(0,0,0,0.45); display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
-                            <div>
-                                <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(16,185,129,0.2); border:1px solid rgba(52,211,153,0.45); padding:4px 12px; border-radius:99px; color:#6ee7b7; font-size:11.5px; font-weight:800; text-transform:uppercase; margin-bottom:10px;">
-                                    📲 FUNZIONA ANCHE DA SMARTPHONE (WHATSAPP / RICERCA)
+                        <!-- Card 2: Chi Schiero 1vs1 -->
+                        <div class="hpro-dock-card duel" onclick="switchTab('chi_schiero')">
+                            <div class="hpro-dc-top">
+                                <div class="hpro-dc-ico purple">⚔️</div>
+                                <div class="hpro-dc-headings">
+                                    <span class="hpro-dc-tag purple">⚖️ BALLOTTAGGIO SECCO</span>
+                                    <h2 class="hpro-dc-title">Chi Schiero? Confronto 1vs1</h2>
                                 </div>
-                                <h2 style="font-size: 1.45rem; font-weight: 900; color: #ffffff; font-family:'Outfit',sans-serif; margin:0 0 8px 0;">
-                                    📋 La Mia Rosa: Calcola i Tuoi 11 Titolari AI
-                                </h2>
-                                <p style="color: #cbd5e1; font-size: 0.92rem; margin:0; line-height:1.5;">
-                                    Cerca i tuoi giocatori, incolla la lista da WhatsApp/App Leghe o carica il file <code>rose.csv</code>. L'AI ti consegna il <b>modulo migliore, gli 11 titolari e la panchina ordinata</b> senza rischio senza voto.
-                                </p>
                             </div>
-                            <button onclick="openMySquadModal()" style="width:100%; font-size:1rem; padding:14px 22px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); border:1px solid rgba(110,231,183,0.4); border-radius:14px; font-weight:800; cursor:pointer; box-shadow:0 8px 20px rgba(16,185,129,0.35); color:#fff; display:flex; align-items:center; justify-content:center; gap:8px;">
-                                <span>⚡ Apri La Mia Rosa &amp; Schiera l'11</span> &rarr;
-                            </button>
+                            <div class="hpro-dc-pills" onclick="event.stopPropagation();">
+                                <a href="/chi-schiero/malen-vs-martinez-l/" class="hpro-duel-chip">⚔️ Malen vs Lautaro</a>
+                                <a href="/chi-schiero/paz-n-vs-calhanoglu/" class="hpro-duel-chip">⚔️ Paz vs Calhanoglu</a>
+                                <a href="/chi-schiero/pulisic-vs-zaccagni/" class="hpro-duel-chip">⚔️ Pulisic vs Zaccagni</a>
+                            </div>
+                            <a href="/chi-schiero/" class="hpro-dc-btn purple" onclick="event.stopPropagation(); onNavClick(event, 'chi_schiero');">
+                                <span>⚔️ Confronta 2 Giocatori (1vs1)</span>
+                                <span>&rarr;</span>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- RIGA AZIONE IMMEDIATA 2: PROBABILI FORMAZIONI & BALLOTTAGGI 11ª GIORNATA (4 FONTI) -->
-                    <div class="probabili-hub-hero-card" style="width: 100%; box-sizing: border-box; background: radial-gradient(120% 120% at 50% 0%, rgba(56,189,248,0.2) 0%, rgba(15,23,42,0.95) 100%); border: 1px solid rgba(56,189,248,0.4); border-radius: 24px; padding: 26px 32px; box-shadow: 0 12px 36px rgba(0,0,0,0.55);">
-                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
-                            <div style="flex:1; min-width:280px;">
-                                <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.4); padding:4px 14px; border-radius:99px; color:#38bdf8; font-size:12px; font-weight:800; text-transform:uppercase; margin-bottom:10px; letter-spacing:0.5px;">
-                                    ⚡ 11ª GIORNATA SERIE A &bull; CONSENSUS 4 FONTI UFFICIALI
-                                </div>
-                                <h2 style="font-size: 1.6rem; font-weight: 900; color: #f8fafc; font-family:'Outfit',sans-serif; margin:0 0 8px 0;">
-                                    ⚽ Probabili Formazioni &amp; Ballottaggi 11ª Giornata
-                                </h2>
-                                <p style="color: #94a3b8; font-size: 0.94rem; max-width: 780px; margin:0 0 14px 0; line-height:1.5;">
-                                    Percentuali di titolarità calcolate incrociando le 4 fonti ufficiali (<b>Fantacalcio.it, Gazzetta dello Sport, Sky Sport, SOS Fanta</b>) con neutralizzazione automatica degli infortunati per tutte le 10 partite dell'11ª giornata.
-                                </p>
-                                <!-- Quick match chips G11 -->
-                                <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-                                    <span style="font-size:11px; font-weight:800; color:#38bdf8; text-transform:uppercase;">Match Clou G11:</span>
-                                    <a href="/probabili-formazioni/fiorentina-juventus/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); color:#fff; border-radius:8px;">⭐ Fiorentina - Juve</a>
-                                    <a href="/probabili-formazioni/napoli-lazio/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); color:#fff; border-radius:8px;">⭐ Napoli - Lazio</a>
-                                    <a href="/probabili-formazioni/genoa-milan/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); color:#fff; border-radius:8px;">Genoa - Milan</a>
-                                    <a href="/probabili-formazioni/inter-como/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); color:#fff; border-radius:8px;">Inter - Como</a>
-                                    <a href="/probabili-formazioni/roma-sassuolo/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); color:#fff; border-radius:8px;">Roma - Sassuolo</a>
+                    <!-- RIGA 2: STRISCIA VISUALE 10 PARTITE 11ª GIORNATA (PROBABILI FORMAZIONI 4 FONTI) -->
+                    <div class="hpro-matches-box">
+                        <div class="hpro-box-header">
+                            <div class="hpro-bh-left">
+                                <span class="hpro-bh-ico">⚽</span>
+                                <div>
+                                    <h2 class="hpro-bh-title">Probabili Formazioni 11ª Giornata</h2>
+                                    <span class="hpro-bh-sub">Media Consensus 4 Fonti • Fantacalcio • Gazzetta • Sky • SOS Fanta</span>
                                 </div>
                             </div>
-                            <div style="display:flex; flex-direction:column; gap:10px; align-items:stretch;">
-                                <a href="/probabili-formazioni/" style="font-size:1rem; padding:15px 28px; background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border:none; border-radius:14px; font-weight:800; cursor:pointer; box-shadow:0 8px 24px rgba(2,132,199,0.45); color:#fff; white-space:nowrap; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:8px;">
-                                    <span>📊 Apri le 10 Partite G11</span> &rarr;
-                                </a>
-                                <span style="font-size:11px; color:#94a3b8; text-align:center;">Titolari, 72 ballottaggi e 4 fonti</span>
-                            </div>
+                            <a href="/probabili-formazioni/" class="hpro-bh-cta">
+                                Tutte le 10 Partite &rarr;
+                            </a>
+                        </div>
+                        <div class="hpro-matches-grid">
+{home_matches_strip_html}
                         </div>
                     </div>
 
-                    <!-- RIGA 3: TUTTI GLI STRUMENTI PER LA GIORNATA DI CAMPIONATO (SENZA DISTRAZIONI DA MERCATO) -->
-                    <div>
-                        <div class="ai-section-title-wrap">
-                            <span class="ai-section-tag">⚽ Sezione 1 • Campionato in Corso</span>
-                            <h2 class="ai-section-title">
-                                <span>🎯</span> Tutto Ciò che Ti Serve per la Giornata di Campionato
-                            </h2>
-                            <p class="ai-section-subtitle">Tutti gli strumenti per scegliere i tuoi 11 titolari in base a partite, infortuni, squalificati, probabili formazioni e statistiche reali.</p>
-                        </div>
-
-                        <div class="ai-capabilities-grid">
-                            <!-- Card 1: Probabili Formazioni & Ballottaggi -->
-                            <div class="ai-cap-card" onclick="if(window.location.protocol==='file:'){{window.location.href='./dist/probabili-formazioni/index.html';}}else{{window.location.href='/probabili-formazioni/';}}">
-                                <div>
-                                    <div class="cap-card-top">
-                                        <div class="cap-icon-box" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#38bdf8;">⚽</div>
-                                        <span class="cap-badge-tag">Consensus 4 Fonti</span>
-                                    </div>
-                                    <h3 class="cap-title">Probabili Formazioni &amp; Ballottaggi</h3>
-                                    <p class="cap-desc">Le 10 partite di giornata e i 20 club di Serie A con percentuali di titolarità aggregate da Fantacalcio.it, Gazzetta, Sky Sport e SOS Fanta.</p>
-                                </div>
-                                <div class="cap-card-footer" style="color:#38bdf8;">
-                                    <span>Vedi le 10 Partite G11 &rarr;</span>
-                                    <span style="font-size:11px;color:var(--text-muted);">11ª Giornata Live</span>
-                                </div>
+                    <!-- RIGA 3: 4 TILES RAPIDE DI GIORNATA (ZERO PARAGRAFI, SOLO ICONA + KPI) -->
+                    <div class="hpro-quick-tools-4">
+                        <a href="/consigli-fantacalcio/" class="hpro-qtile pink" onclick="onNavClick(event, 'matchday_advice')">
+                            <span class="hq-ico">🎯</span>
+                            <div class="hq-body">
+                                <span class="hq-title">Consigliati G11</span>
+                                <span class="hq-meta">Top 11 &amp; Indice AI</span>
                             </div>
-
-                            <!-- Card 2: Tool Chi Schiero 1vs1 -->
-                            <div class="ai-cap-card" onclick="switchTab('chi_schiero')">
-                                <div>
-                                    <div class="cap-card-top">
-                                        <div class="cap-icon-box" style="background:rgba(168,85,247,0.15);border:1px solid rgba(168,85,247,0.3);color:#c084fc;">⚔️</div>
-                                        <span class="cap-badge-tag">Simulatore 1vs1</span>
-                                    </div>
-                                    <h3 class="cap-title">Tool "Chi Schiero?" (Dubbi 1vs1)</h3>
-                                    <p class="cap-desc">Hai un ballottaggio nella tua rosa? Confronta due giocatori testa a testa e scopri chi ha la percentuale di bonus e voto più alta in questo turno.</p>
-                                </div>
-                                <div class="cap-card-footer" style="color:#c084fc;">
-                                    <span>Risolvi Ballottaggio &rarr;</span>
-                                    <span style="font-size:11px;color:var(--text-muted);">Verdetto % Immediato</span>
-                                </div>
+                            <span class="hq-arr">&rarr;</span>
+                        </a>
+                        <a href="/infortunati-serie-a/" class="hpro-qtile red">
+                            <span class="hq-ico">🩺</span>
+                            <div class="hq-body">
+                                <span class="hq-title">Infortuni &amp; Squalifiche</span>
+                                <span class="hq-meta">Bollettino 20 Club</span>
                             </div>
-
-                            <!-- Card 3: Consigliati di Giornata & Top 11 -->
-                            <div class="ai-cap-card" onclick="switchTab('matchday_advice')">
-                                <div>
-                                    <div class="cap-card-top">
-                                        <div class="cap-icon-box" style="background:rgba(236,72,153,0.15);border:1px solid rgba(236,72,153,0.3);color:#f472b6;">🎯</div>
-                                        <span class="cap-badge-tag">Schierabilità AI</span>
-                                    </div>
-                                    <h3 class="cap-title">Consigliati di Giornata &amp; Top 11</h3>
-                                    <p class="cap-desc">I giocatori consigliati ruolo per ruolo per l'11ª giornata, le scommesse di turno, i possibili flop da evitare e la Top 11 ideale dell'algoritmo.</p>
-                                </div>
-                                <div class="cap-card-footer" style="color:#f472b6;">
-                                    <span>Scopri Chi Schierare &rarr;</span>
-                                    <span style="font-size:11px;color:var(--text-muted);">Ruolo per Ruolo</span>
-                                </div>
+                            <span class="hq-arr">&rarr;</span>
+                        </a>
+                        <a href="/statistiche-serie-a/" class="hpro-qtile green" onclick="onNavClick(event, 'stats')">
+                            <span class="hq-ico">📊</span>
+                            <div class="hq-body">
+                                <span class="hq-title">Statistiche &amp; xG</span>
+                                <span class="hq-meta">534 Calciatori Live</span>
                             </div>
-
-                            <!-- Card 4: Infortunati & Squalificati -->
-                            <div class="ai-cap-card" onclick="if(window.location.protocol==='file:'){{window.location.href='./dist/infortunati-serie-a/index.html';}}else{{window.location.href='/infortunati-serie-a/';}}">
-                                <div>
-                                    <div class="cap-card-top">
-                                        <div class="cap-icon-box" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#f87171;">🩺</div>
-                                        <span class="cap-badge-tag">Bollettino Medico</span>
-                                    </div>
-                                    <h3 class="cap-title">Infortunati, Squalificati &amp; Rientri</h3>
-                                    <p class="cap-desc">Tabella aggiornata di tutti gli indisponibili dei 20 club: diagnosi clinica, tempi di recupero stimati e indice di fragilità fisica.</p>
-                                </div>
-                                <div class="cap-card-footer" style="color:#f87171;">
-                                    <span>Controlla Indisponibili &rarr;</span>
-                                    <span style="font-size:11px;color:var(--text-muted);">Zero Rischio S.V.</span>
-                                </div>
+                            <span class="hq-arr">&rarr;</span>
+                        </a>
+                        <a href="/top-flop/" class="hpro-qtile amber" onclick="onNavClick(event, 'top_flop')">
+                            <span class="hq-ico">⚡</span>
+                            <div class="hq-body">
+                                <span class="hq-title">Top, Flop &amp; Voti</span>
+                                <span class="hq-meta">Pagelle &amp; Tabellini</span>
                             </div>
-
-                            <!-- Card 5: Statistiche Calciatori Serie A (xG, xA, xFM) -->
-                            <div class="ai-cap-card" onclick="switchTab('stats')">
-                                <div>
-                                    <div class="cap-card-top">
-                                        <div class="cap-icon-box" style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:#4ade80;">📊</div>
-                                        <span class="cap-badge-tag">Expected Metrics</span>
-                                    </div>
-                                    <h3 class="cap-title">Statistiche Calciatori (xG, xA, FM)</h3>
-                                    <p class="cap-desc">Tutte le statistiche reali della stagione 2026/27: Media Voto, FantaMedia, Gol, Assist, Expected Goals (xG), Expected Assists (xA) e Radar SVG.</p>
-                                </div>
-                                <div class="cap-card-footer" style="color:#4ade80;">
-                                    <span>Esplora Statistiche &rarr;</span>
-                                    <span style="font-size:11px;color:var(--text-muted);">534 Calciatori</span>
-                                </div>
-                            </div>
-
-                            <!-- Card 6: Top & Flop + Match Reports -->
-                            <div class="ai-cap-card" onclick="switchTab('top_flop')">
-                                <div>
-                                    <div class="cap-card-top">
-                                        <div class="cap-icon-box" style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);color:#fbbf24;">⚡</div>
-                                        <span class="cap-badge-tag">Voti &amp; Pagelle</span>
-                                    </div>
-                                    <h3 class="cap-title">Top &amp; Flop e Match Reports</h3>
-                                    <p class="cap-desc">Rivedi i migliori e peggiori calciatori dell'ultimo turno di campionato, i voti ufficiali e i tabellini completi con km percorsi.</p>
-                                </div>
-                                <div class="cap-card-footer" style="color:#fbbf24;">
-                                    <span>Vedi Top &amp; Flop &rarr;</span>
-                                    <span style="font-size:11px;color:var(--text-muted);">Analisi Giornate</span>
-                                </div>
-                            </div>
-                        </div>
+                            <span class="hq-arr">&rarr;</span>
+                        </a>
                     </div>
 
-                    <!-- RIGA 4: AI INTELLIGENCE PULSE (3-BENTO: TOP PICK, FLOP ALERT, SCOMMESSA DI GIORNATA) -->
-                    <div>
-                        <div class="ai-section-title-wrap">
-                            <span class="ai-section-tag">⚡ Live Intelligence Pulse • 11ª Giornata</span>
-                            <h2 class="ai-section-title">
-                                <span>🧠</span> I 3 Verdetti Chiave dell'Algoritmo per Questo Turno
-                            </h2>
-                            <p class="ai-section-subtitle">Analisi computazionale match-by-match per schierare la formazione ideale e minimizzare i rimpianti.</p>
+                    <!-- RIGA 4: 3 FLASH PICKS G11 (CAPITANO, TRAPPOLA, GEMMA — ZERO MURI DI TESTO) -->
+                    <div class="hpro-section-block">
+                        <div class="hpro-sec-bar">
+                            <h2 class="hpro-sec-h2"><span>⚡</span> Flash AI 11ª Giornata</h2>
+                            <span class="hpro-sec-pill">Calcolo xFM Live</span>
                         </div>
-
-                        <div class="ai-pulse-grid">
+                        <div class="ai-pulse-grid hpro-flash-grid">
                             <!-- Card 1: Top AI Pick & Capitano Ideale -->
-                            <div class="ai-pulse-card pick">
+                            <div class="ai-pulse-card pick" onclick="openPlayerByName('Malen')" style="cursor:pointer;">
                                 <div class="pulse-card-header">
-                                    <span class="pulse-badge green">🚀 Top Pick &amp; Capitano AI</span>
+                                    <span class="pulse-badge green">🚀 CAPITANO AI</span>
                                     <span class="pulse-card-score" style="color:#4ade80;">98% Schierabile</span>
                                 </div>
                                 <div class="pulse-player-box">
                                     <span class="role-badge A" style="width:34px;height:34px;font-size:15px;">A</span>
                                     <div>
                                         <div class="pulse-player-name">Donyell Malen</div>
-                                        <div class="pulse-player-sub">Roma • Attaccante • OVR 88</div>
+                                        <div class="pulse-player-sub">Roma • Attaccante • OVR 97</div>
                                     </div>
                                 </div>
                                 <div class="pulse-metrics-strip">
                                     <div class="pulse-metric-item">
-                                        <span class="p-lbl">xFM Previsto</span>
+                                        <span class="p-lbl">xFM G11</span>
                                         <span class="p-val" style="color:#00e676;">8.45</span>
                                     </div>
                                     <div class="pulse-metric-item">
-                                        <span class="p-lbl">Matchup G11</span>
+                                        <span class="p-lbl">Partita</span>
                                         <span class="p-val" style="color:#38bdf8;">vs Sassuolo</span>
                                     </div>
                                     <div class="pulse-metric-item">
-                                        <span class="p-lbl">Status Tattico</span>
+                                        <span class="p-lbl">Status</span>
                                         <span class="p-val" style="color:#fbbf24;">1° Rigorista</span>
                                     </div>
                                 </div>
-                                <div class="pulse-quote-box">
-                                    <b>Verdetto AI:</b> <i>"Vice-capocannoniere del torneo con 8 reti e leader assoluto di Serie A per xG (7.70). Matchup casalingo ideale all'Olimpico contro il Sassuolo. Must-have assoluto di giornata."</i>
-                                </div>
-                                <button class="pulse-action-link" onclick="openPlayerByName('Malen')">
-                                    <span>Apri Scheda Calciatore &amp; Radar SVG</span>
-                                    <span>&rarr;</span>
-                                </button>
                             </div>
 
                             <!-- Card 2: Flop & Trap Alert -->
-                            <div class="ai-pulse-card danger">
+                            <div class="ai-pulse-card danger" onclick="openPlayerByName('Laurient')" style="cursor:pointer;">
                                 <div class="pulse-card-header">
-                                    <span class="pulse-badge red">⚠️ Flop &amp; Trappola Alert</span>
-                                    <span class="pulse-card-score" style="color:#f87171;">Difficoltà 4.7/5</span>
+                                    <span class="pulse-badge red">⚠️ RISCHIO FLOP</span>
+                                    <span class="pulse-card-score" style="color:#f87171;">Diff. 4.7/5</span>
                                 </div>
                                 <div class="pulse-player-box">
                                     <span class="role-badge A" style="width:34px;height:34px;font-size:15px;">A</span>
@@ -996,38 +791,31 @@ def build_standalone_dashboard(sync_android=False):
                                 </div>
                                 <div class="pulse-metrics-strip">
                                     <div class="pulse-metric-item">
-                                        <span class="p-lbl">Matchup G11</span>
+                                        <span class="p-lbl">Partita</span>
                                         <span class="p-val" style="color:#f87171;">@ Roma</span>
                                     </div>
                                     <div class="pulse-metric-item">
-                                        <span class="p-lbl">Indice Difesa</span>
-                                        <span class="p-val" style="color:#ef4444;">🧱 Trasferta Dura</span>
+                                        <span class="p-lbl">Ostacolo</span>
+                                        <span class="p-val" style="color:#ef4444;">Muro Difesa</span>
                                     </div>
                                     <div class="pulse-metric-item">
-                                        <span class="p-lbl">xFM Proiettato</span>
-                                        <span class="p-val" style="color:#fbbf24;">6.85 (Down)</span>
+                                        <span class="p-lbl">xFM G11</span>
+                                        <span class="p-val" style="color:#fbbf24;">5.65 ↓</span>
                                     </div>
                                 </div>
-                                <div class="pulse-quote-box" style="border-left-color:#ef4444;">
-                                    <b>Verdetto AI:</b> <i>"Trasferta ostica allo Stadio Olimpico contro la retroguardia giallorossa. Alto rischio isolamento; l'algoritmo suggerisce cautela e rotazione se disponi di alternative d'attacco in casa."</i>
-                                </div>
-                                <button class="pulse-action-link" onclick="openPlayerByName('Laurient')">
-                                    <span>Analizza Matchup &amp; Profilo Giocatore</span>
-                                    <span>&rarr;</span>
-                                </button>
                             </div>
 
                             <!-- Card 3: Scommessa & Differenziale AI -->
-                            <div class="ai-pulse-card gem">
+                            <div class="ai-pulse-card gem" onclick="openPlayerByName('Adzic')" style="cursor:pointer;">
                                 <div class="pulse-card-header">
-                                    <span class="pulse-badge purple">🔮 Vera Gemma Low-Cost</span>
+                                    <span class="pulse-badge purple">💎 GEMMA G11</span>
                                     <span class="pulse-card-score" style="color:#c084fc;">Upside +38%</span>
                                 </div>
                                 <div class="pulse-player-box">
                                     <span class="role-badge C" style="width:34px;height:34px;font-size:15px;">C</span>
                                     <div>
                                         <div class="pulse-player-name">Vasilije Adzic</div>
-                                        <div class="pulse-player-sub">Sassuolo • Trequartista / C • 11 CR</div>
+                                        <div class="pulse-player-sub">Sassuolo • Centrocampista • 11 CR</div>
                                     </div>
                                 </div>
                                 <div class="pulse-metrics-strip">
@@ -1036,270 +824,152 @@ def build_standalone_dashboard(sync_android=False):
                                         <span class="p-val" style="color:#c084fc;">0.78</span>
                                     </div>
                                     <div class="pulse-metric-item">
-                                        <span class="p-lbl">Gol &amp; Assist</span>
+                                        <span class="p-lbl">Bonus</span>
                                         <span class="p-val" style="color:#34d399;">3G + 1A</span>
                                     </div>
                                     <div class="pulse-metric-item">
-                                        <span class="p-lbl">Prezzo Cons.</span>
-                                        <span class="p-val" style="color:#fbbf24;">11 CR (Gemma)</span>
+                                        <span class="p-lbl">Costo</span>
+                                        <span class="p-val" style="color:#fbbf24;">11 CR</span>
                                     </div>
                                 </div>
-                                <div class="pulse-quote-box" style="border-left-color:#c084fc;">
-                                    <b>Verdetto AI:</b> <i>"Numeri offensivi sbalorditivi con 0.78 xG90 da attaccante aggiunto e già 3 reti. Il miglior rapporto costo/resa come jolly di centrocampo."</i>
-                                </div>
-                                <button class="pulse-action-link" onclick="openPlayerByName('Adzic')">
-                                    <span>Esplora Radar &amp; Proiezioni Future</span>
-                                    <span>&rarr;</span>
-                                </button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- RIGA 5: LEADER & STATISTICHE SERIE A -->
-                    <div>
-                        <div class="ai-section-title-wrap">
-                            <span class="ai-section-tag">📊 Serie A 2026/27 Live</span>
-                            <h2 class="ai-section-title">
-                                <span>🏆</span> I Leader Statistici del Campionato
-                            </h2>
-                            <p class="ai-section-subtitle">Le 6 metriche più determinanti: clicca su qualsiasi calciatore per aprire la sua scheda analitica con Radar.</p>
+                    <!-- RIGA 5: LEADER STATISTICI SERIE A 2026/27 (UNICA ISTANZA PULITA) -->
+                    <div class="hpro-section-block">
+                        <div class="hpro-sec-bar">
+                            <h2 class="hpro-sec-h2"><span>🏆</span> Leader Serie A 2026/27</h2>
+                            <a href="/statistiche-serie-a/" class="hpro-sec-link" onclick="onNavClick(event, 'stats')">Classifiche Complete &rarr;</a>
                         </div>
-
                         <div class="leader-grid" id="homeLeadersGrid">
 {home_leaders_html}
                         </div>
                     </div>
 
-                    <!-- RIGA 6: CERTIFICAZIONE SCIENTIFICA & RETROSPETTIVA (SPOSTATA SOTTO GLI STRUMENTI OPERATIVI) -->
+                    <!-- RIGA 6: BARRA COMPATTA ACCURATEZZA AI CERTIFICATA -->
 {hero_trust_showcase_html}
 
                 </div>
 
                 <!-- =========================================================================
-                     SEZIONE 2: FASE MERCATO & ASTA (ESTATE & MERCATO DI RIPARAZIONE GENNAIO/FEBBRAIO)
+                     FASE 2: MERCATO, ASTA & SCAMBI (CREAZIONE / RIPARAZIONE SQUADRA)
                      ========================================================================= -->
-                <div id="homePhaseMarket" style="display: none; flex-direction: column; gap: 24px; width: 100%;">
+                <div id="homePhaseMarket" class="hpro-phase-pane" style="display:none;">
 
-                    <!-- HERO BANNER MERCATO & ASTA -->
-                    <div style="width: 100%; box-sizing: border-box; background: radial-gradient(120% 120% at 50% 0%, rgba(245,158,11,0.2) 0%, rgba(15,23,42,0.96) 100%); border: 1px solid rgba(245,158,11,0.45); border-radius: 24px; padding: 28px 34px; box-shadow: 0 12px 36px rgba(0,0,0,0.55);">
-                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
-                            <div style="flex:1; min-width:280px;">
-                                <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(245,158,11,0.18); border:1px solid rgba(245,158,11,0.45); padding:4px 14px; border-radius:99px; color:#fbbf24; font-size:12px; font-weight:800; text-transform:uppercase; margin-bottom:10px; letter-spacing:0.5px;">
-                                    💰 CREAZIONE SQUADRA &bull; ASTA ESTIVA &amp; RIPARAZIONE GENNAIO/FEBBRAIO
-                                </div>
-                                <h2 style="font-size: 1.65rem; font-weight: 900; color: #f8fafc; font-family:'Outfit',sans-serif; margin:0 0 8px 0;">
-                                    📋 Listone Calciatori, Quotazioni FVM &amp; Strategia Mercato
-                                </h2>
-                                <p style="color: #cbd5e1; font-size: 0.95rem; max-width: 780px; margin:0 0 14px 0; line-height:1.5;">
-                                    Costruisci o ripara la tua rosa senza sprecare crediti: consulta il <b>Listone completo dei 534 calciatori</b> con prezzi consigliati (scala 1-1000 CR o 500 CR), divisione in <b>Slot 1-8</b>, <b>Griglia Portieri 38/38</b> e <b>Gerarchie Rigoristi e Piazzati</b>.
-                                </p>
-                                <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-                                    <span style="font-size:11px; font-weight:800; color:#fbbf24; text-transform:uppercase;">Accesso Rapido Mercato:</span>
-                                    <button onclick="switchTab('auction')" class="hub-chip-btn" style="font-size:11.5px; padding:5px 12px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); color:#fbbf24; border-radius:8px; cursor:pointer;">📋 Listone 534 Calciatori</button>
-                                    <a href="/probabili-formazioni/como/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(56,189,248,0.14); border:1px solid rgba(56,189,248,0.35); color:#38bdf8; border-radius:8px;">🏟️ Top 11 Stagionali (20 Squadre)</a>
-                                    <a href="/griglia-portieri/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); color:#fff; border-radius:8px;">🧤 Griglia Portieri 38/38</a>
-                                    <a href="/rigoristi-serie-a/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); color:#fff; border-radius:8px;">🎯 Rigoristi &amp; Piazzati</a>
-                                    <button onclick="switchTab('gems')" class="hub-chip-btn" style="font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); color:#fff; border-radius:8px; cursor:pointer;">🔮 Scommesse Low-Cost</button>
-                                </div>
+                    <!-- GRIGLIA VISUALE 6 STRUMENTI MERCATO (ZERO PARAGRAFI LUNGHI) -->
+                    <div class="hpro-market-grid">
+                        <a href="/listone/" class="hpro-mcard amber" onclick="onNavClick(event, 'auction')">
+                            <div class="hmc-top">
+                                <span class="hmc-ico">📋</span>
+                                <span class="hmc-tag">1-1000 CR</span>
                             </div>
-                            <div style="display:flex; flex-direction:column; gap:10px; align-items:stretch;">
-                                <button onclick="switchTab('auction')" style="font-size:1rem; padding:15px 28px; background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border:none; border-radius:14px; font-weight:900; cursor:pointer; box-shadow:0 8px 24px rgba(245,158,11,0.4); color:#0b0f19; white-space:nowrap; display:inline-flex; align-items:center; justify-content:center; gap:8px;">
-                                    <span>📋 Apri il Listone &amp; FVM</span> &rarr;
-                                </button>
-                                <span style="font-size:11px; color:#94a3b8; text-align:center;">Classic &amp; Mantra &bull; Scala 500/1000 CR</span>
+                            <h3 class="hmc-title">Listone &amp; Valori FVM</h3>
+                            <div class="hmc-pills">
+                                <span>534 Calciatori</span>
+                                <span>Classic &amp; Mantra</span>
+                                <span>Slot 1-8</span>
                             </div>
+                            <span class="hmc-cta">Apri Listone &rarr;</span>
+                        </a>
+
+                        <a href="/probabili-formazioni/inter/" class="hpro-mcard pink">
+                            <div class="hmc-top">
+                                <span class="hmc-ico">🏟️</span>
+                                <span class="hmc-tag">20 Club 2D</span>
+                            </div>
+                            <h3 class="hmc-title">Top 11 Stagionali Squadre</h3>
+                            <div class="hmc-pills">
+                                <span>Titolari Tipo</span>
+                                <span>Staffette</span>
+                                <span>Indice FRP</span>
+                            </div>
+                            <span class="hmc-cta">Esplora 20 Club &rarr;</span>
+                        </a>
+
+                        <a href="/griglia-portieri/" class="hpro-mcard cyan">
+                            <div class="hmc-top">
+                                <span class="hmc-ico">🧤</span>
+                                <span class="hmc-tag">38 Giornate</span>
+                            </div>
+                            <h3 class="hmc-title">Griglia Portieri 38/38</h3>
+                            <div class="hmc-pills">
+                                <span>190 Coppie</span>
+                                <span>Incroci Casa/Fuori</span>
+                            </div>
+                            <span class="hmc-cta">Apri Matrice &rarr;</span>
+                        </a>
+
+                        <a href="/rigoristi-serie-a/" class="hpro-mcard green">
+                            <div class="hmc-top">
+                                <span class="hmc-ico">🎯</span>
+                                <span class="hmc-tag">Bonus +3</span>
+                            </div>
+                            <h3 class="hmc-title">Rigoristi &amp; Piazzati</h3>
+                            <div class="hmc-pills">
+                                <span>1° / 2° / 3° Tiratore</span>
+                                <span>Punizioni &amp; Corner</span>
+                            </div>
+                            <span class="hmc-cta">Vedi Gerarchie &rarr;</span>
+                        </a>
+
+                        <a href="/scommesse-talenti/" class="hpro-mcard purple" onclick="onNavClick(event, 'gems')">
+                            <div class="hmc-top">
+                                <span class="hmc-ico">🔮</span>
+                                <span class="hmc-tag">Colpacci 1 CR</span>
+                            </div>
+                            <h3 class="hmc-title">Gemme &amp; Scommesse</h3>
+                            <div class="hmc-pills">
+                                <span>Low-Cost</span>
+                                <span>Alto xG/90</span>
+                            </div>
+                            <span class="hmc-cta">Scopri Talenti &rarr;</span>
+                        </a>
+
+                        <a href="/confronto-calciatori/" class="hpro-mcard blue" onclick="onNavClick(event, 'matchup')">
+                            <div class="hmc-top">
+                                <span class="hmc-ico">⚖️</span>
+                                <span class="hmc-tag">Scambi &amp; Asta</span>
+                            </div>
+                            <h3 class="hmc-title">Confronto Radar 1vs1</h3>
+                            <div class="hmc-pills">
+                                <span>Radar 6 Assi</span>
+                                <span>OVR &amp; FVM</span>
+                            </div>
+                            <span class="hmc-cta">Confronta Profili &rarr;</span>
+                        </a>
+                    </div>
+
+                    <!-- ACCESSO DIRETTO TOP 11 STAGIONALI DEI 20 CLUB (OTTIMO PER UX MERCATO + SEO) -->
+                    <div class="hpro-clubs-box">
+                        <div class="hpro-sec-bar" style="margin-bottom:10px;">
+                            <h2 class="hpro-sec-h2"><span>🏟️</span> Top 11 &amp; Gerarchie Stagionali (20 Club Serie A)</h2>
+                            <span class="hpro-sec-pill">Titolari Base per Asta &amp; Mercato</span>
+                        </div>
+                        <div class="hpro-clubs-grid">
+                            <a href="/probabili-formazioni/atalanta/" class="hpro-club-pill">Atalanta</a>
+                            <a href="/probabili-formazioni/bologna/" class="hpro-club-pill">Bologna</a>
+                            <a href="/probabili-formazioni/cagliari/" class="hpro-club-pill">Cagliari</a>
+                            <a href="/probabili-formazioni/como/" class="hpro-club-pill">Como</a>
+                            <a href="/probabili-formazioni/fiorentina/" class="hpro-club-pill">Fiorentina</a>
+                            <a href="/probabili-formazioni/frosinone/" class="hpro-club-pill">Frosinone</a>
+                            <a href="/probabili-formazioni/genoa/" class="hpro-club-pill">Genoa</a>
+                            <a href="/probabili-formazioni/inter/" class="hpro-club-pill">Inter</a>
+                            <a href="/probabili-formazioni/juventus/" class="hpro-club-pill">Juventus</a>
+                            <a href="/probabili-formazioni/lazio/" class="hpro-club-pill">Lazio</a>
+                            <a href="/probabili-formazioni/lecce/" class="hpro-club-pill">Lecce</a>
+                            <a href="/probabili-formazioni/milan/" class="hpro-club-pill">Milan</a>
+                            <a href="/probabili-formazioni/napoli/" class="hpro-club-pill">Napoli</a>
+                            <a href="/probabili-formazioni/parma/" class="hpro-club-pill">Parma</a>
+                            <a href="/probabili-formazioni/pisa/" class="hpro-club-pill">Pisa</a>
+                            <a href="/probabili-formazioni/roma/" class="hpro-club-pill">Roma</a>
+                            <a href="/probabili-formazioni/sassuolo/" class="hpro-club-pill">Sassuolo</a>
+                            <a href="/probabili-formazioni/torino/" class="hpro-club-pill">Torino</a>
+                            <a href="/probabili-formazioni/udinese/" class="hpro-club-pill">Udinese</a>
+                            <a href="/probabili-formazioni/venezia/" class="hpro-club-pill">Venezia</a>
                         </div>
                     </div>
 
-                    <!-- GRIGLIA DEI 6 STRUMENTI FONDAMENTALI PER IL MERCATO E L'ASTA -->
-                    <div>
-                        <div class="ai-section-title-wrap">
-                            <span class="ai-section-tag" style="color:#fbbf24;">💰 Sezione 2 • Creazione Squadra &amp; Mercato di Riparazione</span>
-                            <h2 class="ai-section-title">
-                                <span>🏆</span> Gli Strumenti per Creare e Modificare la Tua Squadra
-                            </h2>
-                            <p class="ai-section-subtitle">Tutto ciò che serve in Estate e a fine Gennaio/inizio Febbraio per costruire una rosa dominante e vincere gli scambi.</p>
-                        </div>
-
-                        <div class="ai-capabilities-grid">
-                            <!-- Mercato Tool 1: Listone & FVM Dinamico -->
-                            <div class="ai-cap-card" onclick="switchTab('auction')">
-                                <div>
-                                    <div class="cap-card-top">
-                                        <div class="cap-icon-box" style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);color:#fbbf24;">📋</div>
-                                        <span class="cap-badge-tag">Scala 1-1000 CR</span>
-                                    </div>
-                                    <h3 class="cap-title">Listone Calciatori &amp; Valutazioni FVM</h3>
-                                    <p class="cap-desc">Tutti i 534 calciatori di Serie A con prezzi d'asta stimati (FVM), slot reparto 1-8, filtri svincolati e ruoli sia Classic che Mantra.</p>
-                                </div>
-                                <div class="cap-card-footer" style="color:#fbbf24;">
-                                    <span>Apri Listone Completo &rarr;</span>
-                                    <span style="font-size:11px;color:var(--text-muted);">534 Calciatori</span>
-                                </div>
-                            </div>
-
-                            <!-- Mercato Tool 2: Griglia Portieri 38/38 -->
-                            <div class="ai-cap-card" onclick="if(window.location.protocol==='file:'){{window.location.href='./dist/griglia-portieri/index.html';}}else{{window.location.href='/griglia-portieri/';}}">
-                                <div>
-                                    <div class="cap-card-top">
-                                        <div class="cap-icon-box" style="background:rgba(0,242,254,0.15);border:1px solid rgba(0,242,254,0.3);color:#00f2fe;">🧤</div>
-                                        <span class="cap-badge-tag">38 Giornate</span>
-                                    </div>
-                                    <h3 class="cap-title">Griglia Portieri &amp; Incroci 38/38</h3>
-                                    <p class="cap-desc">Matrice matematica degli incroci casa/trasferta su 38 turni: trova la coppia perfetta di portieri low-cost con 0 contemporaneità in trasferta.</p>
-                                </div>
-                                <div class="cap-card-footer" style="color:#00f2fe;">
-                                    <span>Trova Coppia Portieri &rarr;</span>
-                                    <span style="font-size:11px;color:var(--text-muted);">190 Coppie Analizzate</span>
-                                </div>
-                            </div>
-
-                            <!-- Mercato Tool 3: Rigoristi & Calci Piazzati -->
-                            <div class="ai-cap-card" onclick="if(window.location.protocol==='file:'){{window.location.href='./dist/rigoristi-serie-a/index.html';}}else{{window.location.href='/rigoristi-serie-a/';}}">
-                                <div>
-                                    <div class="cap-card-top">
-                                        <div class="cap-icon-box" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#34d399;">🎯</div>
-                                        <span class="cap-badge-tag">Bonus Pesanti</span>
-                                    </div>
-                                    <h3 class="cap-title">Rigoristi, Punizioni &amp; Calci Piazzati</h3>
-                                    <p class="cap-desc">Tabella ufficiale delle gerarchie dal dischetto (1°, 2° e 3° rigorista), tiratori di punizioni dirette e battitori di calci d'angolo dei 20 club.</p>
-                                </div>
-                                <div class="cap-card-footer" style="color:#34d399;">
-                                    <span>Vedi Tutti i Tiratori &rarr;</span>
-                                    <span style="font-size:11px;color:var(--text-muted);">20 Club Serie A</span>
-                                </div>
-                            </div>
-
-                            <!-- Mercato Tool 4: Gemme Nascoste & Scommesse Low-Cost -->
-                            <div class="ai-cap-card" onclick="switchTab('gems')">
-                                <div>
-                                    <div class="cap-card-top">
-                                        <div class="cap-icon-box" style="background:rgba(168,85,247,0.15);border:1px solid rgba(168,85,247,0.3);color:#c084fc;">🔮</div>
-                                        <span class="cap-badge-tag">Colpacci a 1 CR</span>
-                                    </div>
-                                    <h3 class="cap-title">Gemme Nascoste &amp; Scommesse Low-Cost</h3>
-                                    <p class="cap-desc">I talenti sottopagati e i titolari low-cost con metriche xG/90 e xA/90 esplosive da prendere a pochi crediti all'asta o agli svincoli.</p>
-                                </div>
-                                <div class="cap-card-footer" style="color:#c084fc;">
-                                    <span>Scopri le Scommesse &rarr;</span>
-                                    <span style="font-size:11px;color:var(--text-muted);">Alto Upside</span>
-                                </div>
-                            </div>
-
-                            <!-- Mercato Tool 5: Confronto Calciatori (Scambi & Asta) -->
-                            <div class="ai-cap-card" onclick="switchTab('matchup')">
-                                <div>
-                                    <div class="cap-card-top">
-                                        <div class="cap-icon-box" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#38bdf8;">⚖️</div>
-                                        <span class="cap-badge-tag">Valutazione Scambi</span>
-                                    </div>
-                                    <h3 class="cap-title">Confronto Calciatori per Scambi &amp; Asta</h3>
-                                    <p class="cap-desc">Devi fare uno scambio o scegliere su chi rilanciare? Confronta due calciatori su tutta la stagione con Radar SVG a 6 assi, OVR e FVM.</p>
-                                </div>
-                                <div class="cap-card-footer" style="color:#38bdf8;">
-                                    <span>Confronta 2 Profili &rarr;</span>
-                                    <span style="font-size:11px;color:var(--text-muted);">Radar Stagionale</span>
-                                </div>
-                            </div>
-
-                            <!-- Mercato Tool 6: Top 11 & Gerarchie Stagionali (20 Squadre) -->
-                            <div class="ai-cap-card" onclick="if(window.location.protocol==='file:'){{switchTab('pitch');}}else{{window.location.href='/probabili-formazioni/como/';}}">
-                                <div>
-                                    <div class="cap-card-top">
-                                        <div class="cap-icon-box" style="background:rgba(236,72,153,0.15);border:1px solid rgba(236,72,153,0.3);color:#f472b6;">🏟️</div>
-                                        <span class="cap-badge-tag">Campo 2D &amp; Gerarchie</span>
-                                    </div>
-                                    <h3 class="cap-title">Top 11 &amp; Gerarchie Stagionali (20 Squadre)</h3>
-                                    <p class="cap-desc">Gli 11 titolari tipo per tutto l'anno dei 20 club di Serie A, le staffette di reparto su cui fare coppia all'asta, i fuori ruolo (FRP) e i tiratori.</p>
-                                </div>
-                                <div class="cap-card-footer" style="color:#f472b6;">
-                                    <span>Esplora Top 11 Club &rarr;</span>
-                                    <span style="font-size:11px;color:var(--text-muted);">20 Squadre Serie A</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- 4. PERCHÉ FANTA MASTER AI BATTE I METODI TRADIZIONALI -->
-                <div class="ai-comparison-box">
-                    <div class="ai-section-title-wrap" style="margin-bottom:0;">
-                        <span class="ai-section-tag" style="color:#00e676;">⚔️ The Next Generation</span>
-                        <h2 class="ai-section-title">
-                            <span>⚡</span> Perché l'Approccio Scientifico Batte i Siti Tradizionali
-                        </h2>
-                        <p class="ai-section-subtitle">Il divario tra chi si affida alle "sensazioni" e chi vince usando modelli quantitativi.</p>
-                    </div>
-
-                    <div class="ai-comp-grid">
-                        <!-- Legacy Methods -->
-                        <div class="comp-column legacy">
-                            <div class="comp-column-head">
-                                <span style="font-size:22px;">📉</span>
-                                <h3 style="color:#f87171;">I Metodi Tradizionali &amp; Portali Storici</h3>
-                            </div>
-                            <ul class="comp-feature-list">
-                                <li class="comp-item">
-                                    <span class="comp-icon" style="color:#ef4444;">✕</span>
-                                    <span style="color:#94a3b8;"><b>Voti post-partita soggettivi:</b> Valutazioni basate sull'emotività o sulla simpatia del giornalista di turno.</span>
-                                </li>
-                                <li class="comp-item">
-                                    <span class="comp-icon" style="color:#ef4444;">✕</span>
-                                    <span style="color:#94a3b8;"><b>Consigli generici sul "nome":</b> Consigliano i calciatori più famosi senza considerare la difficoltà del matchup difensivo.</span>
-                                </li>
-                                <li class="comp-item">
-                                    <span class="comp-icon" style="color:#ef4444;">✕</span>
-                                    <span style="color:#94a3b8;"><b>Nessuna nozione di regressione:</b> Incapacità di distinguere tra un gol fortunoso e una produzione solida di Expected Goals (xG).</span>
-                                </li>
-                                <li class="comp-item">
-                                    <span class="comp-icon" style="color:#ef4444;">✕</span>
-                                    <span style="color:#94a3b8;"><b>Infortuni valutati a spanne:</b> Nessun calcolo scientifico sulla fragilità fisica, sui giorni di stop e sulle ricadute muscolari.</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Fanta Master AI -->
-                        <div class="comp-column ai-powered">
-                            <div class="comp-column-head">
-                                <span style="font-size:22px;">🚀</span>
-                                <h3 style="color:#38bdf8;">Fanta Master AI (Nuova Generazione)</h3>
-                            </div>
-                            <ul class="comp-feature-list">
-                                <li class="comp-item">
-                                    <span class="comp-icon" style="color:#22c55e;">✓</span>
-                                    <span style="color:#e2e8f0;"><b>Algoritmo Predittivo xFM (Expected FantaMedia):</b> Modello matematico che calcola il rendimento atteso futuro prima che i bonus si verifichino.</span>
-                                </li>
-                                <li class="comp-item">
-                                    <span class="comp-icon" style="color:#22c55e;">✓</span>
-                                    <span style="color:#e2e8f0;"><b>Simulatore 1vs1 per ogni ballottaggio:</b> Verdetto quantitativo imparziale su chi schierare tra due calciatori nel weekend.</span>
-                                </li>
-                                <li class="comp-item">
-                                    <span class="comp-icon" style="color:#22c55e;">✓</span>
-                                    <span style="color:#e2e8f0;"><b>Radar Chart SVG a 6-8 Dimensioni:</b> Visualizzazione istantanea dei percentili reali per ruolo su tiro, rifinitura, recuperi e titolarità.</span>
-                                </li>
-                                <li class="comp-item">
-                                    <span class="comp-icon" style="color:#22c55e;">✓</span>
-                                    <span style="color:#e2e8f0;"><b>Indice di Fragilità &amp; Cronistoria Medica:</b> Algoritmo di affidabilità fisica per non rischiare crediti su calciatori cronici.</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5. LEADER & STATISTICHE SERIE A (RE-IMAGINED & CLICKABLE) -->
-                <div>
-                    <div class="ai-section-title-wrap">
-                        <span class="ai-section-tag">📊 Serie A 2026/27 Live</span>
-                        <h2 class="ai-section-title">
-                            <span>🏆</span> I Leader Statistici del Campionato
-                        </h2>
-                        <p class="ai-section-subtitle">Le 6 metriche più determinanti: clicca su qualsiasi calciatore per aprire la sua scheda analitica con Radar.</p>
-                    </div>
-
-                    <div class="leader-grid" id="homeLeadersGrid">
-{home_leaders_html}
-                    </div>
                 </div>
 
             </div>

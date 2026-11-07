@@ -21516,109 +21516,88 @@ function renderLiveIntelligencePulseCards() {
     const positiveUpside = upside3 > 0 ? `+${upside3}%` : '+35%';
     pulseGrid.innerHTML = `
         <!-- Card 1: Top AI Pick & Capitano Ideale -->
-        <div class="ai-pulse-card pick">
+        <div class="ai-pulse-card pick" onclick="openPlayerProfileModal(${p1.id})" style="cursor:pointer;">
             <div class="pulse-card-header">
-                <span class="pulse-badge green">🚀 Top Pick &amp; Capitano AI</span>
+                <span class="pulse-badge green">🚀 CAPITANO AI</span>
                 <span class="pulse-card-score" style="color:#4ade80;">${confidence1}% Schierabile</span>
             </div>
             <div class="pulse-player-box" style="display:flex;align-items:center;gap:10px;">
                 ${getPulseRoleBadge(p1.role)}
                 <div>
-                    <div class="pulse-player-name" style="font-size:17px;font-weight:900;color:#fff;">${p1.name}</div>
-                    <div class="pulse-player-sub" style="font-size:12px;color:#94a3b8;">${p1.team} • ${p1.role_desc || p1.role} • OVR ${p1.ovr || 85}</div>
+                    <div class="pulse-player-name" style="font-size:16px;font-weight:900;color:#fff;">${p1.name}</div>
+                    <div class="pulse-player-sub" style="font-size:11.5px;color:#94a3b8;">${p1.team} • ${p1.role_desc || p1.role} • OVR ${p1.ovr || 85}</div>
                 </div>
             </div>
             <div class="pulse-metrics-strip">
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">xFM Atteso</span>
+                    <span class="p-lbl">xFM G${roundNum}</span>
                     <span class="p-val" style="color:#00e676;">${topPick.xfmVal}</span>
                 </div>
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">Partita G${roundNum}</span>
+                    <span class="p-lbl">Partita</span>
                     <span class="p-val" style="color:#38bdf8;">${fix1}</span>
                 </div>
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">Status Tattico</span>
-                    <span class="p-val" style="color:#fbbf24;">${p1.is_rigorista_1 ? '1° Rigorista' : (p1.is_rigorista_2 ? '2° Rigorista' : 'Titolare 100%')}</span>
+                    <span class="p-lbl">Status</span>
+                    <span class="p-val" style="color:#fbbf24;">${p1.is_rigorista_1 ? '1° Rigorista' : (p1.is_rigorista_2 ? '2° Rigorista' : 'Titolare')}</span>
                 </div>
             </div>
-            <div class="pulse-quote-box">
-                <b>Verdetto AI:</b> <i>"Top scorer di giornata secondo l'algoritmo predittivo. Pericolosità offensiva massima (${topPick.xfmVal} xFM) e matchup favorevole: schierare e dare la fascia di capitano!"</i>
-            </div>
-            <button class="pulse-action-link" onclick="openPlayerProfileModal(${p1.id})">
-                <span>Apri Scheda Calciatore &amp; Radar SVG</span>
-                <span>&rarr;</span>
-            </button>
         </div>
         <!-- Card 2: Flop & Trap Alert -->
-        <div class="ai-pulse-card danger">
+        <div class="ai-pulse-card danger" onclick="openPlayerProfileModal(${p2.id})" style="cursor:pointer;">
             <div class="pulse-card-header">
-                <span class="pulse-badge red">⚠️ Flop &amp; Trappola Alert</span>
-                <span class="pulse-card-score" style="color:#f87171;">Difficoltà ${diff2}/5</span>
+                <span class="pulse-badge red">⚠️ RISCHIO FLOP</span>
+                <span class="pulse-card-score" style="color:#f87171;">Diff. ${diff2}/5</span>
             </div>
             <div class="pulse-player-box" style="display:flex;align-items:center;gap:10px;">
                 ${getPulseRoleBadge(p2.role)}
                 <div>
-                    <div class="pulse-player-name" style="font-size:17px;font-weight:900;color:#fff;">${p2.name}</div>
-                    <div class="pulse-player-sub" style="font-size:12px;color:#94a3b8;">${p2.team} • ${p2.role_desc || p2.role} • ${p2.fvm || p2.ovr || 75} CR</div>
+                    <div class="pulse-player-name" style="font-size:16px;font-weight:900;color:#fff;">${p2.name}</div>
+                    <div class="pulse-player-sub" style="font-size:11.5px;color:#94a3b8;">${p2.team} • ${p2.role_desc || p2.role} • ${p2.fvm || p2.ovr || 75} CR</div>
                 </div>
             </div>
             <div class="pulse-metrics-strip">
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">Matchup G${roundNum}</span>
+                    <span class="p-lbl">Partita</span>
                     <span class="p-val" style="color:#f87171;">${fix2}</span>
                 </div>
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">Titolarità Live</span>
+                    <span class="p-lbl">Titolarità</span>
                     <span class="p-val" style="color:#ef4444;">${p2.titolarita || 50}%</span>
                 </div>
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">xFM Proiettato</span>
-                    <span class="p-val" style="color:#fbbf24;">${flopPick.xfmVal} (Down)</span>
+                    <span class="p-lbl">xFM G${roundNum}</span>
+                    <span class="p-val" style="color:#fbbf24;">${flopPick.xfmVal} ↓</span>
                 </div>
             </div>
-            <div class="pulse-quote-box" style="border-left-color:#ef4444;">
-                <b>Verdetto AI:</b> <i>"Turno insidioso per ${p2.name}: l'algoritmo rileva un calo di rendimento atteso (${flopPick.xfmVal} xFM) legato alla difficoltà del matchup e alla titolarità. Valuta alternative se disponi di buone opzioni!"</i>
-            </div>
-            <button class="pulse-action-link" onclick="openPlayerProfileModal(${p2.id})">
-                <span>Analizza Matchup &amp; Profilo Giocatore</span>
-                <span>&rarr;</span>
-            </button>
         </div>
         <!-- Card 3: Scommessa & Differenziale AI -->
-        <div class="ai-pulse-card gem">
+        <div class="ai-pulse-card gem" onclick="openPlayerProfileModal(${p3.id})" style="cursor:pointer;">
             <div class="pulse-card-header">
-                <span class="pulse-badge purple">🔮 Vera Gemma Low-Cost</span>
+                <span class="pulse-badge purple">💎 GEMMA G${roundNum}</span>
                 <span class="pulse-card-score" style="color:#c084fc;">Upside ${positiveUpside}</span>
             </div>
             <div class="pulse-player-box" style="display:flex;align-items:center;gap:10px;">
                 ${getPulseRoleBadge(p3.role)}
                 <div>
-                    <div class="pulse-player-name" style="font-size:17px;font-weight:900;color:#fff;">${p3.name}</div>
-                    <div class="pulse-player-sub" style="font-size:12px;color:#94a3b8;">${p3.team} • ${p3.role_desc || p3.role} • ${p3.fvm || 10} CR</div>
+                    <div class="pulse-player-name" style="font-size:16px;font-weight:900;color:#fff;">${p3.name}</div>
+                    <div class="pulse-player-sub" style="font-size:11.5px;color:#94a3b8;">${p3.team} • ${p3.role_desc || p3.role} • ${p3.fvm || 10} CR</div>
                 </div>
             </div>
             <div class="pulse-metrics-strip">
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">xFM Proiettato</span>
+                    <span class="p-lbl">xFM G${roundNum}</span>
                     <span class="p-val" style="color:#c084fc;">${gemPick.xfmVal}</span>
                 </div>
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">Matchup G${roundNum}</span>
+                    <span class="p-lbl">Partita</span>
                     <span class="p-val" style="color:#34d399;">${p3.prossimo_avversario ? 'vs ' + p3.prossimo_avversario : 'Favorevole'}</span>
                 </div>
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">Prezzo Cons.</span>
-                    <span class="p-val" style="color:#fbbf24;">${p3.fvm || 10} CR (Gemma)</span>
+                    <span class="p-lbl">Costo</span>
+                    <span class="p-val" style="color:#fbbf24;">${p3.fvm || 10} CR</span>
                 </div>
             </div>
-            <div class="pulse-quote-box" style="border-left-color:#c084fc;">
-                <b>Verdetto AI:</b> <i>"Ottima scommessa a basso costo (${p3.fvm || 10} CR): titolarità solida e proiezione di giornata a ${gemPick.xfmVal} xFM. Il miglior rapporto costo/resa per questo turno."</i>
-            </div>
-            <button class="pulse-action-link" onclick="openPlayerProfileModal(${p3.id})">
-                <span>Esplora Radar &amp; Proiezioni Future</span>
-                <span>&rarr;</span>
-            </button>
         </div>
     `;
 }
@@ -21756,33 +21735,13 @@ function switchHomePhase(phase) {
     if (phase === 'market') {
         paneMatchday.style.display = 'none';
         paneMarket.style.display = 'flex';
-        if (btnMatchday) {
-            btnMatchday.classList.remove('active');
-            btnMatchday.style.background = 'rgba(15, 23, 42, 0.6)';
-            btnMatchday.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-            btnMatchday.style.boxShadow = 'none';
-        }
-        if (btnMarket) {
-            btnMarket.classList.add('active');
-            btnMarket.style.background = 'linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(217, 119, 6, 0.15) 100%)';
-            btnMarket.style.borderColor = '#fbbf24';
-            btnMarket.style.boxShadow = '0 8px 25px rgba(245, 158, 11, 0.25)';
-        }
+        if (btnMatchday) btnMatchday.classList.remove('active');
+        if (btnMarket) btnMarket.classList.add('active');
     } else {
         paneMatchday.style.display = 'flex';
         paneMarket.style.display = 'none';
-        if (btnMatchday) {
-            btnMatchday.classList.add('active');
-            btnMatchday.style.background = 'linear-gradient(135deg, rgba(0, 230, 118, 0.2) 0%, rgba(56, 189, 248, 0.18) 100%)';
-            btnMatchday.style.borderColor = '#00e676';
-            btnMatchday.style.boxShadow = '0 8px 25px rgba(0, 230, 118, 0.25)';
-        }
-        if (btnMarket) {
-            btnMarket.classList.remove('active');
-            btnMarket.style.background = 'rgba(15, 23, 42, 0.6)';
-            btnMarket.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-            btnMarket.style.boxShadow = 'none';
-        }
+        if (btnMatchday) btnMatchday.classList.add('active');
+        if (btnMarket) btnMarket.classList.remove('active');
     }
 }
 window.switchTrustView = switchTrustView;

@@ -28,7 +28,7 @@ if os.path.exists(CALENDAR_PATH):
 
 
 BASE_URL = "https://www.fantamasterai.it"
-CSS_VERSION = "?v=20261107-v7"
+CSS_VERSION = "?v=20261107-v8"
 GA_MEASUREMENT_ID = "G-4QNYJ5YZXY"
 GA_TAG_SNIPPET = f"""    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
@@ -2338,6 +2338,796 @@ body {
     color: #94a3b8;
     font-size: 14px;
     line-height: 1.6;
+}
+
+/* ==========================================================================
+   PRO PLAYER PAGE DESIGN SYSTEM (VISUAL, ZERO-FLUFF, MOBILE-FIRST)
+   ========================================================================== */
+.player-pro-container {
+    max-width: 1120px !important;
+    margin: 0 auto !important;
+    padding: 12px 14px 80px 14px !important;
+    box-sizing: border-box !important;
+}
+
+.ppro-tobar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    margin-bottom: 10px !important;
+}
+
+.ppro-back-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #cbd5e1 !important;
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    padding: 5px 11px !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    transition: all 0.15s ease !important;
+    white-space: nowrap !important;
+}
+.ppro-back-link:hover {
+    color: #fff !important;
+    border-color: rgba(56, 189, 248, 0.4) !important;
+    background: rgba(56, 189, 248, 0.1) !important;
+}
+
+.ppro-breadcrumb-mini {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    font-size: 11.5px !important;
+    color: #64748b !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+.ppro-breadcrumb-mini a {
+    color: #94a3b8 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+}
+.ppro-breadcrumb-mini b {
+    color: #e2e8f0 !important;
+    font-weight: 700 !important;
+}
+
+/* HERO CARD */
+.ppro-hero-card {
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.96) 0%, rgba(9, 14, 24, 0.98) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.11) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.ppro-hero-top {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    padding: 16px 18px 10px 18px !important;
+}
+
+.ppro-identity {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    min-width: 0 !important;
+}
+
+.ppro-role-avatar {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    border-radius: 12px !important;
+    font-size: 18px !important;
+    font-weight: 900 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+}
+
+.ppro-title-box {
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+}
+
+.ppro-name-line {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+}
+
+.ppro-name {
+    margin: 0 !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    color: #ffffff !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.3px !important;
+}
+
+.ppro-sub-line {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+    font-size: 12px !important;
+    color: #94a3b8 !important;
+    font-weight: 600 !important;
+}
+
+.ppro-team-link {
+    color: #38bdf8 !important;
+    font-weight: 800 !important;
+    text-decoration: none !important;
+}
+.ppro-team-link:hover {
+    text-decoration: underline !important;
+}
+
+.ppro-ovr-shield {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 54px !important;
+    height: 54px !important;
+    min-width: 54px !important;
+    border-radius: 13px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+}
+.ppro-ovr-shield.elite {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.24), rgba(56, 189, 248, 0.22)) !important;
+    border-color: #c084fc !important;
+}
+.ppro-ovr-shield.gold {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.24), rgba(217, 119, 6, 0.2)) !important;
+    border-color: #fbbf24 !important;
+}
+.ppro-ovr-shield.cyan {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.2)) !important;
+    border-color: #38bdf8 !important;
+}
+.ppro-ovr-shield .ovr-num {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 21px !important;
+    font-weight: 900 !important;
+    color: #fff !important;
+    line-height: 1 !important;
+}
+.ppro-ovr-shield .ovr-lbl {
+    font-size: 8.5px !important;
+    font-weight: 800 !important;
+    color: #cbd5e1 !important;
+    letter-spacing: 0.6px !important;
+    margin-top: 2px !important;
+}
+
+/* STATUS PILLS ROW */
+.ppro-tags-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+    padding: 0 18px 12px 18px !important;
+}
+
+.ppro-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding: 3.5px 9px !important;
+    border-radius: 7px !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    white-space: nowrap !important;
+}
+.ppro-pill.green {
+    background: rgba(16, 185, 129, 0.14) !important;
+    border-color: rgba(16, 185, 129, 0.4) !important;
+    color: #4ade80 !important;
+}
+.ppro-pill.red {
+    background: rgba(239, 68, 68, 0.16) !important;
+    border-color: rgba(239, 68, 68, 0.45) !important;
+    color: #f87171 !important;
+}
+.ppro-pill.amber {
+    background: rgba(245, 158, 11, 0.16) !important;
+    border-color: rgba(245, 158, 11, 0.45) !important;
+    color: #fbbf24 !important;
+}
+.ppro-pill.gold {
+    background: rgba(245, 158, 11, 0.14) !important;
+    border-color: rgba(245, 158, 11, 0.38) !important;
+    color: #fde68a !important;
+}
+.ppro-pill.cyan {
+    background: rgba(56, 189, 248, 0.13) !important;
+    border-color: rgba(56, 189, 248, 0.36) !important;
+    color: #7dd3fc !important;
+}
+.ppro-pill.slate {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #cbd5e1 !important;
+}
+
+/* 4-KPI GRID */
+.ppro-kpi-4 {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 8px !important;
+    padding: 0 18px 14px 18px !important;
+    box-sizing: border-box !important;
+}
+
+.ppro-kpi-box {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 11px !important;
+    padding: 9px 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    min-width: 0 !important;
+}
+
+.ppro-kpi-box .pk-lbl {
+    font-size: 9.5px !important;
+    font-weight: 800 !important;
+    color: #94a3b8 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.4px !important;
+    white-space: nowrap !important;
+}
+
+.ppro-kpi-box .pk-val {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 21px !important;
+    font-weight: 900 !important;
+    line-height: 1.15 !important;
+    margin: 2px 0 !important;
+    white-space: nowrap !important;
+}
+.ppro-kpi-box .pk-val small {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #94a3b8 !important;
+}
+
+.ppro-kpi-box .pk-sub {
+    font-size: 10px !important;
+    color: #94a3b8 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+}
+.ppro-kpi-box .pk-sub b {
+    color: #e2e8f0 !important;
+}
+
+.ppro-delta-tag {
+    font-weight: 800 !important;
+    font-size: 10px !important;
+}
+.ppro-delta-tag.hot { color: #38bdf8 !important; }
+.ppro-delta-tag.gem { color: #34d399 !important; }
+.ppro-delta-tag.eq { color: #94a3b8 !important; }
+
+/* NEXT MATCHDAY STRIP */
+.ppro-matchday-strip {
+    background: linear-gradient(90deg, rgba(2, 132, 199, 0.16) 0%, rgba(16, 185, 129, 0.12) 100%) !important;
+    border-top: 1px solid rgba(56, 189, 248, 0.24) !important;
+    padding: 9px 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+}
+
+.ppro-md-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    flex-wrap: wrap !important;
+    min-width: 0 !important;
+}
+
+.ppro-md-round {
+    background: rgba(56, 189, 248, 0.2) !important;
+    border: 1px solid rgba(56, 189, 248, 0.45) !important;
+    color: #38bdf8 !important;
+    font-size: 10.5px !important;
+    font-weight: 900 !important;
+    padding: 2px 7px !important;
+    border-radius: 6px !important;
+}
+
+.ppro-md-match {
+    color: #ffffff !important;
+    font-size: 12.5px !important;
+    font-weight: 800 !important;
+}
+
+.ppro-md-venue {
+    font-size: 12px !important;
+}
+
+.ppro-md-vuln {
+    font-size: 10.5px !important;
+    font-weight: 800 !important;
+    background: rgba(0, 0, 0, 0.28) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    padding: 2px 8px !important;
+    border-radius: 6px !important;
+}
+
+.ppro-md-cta {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    border: 1px solid rgba(125, 211, 252, 0.35) !important;
+    color: #fff !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    padding: 5px 11px !important;
+    border-radius: 7px !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+}
+
+/* 6-CELL SEASON OUTPUT STRIP */
+.ppro-stat-strip-6 {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 8px !important;
+    margin: 12px 0 !important;
+}
+
+.ppro-stat-cell {
+    background: rgba(15, 23, 42, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 10px 8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    min-width: 0 !important;
+}
+
+.ppro-stat-cell .sc-lbl {
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    color: #94a3b8 !important;
+    white-space: nowrap !important;
+}
+
+.ppro-stat-cell .sc-val {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 19px !important;
+    font-weight: 900 !important;
+    line-height: 1.2 !important;
+    margin: 2px 0 !important;
+    white-space: nowrap !important;
+}
+
+.ppro-stat-cell .sc-sub {
+    font-size: 9.5px !important;
+    color: #64748b !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+}
+
+/* DUAL GRID: RANGE VOTO + PROIEZIONE AI */
+.ppro-dual-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    margin-bottom: 14px !important;
+}
+
+.ppro-box-card {
+    background: rgba(15, 23, 42, 0.88) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 14px !important;
+    padding: 12px 14px !important;
+    box-sizing: border-box !important;
+}
+
+.ppro-box-head {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin-bottom: 10px !important;
+    padding-bottom: 7px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.ppro-mini-tag {
+    font-size: 9.5px !important;
+    font-weight: 800 !important;
+    padding: 2px 7px !important;
+    border-radius: 6px !important;
+    background: rgba(56, 189, 248, 0.12) !important;
+    color: #38bdf8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.3) !important;
+}
+.ppro-mini-tag.gold {
+    background: rgba(245, 158, 11, 0.14) !important;
+    color: #fbbf24 !important;
+    border-color: rgba(245, 158, 11, 0.35) !important;
+}
+
+.ppro-range-tri {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+    margin-bottom: 10px !important;
+}
+
+.rt-box {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border-radius: 9px !important;
+    padding: 6px 4px !important;
+    text-align: center !important;
+}
+.rt-box .rt-lbl {
+    display: block !important;
+    font-size: 9.5px !important;
+    font-weight: 700 !important;
+    color: #94a3b8 !important;
+}
+.rt-box .rt-val {
+    display: block !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 900 !important;
+    color: #fff !important;
+    margin-top: 1px !important;
+}
+
+.ppro-bars-compact {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+}
+
+.pbc-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+.pbc-lbl {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #cbd5e1 !important;
+    width: 82px !important;
+    flex-shrink: 0 !important;
+}
+.pbc-track {
+    flex: 1 !important;
+    height: 7px !important;
+    background: rgba(255, 255, 255, 0.07) !important;
+    border-radius: 99px !important;
+    overflow: hidden !important;
+}
+.pbc-fill {
+    height: 100% !important;
+    border-radius: 99px !important;
+}
+.pbc-val {
+    font-size: 11.5px !important;
+    font-weight: 900 !important;
+    width: 36px !important;
+    text-align: right !important;
+    flex-shrink: 0 !important;
+}
+
+.ppro-proj-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+}
+.pp-item {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border-radius: 9px !important;
+    padding: 8px 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+.pp-lbl {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    color: #94a3b8 !important;
+}
+.pp-val {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 17px !important;
+    font-weight: 900 !important;
+    margin-top: 2px !important;
+}
+
+/* TAB 2: RADAR + 6-BOX xG SPLIT */
+.ppro-radar-split {
+    display: grid !important;
+    grid-template-columns: minmax(300px, 1fr) minmax(320px, 1.15fr) !important;
+    gap: 14px !important;
+    align-items: stretch !important;
+    margin: 12px 0 !important;
+}
+
+.ppro-xg-grid-6 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+}
+
+.xg-box {
+    background: rgba(15, 23, 42, 0.88) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+.xg-lbl {
+    font-size: 10.5px !important;
+    font-weight: 800 !important;
+    color: #94a3b8 !important;
+}
+.xg-val {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    margin: 3px 0 !important;
+}
+.xg-sub {
+    font-size: 10px !important;
+    color: #64748b !important;
+    font-weight: 700 !important;
+}
+
+/* TAB 3: HEALTH 4-BOX + TACTICS */
+.ppro-health-grid-4 {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 10px !important;
+    margin: 12px 0 !important;
+}
+
+.ph-card {
+    background: rgba(15, 23, 42, 0.88) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 12px 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+.ph-lbl {
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    color: #94a3b8 !important;
+    text-transform: uppercase !important;
+}
+.ph-val {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    margin: 4px 0 !important;
+}
+.ph-sub {
+    font-size: 10px !important;
+    color: #64748b !important;
+    font-weight: 700 !important;
+}
+.ph-bar {
+    width: 100% !important;
+    height: 5px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-radius: 4px !important;
+    margin-top: 4px !important;
+    overflow: hidden !important;
+}
+
+.ppro-clean-banner {
+    background: rgba(16, 185, 129, 0.1) !important;
+    border: 1px solid rgba(16, 185, 129, 0.3) !important;
+    color: #6ee7b7 !important;
+    padding: 10px 14px !important;
+    border-radius: 11px !important;
+    font-size: 12px !important;
+    margin-bottom: 14px !important;
+    text-align: center !important;
+}
+
+/* COMPAGNI DI REPARTO CARD */
+.reparto-teammates-card {
+    background: rgba(15, 23, 42, 0.88) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 14px !important;
+    padding: 14px !important;
+    margin-top: 14px !important;
+}
+.reparto-card-title {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    color: #fff !important;
+    margin-bottom: 10px !important;
+}
+.reparto-club-link {
+    font-size: 11.5px !important;
+    color: #38bdf8 !important;
+    text-decoration: none !important;
+    font-weight: 800 !important;
+}
+.reparto-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+}
+.reparto-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border-radius: 10px !important;
+    padding: 8px 10px !important;
+    text-decoration: none !important;
+    transition: all 0.15s ease !important;
+}
+.reparto-item:hover {
+    border-color: rgba(56, 189, 248, 0.4) !important;
+    background: rgba(56, 189, 248, 0.06) !important;
+}
+.reparto-item-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    min-width: 0 !important;
+}
+.reparto-item-name {
+    font-size: 12.5px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+.reparto-item-sub {
+    font-size: 10.5px !important;
+    color: #94a3b8 !important;
+}
+.reparto-item-sub b {
+    color: #e2e8f0 !important;
+}
+.reparto-item-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+}
+.reparto-arrow {
+    color: #38bdf8 !important;
+    font-weight: 900 !important;
+    font-size: 12px !important;
+}
+
+/* MOBILE RESPONSIVE FIX PER SCHEDA CALCIATORE (<= 768px) */
+@media (max-width: 768px) {
+    .player-pro-container {
+        padding: 8px 10px 84px 10px !important;
+    }
+    .ppro-hero-top {
+        padding: 12px 12px 8px 12px !important;
+    }
+    .ppro-role-avatar {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        font-size: 15px !important;
+    }
+    .ppro-name {
+        font-size: 18.5px !important;
+    }
+    .ppro-sub-line {
+        font-size: 11px !important;
+    }
+    .ppro-ovr-shield {
+        width: 46px !important;
+        height: 46px !important;
+        min-width: 46px !important;
+    }
+    .ppro-ovr-shield .ovr-num {
+        font-size: 18px !important;
+    }
+    .ppro-tags-row {
+        padding: 0 12px 10px 12px !important;
+        gap: 5px !important;
+    }
+    .ppro-pill {
+        font-size: 10px !important;
+        padding: 3px 7px !important;
+    }
+    .ppro-kpi-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px !important;
+        padding: 0 12px 12px 12px !important;
+    }
+    .ppro-kpi-box {
+        padding: 8px 6px !important;
+    }
+    .ppro-kpi-box .pk-val {
+        font-size: 18.5px !important;
+    }
+    .ppro-matchday-strip {
+        padding: 8px 12px !important;
+    }
+    .ppro-stat-strip-6 {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 6px !important;
+    }
+    .ppro-stat-cell {
+        padding: 8px 5px !important;
+    }
+    .ppro-stat-cell .sc-val {
+        font-size: 16.5px !important;
+    }
+    .ppro-dual-grid,
+    .ppro-radar-split {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+    .ppro-health-grid-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+    }
+    .reparto-grid {
+        grid-template-columns: 1fr !important;
+    }
 }
 """
     return minify_css(base_dashboard_css + "\n" + extra_seo_css)

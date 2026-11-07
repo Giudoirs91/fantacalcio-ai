@@ -56,8 +56,8 @@ def get_match_info(calendar_data, team_name, round_num=6):
     return None
 
 def compute_duel_verdict(p1, p2, calendar_data):
-    # Round 7 upcoming
-    round_num = 7
+    # Round 11 upcoming
+    round_num = 11
     m1 = get_match_info(calendar_data, p1.get('team'), round_num)
     m2 = get_match_info(calendar_data, p2.get('team'), round_num)
 
@@ -537,17 +537,26 @@ def generate_duel_page(p1, p2, tactical_db, calendar_data, base_url="https://www
                 </a>
             </div>
             <nav class="header-nav-groups">
-                <a href="../../" class="nav-direct-btn"><span>📋</span> Listone</a>
-                <a href="../../probabili-formazioni/" class="nav-direct-btn"><span>⚽</span> Formazioni</a>
+                <a href="../../" class="nav-direct-btn"><span>🏠</span> Home</a>
+                <a href="../../probabili-formazioni/" class="nav-direct-btn"><span>⚽</span> Probabili Formazioni</a>
+                <a href="../../chi-schiero/" class="nav-direct-btn" style="color:#38bdf8;"><span>⚔️</span> Chi Schiero 1vs1</a>
                 <a href="../../infortunati-serie-a/" class="nav-direct-btn"><span>🩺</span> Infortunati</a>
-                <a href="../../chi-schiero/" class="nav-direct-btn" style="color:#38bdf8;"><span>⚔️</span> Chi Schiero</a>
+                <a href="../../listone/" class="nav-direct-btn"><span>💰</span> Mercato &amp; Listone</a>
             </nav>
             <div class="header-right">
                 <a href="../../" class="header-squad-pill" style="text-decoration:none;">
-                    <span>Dashboard Live</span>
+                    <span>📋 La Mia Rosa AI</span>
                 </a>
             </div>
         </div>
+        <nav class="mobile-subnav">
+            <a href="../../chi-schiero/" class="active">⚔️ Chi Schiero</a>
+            <a href="../../probabili-formazioni/">⚽ Probabili</a>
+            <a href="../../consigli-fantacalcio/">🎯 Consigli</a>
+            <a href="../../infortunati-serie-a/">🩺 Infortuni</a>
+            <a href="../../statistiche-serie-a/">📊 Statistiche</a>
+            <a href="../../listone/">💰 Listone</a>
+        </nav>
     </header>
 
     <main class="duel-container">
@@ -560,7 +569,7 @@ def generate_duel_page(p1, p2, tactical_db, calendar_data, base_url="https://www
 
         <!-- Hero -->
         <div class="duel-hero">
-            <div class="duel-tag">⚔️ TESTA A TESTA FANTACALCIO • GIORNATA 6</div>
+            <div class="duel-tag">⚔️ TESTA A TESTA FANTACALCIO • 11ª GIORNATA</div>
             <h1 class="duel-title">Chi schiero tra {name1} e {name2}?</h1>
             <p class="duel-desc">Confronto algoritmico dettagliato per risolvere il tuo dubbio di formazione: expected stats (xFM, xG, xA), titolarità e difficoltà avversario.</p>
         </div>

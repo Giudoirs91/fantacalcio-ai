@@ -69,70 +69,74 @@ def render_unified_header(rel_path=""):
                 </a>
             </div>
 
-            <!-- CENTER: DIRECT & INTUITIVE NAVIGATION -->
+            <!-- CENTER: 2-PHASE MACRO NAVIGATION (GIORNATA vs MERCATO) -->
             <nav class="header-nav-groups">
                 <!-- 0. HOME -->
-                <a href="{rel_path}" class="nav-direct-btn" title="Home — Statistiche Principali &amp; Leader">
+                <a href="{rel_path}" class="nav-direct-btn" title="Home — Giornata &amp; Mercato Fantacalcio">
                     <span>🏠</span> Home
                 </a>
 
                 <!-- 1. PROBABILI FORMAZIONI (DIRETTO) -->
-                <a href="{rel_path}probabili-formazioni/" class="nav-direct-btn" title="Probabili Formazioni Serie A &amp; Ballottaggi Consensus 5 Fonti">
+                <a href="{rel_path}probabili-formazioni/" class="nav-direct-btn" title="Probabili Formazioni Serie A &amp; Ballottaggi Consensus 4 Fonti">
                     <span>⚽</span> Probabili Formazioni
                 </a>
 
-                <!-- 2. LISTONE CALCIATORI -->
-                <a href="{rel_path}listone/" class="nav-direct-btn" title="Tabellone &amp; Listone Calciatori">
-                    <span>📋</span> Listone Calciatori
+                <!-- 2. CHI SCHIERO 1VS1 (DIRETTO) -->
+                <a href="{rel_path}chi-schiero/" class="nav-direct-btn" title="Risolvi i dubbi di formazione 1vs1 con l'AI">
+                    <span>⚔️</span> Chi Schiero 1vs1
                 </a>
 
-                <!-- 2. STATISTICHE SERIE A -->
+                <!-- FASE 1: GIORNATA & STATISTICHE -->
                 <div class="nav-dropdown">
                     <button class="nav-group-btn" id="navGroupTactics">
-                        <span>📈</span> Statistiche Serie A <span class="caret">▾</span>
+                        <span>📊</span> Giornata &amp; Statistiche <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
+                        <a href="{rel_path}probabili-formazioni/" class="dropdown-item">⚽ Probabili Formazioni &amp; Ballottaggi</a>
+                        <a href="{rel_path}chi-schiero/" class="dropdown-item">⚔️ Tool "Chi Schiero?" (Dubbi 1vs1)</a>
+                        <a href="{rel_path}consigli-fantacalcio/" class="dropdown-item">🎯 Chi Schierare &amp; Consigli di Giornata</a>
+                        <a href="{rel_path}infortunati-serie-a/" class="dropdown-item">🩺 Infortunati, Squalificati &amp; Rientri</a>
+                        <div class="dropdown-divider"></div>
                         <a href="{rel_path}statistiche-serie-a/" class="dropdown-item">📊 Statistiche Serie A &amp; xG</a>
                         <a href="{rel_path}top-flop/" class="dropdown-item">⚡ Top &amp; Flop di Giornata</a>
+                        <a href="{rel_path}match-report/" class="dropdown-item">📑 Match Reports &amp; Tabellini</a>
                         <a href="{rel_path}football-analytics/" class="dropdown-item">📈 Matrice &amp; Scatter Analytics</a>
-                        <a href="{rel_path}probabili-formazioni/" class="dropdown-item">📋 Probabili Formazioni &amp; Ballottaggi</a>
-                        <a href="{rel_path}confronto-calciatori/" class="dropdown-item">⚔️ Matchup 1vs1 Calciatori</a>
-                        <a href="{rel_path}griglia-portieri/" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="{rel_path}infortunati-serie-a/" class="dropdown-item">🩺 Infortunati &amp; Tempi di Recupero</a>
-                        <a href="{rel_path}rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
+                        <a href="{rel_path}confronto-calciatori/" class="dropdown-item">⚖️ Confronto Statistico Calciatori</a>
                     </div>
                 </div>
 
-                <!-- 3. AI & CONSIGLI -->
+                <!-- FASE 2: MERCATO & ASTA (ESTATE & RIPARAZIONE) -->
                 <div class="nav-dropdown">
                     <button class="nav-group-btn" id="navGroupAi">
-                        <span>🧠</span> AI &amp; Consigli <span class="caret">▾</span>
+                        <span>💰</span> Mercato &amp; Asta <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="{rel_path}consigli-fantacalcio/" class="dropdown-item">🎯 Chi Schierare Prossima Giornata</a>
-                        <a href="{rel_path}chi-schiero/" class="dropdown-item">⚔️ Tool "Chi Schiero?" (Ballottaggi 1vs1)</a>
+                        <a href="{rel_path}listone/" class="dropdown-item">📋 Listone Calciatori &amp; Valutazioni FVM</a>
+                        <a href="{rel_path}griglia-portieri/" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
+                        <a href="{rel_path}rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
+                        <a href="{rel_path}scommesse-talenti/" class="dropdown-item">🔮 Gemme &amp; Scommesse Low-Cost</a>
                         <a href="{rel_path}top-11-ai/" class="dropdown-item">🧠 5 Squadre Perfette AI</a>
-                        <a href="{rel_path}scommesse-talenti/" class="dropdown-item">🔮 Gemme &amp; Sleeper AI</a>
                     </div>
                 </div>
             </nav>
 
             <!-- RIGHT: LIVE STATUS & APP LAUNCH -->
             <div class="header-right">
-                <a href="{rel_path}" class="header-squad-pill" style="text-decoration:none;" title="Apri Dashboard &amp; Rosa">
+                <a href="{rel_path}" class="header-squad-pill" style="text-decoration:none;" title="Apri Dashboard &amp; Schiera la Tua Rosa">
                     <span style="font-size:13px;">📋</span>
-                    <span class="pill-credits">Dashboard Live</span>
+                    <span class="pill-credits">La Mia Rosa AI</span>
                 </a>
             </div>
         </div>
-        <!-- MOBILE SUBNAV -->
+        <!-- MOBILE SUBNAV (PRIORITA' GIORNATA & FORMAZIONE) -->
         <nav class="mobile-subnav">
-            <a href="{rel_path}">📊 Listone</a>
-            <a href="{rel_path}probabili-formazioni/">📋 Probabili</a>
+            <a href="{rel_path}chi-schiero/">⚔️ Chi Schiero</a>
+            <a href="{rel_path}probabili-formazioni/">⚽ Probabili</a>
             <a href="{rel_path}consigli-fantacalcio/">🎯 Consigli</a>
-            <a href="{rel_path}top-flop/">⚡ Top/Flop</a>
             <a href="{rel_path}infortunati-serie-a/">🩺 Infortuni</a>
+            <a href="{rel_path}statistiche-serie-a/">📊 Statistiche</a>
+            <a href="{rel_path}top-flop/">⚡ Top/Flop</a>
+            <a href="{rel_path}listone/">💰 Listone</a>
             <a href="{rel_path}rigoristi-serie-a/">🎯 Rigoristi</a>
             <a href="{rel_path}griglia-portieri/">🧤 Portieri</a>
         </nav>

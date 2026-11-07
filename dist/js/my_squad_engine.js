@@ -754,27 +754,51 @@ function renderMySquadModalContent() {
                     ` : ''}
                 </div>
             </div>
-            <!-- Drag & Drop Zone -->
-            <div id="mySquadDropZone" class="my-squad-drop-zone" style="margin:20px 0; border:2px dashed rgba(56,189,248,0.4); background:rgba(15,23,42,0.6); border-radius:18px; padding:24px; text-align:center; cursor:pointer;" onclick="document.getElementById('mySquadFileInput').click()">
-                <input type="file" id="mySquadFileInput" accept=".csv,.xml,.xlsx,.txt" style="display:none;" onchange="handleRosterFileSelect(event)">
-                <div style="font-size:32px; margin-bottom:6px;">📁</div>
-                <div style="font-weight:800; font-size:15px; color:#38bdf8;">Clicca o trascina qui il file rose.csv / xml di Fantacalcio.it</div>
-                <div style="font-size:12.5px; color:#94a3b8; margin-top:4px;">Supporta file .csv, .xml, .xlsx ed esportazioni in testo da Leghe Fantacalcio</div>
+            <!-- Quick Action Bar in cima se la rosa ha già almeno 11 calciatori -->
+            ${roster.length >= 11 ? `
+            <div style="margin:14px 0 18px 0; background:linear-gradient(135deg, rgba(16,185,129,0.18) 0%, rgba(15,23,42,0.9) 100%); border:1px solid rgba(16,185,129,0.45); border-radius:16px; padding:14px 18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+                <div>
+                    <div style="font-size:13px; font-weight:800; color:#4ade80;">✅ Rosa pronta (${roster.length} calciatori salvati in memoria)</div>
+                    <div style="font-size:11.5px; color:#cbd5e1;">Clicca per calcolare subito gli 11 titolari e la panchina ordinata per questa giornata.</div>
+                </div>
+                <button onclick="runGenerateMySquadLineup()" class="generate-lineup-btn" style="cursor:pointer; padding:10px 20px; font-size:13.5px;">
+                    ⚡ SCHIERA IL MIO 11 MIGLIORE
+                </button>
             </div>
-            <!-- Incolla Testo Area -->
-            <details style="margin-bottom:20px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:12px 16px;">
-                <summary style="font-weight:700; font-size:14px; color:#e2e8f0; cursor:pointer;">📝 Oppure Incolla qui il testo della tua rosa (WhatsApp / Leghe Fantacalcio)</summary>
-                <div style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
-                    <textarea id="mySquadTextarea" placeholder="Incolla qui i calciatori della tua rosa (es. Meret, Dimarco, Barella, Lautaro Martinez...)" style="width:100%; height:90px; background:#05070a; border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:10px; color:#fff; font-size:13px;"></textarea>
-                    <button onclick="submitMySquadTextPaste()" style="align-self:flex-end; background:#38bdf8; color:#0f172a; font-weight:800; padding:8px 18px; border:none; border-radius:10px; cursor:pointer;">Importa Testo Incollato</button>
+            ` : ''}
+            <!-- 1. Aggiunta Rapida & Incolla da Smartphone (Priorità Mobile-First) -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin:16px 0;">
+                <!-- Metodo A: Ricerca Istantanea Calciatore -->
+                <div style="background:rgba(56,189,248,0.07); border:1px solid rgba(56,189,248,0.28); border-radius:14px; padding:14px 16px;">
+                    <label style="font-weight:800; font-size:13px; color:#38bdf8; display:flex; align-items:center; gap:6px; margin-bottom:6px;">
+                        <span>🔍</span> 1. CERCA E AGGIUNGI CALCIATORI RAPIDO:
+                    </label>
+                    <input type="text" id="mySquadSearchInput" placeholder="Scrivi un cognome (es. Malen, Barella, Svilar, Paz...)" style="width:100%; background:#05070a; border:1px solid rgba(56,189,248,0.35); border-radius:10px; padding:10px 12px; color:#fff; font-size:13.5px;" oninput="onSearchInputMySquadRoster(this.value)">
+                    <div style="font-size:11px; color:#94a3b8; margin-top:5px;">Digita 2 lettere e tocca <b>+ AGGIUNGI</b>. La rosa resta salvata sul telefono.</div>
+                    <div id="mySquadSearchResults" style="margin-top:8px; display:flex; flex-direction:column; gap:5px;"></div>
+                </div>
+                <!-- Metodo B: Incolla Lista da WhatsApp / App Leghe (Aperto di default) -->
+                <div style="background:rgba(16,185,129,0.06); border:1px solid rgba(16,185,129,0.28); border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; justify-content:space-between;">
+                    <div>
+                        <label style="font-weight:800; font-size:13px; color:#4ade80; display:flex; align-items:center; gap:6px; margin-bottom:6px;">
+                            <span>📲</span> 2. INCOLLA LISTA DA WHATSAPP / APP LEGHE:
+                        </label>
+                        <textarea id="mySquadTextarea" placeholder="Incolla qui l'elenco dei tuoi giocatori copiato da WhatsApp, Note o App Leghe (es. Svilar, Dimarco, Barella, Malen...)" style="width:100%; height:68px; background:#05070a; border:1px solid rgba(255,255,255,0.14); border-radius:10px; padding:8px 10px; color:#fff; font-size:12.5px; resize:vertical;"></textarea>
+                    </div>
+                    <button onclick="submitMySquadTextPaste()" style="margin-top:8px; width:100%; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#fff; font-weight:800; font-size:12.5px; padding:9px 14px; border:none; border-radius:10px; cursor:pointer; box-shadow:0 4px 12px rgba(16,185,129,0.25);">
+                        📲 Importa Calciatori Incollati
+                    </button>
+                </div>
+            </div>
+            <!-- 2. Opzione Secondaria PC: Carica File CSV / XML -->
+            <details style="margin-bottom:18px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:10px 14px;">
+                <summary style="font-weight:700; font-size:12.5px; color:#94a3b8; cursor:pointer;">💻 Sei da PC? Carica il file rose.csv / xml esportato da Leghe Fantacalcio</summary>
+                <div id="mySquadDropZone" class="my-squad-drop-zone" style="margin-top:10px; border:2px dashed rgba(56,189,248,0.35); background:rgba(15,23,42,0.6); border-radius:14px; padding:16px; text-align:center; cursor:pointer;" onclick="document.getElementById('mySquadFileInput').click()">
+                    <input type="file" id="mySquadFileInput" accept=".csv,.xml,.xlsx,.txt" style="display:none;" onchange="handleRosterFileSelect(event)">
+                    <div style="font-weight:800; font-size:13.5px; color:#38bdf8;">📁 Clicca o trascina qui il file rose.csv / xml</div>
+                    <div style="font-size:11.5px; color:#94a3b8; margin-top:3px;">Supporta file .csv, .xml, .xlsx ed esportazioni da Leghe Fantacalcio.it</div>
                 </div>
             </details>
-            <!-- Aggiunta Manuale Calciatore con Autocomplete Live -->
-            <div style="margin-bottom:20px; background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.2); border-radius:14px; padding:12px 16px;">
-                <label style="font-weight:800; font-size:13px; color:#38bdf8; display:block; margin-bottom:6px;">🔍 CERCA ED AGGIUNGI CALCIATORE SINGOLO:</label>
-                <input type="text" id="mySquadSearchInput" placeholder="Digita un nome (es. Nico Gonzalez, Varela, Mandas, Soulè...)" style="width:100%; background:#05070a; border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:8px 12px; color:#fff; font-size:13px;" oninput="onSearchInputMySquadRoster(this.value)">
-                <div id="mySquadSearchResults" style="margin-top:8px; display:flex; flex-direction:column; gap:4px;"></div>
-            </div>
             <!-- Avviso Revisione Righe Non Matchate -->
             ${unmatchedDrawerHtml}
             <!-- Lista Rosa Salvata -->

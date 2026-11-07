@@ -97,7 +97,7 @@ function renderLiveIntelligencePulseCards() {
     if (typeof PLAYERS === 'undefined' || !Array.isArray(PLAYERS) || PLAYERS.length === 0) return;
     const pulseGrid = document.querySelector('.ai-pulse-grid');
     if (!pulseGrid) return;
-    const roundNum = typeof getUpcomingMatchdayRound === 'function' ? getUpcomingMatchdayRound() : 6;
+    const roundNum = typeof getUpcomingMatchdayRound === 'function' ? getUpcomingMatchdayRound() : 11;
     const evaluated = PLAYERS.map(p => {
         let scoreObj = { score: 60, factors: [] };
         if (typeof calculateChiSchieroScore === 'function') {
@@ -377,8 +377,47 @@ function switchTrustView(view) {
 function switchHeroSlide(idx) {
     switchTrustView(idx === 1 ? 'accuracy' : 'scale');
 }
+function switchHomePhase(phase) {
+    const paneMatchday = document.getElementById('homePhaseMatchday');
+    const paneMarket = document.getElementById('homePhaseMarket');
+    const btnMatchday = document.getElementById('btnPhaseMatchday');
+    const btnMarket = document.getElementById('btnPhaseMarket');
+    if (!paneMatchday || !paneMarket) return;
+    if (phase === 'market') {
+        paneMatchday.style.display = 'none';
+        paneMarket.style.display = 'flex';
+        if (btnMatchday) {
+            btnMatchday.classList.remove('active');
+            btnMatchday.style.background = 'rgba(15, 23, 42, 0.6)';
+            btnMatchday.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            btnMatchday.style.boxShadow = 'none';
+        }
+        if (btnMarket) {
+            btnMarket.classList.add('active');
+            btnMarket.style.background = 'linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(217, 119, 6, 0.15) 100%)';
+            btnMarket.style.borderColor = '#fbbf24';
+            btnMarket.style.boxShadow = '0 8px 25px rgba(245, 158, 11, 0.25)';
+        }
+    } else {
+        paneMatchday.style.display = 'flex';
+        paneMarket.style.display = 'none';
+        if (btnMatchday) {
+            btnMatchday.classList.add('active');
+            btnMatchday.style.background = 'linear-gradient(135deg, rgba(0, 230, 118, 0.2) 0%, rgba(56, 189, 248, 0.18) 100%)';
+            btnMatchday.style.borderColor = '#00e676';
+            btnMatchday.style.boxShadow = '0 8px 25px rgba(0, 230, 118, 0.25)';
+        }
+        if (btnMarket) {
+            btnMarket.classList.remove('active');
+            btnMarket.style.background = 'rgba(15, 23, 42, 0.6)';
+            btnMarket.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            btnMarket.style.boxShadow = 'none';
+        }
+    }
+}
 window.switchTrustView = switchTrustView;
 window.switchHeroSlide = switchHeroSlide;
+window.switchHomePhase = switchHomePhase;
 if (typeof window !== 'undefined') {
     window.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {

@@ -28,7 +28,7 @@ if os.path.exists(CALENDAR_PATH):
 
 
 BASE_URL = "https://www.fantamasterai.it"
-CSS_VERSION = "?v=20261015-v4"
+CSS_VERSION = "?v=20261107-v7"
 GA_MEASUREMENT_ID = "G-4QNYJ5YZXY"
 GA_TAG_SNIPPET = f"""    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
@@ -1553,7 +1553,7 @@ body {
 
 @media (max-width: 1080px) {
     .pitch-container-wrapper {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: minmax(0, 1fr) !important;
         gap: 20px !important;
     }
 }
@@ -1594,78 +1594,33 @@ body {
     box-sizing: border-box !important;
 }
 
-/* Gestione bande per numero di giocatori */
-.pitch-band.band-count-5 {
-    gap: 5px !important;
+/* Gestione bande: TUTTI I QUADRATI DEI CALCIATORI HANNO LA STESSA IDENTICA DIMENSIONE A PRESCINDERE DAL REPARTO */
+.pitch-band.band-count-5,
+.pitch-band.band-count-4,
+.pitch-band.band-count-3,
+.pitch-band.band-count-2,
+.pitch-band.band-count-1 {
+    justify-content: space-evenly !important;
+    gap: 8px !important;
     padding: 0 4px !important;
 }
-.pitch-band.band-count-5 .pitch-player-node {
-    max-width: 102px !important;
-    flex: 1 1 0 !important;
-}
-.pitch-band.band-count-5 .pitch-card {
-    min-width: 76px !important;
-    max-width: 102px !important;
-    padding: 5px 4px !important;
-}
-.pitch-band.band-count-5 .pitch-player-name {
-    font-size: 10.5px !important;
-}
-.pitch-band.band-count-5 .pitch-pos-label {
-    font-size: 7.5px !important;
-}
 
-.pitch-band.band-count-4 {
-    gap: 12px !important;
-    padding: 0 6px !important;
-}
-.pitch-band.band-count-4 .pitch-player-node {
-    max-width: 114px !important;
-    flex: 1 1 0 !important;
-}
-.pitch-band.band-count-4 .pitch-card {
-    min-width: 84px !important;
-    max-width: 114px !important;
-    padding: 6px 6px !important;
-}
-
-.pitch-band.band-count-3,
-.pitch-band.band-count-2 {
-    gap: 22px !important;
-}
+.pitch-player-node,
+.pitch-band.band-count-5 .pitch-player-node,
+.pitch-band.band-count-4 .pitch-player-node,
 .pitch-band.band-count-3 .pitch-player-node,
-.pitch-band.band-count-2 .pitch-player-node {
-    max-width: 124px !important;
-    flex: 0 1 124px !important;
-}
-.pitch-band.band-count-3 .pitch-card,
-.pitch-band.band-count-2 .pitch-card {
-    min-width: 90px !important;
-    max-width: 124px !important;
-    padding: 6px 8px !important;
-}
-
-.pitch-band.band-count-1 {
-    justify-content: center !important;
-}
+.pitch-band.band-count-2 .pitch-player-node,
 .pitch-band.band-count-1 .pitch-player-node {
-    max-width: 128px !important;
-    flex: 0 1 128px !important;
-}
-.pitch-band.band-count-1 .pitch-card {
-    min-width: 92px !important;
-    max-width: 128px !important;
-    padding: 6px 8px !important;
-}
-
-.pitch-player-node {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     cursor: pointer !important;
     transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
     z-index: 5 !important;
-    min-width: 0 !important;
+    flex: 0 0 108px !important;
+    width: 108px !important;
+    min-width: 108px !important;
+    max-width: 108px !important;
     box-sizing: border-box !important;
 }
 .pitch-player-node:hover {
@@ -1673,8 +1628,13 @@ body {
     z-index: 10 !important;
 }
 
-.pitch-card {
-    background: rgba(9, 15, 28, 0.92) !important;
+.pitch-card,
+.pitch-band.band-count-5 .pitch-card,
+.pitch-band.band-count-4 .pitch-card,
+.pitch-band.band-count-3 .pitch-card,
+.pitch-band.band-count-2 .pitch-card,
+.pitch-band.band-count-1 .pitch-card {
+    background: rgba(9, 15, 28, 0.94) !important;
     backdrop-filter: blur(14px) !important;
     -webkit-backdrop-filter: blur(14px) !important;
     border: 1.5px solid rgba(255, 255, 255, 0.16) !important;
@@ -1683,7 +1643,14 @@ body {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    width: 100% !important;
+    justify-content: space-between !important;
+    width: 108px !important;
+    min-width: 108px !important;
+    max-width: 108px !important;
+    height: 64px !important;
+    min-height: 64px !important;
+    max-height: 64px !important;
+    padding: 5px 6px !important;
     box-sizing: border-box !important;
     text-align: center !important;
     transition: all 0.2s ease !important;
@@ -1815,7 +1782,7 @@ body {
 
 @media (max-width: 1240px) {
     .pitch-side-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: minmax(0, 1fr) !important;
     }
     .tactics-card-ballottaggi,
     .tactics-card-piazzati,
@@ -1833,6 +1800,9 @@ body {
     padding: 16px 18px !important;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45) !important;
     box-sizing: border-box !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
 }
 
 .tactics-card-header {
@@ -1849,6 +1819,38 @@ body {
     font-size: 13.5px !important;
     font-weight: 800 !important;
     color: #fff !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+}
+
+.tactics-meta-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 6px 10px !important;
+    padding: 8px 10px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.tactics-meta-row .lbl {
+    font-size: 11.5px !important;
+    color: #94a3b8 !important;
+    font-weight: 800 !important;
+    flex-shrink: 0 !important;
+}
+
+.tactics-meta-row .val {
+    font-size: 12px !important;
+    color: #f8fafc !important;
+    text-align: right !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
 }
 
 /* INJURY BULLETIN ITEMS */
@@ -1856,13 +1858,16 @@ body {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    gap: 12px !important;
-    padding: 9px 14px !important;
+    flex-wrap: wrap !important;
+    gap: 8px 12px !important;
+    padding: 10px 14px !important;
     background: rgba(239, 68, 68, 0.08) !important;
     border: 1px solid rgba(239, 68, 68, 0.22) !important;
     border-radius: 10px !important;
     margin-bottom: 8px !important;
     transition: all 0.15s ease !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 .injury-bulletin-item:hover {
@@ -1875,6 +1880,7 @@ body {
     flex-direction: column !important;
     gap: 2px !important;
     min-width: 0 !important;
+    flex: 1 1 180px !important;
 }
 
 .injury-bulletin-name {
@@ -1882,14 +1888,14 @@ body {
     color: #f87171 !important;
     text-decoration: none !important;
     font-size: 13px !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    white-space: normal !important;
 }
 
 .injury-bulletin-reason {
     font-size: 11.5px !important;
     color: #94a3b8 !important;
+    white-space: normal !important;
+    line-height: 1.35 !important;
 }
 
 .injury-bulletin-badge {
@@ -1914,6 +1920,383 @@ body {
     font-size: 11.5px !important;
     color: #fbbf24 !important;
     font-weight: 900 !important;
+}
+
+/* PRO CLUB HEADER CARD (COMPATTA, PROFESSIONALE & MOBILE-FIRST) */
+.team-pro-header-card {
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.96) 0%, rgba(9, 14, 24, 0.98) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    margin-bottom: 16px !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.tph-main-body {
+    padding: 14px 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 11px !important;
+}
+
+.tph-top-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+}
+
+.tph-identity {
+    display: flex !important;
+    align-items: center !important;
+    gap: 11px !important;
+    min-width: 0 !important;
+}
+
+.tph-crest {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 11px !important;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(16, 185, 129, 0.18)) !important;
+    border: 1.5px solid rgba(56, 189, 248, 0.45) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 900 !important;
+    font-size: 13px !important;
+    color: #fff !important;
+    letter-spacing: 0.5px !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+.tph-title-wrap {
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+}
+
+.tph-title {
+    margin: 0 !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    color: #ffffff !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.2px !important;
+}
+
+.tph-subtitle {
+    font-size: 11.5px !important;
+    color: #94a3b8 !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.tph-subtitle b {
+    color: #e2e8f0 !important;
+    font-weight: 700 !important;
+}
+
+.tph-modulo-badge {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(2, 132, 199, 0.28)) !important;
+    border: 1px solid rgba(56, 189, 248, 0.48) !important;
+    color: #38bdf8 !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 900 !important;
+    font-size: 13.5px !important;
+    padding: 5px 11px !important;
+    border-radius: 9px !important;
+    letter-spacing: 0.4px !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+}
+
+.tph-metrics-bar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 8px 12px !important;
+    padding-top: 9px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.tph-ratings-pair {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+}
+
+.tph-rate-chip {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 3.5px 8px !important;
+    border-radius: 7px !important;
+    font-size: 10.5px !important;
+    font-weight: 800 !important;
+    color: #cbd5e1 !important;
+}
+
+.tph-rate-chip .stars {
+    color: #fbbf24 !important;
+    letter-spacing: 0.5px !important;
+    font-size: 10px !important;
+}
+
+.tph-picks-scroll {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    max-width: 100% !important;
+    padding-bottom: 1px !important;
+}
+.tph-picks-scroll::-webkit-scrollbar {
+    display: none !important;
+}
+
+.tph-pick-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding: 3px 8px !important;
+    border-radius: 6px !important;
+    font-size: 10.5px !important;
+    font-weight: 800 !important;
+    flex-shrink: 0 !important;
+}
+.tph-pick-pill.gold {
+    background: rgba(245, 158, 11, 0.14) !important;
+    border: 1px solid rgba(245, 158, 11, 0.38) !important;
+    color: #fde68a !important;
+}
+.tph-pick-pill.cyan {
+    background: rgba(56, 189, 248, 0.12) !important;
+    border: 1px solid rgba(56, 189, 248, 0.34) !important;
+    color: #7dd3fc !important;
+}
+
+.tph-matchday-strip {
+    background: linear-gradient(90deg, rgba(2, 132, 199, 0.16) 0%, rgba(16, 185, 129, 0.12) 100%) !important;
+    border-top: 1px solid rgba(56, 189, 248, 0.24) !important;
+    padding: 8px 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+}
+
+.tph-md-text {
+    font-size: 11.5px !important;
+    color: #cbd5e1 !important;
+    line-height: 1.3 !important;
+    min-width: 0 !important;
+}
+.tph-md-text b {
+    color: #38bdf8 !important;
+    font-weight: 800 !important;
+}
+
+.tph-md-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    border: 1px solid rgba(125, 211, 252, 0.35) !important;
+    color: #ffffff !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    padding: 5px 10px !important;
+    border-radius: 7px !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 3px 10px rgba(2, 132, 199, 0.35) !important;
+}
+
+/* MOBILE RESPONSIVE FIX PER PAGINE TOP 11 SQUADRA (<= 768px) */
+@media (max-width: 768px) {
+    .team-page-container {
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding: 10px 10px 84px 10px !important;
+        margin: 0 auto !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+    }
+    .tph-main-body {
+        padding: 12px 12px !important;
+        gap: 9px !important;
+    }
+    .tph-crest {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 12px !important;
+    }
+    .tph-title {
+        font-size: 18px !important;
+    }
+    .tph-modulo-badge {
+        font-size: 12.5px !important;
+        padding: 4px 9px !important;
+    }
+    .tph-matchday-strip {
+        padding: 7px 12px !important;
+    }
+    .pitch-container-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+    .pitch-field-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+    .pitch-field {
+        min-height: 430px !important;
+        max-height: none !important;
+        height: auto !important;
+        padding: 14px 4px !important;
+        gap: 12px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 14px !important;
+    }
+    .pitch-band,
+    .pitch-band.band-count-5,
+    .pitch-band.band-count-4,
+    .pitch-band.band-count-3,
+    .pitch-band.band-count-2,
+    .pitch-band.band-count-1 {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-evenly !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 3px !important;
+        padding: 0 2px !important;
+        margin: 2px 0 !important;
+        box-sizing: border-box !important;
+    }
+    /* TUTTI I QUADRATI DEI CALCIATORI HANNO LA STESSA IDENTICA LARGHEZZA E ALTEZZA ANCHE SU MOBILE */
+    .pitch-player-node,
+    .pitch-band.band-count-5 .pitch-player-node,
+    .pitch-band.band-count-4 .pitch-player-node,
+    .pitch-band.band-count-3 .pitch-player-node,
+    .pitch-band.band-count-2 .pitch-player-node,
+    .pitch-band.band-count-1 .pitch-player-node {
+        flex: 0 0 23.6% !important;
+        width: 23.6% !important;
+        min-width: 23.6% !important;
+        max-width: 23.6% !important;
+    }
+    .pitch-band .pitch-card,
+    .pitch-band.band-count-5 .pitch-card,
+    .pitch-band.band-count-4 .pitch-card,
+    .pitch-band.band-count-3 .pitch-card,
+    .pitch-band.band-count-2 .pitch-card,
+    .pitch-band.band-count-1 .pitch-card {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        height: 55px !important;
+        min-height: 55px !important;
+        max-height: 55px !important;
+        padding: 4px 3px !important;
+        border-radius: 8px !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+    }
+    .pitch-role-badge {
+        width: 13px !important;
+        height: 13px !important;
+        font-size: 7px !important;
+    }
+    .pitch-pos-label {
+        font-size: 6.2px !important;
+        letter-spacing: 0 !important;
+    }
+    .pitch-ovr-tag {
+        font-size: 7.5px !important;
+        padding: 1px 2.5px !important;
+    }
+    .pitch-player-name {
+        font-size: 9.2px !important;
+        line-height: 1.15 !important;
+        margin: 1px 0 !important;
+    }
+    .pitch-card-sub {
+        font-size: 7.2px !important;
+        gap: 2px !important;
+        padding-top: 2px !important;
+        margin-top: 1px !important;
+        flex-wrap: nowrap !important;
+    }
+    .sub-vs-tag {
+        font-size: 6.8px !important;
+        max-width: 44px !important;
+        padding: 0 2px !important;
+    }
+    .pitch-side-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+    .tactics-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        padding: 14px 12px !important;
+        border-radius: 14px !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+    .tactics-card-header h4 {
+        font-size: 13px !important;
+        line-height: 1.3 !important;
+        white-space: normal !important;
+    }
+    .tactics-meta-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 4px !important;
+    }
+    .tactics-meta-row .val {
+        text-align: left !important;
+        width: 100% !important;
+    }
+    .injury-bulletin-item {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+        padding: 10px 12px !important;
+    }
+    .injury-bulletin-info {
+        flex: 1 1 auto !important;
+        width: 100% !important;
+    }
 }
 
 /* FAQ Accordion Section for SEO Structured Data */
@@ -2000,7 +2383,7 @@ def render_unified_header(rel_path=""):
                         <span>📊</span> Giornata &amp; Statistiche <span class="caret">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="{rel_path}probabili-formazioni/" class="dropdown-item">⚽ Probabili Formazioni &amp; Ballottaggi</a>
+                        <a href="{rel_path}probabili-formazioni/" class="dropdown-item">⚽ Probabili Formazioni di Giornata (4 Fonti)</a>
                         <a href="{rel_path}chi-schiero/" class="dropdown-item">⚔️ Tool "Chi Schiero?" (Dubbi 1vs1)</a>
                         <a href="{rel_path}consigli-fantacalcio/" class="dropdown-item">🎯 Chi Schierare &amp; Consigli di Giornata</a>
                         <a href="{rel_path}infortunati-serie-a/" class="dropdown-item">🩺 Infortunati, Squalificati &amp; Rientri</a>
@@ -2020,6 +2403,7 @@ def render_unified_header(rel_path=""):
                     </button>
                     <div class="nav-dropdown-menu">
                         <a href="{rel_path}listone/" class="dropdown-item">📋 Listone Calciatori &amp; Valutazioni FVM</a>
+                        <a href="{rel_path}probabili-formazioni/inter/" class="dropdown-item">🏟️ Top 11 &amp; Gerarchie Stagionali (20 Squadre)</a>
                         <a href="{rel_path}griglia-portieri/" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
                         <a href="{rel_path}rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
                         <a href="{rel_path}scommesse-talenti/" class="dropdown-item">🔮 Gemme &amp; Scommesse Low-Cost</a>
@@ -2042,7 +2426,7 @@ def render_unified_header(rel_path=""):
                 </a>
             </div>
         </div>
-        <!-- MOBILE SUBNAV (PRIORITA' GIORNATA & FORMAZIONE) -->
+        <!-- MOBILE SUBNAV (PRIORITA' GIORNATA & FORMAZIONE + MERCATO) -->
         <nav class="mobile-subnav">
             <a href="{rel_path}chi-schiero/">⚔️ Chi Schiero</a>
             <a href="{rel_path}probabili-formazioni/">⚽ Probabili</a>
@@ -2051,6 +2435,7 @@ def render_unified_header(rel_path=""):
             <a href="{rel_path}statistiche-serie-a/">📊 Statistiche</a>
             <a href="{rel_path}top-flop/">⚡ Top/Flop</a>
             <a href="{rel_path}listone/">💰 Listone</a>
+            <a href="{rel_path}probabili-formazioni/inter/">🏟️ Top 11 Squadre</a>
             <a href="{rel_path}rigoristi-serie-a/">🎯 Rigoristi</a>
             <a href="{rel_path}griglia-portieri/">🧤 Portieri</a>
         </nav>
@@ -3096,6 +3481,9 @@ def get_pitch_band(pos, modulo):
         return 'pitchTrq'
     if pos in ['TD', 'TS', 'D'] or pos.startswith('DC') or pos.startswith('BRAC'):
         return 'pitchDef'
+    if modulo and ('3-5-2' in modulo or '4-5-1' in modulo):
+        if pos in ['ED', 'ES', 'CC_D', 'CC_S'] or pos.startswith('MEZ'):
+            return 'pitchTrq'
     if pos in ['ED', 'ES', 'MED', 'CC', 'REG', 'C'] or pos.startswith('MED') or pos.startswith('CC') or pos.startswith('MEZ'):
         return 'pitchMed'
     return 'pitchMed'
@@ -3133,7 +3521,7 @@ def get_substitute_info(starter, team_data, team_players):
         
     return None, None
 
-def generate_team_page(team_name, team_data, team_players, all_teams, injuries_db, base_url="https://www.fantamasterai.it"):
+def generate_team_page(team_name, team_data, team_players, all_teams, injuries_db, base_url="https://www.fantamasterai.it", consensus_data=None):
     team_slug = slugify(team_name)
     modulo = team_data.get("modulo", "3-5-2")
     mister = team_data.get("all", "Mister")
@@ -3142,10 +3530,32 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
     top_players = team_data.get("top", [])
     sleeper_players = team_data.get("sleeper", [])
     
-    meta_title = f"Probabile Formazione {team_name} 2026/27: Titolari, Ballottaggi, Infortunati e Rigoristi | Fanta Master AI"
-    meta_desc = f"Probabile formazione {team_name} 2026/27 aggiornata: modulo {modulo}, 11 titolari con percentuali, ballottaggi di reparto, infortunati e tempi di recupero, rigoristi e rosa Fantacalcio."
+    meta_title = f"Top 11 {team_name} 2026/27: Formazione Tipo, Titolari, Gerarchie e Rigoristi | Fanta Master AI"
+    meta_desc = f"Top 11 {team_name} 2026/27 (Formazione Tipo Stagionale): modulo {modulo}, 11 titolari di base per tutto l'anno, gerarchie di reparto, rigoristi e rosa per Asta e Mercato Fantacalcio."
     page_url = f"{base_url}/probabili-formazioni/{team_slug}/"
     today_iso = datetime.now().strftime("%Y-%m-%d")
+
+    # Individua eventuale partita di giornata del club per la barra integrata nell'intestazione
+    matchday_strip_html = ""
+    if consensus_data and isinstance(consensus_data, dict):
+        round_num = consensus_data.get('round', 11)
+        for m in consensus_data.get("matches", []):
+            ht = (m.get("home_team") or "").strip()
+            at = (m.get("away_team") or "").strip()
+            mslug = m.get("slug") or ""
+            if mslug and (ht.lower() == team_name.lower() or at.lower() == team_name.lower()):
+                matchday_strip_html = f"""
+            <div class="tph-matchday-strip">
+                <div class="tph-md-text">⚽ Cerchi la probabile di <b>Giornata {round_num}</b>?</div>
+                <a href="../{mslug}/" class="tph-md-btn">{clean_html(ht)} - {clean_html(at)} &rarr;</a>
+            </div>"""
+                break
+    if not matchday_strip_html:
+        matchday_strip_html = """
+            <div class="tph-matchday-strip">
+                <div class="tph-md-text">⚽ Cerchi chi gioca nella <b>prossima giornata</b>?</div>
+                <a href="../" class="tph-md-btn">Probabili Giornata &rarr;</a>
+            </div>"""
     
     # 1. Quick Bar 20 Club
     quick_bar_html = "".join([
@@ -3245,43 +3655,28 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
         html_nodes = "".join([x['html'] for x in sorted_items])
         return f'<div class="pitch-band band-count-{cnt}" id="{band_key}">{html_nodes}</div>'
 
-    # 4. Gerarchie Tattiche & Staffette di Reparto
+    # 4. Gerarchie Tattiche & Staffette di Reparto (Stagionali per Asta e Mercato)
     ballottaggi_html = ""
     ball_list = team_data.get("ballottaggi", [])
     if ball_list:
         for b in ball_list:
             bp_raw = b.get("player", "")
             bp = clean_html(bp_raw)
-            pct = int(b.get("pct", 50))
+            pct = int(b.get("pct", 55))
             vs_txt_raw = b.get("vs", "")
+            if "infortunat" in vs_txt_raw.lower():
+                vs_name_only = re.sub(r'\s*\(.*$', '', vs_txt_raw).strip()
+                if pct >= 90:
+                    pct = 60
+                vs_txt_raw = f"{vs_name_only} ({100 - pct}%)"
             vs_txt = clean_html(vs_txt_raw)
 
-            # Neutralizzazione automatica infortuni per evitare la "bugia bianca"
-            p1_obj = find_p(bp_raw)
-            m_rival = re.search(r'([A-Za-z\s\.\'-]+)', vs_txt_raw)
-            rival_name = m_rival.group(1).strip() if m_rival else vs_txt_raw
-            p2_obj = find_p(rival_name)
-
-            p1_inj = p1_obj.get("is_injured") if p1_obj else False
-            p2_inj = p2_obj.get("is_injured") if p2_obj else False
-
-            neutralized_tag = ""
             bar_color = "linear-gradient(90deg,#0284c7,#38bdf8)"
-            if p2_inj and not p1_inj:
-                pct = 95
-                r_date = p2_obj.get("infortunio_rientro", "TBD") if p2_obj else "TBD"
-                neutralized_tag = f'<span style="color:#f87171;font-size:10px;font-weight:700;margin-left:4px;">(Rivale 🩹 fino al {clean_html(r_date)})</span>'
-                bar_color = "linear-gradient(90deg,#10b981,#34d399)"
-            elif p1_inj and not p2_inj:
-                pct = 5
-                r_date = p1_obj.get("infortunio_rientro", "TBD") if p1_obj else "TBD"
-                neutralized_tag = f'<span style="color:#f87171;font-size:10px;font-weight:700;margin-left:4px;">(🩹 Indisponibile fino al {clean_html(r_date)})</span>'
-                bar_color = "linear-gradient(90deg,#ef4444,#f87171)"
 
             ballottaggi_html += f"""
             <div class="ballottaggio-item" style="padding:9px 12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;margin-bottom:8px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:700;">
-                    <span style="color:#fff;">{bp} <b style="color:var(--accent-cyan);">{pct}%</b> {neutralized_tag}</span>
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px 8px;font-size:12.5px;font-weight:700;">
+                    <span style="color:#fff;">{bp} <b style="color:var(--accent-cyan);">{pct}%</b></span>
                     <span style="color:var(--text-muted);font-size:11.5px;">vs {vs_txt}</span>
                 </div>
                 <div style="height:5px;background:rgba(255,255,255,0.08);border-radius:3px;margin-top:6px;overflow:hidden;">
@@ -3400,18 +3795,18 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
     faq_schema = [
         {
             "@type": "Question",
-            "name": f"Qual è la probabile formazione del {team_name} nel 2026/27?",
+            "name": f"Qual è la Top 11 tipo del {team_name} nel 2026/27?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": f"Il {team_name} di mister {mister} scende in campo con il modulo {modulo}. Gli 11 titolari principali sono: {', '.join([st.get('name', '') for st in lineup])}."
+                "text": f"Il {team_name} di mister {mister} scende in campo con il modulo {modulo}. Gli 11 titolari di base per la stagione sono: {', '.join([st.get('name', '') for st in lineup])}."
             }
         },
         {
             "@type": "Question",
-            "name": f"Quali sono i ballottaggi aperti nel {team_name} per la prossima giornata?",
+            "name": f"Quali sono le gerarchie e i ballottaggi di reparto nel {team_name}?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": f"I ballottaggi più caldi nel {team_name} includono: {'; '.join([b.get('player','') + ' vs ' + b.get('vs','') for b in ball_list[:3]]) if ball_list else 'gerarchie stabili con titolari definiti' }."
+                "text": f"Le staffette e gerarchie di reparto nel {team_name} includono: {'; '.join([b.get('player','') + ' vs ' + b.get('vs','') for b in ball_list[:3]]) if ball_list else 'gerarchie stabili con titolari definiti' }."
             }
         },
         {
@@ -3471,8 +3866,8 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{base_url}/"},
-                    {"@type": "ListItem", "position": 2, "name": "Probabili Formazioni Serie A", "item": f"{base_url}/probabili-formazioni/"},
-                    {"@type": "ListItem", "position": 3, "name": team_name, "item": page_url}
+                    {"@type": "ListItem", "position": 2, "name": "Top 11 & Gerarchie Squadre", "item": f"{base_url}/probabili-formazioni/"},
+                    {"@type": "ListItem", "position": 3, "name": f"Top 11 {team_name}", "item": page_url}
                 ]
             }
         ]
@@ -3503,8 +3898,9 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
         if not (p_obj and p_obj.get("is_injured")) and s not in valid_top_players:
             valid_sleeper_players.append(s)
 
-    top_badges = "".join([f'<span class="badge-tag gold" style="font-size:11px;">👑 {clean_html(t)}</span>' for t in valid_top_players[:3]])
-    sleeper_badges = "".join([f'<span class="badge-tag cyan" style="font-size:11px;">🔮 {clean_html(s)}</span>' for s in valid_sleeper_players[:3]])
+    top_badges = "".join([f'<span class="tph-pick-pill gold">👑 {clean_html(t)}</span>' for t in valid_top_players[:3]])
+    sleeper_badges = "".join([f'<span class="tph-pick-pill cyan">🔮 {clean_html(s)}</span>' for s in valid_sleeper_players[:2]])
+    club_monogram = clean_html(team_name[:3].upper())
 
     html = f"""<!DOCTYPE html>
 <html lang="it">
@@ -3547,34 +3943,36 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
     <main class="site-container team-page-container" style="padding-top:16px;">
         <nav class="breadcrumbs">
             <a href="../../">Home</a> <span>/</span> 
-            <a href="../../probabili-formazioni/">Probabili Formazioni</a> <span>/</span> 
-            <span style="color:#fff;">{clean_html(team_name)}</span>
+            <a href="../../listone/">Mercato &amp; Asta</a> <span>/</span> 
+            <span style="color:#fff;">Top 11 {clean_html(team_name)}</span>
         </nav>
 
-        <!-- Hero Club Banner -->
-        <div class="team-hero-banner">
-            <div>
-                <div style="display:flex;align-items:center;gap:12px;">
-                    <span style="font-size:32px;">⚽</span>
-                    <div>
-                        <h1 class="team-hero-title">Probabile Formazione {clean_html(team_name)}</h1>
-                        <div style="font-size:12.5px;color:var(--text-secondary);margin-top:2px;">Titolari, Modulo {clean_html(modulo)}, Ballottaggi, Rigoristi e Rosa Serie A 2026/27</div>
+        <!-- Pro Club Header Card (Compatta, Professionale e Mobile-First) -->
+        <div class="team-pro-header-card">
+            <div class="tph-main-body">
+                <div class="tph-top-row">
+                    <div class="tph-identity">
+                        <div class="tph-crest">{club_monogram}</div>
+                        <div class="tph-title-wrap">
+                            <h1 class="tph-title">Top 11 {clean_html(team_name)}</h1>
+                            <div class="tph-subtitle">All. <b>{clean_html(mister)}</b> &bull; Titolari Base 2026/27</div>
+                        </div>
+                    </div>
+                    <div class="tph-modulo-badge" title="Modulo di base stagionale">{clean_html(modulo)}</div>
+                </div>
+
+                <div class="tph-metrics-bar">
+                    <div class="tph-ratings-pair">
+                        <span class="tph-rate-chip">🛡️ Dif <span class="stars">{'★' * dif_stars}</span></span>
+                        <span class="tph-rate-chip">⚡ Att <span class="stars">{'★' * att_stars}</span></span>
+                    </div>
+                    <div class="tph-picks-scroll">
+                        {top_badges}
+                        {sleeper_badges}
                     </div>
                 </div>
-                <div class="team-meta-pills">
-                    <span class="team-stat-badge" style="color:var(--accent-cyan);border-color:rgba(56,189,248,0.35);background:rgba(56,189,248,0.08);">📋 Modulo: <b>{clean_html(modulo)}</b></span>
-                    <span class="team-stat-badge">👔 Allenatore: <b>{clean_html(mister)}</b></span>
-                    <span class="team-stat-badge">🛡️ Difesa: <b>{'⭐' * dif_stars}</b></span>
-                    <span class="team-stat-badge">⚡ Attacco: <b>{'⭐' * att_stars}</b></span>
-                </div>
             </div>
-            <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start;">
-                <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;">Consigli Fantacalcio AI:</div>
-                <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                    {top_badges}
-                    {sleeper_badges}
-                </div>
-            </div>
+            {matchday_strip_html}
         </div>
 
         <!-- Selettore Rapido 20 Club Serie A -->
@@ -3694,20 +4092,20 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
         <section style="margin-top:35px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:22px;">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
                 <span style="font-size:22px;">❓</span>
-                <h3 style="margin:0;font-size:17px;font-weight:900;color:#fff;">Domande Frequenti Formazione {clean_html(team_name)}</h3>
+                <h3 style="margin:0;font-size:17px;font-weight:900;color:#fff;">Domande Frequenti Top 11 &amp; Gerarchie {clean_html(team_name)}</h3>
             </div>
             <div style="display:flex;flex-direction:column;gap:12px;">
                 <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;">
-                    <b style="color:var(--accent-cyan);font-size:13.5px;">Qual è la probabile formazione del {clean_html(team_name)} nel 2026/27?</b>
-                    <p style="margin:6px 0 0 0;font-size:12.5px;color:var(--text-secondary);line-height:1.45;">Il {clean_html(team_name)} di mister {clean_html(mister)} gioca con il modulo {clean_html(modulo)}. Gli 11 titolari tipo includono {', '.join([st.get('name', '') for st in lineup[:7]])} e compagni.</p>
+                    <b style="color:var(--accent-cyan);font-size:13.5px;">Qual è la Top 11 tipo del {clean_html(team_name)} nel 2026/27?</b>
+                    <p style="margin:6px 0 0 0;font-size:12.5px;color:var(--text-secondary);line-height:1.45;">Il {clean_html(team_name)} di mister {clean_html(mister)} gioca di base con il modulo {clean_html(modulo)}. La Top 11 dei titolari stagionali per l'asta include {', '.join([st.get('name', '') for st in lineup[:7]])} e compagni.</p>
                 </div>
                 <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;">
                     <b style="color:var(--accent-gold);font-size:13.5px;">Chi è il primo rigorista del {clean_html(team_name)}?</b>
                     <p style="margin:6px 0 0 0;font-size:12.5px;color:var(--text-secondary);line-height:1.45;">Il tiratore principale designato dal dischetto è <b>{clean_html(rigs[0] if rigs else 'da definire')}</b>{', con ' + clean_html(rigs[1]) if len(rigs) > 1 else ''} come prima alternativa.</p>
                 </div>
                 <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;">
-                    <b style="color:#38bdf8;font-size:13.5px;">Quali sono i ballottaggi più caldi nel {clean_html(team_name)}?</b>
-                    <p style="margin:6px 0 0 0;font-size:12.5px;color:var(--text-secondary);line-height:1.45;">Le maglie contese di questa giornata riguardano soprattutto: {'; '.join([b.get('player','') + ' vs ' + b.get('vs','') for b in ball_list[:3]]) if ball_list else 'gerarchie stabili con titolari definiti'}.</p>
+                    <b style="color:#38bdf8;font-size:13.5px;">Quali sono i ballottaggi e le staffette stagionali nel {clean_html(team_name)}?</b>
+                    <p style="margin:6px 0 0 0;font-size:12.5px;color:var(--text-secondary);line-height:1.45;">Le staffette di reparto su cui fare coppia all'asta riguardano soprattutto: {'; '.join([b.get('player','') + ' vs ' + b.get('vs','') for b in ball_list[:3]]) if ball_list else 'gerarchie stabili con titolari definiti'}.</p>
                 </div>
             </div>
         </section>
@@ -4463,104 +4861,14 @@ def build_all():
         except Exception as e:
             print(f"  [WARN] Errore nella generazione di probabili-formazioni hub: {e}")
 
-    # 4c. Genera 20 Pagine Dedicate Club & Probabili Formazioni (Cluster Squadra)
+    # 4c. Genera 20 Pagine Dedicate Club & Top 11 Stagionali (Cluster Squadra)
+    consensus_for_teams = locals().get("consensus_data", None)
     all_teams_list = sorted(list(tactical_db.keys()))
     team_count = 0
     for team_name, t_data in sorted(tactical_db.items()):
         t_slug = slugify(team_name)
-        modulo = t_data.get("modulo", "3-5-2")
-        mister = t_data.get("all", "Mister")
-        meta_title = f"Probabile Formazione {team_name} 2026/27: Titolari, Ballottaggi, Infortunati e Rigoristi | Fanta Master AI"
-        meta_desc = f"Probabile formazione {team_name} 2026/27 aggiornata: modulo {modulo}, 11 titolari con percentuali, ballottaggi di reparto, infortunati e tempi di recupero, rigoristi e rosa Fantacalcio."
-        t_url = f"{BASE_URL}/probabili-formazioni/{t_slug}/"
-        today_iso = datetime.now().strftime("%Y-%m-%d")
-
         t_players = [p for p in players if (p.get("team") or "").lower() == team_name.lower()]
-        team_injured = [p for p in t_players if p.get("is_injured")]
-        inj_summary = f"Gli indisponibili attuali nel {team_name} sono: {', '.join([p.get('name','') + ' (' + str(p.get('infortunio_motivo', 'infortunio')) + ', rientro stimato: ' + str(p.get('infortunio_rientro', 'TBD')) + ')' for p in team_injured])}." if team_injured else f"Attualmente l'infermeria del {team_name} è vuota: tutti i calciatori sono a disposizione di mister {mister}."
-        key_starters = ', '.join([p.get('name','') for p in sorted(t_players, key=lambda x: x.get('titolarita', 0), reverse=True)[:5]])
-        lineup_names = ', '.join([st.get('name', '') for st in t_data.get('lineup', [])])
-        ball_list = t_data.get('ballottaggi', [])
-        rigs = [t_data.get('rigorista_1'), t_data.get('rigorista_2'), t_data.get('rigorista_3')]
-        rigs = [r for r in rigs if r and r != '-']
-
-        faq_schema = [
-            {
-                "@type": "Question",
-                "name": f"Qual è la probabile formazione del {team_name} nel 2026/27?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": f"Il {team_name} di mister {mister} scende in campo con il modulo {modulo}. Gli 11 titolari principali sono: {lineup_names}."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": f"Quali sono i ballottaggi aperti nel {team_name} per la prossima giornata?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": f"I ballottaggi più caldi nel {team_name} includono: {'; '.join([b.get('player','') + ' vs ' + b.get('vs','') for b in ball_list[:3]]) if ball_list else 'gerarchie stabili con titolari definiti' }."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": f"Chi sono gli infortunati e gli indisponibili del {team_name}?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": inj_summary
-                }
-            },
-            {
-                "@type": "Question",
-                "name": f"Chi sono i titolari inamovibili del {team_name} al Fantacalcio?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": f"I punti fermi con indice di titolarità più alto nel {team_name} sono: {key_starters}."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": f"Chi è il primo rigorista del {team_name}?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": f"Le gerarchie dal dischetto del {team_name} vedono come 1° rigorista {rigs[0] if rigs else 'da definire'}{', seguito da ' + rigs[1] if len(rigs)>1 else ''}{' e ' + rigs[2] if len(rigs)>2 else ''}."
-                }
-            }
-        ]
-
-        team_schema = {
-            "@context": "https://schema.org",
-            "@graph": [
-                {
-                    "@type": "SportsTeam",
-                    "name": team_name,
-                    "sport": "Soccer",
-                    "coach": {"@type": "Person", "name": mister},
-                    "member": [{"@type": "Person", "name": p.get("name"), "jobTitle": p.get("role")} for p in t_players[:15]]
-                },
-                {
-                    "@type": "WebPage",
-                    "name": meta_title,
-                    "url": t_url,
-                    "dateModified": today_iso,
-                    "description": meta_desc
-                },
-                {
-                    "@type": "FAQPage",
-                    "mainEntity": faq_schema
-                },
-                {
-                    "@type": "BreadcrumbList",
-                    "itemListElement": [
-                        {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE_URL}/"},
-                        {"@type": "ListItem", "position": 2, "name": "Probabili Formazioni Serie A", "item": f"{BASE_URL}/probabili-formazioni/"},
-                        {"@type": "ListItem", "position": 3, "name": team_name, "item": t_url}
-                    ]
-                }
-            ]
-        }
-        schema_json_str = json.dumps(team_schema, ensure_ascii=False, indent=2)
-
-        t_html = generate_team_page(team_name, t_data, t_players, all_teams_list, injuries_db, BASE_URL)
+        t_html = generate_team_page(team_name, t_data, t_players, all_teams_list, injuries_db, BASE_URL, consensus_data=consensus_for_teams)
         
         t_dir = os.path.join(DIST_DIR, "probabili-formazioni", t_slug)
         os.makedirs(t_dir, exist_ok=True)
@@ -4569,7 +4877,7 @@ def build_all():
             
         sitemap_urls.append(f"{BASE_URL}/probabili-formazioni/{t_slug}/")
         team_count += 1
-    print(f"  ✓ Generate {team_count} pagine squadra unificate con interfaccia completa Hub (Campo 2D, Titolari, FRP, Ballottaggi, AI Predictor) in dist/probabili-formazioni/<squadra>/")
+    print(f"  ✓ Generate {team_count} pagine squadra Top 11 & Gerarchie Stagionali (Campo 2D, Titolari, FRP, Staffette, Rigoristi) in dist/probabili-formazioni/<squadra>/")
 
     # 4c. Genera Pagina Privacy Policy Ufficiale & GDPR
     priv_dir = os.path.join(DIST_DIR, "privacy-policy")

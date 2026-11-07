@@ -181,6 +181,7 @@
                     </button>
                     <div class="nav-dropdown-menu">
                         <a href="/listone/" class="dropdown-item active" id="tabAuctionBtn" onclick="onNavClick(event, 'auction')">📋 Listone Calciatori &amp; Valutazioni FVM</a>
+                        <a href="/probabili-formazioni/como/" class="dropdown-item" onclick="onNavClick(event, 'pitch')">🏟️ Top 11 &amp; Gerarchie Stagionali (20 Squadre)</a>
                         <a href="/griglia-portieri/" class="dropdown-item" id="tabGkBtn" onclick="onNavClick(event, 'gk')">🧤 Griglia Portieri 38/38</a>
                         <a href="/rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
                         <a href="/scommesse-talenti/" class="dropdown-item" id="tabGemsBtn" onclick="onNavClick(event, 'gems')">🔮 Gemme &amp; Scommesse Low-Cost</a>
@@ -950,6 +951,7 @@
                                 <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
                                     <span style="font-size:11px; font-weight:800; color:#fbbf24; text-transform:uppercase;">Accesso Rapido Mercato:</span>
                                     <button onclick="switchTab('auction')" class="hub-chip-btn" style="font-size:11.5px; padding:5px 12px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); color:#fbbf24; border-radius:8px; cursor:pointer;">📋 Listone 534 Calciatori</button>
+                                    <a href="/probabili-formazioni/como/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(56,189,248,0.14); border:1px solid rgba(56,189,248,0.35); color:#38bdf8; border-radius:8px;">🏟️ Top 11 Stagionali (20 Squadre)</a>
                                     <a href="/griglia-portieri/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); color:#fff; border-radius:8px;">🧤 Griglia Portieri 38/38</a>
                                     <a href="/rigoristi-serie-a/" class="hub-chip-btn" style="text-decoration:none; font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); color:#fff; border-radius:8px;">🎯 Rigoristi &amp; Piazzati</a>
                                     <button onclick="switchTab('gems')" class="hub-chip-btn" style="font-size:11.5px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); color:#fff; border-radius:8px; cursor:pointer;">🔮 Scommesse Low-Cost</button>
@@ -1055,19 +1057,19 @@
                                 </div>
                             </div>
 
-                            <!-- Mercato Tool 6: 5 Squadre Perfette AI -->
-                            <div class="ai-cap-card" onclick="switchTab('ai_squads')">
+                            <!-- Mercato Tool 6: Top 11 & Gerarchie Stagionali (20 Squadre) -->
+                            <div class="ai-cap-card" onclick="if(window.location.protocol==='file:'){switchTab('pitch');}else{window.location.href='/probabili-formazioni/como/';}">
                                 <div>
                                     <div class="cap-card-top">
-                                        <div class="cap-icon-box" style="background:rgba(236,72,153,0.15);border:1px solid rgba(236,72,153,0.3);color:#f472b6;">🧠</div>
-                                        <span class="cap-badge-tag">Modelli Budget</span>
+                                        <div class="cap-icon-box" style="background:rgba(236,72,153,0.15);border:1px solid rgba(236,72,153,0.3);color:#f472b6;">🏟️</div>
+                                        <span class="cap-badge-tag">Campo 2D &amp; Gerarchie</span>
                                     </div>
-                                    <h3 class="cap-title">5 Squadre Perfette AI</h3>
-                                    <p class="cap-desc">Archetipi di rose bilanciate calcolate dal motore matematico per orientare la distribuzione del budget tra porta, difesa, centrocampo e attacco.</p>
+                                    <h3 class="cap-title">Top 11 &amp; Gerarchie Stagionali (20 Squadre)</h3>
+                                    <p class="cap-desc">Gli 11 titolari tipo per tutto l'anno dei 20 club di Serie A, le staffette di reparto su cui fare coppia all'asta, i fuori ruolo (FRP) e i tiratori.</p>
                                 </div>
                                 <div class="cap-card-footer" style="color:#f472b6;">
-                                    <span>Vedi Archetipi Rose &rarr;</span>
-                                    <span style="font-size:11px;color:var(--text-muted);">Strategia Budget</span>
+                                    <span>Esplora Top 11 Club &rarr;</span>
+                                    <span style="font-size:11px;color:var(--text-muted);">20 Squadre Serie A</span>
                                 </div>
                             </div>
                         </div>
@@ -1899,12 +1901,8 @@
         </div>
     </div>
 
-    <!-- MOBILE BOTTOM NAVIGATION (Native App Bar - Matchday First) -->
+    <!-- MOBILE BOTTOM NAVIGATION (Native App Bar: Probabili | Chi Schiero | Consigli AI | La Tua Rosa | Menu) -->
     <nav class="mobile-bottom-nav" id="mobileBottomNav">
-        <a href="/" class="mobile-nav-item active" id="mobNavHome" onclick="switchTabMobile('home', event)">
-            <span class="mob-icon">🏠</span>
-            <span class="mob-label">Home</span>
-        </a>
         <a href="/probabili-formazioni/" class="mobile-nav-item" id="mobNavProbabili">
             <span class="mob-icon">⚽</span>
             <span class="mob-label">Probabili</span>
@@ -1913,11 +1911,15 @@
             <span class="mob-icon">⚔️</span>
             <span class="mob-label">Chi Schiero</span>
         </a>
+        <a href="/consigli-fantacalcio/" class="mobile-nav-item" id="mobNavAdvice" onclick="switchTabMobile('matchday_advice', event)">
+            <span class="mob-icon">🎯</span>
+            <span class="mob-label">Consigli AI</span>
+        </a>
         <button type="button" class="mobile-nav-item" id="mobNavSquad" onclick="openMySquadModal()">
             <span class="mob-icon">📋</span>
-            <span class="mob-label">Mia Rosa</span>
+            <span class="mob-label">La Tua Rosa</span>
         </button>
-        <button type="button" class="mobile-nav-item" id="mobNavMenu" onclick="openMobileMenuModal()">
+        <button type="button" class="mobile-nav-item" id="mobNavMenu" onclick="openMobileMenuModal()" aria-label="Apri menu completo">
             <span class="mob-icon">☰</span>
             <span class="mob-label">Menu</span>
         </button>
@@ -1938,6 +1940,13 @@
             </div>
             
             <div class="mobile-menu-grid">
+                <!-- Section 0: HOME PAGE -->
+                <div class="mobile-menu-section" style="padding:0;">
+                    <div class="mobile-menu-links">
+                        <button class="mobile-menu-link-btn" onclick="switchTabMobile('home')" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.16);color:#fff;font-weight:900;">🏠 Torna alla Home Page</button>
+                    </div>
+                </div>
+
                 <!-- Section 1: FASE 1 - GIORNATA & FORMAZIONE -->
                 <div class="mobile-menu-section" style="border:1px solid rgba(16,185,129,0.28);background:rgba(16,185,129,0.05);border-radius:12px;padding:12px;">
                     <div class="mobile-menu-section-title" style="color:#34d399;font-weight:900;"><span>⚽</span> FASE 1: GIORNATA &amp; FORMAZIONE (11 Titolari)</div>
@@ -1958,6 +1967,7 @@
                     <div class="mobile-menu-section-title" style="color:#fbbf24;font-weight:900;"><span>💰</span> FASE 2: MERCATO &amp; ASTA (Estate &amp; Riparazione)</div>
                     <div class="mobile-menu-links">
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('auction')" style="background:rgba(245,158,11,0.16);border-color:rgba(245,158,11,0.4);color:#fde68a;font-weight:800;">📋 Listone Calciatori &amp; Quotazioni FVM</button>
+                        <a href="/probabili-formazioni/como/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;color:#fcd34d;font-weight:700;">🏟️ Top 11 &amp; Gerarchie Stagionali (20 Squadre)</a>
                         <a href="/griglia-portieri/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">🧤 Griglia Portieri &amp; Accoppiamenti 38/38</a>
                         <a href="/rigoristi-serie-a/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">🎯 Rigoristi, Punizioni &amp; Calci Piazzati</a>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('gems')">🔮 Gemme Nascoste &amp; Scommesse Low-Cost</button>
@@ -2008,9 +2018,9 @@
     </div>
 
     <!-- Data Injection & Engine Scripts -->
-    <script src="/js/dashboard_data.js?v=1794059615" defer></script>
-    <script src="/js/dashboard_app.js?v=1794059615" defer></script>
-    <script src="/js/tracker.js?v=1794059615" defer></script>
+    <script src="/js/dashboard_data.js?v=1794063022" defer></script>
+    <script src="/js/dashboard_app.js?v=1794063022" defer></script>
+    <script src="/js/tracker.js?v=1794063022" defer></script>
 
     <!-- ==================== FOOTER & LEGAL DISCLAIMER ==================== -->
     <footer class="app-site-footer">

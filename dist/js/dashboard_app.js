@@ -6376,6 +6376,11 @@ function getPitchBandId(pos, modulo) {
     if (['TD', 'TS', 'D'].includes(pos) || pos.startsWith('DC') || pos.startsWith('BRAC')) {
         return 'pitchDef';
     }
+    if (modulo && (modulo.includes('3-5-2') || modulo.includes('4-5-1'))) {
+        if (['ED', 'ES', 'CC_D', 'CC_S'].includes(pos) || pos.startsWith('MEZ')) {
+            return 'pitchTrq';
+        }
+    }
     if (['ED', 'ES', 'MED', 'CC', 'REG', 'C'].includes(pos) || pos.startsWith('MED') || pos.startsWith('CC') || pos.startsWith('MEZ')) {
         return 'pitchMed';
     }
@@ -6566,7 +6571,7 @@ function renderPitchTeam(teamName, updateUrl = false) {
                 window.history.pushState({ team: teamName }, '', targetUrl);
             }
         }
-        document.title = `Probabile Formazione ${teamName} 2026/27: Titolari, Ballottaggi e Schemi | Fanta Master AI`;
+        document.title = `Top 11 ${teamName} 2026/27: Formazione Tipo, Gerarchie e Rigoristi | Fanta Master AI`;
     }
     const selEl = document.getElementById('selectPitchTeam');
     if (selEl && selEl.value !== teamName) {
@@ -6726,7 +6731,7 @@ function renderPitchTeam(teamName, updateUrl = false) {
                 <div class="tactics-hub-header">
                     <div>
                         <div class="tactics-club-main">
-                            <h2 class="tactics-club-title">${teamName}</h2>
+                            <h2 class="tactics-club-title">Top 11 ${teamName}</h2>
                             <span class="tactics-modulo-capsule">${team.modulo}</span>
                         </div>
                         <div class="tactics-coach-txt">Allenatore: <span class="coach-val">${team.all}</span></div>
@@ -22216,7 +22221,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 'top_flop': 'Top & Flop',
                 'match_reports': 'Match Reports — Analisi Partite',
                 'matrix': 'Matrice Analytics',
-                'pitch': 'Campo 2D & Schemi',
+                'pitch': 'Top 11 & Gerarchie 20 Squadre',
                 'matchup': 'Matchup 1vs1',
                 'gk': 'Griglia Portieri',
                 'matchday_advice': 'Consigli Formazione',
@@ -22659,6 +22664,15 @@ window.addEventListener('DOMContentLoaded', () => {
                 ? getInitialPitchClub() 
                 : (window.INITIAL_PITCH_TEAM || 'Inter');
             renderPitchTeam(initialPitchTeam, false);
+
+            // Apertura automatica de "La Tua Rosa" se richiesto da query string (?openSquad=1) o hash (#my_squad)
+            try {
+                if ((window.location.search && window.location.search.indexOf('openSquad=1') !== -1) || window.location.hash === '#my_squad') {
+                    setTimeout(function() {
+                        if (typeof openMySquadModal === 'function') openMySquadModal();
+                    }, 120);
+                }
+            } catch (e) {}
 
             // Registrazione Service Worker per Progressive Web App (PWA)
             if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {

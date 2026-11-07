@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-03T16:37:40.583109",
+  "timestamp": "2026-11-07T17:07:26.736785",
   "rounds_analyzed": [
     1,
     2,
@@ -12,14 +12,14 @@
     9,
     10
   ],
-  "overall_hit_rate": 54.2,
+  "overall_hit_rate": 59.2,
   "role_hit_rates": {
-    "P": 63.3,
-    "D": 53.3,
-    "C": 40.0,
+    "P": 66.7,
+    "D": 56.7,
+    "C": 53.3,
     "A": 60.0
   },
-  "miss_count": 55,
+  "miss_count": 49,
   "misses_diagnostic": [
     {
       "round": 1,
@@ -31,8 +31,8 @@
     },
     {
       "round": 1,
-      "player": "Maignan",
-      "team": "Milan",
+      "player": "Corvi",
+      "team": "Parma",
       "role": "P",
       "category": "PILASTRO",
       "reason": "Malus disciplinare decisivo"
@@ -63,11 +63,11 @@
     },
     {
       "round": 1,
-      "player": "Mbangula",
-      "team": "Bologna",
+      "player": "Calò",
+      "team": "Frosinone",
       "role": "C",
-      "category": "JOLLY_CEILING",
-      "reason": "S.V. (Jolly con copertura in panchina)"
+      "category": "PILASTRO",
+      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 1,
@@ -79,27 +79,11 @@
     },
     {
       "round": 2,
-      "player": "Carlos Augusto",
-      "team": "Inter",
-      "role": "D",
-      "category": "PILASTRO",
-      "reason": "Panchina inattesa / Senza Voto (S.V.)"
-    },
-    {
-      "round": 2,
-      "player": "Pulisic",
+      "player": "Rabiot",
       "team": "Milan",
       "role": "C",
       "category": "PILASTRO",
-      "reason": "Panchina inattesa / Senza Voto (S.V.)"
-    },
-    {
-      "round": 2,
-      "player": "Moreira",
-      "team": "Milan",
-      "role": "C",
-      "category": "JOLLY_CEILING",
-      "reason": "S.V. (Jolly con copertura in panchina)"
+      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 2,
@@ -111,11 +95,11 @@
     },
     {
       "round": 2,
-      "player": "Thuram",
-      "team": "Inter",
+      "player": "Krstovic",
+      "team": "Atalanta",
       "role": "A",
       "category": "PILASTRO",
-      "reason": "Voto ordinario senza bonus (6.0)"
+      "reason": "Malus disciplinare decisivo"
     },
     {
       "round": 3,
@@ -127,27 +111,19 @@
     },
     {
       "round": 3,
-      "player": "Lulli",
-      "team": "Roma",
+      "player": "Bremer",
+      "team": "Juventus",
       "role": "D",
       "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 3,
-      "player": "Mbangula",
-      "team": "Bologna",
+      "player": "Schmid",
+      "team": "Frosinone",
       "role": "C",
-      "category": "JOLLY_CEILING",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
-      "round": 3,
-      "player": "Mora",
-      "team": "Roma",
-      "role": "C",
-      "category": "JOLLY_CEILING",
-      "reason": "Voto ordinario senza bonus (6.0)"
+      "category": "PILASTRO",
+      "reason": "Malus disciplinare decisivo"
     },
     {
       "round": 3,
@@ -156,6 +132,22 @@
       "role": "A",
       "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 3,
+      "player": "Varela G.",
+      "team": "Monza",
+      "role": "A",
+      "category": "PILASTRO",
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+    },
+    {
+      "round": 4,
+      "player": "Butez",
+      "team": "Como",
+      "role": "P",
+      "category": "PILASTRO",
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
     },
     {
       "round": 4,
@@ -175,16 +167,16 @@
     },
     {
       "round": 4,
-      "player": "Butez",
-      "team": "Como",
-      "role": "P",
+      "player": "Dimarco",
+      "team": "Inter",
+      "role": "D",
       "category": "PILASTRO",
-      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 4,
-      "player": "Dimarco",
-      "team": "Inter",
+      "player": "Tavares N.",
+      "team": "Lazio",
       "role": "D",
       "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
@@ -194,7 +186,7 @@
       "player": "Couto",
       "team": "Como",
       "role": "D",
-      "category": "JOLLY_CEILING",
+      "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
@@ -202,7 +194,7 @@
       "player": "Baturina",
       "team": "Como",
       "role": "C",
-      "category": "PILASTRO",
+      "category": "JOLLY_CEILING",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
@@ -210,24 +202,24 @@
       "player": "Krstovic",
       "team": "Atalanta",
       "role": "A",
-      "category": "JOLLY_CEILING",
+      "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 5,
-      "player": "Cambiaso",
-      "team": "Juventus",
+      "player": "Mangas",
+      "team": "Monza",
       "role": "D",
-      "category": "JOLLY_CEILING",
-      "reason": "S.V. (Jolly con copertura in panchina)"
+      "category": "PILASTRO",
+      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 5,
-      "player": "Mbangula",
-      "team": "Bologna",
+      "player": "Paz N.",
+      "team": "Como",
       "role": "C",
-      "category": "JOLLY_CEILING",
-      "reason": "S.V. (Jolly con copertura in panchina)"
+      "category": "PILASTRO",
+      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 5,
@@ -239,11 +231,11 @@
     },
     {
       "round": 5,
-      "player": "Raimondo",
-      "team": "Frosinone",
+      "player": "Douvikas",
+      "team": "Como",
       "role": "A",
       "category": "PILASTRO",
-      "reason": "Malus disciplinare decisivo"
+      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 6,
@@ -255,27 +247,19 @@
     },
     {
       "round": 6,
-      "player": "Politano",
-      "team": "Napoli",
+      "player": "Zaccagni",
+      "team": "Lazio",
       "role": "C",
       "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 6,
-      "player": "Mbangula",
-      "team": "Bologna",
-      "role": "C",
-      "category": "JOLLY_CEILING",
-      "reason": "S.V. (Jolly con copertura in panchina)"
-    },
-    {
-      "round": 6,
-      "player": "Bonny",
-      "team": "Inter",
+      "player": "Malen",
+      "team": "Roma",
       "role": "A",
-      "category": "JOLLY_CEILING",
-      "reason": "Voto ordinario senza bonus (6.0)"
+      "category": "PILASTRO",
+      "reason": "Prestazione gravemente insufficiente"
     },
     {
       "round": 7,
@@ -287,27 +271,11 @@
     },
     {
       "round": 7,
-      "player": "Molina N.",
-      "team": "Roma",
-      "role": "D",
-      "category": "JOLLY_CEILING",
-      "reason": "S.V. (Jolly con copertura in panchina)"
-    },
-    {
-      "round": 7,
       "player": "Wesley",
       "team": "Roma",
       "role": "D",
       "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
-      "round": 7,
-      "player": "De Bruyne",
-      "team": "Napoli",
-      "role": "C",
-      "category": "JOLLY_CEILING",
-      "reason": "Prestazione gravemente insufficiente"
     },
     {
       "round": 7,
@@ -324,6 +292,14 @@
       "role": "D",
       "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 8,
+      "player": "Rabiot",
+      "team": "Milan",
+      "role": "C",
+      "category": "PILASTRO",
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
     },
     {
       "round": 8,
@@ -342,22 +318,6 @@
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
-      "round": 8,
-      "player": "Mbangula",
-      "team": "Bologna",
-      "role": "C",
-      "category": "JOLLY_CEILING",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
-      "round": 8,
-      "player": "Bonny",
-      "team": "Inter",
-      "role": "A",
-      "category": "JOLLY_CEILING",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
       "round": 9,
       "player": "Vicario",
       "team": "Juventus",
@@ -367,11 +327,11 @@
     },
     {
       "round": 9,
-      "player": "Maignan",
-      "team": "Milan",
-      "role": "P",
+      "player": "Balerdi",
+      "team": "Roma",
+      "role": "D",
       "category": "PILASTRO",
-      "reason": "Collasso difensivo di squadra"
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
     },
     {
       "round": 9,
@@ -399,8 +359,8 @@
     },
     {
       "round": 9,
-      "player": "Soulè",
-      "team": "Roma",
+      "player": "Krstovic",
+      "team": "Atalanta",
       "role": "A",
       "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
@@ -418,16 +378,8 @@
       "player": "Tavares N.",
       "team": "Lazio",
       "role": "D",
-      "category": "JOLLY_CEILING",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
-      "round": 10,
-      "player": "Lulli",
-      "team": "Roma",
-      "role": "D",
       "category": "PILASTRO",
-      "reason": "Panchina inattesa / Senza Voto (S.V.)"
+      "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
       "round": 10,
@@ -435,14 +387,6 @@
       "team": "Lazio",
       "role": "D",
       "category": "PILASTRO",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
-      "round": 10,
-      "player": "Mbangula",
-      "team": "Bologna",
-      "role": "C",
-      "category": "JOLLY_CEILING",
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
@@ -455,10 +399,18 @@
     },
     {
       "round": 10,
+      "player": "Zaccagni",
+      "team": "Lazio",
+      "role": "C",
+      "category": "PILASTRO",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 10,
       "player": "Krstovic",
       "team": "Atalanta",
       "role": "A",
-      "category": "JOLLY_CEILING",
+      "category": "PILASTRO",
       "reason": "Prestazione gravemente insufficiente"
     }
   ],

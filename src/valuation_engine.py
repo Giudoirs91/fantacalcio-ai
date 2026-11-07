@@ -269,7 +269,7 @@ def determine_advice_tag(p):
 
     # 13. FUORI RUOLO BRONZO (Riserve con ruolo offensivo a 1 credito)
     if oop_tier == 'BRONZO':
-        return "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR", "sleeper"
+        return "🥉 RISERVA FUORI RUOLO (FRP) A 1 CR", "lowcost"
 
     # 14. TITOLARISSIMI REALI (95%+ o 5/5 da titolare)
     if titolarita >= 95 or starts_2627 >= 5:
@@ -475,19 +475,23 @@ def calculate_xfm(p):
             except (ZeroDivisionError, ValueError):
                 shot_placement_mult = 1.0
 
-        # Gerarchia Rigori e Piazzati (apporto predittivo sui bonus attesi)
+        # Gerarchia Rigori e Piazzati (apporto predittivo marginale: evita il doppio conteggio poiché xg_2627 include già 0.76 xG per rigore)
         rig_tier = int(p.get('rigorista_tier') or 0)
-        rig_bonus_per_match = 0.08 if rig_tier == 1 else (0.03 if rig_tier == 2 else (0.01 if rig_tier == 3 else 0.0))
+        rig_bonus_per_match = 0.025 if rig_tier == 1 else (0.01 if rig_tier == 2 else 0.0)
 
         piaz_tier = int(p.get('piazzati_tier') or 0)
-        piaz_bonus_per_match = 0.06 if piaz_tier == 1 else (0.02 if piaz_tier == 2 else (0.01 if piaz_tier == 3 else 0.0))
+        piaz_bonus_per_match = 0.025 if piaz_tier == 1 else (0.01 if piaz_tier == 2 else 0.0)
 
         # Calcolo bonus attesi scalati sulle presenze
         expected_penalty_bonus = rig_bonus_per_match * 3.0 * presenze
         expected_set_piece_bonus = piaz_bonus_per_match * 1.5 * presenze
 
         bonus_attesi = (xg * shot_placement_mult * 3.0) + (xa * 1.0) + expected_penalty_bonus + expected_set_piece_bonus
-        xfm_base = round(float(mv + ((bonus_attesi - malus) / presenze)), 2)
+        raw_xfm = float(mv + ((bonus_attesi - malus) / presenze))
+
+        # Empirical Bayes Shrinkage: con >= 4 presenze ancora parzialmente l'xFM al rendimento reale osservato per smorzare la varianza estrema
+        shrinkage_w = min(0.35, max(0.0, (presenze - 3.0) * 0.05))
+        xfm_base = round((raw_xfm * (1.0 - shrinkage_w)) + (real_fm * shrinkage_w), 2)
 
     # ── Applica bias corrections apprese dall'AI Evaluator (non-distruttive) ────────
     corrections = _get_bias_corrections()

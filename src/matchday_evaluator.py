@@ -48,9 +48,10 @@ def _get_european_cups():
 
 
 _CONSENSUS_CACHE = None
+_HIST_CONSENSUS_CACHE = {}
 
-def _get_matchday_consensus():
-    global _CONSENSUS_CACHE
+def _get_matchday_consensus(round_num=None):
+    global _CONSENSUS_CACHE, _HIST_CONSENSUS_CACHE
     if _CONSENSUS_CACHE is None:
         if os.path.exists(MATCHDAY_CONSENSUS_PATH):
             try:
@@ -60,6 +61,22 @@ def _get_matchday_consensus():
                 _CONSENSUS_CACHE = {}
         else:
             _CONSENSUS_CACHE = {}
+
+    if round_num is not None:
+        cons_round = _CONSENSUS_CACHE.get('round')
+        if cons_round is not None and int(round_num) == int(cons_round):
+            return _CONSENSUS_CACHE
+        if round_num in _HIST_CONSENSUS_CACHE:
+            return _HIST_CONSENSUS_CACHE[round_num]
+        hist_path = os.path.join(ROOT_DIR, "data", "historical_consensus", f"consensus_g{int(round_num)}.json")
+        if os.path.exists(hist_path):
+            try:
+                with open(hist_path, 'r', encoding='utf-8') as f:
+                    _HIST_CONSENSUS_CACHE[round_num] = json.load(f)
+                    return _HIST_CONSENSUS_CACHE[round_num]
+            except Exception:
+                pass
+        return {}
     return _CONSENSUS_CACHE
 
 
@@ -82,9 +99,9 @@ def _get_learned_feedback():
 def get_player_matchday_status(player_name, team_name, round_num=None):
     """
     Interroga il consensus ufficiale a 4 fonti (Fantacalcio.it, Gazzetta, Sky, SOS Fanta)
-    da config/matchday_consensus.json se disponibile per il round indicato.
+    da config/matchday_consensus.json o data/historical_consensus/ se disponibile per il round indicato.
     """
-    consensus = _get_matchday_consensus()
+    consensus = _get_matchday_consensus(round_num)
     if not consensus:
         return {'in_consensus': False, 'status': 'UNKNOWN', 'consensus_pct': None, 'is_injured': False, 'ballot_verdict': ''}
 
@@ -219,6 +236,7 @@ def is_high_ceiling_jolly(player):
     Riconosce i calciatori 'Jolly Spaccapartita' ad alto ceiling:
     - Non portieri
     - Con comprovata pericolosità offensiva, bonus realizzati o fantamedia di vertice
+    - Richiede minutaggio e continuità reale (evita riserve pure da S.V. cronico)
     """
     if player.get('role') == 'P' or player.get('is_injured'):
         return False
@@ -228,13 +246,65 @@ def is_high_ceiling_jolly(player):
     xg = float(player.get('xg90_2627') or player.get('xg90') or 0.0)
     xa = float(player.get('xa90_2627') or player.get('xa90') or 0.0)
     ovr = float(player.get('ovr') or 70.0)
+    starts = int(player.get('starts_2627') or 0)
+    pres = int(player.get('presenze_2627') or 0)
     adv_type = str(player.get('ai_advice_type', '')).lower()
 
-    has_top_fm = (fm >= 7.2)
-    has_bonus = (gol >= 1 or ass >= 1)
-    has_high_threat = ((xg + xa) >= 0.22)
-    is_elite = (ovr >= 80 or player.get('is_oop') or adv_type in ['hot', 'top', 'supersub'])
+    # Filtro anti-S.V.: una riserva con < 3 presenze da titolare e < 6 voti totali non può andare in Top 3
+    if starts < 3 and pres < 6:
+        return False
+
+    has_top_fm = (fm >= 7.15)
+    has_bonus = (gol >= 2 or (gol >= 1 and ass >= 1) or ass >= 2)
+    has_high_threat = ((xg + xa) >= 0.30)
+    is_elite = (ovr >= 82 or player.get('is_oop') or adv_type in ['hot', 'top'])
     return (has_top_fm or has_bonus) and (has_high_threat or is_elite)
+
+
+def _get_pre_round_form_and_availability(player, round_num):
+    """
+    Analizza lo storico strettamente PRECEDENTE alla giornata `round_num` (nessun lookahead):
+    - Verifica se il giocatore è andato a voto nelle ultime giornate precedenti (G-1, G-2, G-3)
+    - Calcola il momentum di forma recente (media fantavoto e hit rate pre-gara)
+    """
+    voti_list = player.get('voti_dettaglio_2627') or []
+    if not round_num or round_num <= 1 or not voti_list:
+        return {
+            'played_prev': True,
+            'recent_play_rate': 1.0,
+            'recent_avg_fv': float(player.get('fm_2627') or player.get('fm') or 6.0),
+            'recent_hits': 0,
+            'prev_rounds_count': 0
+        }
+
+    prev_voti_map = {}
+    for v in voti_list:
+        g = v.get('giornata')
+        if g and int(g) < int(round_num) and v.get('voto') is not None:
+            prev_voti_map[int(g)] = v
+
+    played_prev = (int(round_num) - 1) in prev_voti_map
+    window_rounds = [r for r in range(max(1, int(round_num) - 3), int(round_num))]
+    played_in_window = [r for r in window_rounds if r in prev_voti_map]
+    recent_play_rate = len(played_in_window) / len(window_rounds) if window_rounds else 1.0
+
+    all_prev_voti = [prev_voti_map[r] for r in sorted(prev_voti_map.keys())]
+    recent_3 = all_prev_voti[-3:] if all_prev_voti else []
+    if recent_3:
+        fvs = [float(v.get('fantavoto') if v.get('fantavoto') is not None else v.get('voto', 6.0)) for v in recent_3]
+        recent_avg_fv = sum(fvs) / len(fvs)
+        recent_hits = sum(1 for fv in fvs if fv >= 6.5)
+    else:
+        recent_avg_fv = 5.8
+        recent_hits = 0
+
+    return {
+        'played_prev': played_prev,
+        'recent_play_rate': recent_play_rate,
+        'recent_avg_fv': recent_avg_fv,
+        'recent_hits': recent_hits,
+        'prev_rounds_count': len(all_prev_voti)
+    }
 
 
 def calculate_advice_score(player, match_info, team_stats, return_details=False):
@@ -252,7 +322,7 @@ def calculate_advice_score(player, match_info, team_stats, return_details=False)
     if c_status.get('is_injured'):
         return (-999.0, 'SCONSIGLIATO', 'Infortunato', '') if return_details else -999.0
 
-    # Calcolo titolarità effettiva con fallback su presenze/starts reali
+    # Calcolo titolarità effettiva con verifica su presenze/starts reali
     tit = float(player.get('titolarita') or 0)
     starts = int(player.get('starts_2627') or 0)
     pres = int(player.get('presenze_2627') or 0)
@@ -262,6 +332,13 @@ def calculate_advice_score(player, match_info, team_stats, return_details=False)
         tit = min(80.0, (pres / 7.0) * 85.0)
     elif tit <= 0:
         tit = 50.0
+
+    # Ancoraggio bayesiano alla titolarità reale di stagione (evita che riserve abbiano titolarità teorica gonfiata)
+    if pres > 0 or starts > 0:
+        real_start_pct = min(98.0, (starts / 10.0) * 100.0)
+        real_pres_pct = min(95.0, (pres / 10.0) * 100.0)
+        empirical_tit = (real_start_pct * 0.65) + (real_pres_pct * 0.35)
+        tit = (tit * 0.55) + (empirical_tit * 0.45)
 
     if c_status.get('in_consensus'):
         c_pct = c_status['consensus_pct']
@@ -276,17 +353,28 @@ def calculate_advice_score(player, match_info, team_stats, return_details=False)
     else:
         effective_tit = tit
 
+    # Controllo continuità pre-gara (G-1 / ultime 3 giornate) contro infortuni/panchine in corso
+    pre_form = _get_pre_round_form_and_availability(player, round_num)
+    if round_num and int(round_num) >= 2 and not c_status.get('in_consensus'):
+        if not pre_form['played_prev']:
+            # S.V. nella giornata immediatamente precedente -> forte rischio panchina/indisponibilità
+            effective_tit *= 0.55
+        if int(round_num) >= 3 and pre_form['recent_play_rate'] < 0.65:
+            effective_tit *= 0.65
+
+    # Filtro continuità stagionale: per entrare nella Top 3 di giornata serve presenza costante (>= 80% gare a voto o >= 7 da titolare)
+    if pres < 8 and starts < 7 and not c_status.get('in_consensus'):
+        effective_tit = min(effective_tit, 64.0)
+
     high_ceiling = is_high_ceiling_jolly(player)
 
-    # Filtri di sicurezza differenziati:
-    # Portieri: devono essere titolari certi (>= 70%)
-    if role == 'P' and effective_tit < 70:
+    # Filtri di sicurezza rigorosi anti-S.V. per la Top 3 di giornata (solo Pilastri con voto garantito):
+    # Portieri: devono essere titolari certi (>= 78%)
+    if role == 'P' and effective_tit < 78.0:
         return (-500.0, 'SCONSIGLIATO', 'Panchina', '') if return_details else -500.0
 
-    # Giocatori di movimento:
-    # Se il giocatore ha un Alto Ceiling (Jolly/Super-Sub con gol/assist o FM alta),
-    # tolleriamo un ballottaggio o ingresso a gara in corso fino al 30% di titolarità
-    min_tit = 30.0 if high_ceiling else 50.0
+    # Giocatori di movimento: soglia minima >= 72% per azzerare i Senza Voto (S.V.) nella Top 3
+    min_tit = 70.0 if high_ceiling else 74.0
     if effective_tit < min_tit:
         return (-500.0, 'SCONSIGLIATO', 'Panchina', '') if return_details else -500.0
 
@@ -307,63 +395,122 @@ def calculate_advice_score(player, match_info, team_stats, return_details=False)
     rig_tier = int(player.get('rigorista_tier') or 0)
     piaz_tier = int(player.get('piazzati_tier') or 0)
 
-    rig_bonus = 8.0 if rig_tier == 1 else (3.0 if rig_tier == 2 else (1.0 if rig_tier == 3 else 0.0))
+    rig_bonus = 9.0 if rig_tier == 1 else (3.0 if rig_tier == 2 else (1.0 if rig_tier == 3 else 0.0))
     piaz_bonus = 4.5 if piaz_tier == 1 else (2.0 if piaz_tier == 2 else (0.5 if piaz_tier == 3 else 0.0))
 
     if role == 'P':
-        score = 55.0 + (ovr * 0.12) + (fm * 2.0)
-        score += (my['cs'] * 6.0) - (my['gc'] * 5.0) - (my['def_vuln'] * 8.0)
-        if is_home: score += 7.0
+        p_cs = float(player.get('clean_sheets_2627') or my['cs'] or 0.0)
+        p_gs = float(player.get('gol_subiti_2627') or 0.0)
+        p_pres = max(1.0, float(pres or 10.0))
+        cs_rate = p_cs / p_pres
+        gs_rate = p_gs / p_pres
 
-        loc_mod = 0.85 if is_home else 1.15
+        score = 52.0 + (ovr * 0.08) + (fm * 3.0) + (mv * 2.5)
+        score += (cs_rate * 28.0) - (gs_rate * 14.0) - (my['def_vuln'] * 9.0)
+        if is_home:
+            score += 8.5
+        else:
+            score -= 4.5
+
+        loc_mod = 0.82 if is_home else 1.18
         xgc_est = opp_prof['att_power'] * my['def_vuln'] * loc_mod
 
-        if xgc_est > 0.95:
-            score -= ((xgc_est - 0.95) ** 1.4) * 32.0
+        if xgc_est > 0.90:
+            score -= ((xgc_est - 0.90) ** 1.4) * 36.0
         else:
-            score += ((0.95 - xgc_est) * 16.0)
+            score += ((0.90 - xgc_est) * 20.0)
 
         if opp_prof['att_stars'] >= 5:
-            score -= 16.0
+            score -= 20.0
         elif opp_prof['att_stars'] == 4:
-            score -= 7.0
+            score -= 10.0
         elif opp_prof['att_stars'] <= 2:
-            score += 12.0
+            score += 14.0
 
     elif role == 'D':
-        score = 52.0 + (ovr * 0.16) + (fm * 2.8) + (mv * 2.2)
+        # Difensori da Modificatore & Bonus (alta priorità a MV >= 6.20 e spinta sulle fasce)
+        score = 50.0 + (ovr * 0.12) + (fm * 3.4) + (mv * 3.8)
+        if mv >= 6.25:
+            score += (mv - 6.15) * 18.0
+        elif mv < 5.95:
+            score -= 8.0
+
         loc_mod = 0.88 if is_home else 1.15
         def_stress = opp_prof['att_power'] * my['def_vuln'] * loc_mod
 
-        if def_stress > 1.05:
-            score -= ((def_stress - 1.05) ** 1.3) * 30.0
+        if def_stress > 1.02:
+            score -= ((def_stress - 1.02) ** 1.35) * 32.0
         else:
-            score += ((1.05 - def_stress) * 14.0)
+            score += ((1.02 - def_stress) * 16.0)
 
-        if is_home: score += 4.0
+        if is_home: score += 4.5
 
-        if player.get('is_oop'): score += 12.0
-        if player.get('is_punizioni') or player.get('is_corner'): score += 6.0
+        if player.get('is_oop'): score += 11.0
+        if player.get('is_punizioni') or player.get('is_corner'): score += 5.5
         if rig_tier == 1: score += 14.0
-        elif rig_tier == 2: score += 6.0
+        elif rig_tier == 2: score += 5.0
         if piaz_tier == 1: score += 4.0
 
-        score += (xg90 * 18.0) + (xa90 * 16.0) + (min(gol, 2) * 2.5) + (min(ass, 2) * 2.0)
+        score += (xg90 * 18.0) + (xa90 * 16.0) + (min(gol, 3) * 3.5) + (min(ass, 3) * 3.0)
 
-    else: # C e A
-        score = 48.0 + (ovr * 0.18) + (fm * 3.2) + (mv * 2.0)
-        loc_mod = 1.10 if is_home else 0.92
+    elif role == 'C':
+        # Centrocampisti: separa i registi da 6.0 piatto dagli incursori/trequartisti ad alta conversione bonus
+        score = 44.0 + (ovr * 0.11) + (fm * 4.2) + (mv * 3.5)
+        if mv >= 6.25:
+            score += (mv - 6.15) * 20.0
+        elif mv < 6.0:
+            score -= 9.0
+
+        loc_mod = 1.12 if is_home else 0.90
         opp_concession = opp_prof['def_vuln'] * loc_mod
 
-        score += (opp_concession - 1.0) * 18.0
-        if is_home: score += 5.0
+        score += (opp_concession - 1.0) * 20.0
+        if is_home:
+            score += 5.5
+        elif opp_prof['def_vuln'] < 0.98 or opp_prof['dif_stars'] >= 4:
+            # Trasferta su campo ostico/bloccato: penalizza centrocampisti a rischio 5.5/6.0
+            score -= 6.5
 
         score += rig_bonus + piaz_bonus
-        if player.get('is_oop'): score += 10.0
+        if player.get('is_oop'): score += 9.5
 
-        score += (xg90 * opp_concession) * 22.0
+        score += (xg90 * opp_concession) * 24.0
+        score += (xa90 * opp_concession) * 18.0
+        score += (min(gol, 5) * 4.8) + (min(ass, 4) * 3.5)
+
+        # Penalità per centrocampisti a zero bonus realizzati in stagione (bassa incisività reale)
+        if gol == 0 and ass == 0 and rig_tier != 1:
+            score -= 7.5
+
+    else: # A (Attaccanti)
+        score = 46.0 + (ovr * 0.14) + (fm * 3.8) + (mv * 2.4)
+        loc_mod = 1.10 if is_home else 0.90
+        opp_concession = opp_prof['def_vuln'] * loc_mod
+
+        score += (opp_concession - 1.0) * 20.0
+        if is_home:
+            score += 5.5
+        elif opp_prof['dif_stars'] >= 4 and gol < 3:
+            score -= 5.5
+
+        score += rig_bonus + piaz_bonus
+        if player.get('is_oop'): score += 8.0
+
+        score += (xg90 * opp_concession) * 24.0
         score += (xa90 * opp_concession) * 16.0
-        score += (min(gol, 4) * 3.5) + (min(ass, 3) * 2.5)
+        score += (min(gol, 6) * 4.2) + (min(ass, 3) * 2.8)
+
+        if gol == 0 and ass == 0 and rig_tier != 1:
+            score -= 8.0
+
+    # Momentum di forma pre-gara (ultime 3 giornate precedenti a round_num, senza lookahead)
+    if pre_form['prev_rounds_count'] >= 1:
+        if pre_form['recent_avg_fv'] >= 6.6:
+            score += min(6.0, (pre_form['recent_avg_fv'] - 6.4) * 4.0)
+        elif pre_form['recent_avg_fv'] < 5.85:
+            score -= 5.0
+        if pre_form['recent_hits'] >= 2:
+            score += 3.5
 
     # Penalità stanchezza e allerta turnover Coppe Europee infrasettimanali
     if round_num and score > 0:

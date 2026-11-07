@@ -148,14 +148,22 @@ function getTeamStrengthProfile(teamName) {
     };
 }
 
-// ALGORITMO QUANTITATIVO DETERMINISTICO (Bayesian Predictive Match Engine)
+// ALGORITMO QUANTITATIVO DETERMINISTICO (Bayesian Predictive Match Engine v2)
 function calcMatchdayAdviceScore(player, matchInfo) {
     if (!matchInfo || player.is_injured) return -999;
-    const tit = (player.titolarita !== undefined && player.titolarita !== null && player.titolarita !== '')
+    let tit = (player.titolarita !== undefined && player.titolarita !== null && player.titolarita !== '')
         ? Number(player.titolarita)
         : 0;
-    if (tit < 50) return -500;
-    if (player.role === 'P' && tit < 70) return -500;
+    const starts = Number(player.starts_2627) || 0;
+    const pres = Number(player.presenze_2627) || 0;
+    if (pres > 0 || starts > 0) {
+        const realStartPct = Math.min(98.0, (starts / 10.0) * 100.0);
+        const realPresPct = Math.min(95.0, (pres / 10.0) * 100.0);
+        const empiricalTit = (realStartPct * 0.65) + (realPresPct * 0.35);
+        tit = (tit * 0.55) + (empiricalTit * 0.45);
+    }
+    if (player.role === 'P' && tit < 75) return -500;
+    if (tit < 65) return -500;
 
     const team = player.team;
     const opp = matchInfo.opp;
@@ -174,87 +182,115 @@ function calcMatchdayAdviceScore(player, matchInfo) {
     const gol = Number(player.gol_2627) || 0;
     const ass = Number(player.assist_2627) || 0;
 
+    let score = 0;
+
     // 1. PORTIERI: Expected Clean Sheet & Matchup Hazard Index
     if (role === 'P') {
-        let score = 55.0 + (ovr * 0.12) + (fm * 2.0);
+        score = 54.0 + (ovr * 0.10) + (fm * 2.4) + (mv * 1.8);
+        score += (my.cs * 6.5) - (my.gc * 5.5) - (my.defVuln * 8.5);
+        if (isHome) score += 7.5;
 
-        // Solidità difensiva della propria squadra (Clean sheets e gol concessi effettivi)
-        score += (my.cs * 6.0) - (my.gc * 5.0) - (my.defVuln * 8.0);
-        if (isHome) score += 7.0;
-
-        // xGC atteso del match (Attacco avversario vs difesa propria)
-        const locMod = isHome ? 0.85 : 1.15;
+        const locMod = isHome ? 0.84 : 1.16;
         const xgcEst = oppProf.attPower * my.defVuln * locMod;
 
-        // Penalizzazione esponenziale per rischio malus elevato
-        if (xgcEst > 0.95) {
-            score -= Math.pow(xgcEst - 0.95, 1.4) * 32.0;
+        if (xgcEst > 0.92) {
+            score -= Math.pow(xgcEst - 0.92, 1.4) * 34.0;
         } else {
-            score += (0.95 - xgcEst) * 16.0;
+            score += (0.92 - xgcEst) * 18.0;
         }
 
-        // Penalità severa per Big Match / Attacchi a 5 stelle (Atalanta, Inter, Napoli, Milan, Juve)
         if (oppProf.att_stars >= 5) {
-            score -= 16.0;
+            score -= 18.0;
         } else if (oppProf.att_stars === 4) {
-            score -= 7.0;
+            score -= 8.0;
         } else if (oppProf.att_stars <= 2) {
-            score += 12.0; // Bonus clean sheet contro attacchi anemici
+            score += 13.0;
         }
-
-        return Math.round(score * 10) / 10;
     }
 
-    // 2. DIFENSORI: Defensive Stress & Flank Threat
+    // 2. DIFENSORI: Defensive Stress, Modificatore & Flank Threat
     else if (role === 'D') {
-        let score = 52.0 + (ovr * 0.16) + (fm * 2.8) + (mv * 2.2);
+        score = 50.0 + (ovr * 0.12) + (fm * 3.4) + (mv * 3.8);
+        if (mv >= 6.25) score += (mv - 6.15) * 18.0;
+        else if (mv < 5.95) score -= 8.0;
 
-        // Stress difensivo del matchup: quanto soffrirà contro l'attacco avversario?
         const locMod = isHome ? 0.88 : 1.15;
         const defStress = oppProf.attPower * my.defVuln * locMod;
 
-        if (defStress > 1.05) {
-            score -= Math.pow(defStress - 1.05, 1.3) * 30.0;
+        if (defStress > 1.02) {
+            score -= Math.pow(defStress - 1.02, 1.35) * 32.0;
         } else {
-            score += (1.05 - defStress) * 14.0;
+            score += (1.02 - defStress) * 16.0;
         }
 
-        if (isHome) score += 4.0;
+        if (isHome) score += 4.5;
 
-        // Bonus Tattico OOP (terzino schierato esterno d'attacco o quinto)
-        if (player.is_oop) score += 12.0;
-        if (player.is_punizioni || player.is_corner) score += 6.0;
+        if (player.is_oop) score += 11.0;
+        if (player.is_punizioni || player.is_corner) score += 5.5;
         if (player.is_rigorista_1) score += 14.0;
-        else if (player.is_rigorista_2) score += 6.0;
+        else if (player.is_rigorista_2) score += 5.0;
 
-        // Metriche offensive predittive (senza sovrastimare i gol casuali passati)
-        score += (xg90 * 18.0) + (xa90 * 16.0) + (Math.min(gol, 2) * 2.5) + (Math.min(ass, 2) * 2.0);
-        return Math.round(score * 10) / 10;
+        score += (xg90 * 18.0) + (xa90 * 16.0) + (Math.min(gol, 3) * 3.5) + (Math.min(ass, 3) * 3.0);
     }
 
-    // 3. CENTROCAMPISTI & ATTACCANTI: Expected Finishing Conversion (EFC)
-    else {
-        let score = 48.0 + (ovr * 0.18) + (fm * 3.2) + (mv * 2.0);
+    // 3. CENTROCAMPISTI: Bonus Conversion & Base Vote Discrimination
+    else if (role === 'C') {
+        score = 44.0 + (ovr * 0.11) + (fm * 4.2) + (mv * 3.5);
+        if (mv >= 6.25) score += (mv - 6.15) * 20.0;
+        else if (mv < 6.0) score -= 9.0;
 
-        // Concessione difensiva avversaria: varchi e spazi
-        const locMod = isHome ? 1.10 : 0.92;
+        const locMod = isHome ? 1.12 : 0.90;
         const oppConcession = oppProf.defVuln * locMod;
 
-        score += (oppConcession - 1.0) * 18.0;
-        if (isHome) score += 5.0;
+        score += (oppConcession - 1.0) * 20.0;
+        if (isHome) {
+            score += 5.5;
+        } else if (oppProf.defVuln < 0.98 || oppProf.dif_stars >= 4) {
+            score -= 6.5;
+        }
 
-        if (player.is_rigorista_1) score += 16.0;
-        else if (player.is_rigorista_2) score += 7.0;
-
-        if (player.is_oop) score += 10.0;
+        if (player.is_rigorista_1) score += 14.0;
+        else if (player.is_rigorista_2) score += 5.0;
+        if (player.is_oop) score += 9.5;
         if (player.is_punizioni || player.is_corner) score += 5.0;
 
-        score += (xg90 * oppConcession) * 22.0;
-        score += (xa90 * oppConcession) * 16.0;
-        score += (Math.min(gol, 4) * 3.5) + (Math.min(ass, 3) * 2.5);
+        score += (xg90 * oppConcession) * 24.0;
+        score += (xa90 * oppConcession) * 18.0;
+        score += (Math.min(gol, 5) * 4.8) + (Math.min(ass, 4) * 3.5);
 
-        return Math.round(score * 10) / 10;
+        if (gol === 0 && ass === 0 && !player.is_rigorista_1) {
+            score -= 7.5;
+        }
     }
+
+    // 4. ATTACCANTI: Expected Finishing Conversion (EFC)
+    else {
+        score = 46.0 + (ovr * 0.14) + (fm * 3.8) + (mv * 2.4);
+        const locMod = isHome ? 1.10 : 0.90;
+        const oppConcession = oppProf.defVuln * locMod;
+
+        score += (oppConcession - 1.0) * 20.0;
+        if (isHome) {
+            score += 5.5;
+        } else if (oppProf.dif_stars >= 4 && gol < 3) {
+            score -= 5.5;
+        }
+
+        if (player.is_rigorista_1) score += 14.0;
+        else if (player.is_rigorista_2) score += 5.0;
+        if (player.is_oop) score += 8.0;
+        if (player.is_punizioni || player.is_corner) score += 4.5;
+
+        score += (xg90 * oppConcession) * 24.0;
+        score += (xa90 * oppConcession) * 16.0;
+        score += (Math.min(gol, 6) * 4.2) + (Math.min(ass, 3) * 2.8);
+
+        if (gol === 0 && ass === 0 && !player.is_rigorista_1) {
+            score -= 8.0;
+        }
+    }
+
+    return Math.round(score * 10) / 10;
 }
 
 // ALGORITMO SCOMMESSE PREDITTIVE & DIFFERENZIALI (Opportunity & Feasibility Engine)

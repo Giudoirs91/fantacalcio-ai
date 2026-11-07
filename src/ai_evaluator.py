@@ -31,34 +31,34 @@ MIN_SEGMENT_SIZE = 8
 LEARNING_RATE = 0.5
 
 ADVICE_THRESHOLDS = {
-    # Top: tarato sui percentili reali della Serie A (P >= 5.8, D >= 6.8, C >= 7.2, A >= 7.6 con titolarità continua)
-    "top":           lambda fm, pres, rounds, role="": (fm >= (5.8 if role == "P" else (6.8 if role == "D" else (7.2 if role == "C" else 7.6)))) and pres >= rounds * 0.70 if role else (fm >= 7.3 and pres >= rounds * 0.70),
+    # Top: tarato sui percentili reali della Serie A per ruolo (P >= 5.3, D >= 6.45, C >= 6.85, A >= 7.20 con titolarità continua)
+    "top":           lambda fm, pres, rounds, role="": (fm >= (5.3 if role == "P" else (6.45 if role == "D" else (6.85 if role == "C" else 7.20)))) and pres >= rounds * 0.60 if role else (fm >= 7.0 and pres >= rounds * 0.60),
     # Leader: colonna portante di rendimento e titolarità garantita
-    "leader":        lambda fm, pres, rounds, role="": (fm >= (6.0 if role in ["P", "D"] else 6.5) and pres >= rounds * 0.70),
+    "leader":        lambda fm, pres, rounds, role="": (fm >= (5.75 if role in ["P", "D"] else 6.30) and pres >= rounds * 0.60),
     # Buy: acquisto a rendimento solido o presenze stabili
-    "buy":           lambda fm, pres, rounds, role="": (fm >= 6.4 or pres >= rounds * 0.65),
-    # Sleeper: scommessa a basso costo che sovraperforma (fm >= 6.0 per P/D, >= 6.4 per C/A con impiego significativo)
-    "sleeper":       lambda fm, pres, rounds, role="": (fm >= (6.0 if role in ["P", "D"] else 6.4) and pres >= rounds * 0.40),
+    "buy":           lambda fm, pres, rounds, role="": (fm >= 6.15 or pres >= rounds * 0.60),
+    # Sleeper: scommessa a basso costo che sovraperforma o conquista il posto
+    "sleeper":       lambda fm, pres, rounds, role="": ((fm >= (5.95 if role in ["P", "D"] else 6.20) and pres >= rounds * 0.30) or pres >= rounds * 0.55),
     # Warning: giocatore a rischio insufficienza o panchina frequente
     "warning":       lambda fm, pres, rounds, role="": (fm < 6.5 or pres < rounds * 0.60),
     # Flop: rendimento gravemente sotto la media
     "flop":          lambda fm, pres, rounds, role="": (fm < 6.0),
     # Avoid: profilo da evitare assolutamente per presenze o fantamedia
-    "avoid":         lambda fm, pres, rounds, role="": (fm < 5.8 or pres < rounds * 0.40),
+    "avoid":         lambda fm, pres, rounds, role="": (fm < 5.85 or pres < rounds * 0.45),
     # Titolarissimo: certezza quasi assoluta di minutaggio
-    "titolarissimo": lambda fm, pres, rounds, role="": (pres >= rounds * 0.85),
+    "titolarissimo": lambda fm, pres, rounds, role="": (pres >= rounds * 0.80),
     # Titolare: maglia da titolare garantita
-    "titolare":      lambda fm, pres, rounds, role="": (pres >= rounds * 0.70),
+    "titolare":      lambda fm, pres, rounds, role="": (pres >= rounds * 0.65),
     # Hot: momento di forma / bonus
-    "hot":           lambda fm, pres, rounds, role="": (fm >= 6.8 and pres >= rounds * 0.50),
+    "hot":           lambda fm, pres, rounds, role="": (fm >= 6.65 and pres >= rounds * 0.50),
     # Supersub: dodicesimo uomo di grande impatto
-    "supersub":      lambda fm, pres, rounds, role="": (pres >= rounds * 0.50 and fm >= 6.0),
+    "supersub":      lambda fm, pres, rounds, role="": (pres >= rounds * 0.45 and fm >= 5.95),
     # Benched: riserva fissa
     "benched":       lambda fm, pres, rounds, role="": (pres < rounds * 0.40),
     # Rotation: rotazione sistematica
-    "rotation":      lambda fm, pres, rounds, role="": (pres >= rounds * 0.35 and pres < rounds * 0.75),
+    "rotation":      lambda fm, pres, rounds, role="": (pres >= rounds * 0.30 and pres < rounds * 0.80),
     # Lowcost: titolare o riserva low-cost a prezzo base
-    "lowcost":       lambda fm, pres, rounds, role="": (pres >= rounds * 0.30),
+    "lowcost":       lambda fm, pres, rounds, role="": (pres >= rounds * 0.20 or fm >= 5.90),
 }
 
 
@@ -411,6 +411,7 @@ def compute_bias_corrections(error_analysis, round_num):
     by_league = error_analysis.get("by_league", {})
     by_oop = error_analysis.get("by_oop", {})
     by_frag = error_analysis.get("by_fragility", {})
+    by_slot = error_analysis.get("by_slot", {})
 
     def _correction(bias_mean, count, lr=LEARNING_RATE):
         if count < MIN_SEGMENT_SIZE:
@@ -429,6 +430,9 @@ def compute_bias_corrections(error_analysis, round_num):
     fragility_correction = {t: c for t, stats in by_frag.items()
                              if (c := _correction(stats["mean"], stats["count"])) != 0.0}
 
+    slot_correction = {s: c for s, stats in by_slot.items()
+                       if (c := _correction(stats["mean"], stats["count"])) != 0.0}
+
     advice_acc = {at: d["accuracy"] for at, d in error_analysis.get("advice_accuracy", {}).items()}
     global_stats = error_analysis.get("global", {})
 
@@ -444,6 +448,7 @@ def compute_bias_corrections(error_analysis, round_num):
         "league_correction": league_correction,
         "oop_correction": oop_correction,
         "fragility_correction": fragility_correction,
+        "slot_correction": slot_correction,
         "advice_accuracy_by_type": advice_acc,
         "learning_notes": error_analysis.get("learning_notes", []),
         "valid": round_num >= MIN_ROUNDS_FOR_LEARNING,
@@ -506,6 +511,10 @@ def apply_bias_correction_to_xfm(xfm, player, corrections):
     fragilita = player.get("fragilita_score") or player.get("fragility_score") or 1
     frag_tier = "alta" if (fragilita >= 65 or str(player.get("fragility_tier", "")).upper() in ["FRAGILE", "CRISTALLO"]) else ("media" if (fragilita >= 39 or str(player.get("fragility_tier", "")).upper() == "ATTENZIONE") else "bassa")
     total_correction += corrections.get("fragility_correction", {}).get(frag_tier, 0.0)
+
+    slot = int(player.get("slot_num") or 5)
+    slot_bracket = "1-2" if slot <= 2 else ("3-4" if slot <= 4 else "5+")
+    total_correction += corrections.get("slot_correction", {}).get(slot_bracket, 0.0)
 
     return round(xfm + total_correction, 2)
 

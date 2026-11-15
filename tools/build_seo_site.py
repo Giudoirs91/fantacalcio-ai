@@ -4884,14 +4884,14 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
                 matchday_strip_html = f"""
             <div class="tph-matchday-strip">
                 <div class="tph-md-text">⚽ Cerchi la probabile di <b>Giornata {round_num}</b>?</div>
-                <a href="../{mslug}/" class="tph-md-btn">{clean_html(ht)} - {clean_html(at)} &rarr;</a>
+                <a href="../../probabili-formazioni/{mslug}/" class="tph-md-btn">{clean_html(ht)} - {clean_html(at)} &rarr;</a>
             </div>"""
                 break
     if not matchday_strip_html:
         matchday_strip_html = """
             <div class="tph-matchday-strip">
                 <div class="tph-md-text">⚽ Cerchi chi gioca nella <b>prossima giornata</b>?</div>
-                <a href="../" class="tph-md-btn">Probabili Giornata &rarr;</a>
+                <a href="../../probabili-formazioni/" class="tph-md-btn">Probabili Giornata &rarr;</a>
             </div>"""
     
     # 1. Quick Bar 20 Club

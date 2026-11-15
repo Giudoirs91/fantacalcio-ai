@@ -28,7 +28,7 @@ if os.path.exists(CALENDAR_PATH):
 
 
 BASE_URL = "https://www.fantamasterai.it"
-CSS_VERSION = "?v=20261107-v8"
+CSS_VERSION = "?v=20261115-v1"
 GA_MEASUREMENT_ID = "G-4QNYJ5YZXY"
 GA_TAG_SNIPPET = f"""    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>

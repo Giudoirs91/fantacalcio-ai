@@ -1658,7 +1658,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
     <meta name="twitter:image" content="{base_url}/static/og-image.jpg">
     
     <!-- CSS Completo Dashboard -->
-    <link rel="stylesheet" href="../../css/seo.css?v=20261107-v8">
+    <link rel="stylesheet" href="../../css/seo.css?v=20261115-v1">
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">

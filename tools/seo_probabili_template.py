@@ -3476,8 +3476,8 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
     <meta name="twitter:image" content="{base_url}/static/og-image.jpg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../css/seo.css?v=20261103-v1">
-    <link rel="stylesheet" href="../css/probabili-layout.css?v=20261103-v1">
+    <link rel="stylesheet" href="../css/seo.css?v=20261115-v1">
+    <link rel="stylesheet" href="../css/probabili-layout.css?v=20261115-v1">
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -3823,8 +3823,8 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
     <meta name="twitter:image" content="{base_url}/static/og-image.jpg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../css/seo.css?v=20261103-v1">
-    <link rel="stylesheet" href="../../css/probabili-layout.css?v=20261103-v1">
+    <link rel="stylesheet" href="../../css/seo.css?v=20261115-v1">
+    <link rel="stylesheet" href="../../css/probabili-layout.css?v=20261115-v1">
     <style>
     .prob-breadcrumbs {{
         display: flex;

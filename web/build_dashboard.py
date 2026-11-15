@@ -204,6 +204,170 @@ def generate_home_matches_strip_html(consensus_data: dict) -> str:
                             </a>''')
     return "\n".join(cards)
 
+def generate_home_flash_picks_html(players_data: list, consensus_data: dict) -> str:
+    """Genera dinamicamente i 3 Flash Picks AI (Capitano, Rischio Flop, Gemma) per la giornata corrente."""
+    next_round = int(consensus_data.get("round") or 12) if isinstance(consensus_data, dict) else 12
+    matches = consensus_data.get("matches", []) if isinstance(consensus_data, dict) else []
+
+    team_match = {}
+    for m in matches:
+        ht = (m.get("home_team") or "").strip()
+        at = (m.get("away_team") or "").strip()
+        if ht:
+            team_match[ht.lower()] = (f"vs {at}", bool(m.get("big_match")))
+        if at:
+            team_match[at.lower()] = (f"@ {ht}", bool(m.get("big_match")))
+
+    def _safe_f(v, d=0.0):
+        try:
+            return float(v) if v is not None else d
+        except (TypeError, ValueError):
+            return d
+
+    def _role_label(r):
+        return {"P": "Portiere", "D": "Difensore", "C": "Centrocampista", "A": "Attaccante"}.get(r, "Giocatore")
+
+    active_pool = [
+        p for p in players_data
+        if not p.get("is_injured")
+        and p.get("role") in ("A", "C")
+        and int(p.get("titolarita") or 0) >= 55
+        and _safe_f(p.get("xfm"), 0) > 0
+    ]
+    if not active_pool:
+        active_pool = [p for p in players_data if p.get("role") in ("A", "C")]
+
+    # 1. Capitano AI: top xFM tra i titolari
+    cap = max(active_pool, key=lambda p: (_safe_f(p.get("xfm"), 0), int(p.get("ovr") or 0)))
+    cap_name = cap.get("name", "-")
+    cap_full = cap.get("nome_completo") or cap_name
+    cap_team = cap.get("team", "-")
+    cap_role = cap.get("role", "A")
+    cap_ovr = int(cap.get("ovr") or 75)
+    cap_xfm = _safe_f(cap.get("xfm"), 0)
+    cap_tit = int(cap.get("titolarita") or 85)
+    cap_match = team_match.get(cap_team.lower(), ("Prossimo turno", False))[0]
+    cap_status = "1° Rigorista" if cap.get("is_rigorista_1") else ("2° Rigorista" if cap.get("is_rigorista_2") else f"Tit. {cap_tit}%")
+
+    # 2. Rischio Flop: giocatore con quotazione alta (>= 25 FVM) ma xFM più basso / gara ostica
+    trap_pool = [
+        p for p in active_pool
+        if p.get("id") != cap.get("id") and _safe_f(p.get("fvm"), 0) >= 25
+    ] or [p for p in active_pool if p.get("id") != cap.get("id")]
+    trap = min(trap_pool, key=lambda p: (_safe_f(p.get("xfm"), 99), -_safe_f(p.get("fvm"), 0)))
+    trap_name = trap.get("name", "-")
+    trap_full = trap.get("nome_completo") or trap_name
+    trap_team = trap.get("team", "-")
+    trap_role = trap.get("role", "A")
+    trap_cr = int(trap.get("prezzo_cons") or trap.get("fvm") or 10)
+    trap_xfm = _safe_f(trap.get("xfm"), 0)
+    trap_match, trap_big = team_match.get(trap_team.lower(), ("Prossimo turno", False))
+    trap_reason = "Big Match" if trap_big else ("Trasferta Ostica" if trap_match.startswith("@") else "Bassa xFM")
+
+    # 3. Gemma low-cost: prezzo <= 25 CR con xFM più alta
+    gem_pool = [
+        p for p in active_pool
+        if p.get("id") not in (cap.get("id"), trap.get("id"))
+        and int(p.get("prezzo_cons") or 99) <= 25
+    ] or [p for p in active_pool if p.get("id") not in (cap.get("id"), trap.get("id"))]
+    gem = max(gem_pool, key=lambda p: (_safe_f(p.get("xfm"), 0), int(p.get("ovr") or 0)))
+    gem_name = gem.get("name", "-")
+    gem_full = gem.get("nome_completo") or gem_name
+    gem_team = gem.get("team", "-")
+    gem_role = gem.get("role", "C")
+    gem_cr = int(gem.get("prezzo_cons") or 1)
+    gem_xfm = _safe_f(gem.get("xfm"), 0)
+    gem_gol = int(gem.get("gol_2627") or 0)
+    gem_ass = int(gem.get("assist_2627") or 0)
+    gem_xg = _safe_f(gem.get("xg90_2627") if gem.get("xg90_2627") is not None else gem.get("xg90"), 0)
+
+    return f'''                            <!-- Card 1: Top AI Pick & Capitano Ideale -->
+                            <div class="ai-pulse-card pick" onclick="openPlayerByName('{cap_name}')" style="cursor:pointer;">
+                                <div class="pulse-card-header">
+                                    <span class="pulse-badge green">🚀 CAPITANO AI</span>
+                                    <span class="pulse-card-score" style="color:#4ade80;">{cap_tit}% Titolarità</span>
+                                </div>
+                                <div class="pulse-player-box">
+                                    <span class="role-badge {cap_role}" style="width:34px;height:34px;font-size:15px;">{cap_role}</span>
+                                    <div>
+                                        <div class="pulse-player-name">{cap_full}</div>
+                                        <div class="pulse-player-sub">{cap_team} • {_role_label(cap_role)} • OVR {cap_ovr}</div>
+                                    </div>
+                                </div>
+                                <div class="pulse-metrics-strip">
+                                    <div class="pulse-metric-item">
+                                        <span class="p-lbl">xFM G{next_round}</span>
+                                        <span class="p-val" style="color:#00e676;">{cap_xfm:.2f}</span>
+                                    </div>
+                                    <div class="pulse-metric-item">
+                                        <span class="p-lbl">Partita</span>
+                                        <span class="p-val" style="color:#38bdf8;">{cap_match}</span>
+                                    </div>
+                                    <div class="pulse-metric-item">
+                                        <span class="p-lbl">Status</span>
+                                        <span class="p-val" style="color:#fbbf24;">{cap_status}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Flop & Trap Alert -->
+                            <div class="ai-pulse-card danger" onclick="openPlayerByName('{trap_name}')" style="cursor:pointer;">
+                                <div class="pulse-card-header">
+                                    <span class="pulse-badge red">⚠️ RISCHIO FLOP</span>
+                                    <span class="pulse-card-score" style="color:#f87171;">Allerta G{next_round}</span>
+                                </div>
+                                <div class="pulse-player-box">
+                                    <span class="role-badge {trap_role}" style="width:34px;height:34px;font-size:15px;">{trap_role}</span>
+                                    <div>
+                                        <div class="pulse-player-name">{trap_full}</div>
+                                        <div class="pulse-player-sub">{trap_team} • {_role_label(trap_role)} • {trap_cr} CR</div>
+                                    </div>
+                                </div>
+                                <div class="pulse-metrics-strip">
+                                    <div class="pulse-metric-item">
+                                        <span class="p-lbl">Partita</span>
+                                        <span class="p-val" style="color:#f87171;">{trap_match}</span>
+                                    </div>
+                                    <div class="pulse-metric-item">
+                                        <span class="p-lbl">Allerta</span>
+                                        <span class="p-val" style="color:#ef4444;">{trap_reason}</span>
+                                    </div>
+                                    <div class="pulse-metric-item">
+                                        <span class="p-lbl">xFM G{next_round}</span>
+                                        <span class="p-val" style="color:#fbbf24;">{trap_xfm:.2f} ↓</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Scommessa & Differenziale AI -->
+                            <div class="ai-pulse-card gem" onclick="openPlayerByName('{gem_name}')" style="cursor:pointer;">
+                                <div class="pulse-card-header">
+                                    <span class="pulse-badge purple">💎 GEMMA G{next_round}</span>
+                                    <span class="pulse-card-score" style="color:#c084fc;">xFM {gem_xfm:.2f}</span>
+                                </div>
+                                <div class="pulse-player-box">
+                                    <span class="role-badge {gem_role}" style="width:34px;height:34px;font-size:15px;">{gem_role}</span>
+                                    <div>
+                                        <div class="pulse-player-name">{gem_full}</div>
+                                        <div class="pulse-player-sub">{gem_team} • {_role_label(gem_role)} • {gem_cr} CR</div>
+                                    </div>
+                                </div>
+                                <div class="pulse-metrics-strip">
+                                    <div class="pulse-metric-item">
+                                        <span class="p-lbl">xG / 90m</span>
+                                        <span class="p-val" style="color:#c084fc;">{gem_xg:.2f}</span>
+                                    </div>
+                                    <div class="pulse-metric-item">
+                                        <span class="p-lbl">Bonus</span>
+                                        <span class="p-val" style="color:#34d399;">{gem_gol}G + {gem_ass}A</span>
+                                    </div>
+                                    <div class="pulse-metric-item">
+                                        <span class="p-lbl">Costo</span>
+                                        <span class="p-val" style="color:#fbbf24;">{gem_cr} CR</span>
+                                    </div>
+                                </div>
+                            </div>'''
+
 def build_standalone_dashboard(sync_android=False):
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     
@@ -324,6 +488,8 @@ def build_standalone_dashboard(sync_android=False):
     home_leaders_html = generate_home_leaders_html(players_data)
     hero_trust_showcase_html = generate_hero_trust_showcase_html(accuracy_data)
     home_matches_strip_html = generate_home_matches_strip_html(consensus_data)
+    next_round = int(consensus_data.get("round") or 12) if isinstance(consensus_data, dict) else 12
+    home_flash_picks_html = generate_home_flash_picks_html(players_data, consensus_data)
 
     # 3. Costruisci il documento HTML completo
     html_template = f"""<!DOCTYPE html>
@@ -709,7 +875,7 @@ def build_standalone_dashboard(sync_android=False):
                         <a href="/consigli-fantacalcio/" class="hpro-qtile pink" onclick="onNavClick(event, 'matchday_advice')">
                             <span class="hq-ico">🎯</span>
                             <div class="hq-body">
-                                <span class="hq-title">Consigliati G11</span>
+                                <span class="hq-title">Consigliati G{next_round}</span>
                                 <span class="hq-meta">Top 11 &amp; Indice AI</span>
                             </div>
                             <span class="hq-arr">&rarr;</span>
@@ -740,99 +906,14 @@ def build_standalone_dashboard(sync_android=False):
                         </a>
                     </div>
 
-                    <!-- RIGA 4: 3 FLASH PICKS G11 (CAPITANO, TRAPPOLA, GEMMA — ZERO MURI DI TESTO) -->
+                    <!-- RIGA 4: 3 FLASH PICKS G{next_round} (CAPITANO, TRAPPOLA, GEMMA — ZERO MURI DI TESTO) -->
                     <div class="hpro-section-block">
                         <div class="hpro-sec-bar">
-                            <h2 class="hpro-sec-h2"><span>⚡</span> Flash AI 11ª Giornata</h2>
+                            <h2 class="hpro-sec-h2"><span>⚡</span> Flash AI {next_round}ª Giornata</h2>
                             <span class="hpro-sec-pill">Calcolo xFM Live</span>
                         </div>
                         <div class="ai-pulse-grid hpro-flash-grid">
-                            <!-- Card 1: Top AI Pick & Capitano Ideale -->
-                            <div class="ai-pulse-card pick" onclick="openPlayerByName('Malen')" style="cursor:pointer;">
-                                <div class="pulse-card-header">
-                                    <span class="pulse-badge green">🚀 CAPITANO AI</span>
-                                    <span class="pulse-card-score" style="color:#4ade80;">98% Schierabile</span>
-                                </div>
-                                <div class="pulse-player-box">
-                                    <span class="role-badge A" style="width:34px;height:34px;font-size:15px;">A</span>
-                                    <div>
-                                        <div class="pulse-player-name">Donyell Malen</div>
-                                        <div class="pulse-player-sub">Roma • Attaccante • OVR 97</div>
-                                    </div>
-                                </div>
-                                <div class="pulse-metrics-strip">
-                                    <div class="pulse-metric-item">
-                                        <span class="p-lbl">xFM G11</span>
-                                        <span class="p-val" style="color:#00e676;">8.45</span>
-                                    </div>
-                                    <div class="pulse-metric-item">
-                                        <span class="p-lbl">Partita</span>
-                                        <span class="p-val" style="color:#38bdf8;">vs Sassuolo</span>
-                                    </div>
-                                    <div class="pulse-metric-item">
-                                        <span class="p-lbl">Status</span>
-                                        <span class="p-val" style="color:#fbbf24;">1° Rigorista</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Card 2: Flop & Trap Alert -->
-                            <div class="ai-pulse-card danger" onclick="openPlayerByName('Laurient')" style="cursor:pointer;">
-                                <div class="pulse-card-header">
-                                    <span class="pulse-badge red">⚠️ RISCHIO FLOP</span>
-                                    <span class="pulse-card-score" style="color:#f87171;">Diff. 4.7/5</span>
-                                </div>
-                                <div class="pulse-player-box">
-                                    <span class="role-badge A" style="width:34px;height:34px;font-size:15px;">A</span>
-                                    <div>
-                                        <div class="pulse-player-name">Armand Laurienté</div>
-                                        <div class="pulse-player-sub">Sassuolo • Attaccante • 77 CR</div>
-                                    </div>
-                                </div>
-                                <div class="pulse-metrics-strip">
-                                    <div class="pulse-metric-item">
-                                        <span class="p-lbl">Partita</span>
-                                        <span class="p-val" style="color:#f87171;">@ Roma</span>
-                                    </div>
-                                    <div class="pulse-metric-item">
-                                        <span class="p-lbl">Ostacolo</span>
-                                        <span class="p-val" style="color:#ef4444;">Muro Difesa</span>
-                                    </div>
-                                    <div class="pulse-metric-item">
-                                        <span class="p-lbl">xFM G11</span>
-                                        <span class="p-val" style="color:#fbbf24;">5.65 ↓</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Card 3: Scommessa & Differenziale AI -->
-                            <div class="ai-pulse-card gem" onclick="openPlayerByName('Adzic')" style="cursor:pointer;">
-                                <div class="pulse-card-header">
-                                    <span class="pulse-badge purple">💎 GEMMA G11</span>
-                                    <span class="pulse-card-score" style="color:#c084fc;">Upside +38%</span>
-                                </div>
-                                <div class="pulse-player-box">
-                                    <span class="role-badge C" style="width:34px;height:34px;font-size:15px;">C</span>
-                                    <div>
-                                        <div class="pulse-player-name">Vasilije Adzic</div>
-                                        <div class="pulse-player-sub">Sassuolo • Centrocampista • 11 CR</div>
-                                    </div>
-                                </div>
-                                <div class="pulse-metrics-strip">
-                                    <div class="pulse-metric-item">
-                                        <span class="p-lbl">xG / 90m</span>
-                                        <span class="p-val" style="color:#c084fc;">0.78</span>
-                                    </div>
-                                    <div class="pulse-metric-item">
-                                        <span class="p-lbl">Bonus</span>
-                                        <span class="p-val" style="color:#34d399;">3G + 1A</span>
-                                    </div>
-                                    <div class="pulse-metric-item">
-                                        <span class="p-lbl">Costo</span>
-                                        <span class="p-val" style="color:#fbbf24;">11 CR</span>
-                                    </div>
-                                </div>
-                            </div>
+{home_flash_picks_html}
                         </div>
                     </div>
 

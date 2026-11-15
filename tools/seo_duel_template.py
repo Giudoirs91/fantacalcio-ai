@@ -55,9 +55,19 @@ def get_match_info(calendar_data, team_name, round_num=6):
             }
     return None
 
+def _get_upcoming_round_num():
+    try:
+        import os
+        cons_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "config", "matchday_consensus.json")
+        if os.path.exists(cons_path):
+            with open(cons_path, "r", encoding="utf-8") as f:
+                return int(json.load(f).get("round") or 12)
+    except Exception:
+        pass
+    return 12
+
 def compute_duel_verdict(p1, p2, calendar_data):
-    # Round 11 upcoming
-    round_num = 11
+    round_num = _get_upcoming_round_num()
     m1 = get_match_info(calendar_data, p1.get('team'), round_num)
     m2 = get_match_info(calendar_data, p2.get('team'), round_num)
 
@@ -569,7 +579,7 @@ def generate_duel_page(p1, p2, tactical_db, calendar_data, base_url="https://www
 
         <!-- Hero -->
         <div class="duel-hero">
-            <div class="duel-tag">⚔️ TESTA A TESTA FANTACALCIO • 11ª GIORNATA</div>
+            <div class="duel-tag">⚔️ TESTA A TESTA FANTACALCIO • {_get_upcoming_round_num()}ª GIORNATA</div>
             <h1 class="duel-title">Chi schiero tra {name1} e {name2}?</h1>
             <p class="duel-desc">Confronto algoritmico dettagliato per risolvere il tuo dubbio di formazione: expected stats (xFM, xG, xA), titolarità e difficoltà avversario.</p>
         </div>

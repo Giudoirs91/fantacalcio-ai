@@ -5817,18 +5817,28 @@ def build_all():
         print("  ✓ App interattiva ottimizzata (HTML: 75KB, CSS e JS asincroni/cacheati) in dist/app.html e dist/index.html")
 
     # 2c. Genera pagine dedicate Clean URL per ogni sezione della Dashboard
+    _cons_round = 12
+    try:
+        _cons_path = os.path.join(ROOT_DIR, "config", "matchday_consensus.json")
+        if os.path.exists(_cons_path):
+            with open(_cons_path, "r", encoding="utf-8") as _cf:
+                _cons_round = int(json.load(_cf).get("round") or 12)
+    except Exception:
+        pass
+    _last_round = max(1, _cons_round - 1)
+
     SECTIONS_METADATA = [
         {
             "route": "top-flop",
             "tab": "top_flop",
-            "title": "Top & Flop 10ª Giornata Serie A 2026/27 | Pagelle e Statistiche | Fanta Master AI",
-            "desc": "I migliori e peggiori calciatori della 10ª giornata di Serie A 2026/27: voti ufficiali, FantaMedia, bonus, malus e analisi algoritmica Fanta Master AI.",
+            "title": f"Top & Flop {_last_round}ª Giornata Serie A 2026/27 | Pagelle e Statistiche | Fanta Master AI",
+            "desc": f"I migliori e peggiori calciatori della {_last_round}ª giornata di Serie A 2026/27: voti ufficiali, FantaMedia, bonus, malus e analisi algoritmica Fanta Master AI.",
         },
         {
             "route": "consigli-fantacalcio",
             "tab": "matchday_advice",
-            "title": "Consigli Fantacalcio 11ª Giornata Serie A | Chi Schierare | Fanta Master AI",
-            "desc": "Chi schierare nell'11ª giornata di Serie A: indici di schierabilità, titolarità, verifiche predittive e consigli ruolo per ruolo con intelligenza artificiale.",
+            "title": f"Consigli Fantacalcio {_cons_round}ª Giornata Serie A | Chi Schierare | Fanta Master AI",
+            "desc": f"Chi schierare nella {_cons_round}ª giornata di Serie A: indici di schierabilità, titolarità, verifiche predittive e consigli ruolo per ruolo con intelligenza artificiale.",
         },
         {
             "route": "match-report",

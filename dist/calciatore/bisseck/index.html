@@ -45,7 +45,7 @@
       "@type": "WebPage",
       "name": "Bisseck (Inter): Statistiche Avanzate, xG, Storico Infortuni e Consigli Asta 2026/27 | Fanta Master AI",
       "url": "https://www.fantamasterai.it/calciatore/bisseck/",
-      "dateModified": "2026-11-07",
+      "dateModified": "2026-11-15",
       "description": "Scheda tecnica completa di Bisseck (Inter): radar a 6 assi, xG, xA, storico infortuni e cartella clinica, gerarchie rigori, quotazione FVM e prezzo consigliato asta Fantacalcio 2026/27."
     },
     {
@@ -56,7 +56,7 @@
           "name": "Qual è la fantamedia di Bisseck nel 2026/27?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Bisseck (Inter) registra attualmente una FantaMedia reale di 6.33 con una media voto pura di 6.00 e un valore atteso xFM di 6.14."
+            "text": "Bisseck (Inter) registra attualmente una FantaMedia reale di 6.33 con una media voto pura di 6.00 e un valore atteso xFM di 6.33."
           }
         },
         {
@@ -72,7 +72,7 @@
           "name": "Quanto pagare Bisseck all'asta del Fantacalcio?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Il prezzo consigliato dall'algoritmo AI per Bisseck è di 15 crediti su un budget di 1000 CR (FVM 36 CR), con rilancio massimo stimato a 17 crediti."
+            "text": "Il prezzo consigliato dall'algoritmo AI per Bisseck è di 16 crediti su un budget di 1000 CR (FVM 36 CR), con rilancio massimo stimato a 18 crediti."
           }
         }
       ]
@@ -226,7 +226,20 @@
             <a href="../../probabili-formazioni/inter/" class="ppro-back-link">Top 11 Inter &rarr;</a>
         </div>
 
-        <!-- PRO PLAYER HERO CARD (VISUAL, ZERO-FLUFF, MOBILE-FIRST) -->
+        <!-- View Mode Switcher (Essenziale vs Completa) -->
+        <div class="ppro-mode-bar">
+            <span class="ppro-mode-hint">Modalità scheda:</span>
+            <div class="ppro-mode-switch" role="tablist" aria-label="Modalità visualizzazione scheda">
+                <button type="button" id="btnViewMode_simple" class="ppro-mode-btn active" onclick="setPlayerViewMode('simple')">
+                    <span>⚡</span> Vista Essenziale
+                </button>
+                <button type="button" id="btnViewMode_full" class="ppro-mode-btn" onclick="setPlayerViewMode('full')">
+                    <span>🔬</span> Vista Completa
+                </button>
+            </div>
+        </div>
+
+        <!-- PRO PLAYER HERO CARD (VISUAL HIERARCHY, MOBILE-FIRST) -->
         <div class="ppro-hero-card">
             <div class="ppro-hero-top">
                 <div class="ppro-identity">
@@ -245,7 +258,7 @@
                     </div>
                 </div>
                 <div class="ppro-ovr-shield gold">
-                    <span class="ovr-num">82</span>
+                    <span class="ovr-num">83</span>
                     <span class="ovr-lbl">OVR</span>
                 </div>
             </div>
@@ -259,63 +272,138 @@
                 <span class="ppro-pill slate">🔄 Alt.: <b>Pavard</b></span>
             </div>
 
-            <!-- 4 Equal KPI Boxes -->
-            <div class="ppro-kpi-4">
-                <div class="ppro-kpi-box">
+            <!-- 3 Primary Hero Pillars (Clear Visual Weight) -->
+            <div class="ppro-kpi-3-hero">
+                <div class="ppro-kpi-pillar is-primary">
                     <span class="pk-lbl">FANTAMEDIA</span>
                     <b class="pk-val" style="color:#fbbf24;">6.33</b>
-                    <span class="pk-sub">MV: <b>6.00</b></span>
+                    <div class="pk-meta-row">
+                        <span>MV <b>6.00</b></span>
+                        <span>&bull;</span>
+                        <span>xFM <b style="color:#38bdf8;">6.33</b> <span class="ppro-delta-tag eq">⚖️ In linea</span></span>
+                    </div>
                 </div>
-                <div class="ppro-kpi-box">
-                    <span class="pk-lbl">xFM ATTESA</span>
-                    <b class="pk-val" style="color:#38bdf8;">6.14</b>
-                    <span class="pk-sub"><span class="ppro-delta-tag eq">⚖️ In linea</span></span>
-                </div>
-                <div class="ppro-kpi-box">
+                <div class="ppro-kpi-pillar">
                     <span class="pk-lbl">TITOLARITÀ</span>
-                    <b class="pk-val" style="color:#4ade80;">87%</b>
-                    <span class="pk-sub">8/10 Tit + 1 Sub (87%)</span>
+                    <b class="pk-val" style="color:#4ade80;">70%</b>
+                    <div class="pk-tit-bar"><span style="width:70%;background:#4ade80;"></span></div>
+                    <span class="pk-sub">8/11 Tit + 1 Sub (70%)</span>
                 </div>
-                <div class="ppro-kpi-box">
+                <div class="ppro-kpi-pillar">
                     <span class="pk-lbl">VALORE ASTA</span>
-                    <b class="pk-val" style="color:#fff;">15 <small>CR</small></b>
-                    <span class="pk-sub">FVM <b>36</b> &bull; Max 17</span>
+                    <b class="pk-val" style="color:#fff;">16 <small>CR</small></b>
+                    <span class="pk-sub">FVM <b>36</b> &bull; Max <b>18 CR</b></span>
                 </div>
             </div>
 
             <!-- Next Matchday Integrated Strip -->
             <div class="ppro-matchday-strip">
                 <div class="ppro-md-left">
-                    <span class="ppro-md-round">G11</span>
-                    <b class="ppro-md-match">Inter vs Como</b>
-                    <span class="ppro-md-venue">🏠</span>
-                    <span class="ppro-md-vuln" style="color:#fbbf24;border-color:#fbbf2455;">⚖️ MATCHUP EQUILIBRATO (44)</span>
+                    <span class="ppro-md-round">G12</span>
+                    <b class="ppro-md-match">Inter @ Atalanta</b>
+                    <span class="ppro-md-venue">✈️</span>
+                    <span class="ppro-md-vuln" style="color:#fbbf24;border-color:#fbbf2455;">⚖️ MATCHUP EQUILIBRATO (59)</span>
                 </div>
                 <a href="../../chi-schiero/" class="ppro-md-cta">⚔️ Chi Schiero &rarr;</a>
             </div>
         </div>
 
-        <!-- Clean 3-Tab Switcher -->
-        <div class="profile-3tabs-nav" style="margin-top:14px;">
-            <button id="profileTabBtn_overview" class="profile-3tab-btn active" onclick="switchProfileTab('overview')">
-                <span class="tab-icon">📊</span>
-                <span class="tab-txt-desktop">Rendimento &amp; Voti</span>
-                <span class="tab-txt-mobile">Voti &amp; KPI</span>
-            </button>
-            <button id="profileTabBtn_advanced" class="profile-3tab-btn" onclick="switchProfileTab('advanced')">
-                <span class="tab-icon">🎯</span>
-                <span class="tab-txt-desktop">Radar &amp; Statistiche xG</span>
-                <span class="tab-txt-mobile">Radar &amp; xG</span>
-            </button>
-            <button id="profileTabBtn_tactics" class="profile-3tab-btn" onclick="switchProfileTab('tactics')">
-                <span class="tab-icon">🩺</span>
-                <span class="tab-txt-desktop">Fisica &amp; Gerarchie</span>
-                <span class="tab-txt-mobile">Fisica &amp; Club</span>
-            </button>
+        <!-- MODE 1: VISTA ESSENZIALE (Default) -->
+        
+    <div id="playerView_simple" class="ppro-simple-wrap">
+        <div class="ppro-simple-card">
+            <div class="ppro-simple-card-head">
+                <div>
+                    <div class="ppro-section-eyebrow">FORMA RECENTE &amp; OUTPUT</div>
+                    <h2 class="ppro-simple-h2">Ultime Giornate &amp; Numeri Chiave</h2>
+                </div>
+                <button type="button" class="ppro-link-btn" onclick="setPlayerViewMode('full', 'overview')">Storico 38G &rarr;</button>
+            </div>
+            <div class="ppro-form-strip"><div class="ppro-form-chip chip-warn" title="G10 vs Milan: Voto 5.5 | FV 5.5 (Nessun bonus)"><div class="fc-top"><span>G10</span><span>Milan</span></div><div class="fc-fv">5.5</div><div class="fc-v">Voto 5.5</div></div><div class="ppro-form-chip chip-warn" title="G9 vs Venezia: Voto 5.5 | FV 5.5 (Nessun bonus)"><div class="fc-top"><span>G9</span><span>Venezia</span></div><div class="fc-fv">5.5</div><div class="fc-v">Voto 5.5</div></div><div class="ppro-form-chip chip-warn" title="G8 vs Fiorentina: Voto 6.0 | FV 6.0 (Nessun bonus)"><div class="fc-top"><span>G8</span><span>Fiorentina</span></div><div class="fc-fv">6.0</div><div class="fc-v">Voto 6.0</div></div><div class="ppro-form-chip chip-warn" title="G7 vs Bologna: Voto 6.0 | FV 6.0 (Nessun bonus)"><div class="fc-top"><span>G7</span><span>Bologna</span></div><div class="fc-fv">6.0</div><div class="fc-v">Voto 6.0</div></div><div class="ppro-form-chip chip-warn" title="G6 vs Parma: Voto 6.0 | FV 6.0 (Nessun bonus)"><div class="fc-top"><span>G6</span><span>Parma</span></div><div class="fc-fv">6.0</div><div class="fc-v">Voto 6.0</div></div></div>
+            
+        <div class="ppro-simple-kpi-4">
+            <div class="psk-box"><span class="psk-lbl">⚽ Gol</span><b class="psk-val" style="color:#fbbf24;">1</b></div>
+            <div class="psk-box"><span class="psk-lbl">🪄 Assist</span><b class="psk-val" style="color:#38bdf8;">0</b></div>
+            <div class="psk-box"><span class="psk-lbl">⏱️ Presenze</span><b class="psk-val" style="color:#fff;">9</b></div>
+            <div class="psk-box"><span class="psk-lbl">✅ Sufficienze</span><b class="psk-val" style="color:#34d399;">67%</b></div>
+        </div>
         </div>
 
-        <!-- Tab Panes -->
         
+    <div class="ppro-pct-card">
+        <div class="ppro-pct-head">
+            <div class="ppro-pct-eyebrow"><span class="ppro-pct-dash"></span> TOP 6 PUNTI DI FORZA &middot; SERIE A 2026/27</div>
+            <h3 class="ppro-pct-title">DOVE ECCELLE.</h3>
+            <div class="ppro-pct-sub">BISSECK &middot; INTER 2026/27 &middot; 1 GOL &middot; 0 ASSIST</div>
+        </div>
+        <div class="ppro-pct-scale-row">
+            <span class="ppro-pct-col-hdr">STATISTICA</span>
+            <div class="ppro-pct-scale">
+                <span>0</span>
+                <span class="ppro-pct-scale-mid">PERCENTILE IN SERIE A</span>
+                <span>100</span>
+            </div>
+            <span class="ppro-pct-col-hdr" style="text-align:right;">PCT</span>
+            <span class="ppro-pct-col-hdr" style="text-align:right;">POS. SERIE A</span>
+        </div>
+        <div class="ppro-pct-rows">
+            <div class="ppro-pct-row" title="PASSAGGI RIUSCITI: 450 &mdash; 92&deg; percentile (37&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">PASSAGGI RIUSCITI</span><span class="ppro-pct-raw">450</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 8% 0 0);"></span><span class="ppro-pct-dot" style="left:92%;background:#10b981;box-shadow:0 0 10px #10b981, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#10b981;">92</span><div class="ppro-pct-right"><span class="ppro-pct-pos">37&deg;</span></div></div><div class="ppro-pct-row" title="xGOT (QUALITÀ TIRO): 1.90 &mdash; 83&deg; percentile (50&deg; in Serie A su 298)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">xGOT (QUALITÀ TIRO)</span><span class="ppro-pct-raw">1.90</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 17% 0 0);"></span><span class="ppro-pct-dot" style="left:83%;background:#10b981;box-shadow:0 0 10px #10b981, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#10b981;">83</span><div class="ppro-pct-right"><span class="ppro-pct-pos">50&deg;</span></div></div><div class="ppro-pct-row" title="PASSAGGI IN AVANTI: 167 &mdash; 83&deg; percentile (74&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">PASSAGGI IN AVANTI</span><span class="ppro-pct-raw">167</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 17% 0 0);"></span><span class="ppro-pct-dot" style="left:83%;background:#10b981;box-shadow:0 0 10px #10b981, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#10b981;">83</span><div class="ppro-pct-right"><span class="ppro-pct-pos">74&deg;</span></div></div><div class="ppro-pct-row" title="PALLE RECUPERATE: 38 &mdash; 83&deg; percentile (74&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">PALLE RECUPERATE</span><span class="ppro-pct-raw">38</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 17% 0 0);"></span><span class="ppro-pct-dot" style="left:83%;background:#10b981;box-shadow:0 0 10px #10b981, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#10b981;">83</span><div class="ppro-pct-right"><span class="ppro-pct-pos">74&deg;</span></div></div><div class="ppro-pct-row" title="PASSAGGI ULTIMO TERZO: 20 &mdash; 77&deg; percentile (102&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">PASSAGGI ULTIMO TERZO</span><span class="ppro-pct-raw">20</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 23% 0 0);"></span><span class="ppro-pct-dot" style="left:77%;background:#10b981;box-shadow:0 0 10px #10b981, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#10b981;">77</span><div class="ppro-pct-right"><span class="ppro-pct-pos">102&deg;</span></div></div><div class="ppro-pct-row" title="GOL: 1 &mdash; 72&deg; percentile (76&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">GOL</span><span class="ppro-pct-raw">1</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 28% 0 0);"></span><span class="ppro-pct-dot" style="left:72%;background:#10b981;box-shadow:0 0 10px #10b981, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#10b981;">72</span><div class="ppro-pct-right"><span class="ppro-pct-pos">76&deg;</span></div></div>
+        </div>
+        
+    <div class="ppro-simple-cta-wrap">
+        <button type="button" class="ppro-simple-cta-btn" onclick="setPlayerViewMode('full', 'advanced')">
+            <span>📊 Apri tutte le 20 statistiche, Radar &amp; xG</span>
+            <span>&rarr;</span>
+        </button>
+    </div>
+    </div>
+    
+
+        <div class="ppro-simple-card">
+            <div class="ppro-simple-card-head">
+                <div>
+                    <div class="ppro-section-eyebrow">AFFIDABILITÀ &amp; GERARCHIE</div>
+                    <h2 class="ppro-simple-h2">Stato Fisico e Ruolo nel Club</h2>
+                </div>
+                <button type="button" class="ppro-link-btn" onclick="setPlayerViewMode('full', 'tactics')">Cartella Clinica &rarr;</button>
+            </div>
+            <div class="ppro-simple-tactics-grid">
+                <div class="pst-box">
+                    <span class="pst-lbl">🩺 Disponibilità &amp; Tenuta</span>
+                    <div class="pst-main"><span class="ppro-pill green">🟢 Disponibile</span></div>
+                    <span class="pst-sub">Disponibilità storica: <b style="color:#10b981;">92%</b> &bull; Rischio AI: <b>20/100</b></span>
+                </div>
+                <div class="pst-box">
+                    <span class="pst-lbl">♟️ Status &amp; Gerarchie</span>
+                    <div class="pst-main"><span class="ppro-pill gold">⭐ 2° Slot D</span> <span class="ppro-pill slate">🔄 Alt.: <b>Pavard</b></span></div>
+                    <span class="pst-sub">Modulo 3-5-2 (Cristian Chivu) &bull; xFM Attesa: <b style="color:#38bdf8;">6.33</b></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- MODE 2: VISTA COMPLETA (3-Tab Pro Analytics) -->
+        <div id="playerView_full" style="display:none;">
+            <div class="profile-3tabs-nav" style="margin-top:16px;">
+                <button id="profileTabBtn_overview" class="profile-3tab-btn active" onclick="switchProfileTab('overview')">
+                    <span class="tab-icon">📊</span>
+                    <span class="tab-txt-desktop">Rendimento &amp; Voti</span>
+                    <span class="tab-txt-mobile">Voti &amp; KPI</span>
+                </button>
+                <button id="profileTabBtn_advanced" class="profile-3tab-btn" onclick="switchProfileTab('advanced')">
+                    <span class="tab-icon">🎯</span>
+                    <span class="tab-txt-desktop">Radar, xG &amp; Percentili</span>
+                    <span class="tab-txt-mobile">Radar &amp; Percentili</span>
+                </button>
+                <button id="profileTabBtn_tactics" class="profile-3tab-btn" onclick="switchProfileTab('tactics')">
+                    <span class="tab-icon">🩺</span>
+                    <span class="tab-txt-desktop">Fisica &amp; Gerarchie</span>
+                    <span class="tab-txt-mobile">Fisica &amp; Club</span>
+                </button>
+            </div>
+
+            <!-- Tab Panes -->
+            
     <div id="profileTabPane_overview" class="profile-tab-pane" style="display:block;">
         
         <div class="ppro-stat-strip-6">
@@ -365,7 +453,7 @@
                 </div>
                 <div class="rt-box avg">
                     <span class="rt-lbl">🎯 Media xFM</span>
-                    <b class="rt-val" style="color:#38bdf8;">6.14</b>
+                    <b class="rt-val" style="color:#38bdf8;">6.33</b>
                 </div>
                 <div class="rt-box ceil">
                     <span class="rt-lbl">🚀 Picco Max</span>
@@ -375,8 +463,8 @@
             <div class="ppro-bars-compact">
                 <div class="pbc-row">
                     <span class="pbc-lbl">Titolarità</span>
-                    <div class="pbc-track"><div class="pbc-fill" style="width:87%;background:#4ade80;"></div></div>
-                    <b class="pbc-val" style="color:#4ade80;">87%</b>
+                    <div class="pbc-track"><div class="pbc-fill" style="width:70%;background:#4ade80;"></div></div>
+                    <b class="pbc-val" style="color:#4ade80;">70%</b>
                 </div>
                 <div class="pbc-row">
                     <span class="pbc-lbl">Tenuta Fisica</span>
@@ -395,7 +483,7 @@
             <div class="ppro-proj-grid">
                 <div class="pp-item">
                     <span class="pp-lbl">⚽ Gol/Bonus Dif.</span>
-                    <b class="pp-val" style="color:#fbbf24;">2 - 3</b>
+                    <b class="pp-val" style="color:#fbbf24;">1 - 2</b>
                 </div>
                 <div class="pp-item">
                     <span class="pp-lbl">⭐ Media Voto Attesa</span>
@@ -403,11 +491,11 @@
                 </div>
                 <div class="pp-item">
                     <span class="pp-lbl">⏱️ Gare a Voto</span>
-                    <b class="pp-val" style="color:#4ade80;">27 - 33</b>
+                    <b class="pp-val" style="color:#4ade80;">22 - 26</b>
                 </div>
                 <div class="pp-item">
                     <span class="pp-lbl">⚡ Voto da Sub</span>
-                    <b class="pp-val" style="color:#cbd5e1;">92%</b>
+                    <b class="pp-val" style="color:#cbd5e1;">84%</b>
                 </div>
             </div>
         </div>
@@ -687,7 +775,7 @@
                 </div>
             </div>
             <div class="reparto-item-right">
-                <span class="ovr-pill gold">OVR 84</span>
+                <span class="ovr-pill gold">OVR 85</span>
                 <span class="reparto-arrow">&rarr;</span>
             </div>
         </a>
@@ -700,7 +788,7 @@
                 </div>
             </div>
             <div class="reparto-item-right">
-                <span class="ovr-pill gold">OVR 84</span>
+                <span class="ovr-pill gold">OVR 85</span>
                 <span class="reparto-arrow">&rarr;</span>
             </div>
         </a>
@@ -709,19 +797,20 @@
                 <span class="profile-role-circle D" style="width:26px;height:26px;font-size:10.5px;min-width:26px;">D</span>
                 <div style="min-width:0;">
                     <div class="reparto-item-name">Spence</div>
-                    <div class="reparto-item-sub">Tit <b>32%</b> &bull; <b>37 CR</b></div>
+                    <div class="reparto-item-sub">Tit <b>48%</b> &bull; <b>37 CR</b></div>
                 </div>
             </div>
             <div class="reparto-item-right">
-                <span class="ovr-pill gold">OVR 82</span>
+                <span class="ovr-pill gold">OVR 83</span>
                 <span class="reparto-arrow">&rarr;</span>
             </div>
         </a>
         </div>
     </div>
     </div>
-        
+            
     <div id="profileTabPane_advanced" class="profile-tab-pane" style="display:none;">
+        <div class="ppro-section-eyebrow">PROFILO AVANZATO xG &amp; RADAR</div>
         <div class="ppro-radar-split">
             
     <div class="radar-chart-wrapper">
@@ -771,13 +860,37 @@
     <div class="team-ecosystem-bar">
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
             <span>🏟️ <b>Inter:</b></span>
-            <span>Attacco <b style="color:#f472b6;">#1</b> (23.2 xG)</span>
+            <span>Attacco <b style="color:#f472b6;">#1</b> (29.0 xG)</span>
             <span>&bull;</span>
-            <span>Difesa <b style="color:#38bdf8;">#2</b> (8.4 xGA &bull; 2 CS)</span>
+            <span>Difesa <b style="color:#38bdf8;">#2</b> (10.9 xGA &bull; 4 CS)</span>
         </div>
     </div>
-    </div>
+        <div class="ppro-section-eyebrow" style="margin-top:20px;">CONFRONTO PERCENTILI SERIE A</div>
         
+    <div class="ppro-pct-card">
+        <div class="ppro-pct-head">
+            <div class="ppro-pct-eyebrow"><span class="ppro-pct-dash"></span> CONFRONTO SERIE A &middot; STAGIONE 2026/27</div>
+            <h3 class="ppro-pct-title">20 STATISTICHE.</h3>
+            <div class="ppro-pct-sub">BISSECK &middot; INTER 2026/27 &middot; 1 GOL &middot; 0 ASSIST</div>
+        </div>
+        <div class="ppro-pct-scale-row">
+            <span class="ppro-pct-col-hdr">STATISTICA</span>
+            <div class="ppro-pct-scale">
+                <span>0</span>
+                <span class="ppro-pct-scale-mid">PERCENTILE IN SERIE A</span>
+                <span>100</span>
+            </div>
+            <span class="ppro-pct-col-hdr" style="text-align:right;">PCT</span>
+            <span class="ppro-pct-col-hdr" style="text-align:right;">POS. SERIE A</span>
+        </div>
+        <div class="ppro-pct-rows">
+            <div class="ppro-pct-row" title="FANTAMEDIA: 6.33 &mdash; 65&deg; percentile (139&deg; in Serie A su 402)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">FANTAMEDIA</span><span class="ppro-pct-raw">6.33</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 35% 0 0);"></span><span class="ppro-pct-dot" style="left:65%;background:#f59e0b;box-shadow:0 0 10px #f59e0b, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#f59e0b;">65</span><div class="ppro-pct-right"><span class="ppro-pct-pos">139&deg;</span></div></div><div class="ppro-pct-row" title="xFM ATTESA: 6.33 &mdash; 66&deg; percentile (147&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">xFM ATTESA</span><span class="ppro-pct-raw">6.33</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 34% 0 0);"></span><span class="ppro-pct-dot" style="left:66%;background:#f59e0b;box-shadow:0 0 10px #f59e0b, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#f59e0b;">66</span><div class="ppro-pct-right"><span class="ppro-pct-pos">147&deg;</span></div></div><div class="ppro-pct-row" title="MEDIA VOTO: 6.00 &mdash; 58&deg; percentile (147&deg; in Serie A su 402)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">MEDIA VOTO</span><span class="ppro-pct-raw">6.00</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 42% 0 0);"></span><span class="ppro-pct-dot" style="left:58%;background:#f59e0b;box-shadow:0 0 10px #f59e0b, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#f59e0b;">58</span><div class="ppro-pct-right"><span class="ppro-pct-pos">147&deg;</span></div></div><div class="ppro-pct-row" title="GOL: 1 &mdash; 72&deg; percentile (76&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">GOL</span><span class="ppro-pct-raw">1</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 28% 0 0);"></span><span class="ppro-pct-dot" style="left:72%;background:#10b981;box-shadow:0 0 10px #10b981, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#10b981;">72</span><div class="ppro-pct-right"><span class="ppro-pct-pos">76&deg;</span></div></div><div class="ppro-pct-row" title="ASSIST: 0 &mdash; 0&deg; percentile (144&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">ASSIST</span><span class="ppro-pct-raw">0</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 100% 0 0);"></span><span class="ppro-pct-dot" style="left:0%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">0</span><div class="ppro-pct-right"><span class="ppro-pct-pos">144&deg;</span></div></div><div class="ppro-pct-row" title="EXPECTED GOALS (xG): 0.70 &mdash; 61&deg; percentile (146&deg; in Serie A su 393)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">EXPECTED GOALS (xG)</span><span class="ppro-pct-raw">0.70</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 39% 0 0);"></span><span class="ppro-pct-dot" style="left:61%;background:#f59e0b;box-shadow:0 0 10px #f59e0b, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#f59e0b;">61</span><div class="ppro-pct-right"><span class="ppro-pct-pos">146&deg;</span></div></div><div class="ppro-pct-row" title="EXPECTED ASSISTS (xA): 0.50 &mdash; 66&deg; percentile (135&deg; in Serie A su 434)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">EXPECTED ASSISTS (xA)</span><span class="ppro-pct-raw">0.50</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 34% 0 0);"></span><span class="ppro-pct-dot" style="left:66%;background:#f59e0b;box-shadow:0 0 10px #f59e0b, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#f59e0b;">66</span><div class="ppro-pct-right"><span class="ppro-pct-pos">135&deg;</span></div></div><div class="ppro-pct-row" title="xGOT (QUALITÀ TIRO): 1.90 &mdash; 83&deg; percentile (50&deg; in Serie A su 298)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">xGOT (QUALITÀ TIRO)</span><span class="ppro-pct-raw">1.90</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 17% 0 0);"></span><span class="ppro-pct-dot" style="left:83%;background:#10b981;box-shadow:0 0 10px #10b981, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#10b981;">83</span><div class="ppro-pct-right"><span class="ppro-pct-pos">50&deg;</span></div></div><div class="ppro-pct-row" title="TIRI TOTALI: 6 &mdash; 59&deg; percentile (170&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">TIRI TOTALI</span><span class="ppro-pct-raw">6</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 41% 0 0);"></span><span class="ppro-pct-dot" style="left:59%;background:#f59e0b;box-shadow:0 0 10px #f59e0b, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#f59e0b;">59</span><div class="ppro-pct-right"><span class="ppro-pct-pos">170&deg;</span></div></div><div class="ppro-pct-row" title="TIRI IN PORTA: 3 &mdash; 71&deg; percentile (112&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">TIRI IN PORTA</span><span class="ppro-pct-raw">3</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 29% 0 0);"></span><span class="ppro-pct-dot" style="left:71%;background:#10b981;box-shadow:0 0 10px #10b981, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#10b981;">71</span><div class="ppro-pct-right"><span class="ppro-pct-pos">112&deg;</span></div></div><div class="ppro-pct-row" title="GRANDI OCCASIONI CREATE: - &mdash; 0&deg; percentile"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">GRANDI OCCASIONI CREATE</span><span class="ppro-pct-raw">-</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 100% 0 0);"></span><span class="ppro-pct-dot" style="left:0%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">0</span><div class="ppro-pct-right"><span class="ppro-pct-pos">-</span></div></div><div class="ppro-pct-row" title="PASSAGGI CHIAVE: 5 &mdash; 62&deg; percentile (153&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">PASSAGGI CHIAVE</span><span class="ppro-pct-raw">5</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 38% 0 0);"></span><span class="ppro-pct-dot" style="left:62%;background:#f59e0b;box-shadow:0 0 10px #f59e0b, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#f59e0b;">62</span><div class="ppro-pct-right"><span class="ppro-pct-pos">153&deg;</span></div></div><div class="ppro-pct-row" title="OCCASIONI CREATE: 5 &mdash; 53&deg; percentile (162&deg; in Serie A su 376)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">OCCASIONI CREATE</span><span class="ppro-pct-raw">5</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 47% 0 0);"></span><span class="ppro-pct-dot" style="left:53%;background:#f59e0b;box-shadow:0 0 10px #f59e0b, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#f59e0b;">53</span><div class="ppro-pct-right"><span class="ppro-pct-pos">162&deg;</span></div></div><div class="ppro-pct-row" title="DRIBBLING RIUSCITI: 2 &mdash; 69&deg; percentile (113&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">DRIBBLING RIUSCITI</span><span class="ppro-pct-raw">2</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 31% 0 0);"></span><span class="ppro-pct-dot" style="left:69%;background:#f59e0b;box-shadow:0 0 10px #f59e0b, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#f59e0b;">69</span><div class="ppro-pct-right"><span class="ppro-pct-pos">113&deg;</span></div></div><div class="ppro-pct-row" title="CROSS: 0 &mdash; 0&deg; percentile (177&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">CROSS</span><span class="ppro-pct-raw">0</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 100% 0 0);"></span><span class="ppro-pct-dot" style="left:0%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">0</span><div class="ppro-pct-right"><span class="ppro-pct-pos">177&deg;</span></div></div><div class="ppro-pct-row" title="FALLI SUBITI: 3 &mdash; 46&deg; percentile (216&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">FALLI SUBITI</span><span class="ppro-pct-raw">3</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 54% 0 0);"></span><span class="ppro-pct-dot" style="left:46%;background:#f59e0b;box-shadow:0 0 10px #f59e0b, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#f59e0b;">46</span><div class="ppro-pct-right"><span class="ppro-pct-pos">216&deg;</span></div></div><div class="ppro-pct-row" title="PASSAGGI RIUSCITI: 450 &mdash; 92&deg; percentile (37&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">PASSAGGI RIUSCITI</span><span class="ppro-pct-raw">450</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 8% 0 0);"></span><span class="ppro-pct-dot" style="left:92%;background:#10b981;box-shadow:0 0 10px #10b981, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#10b981;">92</span><div class="ppro-pct-right"><span class="ppro-pct-pos">37&deg;</span></div></div><div class="ppro-pct-row" title="PASSAGGI IN AVANTI: 167 &mdash; 83&deg; percentile (74&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">PASSAGGI IN AVANTI</span><span class="ppro-pct-raw">167</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 17% 0 0);"></span><span class="ppro-pct-dot" style="left:83%;background:#10b981;box-shadow:0 0 10px #10b981, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#10b981;">83</span><div class="ppro-pct-right"><span class="ppro-pct-pos">74&deg;</span></div></div><div class="ppro-pct-row" title="PASSAGGI ULTIMO TERZO: 20 &mdash; 77&deg; percentile (102&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">PASSAGGI ULTIMO TERZO</span><span class="ppro-pct-raw">20</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 23% 0 0);"></span><span class="ppro-pct-dot" style="left:77%;background:#10b981;box-shadow:0 0 10px #10b981, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#10b981;">77</span><div class="ppro-pct-right"><span class="ppro-pct-pos">102&deg;</span></div></div><div class="ppro-pct-row" title="PALLE RECUPERATE: 38 &mdash; 83&deg; percentile (74&deg; in Serie A su 438)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">PALLE RECUPERATE</span><span class="ppro-pct-raw">38</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 17% 0 0);"></span><span class="ppro-pct-dot" style="left:83%;background:#10b981;box-shadow:0 0 10px #10b981, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#10b981;">83</span><div class="ppro-pct-right"><span class="ppro-pct-pos">74&deg;</span></div></div>
+        </div>
+        
+    </div>
+    
+    </div>
+            
     <div id="profileTabPane_tactics" class="profile-tab-pane" style="display:none;">
         
     <div class="ppro-health-grid-4">
@@ -851,7 +964,7 @@
             </div>
             <div class="tactics-meta-row">
                 <span class="lbl">Titolarità</span>
-                <b class="val" style="color:#4ade80;">87% (8/10 Tit + 1 Sub (87%))</b>
+                <b class="val" style="color:#4ade80;">70% (8/11 Tit + 1 Sub (70%))</b>
             </div>
             <div class="tactics-meta-row">
                 <span class="lbl">Alternativa</span>
@@ -864,11 +977,50 @@
         </div>
     </div>
     </div>
+        </div>
     </main>
 
-    <!-- Interactive Scripts for Tabs, Accordion & Season Inspector -->
+    <!-- Interactive Scripts for View Mode, Tabs, Accordion & Season Inspector -->
     <script>
     var VOTI_DATA = [{"giornata": 1, "voto": 7.0, "fantavoto": 10.0, "gf": 1.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "+3 (1G)", "opponent": "Monza", "is_home": true, "match": "Inter vs Monza"}, {"giornata": 2, "voto": 6.5, "fantavoto": 6.5, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Cagliari", "is_home": false, "match": "Inter @ Cagliari"}, {"giornata": 3, "voto": 6.5, "fantavoto": 6.5, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Napoli", "is_home": true, "match": "Inter vs Napoli"}, {"giornata": 5, "voto": 5.0, "fantavoto": 5.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Roma", "is_home": false, "match": "Inter @ Roma"}, {"giornata": 6, "voto": 6.0, "fantavoto": 6.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Parma", "is_home": true, "match": "Inter vs Parma"}, {"giornata": 7, "voto": 6.0, "fantavoto": 6.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Bologna", "is_home": false, "match": "Inter @ Bologna"}, {"giornata": 8, "voto": 6.0, "fantavoto": 6.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Fiorentina", "is_home": true, "match": "Inter vs Fiorentina"}, {"giornata": 9, "voto": 5.5, "fantavoto": 5.5, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Venezia", "is_home": false, "match": "Inter @ Venezia"}, {"giornata": 10, "voto": 5.5, "fantavoto": 5.5, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Milan", "is_home": false, "match": "Inter @ Milan"}];
+
+    function setPlayerViewMode(mode, targetTab) {
+        var simpleEl = document.getElementById('playerView_simple');
+        var fullEl = document.getElementById('playerView_full');
+        var btnSimple = document.getElementById('btnViewMode_simple');
+        var btnFull = document.getElementById('btnViewMode_full');
+        var isFull = (mode === 'full');
+
+        if (simpleEl) simpleEl.style.display = isFull ? 'none' : 'block';
+        if (fullEl) fullEl.style.display = isFull ? 'block' : 'none';
+        if (btnSimple) btnSimple.classList.toggle('active', !isFull);
+        if (btnFull) btnFull.classList.toggle('active', isFull);
+
+        try { localStorage.setItem('fanta_player_view_mode', isFull ? 'full' : 'simple'); } catch(e) {}
+
+        if (isFull && targetTab) {
+            switchProfileTab(targetTab);
+            var navEl = document.querySelector('#playerView_full .profile-3tabs-nav');
+            if (navEl && navEl.scrollIntoView) {
+                navEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }
+
+    (function initPlayerViewMode() {
+        var mode = 'simple';
+        try {
+            var params = new URLSearchParams(window.location.search);
+            var qView = params.get('view');
+            if (qView === 'full' || qView === 'simple') {
+                mode = qView;
+            } else {
+                var saved = localStorage.getItem('fanta_player_view_mode');
+                if (saved === 'full' || saved === 'simple') mode = saved;
+            }
+        } catch(e) {}
+        setPlayerViewMode(mode);
+    })();
     
     function switchProfileTab(tabName) {
         var tabs = ['overview', 'advanced', 'tactics'];

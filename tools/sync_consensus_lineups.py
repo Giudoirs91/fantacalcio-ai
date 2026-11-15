@@ -420,9 +420,62 @@ def build_ai_verdict(p1_master, p2_master, consensus_pct1, consensus_pct2, is_in
                 'action': 'Preferisci il titolare ma mantieni copertura'
             }
 
+def _resolve_target_round_and_matches(fc_matches, calendar):
+    """Rileva dinamicamente la giornata dai match live di Fantacalcio.it incrociando calendario_serie_a_2026_27.json."""
+    live_pairs = []
+    for m in fc_matches:
+        keys = list(m.keys())
+        if len(keys) >= 2:
+            live_pairs.append((keys[0], keys[1]))
+
+    if calendar and live_pairs:
+        live_set = {frozenset((h, a)) for h, a in live_pairs}
+        best_r = None
+        best_overlap = -1
+        for r_obj in calendar:
+            r_matches = r_obj.get('matches', [])
+            r_set = {frozenset((m['home'], m['away'])) for m in r_matches}
+            overlap = len(live_set & r_set)
+            if overlap > best_overlap:
+                best_overlap = overlap
+                best_r = r_obj
+        if best_r and best_overlap >= 5:
+            r_num = int(best_r['giornata'])
+            r_date = best_r.get('date', '')
+            out = []
+            # Mantieni ordine di Fantacalcio.it se disponibile, altrimenti calendario
+            cal_by_pair = {frozenset((m['home'], m['away'])): m for m in best_r['matches']}
+            used = set()
+            for h, a in live_pairs:
+                k = frozenset((h, a))
+                if k in cal_by_pair and k not in used:
+                    cm = cal_by_pair[k]
+                    out.append({"home": cm['home'], "away": cm['away'], "date": r_date, "time": "15:00", "stadium": ""})
+                    used.add(k)
+            for m in best_r['matches']:
+                k = frozenset((m['home'], m['away']))
+                if k not in used:
+                    out.append({"home": m['home'], "away": m['away'], "date": r_date, "time": "15:00", "stadium": ""})
+            return r_num, out
+
+    # Fallback su G12
+    return 12, [
+        {"home": "Como", "away": "Cagliari", "date": "22/11/2026", "time": "15:00", "stadium": ""},
+        {"home": "Lazio", "away": "Lecce", "date": "22/11/2026", "time": "15:00", "stadium": ""},
+        {"home": "Parma", "away": "Roma", "date": "22/11/2026", "time": "15:00", "stadium": ""},
+        {"home": "Napoli", "away": "Torino", "date": "22/11/2026", "time": "15:00", "stadium": ""},
+        {"home": "Juventus", "away": "Venezia", "date": "22/11/2026", "time": "15:00", "stadium": ""},
+        {"home": "Bologna", "away": "Udinese", "date": "22/11/2026", "time": "15:00", "stadium": ""},
+        {"home": "Sassuolo", "away": "Genoa", "date": "22/11/2026", "time": "15:00", "stadium": ""},
+        {"home": "Milan", "away": "Frosinone", "date": "22/11/2026", "time": "15:00", "stadium": ""},
+        {"home": "Atalanta", "away": "Inter", "date": "22/11/2026", "time": "20:45", "stadium": "", "big_match": True},
+        {"home": "Monza", "away": "Fiorentina", "date": "22/11/2026", "time": "15:00", "stadium": ""}
+    ]
+
+
 def run_consensus_engine():
     print("=" * 65)
-    print("  FANTAMASTERAI: CONSENSUS ENGINE PROBABILI FORMAZIONI (GIORNATA 11)")
+    print("  FANTAMASTERAI: CONSENSUS ENGINE PROBABILI FORMAZIONI")
     print("=" * 65)
     
     players, tactical_db, injuries, calendar, aliases = load_data()
@@ -471,23 +524,30 @@ def run_consensus_engine():
     print(f"  • Gazzetta duelli trovati: {len(gaz_ballots)}")
     print(f"  • SOS Fanta duelli trovati: {len(sos_ballots)}")
 
-    # 3. Aggregazione per Giornata 11 (Weekend del 06-08 Novembre 2026)
-    g11_matches = [
-        {"home": "Venezia", "away": "Udinese", "date": "06/11/2026", "time": "20:45", "stadium": "Pier Luigi Penzo"},
-        {"home": "Torino", "away": "Lecce", "date": "07/11/2026", "time": "15:00", "stadium": "Olimpico Grande Torino"},
-        {"home": "Cagliari", "away": "Frosinone", "date": "07/11/2026", "time": "15:00", "stadium": "Unipol Domus"},
-        {"home": "Parma", "away": "Bologna", "date": "07/11/2026", "time": "18:00", "stadium": "Ennio Tardini"},
-        {"home": "Roma", "away": "Sassuolo", "date": "07/11/2026", "time": "20:45", "stadium": "Stadio Olimpico"},
-        {"home": "Napoli", "away": "Lazio", "date": "08/11/2026", "time": "12:30", "stadium": "Diego Armando Maradona", "big_match": True},
-        {"home": "Genoa", "away": "Milan", "date": "08/11/2026", "time": "15:00", "stadium": "Luigi Ferraris", "big_match": True},
-        {"home": "Monza", "away": "Atalanta", "date": "08/11/2026", "time": "15:00", "stadium": "U-Power Stadium"},
-        {"home": "Inter", "away": "Como", "date": "08/11/2026", "time": "18:00", "stadium": "San Siro"},
-        {"home": "Fiorentina", "away": "Juventus", "date": "08/11/2026", "time": "20:45", "stadium": "Artemio Franchi", "big_match": True}
-    ]
+    # 3. Rilevamento automatico giornata dai match live + calendario
+    target_round, round_matches = _resolve_target_round_and_matches(fc_matches, calendar)
+    print(f"  • Giornata rilevata: {target_round}ª Giornata Serie A 2026/27")
+
+    # Archivia eventuale consensus precedente in data/historical_consensus/
+    if os.path.exists(OUTPUT_PATH):
+        try:
+            with open(OUTPUT_PATH, "r", encoding="utf-8") as f:
+                prev_cons = json.load(f)
+            prev_r = prev_cons.get("round")
+            if prev_r and int(prev_r) != int(target_round):
+                hist_dir = os.path.join(ROOT_DIR, "data", "historical_consensus")
+                os.makedirs(hist_dir, exist_ok=True)
+                hist_path = os.path.join(hist_dir, f"consensus_g{int(prev_r)}.json")
+                if not os.path.exists(hist_path):
+                    with open(hist_path, "w", encoding="utf-8") as hf:
+                        json.dump(prev_cons, hf, ensure_ascii=False, indent=2)
+                    print(f"  ✓ Archiviato consensus G{prev_r} in {hist_path}")
+        except Exception:
+            pass
 
     consensus_round_output = {
-        "round": 11,
-        "round_label": "11ª Giornata Serie A 2026/27",
+        "round": target_round,
+        "round_label": f"{target_round}ª Giornata Serie A 2026/27",
         "last_updated": datetime.now().strftime("%d/%m/%Y %H:%M"),
         "sources_tracked": ["Fantacalcio.it", "Gazzetta dello Sport", "Sky Sport", "SOS Fanta"],
         "matches": []
@@ -499,8 +559,8 @@ def run_consensus_engine():
         for tname, tinfo in m.items():
             parsed_teams_dict[tname] = tinfo
 
-    print("\n[3/5] Elaborazione Consensus 10 Match...")
-    for match_meta in g11_matches:
+    print(f"\n[3/5] Elaborazione Consensus {len(round_matches)} Match (G{target_round})...")
+    for match_meta in round_matches:
         h_team = match_meta['home']
         a_team = match_meta['away']
         

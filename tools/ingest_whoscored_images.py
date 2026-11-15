@@ -36,172 +36,220 @@ def normalize_team(name):
     clean = name.strip().lower()
     return TEAM_NORM.get(clean, name.strip())
 
-# 1. Attack Sides (% Left, Middle, Right) - Giornata 10 (Attack_side.png)
+# 1. Attack Sides (% Left, Middle, Right) - Giornata 11 (Attack_side.png)
 attack_sides_raw = [
-    ("Lazio", 48, 24, 28),
-    ("Sassuolo", 45, 24, 31),
-    ("Bologna", 43, 22, 35),
-    ("Genoa", 43, 23, 33),
-    ("Inter", 40, 28, 32),
-    ("AC Milan", 39, 26, 34),
-    ("Monza", 38, 26, 35),
-    ("Roma", 37, 25, 38),
+    ("Lazio", 47, 24, 28),
+    ("Genoa", 44, 24, 32),
+    ("Sassuolo", 44, 24, 32),
+    ("Bologna", 43, 23, 34),
+    ("Inter", 40, 27, 33),
+    ("AC Milan", 39, 27, 34),
+    ("Monza", 38, 26, 36),
+    ("Torino", 37, 30, 34),
     ("Napoli", 37, 28, 35),
-    ("Torino", 36, 31, 34),
-    ("Cagliari", 36, 33, 31),
-    ("Udinese", 36, 27, 37),
-    ("Frosinone", 35, 23, 42),
+    ("Cagliari", 36, 33, 32),
+    ("Roma", 36, 25, 38),
+    ("Udinese", 36, 27, 38),
+    ("Lecce", 35, 26, 38),
     ("Venezia", 35, 25, 40),
-    ("Lecce", 35, 26, 39),
     ("Fiorentina", 34, 28, 38),
-    ("Parma Calcio 1913", 33, 28, 39),
-    ("Juventus", 32, 31, 37),
-    ("Atalanta", 29, 31, 40),
-    ("Como", 28, 32, 40)
+    ("Frosinone", 34, 23, 43),
+    ("Juventus", 33, 31, 37),
+    ("Parma Calcio 1913", 32, 28, 40),
+    ("Atalanta", 30, 31, 39),
+    ("Como", 28, 31, 41)
 ]
 
-# 2. Action Zones (% Own Third, Middle Third, Opposition Third) - Giornata 10 (action_sides.png)
+# 2. Action Zones (% Own Third, Middle Third, Opposition Third) - Giornata 11 (Action_zones.png)
 action_zones_raw = [
-    ("Cagliari", 34, 45, 20),
-    ("Parma Calcio 1913", 34, 44, 22),
+    ("Parma Calcio 1913", 36, 42, 22),
+    ("Cagliari", 35, 45, 20),
     ("Torino", 33, 44, 23),
-    ("Genoa", 32, 41, 27),
+    ("AC Milan", 31, 47, 23),
+    ("Genoa", 31, 41, 27),
+    ("Sassuolo", 31, 45, 25),
     ("Venezia", 31, 43, 26),
-    ("Napoli", 30, 42, 27),
-    ("Sassuolo", 30, 44, 26),
-    ("AC Milan", 29, 47, 23),
-    ("Bologna", 28, 46, 26),
-    ("Atalanta", 28, 41, 30),
-    ("Frosinone", 28, 39, 34),
-    ("Monza", 27, 46, 27),
-    ("Lecce", 27, 44, 29),
-    ("Fiorentina", 26, 42, 32),
-    ("Como", 25, 43, 32),
+    ("Napoli", 30, 43, 27),
+    ("Atalanta", 30, 42, 29),
+    ("Bologna", 28, 45, 28),
+    ("Fiorentina", 28, 42, 31),
+    ("Frosinone", 27, 38, 34),
+    ("Lecce", 26, 45, 29),
+    ("Monza", 26, 46, 28),
+    ("Como", 25, 43, 31),
     ("Udinese", 25, 46, 30),
-    ("Roma", 24, 43, 33),
-    ("Juventus", 24, 43, 35),
-    ("Lazio", 23, 47, 30),
-    ("Inter", 22, 44, 33)
+    ("Juventus", 24, 42, 35),
+    ("Inter", 23, 44, 33),
+    ("Roma", 23, 44, 33),
+    ("Lazio", 23, 47, 30)
 ]
 
-# 3. Shot Zones % (% in 6 Yards Box, in 18 Yards Box, Outside of Box) - Giornata 10 (Shot_zones.png)
+# 3. Shot Zones % (% in 6 Yards Box, in 18 Yards Box, Outside of Box) - Giornata 11 (Shot_zones.png)
 shot_zones_pct_raw = [
     ("AC Milan", 14, 63, 23),
-    ("Lecce", 12, 51, 37),
-    ("Inter", 11, 60, 28),
-    ("Napoli", 11, 61, 28),
-    ("Venezia", 11, 49, 40),
-    ("Lazio", 10, 50, 40),
-    ("Bologna", 9, 57, 34),
-    ("Roma", 9, 61, 30),
-    ("Juventus", 9, 46, 45),
-    ("Parma Calcio 1913", 9, 59, 32),
-    ("Cagliari", 8, 58, 35),
-    ("Fiorentina", 7, 52, 41),
-    ("Monza", 7, 58, 35),
-    ("Torino", 6, 56, 39),
-    ("Atalanta", 6, 64, 30),
-    ("Frosinone", 6, 58, 36),
-    ("Como", 5, 59, 35),
+    ("Inter", 12, 60, 28),
+    ("Lecce", 11, 50, 39),
+    ("Napoli", 11, 59, 29),
+    ("Roma", 10, 62, 28),
+    ("Venezia", 10, 50, 40),
+    ("Lazio", 9, 50, 41),
+    ("Juventus", 9, 47, 44),
+    ("Bologna", 8, 58, 34),
+    ("Fiorentina", 8, 51, 41),
+    ("Cagliari", 8, 58, 34),
+    ("Parma Calcio 1913", 8, 60, 32),
+    ("Frosinone", 7, 58, 35),
+    ("Monza", 7, 58, 34),
+    ("Torino", 6, 57, 37),
+    ("Atalanta", 6, 65, 30),
+    ("Como", 5, 60, 35),
     ("Sassuolo", 4, 54, 42),
-    ("Udinese", 3, 56, 40),
-    ("Genoa", 0, 65, 35)
+    ("Udinese", 4, 57, 39),
+    ("Genoa", 0, 62, 38)
 ]
 
-# 4. Offensive Stats per game (Shots pg, Shots OT pg, Dribbles pg, Fouled pg, Rating) - Giornata 10 (stats_offensive.png)
+# 4. Offensive Stats per game (Shots pg, Shots OT pg, Dribbles pg, Fouled pg, Rating) - Giornata 11 (stats_offensive.png)
 offensive_stats_raw = [
-    ("Inter", 22.0, 7.2, 6.7, 8.5, 6.86),
-    ("Como", 20.3, 6.3, 8.7, 9.9, 6.78),
-    ("Frosinone", 19.2, 6.6, 7.5, 12.0, 6.86),
-    ("Roma", 18.5, 6.3, 8.8, 8.1, 6.95),
-    ("Fiorentina", 16.4, 5.0, 8.6, 12.0, 6.46),
-    ("Juventus", 16.2, 5.1, 7.3, 9.3, 6.68),
-    ("Napoli", 15.6, 5.6, 4.8, 9.1, 6.64),
-    ("Udinese", 14.7, 4.4, 6.8, 9.3, 6.43),
-    ("Atalanta", 14.5, 5.2, 6.6, 8.5, 6.56),
-    ("Lazio", 13.8, 4.6, 6.7, 11.3, 6.83),
-    ("Venezia", 13.6, 4.0, 6.9, 8.5, 6.42),
-    ("Sassuolo", 13.3, 4.8, 7.2, 12.1, 6.43),
-    ("Lecce", 12.7, 5.0, 7.0, 8.9, 6.47),
-    ("Monza", 12.6, 5.5, 6.7, 10.2, 6.47),
-    ("AC Milan", 12.0, 4.7, 6.9, 11.2, 6.72),
-    ("Bologna", 11.6, 4.0, 6.0, 14.0, 6.55),
-    ("Genoa", 11.2, 2.9, 5.5, 11.1, 6.53),
-    ("Torino", 10.8, 3.7, 7.1, 10.4, 6.51),
-    ("Cagliari", 10.6, 4.0, 5.7, 8.2, 6.52),
-    ("Parma Calcio 1913", 9.9, 3.3, 5.3, 12.4, 6.44)
+    ("Inter", 21.3, 6.9, 6.3, 8.3, 6.86),
+    ("Frosinone", 20.1, 6.8, 8.2, 12.0, 6.85),
+    ("Roma", 19.4, 6.5, 9.3, 8.5, 6.97),
+    ("Como", 18.9, 5.8, 8.1, 10.2, 6.74),
+    ("Fiorentina", 16.9, 5.1, 8.4, 12.3, 6.47),
+    ("Juventus", 16.4, 5.2, 7.8, 9.8, 6.68),
+    ("Napoli", 15.5, 5.6, 4.7, 9.1, 6.64),
+    ("Udinese", 14.5, 4.5, 6.5, 9.5, 6.41),
+    ("Atalanta", 14.4, 5.4, 6.5, 8.5, 6.61),
+    ("Lazio", 13.9, 4.7, 6.8, 11.3, 6.82),
+    ("Venezia", 13.7, 4.0, 6.7, 8.3, 6.46),
+    ("Bologna", 13.5, 4.5, 6.2, 13.7, 6.58),
+    ("Monza", 13.5, 5.6, 7.0, 9.8, 6.47),
+    ("Sassuolo", 12.6, 4.5, 7.1, 11.6, 6.41),
+    ("Lecce", 12.1, 4.6, 6.9, 9.0, 6.47),
+    ("Genoa", 11.7, 3.1, 6.3, 11.1, 6.51),
+    ("AC Milan", 11.5, 4.5, 6.9, 11.4, 6.73),
+    ("Cagliari", 10.9, 4.0, 5.8, 8.4, 6.55),
+    ("Torino", 10.6, 3.5, 7.0, 10.8, 6.51),
+    ("Parma Calcio 1913", 10.0, 3.2, 5.3, 12.5, 6.45)
 ]
 
-# 5. Defensive Stats per game (Shots conceded pg, Tackles pg, Interceptions pg, Fouls pg, Offsides pg, Rating) - Giornata 10 (stats_defensive.png)
+# 5. Defensive Stats per game (Shots conceded pg, Tackles pg, Interceptions pg, Fouls pg, Offsides pg, Rating) - Giornata 11 (stats_defensive.png)
 defensive_stats_raw = [
-    ("Frosinone", 18.6, 20.4, 11.9, 14.9, 3.0, 6.86),
-    ("Lecce", 15.3, 19.7, 8.3, 13.7, 1.6, 6.47),
-    ("Genoa", 16.1, 18.0, 9.9, 9.4, 2.2, 6.53),
-    ("Bologna", 11.3, 17.0, 9.5, 13.1, 2.4, 6.55),
-    ("Roma", 12.3, 17.0, 10.5, 11.2, 2.8, 6.95),
-    ("Como", 12.8, 17.0, 8.5, 8.2, 1.4, 6.78),
-    ("Inter", 10.3, 16.6, 8.6, 9.3, 2.4, 6.86),
-    ("Monza", 13.5, 16.6, 11.9, 12.2, 2.8, 6.47),
-    ("Fiorentina", 13.5, 16.2, 8.0, 11.6, 1.4, 6.46),
-    ("Cagliari", 17.9, 16.2, 10.5, 12.4, 2.5, 6.52),
-    ("Sassuolo", 15.6, 16.2, 8.1, 9.7, 2.8, 6.43),
-    ("AC Milan", 10.7, 15.8, 8.3, 9.6, 1.0, 6.72),
-    ("Venezia", 16.5, 15.6, 7.9, 9.6, 2.5, 6.42),
-    ("Juventus", 9.0, 15.4, 7.9, 11.9, 3.0, 6.68),
-    ("Torino", 16.2, 15.3, 8.1, 9.8, 1.9, 6.51),
-    ("Atalanta", 18.2, 14.9, 9.1, 10.0, 1.3, 6.56),
-    ("Parma Calcio 1913", 18.1, 14.7, 9.2, 10.5, 1.4, 6.44),
-    ("Napoli", 16.4, 14.4, 6.5, 8.6, 2.7, 6.64),
-    ("Udinese", 15.6, 14.0, 8.0, 11.3, 1.0, 6.43),
-    ("Lazio", 11.6, 13.9, 8.4, 11.1, 1.3, 6.83)
+    ("Frosinone", 18.2, 20.3, 11.7, 14.6, 2.8, 6.85),
+    ("Lecce", 14.7, 19.5, 8.6, 13.9, 1.5, 6.47),
+    ("Genoa", 15.2, 17.9, 9.5, 9.8, 2.3, 6.51),
+    ("Roma", 11.7, 17.1, 10.1, 10.9, 2.6, 6.97),
+    ("Monza", 13.5, 16.9, 11.9, 12.1, 2.6, 6.47),
+    ("Sassuolo", 16.7, 16.8, 7.7, 10.0, 2.6, 6.41),
+    ("Como", 12.9, 16.6, 8.5, 8.0, 1.5, 6.74),
+    ("Fiorentina", 13.9, 16.5, 7.8, 12.0, 1.3, 6.47),
+    ("Bologna", 11.3, 16.3, 9.0, 13.1, 2.3, 6.58),
+    ("Inter", 9.8, 16.3, 8.9, 9.6, 2.9, 6.86),
+    ("AC Milan", 11.3, 16.0, 8.7, 9.9, 1.0, 6.73),
+    ("Cagliari", 18.9, 15.9, 10.9, 12.5, 2.5, 6.55),
+    ("Venezia", 16.2, 15.7, 7.5, 9.7, 2.6, 6.46),
+    ("Atalanta", 18.5, 15.6, 9.5, 9.6, 1.2, 6.61),
+    ("Torino", 15.3, 15.5, 8.6, 9.9, 1.8, 6.51),
+    ("Juventus", 10.2, 15.5, 7.6, 12.5, 2.8, 6.68),
+    ("Napoli", 16.3, 15.1, 6.5, 8.9, 2.6, 6.64),
+    ("Parma Calcio 1913", 19.5, 15.0, 8.9, 10.5, 1.3, 6.45),
+    ("Udinese", 15.5, 13.5, 7.6, 10.8, 1.2, 6.41),
+    ("Lazio", 11.9, 13.4, 8.5, 11.1, 1.3, 6.82)
 ]
 
-# 6. Goal Types Situations (Open Play, Counter Attack, Set Piece, Penalty, Own Goal) - Giornata 10 (Goal_types.png)
+# 6. Goal Types Situations (Open Play, Counter Attack, Set Piece, Penalty, Own Goal) - Giornata 11 (Goal_types.png)
 goal_types_raw = [
-    ("Roma", 23, 1, 4, 0, 0),
-    ("Lazio", 18, 2, 2, 1, 1),
-    ("Inter", 16, 1, 5, 2, 2),
+    ("Roma", 25, 1, 4, 0, 1),
+    ("Lazio", 18, 3, 2, 1, 1),
+    ("Inter", 17, 2, 5, 2, 2),
+    ("AC Milan", 15, 2, 4, 1, 1),
     ("Frosinone", 15, 3, 5, 1, 0),
-    ("AC Milan", 13, 2, 4, 1, 1),
-    ("Torino", 12, 0, 2, 0, 0),
-    ("Atalanta", 12, 1, 2, 1, 0),
+    ("Atalanta", 13, 1, 2, 1, 0),
+    ("Torino", 12, 0, 2, 0, 1),
     ("Como", 12, 2, 3, 1, 0),
-    ("Napoli", 11, 1, 4, 1, 0),
-    ("Fiorentina", 10, 3, 1, 0, 1),
+    ("Napoli", 11, 1, 4, 1, 1),
+    ("Fiorentina", 10, 3, 3, 0, 1),
+    ("Juventus", 9, 1, 5, 0, 0),
     ("Monza", 9, 2, 3, 2, 1),
-    ("Juventus", 9, 0, 4, 0, 0),
-    ("Bologna", 8, 0, 3, 2, 1),
-    ("Genoa", 8, 1, 1, 0, 0),
+    ("Bologna", 8, 1, 3, 3, 1),
+    ("Genoa", 8, 1, 2, 0, 0),
     ("Sassuolo", 7, 4, 4, 0, 1),
-    ("Udinese", 6, 1, 4, 0, 0),
-    ("Parma Calcio 1913", 5, 1, 1, 0, 1),
-    ("Cagliari", 4, 2, 1, 2, 0),
-    ("Venezia", 3, 3, 0, 0, 0),
-    ("Lecce", 2, 2, 7, 0, 0)
+    ("Udinese", 6, 1, 4, 0, 1),
+    ("Parma Calcio 1913", 5, 1, 1, 1, 1),
+    ("Venezia", 5, 3, 0, 0, 0),
+    ("Cagliari", 4, 3, 1, 2, 0),
+    ("Lecce", 2, 2, 7, 0, 1)
 ]
 
-# 7. xG Statistics Exclude Penalties (xG, Goals*, xGDiff, Shots, xG/Shots, Rating) - Giornata 10 (xG_stats.png)
+# 7. xG Statistics Exclude Penalties (xG, Goals*, xGDiff, Shots, xG/Shots, Rating) - Giornata 11 (xG_stats.png)
 xg_stats_raw = [
-    ("Inter", 27.30, 22, -5.30, 218, 0.13, 6.86),
-    ("Roma", 25.40, 28, 2.60, 185, 0.14, 6.95),
-    ("Como", 20.86, 17, -3.86, 202, 0.10, 6.78),
-    ("Frosinone", 19.88, 23, 3.12, 191, 0.10, 6.86),
-    ("AC Milan", 18.56, 19, 0.44, 118, 0.16, 6.72),
-    ("Lazio", 16.87, 22, 5.13, 135, 0.12, 6.83),
-    ("Napoli", 16.25, 16, -0.25, 154, 0.11, 6.64),
-    ("Atalanta", 16.04, 15, -1.04, 144, 0.11, 6.56),
-    ("Fiorentina", 15.80, 14, -1.80, 164, 0.10, 6.46),
-    ("Lecce", 15.79, 11, -4.79, 127, 0.12, 6.47),
-    ("Venezia", 15.66, 6, -9.66, 135, 0.12, 6.42),
-    ("Sassuolo", 15.65, 15, -0.65, 133, 0.12, 6.43),
-    ("Monza", 15.44, 14, -1.44, 123, 0.13, 6.47),
-    ("Bologna", 15.08, 11, -4.08, 114, 0.13, 6.55),
-    ("Juventus", 14.68, 13, -1.68, 162, 0.09, 6.68),
-    ("Torino", 13.24, 14, 0.76, 108, 0.12, 6.51),
-    ("Udinese", 12.53, 11, -1.53, 147, 0.09, 6.43),
-    ("Cagliari", 11.27, 7, -4.27, 104, 0.11, 6.52),
-    ("Genoa", 9.81, 10, 0.19, 111, 0.09, 6.53),
-    ("Parma Calcio 1913", 8.85, 7, -1.85, 98, 0.09, 6.44)
+    ("Inter", 29.44, 24, -5.44, 232, 0.13, 6.86),
+    ("Roma", 28.75, 30, 1.25, 213, 0.13, 6.97),
+    ("Frosinone", 22.14, 23, 0.86, 220, 0.10, 6.85),
+    ("Como", 21.10, 17, -4.10, 207, 0.10, 6.74),
+    ("AC Milan", 19.47, 21, 1.53, 124, 0.16, 6.73),
+    ("Fiorentina", 18.16, 16, -2.16, 186, 0.10, 6.47),
+    ("Napoli", 18.13, 16, -2.13, 169, 0.11, 6.64),
+    ("Bologna", 17.78, 12, -5.78, 146, 0.12, 6.58),
+    ("Lazio", 17.78, 23, 5.22, 150, 0.12, 6.82),
+    ("Monza", 17.45, 14, -3.45, 145, 0.12, 6.47),
+    ("Atalanta", 17.41, 16, -1.41, 157, 0.11, 6.61),
+    ("Venezia", 17.25, 8, -9.25, 150, 0.11, 6.46),
+    ("Juventus", 17.17, 15, -2.17, 180, 0.10, 6.68),
+    ("Sassuolo", 16.04, 15, -1.04, 139, 0.12, 6.41),
+    ("Lecce", 16.01, 11, -5.01, 133, 0.12, 6.47),
+    ("Torino", 14.01, 14, -0.01, 117, 0.12, 6.51),
+    ("Udinese", 13.75, 11, -2.75, 160, 0.09, 6.41),
+    ("Cagliari", 12.41, 8, -4.41, 118, 0.11, 6.55),
+    ("Genoa", 11.05, 11, -0.05, 128, 0.09, 6.51),
+    ("Parma Calcio 1913", 9.80, 7, -2.80, 108, 0.09, 6.45)
+]
+
+# 8. Shot Directions (% Left, Middle, Right) - Giornata 11 (Shot_direction.png)
+shot_directions_raw = [
+    ("Genoa", 23, 64, 13),
+    ("Atalanta", 23, 58, 18),
+    ("Lazio", 21, 62, 17),
+    ("Parma Calcio 1913", 21, 68, 11),
+    ("Frosinone", 21, 62, 18),
+    ("Udinese", 20, 61, 19),
+    ("Napoli", 19, 73, 8),
+    ("Cagliari", 18, 70, 12),
+    ("Sassuolo", 18, 67, 15),
+    ("Juventus", 18, 67, 16),
+    ("Torino", 17, 71, 12),
+    ("AC Milan", 17, 75, 8),
+    ("Venezia", 17, 67, 16),
+    ("Bologna", 16, 67, 17),
+    ("Lecce", 16, 65, 19),
+    ("Inter", 16, 71, 13),
+    ("Monza", 16, 66, 18),
+    ("Roma", 15, 69, 16),
+    ("Como", 12, 71, 18),
+    ("Fiorentina", 10, 64, 26)
+]
+
+# 9. Key Pass Types per game (Cross, Corner, Throughball, Freekick, Throwin, Other) - Giornata 11 (Keypass_type.png)
+keypass_types_raw = [
+    ("Roma", 4.3, 1.3, 0.5, 0.2, 0.0, 11.1),
+    ("Inter", 4.5, 1.5, 0.3, 0.6, 0.2, 11.2),
+    ("Frosinone", 4.0, 2.4, 0.5, 0.3, 0.0, 11.2),
+    ("Lazio", 2.4, 0.6, 0.2, 0.2, 0.0, 8.1),
+    ("Como", 3.9, 1.3, 0.4, 0.2, 0.0, 9.5),
+    ("AC Milan", 2.9, 0.6, 0.5, 0.4, 0.0, 5.2),
+    ("Juventus", 3.6, 1.1, 0.4, 0.3, 0.0, 8.5),
+    ("Napoli", 3.7, 1.5, 0.5, 0.1, 0.0, 7.6),
+    ("Atalanta", 2.5, 0.9, 0.2, 0.2, 0.0, 8.2),
+    ("Bologna", 3.1, 1.5, 0.1, 0.3, 0.1, 6.2),
+    ("Cagliari", 2.5, 1.3, 0.3, 0.5, 0.0, 5.8),
+    ("Torino", 2.0, 0.5, 0.4, 0.5, 0.0, 4.9),
+    ("Genoa", 2.0, 0.8, 0.1, 0.4, 0.2, 6.0),
+    ("Lecce", 2.4, 1.0, 0.3, 0.2, 0.2, 5.5),
+    ("Fiorentina", 2.4, 0.6, 0.5, 0.2, 0.1, 9.5),
+    ("Monza", 2.6, 1.0, 0.3, 0.4, 0.0, 7.0),
+    ("Venezia", 3.0, 1.2, 0.5, 0.1, 0.1, 6.5),
+    ("Parma Calcio 1913", 2.9, 0.7, 0.3, 1.0, 0.1, 4.8),
+    ("Udinese", 2.8, 0.9, 0.5, 0.3, 0.1, 7.7),
+    ("Sassuolo", 1.5, 0.7, 0.4, 0.2, 0.0, 8.0)
 ]
 
 def build_whoscored_teams_db():
@@ -292,6 +340,29 @@ def build_whoscored_teams_db():
             'rating': rat
         }
 
+    # 8. Shot Directions %
+    for t_raw, l, m, r in shot_directions_raw:
+        t = normalize_team(t_raw)
+        if t not in teams_db: teams_db[t] = {}
+        teams_db[t]['shot_directions'] = {
+            'left_pct': l,
+            'middle_pct': m,
+            'right_pct': r
+        }
+
+    # 9. Key Pass Types per game
+    for t_raw, cr, co, tb, fk, ti, ot in keypass_types_raw:
+        t = normalize_team(t_raw)
+        if t not in teams_db: teams_db[t] = {}
+        teams_db[t]['keypass_types_pg'] = {
+            'cross': cr,
+            'corner': co,
+            'throughball': tb,
+            'freekick': fk,
+            'throwin': ti,
+            'other': ot
+        }
+
     out_file = os.path.join(CONFIG_DIR, "whoscored_teams_2627.json")
     with open(out_file, 'w', encoding='utf-8') as f:
         json.dump(teams_db, f, indent=2, ensure_ascii=False)
@@ -300,7 +371,7 @@ def build_whoscored_teams_db():
     with open(pos_file, 'w', encoding='utf-8') as f:
         json.dump(teams_db, f, indent=2, ensure_ascii=False)
 
-    print(f"✓ Salvati {out_file} e {pos_file} con dati Giornata 10 per tutte le 20 squadre:")
+    print(f"✓ Salvati {out_file} e {pos_file} con dati Giornata 11 per tutte le 20 squadre:")
     print("  • Attack Sides (% Corsie)")
     print("  • Action Zones (% Terzi di Campo)")
     print("  • Shot Zones (% Aree di Tiro)")
@@ -308,6 +379,8 @@ def build_whoscored_teams_db():
     print("  • Defensive Team Stats (Tiri Concessi, Tackle, Intercetti, Fuorigioco)")
     print("  • Situational Goal Types (Azione, Contropiede, Palle Inattive, Rigori)")
     print("  • Non-Penalty xG & xG/Shot Efficiency")
+    print("  • Shot Directions (% Direzioni Tiro)")
+    print("  • Key Pass Types (Cross, Corner, Filtranti, Punizioni)")
 
     # Aggiorna anche tactical_db.json
     tac_path = os.path.join(CONFIG_DIR, "tactical_db.json")
@@ -323,9 +396,11 @@ def build_whoscored_teams_db():
                 tactical_db[t]['whoscored_defensive_stats'] = data.get('defensive_stats', {})
                 tactical_db[t]['whoscored_goal_situations'] = data.get('goal_situations_pg', {})
                 tactical_db[t]['whoscored_xg'] = data.get('xg_non_penalty', {})
+                tactical_db[t]['whoscored_shot_directions'] = data.get('shot_directions', {})
+                tactical_db[t]['whoscored_keypass_types'] = data.get('keypass_types_pg', {})
         with open(tac_path, 'w', encoding='utf-8') as f:
             json.dump(tactical_db, f, indent=2, ensure_ascii=False)
-        print("✓ tactical_db.json arricchito con tutte le 7 dimensioni tattiche WhoScored G10!")
+        print("✓ tactical_db.json arricchito con tutte le 9 dimensioni tattiche WhoScored G11!")
 
     return teams_db
 

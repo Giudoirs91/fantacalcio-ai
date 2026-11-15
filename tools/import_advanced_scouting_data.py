@@ -65,7 +65,7 @@ def parse_fbref_csv_or_html(file_path):
             # Check if row 0 has super headers like 'Per 90 Minutes'
             super_header = all_rows[0]
             sub_header = all_rows[1]
-            if 'Player' in sub_header or 'Giocatore' in sub_header:
+            if 'Player' in sub_header or 'Giocatore' in sub_header or 'Squad' in sub_header:
                 header = []
                 seen = {}
                 for sup, sub in zip(super_header, sub_header):
@@ -111,6 +111,10 @@ def parse_fbref_csv_or_html(file_path):
 def import_fbref_standard(master_players):
     """Importa presenze, minutaggi, gol non su rigore (G-PK), rigori e metriche per90 da standard_stats.csv o fbref_standard."""
     candidates = [
+        os.path.join(IMPORTS_DIR, "Fbref_stats_serieA_G11.csv"),
+        os.path.join(IMPORTS_DIR, "Fbref_stats_serieA_11l.csv"),
+        os.path.join(IMPORTS_DIR, "stats_serie_a_11g.csv"),
+        os.path.join(IMPORTS_DIR, "stats_serie_A11g.csv"),
         os.path.join(IMPORTS_DIR, "stats_serie_a_10g.csv"),
         os.path.join(IMPORTS_DIR, "stats_serie_A10g.csv"),
         os.path.join(IMPORTS_DIR, "standard_stats.csv"),
@@ -172,6 +176,7 @@ def import_fbref_standard(master_players):
 def import_fbref_miscellaneous(master_players):
     """Importa Cross, Intercetti, Tackle vinti, Falli, Fuorigioco, Rigori concessi/procurati, Autogol da stats_miscellanous.csv."""
     candidates = [
+        os.path.join(IMPORTS_DIR, "stats_miscellanous_G11.csv"),
         os.path.join(IMPORTS_DIR, "stats_miscellanous.csv"),
         os.path.join(IMPORTS_DIR, "fbref_miscellaneous.csv"),
         os.path.join(IMPORTS_DIR, "fbref_miscellaneous.html")
@@ -225,6 +230,7 @@ def import_fbref_miscellaneous(master_players):
 def import_fbref_shooting(master_players):
     """Importa Tiri totali, Tiri in porta, % precisione tiro, Tiri/90 da Player_Shooting.csv."""
     candidates = [
+        os.path.join(IMPORTS_DIR, "fBref_player_shooting_G11.csv"),
         os.path.join(IMPORTS_DIR, "Player_Shooting.csv"),
         os.path.join(IMPORTS_DIR, "fbref_shooting.csv"),
         os.path.join(IMPORTS_DIR, "fbref_shooting.html")
@@ -340,6 +346,73 @@ def import_fbref_possession(master_players):
     return matched
 
 
+def import_fbref_team_miscellaneous():
+    """Importa statistiche Miscellaneous di squadra (for e against/opponent) in config/tactical_db.json."""
+    team_path = os.path.join(IMPORTS_DIR, "fBref_miscellanous_team_G11.csv")
+    opp_path = os.path.join(IMPORTS_DIR, "fBref_miscellanous_team_opponent_G11.csv")
+    if not os.path.exists(TACTICAL_DB_PATH):
+        return 0
+    if not os.path.exists(team_path) and not os.path.exists(opp_path):
+        return 0
+
+    with open(TACTICAL_DB_PATH, 'r', encoding='utf-8') as f:
+        tactical_db = json.load(f)
+
+    team_norm = {
+        'ac milan': 'Milan', 'milan': 'Milan',
+        'parma calcio 1913': 'Parma', 'parma': 'Parma',
+        'inter': 'Inter', 'roma': 'Roma', 'napoli': 'Napoli',
+        'juventus': 'Juventus', 'atalanta': 'Atalanta', 'lazio': 'Lazio',
+        'fiorentina': 'Fiorentina', 'bologna': 'Bologna', 'torino': 'Torino',
+        'como': 'Como', 'udinese': 'Udinese', 'genoa': 'Genoa',
+        'cagliari': 'Cagliari', 'lecce': 'Lecce', 'monza': 'Monza',
+        'venezia': 'Venezia', 'frosinone': 'Frosinone', 'sassuolo': 'Sassuolo'
+    }
+
+    updated = 0
+    if os.path.exists(team_path):
+        rows = parse_fbref_csv_or_html(team_path)
+        for r in rows:
+            sq = (r.get('Squad') or '').strip()
+            t = team_norm.get(sq.lower(), sq)
+            if t in tactical_db:
+                tactical_db[t]['fbref_team_misc'] = {
+                    'yellow_cards_pg': clean_num(r.get('CrdY')),
+                    'red_cards_pg': clean_num(r.get('CrdR')),
+                    'fouls_committed_pg': clean_num(r.get('Fls')),
+                    'fouls_drawn_pg': clean_num(r.get('Fld')),
+                    'offsides_pg': clean_num(r.get('Off')),
+                    'crosses_pg': clean_num(r.get('Crs')),
+                    'interceptions_pg': clean_num(r.get('Int')),
+                    'tackles_won_pg': clean_num(r.get('TklW')),
+                }
+                updated += 1
+
+    if os.path.exists(opp_path):
+        rows = parse_fbref_csv_or_html(opp_path)
+        for r in rows:
+            sq = (r.get('Squad') or '').strip()
+            sq_clean = re.sub(r'^vs\s+', '', sq, flags=re.IGNORECASE).strip()
+            t = team_norm.get(sq_clean.lower(), sq_clean)
+            if t in tactical_db:
+                n90 = max(1.0, clean_num(r.get('90s')) or 11.0)
+                tactical_db[t]['fbref_opponent_misc'] = {
+                    'yellow_cards_drawn_pg': round(clean_num(r.get('CrdY')) / n90, 2),
+                    'fouls_drawn_by_opp_pg': round(clean_num(r.get('Fls')) / n90, 2),
+                    'offsides_conceded_pg': round(clean_num(r.get('Off')) / n90, 2),
+                    'crosses_conceded_pg': round(clean_num(r.get('Crs')) / n90, 2),
+                    'interceptions_conceded_pg': round(clean_num(r.get('Int')) / n90, 2),
+                    'tackles_won_conceded_pg': round(clean_num(r.get('TklW')) / n90, 2),
+                }
+                updated += 1
+
+    if updated > 0:
+        with open(TACTICAL_DB_PATH, 'w', encoding='utf-8') as f:
+            json.dump(tactical_db, f, indent=2, ensure_ascii=False)
+        print(f"  ✓ Tactical DB aggiornato con FBref Miscellaneous Squadre & Avversari ({updated} blocchi)!")
+    return updated
+
+
 def run_all_imports():
     os.makedirs(IMPORTS_DIR, exist_ok=True)
     print(f"=== [Scouting Importer] Scansione cartella: {IMPORTS_DIR} ===")
@@ -356,6 +429,7 @@ def run_all_imports():
     c_shoot = import_fbref_shooting(master_players)
     c_gca = import_fbref_gca(master_players)
     c_poss = import_fbref_possession(master_players)
+    c_tmisc = import_fbref_team_miscellaneous()
 
     total_updated = c_std + c_misc + c_shoot + c_gca + c_poss
     if total_updated > 0:

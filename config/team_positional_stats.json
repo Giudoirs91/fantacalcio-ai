@@ -1,7 +1,7 @@
 {
   "Lazio": {
     "attack_sides": {
-      "left_pct": 48,
+      "left_pct": 47,
       "middle_pct": 24,
       "right_pct": 28
     },
@@ -11,55 +11,132 @@
       "opposition_third_pct": 30
     },
     "shot_zones_pct": {
-      "six_yard_box_pct": 10,
+      "six_yard_box_pct": 9,
       "penalty_area_pct": 50,
-      "outside_box_pct": 40
+      "outside_box_pct": 41
     },
     "offensive_stats": {
-      "shots_pg": 13.8,
-      "shots_on_target_pg": 4.6,
-      "dribbles_pg": 6.7,
+      "shots_pg": 13.9,
+      "shots_on_target_pg": 4.7,
+      "dribbles_pg": 6.8,
       "fouled_pg": 11.3,
-      "rating": 6.83
+      "rating": 6.82
     },
     "shots_zones_pg": {
-      "total": 13.8,
-      "rating": 6.83
+      "total": 13.9,
+      "rating": 6.82
     },
     "defensive_stats": {
-      "shots_conceded_pg": 11.6,
-      "tackles_pg": 13.9,
-      "interceptions_pg": 8.4,
+      "shots_conceded_pg": 11.9,
+      "tackles_pg": 13.4,
+      "interceptions_pg": 8.5,
       "fouls_committed_pg": 11.1,
       "offsides_won_pg": 1.3,
-      "rating": 6.83
+      "rating": 6.82
     },
     "goal_situations_pg": {
       "open_play": 18,
-      "counter_attack": 2,
+      "counter_attack": 3,
       "set_piece": 2,
       "penalty": 1,
       "own_goal": 1
     },
     "xg_non_penalty": {
-      "xg": 16.87,
-      "goals": 22,
-      "xg_diff": 5.13,
-      "shots": 135,
+      "xg": 17.78,
+      "goals": 23,
+      "xg_diff": 5.22,
+      "shots": 150,
       "xg_per_shot": 0.12,
-      "rating": 6.83
+      "rating": 6.82
+    },
+    "shot_directions": {
+      "left_pct": 21,
+      "middle_pct": 62,
+      "right_pct": 17
+    },
+    "keypass_types_pg": {
+      "cross": 2.4,
+      "corner": 0.6,
+      "throughball": 0.2,
+      "freekick": 0.2,
+      "throwin": 0.0,
+      "other": 8.1
+    }
+  },
+  "Genoa": {
+    "attack_sides": {
+      "left_pct": 44,
+      "middle_pct": 24,
+      "right_pct": 32
+    },
+    "action_zones": {
+      "own_third_pct": 31,
+      "middle_third_pct": 41,
+      "opposition_third_pct": 27
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 0,
+      "penalty_area_pct": 62,
+      "outside_box_pct": 38
+    },
+    "offensive_stats": {
+      "shots_pg": 11.7,
+      "shots_on_target_pg": 3.1,
+      "dribbles_pg": 6.3,
+      "fouled_pg": 11.1,
+      "rating": 6.51
+    },
+    "shots_zones_pg": {
+      "total": 11.7,
+      "rating": 6.51
+    },
+    "defensive_stats": {
+      "shots_conceded_pg": 15.2,
+      "tackles_pg": 17.9,
+      "interceptions_pg": 9.5,
+      "fouls_committed_pg": 9.8,
+      "offsides_won_pg": 2.3,
+      "rating": 6.51
+    },
+    "goal_situations_pg": {
+      "open_play": 8,
+      "counter_attack": 1,
+      "set_piece": 2,
+      "penalty": 0,
+      "own_goal": 0
+    },
+    "xg_non_penalty": {
+      "xg": 11.05,
+      "goals": 11,
+      "xg_diff": -0.05,
+      "shots": 128,
+      "xg_per_shot": 0.09,
+      "rating": 6.51
+    },
+    "shot_directions": {
+      "left_pct": 23,
+      "middle_pct": 64,
+      "right_pct": 13
+    },
+    "keypass_types_pg": {
+      "cross": 2.0,
+      "corner": 0.8,
+      "throughball": 0.1,
+      "freekick": 0.4,
+      "throwin": 0.2,
+      "other": 6.0
     }
   },
   "Sassuolo": {
     "attack_sides": {
-      "left_pct": 45,
+      "left_pct": 44,
       "middle_pct": 24,
-      "right_pct": 31
+      "right_pct": 32
     },
     "action_zones": {
-      "own_third_pct": 30,
-      "middle_third_pct": 44,
-      "opposition_third_pct": 26
+      "own_third_pct": 31,
+      "middle_third_pct": 45,
+      "opposition_third_pct": 25
     },
     "shot_zones_pct": {
       "six_yard_box_pct": 4,
@@ -67,23 +144,23 @@
       "outside_box_pct": 42
     },
     "offensive_stats": {
-      "shots_pg": 13.3,
-      "shots_on_target_pg": 4.8,
-      "dribbles_pg": 7.2,
-      "fouled_pg": 12.1,
-      "rating": 6.43
+      "shots_pg": 12.6,
+      "shots_on_target_pg": 4.5,
+      "dribbles_pg": 7.1,
+      "fouled_pg": 11.6,
+      "rating": 6.41
     },
     "shots_zones_pg": {
-      "total": 13.3,
-      "rating": 6.43
+      "total": 12.6,
+      "rating": 6.41
     },
     "defensive_stats": {
-      "shots_conceded_pg": 15.6,
-      "tackles_pg": 16.2,
-      "interceptions_pg": 8.1,
-      "fouls_committed_pg": 9.7,
-      "offsides_won_pg": 2.8,
-      "rating": 6.43
+      "shots_conceded_pg": 16.7,
+      "tackles_pg": 16.8,
+      "interceptions_pg": 7.7,
+      "fouls_committed_pg": 10.0,
+      "offsides_won_pg": 2.6,
+      "rating": 6.41
     },
     "goal_situations_pg": {
       "open_play": 7,
@@ -93,175 +170,163 @@
       "own_goal": 1
     },
     "xg_non_penalty": {
-      "xg": 15.65,
+      "xg": 16.04,
       "goals": 15,
-      "xg_diff": -0.65,
-      "shots": 133,
+      "xg_diff": -1.04,
+      "shots": 139,
       "xg_per_shot": 0.12,
-      "rating": 6.43
+      "rating": 6.41
+    },
+    "shot_directions": {
+      "left_pct": 18,
+      "middle_pct": 67,
+      "right_pct": 15
+    },
+    "keypass_types_pg": {
+      "cross": 1.5,
+      "corner": 0.7,
+      "throughball": 0.4,
+      "freekick": 0.2,
+      "throwin": 0.0,
+      "other": 8.0
     }
   },
   "Bologna": {
     "attack_sides": {
       "left_pct": 43,
-      "middle_pct": 22,
-      "right_pct": 35
+      "middle_pct": 23,
+      "right_pct": 34
     },
     "action_zones": {
       "own_third_pct": 28,
-      "middle_third_pct": 46,
-      "opposition_third_pct": 26
+      "middle_third_pct": 45,
+      "opposition_third_pct": 28
     },
     "shot_zones_pct": {
-      "six_yard_box_pct": 9,
-      "penalty_area_pct": 57,
+      "six_yard_box_pct": 8,
+      "penalty_area_pct": 58,
       "outside_box_pct": 34
     },
     "offensive_stats": {
-      "shots_pg": 11.6,
-      "shots_on_target_pg": 4.0,
-      "dribbles_pg": 6.0,
-      "fouled_pg": 14.0,
-      "rating": 6.55
+      "shots_pg": 13.5,
+      "shots_on_target_pg": 4.5,
+      "dribbles_pg": 6.2,
+      "fouled_pg": 13.7,
+      "rating": 6.58
     },
     "shots_zones_pg": {
-      "total": 11.6,
-      "rating": 6.55
+      "total": 13.5,
+      "rating": 6.58
     },
     "defensive_stats": {
       "shots_conceded_pg": 11.3,
-      "tackles_pg": 17.0,
-      "interceptions_pg": 9.5,
+      "tackles_pg": 16.3,
+      "interceptions_pg": 9.0,
       "fouls_committed_pg": 13.1,
-      "offsides_won_pg": 2.4,
-      "rating": 6.55
-    },
-    "goal_situations_pg": {
-      "open_play": 8,
-      "counter_attack": 0,
-      "set_piece": 3,
-      "penalty": 2,
-      "own_goal": 1
-    },
-    "xg_non_penalty": {
-      "xg": 15.08,
-      "goals": 11,
-      "xg_diff": -4.08,
-      "shots": 114,
-      "xg_per_shot": 0.13,
-      "rating": 6.55
-    }
-  },
-  "Genoa": {
-    "attack_sides": {
-      "left_pct": 43,
-      "middle_pct": 23,
-      "right_pct": 33
-    },
-    "action_zones": {
-      "own_third_pct": 32,
-      "middle_third_pct": 41,
-      "opposition_third_pct": 27
-    },
-    "shot_zones_pct": {
-      "six_yard_box_pct": 0,
-      "penalty_area_pct": 65,
-      "outside_box_pct": 35
-    },
-    "offensive_stats": {
-      "shots_pg": 11.2,
-      "shots_on_target_pg": 2.9,
-      "dribbles_pg": 5.5,
-      "fouled_pg": 11.1,
-      "rating": 6.53
-    },
-    "shots_zones_pg": {
-      "total": 11.2,
-      "rating": 6.53
-    },
-    "defensive_stats": {
-      "shots_conceded_pg": 16.1,
-      "tackles_pg": 18.0,
-      "interceptions_pg": 9.9,
-      "fouls_committed_pg": 9.4,
-      "offsides_won_pg": 2.2,
-      "rating": 6.53
+      "offsides_won_pg": 2.3,
+      "rating": 6.58
     },
     "goal_situations_pg": {
       "open_play": 8,
       "counter_attack": 1,
-      "set_piece": 1,
-      "penalty": 0,
-      "own_goal": 0
+      "set_piece": 3,
+      "penalty": 3,
+      "own_goal": 1
     },
     "xg_non_penalty": {
-      "xg": 9.81,
-      "goals": 10,
-      "xg_diff": 0.19,
-      "shots": 111,
-      "xg_per_shot": 0.09,
-      "rating": 6.53
+      "xg": 17.78,
+      "goals": 12,
+      "xg_diff": -5.78,
+      "shots": 146,
+      "xg_per_shot": 0.12,
+      "rating": 6.58
+    },
+    "shot_directions": {
+      "left_pct": 16,
+      "middle_pct": 67,
+      "right_pct": 17
+    },
+    "keypass_types_pg": {
+      "cross": 3.1,
+      "corner": 1.5,
+      "throughball": 0.1,
+      "freekick": 0.3,
+      "throwin": 0.1,
+      "other": 6.2
     }
   },
   "Inter": {
     "attack_sides": {
       "left_pct": 40,
-      "middle_pct": 28,
-      "right_pct": 32
+      "middle_pct": 27,
+      "right_pct": 33
     },
     "action_zones": {
-      "own_third_pct": 22,
+      "own_third_pct": 23,
       "middle_third_pct": 44,
       "opposition_third_pct": 33
     },
     "shot_zones_pct": {
-      "six_yard_box_pct": 11,
+      "six_yard_box_pct": 12,
       "penalty_area_pct": 60,
       "outside_box_pct": 28
     },
     "offensive_stats": {
-      "shots_pg": 22.0,
-      "shots_on_target_pg": 7.2,
-      "dribbles_pg": 6.7,
-      "fouled_pg": 8.5,
+      "shots_pg": 21.3,
+      "shots_on_target_pg": 6.9,
+      "dribbles_pg": 6.3,
+      "fouled_pg": 8.3,
       "rating": 6.86
     },
     "shots_zones_pg": {
-      "total": 22.0,
+      "total": 21.3,
       "rating": 6.86
     },
     "defensive_stats": {
-      "shots_conceded_pg": 10.3,
-      "tackles_pg": 16.6,
-      "interceptions_pg": 8.6,
-      "fouls_committed_pg": 9.3,
-      "offsides_won_pg": 2.4,
+      "shots_conceded_pg": 9.8,
+      "tackles_pg": 16.3,
+      "interceptions_pg": 8.9,
+      "fouls_committed_pg": 9.6,
+      "offsides_won_pg": 2.9,
       "rating": 6.86
     },
     "goal_situations_pg": {
-      "open_play": 16,
-      "counter_attack": 1,
+      "open_play": 17,
+      "counter_attack": 2,
       "set_piece": 5,
       "penalty": 2,
       "own_goal": 2
     },
     "xg_non_penalty": {
-      "xg": 27.3,
-      "goals": 22,
-      "xg_diff": -5.3,
-      "shots": 218,
+      "xg": 29.44,
+      "goals": 24,
+      "xg_diff": -5.44,
+      "shots": 232,
       "xg_per_shot": 0.13,
       "rating": 6.86
+    },
+    "shot_directions": {
+      "left_pct": 16,
+      "middle_pct": 71,
+      "right_pct": 13
+    },
+    "keypass_types_pg": {
+      "cross": 4.5,
+      "corner": 1.5,
+      "throughball": 0.3,
+      "freekick": 0.6,
+      "throwin": 0.2,
+      "other": 11.2
     }
   },
   "Milan": {
     "attack_sides": {
       "left_pct": 39,
-      "middle_pct": 26,
+      "middle_pct": 27,
       "right_pct": 34
     },
     "action_zones": {
-      "own_third_pct": 29,
+      "own_third_pct": 31,
       "middle_third_pct": 47,
       "opposition_third_pct": 23
     },
@@ -271,73 +336,86 @@
       "outside_box_pct": 23
     },
     "offensive_stats": {
-      "shots_pg": 12.0,
-      "shots_on_target_pg": 4.7,
+      "shots_pg": 11.5,
+      "shots_on_target_pg": 4.5,
       "dribbles_pg": 6.9,
-      "fouled_pg": 11.2,
-      "rating": 6.72
+      "fouled_pg": 11.4,
+      "rating": 6.73
     },
     "shots_zones_pg": {
-      "total": 12.0,
-      "rating": 6.72
+      "total": 11.5,
+      "rating": 6.73
     },
     "defensive_stats": {
-      "shots_conceded_pg": 10.7,
-      "tackles_pg": 15.8,
-      "interceptions_pg": 8.3,
-      "fouls_committed_pg": 9.6,
+      "shots_conceded_pg": 11.3,
+      "tackles_pg": 16.0,
+      "interceptions_pg": 8.7,
+      "fouls_committed_pg": 9.9,
       "offsides_won_pg": 1.0,
-      "rating": 6.72
+      "rating": 6.73
     },
     "goal_situations_pg": {
-      "open_play": 13,
+      "open_play": 15,
       "counter_attack": 2,
       "set_piece": 4,
       "penalty": 1,
       "own_goal": 1
     },
     "xg_non_penalty": {
-      "xg": 18.56,
-      "goals": 19,
-      "xg_diff": 0.44,
-      "shots": 118,
+      "xg": 19.47,
+      "goals": 21,
+      "xg_diff": 1.53,
+      "shots": 124,
       "xg_per_shot": 0.16,
-      "rating": 6.72
+      "rating": 6.73
+    },
+    "shot_directions": {
+      "left_pct": 17,
+      "middle_pct": 75,
+      "right_pct": 8
+    },
+    "keypass_types_pg": {
+      "cross": 2.9,
+      "corner": 0.6,
+      "throughball": 0.5,
+      "freekick": 0.4,
+      "throwin": 0.0,
+      "other": 5.2
     }
   },
   "Monza": {
     "attack_sides": {
       "left_pct": 38,
       "middle_pct": 26,
-      "right_pct": 35
+      "right_pct": 36
     },
     "action_zones": {
-      "own_third_pct": 27,
+      "own_third_pct": 26,
       "middle_third_pct": 46,
-      "opposition_third_pct": 27
+      "opposition_third_pct": 28
     },
     "shot_zones_pct": {
       "six_yard_box_pct": 7,
       "penalty_area_pct": 58,
-      "outside_box_pct": 35
+      "outside_box_pct": 34
     },
     "offensive_stats": {
-      "shots_pg": 12.6,
-      "shots_on_target_pg": 5.5,
-      "dribbles_pg": 6.7,
-      "fouled_pg": 10.2,
+      "shots_pg": 13.5,
+      "shots_on_target_pg": 5.6,
+      "dribbles_pg": 7.0,
+      "fouled_pg": 9.8,
       "rating": 6.47
     },
     "shots_zones_pg": {
-      "total": 12.6,
+      "total": 13.5,
       "rating": 6.47
     },
     "defensive_stats": {
       "shots_conceded_pg": 13.5,
-      "tackles_pg": 16.6,
+      "tackles_pg": 16.9,
       "interceptions_pg": 11.9,
-      "fouls_committed_pg": 12.2,
-      "offsides_won_pg": 2.8,
+      "fouls_committed_pg": 12.1,
+      "offsides_won_pg": 2.6,
       "rating": 6.47
     },
     "goal_situations_pg": {
@@ -348,63 +426,89 @@
       "own_goal": 1
     },
     "xg_non_penalty": {
-      "xg": 15.44,
+      "xg": 17.45,
       "goals": 14,
-      "xg_diff": -1.44,
-      "shots": 123,
-      "xg_per_shot": 0.13,
+      "xg_diff": -3.45,
+      "shots": 145,
+      "xg_per_shot": 0.12,
       "rating": 6.47
+    },
+    "shot_directions": {
+      "left_pct": 16,
+      "middle_pct": 66,
+      "right_pct": 18
+    },
+    "keypass_types_pg": {
+      "cross": 2.6,
+      "corner": 1.0,
+      "throughball": 0.3,
+      "freekick": 0.4,
+      "throwin": 0.0,
+      "other": 7.0
     }
   },
-  "Roma": {
+  "Torino": {
     "attack_sides": {
       "left_pct": 37,
-      "middle_pct": 25,
-      "right_pct": 38
+      "middle_pct": 30,
+      "right_pct": 34
     },
     "action_zones": {
-      "own_third_pct": 24,
-      "middle_third_pct": 43,
-      "opposition_third_pct": 33
+      "own_third_pct": 33,
+      "middle_third_pct": 44,
+      "opposition_third_pct": 23
     },
     "shot_zones_pct": {
-      "six_yard_box_pct": 9,
-      "penalty_area_pct": 61,
-      "outside_box_pct": 30
+      "six_yard_box_pct": 6,
+      "penalty_area_pct": 57,
+      "outside_box_pct": 37
     },
     "offensive_stats": {
-      "shots_pg": 18.5,
-      "shots_on_target_pg": 6.3,
-      "dribbles_pg": 8.8,
-      "fouled_pg": 8.1,
-      "rating": 6.95
+      "shots_pg": 10.6,
+      "shots_on_target_pg": 3.5,
+      "dribbles_pg": 7.0,
+      "fouled_pg": 10.8,
+      "rating": 6.51
     },
     "shots_zones_pg": {
-      "total": 18.5,
-      "rating": 6.95
+      "total": 10.6,
+      "rating": 6.51
     },
     "defensive_stats": {
-      "shots_conceded_pg": 12.3,
-      "tackles_pg": 17.0,
-      "interceptions_pg": 10.5,
-      "fouls_committed_pg": 11.2,
-      "offsides_won_pg": 2.8,
-      "rating": 6.95
+      "shots_conceded_pg": 15.3,
+      "tackles_pg": 15.5,
+      "interceptions_pg": 8.6,
+      "fouls_committed_pg": 9.9,
+      "offsides_won_pg": 1.8,
+      "rating": 6.51
     },
     "goal_situations_pg": {
-      "open_play": 23,
-      "counter_attack": 1,
-      "set_piece": 4,
+      "open_play": 12,
+      "counter_attack": 0,
+      "set_piece": 2,
       "penalty": 0,
-      "own_goal": 0
+      "own_goal": 1
     },
     "xg_non_penalty": {
-      "xg": 25.4,
-      "goals": 28,
-      "xg_diff": 2.6,
-      "shots": 185,
-      "xg_per_shot": 0.14,
-      "rating": 6.95
+      "xg": 14.01,
+      "goals": 14,
+      "xg_diff": -0.01,
+      "shots": 117,
+      "xg_per_shot": 0.12,
+      "rating": 6.51
+    },
+    "shot_directions": {
+      "left_pct": 17,
+      "middle_pct": 71,
+      "right_pct": 12
+    },
+    "keypass_types_pg": {
+      "cross": 2.0,
+      "corner": 0.5,
+      "throughball": 0.4,
+      "freekick": 0.5,
+      "throwin": 0.0,
+      "other": 4.9
     }
   },
   "Napoli": {
@@ -415,31 +519,31 @@
     },
     "action_zones": {
       "own_third_pct": 30,
-      "middle_third_pct": 42,
+      "middle_third_pct": 43,
       "opposition_third_pct": 27
     },
     "shot_zones_pct": {
       "six_yard_box_pct": 11,
-      "penalty_area_pct": 61,
-      "outside_box_pct": 28
+      "penalty_area_pct": 59,
+      "outside_box_pct": 29
     },
     "offensive_stats": {
-      "shots_pg": 15.6,
+      "shots_pg": 15.5,
       "shots_on_target_pg": 5.6,
-      "dribbles_pg": 4.8,
+      "dribbles_pg": 4.7,
       "fouled_pg": 9.1,
       "rating": 6.64
     },
     "shots_zones_pg": {
-      "total": 15.6,
+      "total": 15.5,
       "rating": 6.64
     },
     "defensive_stats": {
-      "shots_conceded_pg": 16.4,
-      "tackles_pg": 14.4,
+      "shots_conceded_pg": 16.3,
+      "tackles_pg": 15.1,
       "interceptions_pg": 6.5,
-      "fouls_committed_pg": 8.6,
-      "offsides_won_pg": 2.7,
+      "fouls_committed_pg": 8.9,
+      "offsides_won_pg": 2.6,
       "rating": 6.64
     },
     "goal_situations_pg": {
@@ -447,124 +551,163 @@
       "counter_attack": 1,
       "set_piece": 4,
       "penalty": 1,
-      "own_goal": 0
+      "own_goal": 1
     },
     "xg_non_penalty": {
-      "xg": 16.25,
+      "xg": 18.13,
       "goals": 16,
-      "xg_diff": -0.25,
-      "shots": 154,
+      "xg_diff": -2.13,
+      "shots": 169,
       "xg_per_shot": 0.11,
       "rating": 6.64
-    }
-  },
-  "Torino": {
-    "attack_sides": {
-      "left_pct": 36,
-      "middle_pct": 31,
-      "right_pct": 34
     },
-    "action_zones": {
-      "own_third_pct": 33,
-      "middle_third_pct": 44,
-      "opposition_third_pct": 23
+    "shot_directions": {
+      "left_pct": 19,
+      "middle_pct": 73,
+      "right_pct": 8
     },
-    "shot_zones_pct": {
-      "six_yard_box_pct": 6,
-      "penalty_area_pct": 56,
-      "outside_box_pct": 39
-    },
-    "offensive_stats": {
-      "shots_pg": 10.8,
-      "shots_on_target_pg": 3.7,
-      "dribbles_pg": 7.1,
-      "fouled_pg": 10.4,
-      "rating": 6.51
-    },
-    "shots_zones_pg": {
-      "total": 10.8,
-      "rating": 6.51
-    },
-    "defensive_stats": {
-      "shots_conceded_pg": 16.2,
-      "tackles_pg": 15.3,
-      "interceptions_pg": 8.1,
-      "fouls_committed_pg": 9.8,
-      "offsides_won_pg": 1.9,
-      "rating": 6.51
-    },
-    "goal_situations_pg": {
-      "open_play": 12,
-      "counter_attack": 0,
-      "set_piece": 2,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "xg": 13.24,
-      "goals": 14,
-      "xg_diff": 0.76,
-      "shots": 108,
-      "xg_per_shot": 0.12,
-      "rating": 6.51
+    "keypass_types_pg": {
+      "cross": 3.7,
+      "corner": 1.5,
+      "throughball": 0.5,
+      "freekick": 0.1,
+      "throwin": 0.0,
+      "other": 7.6
     }
   },
   "Cagliari": {
     "attack_sides": {
       "left_pct": 36,
       "middle_pct": 33,
-      "right_pct": 31
+      "right_pct": 32
     },
     "action_zones": {
-      "own_third_pct": 34,
+      "own_third_pct": 35,
       "middle_third_pct": 45,
       "opposition_third_pct": 20
     },
     "shot_zones_pct": {
       "six_yard_box_pct": 8,
       "penalty_area_pct": 58,
-      "outside_box_pct": 35
+      "outside_box_pct": 34
     },
     "offensive_stats": {
-      "shots_pg": 10.6,
+      "shots_pg": 10.9,
       "shots_on_target_pg": 4.0,
-      "dribbles_pg": 5.7,
-      "fouled_pg": 8.2,
-      "rating": 6.52
+      "dribbles_pg": 5.8,
+      "fouled_pg": 8.4,
+      "rating": 6.55
     },
     "shots_zones_pg": {
-      "total": 10.6,
-      "rating": 6.52
+      "total": 10.9,
+      "rating": 6.55
     },
     "defensive_stats": {
-      "shots_conceded_pg": 17.9,
-      "tackles_pg": 16.2,
-      "interceptions_pg": 10.5,
-      "fouls_committed_pg": 12.4,
+      "shots_conceded_pg": 18.9,
+      "tackles_pg": 15.9,
+      "interceptions_pg": 10.9,
+      "fouls_committed_pg": 12.5,
       "offsides_won_pg": 2.5,
-      "rating": 6.52
+      "rating": 6.55
     },
     "goal_situations_pg": {
       "open_play": 4,
-      "counter_attack": 2,
+      "counter_attack": 3,
       "set_piece": 1,
       "penalty": 2,
       "own_goal": 0
     },
     "xg_non_penalty": {
-      "xg": 11.27,
-      "goals": 7,
-      "xg_diff": -4.27,
-      "shots": 104,
+      "xg": 12.41,
+      "goals": 8,
+      "xg_diff": -4.41,
+      "shots": 118,
       "xg_per_shot": 0.11,
-      "rating": 6.52
+      "rating": 6.55
+    },
+    "shot_directions": {
+      "left_pct": 18,
+      "middle_pct": 70,
+      "right_pct": 12
+    },
+    "keypass_types_pg": {
+      "cross": 2.5,
+      "corner": 1.3,
+      "throughball": 0.3,
+      "freekick": 0.5,
+      "throwin": 0.0,
+      "other": 5.8
+    }
+  },
+  "Roma": {
+    "attack_sides": {
+      "left_pct": 36,
+      "middle_pct": 25,
+      "right_pct": 38
+    },
+    "action_zones": {
+      "own_third_pct": 23,
+      "middle_third_pct": 44,
+      "opposition_third_pct": 33
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 10,
+      "penalty_area_pct": 62,
+      "outside_box_pct": 28
+    },
+    "offensive_stats": {
+      "shots_pg": 19.4,
+      "shots_on_target_pg": 6.5,
+      "dribbles_pg": 9.3,
+      "fouled_pg": 8.5,
+      "rating": 6.97
+    },
+    "shots_zones_pg": {
+      "total": 19.4,
+      "rating": 6.97
+    },
+    "defensive_stats": {
+      "shots_conceded_pg": 11.7,
+      "tackles_pg": 17.1,
+      "interceptions_pg": 10.1,
+      "fouls_committed_pg": 10.9,
+      "offsides_won_pg": 2.6,
+      "rating": 6.97
+    },
+    "goal_situations_pg": {
+      "open_play": 25,
+      "counter_attack": 1,
+      "set_piece": 4,
+      "penalty": 0,
+      "own_goal": 1
+    },
+    "xg_non_penalty": {
+      "xg": 28.75,
+      "goals": 30,
+      "xg_diff": 1.25,
+      "shots": 213,
+      "xg_per_shot": 0.13,
+      "rating": 6.97
+    },
+    "shot_directions": {
+      "left_pct": 15,
+      "middle_pct": 69,
+      "right_pct": 16
+    },
+    "keypass_types_pg": {
+      "cross": 4.3,
+      "corner": 1.3,
+      "throughball": 0.5,
+      "freekick": 0.2,
+      "throwin": 0.0,
+      "other": 11.1
     }
   },
   "Udinese": {
     "attack_sides": {
       "left_pct": 36,
       "middle_pct": 27,
-      "right_pct": 37
+      "right_pct": 38
     },
     "action_zones": {
       "own_third_pct": 25,
@@ -572,94 +715,120 @@
       "opposition_third_pct": 30
     },
     "shot_zones_pct": {
-      "six_yard_box_pct": 3,
-      "penalty_area_pct": 56,
-      "outside_box_pct": 40
+      "six_yard_box_pct": 4,
+      "penalty_area_pct": 57,
+      "outside_box_pct": 39
     },
     "offensive_stats": {
-      "shots_pg": 14.7,
-      "shots_on_target_pg": 4.4,
-      "dribbles_pg": 6.8,
-      "fouled_pg": 9.3,
-      "rating": 6.43
+      "shots_pg": 14.5,
+      "shots_on_target_pg": 4.5,
+      "dribbles_pg": 6.5,
+      "fouled_pg": 9.5,
+      "rating": 6.41
     },
     "shots_zones_pg": {
-      "total": 14.7,
-      "rating": 6.43
+      "total": 14.5,
+      "rating": 6.41
     },
     "defensive_stats": {
-      "shots_conceded_pg": 15.6,
-      "tackles_pg": 14.0,
-      "interceptions_pg": 8.0,
-      "fouls_committed_pg": 11.3,
-      "offsides_won_pg": 1.0,
-      "rating": 6.43
+      "shots_conceded_pg": 15.5,
+      "tackles_pg": 13.5,
+      "interceptions_pg": 7.6,
+      "fouls_committed_pg": 10.8,
+      "offsides_won_pg": 1.2,
+      "rating": 6.41
     },
     "goal_situations_pg": {
       "open_play": 6,
       "counter_attack": 1,
       "set_piece": 4,
       "penalty": 0,
-      "own_goal": 0
+      "own_goal": 1
     },
     "xg_non_penalty": {
-      "xg": 12.53,
+      "xg": 13.75,
       "goals": 11,
-      "xg_diff": -1.53,
-      "shots": 147,
+      "xg_diff": -2.75,
+      "shots": 160,
       "xg_per_shot": 0.09,
-      "rating": 6.43
+      "rating": 6.41
+    },
+    "shot_directions": {
+      "left_pct": 20,
+      "middle_pct": 61,
+      "right_pct": 19
+    },
+    "keypass_types_pg": {
+      "cross": 2.8,
+      "corner": 0.9,
+      "throughball": 0.5,
+      "freekick": 0.3,
+      "throwin": 0.1,
+      "other": 7.7
     }
   },
-  "Frosinone": {
+  "Lecce": {
     "attack_sides": {
       "left_pct": 35,
-      "middle_pct": 23,
-      "right_pct": 42
+      "middle_pct": 26,
+      "right_pct": 38
     },
     "action_zones": {
-      "own_third_pct": 28,
-      "middle_third_pct": 39,
-      "opposition_third_pct": 34
+      "own_third_pct": 26,
+      "middle_third_pct": 45,
+      "opposition_third_pct": 29
     },
     "shot_zones_pct": {
-      "six_yard_box_pct": 6,
-      "penalty_area_pct": 58,
-      "outside_box_pct": 36
+      "six_yard_box_pct": 11,
+      "penalty_area_pct": 50,
+      "outside_box_pct": 39
     },
     "offensive_stats": {
-      "shots_pg": 19.2,
-      "shots_on_target_pg": 6.6,
-      "dribbles_pg": 7.5,
-      "fouled_pg": 12.0,
-      "rating": 6.86
+      "shots_pg": 12.1,
+      "shots_on_target_pg": 4.6,
+      "dribbles_pg": 6.9,
+      "fouled_pg": 9.0,
+      "rating": 6.47
     },
     "shots_zones_pg": {
-      "total": 19.2,
-      "rating": 6.86
+      "total": 12.1,
+      "rating": 6.47
     },
     "defensive_stats": {
-      "shots_conceded_pg": 18.6,
-      "tackles_pg": 20.4,
-      "interceptions_pg": 11.9,
-      "fouls_committed_pg": 14.9,
-      "offsides_won_pg": 3.0,
-      "rating": 6.86
+      "shots_conceded_pg": 14.7,
+      "tackles_pg": 19.5,
+      "interceptions_pg": 8.6,
+      "fouls_committed_pg": 13.9,
+      "offsides_won_pg": 1.5,
+      "rating": 6.47
     },
     "goal_situations_pg": {
-      "open_play": 15,
-      "counter_attack": 3,
-      "set_piece": 5,
-      "penalty": 1,
-      "own_goal": 0
+      "open_play": 2,
+      "counter_attack": 2,
+      "set_piece": 7,
+      "penalty": 0,
+      "own_goal": 1
     },
     "xg_non_penalty": {
-      "xg": 19.88,
-      "goals": 23,
-      "xg_diff": 3.12,
-      "shots": 191,
-      "xg_per_shot": 0.1,
-      "rating": 6.86
+      "xg": 16.01,
+      "goals": 11,
+      "xg_diff": -5.01,
+      "shots": 133,
+      "xg_per_shot": 0.12,
+      "rating": 6.47
+    },
+    "shot_directions": {
+      "left_pct": 16,
+      "middle_pct": 65,
+      "right_pct": 19
+    },
+    "keypass_types_pg": {
+      "cross": 2.4,
+      "corner": 1.0,
+      "throughball": 0.3,
+      "freekick": 0.2,
+      "throwin": 0.2,
+      "other": 5.5
     }
   },
   "Venezia": {
@@ -674,94 +843,56 @@
       "opposition_third_pct": 26
     },
     "shot_zones_pct": {
-      "six_yard_box_pct": 11,
-      "penalty_area_pct": 49,
+      "six_yard_box_pct": 10,
+      "penalty_area_pct": 50,
       "outside_box_pct": 40
     },
     "offensive_stats": {
-      "shots_pg": 13.6,
+      "shots_pg": 13.7,
       "shots_on_target_pg": 4.0,
-      "dribbles_pg": 6.9,
-      "fouled_pg": 8.5,
-      "rating": 6.42
+      "dribbles_pg": 6.7,
+      "fouled_pg": 8.3,
+      "rating": 6.46
     },
     "shots_zones_pg": {
-      "total": 13.6,
-      "rating": 6.42
+      "total": 13.7,
+      "rating": 6.46
     },
     "defensive_stats": {
-      "shots_conceded_pg": 16.5,
-      "tackles_pg": 15.6,
-      "interceptions_pg": 7.9,
-      "fouls_committed_pg": 9.6,
-      "offsides_won_pg": 2.5,
-      "rating": 6.42
+      "shots_conceded_pg": 16.2,
+      "tackles_pg": 15.7,
+      "interceptions_pg": 7.5,
+      "fouls_committed_pg": 9.7,
+      "offsides_won_pg": 2.6,
+      "rating": 6.46
     },
     "goal_situations_pg": {
-      "open_play": 3,
+      "open_play": 5,
       "counter_attack": 3,
       "set_piece": 0,
       "penalty": 0,
       "own_goal": 0
     },
     "xg_non_penalty": {
-      "xg": 15.66,
-      "goals": 6,
-      "xg_diff": -9.66,
-      "shots": 135,
-      "xg_per_shot": 0.12,
-      "rating": 6.42
-    }
-  },
-  "Lecce": {
-    "attack_sides": {
-      "left_pct": 35,
-      "middle_pct": 26,
-      "right_pct": 39
+      "xg": 17.25,
+      "goals": 8,
+      "xg_diff": -9.25,
+      "shots": 150,
+      "xg_per_shot": 0.11,
+      "rating": 6.46
     },
-    "action_zones": {
-      "own_third_pct": 27,
-      "middle_third_pct": 44,
-      "opposition_third_pct": 29
+    "shot_directions": {
+      "left_pct": 17,
+      "middle_pct": 67,
+      "right_pct": 16
     },
-    "shot_zones_pct": {
-      "six_yard_box_pct": 12,
-      "penalty_area_pct": 51,
-      "outside_box_pct": 37
-    },
-    "offensive_stats": {
-      "shots_pg": 12.7,
-      "shots_on_target_pg": 5.0,
-      "dribbles_pg": 7.0,
-      "fouled_pg": 8.9,
-      "rating": 6.47
-    },
-    "shots_zones_pg": {
-      "total": 12.7,
-      "rating": 6.47
-    },
-    "defensive_stats": {
-      "shots_conceded_pg": 15.3,
-      "tackles_pg": 19.7,
-      "interceptions_pg": 8.3,
-      "fouls_committed_pg": 13.7,
-      "offsides_won_pg": 1.6,
-      "rating": 6.47
-    },
-    "goal_situations_pg": {
-      "open_play": 2,
-      "counter_attack": 2,
-      "set_piece": 7,
-      "penalty": 0,
-      "own_goal": 0
-    },
-    "xg_non_penalty": {
-      "xg": 15.79,
-      "goals": 11,
-      "xg_diff": -4.79,
-      "shots": 127,
-      "xg_per_shot": 0.12,
-      "rating": 6.47
+    "keypass_types_pg": {
+      "cross": 3.0,
+      "corner": 1.2,
+      "throughball": 0.5,
+      "freekick": 0.1,
+      "throwin": 0.1,
+      "other": 6.5
     }
   },
   "Fiorentina": {
@@ -771,237 +902,353 @@
       "right_pct": 38
     },
     "action_zones": {
-      "own_third_pct": 26,
+      "own_third_pct": 28,
       "middle_third_pct": 42,
-      "opposition_third_pct": 32
+      "opposition_third_pct": 31
     },
     "shot_zones_pct": {
-      "six_yard_box_pct": 7,
-      "penalty_area_pct": 52,
+      "six_yard_box_pct": 8,
+      "penalty_area_pct": 51,
       "outside_box_pct": 41
     },
     "offensive_stats": {
-      "shots_pg": 16.4,
-      "shots_on_target_pg": 5.0,
-      "dribbles_pg": 8.6,
-      "fouled_pg": 12.0,
-      "rating": 6.46
+      "shots_pg": 16.9,
+      "shots_on_target_pg": 5.1,
+      "dribbles_pg": 8.4,
+      "fouled_pg": 12.3,
+      "rating": 6.47
     },
     "shots_zones_pg": {
-      "total": 16.4,
-      "rating": 6.46
+      "total": 16.9,
+      "rating": 6.47
     },
     "defensive_stats": {
-      "shots_conceded_pg": 13.5,
-      "tackles_pg": 16.2,
-      "interceptions_pg": 8.0,
-      "fouls_committed_pg": 11.6,
-      "offsides_won_pg": 1.4,
-      "rating": 6.46
+      "shots_conceded_pg": 13.9,
+      "tackles_pg": 16.5,
+      "interceptions_pg": 7.8,
+      "fouls_committed_pg": 12.0,
+      "offsides_won_pg": 1.3,
+      "rating": 6.47
     },
     "goal_situations_pg": {
       "open_play": 10,
       "counter_attack": 3,
-      "set_piece": 1,
+      "set_piece": 3,
       "penalty": 0,
       "own_goal": 1
     },
     "xg_non_penalty": {
-      "xg": 15.8,
-      "goals": 14,
-      "xg_diff": -1.8,
-      "shots": 164,
+      "xg": 18.16,
+      "goals": 16,
+      "xg_diff": -2.16,
+      "shots": 186,
       "xg_per_shot": 0.1,
-      "rating": 6.46
+      "rating": 6.47
+    },
+    "shot_directions": {
+      "left_pct": 10,
+      "middle_pct": 64,
+      "right_pct": 26
+    },
+    "keypass_types_pg": {
+      "cross": 2.4,
+      "corner": 0.6,
+      "throughball": 0.5,
+      "freekick": 0.2,
+      "throwin": 0.1,
+      "other": 9.5
     }
   },
-  "Parma": {
+  "Frosinone": {
     "attack_sides": {
-      "left_pct": 33,
-      "middle_pct": 28,
-      "right_pct": 39
+      "left_pct": 34,
+      "middle_pct": 23,
+      "right_pct": 43
     },
     "action_zones": {
-      "own_third_pct": 34,
-      "middle_third_pct": 44,
-      "opposition_third_pct": 22
+      "own_third_pct": 27,
+      "middle_third_pct": 38,
+      "opposition_third_pct": 34
     },
     "shot_zones_pct": {
-      "six_yard_box_pct": 9,
-      "penalty_area_pct": 59,
-      "outside_box_pct": 32
+      "six_yard_box_pct": 7,
+      "penalty_area_pct": 58,
+      "outside_box_pct": 35
     },
     "offensive_stats": {
-      "shots_pg": 9.9,
-      "shots_on_target_pg": 3.3,
-      "dribbles_pg": 5.3,
-      "fouled_pg": 12.4,
-      "rating": 6.44
+      "shots_pg": 20.1,
+      "shots_on_target_pg": 6.8,
+      "dribbles_pg": 8.2,
+      "fouled_pg": 12.0,
+      "rating": 6.85
     },
     "shots_zones_pg": {
-      "total": 9.9,
-      "rating": 6.44
+      "total": 20.1,
+      "rating": 6.85
     },
     "defensive_stats": {
-      "shots_conceded_pg": 18.1,
-      "tackles_pg": 14.7,
-      "interceptions_pg": 9.2,
-      "fouls_committed_pg": 10.5,
-      "offsides_won_pg": 1.4,
-      "rating": 6.44
+      "shots_conceded_pg": 18.2,
+      "tackles_pg": 20.3,
+      "interceptions_pg": 11.7,
+      "fouls_committed_pg": 14.6,
+      "offsides_won_pg": 2.8,
+      "rating": 6.85
     },
     "goal_situations_pg": {
-      "open_play": 5,
-      "counter_attack": 1,
-      "set_piece": 1,
-      "penalty": 0,
-      "own_goal": 1
+      "open_play": 15,
+      "counter_attack": 3,
+      "set_piece": 5,
+      "penalty": 1,
+      "own_goal": 0
     },
     "xg_non_penalty": {
-      "xg": 8.85,
-      "goals": 7,
-      "xg_diff": -1.85,
-      "shots": 98,
-      "xg_per_shot": 0.09,
-      "rating": 6.44
+      "xg": 22.14,
+      "goals": 23,
+      "xg_diff": 0.86,
+      "shots": 220,
+      "xg_per_shot": 0.1,
+      "rating": 6.85
+    },
+    "shot_directions": {
+      "left_pct": 21,
+      "middle_pct": 62,
+      "right_pct": 18
+    },
+    "keypass_types_pg": {
+      "cross": 4.0,
+      "corner": 2.4,
+      "throughball": 0.5,
+      "freekick": 0.3,
+      "throwin": 0.0,
+      "other": 11.2
     }
   },
   "Juventus": {
     "attack_sides": {
-      "left_pct": 32,
+      "left_pct": 33,
       "middle_pct": 31,
       "right_pct": 37
     },
     "action_zones": {
       "own_third_pct": 24,
-      "middle_third_pct": 43,
+      "middle_third_pct": 42,
       "opposition_third_pct": 35
     },
     "shot_zones_pct": {
       "six_yard_box_pct": 9,
-      "penalty_area_pct": 46,
-      "outside_box_pct": 45
+      "penalty_area_pct": 47,
+      "outside_box_pct": 44
     },
     "offensive_stats": {
-      "shots_pg": 16.2,
-      "shots_on_target_pg": 5.1,
-      "dribbles_pg": 7.3,
-      "fouled_pg": 9.3,
+      "shots_pg": 16.4,
+      "shots_on_target_pg": 5.2,
+      "dribbles_pg": 7.8,
+      "fouled_pg": 9.8,
       "rating": 6.68
     },
     "shots_zones_pg": {
-      "total": 16.2,
+      "total": 16.4,
       "rating": 6.68
     },
     "defensive_stats": {
-      "shots_conceded_pg": 9.0,
-      "tackles_pg": 15.4,
-      "interceptions_pg": 7.9,
-      "fouls_committed_pg": 11.9,
-      "offsides_won_pg": 3.0,
+      "shots_conceded_pg": 10.2,
+      "tackles_pg": 15.5,
+      "interceptions_pg": 7.6,
+      "fouls_committed_pg": 12.5,
+      "offsides_won_pg": 2.8,
       "rating": 6.68
     },
     "goal_situations_pg": {
       "open_play": 9,
-      "counter_attack": 0,
-      "set_piece": 4,
+      "counter_attack": 1,
+      "set_piece": 5,
       "penalty": 0,
       "own_goal": 0
     },
     "xg_non_penalty": {
-      "xg": 14.68,
-      "goals": 13,
-      "xg_diff": -1.68,
-      "shots": 162,
-      "xg_per_shot": 0.09,
+      "xg": 17.17,
+      "goals": 15,
+      "xg_diff": -2.17,
+      "shots": 180,
+      "xg_per_shot": 0.1,
       "rating": 6.68
+    },
+    "shot_directions": {
+      "left_pct": 18,
+      "middle_pct": 67,
+      "right_pct": 16
+    },
+    "keypass_types_pg": {
+      "cross": 3.6,
+      "corner": 1.1,
+      "throughball": 0.4,
+      "freekick": 0.3,
+      "throwin": 0.0,
+      "other": 8.5
+    }
+  },
+  "Parma": {
+    "attack_sides": {
+      "left_pct": 32,
+      "middle_pct": 28,
+      "right_pct": 40
+    },
+    "action_zones": {
+      "own_third_pct": 36,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 22
+    },
+    "shot_zones_pct": {
+      "six_yard_box_pct": 8,
+      "penalty_area_pct": 60,
+      "outside_box_pct": 32
+    },
+    "offensive_stats": {
+      "shots_pg": 10.0,
+      "shots_on_target_pg": 3.2,
+      "dribbles_pg": 5.3,
+      "fouled_pg": 12.5,
+      "rating": 6.45
+    },
+    "shots_zones_pg": {
+      "total": 10.0,
+      "rating": 6.45
+    },
+    "defensive_stats": {
+      "shots_conceded_pg": 19.5,
+      "tackles_pg": 15.0,
+      "interceptions_pg": 8.9,
+      "fouls_committed_pg": 10.5,
+      "offsides_won_pg": 1.3,
+      "rating": 6.45
+    },
+    "goal_situations_pg": {
+      "open_play": 5,
+      "counter_attack": 1,
+      "set_piece": 1,
+      "penalty": 1,
+      "own_goal": 1
+    },
+    "xg_non_penalty": {
+      "xg": 9.8,
+      "goals": 7,
+      "xg_diff": -2.8,
+      "shots": 108,
+      "xg_per_shot": 0.09,
+      "rating": 6.45
+    },
+    "shot_directions": {
+      "left_pct": 21,
+      "middle_pct": 68,
+      "right_pct": 11
+    },
+    "keypass_types_pg": {
+      "cross": 2.9,
+      "corner": 0.7,
+      "throughball": 0.3,
+      "freekick": 1.0,
+      "throwin": 0.1,
+      "other": 4.8
     }
   },
   "Atalanta": {
     "attack_sides": {
-      "left_pct": 29,
+      "left_pct": 30,
       "middle_pct": 31,
-      "right_pct": 40
+      "right_pct": 39
     },
     "action_zones": {
-      "own_third_pct": 28,
-      "middle_third_pct": 41,
-      "opposition_third_pct": 30
+      "own_third_pct": 30,
+      "middle_third_pct": 42,
+      "opposition_third_pct": 29
     },
     "shot_zones_pct": {
       "six_yard_box_pct": 6,
-      "penalty_area_pct": 64,
+      "penalty_area_pct": 65,
       "outside_box_pct": 30
     },
     "offensive_stats": {
-      "shots_pg": 14.5,
-      "shots_on_target_pg": 5.2,
-      "dribbles_pg": 6.6,
+      "shots_pg": 14.4,
+      "shots_on_target_pg": 5.4,
+      "dribbles_pg": 6.5,
       "fouled_pg": 8.5,
-      "rating": 6.56
+      "rating": 6.61
     },
     "shots_zones_pg": {
-      "total": 14.5,
-      "rating": 6.56
+      "total": 14.4,
+      "rating": 6.61
     },
     "defensive_stats": {
-      "shots_conceded_pg": 18.2,
-      "tackles_pg": 14.9,
-      "interceptions_pg": 9.1,
-      "fouls_committed_pg": 10.0,
-      "offsides_won_pg": 1.3,
-      "rating": 6.56
+      "shots_conceded_pg": 18.5,
+      "tackles_pg": 15.6,
+      "interceptions_pg": 9.5,
+      "fouls_committed_pg": 9.6,
+      "offsides_won_pg": 1.2,
+      "rating": 6.61
     },
     "goal_situations_pg": {
-      "open_play": 12,
+      "open_play": 13,
       "counter_attack": 1,
       "set_piece": 2,
       "penalty": 1,
       "own_goal": 0
     },
     "xg_non_penalty": {
-      "xg": 16.04,
-      "goals": 15,
-      "xg_diff": -1.04,
-      "shots": 144,
+      "xg": 17.41,
+      "goals": 16,
+      "xg_diff": -1.41,
+      "shots": 157,
       "xg_per_shot": 0.11,
-      "rating": 6.56
+      "rating": 6.61
+    },
+    "shot_directions": {
+      "left_pct": 23,
+      "middle_pct": 58,
+      "right_pct": 18
+    },
+    "keypass_types_pg": {
+      "cross": 2.5,
+      "corner": 0.9,
+      "throughball": 0.2,
+      "freekick": 0.2,
+      "throwin": 0.0,
+      "other": 8.2
     }
   },
   "Como": {
     "attack_sides": {
       "left_pct": 28,
-      "middle_pct": 32,
-      "right_pct": 40
+      "middle_pct": 31,
+      "right_pct": 41
     },
     "action_zones": {
       "own_third_pct": 25,
       "middle_third_pct": 43,
-      "opposition_third_pct": 32
+      "opposition_third_pct": 31
     },
     "shot_zones_pct": {
       "six_yard_box_pct": 5,
-      "penalty_area_pct": 59,
+      "penalty_area_pct": 60,
       "outside_box_pct": 35
     },
     "offensive_stats": {
-      "shots_pg": 20.3,
-      "shots_on_target_pg": 6.3,
-      "dribbles_pg": 8.7,
-      "fouled_pg": 9.9,
-      "rating": 6.78
+      "shots_pg": 18.9,
+      "shots_on_target_pg": 5.8,
+      "dribbles_pg": 8.1,
+      "fouled_pg": 10.2,
+      "rating": 6.74
     },
     "shots_zones_pg": {
-      "total": 20.3,
-      "rating": 6.78
+      "total": 18.9,
+      "rating": 6.74
     },
     "defensive_stats": {
-      "shots_conceded_pg": 12.8,
-      "tackles_pg": 17.0,
+      "shots_conceded_pg": 12.9,
+      "tackles_pg": 16.6,
       "interceptions_pg": 8.5,
-      "fouls_committed_pg": 8.2,
-      "offsides_won_pg": 1.4,
-      "rating": 6.78
+      "fouls_committed_pg": 8.0,
+      "offsides_won_pg": 1.5,
+      "rating": 6.74
     },
     "goal_situations_pg": {
       "open_play": 12,
@@ -1011,12 +1258,25 @@
       "own_goal": 0
     },
     "xg_non_penalty": {
-      "xg": 20.86,
+      "xg": 21.1,
       "goals": 17,
-      "xg_diff": -3.86,
-      "shots": 202,
+      "xg_diff": -4.1,
+      "shots": 207,
       "xg_per_shot": 0.1,
-      "rating": 6.78
+      "rating": 6.74
+    },
+    "shot_directions": {
+      "left_pct": 12,
+      "middle_pct": 71,
+      "right_pct": 18
+    },
+    "keypass_types_pg": {
+      "cross": 3.9,
+      "corner": 1.3,
+      "throughball": 0.4,
+      "freekick": 0.2,
+      "throwin": 0.0,
+      "other": 9.5
     }
   }
 }

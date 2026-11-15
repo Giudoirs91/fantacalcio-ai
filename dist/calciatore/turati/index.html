@@ -45,7 +45,7 @@
       "@type": "WebPage",
       "name": "Turati (Sassuolo): Statistiche Avanzate, xG, Storico Infortuni e Consigli Asta 2026/27 | Fanta Master AI",
       "url": "https://www.fantamasterai.it/calciatore/turati/",
-      "dateModified": "2026-11-07",
+      "dateModified": "2026-11-15",
       "description": "Scheda tecnica completa di Turati (Sassuolo): radar a 6 assi, xG, xA, storico infortuni e cartella clinica, gerarchie rigori, quotazione FVM e prezzo consigliato asta Fantacalcio 2026/27."
     },
     {
@@ -56,7 +56,7 @@
           "name": "Qual è la fantamedia di Turati nel 2026/27?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Turati (Sassuolo) registra attualmente una FantaMedia reale di 4.33 con una media voto pura di 6.33 e un valore atteso xFM di 2.12."
+            "text": "Turati (Sassuolo) registra attualmente una FantaMedia reale di 4.33 con una media voto pura di 6.33 e un valore atteso xFM di 2.4."
           }
         },
         {
@@ -64,7 +64,7 @@
           "name": "Turati è infortunato o a disposizione?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Turati è attualmente integro e regolarmente a disposizione di mister Alberto Aquilani per il prossimo turno di Serie A."
+            "text": "Turati è attualmente integro e regolarmente a disposizione di mister Roberto D'Aversa per il prossimo turno di Serie A."
           }
         },
         {
@@ -226,7 +226,20 @@
             <a href="../../probabili-formazioni/sassuolo/" class="ppro-back-link">Top 11 Sassuolo &rarr;</a>
         </div>
 
-        <!-- PRO PLAYER HERO CARD (VISUAL, ZERO-FLUFF, MOBILE-FIRST) -->
+        <!-- View Mode Switcher (Essenziale vs Completa) -->
+        <div class="ppro-mode-bar">
+            <span class="ppro-mode-hint">Modalità scheda:</span>
+            <div class="ppro-mode-switch" role="tablist" aria-label="Modalità visualizzazione scheda">
+                <button type="button" id="btnViewMode_simple" class="ppro-mode-btn active" onclick="setPlayerViewMode('simple')">
+                    <span>⚡</span> Vista Essenziale
+                </button>
+                <button type="button" id="btnViewMode_full" class="ppro-mode-btn" onclick="setPlayerViewMode('full')">
+                    <span>🔬</span> Vista Completa
+                </button>
+            </div>
+        </div>
+
+        <!-- PRO PLAYER HERO CARD (VISUAL HIERARCHY, MOBILE-FIRST) -->
         <div class="ppro-hero-card">
             <div class="ppro-hero-top">
                 <div class="ppro-identity">
@@ -239,13 +252,13 @@
                         <div class="ppro-sub-line">
                             <a href="../../probabili-formazioni/sassuolo/" class="ppro-team-link">Sassuolo</a>
                             <span>&bull;</span>
-                            <span>4-3-3 (Alberto Aquilani)</span>
+                            <span>4-3-3 (Roberto D&#39;Aversa)</span>
                             
                         </div>
                     </div>
                 </div>
                 <div class="ppro-ovr-shield silver">
-                    <span class="ovr-num">50</span>
+                    <span class="ovr-num">49</span>
                     <span class="ovr-lbl">OVR</span>
                 </div>
             </div>
@@ -259,63 +272,138 @@
                 <span class="ppro-pill slate">🔄 Alt.: <b>Muric</b></span>
             </div>
 
-            <!-- 4 Equal KPI Boxes -->
-            <div class="ppro-kpi-4">
-                <div class="ppro-kpi-box">
+            <!-- 3 Primary Hero Pillars (Clear Visual Weight) -->
+            <div class="ppro-kpi-3-hero">
+                <div class="ppro-kpi-pillar is-primary">
                     <span class="pk-lbl">FANTAMEDIA</span>
                     <b class="pk-val" style="color:#fbbf24;">4.33</b>
-                    <span class="pk-sub">MV: <b>6.33</b></span>
+                    <div class="pk-meta-row">
+                        <span>MV <b>6.33</b></span>
+                        <span>&bull;</span>
+                        <span>xFM <b style="color:#38bdf8;">2.40</b> <span class="ppro-delta-tag hot">+1.93 🔥</span></span>
+                    </div>
                 </div>
-                <div class="ppro-kpi-box">
-                    <span class="pk-lbl">xFM ATTESA</span>
-                    <b class="pk-val" style="color:#38bdf8;">2.12</b>
-                    <span class="pk-sub"><span class="ppro-delta-tag hot">+2.21 🔥</span></span>
-                </div>
-                <div class="ppro-kpi-box">
+                <div class="ppro-kpi-pillar">
                     <span class="pk-lbl">TITOLARITÀ</span>
-                    <b class="pk-val" style="color:#f59e0b;">52%</b>
-                    <span class="pk-sub">3/10 Tit (52%)</span>
+                    <b class="pk-val" style="color:#ef4444;">43%</b>
+                    <div class="pk-tit-bar"><span style="width:43%;background:#ef4444;"></span></div>
+                    <span class="pk-sub">3/11 Tit (43%)</span>
                 </div>
-                <div class="ppro-kpi-box">
+                <div class="ppro-kpi-pillar">
                     <span class="pk-lbl">VALORE ASTA</span>
                     <b class="pk-val" style="color:#fff;">1 <small>CR</small></b>
-                    <span class="pk-sub">FVM <b>1</b> &bull; Max 2</span>
+                    <span class="pk-sub">FVM <b>1</b> &bull; Max <b>2 CR</b></span>
                 </div>
             </div>
 
             <!-- Next Matchday Integrated Strip -->
             <div class="ppro-matchday-strip">
                 <div class="ppro-md-left">
-                    <span class="ppro-md-round">G11</span>
-                    <b class="ppro-md-match">Sassuolo @ Roma</b>
-                    <span class="ppro-md-venue">✈️</span>
-                    <span class="ppro-md-vuln" style="color:#ef4444;border-color:#ef444455;">🧱 MURO DIFENSIVO (15)</span>
+                    <span class="ppro-md-round">G12</span>
+                    <b class="ppro-md-match">Sassuolo vs Genoa</b>
+                    <span class="ppro-md-venue">🏠</span>
+                    <span class="ppro-md-vuln" style="color:#fbbf24;border-color:#fbbf2455;">⚖️ MATCHUP EQUILIBRATO (45)</span>
                 </div>
                 <a href="../../chi-schiero/" class="ppro-md-cta">⚔️ Chi Schiero &rarr;</a>
             </div>
         </div>
 
-        <!-- Clean 3-Tab Switcher -->
-        <div class="profile-3tabs-nav" style="margin-top:14px;">
-            <button id="profileTabBtn_overview" class="profile-3tab-btn active" onclick="switchProfileTab('overview')">
-                <span class="tab-icon">📊</span>
-                <span class="tab-txt-desktop">Rendimento &amp; Voti</span>
-                <span class="tab-txt-mobile">Voti &amp; KPI</span>
-            </button>
-            <button id="profileTabBtn_advanced" class="profile-3tab-btn" onclick="switchProfileTab('advanced')">
-                <span class="tab-icon">🎯</span>
-                <span class="tab-txt-desktop">Radar &amp; Statistiche xG</span>
-                <span class="tab-txt-mobile">Radar &amp; xG</span>
-            </button>
-            <button id="profileTabBtn_tactics" class="profile-3tab-btn" onclick="switchProfileTab('tactics')">
-                <span class="tab-icon">🩺</span>
-                <span class="tab-txt-desktop">Fisica &amp; Gerarchie</span>
-                <span class="tab-txt-mobile">Fisica &amp; Club</span>
-            </button>
+        <!-- MODE 1: VISTA ESSENZIALE (Default) -->
+        
+    <div id="playerView_simple" class="ppro-simple-wrap">
+        <div class="ppro-simple-card">
+            <div class="ppro-simple-card-head">
+                <div>
+                    <div class="ppro-section-eyebrow">FORMA RECENTE &amp; OUTPUT</div>
+                    <h2 class="ppro-simple-h2">Ultime Giornate &amp; Numeri Chiave</h2>
+                </div>
+                <button type="button" class="ppro-link-btn" onclick="setPlayerViewMode('full', 'overview')">Storico 38G &rarr;</button>
+            </div>
+            <div class="ppro-form-strip"><div class="ppro-form-chip chip-bad" title="G10 vs Fiorentina: Voto 6.0 | FV 2.0 (-4 (4GS))"><div class="fc-top"><span>G10</span><span>Fiorentina</span></div><div class="fc-fv">2.0</div><div class="fc-v">Voto 6.0</div></div><div class="ppro-form-chip chip-good" title="G9 vs Lazio: Voto 7.0 | FV 7.0 (+6 (Rig.Par), -6 (6GS))"><div class="fc-top"><span>G9</span><span>Lazio</span></div><div class="fc-fv">7.0</div><div class="fc-v">Voto 7.0</div></div><div class="ppro-form-chip chip-bad" title="G8 vs Como: Voto 6.0 | FV 4.0 (-2 (2GS))"><div class="fc-top"><span>G8</span><span>Como</span></div><div class="fc-fv">4.0</div><div class="fc-v">Voto 6.0</div></div></div>
+            
+        <div class="ppro-simple-kpi-4">
+            <div class="psk-box"><span class="psk-lbl">🧤 Clean Sheet</span><b class="psk-val" style="color:#4ade80;">0</b></div>
+            <div class="psk-box"><span class="psk-lbl">🥅 Gol Subiti</span><b class="psk-val" style="color:#f87171;">12</b></div>
+            <div class="psk-box"><span class="psk-lbl">🛡️ % Parate</span><b class="psk-val" style="color:#38bdf8;">72%</b></div>
+            <div class="psk-box"><span class="psk-lbl">⏱️ Presenze</span><b class="psk-val" style="color:#fff;">3</b></div>
+        </div>
         </div>
 
-        <!-- Tab Panes -->
         
+    <div class="ppro-pct-card">
+        <div class="ppro-pct-head">
+            <div class="ppro-pct-eyebrow"><span class="ppro-pct-dash"></span> TOP 6 PUNTI DI FORZA &middot; SERIE A 2026/27</div>
+            <h3 class="ppro-pct-title">DOVE ECCELLE.</h3>
+            <div class="ppro-pct-sub">TURATI &middot; SASSUOLO 2026/27 &middot; 0 CLEAN SHEET &middot; 8 PARATE</div>
+        </div>
+        <div class="ppro-pct-scale-row">
+            <span class="ppro-pct-col-hdr">STATISTICA</span>
+            <div class="ppro-pct-scale">
+                <span>0</span>
+                <span class="ppro-pct-scale-mid">PERCENTILE IN SERIE A</span>
+                <span>100</span>
+            </div>
+            <span class="ppro-pct-col-hdr" style="text-align:right;">PCT</span>
+            <span class="ppro-pct-col-hdr" style="text-align:right;">POS. SERIE A</span>
+        </div>
+        <div class="ppro-pct-rows">
+            <div class="ppro-pct-row" title="MEDIA VOTO: 6.33 &mdash; 66&deg; percentile (9&deg; in Serie A su 26)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">MEDIA VOTO</span><span class="ppro-pct-raw">6.33</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 34% 0 0);"></span><span class="ppro-pct-dot" style="left:66%;background:#f59e0b;box-shadow:0 0 10px #f59e0b, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#f59e0b;">66</span><div class="ppro-pct-right"><span class="ppro-pct-pos">9&deg;</span></div></div><div class="ppro-pct-row" title="FANTAMEDIA: 4.33 &mdash; 28&deg; percentile (19&deg; in Serie A su 26)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">FANTAMEDIA</span><span class="ppro-pct-raw">4.33</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 72% 0 0);"></span><span class="ppro-pct-dot" style="left:28%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">28</span><div class="ppro-pct-right"><span class="ppro-pct-pos">19&deg;</span></div></div><div class="ppro-pct-row" title="PARATE TOTALI: 8 &mdash; 14&deg; percentile (25&deg; in Serie A su 29)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">PARATE TOTALI</span><span class="ppro-pct-raw">8</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 86% 0 0);"></span><span class="ppro-pct-dot" style="left:14%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">14</span><div class="ppro-pct-right"><span class="ppro-pct-pos">25&deg;</span></div></div><div class="ppro-pct-row" title="xFM ATTESA: 2.40 &mdash; 1&deg; percentile (29&deg; in Serie A su 29)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">xFM ATTESA</span><span class="ppro-pct-raw">2.40</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 99% 0 0);"></span><span class="ppro-pct-dot" style="left:1%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">1</span><div class="ppro-pct-right"><span class="ppro-pct-pos">29&deg;</span></div></div><div class="ppro-pct-row" title="CLEAN SHEET: 0 &mdash; 0&deg; percentile (22&deg; in Serie A su 29)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">CLEAN SHEET</span><span class="ppro-pct-raw">0</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 100% 0 0);"></span><span class="ppro-pct-dot" style="left:0%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">0</span><div class="ppro-pct-right"><span class="ppro-pct-pos">22&deg;</span></div></div><div class="ppro-pct-row" title="RATING LIVE: - &mdash; 0&deg; percentile"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">RATING LIVE</span><span class="ppro-pct-raw">-</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 100% 0 0);"></span><span class="ppro-pct-dot" style="left:0%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">0</span><div class="ppro-pct-right"><span class="ppro-pct-pos">-</span></div></div>
+        </div>
+        
+    <div class="ppro-simple-cta-wrap">
+        <button type="button" class="ppro-simple-cta-btn" onclick="setPlayerViewMode('full', 'advanced')">
+            <span>📊 Apri tutte le 10 statistiche, Radar &amp; xG</span>
+            <span>&rarr;</span>
+        </button>
+    </div>
+    </div>
+    
+
+        <div class="ppro-simple-card">
+            <div class="ppro-simple-card-head">
+                <div>
+                    <div class="ppro-section-eyebrow">AFFIDABILITÀ &amp; GERARCHIE</div>
+                    <h2 class="ppro-simple-h2">Stato Fisico e Ruolo nel Club</h2>
+                </div>
+                <button type="button" class="ppro-link-btn" onclick="setPlayerViewMode('full', 'tactics')">Cartella Clinica &rarr;</button>
+            </div>
+            <div class="ppro-simple-tactics-grid">
+                <div class="pst-box">
+                    <span class="pst-lbl">🩺 Disponibilità &amp; Tenuta</span>
+                    <div class="pst-main"><span class="ppro-pill green">🟢 Disponibile</span></div>
+                    <span class="pst-sub">Disponibilità storica: <b style="color:#f59e0b;">84%</b> &bull; Rischio AI: <b>20/100</b></span>
+                </div>
+                <div class="pst-box">
+                    <span class="pst-lbl">♟️ Status &amp; Gerarchie</span>
+                    <div class="pst-main"><span class="ppro-pill gold">⭐ Riserva P</span> <span class="ppro-pill slate">🔄 Alt.: <b>Muric</b></span></div>
+                    <span class="pst-sub">Modulo 4-3-3 (Roberto D&#39;Aversa) &bull; xFM Attesa: <b style="color:#38bdf8;">2.40</b></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- MODE 2: VISTA COMPLETA (3-Tab Pro Analytics) -->
+        <div id="playerView_full" style="display:none;">
+            <div class="profile-3tabs-nav" style="margin-top:16px;">
+                <button id="profileTabBtn_overview" class="profile-3tab-btn active" onclick="switchProfileTab('overview')">
+                    <span class="tab-icon">📊</span>
+                    <span class="tab-txt-desktop">Rendimento &amp; Voti</span>
+                    <span class="tab-txt-mobile">Voti &amp; KPI</span>
+                </button>
+                <button id="profileTabBtn_advanced" class="profile-3tab-btn" onclick="switchProfileTab('advanced')">
+                    <span class="tab-icon">🎯</span>
+                    <span class="tab-txt-desktop">Radar, xG &amp; Percentili</span>
+                    <span class="tab-txt-mobile">Radar &amp; Percentili</span>
+                </button>
+                <button id="profileTabBtn_tactics" class="profile-3tab-btn" onclick="switchProfileTab('tactics')">
+                    <span class="tab-icon">🩺</span>
+                    <span class="tab-txt-desktop">Fisica &amp; Gerarchie</span>
+                    <span class="tab-txt-mobile">Fisica &amp; Club</span>
+                </button>
+            </div>
+
+            <!-- Tab Panes -->
+            
     <div id="profileTabPane_overview" class="profile-tab-pane" style="display:block;">
         
         <div class="ppro-stat-strip-6">
@@ -361,11 +449,11 @@
             <div class="ppro-range-tri">
                 <div class="rt-box floor">
                     <span class="rt-lbl">🛡️ Base Min</span>
-                    <b class="rt-val">4.9</b>
+                    <b class="rt-val">4.5</b>
                 </div>
                 <div class="rt-box avg">
                     <span class="rt-lbl">🎯 Media xFM</span>
-                    <b class="rt-val" style="color:#38bdf8;">2.12</b>
+                    <b class="rt-val" style="color:#38bdf8;">2.40</b>
                 </div>
                 <div class="rt-box ceil">
                     <span class="rt-lbl">🚀 Picco Max</span>
@@ -375,8 +463,8 @@
             <div class="ppro-bars-compact">
                 <div class="pbc-row">
                     <span class="pbc-lbl">Titolarità</span>
-                    <div class="pbc-track"><div class="pbc-fill" style="width:52%;background:#f59e0b;"></div></div>
-                    <b class="pbc-val" style="color:#f59e0b;">52%</b>
+                    <div class="pbc-track"><div class="pbc-fill" style="width:43%;background:#ef4444;"></div></div>
+                    <b class="pbc-val" style="color:#ef4444;">43%</b>
                 </div>
                 <div class="pbc-row">
                     <span class="pbc-lbl">Tenuta Fisica</span>
@@ -395,7 +483,7 @@
             <div class="ppro-proj-grid">
                 <div class="pp-item">
                     <span class="pp-lbl">🧤 Clean Sheet Stimati</span>
-                    <b class="pp-val" style="color:#fbbf24;">3 - 9</b>
+                    <b class="pp-val" style="color:#fbbf24;">3 - 8</b>
                 </div>
                 <div class="pp-item">
                     <span class="pp-lbl">🛡️ Gol Subiti /90</span>
@@ -403,7 +491,7 @@
                 </div>
                 <div class="pp-item">
                     <span class="pp-lbl">⏱️ Gare a Voto</span>
-                    <b class="pp-val" style="color:#4ade80;">15 - 18</b>
+                    <b class="pp-val" style="color:#4ade80;">12 - 15</b>
                 </div>
                 <div class="pp-item">
                     <span class="pp-lbl">⚡ Voto da Sub</span>
@@ -608,7 +696,7 @@
                 </div>
             </div>
             <div class="reparto-item-right">
-                <span class="ovr-pill silver">OVR 61</span>
+                <span class="ovr-pill silver">OVR 60</span>
                 <span class="reparto-arrow">&rarr;</span>
             </div>
         </a>
@@ -621,7 +709,7 @@
                 </div>
             </div>
             <div class="reparto-item-right">
-                <span class="ovr-pill silver">OVR 50</span>
+                <span class="ovr-pill silver">OVR 48</span>
                 <span class="reparto-arrow">&rarr;</span>
             </div>
         </a>
@@ -634,15 +722,16 @@
                 </div>
             </div>
             <div class="reparto-item-right">
-                <span class="ovr-pill silver">OVR 50</span>
+                <span class="ovr-pill silver">OVR 48</span>
                 <span class="reparto-arrow">&rarr;</span>
             </div>
         </a>
         </div>
     </div>
     </div>
-        
+            
     <div id="profileTabPane_advanced" class="profile-tab-pane" style="display:none;">
+        <div class="ppro-section-eyebrow">PROFILO AVANZATO xG &amp; RADAR</div>
         <div class="ppro-radar-split">
             
     <div class="radar-chart-wrapper">
@@ -683,7 +772,7 @@
             </div>
             <div class="xg-box">
                 <span class="xg-lbl">📈 xFM Attesa</span>
-                <b class="xg-val" style="color:#00f2fe;">2.12</b>
+                <b class="xg-val" style="color:#00f2fe;">2.4</b>
                 <span class="xg-sub">FM: 4.33</span>
             </div>
         </div>
@@ -692,13 +781,37 @@
     <div class="team-ecosystem-bar">
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
             <span>🏟️ <b>Sassuolo:</b></span>
-            <span>Attacco <b style="color:#f472b6;">#9</b> (12.2 xG)</span>
+            <span>Attacco <b style="color:#f472b6;">#14</b> (14.2 xG)</span>
             <span>&bull;</span>
-            <span>Difesa <b style="color:#38bdf8;">#12</b> (12.4 xGA &bull; 0 CS)</span>
+            <span>Difesa <b style="color:#38bdf8;">#18</b> (22.1 xGA &bull; 0 CS)</span>
         </div>
     </div>
-    </div>
+        <div class="ppro-section-eyebrow" style="margin-top:20px;">CONFRONTO PERCENTILI SERIE A</div>
         
+    <div class="ppro-pct-card">
+        <div class="ppro-pct-head">
+            <div class="ppro-pct-eyebrow"><span class="ppro-pct-dash"></span> CONFRONTO SERIE A &middot; STAGIONE 2026/27</div>
+            <h3 class="ppro-pct-title">10 STATISTICHE.</h3>
+            <div class="ppro-pct-sub">TURATI &middot; SASSUOLO 2026/27 &middot; 0 CLEAN SHEET &middot; 8 PARATE</div>
+        </div>
+        <div class="ppro-pct-scale-row">
+            <span class="ppro-pct-col-hdr">STATISTICA</span>
+            <div class="ppro-pct-scale">
+                <span>0</span>
+                <span class="ppro-pct-scale-mid">PERCENTILE IN SERIE A</span>
+                <span>100</span>
+            </div>
+            <span class="ppro-pct-col-hdr" style="text-align:right;">PCT</span>
+            <span class="ppro-pct-col-hdr" style="text-align:right;">POS. SERIE A</span>
+        </div>
+        <div class="ppro-pct-rows">
+            <div class="ppro-pct-row" title="FANTAMEDIA: 4.33 &mdash; 28&deg; percentile (19&deg; in Serie A su 26)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">FANTAMEDIA</span><span class="ppro-pct-raw">4.33</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 72% 0 0);"></span><span class="ppro-pct-dot" style="left:28%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">28</span><div class="ppro-pct-right"><span class="ppro-pct-pos">19&deg;</span></div></div><div class="ppro-pct-row" title="xFM ATTESA: 2.40 &mdash; 1&deg; percentile (29&deg; in Serie A su 29)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">xFM ATTESA</span><span class="ppro-pct-raw">2.40</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 99% 0 0);"></span><span class="ppro-pct-dot" style="left:1%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">1</span><div class="ppro-pct-right"><span class="ppro-pct-pos">29&deg;</span></div></div><div class="ppro-pct-row" title="MEDIA VOTO: 6.33 &mdash; 66&deg; percentile (9&deg; in Serie A su 26)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">MEDIA VOTO</span><span class="ppro-pct-raw">6.33</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 34% 0 0);"></span><span class="ppro-pct-dot" style="left:66%;background:#f59e0b;box-shadow:0 0 10px #f59e0b, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#f59e0b;">66</span><div class="ppro-pct-right"><span class="ppro-pct-pos">9&deg;</span></div></div><div class="ppro-pct-row" title="RATING LIVE: - &mdash; 0&deg; percentile"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">RATING LIVE</span><span class="ppro-pct-raw">-</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 100% 0 0);"></span><span class="ppro-pct-dot" style="left:0%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">0</span><div class="ppro-pct-right"><span class="ppro-pct-pos">-</span></div></div><div class="ppro-pct-row" title="CLEAN SHEET: 0 &mdash; 0&deg; percentile (22&deg; in Serie A su 29)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">CLEAN SHEET</span><span class="ppro-pct-raw">0</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 100% 0 0);"></span><span class="ppro-pct-dot" style="left:0%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">0</span><div class="ppro-pct-right"><span class="ppro-pct-pos">22&deg;</span></div></div><div class="ppro-pct-row" title="% PARATE: - &mdash; 0&deg; percentile"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">% PARATE</span><span class="ppro-pct-raw">-</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 100% 0 0);"></span><span class="ppro-pct-dot" style="left:0%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">0</span><div class="ppro-pct-right"><span class="ppro-pct-pos">-</span></div></div><div class="ppro-pct-row" title="PARATE TOTALI: 8 &mdash; 14&deg; percentile (25&deg; in Serie A su 29)"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">PARATE TOTALI</span><span class="ppro-pct-raw">8</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 86% 0 0);"></span><span class="ppro-pct-dot" style="left:14%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">14</span><div class="ppro-pct-right"><span class="ppro-pct-pos">25&deg;</span></div></div><div class="ppro-pct-row" title="GOL EVITATI (xGOT): - &mdash; 0&deg; percentile"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">GOL EVITATI (xGOT)</span><span class="ppro-pct-raw">-</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 100% 0 0);"></span><span class="ppro-pct-dot" style="left:0%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">0</span><div class="ppro-pct-right"><span class="ppro-pct-pos">-</span></div></div><div class="ppro-pct-row" title="RECUPERI / 90': - &mdash; 0&deg; percentile"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">RECUPERI / 90'</span><span class="ppro-pct-raw">-</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 100% 0 0);"></span><span class="ppro-pct-dot" style="left:0%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">0</span><div class="ppro-pct-right"><span class="ppro-pct-pos">-</span></div></div><div class="ppro-pct-row" title="CONTRIBUTI DIFENSIVI: - &mdash; 0&deg; percentile"><div class="ppro-pct-lbl-wrap"><span class="ppro-pct-lbl">CONTRIBUTI DIFENSIVI</span><span class="ppro-pct-raw">-</span></div><div class="ppro-pct-track-wrap"><span class="ppro-pct-track"></span><span class="ppro-pct-fill" style="clip-path:inset(0 100% 0 0);"></span><span class="ppro-pct-dot" style="left:0%;background:#ef4444;box-shadow:0 0 10px #ef4444, 0 0 3px #ffffff;"></span></div><span class="ppro-pct-val" style="color:#ef4444;">0</span><div class="ppro-pct-right"><span class="ppro-pct-pos">-</span></div></div>
+        </div>
+        
+    </div>
+    
+    </div>
+            
     <div id="profileTabPane_tactics" class="profile-tab-pane" style="display:none;">
         
     <div class="ppro-health-grid-4">
@@ -734,7 +847,7 @@
             </div>
             <div class="tactics-meta-row">
                 <span class="lbl">Allenatore</span>
-                <b class="val">Alberto Aquilani</b>
+                <b class="val">Roberto D&#39;Aversa</b>
             </div>
             <div class="tactics-meta-row">
                 <span class="lbl">Modulo Base</span>
@@ -772,7 +885,7 @@
             </div>
             <div class="tactics-meta-row">
                 <span class="lbl">Titolarità</span>
-                <b class="val" style="color:#f59e0b;">52% (3/10 Tit (52%))</b>
+                <b class="val" style="color:#ef4444;">43% (3/11 Tit (43%))</b>
             </div>
             <div class="tactics-meta-row">
                 <span class="lbl">Alternativa</span>
@@ -785,11 +898,50 @@
         </div>
     </div>
     </div>
+        </div>
     </main>
 
-    <!-- Interactive Scripts for Tabs, Accordion & Season Inspector -->
+    <!-- Interactive Scripts for View Mode, Tabs, Accordion & Season Inspector -->
     <script>
     var VOTI_DATA = [{"giornata": 8, "voto": 6.0, "fantavoto": 4.0, "gf": 0.0, "gs": 2.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "-2 (2GS)", "opponent": "Como", "is_home": false, "match": "Sassuolo @ Como"}, {"giornata": 9, "voto": 7.0, "fantavoto": 7.0, "gf": 0.0, "gs": 6.0, "rp": 2.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "+6 (Rig.Par), -6 (6GS)", "opponent": "Lazio", "is_home": true, "match": "Sassuolo vs Lazio"}, {"giornata": 10, "voto": 6.0, "fantavoto": 2.0, "gf": 0.0, "gs": 4.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "-4 (4GS)", "opponent": "Fiorentina", "is_home": true, "match": "Sassuolo vs Fiorentina"}];
+
+    function setPlayerViewMode(mode, targetTab) {
+        var simpleEl = document.getElementById('playerView_simple');
+        var fullEl = document.getElementById('playerView_full');
+        var btnSimple = document.getElementById('btnViewMode_simple');
+        var btnFull = document.getElementById('btnViewMode_full');
+        var isFull = (mode === 'full');
+
+        if (simpleEl) simpleEl.style.display = isFull ? 'none' : 'block';
+        if (fullEl) fullEl.style.display = isFull ? 'block' : 'none';
+        if (btnSimple) btnSimple.classList.toggle('active', !isFull);
+        if (btnFull) btnFull.classList.toggle('active', isFull);
+
+        try { localStorage.setItem('fanta_player_view_mode', isFull ? 'full' : 'simple'); } catch(e) {}
+
+        if (isFull && targetTab) {
+            switchProfileTab(targetTab);
+            var navEl = document.querySelector('#playerView_full .profile-3tabs-nav');
+            if (navEl && navEl.scrollIntoView) {
+                navEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }
+
+    (function initPlayerViewMode() {
+        var mode = 'simple';
+        try {
+            var params = new URLSearchParams(window.location.search);
+            var qView = params.get('view');
+            if (qView === 'full' || qView === 'simple') {
+                mode = qView;
+            } else {
+                var saved = localStorage.getItem('fanta_player_view_mode');
+                if (saved === 'full' || saved === 'simple') mode = saved;
+            }
+        } catch(e) {}
+        setPlayerViewMode(mode);
+    })();
     
     function switchProfileTab(tabName) {
         var tabs = ['overview', 'advanced', 'tactics'];

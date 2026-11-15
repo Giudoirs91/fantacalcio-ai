@@ -2003,7 +2003,7 @@ def generate_match_editorial_summary(match_data, round_label):
 
     return f"""
     <div class="seo-summary-card">
-        <div class="seo-summary-badge">⚡ Sintesi Fatti Chiave &bull; Featured Snippet Google</div>
+        <div class="seo-summary-badge">⚡ Sintesi Match &bull; Dati Ufficiali</div>
         <h2 class="seo-summary-title">Sintesi Formazioni {clean_html(h_team)} - {clean_html(a_team)} ({clean_html(round_label)})</h2>
         <p class="seo-summary-text">
             Per la <b>{clean_html(round_label)}</b>, il <b>{clean_html(h_team)}</b> di {clean_html(h_coach)} affronta al {clean_html(stadium)} il <b>{clean_html(a_team)}</b> guidato da {clean_html(a_coach)}. 
@@ -2843,7 +2843,7 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
             <div class="seo-section-heading">
                 <span class="icon">❓</span>
                 <span>Domande Frequenti su Formazioni, Ballottaggi e Titolarità (FAQ)</span>
-                <span class="badge">Google Snippet</span>
+                <span class="badge">FAQ Rapide</span>
             </div>
             {hub_faq_html}
         </section>

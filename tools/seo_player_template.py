@@ -379,6 +379,224 @@ def compute_ai_seasonal_targets(player, slot_desc, prezzo_cons, max_bid):
         "price": f"{prezzo_cons} CR (Max {max_bid} CR)"
     }
 
+_PERCENTILE_POOL_CACHE = {}
+
+_OUTFIELD_PCT_METRICS = [
+    ("fm_2627", "FANTAMEDIA", 3, ".2f"),
+    ("xfm", "xFM ATTESA", 1, ".2f"),
+    ("mv_2627", "MEDIA VOTO", 3, ".2f"),
+    ("gol_2627", "GOL", 1, ".0f"),
+    ("assist_2627", "ASSIST", 1, ".0f"),
+    ("xg_2627", "EXPECTED GOALS (xG)", 1, ".2f"),
+    ("xa_2627", "EXPECTED ASSISTS (xA)", 1, ".2f"),
+    ("xgot_2627", "xGOT (QUALITÀ TIRO)", 1, ".2f"),
+    ("tiri_2627", "TIRI TOTALI", 1, ".0f"),
+    ("tiri_porta_2627", "TIRI IN PORTA", 1, ".0f"),
+    ("big_chances_created_2627", "GRANDI OCCASIONI CREATE", 1, ".0f"),
+    ("key_passes_2627", "PASSAGGI CHIAVE", 1, ".0f"),
+    ("chances_created_2627", "OCCASIONI CREATE", 1, ".0f"),
+    ("dribbles_2627", "DRIBBLING RIUSCITI", 1, ".0f"),
+    ("crosses_2627", "CROSS", 1, ".0f"),
+    ("falli_subiti_2627", "FALLI SUBITI", 1, ".0f"),
+    ("passaggi_riusciti_2627", "PASSAGGI RIUSCITI", 1, ".0f"),
+    ("passaggi_avanti_2627", "PASSAGGI IN AVANTI", 1, ".0f"),
+    ("passes_final_third_2627", "PASSAGGI ULTIMO TERZO", 1, ".0f"),
+    ("recuperi_2627", "PALLE RECUPERATE", 1, ".0f"),
+]
+
+_GK_PCT_METRICS = [
+    ("fm_2627", "FANTAMEDIA", 3, ".2f"),
+    ("xfm", "xFM ATTESA", 1, ".2f"),
+    ("mv_2627", "MEDIA VOTO", 3, ".2f"),
+    ("rating_live_2627", "RATING LIVE", 3, ".2f"),
+    ("clean_sheets_2627", "CLEAN SHEET", 1, ".0f"),
+    ("save_pct_2627", "% PARATE", 3, ".1f"),
+    ("parate_2627", "PARATE TOTALI", 1, ".0f"),
+    ("goals_prevented_2627", "GOL EVITATI (xGOT)", 1, ".2f"),
+    ("ball_recovery_stat_2627", "RECUPERI / 90'", 3, ".1f"),
+    ("defensive_contributions_2627", "CONTRIBUTI DIFENSIVI", 3, ".1f"),
+]
+
+def _get_serie_a_percentile_pools(all_players):
+    """Build and cache sorted Serie A metric distributions for percentile & rank calculation."""
+    cache_key = id(all_players)
+    if cache_key in _PERCENTILE_POOL_CACHE:
+        return _PERCENTILE_POOL_CACHE[cache_key]
+
+    pools = {"OUT": {}, "GK": {}}
+    for group_key, metrics, is_gk in [
+        ("OUT", _OUTFIELD_PCT_METRICS, False),
+        ("GK", _GK_PCT_METRICS, True),
+    ]:
+        group_players = [
+            p for p in all_players
+            if (p.get("role") == "P") == is_gk and (p.get("presenze_2627") or 0) >= 1
+        ]
+        for key, _lbl, min_matches, _fmt in metrics:
+            eligible = [
+                p for p in group_players
+                if (p.get("partite_voto_2627") or 0) >= min_matches and p.get(key) is not None
+            ]
+            if len(eligible) < 5:
+                eligible = [p for p in group_players if p.get(key) is not None]
+            vals = sorted(float(p.get(key) or 0.0) for p in eligible)
+            pools[group_key][key] = vals
+
+    _PERCENTILE_POOL_CACHE[cache_key] = pools
+    return pools
+
+def render_percentile_lollipop_table(player, all_players, limit=None, cta_html=""):
+    """Render the Serie A 0-100 percentile lollipop table with Top-10 gold badges."""
+    if not all_players:
+        return ""
+
+    from bisect import bisect_left, bisect_right
+
+    is_gk = player.get("role") == "P"
+    group_key = "GK" if is_gk else "OUT"
+    metrics = _GK_PCT_METRICS if is_gk else _OUTFIELD_PCT_METRICS
+    top_rank_cutoff = 5 if is_gk else 10
+    pools = _get_serie_a_percentile_pools(all_players)[group_key]
+
+    player_name = clean_html((player.get("name") or "").upper())
+    team_name = clean_html((player.get("team") or "").upper())
+    pv_count = int(player.get("partite_voto_2627") or 0)
+    pres_count = int(player.get("presenze_2627") or 0)
+
+    if is_gk:
+        cs_v = int(player.get("clean_sheets_2627") or 0)
+        par_v = int(player.get("parate_2627") or 0)
+        sub_stats = f"{cs_v} CLEAN SHEET &middot; {par_v} PARATE"
+    else:
+        gol_v = int(player.get("gol_2627") or 0)
+        ass_v = int(player.get("assist_2627") or 0)
+        sub_stats = f"{gol_v} GOL &middot; {ass_v} ASSIST"
+
+    computed_rows = []
+    for key, label, min_matches, val_fmt in metrics:
+        pool_vals = pools.get(key) or []
+        n_pool = len(pool_vals)
+        raw_val = player.get(key)
+
+        if raw_val is None or n_pool < 2 or pres_count < 1:
+            val_num = 0.0
+            pct = 0
+            rank = None
+            raw_str = "-"
+        else:
+            val_num = float(raw_val)
+            raw_str = f"{val_num:{val_fmt}}" + ("%" if key == "save_pct_2627" else "")
+            less = bisect_left(pool_vals, val_num)
+            right = bisect_right(pool_vals, val_num)
+            strictly_greater = n_pool - right
+            rank = strictly_greater + 1
+            if val_num <= 0 and min(pool_vals) >= 0:
+                pct = 0
+            else:
+                equal = right - less
+                raw_pct = ((less + 0.5 * max(0, equal - 1)) / max(1, n_pool - 1)) * 100.0
+                pct = max(1, min(100, int(round(raw_pct))))
+
+        is_top = (
+            rank is not None
+            and rank <= top_rank_cutoff
+            and val_num > 0
+            and (min_matches <= 1 or pv_count >= min_matches)
+        )
+        computed_rows.append({
+            "label": label,
+            "raw_str": raw_str,
+            "pct": pct,
+            "rank": rank,
+            "n_pool": n_pool,
+            "is_top": is_top,
+        })
+
+    if limit is not None:
+        computed_rows = sorted(
+            computed_rows,
+            key=lambda r: (1 if r["is_top"] else 0, r["pct"], -(r["rank"] or 9999)),
+            reverse=True,
+        )[:limit]
+
+    rows_html = []
+    for item in computed_rows:
+        pct = item["pct"]
+        rank = item["rank"]
+        n_pool = item["n_pool"]
+        is_top = item["is_top"]
+        label = item["label"]
+        raw_str = item["raw_str"]
+
+        top_cls = " is-top10" if is_top else ""
+        if is_top:
+            dot_color = "#fbbf24"
+        elif pct >= 70:
+            dot_color = "#10b981"
+        elif pct >= 40:
+            dot_color = "#f59e0b"
+        else:
+            dot_color = "#ef4444"
+
+        pos_html = (
+            f'<span class="ppro-pct-rank-pill">{rank}&deg; IN SERIE A</span>'
+            if is_top
+            else (f'<span class="ppro-pct-pos">{rank}&deg;</span>' if rank is not None else '<span class="ppro-pct-pos">-</span>')
+        )
+        rank_title = f" ({rank}&deg; in Serie A su {n_pool})" if rank is not None else ""
+        tooltip = f"{label}: {raw_str} &mdash; {pct}&deg; percentile{rank_title}"
+
+        rows_html.append(
+            f'<div class="ppro-pct-row{top_cls}" title="{tooltip}">'
+            f'<div class="ppro-pct-lbl-wrap">'
+            f'<span class="ppro-pct-lbl">{label}</span>'
+            f'<span class="ppro-pct-raw">{raw_str}</span>'
+            f'</div>'
+            f'<div class="ppro-pct-track-wrap">'
+            f'<span class="ppro-pct-track"></span>'
+            f'<span class="ppro-pct-fill" style="clip-path:inset(0 {100 - pct}% 0 0);"></span>'
+            f'<span class="ppro-pct-dot" style="left:{pct}%;background:{dot_color};box-shadow:0 0 10px {dot_color}, 0 0 3px #ffffff;"></span>'
+            f'</div>'
+            f'<span class="ppro-pct-val" style="color:{dot_color};">{pct}</span>'
+            f'<div class="ppro-pct-right">{pos_html}</div>'
+            f'</div>'
+        )
+
+    eyebrow_txt = (
+        f"TOP {len(computed_rows)} PUNTI DI FORZA &middot; SERIE A 2026/27"
+        if limit is not None
+        else "CONFRONTO SERIE A &middot; STAGIONE 2026/27"
+    )
+    title_txt = (
+        f"DOVE ECCELLE."
+        if limit is not None
+        else f"{len(computed_rows)} STATISTICHE."
+    )
+
+    return f"""
+    <div class="ppro-pct-card">
+        <div class="ppro-pct-head">
+            <div class="ppro-pct-eyebrow"><span class="ppro-pct-dash"></span> {eyebrow_txt}</div>
+            <h3 class="ppro-pct-title">{title_txt}</h3>
+            <div class="ppro-pct-sub">{player_name} &middot; {team_name} 2026/27 &middot; {sub_stats}</div>
+        </div>
+        <div class="ppro-pct-scale-row">
+            <span class="ppro-pct-col-hdr">STATISTICA</span>
+            <div class="ppro-pct-scale">
+                <span>0</span>
+                <span class="ppro-pct-scale-mid">PERCENTILE IN SERIE A</span>
+                <span>100</span>
+            </div>
+            <span class="ppro-pct-col-hdr" style="text-align:right;">PCT</span>
+            <span class="ppro-pct-col-hdr" style="text-align:right;">POS. SERIE A</span>
+        </div>
+        <div class="ppro-pct-rows">
+            {''.join(rows_html)}
+        </div>
+        {cta_html}
+    </div>
+    """
+
 def render_reparto_teammates(player, all_players):
     if not all_players:
         return ""
@@ -1112,13 +1330,107 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
         </div>
     </div>""" if tCtx and tCtx.get("xg_team") else ""
 
+    percentile_lollipop_html = render_percentile_lollipop_table(player, all_players)
+
     tab_advanced_html = f"""
     <div id="profileTabPane_advanced" class="profile-tab-pane" style="display:none;">
+        <div class="ppro-section-eyebrow">PROFILO AVANZATO xG &amp; RADAR</div>
         <div class="ppro-radar-split">
             {radar_chart_html}
             {xg_grid_6_html}
         </div>
         {team_stats_html}
+        <div class="ppro-section-eyebrow" style="margin-top:20px;">CONFRONTO PERCENTILI SERIE A</div>
+        {percentile_lollipop_html}
+    </div>"""
+
+    # VISTA ESSENZIALE (SIMPLE MODE): Solo le info più importanti con gerarchia netta
+    recent_5 = [v for v in voti_list if v.get("voto") is not None][-5:]
+    recent_chips_html = ""
+    if recent_5:
+        chips = []
+        for m in reversed(recent_5):
+            g_num = m.get("giornata", "-")
+            v_val = float(m["voto"])
+            fv_val = float(m.get("fantavoto") if m.get("fantavoto") is not None else v_val)
+            opp_short = clean_html((m.get("opponent") or "VS")[:10])
+            fv_cls = "chip-great" if fv_val >= 8.0 else ("chip-good" if fv_val >= 6.5 else ("chip-warn" if fv_val >= 5.5 else "chip-bad"))
+            bm_mini = compute_bonus_malus_str(m)
+            chips.append(
+                f'<div class="ppro-form-chip {fv_cls}" title="G{g_num} vs {opp_short}: Voto {v_val} | FV {fv_val} ({clean_html(bm_mini)})">'
+                f'<div class="fc-top"><span>G{g_num}</span><span>{opp_short}</span></div>'
+                f'<div class="fc-fv">{fv_val:.1f}</div>'
+                f'<div class="fc-v">Voto {v_val:.1f}</div>'
+                f'</div>'
+            )
+        recent_chips_html = "".join(chips)
+    else:
+        recent_chips_html = '<div class="ppro-empty-note">Nessuna gara a voto registrata finora nel 2026/27.</div>'
+
+    if role == 'P':
+        simple_4_stats_html = f"""
+        <div class="ppro-simple-kpi-4">
+            <div class="psk-box"><span class="psk-lbl">🧤 Clean Sheet</span><b class="psk-val" style="color:#4ade80;">{int(player.get('clean_sheets_2627') or 0)}</b></div>
+            <div class="psk-box"><span class="psk-lbl">🥅 Gol Subiti</span><b class="psk-val" style="color:#f87171;">{int(player.get('gol_subiti_2627') or 0)}</b></div>
+            <div class="psk-box"><span class="psk-lbl">🛡️ % Parate</span><b class="psk-val" style="color:#38bdf8;">{player.get('save_pct_2627') or 72}%</b></div>
+            <div class="psk-box"><span class="psk-lbl">⏱️ Presenze</span><b class="psk-val" style="color:#fff;">{pres_2627}</b></div>
+        </div>"""
+    else:
+        simple_4_stats_html = f"""
+        <div class="ppro-simple-kpi-4">
+            <div class="psk-box"><span class="psk-lbl">⚽ Gol</span><b class="psk-val" style="color:#fbbf24;">{int(player.get('gol_2627') or 0)}</b></div>
+            <div class="psk-box"><span class="psk-lbl">🪄 Assist</span><b class="psk-val" style="color:#38bdf8;">{int(player.get('assist_2627') or 0)}</b></div>
+            <div class="psk-box"><span class="psk-lbl">⏱️ Presenze</span><b class="psk-val" style="color:#fff;">{pres_2627}</b></div>
+            <div class="psk-box"><span class="psk-lbl">✅ Sufficienze</span><b class="psk-val" style="color:#34d399;">{suff_pct}%</b></div>
+        </div>"""
+
+    total_stat_cnt = len(_GK_PCT_METRICS) if role == 'P' else len(_OUTFIELD_PCT_METRICS)
+    simple_cta_html = f"""
+    <div class="ppro-simple-cta-wrap">
+        <button type="button" class="ppro-simple-cta-btn" onclick="setPlayerViewMode('full', 'advanced')">
+            <span>📊 Apri tutte le {total_stat_cnt} statistiche, Radar &amp; xG</span>
+            <span>&rarr;</span>
+        </button>
+    </div>"""
+    simple_top_pct_html = render_percentile_lollipop_table(player, all_players, limit=6, cta_html=simple_cta_html)
+
+    simple_view_html = f"""
+    <div id="playerView_simple" class="ppro-simple-wrap">
+        <div class="ppro-simple-card">
+            <div class="ppro-simple-card-head">
+                <div>
+                    <div class="ppro-section-eyebrow">FORMA RECENTE &amp; OUTPUT</div>
+                    <h2 class="ppro-simple-h2">Ultime Giornate &amp; Numeri Chiave</h2>
+                </div>
+                <button type="button" class="ppro-link-btn" onclick="setPlayerViewMode('full', 'overview')">Storico 38G &rarr;</button>
+            </div>
+            <div class="ppro-form-strip">{recent_chips_html}</div>
+            {simple_4_stats_html}
+        </div>
+
+        {simple_top_pct_html}
+
+        <div class="ppro-simple-card">
+            <div class="ppro-simple-card-head">
+                <div>
+                    <div class="ppro-section-eyebrow">AFFIDABILITÀ &amp; GERARCHIE</div>
+                    <h2 class="ppro-simple-h2">Stato Fisico e Ruolo nel Club</h2>
+                </div>
+                <button type="button" class="ppro-link-btn" onclick="setPlayerViewMode('full', 'tactics')">Cartella Clinica &rarr;</button>
+            </div>
+            <div class="ppro-simple-tactics-grid">
+                <div class="pst-box">
+                    <span class="pst-lbl">🩺 Disponibilità &amp; Tenuta</span>
+                    <div class="pst-main">{inj_badge}</div>
+                    <span class="pst-sub">Disponibilità storica: <b style="color:{disp_color};">{disp_pct}%</b> &bull; Rischio AI: <b>{frag_score}/100</b></span>
+                </div>
+                <div class="pst-box">
+                    <span class="pst-lbl">♟️ Status &amp; Gerarchie</span>
+                    <div class="pst-main">{rig_badge if rig_badge else f'<span class="ppro-pill gold">⭐ {clean_html(slot_desc)}</span>'} {coppia_badge}</div>
+                    <span class="pst-sub">Modulo {clean_html(modulo)} ({clean_html(mister)}) &bull; xFM Attesa: <b style="color:#38bdf8;">{xfm_data['xfm']:.2f}</b></span>
+                </div>
+            </div>
+        </div>
     </div>"""
 
     # TAB 3: FISICA, INFORTUNI & GERARCHIE TATTICHE (Zero Muri di Testo)
@@ -1378,7 +1690,20 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
             <a href="../../probabili-formazioni/{team_slug}/" class="ppro-back-link">Top 11 {clean_html(team)} &rarr;</a>
         </div>
 
-        <!-- PRO PLAYER HERO CARD (VISUAL, ZERO-FLUFF, MOBILE-FIRST) -->
+        <!-- View Mode Switcher (Essenziale vs Completa) -->
+        <div class="ppro-mode-bar">
+            <span class="ppro-mode-hint">Modalità scheda:</span>
+            <div class="ppro-mode-switch" role="tablist" aria-label="Modalità visualizzazione scheda">
+                <button type="button" id="btnViewMode_simple" class="ppro-mode-btn active" onclick="setPlayerViewMode('simple')">
+                    <span>⚡</span> Vista Essenziale
+                </button>
+                <button type="button" id="btnViewMode_full" class="ppro-mode-btn" onclick="setPlayerViewMode('full')">
+                    <span>🔬</span> Vista Completa
+                </button>
+            </div>
+        </div>
+
+        <!-- PRO PLAYER HERO CARD (VISUAL HIERARCHY, MOBILE-FIRST) -->
         <div class="ppro-hero-card">
             <div class="ppro-hero-top">
                 <div class="ppro-identity">
@@ -1411,27 +1736,27 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                 {coppia_badge}
             </div>
 
-            <!-- 4 Equal KPI Boxes -->
-            <div class="ppro-kpi-4">
-                <div class="ppro-kpi-box">
+            <!-- 3 Primary Hero Pillars (Clear Visual Weight) -->
+            <div class="ppro-kpi-3-hero">
+                <div class="ppro-kpi-pillar is-primary">
                     <span class="pk-lbl">FANTAMEDIA</span>
                     <b class="pk-val" style="color:#fbbf24;">{fm_val_str}</b>
-                    <span class="pk-sub">MV: <b>{mv_val_str}</b></span>
+                    <div class="pk-meta-row">
+                        <span>MV <b>{mv_val_str}</b></span>
+                        <span>&bull;</span>
+                        <span>xFM <b style="color:#38bdf8;">{xfm_data['xfm']:.2f}</b> {xfm_delta_pill}</span>
+                    </div>
                 </div>
-                <div class="ppro-kpi-box">
-                    <span class="pk-lbl">xFM ATTESA</span>
-                    <b class="pk-val" style="color:#38bdf8;">{xfm_data['xfm']:.2f}</b>
-                    <span class="pk-sub">{xfm_delta_pill}</span>
-                </div>
-                <div class="ppro-kpi-box">
+                <div class="ppro-kpi-pillar">
                     <span class="pk-lbl">TITOLARITÀ</span>
                     <b class="pk-val" style="color:{tit_color};">{titolarita}%</b>
+                    <div class="pk-tit-bar"><span style="width:{min(100, max(0, int(titolarita)))}%;background:{tit_color};"></span></div>
                     <span class="pk-sub">{clean_html(titolarita_desc)}</span>
                 </div>
-                <div class="ppro-kpi-box">
+                <div class="ppro-kpi-pillar">
                     <span class="pk-lbl">VALORE ASTA</span>
                     <b class="pk-val" style="color:#fff;">{prezzo_cons} <small>CR</small></b>
-                    <span class="pk-sub">FVM <b>{fvm}</b> &bull; Max {max_bid}</span>
+                    <span class="pk-sub">FVM <b>{fvm}</b> &bull; Max <b>{max_bid} CR</b></span>
                 </div>
             </div>
 
@@ -1447,34 +1772,77 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
             </div>
         </div>
 
-        <!-- Clean 3-Tab Switcher -->
-        <div class="profile-3tabs-nav" style="margin-top:14px;">
-            <button id="profileTabBtn_overview" class="profile-3tab-btn active" onclick="switchProfileTab('overview')">
-                <span class="tab-icon">📊</span>
-                <span class="tab-txt-desktop">Rendimento &amp; Voti</span>
-                <span class="tab-txt-mobile">Voti &amp; KPI</span>
-            </button>
-            <button id="profileTabBtn_advanced" class="profile-3tab-btn" onclick="switchProfileTab('advanced')">
-                <span class="tab-icon">🎯</span>
-                <span class="tab-txt-desktop">Radar &amp; Statistiche xG</span>
-                <span class="tab-txt-mobile">Radar &amp; xG</span>
-            </button>
-            <button id="profileTabBtn_tactics" class="profile-3tab-btn" onclick="switchProfileTab('tactics')">
-                <span class="tab-icon">🩺</span>
-                <span class="tab-txt-desktop">Fisica &amp; Gerarchie</span>
-                <span class="tab-txt-mobile">Fisica &amp; Club</span>
-            </button>
-        </div>
+        <!-- MODE 1: VISTA ESSENZIALE (Default) -->
+        {simple_view_html}
 
-        <!-- Tab Panes -->
-        {tab_overview_html}
-        {tab_advanced_html}
-        {tab_tactics_html}
+        <!-- MODE 2: VISTA COMPLETA (3-Tab Pro Analytics) -->
+        <div id="playerView_full" style="display:none;">
+            <div class="profile-3tabs-nav" style="margin-top:16px;">
+                <button id="profileTabBtn_overview" class="profile-3tab-btn active" onclick="switchProfileTab('overview')">
+                    <span class="tab-icon">📊</span>
+                    <span class="tab-txt-desktop">Rendimento &amp; Voti</span>
+                    <span class="tab-txt-mobile">Voti &amp; KPI</span>
+                </button>
+                <button id="profileTabBtn_advanced" class="profile-3tab-btn" onclick="switchProfileTab('advanced')">
+                    <span class="tab-icon">🎯</span>
+                    <span class="tab-txt-desktop">Radar, xG &amp; Percentili</span>
+                    <span class="tab-txt-mobile">Radar &amp; Percentili</span>
+                </button>
+                <button id="profileTabBtn_tactics" class="profile-3tab-btn" onclick="switchProfileTab('tactics')">
+                    <span class="tab-icon">🩺</span>
+                    <span class="tab-txt-desktop">Fisica &amp; Gerarchie</span>
+                    <span class="tab-txt-mobile">Fisica &amp; Club</span>
+                </button>
+            </div>
+
+            <!-- Tab Panes -->
+            {tab_overview_html}
+            {tab_advanced_html}
+            {tab_tactics_html}
+        </div>
     </main>
 
-    <!-- Interactive Scripts for Tabs, Accordion & Season Inspector -->
+    <!-- Interactive Scripts for View Mode, Tabs, Accordion & Season Inspector -->
     <script>
     var VOTI_DATA = {json.dumps(voti_list, ensure_ascii=False)};
+
+    function setPlayerViewMode(mode, targetTab) {{
+        var simpleEl = document.getElementById('playerView_simple');
+        var fullEl = document.getElementById('playerView_full');
+        var btnSimple = document.getElementById('btnViewMode_simple');
+        var btnFull = document.getElementById('btnViewMode_full');
+        var isFull = (mode === 'full');
+
+        if (simpleEl) simpleEl.style.display = isFull ? 'none' : 'block';
+        if (fullEl) fullEl.style.display = isFull ? 'block' : 'none';
+        if (btnSimple) btnSimple.classList.toggle('active', !isFull);
+        if (btnFull) btnFull.classList.toggle('active', isFull);
+
+        try {{ localStorage.setItem('fanta_player_view_mode', isFull ? 'full' : 'simple'); }} catch(e) {{}}
+
+        if (isFull && targetTab) {{
+            switchProfileTab(targetTab);
+            var navEl = document.querySelector('#playerView_full .profile-3tabs-nav');
+            if (navEl && navEl.scrollIntoView) {{
+                navEl.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+            }}
+        }}
+    }}
+
+    (function initPlayerViewMode() {{
+        var mode = 'simple';
+        try {{
+            var params = new URLSearchParams(window.location.search);
+            var qView = params.get('view');
+            if (qView === 'full' || qView === 'simple') {{
+                mode = qView;
+            }} else {{
+                var saved = localStorage.getItem('fanta_player_view_mode');
+                if (saved === 'full' || saved === 'simple') mode = saved;
+            }}
+        }} catch(e) {{}}
+        setPlayerViewMode(mode);
+    }})();
     
     function switchProfileTab(tabName) {{
         var tabs = ['overview', 'advanced', 'tactics'];

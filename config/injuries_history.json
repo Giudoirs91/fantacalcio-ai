@@ -5,28 +5,18 @@
       "name": "Svilar",
       "team": "Roma",
       "ruolo": "P",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Frattura a un dito del piede",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "traumatico",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "De Marzi": {
       "id": 7048,
@@ -369,17 +359,17 @@
       "name": "Rensch",
       "team": "Roma",
       "ruolo": "D",
-      "partite_saltate_totali": 2,
+      "partite_saltate_totali": 5,
       "partite_saltate_2025_26": 2,
-      "giorni_stop_totali": 27,
-      "disponibilita_pct": 94.7,
+      "giorni_stop_totali": 57,
+      "disponibilita_pct": 86.8,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 14.0,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 42.5,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 5 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -400,6 +390,15 @@
           "giornate": [
             22
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Risentimento muscolare al flessore sinistro",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "21/11/2026",
+          "in_corso": true
         }
       ]
     },
@@ -426,28 +425,18 @@
       "name": "Ziolkowski",
       "team": "Roma",
       "ruolo": "D",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Fascite plantare",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "medico",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Lulli": {
       "id": 7599,
@@ -499,17 +488,17 @@
       "name": "Konè M.",
       "team": "Roma",
       "ruolo": "C",
-      "partite_saltate_totali": 12,
+      "partite_saltate_totali": 9,
       "partite_saltate_2025_26": 9,
-      "giorni_stop_totali": 250,
-      "disponibilita_pct": 68.4,
+      "giorni_stop_totali": 70,
+      "disponibilita_pct": 76.3,
       "recidive_muscolari": 2,
-      "indice_fragilita_score": 89.0,
-      "livello_fragilita": "CRISTALLO",
-      "fragility_label": "🚨 Cristallo (Altissimo Rischio)",
-      "fragility_badge": "cristallo",
-      "consiglio_medico_ai": "Altissimo rischio infortuni o lungo degenza in corso. Prezzo d'asta da svalutare fortemente e obbligo assoluto di copertura.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 69.5,
+      "livello_fragilita": "FRAGILE",
+      "fragility_label": "🔴 Fragile (Rischio Elevato)",
+      "fragility_badge": "fragile",
+      "consiglio_medico_ai": "Profilo a rischio elevato: 9 partite saltate con 2 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -546,15 +535,6 @@
           "giornate": [
             37
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione di primo grado al bicipite femorale destro",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -563,17 +543,17 @@
       "name": "Pellegrini Lo.",
       "team": "Roma",
       "ruolo": "C",
-      "partite_saltate_totali": 14,
+      "partite_saltate_totali": 11,
       "partite_saltate_2025_26": 11,
-      "giorni_stop_totali": 264,
-      "disponibilita_pct": 63.2,
+      "giorni_stop_totali": 84,
+      "disponibilita_pct": 71.1,
       "recidive_muscolari": 2,
-      "indice_fragilita_score": 89.0,
-      "livello_fragilita": "CRISTALLO",
-      "fragility_label": "🚨 Cristallo (Altissimo Rischio)",
-      "fragility_badge": "cristallo",
-      "consiglio_medico_ai": "Altissimo rischio infortuni o lungo degenza in corso. Prezzo d'asta da svalutare fortemente e obbligo assoluto di copertura.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 74.0,
+      "livello_fragilita": "FRAGILE",
+      "fragility_label": "🔴 Fragile (Rischio Elevato)",
+      "fragility_badge": "fragile",
+      "consiglio_medico_ai": "Profilo a rischio elevato: 11 partite saltate con 2 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -612,15 +592,6 @@
             37,
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione di alto grado in corrispondenza della giunzione muscolo - tendinea distale del muscolo semitendinoso della coscia destra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "20/12/2026",
-          "in_corso": true
         }
       ]
     },
@@ -701,17 +672,17 @@
       "name": "Dybala",
       "team": "Roma",
       "ruolo": "A",
-      "partite_saltate_totali": 17,
+      "partite_saltate_totali": 14,
       "partite_saltate_2025_26": 14,
-      "giorni_stop_totali": 288,
-      "disponibilita_pct": 55.3,
+      "giorni_stop_totali": 108,
+      "disponibilita_pct": 63.2,
       "recidive_muscolari": 1,
-      "indice_fragilita_score": 77.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 17 partite saltate con 1 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 62.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 14 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -762,15 +733,6 @@
             32,
             33
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione al gemello del polpaccio destro",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "08/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -1187,28 +1149,18 @@
       "name": "Pavard",
       "team": "Inter",
       "ruolo": "D",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Risentimento agli adduttori della coscia destra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "08/11/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Calhanoglu": {
       "id": 2194,
@@ -1318,17 +1270,17 @@
       "name": "Jones C.",
       "team": "Inter",
       "ruolo": "C",
-      "partite_saltate_totali": 8,
+      "partite_saltate_totali": 5,
       "partite_saltate_2025_26": 5,
-      "giorni_stop_totali": 60,
-      "disponibilita_pct": 78.9,
+      "giorni_stop_totali": 30,
+      "disponibilita_pct": 86.8,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 56.0,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 8 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 27.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (5 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -1337,15 +1289,6 @@
           "giorni_stop": 30,
           "tipo": "medico",
           "giornate": []
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Risentimento miofasciale agli adduttori della coscia destra",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "muscolare",
-          "rientro_previsto": "29/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -1491,35 +1434,45 @@
       "name": "Stankovic A.",
       "team": "Inter",
       "ruolo": "C",
-      "partite_saltate_totali": 0,
+      "partite_saltate_totali": 3,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 0,
-      "disponibilita_pct": 100,
+      "giorni_stop_totali": 30,
+      "disponibilita_pct": 92.1,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 5.0,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
-      "cronistoria_infortuni": []
+      "indice_fragilita_score": 33.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": true,
+      "cronistoria_infortuni": [
+        {
+          "stagione": "2026/27",
+          "motivo": "Lesione del muscolo adduttore della coscia destra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "05/12/2026",
+          "in_corso": true
+        }
+      ]
     },
     "Martinez L.": {
       "id": 2764,
       "name": "Martinez L.",
       "team": "Inter",
       "ruolo": "A",
-      "partite_saltate_totali": 8,
+      "partite_saltate_totali": 5,
       "partite_saltate_2025_26": 5,
-      "giorni_stop_totali": 222,
-      "disponibilita_pct": 78.9,
+      "giorni_stop_totali": 42,
+      "disponibilita_pct": 86.8,
       "recidive_muscolari": 1,
-      "indice_fragilita_score": 68.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 8 partite saltate con 1 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 39.5,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 5 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -1543,15 +1496,6 @@
           "giornate": [
             33
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Risentimento muscolare ai flessori della coscia sinistra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -1562,7 +1506,7 @@
       "ruolo": "A",
       "partite_saltate_totali": 9,
       "partite_saltate_2025_26": 6,
-      "giorni_stop_totali": 221,
+      "giorni_stop_totali": 71,
       "disponibilita_pct": 76.3,
       "recidive_muscolari": 0,
       "indice_fragilita_score": 60.5,
@@ -1598,11 +1542,11 @@
         },
         {
           "stagione": "2026/27",
-          "motivo": "Sindrome femoro-rotulea e",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "medico",
-          "rientro_previsto": "31/01/2027",
+          "motivo": "Risentimento al muscolo ischiocrurale e al flessore della coscia destra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "22/11/2026",
           "in_corso": true
         }
       ]
@@ -1641,17 +1585,17 @@
       "name": "Bonny",
       "team": "Inter",
       "ruolo": "A",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 6,
       "partite_saltate_2025_26": 3,
-      "giorni_stop_totali": 27,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 57,
+      "disponibilita_pct": 84.2,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 18.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 47.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 6 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -1673,6 +1617,15 @@
             16,
             17
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Risentimento muscolare ai flessori della coscia destra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "10/12/2026",
+          "in_corso": true
         }
       ]
     }
@@ -1737,17 +1690,17 @@
       "name": "Scalvini",
       "team": "Atalanta",
       "ruolo": "D",
-      "partite_saltate_totali": 12,
+      "partite_saltate_totali": 9,
       "partite_saltate_2025_26": 9,
-      "giorni_stop_totali": 102,
-      "disponibilita_pct": 68.4,
+      "giorni_stop_totali": 72,
+      "disponibilita_pct": 76.3,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 65.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 12 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 45.5,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 9 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -1784,15 +1737,6 @@
           "giornate": [
             28
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Distrazione di basso grado dei muscoli flessori della gamba sinistra",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "muscolare",
-          "rientro_previsto": "29/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -1801,17 +1745,17 @@
       "name": "Hien",
       "team": "Atalanta",
       "ruolo": "D",
-      "partite_saltate_totali": 8,
+      "partite_saltate_totali": 5,
       "partite_saltate_2025_26": 5,
-      "giorni_stop_totali": 213,
-      "disponibilita_pct": 78.9,
+      "giorni_stop_totali": 33,
+      "disponibilita_pct": 86.8,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 56.0,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 8 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 27.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (5 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -1844,15 +1788,6 @@
             32,
             33
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione del tendine prossimale del muscolo semimembranoso della coscia sinistra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -1879,17 +1814,17 @@
       "name": "Kristensen T.",
       "team": "Atalanta",
       "ruolo": "D",
-      "partite_saltate_totali": 8,
+      "partite_saltate_totali": 11,
       "partite_saltate_2025_26": 8,
-      "giorni_stop_totali": 56,
-      "disponibilita_pct": 78.9,
+      "giorni_stop_totali": 86,
+      "disponibilita_pct": 71.1,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 41.0,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 8 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 65.0,
+      "livello_fragilita": "FRAGILE",
+      "fragility_label": "🔴 Fragile (Rischio Elevato)",
+      "fragility_badge": "fragile",
+      "consiglio_medico_ai": "Profilo a rischio elevato: 11 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -1907,6 +1842,15 @@
             12,
             13
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Trauma distorsivo alla caviglia sinistra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "articolare",
+          "rientro_previsto": "22/11/2026",
+          "in_corso": true
         }
       ]
     },
@@ -2024,17 +1968,17 @@
       "name": "Kolasinac",
       "team": "Atalanta",
       "ruolo": "D",
-      "partite_saltate_totali": 14,
+      "partite_saltate_totali": 11,
       "partite_saltate_2025_26": 11,
-      "giorni_stop_totali": 357,
-      "disponibilita_pct": 63.2,
+      "giorni_stop_totali": 177,
+      "disponibilita_pct": 71.1,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 85.0,
-      "livello_fragilita": "CRISTALLO",
-      "fragility_label": "🚨 Cristallo (Altissimo Rischio)",
-      "fragility_badge": "cristallo",
-      "consiglio_medico_ai": "Altissimo rischio infortuni o lungo degenza in corso. Prezzo d'asta da svalutare fortemente e obbligo assoluto di copertura.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 70.0,
+      "livello_fragilita": "FRAGILE",
+      "fragility_label": "🔴 Fragile (Rischio Elevato)",
+      "fragility_badge": "fragile",
+      "consiglio_medico_ai": "Profilo a rischio elevato: 11 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -2073,15 +2017,6 @@
             19,
             20
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Distrazione muscolare al retto femorale della coscia sinistra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -2090,17 +2025,17 @@
       "name": "Kossounou",
       "team": "Atalanta",
       "ruolo": "D",
-      "partite_saltate_totali": 7,
+      "partite_saltate_totali": 4,
       "partite_saltate_2025_26": 4,
-      "giorni_stop_totali": 208,
-      "disponibilita_pct": 81.6,
+      "giorni_stop_totali": 28,
+      "disponibilita_pct": 89.5,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 51.5,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 7 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 23.0,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (4 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -2114,15 +2049,6 @@
             37,
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione muscolare di medio-alto grado del bicipite femorale della coscia sinistra alla vigilia della sfida di campionato contro la Juventus (del 20 settembre)",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -2236,17 +2162,17 @@
       "name": "Gaetano",
       "team": "Atalanta",
       "ruolo": "C",
-      "partite_saltate_totali": 5,
+      "partite_saltate_totali": 8,
       "partite_saltate_2025_26": 5,
-      "giorni_stop_totali": 38,
-      "disponibilita_pct": 86.8,
+      "giorni_stop_totali": 68,
+      "disponibilita_pct": 78.9,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 27.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (5 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 56.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 8 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -2270,6 +2196,15 @@
             27,
             28
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Distrazione ai muscoli adduttori della coscia destra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "02/12/2026",
+          "in_corso": true
         }
       ]
     },
@@ -2486,17 +2421,17 @@
       "name": "Raspadori",
       "team": "Atalanta",
       "ruolo": "A",
-      "partite_saltate_totali": 7,
+      "partite_saltate_totali": 4,
       "partite_saltate_2025_26": 4,
-      "giorni_stop_totali": 208,
-      "disponibilita_pct": 81.6,
+      "giorni_stop_totali": 28,
+      "disponibilita_pct": 89.5,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 51.5,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 7 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 23.0,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (4 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -2510,15 +2445,6 @@
             28,
             29
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Distrazione muscolare di basso grado al bicipite femorale della coscia destra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "08/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -2527,17 +2453,17 @@
       "name": "Sulemana K.",
       "team": "Atalanta",
       "ruolo": "A",
-      "partite_saltate_totali": 7,
+      "partite_saltate_totali": 4,
       "partite_saltate_2025_26": 4,
-      "giorni_stop_totali": 56,
-      "disponibilita_pct": 81.6,
+      "giorni_stop_totali": 26,
+      "disponibilita_pct": 89.5,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 51.5,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 7 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 23.0,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (4 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -2560,15 +2486,6 @@
             32,
             33
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione del collaterale mediale di secondo grado del ginocchio sinistro",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "articolare",
-          "rientro_previsto": "25/10/2026",
-          "in_corso": true
         }
       ]
     }
@@ -2663,17 +2580,17 @@
       "name": "Chalobah T.",
       "team": "Como",
       "ruolo": "D",
-      "partite_saltate_totali": 8,
+      "partite_saltate_totali": 5,
       "partite_saltate_2025_26": 5,
-      "giorni_stop_totali": 210,
-      "disponibilita_pct": 78.9,
+      "giorni_stop_totali": 30,
+      "disponibilita_pct": 86.8,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 56.0,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 8 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 27.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (5 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -2682,15 +2599,6 @@
           "giorni_stop": 30,
           "tipo": "medico",
           "giornate": []
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Guaio muscolare alla gamba",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "08/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -2982,7 +2890,7 @@
       "ruolo": "C",
       "partite_saltate_totali": 4,
       "partite_saltate_2025_26": 1,
-      "giorni_stop_totali": 51,
+      "giorni_stop_totali": 201,
       "disponibilita_pct": 89.5,
       "recidive_muscolari": 0,
       "indice_fragilita_score": 38.0,
@@ -3004,11 +2912,11 @@
         },
         {
           "stagione": "2026/27",
-          "motivo": "Il calciatore si è infortunato in allenamento il 20 ottobre, rimane da valutare per stabilire i tempi di recupero",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "medico",
-          "rientro_previsto": "29/10/2026",
+          "motivo": "Infortunio muscolare in allenamento (tiro in porta a fine seduta)",
+          "partite_perse": 15,
+          "giorni_stop": 180,
+          "tipo": "muscolare",
+          "rientro_previsto": "21/12/2026",
           "in_corso": true
         }
       ]
@@ -3232,17 +3140,17 @@
       "name": "Diao",
       "team": "Como",
       "ruolo": "A",
-      "partite_saltate_totali": 23,
+      "partite_saltate_totali": 20,
       "partite_saltate_2025_26": 20,
-      "giorni_stop_totali": 313,
-      "disponibilita_pct": 39.5,
+      "giorni_stop_totali": 133,
+      "disponibilita_pct": 47.4,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 65.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 23 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 50.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 20 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -3290,15 +3198,6 @@
           "giornate": [
             28
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione muscolare al flessore della gamba",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -3443,11 +3342,11 @@
         },
         {
           "stagione": "2026/27",
-          "motivo": "Lesione al crociato anteriore",
+          "motivo": "Rottura del legamento crociato del ginocchio destro, da trauma distorsivo in allenamento",
           "partite_perse": 15,
           "giorni_stop": 180,
           "tipo": "articolare",
-          "rientro_previsto": "18/04/2027",
+          "rientro_previsto": "31/07/2027",
           "in_corso": true
         }
       ]
@@ -3504,18 +3403,28 @@
       "name": "Kalulu",
       "team": "Juventus",
       "ruolo": "D",
-      "partite_saltate_totali": 0,
+      "partite_saltate_totali": 3,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 0,
-      "disponibilita_pct": 100,
+      "giorni_stop_totali": 30,
+      "disponibilita_pct": 92.1,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 5.0,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
-      "cronistoria_infortuni": []
+      "indice_fragilita_score": 33.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": true,
+      "cronistoria_infortuni": [
+        {
+          "stagione": "2026/27",
+          "motivo": "Lesione di basso grado del bicipite femorale sinistro",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "29/11/2026",
+          "in_corso": true
+        }
+      ]
     },
     "Cambiaso": {
       "id": 5520,
@@ -3810,17 +3719,17 @@
       "name": "Conceicao",
       "team": "Juventus",
       "ruolo": "C",
-      "partite_saltate_totali": 8,
+      "partite_saltate_totali": 5,
       "partite_saltate_2025_26": 5,
-      "giorni_stop_totali": 215,
-      "disponibilita_pct": 78.9,
+      "giorni_stop_totali": 35,
+      "disponibilita_pct": 86.8,
       "recidive_muscolari": 1,
-      "indice_fragilita_score": 68.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 8 partite saltate con 1 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 39.5,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 5 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -3844,15 +3753,6 @@
             19,
             20
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lussazione alla spalla sinistra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -3861,18 +3761,28 @@
       "name": "Gonzalez N.",
       "team": "Juventus",
       "ruolo": "C",
-      "partite_saltate_totali": 0,
+      "partite_saltate_totali": 3,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 0,
-      "disponibilita_pct": 100,
+      "giorni_stop_totali": 30,
+      "disponibilita_pct": 92.1,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 5.0,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
-      "cronistoria_infortuni": []
+      "indice_fragilita_score": 33.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": true,
+      "cronistoria_infortuni": [
+        {
+          "stagione": "2026/27",
+          "motivo": "Lesione di basso grado del soleo destro",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "24/11/2026",
+          "in_corso": true
+        }
+      ]
     },
     "Thuram K.": {
       "id": 5562,
@@ -3881,7 +3791,7 @@
       "ruolo": "C",
       "partite_saltate_totali": 5,
       "partite_saltate_2025_26": 2,
-      "giorni_stop_totali": 200,
+      "giorni_stop_totali": 50,
       "disponibilita_pct": 86.8,
       "recidive_muscolari": 0,
       "indice_fragilita_score": 42.5,
@@ -3913,11 +3823,11 @@
         },
         {
           "stagione": "2026/27",
-          "motivo": "Sindrome femoro-rotulea e",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "medico",
-          "rientro_previsto": "31/01/2027",
+          "motivo": "Risentimento al muscolo ischiocrurale e al flessore della coscia destra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "22/11/2026",
           "in_corso": true
         }
       ]
@@ -3941,11 +3851,11 @@
       "cronistoria_infortuni": [
         {
           "stagione": "2026/27",
-          "motivo": "Rottura del menisco esterno",
+          "motivo": "Problema al menisco del ginocchio destro (in valutazione, possibile intervento chirurgico o terapia conservativa)",
           "partite_perse": 15,
           "giorni_stop": 180,
           "tipo": "articolare",
-          "rientro_previsto": "28/02/2027",
+          "rientro_previsto": "08/02/2027",
           "in_corso": true
         }
       ]
@@ -4084,7 +3994,7 @@
       "ruolo": "A",
       "partite_saltate_totali": 4,
       "partite_saltate_2025_26": 1,
-      "giorni_stop_totali": 201,
+      "giorni_stop_totali": 51,
       "disponibilita_pct": 89.5,
       "recidive_muscolari": 0,
       "indice_fragilita_score": 38.0,
@@ -4106,11 +4016,11 @@
         },
         {
           "stagione": "2026/27",
-          "motivo": "Frattura della base del V metatarso del piede sinistro",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "traumatico",
-          "rientro_previsto": "06/12/2026",
+          "motivo": "Infortunio al piede sinistro, possibile intervento chirurgico",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "chirurgico",
+          "rientro_previsto": "26/11/2026",
           "in_corso": true
         }
       ]
@@ -4232,17 +4142,17 @@
       "name": "Ekhator",
       "team": "Juventus",
       "ruolo": "A",
-      "partite_saltate_totali": 4,
+      "partite_saltate_totali": 1,
       "partite_saltate_2025_26": 1,
-      "giorni_stop_totali": 186,
-      "disponibilita_pct": 89.5,
+      "giorni_stop_totali": 6,
+      "disponibilita_pct": 97.4,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 38.0,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (4 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 9.5,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -4253,15 +4163,6 @@
           "giornate": [
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione di medio grado del muscolo semitendinoso",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     }
@@ -4349,17 +4250,17 @@
       "name": "Pavlovic",
       "team": "Milan",
       "ruolo": "D",
-      "partite_saltate_totali": 1,
+      "partite_saltate_totali": 4,
       "partite_saltate_2025_26": 1,
-      "giorni_stop_totali": 6,
-      "disponibilita_pct": 97.4,
+      "giorni_stop_totali": 36,
+      "disponibilita_pct": 89.5,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 9.5,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 38.0,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (4 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -4370,6 +4271,15 @@
           "giornate": [
             20
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Coliche e fastidio alla spalla",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "articolare",
+          "rientro_previsto": "22/11/2026",
+          "in_corso": true
         }
       ]
     },
@@ -4486,11 +4396,11 @@
         },
         {
           "stagione": "2026/27",
-          "motivo": "Lesione del flessore della coscia sinistra con parziale interessamento tendineo",
+          "motivo": "Problema alla caviglia (natura del problema non specificata)",
           "partite_perse": 15,
           "giorni_stop": 180,
           "tipo": "articolare",
-          "rientro_previsto": "28/02/2027",
+          "rientro_previsto": "13/01/2027",
           "in_corso": true
         }
       ]
@@ -4500,18 +4410,28 @@
       "name": "Tomori",
       "team": "Milan",
       "ruolo": "D",
-      "partite_saltate_totali": 0,
+      "partite_saltate_totali": 3,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 0,
-      "disponibilita_pct": 100,
+      "giorni_stop_totali": 30,
+      "disponibilita_pct": 92.1,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 5.0,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
-      "cronistoria_infortuni": []
+      "indice_fragilita_score": 33.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": true,
+      "cronistoria_infortuni": [
+        {
+          "stagione": "2026/27",
+          "motivo": "Problema muscolare alla coscia destra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "30/11/2026",
+          "in_corso": true
+        }
+      ]
     },
     "De Winter": {
       "id": 5739,
@@ -4780,11 +4700,11 @@
         },
         {
           "stagione": "2026/27",
-          "motivo": "Problema alla caviglia destra e operata",
+          "motivo": "Distorsione alla caviglia destra senza lesioni ossee né danni capsulo-legamentosi",
           "partite_perse": 15,
           "giorni_stop": 180,
           "tipo": "articolare",
-          "rientro_previsto": "28/02/2027",
+          "rientro_previsto": "08/02/2027",
           "in_corso": true
         }
       ]
@@ -4808,11 +4728,11 @@
       "cronistoria_infortuni": [
         {
           "stagione": "2026/27",
-          "motivo": "Problema all'anca sinistra",
+          "motivo": "Problema all'anca sinistra, entità da definire con visita specialistica",
           "partite_perse": 15,
           "giorni_stop": 180,
           "tipo": "medico",
-          "rientro_previsto": "08/11/2026",
+          "rientro_previsto": "04/02/2027",
           "in_corso": true
         }
       ]
@@ -4915,17 +4835,17 @@
       "name": "Loftus-Cheek",
       "team": "Milan",
       "ruolo": "C",
-      "partite_saltate_totali": 6,
+      "partite_saltate_totali": 9,
       "partite_saltate_2025_26": 6,
-      "giorni_stop_totali": 38,
-      "disponibilita_pct": 84.2,
+      "giorni_stop_totali": 68,
+      "disponibilita_pct": 76.3,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 32.0,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (6 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 60.5,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 9 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -4950,6 +4870,15 @@
             29,
             30
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Problema al ginocchio dopo una botta nella parte posteriore dell'articolazione",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "articolare",
+          "rientro_previsto": "24/11/2026",
+          "in_corso": true
         }
       ]
     },
@@ -5327,17 +5256,17 @@
       "name": "Parisi",
       "team": "Fiorentina",
       "ruolo": "D",
-      "partite_saltate_totali": 9,
+      "partite_saltate_totali": 6,
       "partite_saltate_2025_26": 6,
-      "giorni_stop_totali": 368,
-      "disponibilita_pct": 76.3,
+      "giorni_stop_totali": 188,
+      "disponibilita_pct": 84.2,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 80.5,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 9 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 52.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 6 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -5371,15 +5300,6 @@
           "giornate": [
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Infortunio al legamento crociato al ginocchio",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "06/12/2026",
-          "in_corso": true
         }
       ]
     },
@@ -5453,17 +5373,17 @@
       "name": "Atta",
       "team": "Fiorentina",
       "ruolo": "C",
-      "partite_saltate_totali": 9,
+      "partite_saltate_totali": 6,
       "partite_saltate_2025_26": 6,
-      "giorni_stop_totali": 79,
-      "disponibilita_pct": 76.3,
+      "giorni_stop_totali": 49,
+      "disponibilita_pct": 84.2,
       "recidive_muscolari": 1,
-      "indice_fragilita_score": 72.5,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 9 partite saltate con 1 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 44.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 6 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -5488,15 +5408,6 @@
           "giornate": [
             27
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Sovraccarico funzionale dell'addome",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "medico",
-          "rientro_previsto": "29/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -5505,17 +5416,17 @@
       "name": "Gudmundsson A.",
       "team": "Fiorentina",
       "ruolo": "C",
-      "partite_saltate_totali": 5,
+      "partite_saltate_totali": 2,
       "partite_saltate_2025_26": 2,
-      "giorni_stop_totali": 201,
-      "disponibilita_pct": 86.8,
+      "giorni_stop_totali": 21,
+      "disponibilita_pct": 94.7,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 42.5,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 5 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 14.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -5527,15 +5438,6 @@
             3,
             25
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Problema alla spalla destra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -5933,17 +5835,17 @@
       "name": "Di Lorenzo",
       "team": "Napoli",
       "ruolo": "D",
-      "partite_saltate_totali": 11,
+      "partite_saltate_totali": 14,
       "partite_saltate_2025_26": 11,
-      "giorni_stop_totali": 88,
-      "disponibilita_pct": 71.1,
+      "giorni_stop_totali": 118,
+      "disponibilita_pct": 63.2,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 50.0,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 11 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 65.0,
+      "livello_fragilita": "FRAGILE",
+      "fragility_label": "🔴 Fragile (Rischio Elevato)",
+      "fragility_badge": "fragile",
+      "consiglio_medico_ai": "Profilo a rischio elevato: 14 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -5964,6 +5866,15 @@
             33,
             34
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Risentimento all'adduttore",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "27/11/2026",
+          "in_corso": true
         }
       ]
     },
@@ -6022,17 +5933,17 @@
       "name": "Buongiorno",
       "team": "Napoli",
       "ruolo": "D",
-      "partite_saltate_totali": 6,
+      "partite_saltate_totali": 3,
       "partite_saltate_2025_26": 3,
-      "giorni_stop_totali": 213,
-      "disponibilita_pct": 84.2,
+      "giorni_stop_totali": 33,
+      "disponibilita_pct": 92.1,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 47.0,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 6 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 18.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -6054,15 +5965,6 @@
           "giornate": [
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Nella seconda metà di luglio al menisco del ginocchio destro",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "20/12/2026",
-          "in_corso": true
         }
       ]
     },
@@ -6195,7 +6097,7 @@
       "ruolo": "D",
       "partite_saltate_totali": 3,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
+      "giorni_stop_totali": 30,
       "disponibilita_pct": 92.1,
       "recidive_muscolari": 0,
       "indice_fragilita_score": 33.5,
@@ -6207,11 +6109,11 @@
       "cronistoria_infortuni": [
         {
           "stagione": "2026/27",
-          "motivo": "Lesione muscolare di secondo grado del retto femorale della coscia destra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
+          "motivo": "Lesione muscolare (rientrato al Napoli dopo valutazione medica con la Nazionale U21)",
+          "partite_perse": 3,
+          "giorni_stop": 30,
           "tipo": "muscolare",
-          "rientro_previsto": "22/11/2026",
+          "rientro_previsto": "30/11/2026",
           "in_corso": true
         }
       ]
@@ -6547,17 +6449,17 @@
       "name": "Lobotka",
       "team": "Napoli",
       "ruolo": "C",
-      "partite_saltate_totali": 6,
+      "partite_saltate_totali": 9,
       "partite_saltate_2025_26": 6,
-      "giorni_stop_totali": 46,
-      "disponibilita_pct": 84.2,
+      "giorni_stop_totali": 76,
+      "disponibilita_pct": 76.3,
       "recidive_muscolari": 1,
-      "indice_fragilita_score": 44.0,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 6 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 72.5,
+      "livello_fragilita": "FRAGILE",
+      "fragility_label": "🔴 Fragile (Rischio Elevato)",
+      "fragility_badge": "fragile",
+      "consiglio_medico_ai": "Profilo a rischio elevato: 9 partite saltate con 1 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -6591,6 +6493,15 @@
             28,
             29
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Lesione della sindesmosi tibio-peroneale e lesione di basso grado del legamento peroneo-astragalico anteriore della caviglia sinistra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "articolare",
+          "rientro_previsto": "10/12/2026",
+          "in_corso": true
         }
       ]
     },
@@ -6681,45 +6592,35 @@
       "name": "Santos A.",
       "team": "Napoli",
       "ruolo": "A",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione distrattiva di medio grado del bicipite femorale sinistro",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "06/12/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Neres": {
       "id": 6831,
       "name": "Neres",
       "team": "Napoli",
       "ruolo": "A",
-      "partite_saltate_totali": 24,
+      "partite_saltate_totali": 21,
       "partite_saltate_2025_26": 21,
-      "giorni_stop_totali": 355,
-      "disponibilita_pct": 36.8,
+      "giorni_stop_totali": 175,
+      "disponibilita_pct": 44.7,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 65.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 24 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 50.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 21 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -6777,15 +6678,6 @@
             37,
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione di basso grado al muscolo semimembranoso della coscia destra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -6939,45 +6831,35 @@
       "name": "Pessina Mas.",
       "team": "Bologna",
       "ruolo": "P",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Lussazione della rotula del ginocchio",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Miranda J.": {
       "id": 4734,
       "name": "Miranda J.",
       "team": "Bologna",
       "ruolo": "D",
-      "partite_saltate_totali": 2,
+      "partite_saltate_totali": 5,
       "partite_saltate_2025_26": 2,
-      "giorni_stop_totali": 14,
-      "disponibilita_pct": 94.7,
+      "giorni_stop_totali": 44,
+      "disponibilita_pct": 86.8,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 14.0,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 42.5,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 5 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -6989,6 +6871,15 @@
             27,
             28
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Lesione di primo grado del bicipite femorale della coscia sinistra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "04/12/2026",
+          "in_corso": true
         }
       ]
     },
@@ -7171,11 +7062,11 @@
         },
         {
           "stagione": "2026/27",
-          "motivo": "Problema al tendine della coscia destra",
+          "motivo": "Lesione al bicipite femorale della coscia destra",
           "partite_perse": 15,
           "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "28/02/2027",
+          "tipo": "muscolare",
+          "rientro_previsto": "29/01/2027",
           "in_corso": true
         }
       ]
@@ -7329,17 +7220,17 @@
       "name": "Orsolini",
       "team": "Bologna",
       "ruolo": "C",
-      "partite_saltate_totali": 4,
+      "partite_saltate_totali": 1,
       "partite_saltate_2025_26": 1,
-      "giorni_stop_totali": 186,
-      "disponibilita_pct": 89.5,
+      "giorni_stop_totali": 6,
+      "disponibilita_pct": 97.4,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 38.0,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (4 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 9.5,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -7350,15 +7241,6 @@
           "giornate": [
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione di primo grado al bicipite femorale della coscia destra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -7721,17 +7603,17 @@
       "name": "Piccoli",
       "team": "Bologna",
       "ruolo": "A",
-      "partite_saltate_totali": 5,
+      "partite_saltate_totali": 2,
       "partite_saltate_2025_26": 2,
-      "giorni_stop_totali": 192,
-      "disponibilita_pct": 86.8,
+      "giorni_stop_totali": 12,
+      "disponibilita_pct": 94.7,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 42.5,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 5 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 14.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -7743,15 +7625,6 @@
             34,
             35
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Guaio muscolare al bicipite femorale della coscia destra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     }
@@ -8025,17 +7898,17 @@
       "name": "Idrissi R.",
       "team": "Cagliari",
       "ruolo": "D",
-      "partite_saltate_totali": 13,
+      "partite_saltate_totali": 10,
       "partite_saltate_2025_26": 10,
-      "giorni_stop_totali": 330,
-      "disponibilita_pct": 65.8,
+      "giorni_stop_totali": 150,
+      "disponibilita_pct": 73.7,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 85.0,
-      "livello_fragilita": "CRISTALLO",
-      "fragility_label": "🚨 Cristallo (Altissimo Rischio)",
-      "fragility_badge": "cristallo",
-      "consiglio_medico_ai": "Altissimo rischio infortuni o lungo degenza in corso. Prezzo d'asta da svalutare fortemente e obbligo assoluto di copertura.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 70.0,
+      "livello_fragilita": "FRAGILE",
+      "fragility_label": "🔴 Fragile (Rischio Elevato)",
+      "fragility_badge": "fragile",
+      "consiglio_medico_ai": "Profilo a rischio elevato: 10 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -8055,15 +7928,6 @@
             37,
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Rottura del legamento crociato",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -8235,11 +8099,11 @@
         },
         {
           "stagione": "2026/27",
-          "motivo": "Rottura del legamento crociato anteriore",
+          "motivo": "Nuovo infortunio al ginocchio (da accertare con esami strumentali)",
           "partite_perse": 15,
           "giorni_stop": 180,
           "tipo": "articolare",
-          "rientro_previsto": "14/03/2027",
+          "rientro_previsto": "09/02/2027",
           "in_corso": true
         }
       ]
@@ -8973,17 +8837,17 @@
       "name": "Zaccagni",
       "team": "Lazio",
       "ruolo": "C",
-      "partite_saltate_totali": 9,
+      "partite_saltate_totali": 12,
       "partite_saltate_2025_26": 9,
-      "giorni_stop_totali": 68,
-      "disponibilita_pct": 76.3,
+      "giorni_stop_totali": 98,
+      "disponibilita_pct": 68.4,
       "recidive_muscolari": 3,
-      "indice_fragilita_score": 70.5,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 9 partite saltate con 3 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 90.0,
+      "livello_fragilita": "CRISTALLO",
+      "fragility_label": "🚨 Cristallo (Altissimo Rischio)",
+      "fragility_badge": "cristallo",
+      "consiglio_medico_ai": "Altissimo rischio infortuni o lungo degenza in corso. Prezzo d'asta da svalutare fortemente e obbligo assoluto di copertura.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -9047,6 +8911,15 @@
             37,
             38
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Lesione del quadricipite femorale sinistro",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "06/12/2026",
+          "in_corso": true
         }
       ]
     },
@@ -9406,28 +9279,18 @@
       "name": "Dia",
       "team": "Lazio",
       "ruolo": "A",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione muscolare al flessore della gamba",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Ratkov": {
       "id": 7313,
@@ -9718,17 +9581,17 @@
       "name": "Coulibaly L.",
       "team": "Lecce",
       "ruolo": "C",
-      "partite_saltate_totali": 4,
+      "partite_saltate_totali": 1,
       "partite_saltate_2025_26": 1,
-      "giorni_stop_totali": 194,
-      "disponibilita_pct": 89.5,
+      "giorni_stop_totali": 14,
+      "disponibilita_pct": 97.4,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 38.0,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (4 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 9.5,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -9739,15 +9602,6 @@
           "giornate": [
             30
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione muscolare al bicipite femorale della coscia destra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "08/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -9756,35 +9610,45 @@
       "name": "Pierotti",
       "team": "Lecce",
       "ruolo": "C",
-      "partite_saltate_totali": 0,
+      "partite_saltate_totali": 3,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 0,
-      "disponibilita_pct": 100,
+      "giorni_stop_totali": 30,
+      "disponibilita_pct": 92.1,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 5.0,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
-      "cronistoria_infortuni": []
+      "indice_fragilita_score": 33.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": true,
+      "cronistoria_infortuni": [
+        {
+          "stagione": "2026/27",
+          "motivo": "Trauma contusivo alla caviglia sinistra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "articolare",
+          "rientro_previsto": "08/12/2026",
+          "in_corso": true
+        }
+      ]
     },
     "Berisha M.": {
       "id": 6015,
       "name": "Berisha M.",
       "team": "Lecce",
       "ruolo": "C",
-      "partite_saltate_totali": 26,
+      "partite_saltate_totali": 23,
       "partite_saltate_2025_26": 23,
-      "giorni_stop_totali": 191,
-      "disponibilita_pct": 31.6,
+      "giorni_stop_totali": 161,
+      "disponibilita_pct": 39.5,
       "recidive_muscolari": 1,
-      "indice_fragilita_score": 77.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 26 partite saltate con 1 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 62.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 23 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -9826,15 +9690,6 @@
             37,
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Sovraccarico muscolare alla gamba",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "muscolare",
-          "rientro_previsto": "29/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -9976,17 +9831,17 @@
       "name": "Ilic",
       "team": "Lecce",
       "ruolo": "C",
-      "partite_saltate_totali": 16,
+      "partite_saltate_totali": 13,
       "partite_saltate_2025_26": 13,
-      "giorni_stop_totali": 264,
-      "disponibilita_pct": 57.9,
+      "giorni_stop_totali": 84,
+      "disponibilita_pct": 65.8,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 65.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 16 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 50.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 13 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -10027,15 +9882,6 @@
             24,
             25
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione muscolare al retto femorale della coscia sinistra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "08/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -10044,18 +9890,28 @@
       "name": "Laerke",
       "team": "Lecce",
       "ruolo": "C",
-      "partite_saltate_totali": 0,
+      "partite_saltate_totali": 3,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 0,
-      "disponibilita_pct": 100,
+      "giorni_stop_totali": 30,
+      "disponibilita_pct": 92.1,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 5.0,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
-      "cronistoria_infortuni": []
+      "indice_fragilita_score": 33.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": true,
+      "cronistoria_infortuni": [
+        {
+          "stagione": "2026/27",
+          "motivo": "Problema al collo che non gli permette di colpire la palla",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "medico",
+          "rientro_previsto": "21/11/2026",
+          "in_corso": true
+        }
+      ]
     },
     "Geubbels": {
       "id": 5029,
@@ -10403,17 +10259,17 @@
       "name": "Zanoli",
       "team": "Udinese",
       "ruolo": "D",
-      "partite_saltate_totali": 16,
+      "partite_saltate_totali": 19,
       "partite_saltate_2025_26": 16,
-      "giorni_stop_totali": 224,
-      "disponibilita_pct": 57.9,
+      "giorni_stop_totali": 404,
+      "disponibilita_pct": 50.0,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 70.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 16 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 85.0,
+      "livello_fragilita": "CRISTALLO",
+      "fragility_label": "🚨 Cristallo (Altissimo Rischio)",
+      "fragility_badge": "cristallo",
+      "consiglio_medico_ai": "Altissimo rischio infortuni o lungo degenza in corso. Prezzo d'asta da svalutare fortemente e obbligo assoluto di copertura.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -10439,6 +10295,15 @@
             37,
             38
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Intervento per la lesione del legamento crociato anteriore del ginocchio destro",
+          "partite_perse": 15,
+          "giorni_stop": 180,
+          "tipo": "articolare",
+          "rientro_previsto": "23/11/2026",
+          "in_corso": true
         }
       ]
     },
@@ -10861,11 +10726,11 @@
       "cronistoria_infortuni": [
         {
           "stagione": "2026/27",
-          "motivo": "Problema alla caviglia",
+          "motivo": "Distorsione alla caviglia destra, con sospetto interessamento dei legamenti da accertare",
           "partite_perse": 15,
           "giorni_stop": 180,
           "tipo": "articolare",
-          "rientro_previsto": "31/01/2027",
+          "rientro_previsto": "05/01/2027",
           "in_corso": true
         }
       ]
@@ -10875,17 +10740,17 @@
       "name": "Bayo V.",
       "team": "Udinese",
       "ruolo": "A",
-      "partite_saltate_totali": 7,
+      "partite_saltate_totali": 4,
       "partite_saltate_2025_26": 4,
-      "giorni_stop_totali": 207,
-      "disponibilita_pct": 81.6,
+      "giorni_stop_totali": 27,
+      "disponibilita_pct": 89.5,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 51.5,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 7 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 23.0,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (4 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -10908,15 +10773,6 @@
           "giornate": [
             15
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione al bicipite femorale della coscia destra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
         }
       ]
     }
@@ -11102,17 +10958,17 @@
       "name": "Fortini",
       "team": "Torino",
       "ruolo": "D",
-      "partite_saltate_totali": 10,
+      "partite_saltate_totali": 7,
       "partite_saltate_2025_26": 7,
-      "giorni_stop_totali": 72,
-      "disponibilita_pct": 73.7,
+      "giorni_stop_totali": 42,
+      "disponibilita_pct": 81.6,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 65.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 10 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 36.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (7 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -11129,15 +10985,6 @@
             34,
             35
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Affaticamento muscolare all'adduttore",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "muscolare",
-          "rientro_previsto": "25/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -11403,28 +11250,18 @@
       "name": "Ilkhan",
       "team": "Torino",
       "ruolo": "C",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 30,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Fastidio muscolare alla gamba",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "muscolare",
-          "rientro_previsto": "29/10/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Aboukhlal": {
       "id": 7183,
@@ -11918,28 +11755,18 @@
       "name": "Martin",
       "team": "Genoa",
       "ruolo": "D",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Risentimento muscolare ai flessori della coscia sinistra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Mitaj": {
       "id": 7537,
@@ -12155,17 +11982,17 @@
       "name": "Sow",
       "team": "Genoa",
       "ruolo": "C",
-      "partite_saltate_totali": 7,
+      "partite_saltate_totali": 4,
       "partite_saltate_2025_26": 4,
-      "giorni_stop_totali": 208,
-      "disponibilita_pct": 81.6,
+      "giorni_stop_totali": 28,
+      "disponibilita_pct": 89.5,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 51.5,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 7 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 23.0,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (4 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -12174,15 +12001,6 @@
           "giorni_stop": 28,
           "tipo": "muscolare",
           "giornate": []
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Distrazione muscolare al bicipite femorale della coscia sinistra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "08/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -12227,17 +12045,17 @@
       "name": "Meichtry",
       "team": "Genoa",
       "ruolo": "C",
-      "partite_saltate_totali": 4,
+      "partite_saltate_totali": 1,
       "partite_saltate_2025_26": 1,
-      "giorni_stop_totali": 36,
-      "disponibilita_pct": 89.5,
+      "giorni_stop_totali": 6,
+      "disponibilita_pct": 97.4,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 38.0,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (4 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 9.5,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -12246,15 +12064,6 @@
           "giorni_stop": 6,
           "tipo": "medico",
           "giornate": []
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Distrazione della muscolatura di un'anca",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "muscolare",
-          "rientro_previsto": "25/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -12358,56 +12167,36 @@
       "name": "Venturino",
       "team": "Genoa",
       "ruolo": "C",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Operato al tendine rotuleo",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "08/11/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Colombo": {
       "id": 4923,
       "name": "Colombo",
       "team": "Genoa",
       "ruolo": "A",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Problema alla caviglia",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "08/11/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Vitinha O.": {
       "id": 6164,
@@ -12450,17 +12239,17 @@
       "name": "Havel",
       "team": "Genoa",
       "ruolo": "A",
-      "partite_saltate_totali": 5,
+      "partite_saltate_totali": 2,
       "partite_saltate_2025_26": 2,
-      "giorni_stop_totali": 42,
-      "disponibilita_pct": 86.8,
+      "giorni_stop_totali": 12,
+      "disponibilita_pct": 94.7,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 42.5,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 5 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 14.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -12469,15 +12258,6 @@
           "giorni_stop": 12,
           "tipo": "medico",
           "giornate": []
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "L'attaccante ha deciso di operarsi alla caviglia e dovrebbe tornare arruolabile dalla fine di ottobre",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "articolare",
-          "rientro_previsto": "29/10/2026",
-          "in_corso": true
         }
       ]
     }
@@ -12578,17 +12358,17 @@
       "name": "Valenti",
       "team": "Parma",
       "ruolo": "D",
-      "partite_saltate_totali": 6,
+      "partite_saltate_totali": 9,
       "partite_saltate_2025_26": 6,
-      "giorni_stop_totali": 38,
-      "disponibilita_pct": 84.2,
+      "giorni_stop_totali": 68,
+      "disponibilita_pct": 76.3,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 32.0,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (6 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 60.5,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 9 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -12613,6 +12393,15 @@
             23,
             24
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Risentimento muscolare ai flessori della coscia sinistra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "23/11/2026",
+          "in_corso": true
         }
       ]
     },
@@ -12773,28 +12562,18 @@
       "name": "Nicolussi Caviglia",
       "team": "Parma",
       "ruolo": "C",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione di medio grado alla coscia destra",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "muscolare",
-          "rientro_previsto": "06/12/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Keita M.": {
       "id": 6898,
@@ -12848,17 +12627,17 @@
       "name": "Almqvist",
       "team": "Parma",
       "ruolo": "C",
-      "partite_saltate_totali": 17,
+      "partite_saltate_totali": 14,
       "partite_saltate_2025_26": 14,
-      "giorni_stop_totali": 138,
-      "disponibilita_pct": 55.3,
+      "giorni_stop_totali": 108,
+      "disponibilita_pct": 63.2,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 65.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 17 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 50.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 14 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -12900,15 +12679,6 @@
             30,
             31
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione muscolare al polpaccio sinistro",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "muscolare",
-          "rientro_previsto": "29/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -13146,17 +12916,17 @@
       "name": "Elphege",
       "team": "Parma",
       "ruolo": "A",
-      "partite_saltate_totali": 4,
+      "partite_saltate_totali": 1,
       "partite_saltate_2025_26": 1,
-      "giorni_stop_totali": 194,
-      "disponibilita_pct": 89.5,
+      "giorni_stop_totali": 14,
+      "disponibilita_pct": 97.4,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 38.0,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (4 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 9.5,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -13167,15 +12937,6 @@
           "giornate": [
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Appendicite acuta l'11 ottobre",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "medico",
-          "rientro_previsto": "29/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -13337,17 +13098,17 @@
       "name": "Idzes",
       "team": "Sassuolo",
       "ruolo": "D",
-      "partite_saltate_totali": 5,
+      "partite_saltate_totali": 2,
       "partite_saltate_2025_26": 2,
-      "giorni_stop_totali": 42,
-      "disponibilita_pct": 86.8,
+      "giorni_stop_totali": 12,
+      "disponibilita_pct": 94.7,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 42.5,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 5 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 14.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -13359,15 +13120,6 @@
             36,
             37
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Lesione di grado moderato al quadricipite della gamba sinistra",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "muscolare",
-          "rientro_previsto": "25/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -13427,11 +13179,11 @@
         },
         {
           "stagione": "2026/27",
-          "motivo": "Lesione al crociato anteriore",
+          "motivo": "Distorsione importante del ginocchio sinistro, in attesa di esami strumentali",
           "partite_perse": 15,
           "giorni_stop": 180,
           "tipo": "articolare",
-          "rientro_previsto": "18/04/2027",
+          "rientro_previsto": "11/05/2027",
           "in_corso": true
         }
       ]
@@ -13764,11 +13516,11 @@
         },
         {
           "stagione": "2026/27",
-          "motivo": "Rottura di tibia e perone",
+          "motivo": "Intervento di riduzione della frattura della gamba sinistra",
           "partite_perse": 15,
           "giorni_stop": 180,
-          "tipo": "medico",
-          "rientro_previsto": "06/12/2026",
+          "tipo": "traumatico",
+          "rientro_previsto": "17/01/2027",
           "in_corso": true
         }
       ]
@@ -13950,17 +13702,17 @@
       "name": "Boloca",
       "team": "Sassuolo",
       "ruolo": "C",
-      "partite_saltate_totali": 34,
+      "partite_saltate_totali": 31,
       "partite_saltate_2025_26": 31,
-      "giorni_stop_totali": 252,
-      "disponibilita_pct": 10.5,
+      "giorni_stop_totali": 222,
+      "disponibilita_pct": 18.4,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 65.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 34 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 50.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 31 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -14010,15 +13762,6 @@
             37,
             38
           ]
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Problema al ginocchio",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "articolare",
-          "rientro_previsto": "29/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -14276,17 +14019,17 @@
       "name": "Bella-Kotchap",
       "team": "Venezia",
       "ruolo": "D",
-      "partite_saltate_totali": 16,
+      "partite_saltate_totali": 13,
       "partite_saltate_2025_26": 13,
-      "giorni_stop_totali": 135,
-      "disponibilita_pct": 57.9,
+      "giorni_stop_totali": 105,
+      "disponibilita_pct": 65.8,
       "recidive_muscolari": 2,
-      "indice_fragilita_score": 89.0,
-      "livello_fragilita": "CRISTALLO",
-      "fragility_label": "🚨 Cristallo (Altissimo Rischio)",
-      "fragility_badge": "cristallo",
-      "consiglio_medico_ai": "Altissimo rischio infortuni o lungo degenza in corso. Prezzo d'asta da svalutare fortemente e obbligo assoluto di copertura.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 74.0,
+      "livello_fragilita": "FRAGILE",
+      "fragility_label": "🔴 Fragile (Rischio Elevato)",
+      "fragility_badge": "fragile",
+      "consiglio_medico_ai": "Profilo a rischio elevato: 13 partite saltate con 2 ricadute muscolari. Fondamentale acquistare la sua riserva/coppia d'asta.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -14319,15 +14062,6 @@
           "giorni_stop": 14,
           "tipo": "muscolare",
           "giornate": []
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Il difensore in ripresa da noie fisiche che lo hanno condizionato nelle ultime settimane, proverà a esserci dall'8a giornata di A domenica a Genova",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "medico",
-          "rientro_previsto": "25/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -14354,17 +14088,17 @@
       "name": "Correia T.",
       "team": "Venezia",
       "ruolo": "D",
-      "partite_saltate_totali": 13,
+      "partite_saltate_totali": 10,
       "partite_saltate_2025_26": 10,
-      "giorni_stop_totali": 90,
-      "disponibilita_pct": 65.8,
+      "giorni_stop_totali": 60,
+      "disponibilita_pct": 73.7,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 65.0,
-      "livello_fragilita": "FRAGILE",
-      "fragility_label": "🔴 Fragile (Rischio Elevato)",
-      "fragility_badge": "fragile",
-      "consiglio_medico_ai": "Profilo a rischio elevato: 13 partite saltate. Fondamentale acquistare la sua riserva/coppia d'asta.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 50.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 10 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -14373,15 +14107,6 @@
           "giorni_stop": 60,
           "tipo": "medico",
           "giornate": []
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Risentimento muscolare al flessore della gamba sinistra",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "muscolare",
-          "rientro_previsto": "29/10/2026",
-          "in_corso": true
         }
       ]
     },
@@ -14461,28 +14186,18 @@
       "name": "Sverko",
       "team": "Venezia",
       "ruolo": "D",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Estate per il perdurare di un problema all'anca e recuperabile da fine ottobre",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "medico",
-          "rientro_previsto": "29/10/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Hainaut": {
       "id": 6821,
@@ -14548,11 +14263,11 @@
         },
         {
           "stagione": "2026/27",
-          "motivo": "Guaio alla spalla che ha richiesto l'intervento chirurgico",
+          "motivo": "Dislocazione della clavicola",
           "partite_perse": 15,
           "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "13/12/2026",
+          "tipo": "medico",
+          "rientro_previsto": "10/12/2026",
           "in_corso": true
         }
       ]
@@ -14667,28 +14382,18 @@
       "name": "Busio",
       "team": "Venezia",
       "ruolo": "C",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 30,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Distrazione intratendinea del bicipite femorale destro",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "articolare",
-          "rientro_previsto": "25/10/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Sohm": {
       "id": 5319,
@@ -14879,28 +14584,18 @@
       "name": "Adorante",
       "team": "Venezia",
       "ruolo": "A",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 30,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Problema alla schiena",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "medico",
-          "rientro_previsto": "29/10/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Lisman": {
       "id": 7408,
@@ -15327,17 +15022,17 @@
       "name": "Grillitsch",
       "team": "Frosinone",
       "ruolo": "C",
-      "partite_saltate_totali": 5,
+      "partite_saltate_totali": 2,
       "partite_saltate_2025_26": 2,
-      "giorni_stop_totali": 192,
-      "disponibilita_pct": 86.8,
+      "giorni_stop_totali": 12,
+      "disponibilita_pct": 94.7,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 42.5,
-      "livello_fragilita": "ATTENZIONE",
-      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
-      "fragility_badge": "attenzione",
-      "consiglio_medico_ai": "Attenzione: ha registrato 5 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
-      "infortunio_attivo": true,
+      "indice_fragilita_score": 14.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -15346,15 +15041,6 @@
           "giorni_stop": 12,
           "tipo": "medico",
           "giornate": []
-        },
-        {
-          "stagione": "2026/27",
-          "motivo": "Sindrome retto-adduttoria",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "medico",
-          "rientro_previsto": "08/11/2026",
-          "in_corso": true
         }
       ]
     },
@@ -15527,17 +15213,17 @@
       "name": "Kone B.",
       "team": "Frosinone",
       "ruolo": "C",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 6,
       "partite_saltate_2025_26": 3,
-      "giorni_stop_totali": 21,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 51,
+      "disponibilita_pct": 84.2,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 18.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": false,
+      "indice_fragilita_score": 47.0,
+      "livello_fragilita": "ATTENZIONE",
+      "fragility_label": "🟡 Attenzione (Soggetto a Stop)",
+      "fragility_badge": "attenzione",
+      "consiglio_medico_ai": "Attenzione: ha registrato 6 gare saltate e qualche affaticamento muscolare. Consigliata copertura economica in panchina.",
+      "infortunio_attivo": true,
       "cronistoria_infortuni": [
         {
           "stagione": "2025/26",
@@ -15550,6 +15236,15 @@
             9,
             14
           ]
+        },
+        {
+          "stagione": "2026/27",
+          "motivo": "Lesione al flessore della coscia destra",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "muscolare",
+          "rientro_previsto": "22/11/2026",
+          "in_corso": true
         }
       ]
     },
@@ -15603,18 +15298,28 @@
       "name": "Raimondo",
       "team": "Frosinone",
       "ruolo": "A",
-      "partite_saltate_totali": 0,
+      "partite_saltate_totali": 3,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 0,
-      "disponibilita_pct": 100,
+      "giorni_stop_totali": 30,
+      "disponibilita_pct": 92.1,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 5.0,
-      "livello_fragilita": "ROCCIA",
-      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
-      "fragility_badge": "roccia",
-      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
-      "infortunio_attivo": false,
-      "cronistoria_infortuni": []
+      "indice_fragilita_score": 33.5,
+      "livello_fragilita": "STABILE",
+      "fragility_label": "🟢 Stabile (Fisiologico)",
+      "fragility_badge": "stabile",
+      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
+      "infortunio_attivo": true,
+      "cronistoria_infortuni": [
+        {
+          "stagione": "2026/27",
+          "motivo": "Tendinopatia inserzionale del tendine d'Achille destro",
+          "partite_perse": 3,
+          "giorni_stop": 30,
+          "tipo": "articolare",
+          "rientro_previsto": "05/12/2026",
+          "in_corso": true
+        }
+      ]
     },
     "Birligea": {
       "id": 7610,
@@ -15921,28 +15626,18 @@
       "name": "Maye",
       "team": "Monza",
       "ruolo": "D",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 30,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Noie fisiche, assente nel precedente turno di campionato e ora da valutare in vista di venerdì a Torino",
-          "partite_perse": 3,
-          "giorni_stop": 30,
-          "tipo": "medico",
-          "rientro_previsto": "29/10/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Colpani": {
       "id": 5878,
@@ -15967,28 +15662,18 @@
       "name": "Pessina",
       "team": "Monza",
       "ruolo": "C",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Lussazione della rotula del ginocchio",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "22/11/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Akinsanmiro": {
       "id": 6593,
@@ -16088,28 +15773,18 @@
       "name": "Colombo L.",
       "team": "Monza",
       "ruolo": "C",
-      "partite_saltate_totali": 3,
+      "partite_saltate_totali": 0,
       "partite_saltate_2025_26": 0,
-      "giorni_stop_totali": 180,
-      "disponibilita_pct": 92.1,
+      "giorni_stop_totali": 0,
+      "disponibilita_pct": 100,
       "recidive_muscolari": 0,
-      "indice_fragilita_score": 33.5,
-      "livello_fragilita": "STABILE",
-      "fragility_label": "🟢 Stabile (Fisiologico)",
-      "fragility_badge": "stabile",
-      "consiglio_medico_ai": "Storico fisico nella media (3 partite perse). Gestibile normalmente senza particolari accoppiamenti.",
-      "infortunio_attivo": true,
-      "cronistoria_infortuni": [
-        {
-          "stagione": "2026/27",
-          "motivo": "Problema alla caviglia",
-          "partite_perse": 15,
-          "giorni_stop": 180,
-          "tipo": "articolare",
-          "rientro_previsto": "08/11/2026",
-          "in_corso": true
-        }
-      ]
+      "indice_fragilita_score": 5.0,
+      "livello_fragilita": "ROCCIA",
+      "fragility_label": "🟢 Roccia (Massima Affidabilità)",
+      "fragility_badge": "roccia",
+      "consiglio_medico_ai": "Calciatore integro e solido. Nessun problema muscolare ricorrente negli ultimi 24 mesi: affidabilità fisica massima.",
+      "infortunio_attivo": false,
+      "cronistoria_infortuni": []
     },
     "Ciurria": {
       "id": 5880,

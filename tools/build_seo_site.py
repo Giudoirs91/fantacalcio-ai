@@ -28,7 +28,7 @@ if os.path.exists(CALENDAR_PATH):
 
 
 BASE_URL = "https://www.fantamasterai.it"
-CSS_VERSION = "?v=20261115-v1"
+CSS_VERSION = "?v=20261115-v2"
 GA_MEASUREMENT_ID = "G-4QNYJ5YZXY"
 GA_TAG_SNIPPET = f"""    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
@@ -1647,10 +1647,10 @@ body {
     width: 108px !important;
     min-width: 108px !important;
     max-width: 108px !important;
-    height: 64px !important;
-    min-height: 64px !important;
-    max-height: 64px !important;
-    padding: 5px 6px !important;
+    height: auto !important;
+    min-height: 70px !important;
+    max-height: none !important;
+    padding: 6px 6px !important;
     box-sizing: border-box !important;
     text-align: center !important;
     transition: all 0.2s ease !important;
@@ -1713,6 +1713,8 @@ body {
     color: #ffffff !important;
     font-weight: 800 !important;
     font-size: 11px !important;
+    line-height: 1.25 !important;
+    flex-shrink: 0 !important;
     text-decoration: none !important;
     text-align: center !important;
     white-space: nowrap !important;
@@ -2218,9 +2220,9 @@ body {
         width: 100% !important;
         min-width: 100% !important;
         max-width: 100% !important;
-        height: 55px !important;
-        min-height: 55px !important;
-        max-height: 55px !important;
+        height: auto !important;
+        min-height: 60px !important;
+        max-height: none !important;
         padding: 4px 3px !important;
         border-radius: 8px !important;
         justify-content: space-between !important;

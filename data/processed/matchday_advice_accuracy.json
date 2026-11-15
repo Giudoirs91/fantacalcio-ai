@@ -5,10 +5,10 @@
       "total_consigliati": 12,
       "hits": 4,
       "hit_rate_pct": 33.3,
-      "sufficient": 7,
-      "sufficiency_rate_pct": 58.3,
-      "avg_fantavoto": 7.75,
-      "verdict_text": "Accuratezza Predittiva: 33.3% Hit Rate (58.3% Sufficienze, FV Medio 7.75)"
+      "sufficient": 6,
+      "sufficiency_rate_pct": 50.0,
+      "avg_fantavoto": 7.94,
+      "verdict_text": "Accuratezza Predittiva: 33.3% Hit Rate (50.0% Sufficienze, FV Medio 7.94)"
     },
     "roles": {
       "P": [
@@ -228,23 +228,23 @@
           "is_sufficient": true
         },
         {
-          "id": 5734,
-          "name": "Soulè",
-          "team": "Roma",
+          "id": 4871,
+          "name": "Thuram",
+          "team": "Inter",
           "role": "A",
-          "ovr": 81,
-          "match": "Roma vs Fiorentina",
-          "opponent": "Fiorentina",
+          "ovr": 98,
+          "match": "Inter vs Monza",
+          "opponent": "Monza",
           "is_home": true,
-          "score_ai": 175.9,
+          "score_ai": 193.1,
           "category": "PILASTRO",
           "tag": "🔒 TITOLARE CERTO",
-          "voto_reale": 6.0,
-          "fantavoto_reale": 6.0,
-          "bonus_malus": "Nessun bonus",
-          "status": "SUFFICIENTE",
+          "voto_reale": null,
+          "fantavoto_reale": null,
+          "bonus_malus": "",
+          "status": "MISS",
           "is_hit": false,
-          "is_sufficient": true
+          "is_sufficient": false
         }
       ]
     }
@@ -639,7 +639,7 @@
           "match": "Frosinone vs Venezia",
           "opponent": "Venezia",
           "is_home": true,
-          "score_ai": 211.3,
+          "score_ai": 211.7,
           "category": "PILASTRO",
           "tag": "🔒 TITOLARE CERTO",
           "voto_reale": 6.5,
@@ -753,12 +753,12 @@
     "round": 4,
     "summary": {
       "total_consigliati": 12,
-      "hits": 3,
-      "hit_rate_pct": 25.0,
+      "hits": 4,
+      "hit_rate_pct": 33.3,
       "sufficient": 8,
       "sufficiency_rate_pct": 66.7,
-      "avg_fantavoto": 5.85,
-      "verdict_text": "Accuratezza Predittiva: 25.0% Hit Rate (66.7% Sufficienze, FV Medio 5.85)"
+      "avg_fantavoto": 6.4,
+      "verdict_text": "Accuratezza Predittiva: 33.3% Hit Rate (66.7% Sufficienze, FV Medio 6.4)"
     },
     "roles": {
       "P": [
@@ -940,6 +940,25 @@
       ],
       "A": [
         {
+          "id": 4871,
+          "name": "Thuram",
+          "team": "Inter",
+          "role": "A",
+          "ovr": 98,
+          "match": "Inter vs Udinese",
+          "opponent": "Udinese",
+          "is_home": true,
+          "score_ai": 207.7,
+          "category": "PILASTRO",
+          "tag": "🔒 TITOLARE CERTO",
+          "voto_reale": 7.5,
+          "fantavoto_reale": 11.5,
+          "bonus_malus": "+3 (1G), +1 (1A)",
+          "status": "HIT",
+          "is_hit": true,
+          "is_sufficient": true
+        },
+        {
           "id": 5585,
           "name": "Malen",
           "team": "Roma",
@@ -976,25 +995,6 @@
           "status": "MISS",
           "is_hit": false,
           "is_sufficient": false
-        },
-        {
-          "id": 7017,
-          "name": "Douvikas",
-          "team": "Como",
-          "role": "A",
-          "ovr": 97,
-          "match": "Como vs Parma",
-          "opponent": "Parma",
-          "is_home": true,
-          "score_ai": 187.2,
-          "category": "PILASTRO",
-          "tag": "🔒 TITOLARE CERTO",
-          "voto_reale": 6.0,
-          "fantavoto_reale": 6.0,
-          "bonus_malus": "Nessun bonus",
-          "status": "SUFFICIENTE",
-          "is_hit": false,
-          "is_sufficient": true
         }
       ]
     }
@@ -1003,12 +1003,12 @@
     "round": 5,
     "summary": {
       "total_consigliati": 12,
-      "hits": 8,
-      "hit_rate_pct": 66.7,
+      "hits": 9,
+      "hit_rate_pct": 75.0,
       "sufficient": 12,
       "sufficiency_rate_pct": 100.0,
-      "avg_fantavoto": 7.79,
-      "verdict_text": "Accuratezza Predittiva: 66.7% Hit Rate (100.0% Sufficienze, FV Medio 7.79)"
+      "avg_fantavoto": 7.92,
+      "verdict_text": "Accuratezza Predittiva: 75.0% Hit Rate (100.0% Sufficienze, FV Medio 7.92)"
     },
     "roles": {
       "P": [
@@ -1158,7 +1158,7 @@
           "match": "Frosinone vs Como",
           "opponent": "Como",
           "is_home": true,
-          "score_ai": 195.9,
+          "score_ai": 196.3,
           "category": "PILASTRO",
           "tag": "🔒 TITOLARE CERTO",
           "voto_reale": 7.0,
@@ -1228,22 +1228,22 @@
           "is_sufficient": true
         },
         {
-          "id": 7017,
-          "name": "Douvikas",
-          "team": "Como",
+          "id": 4871,
+          "name": "Thuram",
+          "team": "Inter",
           "role": "A",
-          "ovr": 97,
-          "match": "Frosinone vs Como",
-          "opponent": "Frosinone",
+          "ovr": 98,
+          "match": "Roma vs Inter",
+          "opponent": "Roma",
           "is_home": false,
-          "score_ai": 167.2,
+          "score_ai": 170.1,
           "category": "PILASTRO",
           "tag": "🔒 TITOLARE CERTO",
-          "voto_reale": 6.0,
-          "fantavoto_reale": 6.0,
-          "bonus_malus": "Nessun bonus",
-          "status": "SUFFICIENTE",
-          "is_hit": false,
+          "voto_reale": 6.5,
+          "fantavoto_reale": 7.5,
+          "bonus_malus": "+1 (1A)",
+          "status": "HIT",
+          "is_hit": true,
           "is_sufficient": true
         }
       ]
@@ -1255,10 +1255,10 @@
       "total_consigliati": 12,
       "hits": 8,
       "hit_rate_pct": 66.7,
-      "sufficient": 9,
-      "sufficiency_rate_pct": 75.0,
-      "avg_fantavoto": 7.59,
-      "verdict_text": "Accuratezza Predittiva: 66.7% Hit Rate (75.0% Sufficienze, FV Medio 7.59)"
+      "sufficient": 10,
+      "sufficiency_rate_pct": 83.3,
+      "avg_fantavoto": 7.68,
+      "verdict_text": "Accuratezza Predittiva: 66.7% Hit Rate (83.3% Sufficienze, FV Medio 7.68)"
     },
     "roles": {
       "P": [
@@ -1419,26 +1419,45 @@
           "is_sufficient": true
         },
         {
-          "id": 2423,
-          "name": "Pulisic",
-          "team": "Milan",
+          "id": 632,
+          "name": "Zaccagni",
+          "team": "Lazio",
           "role": "C",
-          "ovr": 98,
-          "match": "Sassuolo vs Milan",
-          "opponent": "Sassuolo",
-          "is_home": false,
-          "score_ai": 196.5,
+          "ovr": 92,
+          "match": "Lazio vs Monza",
+          "opponent": "Monza",
+          "is_home": true,
+          "score_ai": 199.3,
           "category": "PILASTRO",
           "tag": "🔒 TITOLARE CERTO",
-          "voto_reale": 5.5,
-          "fantavoto_reale": 5.5,
+          "voto_reale": 6.0,
+          "fantavoto_reale": 6.0,
           "bonus_malus": "Nessun bonus",
-          "status": "MISS",
+          "status": "SUFFICIENTE",
           "is_hit": false,
-          "is_sufficient": false
+          "is_sufficient": true
         }
       ],
       "A": [
+        {
+          "id": 4871,
+          "name": "Thuram",
+          "team": "Inter",
+          "role": "A",
+          "ovr": 98,
+          "match": "Inter vs Parma",
+          "opponent": "Parma",
+          "is_home": true,
+          "score_ai": 206.0,
+          "category": "PILASTRO",
+          "tag": "🔒 TITOLARE CERTO",
+          "voto_reale": 7.0,
+          "fantavoto_reale": 10.0,
+          "bonus_malus": "+3 (1G)",
+          "status": "HIT",
+          "is_hit": true,
+          "is_sufficient": true
+        },
         {
           "id": 6435,
           "name": "Krstovic",
@@ -1476,25 +1495,6 @@
           "status": "MISS",
           "is_hit": false,
           "is_sufficient": false
-        },
-        {
-          "id": 6556,
-          "name": "Noslin",
-          "team": "Lazio",
-          "role": "A",
-          "ovr": 62,
-          "match": "Lazio vs Monza",
-          "opponent": "Monza",
-          "is_home": true,
-          "score_ai": 172.0,
-          "category": "PILASTRO",
-          "tag": "🔒 TITOLARE CERTO",
-          "voto_reale": 7.5,
-          "fantavoto_reale": 9.5,
-          "bonus_malus": "+2 (2A)",
-          "status": "HIT",
-          "is_hit": true,
-          "is_sufficient": true
         }
       ]
     }
@@ -1658,7 +1658,7 @@
           "match": "Frosinone vs Sassuolo",
           "opponent": "Sassuolo",
           "is_home": true,
-          "score_ai": 218.1,
+          "score_ai": 218.2,
           "category": "PILASTRO",
           "tag": "🔒 TITOLARE CERTO",
           "voto_reale": 7.5,
@@ -1753,12 +1753,12 @@
     "round": 8,
     "summary": {
       "total_consigliati": 12,
-      "hits": 8,
-      "hit_rate_pct": 66.7,
-      "sufficient": 9,
-      "sufficiency_rate_pct": 75.0,
+      "hits": 7,
+      "hit_rate_pct": 58.3,
+      "sufficient": 10,
+      "sufficiency_rate_pct": 83.3,
       "avg_fantavoto": 8.1,
-      "verdict_text": "Accuratezza Predittiva: 66.7% Hit Rate (75.0% Sufficienze, FV Medio 8.1)"
+      "verdict_text": "Accuratezza Predittiva: 58.3% Hit Rate (83.3% Sufficienze, FV Medio 8.1)"
     },
     "roles": {
       "P": [
@@ -1919,22 +1919,22 @@
           "is_sufficient": false
         },
         {
-          "id": 2423,
-          "name": "Pulisic",
-          "team": "Milan",
+          "id": 632,
+          "name": "Zaccagni",
+          "team": "Lazio",
           "role": "C",
-          "ovr": 98,
-          "match": "Udinese vs Milan",
-          "opponent": "Udinese",
-          "is_home": false,
-          "score_ai": 196.0,
+          "ovr": 92,
+          "match": "Lazio vs Parma",
+          "opponent": "Parma",
+          "is_home": true,
+          "score_ai": 204.4,
           "category": "PILASTRO",
           "tag": "🔒 TITOLARE CERTO",
-          "voto_reale": 7.0,
-          "fantavoto_reale": 10.0,
-          "bonus_malus": "+3 (1G)",
-          "status": "HIT",
-          "is_hit": true,
+          "voto_reale": 6.0,
+          "fantavoto_reale": 6.0,
+          "bonus_malus": "Nessun bonus",
+          "status": "SUFFICIENTE",
+          "is_hit": false,
           "is_sufficient": true
         }
       ],
@@ -1959,6 +1959,25 @@
           "is_sufficient": true
         },
         {
+          "id": 4871,
+          "name": "Thuram",
+          "team": "Inter",
+          "role": "A",
+          "ovr": 98,
+          "match": "Inter vs Fiorentina",
+          "opponent": "Fiorentina",
+          "is_home": true,
+          "score_ai": 201.9,
+          "category": "PILASTRO",
+          "tag": "🔒 TITOLARE CERTO",
+          "voto_reale": 7.5,
+          "fantavoto_reale": 10.5,
+          "bonus_malus": "+3 (1G)",
+          "status": "HIT",
+          "is_hit": true,
+          "is_sufficient": true
+        },
+        {
           "id": 7017,
           "name": "Douvikas",
           "team": "Como",
@@ -1976,25 +1995,6 @@
           "status": "HIT",
           "is_hit": true,
           "is_sufficient": true
-        },
-        {
-          "id": 5585,
-          "name": "Malen",
-          "team": "Roma",
-          "role": "A",
-          "ovr": 98,
-          "match": "Napoli vs Roma",
-          "opponent": "Napoli",
-          "is_home": false,
-          "score_ai": 184.0,
-          "category": "PILASTRO",
-          "tag": "🔒 TITOLARE CERTO",
-          "voto_reale": 5.5,
-          "fantavoto_reale": 6.5,
-          "bonus_malus": "+1 (1A)",
-          "status": "HIT",
-          "is_hit": true,
-          "is_sufficient": false
         }
       ]
     }
@@ -2139,7 +2139,7 @@
           "match": "Frosinone vs Lecce",
           "opponent": "Lecce",
           "is_home": true,
-          "score_ai": 215.5,
+          "score_ai": 215.7,
           "category": "PILASTRO",
           "tag": "🔒 TITOLARE CERTO",
           "voto_reale": 7.5,
@@ -2253,12 +2253,12 @@
     "round": 10,
     "summary": {
       "total_consigliati": 12,
-      "hits": 6,
-      "hit_rate_pct": 50.0,
+      "hits": 5,
+      "hit_rate_pct": 41.7,
       "sufficient": 10,
       "sufficiency_rate_pct": 83.3,
-      "avg_fantavoto": 7.08,
-      "verdict_text": "Accuratezza Predittiva: 50.0% Hit Rate (83.3% Sufficienze, FV Medio 7.08)"
+      "avg_fantavoto": 6.71,
+      "verdict_text": "Accuratezza Predittiva: 41.7% Hit Rate (83.3% Sufficienze, FV Medio 6.71)"
     },
     "roles": {
       "P": [
@@ -2400,6 +2400,25 @@
           "is_sufficient": true
         },
         {
+          "id": 632,
+          "name": "Zaccagni",
+          "team": "Lazio",
+          "role": "C",
+          "ovr": 92,
+          "match": "Lazio vs Cagliari",
+          "opponent": "Cagliari",
+          "is_home": true,
+          "score_ai": 208.6,
+          "category": "PILASTRO",
+          "tag": "🔒 TITOLARE CERTO",
+          "voto_reale": 6.0,
+          "fantavoto_reale": 6.0,
+          "bonus_malus": "Nessun bonus",
+          "status": "SUFFICIENTE",
+          "is_hit": false,
+          "is_sufficient": true
+        },
+        {
           "id": 7472,
           "name": "Calò",
           "team": "Frosinone",
@@ -2408,26 +2427,7 @@
           "match": "Frosinone vs Torino",
           "opponent": "Torino",
           "is_home": true,
-          "score_ai": 204.6,
-          "category": "PILASTRO",
-          "tag": "🔒 TITOLARE CERTO",
-          "voto_reale": 7.5,
-          "fantavoto_reale": 10.5,
-          "bonus_malus": "+3 (1G)",
-          "status": "HIT",
-          "is_hit": true,
-          "is_sufficient": true
-        },
-        {
-          "id": 6398,
-          "name": "Isaksen",
-          "team": "Lazio",
-          "role": "C",
-          "ovr": 73,
-          "match": "Lazio vs Cagliari",
-          "opponent": "Cagliari",
-          "is_home": true,
-          "score_ai": 194.5,
+          "score_ai": 205.0,
           "category": "PILASTRO",
           "tag": "🔒 TITOLARE CERTO",
           "voto_reale": 7.5,
@@ -2639,7 +2639,7 @@
           "match": "Cagliari vs Frosinone",
           "opponent": "Cagliari",
           "is_home": false,
-          "score_ai": 197.7,
+          "score_ai": 198.1,
           "category": "PILASTRO",
           "tag": "🔒 TITOLARE CERTO",
           "voto_reale": 6.5,
@@ -2755,6 +2755,6 @@
     "overall_hit_rate_pct": 56.1,
     "total_evaluated_advice": 132,
     "total_hits": 74,
-    "evaluated_at": "2026-11-15T09:18:55.436661"
+    "evaluated_at": "2026-11-15T11:07:50.867061"
   }
 }

@@ -1139,23 +1139,17 @@ main {
 ============================================================================== */
 .pitch-container-wrapper {
     display: grid;
-    grid-template-columns: minmax(520px, 1.4fr) 2fr;
-    gap: 18px;
-    align-items: stretch;
+    grid-template-columns: minmax(430px, 1fr) 1.45fr;
+    gap: 20px;
+    align-items: start;
     margin-bottom: 24px;
     width: 100%;
 }
 
-@media (max-width: 1400px) {
-    .pitch-container-wrapper {
-        grid-template-columns: minmax(460px, 1.25fr) 2fr;
-        gap: 14px;
-    }
-}
-
-@media (max-width: 1100px) {
+@media (max-width: 1280px) {
     .pitch-container-wrapper {
         grid-template-columns: 1fr;
+        gap: 18px;
     }
 }
 
@@ -1193,22 +1187,23 @@ main {
 
 .pitch-side-grid {
     display: grid;
-    grid-template-columns: 1.25fr 0.75fr 1fr;
-    gap: 14px;
+    grid-template-columns: 1.12fr 0.88fr;
+    gap: 16px;
     align-items: stretch;
     width: 100%;
 }
-
-@media (max-width: 1380px) {
-    .pitch-side-grid {
-        grid-template-columns: 1.2fr 0.8fr 1fr;
-        gap: 10px;
-    }
+.pitch-side-grid > .tactics-card-col:nth-child(2) {
+    grid-column: 1 / -1;
+    order: 3;
 }
 
 @media (max-width: 900px) {
     .pitch-side-grid {
         grid-template-columns: 1fr;
+    }
+    .pitch-side-grid > .tactics-card-col:nth-child(2) {
+        grid-column: auto;
+        order: 0;
     }
 }
 
@@ -2204,16 +2199,16 @@ main {
     background: rgba(11, 18, 32, 0.94);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 9px;
-    padding: 5px 7px;
-    min-width: 92px;
-    max-width: 120px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 11px;
+    padding: 7px 10px;
+    min-width: 114px;
+    max-width: 148px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.65), 0 2px 5px rgba(0, 0, 0, 0.4);
+    gap: 3px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.65), 0 2px 6px rgba(0, 0, 0, 0.4);
     transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -2221,7 +2216,7 @@ main {
 .pitch-card-name {
     color: #ffffff !important;
     font-weight: 800 !important;
-    font-size: 11px !important;
+    font-size: 12.5px !important;
     text-decoration: none !important;
     text-align: center !important;
     white-space: nowrap !important;
@@ -2230,7 +2225,7 @@ main {
     max-width: 100% !important;
     margin: 2px 0 1px 0 !important;
     display: block !important;
-    letter-spacing: 0.1px !important;
+    letter-spacing: 0.15px !important;
     transition: color 0.15s ease !important;
 }
 
@@ -2240,11 +2235,11 @@ main {
 }
 
 .pitch-card-sub {
-    font-size: 8.5px;
+    font-size: 10px;
     color: #94a3b8;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    margin-top: 2px;
-    padding-top: 2px;
+    margin-top: 3px;
+    padding-top: 3px;
     width: 100%;
     text-align: center;
     white-space: nowrap;
@@ -10538,6 +10533,12 @@ body.creator-mode-active .visitor-only-item {
     position: relative;
 }
 
+.matrix-quadrants-bar {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
 .matrix-quadrant-indicators {
     display: flex;
     align-items: stretch;
@@ -10549,8 +10550,8 @@ body.creator-mode-active .visitor-only-item {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    padding: 8px 12px;
+    gap: 4px;
+    padding: 8px 10px;
     border-radius: 10px;
     border: 1px solid transparent;
     font-size: 11px;
@@ -10558,6 +10559,40 @@ body.creator-mode-active .visitor-only-item {
     cursor: pointer;
     transition: all 0.2s ease;
     user-select: none;
+    min-width: 0;
+}
+.quad-badge-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+.quad-badge-head b {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.quad-count {
+    font-weight: 800;
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff !important;
+    flex-shrink: 0;
+}
+.quad-sub {
+    font-size: 10.5px;
+    color: var(--text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+@media (max-width: 960px) {
+    .matrix-quadrants-bar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 .quad-badge:hover {
     transform: translateY(-1px);
@@ -10656,8 +10691,51 @@ body.creator-mode-active .visitor-only-item {
     align-items: center;
     justify-content: space-between;
     gap: 8px;
-    padding-bottom: 12px;
+    padding-bottom: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.matrix-insights-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+    gap: 6px;
+}
+
+.matrix-insight-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 6px 8px;
+    border-radius: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+
+.matrix-insight-tab-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+.matrix-insight-tab-btn.active {
+    background: color-mix(in srgb, var(--tab-color, #38bdf8) 16%, transparent);
+    border-color: color-mix(in srgb, var(--tab-color, #38bdf8) 55%, transparent);
+    color: #fff;
+}
+
+.matrix-insight-tab-btn .tab-count {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 1px 5px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--tab-color, #fff);
 }
 
 .insights-scrollable-list {
@@ -10687,12 +10765,12 @@ body.creator-mode-active .visitor-only-item {
     background: rgba(255, 255, 255, 0.025);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
-    padding: 11px 13px;
+    padding: 10px 12px;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 6px;
 }
 
 .fanta-insight-card:hover {
@@ -10752,12 +10830,12 @@ body.creator-mode-active .visitor-only-item {
 
 .fanta-insight-advice {
     font-size: 11.5px;
-    color: #e2e8f0;
+    color: #cbd5e1;
     line-height: 1.4;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 7px 10px;
-    border-radius: 8px;
-    border-left: 3px solid var(--accent-gold);
+    background: transparent;
+    padding: 2px 0 2px 9px;
+    border-radius: 0;
+    border-left: 2px solid var(--accent-gold);
 }
 
 /* ==============================================================================
@@ -13229,6 +13307,19 @@ body.creator-mode-active .visitor-only-item {
 
     .pitch-side-grid {
         width: 100% !important;
+        grid-template-columns: 1fr !important;
+        min-width: 0 !important;
+    }
+    .pitch-side-grid > .tactics-card-col {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+    }
+    .pitch-side-grid > .tactics-card-col:nth-child(2) {
+        grid-column: auto !important;
+        order: 0 !important;
     }
 
     .pitch-club-quick-bar {
@@ -14943,8 +15034,8 @@ body.creator-mode-active .visitor-only-item {
     .pitch-player-node {
         flex: 1 1 0 !important;
         min-width: 0 !important;
-        max-width: 66px !important;
-        margin: 0 1px !important;
+        max-width: 96px !important;
+        margin: 0 2px !important;
         padding: 0 !important;
     }
 
@@ -14953,58 +15044,58 @@ body.creator-mode-active .visitor-only-item {
         min-width: 0 !important;
         max-width: 100% !important;
         width: 100% !important;
-        padding: 3px 2px !important;
-        border-radius: 6px !important;
+        padding: 5px 4px !important;
+        border-radius: 8px !important;
         border-width: 1px !important;
-        gap: 1px !important;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6) !important;
+        gap: 2px !important;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6) !important;
     }
 
     .pitch-card-header {
-        gap: 2px !important;
+        gap: 3px !important;
         width: 100% !important;
         justify-content: center !important;
     }
 
     .pitch-role-badge {
-        width: 13px !important;
-        height: 13px !important;
-        font-size: 8px !important;
-        line-height: 13px !important;
+        width: 16px !important;
+        height: 16px !important;
+        font-size: 9.5px !important;
+        line-height: 16px !important;
         flex-shrink: 0 !important;
     }
 
     .pitch-ovr-tag {
-        font-size: 7.5px !important;
-        padding: 0.5px 2px !important;
-        border-radius: 2px !important;
+        font-size: 9.5px !important;
+        padding: 1px 3px !important;
+        border-radius: 3px !important;
         line-height: 1 !important;
     }
 
     .pitch-oop-pill, .pitch-fpn-pill {
-        font-size: 6.5px !important;
-        padding: 0.5px 2px !important;
-        border-radius: 2px !important;
+        font-size: 7.5px !important;
+        padding: 1px 3px !important;
+        border-radius: 3px !important;
         line-height: 1 !important;
     }
 
     .pitch-inj-badge {
-        width: 11px !important;
-        height: 11px !important;
-        font-size: 7px !important;
-        line-height: 11px !important;
+        width: 12px !important;
+        height: 12px !important;
+        font-size: 8px !important;
+        line-height: 12px !important;
     }
 
     .pitch-card-name {
-        font-size: 8.5px !important;
+        font-size: 10.5px !important;
         font-weight: 800 !important;
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
         max-width: 100% !important;
         text-align: center !important;
-        line-height: 1.15 !important;
-        margin-top: 1px !important;
+        line-height: 1.2 !important;
+        margin-top: 2px !important;
     }
 
     .pitch-card-pos {

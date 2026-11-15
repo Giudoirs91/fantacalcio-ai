@@ -56,6 +56,228 @@ def get_player_slug_from_name(name):
     slug = slugify(name)
     return PLAYER_SLUG_ALIASES.get(slug, slug)
 
+def xfm_text_color(xfm):
+    """Gradiente continuo Rosso -> Arancione (5.5) -> Giallo -> Verde (solo colore testo)."""
+    try:
+        v = float(xfm)
+    except Exception:
+        v = 6.0
+    stops = [
+        (4.5, (248, 113, 113)),  # Rosso
+        (5.5, (251, 146, 60)),   # Arancione (5.5)
+        (6.2, (250, 204, 21)),   # Giallo
+        (7.5, (74, 222, 128)),   # Verde
+    ]
+    if v <= stops[0][0]:
+        r, g, b = stops[0][1]
+        return f"rgb({r},{g},{b})"
+    if v >= stops[-1][0]:
+        r, g, b = stops[-1][1]
+        return f"rgb({r},{g},{b})"
+    for i in range(len(stops) - 1):
+        x0, c0 = stops[i]
+        x1, c1 = stops[i + 1]
+        if x0 <= v <= x1:
+            t = (v - x0) / (x1 - x0)
+            r = int(round(c0[0] + (c1[0] - c0[0]) * t))
+            g = int(round(c0[1] + (c1[1] - c0[1]) * t))
+            b = int(round(c0[2] + (c1[2] - c0[2]) * t))
+            return f"rgb({r},{g},{b})"
+    return "#cbd5e1"
+
+def render_player_link(name, style="", css_class=""):
+    if not name or str(name).strip() in ("", "-"):
+        return clean_html(name or "-")
+    clean_name_txt = str(name).strip()
+    slug = get_player_slug_from_name(clean_name_txt)
+    cls_attr = f' class="{css_class}"' if css_class else ''
+    style_attr = f' style="{style}"' if style else ''
+    return f'<a href="/calciatore/{slug}/"{cls_attr}{style_attr}>{clean_html(clean_name_txt)}</a>'
+
+def render_prob_mantra_badges(mantra_str):
+    if not mantra_str or str(mantra_str).strip() in ['', '-', 'null', 'undefined', 'N/A']:
+        return ''
+    roles = [r.strip() for r in re.split(r'[;,/ ]+', str(mantra_str)) if r.strip()]
+    if not roles:
+        return ''
+    pills = []
+    for r in roles:
+        rl = r.lower()
+        if rl == 'por':
+            cat = 'm-por'
+        elif rl in ('dd', 'ds', 'dc', 'b'):
+            cat = 'm-def'
+        elif rl in ('e', 'm', 'c'):
+            cat = 'm-mid'
+        elif rl in ('w', 't'):
+            cat = 'm-trq'
+        else:
+            cat = 'm-att'
+        pills.append(f'<span class="prob-mantra-pill {cat}" title="Ruolo Mantra {clean_html(r)}">{clean_html(r)}</span>')
+    return f'<span class="prob-mantra-list">{"".join(pills)}</span>'
+
+def enrich_consensus_with_mantra(consensus_data, players):
+    """Arricchisce in-place tutti i giocatori di consensus_data con 'mantra' e segnala i Top 2 Bonus / Top 2 Malus per squadra."""
+    if not consensus_data or not players:
+        return consensus_data
+    by_team_slug = {}
+    by_slug = {}
+    player_by_team_slug = {}
+    player_by_slug = {}
+    for p in players:
+        p_slug = slugify(p.get('name', ''))
+        t_key = (p.get('team') or '').strip().upper()
+        if p_slug:
+            if t_key:
+                player_by_team_slug[(t_key, p_slug)] = p
+            if p_slug not in player_by_slug:
+                player_by_slug[p_slug] = p
+        m_val = (p.get('mantra') or p.get('mantra_role') or '').strip()
+        if m_val and p_slug:
+            if t_key:
+                by_team_slug[(t_key, p_slug)] = m_val
+            if p_slug not in by_slug:
+                by_slug[p_slug] = m_val
+
+    def _find_master(obj, team_upper):
+        n_slug = slugify(obj.get('name', '')) if isinstance(obj, dict) else ''
+        if not n_slug:
+            return None
+        return player_by_team_slug.get((team_upper, n_slug)) or player_by_slug.get(n_slug)
+
+    def _fill_player(obj, team_upper):
+        if not isinstance(obj, dict) or obj.get('mantra'):
+            return
+        n_slug = slugify(obj.get('name', ''))
+        if not n_slug:
+            return
+        val = by_team_slug.get((team_upper, n_slug)) or by_slug.get(n_slug)
+        if val:
+            obj['mantra'] = val
+
+    def _compute_team_bonus_malus(side, t_upper):
+        starters = [s for s in side.get('starters', []) if not s.get('is_injured')]
+        if not starters:
+            return [], []
+
+        bonus_candidates = []
+        malus_candidates = []
+        for s in starters:
+            mp = _find_master(s, t_upper) or {}
+            role = (s.get('role') or mp.get('role') or 'C').upper()
+            pct = float(s.get('consensus_pct') or 80)
+            xfm = float(mp.get('xfm') or s.get('xfm') or 6.0)
+            ovr = float(mp.get('ovr') or s.get('ovr') or 72)
+            xg_xa90 = float(mp.get('xg_xa90_2627') or (float(mp.get('xg90') or 0) + float(mp.get('xa90') or 0)))
+            ceiling = float(mp.get('ceiling') or xfm)
+            tot_bonus = float(mp.get('tot_bonus_2627') or 0)
+            is_rig = bool(mp.get('is_rigorista_1'))
+            is_piazz = bool(mp.get('is_punizioni') or mp.get('is_corner'))
+            is_oop = bool(mp.get('is_oop'))
+
+            # Bonus Potential Score (basato su metriche algoritmiche reali + titolarità)
+            b_score = (
+                (xfm - 5.5) * 3.0
+                + xg_xa90 * 6.5
+                + (ceiling - 6.0) * 0.8
+                + (tot_bonus * 0.35)
+                + (2.2 if is_rig else 0.0)
+                + (0.8 if is_piazz else 0.0)
+                + (0.9 if is_oop else 0.0)
+                + ((ovr - 70) * 0.08)
+            ) * (0.6 + 0.4 * min(1.0, pct / 100.0))
+            if role == 'P':
+                b_score -= 3.0
+
+            b_tags = [f"xFM {xfm:.2f}"]
+            if is_rig:
+                b_tags.append("Rigorista")
+            elif is_oop:
+                b_tags.append("Fuori ruolo")
+            elif xg_xa90 >= 0.25:
+                b_tags.append(f"xG+xA {xg_xa90:.2f}")
+            elif is_piazz:
+                b_tags.append("Piazzati")
+
+            bonus_candidates.append({
+                'name': s['name'],
+                'role': role,
+                'mantra': s.get('mantra') or mp.get('mantra', ''),
+                'score': b_score,
+                'reason': " • ".join(b_tags[:2]),
+            })
+
+            # Malus Risk Score (cartellini, falli, gol subiti, flop/floor basso, ballottaggio aperto)
+            amm = float(mp.get('amm_2627') or mp.get('amm') or 0)
+            esp = float(mp.get('esp_2627') or mp.get('esp') or 0)
+            fouls = float(mp.get('fouls_2627') or 0)
+            pres = max(1.0, float(mp.get('presenze_2627') or mp.get('presenze') or 1))
+            gs = float(mp.get('gol_subiti_2627') or mp.get('gs') or 0)
+            floor_val = float(mp.get('floor') or 5.5)
+            is_flop = bool(mp.get('is_flop'))
+            rig_sbagl = float(mp.get('rigori_sbagliati_2627') or 0)
+            autogol = float(mp.get('autogol_2627') or 0)
+
+            m_score = (
+                amm * 1.4
+                + esp * 4.0
+                + (fouls / pres) * 1.5
+                + rig_sbagl * 1.8
+                + autogol * 1.5
+                + (1.8 if is_flop else 0.0)
+                + max(0.0, 5.8 - floor_val) * 1.4
+                + (1.2 if pct < 65 else 0.0)
+                + ((gs / pres) * 2.2 if role == 'P' else 0.0)
+            )
+            m_tags = []
+            if amm > 0 or esp > 0:
+                card_txt = f"{int(amm)} amm." + (f" {int(esp)} esp." if esp > 0 else "")
+                m_tags.append(card_txt)
+            if role == 'P' and gs > 0:
+                m_tags.append(f"{gs / pres:.1f} GS/p")
+            elif fouls / pres >= 1.2:
+                m_tags.append(f"{fouls / pres:.1f} falli/p")
+            if floor_val < 5.5:
+                m_tags.append(f"Floor {floor_val:.1f}")
+            if not m_tags:
+                m_tags.append(f"xFM {xfm:.2f}" if pct >= 65 else f"{int(pct)}% TIT")
+
+            malus_candidates.append({
+                'name': s['name'],
+                'role': role,
+                'mantra': s.get('mantra') or mp.get('mantra', ''),
+                'score': m_score,
+                'reason': " • ".join(m_tags[:2]),
+            })
+
+        bonus_candidates.sort(key=lambda x: x['score'], reverse=True)
+        top_bonus = bonus_candidates[:2]
+        bonus_names = {x['name'] for x in top_bonus}
+
+        # Evita sovrapposizione con i 2 top bonus se ci sono abbastanza giocatori
+        malus_filtered = [x for x in malus_candidates if x['name'] not in bonus_names]
+        if len(malus_filtered) < 2:
+            malus_filtered = malus_candidates
+        malus_filtered.sort(key=lambda x: x['score'], reverse=True)
+        top_malus = malus_filtered[:2]
+        return top_bonus, top_malus
+
+    for m in consensus_data.get('matches', []):
+        for side_key, team_field in (('home', 'home_team'), ('away', 'away_team')):
+            side = m.get(side_key) or {}
+            t_upper = (m.get(team_field) or side.get('team') or '').strip().upper()
+            for item in side.get('starters', []):
+                _fill_player(item, t_upper)
+            for item in side.get('reserves', []):
+                _fill_player(item, t_upper)
+            for b in side.get('ballots', []):
+                _fill_player(b.get('player1'), t_upper)
+                _fill_player(b.get('player2'), t_upper)
+            top_b, top_m = _compute_team_bonus_malus(side, t_upper)
+            side['top_bonus'] = top_b
+            side['top_malus'] = top_m
+    return consensus_data
+
 def render_probabili_css():
     return """
 /* Core App Header Styles (Self-contained) */
@@ -252,12 +474,13 @@ html, body {
 
 /* Hero Header */
 .prob-hero {
-    background: radial-gradient(120% 120% at 50% 0%, rgba(56, 189, 248, 0.16) 0%, rgba(15, 23, 42, 0.95) 100%);
-    border: 1px solid rgba(56, 189, 248, 0.25);
-    border-radius: 18px;
-    padding: 24px 28px;
-    margin-bottom: 20px;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+    display: block !important;
+    background: radial-gradient(120% 120% at 50% 0%, rgba(56, 189, 248, 0.14) 0%, rgba(15, 23, 42, 0.95) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
 }
@@ -441,26 +664,30 @@ html, body {
 
 /* Match Section & Controls */
 .match-detail-section {
-    background: rgba(18, 22, 29, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 18px;
-    padding: 20px 24px;
-    margin-bottom: 28px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(12, 16, 26, 0.94) 100%);
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.match-detail-section:hover {
+    border-color: rgba(56, 189, 248, 0.28);
 }
 .match-detail-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 14px;
-    padding-bottom: 16px;
+    gap: 12px;
+    padding-bottom: 14px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     width: 100%;
     box-sizing: border-box;
 }
@@ -821,6 +1048,288 @@ html, body {
 .consensus-table tr:hover td {
     background: rgba(255, 255, 255, 0.02);
 }
+
+/* Global Quick UX Bar & Bench Accordion */
+.prob-global-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+}
+.prob-global-switch {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9px;
+    padding: 3px;
+    gap: 4px;
+}
+.global-view-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.global-view-btn:hover {
+    color: #ffffff;
+}
+.global-view-btn.active {
+    background: rgba(56, 189, 248, 0.18);
+    color: #38bdf8;
+    font-weight: 800;
+}
+.prob-quick-jumps {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.prob-jump-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    padding: 5px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+.prob-jump-link:hover {
+    color: #38bdf8;
+    border-color: rgba(56, 189, 248, 0.35);
+    background: rgba(56, 189, 248, 0.08);
+}
+.bench-accordion {
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(15, 23, 42, 0.55);
+}
+.bench-accordion-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 9px 12px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #94a3b8;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: color 0.15s ease, background 0.15s ease;
+}
+.bench-accordion-summary::-webkit-details-marker {
+    display: none;
+}
+.bench-accordion-summary:hover {
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.03);
+}
+.bench-preview-names {
+    font-weight: 500;
+    color: #64748b;
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 52%;
+}
+.bench-chevron {
+    color: #38bdf8;
+    font-size: 11px;
+    flex-shrink: 0;
+}
+.bench-accordion[open] .bench-chevron {
+    transform: rotate(180deg);
+}
+
+/* Posizioni Mantra & Player Cell Modern Layout */
+.player-cell-flex {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    white-space: normal;
+}
+.prob-mantra-list {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    flex-wrap: wrap;
+}
+.prob-mantra-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9.5px;
+    font-weight: 800;
+    line-height: 1;
+    padding: 2px 5px;
+    border-radius: 4px;
+    letter-spacing: 0.2px;
+    border: 1px solid transparent;
+}
+.prob-mantra-pill.m-por {
+    background: rgba(245, 158, 11, 0.16);
+    color: #fbbf24;
+    border-color: rgba(245, 158, 11, 0.32);
+}
+.prob-mantra-pill.m-def {
+    background: rgba(16, 185, 129, 0.14);
+    color: #34d399;
+    border-color: rgba(16, 185, 129, 0.30);
+}
+.prob-mantra-pill.m-mid {
+    background: rgba(56, 189, 248, 0.14);
+    color: #38bdf8;
+    border-color: rgba(56, 189, 248, 0.30);
+}
+.prob-mantra-pill.m-trq {
+    background: rgba(168, 85, 247, 0.16);
+    color: #c084fc;
+    border-color: rgba(168, 85, 247, 0.34);
+}
+.prob-mantra-pill.m-att {
+    background: rgba(244, 63, 94, 0.15);
+    color: #fb7185;
+    border-color: rgba(244, 63, 94, 0.32);
+}
+
+/* Quick Search nella Global Bar */
+.prob-search-wrap {
+    position: relative;
+    flex: 1 1 210px;
+    max-width: 280px;
+}
+.prob-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.42);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 8px;
+    color: #f8fafc;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 10px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.prob-search-input::placeholder {
+    color: #64748b;
+}
+.prob-search-input:focus {
+    border-color: rgba(56, 189, 248, 0.65);
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.15);
+}
+
+/* Radar Bonus & Malus AI per Squadra */
+.bm-ai-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.bm-ai-col {
+    background: rgba(15, 23, 42, 0.65);
+    border-radius: 10px;
+    padding: 9px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.bm-ai-col.bonus {
+    border-color: rgba(34, 197, 94, 0.25);
+    background: rgba(34, 197, 94, 0.05);
+}
+.bm-ai-col.malus {
+    border-color: rgba(244, 63, 94, 0.25);
+    background: rgba(244, 63, 94, 0.05);
+}
+.bm-ai-head {
+    font-size: 10.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 6px;
+}
+.bm-ai-col.bonus .bm-ai-head { color: #4ade80; }
+.bm-ai-col.malus .bm-ai-head { color: #fb7185; }
+.bm-ai-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 4px 0;
+    font-size: 11.5px;
+}
+.bm-ai-row + .bm-ai-row {
+    border-top: 1px dashed rgba(255, 255, 255, 0.06);
+}
+.bm-ai-player {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    font-weight: 700;
+    color: #f8fafc;
+}
+.bm-ai-player a {
+    color: #f8fafc;
+    text-decoration: none;
+}
+.bm-ai-player a:hover {
+    color: #38bdf8;
+}
+.bm-ai-reason {
+    font-size: 10px;
+    color: #94a3b8;
+    font-weight: 600;
+    text-align: right;
+    white-space: nowrap;
+}
+.inline-bm-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 9.5px;
+    font-weight: 800;
+    line-height: 1;
+    padding: 2px 6px;
+    border-radius: 9999px;
+    letter-spacing: 0.25px;
+    white-space: nowrap;
+    cursor: help;
+}
+.inline-bm-badge.bonus {
+    background: rgba(34, 197, 94, 0.16);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.38);
+}
+.inline-bm-badge.malus {
+    background: rgba(244, 63, 94, 0.16);
+    color: #fb7185;
+    border: 1px solid rgba(244, 63, 94, 0.38);
+}
+@media (max-width: 640px) {
+    .bm-ai-grid {
+        grid-template-columns: 1fr;
+    }
+}
 .col-player {
     font-weight: 700;
     white-space: nowrap;
@@ -1065,13 +1574,83 @@ html, body {
     }
     .consensus-table-wrapper {
         border-radius: 8px;
+        overflow-x: hidden;
+        width: 100%;
+    }
+    .consensus-table {
+        width: 100%;
+        table-layout: fixed;
+    }
+    .consensus-table th,
+    .consensus-table td {
+        padding: 7px 6px;
+        font-size: 11px;
+    }
+    .consensus-table .col-ovr {
+        display: none;
     }
     .consensus-table .col-player {
-        position: sticky;
-        left: 0;
-        background: #141822;
-        z-index: 2;
-        box-shadow: 2px 0 6px rgba(0,0,0,0.4);
+        width: 44%;
+        position: static;
+        background: transparent;
+        box-shadow: none;
+        white-space: normal;
+        word-break: break-word;
+    }
+    .consensus-table .col-tit {
+        width: 54px;
+        padding: 6px 3px;
+    }
+    .consensus-table .col-xfm {
+        width: 40px;
+        padding: 6px 3px;
+    }
+    .consensus-table .col-status {
+        white-space: normal;
+        word-break: break-word;
+        font-size: 10px;
+        line-height: 1.25;
+    }
+    .prob-global-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 10px;
+    }
+    .prob-global-switch {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .global-view-btn {
+        flex: 1;
+        text-align: center;
+        padding: 7px 6px;
+        font-size: 11px;
+    }
+    .prob-search-wrap {
+        max-width: 100%;
+        width: 100%;
+        flex: 1 1 auto;
+    }
+    .prob-quick-jumps {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .prob-jump-link {
+        flex: 1;
+        justify-content: center;
+    }
+    .taker-item-row,
+    .injury-mini-item {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    .bench-accordion-summary {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+    .bench-preview-names {
+        max-width: 38%;
     }
 }
 
@@ -1629,7 +2208,7 @@ def render_probabili_js():
 <script src="/js/tracker.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Switcher viste per match (Duelli vs Tabellone Fonti)
+    // 1. Switcher viste per match (Formazioni vs Ballottaggi)
     document.querySelectorAll('.view-switch-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             var matchId = this.getAttribute('data-match');
@@ -1655,6 +2234,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // 1b. Switcher globale viste su tutto il turno (Hub)
+    document.querySelectorAll('.global-view-btn[data-global-view]').forEach(function(gBtn) {
+        gBtn.addEventListener('click', function() {
+            var viewType = this.getAttribute('data-global-view');
+            document.querySelectorAll('.global-view-btn[data-global-view]').forEach(function(b) {
+                b.classList.remove('active');
+            });
+            this.classList.add('active');
+
+            document.querySelectorAll('.match-detail-section').forEach(function(sec) {
+                sec.querySelectorAll('.view-switch-btn').forEach(function(b) {
+                    b.classList.toggle('active', b.getAttribute('data-view') === viewType);
+                });
+                sec.querySelectorAll('.match-view-pane').forEach(function(pane) {
+                    pane.style.display = pane.classList.contains('view-pane-' + viewType) ? 'block' : 'none';
+                });
+            });
+        });
+    });
+
     // 2. Click su pill carosello per scroll fluido al match
     document.querySelectorAll('.match-pill-card[data-target-sec]').forEach(function(pill) {
         pill.addEventListener('click', function(e) {
@@ -1668,12 +2267,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // 3. Filtro istantaneo per squadra o giocatore (Hub)
+    var searchInput = document.getElementById('prob-match-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            var q = (this.value || '').trim().toLowerCase();
+            document.querySelectorAll('.match-detail-section').forEach(function(sec) {
+                if (!q) {
+                    sec.style.display = '';
+                    return;
+                }
+                var txt = (sec.textContent || '').toLowerCase();
+                sec.style.display = txt.indexOf(q) !== -1 ? '' : 'none';
+            });
+        });
+    }
 });
 </script>
 """
 
 def is_valid_ballot(b):
     if not b:
+        return False
+    if min(b.get('consensus_pct1', 50), b.get('consensus_pct2', 50)) < 10:
         return False
     p1 = b.get('player1', {})
     p2 = b.get('player2', {})
@@ -1704,11 +2321,11 @@ def render_h2h_duel(duel, team_name):
     p1_ovr = p1.get('ovr', 75)
     p2_ovr = p2.get('ovr', 74)
 
-    calciatore_dist = os.path.join(ROOT_DIR, "dist", "calciatore")
-    p1_exists = os.path.isdir(os.path.join(calciatore_dist, p1_slug))
-    p2_exists = os.path.isdir(os.path.join(calciatore_dist, p2_slug))
-    p1_html_link = f'<a href="/calciatore/{p1_slug}/" class="h2h-name" title="Scheda {clean_html(p1["name"])}">{clean_html(p1["name"])}{inj_badge1}</a>' if p1_exists else f'<span class="h2h-name" title="{clean_html(p1["name"])}">{clean_html(p1["name"])}{inj_badge1}</span>'
-    p2_html_link = f'<a href="/calciatore/{p2_slug}/" class="h2h-name" title="Scheda {clean_html(p2["name"])}">{clean_html(p2["name"])}{inj_badge2}</a>' if p2_exists else f'<span class="h2h-name" title="{clean_html(p2["name"])}">{clean_html(p2["name"])}{inj_badge2}</span>'
+    p1_html_link = render_player_link(p1['name'], css_class="h2h-name") + inj_badge1
+    p2_html_link = render_player_link(p2['name'], css_class="h2h-name") + inj_badge2
+
+    p1_mantra_html = render_prob_mantra_badges(p1.get('mantra'))
+    p2_mantra_html = render_prob_mantra_badges(p2.get('mantra'))
 
     return f"""
     <div class="duel-card-h2h">
@@ -1722,10 +2339,12 @@ def render_h2h_duel(duel, team_name):
             <div class="duel-player-side left">
                 <span class="pitch-role-badge {p1_role}">{p1_role}</span>
                 {p1_html_link}
+                {p1_mantra_html}
                 <span class="h2h-ovr-pill">OVR {p1_ovr}</span>
             </div>
             <div class="duel-player-side right">
                 <span class="h2h-ovr-pill">OVR {p2_ovr}</span>
+                {p2_mantra_html}
                 {p2_html_link}
                 <span class="pitch-role-badge {p2_role}">{p2_role}</span>
             </div>
@@ -1751,7 +2370,48 @@ def render_h2h_duel(duel, team_name):
     </div>
     """
 
+def render_team_bonus_malus(t_data):
+    top_b = t_data.get('top_bonus', [])[:2]
+    top_m = t_data.get('top_malus', [])[:2]
+    if not top_b and not top_m:
+        return ''
+
+    def _render_rows(items):
+        if not items:
+            return '<div style="font-size:11px;color:#64748b;">Dati insufficienti</div>'
+        out = ""
+        for it in items:
+            slug = get_player_slug_from_name(it.get('name', ''))
+            role = it.get('role', 'C')
+            mantra_html = render_prob_mantra_badges(it.get('mantra'))
+            out += f"""
+            <div class="bm-ai-row">
+                <div class="bm-ai-player">
+                    <span class="pitch-role-badge {role}" style="width:16px;height:16px;font-size:9px;display:inline-flex;flex-shrink:0;">{role}</span>
+                    <a href="/calciatore/{slug}/">{clean_html(it.get('name'))}</a>
+                    {mantra_html}
+                </div>
+                <span class="bm-ai-reason">{clean_html(it.get('reason', ''))}</span>
+            </div>
+            """
+        return out
+
+    return f"""
+    <div class="bm-ai-grid">
+        <div class="bm-ai-col bonus">
+            <div class="bm-ai-head">🔥 Top 2 Bonus AI</div>
+            {_render_rows(top_b)}
+        </div>
+        <div class="bm-ai-col malus">
+            <div class="bm-ai-head">⚠️ Top 2 Rischio Malus</div>
+            {_render_rows(top_m)}
+        </div>
+    </div>
+    """
+
 def render_consensus_team_table(team_data):
+    bonus_map = {x['name']: x.get('reason', '') for x in team_data.get('top_bonus', []) if x.get('name')}
+    malus_map = {x['name']: x.get('reason', '') for x in team_data.get('top_malus', []) if x.get('name')}
     rows_starters = ""
     for s in team_data.get('starters', []):
         name = s['name']
@@ -1769,22 +2429,37 @@ def render_consensus_team_table(team_data):
             pct_txt = f"{pct}%"
 
         sub_txt = s.get('sub_txt', 'Titolare')
+        if 'vs ' in sub_txt and pct > 90:
+            sub_txt = 'Titolare inamovibile'
         if 'vs ' in sub_txt:
-            sub_col_html = f'<span style="color:#38bdf8;font-weight:700;">⚔️ {clean_html(sub_txt)}</span>'
+            rival_name = sub_txt.split('vs ', 1)[1].strip()
+            rival_link = render_player_link(rival_name, style="color:#38bdf8;font-weight:700;text-decoration:none;")
+            sub_col_html = f'<span style="color:#38bdf8;font-weight:700;">⚔️ vs {rival_link}</span>'
         elif s.get('is_injured'):
             sub_col_html = f'<span style="color:#f87171;font-weight:600;">{clean_html(sub_txt)}</span>'
         else:
             sub_col_html = f'<span style="color:#cbd5e1;">{clean_html(sub_txt)}</span>'
 
+        mantra_html = render_prob_mantra_badges(s.get('mantra'))
+        bm_inline_html = ""
+        if name in bonus_map:
+            bm_inline_html = f'<span class="inline-bm-badge bonus" title="Top Bonus AI: {clean_html(bonus_map[name])}">🔥 BONUS</span>'
+        elif name in malus_map:
+            bm_inline_html = f'<span class="inline-bm-badge malus" title="Rischio Malus AI: {clean_html(malus_map[name])}">⚠️ MALUS</span>'
+        xfm_color = xfm_text_color(xfm)
         rows_starters += f"""
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge {role}" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">{role}</span>
-                <a href="/calciatore/{slug}/">{clean_html(name)}</a>
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge {role}" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">{role}</span>
+                    <a href="/calciatore/{slug}/">{clean_html(name)}</a>
+                    {mantra_html}
+                    {bm_inline_html}
+                </div>
             </td>
             <td class="col-ovr">{ovr}</td>
             <td class="col-tit"><span class="consensus-chip {chip_cls}">{pct_txt}</span></td>
-            <td class="col-xfm">{xfm:.2f}</td>
+            <td class="col-xfm" style="color:{xfm_color};">{xfm:.2f}</td>
             <td class="col-status">{sub_col_html}</td>
         </tr>
         """
@@ -1807,23 +2482,52 @@ def render_consensus_team_table(team_data):
 
         sub_txt = r.get('sub_txt', 'Panchina')
         if 'vs ' in sub_txt:
-            sub_col_html = f'<span style="color:#38bdf8;font-weight:700;">⚔️ {clean_html(sub_txt)}</span>'
+            rival_name = sub_txt.split('vs ', 1)[1].strip()
+            rival_link = render_player_link(rival_name, style="color:#38bdf8;font-weight:700;text-decoration:none;")
+            sub_col_html = f'<span style="color:#38bdf8;font-weight:700;">⚔️ vs {rival_link}</span>'
         elif r.get('is_injured'):
             sub_col_html = f'<span style="color:#f87171;font-weight:600;">{clean_html(sub_txt)}</span>'
         else:
             sub_col_html = f'<span style="color:#64748b;">{clean_html(sub_txt)}</span>'
 
+        r_mantra_html = render_prob_mantra_badges(r.get('mantra'))
+        r_xfm_color = xfm_text_color(xfm)
         rows_reserves += f"""
         <tr>
             <td class="col-player">
-                <span class="pitch-role-badge {role}" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">{role}</span>
-                <a href="/calciatore/{slug}/" style="color:#94a3b8;">{clean_html(name)}</a>
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge {role}" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">{role}</span>
+                    <a href="/calciatore/{slug}/" style="color:#94a3b8;">{clean_html(name)}</a>
+                    {r_mantra_html}
+                </div>
             </td>
             <td class="col-ovr" style="color:#64748b;">{ovr}</td>
             <td class="col-tit"><span class="consensus-chip {chip_cls}">{pct_txt}</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">{xfm:.2f}</td>
+            <td class="col-xfm" style="color:{r_xfm_color};">{xfm:.2f}</td>
             <td class="col-status">{sub_col_html}</td>
         </tr>
+        """
+
+    reserves_list = team_data.get('reserves', [])
+    bench_preview = ", ".join(clean_html(r['name']) for r in reserves_list[:4])
+    if len(reserves_list) > 4:
+        bench_preview += "..."
+
+    bench_block = ""
+    if reserves_list:
+        bench_block = f"""
+        <details class="bench-accordion">
+            <summary class="bench-accordion-summary">
+                <span>🪑 Panchina &amp; Rotazioni ({len(reserves_list)})</span>
+                <span class="bench-preview-names">{bench_preview}</span>
+                <span class="bench-chevron">▼</span>
+            </summary>
+            <table class="consensus-table">
+                <tbody>
+                    {rows_reserves}
+                </tbody>
+            </table>
+        </details>
         """
 
     return f"""
@@ -1841,10 +2545,9 @@ def render_consensus_team_table(team_data):
             <tbody>
                 <tr class="section-subhead-row"><td colspan="5">🌟 11 Titolari Probabili — {clean_html(team_data['team'])} ({clean_html(team_data.get('formation', '4-3-3'))})</td></tr>
                 {rows_starters}
-                <tr class="section-subhead-row"><td colspan="5">🪑 In Panchina &amp; Rotazioni</td></tr>
-                {rows_reserves}
             </tbody>
         </table>
+        {bench_block}
     </div>
     """
 
@@ -2627,14 +3330,19 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
 
         # Piazzati
         def render_setpieces(t_data):
-            rigs = ", ".join(t_data.get('rigoristi', [])[:3]) or "-"
-            puns = ", ".join(t_data.get('punizioni', [])[:3]) or "-"
-            cors = ", ".join(t_data.get('corner', [])[:3]) or "-"
+            def _links(lst):
+                names = [x for x in lst[:3] if x and str(x).strip() != '-']
+                if not names:
+                    return "-"
+                return ", ".join(render_player_link(n, style="color:#e2e8f0;text-decoration:none;font-weight:700;") for n in names)
+            rigs_html = _links(t_data.get('rigoristi', []))
+            puns_html = _links(t_data.get('punizioni', []))
+            cors_html = _links(t_data.get('corner', []))
             return f"""
             <div class="takers-list-flow">
-                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">{clean_html(rigs)}</span></div>
-                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">{clean_html(puns)}</span></div>
-                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">{clean_html(cors)}</span></div>
+                <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">{rigs_html}</span></div>
+                <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">{puns_html}</span></div>
+                <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">{cors_html}</span></div>
             </div>
             """
 
@@ -2645,9 +3353,10 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                 return '<div style="color:#4ade80;font-size:11.5px;font-weight:700;">🟢 Tutta la rosa a disposizione</div>'
             items = ""
             for inj in injs:
+                p_link = render_player_link(inj.get('player'), style="color:#fca5a5;text-decoration:none;font-weight:700;")
                 items += f"""
                 <div class="injury-mini-item">
-                    <span class="inj-name">🩹 {clean_html(inj.get('player'))}</span>
+                    <span class="inj-name">🩹 {p_link}</span>
                     <span class="inj-meta">{clean_html(inj.get('motivo','Infortunio'))[:25]} &bull; <b class="inj-return-date">{clean_html(inj.get('rientro','TBD'))}</b></span>
                 </div>
                 """
@@ -2667,21 +3376,21 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                     </div>
                 </div>
                 
-                <!-- View Switcher -->
+                <!-- View Switcher (Formazioni prima di default) -->
                 <div class="match-view-switcher">
-                    <button class="view-switch-btn active" data-match="{m_slug}" data-view="duels">⚔️ Ballottaggi</button>
-                    <button class="view-switch-btn" data-match="{m_slug}" data-view="table">📋 Formazioni</button>
+                    <button class="view-switch-btn active" data-match="{m_slug}" data-view="table">📋 Formazioni</button>
+                    <button class="view-switch-btn" data-match="{m_slug}" data-view="duels">⚔️ Ballottaggi ({len(h_duels_list) + len(a_duels_list)})</button>
                 </div>
             </div>
 
-            <!-- Pane 1: Duelli 1vs1 (Default - 2 Colonne Casa vs Fuori Casa) -->
-            <div class="match-view-pane view-pane-duels" style="display:block;">
-                {two_col_duels_html}
+            <!-- Pane 1: Tabellone Formazioni Probabili (Default - 11 Titolari + Panchina espandibile) -->
+            <div class="match-view-pane view-pane-table" style="display:block;">
+                {table_html}
             </div>
 
-            <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
-            <div class="match-view-pane view-pane-table" style="display:none;">
-                {table_html}
+            <!-- Pane 2: Duelli 1vs1 Ballottaggi (Attivabile con click) -->
+            <div class="match-view-pane view-pane-duels" style="display:none;">
+                {two_col_duels_html}
             </div>
 
             <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
@@ -2778,20 +3487,19 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
 <body>
     {header_html}
     <div class="prob-container">
-        <!-- Hero Header -->
+        <!-- Hero Header Compatto -->
         <header class="prob-hero">
-            <div class="prob-hero-badge">⚡ Consensus Engine 4 Fonti Live</div>
-            <h1 class="prob-hero-title">Probabili Formazioni Serie A — {clean_html(round_label)}</h1>
-            <p class="prob-hero-desc">
-                Aggregazione statistica in tempo reale dalle 4 fonti ufficiali di riferimento: <b>Fantacalcio.it</b>, <b>Gazzetta dello Sport</b>, <b>Sky Sport</b> e <b>SOS Fanta</b>. Percentuali di titolarità ponderate, verdetti tattici AI e neutralizzazione automatica degli infortunati.
-            </p>
-            <div class="prob-sources-bar">
-                <span>Fonti Monitorate:</span>
-                <span class="source-chip">Fantacalcio.it</span>
-                <span class="source-chip">Gazzetta dello Sport</span>
-                <span class="source-chip">Sky Sport</span>
-                <span class="source-chip">SOS Fanta</span>
-                <span style="color:#fbbf24;margin-left:auto;">🕒 Ultimo sync: <b>{clean_html(last_updated)}</b></span>
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                <div>
+                    <h1 class="prob-hero-title" style="margin:0 0 4px 0;font-size:23px;">Probabili Formazioni — {clean_html(round_label)}</h1>
+                    <p class="prob-hero-desc" style="margin:0;font-size:13px;">
+                        Media da <b>Fantacalcio.it</b>, <b>Gazzetta</b>, <b>Sky Sport</b> e <b>SOS Fanta</b> &bull; Indisponibili aggiornati live.
+                    </p>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                    <span class="prob-hero-badge" style="margin:0;">⚡ 4 Fonti Live</span>
+                    <span class="source-chip" style="color:#fbbf24;">🕒 {clean_html(last_updated)}</span>
+                </div>
             </div>
         </header>
 
@@ -2799,23 +3507,38 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
         <div class="match-carousel-wrapper">
             <div class="carousel-label">
                 <span>⚽ Le 10 Partite del Turno</span>
-                <span style="font-size:10px;color:#38bdf8;">Clicca per visualizzare formazioni e ballottaggi &darr;</span>
+                <span style="font-size:10px;color:#38bdf8;">Clicca per saltare subito alla formazione &darr;</span>
             </div>
             <div class="match-carousel">
                 {carousel_pills}
             </div>
         </div>
 
-        <!-- Calendario Programma Gare della Giornata -->
-        <div class="seo-section-heading">
-            <span class="icon">📅</span>
-            <span>Calendario &amp; Programma Anticipi e Posticipi — {clean_html(round_label)}</span>
-            <span class="badge">10 Partite</span>
+        <!-- Barra Controlli Globali UX -->
+        <div class="prob-global-bar">
+            <div class="prob-global-switch">
+                <button type="button" class="global-view-btn active" data-global-view="table">📋 Tutte le Formazioni</button>
+                <button type="button" class="global-view-btn" data-global-view="duels">⚔️ Solo Ballottaggi</button>
+            </div>
+            <div class="prob-search-wrap">
+                <input type="search" id="prob-match-search" class="prob-search-input" placeholder="🔍 Filtra squadra o giocatore..." aria-label="Filtra squadra o giocatore">
+            </div>
+            <div class="prob-quick-jumps">
+                <a href="#hot-ballots-section" class="prob-jump-link">🔥 Ballottaggi Caldi</a>
+                <a href="#schedule-section" class="prob-jump-link">📅 Calendario Orari</a>
+            </div>
         </div>
-        {generate_hub_schedule_table(matches, round_label)}
 
-        <!-- Hot 5 Ballottaggi del Weekend -->
-        <section class="hot-ballots-box">
+        <!-- Sezioni dei 10 Match Squadra per Squadra (Subito in primo piano!) -->
+        <div class="seo-section-heading" style="margin-top:8px;">
+            <span class="icon">⚽</span>
+            <span>Probabili Formazioni Partita per Partita — {clean_html(round_label)}</span>
+            <span class="badge">Consensus 4 Fonti</span>
+        </div>
+        {matches_sections_html}
+
+        <!-- Hot Ballottaggi del Weekend (Sezione Secondaria di Approfondimento) -->
+        <section id="hot-ballots-section" class="hot-ballots-box" style="margin-top:28px;">
             <div class="hot-ballots-header">
                 <div class="hot-ballots-title">
                     <span>🔥 I Ballottaggi più Caldi del Weekend</span>
@@ -2827,13 +3550,13 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
             </div>
         </section>
 
-        <!-- Sezioni dei 10 Match Squadra per Squadra -->
-        <div class="seo-section-heading" style="margin-top:32px;">
-            <span class="icon">⚽</span>
-            <span>Analisi Tattica &amp; Formazioni Squadra per Squadra</span>
-            <span class="badge">Consensus 4 Fonti</span>
+        <!-- Calendario Programma Gare della Giornata -->
+        <div id="schedule-section" class="seo-section-heading" style="margin-top:28px;">
+            <span class="icon">📅</span>
+            <span>Calendario &amp; Programma Anticipi e Posticipi — {clean_html(round_label)}</span>
+            <span class="badge">10 Partite</span>
         </div>
-        {matches_sections_html}
+        {generate_hub_schedule_table(matches, round_label)}
 
         <!-- Guida Tattica Editoriale E-E-A-T -->
         {generate_hub_editorial_guide(round_label)}
@@ -2975,14 +3698,19 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
 
     # Piazzati
     def render_setpieces(t_data):
-        rigs = ", ".join(t_data.get('rigoristi', [])[:3]) or "-"
-        puns = ", ".join(t_data.get('punizioni', [])[:3]) or "-"
-        cors = ", ".join(t_data.get('corner', [])[:3]) or "-"
+        def _links(lst):
+            names = [x for x in lst[:3] if x and str(x).strip() != '-']
+            if not names:
+                return "-"
+            return ", ".join(render_player_link(n, style="color:#e2e8f0;text-decoration:none;font-weight:700;") for n in names)
+        rigs_html = _links(t_data.get('rigoristi', []))
+        puns_html = _links(t_data.get('punizioni', []))
+        cors_html = _links(t_data.get('corner', []))
         return f"""
         <div class="takers-list-flow">
-            <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">{clean_html(rigs)}</span></div>
-            <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">{clean_html(puns)}</span></div>
-            <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">{clean_html(cors)}</span></div>
+            <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">{rigs_html}</span></div>
+            <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">{puns_html}</span></div>
+            <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">{cors_html}</span></div>
         </div>
         """
 
@@ -2993,9 +3721,10 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
             return '<div style="color:#4ade80;font-size:11.5px;font-weight:700;">🟢 Tutta la rosa a disposizione</div>'
         items = ""
         for inj in injs:
+            p_link = render_player_link(inj.get('player'), style="color:#fca5a5;text-decoration:none;font-weight:700;")
             items += f"""
             <div class="injury-mini-item">
-                <span class="inj-name">🩹 {clean_html(inj.get('player'))}</span>
+                <span class="inj-name">🩹 {p_link}</span>
                 <span class="inj-meta">{clean_html(inj.get('motivo','Infortunio'))[:25]} &bull; <b class="inj-return-date">{clean_html(inj.get('rientro','TBD'))}</b></span>
             </div>
             """
@@ -3152,21 +3881,21 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
                     </div>
                 </div>
                 
-                <!-- View Switcher -->
+                <!-- View Switcher (Formazioni prima di default) -->
                 <div class="match-view-switcher">
-                    <button class="view-switch-btn active" data-match="{m_slug}" data-view="duels">⚔️ Ballottaggi</button>
-                    <button class="view-switch-btn" data-match="{m_slug}" data-view="table">📋 Formazioni</button>
+                    <button class="view-switch-btn active" data-match="{m_slug}" data-view="table">📋 Formazioni</button>
+                    <button class="view-switch-btn" data-match="{m_slug}" data-view="duels">⚔️ Ballottaggi ({len(h_duels_list) + len(a_duels_list)})</button>
                 </div>
             </div>
 
-            <!-- Pane 1: Duelli 1vs1 (Default - 2 Colonne Casa vs Fuori Casa) -->
-            <div class="match-view-pane view-pane-duels" style="display:block;">
-                {two_col_duels_html}
+            <!-- Pane 1: Tabellone Formazioni Probabili (Default - 11 Titolari + Panchina espandibile) -->
+            <div class="match-view-pane view-pane-table" style="display:block;">
+                {table_html}
             </div>
 
-            <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
-            <div class="match-view-pane view-pane-table" style="display:none;">
-                {table_html}
+            <!-- Pane 2: Duelli 1vs1 Ballottaggi (Attivabile con click) -->
+            <div class="match-view-pane view-pane-duels" style="display:none;">
+                {two_col_duels_html}
             </div>
 
             <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->

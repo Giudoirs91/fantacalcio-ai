@@ -2779,6 +2779,206 @@
       "source": "/calciatore/zeki-celik/",
       "destination": "/calciatore/celik/",
       "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/atalanta",
+      "destination": "/rose-serie-a/atalanta/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/atalanta/",
+      "destination": "/rose-serie-a/atalanta/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/bologna",
+      "destination": "/rose-serie-a/bologna/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/bologna/",
+      "destination": "/rose-serie-a/bologna/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/cagliari",
+      "destination": "/rose-serie-a/cagliari/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/cagliari/",
+      "destination": "/rose-serie-a/cagliari/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/como",
+      "destination": "/rose-serie-a/como/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/como/",
+      "destination": "/rose-serie-a/como/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/fiorentina",
+      "destination": "/rose-serie-a/fiorentina/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/fiorentina/",
+      "destination": "/rose-serie-a/fiorentina/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/frosinone",
+      "destination": "/rose-serie-a/frosinone/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/frosinone/",
+      "destination": "/rose-serie-a/frosinone/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/genoa",
+      "destination": "/rose-serie-a/genoa/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/genoa/",
+      "destination": "/rose-serie-a/genoa/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/inter",
+      "destination": "/rose-serie-a/inter/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/inter/",
+      "destination": "/rose-serie-a/inter/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/juventus",
+      "destination": "/rose-serie-a/juventus/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/juventus/",
+      "destination": "/rose-serie-a/juventus/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/lazio",
+      "destination": "/rose-serie-a/lazio/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/lazio/",
+      "destination": "/rose-serie-a/lazio/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/lecce",
+      "destination": "/rose-serie-a/lecce/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/lecce/",
+      "destination": "/rose-serie-a/lecce/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/milan",
+      "destination": "/rose-serie-a/milan/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/milan/",
+      "destination": "/rose-serie-a/milan/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/napoli",
+      "destination": "/rose-serie-a/napoli/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/napoli/",
+      "destination": "/rose-serie-a/napoli/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/parma",
+      "destination": "/rose-serie-a/parma/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/parma/",
+      "destination": "/rose-serie-a/parma/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/pisa",
+      "destination": "/rose-serie-a/pisa/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/pisa/",
+      "destination": "/rose-serie-a/pisa/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/roma",
+      "destination": "/rose-serie-a/roma/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/roma/",
+      "destination": "/rose-serie-a/roma/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/sassuolo",
+      "destination": "/rose-serie-a/sassuolo/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/sassuolo/",
+      "destination": "/rose-serie-a/sassuolo/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/torino",
+      "destination": "/rose-serie-a/torino/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/torino/",
+      "destination": "/rose-serie-a/torino/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/udinese",
+      "destination": "/rose-serie-a/udinese/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/udinese/",
+      "destination": "/rose-serie-a/udinese/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/venezia",
+      "destination": "/rose-serie-a/venezia/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/venezia/",
+      "destination": "/rose-serie-a/venezia/",
+      "permanent": true
     }
   ],
   "rewrites": [

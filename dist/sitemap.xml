@@ -67,7 +67,7 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -121,25 +121,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/douvikas/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/thuram/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/kolo-muani/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/douvikas/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/kean/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/kolo-muani/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -158,12 +152,6 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/scamacca/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/berardi/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -199,7 +187,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/kean/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/simeone/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/berardi/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -241,18 +241,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/yildiz/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/santos-a/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/diao/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -265,6 +253,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/yildiz/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/kvernadze/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -272,12 +266,6 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/adams-a/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/romero-d/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -332,6 +320,18 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/bowie/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/romero-d/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/santos-a/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -469,12 +469,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/nzola/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/rrahmani-al/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -547,13 +541,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/enem/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/adorante/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/adorante/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/nzola/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/enem/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -667,6 +667,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/zaccagni/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/da-cunha/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -698,12 +704,6 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/conceicao/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/zaccagni/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -793,6 +793,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/gonzalez-n/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/modric/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -872,18 +878,6 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/kone-m/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/gonzalez-n/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/bernabe/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -991,13 +985,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/ferguson/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/bernabe/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/volpato/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/ferguson/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1039,6 +1033,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/gaetano/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/fagioli/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -1069,13 +1069,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/basic/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/volpato/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/pellegrini-lo/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/basic/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1111,25 +1111,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/monteiro-j/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/folorunsho/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/karlstrom/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/gaetano/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1147,12 +1129,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/chukwueze/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/bakola/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -1160,6 +1136,12 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/perez-k/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/monteiro-j/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1225,13 +1207,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/rovella/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/folorunsho/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/pierotti/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/rovella/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1273,6 +1255,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/chukwueze/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/messias/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -1280,12 +1268,6 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/fabbian/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/fadera/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1327,19 +1309,25 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/nicolussi-caviglia/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/pessina/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/nicolussi-caviglia/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/berisha-m/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/pellegrini-lo/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1375,13 +1363,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/keita-m/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/oristanio/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/oristanio/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/keita-m/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1393,7 +1381,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/addai/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/kone-i/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/pierotti/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1471,25 +1465,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/loftus-cheek/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/ngom/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/grillitsch/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/ilic/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/loftus-cheek/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1525,6 +1507,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/fadera/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/addai/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/miller-l/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -1544,12 +1538,6 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/hasa/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/kone-i/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1615,6 +1603,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/stankovic-a/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/belahyane/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -1634,6 +1628,12 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/aboukhlal/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/grillitsch/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1669,12 +1669,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/boloca/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/zarraga/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -1699,13 +1693,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/stankovic-a/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/kone-b/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/kaba/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/laerke/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1729,6 +1729,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/boloca/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/liteta/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -1747,13 +1753,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/kone-b/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/laerke/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/ilic/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1813,6 +1813,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/pavlovic/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/n-dicka/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -1855,6 +1861,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/kalulu/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/carlos-augusto/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -1879,13 +1891,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/kalulu/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/pavlovic/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/di-lorenzo/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1909,7 +1915,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/di-lorenzo/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/miranda-j/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1952,12 +1958,6 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/diego-carlos/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/marusic/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2017,7 +2017,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/miranda-j/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/alaba/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2041,19 +2041,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/mina/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/doekhi/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/sutalo-j/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/marusic/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2084,6 +2078,12 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/bracaglia/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/pedraza/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2125,19 +2125,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/birindelli/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/pedraza/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/idzes/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/mina/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2162,24 +2156,6 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/estupinan/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/alaba/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/badiashile/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/buongiorno/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2239,6 +2215,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/birindelli/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/kouadio/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -2293,13 +2275,25 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/monterisi/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/favasuli/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/fortini/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/badiashile/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/sutalo-j/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/monterisi/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2437,7 +2431,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/kossounou/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/buongiorno/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2491,12 +2485,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/hien/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/vitik/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -2521,7 +2509,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/terzic/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/marin-r/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2533,31 +2521,31 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/marin-r/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/valenti/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/parisi/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/fortini/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/favasuli/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/hien/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/kossounou/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/odenthal/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/pongracic/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2575,19 +2563,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/bertola/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/juan-jesus/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/carboni-a/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2600,6 +2576,12 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/schingtienne/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/carboni-a/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2623,6 +2605,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/terzic/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/arizala/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -2636,6 +2624,12 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/cittadini/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/pongracic/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2689,12 +2683,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/aurelio/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/goglichidze/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -2719,13 +2707,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/de-silvestri/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/parisi/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/valenti/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/bertola/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2767,19 +2755,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/sverko/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/diawara-s/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fantamasterai.it/calciatore/terracciano-f/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2815,6 +2791,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/aurelio/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/rugani/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -2827,13 +2809,31 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/sverko/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/zanoli/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/de-silvestri/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/dembele-a/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/terracciano-f/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2852,6 +2852,12 @@
   </url>
   <url>
     <loc>https://www.fantamasterai.it/calciatore/jean/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fantamasterai.it/calciatore/leysen-f/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2881,12 +2887,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/maye/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/franjic/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -2905,13 +2905,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/leysen-f/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/gomes/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/gomes/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/maye/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -3073,12 +3073,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/terracciano/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.fantamasterai.it/calciatore/thiam/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -3199,6 +3193,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.fantamasterai.it/calciatore/terracciano/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.fantamasterai.it/calciatore/strajnar/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
@@ -3289,13 +3289,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/pompei/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/grabara/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/calciatore/grabara/</loc>
+    <loc>https://www.fantamasterai.it/calciatore/pompei/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -3607,121 +3607,121 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/atalanta/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/atalanta/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/bologna/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/bologna/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/cagliari/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/cagliari/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/como/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/como/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/fiorentina/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/fiorentina/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/frosinone/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/frosinone/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/genoa/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/genoa/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/inter/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/inter/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/juventus/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/juventus/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/lazio/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/lazio/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/lecce/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/lecce/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/milan/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/milan/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/monza/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/monza/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/napoli/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/napoli/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/parma/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/parma/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/roma/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/roma/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/sassuolo/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/sassuolo/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/torino/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/torino/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/udinese/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/udinese/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.fantamasterai.it/probabili-formazioni/venezia/</loc>
+    <loc>https://www.fantamasterai.it/rose-serie-a/venezia/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>

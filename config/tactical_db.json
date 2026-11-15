@@ -55,38 +55,23 @@
     "ballottaggi": [
       {
         "player": "Elmas",
-        "pct": 56,
-        "vs": "Zalewski (44%)"
+        "pct": 54,
+        "vs": "Zalewski (46%)"
       },
       {
         "player": "Krstovic",
-        "pct": 91,
-        "vs": "Scamacca (9%)"
-      },
-      {
-        "player": "Pasalic",
-        "pct": 95,
-        "vs": "Gaetano (Infortunato: Distrazione ai muscoli adduttori della coscia destra)"
+        "pct": 90,
+        "vs": "Scamacca (10%)"
       },
       {
         "player": "Zappacosta",
-        "pct": 91,
-        "vs": "Bellanova (9%)"
-      },
-      {
-        "player": "Kossounou",
-        "pct": 95,
-        "vs": "Kristensen T. (Infortunato: Trauma distorsivo alla caviglia sinistra)"
-      },
-      {
-        "player": "Scalvini",
-        "pct": 74,
-        "vs": "Hien (26%)"
+        "pct": 90,
+        "vs": "Bellanova (10%)"
       },
       {
         "player": "Bernasconi",
-        "pct": 91,
-        "vs": "Kolasinac (9%)"
+        "pct": 90,
+        "vs": "Kolasinac (10%)"
       }
     ],
     "lineup": [
@@ -394,11 +379,6 @@
         "vs": "Darmian (40%)"
       },
       {
-        "player": "Alhassane",
-        "pct": 95,
-        "vs": "Miranda J. (Infortunato: Lesione di primo grado del bicipite femorale della coscia sinistra)"
-      },
-      {
         "player": "Pobega",
         "pct": 75,
         "vs": "Amondarain (25%)"
@@ -672,16 +652,6 @@
     ],
     "ballottaggi": [
       {
-        "player": "Mina",
-        "pct": 54,
-        "vs": "Kofler (46%)"
-      },
-      {
-        "player": "Mendy P.",
-        "pct": 58,
-        "vs": "Nzola (42%)"
-      },
-      {
         "player": "Zè Pedro",
         "pct": 60,
         "vs": "Sugawara (40%)"
@@ -690,11 +660,6 @@
         "player": "Rodriguez Ju.",
         "pct": 55,
         "vs": "Deiola (45%)"
-      },
-      {
-        "player": "Fazzini",
-        "pct": 56,
-        "vs": "Fadera (44%)"
       }
     ],
     "lineup": [
@@ -1003,11 +968,6 @@
         "player": "Liberali",
         "pct": 55,
         "vs": "Smolcic I. (45%)"
-      },
-      {
-        "player": "Da Cunha",
-        "pct": 54,
-        "vs": "Addai (46%)"
       }
     ],
     "lineup": [
@@ -1297,24 +1257,19 @@
     ],
     "ballottaggi": [
       {
-        "player": "Brescianini",
-        "pct": 53,
-        "vs": "Oulai (47%)"
+        "player": "Oulai",
+        "pct": 50,
+        "vs": "Brescianini (50%)"
       },
       {
-        "player": "Pellegrino M.",
-        "pct": 54,
-        "vs": "Beto (46%)"
+        "player": "Beto",
+        "pct": 51,
+        "vs": "Pellegrino M. (49%)"
       },
       {
         "player": "Jimenez A.",
         "pct": 58,
         "vs": "Dodò (42%)"
-      },
-      {
-        "player": "Viery",
-        "pct": 91,
-        "vs": "Pongracic (9%)"
       },
       {
         "player": "Goncalves P.",
@@ -1611,16 +1566,6 @@
         "player": "Birligea",
         "pct": 54,
         "vs": "Bobcek (46%)"
-      },
-      {
-        "player": "Bracaglia",
-        "pct": 52,
-        "vs": "Terzic (48%)"
-      },
-      {
-        "player": "Calò",
-        "pct": 90,
-        "vs": "Grillitsch (10%)"
       },
       {
         "player": "Masini",
@@ -1941,8 +1886,8 @@
     "ballottaggi": [
       {
         "player": "Traorè Hj.",
-        "pct": 56,
-        "vs": "Wiafe (44%)"
+        "pct": 54,
+        "vs": "Wiafe (46%)"
       },
       {
         "player": "Colombo",
@@ -1960,9 +1905,9 @@
         "vs": "Ellertsson (50%)"
       },
       {
-        "player": "Baldanzi",
+        "player": "Traor",
         "pct": 51,
-        "vs": "Traor (49%)"
+        "vs": "Baldanzi (49%)"
       }
     ],
     "lineup": [
@@ -2253,8 +2198,8 @@
     "ballottaggi": [
       {
         "player": "Diouf",
-        "pct": 56,
-        "vs": "Spence (44%)"
+        "pct": 51,
+        "vs": "Spence (49%)"
       },
       {
         "player": "Dimarco",
@@ -2262,24 +2207,14 @@
         "vs": "Carlos Augusto (44%)"
       },
       {
-        "player": "Esposito F.P.",
-        "pct": 95,
-        "vs": "Bonny (Infortunato: Risentimento muscolare ai flessori della coscia destra)"
-      },
-      {
         "player": "Bastoni",
         "pct": 52,
         "vs": "Akanji (48%)"
       },
       {
-        "player": "Barella",
-        "pct": 95,
-        "vs": "Stankovic A. (Infortunato: Lesione del muscolo adduttore della coscia destra)"
-      },
-      {
         "player": "Bisseck",
-        "pct": 74,
-        "vs": "Pavard (26%)"
+        "pct": 61,
+        "vs": "Pavard (39%)"
       },
       {
         "player": "Calhanoglu",
@@ -2573,8 +2508,8 @@
       },
       {
         "player": "Alajbegovic",
-        "pct": 57,
-        "vs": "Boga (43%)"
+        "pct": 54,
+        "vs": "Boga (46%)"
       },
       {
         "player": "Bremer",
@@ -2583,8 +2518,8 @@
       },
       {
         "player": "Lucumì",
-        "pct": 65,
-        "vs": "Gatti (35%)"
+        "pct": 64,
+        "vs": "Gatti (36%)"
       },
       {
         "player": "Douglas Luiz",
@@ -2882,19 +2817,9 @@
         "vs": "Doekhi (46%)"
       },
       {
-        "player": "Tavares N.",
-        "pct": 60,
-        "vs": "Pedraza (40%)"
-      },
-      {
         "player": "Taylor K.",
         "pct": 60,
         "vs": "Dele-Bashiru (40%)"
-      },
-      {
-        "player": "Floriani Mussolini",
-        "pct": 90,
-        "vs": "Marusic (10%)"
       },
       {
         "player": "Isaksen",
@@ -3204,24 +3129,19 @@
         "vs": "Kaba (46%)"
       },
       {
-        "player": "Stulic",
-        "pct": 54,
-        "vs": "Esteban (46%)"
+        "player": "Esteban",
+        "pct": 50,
+        "vs": "Stulic (50%)"
       },
       {
         "player": "Siebert",
-        "pct": 69,
-        "vs": "Gaspar K. (31%)"
-      },
-      {
-        "player": "Monteiro J.",
-        "pct": 91,
-        "vs": "Pierotti (Infortunato: Trauma contusivo alla caviglia sinistra)"
+        "pct": 58,
+        "vs": "Gaspar K. (42%)"
       },
       {
         "player": "Gandelman",
-        "pct": 91,
-        "vs": "Coulibaly L. (9%)"
+        "pct": 90,
+        "vs": "Coulibaly L. (10%)"
       }
     ],
     "lineup": [
@@ -3542,38 +3462,18 @@
     "ballottaggi": [
       {
         "player": "Diawara S.",
-        "pct": 58,
-        "vs": "Bartesaghi (42%)"
-      },
-      {
-        "player": "Gila",
-        "pct": 95,
-        "vs": "Tomori (Infortunato: Problema muscolare alla coscia destra)"
+        "pct": 60,
+        "vs": "Bartesaghi (40%)"
       },
       {
         "player": "Cissè A.",
-        "pct": 59,
-        "vs": "Pulisic (41%)"
-      },
-      {
-        "player": "De Winter",
-        "pct": 95,
-        "vs": "Gabbia (Infortunato: Problema alla caviglia (natura del problema non specificata))"
-      },
-      {
-        "player": "Moreira",
-        "pct": 95,
-        "vs": "Chukwueze (Infortunato: Problema all'anca sinistra, entità da definire con visita specialistica)"
+        "pct": 60,
+        "vs": "Pulisic (40%)"
       },
       {
         "player": "Modric",
         "pct": 85,
         "vs": "Jashari (15%)"
-      },
-      {
-        "player": "Ciss",
-        "pct": 95,
-        "vs": "Loftus-Cheek (Infortunato: Problema al ginocchio dopo una botta nella parte posteriore dell'articolazione)"
       }
     ],
     "lineup": [
@@ -3878,13 +3778,8 @@
       },
       {
         "player": "Zeballos",
-        "pct": 57,
-        "vs": "Robinson J. (43%)"
-      },
-      {
-        "player": "Foe Ondoa",
-        "pct": 58,
-        "vs": "Folorunsho (42%)"
+        "pct": 60,
+        "vs": "Robinson J. (40%)"
       },
       {
         "player": "Tornqvist",
@@ -4186,24 +4081,14 @@
         "vs": "Giovane (44%)"
       },
       {
-        "player": "Beukema",
-        "pct": 95,
-        "vs": "Di Lorenzo (Infortunato: Risentimento all'adduttore)"
-      },
-      {
-        "player": "Marin R.",
-        "pct": 90,
-        "vs": "Badiashile (10%)"
-      },
-      {
         "player": "Olivera",
         "pct": 90,
         "vs": "Spinazzola (10%)"
       },
       {
         "player": "Politano",
-        "pct": 76,
-        "vs": "Neres (24%)"
+        "pct": 63,
+        "vs": "Neres (37%)"
       }
     ],
     "lineup": [
@@ -4470,19 +4355,14 @@
         "vs": "Fabbian (41%)"
       },
       {
-        "player": "Romero D.",
-        "pct": 53,
-        "vs": "Lontani (47%)"
-      },
-      {
         "player": "Britschgi",
-        "pct": 56,
-        "vs": "Drobnic (44%)"
+        "pct": 54,
+        "vs": "Drobnic (46%)"
       },
       {
         "player": "Tourè E.",
-        "pct": 70,
-        "vs": "Almqvist (30%)"
+        "pct": 60,
+        "vs": "Almqvist (40%)"
       }
     ],
     "lineup": [
@@ -4784,8 +4664,8 @@
       },
       {
         "player": "Mancini",
-        "pct": 50,
-        "vs": "Ghilardi (50%)"
+        "pct": 57,
+        "vs": "Ghilardi (43%)"
       }
     ],
     "lineup": [
@@ -5052,18 +4932,13 @@
       },
       {
         "player": "Bakola",
-        "pct": 56,
-        "vs": "Adzic (44%)"
+        "pct": 54,
+        "vs": "Adzic (46%)"
       },
       {
         "player": "Doig",
         "pct": 59,
         "vs": "Obrador (41%)"
-      },
-      {
-        "player": "Berardi",
-        "pct": 50,
-        "vs": "Volpato (50%)"
       },
       {
         "player": "Bowie",
@@ -5400,8 +5275,8 @@
       },
       {
         "player": "Oristanio",
-        "pct": 91,
-        "vs": "Mandragora (9%)"
+        "pct": 90,
+        "vs": "Mandragora (10%)"
       },
       {
         "player": "Simeone",
@@ -5699,8 +5574,8 @@
       },
       {
         "player": "Piotrowski",
-        "pct": 56,
-        "vs": "Miller L. (44%)"
+        "pct": 54,
+        "vs": "Miller L. (46%)"
       },
       {
         "player": "Palma",
@@ -5714,8 +5589,8 @@
       },
       {
         "player": "Abankwah",
-        "pct": 95,
-        "vs": "Alaba (Infortunato: Risentimento muscolare al polpaccio destro)"
+        "pct": 75,
+        "vs": "Alaba (25%)"
       },
       {
         "player": "Zaniolo",

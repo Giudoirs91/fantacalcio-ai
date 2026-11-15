@@ -2,7 +2,7 @@
 run_daily_update.py - Pipeline Quotidiana Completa (Infortuni + Build Sito + Telegram)
 ======================================================================================
 Esegue la routine automatica del mattino:
-1. Scarica e sincronizza gli infortuni ufficiali aggiornati (sync_injuries_fantacalcio_online.py).
+1. Scarica e sincronizza gli infortuni ufficiali aggiornati da Fantacalcio.it (sync_injuries_fantacalcio.py).
 2. Ricostruisce le pagine statiche e la tabella infortuni / probabili formazioni (build_seo_site.py).
 3. Invia il messaggio Telegram con le pillole del giorno (daily_telegram_briefing.py).
 """
@@ -20,8 +20,8 @@ if ROOT_DIR not in sys.path:
 
 
 def step_1_sync_injuries():
-    print("\n--- STEP 1: Sincronizzazione Infortuni Live & Ricalcolo Metriche ---")
-    from tools.sync_injuries_fantacalcio_online import sync_injuries
+    print("\n--- STEP 1: Sincronizzazione Infortuni Live (Fantacalcio.it) & Ricalcolo Metriche ---")
+    from tools.sync_injuries_fantacalcio import sync_injuries
     sync_injuries()
     
     print("\n--- STEP 1b: Ricostruzione Database Storico Infortuni & Fragilità ---")

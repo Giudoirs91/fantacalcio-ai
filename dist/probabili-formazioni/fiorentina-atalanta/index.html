@@ -452,15 +452,792 @@
                     </div>
                 </div>
                 
-                <!-- View Switcher -->
+                <!-- View Switcher (Formazioni prima di default) -->
                 <div class="match-view-switcher">
-                    <button class="view-switch-btn active" data-match="fiorentina-atalanta" data-view="duels">⚔️ Ballottaggi</button>
-                    <button class="view-switch-btn" data-match="fiorentina-atalanta" data-view="table">📋 Formazioni</button>
+                    <button class="view-switch-btn active" data-match="fiorentina-atalanta" data-view="table">📋 Formazioni</button>
+                    <button class="view-switch-btn" data-match="fiorentina-atalanta" data-view="duels">⚔️ Ballottaggi (8)</button>
                 </div>
             </div>
 
-            <!-- Pane 1: Duelli 1vs1 (Default - 2 Colonne Casa vs Fuori Casa) -->
-            <div class="match-view-pane view-pane-duels" style="display:block;">
+            <!-- Pane 1: Tabellone Formazioni Probabili (Default - 11 Titolari + Panchina espandibile) -->
+            <div class="match-view-pane view-pane-table" style="display:block;">
+                
+    <div class="match-teams-columns">
+        <!-- Colonna Sinistra: Formazione Casa -->
+        <div class="team-duels-column team-home">
+            <div class="team-column-header home-header">
+                <div class="team-col-title-wrap">
+                    <span class="team-col-icon">🏠</span>
+                    <a href="/probabili-formazioni/fiorentina/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Fiorentina">Fiorentina</a>
+                    <span class="team-col-badge">CASA</span>
+                </div>
+                <span class="team-col-count">4-3-2-1</span>
+            </div>
+            
+    <div class="consensus-table-wrapper">
+        <table class="consensus-table">
+            <thead>
+                <tr>
+                    <th>Calciatore</th>
+                    <th class="col-ovr">OVR</th>
+                    <th class="col-tit">% TIT</th>
+                    <th class="col-xfm">xFM</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="section-subhead-row"><td colspan="5">🌟 11 Titolari Probabili — Fiorentina (4-3-2-1)</td></tr>
+                
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">P</span>
+                    <a href="/calciatore/de-gea/">De Gea</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-por" title="Ruolo Mantra Por">Por</span></span>
+                    <span class="inline-bm-badge malus" title="Rischio Malus AI: 1 amm. • 2.3 GS/p">⚠️ MALUS</span>
+                </div>
+            </td>
+            <td class="col-ovr">70</td>
+            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
+            <td class="col-xfm" style="color:rgb(248,113,113);">3.53</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/jimenez-a/">Jimenez A.</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dd">Dd</span><span class="prob-mantra-pill m-def" title="Ruolo Mantra Ds">Ds</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra E">E</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">76</td>
+            <td class="col-tit"><span class="consensus-chip low">58%</span></td>
+            <td class="col-xfm" style="color:rgb(251,173,42);">5.83</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/dodo/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Dodò</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/dragusin/">Dragusin</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dc">Dc</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">72</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm" style="color:rgb(250,138,73);">5.26</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/viery/">Viery</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Ds">Ds</span><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dc">Dc</span></span>
+                    <span class="inline-bm-badge malus" title="Rischio Malus AI: 3 amm. • Floor 5.0">⚠️ MALUS</span>
+                </div>
+            </td>
+            <td class="col-ovr">64</td>
+            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
+            <td class="col-xfm" style="color:rgb(250,136,76);">5.20</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/valdepenas/">Valdepenas</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Ds">Ds</span><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dc">Dc</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">69</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm" style="color:rgb(251,151,57);">5.56</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/ndour/">Ndour</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">66</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm" style="color:rgb(250,181,37);">5.92</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/fagioli/">Fagioli</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra M">M</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">67</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm" style="color:rgb(250,199,24);">6.14</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/brescianini/">Brescianini</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span><span class="prob-mantra-pill m-trq" title="Ruolo Mantra T">T</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">60</td>
+            <td class="col-tit"><span class="consensus-chip low">54%</span></td>
+            <td class="col-xfm" style="color:rgb(251,173,42);">5.82</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/oulai/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Oulai</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/mastantuono/">Mastantuono</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-trq" title="Ruolo Mantra W">W</span><span class="prob-mantra-pill m-trq" title="Ruolo Mantra T">T</span></span>
+                    <span class="inline-bm-badge bonus" title="Top Bonus AI: xFM 7.27 • Rigorista">🔥 BONUS</span>
+                </div>
+            </td>
+            <td class="col-ovr">85</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm" style="color:rgb(135,216,91);">7.05</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/goncalves-p/">Goncalves P.</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-trq" title="Ruolo Mantra W">W</span><span class="prob-mantra-pill m-trq" title="Ruolo Mantra T">T</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">78</td>
+            <td class="col-tit"><span class="consensus-chip mid">60%</span></td>
+            <td class="col-xfm" style="color:rgb(251,161,50);">5.68</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/njie/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Njie</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">A</span>
+                    <a href="/calciatore/pellegrino-m/">Pellegrino M.</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-att" title="Ruolo Mantra Pc">Pc</span></span>
+                    <span class="inline-bm-badge bonus" title="Top Bonus AI: xFM 6.50 • xG+xA 0.28">🔥 BONUS</span>
+                </div>
+            </td>
+            <td class="col-ovr">75</td>
+            <td class="col-tit"><span class="consensus-chip low">51%</span></td>
+            <td class="col-xfm" style="color:rgb(250,184,34);">5.96</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/beto/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Beto</a></span></td>
+        </tr>
+        
+            </tbody>
+        </table>
+        
+        <details class="bench-accordion">
+            <summary class="bench-accordion-summary">
+                <span>🪑 Panchina &amp; Rotazioni (12)</span>
+                <span class="bench-preview-names">Beto, Oulai, Dodò, Njie...</span>
+                <span class="bench-chevron">▼</span>
+            </summary>
+            <table class="consensus-table">
+                <tbody>
+                    
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">A</span>
+                    <a href="/calciatore/beto/" style="color:#94a3b8;">Beto</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-att" title="Ruolo Mantra Pc">Pc</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">73</td>
+            <td class="col-tit"><span class="consensus-chip mid">49%</span></td>
+            <td class="col-xfm" style="color:rgb(236,205,29);">6.30</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/pellegrino-m/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Pellegrino M.</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/oulai/" style="color:#94a3b8;">Oulai</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra M">M</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">63</td>
+            <td class="col-tit"><span class="consensus-chip mid">46%</span></td>
+            <td class="col-xfm" style="color:rgb(251,152,56);">5.57</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/brescianini/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Brescianini</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/dodo/" style="color:#94a3b8;">Dodò</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dd">Dd</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra E">E</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">73</td>
+            <td class="col-tit"><span class="consensus-chip mid">42%</span></td>
+            <td class="col-xfm" style="color:rgb(251,143,64);">5.42</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/jimenez-a/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Jimenez A.</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/njie/" style="color:#94a3b8;">Njie</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-trq" title="Ruolo Mantra W">W</span><span class="prob-mantra-pill m-att" title="Ruolo Mantra A">A</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">69</td>
+            <td class="col-tit"><span class="consensus-chip mid">40%</span></td>
+            <td class="col-xfm" style="color:rgb(215,208,42);">6.46</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/goncalves-p/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Goncalves P.</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/joao-mario/" style="color:#94a3b8;">Joao Mario</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dd">Dd</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra E">E</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">67</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:rgb(251,153,56);">5.58</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/ranieri-l/" style="color:#94a3b8;">Ranieri L.</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Ds">Ds</span><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dc">Dc</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">62</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:rgb(250,138,72);">5.27</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">A</span>
+                    <a href="/calciatore/gnonto/" style="color:#94a3b8;">Gnonto</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-trq" title="Ruolo Mantra W">W</span><span class="prob-mantra-pill m-att" title="Ruolo Mantra A">A</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">67</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:rgb(251,170,44);">5.79</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">P</span>
+                    <a href="/calciatore/christensen-o/" style="color:#94a3b8;">Christensen O.</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-por" title="Ruolo Mantra Por">Por</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">50</td>
+            <td class="col-tit"><span class="consensus-chip out">5%</span></td>
+            <td class="col-xfm" style="color:rgb(209,208,46);">6.50</td>
+            <td class="col-status"><span style="color:#64748b;">Secondo portiere</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">P</span>
+                    <a href="/calciatore/lezzerini/" style="color:#94a3b8;">Lezzerini</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-por" title="Ruolo Mantra Por">Por</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">50</td>
+            <td class="col-tit"><span class="consensus-chip out">5%</span></td>
+            <td class="col-xfm" style="color:rgb(250,187,32);">6.00</td>
+            <td class="col-status"><span style="color:#64748b;">Secondo portiere</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/pongracic/" style="color:#94a3b8;">Pongracic</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dc">Dc</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">61</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:rgb(250,186,33);">5.98</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 01/11/2026</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/parisi/" style="color:#94a3b8;">Parisi</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Ds">Ds</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra E">E</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">56</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:rgb(250,186,33);">5.98</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 15/12/2026</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/atta/" style="color:#94a3b8;">Atta</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span><span class="prob-mantra-pill m-trq" title="Ruolo Mantra T">T</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">79</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:rgb(250,195,27);">6.09</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 01/11/2026</span></td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </details>
+        
+    </div>
+    
+        </div>
+
+        <!-- Colonna Destra: Formazione Fuori Casa -->
+        <div class="team-duels-column team-away">
+            <div class="team-column-header away-header">
+                <div class="team-col-title-wrap">
+                    <span class="team-col-icon">✈️</span>
+                    <a href="/probabili-formazioni/atalanta/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Atalanta">Atalanta</a>
+                    <span class="team-col-badge">TRASFERTA</span>
+                </div>
+                <span class="team-col-count">4-2-3-1</span>
+            </div>
+            
+    <div class="consensus-table-wrapper">
+        <table class="consensus-table">
+            <thead>
+                <tr>
+                    <th>Calciatore</th>
+                    <th class="col-ovr">OVR</th>
+                    <th class="col-tit">% TIT</th>
+                    <th class="col-xfm">xFM</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="section-subhead-row"><td colspan="5">🌟 11 Titolari Probabili — Atalanta (4-2-3-1)</td></tr>
+                
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">P</span>
+                    <a href="/calciatore/carnesecchi/">Carnesecchi</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-por" title="Ruolo Mantra Por">Por</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">86</td>
+            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
+            <td class="col-xfm" style="color:rgb(248,116,108);">4.60</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/zappacosta/">Zappacosta</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dd">Dd</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra E">E</span></span>
+                    <span class="inline-bm-badge malus" title="Rischio Malus AI: 3 amm. • Floor 5.1">⚠️ MALUS</span>
+                </div>
+            </td>
+            <td class="col-ovr">74</td>
+            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
+            <td class="col-xfm" style="color:rgb(250,192,29);">6.05</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/kristensen-t/">Kristensen T.</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dd">Dd</span><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dc">Dc</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">71</td>
+            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
+            <td class="col-xfm" style="color:rgb(251,142,67);">5.37</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/bernasconi/">Bernasconi</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Ds">Ds</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra E">E</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">74</td>
+            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
+            <td class="col-xfm" style="color:rgb(251,144,63);">5.45</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/gaetano/">Gaetano</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra M">M</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span></span>
+                    <span class="inline-bm-badge malus" title="Rischio Malus AI: 4 amm. 1 esp. • Floor 5.3">⚠️ MALUS</span>
+                </div>
+            </td>
+            <td class="col-ovr">70</td>
+            <td class="col-tit"><span class="consensus-chip low">58%</span></td>
+            <td class="col-xfm" style="color:rgb(250,181,37);">5.92</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/pasalic/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Pasalic</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">A</span>
+                    <a href="/calciatore/de-ketelaere/">De Ketelaere</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-att" title="Ruolo Mantra A">A</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">83</td>
+            <td class="col-tit"><span class="consensus-chip mid">77%</span></td>
+            <td class="col-xfm" style="color:rgb(250,202,22);">6.18</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/elmas/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Elmas</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/rowe/">Rowe</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-trq" title="Ruolo Mantra W">W</span><span class="prob-mantra-pill m-trq" title="Ruolo Mantra T">T</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">74</td>
+            <td class="col-tit"><span class="consensus-chip low">58%</span></td>
+            <td class="col-xfm" style="color:rgb(250,195,27);">6.09</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/zalewski/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Zalewski</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">A</span>
+                    <a href="/calciatore/krstovic/">Krstovic</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-att" title="Ruolo Mantra Pc">Pc</span></span>
+                    <span class="inline-bm-badge bonus" title="Top Bonus AI: xFM 7.97 • xG+xA 0.78">🔥 BONUS</span>
+                </div>
+            </td>
+            <td class="col-ovr">86</td>
+            <td class="col-tit"><span class="consensus-chip low">55%</span></td>
+            <td class="col-xfm" style="color:rgb(74,222,128);">7.87</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/scamacca/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Scamacca</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/scalvini/">Scalvini</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dc">Dc</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">72</td>
+            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
+            <td class="col-xfm" style="color:rgb(251,168,46);">5.76</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/kessie/">Kessiè</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span></span>
+                    <span class="inline-bm-badge bonus" title="Top Bonus AI: xFM 6.52 • Rigorista">🔥 BONUS</span>
+                </div>
+            </td>
+            <td class="col-ovr">79</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm" style="color:rgb(208,208,47);">6.51</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/samardzic/">Samardzic</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span><span class="prob-mantra-pill m-trq" title="Ruolo Mantra T">T</span></span>
+                    
+                </div>
+            </td>
+            <td class="col-ovr">76</td>
+            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
+            <td class="col-xfm" style="color:rgb(238,205,28);">6.29</td>
+            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
+        </tr>
+        
+            </tbody>
+        </table>
+        
+        <details class="bench-accordion">
+            <summary class="bench-accordion-summary">
+                <span>🪑 Panchina &amp; Rotazioni (13)</span>
+                <span class="bench-preview-names">Scamacca, Zalewski, Pasalic, Elmas...</span>
+                <span class="bench-chevron">▼</span>
+            </summary>
+            <table class="consensus-table">
+                <tbody>
+                    
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">A</span>
+                    <a href="/calciatore/scamacca/" style="color:#94a3b8;">Scamacca</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-att" title="Ruolo Mantra Pc">Pc</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">86</td>
+            <td class="col-tit"><span class="consensus-chip mid">45%</span></td>
+            <td class="col-xfm" style="color:rgb(250,191,30);">6.04</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/krstovic/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Krstovic</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/zalewski/" style="color:#94a3b8;">Zalewski</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-trq" title="Ruolo Mantra W">W</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">68</td>
+            <td class="col-tit"><span class="consensus-chip mid">42%</span></td>
+            <td class="col-xfm" style="color:rgb(242,205,26);">6.26</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/rowe/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Rowe</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/pasalic/" style="color:#94a3b8;">Pasalic</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span><span class="prob-mantra-pill m-trq" title="Ruolo Mantra T">T</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">67</td>
+            <td class="col-tit"><span class="consensus-chip mid">42%</span></td>
+            <td class="col-xfm" style="color:rgb(251,149,58);">5.54</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/gaetano/" style="color:#38bdf8;font-weight:700;text-decoration:none;">Gaetano</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/elmas/" style="color:#94a3b8;">Elmas</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-trq" title="Ruolo Mantra W">W</span><span class="prob-mantra-pill m-trq" title="Ruolo Mantra T">T</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">70</td>
+            <td class="col-tit"><span class="consensus-chip low">23%</span></td>
+            <td class="col-xfm" style="color:rgb(250,201,23);">6.16</td>
+            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs <a href="/calciatore/de-ketelaere/" style="color:#38bdf8;font-weight:700;text-decoration:none;">De Ketelaere</a></span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">A</span>
+                    <a href="/calciatore/sulemana-k/" style="color:#94a3b8;">Sulemana K.</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-att" title="Ruolo Mantra A">A</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">52</td>
+            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
+            <td class="col-xfm" style="color:rgb(250,204,21);">6.20</td>
+            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">P</span>
+                    <a href="/calciatore/sportiello/" style="color:#94a3b8;">Sportiello</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-por" title="Ruolo Mantra Por">Por</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">50</td>
+            <td class="col-tit"><span class="consensus-chip out">5%</span></td>
+            <td class="col-xfm" style="color:rgb(248,113,113);">4.50</td>
+            <td class="col-status"><span style="color:#64748b;">Secondo portiere</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/bellanova/" style="color:#94a3b8;">Bellanova</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dd">Dd</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra E">E</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">73</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:rgb(250,176,40);">5.86</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 01/11/2026</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/kossounou/" style="color:#94a3b8;">Kossounou</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dd">Dd</span><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dc">Dc</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">60</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:rgb(251,145,61);">5.48</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 20/11/2026</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/hien/" style="color:#94a3b8;">Hien</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dc">Dc</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">59</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:rgb(250,176,40);">5.86</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 20/11/2026</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">D</span>
+                    <a href="/calciatore/kolasinac/" style="color:#94a3b8;">Kolasinac</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Ds">Ds</span><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dc">Dc</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">52</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:rgb(251,168,46);">5.76</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 20/11/2026</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">C</span>
+                    <a href="/calciatore/ederson-d-s/" style="color:#94a3b8;">Ederson D.S.</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra M">M</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">75</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:rgb(234,206,31);">6.32</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 01/11/2026</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">A</span>
+                    <a href="/calciatore/raspadori/" style="color:#94a3b8;">Raspadori</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-att" title="Ruolo Mantra A">A</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">72</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:rgb(236,205,29);">6.30</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 15/11/2026</span></td>
+        </tr>
+        
+        <tr>
+            <td class="col-player">
+                <div class="player-cell-flex">
+                    <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">P</span>
+                    <a href="/calciatore/pompei/" style="color:#94a3b8;">Pompei</a>
+                    <span class="prob-mantra-list"><span class="prob-mantra-pill m-por" title="Ruolo Mantra Por">Por</span></span>
+                </div>
+            </td>
+            <td class="col-ovr" style="color:#64748b;">48</td>
+            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
+            <td class="col-xfm" style="color:rgb(251,144,64);">5.43</td>
+            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 01/11/2026</span></td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </details>
+        
+    </div>
+    
+        </div>
+    </div>
+    
+            </div>
+
+            <!-- Pane 2: Duelli 1vs1 Ballottaggi (Attivabile con click) -->
+            <div class="match-view-pane view-pane-duels" style="display:none;">
                 
     <div class="match-teams-columns">
         <!-- Colonna Sinistra: Squadra di Casa -->
@@ -471,7 +1248,7 @@
                     <a href="/probabili-formazioni/fiorentina/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Fiorentina">Fiorentina</a>
                     <span class="team-col-badge">CASA</span>
                 </div>
-                <span class="team-col-count">5 ballottaggi</span>
+                <span class="team-col-count">4 ballottaggi</span>
             </div>
             <div class="team-duels-list">
                 
@@ -485,12 +1262,14 @@
         <div class="duel-players-row">
             <div class="duel-player-side left">
                 <span class="pitch-role-badge D">D</span>
-                <a href="/calciatore/jimenez-a/" class="h2h-name" title="Scheda Jimenez A.">Jimenez A.</a>
+                <a href="/calciatore/jimenez-a/" class="h2h-name">Jimenez A.</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dd">Dd</span><span class="prob-mantra-pill m-def" title="Ruolo Mantra Ds">Ds</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra E">E</span></span>
                 <span class="h2h-ovr-pill">OVR 76</span>
             </div>
             <div class="duel-player-side right">
                 <span class="h2h-ovr-pill">OVR 73</span>
-                <a href="/calciatore/dodo/" class="h2h-name" title="Scheda Dodò">Dodò</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-def" title="Ruolo Mantra Dd">Dd</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra E">E</span></span>
+                <a href="/calciatore/dodo/" class="h2h-name">Dodò</a>
                 <span class="pitch-role-badge D">D</span>
             </div>
         </div>
@@ -524,12 +1303,14 @@
         <div class="duel-players-row">
             <div class="duel-player-side left">
                 <span class="pitch-role-badge C">C</span>
-                <a href="/calciatore/brescianini/" class="h2h-name" title="Scheda Brescianini">Brescianini</a>
+                <a href="/calciatore/brescianini/" class="h2h-name">Brescianini</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span><span class="prob-mantra-pill m-trq" title="Ruolo Mantra T">T</span></span>
                 <span class="h2h-ovr-pill">OVR 60</span>
             </div>
             <div class="duel-player-side right">
                 <span class="h2h-ovr-pill">OVR 63</span>
-                <a href="/calciatore/oulai/" class="h2h-name" title="Scheda Oulai">Oulai</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra M">M</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span></span>
+                <a href="/calciatore/oulai/" class="h2h-name">Oulai</a>
                 <span class="pitch-role-badge C">C</span>
             </div>
         </div>
@@ -563,12 +1344,14 @@
         <div class="duel-players-row">
             <div class="duel-player-side left">
                 <span class="pitch-role-badge A">A</span>
-                <a href="/calciatore/pellegrino-m/" class="h2h-name" title="Scheda Pellegrino M.">Pellegrino M.</a>
+                <a href="/calciatore/pellegrino-m/" class="h2h-name">Pellegrino M.</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-att" title="Ruolo Mantra Pc">Pc</span></span>
                 <span class="h2h-ovr-pill">OVR 75</span>
             </div>
             <div class="duel-player-side right">
                 <span class="h2h-ovr-pill">OVR 73</span>
-                <a href="/calciatore/beto/" class="h2h-name" title="Scheda Beto">Beto</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-att" title="Ruolo Mantra Pc">Pc</span></span>
+                <a href="/calciatore/beto/" class="h2h-name">Beto</a>
                 <span class="pitch-role-badge A">A</span>
             </div>
         </div>
@@ -595,45 +1378,6 @@
     <div class="duel-card-h2h">
         <div class="duel-card-top">
             <span class="duel-team-tag">⚽ Fiorentina</span>
-            <span class="verdict-tag safe">Titolare Blindato</span>
-        </div>
-        
-        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
-        <div class="duel-players-row">
-            <div class="duel-player-side left">
-                <span class="pitch-role-badge D">D</span>
-                <a href="/calciatore/viery/" class="h2h-name" title="Scheda Viery">Viery</a>
-                <span class="h2h-ovr-pill">OVR 64</span>
-            </div>
-            <div class="duel-player-side right">
-                <span class="h2h-ovr-pill">OVR 61</span>
-                <a href="/calciatore/pongracic/" class="h2h-name" title="Scheda Pongracic">Pongracic 🩹</a>
-                <span class="pitch-role-badge D">D</span>
-            </div>
-        </div>
-        
-        <!-- Barra percentuale più alta con valore dentro -->
-        <div class="duel-gauge-bar-thick">
-            <div class="gauge-part-left fav" style="width: 95%;">
-                <span class="gauge-pct-val">95%</span>
-            </div>
-            <div class="gauge-part-right under" style="width: 5%;">
-                <span class="gauge-pct-val">5%</span>
-            </div>
-        </div>
-        
-        <!-- Verdetto AI & CTA compatti su una riga -->
-        <div class="duel-footer-row">
-            <div class="verdict-desc">💡 Titolare certo al 100%: il rivale di reparto è attualmente indisponibile.</div>
-            <a href="/chi-schiero/viery-vs-pongracic/" class="btn-duel-compare" title="Analizza Ballottaggio">
-                <span>⚔️ Chi Schiero</span> &rarr;
-            </a>
-        </div>
-    </div>
-    
-    <div class="duel-card-h2h">
-        <div class="duel-card-top">
-            <span class="duel-team-tag">⚽ Fiorentina</span>
             <span class="verdict-tag jolly">Jolly Spacca-Partita</span>
         </div>
         
@@ -641,12 +1385,14 @@
         <div class="duel-players-row">
             <div class="duel-player-side left">
                 <span class="pitch-role-badge C">C</span>
-                <a href="/calciatore/goncalves-p/" class="h2h-name" title="Scheda Goncalves P.">Goncalves P.</a>
+                <a href="/calciatore/goncalves-p/" class="h2h-name">Goncalves P.</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-trq" title="Ruolo Mantra W">W</span><span class="prob-mantra-pill m-trq" title="Ruolo Mantra T">T</span></span>
                 <span class="h2h-ovr-pill">OVR 78</span>
             </div>
             <div class="duel-player-side right">
                 <span class="h2h-ovr-pill">OVR 69</span>
-                <a href="/calciatore/njie/" class="h2h-name" title="Scheda Njie">Njie</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-trq" title="Ruolo Mantra W">W</span><span class="prob-mantra-pill m-att" title="Ruolo Mantra A">A</span></span>
+                <a href="/calciatore/njie/" class="h2h-name">Njie</a>
                 <span class="pitch-role-badge C">C</span>
             </div>
         </div>
@@ -681,7 +1427,7 @@
                     <a href="/probabili-formazioni/atalanta/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Atalanta">Atalanta</a>
                     <span class="team-col-badge">TRASFERTA</span>
                 </div>
-                <span class="team-col-count">8 ballottaggi</span>
+                <span class="team-col-count">4 ballottaggi</span>
             </div>
             <div class="team-duels-list">
                 
@@ -695,12 +1441,14 @@
         <div class="duel-players-row">
             <div class="duel-player-side left">
                 <span class="pitch-role-badge C">C</span>
-                <a href="/calciatore/gaetano/" class="h2h-name" title="Scheda Gaetano">Gaetano</a>
+                <a href="/calciatore/gaetano/" class="h2h-name">Gaetano</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra M">M</span><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span></span>
                 <span class="h2h-ovr-pill">OVR 70</span>
             </div>
             <div class="duel-player-side right">
                 <span class="h2h-ovr-pill">OVR 67</span>
-                <a href="/calciatore/pasalic/" class="h2h-name" title="Scheda Pasalic">Pasalic</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-mid" title="Ruolo Mantra C">C</span><span class="prob-mantra-pill m-trq" title="Ruolo Mantra T">T</span></span>
+                <a href="/calciatore/pasalic/" class="h2h-name">Pasalic</a>
                 <span class="pitch-role-badge C">C</span>
             </div>
         </div>
@@ -734,12 +1482,14 @@
         <div class="duel-players-row">
             <div class="duel-player-side left">
                 <span class="pitch-role-badge C">C</span>
-                <a href="/calciatore/rowe/" class="h2h-name" title="Scheda Rowe">Rowe</a>
+                <a href="/calciatore/rowe/" class="h2h-name">Rowe</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-trq" title="Ruolo Mantra W">W</span><span class="prob-mantra-pill m-trq" title="Ruolo Mantra T">T</span></span>
                 <span class="h2h-ovr-pill">OVR 74</span>
             </div>
             <div class="duel-player-side right">
                 <span class="h2h-ovr-pill">OVR 68</span>
-                <a href="/calciatore/zalewski/" class="h2h-name" title="Scheda Zalewski">Zalewski</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-trq" title="Ruolo Mantra W">W</span></span>
+                <a href="/calciatore/zalewski/" class="h2h-name">Zalewski</a>
                 <span class="pitch-role-badge C">C</span>
             </div>
         </div>
@@ -773,12 +1523,14 @@
         <div class="duel-players-row">
             <div class="duel-player-side left">
                 <span class="pitch-role-badge A">A</span>
-                <a href="/calciatore/krstovic/" class="h2h-name" title="Scheda Krstovic">Krstovic</a>
+                <a href="/calciatore/krstovic/" class="h2h-name">Krstovic</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-att" title="Ruolo Mantra Pc">Pc</span></span>
                 <span class="h2h-ovr-pill">OVR 86</span>
             </div>
             <div class="duel-player-side right">
                 <span class="h2h-ovr-pill">OVR 86</span>
-                <a href="/calciatore/scamacca/" class="h2h-name" title="Scheda Scamacca">Scamacca</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-att" title="Ruolo Mantra Pc">Pc</span></span>
+                <a href="/calciatore/scamacca/" class="h2h-name">Scamacca</a>
                 <span class="pitch-role-badge A">A</span>
             </div>
         </div>
@@ -805,162 +1557,6 @@
     <div class="duel-card-h2h">
         <div class="duel-card-top">
             <span class="duel-team-tag">⚽ Atalanta</span>
-            <span class="verdict-tag safe">Titolare Blindato</span>
-        </div>
-        
-        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
-        <div class="duel-players-row">
-            <div class="duel-player-side left">
-                <span class="pitch-role-badge D">D</span>
-                <a href="/calciatore/zappacosta/" class="h2h-name" title="Scheda Zappacosta">Zappacosta</a>
-                <span class="h2h-ovr-pill">OVR 74</span>
-            </div>
-            <div class="duel-player-side right">
-                <span class="h2h-ovr-pill">OVR 73</span>
-                <a href="/calciatore/bellanova/" class="h2h-name" title="Scheda Bellanova">Bellanova 🩹</a>
-                <span class="pitch-role-badge D">D</span>
-            </div>
-        </div>
-        
-        <!-- Barra percentuale più alta con valore dentro -->
-        <div class="duel-gauge-bar-thick">
-            <div class="gauge-part-left fav" style="width: 95%;">
-                <span class="gauge-pct-val">95%</span>
-            </div>
-            <div class="gauge-part-right under" style="width: 5%;">
-                <span class="gauge-pct-val">5%</span>
-            </div>
-        </div>
-        
-        <!-- Verdetto AI & CTA compatti su una riga -->
-        <div class="duel-footer-row">
-            <div class="verdict-desc">💡 Titolare certo al 100%: il rivale di reparto è attualmente indisponibile.</div>
-            <a href="/chi-schiero/zappacosta-vs-bellanova/" class="btn-duel-compare" title="Analizza Ballottaggio">
-                <span>⚔️ Chi Schiero</span> &rarr;
-            </a>
-        </div>
-    </div>
-    
-    <div class="duel-card-h2h">
-        <div class="duel-card-top">
-            <span class="duel-team-tag">⚽ Atalanta</span>
-            <span class="verdict-tag safe">Titolare Blindato</span>
-        </div>
-        
-        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
-        <div class="duel-players-row">
-            <div class="duel-player-side left">
-                <span class="pitch-role-badge D">D</span>
-                <a href="/calciatore/kristensen-t/" class="h2h-name" title="Scheda Kristensen T.">Kristensen T.</a>
-                <span class="h2h-ovr-pill">OVR 71</span>
-            </div>
-            <div class="duel-player-side right">
-                <span class="h2h-ovr-pill">OVR 60</span>
-                <a href="/calciatore/kossounou/" class="h2h-name" title="Scheda Kossounou">Kossounou 🩹</a>
-                <span class="pitch-role-badge D">D</span>
-            </div>
-        </div>
-        
-        <!-- Barra percentuale più alta con valore dentro -->
-        <div class="duel-gauge-bar-thick">
-            <div class="gauge-part-left fav" style="width: 95%;">
-                <span class="gauge-pct-val">95%</span>
-            </div>
-            <div class="gauge-part-right under" style="width: 5%;">
-                <span class="gauge-pct-val">5%</span>
-            </div>
-        </div>
-        
-        <!-- Verdetto AI & CTA compatti su una riga -->
-        <div class="duel-footer-row">
-            <div class="verdict-desc">💡 Titolare certo al 100%: il rivale di reparto è attualmente indisponibile.</div>
-            <a href="/chi-schiero/kristensen-t-vs-kossounou/" class="btn-duel-compare" title="Analizza Ballottaggio">
-                <span>⚔️ Chi Schiero</span> &rarr;
-            </a>
-        </div>
-    </div>
-    
-    <div class="duel-card-h2h">
-        <div class="duel-card-top">
-            <span class="duel-team-tag">⚽ Atalanta</span>
-            <span class="verdict-tag safe">Titolare Blindato</span>
-        </div>
-        
-        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
-        <div class="duel-players-row">
-            <div class="duel-player-side left">
-                <span class="pitch-role-badge D">D</span>
-                <a href="/calciatore/scalvini/" class="h2h-name" title="Scheda Scalvini">Scalvini</a>
-                <span class="h2h-ovr-pill">OVR 72</span>
-            </div>
-            <div class="duel-player-side right">
-                <span class="h2h-ovr-pill">OVR 59</span>
-                <a href="/calciatore/hien/" class="h2h-name" title="Scheda Hien">Hien 🩹</a>
-                <span class="pitch-role-badge D">D</span>
-            </div>
-        </div>
-        
-        <!-- Barra percentuale più alta con valore dentro -->
-        <div class="duel-gauge-bar-thick">
-            <div class="gauge-part-left fav" style="width: 95%;">
-                <span class="gauge-pct-val">95%</span>
-            </div>
-            <div class="gauge-part-right under" style="width: 5%;">
-                <span class="gauge-pct-val">5%</span>
-            </div>
-        </div>
-        
-        <!-- Verdetto AI & CTA compatti su una riga -->
-        <div class="duel-footer-row">
-            <div class="verdict-desc">💡 Titolare certo al 100%: il rivale di reparto è attualmente indisponibile.</div>
-            <a href="/chi-schiero/scalvini-vs-hien/" class="btn-duel-compare" title="Analizza Ballottaggio">
-                <span>⚔️ Chi Schiero</span> &rarr;
-            </a>
-        </div>
-    </div>
-    
-    <div class="duel-card-h2h">
-        <div class="duel-card-top">
-            <span class="duel-team-tag">⚽ Atalanta</span>
-            <span class="verdict-tag safe">Titolare Blindato</span>
-        </div>
-        
-        <!-- Nomi calciatori sulla stessa riga (P1 a sx, P2 a dx) -->
-        <div class="duel-players-row">
-            <div class="duel-player-side left">
-                <span class="pitch-role-badge D">D</span>
-                <a href="/calciatore/bernasconi/" class="h2h-name" title="Scheda Bernasconi">Bernasconi</a>
-                <span class="h2h-ovr-pill">OVR 74</span>
-            </div>
-            <div class="duel-player-side right">
-                <span class="h2h-ovr-pill">OVR 52</span>
-                <a href="/calciatore/kolasinac/" class="h2h-name" title="Scheda Kolasinac">Kolasinac 🩹</a>
-                <span class="pitch-role-badge D">D</span>
-            </div>
-        </div>
-        
-        <!-- Barra percentuale più alta con valore dentro -->
-        <div class="duel-gauge-bar-thick">
-            <div class="gauge-part-left fav" style="width: 95%;">
-                <span class="gauge-pct-val">95%</span>
-            </div>
-            <div class="gauge-part-right under" style="width: 5%;">
-                <span class="gauge-pct-val">5%</span>
-            </div>
-        </div>
-        
-        <!-- Verdetto AI & CTA compatti su una riga -->
-        <div class="duel-footer-row">
-            <div class="verdict-desc">💡 Titolare certo al 100%: il rivale di reparto è attualmente indisponibile.</div>
-            <a href="/chi-schiero/bernasconi-vs-kolasinac/" class="btn-duel-compare" title="Analizza Ballottaggio">
-                <span>⚔️ Chi Schiero</span> &rarr;
-            </a>
-        </div>
-    </div>
-    
-    <div class="duel-card-h2h">
-        <div class="duel-card-top">
-            <span class="duel-team-tag">⚽ Atalanta</span>
             <span class="verdict-tag safe">Titolare Inamovibile</span>
         </div>
         
@@ -968,12 +1564,14 @@
         <div class="duel-players-row">
             <div class="duel-player-side left">
                 <span class="pitch-role-badge A">A</span>
-                <a href="/calciatore/de-ketelaere/" class="h2h-name" title="Scheda De Ketelaere">De Ketelaere</a>
+                <a href="/calciatore/de-ketelaere/" class="h2h-name">De Ketelaere</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-att" title="Ruolo Mantra A">A</span></span>
                 <span class="h2h-ovr-pill">OVR 83</span>
             </div>
             <div class="duel-player-side right">
                 <span class="h2h-ovr-pill">OVR 70</span>
-                <a href="/calciatore/elmas/" class="h2h-name" title="Scheda Elmas">Elmas</a>
+                <span class="prob-mantra-list"><span class="prob-mantra-pill m-trq" title="Ruolo Mantra W">W</span><span class="prob-mantra-pill m-trq" title="Ruolo Mantra T">T</span></span>
+                <a href="/calciatore/elmas/" class="h2h-name">Elmas</a>
                 <span class="pitch-role-badge C">C</span>
             </div>
         </div>
@@ -1003,596 +1601,6 @@
     
             </div>
 
-            <!-- Pane 2: Tabellone Formazioni Semplificato (% TIT & Status) -->
-            <div class="match-view-pane view-pane-table" style="display:none;">
-                
-    <div class="match-teams-columns">
-        <!-- Colonna Sinistra: Formazione Casa -->
-        <div class="team-duels-column team-home">
-            <div class="team-column-header home-header">
-                <div class="team-col-title-wrap">
-                    <span class="team-col-icon">🏠</span>
-                    <a href="/probabili-formazioni/fiorentina/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Fiorentina">Fiorentina</a>
-                    <span class="team-col-badge">CASA</span>
-                </div>
-                <span class="team-col-count">4-3-2-1</span>
-            </div>
-            
-    <div class="consensus-table-wrapper">
-        <table class="consensus-table">
-            <thead>
-                <tr>
-                    <th>Calciatore</th>
-                    <th class="col-ovr">OVR</th>
-                    <th class="col-tit">% TIT</th>
-                    <th class="col-xfm">xFM</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="section-subhead-row"><td colspan="5">🌟 11 Titolari Probabili — Fiorentina (4-3-2-1)</td></tr>
-                
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">P</span>
-                <a href="/calciatore/de-gea/">De Gea</a>
-            </td>
-            <td class="col-ovr">70</td>
-            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
-            <td class="col-xfm">3.53</td>
-            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/jimenez-a/">Jimenez A.</a>
-            </td>
-            <td class="col-ovr">76</td>
-            <td class="col-tit"><span class="consensus-chip low">58%</span></td>
-            <td class="col-xfm">5.83</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Dodò</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/dragusin/">Dragusin</a>
-            </td>
-            <td class="col-ovr">72</td>
-            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
-            <td class="col-xfm">5.26</td>
-            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/viery/">Viery</a>
-            </td>
-            <td class="col-ovr">64</td>
-            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
-            <td class="col-xfm">5.20</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Pongracic</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/valdepenas/">Valdepenas</a>
-            </td>
-            <td class="col-ovr">69</td>
-            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
-            <td class="col-xfm">5.56</td>
-            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/ndour/">Ndour</a>
-            </td>
-            <td class="col-ovr">66</td>
-            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
-            <td class="col-xfm">5.92</td>
-            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/fagioli/">Fagioli</a>
-            </td>
-            <td class="col-ovr">67</td>
-            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
-            <td class="col-xfm">6.14</td>
-            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/brescianini/">Brescianini</a>
-            </td>
-            <td class="col-ovr">60</td>
-            <td class="col-tit"><span class="consensus-chip low">54%</span></td>
-            <td class="col-xfm">5.82</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Oulai</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/mastantuono/">Mastantuono</a>
-            </td>
-            <td class="col-ovr">85</td>
-            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
-            <td class="col-xfm">7.05</td>
-            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/goncalves-p/">Goncalves P.</a>
-            </td>
-            <td class="col-ovr">78</td>
-            <td class="col-tit"><span class="consensus-chip mid">60%</span></td>
-            <td class="col-xfm">5.68</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Njie</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
-                <a href="/calciatore/pellegrino-m/">Pellegrino M.</a>
-            </td>
-            <td class="col-ovr">75</td>
-            <td class="col-tit"><span class="consensus-chip low">51%</span></td>
-            <td class="col-xfm">5.96</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Beto</span></td>
-        </tr>
-        
-                <tr class="section-subhead-row"><td colspan="5">🪑 In Panchina &amp; Rotazioni</td></tr>
-                
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
-                <a href="/calciatore/beto/" style="color:#94a3b8;">Beto</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">73</td>
-            <td class="col-tit"><span class="consensus-chip mid">49%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">6.30</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Pellegrino M.</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/oulai/" style="color:#94a3b8;">Oulai</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">63</td>
-            <td class="col-tit"><span class="consensus-chip mid">46%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">5.57</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Brescianini</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/dodo/" style="color:#94a3b8;">Dodò</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">73</td>
-            <td class="col-tit"><span class="consensus-chip mid">42%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">5.42</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Jimenez A.</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/njie/" style="color:#94a3b8;">Njie</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">69</td>
-            <td class="col-tit"><span class="consensus-chip mid">40%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">6.46</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Goncalves P.</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/joao-mario/" style="color:#94a3b8;">Joao Mario</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">67</td>
-            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">5.58</td>
-            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/ranieri-l/" style="color:#94a3b8;">Ranieri L.</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">62</td>
-            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">5.27</td>
-            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
-                <a href="/calciatore/gnonto/" style="color:#94a3b8;">Gnonto</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">67</td>
-            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">5.79</td>
-            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">P</span>
-                <a href="/calciatore/christensen-o/" style="color:#94a3b8;">Christensen O.</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">50</td>
-            <td class="col-tit"><span class="consensus-chip out">5%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">6.50</td>
-            <td class="col-status"><span style="color:#64748b;">Secondo portiere</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">P</span>
-                <a href="/calciatore/lezzerini/" style="color:#94a3b8;">Lezzerini</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">50</td>
-            <td class="col-tit"><span class="consensus-chip out">5%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">6.00</td>
-            <td class="col-status"><span style="color:#64748b;">Secondo portiere</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/pongracic/" style="color:#94a3b8;">Pongracic</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">61</td>
-            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">5.98</td>
-            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 01/11/2026</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/parisi/" style="color:#94a3b8;">Parisi</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">56</td>
-            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">5.98</td>
-            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 15/12/2026</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/atta/" style="color:#94a3b8;">Atta</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">79</td>
-            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">6.09</td>
-            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 01/11/2026</span></td>
-        </tr>
-        
-            </tbody>
-        </table>
-    </div>
-    
-        </div>
-
-        <!-- Colonna Destra: Formazione Fuori Casa -->
-        <div class="team-duels-column team-away">
-            <div class="team-column-header away-header">
-                <div class="team-col-title-wrap">
-                    <span class="team-col-icon">✈️</span>
-                    <a href="/probabili-formazioni/atalanta/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione Atalanta">Atalanta</a>
-                    <span class="team-col-badge">TRASFERTA</span>
-                </div>
-                <span class="team-col-count">4-2-3-1</span>
-            </div>
-            
-    <div class="consensus-table-wrapper">
-        <table class="consensus-table">
-            <thead>
-                <tr>
-                    <th>Calciatore</th>
-                    <th class="col-ovr">OVR</th>
-                    <th class="col-tit">% TIT</th>
-                    <th class="col-xfm">xFM</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="section-subhead-row"><td colspan="5">🌟 11 Titolari Probabili — Atalanta (4-2-3-1)</td></tr>
-                
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">P</span>
-                <a href="/calciatore/carnesecchi/">Carnesecchi</a>
-            </td>
-            <td class="col-ovr">86</td>
-            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
-            <td class="col-xfm">4.60</td>
-            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/zappacosta/">Zappacosta</a>
-            </td>
-            <td class="col-ovr">74</td>
-            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
-            <td class="col-xfm">6.05</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Bellanova</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/kristensen-t/">Kristensen T.</a>
-            </td>
-            <td class="col-ovr">71</td>
-            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
-            <td class="col-xfm">5.37</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Kossounou</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/bernasconi/">Bernasconi</a>
-            </td>
-            <td class="col-ovr">74</td>
-            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
-            <td class="col-xfm">5.45</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Kolasinac</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/gaetano/">Gaetano</a>
-            </td>
-            <td class="col-ovr">70</td>
-            <td class="col-tit"><span class="consensus-chip low">58%</span></td>
-            <td class="col-xfm">5.92</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Pasalic</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
-                <a href="/calciatore/de-ketelaere/">De Ketelaere</a>
-            </td>
-            <td class="col-ovr">83</td>
-            <td class="col-tit"><span class="consensus-chip mid">77%</span></td>
-            <td class="col-xfm">6.18</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Elmas</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/rowe/">Rowe</a>
-            </td>
-            <td class="col-ovr">74</td>
-            <td class="col-tit"><span class="consensus-chip low">58%</span></td>
-            <td class="col-xfm">6.09</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Zalewski</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
-                <a href="/calciatore/krstovic/">Krstovic</a>
-            </td>
-            <td class="col-ovr">86</td>
-            <td class="col-tit"><span class="consensus-chip low">55%</span></td>
-            <td class="col-xfm">7.87</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Scamacca</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/scalvini/">Scalvini</a>
-            </td>
-            <td class="col-ovr">72</td>
-            <td class="col-tit"><span class="consensus-chip high">95%</span></td>
-            <td class="col-xfm">5.76</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Hien</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/kessie/">Kessiè</a>
-            </td>
-            <td class="col-ovr">79</td>
-            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
-            <td class="col-xfm">6.51</td>
-            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/samardzic/">Samardzic</a>
-            </td>
-            <td class="col-ovr">76</td>
-            <td class="col-tit"><span class="consensus-chip high">92%</span></td>
-            <td class="col-xfm">6.29</td>
-            <td class="col-status"><span style="color:#cbd5e1;">Titolare inamovibile</span></td>
-        </tr>
-        
-                <tr class="section-subhead-row"><td colspan="5">🪑 In Panchina &amp; Rotazioni</td></tr>
-                
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
-                <a href="/calciatore/scamacca/" style="color:#94a3b8;">Scamacca</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">86</td>
-            <td class="col-tit"><span class="consensus-chip mid">45%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">6.04</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Krstovic</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/zalewski/" style="color:#94a3b8;">Zalewski</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">68</td>
-            <td class="col-tit"><span class="consensus-chip mid">42%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">6.26</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Rowe</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/pasalic/" style="color:#94a3b8;">Pasalic</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">67</td>
-            <td class="col-tit"><span class="consensus-chip mid">42%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">5.54</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs Gaetano</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/elmas/" style="color:#94a3b8;">Elmas</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">70</td>
-            <td class="col-tit"><span class="consensus-chip low">23%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">6.16</td>
-            <td class="col-status"><span style="color:#38bdf8;font-weight:700;">⚔️ vs De Ketelaere</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
-                <a href="/calciatore/sulemana-k/" style="color:#94a3b8;">Sulemana K.</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">52</td>
-            <td class="col-tit"><span class="consensus-chip low">15%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">6.20</td>
-            <td class="col-status"><span style="color:#64748b;">Panchina</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">P</span>
-                <a href="/calciatore/sportiello/" style="color:#94a3b8;">Sportiello</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">50</td>
-            <td class="col-tit"><span class="consensus-chip out">5%</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">4.50</td>
-            <td class="col-status"><span style="color:#64748b;">Secondo portiere</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/bellanova/" style="color:#94a3b8;">Bellanova</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">73</td>
-            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">5.86</td>
-            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 01/11/2026</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/kossounou/" style="color:#94a3b8;">Kossounou</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">60</td>
-            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">5.48</td>
-            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 20/11/2026</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/hien/" style="color:#94a3b8;">Hien</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">59</td>
-            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">5.86</td>
-            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 20/11/2026</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge D" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">D</span>
-                <a href="/calciatore/kolasinac/" style="color:#94a3b8;">Kolasinac</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">52</td>
-            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">5.76</td>
-            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 20/11/2026</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge C" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">C</span>
-                <a href="/calciatore/ederson-d-s/" style="color:#94a3b8;">Ederson D.S.</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">75</td>
-            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">6.32</td>
-            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 01/11/2026</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge A" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">A</span>
-                <a href="/calciatore/raspadori/" style="color:#94a3b8;">Raspadori</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">72</td>
-            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">6.30</td>
-            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 15/11/2026</span></td>
-        </tr>
-        
-        <tr>
-            <td class="col-player">
-                <span class="pitch-role-badge P" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;margin-right:6px;">P</span>
-                <a href="/calciatore/pompei/" style="color:#94a3b8;">Pompei</a>
-            </td>
-            <td class="col-ovr" style="color:#64748b;">48</td>
-            <td class="col-tit"><span class="consensus-chip out">OUT 🩹</span></td>
-            <td class="col-xfm" style="color:#94a3b8;">5.43</td>
-            <td class="col-status"><span style="color:#f87171;font-weight:600;">🩹 01/11/2026</span></td>
-        </tr>
-        
-            </tbody>
-        </table>
-    </div>
-    
-        </div>
-    </div>
-    
-            </div>
-
             <!-- Pannelli Inferiori: Info Casa a SX, Info Trasferta a DX -->
             <div class="match-teams-columns match-bottom-grid">
                 <div class="team-duels-column team-home">
@@ -1600,25 +1608,25 @@
                         <div class="subpanel-title">🎯 Piazzati &amp; Tiratori Ufficiali — 🏠 Fiorentina</div>
                         
         <div class="takers-list-flow">
-            <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Mastantuono, Pellegrino M., Beto</span></div>
-            <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Mastantuono, Fagioli, Atta</span></div>
-            <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Mastantuono, Goncalves P., Atta</span></div>
+            <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values"><a href="/calciatore/mastantuono/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Mastantuono</a>, <a href="/calciatore/pellegrino-m/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Pellegrino M.</a>, <a href="/calciatore/beto/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Beto</a></span></div>
+            <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values"><a href="/calciatore/mastantuono/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Mastantuono</a>, <a href="/calciatore/fagioli/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Fagioli</a>, <a href="/calciatore/atta/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Atta</a></span></div>
+            <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values"><a href="/calciatore/mastantuono/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Mastantuono</a>, <a href="/calciatore/goncalves-p/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Goncalves P.</a>, <a href="/calciatore/atta/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Atta</a></span></div>
         </div>
         
                         <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Tempi di Recupero — 🏠 Fiorentina</div>
                         <div style="display:flex;flex-direction:column;gap:5px;">
             <div class="injury-mini-item">
-                <span class="inj-name">🩹 Pongracic</span>
+                <span class="inj-name">🩹 <a href="/calciatore/pongracic/" style="color:#fca5a5;text-decoration:none;font-weight:700;">Pongracic</a></span>
                 <span class="inj-meta">il difensore il 15 ottobr &bull; <b class="inj-return-date">01/11/2026</b></span>
             </div>
             
             <div class="injury-mini-item">
-                <span class="inj-name">🩹 Parisi</span>
+                <span class="inj-name">🩹 <a href="/calciatore/parisi/" style="color:#fca5a5;text-decoration:none;font-weight:700;">Parisi</a></span>
                 <span class="inj-meta">il cursore di fascia dell &bull; <b class="inj-return-date">15/12/2026</b></span>
             </div>
             
             <div class="injury-mini-item">
-                <span class="inj-name">🩹 Atta</span>
+                <span class="inj-name">🩹 <a href="/calciatore/atta/" style="color:#fca5a5;text-decoration:none;font-weight:700;">Atta</a></span>
                 <span class="inj-meta">il centrocampista non al  &bull; <b class="inj-return-date">01/11/2026</b></span>
             </div>
             </div>
@@ -1629,45 +1637,45 @@
                         <div class="subpanel-title">🎯 Piazzati &amp; Tiratori Ufficiali — ✈️ Atalanta</div>
                         
         <div class="takers-list-flow">
-            <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values">Kessiè, Scamacca, De Ketelaere</span></div>
-            <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values">Gaetano, Samardzic, Zalewski</span></div>
-            <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values">Gaetano, Zalewski, De Ketelaere</span></div>
+            <div class="taker-item-row"><span class="taker-label">🎯 Rigoristi:</span> <span class="taker-values"><a href="/calciatore/kessie/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Kessiè</a>, <a href="/calciatore/scamacca/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Scamacca</a>, <a href="/calciatore/de-ketelaere/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">De Ketelaere</a></span></div>
+            <div class="taker-item-row"><span class="taker-label">⚡ Punizioni:</span> <span class="taker-values"><a href="/calciatore/gaetano/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Gaetano</a>, <a href="/calciatore/samardzic/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Samardzic</a>, <a href="/calciatore/zalewski/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Zalewski</a></span></div>
+            <div class="taker-item-row"><span class="taker-label">🚩 Corner:</span> <span class="taker-values"><a href="/calciatore/gaetano/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Gaetano</a>, <a href="/calciatore/zalewski/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">Zalewski</a>, <a href="/calciatore/de-ketelaere/" style="color:#e2e8f0;text-decoration:none;font-weight:700;">De Ketelaere</a></span></div>
         </div>
         
                         <div class="subpanel-title" style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">🩺 Infermeria &amp; Tempi di Recupero — ✈️ Atalanta</div>
                         <div style="display:flex;flex-direction:column;gap:5px;">
             <div class="injury-mini-item">
-                <span class="inj-name">🩹 Kossounou</span>
+                <span class="inj-name">🩹 <a href="/calciatore/kossounou/" style="color:#fca5a5;text-decoration:none;font-weight:700;">Kossounou</a></span>
                 <span class="inj-meta">Il difensore frenato da u &bull; <b class="inj-return-date">20/11/2026</b></span>
             </div>
             
             <div class="injury-mini-item">
-                <span class="inj-name">🩹 Kolasinac</span>
+                <span class="inj-name">🩹 <a href="/calciatore/kolasinac/" style="color:#fca5a5;text-decoration:none;font-weight:700;">Kolasinac</a></span>
                 <span class="inj-meta">il difensore KO il 18 ott &bull; <b class="inj-return-date">20/11/2026</b></span>
             </div>
             
             <div class="injury-mini-item">
-                <span class="inj-name">🩹 Bellanova</span>
+                <span class="inj-name">🩹 <a href="/calciatore/bellanova/" style="color:#fca5a5;text-decoration:none;font-weight:700;">Bellanova</a></span>
                 <span class="inj-meta">il terzino KO il 25 ottob &bull; <b class="inj-return-date">01/11/2026</b></span>
             </div>
             
             <div class="injury-mini-item">
-                <span class="inj-name">🩹 Raspadori</span>
+                <span class="inj-name">🩹 <a href="/calciatore/raspadori/" style="color:#fca5a5;text-decoration:none;font-weight:700;">Raspadori</a></span>
                 <span class="inj-meta">Nuovo stop muscolare per  &bull; <b class="inj-return-date">15/11/2026</b></span>
             </div>
             
             <div class="injury-mini-item">
-                <span class="inj-name">🩹 Pompei</span>
+                <span class="inj-name">🩹 <a href="/calciatore/pompei/" style="color:#fca5a5;text-decoration:none;font-weight:700;">Pompei</a></span>
                 <span class="inj-meta">Il portiere fermo da iniz &bull; <b class="inj-return-date">01/11/2026</b></span>
             </div>
             
             <div class="injury-mini-item">
-                <span class="inj-name">🩹 Hien</span>
+                <span class="inj-name">🩹 <a href="/calciatore/hien/" style="color:#fca5a5;text-decoration:none;font-weight:700;">Hien</a></span>
                 <span class="inj-meta">il difensore operato a fi &bull; <b class="inj-return-date">20/11/2026</b></span>
             </div>
             
             <div class="injury-mini-item">
-                <span class="inj-name">🩹 Ederson D.S.</span>
+                <span class="inj-name">🩹 <a href="/calciatore/ederson-d-s/" style="color:#fca5a5;text-decoration:none;font-weight:700;">Ederson D.S.</a></span>
                 <span class="inj-meta">Espulso per doppia ammoni &bull; <b class="inj-return-date">01/11/2026</b></span>
             </div>
             </div>
@@ -2086,7 +2094,7 @@
 <script src="/js/tracker.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Switcher viste per match (Duelli vs Tabellone Fonti)
+    // 1. Switcher viste per match (Formazioni vs Ballottaggi)
     document.querySelectorAll('.view-switch-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             var matchId = this.getAttribute('data-match');
@@ -2112,6 +2120,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // 1b. Switcher globale viste su tutto il turno (Hub)
+    document.querySelectorAll('.global-view-btn[data-global-view]').forEach(function(gBtn) {
+        gBtn.addEventListener('click', function() {
+            var viewType = this.getAttribute('data-global-view');
+            document.querySelectorAll('.global-view-btn[data-global-view]').forEach(function(b) {
+                b.classList.remove('active');
+            });
+            this.classList.add('active');
+
+            document.querySelectorAll('.match-detail-section').forEach(function(sec) {
+                sec.querySelectorAll('.view-switch-btn').forEach(function(b) {
+                    b.classList.toggle('active', b.getAttribute('data-view') === viewType);
+                });
+                sec.querySelectorAll('.match-view-pane').forEach(function(pane) {
+                    pane.style.display = pane.classList.contains('view-pane-' + viewType) ? 'block' : 'none';
+                });
+            });
+        });
+    });
+
     // 2. Click su pill carosello per scroll fluido al match
     document.querySelectorAll('.match-pill-card[data-target-sec]').forEach(function(pill) {
         pill.addEventListener('click', function(e) {
@@ -2125,6 +2153,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // 3. Filtro istantaneo per squadra o giocatore (Hub)
+    var searchInput = document.getElementById('prob-match-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            var q = (this.value || '').trim().toLowerCase();
+            document.querySelectorAll('.match-detail-section').forEach(function(sec) {
+                if (!q) {
+                    sec.style.display = '';
+                    return;
+                }
+                var txt = (sec.textContent || '').toLowerCase();
+                sec.style.display = txt.indexOf(q) !== -1 ? '' : 'none';
+            });
+        });
+    }
 });
 </script>
 

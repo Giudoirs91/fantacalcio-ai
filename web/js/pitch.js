@@ -50,7 +50,7 @@ function renderPitchClubQuickBar(activeTeam) {
     bar.innerHTML = allTeams.map(tm => {
         const isActive = tm.toLowerCase() === (activeTeam || '').toLowerCase();
         const slug = tm.toLowerCase().replace(/\s+/g, '-');
-        return `<a href="/probabili-formazioni/${slug}/" class="club-quick-btn ${isActive ? 'active' : ''}" onclick="event.preventDefault(); renderPitchTeam('${tm}', true);">${tm}</a>`;
+        return `<a href="/rose-serie-a/${slug}/" class="club-quick-btn ${isActive ? 'active' : ''}" onclick="event.preventDefault(); renderPitchTeam('${tm}', true);">${tm}</a>`;
     }).join('');
 }
 
@@ -227,7 +227,7 @@ function getSubstituteForStarter(starter, team, teamPlayers) {
 function getInitialPitchClub() {
     if (typeof window !== 'undefined') {
         if (window.INITIAL_PITCH_TEAM) return window.INITIAL_PITCH_TEAM;
-        const pathMatch = window.location.pathname.match(/\/probabili-formazioni\/([a-z-]+)\/?/);
+        const pathMatch = window.location.pathname.match(/\/rose-serie-a\/([a-z-]+)\/?/);
         if (pathMatch && typeof TACTICAL_DB !== 'undefined') {
             const slug = pathMatch[1];
             const found = Object.keys(TACTICAL_DB).find(t => t.toLowerCase().replace(/\s+/g, '-') === slug);
@@ -250,12 +250,12 @@ function renderPitchTeam(teamName, updateUrl = false) {
         const isFile = window.location.protocol === 'file:';
         if (!isFile) {
             const slug = teamName.toLowerCase().replace(/\s+/g, '-');
-            const targetUrl = `/probabili-formazioni/${slug}/`;
+            const targetUrl = `/rose-serie-a/${slug}/`;
             if (window.location.pathname !== targetUrl) {
                 window.history.pushState({ team: teamName }, '', targetUrl);
             }
         }
-        document.title = `Top 11 ${teamName} 2026/27: Formazione Tipo, Gerarchie e Rigoristi | Fanta Master AI`;
+        document.title = `Rosa ${teamName} 2026/27: Top 11, Gerarchie e Rigoristi | Fanta Master AI`;
     }
 
     // Sincronizza selettore a tendina e barra rapida club
@@ -528,6 +528,7 @@ function renderPitchTeam(teamName, updateUrl = false) {
                         injTag1 = ' 🩹';
                     }
 
+                    if (Math.min(Number(p1.pct) || 0, Number(p2.pct) || 0) >= 10) {
                     ballottaggiHtml += `
                         <div class="modern-duel-card">
                             <div class="duel-contenders-row">
@@ -547,6 +548,7 @@ function renderPitchTeam(teamName, updateUrl = false) {
                             </div>
                         </div>
                     `;
+                    }
                 } else if (allContenders.length >= 3) {
                     const [p1, p2, p3] = allContenders;
                     ballottaggiHtml += `
@@ -592,8 +594,9 @@ function renderPitchTeam(teamName, updateUrl = false) {
                 }
             });
 
-            if (duelsCreated.length > 0) {
-                duelsCreated.forEach(d => {
+            const validDuels = duelsCreated.filter(d => Math.min(Number(d.pct1) || 0, Number(d.pct2) || 0) >= 10);
+            if (validDuels.length > 0) {
+                validDuels.forEach(d => {
                     ballottaggiHtml += `
                         <div class="modern-duel-card">
                             <div class="duel-contenders-row">
@@ -617,6 +620,9 @@ function renderPitchTeam(teamName, updateUrl = false) {
             } else {
                 ballottaggiHtml = `<div class="tactics-empty-state">Nessun ballottaggio critico aperto. 11 titolare stabile.</div>`;
             }
+        }
+        if (!ballottaggiHtml) {
+            ballottaggiHtml = `<div class="tactics-empty-state">Nessun ballottaggio critico aperto. 11 titolare stabile.</div>`;
         }
 
         const col2Html = `
@@ -2247,7 +2253,7 @@ if (typeof window !== 'undefined') {
         if (e.state && e.state.team) {
             renderPitchTeam(e.state.team, false);
         } else {
-            const pathMatch = window.location.pathname.match(/\/probabili-formazioni\/([a-z-]+)\/?/);
+            const pathMatch = window.location.pathname.match(/\/rose-serie-a\/([a-z-]+)\/?/);
             if (pathMatch && typeof TACTICAL_DB !== 'undefined') {
                 const found = Object.keys(TACTICAL_DB).find(t => t.toLowerCase().replace(/\s+/g, '-') === pathMatch[1]);
                 if (found) renderPitchTeam(found, false);

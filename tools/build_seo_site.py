@@ -5865,10 +5865,10 @@ def build_all():
             "desc": "Tabella completa con tutte le statistiche della Serie A 2026/27: presenze, minuti, gol, assist, ammonizioni, espulsioni, xG, xA e FantaMedia.",
         },
         {
-            "route": "probabili-formazioni",
+            "route": "rose-serie-a",
             "tab": "pitch",
-            "title": "Probabili Formazioni Serie A 2026/27 & Ballottaggi 2D | Fanta Master AI",
-            "desc": "Probabili formazioni delle 20 squadre di Serie A su campo tattico 2D interattivo, schemi dei club e percentuali di titolarità aggiornate.",
+            "title": "Rose Serie A 2026/27: Top 11, Gerarchie e Staffette | Fanta Master AI",
+            "desc": "Rose delle 20 squadre di Serie A 2026/27 su campo tattico 2D interattivo: Top 11, gerarchie stagionali, staffette, rigoristi e consigli asta.",
         },
         {
             "route": "confronto-calciatori",
@@ -6154,9 +6154,10 @@ def build_all():
     consensus_path = os.path.join(ROOT_DIR, "config", "matchday_consensus.json")
     if os.path.exists(consensus_path):
         try:
-            from tools.seo_probabili_template import generate_probabili_formazioni_hub, generate_match_probabili_page
+            from tools.seo_probabili_template import generate_probabili_formazioni_hub, generate_match_probabili_page, enrich_consensus_with_mantra
             with open(consensus_path, "r", encoding="utf-8") as f:
                 consensus_data = json.load(f)
+            enrich_consensus_with_mantra(consensus_data, players)
             
             # 1. Hub Principale dist/probabili-formazioni/index.html
             prob_dir = os.path.join(DIST_DIR, "probabili-formazioni")
@@ -6190,6 +6191,7 @@ def build_all():
                         try:
                             with open(os.path.join(hist_dir, h_file), "r", encoding="utf-8") as fh:
                                 h_data = json.load(fh)
+                            enrich_consensus_with_mantra(h_data, players)
                             for m in h_data.get("matches", []):
                                 m_slug = m.get("slug")
                                 if m_slug and m_slug not in generated_slugs:
@@ -6217,14 +6219,14 @@ def build_all():
         t_players = [p for p in players if (p.get("team") or "").lower() == team_name.lower()]
         t_html = generate_team_page(team_name, t_data, t_players, all_teams_list, injuries_db, BASE_URL, consensus_data=consensus_for_teams)
         
-        t_dir = os.path.join(DIST_DIR, "probabili-formazioni", t_slug)
+        t_dir = os.path.join(DIST_DIR, "rose-serie-a", t_slug)
         os.makedirs(t_dir, exist_ok=True)
         with open(os.path.join(t_dir, "index.html"), "w", encoding="utf-8") as f:
             f.write(t_html)
             
-        sitemap_urls.append(f"{BASE_URL}/probabili-formazioni/{t_slug}/")
+        sitemap_urls.append(f"{BASE_URL}/rose-serie-a/{t_slug}/")
         team_count += 1
-    print(f"  ✓ Generate {team_count} pagine squadra Top 11 & Gerarchie Stagionali (Campo 2D, Titolari, FRP, Staffette, Rigoristi) in dist/probabili-formazioni/<squadra>/")
+    print(f"  ✓ Generate {team_count} pagine squadra Rose & Top 11 Stagionali (Campo 2D, Titolari, FRP, Staffette, Rigoristi) in dist/rose-serie-a/<squadra>/")
 
     # 4c. Genera Pagina Privacy Policy Ufficiale & GDPR
     priv_dir = os.path.join(DIST_DIR, "privacy-policy")

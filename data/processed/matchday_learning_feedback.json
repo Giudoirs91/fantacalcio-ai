@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-15T09:18:55.447577",
+  "timestamp": "2026-11-15T11:07:50.876374",
   "rounds_analyzed": [
     1,
     2,
@@ -17,8 +17,8 @@
   "role_hit_rates": {
     "P": 63.6,
     "D": 42.4,
-    "C": 63.6,
-    "A": 54.5
+    "C": 57.6,
+    "A": 60.6
   },
   "miss_count": 58,
   "misses_diagnostic": [
@@ -80,11 +80,11 @@
     },
     {
       "round": 1,
-      "player": "Soulè",
-      "team": "Roma",
+      "player": "Thuram",
+      "team": "Inter",
       "role": "A",
       "category": "PILASTRO",
-      "reason": "Voto ordinario senza bonus (6.0)"
+      "reason": "Panchina inattesa / Senza Voto (S.V.)"
     },
     {
       "round": 2,
@@ -215,14 +215,6 @@
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
-      "round": 4,
-      "player": "Douvikas",
-      "team": "Como",
-      "role": "A",
-      "category": "PILASTRO",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
       "round": 5,
       "player": "Mangas",
       "team": "Monza",
@@ -247,14 +239,6 @@
       "reason": "Voto ordinario senza bonus (6.0)"
     },
     {
-      "round": 5,
-      "player": "Douvikas",
-      "team": "Como",
-      "role": "A",
-      "category": "PILASTRO",
-      "reason": "Voto ordinario senza bonus (6.0)"
-    },
-    {
       "round": 6,
       "player": "Vicario",
       "team": "Juventus",
@@ -272,8 +256,8 @@
     },
     {
       "round": 6,
-      "player": "Pulisic",
-      "team": "Milan",
+      "player": "Zaccagni",
+      "team": "Lazio",
       "role": "C",
       "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"
@@ -359,6 +343,14 @@
       "reason": "Panchina inattesa / Senza Voto (S.V.)"
     },
     {
+      "round": 8,
+      "player": "Zaccagni",
+      "team": "Lazio",
+      "role": "C",
+      "category": "PILASTRO",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
       "round": 9,
       "player": "Vicario",
       "team": "Juventus",
@@ -442,6 +434,14 @@
       "round": 10,
       "player": "Paz N.",
       "team": "Como",
+      "role": "C",
+      "category": "PILASTRO",
+      "reason": "Voto ordinario senza bonus (6.0)"
+    },
+    {
+      "round": 10,
+      "player": "Zaccagni",
+      "team": "Lazio",
       "role": "C",
       "category": "PILASTRO",
       "reason": "Voto ordinario senza bonus (6.0)"

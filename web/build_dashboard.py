@@ -649,7 +649,7 @@ def build_standalone_dashboard(sync_android=False):
                     </button>
                     <div class="nav-dropdown-menu">
                         <a href="/listone/" class="dropdown-item" id="tabAuctionBtn" onclick="onNavClick(event, 'auction')">📋 Listone Calciatori &amp; Valutazioni FVM</a>
-                        <a href="/probabili-formazioni/como/" class="dropdown-item" onclick="onNavClick(event, 'pitch')">🏟️ Top 11 &amp; Gerarchie Stagionali (20 Squadre)</a>
+                        <a href="/rose-serie-a/" class="dropdown-item" onclick="onNavClick(event, 'pitch')">🏟️ Rose Serie A &amp; Top 11 (20 Squadre)</a>
                         <a href="/griglia-portieri/" class="dropdown-item" id="tabGkBtn" onclick="onNavClick(event, 'gk')">🧤 Griglia Portieri 38/38</a>
                         <a href="/rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
                         <a href="/scommesse-talenti/" class="dropdown-item" id="tabGemsBtn" onclick="onNavClick(event, 'gems')">🔮 Gemme &amp; Scommesse Low-Cost</a>
@@ -954,7 +954,7 @@ def build_standalone_dashboard(sync_android=False):
                             <span class="hmc-cta">Apri Listone &rarr;</span>
                         </a>
 
-                        <a href="/probabili-formazioni/inter/" class="hpro-mcard pink">
+                        <a href="/rose-serie-a/inter/" class="hpro-mcard pink">
                             <div class="hmc-top">
                                 <span class="hmc-ico">🏟️</span>
                                 <span class="hmc-tag">20 Club 2D</span>
@@ -1028,26 +1028,26 @@ def build_standalone_dashboard(sync_android=False):
                             <span class="hpro-sec-pill">Titolari Base per Asta &amp; Mercato</span>
                         </div>
                         <div class="hpro-clubs-grid">
-                            <a href="/probabili-formazioni/atalanta/" class="hpro-club-pill">Atalanta</a>
-                            <a href="/probabili-formazioni/bologna/" class="hpro-club-pill">Bologna</a>
-                            <a href="/probabili-formazioni/cagliari/" class="hpro-club-pill">Cagliari</a>
-                            <a href="/probabili-formazioni/como/" class="hpro-club-pill">Como</a>
-                            <a href="/probabili-formazioni/fiorentina/" class="hpro-club-pill">Fiorentina</a>
-                            <a href="/probabili-formazioni/frosinone/" class="hpro-club-pill">Frosinone</a>
-                            <a href="/probabili-formazioni/genoa/" class="hpro-club-pill">Genoa</a>
-                            <a href="/probabili-formazioni/inter/" class="hpro-club-pill">Inter</a>
-                            <a href="/probabili-formazioni/juventus/" class="hpro-club-pill">Juventus</a>
-                            <a href="/probabili-formazioni/lazio/" class="hpro-club-pill">Lazio</a>
-                            <a href="/probabili-formazioni/lecce/" class="hpro-club-pill">Lecce</a>
-                            <a href="/probabili-formazioni/milan/" class="hpro-club-pill">Milan</a>
-                            <a href="/probabili-formazioni/napoli/" class="hpro-club-pill">Napoli</a>
-                            <a href="/probabili-formazioni/parma/" class="hpro-club-pill">Parma</a>
-                            <a href="/probabili-formazioni/pisa/" class="hpro-club-pill">Pisa</a>
-                            <a href="/probabili-formazioni/roma/" class="hpro-club-pill">Roma</a>
-                            <a href="/probabili-formazioni/sassuolo/" class="hpro-club-pill">Sassuolo</a>
-                            <a href="/probabili-formazioni/torino/" class="hpro-club-pill">Torino</a>
-                            <a href="/probabili-formazioni/udinese/" class="hpro-club-pill">Udinese</a>
-                            <a href="/probabili-formazioni/venezia/" class="hpro-club-pill">Venezia</a>
+                            <a href="/rose-serie-a/atalanta/" class="hpro-club-pill">Atalanta</a>
+                            <a href="/rose-serie-a/bologna/" class="hpro-club-pill">Bologna</a>
+                            <a href="/rose-serie-a/cagliari/" class="hpro-club-pill">Cagliari</a>
+                            <a href="/rose-serie-a/como/" class="hpro-club-pill">Como</a>
+                            <a href="/rose-serie-a/fiorentina/" class="hpro-club-pill">Fiorentina</a>
+                            <a href="/rose-serie-a/frosinone/" class="hpro-club-pill">Frosinone</a>
+                            <a href="/rose-serie-a/genoa/" class="hpro-club-pill">Genoa</a>
+                            <a href="/rose-serie-a/inter/" class="hpro-club-pill">Inter</a>
+                            <a href="/rose-serie-a/juventus/" class="hpro-club-pill">Juventus</a>
+                            <a href="/rose-serie-a/lazio/" class="hpro-club-pill">Lazio</a>
+                            <a href="/rose-serie-a/lecce/" class="hpro-club-pill">Lecce</a>
+                            <a href="/rose-serie-a/milan/" class="hpro-club-pill">Milan</a>
+                            <a href="/rose-serie-a/napoli/" class="hpro-club-pill">Napoli</a>
+                            <a href="/rose-serie-a/parma/" class="hpro-club-pill">Parma</a>
+                            <a href="/rose-serie-a/pisa/" class="hpro-club-pill">Pisa</a>
+                            <a href="/rose-serie-a/roma/" class="hpro-club-pill">Roma</a>
+                            <a href="/rose-serie-a/sassuolo/" class="hpro-club-pill">Sassuolo</a>
+                            <a href="/rose-serie-a/torino/" class="hpro-club-pill">Torino</a>
+                            <a href="/rose-serie-a/udinese/" class="hpro-club-pill">Udinese</a>
+                            <a href="/rose-serie-a/venezia/" class="hpro-club-pill">Venezia</a>
                         </div>
                     </div>
 
@@ -1410,9 +1410,6 @@ def build_standalone_dashboard(sync_android=False):
                 </div>
             </div>
 
-            <!-- Barra di Selezione Rapida dei 20 Club di Serie A -->
-            <div class="pitch-club-quick-bar" id="pitchClubQuickBar"></div>
-
             <div class="pitch-container-wrapper">
                 <div class="pitch-field-container">
                     <div class="pitch-field">
@@ -1768,7 +1765,7 @@ def build_standalone_dashboard(sync_android=False):
                     <div class="mobile-menu-section-title" style="color:#fbbf24;font-weight:900;"><span>💰</span> FASE 2: MERCATO &amp; ASTA (Estate &amp; Riparazione)</div>
                     <div class="mobile-menu-links">
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('auction')" style="background:rgba(245,158,11,0.16);border-color:rgba(245,158,11,0.4);color:#fde68a;font-weight:800;">📋 Listone Calciatori &amp; Quotazioni FVM</button>
-                        <a href="/probabili-formazioni/como/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;color:#fcd34d;font-weight:700;">🏟️ Top 11 &amp; Gerarchie Stagionali (20 Squadre)</a>
+                        <a href="/rose-serie-a/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;color:#fcd34d;font-weight:700;">🏟️ Rose Serie A &amp; Top 11 (20 Squadre)</a>
                         <a href="/griglia-portieri/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">🧤 Griglia Portieri &amp; Accoppiamenti 38/38</a>
                         <a href="/rigoristi-serie-a/" class="mobile-menu-link-btn" style="text-decoration:none;display:flex;align-items:center;gap:8px;">🎯 Rigoristi, Punizioni &amp; Calci Piazzati</a>
                         <button class="mobile-menu-link-btn" onclick="switchTabMobile('gems')">🔮 Gemme Nascoste &amp; Scommesse Low-Cost</button>
@@ -1858,7 +1855,7 @@ def build_standalone_dashboard(sync_android=False):
             'chi_schiero': '/chi-schiero/',
             'matrix': '/football-analytics/',
             'stats': '/statistiche-serie-a/',
-            'pitch': '/probabili-formazioni/',
+            'pitch': '/rose-serie-a/',
             'matchup': '/confronto-calciatori/',
             'gk': '/griglia-portieri/',
             'ai_squads': '/top-11-ai/',
@@ -1872,9 +1869,9 @@ def build_standalone_dashboard(sync_android=False):
             '/app.html': 'home',
             '/home': 'home',
             '/home/': 'home',
-            '/probabili-formazioni': 'pitch',
-            '/probabili-formazioni/': 'pitch',
-            '/probabili-formazioni/index.html': 'pitch',
+            '/rose-serie-a': 'pitch',
+            '/rose-serie-a/': 'pitch',
+            '/rose-serie-a/index.html': 'pitch',
             '/listone': 'auction',
             '/listone/': 'auction',
             '/listone/index.html': 'auction',
@@ -2581,7 +2578,7 @@ def build_standalone_dashboard(sync_android=False):
                     <ul class="footer-nav-list">
                         <li><a href="/" class="footer-link" onclick="onNavClick(event, 'home')">🏟️ Formazione &amp; Asta AI</a></li>
                         <li><a href="/consigli-fantacalcio/" class="footer-link" onclick="onNavClick(event, 'matchday_advice')">🎯 Consigli di Giornata</a></li>
-                        <li><a href="/probabili-formazioni/" class="footer-link" onclick="onNavClick(event, 'pitch')">⚽ Probabili Formazioni 2D</a></li>
+                        <li><a href="/rose-serie-a/" class="footer-link" onclick="onNavClick(event, 'pitch')">🏟️ Rose Serie A &amp; Top 11</a></li>
                         <li><a href="/top-flop/" class="footer-link" onclick="onNavClick(event, 'top_flop')">⭐ Top &amp; Flop Settimanali</a></li>
                         <li><a href="/football-analytics/" class="footer-link" onclick="onNavClick(event, 'matrix')">📊 Scatter Matrix xG &amp; xA</a></li>
                     </ul>

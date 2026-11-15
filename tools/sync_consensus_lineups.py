@@ -723,6 +723,10 @@ def run_consensus_engine():
             processed_ballots = []
             seen_ballot_players = set()
             for b in unfiltered_ballots:
+                if b['player1'].get('is_injured') and b['player2'].get('is_injured'):
+                    continue
+                if min(b.get('consensus_pct1', 50), b.get('consensus_pct2', 50)) < 10:
+                    continue
                 p1_role = b['player1'].get('role', '')
                 p2_role = b['player2'].get('role', '')
                 is_gk_ballot = (p1_role == 'P' or p2_role == 'P')
@@ -763,7 +767,7 @@ def run_consensus_engine():
                 if len(candidate_starters) >= 15:
                     break
                 p_low = p['name'].lower()
-                if p_low not in seen_starter_names and p_low not in ballot_l_names:
+                if p_low not in seen_starter_names and p_low not in ballot_l_names and not injuries_map.get(p_low):
                     seen_starter_names.add(p_low)
                     candidate_starters.append(p)
 
@@ -800,8 +804,8 @@ def run_consensus_engine():
                     if cand_idx is not None:
                         current_starters[cand_idx] = w_obj
 
-            # Rimuovi eventuali infortunati dai titolari (tranne se sono player1 legittimi)
-            current_starters = [s for s in current_starters if (not injuries_map.get(s['name'].lower()) or s['name'].lower() in ballot_w_names)]
+            # Rimuovi categoricamente eventuali infortunati dai titolari
+            current_starters = [s for s in current_starters if not injuries_map.get(s['name'].lower())]
 
             # Garantisci esattamente 1 Portiere (P)
             gk_starters = [s for s in current_starters if s.get('role') == 'P']

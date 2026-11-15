@@ -6393,7 +6393,7 @@ function renderPitchClubQuickBar(activeTeam) {
     bar.innerHTML = allTeams.map(tm => {
         const isActive = tm.toLowerCase() === (activeTeam || '').toLowerCase();
         const slug = tm.toLowerCase().replace(/\s+/g, '-');
-        return `<a href="/probabili-formazioni/${slug}/" class="club-quick-btn ${isActive ? 'active' : ''}" onclick="event.preventDefault(); renderPitchTeam('${tm}', true);">${tm}</a>`;
+        return `<a href="/rose-serie-a/${slug}/" class="club-quick-btn ${isActive ? 'active' : ''}" onclick="event.preventDefault(); renderPitchTeam('${tm}', true);">${tm}</a>`;
     }).join('');
 }
 async function exportPitchScreenshot() {
@@ -6546,7 +6546,7 @@ function getSubstituteForStarter(starter, team, teamPlayers) {
 function getInitialPitchClub() {
     if (typeof window !== 'undefined') {
         if (window.INITIAL_PITCH_TEAM) return window.INITIAL_PITCH_TEAM;
-        const pathMatch = window.location.pathname.match(/\/probabili-formazioni\/([a-z-]+)\/?/);
+        const pathMatch = window.location.pathname.match(/\/rose-serie-a\/([a-z-]+)\/?/);
         if (pathMatch && typeof TACTICAL_DB !== 'undefined') {
             const slug = pathMatch[1];
             const found = Object.keys(TACTICAL_DB).find(t => t.toLowerCase().replace(/\s+/g, '-') === slug);
@@ -6566,12 +6566,12 @@ function renderPitchTeam(teamName, updateUrl = false) {
         const isFile = window.location.protocol === 'file:';
         if (!isFile) {
             const slug = teamName.toLowerCase().replace(/\s+/g, '-');
-            const targetUrl = `/probabili-formazioni/${slug}/`;
+            const targetUrl = `/rose-serie-a/${slug}/`;
             if (window.location.pathname !== targetUrl) {
                 window.history.pushState({ team: teamName }, '', targetUrl);
             }
         }
-        document.title = `Top 11 ${teamName} 2026/27: Formazione Tipo, Gerarchie e Rigoristi | Fanta Master AI`;
+        document.title = `Rosa ${teamName} 2026/27: Top 11, Gerarchie e Rigoristi | Fanta Master AI`;
     }
     const selEl = document.getElementById('selectPitchTeam');
     if (selEl && selEl.value !== teamName) {
@@ -6802,6 +6802,7 @@ function renderPitchTeam(teamName, updateUrl = false) {
                         p2.pct = 95;
                         injTag1 = ' 🩹';
                     }
+                    if (Math.min(Number(p1.pct) || 0, Number(p2.pct) || 0) >= 10) {
                     ballottaggiHtml += `
                         <div class="modern-duel-card">
                             <div class="duel-contenders-row">
@@ -6821,6 +6822,7 @@ function renderPitchTeam(teamName, updateUrl = false) {
                             </div>
                         </div>
                     `;
+                    }
                 } else if (allContenders.length >= 3) {
                     const [p1, p2, p3] = allContenders;
                     ballottaggiHtml += `
@@ -6864,8 +6866,9 @@ function renderPitchTeam(teamName, updateUrl = false) {
                     });
                 }
             });
-            if (duelsCreated.length > 0) {
-                duelsCreated.forEach(d => {
+            const validDuels = duelsCreated.filter(d => Math.min(Number(d.pct1) || 0, Number(d.pct2) || 0) >= 10);
+            if (validDuels.length > 0) {
+                validDuels.forEach(d => {
                     ballottaggiHtml += `
                         <div class="modern-duel-card">
                             <div class="duel-contenders-row">
@@ -6889,6 +6892,9 @@ function renderPitchTeam(teamName, updateUrl = false) {
             } else {
                 ballottaggiHtml = `<div class="tactics-empty-state">Nessun ballottaggio critico aperto. 11 titolare stabile.</div>`;
             }
+        }
+        if (!ballottaggiHtml) {
+            ballottaggiHtml = `<div class="tactics-empty-state">Nessun ballottaggio critico aperto. 11 titolare stabile.</div>`;
         }
         const col2Html = `
             <div class="tactics-card-col">
@@ -8259,7 +8265,7 @@ if (typeof window !== 'undefined') {
         if (e.state && e.state.team) {
             renderPitchTeam(e.state.team, false);
         } else {
-            const pathMatch = window.location.pathname.match(/\/probabili-formazioni\/([a-z-]+)\/?/);
+            const pathMatch = window.location.pathname.match(/\/rose-serie-a\/([a-z-]+)\/?/);
             if (pathMatch && typeof TACTICAL_DB !== 'undefined') {
                 const found = Object.keys(TACTICAL_DB).find(t => t.toLowerCase().replace(/\s+/g, '-') === pathMatch[1]);
                 if (found) renderPitchTeam(found, false);
@@ -20490,7 +20496,8 @@ const AnalyticsMatrixState = {
     searchQuery: '',
     highlightedPlayerId: null,
     isExpanded: false,
-    quadrantFilter: 'ALL'      // 'ALL', 'top_left', 'top_right', 'bottom_right', 'bottom_left'
+    quadrantFilter: 'ALL',     // 'ALL', 'top_left', 'top_right', 'bottom_right', 'bottom_left'
+    insightTab: 'under'        // 'under', 'over', 'elite', 'gems'
 };
 const MATRIX_PRESETS = {
     under_over: {
@@ -20958,6 +20965,10 @@ function computeMatrixInsights(mapped, presetKey, season) {
         }));
     return { elite: topGk, under: underSiege, over: [], gems: [] };
 }
+function setMatrixInsightTab(tabKey) {
+    AnalyticsMatrixState.insightTab = tabKey;
+    renderAnalyticsMatrixView();
+}
 function renderAnalyticsMatrixView() {
     const container = document.getElementById('viewMatrix');
     if (!container) return;
@@ -21149,34 +21160,42 @@ function renderAnalyticsMatrixView() {
                 <div class="fanta-insight-top">
                     <div style="display:flex;align-items:center;gap:8px;min-width:0;flex:1;">
                         <span class="role-badge ${item.player.role}" style="font-size:10px;padding:1px 6px;flex-shrink:0;">${item.player.role}</span>
-                        <b style="color:#fff;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.player.name}</b>
-                        <span style="font-size:11.5px;color:var(--text-muted);flex-shrink:0;">(${item.player.team})</span>
+                        <b style="color:#fff;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.player.name}</b>
+                        <span style="font-size:11px;color:var(--text-muted);flex-shrink:0;">${item.player.team}</span>
                     </div>
                     <span class="insight-pill ${item.badgeClass}">${item.deltaLabel}</span>
                 </div>
                 <div class="fanta-insight-stats">
-                    <span style="color:var(--accent-cyan);font-weight:800;">📊 ${item.statLabel}</span>
+                    <span style="color:var(--accent-cyan);font-weight:700;">${item.statLabel}</span>
                     <span style="color:rgba(255,255,255,0.2);">•</span>
-                    <span>FVM: <b style="color:#fff;">${item.player.fvm || '-'} CR</b></span>
+                    <span>FVM <b style="color:#fff;">${item.player.fvm || '-'}</b></span>
                     <span style="color:rgba(255,255,255,0.2);">•</span>
-                    <span>OVR: <b style="color:#fff;">${item.player.ovr}</b></span>
+                    <span>OVR <b style="color:#fff;">${item.player.ovr}</b></span>
                 </div>
-                <div class="fanta-insight-advice">
-                    💡 <b>Consiglio Fanta:</b> ${item.advice}
+                <div class="fanta-insight-advice" style="border-left-color:${sectionColor};">
+                    ${item.advice}
                 </div>
             </div>
         `).join('');
         return `
             <div class="insight-group">
+                ${isExpanded ? `
                 <div class="insight-group-header" style="border-left: 3px solid ${sectionColor};">
                     <span style="font-size:14px;">${sectionIcon}</span>
                     <span style="color:${sectionColor};font-weight:800;font-size:13px;letter-spacing:-0.2px;">${sectionTitle}</span>
                     <span style="margin-left:auto;font-size:10px;color:var(--text-muted);font-weight:700;">${list.length} GIOCATORI</span>
-                </div>
+                </div>` : ''}
                 ${cardsHtml}
             </div>
         `;
     };
+    const insightTabsDef = [
+        { key: 'under', label: 'Occasioni', icon: '🔥', color: '#4ade80', title: "Occasioni d'Oro (Sotto la Lente)", list: insights.under },
+        { key: 'over',  label: 'Bolla',     icon: '⚠️', color: '#f87171', title: "Rischio Bolla (Cedi all'Apice)",   list: insights.over },
+        { key: 'elite', label: 'Élite',     icon: '👑', color: '#38bdf8', title: "I Fuoriclasse del Grafico",        list: insights.elite },
+        { key: 'gems',  label: 'Gems',      icon: '🚀', color: '#c084fc', title: "Value Gems a Basso Costo",         list: insights.gems }
+    ].filter(t => t.list && t.list.length > 0);
+    const activeTabObj = insightTabsDef.find(t => t.key === AnalyticsMatrixState.insightTab) || insightTabsDef[0] || null;
     const teamsList = (typeof TACTICAL_DB !== 'undefined' ? Object.keys(TACTICAL_DB).sort() : []);
     let teamsOptionsHtml = `<option value="ALL">Tutti i 20 Club</option>`;
     teamsList.forEach(t => {
@@ -21268,27 +21287,47 @@ function renderAnalyticsMatrixView() {
                 <!-- CHART COLUMN -->
                 <div class="matrix-chart-column">
                     <div class="matrix-canvas-card">
-                        <!-- Quadrants Top Header Indicator (Interactive Click-to-Filter) -->
-                        <div class="matrix-quadrant-indicators">
+                        <!-- Unified 4-Quadrant Filter Bar -->
+                        <div class="matrix-quadrants-bar">
                             <div class="quad-badge top-left ${qFilter === 'top_left' ? 'active-filter' : ''}" 
                                  onclick="setMatrixQuadrantFilter('top_left')" 
                                  title="Clicca per filtrare/evidenziare solo questo quadrante" 
-                                 style="color:${preset.qTopLeft.color};border-color:${preset.qTopLeft.color}50;background:${preset.qTopLeft.bg};">
-                                <div style="display:flex;align-items:center;justify-content:space-between;">
+                                 style="color:${preset.qTopLeft.color};border-color:${preset.qTopLeft.color}40;background:${preset.qTopLeft.bg};">
+                                <div class="quad-badge-head">
                                     <b>↖ ${preset.qTopLeft.title}</b>
-                                    <span style="font-weight:800;opacity:0.9;">${quadCounts.top_left}</span>
+                                    <span class="quad-count">${quadCounts.top_left}</span>
                                 </div>
-                                <span>${preset.qTopLeft.sub}</span>
+                                <span class="quad-sub">${preset.qTopLeft.sub}</span>
                             </div>
                             <div class="quad-badge top-right ${qFilter === 'top_right' ? 'active-filter' : ''}" 
                                  onclick="setMatrixQuadrantFilter('top_right')" 
                                  title="Clicca per filtrare/evidenziare solo questo quadrante" 
-                                 style="color:${preset.qTopRight.color};border-color:${preset.qTopRight.color}50;background:${preset.qTopRight.bg};">
-                                <div style="display:flex;align-items:center;justify-content:space-between;">
+                                 style="color:${preset.qTopRight.color};border-color:${preset.qTopRight.color}40;background:${preset.qTopRight.bg};">
+                                <div class="quad-badge-head">
                                     <b>↗ ${preset.qTopRight.title}</b>
-                                    <span style="font-weight:800;opacity:0.9;">${quadCounts.top_right}</span>
+                                    <span class="quad-count">${quadCounts.top_right}</span>
                                 </div>
-                                <span>${preset.qTopRight.sub}</span>
+                                <span class="quad-sub">${preset.qTopRight.sub}</span>
+                            </div>
+                            <div class="quad-badge bottom-left ${qFilter === 'bottom_left' ? 'active-filter' : ''}" 
+                                 onclick="setMatrixQuadrantFilter('bottom_left')" 
+                                 title="Clicca per filtrare/evidenziare solo questo quadrante" 
+                                 style="color:${preset.qBottomLeft.color};border-color:${preset.qBottomLeft.color}40;background:${preset.qBottomLeft.bg};">
+                                <div class="quad-badge-head">
+                                    <b>↙ ${preset.qBottomLeft.title}</b>
+                                    <span class="quad-count">${quadCounts.bottom_left}</span>
+                                </div>
+                                <span class="quad-sub">${preset.qBottomLeft.sub}</span>
+                            </div>
+                            <div class="quad-badge bottom-right ${qFilter === 'bottom_right' ? 'active-filter' : ''}" 
+                                 onclick="setMatrixQuadrantFilter('bottom_right')" 
+                                 title="Clicca per filtrare/evidenziare solo questo quadrante" 
+                                 style="color:${preset.qBottomRight.color};border-color:${preset.qBottomRight.color}40;background:${preset.qBottomRight.bg};">
+                                <div class="quad-badge-head">
+                                    <b>↘ ${preset.qBottomRight.title}</b>
+                                    <span class="quad-count">${quadCounts.bottom_right}</span>
+                                </div>
+                                <span class="quad-sub">${preset.qBottomRight.sub}</span>
                             </div>
                         </div>
                         <!-- SVG SCATTER PLOT -->
@@ -21335,29 +21374,6 @@ function renderAnalyticsMatrixView() {
                             <!-- Scatter Dots -->
                             ${dotsSvgHtml}
                         </svg>
-                        <!-- Quadrants Bottom Header Indicator (Interactive Click-to-Filter) -->
-                        <div class="matrix-quadrant-indicators">
-                            <div class="quad-badge bottom-left ${qFilter === 'bottom_left' ? 'active-filter' : ''}" 
-                                 onclick="setMatrixQuadrantFilter('bottom_left')" 
-                                 title="Clicca per filtrare/evidenziare solo questo quadrante" 
-                                 style="color:${preset.qBottomLeft.color};border-color:${preset.qBottomLeft.color}50;background:${preset.qBottomLeft.bg};">
-                                <div style="display:flex;align-items:center;justify-content:space-between;">
-                                    <b>↙ ${preset.qBottomLeft.title}</b>
-                                    <span style="font-weight:800;opacity:0.9;">${quadCounts.bottom_left}</span>
-                                </div>
-                                <span>${preset.qBottomLeft.sub}</span>
-                            </div>
-                            <div class="quad-badge bottom-right ${qFilter === 'bottom_right' ? 'active-filter' : ''}" 
-                                 onclick="setMatrixQuadrantFilter('bottom_right')" 
-                                 title="Clicca per filtrare/evidenziare solo questo quadrante" 
-                                 style="color:${preset.qBottomRight.color};border-color:${preset.qBottomRight.color}50;background:${preset.qBottomRight.bg};">
-                                <div style="display:flex;align-items:center;justify-content:space-between;">
-                                    <b>↘ ${preset.qBottomRight.title}</b>
-                                    <span style="font-weight:800;opacity:0.9;">${quadCounts.bottom_right}</span>
-                                </div>
-                                <span>${preset.qBottomRight.sub}</span>
-                            </div>
-                        </div>
                     </div>
                     <!-- Legend & Interaction Hint -->
                     <div style="font-size:12px;color:var(--text-secondary);display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:rgba(255,255,255,0.02);border-radius:8px;">
@@ -21374,18 +21390,32 @@ function renderAnalyticsMatrixView() {
                 <div class="${isExpanded ? 'matrix-expanded-insights-grid' : 'matrix-insights-column'}">
                     <div class="insights-panel-header">
                         <div style="display:flex;align-items:center;gap:8px;">
-                            <span style="font-size:20px;">🎯</span>
+                            <span style="font-size:18px;">🎯</span>
                             <div>
-                                <h3 style="margin:0;font-size:15.5px;font-weight:850;color:#fff;font-family:'Outfit',sans-serif;">Verdetti & Consigli Fanta Chiave</h3>
-                                <div style="font-size:11px;color:var(--text-muted);">Decisioni operative per Asta & Scambi calcolate dall'algoritmo predittivo</div>
+                                <h3 style="margin:0;font-size:15px;font-weight:850;color:#fff;font-family:'Outfit',sans-serif;">Verdetti & Consigli AI</h3>
+                                <div style="font-size:11px;color:var(--text-muted);">Asta & Scambi in base alla matrice</div>
                             </div>
                         </div>
                     </div>
+                    ${!isExpanded && insightTabsDef.length > 0 ? `
+                    <div class="matrix-insights-tabs">
+                        ${insightTabsDef.map(t => `
+                            <button class="matrix-insight-tab-btn ${activeTabObj && activeTabObj.key === t.key ? 'active' : ''}"
+                                    onclick="setMatrixInsightTab('${t.key}')"
+                                    style="--tab-color:${t.color};">
+                                <span>${t.icon}</span>
+                                <span>${t.label}</span>
+                                <span class="tab-count">${t.list.length}</span>
+                            </button>
+                        `).join('')}
+                    </div>` : ''}
                     <div class="${isExpanded ? 'insights-expanded-cards-container' : 'insights-scrollable-list'}">
-                        ${renderInsightCards(insights.under, "Occasioni d'Oro (Sotto la Lente)", "🔥", "#4ade80")}
-                        ${renderInsightCards(insights.over, "Rischio Bolla (Cedi all'Apice)", "⚠️", "#f87171")}
-                        ${renderInsightCards(insights.elite, "I Fuoriclasse del Grafico", "👑", "#38bdf8")}
-                        ${renderInsightCards(insights.gems, "Value Gems a Basso Costo", "🚀", "#c084fc")}
+                        ${isExpanded ? `
+                            ${renderInsightCards(insights.under, "Occasioni d'Oro (Sotto la Lente)", "🔥", "#4ade80")}
+                            ${renderInsightCards(insights.over, "Rischio Bolla (Cedi all'Apice)", "⚠️", "#f87171")}
+                            ${renderInsightCards(insights.elite, "I Fuoriclasse del Grafico", "👑", "#38bdf8")}
+                            ${renderInsightCards(insights.gems, "Value Gems a Basso Costo", "🚀", "#c084fc")}
+                        ` : (activeTabObj ? renderInsightCards(activeTabObj.list, activeTabObj.title, activeTabObj.icon, activeTabObj.color) : `<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:12.5px;">Nessun verdetto disponibile per i filtri selezionati.</div>`)}
                     </div>
                 </div>
             </div>
@@ -21401,6 +21431,7 @@ window.setMatrixMinMinutes = setMatrixMinMinutes;
 window.setMatrixSearch = setMatrixSearch;
 window.toggleMatrixExpand = toggleMatrixExpand;
 window.setMatrixQuadrantFilter = setMatrixQuadrantFilter;
+window.setMatrixInsightTab = setMatrixInsightTab;
 window.highlightMatrixDot = highlightMatrixDot;
 window.unhighlightMatrixDot = unhighlightMatrixDot;
 window.showMatrixTooltip = showMatrixTooltip;
@@ -22047,7 +22078,7 @@ window.addEventListener('DOMContentLoaded', () => {
             'chi_schiero': '/chi-schiero/',
             'matrix': '/football-analytics/',
             'stats': '/statistiche-serie-a/',
-            'pitch': '/probabili-formazioni/',
+            'pitch': '/rose-serie-a/',
             'matchup': '/confronto-calciatori/',
             'gk': '/griglia-portieri/',
             'ai_squads': '/top-11-ai/',
@@ -22061,9 +22092,9 @@ window.addEventListener('DOMContentLoaded', () => {
             '/app.html': 'home',
             '/home': 'home',
             '/home/': 'home',
-            '/probabili-formazioni': 'pitch',
-            '/probabili-formazioni/': 'pitch',
-            '/probabili-formazioni/index.html': 'pitch',
+            '/rose-serie-a': 'pitch',
+            '/rose-serie-a/': 'pitch',
+            '/rose-serie-a/index.html': 'pitch',
             '/listone': 'auction',
             '/listone/': 'auction',
             '/listone/index.html': 'auction',

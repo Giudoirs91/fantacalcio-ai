@@ -853,7 +853,7 @@ function renderChiSchieroView() {
                     <button class="cs-preset-pill" onclick="selectChiSchieroPreset('Pulisic', 'Chukwueze')">Pulisic vs Chukwueze</button>
                     <button class="cs-preset-pill" onclick="selectChiSchieroPreset('Dimarco', 'Carlos Augusto')">Dimarco vs C. Augusto</button>
                     <button class="cs-preset-pill" onclick="selectChiSchieroPreset('Martinez L', 'Hojlund')">Lautaro vs Hojlund</button>
-                    <button class="cs-preset-pill" onclick="selectChiSchieroPreset('Retegui', 'Lookman')">Retegui vs Lookman</button>
+                    <button class="cs-preset-pill" onclick="selectChiSchieroPreset('Paz N.', 'Calhanoglu')">Nico Paz vs Calhanoglu</button>
                     <button class="cs-preset-pill" onclick="selectChiSchieroPreset('Svilar', 'Vicario')">Svilar vs Vicario</button>
                 </div>
             </div>

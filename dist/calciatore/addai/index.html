@@ -420,7 +420,7 @@
             <div class="ppro-stat-cell">
                 <span class="sc-lbl">⏱️ Presenze</span>
                 <b class="sc-val" style="color:#fff;">3</b>
-                <span class="sc-sub">0 tit &bull; 80&#39;</span>
+                <span class="sc-sub">3 tit &bull; 80&#39;</span>
             </div>
             <div class="ppro-stat-cell">
                 <span class="sc-lbl">✅ Sufficienze</span>
@@ -600,7 +600,7 @@
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                     <span class="inspector-badge">GIORNATA 9</span>
                     <span class="inspector-venue">✈️ Fuori</span>
-                    <b class="inspector-match-title">Como @ Torino</b>
+                    <b class="inspector-match-title">TORINO 1-3 COMO</b>
                 </div>
                 <span class="inspector-hint-text"><span class="hint-desktop">Passa il mouse</span><span class="hint-mobile">Tocca</span> sulle barre per ispezionare</span>
             </div>
@@ -619,11 +619,11 @@
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Gol / Assist</span>
-                    <b class="val">0.0 Gol &bull; 0.0 Ass</b>
+                    <b class="val">0 Gol &bull; 0 Ass</b>
                 </div>
                 <div class="inspector-metric">
                     <span class="lbl">Disciplina</span>
-                    <span class="val" style="color:var(--text-secondary);">0.0 Amm &bull; 0.0 Esp</span>
+                    <span class="val" style="color:var(--text-secondary);">0 Amm &bull; 0 Esp</span>
                 </div>
             </div>
         </div>
@@ -647,7 +647,7 @@
                             
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G6</td>
-                <td style="font-weight:700;color:#fff;">Como vs Roma</td>
+                <td style="font-weight:700;color:#fff;">COMO 0-0 ROMA</td>
                 <td style="color:var(--text-muted);font-size:11px;">🏠 Casa</td>
                 <td style="font-weight:900;color:#38bdf8;">6.0</td>
                 <td><span class="table-bonus-tag">Nessun bonus</span></td>
@@ -655,7 +655,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G8</td>
-                <td style="font-weight:700;color:#fff;">Como vs Sassuolo</td>
+                <td style="font-weight:700;color:#fff;">COMO 2-0 SASSUOLO</td>
                 <td style="color:var(--text-muted);font-size:11px;">🏠 Casa</td>
                 <td style="font-weight:900;color:#38bdf8;">6.5</td>
                 <td><span class="table-bonus-tag">Nessun bonus</span></td>
@@ -663,7 +663,7 @@
             </tr>
             <tr>
                 <td style="font-weight:900;color:var(--accent-cyan);">G9</td>
-                <td style="font-weight:700;color:#fff;">Como @ Torino</td>
+                <td style="font-weight:700;color:#fff;">TORINO 1-3 COMO</td>
                 <td style="color:var(--text-muted);font-size:11px;">✈️ Fuori</td>
                 <td style="font-weight:900;color:#38bdf8;">6.0</td>
                 <td><span class="table-bonus-tag">Nessun bonus</span></td>
@@ -912,7 +912,7 @@
 
     <!-- Interactive Scripts for View Mode, Tabs, Accordion & Season Inspector -->
     <script>
-    var VOTI_DATA = [{"giornata": 6, "voto": 6.0, "fantavoto": 6.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Roma", "is_home": true, "match": "Como vs Roma"}, {"giornata": 8, "voto": 6.5, "fantavoto": 6.5, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Sassuolo", "is_home": true, "match": "Como vs Sassuolo"}, {"giornata": 9, "voto": 6.0, "fantavoto": 6.0, "gf": 0.0, "gs": 0.0, "rp": 0.0, "rs": 0.0, "rf": 0.0, "au": 0.0, "ass": 0.0, "amm": 0.0, "esp": 0.0, "bonus_malus_str": "Nessun bonus", "opponent": "Torino", "is_home": false, "match": "Como @ Torino"}];
+    var VOTI_DATA = [{"giornata": 6, "match": "COMO 0-0 ROMA", "opponent": "Roma", "is_home": true, "voto": 6.0, "fantavoto": 6.0, "gf": 0, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "Nessun bonus"}, {"giornata": 8, "match": "COMO 2-0 SASSUOLO", "opponent": "Sassuolo", "is_home": true, "voto": 6.5, "fantavoto": 6.5, "gf": 0, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "Nessun bonus"}, {"giornata": 9, "match": "TORINO 1-3 COMO", "opponent": "Torino", "is_home": false, "voto": 6.0, "fantavoto": 6.0, "gf": 0, "gs": 0, "ass": 0, "amm": 0, "esp": 0, "au": 0, "rp": 0, "rs": 0, "bonus_malus_str": "Nessun bonus"}];
 
     function setPlayerViewMode(mode, targetTab) {
         var simpleEl = document.getElementById('playerView_simple');

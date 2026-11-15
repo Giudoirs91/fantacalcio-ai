@@ -3270,7 +3270,7 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                 <div class="team-column-header home-header">
                     <div class="team-col-title-wrap">
                         <span class="team-col-icon">🏠</span>
-                        <a href="/probabili-formazioni/{h_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(m['home_team'])}">{clean_html(m['home_team'])}</a>
+                        <a href="/rose-serie-a/{h_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(m['home_team'])}">{clean_html(m['home_team'])}</a>
                         <span class="team-col-badge">CASA</span>
                     </div>
                     <span class="team-col-count">{len(h_duels_list)} ballottaggi</span>
@@ -3285,7 +3285,7 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                 <div class="team-column-header away-header">
                     <div class="team-col-title-wrap">
                         <span class="team-col-icon">✈️</span>
-                        <a href="/probabili-formazioni/{a_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(m['away_team'])}">{clean_html(m['away_team'])}</a>
+                        <a href="/rose-serie-a/{a_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(m['away_team'])}">{clean_html(m['away_team'])}</a>
                         <span class="team-col-badge">TRASFERTA</span>
                     </div>
                     <span class="team-col-count">{len(a_duels_list)} ballottaggi</span>
@@ -3305,7 +3305,7 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                 <div class="team-column-header home-header">
                     <div class="team-col-title-wrap">
                         <span class="team-col-icon">🏠</span>
-                        <a href="/probabili-formazioni/{h_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(m['home_team'])}">{clean_html(m['home_team'])}</a>
+                        <a href="/rose-serie-a/{h_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(m['home_team'])}">{clean_html(m['home_team'])}</a>
                         <span class="team-col-badge">CASA</span>
                     </div>
                     <span class="team-col-count">{clean_html(h_data.get('formation', ''))}</span>
@@ -3318,7 +3318,7 @@ def generate_probabili_formazioni_hub(consensus_data, tactical_db, injuries_db, 
                 <div class="team-column-header away-header">
                     <div class="team-col-title-wrap">
                         <span class="team-col-icon">✈️</span>
-                        <a href="/probabili-formazioni/{a_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(m['away_team'])}">{clean_html(m['away_team'])}</a>
+                        <a href="/rose-serie-a/{a_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(m['away_team'])}">{clean_html(m['away_team'])}</a>
                         <span class="team-col-badge">TRASFERTA</span>
                     </div>
                     <span class="team-col-count">{clean_html(a_data.get('formation', ''))}</span>
@@ -3638,7 +3638,7 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
             <div class="team-column-header home-header">
                 <div class="team-col-title-wrap">
                     <span class="team-col-icon">🏠</span>
-                    <a href="/probabili-formazioni/{h_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(h_team)}">{clean_html(h_team)}</a>
+                    <a href="/rose-serie-a/{h_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(h_team)}">{clean_html(h_team)}</a>
                     <span class="team-col-badge">CASA</span>
                 </div>
                 <span class="team-col-count">{len(h_duels_list)} ballottaggi</span>
@@ -3653,7 +3653,7 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
             <div class="team-column-header away-header">
                 <div class="team-col-title-wrap">
                     <span class="team-col-icon">✈️</span>
-                    <a href="/probabili-formazioni/{a_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(a_team)}">{clean_html(a_team)}</a>
+                    <a href="/rose-serie-a/{a_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(a_team)}">{clean_html(a_team)}</a>
                     <span class="team-col-badge">TRASFERTA</span>
                 </div>
                 <span class="team-col-count">{len(a_duels_list)} ballottaggi</span>
@@ -3673,7 +3673,7 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
             <div class="team-column-header home-header">
                 <div class="team-col-title-wrap">
                     <span class="team-col-icon">🏠</span>
-                    <a href="/probabili-formazioni/{h_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(h_team)}">{clean_html(h_team)}</a>
+                    <a href="/rose-serie-a/{h_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(h_team)}">{clean_html(h_team)}</a>
                     <span class="team-col-badge">CASA</span>
                 </div>
                 <span class="team-col-count">{clean_html(h_data.get('formation', ''))}</span>
@@ -3686,7 +3686,7 @@ def generate_match_probabili_page(match_data, consensus_data, base_url="https://
             <div class="team-column-header away-header">
                 <div class="team-col-title-wrap">
                     <span class="team-col-icon">✈️</span>
-                    <a href="/probabili-formazioni/{a_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(a_team)}">{clean_html(a_team)}</a>
+                    <a href="/rose-serie-a/{a_slug}/" class="team-col-name" style="color:#ffffff;text-decoration:none;" title="Probabile Formazione {clean_html(a_team)}">{clean_html(a_team)}</a>
                     <span class="team-col-badge">TRASFERTA</span>
                 </div>
                 <span class="team-col-count">{clean_html(a_data.get('formation', ''))}</span>

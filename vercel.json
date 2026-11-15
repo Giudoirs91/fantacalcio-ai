@@ -2901,6 +2901,16 @@
       "permanent": true
     },
     {
+      "source": "/probabili-formazioni/monza",
+      "destination": "/rose-serie-a/monza/",
+      "permanent": true
+    },
+    {
+      "source": "/probabili-formazioni/monza/",
+      "destination": "/rose-serie-a/monza/",
+      "permanent": true
+    },
+    {
       "source": "/probabili-formazioni/napoli",
       "destination": "/rose-serie-a/napoli/",
       "permanent": true

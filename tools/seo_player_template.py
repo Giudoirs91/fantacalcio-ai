@@ -112,7 +112,7 @@ def render_unified_header(rel_path=""):
                     </button>
                     <div class="nav-dropdown-menu">
                         <a href="{rel_path}listone/" class="dropdown-item">📋 Listone Calciatori &amp; Valutazioni FVM</a>
-                        <a href="{rel_path}probabili-formazioni/inter/" class="dropdown-item">🏟️ Top 11 Squadre (20 Club)</a>
+                        <a href="{rel_path}rose-serie-a/" class="dropdown-item">🏟️ Top 11 Squadre (20 Club)</a>
                         <a href="{rel_path}griglia-portieri/" class="dropdown-item">🧤 Griglia Portieri 38/38</a>
                         <a href="{rel_path}rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
                         <a href="{rel_path}scommesse-talenti/" class="dropdown-item">🔮 Gemme &amp; Scommesse Low-Cost</a>
@@ -138,7 +138,7 @@ def render_unified_header(rel_path=""):
             <a href="{rel_path}statistiche-serie-a/">📊 Statistiche</a>
             <a href="{rel_path}top-flop/">⚡ Top/Flop</a>
             <a href="{rel_path}listone/">💰 Listone</a>
-            <a href="{rel_path}probabili-formazioni/inter/">🏟️ Top 11 Club</a>
+            <a href="{rel_path}rose-serie-a/">🏟️ Top 11 Club</a>
             <a href="{rel_path}rigoristi-serie-a/">🎯 Rigoristi</a>
             <a href="{rel_path}griglia-portieri/">🧤 Portieri</a>
         </nav>
@@ -644,7 +644,7 @@ def render_reparto_teammates(player, all_players):
     <div class="reparto-teammates-card">
         <div class="reparto-card-title">
             <span>⚔️ Reparto {clean_html(team)} ({role})</span>
-            <a href="../../probabili-formazioni/{slugify(team)}/" class="reparto-club-link">Top 11 {clean_html(team)} &rarr;</a>
+            <a href="../../rose-serie-a/{slugify(team)}/" class="reparto-club-link">Top 11 {clean_html(team)} &rarr;</a>
         </div>
         <div class="reparto-grid">
             {"".join(items_html)}
@@ -1624,7 +1624,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                 "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{base_url}/"},
                     {"@type": "ListItem", "position": 2, "name": "Listone Calciatori", "item": f"{base_url}/listone/"},
-                    {"@type": "ListItem", "position": 3, "name": team, "item": f"{base_url}/probabili-formazioni/{team_slug}/"},
+                    {"@type": "ListItem", "position": 3, "name": team, "item": f"{base_url}/rose-serie-a/{team_slug}/"},
                     {"@type": "ListItem", "position": 4, "name": full_name, "item": page_url}
                 ]
             }
@@ -1683,11 +1683,11 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
         <div class="ppro-tobar">
             <a href="../../listone/" class="ppro-back-link">&larr; Listone</a>
             <div class="ppro-breadcrumb-mini">
-                <a href="../../probabili-formazioni/{team_slug}/">{clean_html(team)}</a>
+                <a href="../../rose-serie-a/{team_slug}/">{clean_html(team)}</a>
                 <span>/</span>
                 <b>{clean_html(full_name)}</b>
             </div>
-            <a href="../../probabili-formazioni/{team_slug}/" class="ppro-back-link">Top 11 {clean_html(team)} &rarr;</a>
+            <a href="../../rose-serie-a/{team_slug}/" class="ppro-back-link">Top 11 {clean_html(team)} &rarr;</a>
         </div>
 
         <!-- View Mode Switcher (Essenziale vs Completa) -->
@@ -1714,7 +1714,7 @@ def generate_player_page(player, injuries_db, tactical_db, calendar_data, base_u
                             {render_mantra_quick_badges(mantra) if mantra and mantra != '-' else ''}
                         </div>
                         <div class="ppro-sub-line">
-                            <a href="../../probabili-formazioni/{team_slug}/" class="ppro-team-link">{clean_html(team)}</a>
+                            <a href="../../rose-serie-a/{team_slug}/" class="ppro-team-link">{clean_html(team)}</a>
                             <span>&bull;</span>
                             <span>{clean_html(modulo)} ({clean_html(mister)})</span>
                             {f'<span>&bull;</span><span>{clean_html(player.get("pos_label"))}</span>' if player.get("pos_label") else ''}

@@ -3772,7 +3772,7 @@ def render_unified_header(rel_path=""):
             <a href="{rel_path}statistiche-serie-a/">📊 Statistiche</a>
             <a href="{rel_path}top-flop/">⚡ Top/Flop</a>
             <a href="{rel_path}listone/">💰 Listone</a>
-            <a href="{rel_path}probabili-formazioni/inter/">🏟️ Top 11 Squadre</a>
+            <a href="{rel_path}rose-serie-a/">🏟️ Top 11 Squadre</a>
             <a href="{rel_path}rigoristi-serie-a/">🎯 Rigoristi</a>
             <a href="{rel_path}griglia-portieri/">🧤 Portieri</a>
         </nav>
@@ -4869,7 +4869,7 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
     
     meta_title = f"Top 11 {team_name} 2026/27: Formazione Tipo, Titolari, Gerarchie e Rigoristi | Fanta Master AI"
     meta_desc = f"Top 11 {team_name} 2026/27 (Formazione Tipo Stagionale): modulo {modulo}, 11 titolari di base per tutto l'anno, gerarchie di reparto, rigoristi e rosa per Asta e Mercato Fantacalcio."
-    page_url = f"{base_url}/probabili-formazioni/{team_slug}/"
+    page_url = f"{base_url}/rose-serie-a/{team_slug}/"
     today_iso = datetime.now().strftime("%Y-%m-%d")
 
     # Individua eventuale partita di giornata del club per la barra integrata nell'intestazione
@@ -5203,7 +5203,7 @@ def generate_team_page(team_name, team_data, team_players, all_teams, injuries_d
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{base_url}/"},
-                    {"@type": "ListItem", "position": 2, "name": "Top 11 & Gerarchie Squadre", "item": f"{base_url}/probabili-formazioni/"},
+                    {"@type": "ListItem", "position": 2, "name": "Top 11 & Gerarchie Squadre", "item": f"{base_url}/rose-serie-a/"},
                     {"@type": "ListItem", "position": 3, "name": f"Top 11 {team_name}", "item": page_url}
                 ]
             }

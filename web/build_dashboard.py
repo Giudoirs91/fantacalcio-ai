@@ -1093,7 +1093,7 @@ def build_standalone_dashboard(sync_android=False):
                         </div>
 
                         <div class="hero-card" onclick="switchTab('gems')">
-                            <div class="hero-card-icon" style="background:linear-gradient(135deg,rgba(168,85,247,0.15),rgba(147,51,234,0.25));color:var(--accent-purple);">🔮</div>
+                            <div class="hero-card-icon" style="background:linear-gradient(135deg,rgba(251,191,36,0.16),rgba(245,158,11,0.26));color:#fbbf24;">🔮</div>
                             <div class="hero-card-content">
                                 <div class="hero-card-title">Gemme & Scommesse</div>
                                 <div class="hero-card-desc">Calciatori low-cost con alto volume di xG/xA a prezzo stracciato</div>

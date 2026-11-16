@@ -6025,7 +6025,7 @@ def build_all():
                     ('Meret', 'Provedel'), ('Butez', 'Mandas')
                 ]
                 duels_pills = "".join([
-                    f'<a href="{slugify(p1_n)}-vs-{slugify(p2_n)}/" style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);color:#38bdf8;padding:7px 14px;border-radius:20px;font-size:13px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:0.2s;" title="Chi schierare tra {p1_n} e {p2_n}">⚔️ {p1_n} vs {p2_n}</a>'
+                    f'<a href="{"-vs-".join(sorted([slugify(p1_n), slugify(p2_n)]))}/" style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);color:#38bdf8;padding:7px 14px;border-radius:20px;font-size:13px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:0.2s;" title="Chi schierare tra {p1_n} e {p2_n}">⚔️ {p1_n} vs {p2_n}</a>'
                     for p1_n, p2_n in duels_list
                 ])
                 duels_box = f"""

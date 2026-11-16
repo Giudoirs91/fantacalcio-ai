@@ -490,6 +490,14 @@ def build_standalone_dashboard(sync_android=False):
     home_matches_strip_html = generate_home_matches_strip_html(consensus_data)
     next_round = int(consensus_data.get("round") or 12) if isinstance(consensus_data, dict) else 12
     home_flash_picks_html = generate_home_flash_picks_html(players_data, consensus_data)
+    acc_meta = accuracy_data.get('meta', {}) if isinstance(accuracy_data, dict) else {}
+    acc_last_round = acc_meta.get('last_completed_round', next_round - 1)
+    acc_last_sum = accuracy_data.get(str(acc_last_round), {}).get('summary', {}) if isinstance(accuracy_data, dict) else {}
+    hero_hit_rate = float(acc_last_sum.get('hit_rate_pct', 75.0))
+    hero_hits = int(acc_last_sum.get('hits', 9))
+    hero_total = int(acc_last_sum.get('total_consigliati', 12))
+    hero_suff = float(acc_last_sum.get('sufficiency_rate_pct', 75.0))
+    hero_avg_fv = float(acc_last_sum.get('avg_fantavoto', 6.27))
 
     # 3. Costruisci il documento HTML completo
     html_template = f"""<!DOCTYPE html>
@@ -743,46 +751,67 @@ def build_standalone_dashboard(sync_android=False):
         <section id="viewHome" class="tab-content active" style="display:flex;flex-direction:column;gap:16px;width:100%;">
             <div class="ai-hub-container hpro-wrapper">
 
-                <!-- 1. COMPACT COMMAND HERO (RICERCA ISTANTANEA + SWITCH 2 FASI) -->
-                <div class="ai-hub-hero hpro-command-hero">
-                    <!-- Top Status Strip -->
-                    <div class="hpro-status-strip">
-                        <span class="ai-badge-chip live">
-                            <span class="pulse-dot-green"></span>
-                            LIVE • {next_round}ª Giornata Serie A
-                        </span>
-                        <a href="/probabili-formazioni/" class="ai-badge-chip live" style="text-decoration:none;">
-                            ⚽ Probabili 4 Fonti
-                        </a>
-                        <span class="ai-badge-chip tech">🎯 75% Hit Rate AI</span>
-                    </div>
+                <!-- 1. HERO FOCALIZZATO: 1 PUNTO FOCALE + 75% HIT RATE PROTAGONISTA -->
+                <div class="ai-hub-hero hpro-command-hero hf-hero-shell">
+                    <div class="hf-hero-grid">
+                        <div class="hf-hero-left">
+                            <div class="hf-live-pill">
+                                <span class="pulse-dot-green"></span>
+                                <span>LIVE &bull; {next_round}ª Giornata Serie A &bull; Consensus 4 Fonti</span>
+                            </div>
 
-                    <!-- H1 SEO (1 riga compatta, zero paragrafi prolissi) -->
-                    <h1 class="ai-hub-title hpro-main-h1">
-                        Statistiche Fantacalcio, Probabili Formazioni &amp; <span class="gradient-text">Consigli AI Serie A</span>
-                    </h1>
+                            <h1 class="hf-hero-h1">
+                                Schiera i tuoi 11 migliori <span class="gradient-text">con l'AI</span>
+                            </h1>
 
-                    <!-- Omni-Search Bar Istantanea -->
-                    <div class="ai-hub-search-wrap hpro-search-wrap">
-                        <div class="ai-hub-search-inner">
-                            <span class="ai-hub-search-icon">🔍</span>
-                            <input type="text" id="hubQuickSearch" class="ai-hub-search-input" placeholder="Cerca calciatore o club (es. Malen, Nico Paz, Barella, Svilar)..." oninput="filterHubPlayers(this.value)" autocomplete="off">
+                            <p class="hf-hero-sub">
+                                Probabili formazioni, xFM atteso e confronto 1vs1 &mdash; gratis, zero registrazione.
+                            </p>
+
+                            <div class="hf-cta-row">
+                                <button type="button" class="hf-btn-primary" onclick="openMySquadModal()">
+                                    <span>⚡ Calcola il tuo 11 Migliore</span>
+                                    <span>&rarr;</span>
+                                </button>
+                                <a href="/chi-schiero/" class="hf-btn-secondary" onclick="onNavClick(event, 'chi_schiero')">
+                                    <span>⚔️ Chi Schiero 1vs1</span>
+                                </a>
+                            </div>
+
+                            <!-- Omni-Search Bar Istantanea -->
+                            <div class="ai-hub-search-wrap hpro-search-wrap hf-search-wrap">
+                                <div class="ai-hub-search-inner">
+                                    <span class="ai-hub-search-icon">🔍</span>
+                                    <input type="text" id="hubQuickSearch" class="ai-hub-search-input" placeholder="Cerca calciatore o club (es. Malen, Nico Paz, Barella, Svilar)..." oninput="filterHubPlayers(this.value)" autocomplete="off">
+                                </div>
+                                <div id="hubSearchResults" class="ai-hub-search-results"></div>
+                            </div>
                         </div>
-                        <div id="hubSearchResults" class="ai-hub-search-results"></div>
+
+                        <div class="hf-hero-proof" onclick="if(window.switchTab) {{ switchTab('matchday_advice'); }}" title="Vedi esiti e consigli di giornata">
+                            <div class="hf-proof-eyebrow">
+                                <span class="pulse-dot-green"></span>
+                                <span>VERIFICA UFFICIALE G{acc_last_round}</span>
+                            </div>
+                            <div class="hf-proof-big">
+                                <span class="hf-proof-num">{hero_hit_rate:.0f}%</span>
+                                <div class="hf-proof-label">
+                                    <b>HIT RATE AI</b>
+                                    <span>{hero_hits} su {hero_total} consigliati a segno</span>
+                                </div>
+                            </div>
+                            <div class="hf-proof-kpis">
+                                <div class="hf-pk"><span>Voto &ge; 6.0</span><b>{hero_suff:.0f}%</b></div>
+                                <div class="hf-pk"><span>FantaVoto Medio</span><b>{hero_avg_fv:.2f}</b></div>
+                                <div class="hf-pk"><span>Calciatori xFM</span><b>534</b></div>
+                            </div>
+                            <a href="/consigli-fantacalcio/" class="hf-proof-link" onclick="event.stopPropagation(); if(window.switchTab) {{ event.preventDefault(); switchTab('matchday_advice'); }}">
+                                Vedi Consigli &amp; Storico AI &rarr;
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Chip Trending Calciatori (Link SEO + Apertura Rapida) -->
-                    <div class="ai-hub-quick-chips hpro-trending-chips">
-                        <span class="quick-chip-lbl">🔥 Trending:</span>
-                        <a href="/calciatore/malen/" class="hub-chip-btn" onclick="if(typeof openPlayerByName==='function'){{event.preventDefault();openPlayerByName('Malen');}}">🔥 Malen <small>97</small></a>
-                        <a href="/calciatore/paz-n/" class="hub-chip-btn" onclick="if(typeof openPlayerByName==='function'){{event.preventDefault();openPlayerByName('Nico Paz');}}">💎 Paz N. <small>98</small></a>
-                        <a href="/calciatore/barella/" class="hub-chip-btn" onclick="if(typeof openPlayerByName==='function'){{event.preventDefault();openPlayerByName('Barella');}}">⚡ Barella <small>96</small></a>
-                        <a href="/calciatore/pulisic/" class="hub-chip-btn" onclick="if(typeof openPlayerByName==='function'){{event.preventDefault();openPlayerByName('Pulisic');}}">🎯 Pulisic <small>96</small></a>
-                        <a href="/calciatore/dimarco/" class="hub-chip-btn" onclick="if(typeof openPlayerByName==='function'){{event.preventDefault();openPlayerByName('Dimarco');}}">🛡️ Dimarco <small>95</small></a>
-                        <a href="/calciatore/svilar/" class="hub-chip-btn" onclick="if(typeof openPlayerByName==='function'){{event.preventDefault();openPlayerByName('Svilar');}}">🧤 Svilar <small>89</small></a>
-                    </div>
-
-                    <!-- TACTILE 2-PHASE APP SWITCHER (Zero Testo Inutile) -->
+                    <!-- TACTILE 2-PHASE APP SWITCHER -->
                     <div class="hpro-phase-switcher">
                         <button type="button" id="btnPhaseMatchday" class="hpro-phase-btn active" onclick="switchHomePhase('matchday')">
                             <span class="hpro-p-ico">⚽</span>
@@ -802,52 +831,9 @@ def build_standalone_dashboard(sync_android=False):
                 </div>
 
                 <!-- =========================================================================
-                     FASE 1 (DEFAULT): GIORNATA 11 — SCHIERA I TUOI 11 IN 1 CLICK
+                     FASE 1 (DEFAULT): GIORNATA {next_round}
                      ========================================================================= -->
                 <div id="homePhaseMatchday" class="hpro-phase-pane" style="display:flex;">
-
-                    <!-- RIGA 1: DOCK OPERATIVO IMMEDIATO (LA TUA ROSA AI + CHI SCHIERO 1VS1) -->
-                    <div class="hpro-action-dock">
-                        <!-- Card 1: La Tua Rosa AI -->
-                        <div class="hpro-dock-card squad" onclick="openMySquadModal()">
-                            <div class="hpro-dc-top">
-                                <div class="hpro-dc-ico green">📋</div>
-                                <div class="hpro-dc-headings">
-                                    <span class="hpro-dc-tag green">⚡ OTTIMIZZATORE 1-CLICK</span>
-                                    <h2 class="hpro-dc-title">La Tua Rosa &amp; Miglior 11 AI</h2>
-                                </div>
-                            </div>
-                            <div class="hpro-dc-pills">
-                                <span class="hpro-mini-pill">🧠 Modulo Ideale</span>
-                                <span class="hpro-mini-pill">👑 Capitano &amp; Panchina</span>
-                                <span class="hpro-mini-pill">🛡️ Zero S.V.</span>
-                            </div>
-                            <button type="button" class="hpro-dc-btn green" onclick="event.stopPropagation(); openMySquadModal();">
-                                <span>⚡ Inserisci Rosa &amp; Calcola 11</span>
-                                <span>&rarr;</span>
-                            </button>
-                        </div>
-
-                        <!-- Card 2: Chi Schiero 1vs1 -->
-                        <div class="hpro-dock-card duel" onclick="switchTab('chi_schiero')">
-                            <div class="hpro-dc-top">
-                                <div class="hpro-dc-ico purple">⚔️</div>
-                                <div class="hpro-dc-headings">
-                                    <span class="hpro-dc-tag purple">⚖️ BALLOTTAGGIO SECCO</span>
-                                    <h2 class="hpro-dc-title">Chi Schiero? Confronto 1vs1</h2>
-                                </div>
-                            </div>
-                            <div class="hpro-dc-pills" onclick="event.stopPropagation();">
-                                <a href="/chi-schiero/malen-vs-martinez-l/" class="hpro-duel-chip">⚔️ Malen vs Lautaro</a>
-                                <a href="/chi-schiero/calhanoglu-vs-paz-n/" class="hpro-duel-chip">⚔️ Paz vs Calhanoglu</a>
-                                <a href="/chi-schiero/pulisic-vs-zaccagni/" class="hpro-duel-chip">⚔️ Pulisic vs Zaccagni</a>
-                            </div>
-                            <a href="/chi-schiero/" class="hpro-dc-btn purple" onclick="event.stopPropagation(); onNavClick(event, 'chi_schiero');">
-                                <span>⚔️ Confronta 2 Giocatori (1vs1)</span>
-                                <span>&rarr;</span>
-                            </a>
-                        </div>
-                    </div>
 
                     <!-- RIGA 2: STRISCIA VISUALE 10 PARTITE 11ª GIORNATA (PROBABILI FORMAZIONI 4 FONTI) -->
                     <div class="hpro-matches-box">

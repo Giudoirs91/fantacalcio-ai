@@ -145,11 +145,11 @@ function renderLiveIntelligencePulseCards() {
     const upside3 = Math.round(((gemPick.score / 55) - 1) * 100);
     const positiveUpside = upside3 > 0 ? `+${upside3}%` : '+35%';
     pulseGrid.innerHTML = `
-        <!-- Card 1: Top AI Pick & Capitano Ideale -->
+        <!-- Card 1: Top di Giornata -->
         <div class="ai-pulse-card pick" onclick="openPlayerProfileModal(${p1.id})" style="cursor:pointer;">
             <div class="pulse-card-header">
-                <span class="pulse-badge green">🚀 CAPITANO AI</span>
-                <span class="pulse-card-score" style="color:#4ade80;">${confidence1}% Schierabile</span>
+                <span class="pulse-badge green">🔥 TOP DI GIORNATA</span>
+                <span class="pulse-card-score" style="color:#4ade80;">${confidence1}% Titolare</span>
             </div>
             <div class="pulse-player-box" style="display:flex;align-items:center;gap:10px;">
                 ${getPulseRoleBadge(p1.role)}
@@ -160,7 +160,7 @@ function renderLiveIntelligencePulseCards() {
             </div>
             <div class="pulse-metrics-strip">
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">xFM G${roundNum}</span>
+                    <span class="p-lbl">Voto Atteso</span>
                     <span class="p-val" style="color:#00e676;">${topPick.xfmVal}</span>
                 </div>
                 <div class="pulse-metric-item">
@@ -168,16 +168,16 @@ function renderLiveIntelligencePulseCards() {
                     <span class="p-val" style="color:#38bdf8;">${fix1}</span>
                 </div>
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">Status</span>
+                    <span class="p-lbl">Ruolo</span>
                     <span class="p-val" style="color:#fbbf24;">${p1.is_rigorista_1 ? '1° Rigorista' : (p1.is_rigorista_2 ? '2° Rigorista' : 'Titolare')}</span>
                 </div>
             </div>
         </div>
-        <!-- Card 2: Flop & Trap Alert -->
+        <!-- Card 2: Sconsigliato / Rischio Insufficienza -->
         <div class="ai-pulse-card danger" onclick="openPlayerProfileModal(${p2.id})" style="cursor:pointer;">
             <div class="pulse-card-header">
-                <span class="pulse-badge red">⚠️ RISCHIO FLOP</span>
-                <span class="pulse-card-score" style="color:#f87171;">Diff. ${diff2}/5</span>
+                <span class="pulse-badge red">⚠️ SCONSIGLIATO</span>
+                <span class="pulse-card-score" style="color:#f87171;">Partita Ostica</span>
             </div>
             <div class="pulse-player-box" style="display:flex;align-items:center;gap:10px;">
                 ${getPulseRoleBadge(p2.role)}
@@ -196,16 +196,16 @@ function renderLiveIntelligencePulseCards() {
                     <span class="p-val" style="color:#ef4444;">${p2.titolarita || 50}%</span>
                 </div>
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">xFM G${roundNum}</span>
+                    <span class="p-lbl">Voto Atteso</span>
                     <span class="p-val" style="color:#fbbf24;">${flopPick.xfmVal} ↓</span>
                 </div>
             </div>
         </div>
-        <!-- Card 3: Scommessa & Differenziale AI -->
+        <!-- Card 3: Scommessa di Giornata -->
         <div class="ai-pulse-card gem" onclick="openPlayerProfileModal(${p3.id})" style="cursor:pointer;">
             <div class="pulse-card-header">
-                <span class="pulse-badge purple">💎 GEMMA G${roundNum}</span>
-                <span class="pulse-card-score" style="color:#c084fc;">Upside ${positiveUpside}</span>
+                <span class="pulse-badge purple">🔮 SCOMMESSA G${roundNum}</span>
+                <span class="pulse-card-score" style="color:#c084fc;">Affare Low-Cost</span>
             </div>
             <div class="pulse-player-box" style="display:flex;align-items:center;gap:10px;">
                 ${getPulseRoleBadge(p3.role)}
@@ -216,7 +216,7 @@ function renderLiveIntelligencePulseCards() {
             </div>
             <div class="pulse-metrics-strip">
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">xFM G${roundNum}</span>
+                    <span class="p-lbl">Voto Atteso</span>
                     <span class="p-val" style="color:#c084fc;">${gemPick.xfmVal}</span>
                 </div>
                 <div class="pulse-metric-item">
@@ -224,7 +224,7 @@ function renderLiveIntelligencePulseCards() {
                     <span class="p-val" style="color:#34d399;">${p3.prossimo_avversario ? 'vs ' + p3.prossimo_avversario : 'Favorevole'}</span>
                 </div>
                 <div class="pulse-metric-item">
-                    <span class="p-lbl">Costo</span>
+                    <span class="p-lbl">Quotazione</span>
                     <span class="p-val" style="color:#fbbf24;">${p3.fvm || 10} CR</span>
                 </div>
             </div>
@@ -299,20 +299,20 @@ function renderHomeLeaders() {
         const runnersHtml = [r2Str, r3Str].filter(Boolean).join(' • ');
         const ovrClass = typeof getOvrClass === 'function' ? getOvrClass(top1.ovr) : 'ovr-tier-good';
         return `
-            <div class="leader-card" onclick="openPlayerProfileModal(${top1.id})" style="cursor:pointer;" title="Clicca per aprire la scheda di ${top1.name}">
-                <div class="leader-card-header">
-                    <span class="leader-stat-badge">${cat.title}</span>
-                    <span class="leader-val">${cat.valStr(val1)}</span>
-                </div>
-                <div class="leader-player-info">
-                    <span class="role-badge ${top1.role}">${top1.role}</span>
-                    <div>
-                        <div class="leader-player-name">${top1.name} <span class="ovr-pill ${ovrClass}" style="font-size:10px;margin-left:4px;">OVR ${top1.ovr || '-'}</span></div>
-                        <div class="leader-player-team">${cat.sub(top1)}</div>
+            <div class="hl-leader-row" onclick="openPlayerProfileModal(${top1.id})" title="Clicca per aprire la scheda di ${top1.name}">
+                <div class="hl-lr-left">
+                    <div class="hl-lr-cat">${cat.title}</div>
+                    <div class="hl-lr-player">
+                        <span class="role-badge ${top1.role}">${top1.role}</span>
+                        <b class="hl-lr-name">${top1.name}</b>
+                        <span class="hl-lr-team">${top1.team || ''}</span>
+                        <span class="ovr-pill ${ovrClass}" style="font-size:10px;">OVR ${top1.ovr || '-'}</span>
                     </div>
+                    <div class="hl-lr-runners">Inseguitori: ${runnersHtml}</div>
                 </div>
-                <div class="leader-podium">
-                    <strong>Inseguitori:</strong> ${runnersHtml}
+                <div class="hl-lr-right">
+                    <span class="hl-lr-val">${cat.valStr(val1)}</span>
+                    <span class="hl-lr-arr">&rarr;</span>
                 </div>
             </div>
         `;

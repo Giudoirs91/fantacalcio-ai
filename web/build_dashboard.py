@@ -110,20 +110,20 @@ def generate_home_leaders_html(players_data: list) -> str:
             runners_parts.append(f"<span onclick=\"event.stopPropagation(); if (typeof openPlayerProfileModal==='function') openPlayerProfileModal({p3.get('id', 0)});\" style=\"cursor:pointer;\" title=\"Vedi scheda {p3.get('name', '')}\">3° {c['runner'](p3, val3)}</span>")
         runners_str = " • ".join(runners_parts)
 
-        card = f'''                        <div class="leader-card" onclick="openPlayerProfileModal({top1.get('id', 0)})" style="cursor:pointer;" title="Clicca per aprire la scheda di {top1.get('name', '')}">
-                            <div class="leader-card-header">
-                                <span class="leader-stat-badge">{c['title']}</span>
-                                <span class="leader-val">{c['val_str'](val1)}</span>
-                            </div>
-                            <div class="leader-player-info">
-                                <span class="role-badge {top1.get('role', 'A')}">{top1.get('role', 'A')}</span>
-                                <div>
-                                    <div class="leader-player-name">{top1.get('name', '')} <span class="ovr-pill {get_ovr_tier(top1.get('ovr', 75))}" style="font-size:10px;margin-left:4px;">OVR {top1.get('ovr', '-')}</span></div>
-                                    <div class="leader-player-team">{c['sub'](top1)}</div>
+        card = f'''                        <div class="hl-leader-row" onclick="openPlayerProfileModal({top1.get('id', 0)})" title="Clicca per aprire la scheda di {top1.get('name', '')}">
+                            <div class="hl-lr-left">
+                                <div class="hl-lr-cat">{c['title']}</div>
+                                <div class="hl-lr-player">
+                                    <span class="role-badge {top1.get('role', 'A')}">{top1.get('role', 'A')}</span>
+                                    <b class="hl-lr-name">{top1.get('name', '')}</b>
+                                    <span class="hl-lr-team">{top1.get('team', '')}</span>
+                                    <span class="ovr-pill {get_ovr_tier(top1.get('ovr', 75))}" style="font-size:10px;">OVR {top1.get('ovr', '-')}</span>
                                 </div>
+                                <div class="hl-lr-runners">Inseguitori: {runners_str}</div>
                             </div>
-                            <div class="leader-podium">
-                                <strong>Inseguitori:</strong> {runners_str}
+                            <div class="hl-lr-right">
+                                <span class="hl-lr-val">{c['val_str'](val1)}</span>
+                                <span class="hl-lr-arr">&rarr;</span>
                             </div>
                         </div>'''
         cards_html.append(card)
@@ -131,38 +131,68 @@ def generate_home_leaders_html(players_data: list) -> str:
     return "\n".join(cards_html)
 
 def generate_hero_trust_showcase_html(accuracy_data: dict) -> str:
-    """Genera la barra visuale ultra-compatta di accuratezza certificata AI (zero muri di testo)."""
+    """Genera la barra visuale ultra-compatta di accuratezza media stagionale & trend dell'algoritmo AI."""
     meta = accuracy_data.get('meta', {}) if isinstance(accuracy_data, dict) else {}
-    last_completed = meta.get('last_completed_round', 8)
-    last_summary = accuracy_data.get(str(last_completed), {}).get('summary', {}) if isinstance(accuracy_data, dict) else {}
-    
-    acc_hit_rate = float(last_summary.get('hit_rate_pct', 75.0))
-    acc_hits = int(last_summary.get('hits', 9))
-    acc_total = int(last_summary.get('total_consigliati', 12))
-    acc_suff = float(last_summary.get('sufficiency_rate_pct', 75.0))
-    acc_avg_fv = float(last_summary.get('avg_fantavoto', 6.27))
+    round_keys = sorted([k for k in (accuracy_data or {}).keys() if str(k).isdigit()], key=lambda x: int(x))
+    last_completed = int(meta.get('last_completed_round') or (int(round_keys[-1]) if round_keys else 11))
 
-    return f'''                    <!-- BARRA COMPATTA ACCURATEZZA AI CERTIFICATA (VISUAL FIRST) -->
+    tot_cons = 0
+    tot_hits = 0
+    tot_suff = 0
+    fv_vals = []
+    early_hits, early_tot = 0, 0
+    recent_hits, recent_tot = 0, 0
+    split_idx = max(1, len(round_keys) // 3)
+
+    for idx, rk in enumerate(round_keys):
+        s = accuracy_data.get(rk, {}).get('summary', {})
+        c = int(s.get('total_consigliati') or 0)
+        h = int(s.get('hits') or 0)
+        sf = int(s.get('sufficient') or 0)
+        fv = s.get('avg_fantavoto')
+        tot_cons += c
+        tot_hits += h
+        tot_suff += sf
+        if fv is not None:
+            fv_vals.append(float(fv))
+        if idx < split_idx:
+            early_hits += h
+            early_tot += c
+        else:
+            recent_hits += h
+            recent_tot += c
+
+    avg_hit_rate = (tot_hits / tot_cons * 100.0) if tot_cons else float(meta.get('overall_hit_rate_pct', 56.1))
+    avg_suff_rate = (tot_suff / tot_cons * 100.0) if tot_cons else 78.8
+    avg_fv = (sum(fv_vals) / len(fv_vals)) if fv_vals else 7.20
+
+    early_pct = (early_hits / early_tot * 100.0) if early_tot else avg_hit_rate
+    recent_pct = (recent_hits / recent_tot * 100.0) if recent_tot else avg_hit_rate
+    delta_pct = recent_pct - early_pct
+    trend_str = f"{delta_pct:+.1f}%" if abs(delta_pct) >= 0.1 else f"{avg_hit_rate:.1f}%"
+    n_rounds = len(round_keys) or last_completed
+
+    return f'''                    <!-- BARRA COMPATTA ACCURATEZZA MEDIA STAGIONALE & TREND AI -->
                     <div class="hpro-trust-strip" id="heroTrustShowcase">
                         <div class="hpro-trust-left">
-                            <span class="hpro-trust-seal"><span class="pulse-dot-green"></span> G{last_completed} CERTIFICATA</span>
+                            <span class="hpro-trust-seal"><span class="pulse-dot-green"></span> BILANCIO AI ({n_rounds} GIORNATE)</span>
                         </div>
                         <div class="hpro-trust-kpis">
                             <div class="hpro-trust-pill hit">
-                                <span class="ht-val">{acc_hit_rate:.0f}%</span>
-                                <span class="ht-lbl">Hit Bonus ({acc_hits}/{acc_total})</span>
+                                <span class="ht-val">{avg_hit_rate:.1f}%</span>
+                                <span class="ht-lbl">Consigli Azzeccati ({tot_hits}/{tot_cons})</span>
                             </div>
                             <div class="hpro-trust-pill suff">
-                                <span class="ht-val">{acc_suff:.0f}%</span>
-                                <span class="ht-lbl">Voto &ge; 6.0</span>
+                                <span class="ht-val">{avg_suff_rate:.1f}%</span>
+                                <span class="ht-lbl">Sufficienze</span>
                             </div>
                             <div class="hpro-trust-pill fv">
-                                <span class="ht-val">{acc_avg_fv:.2f}</span>
+                                <span class="ht-val">{avg_fv:.2f}</span>
                                 <span class="ht-lbl">FantaVoto Medio</span>
                             </div>
                             <div class="hpro-trust-pill db">
-                                <span class="ht-val">534</span>
-                                <span class="ht-lbl">Calciatori xFM</span>
+                                <span class="ht-val">{trend_str}</span>
+                                <span class="ht-lbl">Miglioramento AI</span>
                             </div>
                         </div>
                         <a href="/consigli-fantacalcio/" class="hpro-trust-cta" onclick="if(window.switchTab) {{ event.preventDefault(); switchTab('matchday_advice'); }}">
@@ -284,8 +314,8 @@ def generate_home_flash_picks_html(players_data: list, consensus_data: dict) -> 
     return f'''                            <!-- Card 1: Top AI Pick & Capitano Ideale -->
                             <div class="ai-pulse-card pick" onclick="openPlayerByName('{cap_name}')" style="cursor:pointer;">
                                 <div class="pulse-card-header">
-                                    <span class="pulse-badge green">🚀 CAPITANO AI</span>
-                                    <span class="pulse-card-score" style="color:#4ade80;">{cap_tit}% Titolarità</span>
+                                    <span class="pulse-badge green">🔥 TOP DI GIORNATA</span>
+                                    <span class="pulse-card-score" style="color:#4ade80;">{cap_tit}% Titolare</span>
                                 </div>
                                 <div class="pulse-player-box">
                                     <span class="role-badge {cap_role}" style="width:34px;height:34px;font-size:15px;">{cap_role}</span>
@@ -313,8 +343,8 @@ def generate_home_flash_picks_html(players_data: list, consensus_data: dict) -> 
                             <!-- Card 2: Flop & Trap Alert -->
                             <div class="ai-pulse-card danger" onclick="openPlayerByName('{trap_name}')" style="cursor:pointer;">
                                 <div class="pulse-card-header">
-                                    <span class="pulse-badge red">⚠️ RISCHIO FLOP</span>
-                                    <span class="pulse-card-score" style="color:#f87171;">Allerta G{next_round}</span>
+                                    <span class="pulse-badge red">⚠️ SCONSIGLIATO</span>
+                                    <span class="pulse-card-score" style="color:#f87171;">Partita Ostica</span>
                                 </div>
                                 <div class="pulse-player-box">
                                     <span class="role-badge {trap_role}" style="width:34px;height:34px;font-size:15px;">{trap_role}</span>
@@ -342,8 +372,8 @@ def generate_home_flash_picks_html(players_data: list, consensus_data: dict) -> 
                             <!-- Card 3: Scommessa & Differenziale AI -->
                             <div class="ai-pulse-card gem" onclick="openPlayerByName('{gem_name}')" style="cursor:pointer;">
                                 <div class="pulse-card-header">
-                                    <span class="pulse-badge purple">💎 GEMMA G{next_round}</span>
-                                    <span class="pulse-card-score" style="color:#c084fc;">xFM {gem_xfm:.2f}</span>
+                                    <span class="pulse-badge purple">🔮 SCOMMESSA G{next_round}</span>
+                                    <span class="pulse-card-score" style="color:#c084fc;">Affare Low-Cost</span>
                                 </div>
                                 <div class="pulse-player-box">
                                     <span class="role-badge {gem_role}" style="width:34px;height:34px;font-size:15px;">{gem_role}</span>
@@ -833,6 +863,9 @@ def build_standalone_dashboard(sync_android=False):
                     </div>
                 </div>
 
+                <!-- BARRA COMPATTA ACCURATEZZA AI CERTIFICATA -->
+{hero_trust_showcase_html}
+
                 <!-- =========================================================================
                      FASE 1 (DEFAULT): GIORNATA {next_round}
                      ========================================================================= -->
@@ -896,7 +929,7 @@ def build_standalone_dashboard(sync_android=False):
                     <!-- RIGA 4: 3 FLASH PICKS G{next_round} (CAPITANO, TRAPPOLA, GEMMA — ZERO MURI DI TESTO) -->
                     <div class="hpro-section-block">
                         <div class="hpro-sec-bar">
-                            <h2 class="hpro-sec-h2"><span>⚡</span> Flash AI {next_round}ª Giornata</h2>
+                            <h2 class="hpro-sec-h2"><span>⚡</span> Consiglio Flash prossima giornata</h2>
                             <span class="hpro-sec-pill">Calcolo xFM Live</span>
                         </div>
                         <div class="ai-pulse-grid hpro-flash-grid">
@@ -904,19 +937,16 @@ def build_standalone_dashboard(sync_android=False):
                         </div>
                     </div>
 
-                    <!-- RIGA 5: LEADER STATISTICI SERIE A 2026/27 (UNICA ISTANZA PULITA) -->
+                    <!-- RIGA 6: LEADER STATISTICI SERIE A 2026/27 (LISTA LEADERBOARD COMPATTA) -->
                     <div class="hpro-section-block">
                         <div class="hpro-sec-bar">
                             <h2 class="hpro-sec-h2"><span>🏆</span> Leader Serie A 2026/27</h2>
                             <a href="/statistiche-serie-a/" class="hpro-sec-link" onclick="onNavClick(event, 'stats')">Classifiche Complete &rarr;</a>
                         </div>
-                        <div class="leader-grid" id="homeLeadersGrid">
+                        <div class="hl-leaders-list" id="homeLeadersGrid">
 {home_leaders_html}
                         </div>
                     </div>
-
-                    <!-- RIGA 6: BARRA COMPATTA ACCURATEZZA AI CERTIFICATA -->
-{hero_trust_showcase_html}
 
                 </div>
 

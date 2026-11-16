@@ -653,7 +653,6 @@ def build_standalone_dashboard(sync_android=False):
                         <a href="/griglia-portieri/" class="dropdown-item" id="tabGkBtn" onclick="onNavClick(event, 'gk')">🧤 Griglia Portieri 38/38</a>
                         <a href="/rigoristi-serie-a/" class="dropdown-item">🎯 Rigoristi &amp; Calci Piazzati</a>
                         <a href="/scommesse-talenti/" class="dropdown-item" id="tabGemsBtn" onclick="onNavClick(event, 'gems')">🔮 Gemme &amp; Scommesse Low-Cost</a>
-                        <a href="/top-11-ai/" class="dropdown-item" id="tabAiSquadsBtn" onclick="onNavClick(event, 'ai_squads')">🔒 5 Squadre Perfette AI <span style="font-size:10px;background:rgba(239,68,68,0.2);color:#f87171;padding:2px 6px;border-radius:4px;font-weight:700;margin-left:6px;">In Aggiornamento</span></a>
                     </div>
                 </div>
             </nav>
@@ -693,10 +692,9 @@ def build_standalone_dashboard(sync_android=False):
                     <div class="nav-dropdown-menu">
                         <!-- VISTA VISITATORE -->
                         <div class="visitor-only-item">
-                            <div class="dropdown-header">Strumenti Listone</div>
+                            <div class="dropdown-header">Strumenti Rapidi</div>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="openMySquadModal()">📋 Gestisci La Mia Rosa</a>
                             <a href="javascript:void(0)" class="dropdown-item" onclick="resetAllFilters()">🔄 Reimposta Filtri Listone</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="javascript:void(0)" class="dropdown-item" onclick="openCreatorAuthModal()" style="color:#fbbf24;font-weight:700;">👑 Accesso Riservato Creatore</a>
                         </div>
 
                         <!-- VISTA CREATORE (Strumenti Completi Sbloccati) -->

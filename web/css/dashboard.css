@@ -8308,7 +8308,12 @@ body.creator-mode-active .visitor-only-item {
 .header-right {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.header-ai-info-pill .header-pill-short-text {
+    display: none;
 }
 
 .header-squad-pill {

@@ -1806,7 +1806,17 @@ function renderMySquadModalContent() {
                     ⚡ SCHIERA IL MIO 11 MIGLIORE
                 </button>
             </div>
-            ` : ''}
+            ` : `
+            <div style="margin:14px 0 18px 0; background:linear-gradient(135deg, rgba(56,189,248,0.12) 0%, rgba(15,23,42,0.9) 100%); border:1px solid rgba(56,189,248,0.35); border-radius:16px; padding:14px 18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+                <div>
+                    <div style="font-size:13px; font-weight:800; color:#38bdf8;">⚡ Vuoi provare subito l'algoritmo che schiera i migliori 11?</div>
+                    <div style="font-size:11.5px; color:#cbd5e1;">Carica una rosa d'esempio da 25 giocatori in 1 click oppure aggiungi i tuoi calciatori qui sotto.</div>
+                </div>
+                <button onclick="loadDemoMySquadRoster()" style="cursor:pointer; padding:9px 16px; font-size:12.5px; font-weight:800; border-radius:10px; border:1px solid rgba(56,189,248,0.5); background:rgba(56,189,248,0.18); color:#fff;">
+                    ⚡ Prova Rosa Demo (1 click)
+                </button>
+            </div>
+            `}
             <!-- 1. Aggiunta Rapida & Incolla da Smartphone (Priorità Mobile-First) -->
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin:16px 0;">
                 <!-- Metodo A: Ricerca Istantanea Calciatore -->
@@ -2430,6 +2440,21 @@ function fallbackCopyTextToClipboard(text) {
     }
     document.body.removeChild(textArea);
 }
+function loadDemoMySquadRoster() {
+    if (typeof PLAYERS === 'undefined' || !Array.isArray(PLAYERS) || PLAYERS.length === 0) return;
+    const quotas = { P: 3, D: 8, C: 8, A: 6 };
+    const picked = [];
+    ['P', 'D', 'C', 'A'].forEach(role => {
+        const pool = PLAYERS
+            .filter(p => p.role === role && !p.is_injured)
+            .sort((a, b) => ((b.ovr || 0) + (b.titolarita || 0) * 0.25) - ((a.ovr || 0) + (a.titolarita || 0) * 0.25));
+        pool.slice(0, quotas[role]).forEach(p => picked.push(p.id));
+    });
+    if (picked.length < 11) return;
+    MySquadState.rosterIds = picked;
+    runGenerateMySquadLineup();
+    showCopyNotificationToast('⚡ Rosa Demo da 25 calciatori caricata!');
+}
 function showCopyNotificationToast(msg) {
     const existing = document.getElementById('mySquadCopyToast');
     if (existing) existing.remove();
@@ -2453,6 +2478,7 @@ if (typeof window !== 'undefined') {
     window.handleRosterFileSelect = handleRosterFileSelect;
     window.submitMySquadTextPaste = submitMySquadTextPaste;
     window.runGenerateMySquadLineup = runGenerateMySquadLineup;
+    window.loadDemoMySquadRoster = loadDemoMySquadRoster;
     window.onSearchInputMySquadRoster = onSearchInputMySquadRoster;
     window.addUnmatchedCandidate = addUnmatchedCandidate;
 }

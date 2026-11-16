@@ -5770,6 +5770,13 @@ def build_all():
             else:
                 shutil.copy2(s_item, d_item)
         print("  ✓ Tutti gli asset statici (PWA, icone, manifest, sw) copiati in dist/static/")
+        fav_png = os.path.join(web_static_dir, "favicon.png")
+        if os.path.exists(fav_png):
+            try:
+                from PIL import Image
+                Image.open(fav_png).save(os.path.join(DIST_DIR, "favicon.ico"), format="ICO", sizes=[(32, 32), (16, 16)])
+            except Exception:
+                shutil.copy2(fav_png, os.path.join(DIST_DIR, "favicon.ico"))
         
     # Carica Dati
     with open(MASTER_PLAYERS_PATH, "r", encoding="utf-8") as f:
@@ -6152,11 +6159,76 @@ def build_all():
         f.write(generate_gk_pillar(gk_matrix_data))
     print("  ✓ Generata pagina Pillar: dist/griglia-portieri/index.html")
 
-    # 4b. Genera Hub & Pagine Match: Probabili Formazioni & Ballottaggi Consensus (5 Fonti)
+    # 4a-bis. Genera Pagine Statiche "Chi Schiero tra X e Y" (High-Intent + Tutti i Ballottaggi Live/Storici)
+    valid_player_slugs = {slugify(p.get("name", "")) for p in players if p.get("name")}
+    duels_list = [
+        ('Malen', 'Martinez L.'), ('Hojlund', 'Thuram'), ('Ramos G.', 'Kolo Muani'),
+        ('Kean', 'Douvikas'), ('Dovbyk', 'Piccoli'), ('Dybala', 'Yildiz'),
+        ('Krstovic', 'Lucca'), ('Scamacca', 'Davis K.'), ('Berardi', 'De Ketelaere'),
+        ('Esposito F.P.', 'Woltemade'), ('Simeone', 'Raspadori'),
+        ('Paz N.', 'Calhanoglu'), ('McTominay', 'Orsolini'), ('Pulisic', 'Zaccagni'),
+        ('Rabiot', 'Barella'), ('De Bruyne', 'Baturina'), ('Frattesi', 'Pellegrini Lo.'),
+        ('Koopmeiners', 'Ferguson'), ('Zaniolo', 'Vlasic'), ('Conceicao', 'McKennie'),
+        ('Da Cunha', 'Mora'),
+        ('Dimarco', 'Wesley'), ('Molina N.', 'Bremer'), ('Bastoni', 'Pavlovic'),
+        ('Rrahmani', 'Mancini'), ('Di Lorenzo', 'Bellanova'), ('Tavares N.', 'Cambiaso'),
+        ('Zortea', 'Darmian'), ('Akanji', 'Kalulu'), ('Solet', 'Ostigard'),
+        ('Bisseck', 'Chalobah T.'),
+        ('Svilar', 'Vicario'), ('Martinez Jo.', 'Carnesecchi'), ('Maignan', 'De Gea'),
+        ('Meret', 'Provedel'), ('Butez', 'Mandas')
+    ]
     consensus_path = os.path.join(ROOT_DIR, "config", "matchday_consensus.json")
+    hist_dir = os.path.join(ROOT_DIR, "data", "historical_consensus")
+    consensus_files_for_duels = []
+    if os.path.exists(consensus_path):
+        consensus_files_for_duels.append(consensus_path)
+    if os.path.exists(hist_dir):
+        for h_file in sorted(os.listdir(hist_dir)):
+            if h_file.endswith(".json"):
+                consensus_files_for_duels.append(os.path.join(hist_dir, h_file))
+    for c_fp in consensus_files_for_duels:
+        try:
+            with open(c_fp, "r", encoding="utf-8") as fc:
+                c_json = json.load(fc)
+            for m in c_json.get("matches", []):
+                for side in ("home", "away"):
+                    for b in m.get(side, {}).get("ballots", []):
+                        n1 = (b.get("player1", {}) or {}).get("name", "").strip()
+                        n2 = (b.get("player2", {}) or {}).get("name", "").strip()
+                        if n1 and n2:
+                            duels_list.append((n1, n2))
+        except Exception:
+            pass
+
+    p_map = {p.get('name', '').lower(): p for p in players}
+    p_slug_map = {slugify(p.get('name', '')): p for p in players if p.get('name')}
+    duel_count = 0
+    valid_duel_slugs = set()
+    duel_dir_base = os.path.join(DIST_DIR, "chi-schiero")
+    os.makedirs(duel_dir_base, exist_ok=True)
+    for p1_name, p2_name in duels_list:
+        p1 = p_map.get(p1_name.lower()) or p_slug_map.get(slugify(p1_name))
+        p2 = p_map.get(p2_name.lower()) or p_slug_map.get(slugify(p2_name))
+        if not p1 or not p2:
+            continue
+        d_slug_check = f"{slugify(p1.get('name',''))}-vs-{slugify(p2.get('name',''))}"
+        if d_slug_check in valid_duel_slugs:
+            continue
+        duel_slug, duel_html = generate_duel_page(p1, p2, tactical_db, CALENDAR_DATA, BASE_URL)
+        d_folder = os.path.join(duel_dir_base, duel_slug)
+        os.makedirs(d_folder, exist_ok=True)
+        with open(os.path.join(d_folder, "index.html"), "w", encoding="utf-8") as f:
+            f.write(duel_html)
+        sitemap_urls.append(f"{BASE_URL}/chi-schiero/{duel_slug}/")
+        valid_duel_slugs.add(duel_slug)
+        duel_count += 1
+    print(f"  ✓ Generate {duel_count} pagine statiche 'Chi Schiero' 1vs1 con Verdetto AI e Schema FAQ in dist/chi-schiero/<duello>/")
+
+    # 4b. Genera Hub & Pagine Match: Probabili Formazioni & Ballottaggi Consensus (5 Fonti)
     if os.path.exists(consensus_path):
         try:
-            from tools.seo_probabili_template import generate_probabili_formazioni_hub, generate_match_probabili_page, enrich_consensus_with_mantra
+            from tools.seo_probabili_template import generate_probabili_formazioni_hub, generate_match_probabili_page, enrich_consensus_with_mantra, set_valid_seo_slugs
+            set_valid_seo_slugs(valid_player_slugs, valid_duel_slugs)
             with open(consensus_path, "r", encoding="utf-8") as f:
                 consensus_data = json.load(f)
             enrich_consensus_with_mantra(consensus_data, players)
@@ -6236,41 +6308,6 @@ def build_all():
     with open(os.path.join(priv_dir, "index.html"), "w", encoding="utf-8") as f:
         f.write(generate_privacy_policy_page())
     print("  ✓ Generata pagina Pillar: dist/privacy-policy/index.html")
-
-    # 4d. Genera 36 Pagine Landing "Chi Schiero tra X e Y" (High-Intent SEO Duels)
-    duels_list = [
-        ('Malen', 'Martinez L.'), ('Hojlund', 'Thuram'), ('Ramos G.', 'Kolo Muani'),
-        ('Kean', 'Douvikas'), ('Dovbyk', 'Piccoli'), ('Dybala', 'Yildiz'),
-        ('Krstovic', 'Lucca'), ('Scamacca', 'Davis K.'), ('Berardi', 'De Ketelaere'),
-        ('Esposito F.P.', 'Woltemade'), ('Simeone', 'Raspadori'),
-        ('Paz N.', 'Calhanoglu'), ('McTominay', 'Orsolini'), ('Pulisic', 'Zaccagni'),
-        ('Rabiot', 'Barella'), ('De Bruyne', 'Baturina'), ('Frattesi', 'Pellegrini Lo.'),
-        ('Koopmeiners', 'Ferguson'), ('Zaniolo', 'Vlasic'), ('Conceicao', 'McKennie'),
-        ('Da Cunha', 'Mora'),
-        ('Dimarco', 'Wesley'), ('Molina N.', 'Bremer'), ('Bastoni', 'Pavlovic'),
-        ('Rrahmani', 'Mancini'), ('Di Lorenzo', 'Bellanova'), ('Tavares N.', 'Cambiaso'),
-        ('Zortea', 'Darmian'), ('Akanji', 'Kalulu'), ('Solet', 'Ostigard'),
-        ('Bisseck', 'Chalobah T.'),
-        ('Svilar', 'Vicario'), ('Martinez Jo.', 'Carnesecchi'), ('Maignan', 'De Gea'),
-        ('Meret', 'Provedel'), ('Butez', 'Mandas')
-    ]
-    p_map = {p.get('name', '').lower(): p for p in players}
-    duel_count = 0
-    duel_dir_base = os.path.join(DIST_DIR, "chi-schiero")
-    os.makedirs(duel_dir_base, exist_ok=True)
-    for p1_name, p2_name in duels_list:
-        p1 = p_map.get(p1_name.lower())
-        p2 = p_map.get(p2_name.lower())
-        if not p1 or not p2:
-            continue
-        duel_slug, duel_html = generate_duel_page(p1, p2, tactical_db, CALENDAR_DATA, BASE_URL)
-        d_folder = os.path.join(duel_dir_base, duel_slug)
-        os.makedirs(d_folder, exist_ok=True)
-        with open(os.path.join(d_folder, "index.html"), "w", encoding="utf-8") as f:
-            f.write(duel_html)
-        sitemap_urls.append(f"{BASE_URL}/chi-schiero/{duel_slug}/")
-        duel_count += 1
-    print(f"  ✓ Generate {duel_count} pagine 'Chi Schiero' 1vs1 con Verdetto AI e Schema FAQ in dist/chi-schiero/<duello>/")
 
     # 5. Genera Sitemap XML
     today = datetime.now().strftime("%Y-%m-%d")

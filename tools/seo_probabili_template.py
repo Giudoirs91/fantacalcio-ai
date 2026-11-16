@@ -85,6 +85,16 @@ def xfm_text_color(xfm):
             return f"rgb({r},{g},{b})"
     return "#cbd5e1"
 
+VALID_PLAYER_SLUGS = set()
+VALID_DUEL_SLUGS = set()
+
+def set_valid_seo_slugs(player_slugs=None, duel_slugs=None):
+    global VALID_PLAYER_SLUGS, VALID_DUEL_SLUGS
+    if player_slugs is not None:
+        VALID_PLAYER_SLUGS = set(player_slugs)
+    if duel_slugs is not None:
+        VALID_DUEL_SLUGS = set(duel_slugs)
+
 def render_player_link(name, style="", css_class=""):
     if not name or str(name).strip() in ("", "-"):
         return clean_html(name or "-")
@@ -92,6 +102,8 @@ def render_player_link(name, style="", css_class=""):
     slug = get_player_slug_from_name(clean_name_txt)
     cls_attr = f' class="{css_class}"' if css_class else ''
     style_attr = f' style="{style}"' if style else ''
+    if VALID_PLAYER_SLUGS and slug not in VALID_PLAYER_SLUGS:
+        return f'<span{cls_attr}{style_attr}>{clean_html(clean_name_txt)}</span>'
     return f'<a href="/calciatore/{slug}/"{cls_attr}{style_attr}>{clean_html(clean_name_txt)}</a>'
 
 def render_prob_mantra_badges(mantra_str):
@@ -2363,7 +2375,7 @@ def render_h2h_duel(duel, team_name):
         <!-- Verdetto AI & CTA compatti su una riga -->
         <div class="duel-footer-row">
             <div class="verdict-desc">💡 {clean_html(verdict.get('desc', ''))}</div>
-            <a href="/chi-schiero/{duel_slug}/" class="btn-duel-compare" title="Analizza Ballottaggio">
+            <a href="{f'/chi-schiero/{duel_slug}/' if (not VALID_DUEL_SLUGS or duel_slug in VALID_DUEL_SLUGS) else '/chi-schiero/'}" class="btn-duel-compare" title="Analizza Ballottaggio">
                 <span>⚔️ Chi Schiero</span> &rarr;
             </a>
         </div>
@@ -2388,7 +2400,7 @@ def render_team_bonus_malus(t_data):
             <div class="bm-ai-row">
                 <div class="bm-ai-player">
                     <span class="pitch-role-badge {role}" style="width:16px;height:16px;font-size:9px;display:inline-flex;flex-shrink:0;">{role}</span>
-                    <a href="/calciatore/{slug}/">{clean_html(it.get('name'))}</a>
+                    {render_player_link(it.get('name'))}
                     {mantra_html}
                 </div>
                 <span class="bm-ai-reason">{clean_html(it.get('reason', ''))}</span>
@@ -2452,7 +2464,7 @@ def render_consensus_team_table(team_data):
             <td class="col-player">
                 <div class="player-cell-flex">
                     <span class="pitch-role-badge {role}" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">{role}</span>
-                    <a href="/calciatore/{slug}/">{clean_html(name)}</a>
+                    {render_player_link(name)}
                     {mantra_html}
                     {bm_inline_html}
                 </div>
@@ -2497,7 +2509,7 @@ def render_consensus_team_table(team_data):
             <td class="col-player">
                 <div class="player-cell-flex">
                     <span class="pitch-role-badge {role}" style="width:18px;height:18px;font-size:9.5px;display:inline-flex;flex-shrink:0;">{role}</span>
-                    <a href="/calciatore/{slug}/" style="color:#94a3b8;">{clean_html(name)}</a>
+                    {render_player_link(name, style="color:#94a3b8;")}
                     {r_mantra_html}
                 </div>
             </td>
@@ -2797,7 +2809,7 @@ def generate_match_ai_advice(match_data):
             </div>
             <div class="advice-player-row">
                 <span class="pitch-role-badge {top_pick.get('role','C')}">{top_pick.get('role','C')}</span>
-                <a href="/calciatore/{pick_slug}/" class="advice-name">{clean_html(top_pick['name'])}</a>
+                {render_player_link(top_pick['name'], css_class="advice-name")}
             </div>
             <div class="advice-meta">
                 <span>OVR <b>{top_pick.get('ovr', 80)}</b></span> &bull; <span>xFM <b>{top_pick.get('xfm', 7.5):.2f}</b></span>
@@ -2815,7 +2827,7 @@ def generate_match_ai_advice(match_data):
             </div>
             <div class="advice-player-row">
                 <span class="pitch-role-badge {risk_player.get('role','D')}">{risk_player.get('role','D')}</span>
-                <a href="/calciatore/{risk_slug}/" class="advice-name">{clean_html(risk_player['name'])}</a>
+                {render_player_link(risk_player['name'], css_class="advice-name")}
             </div>
             <div class="advice-meta">
                 <span>OVR <b>{risk_player.get('ovr', 68)}</b></span> &bull; <span>xFM <b>{risk_player.get('xfm', 5.5):.2f}</b></span>
@@ -2833,7 +2845,7 @@ def generate_match_ai_advice(match_data):
             </div>
             <div class="advice-player-row">
                 <span class="pitch-role-badge {jolly_player.get('role','A')}">{jolly_player.get('role','A')}</span>
-                <a href="/calciatore/{jolly_slug}/" class="advice-name">{clean_html(jolly_player['name'])}</a>
+                {render_player_link(jolly_player['name'], css_class="advice-name")}
             </div>
             <div class="advice-meta">
                 <span>OVR <b>{jolly_player.get('ovr', 74)}</b></span> &bull; <span>xFM <b>{jolly_player.get('xfm', 6.5):.2f}</b></span>
@@ -2940,7 +2952,7 @@ def generate_match_gk_analysis(match_data):
             <div class="gk-player-row">
                 <div class="gk-name-wrap">
                     <span class="pitch-role-badge P">P</span>
-                    <a href="/calciatore/{slug}/" class="advice-name">{clean_html(gk['name'])}</a>
+                    {render_player_link(gk['name'], css_class="advice-name")}
                 </div>
                 <span class="gk-status-tag">{tit_label}</span>
             </div>

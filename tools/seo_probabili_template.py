@@ -2323,7 +2323,8 @@ def render_h2h_duel(duel, team_name):
     
     p1_slug = get_player_slug_from_name(p1['name'])
     p2_slug = get_player_slug_from_name(p2['name'])
-    duel_slug = f"{slugify(p1['name'])}-vs-{slugify(p2['name'])}"
+    s_a, s_b = sorted([slugify(p1['name']), slugify(p2['name'])])
+    duel_slug = f"{s_a}-vs-{s_b}"
     
     inj_badge1 = " 🩹" if p1.get('is_injured') else ""
     inj_badge2 = " 🩹" if p2.get('is_injured') else ""

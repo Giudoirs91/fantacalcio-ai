@@ -6211,7 +6211,8 @@ def build_all():
         p2 = p_map.get(p2_name.lower()) or p_slug_map.get(slugify(p2_name))
         if not p1 or not p2:
             continue
-        d_slug_check = f"{slugify(p1.get('name',''))}-vs-{slugify(p2.get('name',''))}"
+        s_a, s_b = sorted([slugify(p1.get('name', '')), slugify(p2.get('name', ''))])
+        d_slug_check = f"{s_a}-vs-{s_b}"
         if d_slug_check in valid_duel_slugs:
             continue
         duel_slug, duel_html = generate_duel_page(p1, p2, tactical_db, CALENDAR_DATA, BASE_URL)
@@ -6245,6 +6246,7 @@ def build_all():
             # 2. Pagine Singolo Match dist/probabili-formazioni/<match-slug>/index.html
             match_count = 0
             generated_slugs = set()
+            archived_match_urls = set()
             for m in consensus_data.get("matches", []):
                 m_slug = m.get("slug")
                 if m_slug:
@@ -6275,6 +6277,7 @@ def build_all():
                                     with open(os.path.join(m_dir, "index.html"), "w", encoding="utf-8") as fh_out:
                                         fh_out.write(m_html)
                                     sitemap_urls.append(f"{BASE_URL}/probabili-formazioni/{m_slug}/")
+                                    archived_match_urls.add(f"{BASE_URL}/probabili-formazioni/{m_slug}/")
                                     generated_slugs.add(m_slug)
                                     match_count += 1
                         except Exception as eh:
@@ -6311,13 +6314,20 @@ def build_all():
 
     # 5. Genera Sitemap XML
     today = datetime.now().strftime("%Y-%m-%d")
+    archived_set = locals().get("archived_match_urls", set())
     sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     for url in sitemap_urls:
-        prio = "1.0" if url.endswith("/") and len(url.split("/")) == 4 else ("0.9" if ("serie-a" in url or "probabili-formazioni" in url) else "0.8")
+        if url.endswith("/privacy-policy/"):
+            freq, prio = "monthly", "0.3"
+        elif url in archived_set:
+            freq, prio = "monthly", "0.4"
+        else:
+            freq = "daily"
+            prio = "1.0" if url.endswith("/") and len(url.split("/")) == 4 else ("0.9" if ("serie-a" in url or "probabili-formazioni" in url) else "0.8")
         sitemap_xml += f"""  <url>
     <loc>{url}</loc>
     <lastmod>{today}</lastmod>
-    <changefreq>daily</changefreq>
+    <changefreq>{freq}</changefreq>
     <priority>{prio}</priority>
   </url>\n"""
     sitemap_xml += '</urlset>\n'
@@ -6329,7 +6339,6 @@ def build_all():
     # 6. Genera Robots.txt
     robots_txt = f"""User-agent: *
 Allow: /
-Disallow: /data/
 Disallow: /config/
 Disallow: /src/
 Disallow: /tools/

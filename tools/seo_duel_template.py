@@ -139,7 +139,8 @@ def compute_duel_verdict(p1, p2, calendar_data):
 def generate_duel_page(p1, p2, tactical_db, calendar_data, base_url="https://www.fantamasterai.it"):
     slug1 = slugify(p1.get("name", "p1"))
     slug2 = slugify(p2.get("name", "p2"))
-    duel_slug = f"{slug1}-vs-{slug2}"
+    s_a, s_b = sorted([slug1, slug2])
+    duel_slug = f"{s_a}-vs-{s_b}"
     
     winner, loser, w_pct, l_pct, reason, m1, m2 = compute_duel_verdict(p1, p2, calendar_data)
     

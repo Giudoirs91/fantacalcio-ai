@@ -62,7 +62,9 @@ function initLiveSync() {
     }
 
     const baseUrl = getServerBaseUrl();
-    if (!baseUrl) {
+    const host = (typeof window !== 'undefined' && window.location) ? window.location.hostname : '';
+    const isPublicStaticHost = host === 'fantamasterai.it' || host.endsWith('.fantamasterai.it') || host.endsWith('.vercel.app');
+    if (!baseUrl || (isPublicStaticHost && !localStorage.getItem('fanta_server_url'))) {
         updateSyncBadge('offline');
         return;
     }

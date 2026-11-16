@@ -750,50 +750,15 @@ function renderMatchdayAdviceView() {
         const hits = sum.hits;
         const total = sum.total_consigliati;
         auditBannerHtml = `
-            <div class="fut-audit-banner compact">
-                <div class="fut-audit-header-compact">
-                    <div class="fut-audit-title-compact">
-                        <span class="fut-audit-icon">🏆</span>
-                        <div>
-                            <div class="fut-audit-tag">GIORNATA ${currentRound} CONCLUSA • VERIFICA RETROSPETTIVA AI</div>
-                            <h3 class="fut-audit-heading-compact">Riepilogo Esiti: ${hitRateStr} Hit Rate • ${suffRateStr} Sufficienze</h3>
-                        </div>
-                    </div>
-                    <div class="fut-audit-pills-row">
-                        <div class="fut-audit-stat-pill hit" title="${hits} su ${total} consigliati hanno centrato il bonus o preso voto >= 6.5">
-                            <span class="pill-kpi">${hitRateStr}</span>
-                            <span class="pill-lbl">🎯 HIT (${hits}/${total})</span>
-                        </div>
-                        <div class="fut-audit-stat-pill suff" title="${suffRateStr} dei consigliati hanno ottenuto la sufficienza (voto >= 6.0)">
-                            <span class="pill-kpi">${suffRateStr}</span>
-                            <span class="pill-lbl">🛡️ SUFFICIENZE</span>
-                        </div>
-                        <div class="fut-audit-stat-pill fv" title="Fantavoto medio registrato dai calciatori consigliati">
-                            <span class="pill-kpi">${avgFvStr}</span>
-                            <span class="pill-lbl">⭐ FV MEDIO</span>
-                        </div>
-                    </div>
+            <div class="ca-audit-strip">
+                <div class="ca-audit-left">
+                    <span class="ca-audit-badge">🏆 VERIFICA G${currentRound}</span>
+                    <span class="ca-audit-sub">Esiti reali dei consigliati rispetto ai voti ufficiali</span>
                 </div>
-            </div>
-        `;
-    } else {
-        const lastCompleted = upcomingRound - 1;
-        auditBannerHtml = `
-            <div class="fut-audit-banner compact future">
-                <div class="fut-audit-header-compact">
-                    <div class="fut-audit-title-compact">
-                        <span class="fut-audit-icon">🔮</span>
-                        <div>
-                            <div class="fut-audit-tag">GIORNATA ${currentRound} IN ARRIVO • ALGORITMO PREDITTIVO ATTIVO</div>
-                            <h3 class="fut-audit-heading-compact">Consigli Ufficiali per la Giornata ${currentRound}</h3>
-                        </div>
-                    </div>
-                    <div class="fut-audit-pills-row">
-                        <div class="fut-audit-stat-pill fv" title="Algoritmo ricalibrato sui dati ufficiali della Giornata ${lastCompleted}">
-                            <span class="pill-kpi">G${lastCompleted}</span>
-                            <span class="pill-lbl">CALIBRAZIONE AI</span>
-                        </div>
-                    </div>
+                <div class="ca-audit-kpis">
+                    <div class="ca-audit-kpi hit"><b>${hitRateStr}</b><span>Hit (${hits}/${total})</span></div>
+                    <div class="ca-audit-kpi suff"><b>${suffRateStr}</b><span>Sufficienze</span></div>
+                    <div class="ca-audit-kpi fv"><b>${avgFvStr}</b><span>FV Medio</span></div>
                 </div>
             </div>
         `;
@@ -836,68 +801,59 @@ function renderMatchdayAdviceView() {
         adviceData = getTop3MantraAdvice(PLAYERS, fixtureMap);
     }
     let roleChipsHtml = `
-        <button class="fut-filter-chip ${activeFilter === 'ALL' ? 'active' : ''}" onclick="setMatchdayRoleFilter('ALL')">
-            TUTTI (${rolesToRender.length})
+        <button class="ca-role-tab ${activeFilter === 'ALL' ? 'active' : ''}" onclick="setMatchdayRoleFilter('ALL')">
+            Tutti (${rolesToRender.length})
         </button>
     `;
     rolesToRender.forEach(r => {
         const isAct = activeFilter === r.key ? 'active' : '';
         roleChipsHtml += `
-            <button class="fut-filter-chip ${isAct}" onclick="setMatchdayRoleFilter('${r.key}')">
-                ${r.icon} ${r.code || r.key}
+            <button class="ca-role-tab ${isAct}" onclick="setMatchdayRoleFilter('${r.key}')" style="--role-accent:${r.color};">
+                <span>${r.icon}</span> <span>${r.code || r.key}</span>
             </button>
         `;
     });
     const tierFilterBarHtml = `
-        <div class="fut-tier-filter-row">
-            <span class="fut-tier-filter-label">🎯 FILTRO STRATEGICO:</span>
-            <button class="fut-tier-btn ${tierFilter === 'ALL' ? 'active' : ''}" onclick="setMatchdayTierFilter('ALL')">
-                <span class="fut-tier-txt-desk">⚡ TUTTI (Top + Scommesse)</span>
-                <span class="fut-tier-txt-mob">⚡ Tutti</span>
-            </button>
-            <button class="fut-tier-btn top ${tierFilter === 'TOP_ONLY' ? 'active' : ''}" onclick="setMatchdayTierFilter('TOP_ONLY')">
-                <span class="fut-tier-txt-desk">⭐ SOLO TOP & CERTEZZE</span>
-                <span class="fut-tier-txt-mob">⭐ Top</span>
-            </button>
-            <button class="fut-tier-btn bets ${tierFilter === 'BETS_ONLY' ? 'active' : ''}" onclick="setMatchdayTierFilter('BETS_ONLY')">
-                <span class="fut-tier-txt-desk">🔮 SOLO SCOMMESSE LOW-COST</span>
-                <span class="fut-tier-txt-mob">🔮 Scommesse</span>
-            </button>
+        <div class="ca-seg-group">
+            <button class="ca-seg-btn ${tierFilter === 'ALL' ? 'active' : ''}" onclick="setMatchdayTierFilter('ALL')">Tutti</button>
+            <button class="ca-seg-btn ${tierFilter === 'TOP_ONLY' ? 'active' : ''}" onclick="setMatchdayTierFilter('TOP_ONLY')">⭐ Top</button>
+            <button class="ca-seg-btn ${tierFilter === 'BETS_ONLY' ? 'active' : ''}" onclick="setMatchdayTierFilter('BETS_ONLY')">🔮 Scommesse</button>
         </div>
     `;
     let sectionsHtml = '';
     rolesToRender.forEach(roleObj => {
         if (activeFilter !== 'ALL' && activeFilter !== roleObj.key) return;
         const playersForRole = adviceData[roleObj.key] || [];
-        let rowsHtml = '';
-        playersForRole.forEach((item, idx) => {
-            if (tierFilter === 'TOP_ONLY' && item.isBet) return;
-            if (tierFilter === 'BETS_ONLY' && !item.isBet) return;
+        const filteredItems = playersForRole.filter(item => {
+            if (tierFilter === 'TOP_ONLY' && item.isBet) return false;
+            if (tierFilter === 'BETS_ONLY' && !item.isBet) return false;
+            return true;
+        });
+        if (filteredItems.length === 0) return;
+        const buildItemMeta = (item) => {
             const p = item.player;
             const mInfo = item.matchInfo;
             let tierClass = 'tier-gold';
-            let tierBadgeText = '🥇 TOP 1';
-            let tierMedal = '🥇';
+            let tierBadgeText = '🥇 #1 TOP PICK';
+            let tierColor = '#fbbf24';
             if (!item.isBet) {
                 if (item.tierIndex === 0) {
                     tierClass = 'tier-gold';
-                    tierBadgeText = '🥇 TOP 1';
-                    tierMedal = '🥇';
+                    tierBadgeText = '🥇 #1 TOP PICK';
+                    tierColor = '#fbbf24';
                 } else {
                     tierClass = 'tier-silver';
-                    tierBadgeText = '🥈 2ª SCELTA';
-                    tierMedal = '🥈';
+                    tierBadgeText = '🥈 #2 CERTEZZA';
+                    tierColor = '#93c5fd';
                 }
+            } else if (item.tierIndex === 2 || item.tierIndex === 0) {
+                tierClass = 'tier-bet-green';
+                tierBadgeText = '🔮 SCOMMESSA AI';
+                tierColor = '#34d399';
             } else {
-                if (item.tierIndex === 2 || item.tierIndex === 0) {
-                    tierClass = 'tier-bet-green';
-                    tierBadgeText = '🔮 SCOMMESSA AI';
-                    tierMedal = '🔮';
-                } else {
-                    tierClass = 'tier-bet-cyan';
-                    tierBadgeText = '💎 DIFFERENZIALE';
-                    tierMedal = '💎';
-                }
+                tierClass = 'tier-bet-cyan';
+                tierBadgeText = '💎 DIFFERENZIALE';
+                tierColor = '#38bdf8';
             }
             const locBadge = mInfo.isHome
                 ? `<span class="fut-matchup-loc home">CASA</span>`
@@ -910,239 +866,190 @@ function renderMatchdayAdviceView() {
             const ceilVal = (p.ceiling !== undefined && p.ceiling !== null) ? Number(p.ceiling).toFixed(1) : (Number(fmVal) + 2.5).toFixed(1);
             const volLabel = p.volatility_label || 'MEDIA';
             const volClass = volLabel === 'ESPLOSIVA' ? 'high' : (volLabel === 'BASSA' ? 'low' : 'med');
-            let ratingTierSub = 'OPPORTUNITÀ AI';
-            if (!item.isBet && item.tierIndex === 0) ratingTierSub = 'TOP PICK ASSOLUTO';
-            else if (!item.isBet) ratingTierSub = 'CERTEZZA TITOLARE';
-            else if (item.isBet && (item.tierIndex === 2 || item.tierIndex === 0)) ratingTierSub = 'SCOMMESSA AI TOP';
-            else ratingTierSub = 'DIFFERENZIALE LOW-COST';
             let keyMetricHtml = '';
             if (p.role === 'P') {
                 const csCount = (p.clean_sheets_2627 !== undefined && p.clean_sheets_2627 !== null) ? p.clean_sheets_2627 : (p.clean_sheets || 0);
                 keyMetricHtml = `🧤 <strong>${csCount}</strong> CS • Tit <strong>${titVal}%</strong>`;
             } else if (p.role === 'D') {
-                if (p.is_oop) {
-                    keyMetricHtml = `💎 <strong>FRP Quinto</strong> • ${p.key_passes_2627 || 0} Key Pass`;
-                } else if (p.xa90_2627) {
-                    keyMetricHtml = `🎯 <strong>xA/90 ${p.xa90_2627}</strong> • MV <strong>${(p.mv_2627 || p.mv || 6.0).toFixed(2)}</strong>`;
-                } else {
-                    keyMetricHtml = `🛡️ MV <strong>${(p.mv_2627 || p.mv || 6.0).toFixed(2)}</strong> • Tit <strong>${titVal}%</strong>`;
-                }
+                if (p.is_oop) keyMetricHtml = `💎 <strong>FRP</strong> • ${p.key_passes_2627 || 0} KP`;
+                else if (p.xa90_2627) keyMetricHtml = `🎯 <strong>xA/90 ${p.xa90_2627}</strong> • MV <strong>${(p.mv_2627 || p.mv || 6.0).toFixed(2)}</strong>`;
+                else keyMetricHtml = `🛡️ MV <strong>${(p.mv_2627 || p.mv || 6.0).toFixed(2)}</strong> • Tit <strong>${titVal}%</strong>`;
             } else if (p.role === 'C') {
-                if (p.key_passes_2627) {
-                    keyMetricHtml = `🪄 <strong>${p.key_passes_2627}</strong> KP • FM <strong>${fmVal}</strong>`;
-                } else if (p.xg90_2627) {
-                    keyMetricHtml = `⚡ <strong>xG/90 ${p.xg90_2627}</strong> • FM <strong>${fmVal}</strong>`;
-                } else {
-                    keyMetricHtml = `🪄 FM <strong>${fmVal}</strong> • Tit <strong>${titVal}%</strong>`;
-                }
-            } else { // 'A'
-                if (p.tiri_porta_2627) {
-                    keyMetricHtml = `🎯 <strong>${p.tiri_porta_2627}</strong> Tiri Porta • FM <strong>${fmVal}</strong>`;
-                } else if (p.xg90_2627) {
-                    keyMetricHtml = `🔥 <strong>xG/90 ${p.xg90_2627}</strong> • FM <strong>${fmVal}</strong>`;
-                } else {
-                    keyMetricHtml = `⚡ FM <strong>${fmVal}</strong> • Tit <strong>${titVal}%</strong>`;
-                }
+                if (p.key_passes_2627) keyMetricHtml = `🪄 <strong>${p.key_passes_2627}</strong> KP • FM <strong>${fmVal}</strong>`;
+                else if (p.xg90_2627) keyMetricHtml = `⚡ <strong>xG/90 ${p.xg90_2627}</strong> • FM <strong>${fmVal}</strong>`;
+                else keyMetricHtml = `🪄 FM <strong>${fmVal}</strong> • Tit <strong>${titVal}%</strong>`;
+            } else {
+                if (p.tiri_porta_2627) keyMetricHtml = `🎯 <strong>${p.tiri_porta_2627}</strong> Tiri • FM <strong>${fmVal}</strong>`;
+                else if (p.xg90_2627) keyMetricHtml = `🔥 <strong>xG/90 ${p.xg90_2627}</strong> • FM <strong>${fmVal}</strong>`;
+                else keyMetricHtml = `⚡ FM <strong>${fmVal}</strong> • Tit <strong>${titVal}%</strong>`;
             }
             const outcome = isPastRound ? computePlayerRoundOutcome(p, currentRound) : null;
-            let colTacticsHtml = '';
-            if (isPastRound && outcome) {
-                colTacticsHtml = `
-                    <div class="fut-col-tactics is-past-round">
-                        <!-- BOX ESITI RETROSPETTIVI: VERDETTO + SUFFICIENZA + BONUS -->
-                        <div class="fut-outcome-box ${outcome.verdictClass}">
-                            <div class="fut-outcome-topline">
-                                <div class="fut-verdict-badge ${outcome.verdictClass}">
-                                    <span class="v-icon">${outcome.verdictIcon}</span>
-                                    <span class="v-label">${outcome.verdictLabel}</span>
-                                </div>
-                                <div class="fut-outcome-fv-badge">
-                                    <span class="fv-tag">FANTAVOTO REALE:</span>
-                                    <span class="fv-num">${outcome.fvText}</span>
-                                </div>
-                            </div>
-                            <div class="fut-outcome-breakdown-grid">
-                                <!-- 1. SUFFICIENZA -->
-                                <div class="fut-outcome-tile ${outcome.suffClass}">
-                                    <div class="tile-head">
-                                        <span class="tile-icon">${outcome.suffIcon}</span>
-                                        <span class="tile-title">SUFFICIENZA (VOTO ≥ 6.0)</span>
-                                    </div>
-                                    <div class="tile-body">
-                                        <strong>${outcome.suffText}</strong>
-                                    </div>
-                                </div>
-                                <!-- 2. BONUS / MALUS -->
-                                <div class="fut-outcome-tile ${outcome.bonusClass}">
-                                    <div class="tile-head">
-                                        <span class="tile-icon">${outcome.bonusIcon}</span>
-                                        <span class="tile-title">BONUS / MALUS</span>
-                                    </div>
-                                    <div class="tile-body">
-                                        <strong>${outcome.bonusSummary}</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- NOTA TATTICA ORIGINARIA INIZIALE -->
-                        <div class="fut-tactical-past-note">
-                            <span class="past-note-tag">💡 MOTIVAZIONE AI:</span>
-                            <span class="past-note-text">${item.rationale}</span>
-                        </div>
+            return { p, mInfo, tierClass, tierBadgeText, tierColor, locBadge, mantraTags, ovrVal, floorVal, ceilVal, volLabel, volClass, keyMetricHtml, outcome };
+        };
+        const renderHeroCard = (item) => {
+            const m = buildItemMeta(item);
+            const p = m.p;
+            const scoreNum = Math.min(100, Math.max(0, Number(item.score) || 85));
+            const circ = 2 * Math.PI * 26;
+            const dashOffset = circ * (1 - scoreNum / 100);
+            const rangeLeft = Math.max(4, Math.min(80, ((Number(m.floorVal) - 4.0) / 8.0) * 100));
+            const rangeRight = Math.max(rangeLeft + 10, Math.min(100, ((Number(m.ceilVal) - 4.0) / 8.0) * 100));
+            return `
+                <article class="ca-hero-pick ${m.tierClass}" id="adviceCard_${p.id}" onclick="openPlayerProfileModal(${p.id})" style="--tier-color:${m.tierColor};" title="Apri scheda completa di ${p.name}">
+                    <div class="ca-hp-header">
+                        <span class="ca-tier-pill ${m.tierClass}">${m.tierBadgeText}</span>
+                        <span class="ca-ovr-chip">OVR ${m.ovrVal}</span>
                     </div>
-                `;
-            } else {
-                colTacticsHtml = `
-                    <div class="fut-col-tactics">
-                        <div class="fut-tactical-header">
-                            <span class="tactical-badge-icon">${item.isBet ? '🔮' : '💡'}</span>
-                            <span class="tactical-badge-title">${item.isBet ? 'ANALISI SCOMMESSA PREDITTIVA' : 'MOTIVAZIONE TATTICA AI'}</span>
+                    <div class="ca-hp-main">
+                        <div class="ca-hp-identity">
+                            <div class="ca-hp-name-row">
+                                <span class="pitch-role-badge ${p.role}" style="width:28px;height:28px;font-size:12px;flex-shrink:0;">${p.role}</span>
+                                <h3>${p.name}</h3>
+                            </div>
+                            <div class="ca-hp-match">
+                                <b>${p.team}</b> vs ${m.mInfo.opp} ${m.locBadge}
+                                ${item.isBet ? `<span class="ca-fvm-mini">FVM ${p.fvm || 1}</span>` : ''}
+                            </div>
+                            <div class="ca-specialties-row">
+                                ${m.mantraTags}
+                                ${p.is_rigorista_1 ? '<span class="ca-spec-tag pen">⚽ Rig.</span>' : ''}
+                                ${p.is_oop ? '<span class="ca-spec-tag oop">💎 FRP</span>' : ''}
+                                ${p.is_punizioni ? '<span class="ca-spec-tag fk">🎯 Piaz.</span>' : ''}
+                            </div>
                         </div>
-                        <div class="fut-tactical-body">
-                            ${item.rationale}
-                        </div>
-                    </div>
-                `;
-            }
-            rowsHtml += `
-                <div class="fut-player-row ${tierClass}" id="adviceCard_${p.id}" onclick="openPlayerProfileModal(${p.id})" title="Clicca per visualizzare la scheda completa di ${p.name}">
-                    <!-- COLONNA 1: IDENTITÀ & SHIELD -->
-                    <div class="fut-col-identity">
-                        <!-- FIFA SHIELD -->
-                        <div class="fut-card-shield ${tierClass}" title="Clicca per aprire la scheda di ${p.name}">
-                            <div class="fut-shield-top">
-                                <span class="fut-shield-ovr">${ovrVal}</span>
-                                <span class="fut-shield-pos">${p.role}</span>
-                            </div>
-                            <div class="fut-shield-avatar">
-                                <span>${p.name.charAt(0)}</span>
-                            </div>
-                            <div class="fut-shield-medal">${tierMedal}</div>
-                        </div>
-                        <!-- INFO GIOCATORE -->
-                        <div class="fut-identity-info">
-                            <div class="fut-identity-badges">
-                                <span class="fut-tier-tag ${tierClass}">${tierBadgeText}</span>
-                                <span class="fut-team-pill">${p.team}</span>
-                                ${item.isBet ? `<span class="fut-fvm-badge" title="Quotazione di mercato low-cost">💰 FVM ${p.fvm || 1} CR</span>` : ''}
-                                ${p.is_rigorista_1 ? '<span class="fut-spec-mini pen" title="1° Rigorista">⚽ Rig.</span>' : ''}
-                                ${p.is_oop ? '<span class="fut-spec-mini oop" title="Fuori Ruolo Positivo">💎 FRP</span>' : ''}
-                                ${p.is_punizioni ? '<span class="fut-spec-mini fk" title="Tiratore Punizioni">🎯 Piaz.</span>' : ''}
-                            </div>
-                            <div class="fut-player-name" title="Clicca per aprire la scheda di ${p.name}">
-                                ${p.name} <span class="fut-click-hint">➔</span>
-                            </div>
-                            <div class="fut-matchup-strip">
-                                <span class="fut-matchup-vs">vs <strong>${mInfo.opp}</strong></span>
-                                ${locBadge}
-                                ${mantraTags ? `<span class="fut-mantra-box">${mantraTags}</span>` : ''}
+                        <div class="ca-score-ring" title="Rating Predittivo AI">
+                            <svg viewBox="0 0 64 64">
+                                <circle cx="32" cy="32" r="26" class="ring-bg" />
+                                <circle cx="32" cy="32" r="26" class="ring-fg" style="stroke:${m.tierColor};stroke-dasharray:${circ.toFixed(1)};stroke-dashoffset:${dashOffset.toFixed(1)};" />
+                            </svg>
+                            <div class="ring-val">
+                                <b>${item.score}</b>
+                                <span>AI</span>
                             </div>
                         </div>
                     </div>
-                    <!-- COLONNA 2: HERO RATING AI & PREDITTIVO -->
-                    <div class="fut-col-rating">
-                        <div class="fut-rating-hero-box ${tierClass}">
-                            <div class="rating-hero-top">
-                                <span class="rating-hero-icon">⚡</span>
-                                <span class="rating-hero-lbl">RATING AI</span>
+                    <div class="ca-hp-metrics">
+                        <div class="ca-hp-range-box">
+                            <div class="ca-hp-range-head">
+                                <span>Range xFM Atteso</span>
+                                <b>${m.floorVal} – ${m.ceilVal} <em class="ca-vol ${m.volClass}">(${m.volLabel})</em></b>
                             </div>
-                            <div class="rating-hero-val">${item.score}<span class="rating-base">/100</span></div>
-                            <div class="rating-hero-sub">${ratingTierSub}</div>
+                            <div class="ca-range-track">
+                                <div class="ca-range-fill" style="left:${rangeLeft.toFixed(0)}%;width:${(rangeRight - rangeLeft).toFixed(0)}%;background:${m.tierColor};"></div>
+                            </div>
                         </div>
-                        <div class="fut-rating-meta">
-                            <div class="fut-key-metric-badge" title="Statistica chiave avanzata">
-                                ${keyMetricHtml}
-                            </div>
-                            <div class="fut-range-compact" title="Range Min-Max di Fantavoto atteso (Floor / Ceiling)">
-                                <span class="range-tag">ATTESO</span>
-                                <span class="range-numbers">${floorVal} - ${ceilVal}</span>
-                                <span class="range-vol ${volClass}">${volLabel}</span>
-                            </div>
+                        <div class="ca-hp-stat-line">${m.keyMetricHtml}</div>
+                    </div>
+                    ${isPastRound && m.outcome ? `
+                    <div class="ca-outcome-bar ${m.outcome.verdictClass}">
+                        <span>${m.outcome.verdictIcon} ${m.outcome.verdictLabel}</span>
+                        <span>FV <b>${m.outcome.fvText}</b> • ${m.outcome.bonusSummary}</span>
+                    </div>` : ''}
+                    <p class="ca-hp-rationale">${item.rationale}</p>
+                </article>
+            `;
+        };
+        const renderAltRow = (item, rankNum) => {
+            const m = buildItemMeta(item);
+            const p = m.p;
+            return `
+                <article class="ca-alt-row ${m.tierClass}" id="adviceCard_${p.id}" onclick="openPlayerProfileModal(${p.id})" style="--tier-color:${m.tierColor};" title="Apri scheda completa di ${p.name}">
+                    <div class="ca-alt-left">
+                        <div class="ca-alt-rank">#${rankNum}</div>
+                        <div class="ca-alt-score" style="color:${m.tierColor};border-color:${m.tierColor}45;background:${m.tierColor}15;">
+                            <b>${item.score}</b>
+                            <span>OVR ${m.ovrVal}</span>
                         </div>
                     </div>
-                    <!-- COLONNA 3: TATTICA O ESITI RETROSPETTIVI -->
-                    ${colTacticsHtml}
+                    <div class="ca-alt-body">
+                        <div class="ca-alt-top">
+                            <div class="ca-alt-name-wrap">
+                                <span class="ca-alt-name">${p.name}</span>
+                                <span class="ca-alt-team">${p.team} vs ${m.mInfo.opp}</span>
+                                ${m.locBadge}
+                                ${item.isBet ? `<span class="ca-fvm-mini">FVM ${p.fvm || 1}</span>` : ''}
+                            </div>
+                            <span class="ca-tier-pill ${m.tierClass}">${m.tierBadgeText}</span>
+                        </div>
+                        <div class="ca-alt-kpis">
+                            <span>xFM <b>${m.floorVal}–${m.ceilVal}</b></span>
+                            <span class="ca-dot">&bull;</span>
+                            <span>${m.keyMetricHtml}</span>
+                            ${isPastRound && m.outcome ? `<span class="ca-dot">&bull;</span><span class="ca-alt-out ${m.outcome.verdictClass}">${m.outcome.verdictIcon} FV ${m.outcome.fvText}</span>` : ''}
+                        </div>
+                        <p class="ca-alt-rationale">${item.rationale}</p>
+                    </div>
+                </article>
+            `;
+        };
+        let bodyLayoutHtml = '';
+        if (filteredItems.length >= 3) {
+            const heroHtml = renderHeroCard(filteredItems[0]);
+            const altsHtml = filteredItems.slice(1).map((it, idx) => renderAltRow(it, idx + 2)).join('');
+            bodyLayoutHtml = `
+                <div class="ca-spotlight-split">
+                    <div class="ca-spotlight-main">${heroHtml}</div>
+                    <div class="ca-spotlight-alts">${altsHtml}</div>
                 </div>
             `;
-        });
-        let secBadgeText = 'TOP & SCOMMESSE';
-        if (tierFilter === 'TOP_ONLY') secBadgeText = '⭐ SOLO TOP & CERTEZZE';
-        if (tierFilter === 'BETS_ONLY') secBadgeText = '🔮 SOLO SCOMMESSE PREDITTIVE';
+        } else {
+            bodyLayoutHtml = `
+                <div class="ca-pair-grid">
+                    ${filteredItems.map(it => renderHeroCard(it)).join('')}
+                </div>
+            `;
+        }
         sectionsHtml += `
-            <div class="fut-role-section">
-                <div class="fut-section-header">
-                    <div class="fut-section-title">
-                        <span class="fut-sec-icon" style="color:${roleObj.color};">${roleObj.icon}</span>
+            <section class="ca-role-section">
+                <div class="ca-section-head">
+                    <div class="ca-section-title">
+                        <span class="ca-sec-icon" style="color:${roleObj.color};">${roleObj.icon}</span>
                         <div>
                             <h2>${roleObj.label}</h2>
-                            <span class="fut-sec-sub">${roleObj.desc}</span>
+                            <p>${roleObj.desc}</p>
                         </div>
                     </div>
-                    <div class="fut-sec-badge">${secBadgeText}</div>
                 </div>
-                <div class="fut-rows-list">
-                    ${rowsHtml}
-                </div>
-            </div>
+                ${bodyLayoutHtml}
+            </section>
         `;
     });
+    const lastCalibrated = upcomingRound - 1;
     const fullHtml = `
-        <div class="matchday-advice-container fut-gaming-theme">
-            <!-- HEADER SLIM & PULITO -->
-            <div class="fut-header-banner">
-                <div class="fut-header-top">
-                    <div class="fut-title-block">
-                        <div class="fut-logo-emblem">🎯</div>
+        <div class="ca-advice-wrap">
+            <!-- HEADER COMPATTO SAAS -->
+            <div class="ca-hero-bar">
+                <div class="ca-hero-top">
+                    <div class="ca-hero-title">
+                        <div class="ca-hero-icon">🎯</div>
                         <div>
-                            <div class="fut-eyebrow">QUANTITATIVE PREDICTIVE ENGINE • SERIE A 2026/27</div>
-                            <h1 class="fut-main-heading">CONSIGLIATI DI GIORNATA</h1>
+                            <div class="ca-eyebrow">SERIE A 2026/27 &bull; CALIBRATO SU G${lastCalibrated}</div>
+                            <h1>Consigliati di Giornata — G${currentRound}</h1>
                         </div>
                     </div>
-                    <div class="fut-header-actions">
-                        <button class="fut-btn-share" onclick="copyMatchdayAdviceToClipboard()">
-                            <span>📲</span> <span class="fut-share-text-desk">Condividi su WhatsApp / Telegram</span><span class="fut-share-text-mob">Condividi</span>
-                        </button>
-                    </div>
+                    <button class="ca-share-btn" onclick="copyMatchdayAdviceToClipboard()">
+                        <span>📲</span> <span>Condividi</span>
+                    </button>
                 </div>
-                <!-- CONTROLLI: GIORNATA + CLASSICO/MANTRA -->
-                <div class="fut-control-bar">
-                    <div class="fut-ctrl-group">
-                        <label for="selectAdviceRound" class="fut-ctrl-label">⚽ TURNO SERIE A:</label>
-                        <select id="selectAdviceRound" class="fut-select" onchange="onMatchdayRoundChange(this.value)">
+                <div class="ca-controls-row">
+                    <div class="ca-ctrl-left">
+                        <select id="selectAdviceRound" class="ca-select" onchange="onMatchdayRoundChange(this.value)" aria-label="Seleziona giornata">
                             ${roundOptionsHtml}
                         </select>
-                        ${roundDate ? `<span class="fut-date-badge">📅 ${roundDate}</span>` : ''}
-                    </div>
-                    <div class="fut-ctrl-group">
-                        <label class="fut-ctrl-label">FORMAT:</label>
-                        <div class="fut-mode-toggles">
-                            <button class="fut-toggle-btn ${mode === 'classic' ? 'active' : ''}" onclick="setMatchdayAdviceMode('classic')">
-                                ⚡ CLASSICO <span class="fut-mode-sub">(4 RUOLI)</span>
-                            </button>
-                            <button class="fut-toggle-btn ${mode === 'mantra' ? 'active' : ''}" onclick="setMatchdayAdviceMode('mantra')">
-                                💎 MANTRA <span class="fut-mode-sub">(12 POSIZIONI)</span>
-                            </button>
+                        ${roundDate ? `<span class="ca-date-chip">📅 ${roundDate}</span>` : ''}
+                        <div class="ca-seg-group">
+                            <button class="ca-seg-btn ${mode === 'classic' ? 'active' : ''}" onclick="setMatchdayAdviceMode('classic')">Classico</button>
+                            <button class="ca-seg-btn ${mode === 'mantra' ? 'active' : ''}" onclick="setMatchdayAdviceMode('mantra')">Mantra</button>
                         </div>
+                        ${tierFilterBarHtml}
                     </div>
                 </div>
-                <!-- FIXTURES RIBBON -->
-                <div class="fut-fixtures-row">
-                    <span class="fut-fixtures-label">PARTITE DEL TURNO:</span>
-                    <div class="fut-fixtures-scroll">
-                        ${fixturesBarHtml}
-                    </div>
-                </div>
-                <!-- QUICK FILTER CHIPS (RUOLI) -->
-                <div class="fut-chips-bar">
+                <div class="ca-role-tabs-bar">
                     ${roleChipsHtml}
                 </div>
-                <!-- QUICK FILTER CHIPS (LIVELLO STRATEGICO) -->
-                ${tierFilterBarHtml}
             </div>
-            <!-- BANNER AUDIT COMPATTO / FEEDBACK LOOP PREDITTIVO -->
             ${auditBannerHtml}
-            <!-- CONTENUTO LISTA COMPATTA (CLICCABILE) -->
-            <div class="fut-content-list">
+            <div class="ca-sections-stack">
                 ${sectionsHtml}
             </div>
         </div>

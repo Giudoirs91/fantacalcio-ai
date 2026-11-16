@@ -7987,7 +7987,7 @@ body.creator-mode-active .visitor-only-item {
     line-height: 1.2;
 }
 
-@media (max-width: 1340px) and (min-width: 1025px) {
+@media (max-width: 1520px) and (min-width: 1025px) {
     .header-main-row {
         padding: 0 12px !important;
         gap: 8px !important;

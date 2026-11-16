@@ -185,7 +185,7 @@ def generate_home_matches_strip_html(consensus_data: dict) -> str:
         is_big = m.get("big_match", False)
         h_mod = m.get("home", {}).get("formation", "4-3-3")
         a_mod = m.get("away", {}).get("formation", "4-3-3")
-        n_dubbi = len(m.get("ballottaggi", []))
+        n_dubbi = len(m.get("home", {}).get("ballots", [])) + len(m.get("away", {}).get("ballots", []))
         big_badge = '<span class="hpro-match-big">🔥 BIG</span>' if is_big else f'<span class="hpro-match-dubbi">⚖️ {n_dubbi} dubbi</span>'
         cards.append(f'''                            <a href="/probabili-formazioni/{slug}/" class="hpro-match-card{' is-big' if is_big else ''}" title="Probabili formazioni {h_team} - {a_team}">
                                 <div class="hpro-mc-top">
@@ -749,7 +749,7 @@ def build_standalone_dashboard(sync_android=False):
                     <div class="hpro-status-strip">
                         <span class="ai-badge-chip live">
                             <span class="pulse-dot-green"></span>
-                            LIVE • 11ª Giornata Serie A
+                            LIVE • {next_round}ª Giornata Serie A
                         </span>
                         <a href="/probabili-formazioni/" class="ai-badge-chip live" style="text-decoration:none;">
                             ⚽ Probabili 4 Fonti
@@ -787,7 +787,7 @@ def build_standalone_dashboard(sync_android=False):
                         <button type="button" id="btnPhaseMatchday" class="hpro-phase-btn active" onclick="switchHomePhase('matchday')">
                             <span class="hpro-p-ico">⚽</span>
                             <div class="hpro-p-txt">
-                                <span class="hpro-p-title">1. GIORNATA 11 <span class="hpro-p-badge green">LIVE</span></span>
+                                <span class="hpro-p-title">1. GIORNATA {next_round} <span class="hpro-p-badge green">LIVE</span></span>
                                 <span class="hpro-p-sub">Probabili • Chi Schiero • La Tua Rosa • Infortuni</span>
                             </div>
                         </button>
@@ -855,7 +855,7 @@ def build_standalone_dashboard(sync_android=False):
                             <div class="hpro-bh-left">
                                 <span class="hpro-bh-ico">⚽</span>
                                 <div>
-                                    <h2 class="hpro-bh-title">Probabili Formazioni 11ª Giornata</h2>
+                                    <h2 class="hpro-bh-title">Probabili Formazioni {next_round}ª Giornata</h2>
                                     <span class="hpro-bh-sub">Media Consensus 4 Fonti • Fantacalcio • Gazzetta • Sky • SOS Fanta</span>
                                 </div>
                             </div>

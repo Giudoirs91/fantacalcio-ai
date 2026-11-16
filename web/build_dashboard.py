@@ -776,6 +776,9 @@ def build_standalone_dashboard(sync_android=False):
                                 <a href="/chi-schiero/" class="hf-btn-secondary" onclick="onNavClick(event, 'chi_schiero')">
                                     <span>⚔️ Chi Schiero 1vs1</span>
                                 </a>
+                                <a href="/consigli-fantacalcio/" class="hf-btn-secondary" onclick="onNavClick(event, 'matchday_advice')">
+                                    <span>🎯 Consigli AI G{next_round}</span>
+                                </a>
                             </div>
 
                             <!-- Omni-Search Bar Istantanea -->
